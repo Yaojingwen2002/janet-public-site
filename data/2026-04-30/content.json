@@ -1,0 +1,129 @@
+{
+  "date": "2026-04-30",
+  "vol": "第212期",
+  "intro_text": "OpenAI撕开七年独家协议，模型登陆AWS；马斯克出庭作证OpenAI案，庭审进入第二天；DeepMind创始人David Silver新公司狂吸11亿美元——今天AI圈有三件事值得你停下手里的事。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI终结微软独家",
+          "content": "OpenAI与微软同步宣布修订合作框架，OpenAI模型正式登陆AWS Bedrock。微软保留首要云伙伴地位，但OpenAI产品可登陆其他云平台；OpenAI模型授权对微软不再排他。这是OpenAI自成立以来的最大战略转向。\n\nJanet锐评：这不是\"分手\"，是\"开源\"。OpenAI用脚投票：谁给钱多、谁不卡脖子，我就去谁那。微软七年独家护城河说拆就拆，接下来Azure和AWS的AI军备竞赛会打得比现在狠十倍。对中国企业来说，这意味着AWS上的OpenAI模型成本可能更透明——别急着欢呼，先看看定价。",
+          "source": "TechCrunch / CNBC",
+          "link": "https://techcrunch.com/2026/04/27/openai-ends-microsoft-legal-peril-over-its-50b-amazon-deal/"
+        },
+        {
+          "title": "马斯克出庭作证OpenAI案",
+          "content": "马斯克诉OpenAI案庭审进入第二天（美国时间4月28日开审）。马斯克在证人席上声称\"名字我取的，钱我出的，人我招的\"，指控奥尔特曼和布罗克曼背弃非营利使命。奥尔特曼到庭旁听但未作证。庭审预计持续三周，纳德拉也将出庭。\n\nJanet锐评：这场官司的本质不是\"谁偷了谁的公司\"，而是\"谁该为AI的未来定价\"。马斯克用慈善叙事包装商业利益，奥尔特曼用商业现实反驳理想主义。无论谁赢，OpenAI的估值和上市时间表都会被拖慢——这才是真正该关注的事。",
+          "source": "新浪财经 / 网易科技",
+          "link": "https://finance.sina.com.cn/stock/usstock/c/2026-04-30/doc-inhwfays7442557.shtml"
+        },
+        {
+          "title": "Google拿下五角大楼AI合同",
+          "content": "Google与五角大楼达成协议，扩大其在机密军事项目中的AI使用。此前Anthropic因伦理政策拒绝军方合作。Google此举被视为在军事AI领域的重大突破。\n\nJanet锐评：Anthropic的\"道德红线\"在五角大楼的预算面前，就像纸一样薄。Google不道德？不，Google只是更诚实——它从一开始就没说过自己有多干净。军事AI的边界正在被\"国家安全\"这个万能钥匙逐一解锁。中国创作者该问的不是\"该不该做\"，而是\"我们能不能做\"。",
+          "source": "TechCrunch / France24",
+          "link": "https://techcrunch.com/2026/04/28/google-expands-pentagons-access-to-its-ai-after-anthropics-refusal/"
+        },
+        {
+          "title": "特朗普团队拟拉Anthropic回军方",
+          "content": "据Axios报道，特朗普政府官员正在起草方案，试图将Anthropic重新纳入五角大楼AI生态。此前Anthropic因伦理政策拒绝军方合作，其CEO达里奥·阿莫迪曾公开表示\"不会为军队打造AI\"。\n\nJanet锐评：政治和伦理的博弈永远比技术本身精彩。Anthropic现在面临一个经典难题：拒绝军方=失去最大客户；接受军方=背叛立身之本。特朗普政府出面\"拉人\"，说明五角大楼对AI军备的焦虑已经压过了对伦理的顾虑。",
+          "source": "Axios",
+          "link": "https://www.axios.com/2026/04/29/trump-anthropic-pentagon-ai-executive-order-gov"
+        },
+        {
+          "title": "中国磐石100模型体系发布",
+          "content": "中国科学院在北京正式发布\"磐石100\"模型体系，以\"磐石·科学基础大模型\"为根基，八大学科领域大模型为骨干，百个垂直模型覆盖物理、化学、生物等科学领域。这是中国首个AI for Science体系化成果。\n\nJanet锐评：中科院这次不玩虚的——直接上体系。八个学科大模型+百个垂直模型，规模上去了，但真正的考验是：这些模型能不能在真实科研中跑通？AI for Science的瓶颈从来不是算力，而是科学家愿不愿意把\"黑盒\"结果当成论文依据。",
+          "source": "新华网 / 中新网",
+          "link": "https://www.chinanews.com.cn/gn/2026/04-28/10612192.shtml"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Nvidia发布多模态推理模型",
+          "content": "Nvidia发布Nemotron 3 Nano Omni，30B参数、3B激活参数的开源多模态模型，统一处理文本、图像、视频和音频。相比分别调用多模型的方案，推理效率最高提升9倍，专为边缘AI Agent设计。\n\nJanet锐评：Nvidia在用开源打脸闭源。30B参数、3B激活，这个稀疏化策略意味着边缘设备也能跑多模态Agent——这才是真正的\"普惠AI\"。对国内开发者来说，这意味着以后不用全押GPT-4了，本地部署多模态Agent的成本会大幅下降。",
+          "source": "NVIDIA Blog",
+          "link": "https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/"
+        },
+        {
+          "title": "IBM发布Bob编程平台",
+          "content": "IBM推出AI编程平台Bob，支持多模型路由（Granite、Claude、Mistral等）和人工检查点机制。已在8万+内部员工中试用，部分团队节省70%时间（平均每周10小时）。重点企业级安全管控。\n\nJanet锐评：IBM终于不卖License了，改卖\"AI编程流水线\"。多模型路由+人工检查点，这套组合拳打得很准——企业最怕AI写代码不可控，Bob用\"AI干活、人把关\"的模式解决了这个痛点。但只支持Granite/Claude/Mistral，不支持Qwen，这算不算一种\"选择性失明\"？",
+          "source": "VentureBeat",
+          "link": "https://venturebeat.com/orchestration/ibm-launches-bob-with-multi-model-routing-and-human-checkpoints-to-turn-ai-coding-into-a-secure-production-system"
+        },
+        {
+          "title": "IBM发布Granite 4.1模型家族",
+          "content": "IBM发布其迄今最庞大的模型发布，涵盖语言、视觉、语音、嵌入和guardian模型，面向企业工作负载优化。Granite 4.1系列覆盖从nano到large的多种尺寸。\n\nJanet锐评：企业模型市场越来越卷了。IBM Granite 4.1的卖点很明确——\"我的企业级AI，我说了算\"。但问题是：在开源模型越来越强的今天，企业真的愿意为\"企业级\"多付溢价吗？答案取决于他们的合规成本。",
+          "source": "IBM Research",
+          "link": "https://research.ibm.com/blog/granite-4-1-ai-foundation-models"
+        },
+        {
+          "title": "OpenAI Symphony开源规范发布",
+          "content": "OpenAI发布Symphony，一个用于编排编码Agent工作流的开源规范。允许不同AI Agent协同完成复杂的编程任务，包括代码生成、测试、调试和部署。\n\nJanet锐评：OpenAI在推标准。Symphony不是模型，而是\"让模型们一起干活\"的协议。这步棋很聪明——与其自己造所有轮子，不如定义轮子的接口。对国内开发者来说，关注点应该是：这个规范能不能成为事实标准？如果答案是\"能\"，那适配它比重新造轮子划算。",
+          "source": "IT Brief",
+          "link": "https://itbrief.news/story/openai-launches-symphony-for-coding-agent-workflows"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "David Silver新公司融资11亿美元",
+          "content": "DeepMind联合创始人David Silver创办的Ineffable Intelligence完成11亿美元融资，估值达51亿美元。公司目标构建\"无需人类数据\"的AI系统，走强化学习路线。\n\nJanet锐评：11亿美元！David Silver用AlphGo的遗产买了张无限额信用卡。\"无需人类数据\"是画饼还是真突破？AlphaGo之后他证明了强化学习能超越人类，但现在的问题是：算力成本能不能支撑这种路线规模化。如果答案是\"能\"，那当前所有依赖海量标注数据的AI公司估值模型都要重写。",
+          "source": "TechCrunch / Reuters",
+          "link": "https://techcrunch.com/2026/04/27/deepminds-david-silver-just-raised-1-1b-to-build-an-ai-that-learns-without-human-data/"
+        },
+        {
+          "title": "Google Meta AI广告军备竞赛",
+          "content": "The Verge报道Google和Meta正在扩大AI广告技术投入，将内容生成与精准投放深度整合。AI生成内容直接用于广告投放，实现\"内容即定向\"的新范式。\n\nJanet锐评：广告商最想要的不是\"更好的广告\"，而是\"不用投广告也能卖货\"。Google和Meta把AI内容生成和投放绑在一起，等于告诉广告主：\"你不用找创意团队了，AI帮你写、帮你投、帮你优化\"。对内容创作者来说，这意味着AI生成内容的变现路径正在被平台垄断。",
+          "source": "The Verge",
+          "link": "https://www.theverge.com/tech/920733/inside-the-ai-ad-boom-at-google-and-meta"
+        },
+        {
+          "title": "工信部推\"人工智能+软件\"行动",
+          "content": "工信部开展\"人工智能+软件\"专项行动，推动AI赋能服务业高质量发展。重点聚焦软件行业智能化升级，推动AI技术与传统软件深度融合。\n\nJanet锐评：中国AI政策正在从\"建模型\"转向\"用模型\"。\"人工智能+软件\"这个提法很有意思——不是\"AI+X\"的泛泛而谈，而是直接瞄准软件这个AI落地的主战场。对国内SaaS企业来说，不接这波政策的红利，等于主动放弃转型窗口。",
+          "source": "每日经济新闻",
+          "link": "https://www.nbd.com.cn/articles/2026-04-29/4371727.html"
+        },
+        {
+          "title": "具身智能赛道日均吸金数亿",
+          "content": "据不完全统计，2026年以来国内具身智能领域披露融资事件122起，总规模约345亿元。星动纪元两个月融资近25亿元，它石智航4.55亿美元创中国具身智能单笔纪录。机器人赛道日均吸金数亿元。\n\nJanet锐评：资本比技术更懂\"未来\"——它已经提前把估值炒到\"千台级交付\"阶段了。但具身智能的商业化瓶颈不在融资，而在\"从实验室到仓库\"的那最后一公里。顺丰领投星动纪元是个信号：物流场景可能是具身智能第一个规模化落地的地方。",
+          "source": "新浪财经 / 财新网",
+          "link": "https://finance.sina.com.cn/wm/2026-04-27/doc-inhvyefa7769933.shtml"
+        }
+      ]
+    },
+    "investment": {
+      "items": [
+        {
+          "title": "星动纪元再融2亿美元",
+          "content": "具身智能企业星动纪元再获超2亿美元融资，顺丰集团领投，红杉中国、IDG等联合注资。两个月累计融资近25亿元，宣布将开启千台级机器人批量交付，完成具身行业首个PMF（产品市场匹配）。\n\nJanet锐评：顺丰投具身智能，逻辑很简单——\"我的仓库需要机器人\"。产业资本的投资永远比财务资本更务实。星动纪元拿的是物流场景的\"入场券\"，接下来看它能不能把千台级交付做成行业标杆。",
+          "source": "财新网 / IT之家",
+          "link": "https://www.caixin.com/2026-04-27/102438245.html"
+        },
+        {
+          "title": "It石智航4.55亿美元融资",
+          "content": "它石智航完成4.55亿美元Pre-A轮融资，创中国具身智能有史以来最大单笔融资纪录。全明星投资阵容包括多家顶级国家队基金和产业资本。\n\nJanet锐评：4.55亿美元=33亿人民币。一个Pre-A轮，这个数字已经超越了绝大多数A+轮。具身智能的估值逻辑正在被改写——\"你能交付多少台\"比\"你的算法有多先进\"更值钱。",
+          "source": "新浪科技",
+          "link": "https://finance.sina.com.cn/tech/roll/2026-04-16/doc-inhusenn4081050.shtml"
+        },
+        {
+          "title": "OpenAI 500亿美元Amazon交易",
+          "content": "OpenAI与Amazon达成500亿美元规模的交易，OpenAI模型登陆AWS Bedrock。这是OpenAI结束与微软独家合作后的最大动作，标志着AI基础设施格局的重大变化。\n\nJanet锐评：500亿美元不是\"合作\"，是\"买断\"。OpenAI用AWS替代Azure，说明云厂商的AI军备竞赛已经从\"谁能用OpenAI\"升级到\"谁能用得起OpenAI\"。对中国云厂商来说，这是一个信号——\"多云策略\"不再是口号，而是生存必需。",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/2026/04/27/openai-ends-microsoft-legal-peril-over-its-50b-amazon-deal/"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "OpenAI Privacy Filter开源",
+          "content": "OpenAI发布Privacy Filter，一个开源的PII（个人可识别信息）检测和脱敏模型。可自动识别并隐藏文本中的敏感信息，支持企业级数据合规需求。模型已开源，可在HuggingFace下载。\n\nJanet锐评：企业用AI最怕什么？\"我的数据被拿去训练了\"。OpenAI这个开源模型很聪明——你不用担心数据泄露，因为它帮你把敏感信息先筛掉了。对国内企业来说，这意味着在合规的前提下用OpenAI模型成为可能。但要注意：开源≠免费，商用仍需授权。",
+          "source": "OpenAI Blog",
+          "link": "https://openai.com/index/introducing-openai-privacy-filter/"
+        }
+      ]
+    }
+  }
+}

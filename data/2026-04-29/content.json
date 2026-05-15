@@ -1,0 +1,146 @@
+{
+  "date": "2026-04-29",
+  "vol": "第211期",
+  "intro_text": "OpenAI解除微软独家协议转投AWS，AI多云时代正式降临；Elon Musk出庭作证要求罢免Altman，OpenAI创始人内战进入白热化；中国政治局会议首次以\"人工智能+\"为战略关键词定调经济工作。三大信号叠加，AI行业正在经历结构性重组。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI抛弃微软独家，转投AWS",
+          "content": "OpenAI宣布解除与微软的AI模型独家销售协议，其模型正式上架Amazon Bedrock。同时推出OpenAI Codex on AWS和Amazon Bedrock Managed Agents（由OpenAI驱动）。这意味着OpenAI的GPT系列模型不再被锁定在Azure生态，企业可以在AWS上直接调用OpenAI API。据CNBC报道，这是OpenAI成立以来的重大战略转向，标志着AI基础设施从\"云厂商绑定\"走向\"模型即服务\"的开放竞争。Janet锐评：这不是OpenAI变心，是商业逻辑的必然。独家协议让OpenAI失去了议价权——当客户需要多云部署时，微软的绑死方案成了绊脚石。解除独家后OpenAI能赚两份钱：一份给微软，一份给AWS。但真正受益的是企业客户，多云部署不再是PPT里的概念。不过别高兴太早，AWS的定价策略才是关键——如果AWS用OpenAI打价格战，Azure的日子就不好过了。",
+          "source": "CNBC / OpenAI官方",
+          "link": "https://www.cnbc.com/2026/04/28/openai-brings-models-to-aws-after-ending-exclusivity-with-microsoft.html",
+          "image": "openai-aws-partnership.jpg"
+        },
+        {
+          "title": "Musk出庭：罢免Altman，再战OpenAI",
+          "content": "Elon Musk在Oakland联邦法院就OpenAI诉讼案发表第二天证词，指控OpenAI领导层\"掏空非营利组织\"，要求罢免CEO Sam Altman。Musk在证词中警告\"我们不想看到终结者式的结果\"，并强调自己推动AI开源和多行星文明的初衷。此案由Judge Yvonne Gonzalez Rogers审理，是AI行业最具影响力的法律战。CNN报道称，这场诉讼可能\"改变AI的未来路径\"。Janet锐评：Musk vs Altman的戏码已经演了两年多，从\"拯救人类\"到\"掏空非营利\"，叙事越来越像好莱坞剧本。但核心问题没变：OpenAI到底该是个闭源的商业公司还是开源的非营利组织？Musk想当道德裁判，Altman想当CEO。无论谁赢，普通开发者和用户都是旁观者——这场仗打的是公司控制权，不是AI安全。",
+          "source": "CNN / AP News",
+          "link": "https://www.cnn.com/2026/04/28/tech/elon-musk-sam-altman-openai",
+          "image": "musk-testimony.jpg"
+        },
+        {
+          "title": "五角大楼黑名单：Anthropic出局",
+          "content": "美国国防部确认在将Anthropic列入供应链风险黑名单后，已与Google展开机密军事AI项目合作。五角大楼AI主管Cameron Stanley表示\"过度依赖单一供应商从来不是好事\"。此前Anthropic因拒绝向五角大楼提供AI内容过滤工具而被认定为\"国家安全风险\"。TechCrunch报道称，Google正在扩展其在国防领域的AI能力，填补Anthropic留下的空白。Janet锐评：AI公司被政府拉黑，这在2026年已经不是新闻了。但关键是——谁能在合规和伦理之间找到平衡点？Anthropic因为\"伦理\"被踢出局，Google因为\"配合\"上位。这不是AI问题，是政治问题。对中国创作者来说，最大的启示是：AI公司的政治风险正在成为估值的核心变量。",
+          "source": "CNBC / TechCrunch",
+          "link": "https://www.cnbc.com/2026/04/28/pentagon-ai-chief-confirms-work-with-google-after-anthropic-blacklist.html",
+          "image": "pentagon-ai-google.jpg"
+        },
+        {
+          "title": "中国政治局：全面实施\"人工智能+\"",
+          "content": "4月28日中共中央政治局召开会议，首次以\"全面实施人工智能+行动\"为关键词定调经济工作。会议指出要\"发展智能经济新形态，完善人工智能治理\"，同时强调\"深入整治内卷式竞争\"。会议还涉及算力网规划、制造业合理比重保持、房地产市场调控等。财新网报道，这是中国最高层对AI的战略定位升级。联合早报分析称，面对中美科技战和外部不确定性，中国正加速AI自主可控布局。Janet锐评：\"人工智能+\"从政策词汇变成了战略关键词，意味着AI不再是\"锦上添花\"而是\"基础设施\"。但有意思的是，会议同时提到\"整治内卷式竞争\"——这不就是AI行业现状吗？大模型价格战打得天昏地暗，算力军备竞赛越演越烈。中国要AI自主可控，但自主可控的前提是别把企业卷死。",
+          "source": "财新网 / 联合早报",
+          "link": "https://china.caixin.com/2026-04-28/102438723.html",
+          "image": "politbureau-ai.jpg"
+        },
+        {
+          "title": "中科院发布\"磐石100\"科学模型体系",
+          "content": "中国科学院在北京正式发布\"磐石100\"模型体系，以\"磐石·科学基础大模型\"为根基，覆盖八大科学领域的大模型矩阵，包括数学、物理、化学、生物、天文、地质、气象、材料等。这是中国首个面向AI for Science的体系化模型发布。中新网报道称，该体系旨在推动AI赋能科学研究从\"单兵作战\"迈向\"集团冲锋\"。Janet锐评：中科院搞AI for Science，方向没错，但关键是——这些科学大模型能不能真正替代科学家？还是只是另一个PPT产品？AI for Science的核心不是模型多大，而是能不能在真实科研场景里跑通。国内AI圈喜欢堆参数、堆榜单，但科学研究的难题从来不在基准测试里。",
+          "source": "中新网 / 新华网",
+          "link": "https://www.chinanews.com.cn/gn/2026/04-28/10612192.shtml",
+          "image": "panshi100-model.jpg"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "英伟达开源最强多模态Agent模型",
+          "content": "英伟达发布Nemotron 3 Nano Omni，30B参数/3B激活参数的MoE混合专家架构多模态模型，整合视觉、语音、文本能力。官方宣称吞吐量比同类开放全向模型高出9倍（900%），在6个权威榜单上取得领先。模型已开源，面向AI Agent场景优化。Janet锐评：老黄又在秀肌肉了。30B参数做端侧Agent推理，效率确实能打。但9倍吞吐量的数字要打个问号——对比基线是什么？测试场景是什么？不过有一点是确定的：NVIDIA正在把AI Agent从\"烧钱玩具\"变成\"可落地产品\"。这对中国开发者是好消息——开源多模态模型越多，我们越不需要跪着求API。",
+          "source": "NVIDIA官方 / The Next Web",
+          "link": "https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/",
+          "image": "nemotron-3-nano.jpg"
+        },
+        {
+          "title": "IBM推出企业级AI编程伙伴Bob",
+          "content": "IBM宣布AI开发伙伴Bob正式全球可用。Bob支持多模型编排和人工审核节点，覆盖从AI辅助编码到生产就绪软件的完整流程。80,000+ IBM内部员工已在使用，用户报告平均45%生产力提升。IBM Bob的核心差异化在于：不是单纯写代码，而是管理SDLC成本和合规。Janet锐评：IBM终于搞对了——AI编程工具不能只关注\"写代码\"，更要关注\"代码怎么用\"。企业最怕的不是AI写错代码，是AI写了代码但没人敢上线。Bob的人工审核节点和多模型路由，恰恰解决了这个痛点。但80,000内部员工的数据，懂的都懂。",
+          "source": "IBM官方 / The Register",
+          "link": "https://newsroom.ibm.com/2026-04-28-introducing-ibm-bob-ai-development-partner-that-takes-enterprises-from-ai-assisted-coding-to-production-ready-software",
+          "image": "ibm-bob-launch.jpg"
+        },
+        {
+          "title": "支付宝上线\"AI收\"智能体支付",
+          "content": "支付宝正式上线\"AI收\"服务，支持商家和个人开发者通过OpenClaw（龙虾）等AI Agent实现按调用即时收款。接入流程压缩至三步：入驻签约、创建应用、安装SDK。个人开发者可享0费率至2026年底。这是继\"AI付\"之后，支付宝在智能体支付领域的进一步布局，形成\"一付一收\"的AI支付体系。Janet锐评：AI Agent商业化支付闭环终于补齐了。\"AI付\"解决的是用户付钱给AI，\"AI收\"解决的是AI开发者收钱。0费率是个狠招——用补贴换生态。但关键问题是：AI Agent的调用量能不能撑起这个生态？如果Agent调用的都是免费服务，那收什么？",
+          "source": "IT之家 / 每日经济新闻",
+          "link": "https://www.ithome.com/0/944/585.htm",
+          "image": "alipay-ai-shou.jpg"
+        },
+        {
+          "title": "OpenAI Codex on AWS正式上线",
+          "content": "OpenAI Codex on AWS作为Amazon Bedrock的一部分正式上线，企业用户可以在AWS环境中直接调用OpenAI Codex模型进行开发。同时推出的还有Amazon Bedrock Managed Agents（由OpenAI驱动），允许企业在Bedrock平台上构建和管理AI Agent。OpenAI官方表示，这是\"帮助企业在AWS环境中使用OpenAI能力\"的战略举措。Janet锐评：OpenAI Codex是编程模型里的\"新贵\"，但放在AWS上跑，意味着OpenAI承认了一个事实：没有企业会只用一个云。Codex on AWS的定价策略值得关注——如果AWS用自家推理芯片跑OpenAI模型，成本可能比Azure低。这才是微软真正担心的。",
+          "source": "OpenAI官方 / TechCrunch",
+          "link": "https://openai.com/index/openai-on-aws/",
+          "image": "codex-aws.jpg"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "AI多云时代：独家协议的终结",
+          "content": "OpenAI解除微软独家协议，模型上架AWS，标志着AI行业的\"云厂商绑定\"时代结束。过去两年，Azure+OpenAI的组合让微软在AI基础设施竞争中占据先机，但也让企业客户担忧供应商锁定风险。多云部署正在从\"可选项\"变成\"必选项\"。Janet锐评：这不是OpenAI的仁慈，是客户用脚投票的结果。企业CTO最怕的不是技术落后，是被供应商绑死。OpenAI选择解除独家，说明客户压力已经超过了微软的议价能力。对行业的影响：模型价格战会从AWS开始打，Azure的AI收入增速可能放缓。",
+          "source": "综合分析",
+          "link": "https://www.theverge.com/ai-artificial-intelligence/919800/now-that-openais-microsoft-exclusivity-is-over-it-has-a-new-deal-with-amazon-and-aws",
+          "image": "ai-multicloud.jpg"
+        },
+        {
+          "title": "AI Agent商业化：从\"付\"到\"收\"的闭环",
+          "content": "支付宝上线\"AI收\"，与之前的\"AI付\"形成完整闭环，标志着AI Agent商业化基础设施的初步成型。从AI点单（AI付）到AI服务收款（AI收），智能体经济的基础设施正在补齐。Janet锐评：AI Agent最大的瓶颈不是能力，是赚钱能力。能调用AI的人多，但能为AI创造收入的人少。支付宝这个布局很聪明——用0费率换生态，先把开发者圈进来。但AI Agent的商业化路径，最终还是要回到\"用户愿不愿意为AI服务付费\"这个本质问题。",
+          "source": "综合分析",
+          "link": "https://www.nbd.com.cn/articles/2026-04-28/4365784.html",
+          "image": "agent-economy.jpg"
+        },
+        {
+          "title": "中国AI爆发：Token调用量指数级增长",
+          "content": "国家数据局数据显示，2025年全国日均词元调用量从年初超万亿增长到年末100万亿，全年累计约21100万亿。高质量数据集超11.6万个，总体量超960PB。国家层面首次推出数据集管理服务平台。Janet锐评：日均100万亿Token是什么概念？相当于每秒处理超过3万亿Token。中国AI应用的爆发速度远超预期。但数据集11.6万个这个数字，要问一句：有多少是真正高质量的？国内AI圈的数据集质量参差不齐，很多是爬虫+清洗的\"伪数据\"。高质量数据集才是AI的下一个瓶颈。",
+          "source": "国家数据局 / 新浪科技",
+          "link": "https://finance.sina.com.cn/tech/roll/2026-04-29/doc-inhwcqxn6847875.shtml",
+          "image": "ai-token-growth.jpg"
+        },
+        {
+          "title": "AI for Science：从PPT到生产力的鸿沟",
+          "content": "中科院发布\"磐石100\"科学模型体系，覆盖八大科学领域。这是中国AI for Science领域最重要的体系化发布。但AI for Science的核心挑战不是模型能力，是数据质量和科研流程整合。Janet锐评：中科院的AI for Science路线图很宏大，但国内AI圈有个老毛病——重发布轻落地。科学大模型如果只停留在论文和PPT里，和通用大模型有什么区别？真正的AI for Science，是能让一个化学家在实验室里用AI加速分子筛选，而不是让一个AI研究员在实验室里用化学家做benchmark。",
+          "source": "综合分析",
+          "link": "https://www.chinanews.com.cn/gn/2026/04-28/10612192.shtml",
+          "image": "ai-science.jpg"
+        }
+      ]
+    },
+    "investment": {
+      "items": [
+        {
+          "title": "OpenAI多云化：谁的云最受益",
+          "content": "OpenAI解除微软独家后，AWS获得重大利好。OpenAI模型上架Bedrock，意味着AWS可以直接向企业客户兜售OpenAI能力。投资视角：AWS的AI基础设施收入有望加速增长，但Azure不会坐以待毙。微软可能通过降价或捆绑策略反击。Janet锐评：AI基础设施的竞争已经从\"谁有模型\"变成\"谁有客户\"。OpenAI选择AWS，说明客户选择正在影响模型分发策略。对投资者来说，关注AWS AI收入增速和Azure AI收入增速的剪刀差，比关注任何模型评测都重要。",
+          "source": "投资分析",
+          "link": "https://www.cnbc.com/2026/04/28/openai-brings-models-to-aws-after-ending-exclusivity-with-microsoft.html",
+          "image": "aws-investment.jpg"
+        },
+        {
+          "title": "NVIDIA开源策略：卖铲人变开源派",
+          "content": "NVIDIA发布开源的Nemotron 3 Nano Omni，同时之前已开源Nemotron 3 Super。NVIDIA从\"闭源推理芯片\"转向\"开源模型+闭源芯片\"策略。投资视角：开源模型是NVIDIA的生态策略——用开源模型绑定开发者，用闭源芯片赚钱。Janet锐评：黄仁勋的算盘很精：开源模型让NVIDIA的芯片成为\"事实标准\"，开发者习惯了Nemotron架构，自然会选择NVIDIA GPU来推理。这是比降价更狠的竞争策略。对中国AI公司来说，开源模型是机会也是威胁——模型门槛降低了，但芯片依赖度可能升高。",
+          "source": "投资分析",
+          "link": "https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/",
+          "image": "nvidia-investment.jpg"
+        },
+        {
+          "title": "中国\"人工智能+\"政策：算力基础设施投资机遇",
+          "content": "政治局会议首次将\"人工智能+\"上升为国家战略关键词，同时强调算力网规划。工信部同步推进\"人工智能+软件\"专项行动。投资视角：算力基础设施、国产AI芯片、AI Agent应用层是三大受益方向。Janet锐评：\"人工智能+\"从部委级政策升级到政治局级定调，说明AI在中国经济中的地位已经不可替代。但政策红利不等于投资机会——关键看谁能吃到实际订单。国产AI芯片的产能和良率才是硬指标，别被PPT骗了。",
+          "source": "投资分析",
+          "link": "https://finance.sina.com.cn/wm/2026-04-28/doc-inhvzsha8563174.shtml",
+          "image": "china-ai-investment.jpg"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "创作者工具推荐：NVIDIA Nemotron 3 Nano Omni",
+          "content": "NVIDIA开源的30B参数多模态Agent模型，支持视觉、语音、文本全维度理解，吞吐量比同类开放模型高9倍。适合端侧AI Agent部署，3B激活参数让推理成本大幅降低。GitHub/HuggingFace可下载，商用友好。Janet锐评：对中国创作者来说，这是今年最值得关注的开源模型之一。30B参数、3B激活的多模态模型，意味着你可以在自己的服务器上跑一个\"眼睛+耳朵+大脑\"的Agent系统，不需要依赖任何API。成本不到闭源模型的1/10。但前提是——你得有GPU。",
+          "source": "NVIDIA / HuggingFace",
+          "link": "https://developer.nvidia.com/blog/nvidia-nemotron-3-nano-omni-powers-multimodal-agent-reasoning-in-a-single-efficient-open-model/",
+          "image": "nemotron-tool.jpg"
+        }
+      ]
+    }
+  }
+}

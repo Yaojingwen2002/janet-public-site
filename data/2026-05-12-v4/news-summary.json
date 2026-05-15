@@ -1,0 +1,37 @@
+{
+  "date": "2026-05-12",
+  "vol": "0512",
+  "brand": "Janet 快车箱",
+  "theme": "Codex进工位，AI开始接活",
+  "intro_text": "本期从 AIHOT 今日候选中筛出 20 条进入 v4 预览，重点看模型、Agent、开源论文和资本动作如何挤进真实工作。",
+  "daily_thesis": "今天这期不是\"又一个模型发布\"的流水账，主线更像 AI 开始被塞进真实工位。头条「OpenAI解释如何安全运行」把代码、权限和交付责任摆到桌面上，旁边还有 4 条 Agent、4 条开源论文、3 条商业线索一起催场。Janet 的判断很简单：AI 现在不是缺热闹，是缺能把活干完还不把锅甩给人的证据。",
+  "lead_story": {
+    "id": "openai-codex",
+    "title": "OpenAI 解释如何安全运行 Codex",
+    "summary": "OpenAI：官网动态：OpenAI通过沙盒隔离、人工审批流程、严格网络策略与原生代理遥测四层防护机制，确保Codex代码生成模型的安全运行。沙盒环境完全隔离执行代码，所有生产请求需经人工审核批准，…",
+    "url": "https://openai.com/index/running-codex-safely",
+    "source": "OpenAI：官网动态",
+    "source_rank": "S",
+    "image": "images/openai-codex.png"
+  },
+  "section_counts": {
+    "lead_story": 1,
+    "models": 4,
+    "agents": 4,
+    "open_source": 4,
+    "business": 3,
+    "china_perspective": 1,
+    "creator_opportunity": 3
+  },
+  "item_count": 20,
+  "source_rank_distribution": {
+    "S": 11,
+    "B": 9
+  },
+  "output_url": "data/2026-05-12-v4/output.html",
+  "working_preview": true,
+  "summary_url": "data/2026-05-12-v4/news-summary.json",
+  "content_url": "data/2026-05-12-v4/content.json",
+  "homepage_entry": "2026-05-12-v4",
+  "homepage_integration": "v4_summary_card"
+}

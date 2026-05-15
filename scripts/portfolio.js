@@ -1,0 +1,596 @@
+// portfolio.js — 作品集数据加载与渲染
+// 目标：把作品集从"视频列表"升级为"项目案例库"
+// 结构：卡片主体进入项目详情页，播放按钮单独跳转视频外链
+
+(function() {
+  'use strict';
+
+  // ── 工具函数 ────────────────────────────────────────────────
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function titleToSlug(title) {
+    return String(title || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9\u4e00-\u9fa5]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .substring(0, 32);
+  }
+
+  function getField(item, field, fallback) {
+    if (item && item[field] !== undefined && item[field] !== null && item[field] !== '') {
+      return item[field];
+    }
+    return fallback !== undefined ? fallback : '';
+  }
+
+  function resolveId(item, index) {
+    if (item.id && typeof item.id === 'string' && item.id.trim() !== '') {
+      return item.id.trim();
+    }
+
+    if (item.id && typeof item.id === 'number') {
+      return 'item-' + item.id;
+    }
+
+    if (item.title) {
+      const slug = titleToSlug(item.title);
+      if (slug) return slug;
+    }
+
+    return 'item-' + index;
+  }
+
+  function resolveDetailUrl(item, id) {
+    if (item.detailUrl && typeof item.detailUrl === 'string' && item.detailUrl.trim() !== '') {
+      return item.detailUrl;
+    }
+
+    return 'project-detail.html?id=' + encodeURIComponent(id);
+  }
+
+  function resolveVideoUrl(item) {
+    if (item.videoUrl && typeof item.videoUrl === 'string' && item.videoUrl.trim() !== '') {
+      return item.videoUrl;
+    }
+
+    // 兼容旧字段 url
+    if (item.url && typeof item.url === 'string' && item.url.trim() !== '' && item.url !== '#') {
+      return item.url;
+    }
+
+    return '#';
+  }
+
+  function parseTags(tags) {
+    if (!tags) return [];
+
+    if (Array.isArray(tags)) {
+      return tags.filter(Boolean);
+    }
+
+    if (typeof tags === 'string') {
+      return tags
+        .split(/[,，/\/]+/)
+        .map(t => t.trim())
+        .filter(Boolean);
+    }
+
+    return [];
+  }
+
+  function placeholderImg(color) {
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="800" height="450">
+        <rect fill="${color || '#111'}" width="800" height="450"/>
+        <text x="400" y="235" text-anchor="middle" fill="#333" font-family="sans-serif" font-size="24">No Image</text>
+      </svg>
+    `;
+
+    return 'data:image/svg+xml,' + encodeURIComponent(svg);
+  }
+
+  function getThumbSrc(item) {
+    const thumbnail = getField(item, 'thumbnail', '');
+    const videoThumb = getField(item, 'videoThumb', '');
+
+    return videoThumb || thumbnail || placeholderImg('#111');
+  }
+
+  function getCoverSrc(item) {
+    const thumbnail = getField(item, 'thumbnail', '');
+    const videoThumb = getField(item, 'videoThumb', '');
+
+    return thumbnail || videoThumb || placeholderImg('#111');
+  }
+
+  function renderTagList(tags, className) {
+    const arr = parseTags(tags);
+    if (!arr.length) return '';
+
+    return `
+      <div class="${className}">
+        ${arr.map(tag => `<span class="tag tag-outline">${escapeHtml(tag)}</span>`).join('')}
+      </div>
+    `;
+  }
+
+  function renderVideoButton(videoUrl, buttonClass, label) {
+    const safeUrl = escapeHtml(videoUrl || '#');
+
+    if (!videoUrl || videoUrl === '#') {
+      return `<span class="${buttonClass} is-disabled" aria-disabled="true">${escapeHtml(label)}</span>`;
+    }
+
+    return `
+      <a href="${safeUrl}" class="${buttonClass}" target="_blank" rel="noopener noreferrer">
+        ${escapeHtml(label)}
+      </a>
+    `;
+  }
+
+  // ── 数据加载 ────────────────────────────────────────────────
+
+  function loadPortfolioData() {
+    return fetch('data/portfolio.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('HTTP ' + response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) {
+          throw new Error('portfolio.json 必须是数组');
+        }
+        return data;
+      });
+  }
+
+  // ── 首页 Recent Videos 渲染 ────────────────────────────────
+
+  function renderVideos() {
+    const videoContainer = document.getElementById('video-container');
+    if (!videoContainer) return;
+
+    loadPortfolioData()
+      .then(data => {
+        const recent = data.slice(0, 10);
+
+        if (!recent.length) {
+          videoContainer.innerHTML = '<p style="color:var(--text-3);padding:40px 0;">暂无作品数据</p>';
+          return;
+        }
+
+        videoContainer.innerHTML = recent.map((item, index) => {
+          const id = resolveId(item, index);
+          const title = getField(item, 'title', '未命名项目');
+          const subtitle = getField(item, 'subtitle', '');
+          const type = getField(item, 'type', 'AI 创作');
+          const date = getField(item, 'date', '—');
+          const videoUrl = resolveVideoUrl(item);
+          const detailUrl = resolveDetailUrl(item, id);
+          const thumbSrc = getThumbSrc(item);
+
+          return `
+            <article class="card video-card">
+              <a href="${escapeHtml(detailUrl)}" class="video-card-main" aria-label="查看完整项目：${escapeHtml(title)}">
+                <div class="thumbnail video-card-thumb">
+                  <img src="${escapeHtml(thumbSrc)}"
+                       alt="${escapeHtml(title)}"
+                       width="800"
+                       height="450"
+                       loading="lazy"
+                       onerror="this.style.display='none';">
+                  <div class="video-card-overlay">
+                    <div class="play-btn-small" aria-hidden="true">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M6 4L16 10L6 16V4Z" fill="white"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="video-card-meta">
+                  <h4 class="truncate">${escapeHtml(title)}</h4>
+                  ${subtitle ? `<span class="video-subtitle">${escapeHtml(subtitle)}</span>` : ''}
+                  <span class="date">${escapeHtml(date)} · ${escapeHtml(type)}</span>
+                </div>
+              </a>
+
+              <div class="video-card-actions">
+                <a href="${escapeHtml(detailUrl)}" class="btn btn-outline btn-sm">查看完整项目</a>
+                ${renderVideoButton(videoUrl, 'btn btn-green btn-sm', '播放视频')}
+              </div>
+            </article>
+          `;
+        }).join('');
+      })
+      .catch(error => {
+        console.warn('作品数据加载失败', error);
+        videoContainer.innerHTML = `
+          <p style="text-align:center;color:var(--text-3);padding:40px;">
+            作品数据加载失败
+          </p>
+        `;
+      });
+  }
+
+  // ── 首页 Selected Work 渲染 ────────────────────────────────
+
+  function renderPortfolio() {
+    const portfolioContainer = document.getElementById('portfolio-container');
+    if (!portfolioContainer) return;
+
+    loadPortfolioData()
+      .then(data => {
+        const featured = data.slice(0, 4);
+
+        if (!featured.length) {
+          portfolioContainer.innerHTML = '<p style="color:var(--text-3);padding:40px 0;">暂无精选作品</p>';
+          return;
+        }
+
+        portfolioContainer.innerHTML = featured.map((item, index) => {
+          const id = resolveId(item, index);
+          const title = getField(item, 'title', '未命名项目');
+          const subtitle = getField(item, 'subtitle', '');
+          const type = getField(item, 'type', 'AI 创作');
+          const date = getField(item, 'date', '—');
+          const summary = getField(item, 'summary', '');
+          const videoUrl = resolveVideoUrl(item);
+          const detailUrl = resolveDetailUrl(item, id);
+          const thumbSrc = getCoverSrc(item);
+          const tags = parseTags(item.tags);
+
+          return `
+            <article class="card portfolio-item">
+              <a href="${escapeHtml(detailUrl)}" class="portfolio-item-main" aria-label="查看完整项目：${escapeHtml(title)}">
+                <div class="thumbnail portfolio-item-thumb">
+                  <img src="${escapeHtml(thumbSrc)}"
+                       alt="${escapeHtml(title)}"
+                       width="800"
+                       height="600"
+                       loading="lazy"
+                       onerror="this.style.display='none';">
+                  <div class="portfolio-item-overlay">
+                    <span class="portfolio-item-type">${escapeHtml(type)}</span>
+                  </div>
+                </div>
+
+                <div class="portfolio-item-meta">
+                  <h4 class="truncate">${escapeHtml(title)}</h4>
+                  ${subtitle ? `<span class="portfolio-item-subtitle">${escapeHtml(subtitle)}</span>` : ''}
+                  <span class="date">${escapeHtml(date)} · ${escapeHtml(type)}</span>
+                </div>
+              </a>
+
+              ${summary ? `
+                <p class="portfolio-item-summary">
+                  ${escapeHtml(summary.substring(0, 90))}${summary.length > 90 ? '...' : ''}
+                </p>
+              ` : ''}
+
+              ${tags.length ? renderTagList(tags, 'portfolio-item-tags') : ''}
+
+              <div class="portfolio-item-actions">
+                <a href="${escapeHtml(detailUrl)}" class="btn btn-outline btn-sm">查看完整项目</a>
+                ${renderVideoButton(videoUrl, 'btn btn-green btn-sm', '播放视频')}
+              </div>
+            </article>
+          `;
+        }).join('');
+      })
+      .catch(error => {
+        console.warn('作品数据加载失败', error);
+        portfolioContainer.innerHTML = `
+          <p style="text-align:center;color:var(--text-3);padding:40px;">
+            作品数据加载失败
+          </p>
+        `;
+      });
+  }
+
+  // ── portfolio.html 全量作品渲染 ───────────────────────────
+
+  function renderPortfolioFull() {
+    const container = document.getElementById('portfolio-full');
+    if (!container) return;
+
+    loadPortfolioData()
+      .then(data => {
+        if (!data.length) {
+          container.innerHTML = '<p style="color:var(--text-3);padding:40px 0;text-align:center;">暂无项目案例</p>';
+          return;
+        }
+
+        container.innerHTML = data.map((item, index) => {
+          const id = resolveId(item, index);
+          const title = getField(item, 'title', '未命名项目');
+          const subtitle = getField(item, 'subtitle', '');
+          const type = getField(item, 'type', 'AI 创作');
+          const category = getField(item, 'category', type);
+          const date = getField(item, 'date', '—');
+          const summary = getField(item, 'summary', '');
+          const videoUrl = resolveVideoUrl(item);
+          const detailUrl = resolveDetailUrl(item, id);
+          const thumbSrc = getCoverSrc(item);
+          const tags = parseTags(item.tags);
+
+          return `
+            <article class="portfolio-full-card">
+              <a href="${escapeHtml(detailUrl)}" class="portfolio-full-card-main" aria-label="查看完整项目：${escapeHtml(title)}">
+                <div class="portfolio-full-thumb">
+                  <img src="${escapeHtml(thumbSrc)}"
+                       alt="${escapeHtml(title)}"
+                       width="800"
+                       height="450"
+                       loading="lazy"
+                       onerror="this.style.display='none';">
+                  <div class="portfolio-full-overlay">
+                    <span class="portfolio-full-date">${escapeHtml(date)}</span>
+                    <span class="portfolio-full-type">${escapeHtml(category)}</span>
+                  </div>
+                </div>
+
+                <div class="portfolio-full-info">
+                  <h4>${escapeHtml(title)}</h4>
+                  ${subtitle ? `<span class="portfolio-full-subtitle">${escapeHtml(subtitle)}</span>` : ''}
+                  ${summary ? `
+                    <p class="portfolio-full-summary">
+                      ${escapeHtml(summary.substring(0, 100))}${summary.length > 100 ? '...' : ''}
+                    </p>
+                  ` : ''}
+                  ${tags.length ? renderTagList(tags, 'portfolio-full-tags') : ''}
+                </div>
+              </a>
+
+              <div class="portfolio-full-actions">
+                <a href="${escapeHtml(detailUrl)}" class="btn btn-outline btn-sm">查看完整项目</a>
+                ${renderVideoButton(videoUrl, 'btn btn-green btn-sm', '播放视频')}
+              </div>
+            </article>
+          `;
+        }).join('');
+      })
+      .catch(error => {
+        container.innerHTML = `
+          <div style="text-align:center; padding:60px 20px;">
+            <div style="font-size:48px; margin-bottom:16px;">⚠️</div>
+            <p style="color:var(--text-2); font-size:var(--body); margin-bottom:8px;">作品数据加载失败</p>
+            <p style="color:var(--text-3); font-size:var(--body-xs); font-family:var(--font-mono); margin-bottom:20px;">
+              ${escapeHtml(error.message || '未知错误')}
+            </p>
+            <button onclick="location.reload()"
+              style="padding:12px 28px; background:var(--green); color:#000; border:none; border-radius:8px; font-size:var(--body-sm); font-weight:600; cursor:pointer;">
+              重试 ↻
+            </button>
+          </div>
+        `;
+      });
+  }
+
+
+// JANET_WORKS_LIBRARY_ENTRY_START
+
+  async function loadWorksManifest() {
+    const response = await fetch('data/works/works-manifest.json', { cache: 'no-cache' });
+    if (!response.ok) throw new Error('Cannot load works manifest');
+    return response.json();
+  }
+
+  function renderHomepageWorksLibrary(manifest) {
+    const grid = document.getElementById('works-project-grid');
+    if (!grid) return;
+
+    const projects = manifest.projects || [];
+
+    if (!projects.length) {
+      grid.innerHTML = '<p class="works-library-empty">作品库数据暂时为空。</p>';
+      return;
+    }
+
+    grid.innerHTML = projects.map((project) => {
+      const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
+      const method = (project.method || []).slice(0, 5).map(item => '<span>' + escapeHtml(item) + '</span>').join('');
+
+      return `
+        <article class="works-project-card works-project-card--${escapeHtml(project.id)}">
+          <div class="works-project-card__meta">
+            <span>${escapeHtml(project.type || '')}</span>
+            <span>${escapeHtml(project.work_count || 0)} works</span>
+          </div>
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.description || '')}</p>
+          <div class="works-project-card__tags">${tags}</div>
+          <div class="works-project-card__method">${method}</div>
+          <a href="portfolio.html?project=${encodeURIComponent(project.id)}" class="works-project-card__link">
+            查看项目作品 →
+          </a>
+        </article>
+      `;
+    }).join('');
+  }
+
+  async function initHomepageWorksLibrary() {
+    const grid = document.getElementById('works-project-grid');
+    if (!grid) return;
+
+    try {
+      const manifest = await loadWorksManifest();
+      renderHomepageWorksLibrary(manifest);
+    } catch (error) {
+      console.error('[works-library] failed:', error);
+      grid.innerHTML = '<p class="works-library-empty">作品库数据暂时无法读取。</p>';
+    }
+  }
+
+// JANET_WORKS_LIBRARY_ENTRY_END
+
+
+// JANET_WORKS_LIBRARY_LISTING_START
+
+  async function loadJson(path) {
+    const response = await fetch(path, { cache: 'no-cache' });
+    if (!response.ok) throw new Error('Cannot load ' + path);
+    return response.json();
+  }
+
+  async function loadWorkDetail(work) {
+    if (!work.detail_json) return work;
+    try {
+      return await loadJson(work.detail_json);
+    } catch (error) {
+      console.warn('[works-library] work detail failed:', work.detail_json, error);
+      return work;
+    }
+  }
+
+  function getProjectLabel(projectId) {
+    if (projectId === 'shuttle-universe') return '穿梭宇宙';
+    if (projectId === 'misaligned-scenes') return '错位名场面';
+    return projectId || 'Unknown';
+  }
+
+  function getInitialProjectFilter() {
+    const params = new URLSearchParams(window.location.search);
+    const project = params.get('project');
+    if (project === 'shuttle-universe' || project === 'misaligned-scenes') return project;
+    return 'all';
+  }
+
+  function renderWorksProjectOverview(manifest) {
+    const container = document.getElementById('works-project-overview');
+    if (!container) return;
+
+    const projects = manifest.projects || [];
+    container.innerHTML = projects.map((project) => {
+      const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
+
+      return `
+        <article class="works-overview-card" data-project-id="${escapeHtml(project.id)}">
+          <div class="work-archive-card__meta">
+            <span>${escapeHtml(project.type || '')}</span>
+            <span>${escapeHtml(project.work_count || 0)} works</span>
+            <span>${escapeHtml(project.document_count || 0)} docs</span>
+          </div>
+          <h3>${escapeHtml(project.title)}</h3>
+          <p>${escapeHtml(project.description || '')}</p>
+          <div class="work-archive-card__tags">${tags}</div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  function renderWorksList(works, activeProject) {
+    const grid = document.getElementById('works-list-grid');
+    const countEl = document.getElementById('works-list-count');
+    if (!grid) return;
+
+    const filtered = activeProject === 'all'
+      ? works
+      : works.filter(work => work.project_id === activeProject);
+
+    if (countEl) {
+      countEl.textContent = filtered.length + ' works';
+    }
+
+    if (!filtered.length) {
+      grid.innerHTML = '<p class="works-library-empty">当前筛选下暂无作品。</p>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map((work) => {
+      const stats = work.stats || {};
+      const tags = (work.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
+      const detailHref = 'project-detail.html?work=' + encodeURIComponent(work.id);
+
+      return `
+        <article class="work-archive-card" data-project-id="${escapeHtml(work.project_id)}">
+          <div class="work-archive-card__meta">
+            <span>${escapeHtml(getProjectLabel(work.project_id))}</span>
+            <span>${escapeHtml(work.type || '')}</span>
+            <span>${escapeHtml(work.status || '制作中')}</span>
+          </div>
+          <h3>${escapeHtml(work.title || '未命名作品')}</h3>
+          <p>${escapeHtml(work.summary || '')}</p>
+
+          <div class="work-archive-card__stats" aria-label="制作材料统计">
+            <span><strong>${escapeHtml(stats.document_count || 0)}</strong>docs</span>
+            <span><strong>${escapeHtml(stats.prompt_count || 0)}</strong>prompts</span>
+            <span><strong>${escapeHtml(stats.subtitle_count || 0)}</strong>subs</span>
+            <span><strong>${escapeHtml(stats.image_count || 0)}</strong>images</span>
+            <span><strong>${escapeHtml(stats.video_count || 0)}</strong>videos</span>
+          </div>
+
+          <div class="work-archive-card__tags">${tags}</div>
+          <a class="work-archive-card__link" href="${escapeHtml(detailHref)}">查看制作档案 →</a>
+        </article>
+      `;
+    }).join('');
+  }
+
+  function setActiveFilter(project) {
+    document.querySelectorAll('.works-filter-btn').forEach((button) => {
+      button.classList.toggle('active', button.dataset.projectFilter === project);
+    });
+  }
+
+  async function initWorksListingPage() {
+    const grid = document.getElementById('works-list-grid');
+    if (!grid) return;
+
+    try {
+      const manifest = await loadWorksManifest();
+      renderWorksProjectOverview(manifest);
+
+      const projectDetails = await Promise.all(
+        (manifest.projects || []).map((project) => loadJson(project.project_json))
+      );
+
+      const workSummaries = projectDetails.flatMap((project) => project.works || []);
+      const works = await Promise.all(workSummaries.map(loadWorkDetail));
+      let activeProject = getInitialProjectFilter();
+
+      setActiveFilter(activeProject);
+      renderWorksList(works, activeProject);
+
+      document.querySelectorAll('.works-filter-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          activeProject = button.dataset.projectFilter || 'all';
+          setActiveFilter(activeProject);
+          renderWorksList(works, activeProject);
+          const nextUrl = activeProject === 'all'
+            ? 'portfolio.html'
+            : 'portfolio.html?project=' + encodeURIComponent(activeProject);
+          history.replaceState(null, '', nextUrl);
+        });
+      });
+    } catch (error) {
+      console.error('[works-library] listing failed:', error);
+      grid.innerHTML = '<p class="works-library-empty">作品库数据暂时无法读取。</p>';
+      const countEl = document.getElementById('works-list-count');
+      if (countEl) countEl.textContent = '0 works';
+    }
+  }
+
+// JANET_WORKS_LIBRARY_LISTING_END
+
+  // ── 初始化 ────────────────────────────────────────────────
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderVideos();
+    renderPortfolio();
+    renderPortfolioFull();
+    initHomepageWorksLibrary();
+    initWorksListingPage();
+  });
+
+})();

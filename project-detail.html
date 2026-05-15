@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Janet 作品制作流程档案 · Work Process Archive">
+  <title>作品制作流程档案 · Janet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/news-editorial.css">
+  <link rel="stylesheet" href="styles/project-detail.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
+</head>
+<body>
+<div class="bg-ambient"></div>
+<div class="page">
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand nav-brand-logo" aria-label="Janet Home">
+        <img src="assets/icons/logo-mark.svg" alt="" class="nav-logo-mark">
+        <span data-i18n="i18n-nav-brand">Janet</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#news" data-i18n="i18n-nav-news">快车箱</a></li>
+        <li><a href="index.html#works-library">作品库</a></li>
+        <li><a href="index.html#projects" data-i18n="i18n-nav-cases">案例</a></li>
+        <li><a href="index.html#about" data-i18n="i18n-nav-about">关于</a></li>
+        <li><a href="index.html#contact" data-i18n="i18n-nav-contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+  <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="菜单">☰</button>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="index.html#news" data-i18n="i18n-nav-news">快车箱</a>
+    <a href="index.html#works-library">作品库</a>
+    <a href="index.html#projects" data-i18n="i18n-nav-cases">案例</a>
+    <a href="index.html#about" data-i18n="i18n-nav-about">关于</a>
+    <a href="index.html#contact" data-i18n="i18n-nav-contact">联系</a>
+  </div>
+
+  <section class="detail-error" id="detail-error" style="display:none;">
+    <div class="container">
+      <div class="error-card">
+        <div class="error-icon">!</div>
+        <h2>作品不存在</h2>
+        <p>请返回作品库重新选择。</p>
+        <a href="portfolio.html" class="btn btn-outline">← 返回作品库</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="detail-loading" id="detail-loading">
+    <div class="container">
+      <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <p style="color:var(--text-3); font-size:var(--body-sm); margin-top:24px;">加载中...</p>
+      </div>
+    </div>
+  </section>
+
+  <main id="work-detail-root" class="work-detail-page" style="display:none;">
+    <section class="work-detail-hero">
+      <div class="container">
+        <a id="work-back-link" class="work-back-link" href="portfolio.html">← 返回作品库</a>
+        <span id="work-detail-kicker" class="section-kicker">Work Process Archive</span>
+        <h1 id="work-detail-title">Loading...</h1>
+        <p id="work-detail-summary"></p>
+        <div id="work-detail-meta" class="work-detail-meta"></div>
+      </div>
+    </section>
+    <section class="work-detail-body">
+      <div class="container">
+        <div class="work-detail-layout">
+          <aside class="work-detail-sidebar">
+            <div class="work-sidebar-card">
+              <span class="section-kicker">Stats</span>
+              <div id="work-stats-grid" class="work-stats-grid"></div>
+            </div>
+            <div class="work-sidebar-card">
+              <span class="section-kicker">Process</span>
+              <div id="work-process-flow" class="work-process-flow"></div>
+            </div>
+          </aside>
+          <section class="work-detail-main">
+            <div class="work-section-header">
+              <span class="section-kicker">Production Documents</span>
+              <h2>制作材料</h2>
+              <p>按 overview、prompts、subtitles、editing、cover、publish、references 分组查看。当前展示制作材料索引，文档正文会在后续步骤接入。</p>
+            </div>
+            <div id="work-document-tabs" class="work-document-tabs"></div>
+            <div id="work-document-panel" class="work-document-panel"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="i18n-footer-brand">Janet · AI 内容产品与视频世界观</p>
+      <p style="margin-top:8px; color:var(--text-3); font-size:var(--body-xs);" data-i18n="i18n-footer">© 2026 Janet Yao · 保留所有权利。</p>
+      <p style="margin-top:8px; color:var(--text-3); font-size:var(--body-xs);" data-i18n="i18n-footer2">由 AI 协作搭建 · 被好奇心驱动</p>
+    </div>
+  </footer>
+  <button id="back-to-top" class="back-to-top" aria-label="回到顶部" data-i18n="i18n-backtop">↑</button>
+</div>
+<script src="scripts/i18n.js"></script>
+<script src="scripts/nav.js"></script>
+<script src="scripts/effects.js"></script>
+<script src="scripts/project-detail.js"></script>
+</body>
+</html>

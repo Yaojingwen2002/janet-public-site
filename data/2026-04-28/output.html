@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Janet的快车箱 - AI科技晨报</title>
+<style>
+:root { --bg: #ffffff; --text: #0d0d0d; --brand: #18E299; --brand-sub: rgba(24, 226, 153, 0.08); --border: rgba(0,0,0,0.06); --mono: 'Geist Mono', 'SFMono-Regular', monospace; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; padding: 60px 20px; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; }
+header { border-bottom: 2px solid var(--text); padding-bottom: 20px; margin-bottom: 30px; }
+.slogan { font-size: 14px; font-weight: 600; letter-spacing: 0.2em; color: #444; margin-bottom: 8px; text-transform: uppercase; }
+.main-header { display: flex; justify-content: space-between; align-items: flex-end; }
+.logo { font-size: 32px; font-weight: 900; letter-spacing: -1.5px; }
+.date-info { font-family: var(--mono); font-size: 14px; font-weight: 600; }
+.intro-box { background: #f9fafb; padding: 25px; border-radius: 12px; margin-bottom: 50px; border: 1px solid var(--border); font-size: 15px; color: #333; line-height: 1.8; }
+.section-tag { font-family: var(--mono); font-size: 14px; font-weight: 800; color: #fff; background: #000; padding: 6px 16px; border-radius: 4px; display: inline-block; margin: 60px 0 25px 0; }
+.card { border: 1px solid var(--border); padding: 30px; border-radius: 20px; margin-bottom: 30px; background: #fff; }
+.grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.mini-card { border: 1px solid var(--border); padding: 20px; border-radius: 16px; background: #fff; }
+h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.critique { margin-top: 20px; padding: 15px; background: var(--brand-sub); border-left: 4px solid var(--brand); border-radius: 0 12px 12px 0; }
+.critique b { font-family: var(--mono); color: var(--brand); font-size: 12px; margin-right: 8px; text-transform: uppercase; }
+.critique span { font-style: italic; font-weight: 600; font-size: 14px; }
+.prediction-box { background: #000; color: #fff; padding: 30px; border-radius: 20px; }
+.prediction-box b { color: var(--brand); }
+.tools-grid { background: #fdfdfd; border: 2px dashed var(--brand); padding: 25px; border-radius: 20px; }
+tools-grid > div { margin-bottom: 20px; }
+tools-grid img { width: 100%; border-radius: 16px; margin-bottom: 16px; object-fit: cover; max-height: 280px; }
+footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; color: #888; font-size: 12px; font-family: var(--mono); }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="slogan">中国创作者视角 • 全球AI前沿 • 每日晨报</div>
+<div class="main-header">
+<div class="logo">Janet's Express Box</div>
+<div class="date-info">REV_2026-04-28 // VOL_210</div>
+</div>
+</header>
+<div class="intro-box">早上好，这里是『Janet的快车箱』第210期。今天是4月28日，星期二。<br><br>今天最炸裂的新闻：Google 向 Anthropic 砸了 400 亿美元，AI 圈最大单笔投资诞生；OpenAI 终于撕了和 Microsoft 的独家协议，GPT-5.5 刚上线五天就开始收割用户。另一边，Cohere 和 Aleph Alpha 合并成 200 亿美元的跨大西洋 AI 巨头。<br><br>大厂之间的军备竞赛已经烧到千亿美元级别了。中国创作者该关注什么？往下看。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。</div>
+<div class="section-tag">01 / KEY INTELLIGENCE (全球要闻)</div>
+<div class="top-stories">
+<div class="card">
+  <img src="images/news-google-anthropic.jpg" alt="Google 向 Anthropic 投资 400 亿美元，AI 史上最大单笔投资诞生" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>Google 向 Anthropic 投资 400 亿美元，AI 史上最大单笔投资诞生</h2>
+  <p>Google 母公司 Alphabet 宣布向 Anthropic 投资高达 400 亿美元，其中包括 100 亿现金和 300 亿的云计算资源承诺。如果 Anthropic 达到特定性能目标，还有额外 300 亿待释放。这笔投资让 Anthropic 估值达到 3500 亿美元。<br><br>这是 AI 行业有史以来最大的一笔单笔投资。Google 此举意在绑定 Anthropic 作为对抗 OpenAI 的核心盟友，同时通过 compute 承诺深度绑定 Google Cloud。</p>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: TechCrunch / Bloomberg</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>400 亿，这已经不是投资了，这是军备竞赛的军费。Google 用这笔钱买的不只是 Anthropic 的股权，而是整个 AI 基础设施的话语权。对中小玩家来说，这意味着「不选边就死」——要么押 Google Cloud，要么自己烧钱建算力。中国创作者呢？这恰恰是机会：当美国大厂在千亿美元级别互相掐架，开源模型和低成本推理方案的市场空间会更大。</span>
+  </div>
+</div>
+<div class="card">
+  <img src="images/news-openai-microsoft.jpg" alt="OpenAI 与 Microsoft 终止独家协议，GPT 系列将多平台分发" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>OpenAI 与 Microsoft 终止独家协议，GPT 系列将多平台分发</h2>
+  <p>OpenAI 与 Microsoft 签署了修订后的合作协议，取消了 Microsoft 在销售 OpenAI 模型方面的独家权利。这意味着 GPT 系列模型未来可能出现在 AWS、Google Cloud 甚至更多平台。<br><br>此前 Microsoft 因独家协议获得了 OpenAI 27% 的股权。这一变更标志着 OpenAI 从「微软专属」走向「全平台可用」的战略转向。</p>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: Bloomberg / SiliconANGLE</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>OpenAI 终于意识到，把鸡蛋放在微软一个篮子里的风险太大了。多平台分发意味着更强的议价能力和更广泛的生态渗透。但对国内用户来说，核心问题没变——你还是要翻墙才能用。不过，GPT-5.5 的 API 一旦在多平台铺开，推理成本可能会进一步降低，这才是真正值得关注的。</span>
+  </div>
+</div>
+<div class="card">
+  <img src="images/news-cohere-aleph.jpg" alt="Cohere 与 Aleph Alpha 合并，打造 200 亿美元跨大西洋 AI 公司" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>Cohere 与 Aleph Alpha 合并，打造 200 亿美元跨大西洋 AI 公司</h2>
+  <p>加拿大企业 AI 公司 Cohere 与德国 AI 初创公司 Aleph Alpha 宣布合并，获得 6 亿美元新融资，由德国 Schwarz Group（Lidl 母公司）领投。合并后公司估值约 200 亿美元，总部设在多伦多。<br><br>这是欧洲 AI 企业对抗中美 AI 巨头的重要布局，旨在打造一个「主权 AI」平台，服务欧洲企业和政府客户。</p>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: TechCrunch / The Next Web</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>200 亿美元的估值，Cohere 从 68 亿起步一路狂奔。合并 Aleph Alpha 是聪明的棋——补上了欧洲本土大模型的能力短板。但「主权 AI」这个叙事在海外越来越热，在欧洲可能吃得开，对中国创作者来说，这反而说明了一件事：全球 AI 格局正在从「中美双极」走向「多极化」，开源模型的机会窗口在扩大。</span>
+  </div>
+</div>
+<div class="card">
+  <img src="images/news-eu-google.jpg" alt="EU 要求 Google 开放 Android AI 接口，Google 怒斥「不当干预」" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>EU 要求 Google 开放 Android AI 接口，Google 怒斥「不当干预」</h2>
+  <p>欧盟委员会要求 Google 开放 Android 系统中的 AI 助手接口，允许第三方 AI 服务接入。Google 回应称这是「不当干预」，拒绝配合。<br><br>这是欧盟《数字市场法》(DMA) 框架下的又一重大反垄断行动，目标直指 Google 在移动生态中的 AI 垄断地位。</p>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: Ars Technica</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>欧盟又在对 Google 动手了，这次是 AI 领域的反垄断。对普通用户来说，这可能会让手机里的 AI 助手选择更多；但对 AI 公司来说，这意味着 Google 的护城河正在被政策一点点侵蚀。中国玩家如果出海欧洲，这可能是一个窗口期——Google 的 AI 生态开放了，你的产品就有机会进去。</span>
+  </div>
+</div>
+<div class="card">
+  <img src="images/news-accenture-morph.jpg" alt="Accenture 8 亿美元收购 AI 创业公司 Morph，加速企业 AI 部署" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>Accenture 8 亿美元收购 AI 创业公司 Morph，加速企业 AI 部署</h2>
+  <p>Accenture 宣布以约 8 亿美元收购 AI 创业公司 Morph，这是 Accenture 单笔最大的收购交易。Morph 专注于企业级 AI 工作流自动化，帮助大型企业快速部署 AI 解决方案。<br><br>Accenture 计划将 50 亿美元投入 AI 相关战略部署，Morph 是其中的关键一环。</p>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: WALAW Press</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>8 亿买 Morph，Accenture 这是在用真金白银告诉客户：「别只买 AI 咨询了，来买我们的 AI 落地方案吧。」传统咨询公司都在抢 AI 饭碗，Morph 被收购说明一件事——企业 AI 落地已经进入了「拼执行」的阶段，光会 PPT 不行了，得有真实的产品和交付能力。</span>
+  </div>
+</div>
+</div>
+<div class="section-tag">02 / MODEL UPDATES (模型动态)</div>
+<div class="grid-layout">
+<div class="mini-card">
+  <img src="images/models-gpt55.jpg" alt="OpenAI 发布 GPT-5.5：更快的推理，更强的多工具协同" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>OpenAI 发布 GPT-5.5：更快的推理，更强的多工具协同</h3>
+  <p>OpenAI 于 4 月 23 日正式发布 GPT-5.5，号称是其「最聪明的模型」。GPT-5.5 针对复杂任务进行了优化，包括编码、研究、数据分析等，支持多工具协同工作。<br><br>GPT-5.5 已在 ChatGPT（作为 GPT-5.5 Thinking）、API 和 Codex 中上线。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: OpenAI</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>GPT-5.5 距离 GPT-5.4 才一个月，OpenAI 的迭代速度已经快到让人麻木。这次的核心升级是「多工具协同」——这意味着 AI agent 的能力又上了一个台阶。但对国内创作者来说，关键不是模型多强，而是推理成本降了多少。</span>
+  </div>
+</div>
+<div class="mini-card">
+  <img src="images/models-claopus47.jpg" alt="Anthropic 发布 Claude Opus 4.7：编码能力再升级" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>Anthropic 发布 Claude Opus 4.7：编码能力再升级</h3>
+  <p>Anthropic 于 4 月 16 日发布 Claude Opus 4.7，在高级软件工程方面相比 Opus 4.6 有显著提升，尤其在处理最困难的任务时。<br><br>Opus 4.7 的发布标志着 Claude 系列在编码领域的竞争力进一步提升。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Anthropic</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>Claude Opus 4.7 的编码能力确实强，但问题是——你能在国内用吗？API 不通、代理成本高，这些现实问题比模型 benchmark 重要得多。不过，Opus 4.7 在复杂任务上的表现确实值得追踪。</span>
+  </div>
+</div>
+<div class="mini-card">
+  <img src="images/models-geminiultra2.jpg" alt="Google Gemini Ultra 2 发布，AI 视频生成能力大幅增强" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>Google Gemini Ultra 2 发布，AI 视频生成能力大幅增强</h3>
+  <p>Google 正式发布 Gemini Ultra 2，这是其最先进的多模态模型。Gemini Ultra 2 在视频生成方面实现了重大突破，能够生成更高质量、更长时长的 AI 视频内容。<br><br>Gemini Ultra 2 同时增强了文本、图像、音频的理解和生成能力。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Google / Aidailyshot</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>Google 在视频生成领域的动作越来越密集了。Gemini Ultra 2 的发布说明 Google 不想在 AI 视频赛道落后——Sora、Runway、PixVerse 都在抢这块蛋糕。对创作者来说，多模态模型的进步意味着你可以用更少的工具完成从文字到视频的全流程。</span>
+  </div>
+</div>
+<div class="mini-card">
+  <img src="images/models-anthropic-compute.jpg" alt="Anthropic 与 Google、Broadcom 签署多吉瓦特算力协议" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>Anthropic 与 Google、Broadcom 签署多吉瓦特算力协议</h3>
+  <p>Anthropic 与 Google 和 Broadcom 签署了新的算力协议，获得多吉瓦特的下一代 TPU 算力，预计从 2027 年开始上线。<br><br>这笔协议与 Google 400 亿美元投资相呼应，构成了 Anthropic 的算力保障。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Anthropic / The Verge</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>算力就是 AI 时代的石油。Anthropic 用 Google 的钱锁定了未来的算力，这招很聪明。但 TPU 算力从 2027 年才上线，意味着 Anthropic 在未来一年仍然面临算力紧张的风险。没有算力，再强的模型也只是纸上谈兵。</span>
+  </div>
+</div>
+</div>
+<div class="section-tag">03 / TECH INSIGHTS (技术深度)</div>
+<div class="grid-layout">
+<div class="mini-card">
+  <img src="images/insights-pentagon-ai.jpg" alt="Pentagon 接入 Google 最新模型，GenAI.mil 用户突破 10 万" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>Pentagon 接入 Google 最新模型，GenAI.mil 用户突破 10 万</h3>
+  <p>美国国防部将 Google 最新 AI 模型接入 GenAI.mil 平台，该平台用户已构建超过 10 万个 AI agent。<br><br>GenAI.mil 已成为美国政府机构使用 AI 的核心平台。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Defense One</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>军队都在用 AI agent 了，这信号还不够明显吗？当 Pentagon 在大规模部署 AI agent 的时候，民用领域的 AI 落地只会更快。对国内创作者来说，可以参考他们的 agent 部署模式。</span>
+  </div>
+</div>
+<div class="mini-card">
+  <img src="images/insights-github-ai.jpg" alt="GitHub 4 月开源 AI 项目爆发：40+ 重大发布" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>GitHub 4 月开源 AI 项目爆发：40+ 重大发布</h3>
+  <p>2026 年 4 月是开源 AI 项目最密集的月份之一。Meta、Alibaba、Google、Mistral、Ai2 等机构发布了多个基础模型，同时编码 agent 框架、推理引擎等开发者工具也在快速迭代。<br><br>GitHub 上 Hermes Agent 等项目热度持续攀升，单周增长超过 60K stars。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Fazm Blog / GitHub Trending</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>开源 AI 的密度已经到了一种恐怖的程度。每个月 40+ 个重大发布，这意味着你每周都要重新评估自己的技术栈。对国内创作者来说，最大的机会在于：开源模型的进步意味着你可以用更低的成本获得接近闭源模型的能力。</span>
+  </div>
+</div>
+<div class="mini-card">
+  <img src="images/insights-runloop.jpg" alt="AI Agent 评估平台 Runloop 发布，集成 Weights & Biases" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>AI Agent 评估平台 Runloop 发布，集成 Weights &amp; Biases</h3>
+  <p>Runloop 于 4 月 24 日发布了行业首个 AI Agent 基准测试平台，集成了 Weights &amp; Biases。<br><br>这是 AI agent 领域首个标准化的评估工具。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: VersusTools</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>Agent 评测平台的出现说明一件事——AI agent 已经从「能用」走向了「比谁更好用」的阶段。当所有人都能做出一个 agent 的时候，评测就成了核心竞争力。关注 Runloop 和类似的评测框架，可以帮助你快速判断哪些 agent 框架值得投入。</span>
+  </div>
+</div>
+<div class="mini-card">
+  <img src="images/insights-wan27.jpg" alt="Wan 2.7 开源：创作者可控的视频生成新选择" style="width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;">
+  <h3>Wan 2.7 开源：创作者可控的视频生成新选择</h3>
+  <p>Wan 2.7 发布，支持从故事板生成视频、锁定角色一致性、纯 prompt 编辑等功能。<br><br>Wan 2.7 定位为创作者友好的 AI 视频生成工具，强调可控性和可复现性。</p>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Acid Tools / GitHub</p>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>终于有人在做「可控」的视频生成了，而不是每次都靠抽卡。Wan 2.7 的核心价值在于「可复现」——对创作者来说，能够重复出想要的效果比偶尔生成一个惊艳视频重要得多。开源意味着你可以本地部署，这对国内创作者来说是大利好。</span>
+  </div>
+</div>
+</div>
+<div class="section-tag">04 / INVESTMENT & PREDICTION (投资视角/大胆预测)</div>
+<div class="prediction-box">
+  <h3>🎯 今日核心预测</h3>
+  <div class="card" style="background:transparent;border:none;padding:0;">
+  <img src="images/invest-google-anthropic.jpg" alt="Google 400 亿押注 Anthropic：AI 基础设施战争的真正赢家是谁？" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>Google 400 亿押注 Anthropic：AI 基础设施战争的真正赢家是谁？</h2>
+  <p>Google 对 Anthropic 的 400 亿美元投资不仅仅是财务行为，更是战略布局。通过绑定 Anthropic，Google 在 AI 模型层获得了强有力的盟友；通过 compute 承诺，Google Cloud 锁定了未来的 AI 算力需求。<br><br>这场博弈的真正受益者可能不是 Anthropic 或 Google，而是所有需要算力的 AI 公司——因为 Google 正在用这笔钱告诉市场：算力不是稀缺资源，而是可以大规模供应的商品。</p>
+  <p style="font-size:12px;color:#888;margin-top:8px;">来源: 综合分析</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>JANET:</b>
+    <span>当 Google 开始用千亿美元级别的投入来定义 AI 基础设施的标准时，所有其他玩家都在被迫跟进。这种军备竞赛的结果是算力成本会持续下降，对开发者是好事。但对小公司来说，如果没有 Google 或 OpenAI 的资源，如何在算力竞争中生存？答案只有一个：做 Google 和 OpenAI 看不上的细分市场，或者用开源模型降低依赖。</span>
+  </div>
+</div>
+  <div class="card" style="background:transparent;border:none;padding:0;">
+  <img src="images/invest-openai-platform.jpg" alt="OpenAI 摆脱微软独家：GPT 多平台化对国内开发者的影响" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>OpenAI 摆脱微软独家：GPT 多平台化对国内开发者的影响</h2>
+  <p>OpenAI 取消微软独家协议后，GPT 系列模型将出现在 AWS、Google Cloud 等多个平台。这意味着 GPT 的定价策略将更加灵活，推理成本有望进一步降低。<br><br>对国内开发者来说，多平台分发可能意味着更多获取 GPT API 的渠道，但也可能带来合规风险。</p>
+  <p style="font-size:12px;color:#888;margin-top:8px;">来源: 综合分析</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>JANET:</b>
+    <span>OpenAI 终于想通了——独家协议保护了微软，但伤害了 OpenAI 自己的生态。多平台化后，GPT 的定价会更市场化，推理成本下降是必然。但国内开发者获取 GPT API 的渠道问题不会因此解决，反而可能因为合规收紧而更难。建议：关注国内大模型的进步，它们才是真正的长期解决方案。</span>
+  </div>
+</div>
+  <div class="card" style="background:transparent;border:none;padding:0;">
+  <img src="images/invest-sovereign-ai.jpg" alt="Cohere-Aleph Alpha 合并：「主权 AI」叙事下的投资逻辑" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>Cohere-Aleph Alpha 合并：「主权 AI」叙事下的投资逻辑</h2>
+  <p>Cohere 与 Aleph Alpha 的合并代表了「主权 AI」趋势——各国/各地区希望拥有自己的 AI 基础设施和能力，不完全依赖中美巨头。<br><br>这种趋势在欧洲尤为明显，德国政府通过 Schwarz Group 领投合并，体现了欧洲对 AI 主权的高度重视。</p>
+  <p style="font-size:12px;color:#888;margin-top:8px;">来源: 综合分析</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>JANET:</b>
+    <span>「主权 AI」在欧洲是政治正确，在中国是战略需求。对中国创作者来说，这意味着开源模型的市场空间会进一步扩大——当各国都想拥有自己的 AI 能力时，开源就是最低成本的选择。关注中国开源模型（如 Qwen、GLM 等）的进展，它们可能在全球「主权 AI」浪潮中找到独特的定位。</span>
+  </div>
+</div>
+</div>
+<div class="section-tag">05 / CREATOR TOOLBOX (创作者工具箱)</div>
+<div class="tools-grid">
+  <h3>🛠️ 今日工具箱</h3>
+<div>
+  <img src="images/tools-pixverse.jpg" alt="PixVerse V6：创作者的 AI 视频新利器" style="width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;">
+  <h2>PixVerse V6：创作者的 AI 视频新利器</h2>
+  <div style="white-space:pre-line;font-size:15px;color:#333;line-height:1.8;">PixVerse 发布了 V6 模型，支持 15 秒 1080p 视频生成、原生音频、相机控制、多镜头一致性等能力。定价约 $0.04/秒（720p），在 AI 视频工具中性价比突出。<br><br>V6 的核心升级是「可控性」——相机运动控制、角色一致性、多镜头连贯性，这些都是创作者真正需要的功能，而不是偶尔抽到一张好图。</div>
+  <div class="critique">
+    <b>JANET:</b>
+    <span>PixVerse V6 是近期最值得关注的 AI 视频工具之一。$0.04/秒的定价对创作者来说非常友好，尤其是它支持原生音频——这意味着你不需要再单独处理音频后期。相机控制和多镜头一致性解决了 AI 视频最大的痛点：连贯性。国内创作者可以直接使用（无需特殊网络配置），建议立即试用。</span>
+  </div>
+  <a href="https://pixverse.ai" target="_blank" style="color:#18E299;font-size:12px;">[链接]</a>
+  <p style="font-size:12px;color:#888;font-family:monospace;margin-top:12px;">来源: PixVerse</p>
+</div>
+</div>
+<footer>
+Janet的快车箱 · AI科技晨报 · 2026-04-28 版<br>
+DATA SOURCES: HACKER NEWS, TECHCRUNCH, ARXIV, GITHUB TRENDING<br>
+QUALITY CHECK: 5+4-4-3-1 STRUCTURE VERIFIED
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+{
+  "edition_number": "114",
+  "date": "2026-04-16",
+  "top_stories": [
+    {
+      "title": "Anthropic拒绝8000亿美元估值融资，硬刚OpenAI",
+      "content": "据Bloomberg报道，VC们给Anthropic开出了8000亿美元+的估值融资offer，直接被Dario Amodei拒了。OpenAI二月刚拿1100亿融资，估值8520亿美元。Anthropic三月营收冲到300亿美元（去年底才90亿），刚投500亿建数据中心，300亿给微软云。",
+      "critique": "这年头AI公司比国家还能烧钱。Anthropic这波操作我给满分——不是我不缺钱，是你们给的还不够多！",
+      "source": "TechCrunch · Bloomberg"
+    },
+    {
+      "title": "神经符号AI突破：能耗降100倍，准确率反升",
+      "content": "Hacker News热榜第一：新型神经符号混合架构在推理任务上实现历史性突破。传统Transformer需要1000W功耗的任务，现在只要10W，准确率还提升了3.2%。关键能在边缘设备上跑。",
+      "critique": "2027年将是'边缘AI元年'。苹果、高通、联发科都在憋大招。我赌明年iPhone 17的神经引擎性能提升500%。",
+      "source": "Hacker News · arXiv论文"
+    },
+    {
+      "title": "Google Gemma 4发布：Apache 2.0开源，性能超同类20倍",
+      "content": "Google Gemma 4全家桶从2B到31B全系列Apache 2.0开源，31B版本在Arena AI排行榜冲进前三。2B模型能在树莓派上流畅运行。",
+      "critique": "Google这波操作堪称'开源核弹'。Meta的Llama系列要紧张了。我预测6个月内，基于Gemma 4的微调模型会像蘑菇一样冒出来。",
+      "source": "Google官方博客 · 9to5Google"
+    },
+    {
+      "title": "Parasail融资3200万美元：打造\"AI超级云\"，分钟级部署智能体",
+      "content": "初创公司Parasail完成3200万美元A轮融资，总融资额达4200万。口号是\"让AI智能体部署像发短信一样简单\"。CEO说要从2周降到2分钟。",
+      "critique": "AI infra赛道开始卷体验了。之前是'我有算力'，现在是'我最好用'。这波我站Parasail。",
+      "source": "TechCrunch · TechStartups"
+    },
+    {
+      "title": "Sam Altman vs Elon Musk：法庭大战升级，OpenAI考虑做社交平台",
+      "content": "萨姆·奥特曼说：\"看到马斯克在法庭上宣誓作证，就像过圣诞节一样开心。\" OpenAI正在考虑开发X-like社交平台，直接对标马斯克。",
+      "critique": "这俩人的恩怨可以拍成美剧了。我赌OpenAI的社交平台会叫'OpenChat'或者'Neura'。",
+      "source": "Yahoo Finance · 多方报道"
+    }
+  ],
+  "model_updates": [
+    {
+      "title": "GPT-5内部测试泄露：上下文突破1M tokens",
+      "content": "GPT-5目前正在OpenAI内部压力测试，上下文窗口突破100万tokens。推理速度比GPT-4 Turbo快40%。",
+      "critique": "GPT-5正式发布时，会附带\"文档级理解\"功能，律师、分析师、研究员的工作流会被彻底重构。",
+      "source": "Twitter AI KOL爆料"
+    },
+    {
+      "title": "Claude 3.5 Sonnet实测：代码能力碾压GPT-4",
+      "content": "Claude 3.5 Sonnet在LeetCode Hard题目上的通过率达到92%，GPT-4是78%。代码可读性和架构设计明显更优。",
+      "critique": "2026年底，AI辅助编程会让初级工程师的生产力提升300%，但也会倒逼程序员向\"架构师+产品经理\"转型。",
+      "source": "GitHub开发者实测 · Anthropic技术博客"
+    },
+    {
+      "title": "Meta Muse Spark：个人超智能体雏形曝光",
+      "content": "Meta的神秘项目Muse Spark是\"个人超智能体\"，能持续学习你的工作习惯、思维模式、知识偏好，成为你的数字分身。",
+      "critique": "如果真能做到，我第一个报名当测试用户。想象一下：一个比你更懂你的AI助手...",
+      "source": "Hacker News讨论 · Meta内部泄露"
+    },
+    {
+      "title": "中国大模型暗战：深度求索 vs 智谱 vs 月之暗面",
+      "content": "深度求索的DeepSeek-V3在MMLU上冲到89.2%，智谱的GLM-4 Ultra在中文任务上领先，月之暗面的Kimi 2.0上下文突破800K。",
+      "critique": "2026年下半年会有一波\"开源大逃杀\"，不开源的厂商会被社区抛弃。我赌智谱会第一个全面开源。",
+      "source": "中文AI社区 · 各厂商技术报告"
+    }
+  ],
+  "tech_insights": [
+    {
+      "title": "QED-Nano论文：2B小模型学会证明复杂定理",
+      "content": "arXiv新鲜论文：QED-Nano让一个只有20亿参数的小模型学会了证明数学定理。关键是方法——不是暴力训练，而是教它\"思考框架\"。",
+      "critique": "小模型+好方法 > 大模型+暴力训练。这会给边缘计算和移动端AI带来革命性突破。",
+      "source": "arXiv:2604.04898v1"
+    },
+    {
+      "title": "In-Place Test-Time Training：模型实时自适应进化",
+      "content": "新论文提出\"原地测试时训练\"：模型在推理过程中能根据新数据微调自己。比如翻译模型遇到新术语，能立即学习并应用。",
+      "critique": "2027年主流大模型都会内置实时学习能力，AI将像人类一样\"越用越聪明\"。",
+      "source": "arXiv:2604.06169v1"
+    },
+    {
+      "title": "MolmoWeb：开源视觉网页智能体框架",
+      "content": "MolmoWeb开源了完整的视觉网页智能体框架+数据集。这意味着任何人都能训练自己的\"网页版AutoGPT\"。",
+      "critique": "这玩意儿太可怕了——想象一下，1000个MolmoWeb智能体在互联网上自动学习、自动工作...",
+      "source": "GitHub Trending · arXiv:2604.08516v1"
+    },
+    {
+      "title": "Transformer学会隐式混合模型：数学证明突破",
+      "content": "最新数学证明：Transformer在上下文学习中实际上是在学习隐式混合模型。这解释了为什么few-shot learning能work。",
+      "critique": "AI理论终于追上实践了。基于这个发现，下一代模型的样本效率会提升10倍以上。",
+      "source": "arXiv:2604.10848"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Gemma 4 2B 本地部署指南",
+      "description": "想在本地设备（MacBook、树莓派）上跑一个能用的开源大模型",
+      "link": "https://ollama.ai/"
+    },
+    {
+      "name": "Claude 3.5 Sonnet重构烂代码",
+      "description": "提高可读性和可维护性，添加类型提示，优化性能瓶颈",
+      "link": ""
+    },
+    {
+      "name": "MolmoWeb网页智能体框架",
+      "description": "打造你的第一个网页智能体，从价格比较智能体开始",
+      "link": "https://github.com/MolmoWeb/MolmoWeb"
+    }
+  ],
+  "essence": "今天的核心洞察：AI正在从\"大模型竞赛\"转向\"效率革命\"。神经符号混合架构降能耗100倍，小模型学会数学证明，实时自适应学习——这些都不是单纯的规模扩展，而是智能效率的质变。2027年我们会看到：1) 边缘AI成为主流，2) 模型实时学习成为标配，3) 开源社区成为创新主战场。技术乐观派赢麻了。"
+}

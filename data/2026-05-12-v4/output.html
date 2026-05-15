@@ -1,0 +1,2349 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>Janet 快车箱 2026.05.12｜Codex进工位，AI开始接活</title>
+ <meta name="description" content="本期从 AIHOT 今日候选中筛出 20 条进入 v4 预览，重点看模型、Agent、开源论文和资本动作如何挤进真实工作。">
+ <meta name="robots" content="noindex,nofollow">
+
+
+ <style>
+ /* ═══════════════════════════════════════════════════════════
+    Janet 快车箱 v4 · 视觉方向重置
+    Janet 个人网站统一风格 · 高级暗色杂志日报
+    参考：styles/main.css + index.html
+    ═══════════════════════════════════════════════════════════ */
+
+ :root {
+ /* 品牌色 */
+ --green: #18E299;
+ --janet-green: #18E299;
+ --green-deep: #0fa76e;
+ --green-glow: rgba(24, 226, 153, 0.25);
+ --green-dim: rgba(24, 226, 153, 0.06);
+
+ --blue: #3B82F6;
+ --blue-dim: rgba(59, 130, 246, 0.08);
+ --purple: #8B5CF6;
+ --purple-dim: rgba(139, 92, 246, 0.08);
+ --amber: #F59E0B;
+ --amber-dim: rgba(245, 158, 11, 0.08);
+
+ /* 背景 — 主站同款 */
+ --bg: #000000;
+ --bg-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, #0a1a12 0%, transparent 70%);
+ --surface: #050505;
+ --surface-hover: #0a0a0a;
+ --surface-2: #0a0a0a;
+
+ /* 文字 */
+ --text: #f0f0f0;
+ --text-2: #a8a8a8;
+ --text-3: #555555;
+
+ /* 边框 */
+ --border: #151515;
+ --border-2: #222222;
+ --border-glow: rgba(24, 226, 153, 0.15);
+
+ /* 字体 */
+ --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+ --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+
+ /* 标题 */
+ --title-1: clamp(48px, 7.5vw, 80px);
+ --title-2: clamp(28px, 4.5vw, 42px);
+ --title-3: clamp(20px, 2.8vw, 26px);
+
+ /* 正文 */
+ --body: 17px;
+ --body-sm: 14.5px;
+ --body-xs: 12px;
+
+ /* 行高 */
+ --leading-tight: 1.08;
+ --leading-snug: 1.35;
+ --leading-normal: 1.7;
+ --leading-relaxed: 1.8;
+
+ /* 间距 */
+ --space-xs: 8px;
+ --space-sm: 16px;
+ --space-md: 24px;
+ --space-lg: 40px;
+ --space-xl: 64px;
+ --space-2xl: 100px;
+
+ /* 圆角 */
+ --radius: 14px;
+ --radius-sm: 10px;
+ --radius-lg: 20px;
+ --radius-xl: 28px;
+ }
+
+ /* ── Glass Card Token ── */
+.janet-news-v4-glass {
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-lg);
+ }
+
+ *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+ html {
+ font-size: 16px;
+ scroll-behavior: smooth;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ }
+
+ /* ── 页面背景 — 主站同款 ── */
+body {
+ font-family: var(--font-sans);
+ background:
+ radial-gradient(ellipse 80% 60% at 50% 0%, #0a1a12 0%, transparent 70%),
+ radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139, 92, 246, 0.03), transparent 60%),
+ #000000;
+ color: var(--text);
+ line-height: var(--leading-normal);
+ overflow-x: hidden;
+ min-height: 100vh;
+}
+
+a { color: var(--green); text-decoration: none; }
+a:hover { color: var(--text); }
+
+/* ── 页面布局 — 主站级别宽度 ── */
+.janet-news-v4-page {
+ position: relative;
+ z-index: 1;
+ width: 100%;
+ padding: 40px 24px 96px;
+}
+
+.janet-news-v4-container {
+ width: min(100%, 1400px);
+ margin: 0 auto;
+ padding: 0 var(--space-md);
+}
+
+.janet-news-v4-section-space {
+ margin-top: 48px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Masthead · 杂志封面风格（不是小框框）
+   Janet 主页 Hero 级别的视觉
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-masthead {
+ padding: 44px 42px;
+ border-radius: var(--radius-xl, 28px);
+}
+
+.janet-news-v4-masthead::after {
+ content: '';
+ position: absolute;
+ bottom: -1px;
+ left: 0;
+ right: 0;
+ height: 1px;
+ background: linear-gradient(90deg, transparent 0%, var(--border-glow) 30%, var(--border-glow) 70%, transparent 100%);
+ opacity: 0.5;
+}
+
+.janet-news-v4-masthead-grid {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ align-items: flex-end;
+ gap: 32px;
+}
+
+.janet-news-v4-masthead-left {
+ flex: 1;
+ min-width: 0;
+}
+
+.janet-news-v4-kicker {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ padding: 6px 16px;
+ border: 1px solid var(--border-glow);
+ border-radius: 999px;
+ background: var(--green-dim);
+ color: var(--green);
+ font-size: 11px;
+ line-height: 1;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ margin-bottom: 20px;
+ font-weight: 500;
+}
+
+/* 去掉 h1 重复，只保留 kicker 作为品牌标识 */
+.janet-news-v4-brand {
+ display: none;
+}
+
+.janet-news-v4-theme {
+ margin: 18px 0 0;
+ max-width: 920px;
+ font-size: clamp(44px, 7vw, 84px);
+ line-height: 0.98;
+ letter-spacing: -0.065em;
+ font-weight: 500;
+ color: var(--text);
+}
+
+.janet-news-v4-intro {
+ margin-top: 20px;
+ max-width: 760px;
+ font-size: 15px;
+ line-height: 1.85;
+ color: var(--text-2, rgba(240,240,240,0.68));
+}
+
+.janet-news-v4-issue-meta {
+ display: flex;
+ gap: 24px;
+ align-items: baseline;
+ flex-wrap: wrap;
+ color: var(--text-3);
+ font-size: 11px;
+ line-height: 1.5;
+ text-align: right;
+}
+
+.janet-news-v4-meta-card {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+}
+
+.janet-news-v4-meta-label {
+ display: block;
+ color: var(--text-3);
+ font-size: 9px;
+ text-transform: uppercase;
+ letter-spacing: 0.1em;
+ margin-bottom: 3px;
+}
+
+.janet-news-v4-meta-value {
+ color: var(--text-2);
+ font-size: 13px;
+ font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Daily Thesis · 宽幅 editorial card
+   像主站的大段判断卡，不是普通小卡片
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-thesis {
+ padding: 40px 44px;
+ border: 1px solid var(--border-2);
+ border-left: 2px solid var(--green);
+ background: var(--surface);
+ border-radius: var(--radius-lg);
+}
+
+.janet-news-v4-block-title {
+ margin: 0 0 16px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-size: 11px;
+ line-height: 1.2;
+ font-weight: 600;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ color: var(--text-3);
+}
+
+.janet-news-v4-block-title span {
+ color: var(--green);
+ font-size: 11px;
+}
+
+.janet-news-v4-thesis-text {
+ margin: 0;
+ font-size: clamp(18px, 2.6vw, 26px);
+ line-height: var(--leading-relaxed);
+ letter-spacing: -0.03em;
+ color: var(--text);
+ font-weight: 400;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Signal Map · 主站 bento 风格
+   不是后台统计卡，是主站卡片风格
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-signal-map {
+ display: grid;
+ grid-template-columns: repeat(3, minmax(0, 1fr));
+ gap: 16px;
+}
+
+.janet-news-v4-signal-card {
+ position: relative;
+ padding: 28px 24px;
+ border: 1px solid var(--border);
+ border-radius: var(--radius-lg);
+ background: var(--surface);
+ transition: transform 450ms linear(0, 0.05, 0.97, 1.05, 0.99, 1),
+ border-color 450ms linear(0, 0.08, 0.95, 1.08, 0.98, 1);
+ overflow: hidden;
+}
+
+.janet-news-v4-signal-card:hover {
+ transform: translateY(-3px);
+ border-color: var(--border-2);
+}
+
+.janet-news-v4-signal-index {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ border-radius: var(--radius);
+ background: var(--green-dim);
+ color: var(--green);
+ font-size: 15px;
+ font-weight: 600;
+ margin-bottom: 16px;
+}
+
+.janet-news-v4-signal-title {
+ margin: 0;
+ font-size: 18px;
+ font-weight: 600;
+ line-height: 1.25;
+ color: var(--text);
+ letter-spacing: -0.02em;
+}
+
+.janet-news-v4-signal-view {
+ margin: 10px 0 0;
+ font-size: 14px;
+ line-height: var(--leading-normal);
+ color: var(--text-2);
+}
+
+.janet-news-v4-signal-evidence {
+ margin-top: 14px;
+ font-size: 11px;
+ color: var(--text-3);
+ letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Lead Story · 杂志封面（不是普通卡）
+   大横幅，左侧视觉 / 右侧 headline
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-lead-story {
+ border: 1px solid var(--border-glow);
+ border-radius: var(--radius-xl);
+ background: linear-gradient(135deg, rgba(10, 26, 18, 0.5) 0%, var(--surface) 100%);
+ overflow: hidden;
+}
+
+.janet-news-v4-lead-inner {
+ display: grid;
+ grid-template-columns: minmax(360px, 0.92fr) minmax(0, 1.08fr);
+ gap: 28px;
+ align-items: stretch;
+}
+
+.janet-news-v4-lead-visual {
+ min-height: 300px;
+ border-radius: var(--radius-lg, 20px);
+ overflow: hidden;
+ background:
+ radial-gradient(circle at 50% 42%, rgba(24, 226, 153, 0.13), transparent 42%),
+ linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+ #050505;
+ border: 1px solid rgba(255,255,255,0.08);
+}
+
+.janet-news-v4-lead-visual img {
+ width: 100%;
+ height: 100%;
+ min-height: 300px;
+ object-fit: cover;
+ display: block;
+}
+
+.janet-news-v4-lead-visual .janet-news-v4-story-image--fallback {
+ min-height: 300px;
+}
+
+.janet-news-v4-lead-content {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ padding: 4px 2px;
+}
+
+.janet-news-v4-lead-section-header {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+ align-items: center;
+ margin-bottom: 18px;
+}
+
+.janet-news-v4-lead-section-title {
+ display: inline-flex;
+ align-items: center;
+ padding: 7px 10px;
+ border-radius: 999px;
+ border: 1px solid rgba(24,226,153,0.18);
+ color: var(--green, #18E299);
+ background: rgba(24,226,153,0.055);
+ font-size: 12px;
+ line-height: 1;
+}
+
+.janet-news-v4-lead-title {
+ margin: 0;
+ max-width: 760px;
+ font-size: clamp(36px, 5vw, 64px);
+ line-height: 0.98;
+ letter-spacing: -0.065em;
+ font-weight: 500;
+ color: var(--text, #f0f0f0);
+}
+
+.janet-news-v4-lead-title a {
+ color: inherit;
+}
+
+.janet-news-v4-lead-summary {
+ margin: 20px 0 0;
+ max-width: 700px;
+ color: rgba(240, 240, 240, 0.74);
+ font-size: 17px;
+ line-height: 1.9;
+}
+
+.janet-news-v4-lead-note {
+ margin-top: 22px;
+ padding: 18px 20px;
+ border-radius: var(--radius, 14px);
+ border: 1px solid rgba(24,226,153,0.13);
+ background: rgba(24,226,153,0.035);
+ color: var(--text-2, #a8a8a8);
+ font-size: 14px;
+ line-height: 1.8;
+}
+
+.janet-news-v4-lead-note strong {
+ display: block;
+ margin-bottom: 6px;
+ color: var(--green, #18E299);
+ font-weight: 500;
+}
+
+.janet-news-v4-lead-footer {
+ margin-top: 22px;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 12px;
+ align-items: center;
+ color: var(--text-3, #555);
+ font-size: 13px;
+}
+
+.janet-news-v4-lead-footer a {
+ color: var(--green, #18E299);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Section 标题 · 统一风格
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-section {
+ padding: 0;
+}
+
+.janet-news-v4-section-header {
+ display: flex;
+ align-items: baseline;
+ justify-content: space-between;
+ gap: 16px;
+ margin-bottom: 20px;
+ padding-bottom: 14px;
+ border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.janet-news-v4-section-title {
+ margin: 0;
+ font-size: 26px;
+ line-height: 1.2;
+ font-weight: 600;
+ letter-spacing: -0.045em;
+ color: var(--text);
+}
+
+.janet-news-v4-section-count {
+ color: rgba(240,240,240,0.42);
+ font-size: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   编辑网格 · 2 列
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-grid {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 16px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   新闻卡片 · 干净内容卡（不是后台小卡）
+   保留一个 Janet Take 小块，summary 正常正文
+   去掉"为什么重要"双绿色框
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-story-card {
+ position: relative;
+ display: flex;
+ flex-direction: column;
+ border: 1px solid var(--border);
+ border-radius: var(--radius-lg);
+ background: var(--surface);
+ overflow: hidden;
+ transition: transform 450ms linear(0, 0.05, 0.97, 1.05, 0.99, 1),
+ border-color 450ms linear(0, 0.08, 0.95, 1.08, 0.98, 1),
+ background 450ms linear(0, 0.08, 0.95, 1.08, 0.98, 1);
+}
+
+.janet-news-v4-story-card:hover {
+ transform: translateY(-4px);
+ border-color: var(--border-2);
+ background: var(--surface-hover);
+}
+
+/* 图片区域 */
+.janet-news-v4-story-image {
+ position: relative;
+ min-height: 150px;
+ background: var(--surface);
+ border-bottom: 1px solid var(--border);
+ overflow: hidden;
+}
+
+.janet-news-v4-story-image img {
+ width: 100%;
+ height: 100%;
+ min-height: 150px;
+ object-fit: cover;
+ display: block;
+}
+
+/* 品牌封面 fallback · 深黑底 + 微弱径向绿光 + 中间小号文字 + 底部细线 */
+.janet-news-v4-story-image--fallback {
+ position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ min-height: 150px;
+ background:
+ radial-gradient(circle at 50% 45%, rgba(24, 226, 153, 0.10), transparent 42%),
+ linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.008)),
+ #050505;
+}
+
+.janet-news-v4-story-image--fallback::before {
+ content: "Janet 快车箱";
+ font-size: 11px;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--text-3);
+ padding: 8px 16px;
+ border-bottom: 1px solid var(--border);
+ opacity: 0.72;
+}
+
+/* 卡片内容区 */
+.janet-news-v4-story-body {
+ padding: 20px;
+ display: flex;
+ flex-direction: column;
+ flex: 1;
+}
+
+/* 来源标签 */
+.janet-news-v4-story-meta {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 6px;
+ align-items: center;
+ margin-bottom: 12px;
+}
+
+.janet-news-v4-source-badge,
+.janet-news-v4-category-badge {
+ display: inline-flex;
+ align-items: center;
+ padding: 3px 8px;
+ border-radius: 6px;
+ font-size: 10px;
+ line-height: 1;
+ border: 1px solid var(--border);
+ color: var(--text-3);
+ background: transparent;
+ font-weight: 500;
+ letter-spacing: 0.02em;
+}
+
+.janet-news-v4-source-badge--s {
+ color: var(--green);
+ border-color: var(--border-glow);
+}
+
+.janet-news-v4-source-badge--a {
+ color: var(--blue);
+ border-color: var(--blue-dim);
+}
+
+.janet-news-v4-source-badge--b {
+ color: var(--amber);
+ border-color: rgba(245, 158, 11, 0.15);
+}
+
+.janet-news-v4-source-badge--c {
+ color: var(--purple);
+ border-color: var(--purple-dim);
+}
+
+.janet-news-v4-source-badge--d {
+ color: var(--text-3);
+ border-color: var(--border);
+}
+
+.janet-news-v4-story-title {
+ margin: 0;
+ font-size: 18px;
+ line-height: 1.42;
+ font-weight: 600;
+ letter-spacing: -0.02em;
+ color: var(--text);
+}
+
+.janet-news-v4-story-card:hover .janet-news-v4-story-title {
+ color: var(--green);
+}
+
+.janet-news-v4-story-card a.janet-news-v4-story-title {
+ color: inherit;
+}
+
+.janet-news-v4-story-summary {
+ margin: 10px 0 0;
+ color: var(--text-2);
+ font-size: 14px;
+ line-height: 1.85;
+ color: rgba(240, 240, 240, 0.72);
+}
+
+/* Janet Take 小块（不是绿色框） */
+.janet-news-v4-story-note {
+ margin-top: 14px;
+ padding: 10px 14px;
+ border-radius: var(--radius-sm);
+ background: rgba(255, 255, 255, 0.025);
+ border: 1px solid rgba(255, 255, 255, 0.06);
+ border-left: 2px solid rgba(24, 226, 153, 0.45);
+}
+
+.janet-news-v4-story-note-label {
+ display: block;
+ margin-bottom: 4px;
+ color: rgba(24, 226, 153, 0.86);
+ font-size: 10px;
+ font-weight: 600;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+}
+
+.janet-news-v4-story-note p {
+ margin: 0;
+ color: var(--text-2);
+ font-size: 13.5px;
+ line-height: 1.75;
+}
+
+/* 卡片底部 */
+.janet-news-v4-story-footer {
+ margin-top: auto;
+ padding-top: 14px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 14px;
+ color: var(--text-3);
+ font-size: 11px;
+}
+
+.janet-news-v4-story-link {
+ color: var(--green);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Past Echo / Watch Next · 弱化
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-list {
+ margin: 0;
+ padding: 0;
+ list-style: none;
+ display: grid;
+ gap: 8px;
+}
+
+.janet-news-v4-list li {
+ padding: 12px 14px;
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ background: var(--surface);
+ color: var(--text-2);
+ line-height: var(--leading-normal);
+ font-size: 13px;
+}
+
+.janet-news-v4-list li strong {
+ color: var(--text);
+ font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Source Ledger · 折叠感 / 弱化
+   像工程表 → 像低调的参考资料
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-source-ledger {
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius-lg);
+}
+
+.janet-news-v4-ledger-details {
+ margin-top: 14px;
+}
+
+.janet-news-v4-ledger-details summary {
+ cursor: pointer;
+ color: var(--text-2, #a8a8a8);
+ font-size: 12px;
+ line-height: 1;
+ padding: 12px 0;
+ list-style: none;
+}
+
+.janet-news-v4-ledger-details summary::-webkit-details-marker {
+ display: none;
+}
+
+.janet-news-v4-ledger-details summary::before {
+ content: "+";
+ display: inline-flex;
+ width: 18px;
+ color: var(--green, #18E299);
+}
+
+.janet-news-v4-ledger-details[open] summary {
+ color: var(--green, #18E299);
+}
+
+.janet-news-v4-ledger-details[open] summary::before {
+ content: "−";
+}
+
+.janet-news-v4-ledger-summary {
+ margin: 0 0 14px;
+ color: var(--text-3);
+ line-height: var(--leading-normal);
+ font-size: 12px;
+}
+
+.janet-news-v4-ledger-table-wrap {
+ overflow-x: auto;
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+}
+
+.janet-news-v4-ledger-table {
+ width: 100%;
+ border-collapse: collapse;
+ min-width: 700px;
+ font-size: 11px;
+ color: var(--text-3);
+}
+
+.janet-news-v4-ledger-table th,
+.janet-news-v4-ledger-table td {
+ padding: 8px 10px;
+ border-bottom: 1px solid var(--border);
+ text-align: left;
+ vertical-align: top;
+}
+
+.janet-news-v4-ledger-table th {
+ color: var(--text-3);
+ font-weight: 600;
+ background: var(--surface-hover);
+ font-size: 10px;
+ letter-spacing: 0.06em;
+ text-transform: uppercase;
+}
+
+.janet-news-v4-ledger-table td {
+ color: var(--text-3);
+}
+
+.janet-news-v4-ledger-table td a {
+ color: var(--text-3);
+ text-decoration: underline;
+ text-decoration-color: var(--border);
+}
+
+.janet-news-v4-ledger-table td a:hover {
+ color: var(--green);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Footer
+   ═══════════════════════════════════════════════════════════ */
+.janet-news-v4-footer-note {
+ margin-top: 64px;
+ text-align: center;
+ color: var(--text-3);
+ font-size: 11px;
+ letter-spacing: 0.04em;
+ padding: 32px 0;
+ border-top: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   响应式
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+ .janet-news-v4-masthead-grid {
+ flex-direction: column;
+ align-items: flex-start;
+ }
+
+ .janet-news-v4-issue-meta {
+ justify-content: flex-start;
+ text-align: left;
+ }
+
+ .janet-news-v4-signal-map,
+ .janet-news-v4-grid {
+ grid-template-columns: 1fr;
+ }
+
+ .janet-news-v4-lead-inner {
+ grid-template-columns: 1fr;
+ }
+
+ .janet-news-v4-lead-visual {
+ min-height: 200px;
+ border-right: none;
+ border-bottom: 1px solid var(--border);
+ }
+
+ .janet-news-v4-lead-content {
+ padding: 28px 24px;
+ }
+}
+
+@media (max-width: 640px) {
+ .janet-news-v4-page {
+ padding: 24px 16px 64px;
+ }
+
+ .janet-news-v4-masthead {
+ padding: 36px 0 32px;
+ }
+
+ .janet-news-v4-thesis {
+ padding: 24px 20px;
+ }
+
+ .janet-news-v4-signal-card {
+ padding: 20px;
+ }
+
+ .janet-news-v4-story-body {
+ padding: 16px;
+ }
+
+ .janet-news-v4-lead-content {
+ padding: 24px 20px;
+ }
+
+ .janet-news-v4-lead-title {
+ font-size: clamp(26px, 6vw, 36px);
+ }
+
+ .janet-news-v4-masthead::after {
+ display: none;
+ }
+}
+ 
+/* JANET_TODAY_V4_FINAL_UI_FIX_START */
+
+/* =========================================================
+ Step 27.3-A-4
+ Today V4 Final Card UI Fix
+ 普通卡片改为 text-first editorial card
+ ========================================================= */
+
+/* 1. 普通卡 image=null 不再显示大面积 fallback 空块 */
+.janet-news-v4-story-card > .janet-news-v4-story-image--fallback {
+ display: none !important;
+}
+
+/* 2. 普通卡未来如果有真实图，保留克制高度 */
+.janet-news-v4-story-card > .janet-news-v4-story-image:not(.janet-news-v4-story-image--fallback) {
+ min-height: 148px;
+ max-height: 180px;
+ border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+ overflow: hidden;
+}
+
+.janet-news-v4-story-card > .janet-news-v4-story-image:not(.janet-news-v4-story-image--fallback) img {
+ width: 100%;
+ height: 100%;
+ min-height: 148px;
+ max-height: 180px;
+ object-fit: cover;
+ display: block;
+}
+
+/* 3. 普通卡改成文字优先，不再像图片卡墙 */
+.janet-news-v4-story-card {
+ position: relative;
+ overflow: hidden;
+ min-height: auto;
+ background:
+ linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.012)),
+ #050505;
+ border: 1px solid rgba(255, 255, 255, 0.075);
+ border-radius: 18px;
+ transition:
+ border-color 180ms ease,
+ background 180ms ease,
+ transform 180ms ease;
+}
+
+.janet-news-v4-story-card:hover {
+ transform: translateY(-2px);
+ border-color: rgba(24, 226, 153, 0.18);
+ background:
+ linear-gradient(180deg, rgba(24, 226, 153, 0.026), rgba(255, 255, 255, 0.012)),
+ #050505;
+}
+
+/* 4. 没有图片时，用顶部细线代替坏图占位 */
+.janet-news-v4-story-card::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 22px;
+ right: 22px;
+ height: 1px;
+ background: linear-gradient(
+ 90deg,
+ transparent,
+ rgba(24, 226, 153, 0.38),
+ transparent
+ );
+ opacity: 0.7;
+ pointer-events: none;
+}
+
+.janet-news-v4-story-body {
+ padding: 24px 24px 20px;
+}
+
+.janet-news-v4-story-card--no-image .janet-news-v4-story-body {
+ padding-top: 26px;
+}
+
+.janet-news-v4-story-meta {
+ margin-bottom: 16px;
+}
+
+.janet-news-v4-story-title {
+ margin: 0 0 13px;
+ font-size: 19px;
+ line-height: 1.38;
+ letter-spacing: -0.035em;
+ font-weight: 500;
+ color: var(--text, #f0f0f0);
+}
+
+.janet-news-v4-story-title a {
+ color: inherit;
+}
+
+.janet-news-v4-story-title a:hover {
+ color: var(--green, #18E299);
+}
+
+.janet-news-v4-story-summary {
+ margin: 0;
+ font-size: 14.5px;
+ line-height: 1.82;
+ color: rgba(240, 240, 240, 0.72);
+}
+
+/* 5. 为什么重要弱化成正文提示 */
+.janet-news-v4-story-note {
+ margin-top: 15px;
+}
+
+.janet-news-v4-story-note--why {
+ padding: 0;
+ background: transparent;
+ border: 0;
+ color: rgba(240, 240, 240, 0.62);
+}
+
+.janet-news-v4-story-note--why .janet-news-v4-story-note-label {
+ display: inline-flex;
+ margin-bottom: 5px;
+ color: rgba(240, 240, 240, 0.42);
+ font-size: 11px;
+ letter-spacing: 0.04em;
+}
+
+.janet-news-v4-story-note--why p {
+ color: rgba(240, 240, 240, 0.62);
+ font-size: 13.5px;
+ line-height: 1.78;
+}
+
+/* 6. Janet 判断保留为编辑判断块 */
+.janet-news-v4-story-note--take {
+ padding: 14px 15px;
+ background: rgba(24, 226, 153, 0.035);
+ border: 1px solid rgba(24, 226, 153, 0.10);
+ border-left: 2px solid rgba(24, 226, 153, 0.48);
+ border-radius: 12px;
+}
+
+.janet-news-v4-story-note--take .janet-news-v4-story-note-label {
+ display: inline-flex;
+ margin-bottom: 6px;
+ color: rgba(24, 226, 153, 0.88);
+ font-size: 11px;
+ letter-spacing: 0.04em;
+}
+
+.janet-news-v4-story-note--take p {
+ color: rgba(240, 240, 240, 0.72);
+ font-size: 13.5px;
+ line-height: 1.78;
+}
+
+/* 7. 底部信息合并后更轻 */
+.janet-news-v4-story-footer {
+ margin-top: 17px;
+ padding-top: 13px;
+ border-top: 1px solid rgba(255, 255, 255, 0.045);
+ color: rgba(240, 240, 240, 0.38);
+ font-size: 12px;
+ line-height: 1.55;
+}
+
+.janet-news-v4-story-footer strong {
+ color: rgba(240, 240, 240, 0.52);
+ font-weight: 500;
+}
+
+.janet-news-v4-story-footer .janet-news-v4-story-link {
+ color: rgba(24, 226, 153, 0.82);
+}
+
+/* 8. Section 更像杂志栏目 */
+.janet-news-v4-section {
+ padding: 32px;
+}
+
+.janet-news-v4-section-header {
+ padding-bottom: 16px;
+ margin-bottom: 24px;
+ border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.janet-news-v4-section-title {
+ font-size: 29px;
+ line-height: 1.12;
+ letter-spacing: -0.052em;
+ font-weight: 500;
+}
+
+.janet-news-v4-section-count {
+ font-size: 12px;
+ color: rgba(240, 240, 240, 0.38);
+}
+
+/* 9. 卡片网格略微拉开，减少墙感 */
+.janet-news-v4-grid {
+ gap: 18px;
+}
+
+/* 10. Lead Story 保留大视觉，不受普通卡隐藏策略影响 */
+.janet-news-v4-lead-visual {
+ min-height: 320px;
+ background:
+ radial-gradient(circle at 50% 42%, rgba(24, 226, 153, 0.16), transparent 44%),
+ linear-gradient(180deg, rgba(255, 255, 255, 0.042), rgba(255, 255, 255, 0.012)),
+ #050505;
+}
+
+.janet-news-v4-lead-title {
+ font-size: clamp(38px, 5.2vw, 68px);
+}
+
+.janet-news-v4-lead-summary {
+ font-size: 17px;
+ line-height: 1.9;
+ color: rgba(240, 240, 240, 0.74);
+}
+
+/* 11. Signal Map 略微弱化，避免和正文抢戏 */
+.janet-news-v4-signal-card {
+ background:
+ linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.01)),
+ #050505;
+}
+
+.janet-news-v4-signal-title {
+ font-size: 18px;
+}
+
+.janet-news-v4-signal-view {
+ color: rgba(240, 240, 240, 0.62);
+}
+
+/* 12. 移动端 */
+@media (max-width: 900px) {
+ .janet-news-v4-lead-visual {
+ min-height: 240px;
+ }
+}
+
+@media (max-width: 640px) {
+ .janet-news-v4-story-body,
+ .janet-news-v4-story-card--no-image .janet-news-v4-story-body {
+ padding: 22px 18px 18px;
+ }
+
+ .janet-news-v4-story-title {
+ font-size: 18px;
+ }
+
+ .janet-news-v4-section {
+ padding: 22px;
+ }
+
+ .janet-news-v4-section-title {
+ font-size: 24px;
+ }
+
+ .janet-news-v4-grid {
+ gap: 14px;
+ }
+}
+
+/* JANET_TODAY_V4_FINAL_UI_FIX_END */
+
+</style>
+<style>
+html { scroll-padding-top: 96px; }
+.janet-news-v4-topbar { position: sticky; top: 0; z-index: 50; height: 64px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:0 max(22px, calc((100vw - 1180px)/2)); background:rgba(0,0,0,.78); border-bottom:1px solid rgba(255,255,255,.08); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+.janet-news-v4-topbar a { color:rgba(255,255,255,.76); text-decoration:none; font-size:13px; }
+.janet-news-v4-topbar-brand { color:#18e299 !important; font-weight:650; }
+.janet-news-v4-topbar-links { display:flex; gap:16px; flex-wrap:wrap; }
+.janet-news-v4-toc { position:fixed; z-index:40; right:24px; top:92px; width:176px; padding:16px; border:1px solid rgba(255,255,255,.08); border-radius:16px; background:rgba(5,5,5,.72); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); display:grid; gap:8px; }
+.janet-news-v4-toc strong { color:#18e299; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+.janet-news-v4-toc a { color:rgba(255,255,255,.64); text-decoration:none; font-size:12px; line-height:1.35; }
+.janet-news-v4-toc a:hover { color:#18e299; }
+.janet-news-v4-thesis-feature { background:linear-gradient(135deg, rgba(24,226,153,.08), rgba(255,255,255,.025)) !important; }
+.janet-news-v4-thesis-card { border-left:3px solid #18e299; padding:6px 0 6px 22px; }
+.janet-news-v4-thesis-text { font-size:clamp(20px,2vw,30px) !important; line-height:1.65 !important; color:rgba(255,255,255,.9) !important; }
+.janet-news-v4-watch-intro { color:rgba(255,255,255,.58); margin:0 0 16px; }
+.janet-news-v4-image-credit { display:block; position:absolute; right:10px; bottom:8px; padding:3px 7px; border-radius:999px; background:rgba(0,0,0,.55); color:rgba(255,255,255,.52); font-size:10px; }
+.janet-news-v4-story-image, .janet-news-v4-lead-visual { position:relative; }
+@media (max-width:1280px){ .janet-news-v4-toc{ display:none; } }
+@media (max-width:760px){ .janet-news-v4-topbar{ align-items:flex-start; height:auto; padding:12px 16px; flex-direction:column; } .janet-news-v4-topbar-links{ gap:10px; } }
+</style></head>
+
+<body>
+<nav class="janet-news-v4-topbar" aria-label="晨报导航">
+  <a class="janet-news-v4-topbar-brand" href="../../index.html">← 返回 Janet 主站</a>
+  <div class="janet-news-v4-topbar-links">
+    <a href="#daily-thesis">今日总论</a>
+    <a href="#lead-story">封面新闻</a>
+    <a href="#source-ledger">来源账本</a>
+  </div>
+</nav>
+<aside class="janet-news-v4-toc" aria-label="晨报目录">
+  <strong>本期目录</strong>
+  <a href="#masthead">开场</a>
+  <a href="#daily-thesis">今日总论</a>
+  <a href="#signal-map">Signal Map</a>
+  <a href="#lead-story">封面新闻</a>
+  <a href="#models">模型与产品</a>
+  <a href="#agents">Agent 与工具</a>
+  <a href="#open-source">开源与论文</a>
+  <a href="#business">商业与资本</a>
+  <a href="#china-perspective">中国视角</a>
+  <a href="#creator-opportunity">创作者机会</a>
+  <a href="#source-ledger">来源账本</a>
+  <a href="#watch-next">观察重点</a>
+</aside>
+ <main class="janet-news-v4-page" data-janet-news-version="4">
+ <div class="janet-news-v4-container">
+
+ <!-- BLOCK: masthead -->
+ <header class="janet-news-v4-masthead janet-news-v4-glass" data-block="masthead" id="masthead">
+ <div class="janet-news-v4-masthead-grid">
+ <div class="janet-news-v4-masthead-left">
+ <div class="janet-news-v4-kicker">Janet 快车箱</div>
+ <div class="janet-news-v4-theme">Codex进工位，AI开始接活</div>
+ <p class="janet-news-v4-intro">本期从 AIHOT 今日候选中筛出 20 条进入 v4 预览，重点看模型、Agent、开源论文和资本动作如何挤进真实工作。</p>
+ </div>
+
+ <aside class="janet-news-v4-issue-meta" aria-label="issue meta">
+ <div class="janet-news-v4-meta-card">
+ <span class="janet-news-v4-meta-label">Date</span>
+ <span class="janet-news-v4-meta-value">2026-05-12</span>
+ </div>
+ <div class="janet-news-v4-meta-card">
+ <span class="janet-news-v4-meta-label">Issue</span>
+ <span class="janet-news-v4-meta-value">2026.05.12</span>
+ </div>
+ <div class="janet-news-v4-meta-card">
+ <span class="janet-news-v4-meta-label">Editorial Angle</span>
+ <span class="janet-news-v4-meta-value">从会聊天到会接活</span>
+ </div>
+ </aside>
+ </div>
+ </header>
+
+ <!-- BLOCK: daily_thesis -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space janet-news-v4-thesis-feature" data-block="daily_thesis" id="daily-thesis">
+ <h2 class="janet-news-v4-block-title"><span>01</span> 今日总论</h2>
+ <div class="janet-news-v4-thesis-card"><p class="janet-news-v4-thesis-text">今天这期不是"又一个模型发布"的流水账，主线更像 AI 开始被塞进真实工位。头条「OpenAI解释如何安全运行」把代码、权限和交付责任摆到桌面上，旁边还有 4 条 Agent、4 条开源论文、3 条商业线索一起催场。Janet 的判断很简单：AI 现在不是缺热闹，是缺能把活干完还不把锅甩给人的证据。</p></div>
+ </section>
+
+ <!-- BLOCK: signal_map -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="signal_map" id="signal-map">
+ <h2 class="janet-news-v4-block-title"><span>02</span> Signal Map</h2>
+ <div class="janet-news-v4-signal-map">
+ 
+ <article class="janet-news-v4-signal-card">
+ <div class="janet-news-v4-signal-index">01</div>
+ <h3 class="janet-news-v4-signal-title">代码上岗</h3>
+ <p class="janet-news-v4-signal-view">Codex 和 Agent 类消息说明 AI 正从聊天框往工位钻，接下来要看的不是会不会写，而是谁来管权限和出错。</p>
+ <div class="janet-news-v4-signal-evidence">2 条证据关联</div>
+ </article>
+ 
+
+ <article class="janet-news-v4-signal-card">
+ <div class="janet-news-v4-signal-index">02</div>
+ <h3 class="janet-news-v4-signal-title">模型拟人</h3>
+ <p class="janet-news-v4-signal-view">ChatGPT、Claude、语音 API 这类线索都在推高"像人"的体验，但越像人，越要讲清楚边界。</p>
+ <div class="janet-news-v4-signal-evidence">2 条证据关联</div>
+ </article>
+ 
+
+ <article class="janet-news-v4-signal-card">
+ <div class="janet-news-v4-signal-index">03</div>
+ <h3 class="janet-news-v4-signal-title">入口收费</h3>
+ <p class="janet-news-v4-signal-view">广告、云、创作者工具和商业动作同时出现，说明 AI 已经从讲故事进入算账阶段。</p>
+ <div class="janet-news-v4-signal-evidence">2 条证据关联</div>
+ </article>
+ 
+ </div>
+ </section>
+
+ <!-- BLOCK: lead_story -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="lead_story" id="lead-story">
+ <div class="janet-news-v4-lead-section-header">
+ <span class="janet-news-v4-lead-section-title">封面新闻 · 今日最重要的信号</span>
+ </div>
+ <div class="janet-news-v4-lead-story">
+ <div class="janet-news-v4-lead-inner">
+ 
+ 
+ <div class="janet-news-v4-lead-visual" aria-label="Janet 快车箱"><img src="images/openai-codex.png" alt="OpenAI 解释如何安全运行 Codex" loading="eager"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+
+ <div class="janet-news-v4-lead-content">
+ <div class="janet-news-v4-lead-section-header">
+ <span class="janet-news-v4-lead-section-title">封面新闻 · 今日最重要的信号</span>
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">商业与资本</span>
+ </div>
+
+ <h3 class="janet-news-v4-lead-title">
+ <a href="https://openai.com/index/running-codex-safely" target="_blank" rel="noopener noreferrer">OpenAI 解释如何安全运行 Codex</a>
+ </h3>
+
+ <p class="janet-news-v4-lead-summary">OpenAI：官网动态：OpenAI通过沙盒隔离、人工审批流程、严格网络策略与原生代理遥测四层防护机制，确保Codex代码生成模型的安全运行。沙盒环境完全隔离执行代码，所有生产请求需经人工审核批准，…</p>
+
+ <div class="janet-news-v4-lead-note">
+ <strong>Janet 判断</strong>
+ 一手源。OpenAI解释如何 把 AI 推向代码现场，权限、安全、交付责任一起到。
+ </div>
+
+ <div class="janet-news-v4-lead-footer">
+ <span>OpenAI：官网动态</span>
+ <a href="https://openai.com/index/running-codex-safely" target="_blank" rel="noopener noreferrer">原文</a>
+ <span>接下来观察：看OpenAI权限</span>
+ </div>
+ </div>
+ 
+ </div>
+ </div>
+ </section>
+
+ <!-- BLOCK: models -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="models" id="models">
+ <div class="janet-news-v4-section-header">
+ <h2 class="janet-news-v4-section-title">模型与产品</h2>
+ <div class="janet-news-v4-section-count">4 items</div>
+ </div>
+ <div class="janet-news-v4-grid">
+ 
+ <article class="janet-news-v4-story-card" data-story-id="chatgpt-wired">
+ <div class="janet-news-v4-story-image"><img src="images/chatgpt-wired.png" alt="ChatGPT中文回复频现" 我会稳稳地接住你"，wired剖析成因"="" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">模型与产品</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/dotey/status/2052500525598527732" target="_blank" rel="noopener noreferrer">ChatGPT中文回复频现"我会稳稳地接住你"，WIRED剖析成因</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：宝玉 (@dotey)：X：宝玉 (@dotey)：ChatGPT在中文对话中反复出现"我会稳稳地接住你"等怪异表达，已成为流行梗。WIRED报道指出，这源于"模式坍缩"现象，即后训练反馈机制导…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「ChatGPT中文回」不是小作文问题，而是模型人格化开始影响用户信任和产品边界。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。ChatGPT中文回 模型开始会哄人时，产品经理开心，用户也要小心。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：宝玉 (@dotey)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/dotey/status/2052500525598527732" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看人格边界</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="claude-2">
+ <div class="janet-news-v4-story-image"><img src="images/claude-2.png" alt="Claude人格化趋势的中期影响" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">模型与产品</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/emollick/status/2053490736625029167" target="_blank" rel="noopener noreferrer">Claude人格化趋势的中期影响</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：Ethan Mollick (@emollick)：X：Ethan Mollick (@emollick)：Claude的人格化体现--无论是名称（唯一拥有人类名字的AI）、训练方式、Anthr…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「Claude人格化趋」不是小作文问题，而是模型人格化开始影响用户信任和产品边界。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。Claude人格化趋 模型开始会哄人时，产品经理开心，用户也要小心自己被温柔地带偏。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：Ethan Mollick (@emollick)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/emollick/status/2053490736625029167" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看人格边界</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="opencode-x-ring-2-6-1t">
+ <div class="janet-news-v4-story-image"><img src="images/opencode-x-ring-2-6-1t.png" alt="OpenCode x Ring 2.6 1T限时免费开放" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">模型与产品</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/opencode/status/2053393732221739498" target="_blank" rel="noopener noreferrer">OpenCode x Ring 2.6 1T限时免费开放</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：opencode (@opencode)：X：opencode (@opencode)：OpenCode x Ring 2.6 1T - 限时免费开放 256K上下文 • 推理能力 • 纯文本模…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「OpenCodexR」把 AI 从聊天窗口推向代码现场，真正考验会变成权限、安全和交付责任。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。OpenCodexR 看起来能干活，但权限边界和安全审计还没跟上。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：opencode (@opencode)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/opencode/status/2053393732221739498" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看OpenCo权限</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="item-2">
+ <div class="janet-news-v4-story-image"><img src="images/item-2.png" alt="帕累托代码：免费实验性编码路由工具" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">模型与产品</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/OpenRouter/status/2053170520087024109" target="_blank" rel="noopener noreferrer">帕累托代码：免费实验性编码路由工具</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：OpenRouter (@OpenRouter)：X：OpenRouter (@OpenRouter)：推出帕累托代码：一款全新、免费、实验性的编码路由工具 在请求中设置 `min_coding…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「帕累托代码：免费实验」把 AI 从聊天窗口推向代码现场，真正考验会变成权限、安全和交付责任。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。帕累托代码：免费实验 把 AI 推向代码现场，权限、安全、交付责任一起到。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：OpenRouter (@OpenRouter)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/OpenRouter/status/2053170520087024109" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看帕累托代码：权限</span>
+ </div>
+ </div>
+ </article>
+ 
+ </div>
+ </section>
+
+ <!-- BLOCK: agents -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="agents" id="agents">
+ <div class="janet-news-v4-section-header">
+ <h2 class="janet-news-v4-section-title">Agent 与工具</h2>
+ <div class="janet-news-v4-section-count">4 items</div>
+ </div>
+ <div class="janet-news-v4-grid">
+ 
+ <article class="janet-news-v4-story-card" data-story-id="ai-ai">
+ <div class="janet-news-v4-story-image"><img src="images/ai-ai.png" alt="AI协数学家：以智能体AI加速数学研究" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">Agent 与工具</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://arxiv.org/abs/2605.06651" target="_blank" rel="noopener noreferrer">AI协数学家：以智能体AI加速数学研究</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">HuggingFace Daily Papers（社区热门论文）：AI协数学家是一个供数学家利用AI智能体进行开放式研究的工作平台。它针对数学工作流程的探索性与迭代性特点，提供从构思、文献检索、计算…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「AI协数学家：以智能」说明 Agent 正在从演示走向流程，脏数据和异常处理会决定它是不是能上桌。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。AI协数学家：以智能 真正考验不是能不能干活，是干砸了谁来兜底。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>HuggingFace Daily Papers（社区热门论文）</span>
+ <a class="janet-news-v4-story-link" href="https://arxiv.org/abs/2605.06651" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看失败处理</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="opensearch-vl">
+ <div class="janet-news-v4-story-image"><img src="images/opensearch-vl.png" alt="OpenSearch-VL：前沿多模态搜索智能体的开源方案" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">Agent 与工具</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://arxiv.org/abs/2605.05185" target="_blank" rel="noopener noreferrer">OpenSearch-VL：前沿多模态搜索智能体的开源方案</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">HuggingFace Daily Papers（社区热门论文）：研究团队推出完全开源的OpenSearch-VL方案，用于训练前沿多模态深度搜索智能体。该方案包含三大核心：通过维基百科路径采样、模…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「OpenSearch」说明 Agent 正在从演示走向流程，脏数据和异常处理会决定它是不是能上桌。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。OpenSearch 别急着叫它同事，先让它把失败现场处理明白。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>HuggingFace Daily Papers（社区热门论文）</span>
+ <a class="janet-news-v4-story-link" href="https://arxiv.org/abs/2605.05185" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看失败处理</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="openai">
+ <div class="janet-news-v4-story-image"><img src="images/openai.png" alt="OpenAI分析意外思维链评分对模型影响" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">Agent 与工具</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/OpenAI/status/2052845764507062349" target="_blank" rel="noopener noreferrer">OpenAI分析意外思维链评分对模型影响</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：OpenAI (@OpenAI)：X：OpenAI (@OpenAI)：思维链监控器是防御AI智能体错位的关键层。为保持可监控性，我们在RL期间避免惩罚错位推理。 我们发现少量意外思维链评分影响…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「OpenAI分析意外」说明 Agent 正在从演示走向流程，脏数据和异常处理会决定它是不是能上桌。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。OpenAI分析意外 先让它把失败现场处理明白，不然只是更贵的自动填表。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：OpenAI (@OpenAI)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/OpenAI/status/2052845764507062349" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看失败处理</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="openai-openai-cli-api">
+ <div class="janet-news-v4-story-image"><img src="images/openai-openai-cli-api.png" alt="OpenAI 上线官方命令行工具 openai-cli，终端直接调用 API" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">Agent 与工具</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/dotey/status/2052512560264380737" target="_blank" rel="noopener noreferrer">OpenAI 上线官方命令行工具 openai-cli，终端直接调用 API</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：宝玉 (@dotey)：X：宝玉 (@dotey)：OpenAI 在 GitHub 开源了官方命令行工具 openai-cli，采用 Apache 2.0 协议，支持通过 Homebrew 或 …</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「OpenAI上线官方」把 AI 从聊天窗口推向代码现场，真正考验会变成权限、安全和交付责任。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。OpenAI上线官方 把 AI 推向代码现场，权限、安全、交付责任一起到。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：宝玉 (@dotey)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/dotey/status/2052512560264380737" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看OpenAI权限</span>
+ </div>
+ </div>
+ </article>
+ 
+ </div>
+ </section>
+
+ <!-- BLOCK: open_source -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="open_source" id="open-source">
+ <div class="janet-news-v4-section-header">
+ <h2 class="janet-news-v4-section-title">开源与论文</h2>
+ <div class="janet-news-v4-section-count">4 items</div>
+ </div>
+ <div class="janet-news-v4-grid">
+ 
+ <article class="janet-news-v4-story-card" data-story-id="scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber">
+ <div class="janet-news-v4-story-image"><img src="images/scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber.png" alt="Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-C…" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">开源与论文</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber" target="_blank" rel="noopener noreferrer">Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-C…</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">OpenAI：官网动态：OpenAI扩展了网络安全领域的可信访问计划，推出了GPT-5.5和专门针对网络安全的GPT-5.5-Cyber模型。此举旨在帮助经过验证的网络安全防御者加速漏洞研究，并加强…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「ScalingTru」把 AI 风险拉回安全现场，能力越强，权限和防线越不能靠祈祷。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。ScalingTru AI 安全不是贴个警告牌，越能干的模型越需要笼子和钥匙分开管。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>OpenAI：官网动态</span>
+ <a class="janet-news-v4-story-link" href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看安全权限</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="item">
+ <div class="janet-news-v4-story-image"><img src="images/item.png" alt="Claude 开始被训练解释" 为什么""="" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">开源与论文</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://www.anthropic.com/research/teaching-claude-why" target="_blank" rel="noopener noreferrer">Claude 开始被训练解释"为什么"</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">Hacker News 热门（buzzing.cc 中文翻译）：Anthropic公司发布了Claude模型的新研究"Teaching Claude Why"。该研究通过让模型学习解释自身推理过程中…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「Claude开始被训」不是小作文问题，而是模型人格化开始影响用户信任和产品边界。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。Claude开始被训 模型开始会哄人时，产品经理开心，用户也要小心。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>Hacker News 热门（buzzing.cc 中文翻译）</span>
+ <a class="janet-news-v4-story-link" href="https://www.anthropic.com/research/teaching-claude-why" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看人格边界</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="cot">
+ <div class="janet-news-v4-story-image"><img src="images/cot.png" alt="研究强化学习中意外对思维链（CoT）评分的影响" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">开源与论文</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://alignment.openai.com/accidental-cot-grading" target="_blank" rel="noopener noreferrer">研究强化学习中意外对思维链（CoT）评分的影响</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">OpenAI：Alignment 研究博客（RSS）：研究发现，部分已发布的模型存在有限的意外对思维链（CoT）进行评分的情况。团队已修复受影响的奖励通路，并确认没有明确证据表明模型的可监控性因此下…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「研究强化学习中意外对」提供方法线索，但论文热闹不等于生产可用，复现实验才是第一关。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。研究强化学习中意外对 提供方法线索，但论文热闹不等于生产可用，复现实验才是第一关。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>OpenAI：Alignment 研究博客（RSS）</span>
+ <a class="janet-news-v4-story-link" href="https://alignment.openai.com/accidental-cot-grading" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看复现实验</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="claude">
+ <div class="janet-news-v4-story-image"><img src="images/claude.png" alt="自然语言自编码器：将Claude的" 想法"解码为文本"="" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">开源与论文</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://www.anthropic.com/research/natural-language-autoencoders" target="_blank" rel="noopener noreferrer">自然语言自编码器：将Claude的"想法"解码为文本</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">Anthropic：Research（发表成果 · 网页）：Anthropic团队推出自然语言自编码器方法，能将大模型内部的激活值直接解码为可读文本。该方法通过训练"激活描述器"和"激活重建器"，形…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「自然语言自编码器：将」不是小作文问题，而是模型人格化开始影响用户信任和产品边界。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。自然语言自编码器：将 模型开始会哄人时，产品经理开心，用户也要小心。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>Anthropic：Research（发表成果 · 网页）</span>
+ <a class="janet-news-v4-story-link" href="https://www.anthropic.com/research/natural-language-autoencoders" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看人格边界</span>
+ </div>
+ </div>
+ </article>
+ 
+ </div>
+ </section>
+
+ <!-- BLOCK: business -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="business" id="business">
+ <div class="janet-news-v4-section-header">
+ <h2 class="janet-news-v4-section-title">商业与资本</h2>
+ <div class="janet-news-v4-section-count">3 items</div>
+ </div>
+ <div class="janet-news-v4-grid">
+ 
+ <article class="janet-news-v4-story-card" data-story-id="api">
+ <div class="janet-news-v4-story-image"><img src="images/api.png" alt="通过 API 中的新模型推进语音智能" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">商业与资本</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api" target="_blank" rel="noopener noreferrer">通过 API 中的新模型推进语音智能</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">OpenAI：官网动态：OpenAI API 推出了新的实时语音模型，能够进行推理、翻译和语音转录。这些模型显著提升了语音交互的自然度与智能水平，支持实时处理与多语言转换。新功能旨在为开发者提供更强…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「通过API中的新模型」把 AI 从聊天窗口推向代码现场，真正考验会变成权限、安全和交付责任。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。通过API中的新模型 如果真能进工位，最先失眠的不是程序员，是权限管理员。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>OpenAI：官网动态</span>
+ <a class="janet-news-v4-story-link" href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看通过API中权限</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="chatgpt">
+ <div class="janet-news-v4-story-image"><img src="images/chatgpt.png" alt="在ChatGPT中测试广告" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">商业与资本</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank" rel="noopener noreferrer">在ChatGPT中测试广告</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">OpenAI：官网动态：OpenAI开始在ChatGPT中测试广告功能，旨在支持其免费服务的持续运营。测试强调广告会带有明确标识，且广告内容不会影响ChatGPT的回答独立性。该举措配套严格的隐私保…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「在ChatGPT中测」不是小作文问题，而是模型人格化开始影响用户信任和产品边界。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。在ChatGPT中测 模型开始会哄人时，产品经理开心，用户也要小心自己被温柔地带偏。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>OpenAI：官网动态</span>
+ <a class="janet-news-v4-story-link" href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看人格边界</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="uber-openai">
+ <div class="janet-news-v4-story-image"><img src="images/uber-openai.png" alt="Uber 利用 OpenAI 帮助司机更智能地赚钱、乘客更快地叫车" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">商业与资本</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://openai.com/index/uber" target="_blank" rel="noopener noreferrer">Uber 利用 OpenAI 帮助司机更智能地赚钱、乘客更快地叫车</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">OpenAI：官网动态：Uber 宣布在其全球实时交通服务平台中集成 OpenAI 技术，用于驱动 AI 助手与语音功能。新功能旨在帮助司机更智能地规划接单以提升收入，同时让乘客能够更快完成叫车流程…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「Uber利用Open」把入口从文字推到语音，延迟、价格和稳定性会直接影响使用频率。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。Uber利用Open 语音入口听起来性感，但只要延迟一高，它就会从助手变成电话客服。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>OpenAI：官网动态</span>
+ <a class="janet-news-v4-story-link" href="https://openai.com/index/uber" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看延迟价格</span>
+ </div>
+ </div>
+ </article>
+ 
+ </div>
+ </section>
+
+ <!-- BLOCK: china_perspective -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="china_perspective" id="china-perspective">
+ <div class="janet-news-v4-section-header">
+ <h2 class="janet-news-v4-section-title">中国视角</h2>
+ <div class="janet-news-v4-section-count">1 item</div>
+ </div>
+ <div class="janet-news-v4-grid">
+ 
+ <article class="janet-news-v4-story-card" data-story-id="happyhorse-ai">
+ <div class="janet-news-v4-story-image"><img src="images/happyhorse-ai.png" alt="HappyHorse AI视频引擎登陆阿里云" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--s">官方/一手</span>
+ <span class="janet-news-v4-category-badge">中国视角</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/alibaba_cloud/status/2053646520998560033" target="_blank" rel="noopener noreferrer">HappyHorse AI视频引擎登陆阿里云</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：阿里云 / Alibaba Cloud (@alibaba_cloud)：X：阿里云 / Alibaba Cloud (@alibaba_cloud)：资产审核：通过。物理逻辑：无缝衔接。🐎 …</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「HappyHorse」说明本土 AI 仍在抢落地窗口，云、渠道和场景会比参数表更现实。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>一手源。HappyHorse 国产 AI 的重点不是喊追上谁，而是谁先在真实客户那里少翻车。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：阿里云 / Alibaba Cloud (@alibaba_cloud)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/alibaba_cloud/status/2053646520998560033" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看客户落地</span>
+ </div>
+ </div>
+ </article>
+ 
+ </div>
+ </section>
+
+ <!-- BLOCK: creator_opportunity -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="creator_opportunity" id="creator-opportunity">
+ <div class="janet-news-v4-section-header">
+ <h2 class="janet-news-v4-section-title">创作者机会</h2>
+ <div class="janet-news-v4-section-count">3 items</div>
+ </div>
+ <div class="janet-news-v4-grid">
+ 
+ <article class="janet-news-v4-story-card" data-story-id="agi-llm">
+ <div class="janet-news-v4-story-image"><img src="images/agi-llm.png" alt="机器人终局：物理AGI路线图与LLM类比" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">创作者机会</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/DrJimFan/status/2052758642781487237" target="_blank" rel="noopener noreferrer">机器人终局：物理AGI路线图与LLM类比</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：Jim Fan (@DrJimFan)：X：Jim Fan (@DrJimFan)：演讲者以"Robotics： Endgame"为题，提出解决物理AGI的路线图，直接类比LLM的成功路径。核心…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「机器人终局：物理AG」把 AI 从屏幕拖到现实世界，硬件、成本和安全都会一起找上门。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。机器人终局：物理AG 机器人路线图听着很燃，现实会先拿电池、成本和摔倒来泼冷水。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：Jim Fan (@DrJimFan)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/DrJimFan/status/2052758642781487237" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看硬件成本</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="gpt">
+ <div class="janet-news-v4-story-image"><img src="images/gpt.png" alt="GPT实时模型提示指南发布" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">创作者机会</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/OpenAIDevs/status/2052530378184032560" target="_blank" rel="noopener noreferrer">GPT实时模型提示指南发布</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：OpenAI Developers (@OpenAIDevs)：X：OpenAI Developers (@OpenAIDevs)：正在用GPT-Realtime-2构建语音应用？ 我们的新提示…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「GPT实时模型提示指」把 AI 从聊天窗口推向代码现场，真正考验会变成权限、安全和交付责任。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。GPT实时模型提示指 看起来能干活，但权限边界和安全审计还没跟上。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：OpenAI Developers (@OpenAIDevs)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/OpenAIDevs/status/2052530378184032560" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看GPT实时模权限</span>
+ </div>
+ </div>
+ </article>
+ 
+
+ <article class="janet-news-v4-story-card" data-story-id="ai-3d">
+ <div class="janet-news-v4-story-image"><img src="images/ai-3d.png" alt="教育科技门槛一夜归零：AI助力单人低成本开发3D教学应用" loading="lazy"><span class="janet-news-v4-image-credit">相关主题图 · 本地生成（源站图片暂不可稳定抓取）</span></div>
+ 
+ 
+ <div class="janet-news-v4-story-body">
+ <div class="janet-news-v4-story-meta">
+ <span class="janet-news-v4-source-badge janet-news-v4-source-badge--b">行业源</span>
+ <span class="janet-news-v4-category-badge">创作者机会</span>
+ </div>
+
+ <h3 class="janet-news-v4-story-title">
+ <a href="https://x.com/AYi_AInotes/status/2053473057365246297" target="_blank" rel="noopener noreferrer">教育科技门槛一夜归零：AI助力单人低成本开发3D教学应用</a>
+ </h3>
+
+ <p class="janet-news-v4-story-summary">X：阿易 AI Notes (@AYi_AInotes)：X：阿易 AI Notes (@AYi_AInotes)：AI工具GPT Images 2和Gemini 3.1 Pro的出现，彻底颠覆了教…</p>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--why">
+ <span class="janet-news-v4-story-note-label">为什么重要</span>
+ <p>「教育科技门槛一夜归零」把 AI 从聊天窗口推向代码现场，真正考验会变成权限、安全和交付责任。</p>
+ </div>
+
+ <div class="janet-news-v4-story-note janet-news-v4-story-note--take">
+ <span class="janet-news-v4-story-note-label">Janet 判断</span>
+ <p>行业线索。教育科技门槛一夜归零 如果真能进工位，最先失眠的不是程序员，是权限管理员。</p>
+ </div>
+
+ <div class="janet-news-v4-story-footer">
+ <span>X：阿易 AI Notes (@AYi_AInotes)</span>
+ <a class="janet-news-v4-story-link" href="https://x.com/AYi_AInotes/status/2053473057365246297" target="_blank" rel="noopener noreferrer">原文</a>
+ <span> · </span>
+ <strong>接下来观察：</strong>
+ <span>看教育科技门槛权限</span>
+ </div>
+ </div>
+ </article>
+ 
+ </div>
+ </section>
+
+ <!-- BLOCK: source_ledger -->
+ <section class="janet-news-v4-section janet-news-v4-glass janet-news-v4-section-space" data-block="source_ledger" id="source-ledger">
+ <h2 class="janet-news-v4-block-title"><span>Ledger</span> 来源账本</h2>
+ <p class="janet-news-v4-ledger-summary">本期正文来自 AIHOT fresh snapshot 里的 20 条入选新闻，来源账本 20 条；其中 S 级 11 条、A 级 0 条、B 级 9 条，仍需人工复核排序。</p>
+ <details class="janet-news-v4-ledger-details">
+ <summary>查看来源明细</summary>
+ <div class="janet-news-v4-ledger-table-wrap">
+ <table class="janet-news-v4-ledger-table">
+ <thead>
+ <tr>
+ <th>News ID</th>
+ <th>Source</th>
+ <th>Rank</th>
+ <th>Type</th>
+ <th>Include</th>
+ </tr>
+ </thead>
+ <tbody>
+ 
+ <tr>
+ <td>openai-codex</td>
+ <td>
+ <a href="https://openai.com/index/running-codex-safely" target="_blank" rel="noopener noreferrer">OpenAI：官网动态</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>chatgpt-wired</td>
+ <td>
+ <a href="https://x.com/dotey/status/2052500525598527732" target="_blank" rel="noopener noreferrer">X：宝玉 (@dotey)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>claude-2</td>
+ <td>
+ <a href="https://x.com/emollick/status/2053490736625029167" target="_blank" rel="noopener noreferrer">X：Ethan Mollick (@emollick)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>opencode-x-ring-2-6-1t</td>
+ <td>
+ <a href="https://x.com/opencode/status/2053393732221739498" target="_blank" rel="noopener noreferrer">X：opencode (@opencode)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>item-2</td>
+ <td>
+ <a href="https://x.com/OpenRouter/status/2053170520087024109" target="_blank" rel="noopener noreferrer">X：OpenRouter (@OpenRouter)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>ai-ai</td>
+ <td>
+ <a href="https://arxiv.org/abs/2605.06651" target="_blank" rel="noopener noreferrer">HuggingFace Daily Papers（社区热门论文）</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>opensearch-vl</td>
+ <td>
+ <a href="https://arxiv.org/abs/2605.05185" target="_blank" rel="noopener noreferrer">HuggingFace Daily Papers（社区热门论文）</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>openai</td>
+ <td>
+ <a href="https://x.com/OpenAI/status/2052845764507062349" target="_blank" rel="noopener noreferrer">X：OpenAI (@OpenAI)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>openai-openai-cli-api</td>
+ <td>
+ <a href="https://x.com/dotey/status/2052512560264380737" target="_blank" rel="noopener noreferrer">X：宝玉 (@dotey)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber</td>
+ <td>
+ <a href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber" target="_blank" rel="noopener noreferrer">OpenAI：官网动态</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>item</td>
+ <td>
+ <a href="https://www.anthropic.com/research/teaching-claude-why" target="_blank" rel="noopener noreferrer">Hacker News 热门（buzzing.cc 中文翻译）</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>cot</td>
+ <td>
+ <a href="https://alignment.openai.com/accidental-cot-grading" target="_blank" rel="noopener noreferrer">OpenAI：Alignment 研究博客（RSS）</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>claude</td>
+ <td>
+ <a href="https://www.anthropic.com/research/natural-language-autoencoders" target="_blank" rel="noopener noreferrer">Anthropic：Research（发表成果 · 网页）</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>api</td>
+ <td>
+ <a href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api" target="_blank" rel="noopener noreferrer">OpenAI：官网动态</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>chatgpt</td>
+ <td>
+ <a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank" rel="noopener noreferrer">OpenAI：官网动态</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>uber-openai</td>
+ <td>
+ <a href="https://openai.com/index/uber" target="_blank" rel="noopener noreferrer">OpenAI：官网动态</a>
+ </td>
+ <td>S</td>
+ <td>official</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>happyhorse-ai</td>
+ <td>
+ <a href="https://x.com/alibaba_cloud/status/2053646520998560033" target="_blank" rel="noopener noreferrer">X：阿里云 / Alibaba Cloud (@alibaba_cloud)</a>
+ </td>
+ <td>S</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>agi-llm</td>
+ <td>
+ <a href="https://x.com/DrJimFan/status/2052758642781487237" target="_blank" rel="noopener noreferrer">X：Jim Fan (@DrJimFan)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>gpt</td>
+ <td>
+ <a href="https://x.com/OpenAIDevs/status/2052530378184032560" target="_blank" rel="noopener noreferrer">X：OpenAI Developers (@OpenAIDevs)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+
+ <tr>
+ <td>ai-3d</td>
+ <td>
+ <a href="https://x.com/AYi_AInotes/status/2053473057365246297" target="_blank" rel="noopener noreferrer">X：阿易 AI Notes (@AYi_AInotes)</a>
+ </td>
+ <td>B</td>
+ <td>social</td>
+ <td>Yes</td>
+ </tr>
+ 
+ </tbody>
+ </table>
+ </div>
+ </details>
+ </section>
+
+ <!-- BLOCK: watch_next -->
+ <section class="janet-news-v4-watch-next janet-news-v4-glass janet-news-v4-section-space" data-block="watch_next" id="watch-next">
+ <h2 class="janet-news-v4-block-title"><span>观察</span> 下一步重点</h2>
+ <p class="janet-news-v4-watch-intro">这里不是任务清单，而是接下来几天值得继续盯住的变量。</p><ul class="janet-news-v4-list">
+ 
+ <li>Codex权限</li>
+ 
+
+ <li>语音延迟</li>
+ 
+
+ <li>广告边界</li>
+ 
+
+ <li>开源复现</li>
+ 
+ </ul>
+ </section>
+
+ <footer class="janet-news-v4-footer-note">
+ Janet 快车箱 · AI 情报过滤器 · Generated from verified editorial data
+ </footer>
+
+ </div>
+ </main>
+
+
+</body></html>

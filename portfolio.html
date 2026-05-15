@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Janet 作品库 — AI 影像、剧情短片与创作流程档案。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Janet">
+  <meta property="og:title" content="Janet 作品库">
+  <meta property="og:description" content="AI 影像、剧情短片与创作流程档案。">
+  <meta property="og:url" content="https://janetyao.com/portfolio.html">
+  <meta property="og:image" content="https://janetyao.com/assets/images/og-portfolio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Janet 作品库预览图">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Janet 作品库">
+  <meta name="twitter:description" content="AI 影像、剧情短片与创作流程档案。">
+  <meta name="twitter:image" content="https://janetyao.com/assets/images/og-portfolio.jpg">
+  <meta name="twitter:image:alt" content="Janet 作品库预览图">
+  <title>Janet 作品库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/news-editorial.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
+</head>
+<body>
+
+<div class="bg-ambient"></div>
+
+<div class="page">
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand nav-brand-logo" aria-label="Janet Home">
+        <img src="assets/icons/logo-mark.svg" alt="" class="nav-logo-mark">
+        <span data-i18n="i18n-nav-brand">Janet</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#news" data-i18n="i18n-nav-news">快车箱</a></li>
+        <li><a href="index.html#works-library">作品库</a></li>
+        <li><a href="index.html#projects" data-i18n="i18n-nav-cases">案例</a></li>
+        <li><a href="index.html#about" data-i18n="i18n-nav-about">关于</a></li>
+        <li><a href="index.html#contact" data-i18n="i18n-nav-contact">联系</a></li>
+      </ul>
+      <a href="index.html" class="btn btn-outline btn-sm" data-i18n="i18n-back-home">← 返回首页</a>
+    </div>
+  </nav>
+
+  <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="菜单">☰</button>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="index.html#news" data-i18n="i18n-nav-news">快车箱</a>
+    <a href="index.html#works-library">作品库</a>
+    <a href="index.html#projects" data-i18n="i18n-nav-cases">案例</a>
+    <a href="index.html#about" data-i18n="i18n-nav-about">关于</a>
+    <a href="index.html#contact" data-i18n="i18n-nav-contact">联系</a>
+  </div>
+
+  <main class="works-page">
+    <section class="works-page-hero">
+      <div class="container">
+        <span class="section-kicker">Creative Works Library</span>
+        <h1>Janet 作品库</h1>
+        <p>
+          这里不是成片展示墙，而是 Janet 的 AI 内容制作档案：
+          从世界观设定、角色设计、镜头运动、提示词、分镜、字幕、封面到发布文案，
+          每个作品都保留完整制作链路。
+        </p>
+      </div>
+    </section>
+
+    <section class="works-page-body">
+      <div class="container">
+        <div class="works-filter-bar" aria-label="作品库项目筛选">
+          <button class="works-filter-btn active" type="button" data-project-filter="all">全部作品</button>
+          <button class="works-filter-btn" type="button" data-project-filter="shuttle-universe">穿梭宇宙</button>
+          <button class="works-filter-btn" type="button" data-project-filter="misaligned-scenes">错位名场面</button>
+        </div>
+
+        <div id="works-project-overview" class="works-project-overview"></div>
+
+        <div class="works-list-header">
+          <div>
+            <span class="section-kicker">Works</span>
+            <h2>作品档案</h2>
+          </div>
+          <span id="works-list-count" class="works-list-count">Loading</span>
+        </div>
+
+        <div id="works-list-grid" class="works-list-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="i18n-footer-brand">Janet · AI 内容产品与视频世界观</p>
+      <p style="margin-top: 8px; color:var(--text-3); font-size:var(--body-xs);" data-i18n="i18n-footer">
+        © 2026 Janet Yao · 保留所有权利。
+      </p>
+      <p style="margin-top: 8px; color:var(--text-3); font-size:var(--body-xs);" data-i18n="i18n-footer2">
+        由 AI 协作搭建 · 被好奇心驱动
+      </p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" aria-label="回到顶部" data-i18n="i18n-backtop">
+    ↑
+  </button>
+
+</div>
+
+<script src="scripts/i18n.js"></script>
+<script src="scripts/portfolio.js"></script>
+<script src="scripts/nav.js"></script>
+<script src="scripts/effects.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+ <title id="title">Janet Mark</title>
+ <desc id="desc">Janet J monogram with signal dot and orbit line.</desc>
+
+ <defs>
+ <linearGradient id="janetGreen" x1="96" y1="88" x2="416" y2="424" gradientUnits="userSpaceOnUse">
+ <stop offset="0" stop-color="#53F5BD"/>
+ <stop offset="1" stop-color="#18E299"/>
+ </linearGradient>
+
+ <radialGradient id="bgGlow" cx="50%" cy="36%" r="70%">
+ <stop offset="0" stop-color="#0B2A1D"/>
+ <stop offset="0.46" stop-color="#050908"/>
+ <stop offset="1" stop-color="#000000"/>
+ </radialGradient>
+
+ <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+ <feGaussianBlur stdDeviation="12" result="blur"/>
+ <feColorMatrix in="blur" type="matrix"
+ values="0 0 0 0 0.094
+ 0 0 0 0 0.886
+ 0 0 0 0 0.600
+ 0 0 0 0.65 0" result="glow"/>
+ <feMerge>
+ <feMergeNode in="glow"/>
+ <feMergeNode in="SourceGraphic"/>
+ </feMerge>
+ </filter>
+ </defs>
+
+ <rect width="512" height="512" rx="144" fill="url(#bgGlow)"/>
+ <rect x="18" y="18" width="476" height="476" rx="132" stroke="#18E299" stroke-opacity="0.18" stroke-width="3"/>
+
+ <!-- Orbit -->
+ <path d="M113 316C177 182 340 112 438 182"
+ stroke="url(#janetGreen)"
+ stroke-width="18"
+ stroke-linecap="round"
+ opacity="0.72"/>
+
+ <!-- J -->
+ <path d="M318 121V304C318 361 281 397 226 397C192 397 163 384 145 359"
+ stroke="url(#janetGreen)"
+ stroke-width="48"
+ stroke-linecap="round"
+ stroke-linejoin="round"
+ filter="url(#softGlow)"/>
+
+ <!-- Signal dot -->
+ <circle cx="384" cy="135" r="30" fill="#18E299" filter="url(#softGlow)"/>
+ <circle cx="384" cy="135" r="56" stroke="#18E299" stroke-opacity="0.15" stroke-width="5"/>
+</svg>

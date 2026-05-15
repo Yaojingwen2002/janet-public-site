@@ -1,0 +1,132 @@
+{
+  "date": "2026-04-22",
+  "vol": "083",
+  "intro_text": "早上好。今天是2026年4月22日，星期三。OpenAI发布了ChatGPT Images 2.0，SpaceX要花600亿美金收购Cursor——你没看错，一个AI代码编辑器。Meta开始偷偷记录员工鼠标轨迹训练AI，而Claude Code可能要被踢出Pro订阅了。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI发布ChatGPT Images 2.0",
+          "content": "OpenAI正式上线ChatGPT Images 2.0，支持文本到图像、图像编辑、风格迁移一体化。新模型在细节还原和文字渲染上大幅提升，号称能正确拼出8个单词以上的图片文案。同时开放API，定价$0.04/张。\n\nJanet锐评：终于能正确拼字了。三年了，OpenAI花了多少钱才修好「拼写」这个人类小学一年级就该掌握的技能？不过说实话，渲染质量的跃升确实肉眼可见，创作者们可以先冲了。",
+          "source": "openai.com",
+          "image": "chatgpt_images.jpg"
+        },
+        {
+          "title": "SpaceX宣布600亿美元收购Cursor",
+          "content": "SpaceX突然宣布已达成协议，将以600亿美元收购AI编程工具Cursor。如果属实，这将是科技史上最大规模的IDE收购案。Elon Musk在X上发帖称「AI写的代码，AI公司来执行」。\n\nJanet锐评：600亿美金买一个代码编辑器？要么Musk在下一盘没人看得懂的棋，要么SpaceX的CFO今晚要失眠了。但我赌前者——把AI编程工具整合到火箭软件链里，这个想象空间确实恐怖。",
+          "source": "twitter.com/spacex",
+          "image": "spacex_cursor.jpg"
+        },
+        {
+          "title": "Meta开始采集员工鼠标轨迹和键盘数据训练AI",
+          "content": "据路透社报道，Meta已启动内部计划，开始收集员工的鼠标移动轨迹和键盘输入数据用于AI训练。员工被告知这是「提升办公效率的AI助手项目」，但隐私倡导者已公开表达强烈反对。\n\nJanet锐评：连你在Excel里发呆时鼠标画圈圈的数据都不放过。建议Meta员工改用纸笔办公，或者干脆把摄像头也装上——反正迟早的事。但说真的，这种数据采集方式如果合法，那所有公司的员工数据都该被采集。边界在哪里？",
+          "source": "reuters.com",
+          "image": "meta_surveillance.jpg"
+        },
+        {
+          "title": "Vercel遭OAuth供应链攻击泄露环境变量",
+          "content": "安全公司Trend Micro披露Vercel遭遇OAuth供应链攻击，攻击者通过OAuth令牌劫持获取了大量平台环境变量。受影响项目包括多个知名SaaS应用，涉及API密钥、数据库密码等敏感信息。\n\nJanet锐评：又一个「环境变量不是秘密」的血泪教训。如果你的生产环境密钥还直接写在Vercel dashboard里，现在、立刻、马上——换成密钥管理服务。别等下一个Trend Micro报告来教你做人。",
+          "source": "trendmicro.com",
+          "image": "security_breach.jpg"
+        },
+        {
+          "title": "Trellis AI融资构建「自我进化」智能体",
+          "content": "YC W24公司Trellis AI正在招聘工程师，宣称要构建「自我改进」的AI智能体系统。该公司专注于让AI Agent能够通过反馈循环自主优化行为策略，无需人工干预。\n\nJanet锐评：自我改进的AI智能体，听起来像是要造一个不需要你的AI员工。如果你是个老板，这可能让你兴奋；如果你是个打工人，这可能是你今年最需要关注的威胁。但我更关心的是——谁来给这些自我进化的Agent写performance review？",
+          "source": "ycombinator.com",
+          "image": "ai_models.jpg"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Claude Code或将被移出Pro订阅",
+          "content": "社区爆料称Anthropic计划将Claude Code从Pro订阅中移除，可能需要单独付费或升级到更高级别。此举将直接影响大量依赖Claude编程助手的开发者。\n\nJanet锐评：又是「先用免费版把你养肥，然后收网」的剧本。Anthropic这波操作跟GitHub Copilot的定价策略如出一辙。不过说真的，如果Claude Code的编程能力确实值那个价，掏钱也认了——问题是，它真的值吗？",
+          "source": "bsky.app",
+          "image": "claude_code.jpg"
+        },
+        {
+          "title": "GitHub Copilot个人计划大改",
+          "content": "GitHub宣布调整Copilot个人版订阅计划，部分功能重新分层。基础代码补全保持免费，但高级Agent功能和跨仓库上下文分析被移至付费层级。\n\nJanet锐评：微软的镰刀又一次挥向开发者。好消息是基础补全还在，坏消息是真正值钱的功能都要加钱。国内开发者们，建议趁早评估替代方案——Codeium、通义灵码，哪个不香？",
+          "source": "github.blog",
+          "image": "github_copilot.jpg"
+        },
+        {
+          "title": "开源AI网关GoModel上线",
+          "content": "开发者在HN上展示了GoModel——一个用Go编写的开源AI网关。支持多模型路由、速率限制、成本追踪和缓存，主打轻量级和高性能，适合中小团队自建AI基础设施。\n\nJanet锐评：又一个AI网关？不过Go写的确实比那些Python全家桶快不少。国内团队如果不想被各大API平台的定价绑着走，自建网关是迟早的事。这个项目的架构设计值得关注。",
+          "source": "github.com/enterpilot",
+          "image": "ai_coding.jpg"
+        },
+        {
+          "title": "Zindex：为Agent打造的图谱基础设施",
+          "content": "Zindex.ai推出面向AI智能体的图谱基础设施，帮助Agent理解和维护复杂的关系数据结构。支持实时协作和版本控制，专为多Agent协作场景设计。\n\nJanet锐评：当Agent开始需要自己的「知识图谱」来记住它们之间的对话和关系时，我们离真正的多智能体社会就不远了。这个项目解决的是一个越来越真实的问题——Agent们也需要一个「朋友圈」。",
+          "source": "zindex.ai",
+          "image": "ai_tools.jpg"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "AI编程工具进入「并购整合期」",
+          "content": "SpaceX拟600亿收购Cursor的事件如果属实，标志着AI编程工具赛道正式进入巨头并购时代。此前Anthropic、OpenAI也在强化各自的编码能力。独立编程工具的生存空间正在被压缩。\n\nJanet锐评：创业公司们，如果你在做AI编程工具，现在只有两条路：要么被收购，要么被碾碎。这个赛道的窗口期正在关闭。国内做编程助力的团队，抓紧时间证明自己不可替代。",
+          "source": "综合分析",
+          "image": "cover.jpg"
+        },
+        {
+          "title": "AI安全从「内容审核」走向「行为治理」",
+          "content": "Brex发布的CrabTrap工具展示了新趋势：用LLM作为裁判来监控AI Agent在生产环境中的行为。这标志着AI安全的焦点正在从「防止生成有害内容」转向「防止Agent执行有害操作」。\n\nJanet锐评：以前我们担心AI说出什么，现在我们担心AI做什么。这个转变意味着整个AI安全行业需要重新洗牌。国内的安全厂商们，你们的LLM-as-a-Judge方案准备好了吗？",
+          "source": "brex.com",
+          "image": "insights_security.jpg"
+        },
+        {
+          "title": "创作者内容进入『视觉资产即代码』时代",
+          "content": "ChatGPT Images 2.0 的 API 化意味着创作者可以将图片生成直接嵌入自动化工作流。配合 ComfyUI 和 Stable Diffusion 的本地部署，内容生产的『视觉管线』正在从手工操作变成可版本控制的代码流程。\n\nJanet锐评：以前设计师说『给我一张图』，现在程序员说『给我个 prompt』。两边都在互相鄙视，但结果是一样的——中间商正在被淘汰。如果你还在靠信息差赚设计费，赶紧转型。",
+          "source": "行业趋势分析",
+          "image": "insights_multimodal.jpg"
+        },
+        {
+          "title": "创作者内容生成进入「多模态流水线」时代",
+          "content": "ChatGPT Images 2.0的发布加上视频生成工具的成熟，创作者现在可以仅用文字提示完成从文案到图片再到视频的全流程。传统设计工具和素材库的壁垒正在被瓦解。\n\nJanet锐评：设计师朋友们，我不是在制造焦虑，我是在陈述事实。如果你还在用「AI没有灵魂」来安慰自己，建议去看看Midjourney最新的作品质量。真正不会被替代的是有想法的人，不是会用Photoshop的人。",
+          "source": "综合趋势",
+          "image": "investment.jpg"
+        },
+        {
+          "title": "国内AI基础设施的「去美化」加速",
+          "content": "随着GitHub Copilot分层定价和Anthropic收紧服务，国内开发者和企业对AI基础设施的自主可控需求持续上升。开源替代方案和国内大模型API的调用量显著增长。\n\nJanet锐评：这不是什么「国产替代」的情怀故事，这是实打实的成本控制。当你的API账单开始比服务器还贵的时候，自建和切换就不再是选择题了。国内模型的质量差距正在缩小，性价比是最大武器。",
+          "source": "行业观察",
+          "image": "insights_deamerica.jpg"
+        }
+      ]
+    },
+    "investment": {
+      "items": [
+        {
+          "title": "600亿收购Cursor：泡沫还是远见？",
+          "content": "如果SpaceX以600亿美元收购Cursor属实，这意味着AI编程工具的估值已经达到了一个荒谬的高度。对比之下，GitHub被微软收购时仅75亿美元。\n\nJanet锐评：600亿。这个数字要么是Musk在 trolling，要么是AI编程赛道的终极泡沫。我倾向于后者——但不是Cursor的问题，是整个赛道的问题。当代码编辑器的估值超过波音，你需要重新审视这个行业的定价逻辑。但话说回来，如果AI编程真的能替代10倍程序员，那600亿可能只是地板价。",
+          "source": "twitter.com/spacex"
+        },
+        {
+          "title": "AI安全赛道：下一个十亿美元机会",
+          "content": "CrabTrap等AI Agent安全工具的出现，加上Vercel等平台的供应链攻击频发，AI安全正在成为企业级市场的刚需。这个赛道的头部公司可能在12-18个月内迎来爆发。\n\nJanet锐评：当所有人都冲向AI的时候，卖铲子的赚了，卖保险的要来了。AI安全就是这个时代的「保险」。关注这个赛道的早期项目，尤其是能解决Agent行为监控和API安全防护的团队。",
+          "source": "brex.com + trendmicro.com"
+        },
+        {
+          "title": "订阅制AI工具的「价值回归」正在到来",
+          "content": "Anthropic收紧Claude Code、GitHub Copilot分层，都在传递一个信号：AI工具的定价正在回归其真实价值。免费午餐结束了，用户开始为真正的生产力提升付费。\n\nJanet锐评：这对创作者来说其实是好事——市场在淘汰那些「AI for AI's sake」的伪需求产品，真正能帮你赚钱的工具会活下来。你的AI工具订阅账单该做个审计了：哪些是必需品，哪些是智商税？",
+          "source": "bsky.app + github.blog"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "CrabTrap：AI Agent行为监控代理",
+          "content": "Brex开源的CrabTrap是一个LLM-as-a-Judge的HTTP代理，专门用于监控和保护生产环境中的AI Agent。\n\n它能做什么：拦截AI Agent的所有HTTP请求，用LLM判断是否安全；防止Agent执行破坏性操作（删除数据、发送敏感信息等）；实时监控和审计Agent日志；支持自定义规则和策略。\n\n为什么推荐：随着企业部署越来越多的AI Agent，Agent安全正在成为刚需。CrabTrap提供了一个轻量级的解决方案，不需要改造现有Agent架构，只需要把流量经过代理即可。\n\nJanet锐评：如果你已经在用AI Agent处理生产任务但没有安全措施，你现在就是在裸奔。CrabTrap不是最优雅的方案，但它是目前最容易上手的。花10分钟部署，比你花10天修复Agent造成的数据丢失划算得多。",
+          "source": "brex.com",
+          "link": "https://github.com/brexhq/crabtrap"
+        }
+      ]
+    }
+  }
+}

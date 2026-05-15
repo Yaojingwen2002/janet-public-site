@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <title>Janet的快车箱 · AI科技晨报 · 2026-05-11 版</title>
+ <style>
+ :root { 
+ --bg: #ffffff; --text: #0d0d0d; --brand: #18E299; --brand-sub: rgba(24, 226, 153, 0.08);
+ --border: rgba(0,0,0,0.06); --mono: 'Geist Mono', 'SFMono-Regular', monospace;
+ }
+ body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; padding: 60px 20px; line-height: 1.6; }
+ .container { max-width: 800px; margin: 0 auto; }
+ 
+ /* 1. 强化报头 */
+ header { border-bottom: 2px solid var(--text); padding-bottom: 20px; margin-bottom: 30px; }
+ .slogan { font-size: 14px; font-weight: 600; letter-spacing: 0.2em; color: #444; margin-bottom: 8px; text-transform: uppercase; }
+ .main-header { display: flex; justify-content: space-between; align-items: flex-end; }
+ .logo { font-size: 32px; font-weight: 900; letter-spacing: -1.5px; }
+ .date-info { font-family: var(--mono); font-size: 14px; font-weight: 600; }
+ 
+ /* 导航按钮 */
+ 
+ /* 3. 放大标题 (告别蚂蚁字) */
+ .section-tag { font-family: var(--mono); font-size: 14px; font-weight: 800; color: #fff; background: #000; padding: 6px 16px; border-radius: 4px; display: inline-block; margin: 60px 0 25px 0; }
+ 
+ /* 4. 模块结构 */
+ .card { border: 1px solid var(--border); padding: 30px; border-radius: 20px; margin-bottom: 30px; background: #fff; }
+ .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+ .mini-card { border: 1px solid var(--border); padding: 20px; border-radius: 16px; background: #fff; }
+ 
+ h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+ h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+ 
+ /* 吐槽高亮 */
+ .critique { margin-top: 20px; padding: 15px; background: var(--brand-sub); border-left: 4px solid var(--brand); border-radius: 0 12px 12px 0; }
+ .critique b { font-family: var(--mono); color: var(--brand); font-size: 12px; margin-right: 8px; text-transform: uppercase; }
+ .critique span { font-style: italic; font-weight: 600; font-size: 14px; }
+
+ /* 趋势模块 */
+ .trend-card { border: 2px solid var(--brand); padding: 30px; border-radius: 20px; background: linear-gradient(135deg, rgba(24,226,153,0.05), rgba(24,226,153,0.02)); margin-bottom: 30px; }
+ .trend-card h2 { color: var(--brand); }
+
+ /* 第四模块：投资视角/大胆预测 */
+ .prediction-box { background: #000; color: #fff; padding: 30px; border-radius: 20px; }
+ .prediction-box b { color: var(--brand); }
+
+ /* 第五模块：工具箱 */
+ .tools-grid { background: #fdfdfd; border: 2px dashed var(--brand); padding: 25px; border-radius: 20px; }
+
+ /* 5. 页脚信息全回正 */
+ footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; color: #888; font-size: 12px; font-family: var(--mono); }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <header>
+ <div class="slogan">中国创作者视角 • 全球AI前沿 • 每日晨报</div>
+ <div class="main-header">
+ <div class="logo">Janet's Express Box</div>
+ <div class="date-info">2026-05-11 // VOL_第196期</div>
+ </div>
+ </header>
+
+ <div class="intro-box">
+ 本周 AI 圈三件大事：Alphabet 市值短暂超越 Nvidia、Anthropic 估值谈至 9000 亿美元、OpenAI GPT-5.5 正式发布。同时 HiDream 发布开源推理绘图模型 O1-Image，Nvidia 推出多模型推理工具 Star Elastic。
+
+以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。
+
+保持好奇，保持吐槽。 </div>
+
+ 
+
+ <div class="section-tag">01 / KEY INTELLIGENCE (全球要闻)</div>
+ <div class="top-stories"><div class="card">
+  <h2>Alphabet 市值短暂超越 Nvidia，AI 赢家通吃叙事升温</h2>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: Fortune</p>
+</div>
+
+<div class="card">
+  <h2>Anthropic 估值谈至 9000 亿美元，融资高达 500 亿</h2>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: Chain Tech Daily</p>
+</div>
+
+<div class="card">
+  <h2>OpenAI GPT-5.5 正式发布，对标 Anthropic</h2>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: Implicator</p>
+</div>
+
+<div class="card">
+  <h2>AI 行业 5 月融资 250 亿美元，37 笔交易</h2>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: InforCapital</p>
+</div>
+
+<div class="card">
+  <h2>OpenAI 和 Anthropic 与宗教领袖会面讨论 AI 伦理</h2>
+  <p style="font-size:12px;color:#666;margin-top:8px;">来源: The Decoder</p>
+</div>
+</div>
+
+ <div class="section-tag">02 / MODEL UPDATES (模型动态)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <h3>OpenAI GPT-5.5：模糊指令也能用的模型</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Implicator</p>
+</div>
+
+<div class="mini-card">
+  <h3>OpenAI GPT-5.5-Cyber：安全研究专用模型</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: WinBuzzer</p>
+</div>
+
+<div class="mini-card">
+  <h3>HiDream 发布 O1-Image：开源推理绘图模型</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: NE Dispatch</p>
+</div>
+
+<div class="mini-card">
+  <h3>Nvidia Star Elastic：一个 checkpoint 包含 3 个推理模型</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: MarkTechPost</p>
+</div>
+</div>
+
+ <div class="section-tag">03 / TECH INSIGHTS (技术深度)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <h3>Claude 勒索事件后续：Anthropic 归咎 AI 恐怖叙事</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: TechCrunch</p>
+</div>
+
+<div class="mini-card">
+  <h3>OpenAI 内部混乱正在法庭上公开</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: NY Mag</p>
+</div>
+
+<div class="mini-card">
+  <h3>中国加速推进 AI 安全能力建设</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: 南华早报</p>
+</div>
+
+<div class="mini-card">
+  <h3>AI vs AI 网络安全时代</h3>
+  <p style="font-size:11px;color:#666;margin-top:8px;">来源: Economic Times</p>
+</div>
+</div>
+
+ <div class="section-tag">04 / INVESTMENT & PREDICTION (投资视角/大胆预测)</div>
+ <div class="prediction-box"><div class="prediction-box">
+  <h3>🎯 今日核心预测</h3>
+
+  <h3>Anthropic 9000 亿估值背后的算盘</h3>
+  <h3>Nvidia 400 亿股权投资的信号</h3>
+  <h3>5 月 AI 融资 250 亿美元，投资信号</h3>
+</div>
+</div>
+
+ <div class="section-tag">05 / CREATOR TOOLBOX (创作者工具箱)</div>
+ <div class="tools-grid"><div class="tools-grid">
+  <h3>🛠️ 今日工具箱</h3>
+
+<div>
+  <h2>HiDream O1-Image：开源推理绘图工具</h2>
+  <p style="font-size:12px;color:#888;font-family:var(--mono);margin-top:12px;">来源: NE Dispatch</p>
+</div>
+</div>
+</div>
+
+ <footer>
+ Janet的快车箱 · AI科技晨报 · 2026-05-11 版<br>
+ DATA SOURCES: HACKER NEWS, TECHCRUNCH, ARXIV, GITHUB TRENDING<br>
+ QUALITY CHECK: 5+4+4+3+1 STRUCTURE VERIFIED<br>
+ 中国创作者视角 · 全球AI前沿 · 每日晨报
+ </footer>
+ </div>
+</body>
+</html>

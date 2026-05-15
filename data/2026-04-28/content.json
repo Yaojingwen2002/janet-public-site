@@ -1,0 +1,127 @@
+{
+  "date": "2026-04-28",
+  "vol": "210",
+  "intro_text": "早上好，这里是『Janet的快车箱』第210期。今天是4月28日，星期二。\n\n今天的重头戏：OpenAI正式解除与Microsoft的独家协议，AI云格局要变天了；中国叫停Meta 20亿美元收购Manus，AI人才战进入新阶段。\n\n此外，Amazon再砸250亿美元追加投资Anthropic，David Silver（AlphaGo之父）融资11亿美元搞自学习AI，EU对Google开出AI反垄断罚单——全球AI军备竞赛已经白热化。\n\n以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。\n\n保持好奇，保持吐槽。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI解除与Microsoft独家协议，AI云格局要变",
+          "content": "2026年4月27日，OpenAI与Microsoft宣布重新修订双方合作协议，核心变化包括：终止OpenAI技术的独家授权条款、取消收入分成安排、移除AGI相关条款。这意味着OpenAI将不再受限于仅通过Microsoft Azure提供服务，可以独立与Amazon AWS、Google Cloud等签订合作。\n\n自2019年双方建立伙伴关系以来，Microsoft一直是OpenAI唯一的云基础设施合作伙伴。此次解绑标志着OpenAI从Microsoft的\"独家资产\"转变为独立运营的AI公司。",
+          "source": "OpenAI官方公告 / Decrypt / SiliconANGLE",
+          "link": "https://openai.com/index/next-chapter-of-microsoft-openai-partnership"
+        },
+        {
+          "title": "中国叫停Meta 20亿美元收购Manus，AI人才战升级",
+          "content": "中国商务部于4月27日正式下令Meta取消对AI Agent公司Manus的20亿美元收购。据OfficeChai报道，Manus创始人肖弘、纪一超已被限制出境。这是中国首次以国家安全为由阻止外国科技巨头收购中国AI初创公司。\n\nManus此前因推出全球领先的AI Agent产品引发关注，被视为中国AI Agent赛道的代表公司。此次事件标志着AI人才和技术出口监管进入更严格的阶段。",
+          "source": "OfficeChai / SiliconANGLE / NPR",
+          "link": "https://siliconangle.com/2026/04/27/china-blocks-metas-acquisition-ai-agent-developer-manus/"
+        },
+        {
+          "title": "EU要求Google开放Android AI功能给竞争对手",
+          "content": "欧盟委员会依据《数字市场法》(DMA)正式警告Google，要求其将Gemini AI和Android深度集成功能向竞争对手开放。Google随后回应称这是\"无端干预\"。\n\n欧盟的核心诉求包括：允许第三方AI助手控制Android设备、开放搜索数据给 rival AI公司、禁止Gemini在Android中享有默认优先地位。这标志着AI时代的反垄断监管从搜索扩展到AI层。",
+          "source": "Ars Technica / Android Authority / Bloomberg",
+          "link": "https://arstechnica.com/ai/2026/04/europe-could-force-google-to-open-android-to-other-ai-assistants/"
+        },
+        {
+          "title": "Amazon再砸250亿美元追加投资Anthropic",
+          "content": "Amazon宣布再向Anthropic投资高达250亿美元，这是Amazon连续第二笔对前沿AI实验室的巨额投资（此前两个月已向OpenAI投资500亿美元）。根据协议，Anthropic将获得Amazon Trainium芯片的5GW算力保障，Claude平台将在AWS全面上线。\n\n值得注意的是，Anthropic年化收入已达300亿美元，但仍在持续烧钱扩张。Amazon此举被解读为锁定Anthropic远离Google Cloud的关键动作。",
+          "source": "Amazon官方公告 / The Next Web",
+          "link": "https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai"
+        },
+        {
+          "title": "AlphaGo之父David Silver融资11亿美元，押注自学习AI",
+          "content": "DeepMind联合创始人David Silver宣布融资11亿美元，创办全新AI公司，专注于无需人工标注数据的自学习系统。据AI Business Review报道，本轮融资由多家顶级风投参与。\n\n自学习AI被视为后标注时代的核心方向——当标注数据耗尽，AI能否像人类一样从环境中自主学习将成为关键分水岭。",
+          "source": "AI Business Review",
+          "link": "https://www.aibusinessreview.org/2026/04/27/david-silver-raises-1-1-billion-self-learning-ai/"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "PixVerse C1 — 影视级AI视频模型正式发布",
+          "content": "爱诗科技于4月8日发布首个影视行业大模型PixVerse C1，支持文生视频、图生视频、参考图一致性、首尾帧插值等能力，输出最高1080P/15秒视频，内置音画同步。核心亮点是物理规律模拟——打斗场景拳脚有重量感、武器碰撞有物理反馈，角色在不同镜头间保持一致。\n\n该模型已上线PixVerse Web端及API平台，面向影视制作团队开放。",
+          "source": "PixVerse官方 / 和讯科技",
+          "link": "https://pixverse.ai/blog/pixverse-introduces-c1-ai-video-model-for-film-production"
+        },
+        {
+          "title": "Google发布Gemma 4 — 本地Agent智能新标准",
+          "content": "Google在Android开发者博客宣布发布Gemma 4，定位为\"本地Agent智能新标准\"。该模型针对手机端优化，可在Android设备上运行本地AI Agent，无需云端连接。\n\n这意味着AI Agent能力将从云端下沉到边缘设备，对用户隐私和响应速度都有显著提升。",
+          "source": "Google Android Developers Blog",
+          "link": "https://android-developers.googleblog.com/2026/04/gemma-4-new-standard-for-local-agentic-intelligence.html"
+        },
+        {
+          "title": "DeepMind发布Gemini Robotics-ER 1.6",
+          "content": "Google DeepMind发布Gemini Robotics-ER 1.6，专为物理AI需求设计的基础机器人模型。该模型能处理精确的空间操作任务，支持机械臂控制、物体抓取等物理交互场景。\n\nDeepMind将机器人学纳入Gemini家族，标志着多模态大模型向物理世界延伸的战略布局。",
+          "source": "SiliconANGLE / DeepMind",
+          "link": "https://siliconangle.com/2026/04/15/deepmind-launches-gemini-robotics-er-1-6-meet-precise-physical-ai-demands/"
+        },
+        {
+          "title": "Google Gemini开始全球推送Personal Intelligence",
+          "content": "Google Gemini应用开始在全球范围推送Personal Intelligence功能，可访问用户的文本、照片、视频等个人数据，提供个性化AI体验（欧洲除外，受监管限制）。这是Google将AI从通用工具转向个人助理的关键一步。\n\n该功能此前已在美国上线，此次全球推送标志着Google AI个人化战略的加速。",
+          "source": "9to5Google",
+          "link": "https://9to5google.com/2026/04/14/gemini-personal-intelligence-global/"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "OpenAI-Microsoft解绑：从\"绑死\"到\"多配偶\"的战略转变",
+          "content": "OpenAI解除独家协议不是简单的商业条款调整，而是其从非营利转向为盈利公司后的必然结果。作为独立上市公司，OpenAI需要向股东证明其价值最大化能力——绑定单一云厂商显然不符合股东利益。\n\n对行业的影响：Amazon和Google将获得与OpenAI深度合作的机会，Azure的AI垄断地位被打破。对中国创作者而言，这意味着更多API渠道选择，OpenAI API的价格战可能随之而来。",
+          "source": "综合分析",
+          "link": "https://decrypt.co/365630/microsoft-openai-rework-ai-deal-cutting-exclusivity-agi-provisions"
+        },
+        {
+          "title": "AI军备竞赛进入\"GW级\"时代：算力即权力",
+          "content": "Amazon给Anthropic5GW Trainium芯片保障，这个数字意味着什么？5GW算力约等于500万个GPU持续运行。AI基础设施的竞争已从\"谁有更多GPU\"升级为\"谁能锁定更大规模的专属算力\"。\n\n对中国企业的影响：国内AI公司获取海外算力的成本将进一步上升，国产芯片（华为昇腾、寒武纪等）的替代需求将加速。",
+          "source": "综合行业分析",
+          "link": "https://thenextweb.com/news/amazon-anthropic-25-billion-investment"
+        },
+        {
+          "title": "EU的AI反垄断：从搜索到AI层的监管延伸",
+          "content": "EU要求Google开放Android AI功能给竞争对手，这是DMA框架下AI领域的首次深度监管。核心矛盾在于：AI深度集成在操作系统中是技术进步的必然，但这也可能形成新的垄断壁垒。\n\n对中国创作者的启示：EU的监管方向可能影响全球AI产品的竞争格局，但短期内难以改变Google在移动端的统治地位。中国AI产品出海需关注EU监管动态。",
+          "source": "综合分析",
+          "link": "https://www.androidauthority.com/google-dma-android-ai-search-data-proceedings-3635493/"
+        },
+        {
+          "title": "Google Enterprise AI Agent：大厂的企业级AI焦虑",
+          "content": "Google在The Register报道中提出企业AI Agent治理方案，包括AI编排、安全管理和基础设施工具。这反映出Google对企业在AI Agent部署中的痛点的关注——Agent sprawl（Agent泛滥）已成为企业AI落地的核心挑战。\n\nGoogle试图通过\"管理Agent的Agent\"来建立企业级护城河。但企业客户是否愿意被单一厂商锁定，仍是未知数。",
+          "source": "The Register / Bloomberg",
+          "link": "https://www.theregister.com/2026/04/22/google_enterprise/"
+        }
+      ]
+    },
+    "investment": {
+      "items": [
+        {
+          "title": "🎯 今日核心预测：AI云格局将迎\"三国鼎立\"",
+          "content": "OpenAI解除与Microsoft独家协议后，AI基础设施市场将形成Amazon(AWS)、Microsoft(Azure)、Google(GCP)三足鼎立的局面。对投资者而言：\n\n1. AWS和GCP的AI基础设施收入将大幅增长，但利润率可能因竞争下降\n2. Microsoft的AI故事将从\"OpenAI独家\"转向\"多模型平台\"，估值逻辑需重新评估\n3. 对中国创作者：OpenAI API可能迎来新一轮降价，AWS/GCP将推出更多补贴方案\n\nJanet锐评：大厂烧钱竞赛没有终点，但最终受益的是能用更低成本获取AI能力的创作者和企业。关注AWS和GCP的新用户补贴，这可能是OpenAI API最便宜的获取渠道。",
+          "source": "Janet投资分析"
+        },
+        {
+          "title": "🔮 大胆预测：自学习AI将在3年内成为主流方向",
+          "content": "David Silver的11亿美元融资指向一个关键趋势：标注数据的瓶颈已现。当预训练数据耗尽，AI能否从环境中自主学习将成为下一代AI的核心竞争力。\n\nJanet锐评：11亿美元赌\"标注数据将耗尽\"，这个判断我认同。但目前自学习AI的技术成熟度远不如监督学习，短期更多是概念炒作。真正值得关注的不是融资额，而是谁能先做出可商业化的自学习产品。",
+          "source": "Janet投资分析"
+        },
+        {
+          "title": "📊 中国AI监管信号：人才出口管控将常态化",
+          "content": "中国叫停Meta收购Manus并限制出境创始人，释放明确信号：AI人才和技术出口将受到更严格管控。这与美国对华芯片出口管制形成对称——全球AI竞争已进入\"人才封锁\"阶段。\n\nJanet锐评：对中国AI创业者而言，这既是保护也是束缚。保护在于本土AI公司获得更长的时间窗口；束缚在于人才流动受限可能影响创新活力。建议关注国内AI创业政策扶持，尤其是人才回流计划。",
+          "source": "Janet投资分析"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "PixVerse C1 — 影视级AI视频生成（中国团队出品）",
+          "content": "PixVerse C1是爱诗科技（中国团队）发布的影视级AI视频模型，定位为\"为影视制作而生的AI视频模型\"。\n\n核心能力：\n- 文生视频、图生视频、参考图一致性生成\n- 首尾帧插值（Storyboard-to-Video）\n- 物理规律模拟：打斗场景拳脚有重量感，武器碰撞有物理反馈\n- 角色跨镜头一致性\n- 内置音画同步\n- 最高1080P/15秒输出\n- 所有能力可跟随提示词自动分镜\n\n适用场景：短视频创作、影视预可视化、特效制作、广告创意。\n\nJanet锐评：中国团队做的影视级AI视频模型，物理规律模拟是最大亮点。目前AI视频工具普遍存在\"前两秒好看，后面崩坏\"的问题，PixVerse C1声称解决了角色一致性和物理模拟，值得实测。API已开放，适合需要批量生成的创作者。不过1080P/15秒的输出限制意味着长视频仍需拼接，现阶段更适合短片和片段生成。",
+          "source": "PixVerse官方",
+          "link": "https://pixverse.ai/blog/pixverse-introduces-c1-ai-video-model-for-film-production",
+          "image": "tools-01.jpg"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<svg width="220" height="64" viewBox="0 0 220 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+ <title id="title">Janet Logo</title>
+ <desc id="desc">Janet personal brand logo with a J monogram, signal dot, and orbit line.</desc>
+
+ <defs>
+ <linearGradient id="janetGreen" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+ <stop offset="0" stop-color="#53F5BD"/>
+ <stop offset="1" stop-color="#18E299"/>
+ </linearGradient>
+
+ <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+ <feGaussianBlur stdDeviation="3" result="blur"/>
+ <feColorMatrix in="blur" type="matrix"
+ values="0 0 0 0 0.094
+ 0 0 0 0 0.886
+ 0 0 0 0 0.600
+ 0 0 0 0.55 0" result="glow"/>
+ <feMerge>
+ <feMergeNode in="glow"/>
+ <feMergeNode in="SourceGraphic"/>
+ </feMerge>
+ </filter>
+ </defs>
+
+ <!-- Mark container -->
+ <rect x="4" y="4" width="56" height="56" rx="18" fill="#050706"/>
+ <rect x="4.5" y="4.5" width="55" height="55" rx="17.5" stroke="#18E299" stroke-opacity="0.26"/>
+
+ <!-- Orbit line -->
+ <path d="M16 39C25 22 45 14 58 22" stroke="url(#janetGreen)" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+
+ <!-- J monogram -->
+ <path d="M38 16V38.5C38 45.4 33.7 49.5 27.4 49.5C23.7 49.5 20.7 48.1 18.8 45.6"
+ stroke="url(#janetGreen)"
+ stroke-width="5.4"
+ stroke-linecap="round"
+ stroke-linejoin="round"
+ filter="url(#softGlow)"/>
+
+ <!-- Signal dot -->
+ <circle cx="47" cy="18" r="4.2" fill="#18E299" filter="url(#softGlow)"/>
+ <circle cx="47" cy="18" r="8.5" stroke="#18E299" stroke-opacity="0.18"/>
+
+ <!-- Wordmark -->
+ <text x="76" y="40"
+ fill="#F5F7F6"
+ font-size="30"
+ font-weight="700"
+ letter-spacing="-1.2"
+ font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif">
+ Janet
+ </text>
+
+ <!-- Small signal line -->
+ <path d="M161 35H198" stroke="#18E299" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+ <circle cx="205" cy="35" r="3" fill="#18E299" opacity="0.9"/>
+</svg>

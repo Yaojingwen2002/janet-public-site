@@ -3,8 +3,8 @@
   "vol": "0000",
   "brand": "Janet 快车箱",
   "theme": "工具链又拧紧了",
-  "intro_text": "本期从公开 RSS / Atom / official feeds 中筛出 15 条窗口内新闻，按新闻价值重新排序。",
-  "daily_thesis": "今天窗口里，OpenAI、GitHub Blog、TechCrunch AI把工具入口摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
+  "intro_text": "本期从公开 RSS / Atom / official feeds 中筛出 16 条窗口内新闻，按新闻价值重新排序。",
+  "daily_thesis": "今天窗口里，OpenAI、GitHub Blog、TechCrunch AI、Hugging Face把工具入口摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
   "signal_map": [
     {
       "signal": "模型上新",
@@ -55,10 +55,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0003"
+            "evidence-0015"
           ],
           "editorial_score": 160,
           "editorial_signals": [
@@ -105,10 +105,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0004"
+            "evidence-0016"
           ],
           "editorial_score": 125,
           "editorial_signals": [
@@ -147,7 +147,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
             "evidence-0002"
@@ -184,7 +184,45 @@
     },
     "open_source": {
       "title": "开源与论文",
-      "items": []
+      "items": [
+        {
+          "id": "huggingface-blog-67c9381f2c92",
+          "title": "Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context —...",
+          "url": "https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2",
+          "source": "Hugging Face",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "open_source",
+          "score": 8,
+          "published_at": "2026-05-14T18:55:01.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality",
+          "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+          "watch_next": "看社区复现和二次封装速度",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-15T07:32:07.251Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0003"
+          ],
+          "editorial_score": 110,
+          "editorial_signals": [
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "Hugging Face"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        }
+      ]
     },
     "business": {
       "title": "商业与资本",
@@ -207,10 +245,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0015"
+            "evidence-0014"
           ],
           "editorial_score": 120,
           "editorial_signals": [
@@ -251,10 +289,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0007"
+            "evidence-0006"
           ],
           "editorial_score": 85,
           "editorial_signals": [
@@ -289,10 +327,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0009"
+            "evidence-0008"
           ],
           "editorial_score": 85,
           "editorial_signals": [
@@ -326,10 +364,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0010"
+            "evidence-0009"
           ],
           "editorial_score": 85,
           "editorial_signals": [
@@ -363,10 +401,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0014"
+            "evidence-0013"
           ],
           "editorial_score": 75,
           "editorial_signals": [
@@ -400,10 +438,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0005"
+            "evidence-0004"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -429,10 +467,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0008"
+            "evidence-0007"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -458,10 +496,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0011"
+            "evidence-0010"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -487,10 +525,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0012"
+            "evidence-0011"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -516,10 +554,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-15T07:30:59.184Z",
+          "verified_at": "2026-05-15T07:32:07.251Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0006"
+            "evidence-0005"
           ],
           "editorial_score": 25,
           "editorial_signals": [],
@@ -546,7 +584,7 @@
       "items": []
     }
   },
-  "source_summary": "公开来源自动生成；included=15; edition=full_edition; lead_score=160",
+  "source_summary": "公开来源自动生成；included=16; edition=full_edition; lead_score=160",
   "source_ledger": [
     {
       "news_id": "openai-news-ed9d35b23509",
@@ -594,6 +632,18 @@
       "risk_note": null,
       "should_include": true,
       "editorial_score": 120,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "huggingface-blog-67c9381f2c92",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 110,
       "editorial_penalties": []
     },
     {

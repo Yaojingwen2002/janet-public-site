@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "timezone": "Asia/Shanghai",
+  "min_publish_count": 5,
+  "full_edition_count": 10,
+  "sources": [
+    {
+      "id": "openai-news",
+      "enabled": true,
+      "url": "https://openai.com/news/rss.xml",
+      "fallback_url": "https://openai.com/news/",
+      "source": "OpenAI",
+      "category": "models",
+      "rank": "S"
+    },
+    {
+      "id": "google-ai-blog",
+      "enabled": true,
+      "url": "https://blog.google/technology/ai/rss/",
+      "fallback_url": "https://blog.google/technology/ai/",
+      "source": "Google AI",
+      "category": "models",
+      "rank": "S"
+    },
+    {
+      "id": "microsoft-ai-blog",
+      "enabled": true,
+      "url": "https://blogs.microsoft.com/ai/feed/",
+      "source": "Microsoft AI",
+      "category": "business",
+      "rank": "A"
+    },
+    {
+      "id": "github-blog",
+      "enabled": true,
+      "url": "https://github.blog/feed/",
+      "source": "GitHub Blog",
+      "category": "agents",
+      "rank": "A"
+    },
+    {
+      "id": "huggingface-blog",
+      "enabled": true,
+      "url": "https://huggingface.co/blog/feed.xml",
+      "fallback_url": "https://huggingface.co/blog",
+      "source": "Hugging Face",
+      "category": "open_source",
+      "rank": "A"
+    },
+    {
+      "id": "arxiv-cs-ai",
+      "enabled": true,
+      "url": "http://export.arxiv.org/rss/cs.AI",
+      "source": "arXiv cs.AI",
+      "category": "research",
+      "rank": "A"
+    },
+    {
+      "id": "arxiv-cs-cl",
+      "enabled": true,
+      "url": "http://export.arxiv.org/rss/cs.CL",
+      "source": "arXiv cs.CL",
+      "category": "research",
+      "rank": "A"
+    },
+    {
+      "id": "arxiv-cs-lg",
+      "enabled": true,
+      "url": "http://export.arxiv.org/rss/cs.LG",
+      "source": "arXiv cs.LG",
+      "category": "research",
+      "rank": "A"
+    },
+    {
+      "id": "arxiv-stat-ml",
+      "enabled": true,
+      "url": "http://export.arxiv.org/rss/stat.ML",
+      "source": "arXiv stat.ML",
+      "category": "research",
+      "rank": "A"
+    },
+    {
+      "id": "techcrunch-ai",
+      "enabled": true,
+      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "fallback_url": "https://techcrunch.com/category/artificial-intelligence/",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "rank": "B"
+    },
+    {
+      "id": "venturebeat-ai",
+      "enabled": true,
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "fallback_url": "https://venturebeat.com/category/ai/",
+      "source": "VentureBeat AI",
+      "category": "business",
+      "rank": "B"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "step": "31",
+  "status": "daily_news_automation_ready",
+  "schedule_utc": "37 0 * * *",
+  "schedule_asia_shanghai": "08:37",
+  "mode": "Mode A: publish before 09:00 Asia/Shanghai",
+  "requires_paid_api": false,
+  "requires_secret": false,
+  "uses_public_sources": true,
+  "workflow": ".github/workflows/daily-news-pages.yml",
+  "generator": ".github/scripts/daily-news-generator.mjs",
+  "source_pool": ".github/scripts/rss-source-pool.json",
+  "manual_run_url_note": "GitHub Actions -> Daily Janet News -> Run workflow",
+  "local_test": {
+    "node_check_passed": true,
+    "generator_ran": true,
+    "run_status": "blocked_insufficient_fresh_news",
+    "included": 0,
+    "published": false,
+    "published_edition_id": "",
+    "reason": "Local Node fetch failed because this machine cannot validate source TLS certificates; GitHub Actions runner is expected to use normal CA certificates."
+  },
+  "hard_rules": {
+    "used_sample_data": false,
+    "published_at_window_enforced": true,
+    "collected_at_is_not_published_at": true,
+    "min_publish_count": 5
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "status": "blocked_insufficient_fresh_news",
+  "run_at": "2026-05-15T03:33:36.707Z",
+  "timezone": "Asia/Shanghai",
+  "window_start": "2026-05-14T17:00:00+08:00",
+  "window_end": "2026-05-15T09:00:00+08:00",
+  "source_count": 11,
+  "source_success_count": 0,
+  "source_error_count": 11,
+  "raw_items": 0,
+  "included": 0,
+  "excluded": 0,
+  "edition_type": "",
+  "published": false,
+  "published_edition_id": "",
+  "used_sample_data": false,
+  "published_at_window_enforced": true,
+  "min_publish_count": 5,
+  "full_edition_count": 10,
+  "dry_run": false,
+  "date": "2026-05-15",
+  "errors": [
+    {
+      "source_id": "openai-news",
+      "source": "OpenAI",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "google-ai-blog",
+      "source": "Google AI",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "microsoft-ai-blog",
+      "source": "Microsoft AI",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "github-blog",
+      "source": "GitHub Blog",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "huggingface-blog",
+      "source": "Hugging Face",
+      "error": "fetch failed (ECONNRESET: Client network socket disconnected before secure TLS connection was established)"
+    },
+    {
+      "source_id": "arxiv-cs-ai",
+      "source": "arXiv cs.AI",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "arxiv-cs-cl",
+      "source": "arXiv cs.CL",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "arxiv-cs-lg",
+      "source": "arXiv cs.LG",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "arxiv-stat-ml",
+      "source": "arXiv stat.ML",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "techcrunch-ai",
+      "source": "TechCrunch AI",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    },
+    {
+      "source_id": "venturebeat-ai",
+      "source": "VentureBeat AI",
+      "error": "fetch failed (UNABLE_TO_GET_ISSUER_CERT_LOCALLY: unable to get local issuer certificate)"
+    }
+  ],
+  "excluded_reasons": {}
+}

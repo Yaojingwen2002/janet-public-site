@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "lead_story_policy": {
+    "min_score": 60,
+    "prefer_categories": ["models", "open_source", "research", "agents"],
+    "avoid_as_lead_keywords": [
+      "availability report",
+      "status report",
+      "incident",
+      "outage",
+      "degraded performance",
+      "maintenance",
+      "webinar",
+      "event",
+      "conference",
+      "sponsored",
+      "hiring",
+      "job",
+      "newsletter",
+      "weekly roundup",
+      "monthly report",
+      "April 2026",
+      "May 2026 report"
+    ]
+  },
+  "positive_signals": [
+    {
+      "name": "model_release",
+      "weight": 35,
+      "keywords": ["launches", "introduces", "announces", "releases", "new model", "frontier model", "reasoning model", "multimodal", "agent"]
+    },
+    {
+      "name": "developer_tooling",
+      "weight": 25,
+      "keywords": ["API", "SDK", "Codex", "GitHub Copilot", "agent", "workflow", "developer", "tool", "integration"]
+    },
+    {
+      "name": "open_source_release",
+      "weight": 25,
+      "keywords": ["open source", "weights", "dataset", "benchmark", "Hugging Face", "GitHub", "repository", "release"]
+    },
+    {
+      "name": "research_signal",
+      "weight": 20,
+      "keywords": ["arXiv", "paper", "benchmark", "training", "inference", "alignment", "evaluation", "safety"]
+    },
+    {
+      "name": "business_impact",
+      "weight": 15,
+      "keywords": ["enterprise", "pricing", "adoption", "partnership", "funding", "revenue", "customers"]
+    }
+  ],
+  "negative_signals": [
+    {
+      "name": "status_or_availability",
+      "weight": -80,
+      "keywords": ["availability report", "status report", "incident", "outage", "degraded performance", "maintenance"]
+    },
+    {
+      "name": "event_or_marketing",
+      "weight": -35,
+      "keywords": ["webinar", "event", "conference", "register", "sponsored", "join us"]
+    },
+    {
+      "name": "jobs_or_hr",
+      "weight": -50,
+      "keywords": ["hiring", "job", "career", "role opening"]
+    },
+    {
+      "name": "old_monthly_report",
+      "weight": -45,
+      "keywords": ["monthly report", "April 2026", "March 2026", "availability report"]
+    },
+    {
+      "name": "generic_ai_fluff",
+      "weight": -20,
+      "keywords": ["future of AI", "transforming industries", "AI revolution", "unlock productivity"]
+    }
+  ],
+  "source_priority": {
+    "OpenAI": 100,
+    "Anthropic": 95,
+    "Google AI": 90,
+    "Google DeepMind": 90,
+    "Hugging Face": 85,
+    "arXiv cs.AI": 80,
+    "arXiv cs.CL": 80,
+    "arXiv cs.LG": 80,
+    "arXiv stat.ML": 78,
+    "GitHub Blog": 75,
+    "Microsoft AI": 72,
+    "TechCrunch AI": 60,
+    "VentureBeat AI": 55
+  },
+  "forbidden_frontend_phrases": [
+    "公开源池晨报",
+    "AI 正在改变世界",
+    "未来已来",
+    "智能体时代来了",
+    "行业正在重构",
+    "值得关注",
+    "持续关注",
+    "赋能千行百业"
+  ],
+  "janet_voice": {
+    "tone": "sharp, useful, slightly sarcastic, not official",
+    "max_sentence_length_cn": 42,
+    "avoid_official_words": ["赋能", "生态", "抓手", "闭环", "落地", "矩阵", "底座"]
+  }
+}

@@ -9,12 +9,15 @@ import { createHash } from 'node:crypto';
 const ROOT = resolve(process.cwd());
 const TZ = 'Asia/Shanghai';
 const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
+const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
 const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
 const FORBIDDEN_TAKES = [
   'AI 正在改变世界',
   '未来已来',
   '智能体时代来了',
-  '行业正在重构'
+  '行业正在重构',
+  '值得关注',
+  '持续关注'
 ];
 
 function parseArgs(argv) {
@@ -257,7 +260,7 @@ function filterWindow(items, window) {
 
 function clamp(input, max) {
   const text = decodeText(input);
-  return text.length <= max ? text : text.slice(0, max - 1).trimEnd();
+  return text.length <= max ? text : `${text.slice(0, Math.max(0, max - 3)).trimEnd()}...`;
 }
 
 function schemaCategory(category) {
@@ -291,6 +294,181 @@ function scoreFor(rank) {
   return 4.5;
 }
 
+function rankWeight(rank) {
+  if (rank === 'S') return 4;
+  if (rank === 'A') return 3;
+  if (rank === 'B') return 2;
+  return 1;
+}
+
+function textForScoring(item) {
+  return `${item.title || ''} ${item.summary || ''} ${item.source || ''} ${item.category || ''}`.toLowerCase();
+}
+
+function keywordHits(text, keywords = []) {
+  return keywords.filter((keyword) => text.includes(String(keyword).toLowerCase()));
+}
+
+function scoreEditorialItem(item, rules) {
+  const text = textForScoring(item);
+  const base = Number(rules.source_priority?.[item.source]) || (item.source_rank === 'S' ? 82 : item.source_rank === 'A' ? 68 : 48);
+  let score = base;
+  const editorial_signals = [];
+  const editorial_penalties = [];
+
+  for (const signal of rules.positive_signals || []) {
+    const hits = keywordHits(text, signal.keywords);
+    if (!hits.length) continue;
+    score += Number(signal.weight) || 0;
+    editorial_signals.push({ name: signal.name, weight: signal.weight, hits });
+  }
+
+  for (const signal of rules.negative_signals || []) {
+    const hits = keywordHits(text, signal.keywords);
+    if (!hits.length) continue;
+    score += Number(signal.weight) || 0;
+    editorial_penalties.push({ name: signal.name, weight: signal.weight, hits });
+  }
+
+  const avoidLeadHits = keywordHits(text, rules.lead_story_policy?.avoid_as_lead_keywords || []);
+  const lead_eligible = avoidLeadHits.length === 0 && !editorial_penalties.some((item) => item.name === 'status_or_availability');
+
+  return {
+    ...item,
+    editorial_score: Math.max(0, Math.round(score)),
+    editorial_signals,
+    editorial_penalties,
+    lead_eligible,
+    core_eligible: score >= 25 && !editorial_penalties.some((penalty) => ['status_or_availability', 'old_monthly_report', 'jobs_or_hr'].includes(penalty.name)),
+    avoid_lead_hits: avoidLeadHits
+  };
+}
+
+function sortByEditorialValue(a, b) {
+  if ((b.core_eligible ? 1 : 0) !== (a.core_eligible ? 1 : 0)) return (b.core_eligible ? 1 : 0) - (a.core_eligible ? 1 : 0);
+  if (b.editorial_score !== a.editorial_score) return b.editorial_score - a.editorial_score;
+  if (rankWeight(b.source_rank) !== rankWeight(a.source_rank)) return rankWeight(b.source_rank) - rankWeight(a.source_rank);
+  return new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
+}
+
+function orderStoriesForEdition(included, rules) {
+  const scored = included.map((item) => scoreEditorialItem(item, rules));
+  const minLeadScore = Number(rules.lead_story_policy?.min_score || 60);
+  const leadPool = scored
+    .filter((item) => item.lead_eligible && item.editorial_score >= minLeadScore)
+    .sort(sortByEditorialValue);
+  const fallbackPool = scored
+    .filter((item) => item.lead_eligible)
+    .sort(sortByEditorialValue);
+  const nonStatusPool = scored
+    .filter((item) => !item.editorial_penalties.some((penalty) => penalty.name === 'status_or_availability'))
+    .sort(sortByEditorialValue);
+  const lead = leadPool[0] || fallbackPool[0] || nonStatusPool[0];
+  if (!lead) {
+    const error = new Error('blocked_quality_insufficient');
+    error.code = 'blocked_quality_insufficient';
+    throw error;
+  }
+
+  const rest = scored.filter((item) => item.id !== lead.id).sort(sortByEditorialValue);
+  const core = rest.filter((item) => item.core_eligible);
+  const secondary = rest.filter((item) => !item.core_eligible);
+  return [lead, ...core, ...secondary];
+}
+
+function sourceNames(stories, limit = 4) {
+  return [...new Set(stories.map((story) => story.source).filter(Boolean))].slice(0, limit);
+}
+
+function titleForEdition(stories, rules) {
+  const lead = stories[0] || {};
+  const sources = sourceNames(stories, 3);
+  const hasOpenSource = stories.some((story) => story.category === 'open_source' || /hugging face|github/i.test(story.source || story.title || ''));
+  const hasResearch = stories.some((story) => story.category === 'research' || /arxiv|paper|benchmark/i.test(story.source || story.title || ''));
+  const hasTools = stories.some((story) => /api|sdk|agent|copilot|workflow|developer|tool/i.test(`${story.title} ${story.summary}`));
+  const candidates = [
+    hasTools ? '工具链又拧紧了' : '',
+    hasOpenSource ? '开源模型继续补位' : '',
+    hasResearch ? '论文先把路探了' : '',
+    sources.includes('OpenAI') || sources.includes('Google AI') ? '巨头继续卡入口' : '',
+    lead.source === 'GitHub Blog' ? '开发入口又收紧' : '',
+    '今天AI有点实在'
+  ].filter(Boolean);
+  const forbidden = rules.forbidden_frontend_phrases || [];
+  const selected = candidates.find((item) => item.length <= 24 && !forbidden.some((phrase) => item.includes(phrase))) || '今天AI有点实在';
+  return selected;
+}
+
+function thesisForEdition(stories) {
+  const top = stories.slice(0, 5);
+  const sources = sourceNames(top, 5).join('、');
+  const verbs = top
+    .map((story) => story.editorial_signals?.[0]?.name)
+    .filter(Boolean);
+  const focus = verbs.includes('developer_tooling') ? '工具入口' : verbs.includes('open_source_release') ? '开源补位' : verbs.includes('research_signal') ? '研究信号' : '产品和研究';
+  return clamp(`今天窗口里，${sources || '公开源'}把${focus}摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。`, 140);
+}
+
+function signalMapForEdition(stories) {
+  const groups = [
+    { label: '模型上新', test: (story) => /model|launch|release|introduce|announc|openai|google/i.test(`${story.title} ${story.summary} ${story.source}`) },
+    { label: '工具收口', test: (story) => /api|sdk|agent|copilot|github|developer|workflow|tool/i.test(`${story.title} ${story.summary} ${story.source}`) },
+    { label: '开源补位', test: (story) => /hugging face|open source|github|arxiv|paper|benchmark|dataset|weights/i.test(`${story.title} ${story.summary} ${story.source}`) }
+  ];
+  return groups.map((group) => {
+    const picks = stories.filter(group.test).slice(0, 2);
+    const first = picks[0] || stories[0] || {};
+    return {
+      signal: group.label,
+      evidence: picks.length ? picks.map((story) => story.id) : [first.id].filter(Boolean),
+      janet_view: clamp(`${sourceNames(picks.length ? picks : [first], 2).join('、') || first.source || '公开源'}给了信号：${group.label}不是口号，是今天具体新闻里能点开的变化。`, 45)
+    };
+  });
+}
+
+function whyItMatters(story) {
+  const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
+  const audience = /api|sdk|github|copilot|developer|workflow|agent/.test(text)
+    ? '开发者'
+    : /arxiv|paper|benchmark|training|inference|alignment|evaluation/.test(text)
+      ? '研究者'
+      : /hugging face|open source|dataset|weights|repository/.test(text)
+        ? '开源社区'
+        : /enterprise|pricing|customer|funding|partnership|business/.test(text)
+          ? '企业'
+          : '创作者和产品团队';
+  return clamp(`${audience}要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。`, 90);
+}
+
+function janetTake(story) {
+  const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
+  if (/availability report|status report|incident|outage|maintenance/.test(text)) {
+    return '这类更像值班记录，能进归档，但别让它抢头条。';
+  }
+  if (/api|sdk|developer|workflow|copilot|github|agent/.test(text)) {
+    return '重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。';
+  }
+  if (/hugging face|open source|weights|dataset|repository/.test(text)) {
+    return '开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。';
+  }
+  if (/arxiv|paper|benchmark|training|inference|evaluation/.test(text)) {
+    return '论文不等于产品，但它通常先告诉你下一轮功能会从哪里冒出来。';
+  }
+  if (/enterprise|pricing|funding|partnership|customer/.test(text)) {
+    return '商业新闻的看点是钱和入口流向谁，口号先放一边。';
+  }
+  return '这条先按源站事实看，别急着拔高成时代宣言。';
+}
+
+function watchNext(story) {
+  const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
+  if (/api|sdk|developer|workflow|copilot|agent/.test(text)) return '看开发者是否真的迁移工作流';
+  if (/hugging face|open source|weights|dataset/.test(text)) return '看社区复现和二次封装速度';
+  if (/arxiv|paper|benchmark/.test(text)) return '看是否出现代码和独立复现';
+  if (/pricing|enterprise|customer|partnership/.test(text)) return '看客户和价格是否跟上';
+  return '看源站是否给出后续细节';
+}
+
 function emptySections(template) {
   const sections = {};
   for (const [key, value] of Object.entries(template.sections || {})) {
@@ -299,27 +477,36 @@ function emptySections(template) {
   return sections;
 }
 
-function buildContent(template, included, date, editionType) {
+function buildContent(template, included, date, editionType, rules) {
   const now = new Date().toISOString();
-  const stories = included.slice(0, editionType === 'limited_edition' ? 9 : 18).map((item) => ({
+  const ordered = orderStoriesForEdition(included, rules);
+  const displayItems = ordered.filter((item) => item.core_eligible).slice(0, editionType === 'limited_edition' ? 9 : 18);
+  const stories = displayItems.map((item) => ({
     id: item.id,
-    title: clamp(item.title, 60),
+    title: clamp(item.title, 96),
     url: item.url,
     source: item.source,
     source_type: sourceType(item.source),
     source_rank: item.source_rank,
     category: schemaCategory(item.category),
     score: scoreFor(item.source_rank),
-    summary: clamp(item.summary || item.title, 100),
-    why_it_matters: '进入今日时间窗口，来源清晰，可作为晨报候选。',
-    janet_take: '先按证据看，不扩大成无依据判断，等源站后续更新。',
-    watch_next: '看源站后续更新。',
+    published_at: item.published_at,
+    published_at_source: item.published_at_source,
+    summary: clamp(item.summary || item.title, 140),
+    why_it_matters: whyItMatters(item),
+    janet_take: janetTake(item),
+    watch_next: watchNext(item),
     image: null,
     image_source: null,
     image_credit: null,
     verified_at: now,
     duplicate_group: null,
-    evidence_ids: item.evidence_ids
+    evidence_ids: item.evidence_ids,
+    editorial_score: item.editorial_score,
+    editorial_signals: item.editorial_signals,
+    editorial_penalties: item.editorial_penalties,
+    lead_eligible: item.lead_eligible,
+    core_eligible: item.core_eligible
   }));
   for (const phrase of FORBIDDEN_TAKES) {
     if (JSON.stringify(stories).includes(phrase)) throw new Error(`forbidden_janet_take:${phrase}`);
@@ -334,36 +521,35 @@ function buildContent(template, included, date, editionType) {
   }
 
   const evidence = stories.slice(0, Math.max(6, Math.min(stories.length, 9))).map((story) => story.id);
+  const theme = titleForEdition(stories, rules);
   return {
     ...template,
     date,
     vol: template.vol || '0000',
-    theme: '公开源池晨报',
-    intro_text: `本期从公开 RSS / Atom / official feeds 中筛出 ${included.length} 条窗口内新闻。`,
-    daily_thesis: '今天的晨报只基于固定时间窗口内的公开来源生成，判断跟随可追溯证据。正式观点保持克制，只记录源站已经发布的事实和下一步观察点。',
-    signal_map: [
-      { signal: '公开源池', evidence: evidence.slice(0, 2), janet_view: '公开源池提供当天候选新闻，但判断仍只跟随可追溯证据。' },
-      { signal: '窗口过滤', evidence: evidence.slice(2, 4), janet_view: 'published_at 是唯一时间依据，窗口外内容不会被拿来补数量。' },
-      { signal: '发布门禁', evidence: evidence.slice(4, 6), janet_view: '生成结果通过 QA 后才写入 MANIFEST，避免坏数据上线。' }
-    ],
+    theme,
+    intro_text: `本期从公开 RSS / Atom / official feeds 中筛出 ${included.length} 条窗口内新闻，按新闻价值重新排序。`,
+    daily_thesis: thesisForEdition(stories),
+    signal_map: signalMapForEdition(stories),
     lead_story_id: stories[0].id,
     sections,
-    source_summary: `公开源池自动生成；included=${included.length}; edition=${editionType}`,
-    source_ledger: stories.map((story) => ({
+    source_summary: `公开来源自动生成；included=${included.length}; edition=${editionType}; lead_score=${stories[0]?.editorial_score || 0}`,
+    source_ledger: ordered.map((story) => ({
       news_id: story.id,
       source: story.source,
-      source_type: story.source_type,
+      source_type: sourceType(story.source),
       source_rank: story.source_rank,
       verified_url: story.url,
       duplicate_group: null,
-      risk_note: null,
-      should_include: true
+      risk_note: story.core_eligible ? null : 'low_editorial_score_archived_only',
+      should_include: story.core_eligible,
+      editorial_score: story.editorial_score,
+      editorial_penalties: story.editorial_penalties || []
     })),
-    editorial_angle: '公开源池自动晨报',
+    editorial_angle: '每日公开源编辑晨报',
     what_to_watch_next: [
-      '复核封面新闻源站更新',
-      '确认是否需要人工补充图片',
-      '观察同主题后续报道'
+      stories[0]?.watch_next || '看头条源站后续动作',
+      stories[1]?.watch_next || '看同主题是否继续发酵',
+      stories[2]?.watch_next || '看开发者和社区是否跟进'
     ]
   };
 }
@@ -518,9 +704,10 @@ function main() {
     const templateId = manifest[0] || '2026-05-14-v4';
     const templateContent = readJson(resolve(ROOT, `data/${templateId}/content.json`));
     const templateSummary = readJson(resolve(ROOT, `data/${templateId}/news-summary.json`), {});
+    const editorialRules = readJson(EDITORIAL_RULES, { positive_signals: [], negative_signals: [], source_priority: {}, forbidden_frontend_phrases: [] });
     const editionId = `${date}-v4`;
     const outDir = resolve(ROOT, `data/${editionId}`);
-    const content = buildContent(templateContent, included, date, editionType);
+    const content = buildContent(templateContent, included, date, editionType, editorialRules);
     writeJson(resolve(outDir, 'content.json'), content);
     writeText(resolve(outDir, 'output.html'), renderHtml(content));
     writeJson(resolve(outDir, 'news-summary.json'), buildSummary(templateSummary, content, editionId, editionType));

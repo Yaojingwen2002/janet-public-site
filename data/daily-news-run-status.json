@@ -1,19 +1,24 @@
 {
   "status": "published_full_edition",
-  "run_at": "2026-05-15T06:45:37.629Z",
+  "run_at": "2026-05-15T07:30:38.154Z",
   "timezone": "Asia/Shanghai",
   "window_start": "2026-05-14 17:00:00",
   "window_end": "2026-05-15 09:00:00",
   "source_count": 11,
-  "source_success_count": 11,
-  "source_error_count": 0,
-  "raw_items": 2943,
-  "included": 16,
-  "excluded": 2927,
+  "source_success_count": 10,
+  "source_error_count": 1,
+  "raw_items": 2164,
+  "included": 15,
+  "excluded": 2149,
   "edition_type": "full_edition",
   "published": true,
   "published_edition_id": "2026-05-15-v4",
   "used_sample_data": false,
   "published_at_window_enforced": true,
-  "errors": []
+  "errors": [
+    {
+      "source_id": "huggingface-blog",
+      "error": "https://huggingface.co/blog/feed.xml:fetch failed; https://huggingface.co/blog:fetch failed"
+    }
+  ]
 }

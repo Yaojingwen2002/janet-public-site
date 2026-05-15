@@ -3,6 +3,7 @@
 ## Files
 
 - `rss-source-pool.json`
+- `editorial-rules.json`
 - `daily-news-generator.mjs`
 - `qa-daily-news-output.mjs`
 
@@ -17,3 +18,7 @@ node .github/scripts/qa-daily-news-output.mjs
 
 Asia/Shanghai
 previous_day 17:00 <= published_at < current_day 09:00
+
+## Editorial quality
+
+`editorial-rules.json` demotes status reports, outage posts, monthly reports, event posts, and generic marketing copy. The generator scores stories before choosing the lead, and QA writes `data/editorial-quality-check.json`.

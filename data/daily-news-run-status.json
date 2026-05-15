@@ -1,64 +1,19 @@
 {
-  "status": "blocked_insufficient_fresh_news",
-  "run_at": "2026-05-15T06:30:19.198Z",
+  "status": "published_full_edition",
+  "run_at": "2026-05-15T06:45:37.629Z",
   "timezone": "Asia/Shanghai",
   "window_start": "2026-05-14 17:00:00",
   "window_end": "2026-05-15 09:00:00",
   "source_count": 11,
-  "source_success_count": 0,
-  "source_error_count": 11,
-  "raw_items": 0,
-  "included": 0,
-  "excluded": 0,
-  "edition_type": "blocked",
-  "published": false,
-  "published_edition_id": "",
+  "source_success_count": 11,
+  "source_error_count": 0,
+  "raw_items": 2943,
+  "included": 16,
+  "excluded": 2927,
+  "edition_type": "full_edition",
+  "published": true,
+  "published_edition_id": "2026-05-15-v4",
   "used_sample_data": false,
   "published_at_window_enforced": true,
-  "errors": [
-    {
-      "source_id": "microsoft-ai-blog",
-      "error": "https://blogs.microsoft.com/ai/feed/:fetch failed"
-    },
-    {
-      "source_id": "google-ai-blog",
-      "error": "https://blog.google/technology/ai/rss/:fetch failed; https://blog.google/technology/ai/:fetch failed"
-    },
-    {
-      "source_id": "github-blog",
-      "error": "https://github.blog/feed/:fetch failed"
-    },
-    {
-      "source_id": "openai-news",
-      "error": "https://openai.com/news/rss.xml:fetch failed; https://openai.com/news/:fetch failed"
-    },
-    {
-      "source_id": "techcrunch-ai",
-      "error": "https://techcrunch.com/category/artificial-intelligence/feed/:fetch failed; https://techcrunch.com/category/artificial-intelligence/:fetch failed"
-    },
-    {
-      "source_id": "venturebeat-ai",
-      "error": "https://venturebeat.com/category/ai/feed/:fetch failed; https://venturebeat.com/category/ai/:fetch failed"
-    },
-    {
-      "source_id": "arxiv-cs-lg",
-      "error": "http://export.arxiv.org/rss/cs.LG:fetch failed"
-    },
-    {
-      "source_id": "arxiv-cs-cl",
-      "error": "http://export.arxiv.org/rss/cs.CL:fetch failed"
-    },
-    {
-      "source_id": "arxiv-cs-ai",
-      "error": "http://export.arxiv.org/rss/cs.AI:fetch failed"
-    },
-    {
-      "source_id": "arxiv-stat-ml",
-      "error": "http://export.arxiv.org/rss/stat.ML:fetch failed"
-    },
-    {
-      "source_id": "huggingface-blog",
-      "error": "https://huggingface.co/blog/feed.xml:fetch failed; https://huggingface.co/blog:fetch failed"
-    }
-  ]
+  "errors": []
 }

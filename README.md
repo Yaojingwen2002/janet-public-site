@@ -23,6 +23,11 @@ Generator:
 
 - `.github/scripts/daily-news-generator.mjs`
 
-No paid API is required.
-No secrets are required.
+Status:
+
+- `data/daily-news-run-status.json`
+- `data/daily-news-automation-result.json`
+
+No paid API is required.  
+No secrets are required.  
 The generator only uses public RSS / Atom / official feeds.

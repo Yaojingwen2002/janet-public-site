@@ -1,8 +1,19 @@
 # Janet Daily News Scripts
 
-This folder contains the public GitHub Actions generator for Janet daily news.
+## Files
 
-- `rss-source-pool.json` lists public RSS / Atom sources.
-- `daily-news-generator.mjs` fetches public feeds, filters by `published_at`, writes v4 news data, and updates `data/MANIFEST.json` when enough fresh stories exist.
+- `rss-source-pool.json`
+- `daily-news-generator.mjs`
+- `qa-daily-news-output.mjs`
 
-No paid API, secret, npm install, or local working directory is required.
+## Manual test
+
+```bash
+node .github/scripts/daily-news-generator.mjs --date 2026-05-15
+node .github/scripts/qa-daily-news-output.mjs
+```
+
+## Time window
+
+Asia/Shanghai
+previous_day 17:00 <= published_at < current_day 09:00

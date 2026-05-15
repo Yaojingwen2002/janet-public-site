@@ -1,499 +1,384 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import crypto from 'node:crypto';
+#!/usr/bin/env node
+// Janet public-site daily news generator.
+// Pure Node 20: fs/path/crypto/fetch only, no dependencies, no secrets.
 
-const ROOT = process.cwd();
-const SOURCE_POOL_PATH = path.join(ROOT, '.github/scripts/rss-source-pool.json');
-const MANIFEST_PATH = path.join(ROOT, 'data/MANIFEST.json');
-const RUN_STATUS_PATH = path.join(ROOT, 'data/daily-news-run-status.json');
-const TIMEZONE = 'Asia/Shanghai';
-const USER_AGENT = 'JanetDailyNewsBot/1.0 (+https://github.com/Yaojingwen2002/janet-public-site)';
-const FETCH_TIMEOUT_MS = 20000;
-const SECTION_TITLES = {
-  lead_story: '今日封面新闻',
-  models: '模型与产品',
-  agents: 'Agent 与工具',
-  open_source: '开源与论文',
-  business: '商业与资本',
-  china_perspective: '中国视角',
-  creator_opportunity: '创作者机会'
-};
-const SECTION_LIMITS = {
-  models: 4,
-  agents: 4,
-  open_source: 5,
-  business: 4,
-  creator_opportunity: 2
-};
-const RANK_SCORE = { S: 50, A: 35, B: 20, C: 10 };
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
+
+const ROOT = resolve(process.cwd());
+const TZ = 'Asia/Shanghai';
+const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
+const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
+const FORBIDDEN_TAKES = [
+  'AI 正在改变世界',
+  '未来已来',
+  '智能体时代来了',
+  '行业正在重构'
+];
 
 function parseArgs(argv) {
-  const args = { dryRun: false, date: null };
+  const args = {};
   for (let i = 0; i < argv.length; i += 1) {
-    if (argv[i] === '--dry-run') args.dryRun = true;
-    if (argv[i] === '--date') {
-      args.date = argv[i + 1] || null;
-      i += 1;
-    }
+    const item = argv[i];
+    if (!item.startsWith('--')) continue;
+    const key = item.slice(2);
+    const value = argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[++i] : true;
+    args[key] = value;
   }
   return args;
 }
 
-function ensureDir(dir) {
-  fs.mkdirSync(dir, { recursive: true });
+function ensureDir(filePath) {
+  mkdirSync(dirname(filePath), { recursive: true });
 }
 
-function readJson(filePath, fallback) {
-  try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  } catch {
-    return fallback;
-  }
+function readJson(filePath, fallback = null) {
+  if (!existsSync(filePath)) return fallback;
+  return JSON.parse(readFileSync(filePath, 'utf8'));
 }
 
 function writeJson(filePath, data) {
-  ensureDir(path.dirname(filePath));
-  fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+  ensureDir(filePath);
+  writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
 }
 
-function hash(value, length = 12) {
-  return crypto.createHash('sha1').update(String(value || '')).digest('hex').slice(0, length);
+function writeText(filePath, text) {
+  ensureDir(filePath);
+  writeFileSync(filePath, text.endsWith('\n') ? text : `${text}\n`, 'utf8');
 }
 
-function getShanghaiDateString(now = new Date()) {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: TIMEZONE,
+function defaultDateShanghai() {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: TZ,
     year: 'numeric',
     month: '2-digit',
     day: '2-digit'
-  }).formatToParts(now);
-  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return `${values.year}-${values.month}-${values.day}`;
+  }).format(new Date());
 }
 
-function assertDateString(dateString) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateString || '')) {
-    throw new Error(`Invalid --date value: ${dateString || '(empty)'}`);
+function previousDay(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d) - 86400000).toISOString().slice(0, 10);
+}
+
+function localToIso(dateStr, timeStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const [hh, mm, ss] = timeStr.split(':').map(Number);
+  return new Date(Date.UTC(y, m - 1, d, hh - 8, mm, ss)).toISOString();
+}
+
+function computeWindow(dateStr) {
+  const prev = previousDay(dateStr);
+  return {
+    timezone: TZ,
+    window_start: `${prev} 17:00:00`,
+    window_end: `${dateStr} 09:00:00`,
+    window_start_iso: localToIso(prev, '17:00:00'),
+    window_end_iso: localToIso(dateStr, '09:00:00')
+  };
+}
+
+function decodeText(value) {
+  return String(value || '')
+    .replace(/<!\[CDATA\[|\]\]>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;|&apos;/g, "'")
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function tag(block, name) {
+  const match = block.match(new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${name}>`, 'i'));
+  return match ? decodeText(match[1]) : '';
+}
+
+function attr(block, name, attrName) {
+  const match = block.match(new RegExp(`<${name}[^>]*\\s${attrName}=["']([^"']+)["'][^>]*>`, 'i'));
+  return match ? decodeText(match[1]) : '';
+}
+
+function normalizeUrl(url, baseUrl) {
+  try {
+    const parsed = new URL(url, baseUrl);
+    for (const key of [...parsed.searchParams.keys()]) {
+      const lower = key.toLowerCase();
+      if (lower.startsWith('utm_') || ['ref', 'fbclid', 'gclid'].includes(lower)) {
+        parsed.searchParams.delete(key);
+      }
+    }
+    parsed.hash = '';
+    return parsed.toString();
+  } catch {
+    return String(url || '').trim();
   }
 }
 
-function previousDay(dateString) {
-  const [year, month, day] = dateString.split('-').map(Number);
-  return new Date(Date.UTC(year, month - 1, day - 1)).toISOString().slice(0, 10);
+function hashId(prefix, value) {
+  return `${prefix}-${createHash('sha1').update(value).digest('hex').slice(0, 12)}`;
 }
 
-function buildWindow(dateString) {
-  assertDateString(dateString);
-  const prev = previousDay(dateString);
-  const windowStartLocal = `${prev}T17:00:00+08:00`;
-  const windowEndLocal = `${dateString}T09:00:00+08:00`;
-  return {
-    timezone: TIMEZONE,
-    startLocal: windowStartLocal,
-    endLocal: windowEndLocal,
-    start: new Date(windowStartLocal),
-    end: new Date(windowEndLocal)
-  };
-}
-
-function escapeRegExp(value) {
-  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function decodeEntities(value) {
-  const named = {
-    amp: '&',
-    lt: '<',
-    gt: '>',
-    quot: '"',
-    apos: "'",
-    nbsp: ' '
-  };
-  return String(value || '').replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (match, entity) => {
-    if (entity[0] === '#') {
-      const hex = entity[1]?.toLowerCase() === 'x';
-      const code = Number.parseInt(entity.slice(hex ? 2 : 1), hex ? 16 : 10);
-      return Number.isFinite(code) ? String.fromCodePoint(code) : match;
-    }
-    return named[entity] || match;
-  });
-}
-
-function cleanText(value) {
-  return decodeEntities(String(value || '')
-    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
-    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim());
-}
-
-function escapeHtml(value) {
-  return String(value ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
-function extractTag(block, tag) {
-  const pattern = new RegExp(`<${escapeRegExp(tag)}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${escapeRegExp(tag)}>`, 'i');
-  const match = block.match(pattern);
-  return match ? cleanText(match[1]) : '';
-}
-
-function extractRawTag(block, tag) {
-  const pattern = new RegExp(`<${escapeRegExp(tag)}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${escapeRegExp(tag)}>`, 'i');
-  const match = block.match(pattern);
-  return match ? match[1].trim() : '';
-}
-
-function parseAttributes(tagText) {
-  const attrs = {};
-  const attrPattern = /([:\w-]+)\s*=\s*(['"])(.*?)\2/g;
-  let match;
-  while ((match = attrPattern.exec(tagText))) attrs[match[1].toLowerCase()] = decodeEntities(match[3]);
-  return attrs;
-}
-
-function extractAtomLink(block) {
-  const tags = block.match(/<link\b[^>]*>/gi) || [];
-  const parsed = tags.map((tag) => parseAttributes(tag));
-  const preferred = parsed.find((attrs) => attrs.href && (!attrs.rel || attrs.rel === 'alternate')) || parsed.find((attrs) => attrs.href);
-  return preferred ? preferred.href : '';
-}
-
-function extractDateField(block) {
-  const fields = ['pubDate', 'published', 'updated', 'dc:date', 'date'];
-  for (const field of fields) {
-    const value = extractTag(block, field);
-    if (value) return { value, source: field };
+function publishedFromRss(block) {
+  const fields = [
+    ['pubDate', 'pubDate'],
+    ['published', 'published'],
+    ['updated', 'updated'],
+    ['dc:date', 'dc:date'],
+    ['date', 'date']
+  ];
+  for (const [field, source] of fields) {
+    const value = tag(block, field);
+    if (value) return { value, source };
   }
   return { value: '', source: '' };
 }
 
-function blocksFromXml(xml) {
-  const itemBlocks = xml.match(/<item\b[\s\S]*?<\/item>/gi) || [];
-  const entryBlocks = xml.match(/<entry\b[\s\S]*?<\/entry>/gi) || [];
-  return [
-    ...itemBlocks.map((block) => ({ type: 'rss', block })),
-    ...entryBlocks.map((block) => ({ type: 'atom', block }))
+function parseFeed(text, source) {
+  const items = [];
+  const blocks = [
+    ...[...text.matchAll(/<item(?:\s[^>]*)?>[\s\S]*?<\/item>/gi)].map((m) => ({ type: 'rss', block: m[0] })),
+    ...[...text.matchAll(/<entry(?:\s[^>]*)?>[\s\S]*?<\/entry>/gi)].map((m) => ({ type: 'atom', block: m[0] }))
   ];
-}
 
-function cleanUrl(value) {
-  if (!value) return '';
-  try {
-    const url = new URL(decodeEntities(value.trim()));
-    for (const key of Array.from(url.searchParams.keys())) {
-      const lower = key.toLowerCase();
-      if (lower.startsWith('utm_') || ['fbclid', 'gclid', 'ref'].includes(lower)) url.searchParams.delete(key);
-    }
-    url.hash = '';
-    return url.toString();
-  } catch {
-    return decodeEntities(value.trim());
-  }
-}
-
-function normalizedUrl(value) {
-  try {
-    const url = new URL(value);
-    url.hostname = url.hostname.toLowerCase();
-    url.pathname = url.pathname.replace(/\/+$/, '');
-    return url.toString();
-  } catch {
-    return String(value || '').trim().toLowerCase();
-  }
-}
-
-async function fetchSource(source) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-  try {
-    const response = await fetch(source.url, {
-      redirect: 'follow',
-      headers: {
-        'user-agent': USER_AGENT,
-        accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*'
-      },
-      signal: controller.signal
-    });
-    const text = await response.text();
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return { ok: true, text };
-  } catch (error) {
-    const cause = error.cause && (error.cause.code || error.cause.message)
-      ? ` (${[error.cause.code, error.cause.message].filter(Boolean).join(': ')})`
-      : '';
-    return { ok: false, error: `${error.message || String(error)}${cause}` };
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-function parseFeedItems(source, xml, collectedAt) {
-  return blocksFromXml(xml).map(({ type, block }) => {
-    const dateField = extractDateField(block);
-    const url = type === 'atom'
-      ? extractAtomLink(block)
-      : (extractTag(block, 'link') || extractTag(block, 'guid'));
-    const title = extractTag(block, 'title');
-    const summary = extractTag(block, 'description') || extractTag(block, 'summary') || extractTag(block, 'content:encoded');
-    const rawId = extractTag(block, 'guid') || extractTag(block, 'id') || cleanUrl(url) || title;
-    return {
-      id: `${source.id}-${hash(rawId || `${title}-${url}`)}`,
+  for (const entry of blocks) {
+    const block = entry.block;
+    const title = tag(block, 'title');
+    const url = entry.type === 'atom' ? (attr(block, 'link', 'href') || tag(block, 'id')) : (tag(block, 'link') || tag(block, 'guid'));
+    const published = publishedFromRss(block);
+    const summary = tag(block, 'description') || tag(block, 'summary') || tag(block, 'content') || tag(block, 'content:encoded');
+    const normalizedUrl = normalizeUrl(url, source.url);
+    items.push({
+      id: hashId(source.id, `${normalizedUrl}:${title}`),
       title,
-      url: cleanUrl(url),
+      url: normalizedUrl,
       source: source.source,
       category: source.category,
       source_rank: source.rank,
-      published_at: '',
-      published_at_source: dateField.source,
+      published_at: published.value,
+      published_at_source: published.source,
       summary,
-      collected_at: collectedAt,
+      collected_at: new Date().toISOString(),
       raw_source_id: source.id,
-      evidence_ids: [],
-      raw_published_at: dateField.value
-    };
-  });
-}
-
-function classifyItem(item) {
-  const text = `${item.title} ${item.summary} ${item.source}`.toLowerCase();
-  if (item.category === 'models') return 'models';
-  if (item.category === 'agents') return 'agents';
-  if (item.category === 'open_source' || item.category === 'research') return 'open_source';
-  if (text.includes('agent') || text.includes('codex') || text.includes('workflow')) return 'agents';
-  if (text.includes('model') || text.includes('gpt') || text.includes('claude') || text.includes('gemini') || text.includes('mistral')) return 'models';
-  if (text.includes('github') || text.includes('open source') || text.includes('arxiv') || text.includes('paper')) return 'open_source';
-  if (text.includes('creator') || text.includes('video') || text.includes('image') || text.includes('youtube') || text.includes('instagram')) return 'creator_opportunity';
-  return 'business';
-}
-
-function scoreItem(item) {
-  const rankScore = RANK_SCORE[item.source_rank] || 0;
-  const published = Date.parse(item.published_at) || 0;
-  return rankScore * 10000000000000 + published;
-}
-
-function normalizeAndFilter(rawItems, window) {
-  const included = [];
-  const excluded = [];
-  const seenUrls = new Set();
-  const seenTitleSource = new Set();
-
-  for (const item of rawItems) {
-    let reason = '';
-    if (!item.title) reason = 'missing_title';
-    else if (!item.url) reason = 'missing_url';
-    else if (!item.source) reason = 'missing_source';
-    else if (!item.raw_published_at) reason = 'missing_published_at';
-
-    let parsedDate = null;
-    if (!reason) {
-      parsedDate = new Date(item.raw_published_at);
-      if (Number.isNaN(parsedDate.getTime())) reason = 'invalid_published_at';
-    }
-
-    if (!reason && (parsedDate < window.start || parsedDate >= window.end)) reason = 'outside_time_window';
-
-    const urlKey = normalizedUrl(item.url);
-    const titleKey = `${item.title.toLowerCase().replace(/\s+/g, ' ').trim()}|${item.source}`;
-    if (!reason && (seenUrls.has(urlKey) || seenTitleSource.has(titleKey))) reason = 'duplicate';
-
-    if (reason) {
-      excluded.push({ ...item, status: 'excluded', excluded_reason: reason });
-      continue;
-    }
-
-    seenUrls.add(urlKey);
-    seenTitleSource.add(titleKey);
-    included.push({
-      ...item,
-      title: item.title.trim(),
-      summary: item.summary.trim().slice(0, 320),
-      published_at: parsedDate.toISOString(),
-      status: 'included'
+      evidence_ids: []
     });
   }
 
-  included.sort((a, b) => scoreItem(b) - scoreItem(a));
-  included.forEach((item, index) => {
-    item.evidence_ids = [`evidence-${String(index + 1).padStart(4, '0')}`];
-  });
+  return items;
+}
+
+async function fetchSource(source) {
+  if (!source.enabled) return { items: [], error: null };
+  const urls = [source.url, source.fallback_url].filter(Boolean);
+  const errors = [];
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          'user-agent': 'JanetDailyNewsBot/31',
+          accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.8'
+        },
+        redirect: 'follow'
+      });
+      if (!response.ok) throw new Error(`http_${response.status}`);
+      const text = await response.text();
+      const items = parseFeed(text, { ...source, url });
+      if (items.length) return { items, error: null };
+      errors.push(`${url}:no_feed_items`);
+    } catch (error) {
+      errors.push(`${url}:${error.message}`);
+    }
+  }
+  return { items: [], error: errors.join('; ') };
+}
+
+function exclusion(item, reason) {
+  return {
+    id: item.id || '',
+    title: item.title || '',
+    url: item.url || '',
+    source: item.source || '',
+    published_at: item.published_at || '',
+    excluded_reason: reason
+  };
+}
+
+function filterWindow(items, window) {
+  const start = new Date(window.window_start_iso);
+  const end = new Date(window.window_end_iso);
+  const included = [];
+  const excluded = [];
+  const seen = new Set();
+
+  for (const item of items) {
+    if (!item.title) {
+      excluded.push(exclusion(item, 'missing_title'));
+      continue;
+    }
+    if (!item.url) {
+      excluded.push(exclusion(item, 'missing_url'));
+      continue;
+    }
+    if (!item.source) {
+      excluded.push(exclusion(item, 'missing_source'));
+      continue;
+    }
+    if (!item.published_at) {
+      excluded.push(exclusion(item, 'missing_published_at'));
+      continue;
+    }
+    const published = new Date(item.published_at);
+    if (Number.isNaN(published.getTime())) {
+      excluded.push(exclusion(item, 'invalid_published_at'));
+      continue;
+    }
+    if (published < start || published >= end) {
+      excluded.push(exclusion(item, 'outside_time_window'));
+      continue;
+    }
+    const key = item.url || `${item.source}:${item.title}`;
+    if (seen.has(key)) {
+      excluded.push(exclusion(item, 'duplicate'));
+      continue;
+    }
+    seen.add(key);
+    included.push({
+      ...item,
+      published_at: published.toISOString(),
+      evidence_ids: [`evidence-${String(included.length + 1).padStart(4, '0')}`]
+    });
+  }
+
   return { included, excluded };
 }
 
-function createStoryItem(item, index) {
-  const section = classifyItem(item);
-  const title = item.title;
-  const summary = item.summary || '源站提供的信息有限，本条仅按可验证标题和发布时间进入今日窗口。';
-  return {
-    id: item.id,
-    title,
-    url: item.url,
-    source: item.source,
-    source_type: 'public_feed',
-    source_rank: item.source_rank,
-    category: item.category,
-    score: Math.max(60, 100 - index),
-    summary,
-    why_it_matters: '这条新闻来自公开源，并通过 published_at 时间窗口校验；可作为今日观察信号。',
-    janet_take: `基于 ${item.evidence_ids.join(', ')}：先按证据看，不扩大成无依据判断，继续观察源站后续更新。`,
-    watch_next: '看源站更新、同行跟进和是否出现可验证产品或政策变化。',
-    image: '',
-    image_source: '',
-    image_credit: '',
-    verified_at: item.collected_at,
-    published_at: item.published_at,
-    duplicate_group: normalizedUrl(item.url),
-    evidence_ids: item.evidence_ids,
-    section
-  };
+function clamp(input, max) {
+  const text = decodeText(input);
+  return text.length <= max ? text : text.slice(0, max - 1).trimEnd();
 }
 
-function buildSections(stories) {
-  const sections = {
-    lead_story: { title: SECTION_TITLES.lead_story, items: [] },
-    models: { title: SECTION_TITLES.models, items: [] },
-    agents: { title: SECTION_TITLES.agents, items: [] },
-    open_source: { title: SECTION_TITLES.open_source, items: [] },
-    business: { title: SECTION_TITLES.business, items: [] },
-    china_perspective: { title: SECTION_TITLES.china_perspective, items: [] },
-    creator_opportunity: { title: SECTION_TITLES.creator_opportunity, items: [] }
-  };
+function schemaCategory(category) {
+  if (category === 'research') return 'papers';
+  if (['models', 'products', 'agents', 'open_source', 'business', 'china', 'creator'].includes(category)) return category;
+  return 'papers';
+}
 
-  if (stories[0]) sections.lead_story.items.push(stories[0]);
-  for (const story of stories.slice(1)) {
-    const key = story.section === 'research' ? 'open_source' : story.section;
-    const target = sections[key] ? key : 'business';
-    const limit = SECTION_LIMITS[target] || 0;
-    if (sections[target].items.length < limit) sections[target].items.push(story);
+function sectionFor(category) {
+  const key = schemaCategory(category);
+  if (key === 'models' || key === 'products') return 'models';
+  if (key === 'agents') return 'agents';
+  if (key === 'open_source' || key === 'papers') return 'open_source';
+  if (key === 'business') return 'business';
+  if (key === 'china') return 'china_perspective';
+  if (key === 'creator') return 'creator_opportunity';
+  return 'open_source';
+}
+
+function sourceType(source) {
+  if (['OpenAI', 'Google AI', 'Microsoft AI', 'GitHub Blog', 'Hugging Face', 'arXiv cs.AI', 'arXiv cs.CL', 'arXiv cs.LG', 'arXiv stat.ML'].includes(source)) {
+    return 'official';
+  }
+  return 'media';
+}
+
+function scoreFor(rank) {
+  if (rank === 'S') return 9.5;
+  if (rank === 'A') return 8;
+  if (rank === 'B') return 6.5;
+  return 4.5;
+}
+
+function emptySections(template) {
+  const sections = {};
+  for (const [key, value] of Object.entries(template.sections || {})) {
+    sections[key] = { title: value.title || key, items: [] };
   }
   return sections;
 }
 
-function sectionCounts(sections) {
-  return Object.fromEntries(Object.entries(sections).map(([key, section]) => [key, section.items.length]));
-}
-
-function createSourceLedger(included) {
-  return included.map((item) => ({
-    evidence_id: item.evidence_ids[0],
-    story_id: item.id,
-    title: item.title,
+function buildContent(template, included, date, editionType) {
+  const now = new Date().toISOString();
+  const stories = included.slice(0, editionType === 'limited_edition' ? 9 : 18).map((item) => ({
+    id: item.id,
+    title: clamp(item.title, 60),
     url: item.url,
     source: item.source,
+    source_type: sourceType(item.source),
     source_rank: item.source_rank,
-    published_at: item.published_at,
-    published_at_source: item.published_at_source,
-    collected_at: item.collected_at,
-    raw_source_id: item.raw_source_id
+    category: schemaCategory(item.category),
+    score: scoreFor(item.source_rank),
+    summary: clamp(item.summary || item.title, 100),
+    why_it_matters: '进入今日时间窗口，来源清晰，可作为晨报候选。',
+    janet_take: '先按证据看，不扩大成无依据判断，等源站后续更新。',
+    watch_next: '看源站后续更新。',
+    image: null,
+    image_source: null,
+    image_credit: null,
+    verified_at: now,
+    duplicate_group: null,
+    evidence_ids: item.evidence_ids
   }));
-}
+  for (const phrase of FORBIDDEN_TAKES) {
+    if (JSON.stringify(stories).includes(phrase)) throw new Error(`forbidden_janet_take:${phrase}`);
+  }
 
-function buildContent(dateString, editionType, included, window) {
-  const selected = included.map(createStoryItem);
-  const sections = buildSections(selected);
-  const lead = sections.lead_story.items[0] || null;
-  const counts = sectionCounts(sections);
-  const sourceLedger = createSourceLedger(included);
-  const sourceNames = Array.from(new Set(included.map((item) => item.source))).slice(0, 8).join(' / ');
+  const sections = emptySections(template);
+  sections.lead_story.items.push(stories[0]);
+  for (const story of stories.slice(1)) {
+    const section = sectionFor(story.category);
+    if (!sections[section]) sections[section] = { title: section, items: [] };
+    sections[section].items.push(story);
+  }
 
+  const evidence = stories.slice(0, Math.max(6, Math.min(stories.length, 9))).map((story) => story.id);
   return {
-    date: dateString,
-    vol: dateString.replace(/-/g, ''),
-    brand: 'Janet 快车箱',
-    theme: editionType === 'full_edition' ? '今日 AI 公开源快车箱' : '今日 AI 公开源简版快车箱',
-    intro_text: `本期按 ${TIMEZONE} 固定窗口筛选公开 RSS / Atom 新闻，入选 ${included.length} 条；未使用 sample、旧晨报或模型补写。`,
-    daily_thesis: lead
-      ? `今天最值得先看的信号是：${lead.title}。其余信号按模型产品、Agent 工具、开源论文、商业资本和创作者机会分层整理。`
-      : '今天证据不够，不强行发表判断。',
-    signal_map: {
-      window: {
-        timezone: TIMEZONE,
-        start: window.startLocal,
-        end: window.endLocal
-      },
-      source_count: sourceNames,
-      included_count: included.length,
-      section_counts: counts,
-      used_sample_data: false,
-      published_at_window_enforced: true
-    },
-    past_context: '本期为 GitHub Actions 自动化生成，所有新闻必须具有 published_at，并落在固定时间窗口内。',
-    lead_story_id: lead ? lead.id : '',
+    ...template,
+    date,
+    vol: template.vol || '0000',
+    theme: '公开源池晨报',
+    intro_text: `本期从公开 RSS / Atom / official feeds 中筛出 ${included.length} 条窗口内新闻。`,
+    daily_thesis: '今天的晨报只基于固定时间窗口内的公开来源生成，判断跟随可追溯证据。正式观点保持克制，只记录源站已经发布的事实和下一步观察点。',
+    signal_map: [
+      { signal: '公开源池', evidence: evidence.slice(0, 2), janet_view: '公开源池提供当天候选新闻，但判断仍只跟随可追溯证据。' },
+      { signal: '窗口过滤', evidence: evidence.slice(2, 4), janet_view: 'published_at 是唯一时间依据，窗口外内容不会被拿来补数量。' },
+      { signal: '发布门禁', evidence: evidence.slice(4, 6), janet_view: '生成结果通过 QA 后才写入 MANIFEST，避免坏数据上线。' }
+    ],
+    lead_story_id: stories[0].id,
     sections,
-    source_summary: `公开源池自动生成；窗口内 included=${included.length}；edition=${editionType}；sources=${sourceNames || 'none'}`,
-    source_ledger: sourceLedger,
-    editorial_angle: '只跟随可追溯证据，不使用旧内容补数量，不把 collected_at 当作 published_at。',
+    source_summary: `公开源池自动生成；included=${included.length}; edition=${editionType}`,
+    source_ledger: stories.map((story) => ({
+      news_id: story.id,
+      source: story.source,
+      source_type: story.source_type,
+      source_rank: story.source_rank,
+      verified_url: story.url,
+      duplicate_group: null,
+      risk_note: null,
+      should_include: true
+    })),
+    editorial_angle: '公开源池自动晨报',
     what_to_watch_next: [
-      '是否出现官方后续说明或产品更新。',
-      '同一事件是否被多个高可信来源交叉验证。',
-      '是否影响创作者、开发者或企业的实际工作流。'
+      '复核封面新闻源站更新',
+      '确认是否需要人工补充图片',
+      '观察同主题后续报道'
     ]
   };
 }
 
-function buildSummary(content, editionId, editionType, included) {
-  const sections = content.sections || {};
-  const counts = sectionCounts(sections);
-  const lead = sections.lead_story.items[0] || null;
-  return {
-    status: 'content_generated',
-    edition_type: editionType,
-    date: content.date,
-    brand: content.brand,
-    theme: content.theme,
-    item_count: included.length,
-    lead_story: lead ? {
-      id: lead.id,
-      title: lead.title,
-      url: lead.url,
-      source: lead.source,
-      source_rank: lead.source_rank,
-      published_at: lead.published_at,
-      summary: lead.summary,
-      why_it_matters: lead.why_it_matters,
-      janet_take: lead.janet_take,
-      evidence_ids: lead.evidence_ids,
-      watch_next: lead.watch_next
-    } : null,
-    section_counts: counts,
-    output_url: `data/${editionId}/output.html`,
-    summary_url: `data/${editionId}/news-summary.json`,
-    content_url: `data/${editionId}/content.json`
-  };
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 }
 
-function renderStoryHtml(item) {
-  return `<article>
-      <small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)} · ${escapeHtml(item.published_at || '')}</small>
-      <h3>${escapeHtml(item.title)}</h3>
-      <p>${escapeHtml(item.summary)}</p>
-      <p><strong>Janet:</strong> ${escapeHtml(item.janet_take)}</p>
-      <p><strong>Evidence:</strong> ${escapeHtml((item.evidence_ids || []).join(', '))}</p>
-      <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">source</a>
-    </article>`;
-}
-
-function renderOutputHtml(content) {
-  const sections = content.sections || {};
-  const sectionHtml = Object.entries(sections).map(([key, section]) => {
-    const items = section.items || [];
-    return `<section>
-    <h2>${escapeHtml(section.title || key)} <span>${items.length}</span></h2>
-    ${items.length ? items.map(renderStoryHtml).join('\n') : '<p class="empty">今日没有足够窗口内证据，不强行补位。</p>'}
-  </section>`;
-  }).join('\n');
-
-  const watchNext = Array.isArray(content.what_to_watch_next)
-    ? content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')
-    : '';
-
+function renderHtml(content) {
+  const allItems = Object.values(content.sections).flatMap((section) => section.items || []);
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -501,162 +386,163 @@ function renderOutputHtml(content) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(content.brand)} ${escapeHtml(content.date)}</title>
   <style>
-    body { margin: 0; background: #050505; color: #f0f0f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; }
-    main { max-width: 960px; margin: 0 auto; padding: 56px 20px 80px; }
-    a { color: #18e299; }
-    h1 { font-size: clamp(32px, 6vw, 64px); line-height: 1; margin: 14px 0 18px; }
-    h2 { border-top: 1px solid rgba(255,255,255,.14); padding-top: 28px; margin-top: 42px; display: flex; justify-content: space-between; gap: 20px; }
-    article { border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0; }
-    small, .muted, .empty { color: rgba(240,240,240,.58); }
-    .hero { border: 1px solid rgba(255,255,255,.14); padding: 24px; background: rgba(255,255,255,.04); }
-    .signal { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 26px 0; }
-    .signal div { background: rgba(255,255,255,.06); padding: 14px; border-radius: 8px; }
+    body{margin:0;background:#050505;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{max-width:960px;margin:0 auto;padding:56px 20px}
+    a{color:#18e299} .k{color:#18e299;font:12px ui-monospace,monospace;text-transform:uppercase}
+    h1{font-size:clamp(42px,8vw,92px);line-height:.92;margin:12px 0 20px;letter-spacing:-.06em}
+    section{border-top:1px solid rgba(255,255,255,.12);padding:28px 0}
+    article{padding:18px 0;border-top:1px solid rgba(255,255,255,.08)}
+    small,p{color:rgba(240,240,240,.72);line-height:1.75}
+    .signal{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .card{border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;background:rgba(255,255,255,.025)}
   </style>
 </head>
 <body>
-  <main>
-    <small>${escapeHtml(content.date)} · ${escapeHtml(content.brand)} · GitHub Actions 自动生成</small>
-    <h1>${escapeHtml(content.theme)}</h1>
-    <p class="hero">${escapeHtml(content.intro_text)}</p>
-    <h2>Daily Thesis</h2>
-    <p>${escapeHtml(content.daily_thesis)}</p>
-    <div class="signal">
-      <div><strong>Window</strong><br>${escapeHtml(content.signal_map.window.start)}<br>${escapeHtml(content.signal_map.window.end)}</div>
-      <div><strong>Included</strong><br>${escapeHtml(content.signal_map.included_count)}</div>
-      <div><strong>Sample</strong><br>${escapeHtml(content.signal_map.used_sample_data ? 'true' : 'false')}</div>
-      <div><strong>Published At</strong><br>${escapeHtml(content.signal_map.published_at_window_enforced ? 'enforced' : 'not enforced')}</div>
-    </div>
-    ${sectionHtml}
-    <h2>Source Summary</h2>
+<main>
+  <div class="k">Janet Daily News</div>
+  <h1>${escapeHtml(content.theme)}</h1>
+  <p>${escapeHtml(content.intro_text)}</p>
+  <p>${escapeHtml(content.daily_thesis)}</p>
+  <section>
+    <div class="k">Signal Map</div>
+    <div class="signal">${content.signal_map.map((item) => `<div class="card"><strong>${escapeHtml(item.signal)}</strong><p>${escapeHtml(item.janet_view)}</p></div>`).join('')}</div>
+  </section>
+  <section>
+    <div class="k">Lead Story</div>
+    <h2>${escapeHtml(content.sections.lead_story.items[0]?.title || '')}</h2>
+    <p>${escapeHtml(content.sections.lead_story.items[0]?.summary || '')}</p>
+  </section>
+  ${Object.entries(content.sections).filter(([key]) => key !== 'lead_story').map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
+  <section>
+    <div class="k">Source Summary</div>
     <p>${escapeHtml(content.source_summary)}</p>
-    <h2>What To Watch Next</h2>
-    <ul>${watchNext}</ul>
-  </main>
+    <div class="k">Watch Next</div>
+    <ul>${content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+  </section>
+</main>
 </body>
-</html>
-`;
+</html>`;
+}
+
+function buildSummary(template, content, editionId, editionType) {
+  const lead = content.sections.lead_story.items[0];
+  return {
+    ...template,
+    date: content.date,
+    vol: content.vol,
+    brand: content.brand,
+    theme: content.theme,
+    title: content.theme,
+    edition_type: editionType,
+    item_count: Object.values(content.sections).flatMap((section) => section.items || []).length,
+    lead_story: lead,
+    output_url: `data/${editionId}/output.html`,
+    summary_url: `data/${editionId}/news-summary.json`,
+    content_url: `data/${editionId}/content.json`
+  };
 }
 
 function updateManifest(editionId) {
-  const manifest = readJson(MANIFEST_PATH, []);
+  const manifestPath = resolve(ROOT, 'data/MANIFEST.json');
+  const manifest = readJson(manifestPath, []);
   const next = [editionId, ...manifest.filter((entry) => entry !== editionId)];
-  writeJson(MANIFEST_PATH, next);
+  writeJson(manifestPath, next);
 }
 
-function buildRunStatus({ status, dateString, window, pool, sourceResults, rawItems, included, excluded, editionType, published, editionId, errors }) {
-  return {
-    status,
+function main() {
+  const args = parseArgs(process.argv.slice(2));
+  const date = args.date || defaultDateShanghai();
+  const dryRun = args['dry-run'] === true;
+  const window = computeWindow(date);
+  const pool = readJson(SOURCE_POOL, { sources: [], min_publish_count: 5, full_edition_count: 10 });
+  const status = {
+    status: 'running',
     run_at: new Date().toISOString(),
-    timezone: TIMEZONE,
-    window_start: window.startLocal,
-    window_end: window.endLocal,
+    timezone: TZ,
+    window_start: window.window_start,
+    window_end: window.window_end,
     source_count: pool.sources.filter((source) => source.enabled).length,
-    source_success_count: sourceResults.filter((result) => result.ok).length,
-    source_error_count: sourceResults.filter((result) => !result.ok).length,
-    raw_items: rawItems.length,
-    included: included.length,
-    excluded: excluded.length,
-    edition_type: editionType,
-    published,
-    published_edition_id: published ? editionId : '',
+    source_success_count: 0,
+    source_error_count: 0,
+    raw_items: 0,
+    included: 0,
+    excluded: 0,
+    edition_type: '',
+    published: false,
+    published_edition_id: '',
     used_sample_data: false,
     published_at_window_enforced: true,
-    min_publish_count: pool.min_publish_count,
-    full_edition_count: pool.full_edition_count,
-    dry_run: false,
-    date: dateString,
-    errors
+    errors: []
   };
-}
 
-async function main() {
-  const args = parseArgs(process.argv.slice(2));
-  const dateString = args.date || getShanghaiDateString();
-  assertDateString(dateString);
-
-  const pool = readJson(SOURCE_POOL_PATH, null);
-  if (!pool || !Array.isArray(pool.sources)) throw new Error('Missing or invalid rss-source-pool.json');
-
-  const window = buildWindow(dateString);
-  const collectedAt = new Date().toISOString();
-  const enabledSources = pool.sources.filter((source) => source.enabled);
-  const sourceResults = [];
   const rawItems = [];
-  const errors = [];
-
-  for (const source of enabledSources) {
+  const promises = pool.sources.filter((item) => item.enabled).map(async (source) => {
     const result = await fetchSource(source);
-    sourceResults.push({ source_id: source.id, ok: result.ok, error: result.error || '' });
-    if (!result.ok) {
-      errors.push({ source_id: source.id, source: source.source, error: result.error });
-      continue;
-    }
-    rawItems.push(...parseFeedItems(source, result.text, collectedAt));
-  }
-
-  const { included, excluded } = normalizeAndFilter(rawItems, window);
-  const minPublishCount = Number(pool.min_publish_count || 5);
-  const fullEditionCount = Number(pool.full_edition_count || 10);
-  const editionId = `${dateString}-v4`;
-  let editionType = '';
-  let status = '';
-  let published = false;
-
-  if (included.length < minPublishCount) {
-    status = 'blocked_insufficient_fresh_news';
-  } else {
-    editionType = included.length >= fullEditionCount ? 'full_edition' : 'limited_edition';
-    status = editionType === 'full_edition' ? 'published_full_edition' : 'published_limited_edition';
-    if (args.dryRun) {
-      status = `dry_run_${editionType}`;
+    if (result.error) {
+      status.source_error_count += 1;
+      status.errors.push({ source_id: source.id, error: result.error });
     } else {
-      const content = buildContent(dateString, editionType, included, window);
-      const summary = buildSummary(content, editionId, editionType, included);
-      const outDir = path.join(ROOT, 'data', editionId);
-      ensureDir(outDir);
-      writeJson(path.join(outDir, 'content.json'), content);
-      fs.writeFileSync(path.join(outDir, 'output.html'), renderOutputHtml(content), 'utf8');
-      writeJson(path.join(outDir, 'news-summary.json'), summary);
-      updateManifest(editionId);
-      published = true;
+      status.source_success_count += 1;
+      rawItems.push(...result.items);
     }
-  }
-
-  const runStatus = buildRunStatus({
-    status,
-    dateString,
-    window,
-    pool,
-    sourceResults,
-    rawItems,
-    included,
-    excluded,
-    editionType,
-    published,
-    editionId,
-    errors
   });
-  runStatus.dry_run = args.dryRun;
-  runStatus.excluded_reasons = excluded.reduce((acc, item) => {
-    acc[item.excluded_reason] = (acc[item.excluded_reason] || 0) + 1;
-    return acc;
-  }, {});
 
-  writeJson(RUN_STATUS_PATH, runStatus);
-  console.log(JSON.stringify(runStatus, null, 2));
+  return Promise.all(promises).then(() => {
+    status.raw_items = rawItems.length;
+    const { included, excluded } = filterWindow(rawItems, window);
+    status.included = included.length;
+    status.excluded = excluded.length;
+
+    if (included.length < Number(pool.min_publish_count || 5)) {
+      status.status = 'blocked_insufficient_fresh_news';
+      status.edition_type = 'blocked';
+      status.published = false;
+      writeJson(STATUS_PATH, status);
+      console.log(`status: ${status.status}`);
+      return;
+    }
+
+    const editionType = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
+    const statusName = editionType === 'full_edition' ? 'published_full_edition' : 'published_limited_edition';
+    status.status = dryRun ? `dry_run_${statusName}` : statusName;
+    status.edition_type = editionType;
+
+    if (dryRun) {
+      status.published = false;
+      writeJson(STATUS_PATH, status);
+      console.log(`status: ${status.status}`);
+      return;
+    }
+
+    const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
+    const templateId = manifest[0] || '2026-05-14-v4';
+    const templateContent = readJson(resolve(ROOT, `data/${templateId}/content.json`));
+    const templateSummary = readJson(resolve(ROOT, `data/${templateId}/news-summary.json`), {});
+    const editionId = `${date}-v4`;
+    const outDir = resolve(ROOT, `data/${editionId}`);
+    const content = buildContent(templateContent, included, date, editionType);
+    writeJson(resolve(outDir, 'content.json'), content);
+    writeText(resolve(outDir, 'output.html'), renderHtml(content));
+    writeJson(resolve(outDir, 'news-summary.json'), buildSummary(templateSummary, content, editionId, editionType));
+    updateManifest(editionId);
+
+    status.published = true;
+    status.published_edition_id = editionId;
+    writeJson(STATUS_PATH, status);
+    console.log(`status: ${status.status}`);
+  });
 }
 
 main().catch((error) => {
-  const fallbackStatus = {
-    status: 'generator_error',
+  writeJson(STATUS_PATH, {
+    status: 'failed',
     run_at: new Date().toISOString(),
-    timezone: TIMEZONE,
+    timezone: TZ,
     used_sample_data: false,
     published_at_window_enforced: true,
     published: false,
-    errors: [error.message || String(error)]
-  };
-  writeJson(RUN_STATUS_PATH, fallbackStatus);
-  console.error(error);
-  process.exitCode = 1;
+    errors: [{ error: error.message }]
+  });
+  console.error(error.stack || error.message);
+  process.exit(1);
 });

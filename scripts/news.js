@@ -29,6 +29,15 @@
     return date.replace(/-/g, '.');
   }
 
+  function todayShanghai() {
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Shanghai',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(new Date());
+  }
+
   function escapeHtml(value) {
     return String(value ?? '')
       .replace(/&/g, '&amp;')
@@ -170,6 +179,7 @@
     const outputUrl = safeLocalPath(summary.output_url || ('data/' + bundle.entry + '/output.html'));
     const leadUrl = safeExternalUrl(lead.url);
     const issueLabel = formatIssueLabel(summary, bundle.entry);
+    const freshnessLabel = summary.date === todayShanghai() ? '今日精选' : '最近一期';
 
     if (btnFull) {
       btnFull.href = outputUrl;
@@ -196,7 +206,7 @@
         '<div class="news-v4-kicker">' +
           '<span>Janet 快车箱 v4</span>' +
           '<span>' + escapeHtml(issueLabel) + '</span>' +
-          '<span>今日精选</span>' +
+          '<span>' + escapeHtml(freshnessLabel) + '</span>' +
         '</div>' +
         '<div class="news-v4-main">' +
           '<div class="news-v4-copy">' +
@@ -212,7 +222,8 @@
             ) : '') +
             '<div class="news-v4-actions">' +
               '<a class="news-v4-open" href="' + escapeHtml(outputUrl) + '" target="_blank" rel="noopener noreferrer">打开完整晨报 →</a>' +
-              '<a class="news-v4-source" href="archive.html">浏览晨报归档</a>' +
+              '<a class="news-v4-source" href="news.html">浏览晨报归档</a>' +
+              '<a class="news-v4-source" href="news-status.html">查看运行状态</a>' +
             '</div>' +
           '</div>' +
           '<div class="news-v4-panel">' +

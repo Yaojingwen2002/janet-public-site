@@ -48,9 +48,19 @@ Public status files:
 - `data/daily-news-run-status.json`
 - `data/daily-news-automation-result.json`
 - `data/daily-news-automation-acceptance.json`
+- `data/editorial-quality-check.json`
+- `data/news-index.json`
 
 Latest verified manual run:
 
 - Status: `published_full_edition`
 - Edition: `2026-05-15-v4`
 - Included stories: 16
+
+## News Experience
+
+- Archive: `news.html`
+- Story detail: `news-detail.html`
+- Automation status: `news-status.html`
+
+The archive supports source, category, date, and keyword filtering. The status page explains whether a run published, blocked because of insufficient fresh news, or needs attention.

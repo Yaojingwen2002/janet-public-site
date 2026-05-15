@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Janet 快车箱每日新闻自动化运行状态。">
+  <title>Janet 快车箱运行状态</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/news-status.css">
+</head>
+<body>
+  <div class="news-status-page">
+    <nav class="news-topbar">
+      <a href="index.html" class="news-brand">Janet</a>
+      <div>
+        <a href="index.html#news">首页快车箱</a>
+        <a href="news.html">晨报归档</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="news-status-hero">
+        <span class="section-kicker">Automation Status</span>
+        <h1>Janet 快车箱运行状态</h1>
+        <p id="news-status-message">状态文件读取中。</p>
+      </section>
+
+      <section id="news-status-grid" class="news-status-grid"></section>
+
+      <section class="news-status-actions">
+        <a href="https://github.com/Yaojingwen2002/janet-public-site/actions" target="_blank" rel="noopener noreferrer">打开 GitHub Actions ↗</a>
+        <a href="news.html">查看晨报归档</a>
+      </section>
+    </main>
+  </div>
+  <script src="scripts/news-status.js"></script>
+</body>
+</html>

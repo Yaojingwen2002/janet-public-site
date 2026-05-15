@@ -30,6 +30,9 @@ jobs:
       - name: Generate daily news
         run: node .github/scripts/daily-news-generator.mjs
 
+      - name: Build news index
+        run: node .github/scripts/build-news-index.mjs
+
       - name: QA generated news
         run: node .github/scripts/qa-daily-news-output.mjs
 

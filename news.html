@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Janet 快车箱晨报归档：浏览历史 AI 晨报、按来源和分类筛选。">
+  <title>Janet 快车箱归档</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/news-archive.css">
+</head>
+<body>
+  <div class="news-page">
+    <nav class="news-topbar">
+      <a href="index.html" class="news-brand">Janet</a>
+      <div>
+        <a href="index.html#news">首页快车箱</a>
+        <a href="news-status.html">运行状态</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="news-archive-hero">
+        <span class="section-kicker">Janet Daily News</span>
+        <h1>Janet 快车箱归档</h1>
+        <p>每日自动抓取公开 AI 新闻源，只保留有发布时间和来源的内容。这里可以回看每一期晨报，也可以按来源、分类和关键词过滤。</p>
+      </section>
+
+      <section id="latest-edition" class="news-latest-card" aria-live="polite"></section>
+
+      <section class="news-filter-panel" aria-label="晨报筛选">
+        <label>
+          <span>搜索</span>
+          <input id="news-search" type="search" placeholder="搜标题 / source / summary">
+        </label>
+        <label>
+          <span>日期</span>
+          <select id="news-date-filter"></select>
+        </label>
+        <label>
+          <span>来源</span>
+          <select id="news-source-filter"></select>
+        </label>
+        <label>
+          <span>分类</span>
+          <select id="news-category-filter"></select>
+        </label>
+      </section>
+
+      <section class="news-list-section">
+        <div class="news-list-head">
+          <div>
+            <span class="section-kicker">Archive</span>
+            <h2>历史晨报</h2>
+          </div>
+          <span id="news-result-count" class="news-result-count">Loading</span>
+        </div>
+        <div id="news-archive-list" class="news-archive-list"></div>
+      </section>
+    </main>
+  </div>
+  <script src="scripts/news-archive.js"></script>
+</body>
+</html>

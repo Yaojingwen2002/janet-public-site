@@ -5,12 +5,14 @@
 - `rss-source-pool.json`
 - `editorial-rules.json`
 - `daily-news-generator.mjs`
+- `build-news-index.mjs`
 - `qa-daily-news-output.mjs`
 
 ## Manual test
 
 ```bash
 node .github/scripts/daily-news-generator.mjs --date 2026-05-15
+node .github/scripts/build-news-index.mjs
 node .github/scripts/qa-daily-news-output.mjs
 ```
 

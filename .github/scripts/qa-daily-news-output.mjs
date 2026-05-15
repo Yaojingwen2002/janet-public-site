@@ -167,6 +167,30 @@ function main() {
     issues.push(`unknown run status: ${status.status}`);
   }
 
+  const experienceFiles = [
+    'news.html',
+    'news-detail.html',
+    'news-status.html',
+    'scripts/news-archive.js',
+    'scripts/news-detail.js',
+    'scripts/news-status.js',
+    'styles/news-archive.css',
+    'styles/news-detail.css',
+    'styles/news-status.css',
+    'data/news-index.json'
+  ];
+  for (const file of experienceFiles) {
+    if (!existsSync(resolve(ROOT, file))) issues.push(`missing news experience file: ${file}`);
+  }
+
+  const manifestForIndex = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
+  const newsIndex = readJson(resolve(ROOT, 'data/news-index.json'), null);
+  if (!newsIndex) {
+    issues.push('news-index missing or invalid');
+  } else if (newsIndex.latest_edition_id !== manifestForIndex[0]) {
+    issues.push('news-index latest_edition_id mismatch');
+  }
+
   for (const forbidden of ['engineering', 'docs', 'data/_working', 'node_modules']) {
     if (existsSync(resolve(ROOT, forbidden))) issues.push(`forbidden path exists: ${forbidden}`);
   }
@@ -190,6 +214,7 @@ function main() {
     requires_paid_api: false,
     requires_secret: false,
     uses_public_sources: true,
+    news_experience_layer_passed: !issues.some((issue) => issue.includes('news experience') || issue.includes('news-index')),
     workflow: '.github/workflows/daily-news-pages.yml',
     generator: '.github/scripts/daily-news-generator.mjs',
     issues

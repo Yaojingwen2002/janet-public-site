@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Janet 快车箱单条新闻详情。">
+  <title>Janet 快车箱新闻详情</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/news-detail.css">
+</head>
+<body>
+  <div class="news-detail-page">
+    <nav class="news-topbar">
+      <a href="index.html" class="news-brand">Janet</a>
+      <div>
+        <a href="news.html">晨报归档</a>
+        <a href="news-status.html">运行状态</a>
+      </div>
+    </nav>
+
+    <main id="news-detail-root">
+      <section class="news-detail-hero">
+        <a id="news-detail-back-archive" class="news-back-link" href="news.html">← 返回归档页</a>
+        <span id="news-detail-kicker" class="section-kicker">News Detail</span>
+        <h1 id="news-detail-title">Loading...</h1>
+        <p id="news-detail-summary"></p>
+        <div id="news-detail-meta" class="news-detail-meta"></div>
+      </section>
+
+      <section id="news-detail-content" class="news-detail-content"></section>
+    </main>
+  </div>
+  <script src="scripts/news-detail.js"></script>
+</body>
+</html>

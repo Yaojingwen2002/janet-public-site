@@ -1,0 +1,425 @@
+{
+  "date": "2026-05-16",
+  "vol": "0000",
+  "brand": "Janet 快车箱",
+  "theme": "工具链又拧紧了",
+  "intro_text": "本期从公开 RSS / Atom / official feeds 中筛出 7 条窗口内新闻，按新闻价值重新排序。",
+  "daily_thesis": "今天窗口里，GitHub Blog、TechCrunch AI把工具入口摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
+  "signal_map": [
+    {
+      "signal": "模型上新",
+      "evidence": [
+        "techcrunch-ai-712ca2886a05",
+        "techcrunch-ai-40c6bb5d92e7"
+      ],
+      "janet_view": "TechCrunch AI给了信号：模型上新不是口号，是今天具体新闻里能点开的变化。"
+    },
+    {
+      "signal": "工具收口",
+      "evidence": [
+        "github-blog-85559476b1ab",
+        "github-blog-e61e3da9ec4f"
+      ],
+      "janet_view": "GitHub Blog给了信号：工具收口不是口号，是今天具体新闻里能点开的变化。"
+    },
+    {
+      "signal": "开源补位",
+      "evidence": [
+        "github-blog-85559476b1ab",
+        "github-blog-e61e3da9ec4f"
+      ],
+      "janet_view": "GitHub Blog给了信号：开源补位不是口号，是今天具体新闻里能点开的变化。"
+    }
+  ],
+  "past_context": [],
+  "lead_story_id": "github-blog-85559476b1ab",
+  "sections": {
+    "lead_story": {
+      "title": "今日封面新闻",
+      "items": [
+        {
+          "id": "github-blog-85559476b1ab",
+          "title": "Building a general-purpose accessibility agent—and what we learned in the process",
+          "url": "https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/",
+          "source": "GitHub Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "agents",
+          "score": 8,
+          "published_at": "2026-05-15T16:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Learn about the experimental general-purpose accessibility agent that GitHub is piloting. The post Building a general-purpose accessibili...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看开发者是否真的迁移工作流",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-16T04:20:33.002Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0001"
+          ],
+          "editorial_score": 160,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "GitHub"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        }
+      ]
+    },
+    "models": {
+      "title": "模型与产品",
+      "items": []
+    },
+    "agents": {
+      "title": "Agent 与工具",
+      "items": [
+        {
+          "id": "github-blog-e61e3da9ec4f",
+          "title": "Raising the bar: Quality, shared responsibility, and the future of GitHub&#8217;s bug bounty...",
+          "url": "https://github.blog/security/raising-the-bar-quality-shared-responsibility-and-the-future-of-githubs-bug-bounty-program/",
+          "source": "GitHub Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "agents",
+          "score": 8,
+          "published_at": "2026-05-15T14:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "We're updating our bug bounty program standards to prioritize quality submissions, clarify shared responsibility boundaries, and evolve h...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看源站是否给出后续细节",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-16T04:20:33.002Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0002"
+          ],
+          "editorial_score": 160,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "GitHub"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        }
+      ]
+    },
+    "open_source": {
+      "title": "开源与论文",
+      "items": []
+    },
+    "business": {
+      "title": "商业与资本",
+      "items": [
+        {
+          "id": "techcrunch-ai-712ca2886a05",
+          "title": "OpenAI launches ChatGPT for personal finance, will let you connect bank accounts",
+          "url": "https://techcrunch.com/2026/05/15/openai-launches-chatgpt-for-personal-finance-will-let-you-connect-bank-accounts/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-15T16:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Once users connect their accounts, they will see a dashboard of their portfolio performance, spending, subscriptions, and upcoming payments.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+          "watch_next": "看源站是否给出后续细节",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-16T04:20:33.002Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0005"
+          ],
+          "editorial_score": 95,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "launches"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        },
+        {
+          "id": "techcrunch-ai-40c6bb5d92e7",
+          "title": "Osaurus brings both local and cloud AI models to your Mac",
+          "url": "https://techcrunch.com/2026/05/15/osaurus-brings-both-local-and-cloud-ai-models-to-your-mac/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-15T12:19:48.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Osaurus￼ combines local and cloud AI models in a Mac app that keeps users’ memory, files, and tools on their own hardware.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+          "watch_next": "看源站是否给出后续细节",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-16T04:20:33.002Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0007"
+          ],
+          "editorial_score": 85,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "tool"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        },
+        {
+          "id": "techcrunch-ai-9beb207134bf",
+          "title": "The OpenAI trial wraps up, and the Musk founder machine keeps spinning",
+          "url": "https://techcrunch.com/podcast/the-openai-trial-wraps-up-and-the-musk-founder-machine-keeps-spinning/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-15T19:24:16.000Z",
+          "published_at_source": "pubDate",
+          "summary": "The Musk v. Altman trial came to a close this week, and the final arguments kept circling back to one question:&#160;can we trust the peo...",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+          "watch_next": "看源站是否给出后续细节",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-16T04:20:33.002Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0003"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        },
+        {
+          "id": "techcrunch-ai-1c98dc21e45b",
+          "title": "Silicon Valley’s vacationland needs a new energy provider just as AI is driving prices up",
+          "url": "https://techcrunch.com/2026/05/15/silicon-valleys-vacationland-needs-a-new-energy-provider-just-as-ai-is-driving-prices-up/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-15T18:14:44.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Lake Tahoe, Silicon Valley's favorite vacation spot, is about to get hit with higher energy prices as AI drives demand for electricity.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+          "watch_next": "看源站是否给出后续细节",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-16T04:20:33.002Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0004"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        },
+        {
+          "id": "techcrunch-ai-060e1e508e20",
+          "title": "Runway started by helping filmmakers — now it wants to beat Google at AI",
+          "url": "https://techcrunch.com/2026/05/15/runway-started-by-helping-filmmakers-now-it-wants-to-beat-google-at-ai/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-15T14:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AI video-generation startup Runway is betting that video generation is the path to world models. And that being an AI outsider is an adva...",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+          "watch_next": "看源站是否给出后续细节",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-16T04:20:33.002Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0006"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true
+        }
+      ]
+    },
+    "china_perspective": {
+      "title": "中国视角",
+      "items": []
+    },
+    "creator_opportunity": {
+      "title": "创作者机会",
+      "items": []
+    }
+  },
+  "source_summary": "公开来源自动生成；included=7; edition=limited_edition; lead_score=160",
+  "source_ledger": [
+    {
+      "news_id": "github-blog-85559476b1ab",
+      "source": "GitHub Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 160,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "github-blog-e61e3da9ec4f",
+      "source": "GitHub Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://github.blog/security/raising-the-bar-quality-shared-responsibility-and-the-future-of-githubs-bug-bounty-program/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 160,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-712ca2886a05",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/15/openai-launches-chatgpt-for-personal-finance-will-let-you-connect-bank-accounts/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 95,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-40c6bb5d92e7",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/15/osaurus-brings-both-local-and-cloud-ai-models-to-your-mac/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 85,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-9beb207134bf",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/podcast/the-openai-trial-wraps-up-and-the-musk-founder-machine-keeps-spinning/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 60,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-1c98dc21e45b",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/15/silicon-valleys-vacationland-needs-a-new-energy-provider-just-as-ai-is-driving-prices-up/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 60,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-060e1e508e20",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/15/runway-started-by-helping-filmmakers-now-it-wants-to-beat-google-at-ai/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 60,
+      "editorial_penalties": []
+    }
+  ],
+  "editorial_angle": "每日公开源编辑晨报",
+  "what_to_watch_next": [
+    "看开发者是否真的迁移工作流",
+    "看源站是否给出后续细节",
+    "看源站是否给出后续细节"
+  ]
+}

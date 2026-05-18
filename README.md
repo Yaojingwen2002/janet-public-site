@@ -64,3 +64,14 @@ Latest verified manual run:
 - Automation status: `news-status.html`
 
 The archive supports source, category, date, and keyword filtering. The status page explains whether a run published, blocked because of insufficient fresh news, or needs attention.
+
+## Site Polish
+
+The public site includes shared navigation, SEO metadata, Open Graph / Twitter Card tags, static share images, a custom 404 page, sitemap, robots.txt, and a site-polish QA check.
+
+Public QA:
+
+- `data/site-polish-check.json`
+- `sitemap.xml`
+- `robots.txt`
+- `404.html`

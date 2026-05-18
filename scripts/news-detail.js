@@ -46,6 +46,7 @@
           <article class="news-story-row">
             <span>${escapeHtml(story.source || '')} · ${escapeHtml(story.category || story.section_title || '')}</span>
             <h2>${escapeHtml(story.title || '')}</h2>
+            ${story.original_title ? `<small>原文：${escapeHtml(story.original_title)}</small>` : ''}
             <p>${escapeHtml(story.summary || '')}</p>
             <a href="news-detail.html?edition=${encodeURIComponent(edition)}&story=${encodeURIComponent(story.id)}">查看新闻详情 →</a>
           </article>
@@ -66,6 +67,8 @@
     ].join('');
     document.getElementById('news-detail-content').innerHTML = `
       <article class="news-story-detail">
+        ${story.visual ? `<img class="news-detail-visual" src="${escapeHtml(story.visual)}" alt="${escapeHtml(story.title || '新闻视觉图')}" loading="lazy" decoding="async">` : ''}
+        ${story.original_title ? `<section><span class="section-kicker">Source Title</span><p class="news-original-title">原文：${escapeHtml(story.original_title)}</p></section>` : ''}
         ${story.why_it_matters ? `<section><span class="section-kicker">Why it matters</span><p>${escapeHtml(story.why_it_matters)}</p></section>` : ''}
         ${story.janet_take ? `<section><span class="section-kicker">Janet Take</span><p>${escapeHtml(story.janet_take)}</p></section>` : ''}
         ${story.watch_next ? `<section><span class="section-kicker">Watch Next</span><p>${escapeHtml(story.watch_next)}</p></section>` : ''}

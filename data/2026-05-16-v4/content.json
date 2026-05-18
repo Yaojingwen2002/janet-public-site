@@ -3,32 +3,47 @@
   "vol": "0000",
   "brand": "Janet 快车箱",
   "theme": "工具链又拧紧了",
-  "intro_text": "本期从公开 RSS / Atom / official feeds 中筛出 7 条窗口内新闻，按新闻价值重新排序。",
-  "daily_thesis": "今天窗口里，GitHub Blog、TechCrunch AI把工具入口摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
+  "intro_text": "本期从公开 RSS / Atom / official feeds 中筛出 7 条窗口内新闻，Janet 已改写为中文优先版本。",
+  "daily_thesis": "今天窗口里，GitHub Blog、TechCrunch AI的信号集中在工具链、开源研究和产品落地：不用先背英文标题，也能看懂谁在推进、影响谁、下一步该盯什么。",
   "signal_map": [
     {
-      "signal": "模型上新",
+      "signal": "模型/工具",
+      "label": "模型/工具",
       "evidence": [
-        "techcrunch-ai-712ca2886a05",
+        "github-blog-e61e3da9ec4f"
+      ],
+      "janet_view": "模型和工具链在往真实工作流里收口。",
+      "summary": "模型和工具链在往真实工作流里收口。",
+      "story_id": "github-blog-e61e3da9ec4f",
+      "story_title": "GitHub 围绕开发入口放出新信号",
+      "source": "GitHub Blog",
+      "visual": "assets/news-visuals/2026-05-16-signal-1.svg"
+    },
+    {
+      "signal": "开源/研究",
+      "label": "开源/研究",
+      "evidence": [
+        "techcrunch-ai-712ca2886a05"
+      ],
+      "janet_view": "开源与论文继续补位，决定后续可复用空间。",
+      "summary": "开源与论文继续补位，决定后续可复用空间。",
+      "story_id": "techcrunch-ai-712ca2886a05",
+      "story_title": "TechCrunch 围绕商业动作放出新信号",
+      "source": "TechCrunch AI",
+      "visual": "assets/news-visuals/2026-05-16-signal-2.svg"
+    },
+    {
+      "signal": "商业/产品",
+      "label": "商业/产品",
+      "evidence": [
         "techcrunch-ai-40c6bb5d92e7"
       ],
-      "janet_view": "TechCrunch AI给了信号：模型上新不是口号，是今天具体新闻里能点开的变化。"
-    },
-    {
-      "signal": "工具收口",
-      "evidence": [
-        "github-blog-85559476b1ab",
-        "github-blog-e61e3da9ec4f"
-      ],
-      "janet_view": "GitHub Blog给了信号：工具收口不是口号，是今天具体新闻里能点开的变化。"
-    },
-    {
-      "signal": "开源补位",
-      "evidence": [
-        "github-blog-85559476b1ab",
-        "github-blog-e61e3da9ec4f"
-      ],
-      "janet_view": "GitHub Blog给了信号：开源补位不是口号，是今天具体新闻里能点开的变化。"
+      "janet_view": "商业侧继续试水，重点看价格、客户和入口。",
+      "summary": "商业侧继续试水，重点看价格、客户和入口。",
+      "story_id": "techcrunch-ai-40c6bb5d92e7",
+      "story_title": "TechCrunch 围绕模型能力放出新信号",
+      "source": "TechCrunch AI",
+      "visual": "assets/news-visuals/2026-05-16-signal-3.svg"
     }
   ],
   "past_context": [],
@@ -39,7 +54,7 @@
       "items": [
         {
           "id": "github-blog-85559476b1ab",
-          "title": "Building a general-purpose accessibility agent—and what we learned in the process",
+          "title": "GitHub 试做无障碍智能体，工具开始替人跑流程",
           "url": "https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/",
           "source": "GitHub Blog",
           "source_type": "official",
@@ -48,7 +63,7 @@
           "score": 8,
           "published_at": "2026-05-15T16:00:00.000Z",
           "published_at_source": "pubDate",
-          "summary": "Learn about the experimental general-purpose accessibility agent that GitHub is piloting. The post Building a general-purpose accessibili...",
+          "summary": "GitHub 把智能体放进无障碍场景试水，重点不在炫技，而在工具能否真的替人完成具体流程。",
           "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
           "watch_next": "看开发者是否真的迁移工作流",
@@ -86,7 +101,10 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "original_title": "Building a general-purpose accessibility agent—and what we learned in the process",
+          "original_summary": "Learn about the experimental general-purpose accessibility agent that GitHub is piloting. The post Building a general-purpose accessibili...",
+          "visual": "assets/news-visuals/2026-05-16-lead.svg"
         }
       ]
     },
@@ -99,7 +117,7 @@
       "items": [
         {
           "id": "github-blog-e61e3da9ec4f",
-          "title": "Raising the bar: Quality, shared responsibility, and the future of GitHub&#8217;s bug bounty...",
+          "title": "GitHub 围绕开发入口放出新信号",
           "url": "https://github.blog/security/raising-the-bar-quality-shared-responsibility-and-the-future-of-githubs-bug-bounty-program/",
           "source": "GitHub Blog",
           "source_type": "official",
@@ -108,7 +126,7 @@
           "score": 8,
           "published_at": "2026-05-15T14:00:00.000Z",
           "published_at_source": "pubDate",
-          "summary": "We're updating our bug bounty program standards to prioritize quality submissions, clarify shared responsibility boundaries, and evolve h...",
+          "summary": "GitHub 给出了一条关于开发入口的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
           "watch_next": "看源站是否给出后续细节",
@@ -146,7 +164,9 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "original_title": "Raising the bar: Quality, shared responsibility, and the future of GitHub&#8217;s bug bounty...",
+          "original_summary": "We're updating our bug bounty program standards to prioritize quality submissions, clarify shared responsibility boundaries, and evolve h..."
         }
       ]
     },
@@ -159,7 +179,7 @@
       "items": [
         {
           "id": "techcrunch-ai-712ca2886a05",
-          "title": "OpenAI launches ChatGPT for personal finance, will let you connect bank accounts",
+          "title": "TechCrunch 围绕商业动作放出新信号",
           "url": "https://techcrunch.com/2026/05/15/openai-launches-chatgpt-for-personal-finance-will-let-you-connect-bank-accounts/",
           "source": "TechCrunch AI",
           "source_type": "media",
@@ -168,7 +188,7 @@
           "score": 6.5,
           "published_at": "2026-05-15T16:00:00.000Z",
           "published_at_source": "pubDate",
-          "summary": "Once users connect their accounts, they will see a dashboard of their portfolio performance, spending, subscriptions, and upcoming payments.",
+          "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
           "watch_next": "看源站是否给出后续细节",
@@ -192,11 +212,13 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "original_title": "OpenAI launches ChatGPT for personal finance, will let you connect bank accounts",
+          "original_summary": "Once users connect their accounts, they will see a dashboard of their portfolio performance, spending, subscriptions, and upcoming payments."
         },
         {
           "id": "techcrunch-ai-40c6bb5d92e7",
-          "title": "Osaurus brings both local and cloud AI models to your Mac",
+          "title": "TechCrunch 围绕模型能力放出新信号",
           "url": "https://techcrunch.com/2026/05/15/osaurus-brings-both-local-and-cloud-ai-models-to-your-mac/",
           "source": "TechCrunch AI",
           "source_type": "media",
@@ -205,7 +227,7 @@
           "score": 6.5,
           "published_at": "2026-05-15T12:19:48.000Z",
           "published_at_source": "pubDate",
-          "summary": "Osaurus￼ combines local and cloud AI models in a Mac app that keeps users’ memory, files, and tools on their own hardware.",
+          "summary": "TechCrunch 给出了一条关于模型能力的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
           "watch_next": "看源站是否给出后续细节",
@@ -229,11 +251,13 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "original_title": "Osaurus brings both local and cloud AI models to your Mac",
+          "original_summary": "Osaurus￼ combines local and cloud AI models in a Mac app that keeps users’ memory, files, and tools on their own hardware."
         },
         {
           "id": "techcrunch-ai-9beb207134bf",
-          "title": "The OpenAI trial wraps up, and the Musk founder machine keeps spinning",
+          "title": "TechCrunch 围绕商业动作放出新信号",
           "url": "https://techcrunch.com/podcast/the-openai-trial-wraps-up-and-the-musk-founder-machine-keeps-spinning/",
           "source": "TechCrunch AI",
           "source_type": "media",
@@ -242,7 +266,7 @@
           "score": 6.5,
           "published_at": "2026-05-15T19:24:16.000Z",
           "published_at_source": "pubDate",
-          "summary": "The Musk v. Altman trial came to a close this week, and the final arguments kept circling back to one question:&#160;can we trust the peo...",
+          "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
           "watch_next": "看源站是否给出后续细节",
@@ -258,11 +282,13 @@
           "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "original_title": "The OpenAI trial wraps up, and the Musk founder machine keeps spinning",
+          "original_summary": "The Musk v. Altman trial came to a close this week, and the final arguments kept circling back to one question:&#160;can we trust the peo..."
         },
         {
           "id": "techcrunch-ai-1c98dc21e45b",
-          "title": "Silicon Valley’s vacationland needs a new energy provider just as AI is driving prices up",
+          "title": "TechCrunch 围绕商业动作放出新信号",
           "url": "https://techcrunch.com/2026/05/15/silicon-valleys-vacationland-needs-a-new-energy-provider-just-as-ai-is-driving-prices-up/",
           "source": "TechCrunch AI",
           "source_type": "media",
@@ -271,7 +297,7 @@
           "score": 6.5,
           "published_at": "2026-05-15T18:14:44.000Z",
           "published_at_source": "pubDate",
-          "summary": "Lake Tahoe, Silicon Valley's favorite vacation spot, is about to get hit with higher energy prices as AI drives demand for electricity.",
+          "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
           "watch_next": "看源站是否给出后续细节",
@@ -287,11 +313,13 @@
           "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "original_title": "Silicon Valley’s vacationland needs a new energy provider just as AI is driving prices up",
+          "original_summary": "Lake Tahoe, Silicon Valley's favorite vacation spot, is about to get hit with higher energy prices as AI drives demand for electricity."
         },
         {
           "id": "techcrunch-ai-060e1e508e20",
-          "title": "Runway started by helping filmmakers — now it wants to beat Google at AI",
+          "title": "TechCrunch 盯上 AI 生意，钱开始换方向",
           "url": "https://techcrunch.com/2026/05/15/runway-started-by-helping-filmmakers-now-it-wants-to-beat-google-at-ai/",
           "source": "TechCrunch AI",
           "source_type": "media",
@@ -300,9 +328,9 @@
           "score": 6.5,
           "published_at": "2026-05-15T14:00:00.000Z",
           "published_at_source": "pubDate",
-          "summary": "AI video-generation startup Runway is betting that video generation is the path to world models. And that being an AI outsider is an adva...",
+          "summary": "TechCrunch 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+          "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
           "watch_next": "看源站是否给出后续细节",
           "image": null,
           "image_source": null,
@@ -316,7 +344,9 @@
           "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "original_title": "Runway started by helping filmmakers — now it wants to beat Google at AI",
+          "original_summary": "AI video-generation startup Runway is betting that video generation is the path to world models. And that being an AI outsider is an adva..."
         }
       ]
     },
@@ -421,5 +451,6 @@
     "看开发者是否真的迁移工作流",
     "看源站是否给出后续细节",
     "看源站是否给出后续细节"
-  ]
+  ],
+  "edition_id": "2026-05-16-v4"
 }

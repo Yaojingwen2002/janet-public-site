@@ -59,6 +59,7 @@
   function safeLocalPath(path) {
     if (!path || typeof path !== 'string') return '#';
     if (/^data\/[-A-Za-z0-9_./]+$/.test(path)) return path;
+    if (/^assets\/[-A-Za-z0-9_./]+$/.test(path)) return path;
     return '#';
   }
 
@@ -176,29 +177,30 @@
     const summary = normalizeV4Summary(bundle);
     const lead = summary.lead_story || {};
     const sectionCounts = summary.section_counts || {};
+    const signalMap = Array.isArray(summary.signal_map) ? summary.signal_map.slice(0, 3) : [];
     const outputUrl = safeLocalPath(summary.output_url || ('data/' + bundle.entry + '/output.html'));
     const leadUrl = safeExternalUrl(lead.url);
     const issueLabel = formatIssueLabel(summary, bundle.entry);
     const freshnessLabel = summary.date === todayShanghai() ? '今日精选' : '最近一期';
 
-    if (btnFull) {
-      btnFull.href = outputUrl;
-      btnFull.style.display = 'none';
-    }
+    if (btnFull) btnFull.href = outputUrl;
 
     const count = summary.item_count || Object.keys(sectionCounts).reduce(function(total, key) {
       return total + Number(sectionCounts[key] || 0);
     }, 0);
 
-    const chips = Object.keys(sectionCounts)
-      .filter(function(key) {
-        return key !== 'lead_story' && Number(sectionCounts[key] || 0) > 0;
-      })
-      .slice(0, 5)
-      .map(function(key) {
-        return '<span class="news-v4-chip"><span>' + escapeHtml(V4_SECTION_LABELS[key] || key) + '</span><strong>' + escapeHtml(sectionCounts[key]) + '</strong></span>';
-      })
-      .join('');
+    const signalCards = signalMap.map(function(signal, index) {
+      const visual = safeLocalPath(signal.visual || '');
+      return '<article class="news-signal-card janet-card">' +
+        (visual !== '#' ? '<img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(signal.label || signal.signal || '今日信号') + '" loading="lazy" decoding="async">' : '<div class="news-signal-visual-fallback"></div>') +
+        '<div class="news-signal-card__copy">' +
+          '<span>0' + (index + 1) + ' · ' + escapeHtml(signal.source || 'Janet') + '</span>' +
+          '<strong>' + escapeHtml(signal.label || signal.signal || '今日信号') + '</strong>' +
+          '<p>' + escapeHtml(signal.summary || signal.janet_view || '') + '</p>' +
+          (signal.story_title ? '<em>' + escapeHtml(signal.story_title) + '</em>' : '') +
+        '</div>' +
+      '</article>';
+    }).join('');
 
     container.innerHTML =
       '<article class="news-v4-card">' +
@@ -216,6 +218,7 @@
               '<div class="news-v4-lead">' +
                 '<span class="news-v4-lead-label">今日封面新闻</span>' +
                 '<strong>' + escapeHtml(lead.title) + '</strong>' +
+                (lead.original_title ? '<small class="news-v4-original-title">原文：' + escapeHtml(lead.original_title) + '</small>' : '') +
                 '<em>' + escapeHtml(lead.summary || '') + '</em>' +
                 (lead.url ? '<a class="news-v4-lead-source" href="' + escapeHtml(leadUrl) + '" target="_blank" rel="noopener noreferrer">查看头条源站 ↗</a>' : '') +
               '</div>'
@@ -223,18 +226,17 @@
             '<div class="news-v4-actions">' +
               '<a class="news-v4-open" href="' + escapeHtml(outputUrl) + '" target="_blank" rel="noopener noreferrer">打开完整晨报 →</a>' +
               '<a class="news-v4-source" href="news.html">浏览晨报归档</a>' +
-              '<a class="news-v4-source" href="news-status.html">查看运行状态</a>' +
             '</div>' +
           '</div>' +
-          '<div class="news-v4-panel">' +
-            '<div class="news-v4-panel-number">' + escapeHtml(count || 0) + '</div>' +
-            '<div class="news-v4-panel-label">入选信号</div>' +
-            '<div class="news-v4-chip-grid">' + chips + '</div>' +
+          '<div class="news-v4-panel news-v4-visual-panel">' +
+            (lead.visual ? '<img class="news-v4-lead-visual" src="' + escapeHtml(safeLocalPath(lead.visual)) + '" alt="' + escapeHtml(lead.title || '今日封面新闻') + '" loading="lazy" decoding="async">' : '<div class="news-signal-visual-fallback"></div>') +
+            '<span class="news-v4-panel-note">今日 ' + escapeHtml(count || 0) + ' 条有效新闻</span>' +
           '</div>' +
         '</div>' +
+        (signalCards ? '<div class="news-signal-map">' + signalCards + '</div>' : '') +
       '</article>';
 
-    if (countEl) countEl.textContent = String(count || 0) + ' signals';
+    if (countEl) countEl.textContent = '今日 ' + String(count || 0) + ' 条';
   }
 
   function renderLegacyEditorialNews(data, usedDate) {

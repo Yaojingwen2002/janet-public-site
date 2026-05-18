@@ -7,7 +7,7 @@
   "item_count": 14,
   "lead_story": {
     "id": "openai-news-ed9d35b23509",
-    "title": "Sea's View on the Future of Agentic Software Development with Codex",
+    "title": "Sea 押注 Codex，软件开发开始代理化",
     "url": "https://openai.com/index/sea-david-chen",
     "source": "OpenAI",
     "source_type": "official",
@@ -16,7 +16,7 @@
     "score": 9.5,
     "published_at": "2026-05-14T20:30:00.000Z",
     "published_at_source": "pubDate",
-    "summary": "Sea Limited's CPO explains why the company is deploying Codex across engineering teams to accelerate AI-native software development in Asia.",
+    "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
     "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
     "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
     "watch_next": "看开发者是否真的迁移工作流",
@@ -48,11 +48,57 @@
     ],
     "editorial_penalties": [],
     "lead_eligible": true,
-    "core_eligible": true
+    "core_eligible": true,
+    "original_title": "Sea's View on the Future of Agentic Software Development with Codex",
+    "original_summary": "Sea Limited's CPO explains why the company is deploying Codex across engineering teams to accelerate AI-native software development in Asia.",
+    "visual": "assets/news-visuals/2026-05-15-lead.svg"
   },
   "output_url": "data/2026-05-15-v4/output.html",
   "summary_url": "data/2026-05-15-v4/news-summary.json",
   "content_url": "data/2026-05-15-v4/content.json",
   "vol": "0000",
-  "title": "工具链又拧紧了"
+  "title": "工具链又拧紧了",
+  "intro_text": "本期从公开 RSS / Atom / official feeds 中筛出 14 条窗口内新闻，Janet 已改写为中文优先版本。",
+  "daily_thesis": "今天窗口里，OpenAI、GitHub Blog、Hugging Face、TechCrunch AI的信号集中在工具链、开源研究和产品落地：不用先背英文标题，也能看懂谁在推进、影响谁、下一步该盯什么。",
+  "signal_map": [
+    {
+      "signal": "模型/工具",
+      "label": "模型/工具",
+      "evidence": [
+        "openai-news-b264b8b470b6"
+      ],
+      "janet_view": "模型和工具链在往真实工作流里收口。",
+      "summary": "模型和工具链在往真实工作流里收口。",
+      "story_id": "openai-news-b264b8b470b6",
+      "story_title": "OpenAI 继续把 Codex 推进工程现场",
+      "source": "OpenAI",
+      "visual": "assets/news-visuals/2026-05-15-signal-1.svg"
+    },
+    {
+      "signal": "开源/研究",
+      "label": "开源/研究",
+      "evidence": [
+        "github-blog-3c5997071d51"
+      ],
+      "janet_view": "开源与论文继续补位，决定后续可复用空间。",
+      "summary": "开源与论文继续补位，决定后续可复用空间。",
+      "story_id": "github-blog-3c5997071d51",
+      "story_title": "GitHub 围绕开发入口放出新信号",
+      "source": "GitHub Blog",
+      "visual": "assets/news-visuals/2026-05-15-signal-2.svg"
+    },
+    {
+      "signal": "商业/产品",
+      "label": "商业/产品",
+      "evidence": [
+        "huggingface-blog-67c9381f2c92"
+      ],
+      "janet_view": "商业侧继续试水，重点看价格、客户和入口。",
+      "summary": "商业侧继续试水，重点看价格、客户和入口。",
+      "story_id": "huggingface-blog-67c9381f2c92",
+      "story_title": "Hugging Face 围绕AI 工具放出新信号",
+      "source": "Hugging Face",
+      "visual": "assets/news-visuals/2026-05-15-signal-3.svg"
+    }
+  ]
 }

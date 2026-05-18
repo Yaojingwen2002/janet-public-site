@@ -78,7 +78,6 @@
     container.innerHTML = `
       <span class="section-kicker">Latest</span>
       ${editionCard(latest, true)}
-      <a class="news-status-link" href="news-status.html">查看运行状态 →</a>
     `;
   }
 

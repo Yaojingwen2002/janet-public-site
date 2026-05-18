@@ -39,6 +39,9 @@ jobs:
       - name: QA site polish
         run: node scripts/qa-site-polish.mjs
 
+      - name: QA main UX polish
+        run: node scripts/qa-main-ux.mjs
+
       - name: Commit generated news files
         run: |
           git config user.name "janet-news-bot"

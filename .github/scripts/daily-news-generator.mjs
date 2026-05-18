@@ -11,6 +11,7 @@ const TZ = 'Asia/Shanghai';
 const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
 const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
 const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
+const VISUAL_DIR = resolve(ROOT, 'assets/news-visuals');
 const FORBIDDEN_TAKES = [
   'AI 正在改变世界',
   '未来已来',
@@ -305,6 +306,103 @@ function textForScoring(item) {
   return `${item.title || ''} ${item.summary || ''} ${item.source || ''} ${item.category || ''}`.toLowerCase();
 }
 
+function hasChinese(text) {
+  return /[\u4e00-\u9fff]/.test(String(text || ''));
+}
+
+function englishWordCount(text) {
+  const matches = String(text || '').match(/[A-Za-z][A-Za-z'-]+/g);
+  return matches ? matches.length : 0;
+}
+
+function chineseSourceName(source) {
+  const map = {
+    'OpenAI': 'OpenAI',
+    'GitHub Blog': 'GitHub',
+    'Hugging Face': 'Hugging Face',
+    'Google AI': 'Google AI',
+    'Microsoft AI': 'Microsoft',
+    'TechCrunch AI': 'TechCrunch',
+    'VentureBeat AI': 'VentureBeat',
+    'arXiv cs.AI': 'arXiv',
+    'arXiv cs.CL': 'arXiv',
+    'arXiv cs.LG': 'arXiv',
+    'arXiv stat.ML': 'arXiv'
+  };
+  return map[source] || source || '公开源';
+}
+
+function normalizeTopic(item) {
+  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+  if (/codex/.test(text)) return 'Codex';
+  if (/copilot/.test(text)) return 'Copilot';
+  if (/agent|agentic/.test(text)) return '智能体';
+  if (/api|sdk/.test(text)) return 'API';
+  if (/open source|weights|hugging face/.test(text)) return '开源模型';
+  if (/benchmark|paper|arxiv|research/.test(text)) return '研究信号';
+  if (/enterprise|customer|pricing|partnership/.test(text)) return '企业落地';
+  if (/availability report|status report|incident|outage|maintenance/.test(text)) return '可用性报告';
+  if (/model|reasoning|multimodal|llm/.test(text)) return '模型能力';
+  if (/github/.test(text)) return '开发入口';
+  return item.category === 'research' ? '研究进展' : item.category === 'business' ? '商业动作' : 'AI 工具';
+}
+
+function chineseVerb(item) {
+  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+  if (/launch|introduc|announce|release/.test(text)) return '发布新动作';
+  if (/deploy|adopt|use|using/.test(text)) return '开始落到团队里';
+  if (/future|view|vision/.test(text)) return '押注下一步';
+  if (/report|availability|status/.test(text)) return '交出运行报告';
+  if (/benchmark|paper|research/.test(text)) return '给出研究信号';
+  if (/fund|partner|customer|enterprise/.test(text)) return '把商业线往前推';
+  return '放出一个新信号';
+}
+
+function makeChineseTitle(item) {
+  if (hasChinese(item.title) && englishWordCount(item.title) < 5) return clamp(item.title, 34);
+  const source = chineseSourceName(item.source);
+  const topic = normalizeTopic(item);
+  const verb = chineseVerb(item);
+  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+
+  if (/availability report|status report|incident|outage|maintenance/.test(text)) {
+    return `${source} 可用性报告，放进归档就好`;
+  }
+  if (/codex/.test(text) && /agent|agentic|software development|developer/.test(text)) {
+    return `${source} 押注 Codex，开发开始代理化`;
+  }
+  if (/copilot/.test(text)) return `${source} 继续把 Copilot 往工作流里塞`;
+  if (/hugging face|open source|weights|dataset/.test(text)) return `${source} 放出开源信号，社区有活干了`;
+  if (/arxiv|paper|benchmark/.test(text)) return `${source} 新论文冒头，先看能否复现`;
+  if (/api|sdk|developer|workflow|agent/.test(text)) return `${source} 把${topic}继续推向开发者`;
+  return `${source} 围绕${topic}${verb}`;
+}
+
+function makeChineseSummary(item) {
+  const source = chineseSourceName(item.source);
+  const topic = normalizeTopic(item);
+  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+  if (/availability report|status report|incident|outage|maintenance/.test(text)) {
+    return `${source} 这条更像服务运行记录，不适合作为头条，但可以帮助判断工具稳定性和平台状态。`;
+  }
+  if (/codex/.test(text)) {
+    return `${source} 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。`;
+  }
+  if (/api|sdk|developer|workflow|copilot|agent/.test(text)) {
+    return `${source} 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。`;
+  }
+  if (/hugging face|open source|weights|dataset/.test(text)) {
+    return `${source} 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。`;
+  }
+  if (/arxiv|paper|benchmark|research/.test(text)) {
+    return `${source} 的研究内容值得放进观察名单，它不等于产品发布，但可能预告下一波能力方向。`;
+  }
+  if (/enterprise|customer|pricing|partnership|funding/.test(text)) {
+    return `${source} 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。`;
+  }
+  return `${source} 给出了一条关于${topic}的新信号，适合和今天其他新闻一起看，不必单独拔高。`;
+}
+
 function keywordHits(text, keywords = []) {
   return keywords.filter((keyword) => text.includes(String(keyword).toLowerCase()));
 }
@@ -469,6 +567,48 @@ function watchNext(story) {
   return '看源站是否给出后续细节';
 }
 
+function visualTitle(text) {
+  return String(text || 'Janet').replace(/[^\u4e00-\u9fffA-Za-z0-9 ]/g, '').slice(0, 12) || 'Janet';
+}
+
+function visualPattern(category) {
+  if (category === 'models') {
+    return '<circle cx="640" cy="280" r="92" fill="none" stroke="#18e299" stroke-width="4" opacity=".7"/><circle cx="640" cy="280" r="42" fill="#18e299" opacity=".16"/><path d="M410 280h460M640 90v380" stroke="#18e299" stroke-width="2" opacity=".2"/>';
+  }
+  if (category === 'agents') {
+    return '<path d="M360 360c120-160 360-160 520 0" fill="none" stroke="#18e299" stroke-width="4" opacity=".55"/><circle cx="360" cy="360" r="22" fill="#18e299" opacity=".8"/><circle cx="620" cy="238" r="26" fill="#18e299" opacity=".5"/><circle cx="880" cy="360" r="22" fill="#18e299" opacity=".8"/>';
+  }
+  if (category === 'open_source') {
+    return '<path d="M360 180h520v300H360z" fill="none" stroke="#18e299" stroke-width="3" opacity=".45"/><path d="M410 240h420M410 300h280M410 360h360M410 420h210" stroke="#18e299" stroke-width="8" stroke-linecap="round" opacity=".28"/>';
+  }
+  if (category === 'research' || category === 'papers') {
+    return '<path d="M340 380c70-180 120 120 200-40s130 60 210-80 120 80 170-30" fill="none" stroke="#18e299" stroke-width="5" opacity=".7"/><path d="M360 160h360l120 120v250H360z" fill="none" stroke="#ffffff" stroke-width="2" opacity=".18"/>';
+  }
+  return '<path d="M350 440h500M390 440V280h92v160M554 440V210h92v230M718 440V310h92v130" stroke="#18e299" stroke-width="4" fill="none" opacity=".55"/><path d="M360 250l180-70 150 80 180-120" stroke="#ffffff" stroke-width="3" fill="none" opacity=".24"/>';
+}
+
+function visualSvg(title, subtitle, category) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-label="${escapeHtml(title)}">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#050505"/><stop offset="1" stop-color="#101712"/></linearGradient>
+    <radialGradient id="glow" cx="24%" cy="16%" r="78%"><stop offset="0" stop-color="#18e299" stop-opacity=".22"/><stop offset=".5" stop-color="#18e299" stop-opacity=".05"/><stop offset="1" stop-color="#18e299" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <rect width="1200" height="720" fill="url(#glow)"/>
+  <rect x="70" y="70" width="1060" height="580" rx="34" fill="rgba(255,255,255,.035)" stroke="rgba(255,255,255,.11)"/>
+  ${visualPattern(category)}
+  <text x="104" y="132" fill="#18e299" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="2">JANET DAILY</text>
+  <text x="104" y="562" fill="#f0f0f0" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">${escapeHtml(visualTitle(title))}</text>
+  <text x="108" y="608" fill="rgba(240,240,240,.68)" font-family="Arial, Helvetica, sans-serif" font-size="24">${escapeHtml(visualTitle(subtitle))}</text>
+</svg>`;
+}
+
+function writeNewsVisual(fileName, title, subtitle, category) {
+  const rel = `assets/news-visuals/${fileName}`;
+  writeText(resolve(ROOT, rel), visualSvg(title, subtitle, category));
+  return rel;
+}
+
 function emptySections(template) {
   const sections = {};
   for (const [key, value] of Object.entries(template.sections || {})) {
@@ -483,7 +623,8 @@ function buildContent(template, included, date, editionType, rules) {
   const displayItems = ordered.filter((item) => item.core_eligible).slice(0, editionType === 'limited_edition' ? 9 : 18);
   const stories = displayItems.map((item) => ({
     id: item.id,
-    title: clamp(item.title, 96),
+    title: clamp(makeChineseTitle(item), 52),
+    original_title: clamp(item.title, 140),
     url: item.url,
     source: item.source,
     source_type: sourceType(item.source),
@@ -492,7 +633,8 @@ function buildContent(template, included, date, editionType, rules) {
     score: scoreFor(item.source_rank),
     published_at: item.published_at,
     published_at_source: item.published_at_source,
-    summary: clamp(item.summary || item.title, 140),
+    summary: clamp(makeChineseSummary(item), 120),
+    original_summary: clamp(item.summary || item.title, 220),
     why_it_matters: whyItMatters(item),
     janet_take: janetTake(item),
     watch_next: watchNext(item),
@@ -513,6 +655,11 @@ function buildContent(template, included, date, editionType, rules) {
   }
 
   const sections = emptySections(template);
+  stories.forEach((story, index) => {
+    if (index === 0) {
+      story.visual = writeNewsVisual(`${date}-lead.svg`, story.title, story.source, story.category);
+    }
+  });
   sections.lead_story.items.push(stories[0]);
   for (const story of stories.slice(1)) {
     const section = sectionFor(story.category);
@@ -520,8 +667,19 @@ function buildContent(template, included, date, editionType, rules) {
     sections[section].items.push(story);
   }
 
-  const evidence = stories.slice(0, Math.max(6, Math.min(stories.length, 9))).map((story) => story.id);
   const theme = titleForEdition(stories, rules);
+  const signalMap = signalMapForEdition(stories).map((signal, index) => {
+    const story = stories.find((item) => signal.evidence.includes(item.id)) || stories[index + 1] || stories[0];
+    return {
+      ...signal,
+      label: signal.signal,
+      summary: signal.janet_view,
+      story_id: story?.id || '',
+      story_title: story?.title || '',
+      source: story?.source || '',
+      visual: writeNewsVisual(`${date}-signal-${index + 1}.svg`, signal.signal, story?.source || 'Janet', story?.category || 'models')
+    };
+  });
   return {
     ...template,
     date,
@@ -529,7 +687,7 @@ function buildContent(template, included, date, editionType, rules) {
     theme,
     intro_text: `本期从公开 RSS / Atom / official feeds 中筛出 ${included.length} 条窗口内新闻，按新闻价值重新排序。`,
     daily_thesis: thesisForEdition(stories),
-    signal_map: signalMapForEdition(stories),
+    signal_map: signalMap,
     lead_story_id: stories[0].id,
     sections,
     source_summary: `公开来源自动生成；included=${included.length}; edition=${editionType}; lead_score=${stories[0]?.editorial_score || 0}`,
@@ -565,6 +723,7 @@ function escapeHtml(value) {
 
 function renderHtml(content) {
   const allItems = Object.values(content.sections).flatMap((section) => section.items || []);
+  const lead = content.sections.lead_story.items[0] || {};
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -579,6 +738,7 @@ function renderHtml(content) {
     section{border-top:1px solid rgba(255,255,255,.12);padding:28px 0}
     article{padding:18px 0;border-top:1px solid rgba(255,255,255,.08)}
     small,p{color:rgba(240,240,240,.72);line-height:1.75}
+    .visual{width:100%;border-radius:22px;border:1px solid rgba(255,255,255,.1);margin:24px 0}
     .signal{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
     .card{border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;background:rgba(255,255,255,.025)}
   </style>
@@ -589,16 +749,18 @@ function renderHtml(content) {
   <h1>${escapeHtml(content.theme)}</h1>
   <p>${escapeHtml(content.intro_text)}</p>
   <p>${escapeHtml(content.daily_thesis)}</p>
+  ${lead.visual ? `<img class="visual" src="../../${escapeHtml(lead.visual)}" alt="${escapeHtml(lead.title)}">` : ''}
   <section>
     <div class="k">Signal Map</div>
-    <div class="signal">${content.signal_map.map((item) => `<div class="card"><strong>${escapeHtml(item.signal)}</strong><p>${escapeHtml(item.janet_view)}</p></div>`).join('')}</div>
+    <div class="signal">${content.signal_map.map((item) => `<div class="card">${item.visual ? `<img src="../../${escapeHtml(item.visual)}" alt="${escapeHtml(item.label || item.signal)}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></div>`).join('')}</div>
   </section>
   <section>
     <div class="k">Lead Story</div>
-    <h2>${escapeHtml(content.sections.lead_story.items[0]?.title || '')}</h2>
-    <p>${escapeHtml(content.sections.lead_story.items[0]?.summary || '')}</p>
+    <h2>${escapeHtml(lead.title || '')}</h2>
+    ${lead.original_title ? `<small>原文：${escapeHtml(lead.original_title)}</small>` : ''}
+    <p>${escapeHtml(lead.summary || '')}</p>
   </section>
-  ${Object.entries(content.sections).filter(([key]) => key !== 'lead_story').map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
+  ${Object.entries(content.sections).filter(([key]) => key !== 'lead_story').map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
   <section>
     <div class="k">Source Summary</div>
     <p>${escapeHtml(content.source_summary)}</p>
@@ -622,6 +784,9 @@ function buildSummary(template, content, editionId, editionType) {
     edition_type: editionType,
     item_count: Object.values(content.sections).flatMap((section) => section.items || []).length,
     lead_story: lead,
+    daily_thesis: content.daily_thesis,
+    intro_text: content.intro_text,
+    signal_map: content.signal_map,
     output_url: `data/${editionId}/output.html`,
     summary_url: `data/${editionId}/news-summary.json`,
     content_url: `data/${editionId}/content.json`

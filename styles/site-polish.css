@@ -5,7 +5,7 @@
 }
 
 .has-janet-site-nav {
-  padding-top: 64px;
+  padding-top: 84px;
 }
 
 .has-janet-site-nav .nav,
@@ -18,18 +18,41 @@
 
 .janet-site-nav {
   position: fixed;
-  inset: 0 0 auto;
+  inset: 14px clamp(14px, 3vw, 36px) auto;
   z-index: 1000;
-  min-height: 64px;
+  min-height: 62px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 12px clamp(16px, 4vw, 48px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  background: rgba(5,5,5,0.82);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  padding: 14px clamp(16px, 3vw, 28px);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+  background: rgba(5,5,5,0.48);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.26), 0 0 0 rgba(24,226,153,0);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  transform: translateY(0) scale(1);
+  transform-origin: top center;
+  transition:
+    transform 520ms cubic-bezier(.16, 1, .3, 1),
+    width 520ms cubic-bezier(.16, 1, .3, 1),
+    padding 520ms cubic-bezier(.16, 1, .3, 1),
+    background 420ms ease,
+    box-shadow 420ms ease,
+    border-color 420ms ease;
+}
+
+.janet-site-nav.is-compact {
+  padding: 9px clamp(14px, 2.4vw, 22px);
+  background: rgba(5,5,5,0.76);
+  border-color: rgba(24,226,153,0.20);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.34), 0 0 34px rgba(24,226,153,0.08);
+  transform: translateY(-2px) scale(0.985);
+}
+
+.janet-site-nav.is-floating-up {
+  transform: translateY(3px) scale(1.01);
 }
 
 .janet-site-brand,
@@ -75,6 +98,12 @@
   color: rgba(240,240,240,0.62);
   font-size: 13px;
   white-space: nowrap;
+  transition:
+    transform 260ms cubic-bezier(.2, 1.4, .3, 1),
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .janet-site-links a:hover,
@@ -82,6 +111,27 @@
   color: #00140c;
   background: var(--janet-polish-green);
   border-color: var(--janet-polish-green);
+  box-shadow: 0 8px 24px rgba(24,226,153,0.20);
+  transform: translateY(-2px);
+}
+
+.janet-site-links a:active,
+.janet-btn:active,
+.janet-action:active,
+.btn:active,
+button:active,
+a[class*="btn"]:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.janet-site-links a:focus-visible,
+.janet-btn:focus-visible,
+.janet-action:focus-visible,
+.btn:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(24,226,153,0.82);
+  outline-offset: 3px;
 }
 
 .janet-site-footer {
@@ -132,6 +182,58 @@
 .news-v4-actions a,
 .hero-actions a {
   min-width: max-content;
+}
+
+.janet-btn,
+.janet-action,
+.btn,
+button,
+a[class*="btn"],
+.news-v4-open,
+.news-v4-source,
+.archive-view-btn,
+.works-filter-btn,
+.work-archive-card__link,
+.news-filter-panel input,
+.news-filter-panel select {
+  transition:
+    transform 260ms cubic-bezier(.2, 1.4, .3, 1),
+    box-shadow 260ms ease,
+    border-color 260ms ease,
+    background 260ms ease,
+    color 260ms ease;
+}
+
+.janet-btn:hover,
+.janet-action:hover,
+.btn:hover,
+button:hover,
+a[class*="btn"]:hover,
+.news-v4-open:hover,
+.news-v4-source:hover,
+.archive-view-btn:hover,
+.works-filter-btn:hover,
+.work-archive-card__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(24,226,153,0.16);
+}
+
+.janet-card,
+.news-v4-card,
+.news-signal-card,
+.news-latest-card,
+.work-archive-card {
+  transition: transform 320ms cubic-bezier(.2, 1.1, .3, 1), border-color 260ms ease, box-shadow 260ms ease;
+}
+
+.janet-card:hover,
+.news-v4-card:hover,
+.news-signal-card:hover,
+.news-latest-card:hover,
+.work-archive-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(24,226,153,0.18);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.24), 0 0 32px rgba(24,226,153,0.06);
 }
 
 .not-found-page {
@@ -207,14 +309,16 @@
 
 @media (max-width: 720px) {
   .has-janet-site-nav {
-    padding-top: 104px;
+    padding-top: 116px;
   }
 
   .janet-site-nav {
-    min-height: 104px;
+    min-height: 96px;
+    inset: 10px 10px auto;
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+    border-radius: 24px;
   }
 
   .janet-site-links {
@@ -231,5 +335,11 @@
     justify-content: flex-start;
   }
 }
-/* JANET_SITE_POLISH_END */
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* JANET_SITE_POLISH_END */

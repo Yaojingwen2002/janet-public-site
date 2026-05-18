@@ -28,6 +28,15 @@ const BAD_VOICE_PHRASES = [
   '行业正在重构'
 ];
 
+function hasChinese(text) {
+  return /[\u4e00-\u9fff]/.test(String(text || ''));
+}
+
+function englishWordCount(text) {
+  const matches = String(text || '').match(/[A-Za-z][A-Za-z'-]+/g);
+  return matches ? matches.length : 0;
+}
+
 function ensureDir(filePath) {
   mkdirSync(dirname(filePath), { recursive: true });
 }
@@ -89,6 +98,12 @@ function runEditorialQa(content, rules) {
       if (better) issues.push('lead story is status/availability while better stories exist');
       else warnings.push('lead story looks like status/availability content');
     }
+    if (!hasChinese(lead.title) || englishWordCount(lead.title) >= 5) {
+      issues.push('lead title is not Chinese-first');
+    }
+    if (lead.summary && !hasChinese(lead.summary)) {
+      issues.push('lead summary is not Chinese-first');
+    }
   }
 
   const theme = content?.theme || content?.title || '';
@@ -105,6 +120,8 @@ function runEditorialQa(content, rules) {
     if (containsAny(story.janet_take, BAD_VOICE_PHRASES)) issues.push(`weak janet_take phrase: ${story.id || story.title}`);
     if (!story.why_it_matters) issues.push(`missing why_it_matters: ${story.id || story.title}`);
     if (!story.watch_next) issues.push(`missing watch_next: ${story.id || story.title}`);
+    if (!hasChinese(story.title) || englishWordCount(story.title) >= 5) issues.push(`story title is not Chinese-first: ${story.id || story.title}`);
+    if (story.summary && !hasChinese(story.summary)) issues.push(`story summary is not Chinese-first: ${story.id || story.title}`);
   }
 
   return {
@@ -144,6 +161,15 @@ function main() {
 
   if (status.status === 'blocked_insufficient_fresh_news') {
     if (status.published !== false) issues.push('blocked run must not publish');
+    const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
+    const latest = manifest[0];
+    if (latest) {
+      const content = readJson(resolve(ROOT, 'data', latest, 'content.json'), null);
+      if (content) {
+        editorialQuality = runEditorialQa(content, rules);
+        issues.push(...editorialQuality.issues);
+      }
+    }
   } else if (['published_full_edition', 'published_limited_edition'].includes(status.status)) {
     const edition = status.published_edition_id;
     if (!edition) issues.push('published edition id missing');

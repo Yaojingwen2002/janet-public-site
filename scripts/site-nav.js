@@ -2,8 +2,7 @@
   const links = [
     { href: 'index.html', label: '首页', key: 'home' },
     { href: 'portfolio.html', label: '作品库', key: 'works' },
-    { href: 'news.html', label: '晨报归档', key: 'news' },
-    { href: 'news-status.html', label: '自动化状态', key: 'status' }
+    { href: 'news.html', label: '晨报归档', key: 'news' }
   ];
 
   function currentKey() {
@@ -31,6 +30,7 @@
       }).join('') + '</div>';
     document.body.insertBefore(nav, document.body.firstChild);
     document.body.classList.add('has-janet-site-nav');
+    bindScrollMotion(nav);
   }
 
   function buildFooter() {
@@ -41,9 +41,31 @@
       '<div class="janet-site-footer-links">' +
       '<a href="portfolio.html">作品库</a>' +
       '<a href="news.html">晨报归档</a>' +
-      '<a href="news-status.html">运行状态</a>' +
+      '<a class="janet-status-link" href="news-status.html">自动化状态</a>' +
       '</div>';
     document.body.appendChild(footer);
+  }
+
+  function bindScrollMotion(nav) {
+    let lastY = window.scrollY || 0;
+    let ticking = false;
+
+    function update() {
+      const y = window.scrollY || 0;
+      const goingDown = y > lastY;
+      nav.classList.toggle('is-compact', y > 40);
+      nav.classList.toggle('is-floating-up', !goingDown && y > 40);
+      document.body.classList.toggle('nav-is-compact', y > 40);
+      lastY = y;
+      ticking = false;
+    }
+
+    update();
+    window.addEventListener('scroll', function() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -51,4 +73,3 @@
     buildFooter();
   });
 })();
-

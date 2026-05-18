@@ -8,7 +8,11 @@ const ROOT = resolve(process.cwd());
 const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
 const OUT = resolve(ROOT, 'data/daily-news-automation-result.json');
 const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
+const EDITORIAL_COPY_RULES = resolve(ROOT, '.github/scripts/editorial-copy-rules.json');
 const EDITORIAL_QUALITY_OUT = resolve(ROOT, 'data/editorial-quality-check.json');
+const EDITORIAL_REDESIGN_OUT = resolve(ROOT, 'data/editorial-redesign-check.json');
+const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
+const SOURCE_COVERAGE = resolve(ROOT, 'data/source-coverage-report.json');
 const LEAKS = ['/Volumes/', 'file://', '/Users/', 'localhost', '127.0.0.1'];
 const BAD_LEAD_KEYWORDS = [
   'availability report',
@@ -140,6 +144,93 @@ function runEditorialQa(content, rules) {
   };
 }
 
+function recentTitles(limit = 7) {
+  const index = readJson(resolve(ROOT, 'data/news-index.json'), null);
+  const titles = [];
+  if (Array.isArray(index?.editions)) {
+    return index.editions.slice(0, limit).map((edition) => edition.title).filter(Boolean);
+  }
+  const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
+  for (const editionId of manifest.slice(0, limit)) {
+    const summary = readJson(resolve(ROOT, `data/${editionId}/news-summary.json`), null);
+    const content = readJson(resolve(ROOT, `data/${editionId}/content.json`), null);
+    titles.push(summary?.title || summary?.theme || content?.theme || '');
+  }
+  return titles.filter(Boolean);
+}
+
+function runEditorialRedesignQa(content, status, rules, copyRules) {
+  const issues = [];
+  const warnings = [];
+  const pool = readJson(SOURCE_POOL, { sources: [] });
+  const coverage = readJson(SOURCE_COVERAGE, null);
+  const stories = allStories(content);
+  const editionItems = Array.isArray(content?.edition_items) ? content.edition_items : stories;
+  const homepageItems = Array.isArray(content?.homepage_items) ? content.homepage_items : [];
+  const compactCards = Array.isArray(content?.compact_news)
+    ? content.compact_news.length
+    : homepageItems.filter((item) => item.role === 'compact').length;
+  const enabledSourceCount = (pool.sources || []).filter((source) => source.enabled).length;
+  const forbiddenPublic = [
+    ...(copyRules.forbidden_public_phrases || []),
+    '本期从公开 RSS',
+    'Atom / official feeds',
+    '窗口内新闻',
+    'Janet 已改写',
+    '筛出',
+    '入选信号'
+  ];
+  const publicText = [
+    content?.theme,
+    content?.intro_text,
+    content?.daily_thesis,
+    JSON.stringify(content?.signal_map || []),
+    JSON.stringify(content?.compact_news || []),
+    readFileSync(resolve(ROOT, 'index.html'), 'utf8')
+  ].join('\n');
+  for (const phrase of forbiddenPublic) {
+    if (phrase && publicText.includes(phrase)) issues.push(`public engineering/generic phrase remains: ${phrase}`);
+  }
+  const titles = recentTitles(Number(rules.title_generation?.forbid_repeat_days || 7));
+  const currentTitle = content?.theme || '';
+  const duplicateCount = titles.filter((title) => title === currentTitle).length;
+  const dailyTitleUnique7d = duplicateCount <= 1;
+  if (!dailyTitleUnique7d) issues.push('daily title repeats in recent 7 editions');
+  if (currentTitle === '工具链又拧紧了') issues.push('dead repeated title remains');
+  if (enabledSourceCount < 20) issues.push('enabled source pool is below 20');
+  if (!coverage) issues.push('source coverage report missing');
+  if (Number(status.source_success_count || 0) < 8) issues.push('source_success_count below 8');
+  if (compactCards < 4) issues.push('homepage compact cards below 4');
+  if (editionItems.length < Number(status.included || 0)) issues.push('edition_items fewer than included stories');
+  for (const story of editionItems) {
+    if (!story.title || !hasChinese(story.title) || englishWordCount(story.title) >= 5) issues.push(`story title not Chinese-first: ${story.id || story.title}`);
+    if (!story.summary || !hasChinese(story.summary)) issues.push(`story summary missing or not Chinese: ${story.id || story.title}`);
+    if (!story.janet_take) issues.push(`story missing janet_take: ${story.id || story.title}`);
+    if (!story.why_it_matters) issues.push(`story missing why_it_matters: ${story.id || story.title}`);
+    if (!story.watch_next) issues.push(`story missing watch_next: ${story.id || story.title}`);
+  }
+  if (Number(status.source_error_count || 0) > 0) warnings.push('some sources failed; kept as warning because wide pool is resilient');
+
+  return {
+    step: '35-R',
+    status: issues.length ? 'editorial_system_redesign_blocked' : 'editorial_system_redesigned',
+    qa_passed: issues.length === 0,
+    daily_title_unique_7d: dailyTitleUnique7d,
+    public_engineering_copy_removed: !issues.some((issue) => issue.includes('public engineering')),
+    wide_source_pool_passed: enabledSourceCount >= 20,
+    enabled_source_count: enabledSourceCount,
+    source_success_count: Number(status.source_success_count || 0),
+    source_error_count: Number(status.source_error_count || 0),
+    homepage_compact_cards: compactCards,
+    chinese_first_passed: !issues.some((issue) => issue.includes('Chinese') || issue.includes('summary')),
+    edition_items_count: editionItems.length,
+    homepage_items_count: homepageItems.length,
+    source_coverage_report_exists: Boolean(coverage),
+    issues,
+    warnings
+  };
+}
+
 function main() {
   const status = readJson(STATUS_PATH, {});
   const issues = [];
@@ -158,6 +249,22 @@ function main() {
     warnings: [],
     issues: []
   };
+  let editorialRedesign = {
+    step: '35-R',
+    status: 'editorial_system_redesign_not_applicable',
+    qa_passed: true,
+    daily_title_unique_7d: true,
+    public_engineering_copy_removed: true,
+    wide_source_pool_passed: true,
+    enabled_source_count: 0,
+    homepage_compact_cards: 0,
+    chinese_first_passed: true,
+    edition_items_count: 0,
+    homepage_items_count: 0,
+    source_coverage_report_exists: existsSync(SOURCE_COVERAGE),
+    issues: [],
+    warnings: []
+  };
 
   if (status.status === 'blocked_insufficient_fresh_news') {
     if (status.published !== false) issues.push('blocked run must not publish');
@@ -167,7 +274,9 @@ function main() {
       const content = readJson(resolve(ROOT, 'data', latest, 'content.json'), null);
       if (content) {
         editorialQuality = runEditorialQa(content, rules);
+        editorialRedesign = runEditorialRedesignQa(content, status, rules, readJson(EDITORIAL_COPY_RULES, { forbidden_public_phrases: [] }));
         issues.push(...editorialQuality.issues);
+        issues.push(...editorialRedesign.issues);
       }
     }
   } else if (['published_full_edition', 'published_limited_edition'].includes(status.status)) {
@@ -186,7 +295,9 @@ function main() {
     const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
     if (manifest[0] !== edition) issues.push('manifest first entry mismatch');
     editorialQuality = runEditorialQa(content, rules);
+    editorialRedesign = runEditorialRedesignQa(content, status, rules, readJson(EDITORIAL_COPY_RULES, { forbidden_public_phrases: [] }));
     issues.push(...editorialQuality.issues);
+    issues.push(...editorialRedesign.issues);
   } else if (/^dry_run_/.test(status.status || '')) {
     // Dry run is allowed locally; workflow uses non-dry-run mode.
   } else {
@@ -247,6 +358,7 @@ function main() {
   };
 
   writeJson(EDITORIAL_QUALITY_OUT, editorialQuality);
+  writeJson(EDITORIAL_REDESIGN_OUT, editorialRedesign);
   writeJson(OUT, result);
   console.log(`status: ${result.status}`);
   if (issues.length) process.exit(1);

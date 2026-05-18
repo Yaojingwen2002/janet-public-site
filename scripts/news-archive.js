@@ -58,7 +58,7 @@
         <div class="news-edition-meta">
           <span>${escapeHtml(edition.date)}</span>
           <span>${escapeHtml(edition.edition_type || 'edition')}</span>
-          <span>${escapeHtml(edition.signal_count || 0)} signals</span>
+          <span>${escapeHtml(edition.edition_items_count || edition.signal_count || 0)} 条新闻</span>
         </div>
         <h3>${escapeHtml(edition.title || 'Janet 快车箱')}</h3>
         <p>${escapeHtml(edition.summary || edition.lead_story?.title || '')}</p>

@@ -3,32 +3,34 @@
   "edition_type": "full_edition",
   "date": "2026-05-15",
   "brand": "Janet 快车箱",
-  "theme": "工具链又拧紧了",
-  "item_count": 14,
+  "theme": "开源模型把开源战场收紧了",
+  "item_count": 25,
   "lead_story": {
-    "id": "openai-news-ed9d35b23509",
-    "title": "Sea 押注 Codex，软件开发开始代理化",
-    "url": "https://openai.com/index/sea-david-chen",
+    "id": "openai-news-7fd2c0e73632",
+    "title": "OpenAI 新论文冒头，先看能否复现",
+    "original_title": "Databricks brings GPT-5.5 to enterprise agent workflows",
+    "url": "https://openai.com/index/databricks",
     "source": "OpenAI",
     "source_type": "official",
     "source_rank": "S",
     "category": "models",
     "score": 9.5,
-    "published_at": "2026-05-14T20:30:00.000Z",
+    "published_at": "2026-05-15T00:00:00.000Z",
     "published_at_source": "pubDate",
-    "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+    "summary": "OpenAI 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+    "original_summary": "Databricks uses GPT-5.5 for enterprise agent workflows after the model set a new state of the art on the OfficeQA Pro benchmark.",
     "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
     "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
     "watch_next": "看开发者是否真的迁移工作流",
     "image": null,
     "image_source": null,
     "image_credit": null,
-    "verified_at": "2026-05-15T08:11:07.021Z",
+    "verified_at": "2026-05-18T06:32:04.197Z",
     "duplicate_group": null,
     "evidence_ids": [
-      "evidence-0003"
+      "evidence-0002"
     ],
-    "editorial_score": 160,
+    "editorial_score": 220,
     "editorial_signals": [
       {
         "name": "model_release",
@@ -41,64 +43,436 @@
         "name": "developer_tooling",
         "weight": 25,
         "hits": [
-          "Codex",
-          "agent"
+          "agent",
+          "workflow"
+        ]
+      },
+      {
+        "name": "open_source_release",
+        "weight": 25,
+        "hits": [
+          "benchmark"
+        ]
+      },
+      {
+        "name": "research_signal",
+        "weight": 20,
+        "hits": [
+          "benchmark"
+        ]
+      },
+      {
+        "name": "business_impact",
+        "weight": 15,
+        "hits": [
+          "enterprise"
         ]
       }
     ],
     "editorial_penalties": [],
     "lead_eligible": true,
     "core_eligible": true,
-    "original_title": "Sea's View on the Future of Agentic Software Development with Codex",
-    "original_summary": "Sea Limited's CPO explains why the company is deploying Codex across engineering teams to accelerate AI-native software development in Asia.",
     "visual": "assets/news-visuals/2026-05-15-lead.svg"
   },
   "output_url": "data/2026-05-15-v4/output.html",
   "summary_url": "data/2026-05-15-v4/news-summary.json",
   "content_url": "data/2026-05-15-v4/content.json",
   "vol": "0000",
-  "title": "工具链又拧紧了",
-  "intro_text": "本期从公开 RSS / Atom / official feeds 中筛出 14 条窗口内新闻，Janet 已改写为中文优先版本。",
-  "daily_thesis": "今天窗口里，OpenAI、GitHub Blog、Hugging Face、TechCrunch AI的信号集中在工具链、开源研究和产品落地：不用先背英文标题，也能看懂谁在推进、影响谁、下一步该盯什么。",
+  "title": "开源模型把开源战场收紧了",
+  "intro_text": "今天最值得看的不是热闹数量，而是OpenAI、GitHub Blog、AWS Machine Learning Blog把AI 工具推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。",
+  "daily_thesis": "今天窗口里，OpenAI、GitHub Blog、AWS Machine Learning Blog把产品和研究摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
   "signal_map": [
     {
-      "signal": "模型/工具",
-      "label": "模型/工具",
+      "signal": "模型上新",
       "evidence": [
-        "openai-news-b264b8b470b6"
+        "openai-news-7fd2c0e73632",
+        "openai-news-ed9d35b23509"
       ],
-      "janet_view": "模型和工具链在往真实工作流里收口。",
-      "summary": "模型和工具链在往真实工作流里收口。",
-      "story_id": "openai-news-b264b8b470b6",
-      "story_title": "OpenAI 继续把 Codex 推进工程现场",
+      "janet_view": "OpenAI给了信号：模型上新不是口号，是今天具体新闻里能点开的变化。",
+      "label": "模型上新",
+      "summary": "OpenAI给了信号：模型上新不是口号，是今天具体新闻里能点开的变化。",
+      "story_id": "openai-news-7fd2c0e73632",
+      "story_title": "OpenAI 新论文冒头，先看能否复现",
       "source": "OpenAI",
       "visual": "assets/news-visuals/2026-05-15-signal-1.svg"
     },
     {
-      "signal": "开源/研究",
-      "label": "开源/研究",
+      "signal": "工具收口",
       "evidence": [
-        "github-blog-3c5997071d51"
+        "github-blog-3c5997071d51",
+        "github-blog-1424f24a3ea4"
       ],
-      "janet_view": "开源与论文继续补位，决定后续可复用空间。",
-      "summary": "开源与论文继续补位，决定后续可复用空间。",
+      "janet_view": "GitHub Blog给了信号：工具收口不是口号，是今天具体新闻里能点开的变化。",
+      "label": "工具收口",
+      "summary": "GitHub Blog给了信号：工具收口不是口号，是今天具体新闻里能点开的变化。",
       "story_id": "github-blog-3c5997071d51",
-      "story_title": "GitHub 围绕开发入口放出新信号",
+      "story_title": "GitHub 围绕开发入口开始落到团队里",
       "source": "GitHub Blog",
       "visual": "assets/news-visuals/2026-05-15-signal-2.svg"
     },
     {
-      "signal": "商业/产品",
-      "label": "商业/产品",
+      "signal": "开源补位",
       "evidence": [
-        "huggingface-blog-67c9381f2c92"
+        "github-blog-3c5997071d51",
+        "github-blog-1424f24a3ea4"
       ],
-      "janet_view": "商业侧继续试水，重点看价格、客户和入口。",
-      "summary": "商业侧继续试水，重点看价格、客户和入口。",
-      "story_id": "huggingface-blog-67c9381f2c92",
-      "story_title": "Hugging Face 围绕AI 工具放出新信号",
-      "source": "Hugging Face",
+      "janet_view": "GitHub Blog给了信号：开源补位不是口号，是今天具体新闻里能点开的变化。",
+      "label": "开源补位",
+      "summary": "GitHub Blog给了信号：开源补位不是口号，是今天具体新闻里能点开的变化。",
+      "story_id": "github-blog-3c5997071d51",
+      "story_title": "GitHub 围绕开发入口开始落到团队里",
+      "source": "GitHub Blog",
       "visual": "assets/news-visuals/2026-05-15-signal-3.svg"
+    }
+  ],
+  "edition_items_count": 25,
+  "homepage_items_count": 10,
+  "compact_news": [
+    {
+      "id": "openai-news-ed9d35b23509",
+      "title": "OpenAI 押注 Codex，开发开始代理化",
+      "original_title": "Sea's View on the Future of Agentic Software Development with Codex",
+      "url": "https://openai.com/index/sea-david-chen",
+      "source": "OpenAI",
+      "source_type": "official",
+      "source_rank": "S",
+      "category": "models",
+      "score": 9.5,
+      "published_at": "2026-05-14T20:30:00.000Z",
+      "published_at_source": "pubDate",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "original_summary": "Sea Limited's CPO explains why the company is deploying Codex across engineering teams to accelerate AI-native software development in Asia.",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看开发者是否真的迁移工作流",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-18T06:32:04.197Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0006"
+      ],
+      "editorial_score": 160,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "Codex",
+            "agent"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true
+    },
+    {
+      "id": "aws-machine-learning-6fdfeec691e9",
+      "title": "AWS 把智能体继续推向开发者",
+      "original_title": "Control where your AI agents can browse with Chrome enterprise policies on Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/control-where-your-ai-agents-can-browse-with-chrome-enterprise-policies-on-amazon-bedrock-agentcore/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-14T17:17:35.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "In this post, you will configure Chrome enterprise policies to restrict a browser agent to a specific website, observe the policy enforcement through session recording, and demonstrate custom root CA certificates usin...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看开发者是否真的迁移工作流",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-18T06:32:04.197Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0025"
+      ],
+      "editorial_score": 145,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "business_impact",
+          "weight": 15,
+          "hits": [
+            "enterprise"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true
+    },
+    {
+      "id": "aws-machine-learning-0e89d78bb059",
+      "title": "AWS 把智能体继续推向开发者",
+      "original_title": "Real-time voice agents with Stream Vision Agents and Amazon Nova 2 Sonic",
+      "url": "https://aws.amazon.com/blogs/machine-learning/real-time-voice-agents-with-stream-vision-agents-and-amazon-nova-2-sonic/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-14T17:23:48.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "In this post, you learn how to combine Stream's Vision Agents open-source framework with Amazon Bedrock and Amazon Nova 2 Sonic to build real-time voice agents that can be production-ready in minutes. You'll learn how...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看开发者是否真的迁移工作流",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-18T06:32:04.197Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0023"
+      ],
+      "editorial_score": 130,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent",
+            "integration"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true
+    },
+    {
+      "id": "openai-news-542a320d78bf",
+      "title": "OpenAI 围绕Codex开始落到团队里",
+      "original_title": "How business operations teams use Codex",
+      "url": "https://openai.com/academy/codex-for-work/how-business-operations-teams-use-codex",
+      "source": "OpenAI",
+      "source_type": "official",
+      "source_rank": "S",
+      "category": "models",
+      "score": 9.5,
+      "published_at": "2026-05-15T00:00:00.000Z",
+      "published_at_source": "pubDate",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "original_summary": "See how business operations teams can use Codex to create initiative briefs, strategy updates, leadership decision packets, progress updates, and more from real work inputs.",
+      "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+      "watch_next": "看源站是否给出后续细节",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-18T06:32:04.197Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0001"
+      ],
+      "editorial_score": 125,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "Codex"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true
+    },
+    {
+      "id": "openai-news-ccc81d221bea",
+      "title": "OpenAI 围绕Codex开始落到团队里",
+      "original_title": "How data science teams use Codex",
+      "url": "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex",
+      "source": "OpenAI",
+      "source_type": "official",
+      "source_rank": "S",
+      "category": "models",
+      "score": 9.5,
+      "published_at": "2026-05-15T00:00:00.000Z",
+      "published_at_source": "pubDate",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "original_summary": "See how data science teams can use Codex to build root-cause briefs, impact readouts, KPI memos, scoped analyses, and dashboard specs from real work inputs.",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+      "watch_next": "看源站是否给出后续细节",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-18T06:32:04.197Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0003"
+      ],
+      "editorial_score": 125,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "Codex"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true
+    },
+    {
+      "id": "openai-news-0536bbd158bb",
+      "title": "OpenAI 围绕Codex开始落到团队里",
+      "original_title": "How sales teams use Codex",
+      "url": "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex",
+      "source": "OpenAI",
+      "source_type": "official",
+      "source_rank": "S",
+      "category": "models",
+      "score": 9.5,
+      "published_at": "2026-05-15T00:00:00.000Z",
+      "published_at_source": "pubDate",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "original_summary": "See how sales teams can use Codex to create pipeline briefs, meeting prep packets, forecast reviews, account plans, and stalled-deal diagnoses from real work inputs.",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
+      "watch_next": "看源站是否给出后续细节",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-18T06:32:04.197Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0005"
+      ],
+      "editorial_score": 125,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "Codex"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true
+    }
+  ],
+  "homepage_items": [
+    {
+      "role": "lead",
+      "story_id": "openai-news-7fd2c0e73632",
+      "title": "OpenAI 新论文冒头，先看能否复现",
+      "source": "OpenAI",
+      "category": "models",
+      "visual": "assets/news-visuals/2026-05-15-lead.svg"
+    },
+    {
+      "role": "signal",
+      "story_id": "openai-news-7fd2c0e73632",
+      "title": "OpenAI 新论文冒头，先看能否复现",
+      "source": "OpenAI",
+      "category": "models",
+      "visual": "assets/news-visuals/2026-05-15-signal-1.svg"
+    },
+    {
+      "role": "signal",
+      "story_id": "github-blog-3c5997071d51",
+      "title": "GitHub 围绕开发入口开始落到团队里",
+      "source": "GitHub Blog",
+      "category": "agents",
+      "visual": "assets/news-visuals/2026-05-15-signal-2.svg"
+    },
+    {
+      "role": "signal",
+      "story_id": "github-blog-3c5997071d51",
+      "title": "GitHub 围绕开发入口开始落到团队里",
+      "source": "GitHub Blog",
+      "category": "agents",
+      "visual": "assets/news-visuals/2026-05-15-signal-3.svg"
+    },
+    {
+      "role": "compact",
+      "story_id": "openai-news-ed9d35b23509",
+      "title": "OpenAI 押注 Codex，开发开始代理化",
+      "source": "OpenAI",
+      "category": "models",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
+    },
+    {
+      "role": "compact",
+      "story_id": "aws-machine-learning-6fdfeec691e9",
+      "title": "AWS 把智能体继续推向开发者",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。"
+    },
+    {
+      "role": "compact",
+      "story_id": "aws-machine-learning-0e89d78bb059",
+      "title": "AWS 把智能体继续推向开发者",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。"
+    },
+    {
+      "role": "compact",
+      "story_id": "openai-news-542a320d78bf",
+      "title": "OpenAI 围绕Codex开始落到团队里",
+      "source": "OpenAI",
+      "category": "models",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
+    },
+    {
+      "role": "compact",
+      "story_id": "openai-news-ccc81d221bea",
+      "title": "OpenAI 围绕Codex开始落到团队里",
+      "source": "OpenAI",
+      "category": "models",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
+    },
+    {
+      "role": "compact",
+      "story_id": "openai-news-0536bbd158bb",
+      "title": "OpenAI 围绕Codex开始落到团队里",
+      "source": "OpenAI",
+      "category": "models",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
     }
   ]
 }

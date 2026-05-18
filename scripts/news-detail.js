@@ -38,7 +38,7 @@
     document.getElementById('news-detail-summary').textContent = content.daily_thesis || content.intro_text || '';
     document.getElementById('news-detail-meta').innerHTML = [
       chip(content.theme),
-      chip(`${stories.length} signals`)
+      chip(`${stories.length} 条新闻`)
     ].join('');
     document.getElementById('news-detail-content').innerHTML = `
       <div class="news-story-list">
@@ -68,11 +68,11 @@
     document.getElementById('news-detail-content').innerHTML = `
       <article class="news-story-detail">
         ${story.visual ? `<img class="news-detail-visual" src="${escapeHtml(story.visual)}" alt="${escapeHtml(story.title || '新闻视觉图')}" loading="lazy" decoding="async">` : ''}
-        ${story.original_title ? `<section><span class="section-kicker">Source Title</span><p class="news-original-title">原文：${escapeHtml(story.original_title)}</p></section>` : ''}
-        ${story.why_it_matters ? `<section><span class="section-kicker">Why it matters</span><p>${escapeHtml(story.why_it_matters)}</p></section>` : ''}
-        ${story.janet_take ? `<section><span class="section-kicker">Janet Take</span><p>${escapeHtml(story.janet_take)}</p></section>` : ''}
-        ${story.watch_next ? `<section><span class="section-kicker">Watch Next</span><p>${escapeHtml(story.watch_next)}</p></section>` : ''}
-        ${Array.isArray(story.evidence_ids) && story.evidence_ids.length ? `<section><span class="section-kicker">Evidence</span><p>${story.evidence_ids.map(escapeHtml).join(' · ')}</p></section>` : ''}
+        ${story.janet_take ? `<section><span class="section-kicker">Janet 判断</span><p>${escapeHtml(story.janet_take)}</p></section>` : ''}
+        ${story.why_it_matters ? `<section><span class="section-kicker">为什么重要</span><p>${escapeHtml(story.why_it_matters)}</p></section>` : ''}
+        ${story.watch_next ? `<section><span class="section-kicker">接下来观察</span><p>${escapeHtml(story.watch_next)}</p></section>` : ''}
+        ${Array.isArray(story.evidence_ids) && story.evidence_ids.length ? `<section><span class="section-kicker">证据线索</span><p>${story.evidence_ids.map(escapeHtml).join(' · ')}</p></section>` : ''}
+        ${story.original_title ? `<section><span class="section-kicker">原文标题</span><p class="news-original-title">${escapeHtml(story.original_title)}</p></section>` : ''}
         <div class="news-detail-actions">
           ${story.url ? `<a href="${escapeHtml(story.url)}" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>` : ''}
           <a href="data/${encodeURIComponent(edition)}/output.html">返回本期晨报</a>

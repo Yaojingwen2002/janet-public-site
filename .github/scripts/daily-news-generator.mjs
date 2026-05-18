@@ -6,10 +6,15 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 
+if (!process.env.CI && !process.env.NODE_TLS_REJECT_UNAUTHORIZED) {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
+
 const ROOT = resolve(process.cwd());
 const TZ = 'Asia/Shanghai';
 const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
 const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
+const EDITORIAL_COPY_RULES = resolve(ROOT, '.github/scripts/editorial-copy-rules.json');
 const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
 const VISUAL_DIR = resolve(ROOT, 'assets/news-visuals');
 const FORBIDDEN_TAKES = [
@@ -174,11 +179,34 @@ function parseFeed(text, source) {
   return items;
 }
 
+function feedLinksFromHtml(html, baseUrl) {
+  const links = [];
+  const linkRe = /<link\b[^>]*>/gi;
+  for (const match of html.matchAll(linkRe)) {
+    const tagText = match[0];
+    const rel = (tagText.match(/\brel=["']([^"']+)["']/i)?.[1] || '').toLowerCase();
+    const type = (tagText.match(/\btype=["']([^"']+)["']/i)?.[1] || '').toLowerCase();
+    const href = tagText.match(/\bhref=["']([^"']+)["']/i)?.[1] || '';
+    if (!href) continue;
+    const isFeed = rel.includes('alternate') && (
+      type.includes('rss') ||
+      type.includes('atom') ||
+      type.includes('xml')
+    );
+    if (!isFeed) continue;
+    links.push(normalizeUrl(href, baseUrl));
+  }
+  return [...new Set(links)];
+}
+
 async function fetchSource(source) {
   if (!source.enabled) return { items: [], error: null };
-  const urls = [source.url, source.fallback_url].filter(Boolean);
+  const urls = [source.rss_url, source.url, source.fallback_url].filter(Boolean);
   const errors = [];
+  const visited = new Set();
   for (const url of urls) {
+    if (visited.has(url)) continue;
+    visited.add(url);
     try {
       const response = await fetch(url, {
         headers: {
@@ -191,12 +219,36 @@ async function fetchSource(source) {
       const text = await response.text();
       const items = parseFeed(text, { ...source, url });
       if (items.length) return { items, error: null };
+      const discovered = feedLinksFromHtml(text, url).filter((link) => !visited.has(link));
+      for (const feedUrl of discovered.slice(0, 3)) {
+        visited.add(feedUrl);
+        try {
+          const feedResponse = await fetch(feedUrl, {
+            headers: {
+              'user-agent': 'JanetDailyNewsBot/31',
+              accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.8'
+            },
+            redirect: 'follow'
+          });
+          if (!feedResponse.ok) throw new Error(`http_${feedResponse.status}`);
+          const feedText = await feedResponse.text();
+          const feedItems = parseFeed(feedText, { ...source, url: feedUrl });
+          if (feedItems.length) return { items: feedItems, error: null };
+          errors.push(`${feedUrl}:no_feed_items`);
+        } catch (error) {
+          errors.push(`${feedUrl}:${error.message}`);
+        }
+      }
       errors.push(`${url}:no_feed_items`);
     } catch (error) {
       errors.push(`${url}:${error.message}`);
     }
   }
-  return { items: [], error: errors.join('; ') };
+  return {
+    items: [],
+    error: errors.join('; '),
+    empty: errors.length > 0 && errors.every((entry) => entry.includes('no_feed_items'))
+  };
 }
 
 function exclusion(item, reason) {
@@ -282,7 +334,29 @@ function sectionFor(category) {
 }
 
 function sourceType(source) {
-  if (['OpenAI', 'Google AI', 'Microsoft AI', 'GitHub Blog', 'Hugging Face', 'arXiv cs.AI', 'arXiv cs.CL', 'arXiv cs.LG', 'arXiv stat.ML'].includes(source)) {
+  if ([
+    'OpenAI',
+    'Anthropic',
+    'Google AI',
+    'Google DeepMind',
+    'Google Research',
+    'Microsoft AI',
+    'Microsoft Research AI',
+    'GitHub Blog',
+    'Hugging Face',
+    'Meta AI',
+    'Mistral AI',
+    'NVIDIA AI',
+    'AWS Machine Learning Blog',
+    'arXiv cs.AI',
+    'arXiv cs.CL',
+    'arXiv cs.LG',
+    'arXiv stat.ML',
+    'Stanford HAI',
+    'Berkeley BAIR',
+    'LangChain Blog',
+    'LlamaIndex Blog'
+  ].includes(source)) {
     return 'official';
   }
   return 'media';
@@ -321,9 +395,25 @@ function chineseSourceName(source) {
     'GitHub Blog': 'GitHub',
     'Hugging Face': 'Hugging Face',
     'Google AI': 'Google AI',
+    'Google DeepMind': 'DeepMind',
+    'Google Research': 'Google Research',
     'Microsoft AI': 'Microsoft',
+    'Microsoft Research AI': 'Microsoft Research',
+    'Anthropic': 'Anthropic',
+    'Meta AI': 'Meta',
+    'Mistral AI': 'Mistral',
+    'NVIDIA AI': 'NVIDIA',
+    'AWS Machine Learning Blog': 'AWS',
     'TechCrunch AI': 'TechCrunch',
     'VentureBeat AI': 'VentureBeat',
+    'The Verge AI': 'The Verge',
+    'MIT Technology Review AI': 'MIT Tech Review',
+    'Stanford HAI': 'Stanford HAI',
+    'Berkeley BAIR': 'Berkeley BAIR',
+    'Papers with Code Blog': 'Papers with Code',
+    'Replicate Blog': 'Replicate',
+    'LangChain Blog': 'LangChain',
+    'LlamaIndex Blog': 'LlamaIndex',
     'arXiv cs.AI': 'arXiv',
     'arXiv cs.CL': 'arXiv',
     'arXiv cs.LG': 'arXiv',
@@ -478,23 +568,87 @@ function sourceNames(stories, limit = 4) {
   return [...new Set(stories.map((story) => story.source).filter(Boolean))].slice(0, limit);
 }
 
-function titleForEdition(stories, rules) {
+function recentTitles(limit = 7) {
+  const titles = [];
+  const index = readJson(resolve(ROOT, 'data/news-index.json'), null);
+  if (Array.isArray(index?.editions)) {
+    for (const edition of index.editions.slice(0, limit)) {
+      if (edition.title) titles.push(edition.title);
+    }
+  }
+  const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
+  for (const editionId of manifest.slice(0, limit)) {
+    const summary = readJson(resolve(ROOT, `data/${editionId}/news-summary.json`), null);
+    const content = readJson(resolve(ROOT, `data/${editionId}/content.json`), null);
+    if (summary?.title) titles.push(summary.title);
+    if (summary?.theme) titles.push(summary.theme);
+    if (content?.theme) titles.push(content.theme);
+  }
+  return [...new Set(titles.filter(Boolean))].slice(0, limit * 3);
+}
+
+function fillTitlePattern(pattern, subject, verb, object) {
+  return String(pattern)
+    .replaceAll('{subject}', subject)
+    .replaceAll('{verb}', verb)
+    .replaceAll('{object}', object);
+}
+
+function titleForEdition(stories, rules, date) {
   const lead = stories[0] || {};
-  const sources = sourceNames(stories, 3);
+  const top = stories.slice(0, 5);
+  const sources = sourceNames(top, 4);
   const hasOpenSource = stories.some((story) => story.category === 'open_source' || /hugging face|github/i.test(story.source || story.title || ''));
   const hasResearch = stories.some((story) => story.category === 'research' || /arxiv|paper|benchmark/i.test(story.source || story.title || ''));
   const hasTools = stories.some((story) => /api|sdk|agent|copilot|workflow|developer|tool/i.test(`${story.title} ${story.summary}`));
-  const candidates = [
-    hasTools ? '工具链又拧紧了' : '',
-    hasOpenSource ? '开源模型继续补位' : '',
-    hasResearch ? '论文先把路探了' : '',
-    sources.includes('OpenAI') || sources.includes('Google AI') ? '巨头继续卡入口' : '',
-    lead.source === 'GitHub Blog' ? '开发入口又收紧' : '',
-    '今天AI有点实在'
-  ].filter(Boolean);
-  const forbidden = rules.forbidden_frontend_phrases || [];
-  const selected = candidates.find((item) => item.length <= 24 && !forbidden.some((phrase) => item.includes(phrase))) || '今天AI有点实在';
-  return selected;
+  const hasModel = stories.some((story) => /openai|anthropic|google|deepmind|mistral|model|reasoning|multimodal/i.test(`${story.source} ${story.title} ${story.summary}`));
+  const subject = hasTools
+    ? '开发者入口'
+    : hasOpenSource
+      ? '开源模型'
+      : hasResearch
+        ? '研究侧'
+        : hasModel
+          ? '模型'
+          : 'AI 工位';
+  const object = hasTools
+    ? '开发流程'
+    : hasOpenSource
+      ? '开源战场'
+      : hasResearch
+        ? '评测短板'
+        : hasModel
+          ? '模型入口'
+          : '企业工作流';
+  const verb = hasTools ? '进工位' : hasOpenSource ? '补位' : hasResearch ? '换挡' : '抢入口';
+  const titleRules = rules.title_generation || {};
+  const patterns = titleRules.title_patterns || [];
+  const generated = patterns.map((pattern) => fillTitlePattern(pattern, subject, verb, object));
+  const concrete = [
+    lead.source ? `${chineseSourceName(lead.source)}把入口往前挪` : '',
+    sources.includes('OpenAI') ? 'OpenAI把开发流往前推' : '',
+    sources.includes('GitHub Blog') ? 'GitHub继续收开发入口' : '',
+    sources.includes('Hugging Face') ? '开源侧今天继续补位' : '',
+    hasResearch ? '论文先把短板照出来' : '',
+    `${subject}今天有实事`
+  ];
+  const candidates = [...generated, ...concrete]
+    .filter(Boolean)
+    .map((item) => String(item).replace(/\s+/g, '').trim());
+  const forbidden = [...(rules.forbidden_frontend_phrases || []), '工具链又拧紧了', '公开源池晨报'];
+  const history = recentTitles(Number(titleRules.forbid_repeat_days || 7));
+  const maxLength = Number(titleRules.max_length_cn || 18);
+  const selected = candidates.find((item) => (
+    item.length <= maxLength + 6 &&
+    !history.includes(item) &&
+    !forbidden.some((phrase) => item.includes(phrase)) &&
+    hasChinese(item)
+  ));
+  if (selected) return selected;
+  const suffix = sources[0] ? chineseSourceName(sources[0]) : date.replaceAll('-', '.');
+  const fallback = `${subject}换挡：${suffix}`;
+  if (!history.includes(fallback)) return fallback;
+  return `${subject}换挡${date.slice(5).replace('-', '')}`;
 }
 
 function thesisForEdition(stories) {
@@ -617,11 +771,15 @@ function emptySections(template) {
   return sections;
 }
 
-function buildContent(template, included, date, editionType, rules) {
-  const now = new Date().toISOString();
-  const ordered = orderStoriesForEdition(included, rules);
-  const displayItems = ordered.filter((item) => item.core_eligible).slice(0, editionType === 'limited_edition' ? 9 : 18);
-  const stories = displayItems.map((item) => ({
+function publicIntroForEdition(stories) {
+  const lead = stories[0] || {};
+  const sources = sourceNames(stories.slice(0, 6), 4).join('、');
+  const leadTopic = normalizeTopic(lead);
+  return clamp(`今天最值得看的不是热闹数量，而是${sources || '几个关键来源'}把${leadTopic}推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。`, 110);
+}
+
+function storyToPublicItem(item) {
+  return {
     id: item.id,
     title: clamp(makeChineseTitle(item), 52),
     original_title: clamp(item.title, 140),
@@ -641,7 +799,7 @@ function buildContent(template, included, date, editionType, rules) {
     image: null,
     image_source: null,
     image_credit: null,
-    verified_at: now,
+    verified_at: new Date().toISOString(),
     duplicate_group: null,
     evidence_ids: item.evidence_ids,
     editorial_score: item.editorial_score,
@@ -649,12 +807,23 @@ function buildContent(template, included, date, editionType, rules) {
     editorial_penalties: item.editorial_penalties,
     lead_eligible: item.lead_eligible,
     core_eligible: item.core_eligible
-  }));
+  };
+}
+
+function buildContent(template, included, date, editionType, rules) {
+  const now = new Date().toISOString();
+  const ordered = orderStoriesForEdition(included, rules);
+  const stories = ordered.map(storyToPublicItem);
+  stories.forEach((story) => {
+    story.verified_at = now;
+  });
   for (const phrase of FORBIDDEN_TAKES) {
     if (JSON.stringify(stories).includes(phrase)) throw new Error(`forbidden_janet_take:${phrase}`);
   }
 
   const sections = emptySections(template);
+  const homepageItems = [];
+  const hiddenItems = [];
   stories.forEach((story, index) => {
     if (index === 0) {
       story.visual = writeNewsVisual(`${date}-lead.svg`, story.title, story.source, story.category);
@@ -667,7 +836,7 @@ function buildContent(template, included, date, editionType, rules) {
     sections[section].items.push(story);
   }
 
-  const theme = titleForEdition(stories, rules);
+  const theme = titleForEdition(stories, rules, date);
   const signalMap = signalMapForEdition(stories).map((signal, index) => {
     const story = stories.find((item) => signal.evidence.includes(item.id)) || stories[index + 1] || stories[0];
     return {
@@ -680,17 +849,66 @@ function buildContent(template, included, date, editionType, rules) {
       visual: writeNewsVisual(`${date}-signal-${index + 1}.svg`, signal.signal, story?.source || 'Janet', story?.category || 'models')
     };
   });
+  homepageItems.push({
+    role: 'lead',
+    story_id: stories[0]?.id || '',
+    title: stories[0]?.title || '',
+    source: stories[0]?.source || '',
+    category: stories[0]?.category || '',
+    visual: stories[0]?.visual || ''
+  });
+  signalMap.forEach((signal) => {
+    homepageItems.push({
+      role: 'signal',
+      story_id: signal.story_id,
+      title: signal.story_title,
+      source: signal.source,
+      category: stories.find((story) => story.id === signal.story_id)?.category || '',
+      visual: signal.visual
+    });
+  });
+  const signalIds = new Set(signalMap.map((signal) => signal.story_id).filter(Boolean));
+  const compactNews = stories
+    .filter((story) => story.id !== stories[0]?.id && !signalIds.has(story.id) && story.core_eligible)
+    .slice(0, 6);
+  compactNews.forEach((story) => homepageItems.push({
+    role: 'compact',
+    story_id: story.id,
+    title: story.title,
+    source: story.source,
+    category: story.category,
+    summary: story.summary
+  }));
+  const homepageIds = new Set(homepageItems.map((item) => item.story_id).filter(Boolean));
+  for (const story of stories) {
+    if (!homepageIds.has(story.id)) {
+      hiddenItems.push({
+        id: story.id,
+        title: story.title,
+        source: story.source,
+        reason: story.core_eligible ? 'not_home_slot' : 'low_editorial_score',
+        editorial_score: story.editorial_score
+      });
+    }
+  }
+
   return {
     ...template,
     date,
     vol: template.vol || '0000',
     theme,
-    intro_text: `本期从公开 RSS / Atom / official feeds 中筛出 ${included.length} 条窗口内新闻，按新闻价值重新排序。`,
+    title: theme,
+    intro_text: publicIntroForEdition(stories),
     daily_thesis: thesisForEdition(stories),
     signal_map: signalMap,
     lead_story_id: stories[0].id,
     sections,
-    source_summary: `公开来源自动生成；included=${included.length}; edition=${editionType}; lead_score=${stories[0]?.editorial_score || 0}`,
+    collected_items_count: included.length,
+    edition_items: stories,
+    homepage_items: homepageItems,
+    hidden_items: hiddenItems,
+    compact_news: compactNews,
+    source_summary: `今日重点：${sourceNames(stories, 4).join('、')}。完整来源与覆盖情况见状态页。`,
     source_ledger: ordered.map((story) => ({
       news_id: story.id,
       source: story.source,
@@ -751,20 +969,22 @@ function renderHtml(content) {
   <p>${escapeHtml(content.daily_thesis)}</p>
   ${lead.visual ? `<img class="visual" src="../../${escapeHtml(lead.visual)}" alt="${escapeHtml(lead.title)}">` : ''}
   <section>
-    <div class="k">Signal Map</div>
+    <div class="k">今日三条主线</div>
     <div class="signal">${content.signal_map.map((item) => `<div class="card">${item.visual ? `<img src="../../${escapeHtml(item.visual)}" alt="${escapeHtml(item.label || item.signal)}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></div>`).join('')}</div>
   </section>
   <section>
-    <div class="k">Lead Story</div>
+    <div class="k">今日封面</div>
     <h2>${escapeHtml(lead.title || '')}</h2>
     ${lead.original_title ? `<small>原文：${escapeHtml(lead.original_title)}</small>` : ''}
     <p>${escapeHtml(lead.summary || '')}</p>
   </section>
+  <section>
+    <div class="k">今日更多</div>
+    <div class="signal">${(content.compact_news || []).map((item) => `<div class="card"><small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></div>`).join('')}</div>
+  </section>
   ${Object.entries(content.sections).filter(([key]) => key !== 'lead_story').map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
   <section>
-    <div class="k">Source Summary</div>
-    <p>${escapeHtml(content.source_summary)}</p>
-    <div class="k">Watch Next</div>
+    <div class="k">接下来观察</div>
     <ul>${content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
   </section>
 </main>
@@ -782,11 +1002,15 @@ function buildSummary(template, content, editionId, editionType) {
     theme: content.theme,
     title: content.theme,
     edition_type: editionType,
-    item_count: Object.values(content.sections).flatMap((section) => section.items || []).length,
+    item_count: (content.edition_items || Object.values(content.sections).flatMap((section) => section.items || [])).length,
+    edition_items_count: (content.edition_items || []).length,
+    homepage_items_count: (content.homepage_items || []).length,
     lead_story: lead,
     daily_thesis: content.daily_thesis,
     intro_text: content.intro_text,
     signal_map: content.signal_map,
+    compact_news: content.compact_news || [],
+    homepage_items: content.homepage_items || [],
     output_url: `data/${editionId}/output.html`,
     summary_url: `data/${editionId}/news-summary.json`,
     content_url: `data/${editionId}/content.json`
@@ -815,9 +1039,12 @@ function main() {
     source_count: pool.sources.filter((source) => source.enabled).length,
     source_success_count: 0,
     source_error_count: 0,
+    source_empty_count: 0,
     raw_items: 0,
     included: 0,
     excluded: 0,
+    exclusion_reasons: {},
+    source_reports: [],
     edition_type: '',
     published: false,
     published_edition_id: '',
@@ -829,13 +1056,32 @@ function main() {
   const rawItems = [];
   const promises = pool.sources.filter((item) => item.enabled).map(async (source) => {
     const result = await fetchSource(source);
+    const report = {
+      id: source.id,
+      source: source.source,
+      category: source.category,
+      rank: source.rank,
+      status: 'success',
+      item_count: result.items.length,
+      error: ''
+    };
+    if (result.empty) {
+      status.source_empty_count += 1;
+      report.status = 'empty';
+      report.error = result.error || 'no_feed_items';
+      status.source_reports.push(report);
+      return;
+    }
     if (result.error) {
       status.source_error_count += 1;
       status.errors.push({ source_id: source.id, error: result.error });
+      report.status = 'error';
+      report.error = result.error;
     } else {
       status.source_success_count += 1;
       rawItems.push(...result.items);
     }
+    status.source_reports.push(report);
   });
 
   return Promise.all(promises).then(() => {
@@ -843,6 +1089,10 @@ function main() {
     const { included, excluded } = filterWindow(rawItems, window);
     status.included = included.length;
     status.excluded = excluded.length;
+    status.exclusion_reasons = excluded.reduce((acc, item) => {
+      acc[item.excluded_reason] = (acc[item.excluded_reason] || 0) + 1;
+      return acc;
+    }, {});
 
     if (included.length < Number(pool.min_publish_count || 5)) {
       status.status = 'blocked_insufficient_fresh_news';

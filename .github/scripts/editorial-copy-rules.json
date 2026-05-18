@@ -1,0 +1,31 @@
+{
+  "language_policy": {
+    "primary_language": "zh-CN",
+    "original_language_display": "secondary",
+    "never_use_raw_english_title_as_primary": true
+  },
+  "forbidden_public_phrases": [
+    "本期从公开 RSS",
+    "Atom / official feeds",
+    "窗口内新闻",
+    "Janet 已改写",
+    "筛出",
+    "入选信号",
+    "值得关注",
+    "持续关注",
+    "AI 正在改变世界",
+    "未来已来",
+    "行业正在重构"
+  ],
+  "summary_policy": {
+    "min_cn_chars": 45,
+    "max_cn_chars": 110,
+    "must_explain": ["谁", "做了什么", "影响谁"]
+  },
+  "janet_take_policy": {
+    "min_cn_chars": 24,
+    "max_cn_chars": 80,
+    "tone": "sharp useful slightly sarcastic",
+    "must_not_be_generic": true
+  }
+}

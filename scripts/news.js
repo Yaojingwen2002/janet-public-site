@@ -168,6 +168,18 @@
     return buildV4SummaryFromContent(bundle.content || {}, bundle.entry);
   }
 
+  function isEngineeringCopy(text) {
+    return /本期从公开 RSS|Atom \/ official feeds|窗口内新闻|Janet 已改写|筛出|published_at|raw_items|included|source_success_count|source_error_count/i.test(String(text || ''));
+  }
+
+  function readerIntro(summary, lead) {
+    const intro = summary.intro_text || summary.daily_thesis || '';
+    if (intro && !isEngineeringCopy(intro)) return intro;
+    const source = lead.source || '今天的几个关键来源';
+    const title = lead.title || 'AI 新闻';
+    return source + ' 把 "' + title + '" 推到台前。今天先看谁在抢入口、谁在补工具、谁只是发声明。';
+  }
+
   function renderV4HomepageNews(bundle) {
     const container = document.getElementById('news-editorial');
     const countEl = document.getElementById('news-count');
@@ -178,6 +190,11 @@
     const lead = summary.lead_story || {};
     const sectionCounts = summary.section_counts || {};
     const signalMap = Array.isArray(summary.signal_map) ? summary.signal_map.slice(0, 3) : [];
+    const compactNews = Array.isArray(summary.compact_news)
+      ? summary.compact_news.slice(0, 6)
+      : Array.isArray(summary.homepage_items)
+        ? summary.homepage_items.filter(function(item) { return item.role === 'compact'; }).slice(0, 6)
+        : [];
     const outputUrl = safeLocalPath(summary.output_url || ('data/' + bundle.entry + '/output.html'));
     const leadUrl = safeExternalUrl(lead.url);
     const issueLabel = formatIssueLabel(summary, bundle.entry);
@@ -202,6 +219,17 @@
       '</article>';
     }).join('');
 
+    const compactCards = compactNews.map(function(item) {
+      return '<article class="news-compact-card janet-card">' +
+        '<div class="news-compact-card__icon">' + escapeHtml((item.category || 'AI').slice(0, 2).toUpperCase()) + '</div>' +
+        '<div>' +
+          '<span>' + escapeHtml(item.source || 'Janet') + '</span>' +
+          '<strong>' + escapeHtml(item.title || '今日新闻') + '</strong>' +
+          '<p>' + escapeHtml(item.summary || '') + '</p>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+
     container.innerHTML =
       '<article class="news-v4-card">' +
         '<div class="news-v4-card-bg"></div>' +
@@ -213,7 +241,7 @@
         '<div class="news-v4-main">' +
           '<div class="news-v4-copy">' +
             '<h3 class="news-v4-theme">' + escapeHtml(summary.theme || '今日 AI 快车箱') + '</h3>' +
-            '<p class="news-v4-intro">' + escapeHtml(summary.intro_text || summary.daily_thesis || '') + '</p>' +
+            '<p class="news-v4-intro">' + escapeHtml(readerIntro(summary, lead)) + '</p>' +
             (lead.title ? (
               '<div class="news-v4-lead">' +
                 '<span class="news-v4-lead-label">今日封面新闻</span>' +
@@ -234,6 +262,7 @@
           '</div>' +
         '</div>' +
         (signalCards ? '<div class="news-signal-map">' + signalCards + '</div>' : '') +
+        (compactCards ? '<div class="news-more-strip"><div class="news-more-strip__head"><span>今日更多</span><small>不是所有新闻都适合当头条，但这些也值得看一眼。</small></div><div class="news-compact-grid">' + compactCards + '</div></div>' : '') +
       '</article>';
 
     if (countEl) countEl.textContent = '今日 ' + String(count || 0) + ' 条';

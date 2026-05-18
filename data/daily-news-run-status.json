@@ -1,15 +1,15 @@
 {
   "status": "blocked_insufficient_fresh_news",
-  "run_at": "2026-05-17T04:42:01.024Z",
+  "run_at": "2026-05-18T02:47:36.781Z",
   "timezone": "Asia/Shanghai",
-  "window_start": "2026-05-16 17:00:00",
-  "window_end": "2026-05-17 09:00:00",
+  "window_start": "2026-05-17 17:00:00",
+  "window_end": "2026-05-18 09:00:00",
   "source_count": 11,
   "source_success_count": 7,
   "source_error_count": 4,
   "raw_items": 1812,
-  "included": 3,
-  "excluded": 1809,
+  "included": 4,
+  "excluded": 1808,
   "edition_type": "blocked",
   "published": false,
   "published_edition_id": "",
@@ -17,12 +17,12 @@
   "published_at_window_enforced": true,
   "errors": [
     {
-      "source_id": "arxiv-cs-ai",
-      "error": "http://export.arxiv.org/rss/cs.AI:no_feed_items"
-    },
-    {
       "source_id": "arxiv-cs-cl",
       "error": "http://export.arxiv.org/rss/cs.CL:no_feed_items"
+    },
+    {
+      "source_id": "arxiv-cs-ai",
+      "error": "http://export.arxiv.org/rss/cs.AI:no_feed_items"
     },
     {
       "source_id": "arxiv-stat-ml",

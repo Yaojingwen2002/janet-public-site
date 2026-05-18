@@ -25,6 +25,16 @@ const FORBIDDEN_TAKES = [
   '值得关注',
   '持续关注'
 ];
+const SECTION_DEFS = [
+  { key: 'models', label: '模型与产品', categories: ['models'], min: 1, max: 4 },
+  { key: 'agents', label: 'Agent 与工具', categories: ['agents', 'developer_tooling'], min: 1, max: 4 },
+  { key: 'open_source', label: '开源与论文', categories: ['open_source', 'research', 'papers'], min: 1, max: 5 },
+  { key: 'business', label: '商业与入口', categories: ['business', 'enterprise'], min: 0, max: 4 },
+  { key: 'china_perspective', label: '中国视角', categories: ['china_perspective', 'china'], min: 0, max: 3 },
+  { key: 'creator_opportunity', label: '创作者机会', categories: ['creator_opportunity', 'creator', 'business'], min: 0, max: 3 },
+  { key: 'more_ai', label: '更多 AI 动态', categories: [], min: 0, max: 6 }
+];
+const SECTION_LABELS = Object.fromEntries(SECTION_DEFS.map((item) => [item.key, item.label]));
 
 function parseArgs(argv) {
   const args = {};
@@ -694,6 +704,8 @@ function whyItMatters(story) {
 
 function janetTake(story) {
   const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
+  const source = chineseSourceName(story.source);
+  const topic = normalizeTopic(story);
   if (/availability report|status report|incident|outage|maintenance/.test(text)) {
     return '这类更像值班记录，能进归档，但别让它抢头条。';
   }
@@ -709,16 +721,52 @@ function janetTake(story) {
   if (/enterprise|pricing|funding|partnership|customer/.test(text)) {
     return '商业新闻的看点是钱和入口流向谁，口号先放一边。';
   }
-  return '这条先按源站事实看，别急着拔高成时代宣言。';
+  return `${source}这条不必喊口号，先看它会不会把${topic}变成可用入口。`;
 }
 
 function watchNext(story) {
   const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
-  if (/api|sdk|developer|workflow|copilot|agent/.test(text)) return '看开发者是否真的迁移工作流';
-  if (/hugging face|open source|weights|dataset/.test(text)) return '看社区复现和二次封装速度';
-  if (/arxiv|paper|benchmark/.test(text)) return '看是否出现代码和独立复现';
-  if (/pricing|enterprise|customer|partnership/.test(text)) return '看客户和价格是否跟上';
-  return '看源站是否给出后续细节';
+  const source = chineseSourceName(story.source);
+  const topic = normalizeTopic(story);
+  if (/openai|model|reasoning|multimodal/.test(text)) return `看${source}是否开放 API、价格和企业权限。`;
+  if (/github|codex|copilot|api|sdk|developer|workflow|agent/.test(text)) return `看${topic}是否进入默认开发工作流。`;
+  if (/hugging face|open source|weights|dataset/.test(text)) return `看${source}社区复现速度和许可边界。`;
+  if (/arxiv|paper|benchmark/.test(text)) return '看这篇论文有没有代码和基准跟进。';
+  if (/creator|video|image|audio|design|media|content/.test(text)) return '看创作者工具是否真正降低制作成本。';
+  if (/pricing|enterprise|customer|partnership|funding|trial|lawsuit|finance/.test(text)) return `看${source}的客户、定价和入口变化。`;
+  if (/apple|siri|chatbot|assistant|drive-thru|automotive/.test(text)) return `看${source}是否把${topic}做成默认入口。`;
+  return `看${source}能否把${topic}落成具体产品。`;
+}
+
+function uniqueWatchNext(story, used) {
+  const source = chineseSourceName(story.source);
+  const topic = normalizeTopic(story);
+  const candidates = [
+    watchNext(story),
+    `看${source}在${topic}上的产品入口。`,
+    `看${source}这条${topic}是否有真实用户。`,
+    `看${topic}是否被${source}继续推向默认流程。`
+  ];
+  let selected = candidates.find((item) => item && !used.has(item));
+  if (!selected) selected = `看${source}第${used.size + 1}条${topic}的落地位置。`;
+  used.add(selected);
+  return clamp(selected, 42);
+}
+
+function assignPrimarySection(story) {
+  const text = `${story.title || ''} ${story.original_title || ''} ${story.summary || ''} ${story.original_summary || ''} ${story.source || ''} ${story.category || ''}`.toLowerCase();
+  if (/china|中国|阿里|腾讯|百度|字节|deepseek|月之暗面|智谱/.test(text)) return 'china_perspective';
+  if (/github|codex|copilot|sdk|api|workflow|developer|agent|agentic|langchain|llamaindex/.test(text)) return 'agents';
+  if (/openai|anthropic|google ai|deepmind|meta ai|mistral|model|multimodal|reasoning|siri|assistant|chatbot/.test(text)) return 'models';
+  if (/hugging face|arxiv|paper|benchmark|open source|weights|dataset|replicate|bair|stanford|research|论文|评测/.test(text)) return 'open_source';
+  if (/creator|video|image|audio|design|media|content|runway|创作|视频|图像|音频|设计/.test(text)) return 'creator_opportunity';
+  if (/business|enterprise|pricing|customer|partnership|funding|trial|lawsuit|finance|automotive|drive-thru|mobility|skills/.test(text)) return 'business';
+  if (story.category === 'models') return 'models';
+  if (story.category === 'agents') return 'agents';
+  if (['open_source', 'research', 'papers'].includes(story.category)) return 'open_source';
+  if (['creator', 'creator_opportunity'].includes(story.category)) return 'creator_opportunity';
+  if (['business', 'enterprise'].includes(story.category)) return 'business';
+  return 'more_ai';
 }
 
 function visualTitle(text) {
@@ -761,14 +809,6 @@ function writeNewsVisual(fileName, title, subtitle, category) {
   const rel = `assets/news-visuals/${fileName}`;
   writeText(resolve(ROOT, rel), visualSvg(title, subtitle, category));
   return rel;
-}
-
-function emptySections(template) {
-  const sections = {};
-  for (const [key, value] of Object.entries(template.sections || {})) {
-    sections[key] = { title: value.title || key, items: [] };
-  }
-  return sections;
 }
 
 function publicIntroForEdition(stories) {
@@ -814,14 +854,19 @@ function buildContent(template, included, date, editionType, rules) {
   const now = new Date().toISOString();
   const ordered = orderStoriesForEdition(included, rules);
   const stories = ordered.map(storyToPublicItem);
+  const usedWatchNext = new Set();
   stories.forEach((story) => {
     story.verified_at = now;
+    story.primary_section = assignPrimarySection(story);
+    story.watch_next = uniqueWatchNext(story, usedWatchNext);
   });
   for (const phrase of FORBIDDEN_TAKES) {
     if (JSON.stringify(stories).includes(phrase)) throw new Error(`forbidden_janet_take:${phrase}`);
   }
 
-  const sections = emptySections(template);
+  const sections = {
+    lead_story: { title: '今日封面', items: [] }
+  };
   const homepageItems = [];
   const hiddenItems = [];
   stories.forEach((story, index) => {
@@ -831,8 +876,8 @@ function buildContent(template, included, date, editionType, rules) {
   });
   sections.lead_story.items.push(stories[0]);
   for (const story of stories.slice(1)) {
-    const section = sectionFor(story.category);
-    if (!sections[section]) sections[section] = { title: section, items: [] };
+    const section = story.primary_section || sectionFor(story.category);
+    if (!sections[section]) sections[section] = { title: SECTION_LABELS[section] || '更多 AI 动态', items: [] };
     sections[section].items.push(story);
   }
 
@@ -855,15 +900,24 @@ function buildContent(template, included, date, editionType, rules) {
     title: stories[0]?.title || '',
     source: stories[0]?.source || '',
     category: stories[0]?.category || '',
+    summary: stories[0]?.summary || '',
+    why_it_matters: stories[0]?.why_it_matters || '',
+    janet_take: stories[0]?.janet_take || '',
+    watch_next: stories[0]?.watch_next || '',
     visual: stories[0]?.visual || ''
   });
   signalMap.forEach((signal) => {
+    const story = stories.find((item) => item.id === signal.story_id) || {};
     homepageItems.push({
       role: 'signal',
       story_id: signal.story_id,
       title: signal.story_title,
       source: signal.source,
-      category: stories.find((story) => story.id === signal.story_id)?.category || '',
+      category: story.category || '',
+      summary: story.summary || signal.summary || '',
+      why_it_matters: story.why_it_matters || '',
+      janet_take: story.janet_take || '',
+      watch_next: story.watch_next || '',
       visual: signal.visual
     });
   });
@@ -877,7 +931,10 @@ function buildContent(template, included, date, editionType, rules) {
     title: story.title,
     source: story.source,
     category: story.category,
-    summary: story.summary
+    summary: story.summary,
+    why_it_matters: story.why_it_matters,
+    janet_take: story.janet_take,
+    watch_next: story.watch_next
   }));
   const homepageIds = new Set(homepageItems.map((item) => item.story_id).filter(Boolean));
   for (const story of stories) {
@@ -922,11 +979,7 @@ function buildContent(template, included, date, editionType, rules) {
       editorial_penalties: story.editorial_penalties || []
     })),
     editorial_angle: '每日公开源编辑晨报',
-    what_to_watch_next: [
-      stories[0]?.watch_next || '看头条源站后续动作',
-      stories[1]?.watch_next || '看同主题是否继续发酵',
-      stories[2]?.watch_next || '看开发者和社区是否跟进'
-    ]
+    what_to_watch_next: stories.map((story) => story.watch_next).filter(Boolean).slice(0, 3)
   };
 }
 
@@ -982,7 +1035,7 @@ function renderHtml(content) {
     <div class="k">今日更多</div>
     <div class="signal">${(content.compact_news || []).map((item) => `<div class="card"><small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></div>`).join('')}</div>
   </section>
-  ${Object.entries(content.sections).filter(([key]) => key !== 'lead_story').map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
+  ${Object.entries(content.sections).filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0).map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
   <section>
     <div class="k">接下来观察</div>
     <ul>${content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>

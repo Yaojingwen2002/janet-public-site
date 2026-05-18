@@ -1,0 +1,19 @@
+{
+  "step": "35-S",
+  "status": "section_hydration_ready",
+  "qa_passed": true,
+  "checked_edition_id": "2026-05-18-v4",
+  "diagnosis": {
+    "empty_section_source": "daily-news-generator wrote template sections even when items were empty; output.html rendered them without hydration guard",
+    "watch_next_source": "daily-news-generator watchNext fallback returned generic repeated copy",
+    "previous_qa_gap": "previous QA checked required fields but not empty sections, duplicated watch_next, or generic fallback phrases"
+  },
+  "empty_sections_found": [],
+  "generic_watch_next_found": false,
+  "duplicate_watch_next_count": 0,
+  "non_empty_section_count": 3,
+  "homepage_items_checked": 9,
+  "compact_news_count": 5,
+  "issues": [],
+  "warnings": []
+}

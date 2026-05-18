@@ -2,7 +2,7 @@
   "date": "2026-05-15",
   "vol": "0000",
   "brand": "Janet 快车箱",
-  "theme": "开源模型把开源战场收紧了",
+  "theme": "开源模型开始补位",
   "intro_text": "今天最值得看的不是热闹数量，而是OpenAI、GitHub Blog、AWS Machine Learning Blog把AI 工具推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。",
   "daily_thesis": "今天窗口里，OpenAI、GitHub Blog、AWS Machine Learning Blog把产品和研究摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
   "signal_map": [
@@ -53,7 +53,7 @@
   "lead_story_id": "openai-news-7fd2c0e73632",
   "sections": {
     "lead_story": {
-      "title": "今日封面新闻",
+      "title": "今日封面",
       "items": [
         {
           "id": "openai-news-7fd2c0e73632",
@@ -71,14 +71,14 @@
           "original_summary": "Databricks uses GPT-5.5 for enterprise agent workflows after the model set a new state of the art on the OfficeQA Pro benchmark.",
           "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-          "watch_next": "看开发者是否真的迁移工作流",
+          "watch_next": "看OpenAI是否开放 API、价格和企业权限。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0002"
+            "evidence-0016"
           ],
           "editorial_score": 220,
           "editorial_signals": [
@@ -122,12 +122,13 @@
           "editorial_penalties": [],
           "lead_eligible": true,
           "core_eligible": true,
+          "primary_section": "agents",
           "visual": "assets/news-visuals/2026-05-15-lead.svg"
         }
       ]
     },
-    "models": {
-      "title": "模型与产品",
+    "agents": {
+      "title": "Agent 与工具",
       "items": [
         {
           "id": "openai-news-ed9d35b23509",
@@ -145,14 +146,14 @@
           "original_summary": "Sea Limited's CPO explains why the company is deploying Codex across engineering teams to accelerate AI-native software development in Asia.",
           "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-          "watch_next": "看开发者是否真的迁移工作流",
+          "watch_next": "看OpenAI在Codex上的产品入口。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0006"
+            "evidence-0020"
           ],
           "editorial_score": 160,
           "editorial_signals": [
@@ -174,200 +175,9 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "agents"
         },
-        {
-          "id": "openai-news-542a320d78bf",
-          "title": "OpenAI 围绕Codex开始落到团队里",
-          "original_title": "How business operations teams use Codex",
-          "url": "https://openai.com/academy/codex-for-work/how-business-operations-teams-use-codex",
-          "source": "OpenAI",
-          "source_type": "official",
-          "source_rank": "S",
-          "category": "models",
-          "score": 9.5,
-          "published_at": "2026-05-15T00:00:00.000Z",
-          "published_at_source": "pubDate",
-          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
-          "original_summary": "See how business operations teams can use Codex to create initiative briefs, strategy updates, leadership decision packets, progress updates, and more from real work inputs.",
-          "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0001"
-          ],
-          "editorial_score": 125,
-          "editorial_signals": [
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "Codex"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "openai-news-ccc81d221bea",
-          "title": "OpenAI 围绕Codex开始落到团队里",
-          "original_title": "How data science teams use Codex",
-          "url": "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex",
-          "source": "OpenAI",
-          "source_type": "official",
-          "source_rank": "S",
-          "category": "models",
-          "score": 9.5,
-          "published_at": "2026-05-15T00:00:00.000Z",
-          "published_at_source": "pubDate",
-          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
-          "original_summary": "See how data science teams can use Codex to build root-cause briefs, impact readouts, KPI memos, scoped analyses, and dashboard specs from real work inputs.",
-          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0003"
-          ],
-          "editorial_score": 125,
-          "editorial_signals": [
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "Codex"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "openai-news-0536bbd158bb",
-          "title": "OpenAI 围绕Codex开始落到团队里",
-          "original_title": "How sales teams use Codex",
-          "url": "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex",
-          "source": "OpenAI",
-          "source_type": "official",
-          "source_rank": "S",
-          "category": "models",
-          "score": 9.5,
-          "published_at": "2026-05-15T00:00:00.000Z",
-          "published_at_source": "pubDate",
-          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
-          "original_summary": "See how sales teams can use Codex to create pipeline briefs, meeting prep packets, forecast reviews, account plans, and stalled-deal diagnoses from real work inputs.",
-          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0005"
-          ],
-          "editorial_score": 125,
-          "editorial_signals": [
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "Codex"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "openai-news-b264b8b470b6",
-          "title": "OpenAI 围绕Codex开始落到团队里",
-          "original_title": "Work with Codex from anywhere",
-          "url": "https://openai.com/index/work-with-codex-from-anywhere",
-          "source": "OpenAI",
-          "source_type": "official",
-          "source_rank": "S",
-          "category": "models",
-          "score": 9.5,
-          "published_at": "2026-05-14T13:00:00.000Z",
-          "published_at_source": "pubDate",
-          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
-          "original_summary": "Use Codex anywhere with the ChatGPT mobile app. Monitor, steer, and approve coding tasks in real time across devices and remote environments.",
-          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0007"
-          ],
-          "editorial_score": 125,
-          "editorial_signals": [
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "Codex"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "openai-news-755126b5dd71",
-          "title": "OpenAI 围绕AI 工具开始落到团队里",
-          "original_title": "A new personal finance experience in ChatGPT",
-          "url": "https://openai.com/index/personal-finance-chatgpt",
-          "source": "OpenAI",
-          "source_type": "official",
-          "source_rank": "S",
-          "category": "models",
-          "score": 9.5,
-          "published_at": "2026-05-15T00:00:00.000Z",
-          "published_at_source": "pubDate",
-          "summary": "OpenAI 给出了一条关于AI 工具的新信号，适合和今天其他新闻一起看，不必单独拔高。",
-          "original_summary": "Preview a new personal finance experience in ChatGPT for Pro users in the U.S. Securely connect your financial accounts and get AI-powered insights and guidance grounded in your financial context, goals, and priorities.",
-          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0004"
-          ],
-          "editorial_score": 100,
-          "editorial_signals": [],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        }
-      ]
-    },
-    "agents": {
-      "title": "Agent 与工具",
-      "items": [
         {
           "id": "github-blog-3c5997071d51",
           "title": "GitHub 围绕开发入口开始落到团队里",
@@ -384,14 +194,14 @@
           "original_summary": "How the GitHub Issues team used client-side caching, smart prefetching, and service workers to make navigation feel instant. The post From latency to instant: Modernizing GitHub Issues navigation performance appeared...",
           "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-          "watch_next": "看源站是否给出后续细节",
+          "watch_next": "看开发入口是否进入默认开发工作流。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0018"
+            "evidence-0011"
           ],
           "editorial_score": 160,
           "editorial_signals": [
@@ -419,7 +229,366 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "aws-machine-learning-6fdfeec691e9",
+          "title": "AWS 把智能体继续推向开发者",
+          "original_title": "Control where your AI agents can browse with Chrome enterprise policies on Amazon Bedrock AgentCore",
+          "url": "https://aws.amazon.com/blogs/machine-learning/control-where-your-ai-agents-can-browse-with-chrome-enterprise-policies-on-amazon-bedrock-agentcore/",
+          "source": "AWS Machine Learning Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-14T17:17:35.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "In this post, you will configure Chrome enterprise policies to restrict a browser agent to a specific website, observe the policy enforcement through session recording, and demonstrate custom root CA certificates usin...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看AWS能否把商业动作落成具体产品。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0025"
+          ],
+          "editorial_score": 145,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "business_impact",
+              "weight": 15,
+              "hits": [
+                "enterprise"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "aws-machine-learning-0e89d78bb059",
+          "title": "AWS 把智能体继续推向开发者",
+          "original_title": "Real-time voice agents with Stream Vision Agents and Amazon Nova 2 Sonic",
+          "url": "https://aws.amazon.com/blogs/machine-learning/real-time-voice-agents-with-stream-vision-agents-and-amazon-nova-2-sonic/",
+          "source": "AWS Machine Learning Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-14T17:23:48.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "In this post, you learn how to combine Stream's Vision Agents open-source framework with Amazon Bedrock and Amazon Nova 2 Sonic to build real-time voice agents that can be production-ready in minutes. You'll learn how...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看AWS在商业动作上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0023"
+          ],
+          "editorial_score": 130,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent",
+                "integration"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "openai-news-542a320d78bf",
+          "title": "OpenAI 围绕Codex开始落到团队里",
+          "original_title": "How business operations teams use Codex",
+          "url": "https://openai.com/academy/codex-for-work/how-business-operations-teams-use-codex",
+          "source": "OpenAI",
+          "source_type": "official",
+          "source_rank": "S",
+          "category": "models",
+          "score": 9.5,
+          "published_at": "2026-05-15T00:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+          "original_summary": "See how business operations teams can use Codex to create initiative briefs, strategy updates, leadership decision packets, progress updates, and more from real work inputs.",
+          "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+          "watch_next": "看OpenAI这条Codex是否有真实用户。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0015"
+          ],
+          "editorial_score": 125,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "Codex"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "openai-news-ccc81d221bea",
+          "title": "OpenAI 围绕Codex开始落到团队里",
+          "original_title": "How data science teams use Codex",
+          "url": "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex",
+          "source": "OpenAI",
+          "source_type": "official",
+          "source_rank": "S",
+          "category": "models",
+          "score": 9.5,
+          "published_at": "2026-05-15T00:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+          "original_summary": "See how data science teams can use Codex to build root-cause briefs, impact readouts, KPI memos, scoped analyses, and dashboard specs from real work inputs.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+          "watch_next": "看Codex是否被OpenAI继续推向默认流程。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0017"
+          ],
+          "editorial_score": 125,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "Codex"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "openai-news-0536bbd158bb",
+          "title": "OpenAI 围绕Codex开始落到团队里",
+          "original_title": "How sales teams use Codex",
+          "url": "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex",
+          "source": "OpenAI",
+          "source_type": "official",
+          "source_rank": "S",
+          "category": "models",
+          "score": 9.5,
+          "published_at": "2026-05-15T00:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+          "original_summary": "See how sales teams can use Codex to create pipeline briefs, meeting prep packets, forecast reviews, account plans, and stalled-deal diagnoses from real work inputs.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+          "watch_next": "看OpenAI第8条Codex的落地位置。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0019"
+          ],
+          "editorial_score": 125,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "Codex"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "openai-news-b264b8b470b6",
+          "title": "OpenAI 围绕Codex开始落到团队里",
+          "original_title": "Work with Codex from anywhere",
+          "url": "https://openai.com/index/work-with-codex-from-anywhere",
+          "source": "OpenAI",
+          "source_type": "official",
+          "source_rank": "S",
+          "category": "models",
+          "score": 9.5,
+          "published_at": "2026-05-14T13:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+          "original_summary": "Use Codex anywhere with the ChatGPT mobile app. Monitor, steer, and approve coding tasks in real time across devices and remote environments.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+          "watch_next": "看OpenAI第9条Codex的落地位置。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0021"
+          ],
+          "editorial_score": 125,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "Codex"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "techcrunch-ai-bf4ce8a4739e",
+          "title": "TechCrunch 把Codex继续推向开发者",
+          "original_title": "OpenAI says Codex is coming to your phone",
+          "url": "https://techcrunch.com/2026/05/14/openai-says-codex-is-coming-to-your-phone/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-14T20:58:55.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+          "original_summary": "The update gives users enhanced flexibility over how they can manage their workflows.",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看Codex是否进入默认开发工作流。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0004"
+          ],
+          "editorial_score": 85,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "Codex",
+                "workflow"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "mit-tech-review-ai-ac7c4720f04d",
+          "title": "MIT Tech Review 把智能体继续推向开发者",
+          "original_title": "Data readiness for agentic AI in financial services",
+          "url": "https://www.technologyreview.com/2026/05/14/1137034/data-readiness-for-agentic-ai-in-financial-services/",
+          "source": "MIT Technology Review AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-14T13:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "MIT Tech Review 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "Financial services companies have unique needs when it comes to business AI. They operate in one of the most highly regulated sectors while responding to external events that are updated by the second. As a result, th...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看MIT Tech Review能否把商业动作落成具体产品。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0012"
+          ],
+          "editorial_score": 83,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            }
+          ],
+          "editorial_penalties": [
+            {
+              "name": "event_or_marketing",
+              "weight": -35,
+              "hits": [
+                "event"
+              ]
+            }
+          ],
+          "lead_eligible": false,
+          "core_eligible": true,
+          "primary_section": "agents"
         },
         {
           "id": "github-blog-1424f24a3ea4",
@@ -437,14 +606,14 @@
           "original_summary": "In April, we experienced 10 incidents that resulted in degraded performance across GitHub services. The post GitHub availability report: April 2026 appeared first on The GitHub Blog .",
           "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "这类更像值班记录，能进归档，但别让它抢头条。",
-          "watch_next": "看源站是否给出后续细节",
+          "watch_next": "看GitHub在开发入口上的产品入口。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0017"
+            "evidence-0010"
           ],
           "editorial_score": 35,
           "editorial_signals": [
@@ -490,195 +659,45 @@
             }
           ],
           "lead_eligible": false,
-          "core_eligible": false
+          "core_eligible": false,
+          "primary_section": "agents"
         }
       ]
     },
-    "open_source": {
-      "title": "开源与论文",
-      "items": []
-    },
-    "business": {
-      "title": "商业与资本",
+    "models": {
+      "title": "模型与产品",
       "items": [
         {
-          "id": "aws-machine-learning-6fdfeec691e9",
-          "title": "AWS 把智能体继续推向开发者",
-          "original_title": "Control where your AI agents can browse with Chrome enterprise policies on Amazon Bedrock AgentCore",
-          "url": "https://aws.amazon.com/blogs/machine-learning/control-where-your-ai-agents-can-browse-with-chrome-enterprise-policies-on-amazon-bedrock-agentcore/",
-          "source": "AWS Machine Learning Blog",
+          "id": "openai-news-755126b5dd71",
+          "title": "OpenAI 围绕AI 工具开始落到团队里",
+          "original_title": "A new personal finance experience in ChatGPT",
+          "url": "https://openai.com/index/personal-finance-chatgpt",
+          "source": "OpenAI",
           "source_type": "official",
-          "source_rank": "A",
-          "category": "business",
-          "score": 8,
-          "published_at": "2026-05-14T17:17:35.000Z",
+          "source_rank": "S",
+          "category": "models",
+          "score": 9.5,
+          "published_at": "2026-05-15T00:00:00.000Z",
           "published_at_source": "pubDate",
-          "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
-          "original_summary": "In this post, you will configure Chrome enterprise policies to restrict a browser agent to a specific website, observe the policy enforcement through session recording, and demonstrate custom root CA certificates usin...",
-          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-          "watch_next": "看开发者是否真的迁移工作流",
+          "summary": "OpenAI 给出了一条关于AI 工具的新信号，适合和今天其他新闻一起看，不必单独拔高。",
+          "original_summary": "Preview a new personal finance experience in ChatGPT for Pro users in the U.S. Securely connect your financial accounts and get AI-powered insights and guidance grounded in your financial context, goals, and priorities.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "OpenAI这条不必喊口号，先看它会不会把AI 工具变成可用入口。",
+          "watch_next": "看OpenAI在AI 工具上的产品入口。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0025"
+            "evidence-0018"
           ],
-          "editorial_score": 145,
-          "editorial_signals": [
-            {
-              "name": "model_release",
-              "weight": 35,
-              "hits": [
-                "agent"
-              ]
-            },
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "agent"
-              ]
-            },
-            {
-              "name": "business_impact",
-              "weight": 15,
-              "hits": [
-                "enterprise"
-              ]
-            }
-          ],
+          "editorial_score": 100,
+          "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "aws-machine-learning-0e89d78bb059",
-          "title": "AWS 把智能体继续推向开发者",
-          "original_title": "Real-time voice agents with Stream Vision Agents and Amazon Nova 2 Sonic",
-          "url": "https://aws.amazon.com/blogs/machine-learning/real-time-voice-agents-with-stream-vision-agents-and-amazon-nova-2-sonic/",
-          "source": "AWS Machine Learning Blog",
-          "source_type": "official",
-          "source_rank": "A",
-          "category": "business",
-          "score": 8,
-          "published_at": "2026-05-14T17:23:48.000Z",
-          "published_at_source": "pubDate",
-          "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
-          "original_summary": "In this post, you learn how to combine Stream's Vision Agents open-source framework with Amazon Bedrock and Amazon Nova 2 Sonic to build real-time voice agents that can be production-ready in minutes. You'll learn how...",
-          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-          "watch_next": "看开发者是否真的迁移工作流",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0023"
-          ],
-          "editorial_score": 130,
-          "editorial_signals": [
-            {
-              "name": "model_release",
-              "weight": 35,
-              "hits": [
-                "agent"
-              ]
-            },
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "agent",
-                "integration"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "aws-machine-learning-978c16cfd817",
-          "title": "AWS 围绕企业落地开始落到团队里",
-          "original_title": "From siloed data to unified insights: Cross-account Athena Access for Amazon Quick",
-          "url": "https://aws.amazon.com/blogs/machine-learning/from-siloed-data-to-unified-insights-cross-account-athena-access-for-amazon-quick/",
-          "source": "AWS Machine Learning Blog",
-          "source_type": "official",
-          "source_rank": "A",
-          "category": "business",
-          "score": 8,
-          "published_at": "2026-05-14T17:17:50.000Z",
-          "published_at_source": "pubDate",
-          "summary": "AWS 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。",
-          "original_summary": "Today, we're announcing cross-account Athena access for Amazon Quick. With this feature, customers can query Athena data in other AWS accounts using AWS Identity and Access Management (IAM) role chaining, with query c...",
-          "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
-          "watch_next": "看客户和价格是否跟上",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0024"
-          ],
-          "editorial_score": 85,
-          "editorial_signals": [
-            {
-              "name": "business_impact",
-              "weight": 15,
-              "hits": [
-                "customers"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "techcrunch-ai-bf4ce8a4739e",
-          "title": "TechCrunch 把Codex继续推向开发者",
-          "original_title": "OpenAI says Codex is coming to your phone",
-          "url": "https://techcrunch.com/2026/05/14/openai-says-codex-is-coming-to-your-phone/",
-          "source": "TechCrunch AI",
-          "source_type": "media",
-          "source_rank": "B",
-          "category": "business",
-          "score": 6.5,
-          "published_at": "2026-05-14T20:58:55.000Z",
-          "published_at_source": "pubDate",
-          "summary": "TechCrunch 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
-          "original_summary": "The update gives users enhanced flexibility over how they can manage their workflows.",
-          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-          "watch_next": "看开发者是否真的迁移工作流",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0010"
-          ],
-          "editorial_score": 85,
-          "editorial_signals": [
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "Codex",
-                "workflow"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "models"
         },
         {
           "id": "techcrunch-ai-e6558d7a626a",
@@ -695,15 +714,15 @@
           "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "original_summary": "OpenAI is so frustrated with Apple over a ChatGPT integration that failed to deliver the subscribers and prominence it expected that the company is now actively exploring legal action against the iPhone maker.",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+          "watch_next": "看TechCrunch能否把商业动作落成具体产品。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0012"
+            "evidence-0006"
           ],
           "editorial_score": 85,
           "editorial_signals": [
@@ -717,131 +736,8 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "techcrunch-ai-e3715eb4dd54",
-          "title": "TechCrunch 放出开源信号，社区有活干了",
-          "original_title": "Clawdmeter turns your Claude Code usage stats into a tiny desktop dashboard",
-          "url": "https://techcrunch.com/2026/05/14/clawdmeter-turns-your-claude-code-usage-stats-into-a-tiny-desktop-dashboard/",
-          "source": "TechCrunch AI",
-          "source_type": "media",
-          "source_rank": "B",
-          "category": "business",
-          "score": 6.5,
-          "published_at": "2026-05-14T19:05:01.000Z",
-          "published_at_source": "pubDate",
-          "summary": "TechCrunch 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。",
-          "original_summary": "A new open source gadget called Clawdmeter turns Claude Code usage stats into a tiny desktop dashboard for AI coding power users.",
-          "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
-          "watch_next": "看社区复现和二次封装速度",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0013"
-          ],
-          "editorial_score": 85,
-          "editorial_signals": [
-            {
-              "name": "open_source_release",
-              "weight": 25,
-              "hits": [
-                "open source"
-              ]
-            }
-          ],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "mit-tech-review-ai-ac7c4720f04d",
-          "title": "MIT Tech Review 把智能体继续推向开发者",
-          "original_title": "Data readiness for agentic AI in financial services",
-          "url": "https://www.technologyreview.com/2026/05/14/1137034/data-readiness-for-agentic-ai-in-financial-services/",
-          "source": "MIT Technology Review AI",
-          "source_type": "media",
-          "source_rank": "B",
-          "category": "business",
-          "score": 6.5,
-          "published_at": "2026-05-14T13:00:00.000Z",
-          "published_at_source": "pubDate",
-          "summary": "MIT Tech Review 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
-          "original_summary": "Financial services companies have unique needs when it comes to business AI. They operate in one of the most highly regulated sectors while responding to external events that are updated by the second. As a result, th...",
-          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-          "watch_next": "看开发者是否真的迁移工作流",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0019"
-          ],
-          "editorial_score": 83,
-          "editorial_signals": [
-            {
-              "name": "model_release",
-              "weight": 35,
-              "hits": [
-                "agent"
-              ]
-            },
-            {
-              "name": "developer_tooling",
-              "weight": 25,
-              "hits": [
-                "agent"
-              ]
-            }
-          ],
-          "editorial_penalties": [
-            {
-              "name": "event_or_marketing",
-              "weight": -35,
-              "hits": [
-                "event"
-              ]
-            }
-          ],
-          "lead_eligible": false,
-          "core_eligible": true
-        },
-        {
-          "id": "nvidia-ai-blog-485732188f10",
-          "title": "NVIDIA 围绕商业动作发布新动作",
-          "original_title": "Sea You in the Cloud: ‘Subnautica 2’ Early Access Dives Onto GeForce NOW",
-          "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-subnautica-2/",
-          "source": "NVIDIA AI",
-          "source_type": "official",
-          "source_rank": "A",
-          "category": "business",
-          "score": 8,
-          "published_at": "2026-05-14T13:00:08.000Z",
-          "published_at_source": "pubDate",
-          "summary": "NVIDIA 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
-          "original_summary": "Editor&#8217;s note: The Gaijin single sign-on feature is now up and running. Dive masks on — Subnautica 2 is making a splash on GeForce NOW day-and-date with launch, so members can plunge into the title’s brand-new a...",
-          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0016"
-          ],
-          "editorial_score": 78,
-          "editorial_signals": [],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "models"
         },
         {
           "id": "mit-tech-review-ai-f326ef35c814",
@@ -859,14 +755,14 @@
           "original_summary": "When generative AI first moved from research labs into real-world business applications, enterprises made a tacit bargain: “Capability now, control later.” Feed your proprietary data into third-party AI models, and yo...",
           "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
           "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
-          "watch_next": "看客户和价格是否跟上",
+          "watch_next": "看MIT Tech Review在商业动作上的产品入口。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0020"
+            "evidence-0013"
           ],
           "editorial_score": 73,
           "editorial_signals": [
@@ -880,7 +776,85 @@
           ],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "models"
+        }
+      ]
+    },
+    "creator_opportunity": {
+      "title": "创作者机会",
+      "items": [
+        {
+          "id": "aws-machine-learning-978c16cfd817",
+          "title": "AWS 围绕企业落地开始落到团队里",
+          "original_title": "From siloed data to unified insights: Cross-account Athena Access for Amazon Quick",
+          "url": "https://aws.amazon.com/blogs/machine-learning/from-siloed-data-to-unified-insights-cross-account-athena-access-for-amazon-quick/",
+          "source": "AWS Machine Learning Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-14T17:17:50.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AWS 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。",
+          "original_summary": "Today, we're announcing cross-account Athena access for Amazon Quick. With this feature, customers can query Athena data in other AWS accounts using AWS Identity and Access Management (IAM) role chaining, with query c...",
+          "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
+          "watch_next": "看AWS这条商业动作是否有真实用户。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0024"
+          ],
+          "editorial_score": 85,
+          "editorial_signals": [
+            {
+              "name": "business_impact",
+              "weight": 15,
+              "hits": [
+                "customers"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
+        },
+        {
+          "id": "nvidia-ai-blog-485732188f10",
+          "title": "NVIDIA 围绕商业动作发布新动作",
+          "original_title": "Sea You in the Cloud: ‘Subnautica 2’ Early Access Dives Onto GeForce NOW",
+          "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-subnautica-2/",
+          "source": "NVIDIA AI",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-14T13:00:08.000Z",
+          "published_at_source": "pubDate",
+          "summary": "NVIDIA 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
+          "original_summary": "Editor&#8217;s note: The Gaijin single sign-on feature is now up and running. Dive masks on — Subnautica 2 is making a splash on GeForce NOW day-and-date with launch, so members can plunge into the title’s brand-new a...",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "NVIDIA这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+          "watch_next": "看NVIDIA能否把商业动作落成具体产品。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0001"
+          ],
+          "editorial_score": 78,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
         },
         {
           "id": "aws-machine-learning-f0f96f99b7a4",
@@ -897,12 +871,12 @@
           "summary": "AWS 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "original_summary": "In this post, you will learn how to implement Assisted NLU effectively. You will learn how to improve your bot design with effective intent and slot descriptions, validate your implementation using Test Workbench, and...",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
+          "janet_take": "AWS这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+          "watch_next": "看商业动作是否被AWS继续推向默认流程。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
             "evidence-0022"
@@ -911,7 +885,8 @@
           "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
         },
         {
           "id": "techcrunch-ai-e5e5c109a86a",
@@ -928,52 +903,22 @@
           "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "original_summary": "Here's what the biggest tech court case of the year is all about.",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+          "watch_next": "看TechCrunch这条商业动作是否有真实用户。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0008"
+            "evidence-0002"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
-        },
-        {
-          "id": "techcrunch-ai-af34e789bded",
-          "title": "TechCrunch 围绕研究信号给出研究信号",
-          "original_title": "What happens when AI starts building itself?",
-          "url": "https://techcrunch.com/2026/05/14/what-happens-when-ai-starts-building-itself/",
-          "source": "TechCrunch AI",
-          "source_type": "media",
-          "source_rank": "B",
-          "category": "business",
-          "score": 6.5,
-          "published_at": "2026-05-14T19:57:20.000Z",
-          "published_at_source": "pubDate",
-          "summary": "TechCrunch 的研究内容值得放进观察名单，它不等于产品发布，但可能预告下一波能力方向。",
-          "original_summary": "Richard Socher's new $650 million startup wants to build an AI that can research and improve itself indefinitely — and he insists it will actually ship products.",
-          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
-          "image": null,
-          "image_source": null,
-          "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
-          "duplicate_group": null,
-          "evidence_ids": [
-            "evidence-0011"
-          ],
-          "editorial_score": 60,
-          "editorial_signals": [],
-          "editorial_penalties": [],
-          "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
         },
         {
           "id": "techcrunch-ai-79fe72d0114c",
@@ -990,21 +935,22 @@
           "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "original_summary": "A year ago, it looked like this day would never happen for Cerebras.",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+          "watch_next": "看TechCrunch第21条商业动作的落地位置。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0014"
+            "evidence-0008"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
         },
         {
           "id": "techcrunch-ai-33766550486d",
@@ -1021,21 +967,22 @@
           "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "original_summary": "Crosby is building Synthetic, a fully autonomous AI bookkeeping service for other startups.",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+          "watch_next": "看TechCrunch第22条商业动作的落地位置。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0015"
+            "evidence-0009"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
           "editorial_penalties": [],
           "lead_eligible": true,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
         },
         {
           "id": "techcrunch-ai-20e9cf93d0f2",
@@ -1052,15 +999,15 @@
           "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
           "original_summary": "More than 50 employees have reportedly left Elon Musk’s newly merged SpaceXAI since February, raising questions about burnout, leadership changes, talent poaching, and whether liquidity events weakened retention incen...",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+          "watch_next": "看TechCrunch第23条商业动作的落地位置。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0009"
+            "evidence-0003"
           ],
           "editorial_score": 25,
           "editorial_signals": [],
@@ -1074,7 +1021,85 @@
             }
           ],
           "lead_eligible": false,
-          "core_eligible": true
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
+        }
+      ]
+    },
+    "open_source": {
+      "title": "开源与论文",
+      "items": [
+        {
+          "id": "techcrunch-ai-e3715eb4dd54",
+          "title": "TechCrunch 放出开源信号，社区有活干了",
+          "original_title": "Clawdmeter turns your Claude Code usage stats into a tiny desktop dashboard",
+          "url": "https://techcrunch.com/2026/05/14/clawdmeter-turns-your-claude-code-usage-stats-into-a-tiny-desktop-dashboard/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-14T19:05:01.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。",
+          "original_summary": "A new open source gadget called Clawdmeter turns Claude Code usage stats into a tiny desktop dashboard for AI coding power users.",
+          "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+          "watch_next": "看TechCrunch在商业动作上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0007"
+          ],
+          "editorial_score": 85,
+          "editorial_signals": [
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "open source"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "open_source"
+        },
+        {
+          "id": "techcrunch-ai-af34e789bded",
+          "title": "TechCrunch 围绕研究信号给出研究信号",
+          "original_title": "What happens when AI starts building itself?",
+          "url": "https://techcrunch.com/2026/05/14/what-happens-when-ai-starts-building-itself/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-14T19:57:20.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch 的研究内容值得放进观察名单，它不等于产品发布，但可能预告下一波能力方向。",
+          "original_summary": "Richard Socher's new $650 million startup wants to build an AI that can research and improve itself indefinitely — and he insists it will actually ship products.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把研究信号变成可用入口。",
+          "watch_next": "看商业动作是否被TechCrunch继续推向默认流程。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-18T06:50:35.059Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0005"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "open_source"
         },
         {
           "id": "mit-tech-review-ai-c6510feac174",
@@ -1091,15 +1116,15 @@
           "summary": "MIT Tech Review 的研究内容值得放进观察名单，它不等于产品发布，但可能预告下一波能力方向。",
           "original_summary": "When Jennifer got a job doing research for a nonprofit in 2023, she ran her new professional headshot through a facial recognition program. She wanted to see if the tech would pull up the porn videos she’d made more t...",
           "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-          "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-          "watch_next": "看源站是否给出后续细节",
+          "janet_take": "MIT Tech Review这条不必喊口号，先看它会不会把研究信号变成可用入口。",
+          "watch_next": "看MIT Tech Review这条商业动作是否有真实用户。",
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-18T06:32:04.197Z",
+          "verified_at": "2026-05-18T06:50:35.059Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0021"
+            "evidence-0014"
           ],
           "editorial_score": 8,
           "editorial_signals": [],
@@ -1113,17 +1138,10 @@
             }
           ],
           "lead_eligible": false,
-          "core_eligible": false
+          "core_eligible": false,
+          "primary_section": "open_source"
         }
       ]
-    },
-    "china_perspective": {
-      "title": "中国视角",
-      "items": []
-    },
-    "creator_opportunity": {
-      "title": "创作者机会",
-      "items": []
     }
   },
   "source_summary": "今日重点：OpenAI、GitHub Blog、AWS Machine Learning Blog、TechCrunch AI。完整来源与覆盖情况见状态页。",
@@ -1473,12 +1491,12 @@
   ],
   "editorial_angle": "每日公开源编辑晨报",
   "what_to_watch_next": [
-    "看开发者是否真的迁移工作流",
-    "看开发者是否真的迁移工作流",
-    "看源站是否给出后续细节"
+    "看OpenAI是否开放 API、价格和企业权限。",
+    "看OpenAI在Codex上的产品入口。",
+    "看开发入口是否进入默认开发工作流。"
   ],
   "edition_id": "2026-05-16-v4",
-  "title": "开源模型把开源战场收紧了",
+  "title": "开源模型开始补位",
   "collected_items_count": 25,
   "edition_items": [
     {
@@ -1497,14 +1515,14 @@
       "original_summary": "Databricks uses GPT-5.5 for enterprise agent workflows after the model set a new state of the art on the OfficeQA Pro benchmark.",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看OpenAI是否开放 API、价格和企业权限。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0002"
+        "evidence-0016"
       ],
       "editorial_score": 220,
       "editorial_signals": [
@@ -1548,6 +1566,7 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
+      "primary_section": "agents",
       "visual": "assets/news-visuals/2026-05-15-lead.svg"
     },
     {
@@ -1566,14 +1585,14 @@
       "original_summary": "Sea Limited's CPO explains why the company is deploying Codex across engineering teams to accelerate AI-native software development in Asia.",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看OpenAI在Codex上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0006"
+        "evidence-0020"
       ],
       "editorial_score": 160,
       "editorial_signals": [
@@ -1595,7 +1614,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "github-blog-3c5997071d51",
@@ -1613,14 +1633,14 @@
       "original_summary": "How the GitHub Issues team used client-side caching, smart prefetching, and service workers to make navigation feel instant. The post From latency to instant: Modernizing GitHub Issues navigation performance appeared...",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看源站是否给出后续细节",
+      "watch_next": "看开发入口是否进入默认开发工作流。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0018"
+        "evidence-0011"
       ],
       "editorial_score": 160,
       "editorial_signals": [
@@ -1648,7 +1668,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "aws-machine-learning-6fdfeec691e9",
@@ -1666,11 +1687,11 @@
       "original_summary": "In this post, you will configure Chrome enterprise policies to restrict a browser agent to a specific website, observe the policy enforcement through session recording, and demonstrate custom root CA certificates usin...",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看AWS能否把商业动作落成具体产品。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0025"
@@ -1701,7 +1722,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "aws-machine-learning-0e89d78bb059",
@@ -1719,11 +1741,11 @@
       "original_summary": "In this post, you learn how to combine Stream's Vision Agents open-source framework with Amazon Bedrock and Amazon Nova 2 Sonic to build real-time voice agents that can be production-ready in minutes. You'll learn how...",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看AWS在商业动作上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0023"
@@ -1748,7 +1770,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-542a320d78bf",
@@ -1765,15 +1788,15 @@
       "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
       "original_summary": "See how business operations teams can use Codex to create initiative briefs, strategy updates, leadership decision packets, progress updates, and more from real work inputs.",
       "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看OpenAI这条Codex是否有真实用户。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0001"
+        "evidence-0015"
       ],
       "editorial_score": 125,
       "editorial_signals": [
@@ -1787,7 +1810,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-ccc81d221bea",
@@ -1804,15 +1828,15 @@
       "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
       "original_summary": "See how data science teams can use Codex to build root-cause briefs, impact readouts, KPI memos, scoped analyses, and dashboard specs from real work inputs.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看Codex是否被OpenAI继续推向默认流程。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0003"
+        "evidence-0017"
       ],
       "editorial_score": 125,
       "editorial_signals": [
@@ -1826,7 +1850,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-0536bbd158bb",
@@ -1843,15 +1868,15 @@
       "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
       "original_summary": "See how sales teams can use Codex to create pipeline briefs, meeting prep packets, forecast reviews, account plans, and stalled-deal diagnoses from real work inputs.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看OpenAI第8条Codex的落地位置。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0005"
+        "evidence-0019"
       ],
       "editorial_score": 125,
       "editorial_signals": [
@@ -1865,7 +1890,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-b264b8b470b6",
@@ -1882,15 +1908,15 @@
       "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
       "original_summary": "Use Codex anywhere with the ChatGPT mobile app. Monitor, steer, and approve coding tasks in real time across devices and remote environments.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看OpenAI第9条Codex的落地位置。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0007"
+        "evidence-0021"
       ],
       "editorial_score": 125,
       "editorial_signals": [
@@ -1904,7 +1930,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-755126b5dd71",
@@ -1921,21 +1948,22 @@
       "summary": "OpenAI 给出了一条关于AI 工具的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "Preview a new personal finance experience in ChatGPT for Pro users in the U.S. Securely connect your financial accounts and get AI-powered insights and guidance grounded in your financial context, goals, and priorities.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把AI 工具变成可用入口。",
+      "watch_next": "看OpenAI在AI 工具上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0004"
+        "evidence-0018"
       ],
       "editorial_score": 100,
       "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "models"
     },
     {
       "id": "aws-machine-learning-978c16cfd817",
@@ -1953,11 +1981,11 @@
       "original_summary": "Today, we're announcing cross-account Athena access for Amazon Quick. With this feature, customers can query Athena data in other AWS accounts using AWS Identity and Access Management (IAM) role chaining, with query c...",
       "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
-      "watch_next": "看客户和价格是否跟上",
+      "watch_next": "看AWS这条商业动作是否有真实用户。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0024"
@@ -1974,7 +2002,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
     },
     {
       "id": "techcrunch-ai-bf4ce8a4739e",
@@ -1992,14 +2021,14 @@
       "original_summary": "The update gives users enhanced flexibility over how they can manage their workflows.",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看Codex是否进入默认开发工作流。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0010"
+        "evidence-0004"
       ],
       "editorial_score": 85,
       "editorial_signals": [
@@ -2014,7 +2043,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "techcrunch-ai-e6558d7a626a",
@@ -2031,15 +2061,15 @@
       "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "OpenAI is so frustrated with Apple over a ChatGPT integration that failed to deliver the subscribers and prominence it expected that the company is now actively exploring legal action against the iPhone maker.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+      "watch_next": "看TechCrunch能否把商业动作落成具体产品。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0012"
+        "evidence-0006"
       ],
       "editorial_score": 85,
       "editorial_signals": [
@@ -2053,7 +2083,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "models"
     },
     {
       "id": "techcrunch-ai-e3715eb4dd54",
@@ -2071,14 +2102,14 @@
       "original_summary": "A new open source gadget called Clawdmeter turns Claude Code usage stats into a tiny desktop dashboard for AI coding power users.",
       "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
-      "watch_next": "看社区复现和二次封装速度",
+      "watch_next": "看TechCrunch在商业动作上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0013"
+        "evidence-0007"
       ],
       "editorial_score": 85,
       "editorial_signals": [
@@ -2092,7 +2123,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "open_source"
     },
     {
       "id": "mit-tech-review-ai-ac7c4720f04d",
@@ -2110,14 +2142,14 @@
       "original_summary": "Financial services companies have unique needs when it comes to business AI. They operate in one of the most highly regulated sectors while responding to external events that are updated by the second. As a result, th...",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看MIT Tech Review能否把商业动作落成具体产品。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0019"
+        "evidence-0012"
       ],
       "editorial_score": 83,
       "editorial_signals": [
@@ -2146,7 +2178,8 @@
         }
       ],
       "lead_eligible": false,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "nvidia-ai-blog-485732188f10",
@@ -2163,21 +2196,22 @@
       "summary": "NVIDIA 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "Editor&#8217;s note: The Gaijin single sign-on feature is now up and running. Dive masks on — Subnautica 2 is making a splash on GeForce NOW day-and-date with launch, so members can plunge into the title’s brand-new a...",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "NVIDIA这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+      "watch_next": "看NVIDIA能否把商业动作落成具体产品。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0016"
+        "evidence-0001"
       ],
       "editorial_score": 78,
       "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
     },
     {
       "id": "mit-tech-review-ai-f326ef35c814",
@@ -2195,14 +2229,14 @@
       "original_summary": "When generative AI first moved from research labs into real-world business applications, enterprises made a tacit bargain: “Capability now, control later.” Feed your proprietary data into third-party AI models, and yo...",
       "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
-      "watch_next": "看客户和价格是否跟上",
+      "watch_next": "看MIT Tech Review在商业动作上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0020"
+        "evidence-0013"
       ],
       "editorial_score": 73,
       "editorial_signals": [
@@ -2216,7 +2250,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "models"
     },
     {
       "id": "aws-machine-learning-f0f96f99b7a4",
@@ -2233,12 +2268,12 @@
       "summary": "AWS 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "In this post, you will learn how to implement Assisted NLU effectively. You will learn how to improve your bot design with effective intent and slot descriptions, validate your implementation using Test Workbench, and...",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "AWS这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+      "watch_next": "看商业动作是否被AWS继续推向默认流程。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0022"
@@ -2247,7 +2282,8 @@
       "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
     },
     {
       "id": "techcrunch-ai-e5e5c109a86a",
@@ -2264,21 +2300,22 @@
       "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "Here's what the biggest tech court case of the year is all about.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+      "watch_next": "看TechCrunch这条商业动作是否有真实用户。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0008"
+        "evidence-0002"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
     },
     {
       "id": "techcrunch-ai-af34e789bded",
@@ -2295,21 +2332,22 @@
       "summary": "TechCrunch 的研究内容值得放进观察名单，它不等于产品发布，但可能预告下一波能力方向。",
       "original_summary": "Richard Socher's new $650 million startup wants to build an AI that can research and improve itself indefinitely — and he insists it will actually ship products.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把研究信号变成可用入口。",
+      "watch_next": "看商业动作是否被TechCrunch继续推向默认流程。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0011"
+        "evidence-0005"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "open_source"
     },
     {
       "id": "techcrunch-ai-79fe72d0114c",
@@ -2326,21 +2364,22 @@
       "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "A year ago, it looked like this day would never happen for Cerebras.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+      "watch_next": "看TechCrunch第21条商业动作的落地位置。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0014"
+        "evidence-0008"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
     },
     {
       "id": "techcrunch-ai-33766550486d",
@@ -2357,21 +2396,22 @@
       "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "Crosby is building Synthetic, a fully autonomous AI bookkeeping service for other startups.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+      "watch_next": "看TechCrunch第22条商业动作的落地位置。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0015"
+        "evidence-0009"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
     },
     {
       "id": "techcrunch-ai-20e9cf93d0f2",
@@ -2388,15 +2428,15 @@
       "summary": "TechCrunch 给出了一条关于商业动作的新信号，适合和今天其他新闻一起看，不必单独拔高。",
       "original_summary": "More than 50 employees have reportedly left Elon Musk’s newly merged SpaceXAI since February, raising questions about burnout, leadership changes, talent poaching, and whether liquidity events weakened retention incen...",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把商业动作变成可用入口。",
+      "watch_next": "看TechCrunch第23条商业动作的落地位置。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0009"
+        "evidence-0003"
       ],
       "editorial_score": 25,
       "editorial_signals": [],
@@ -2410,7 +2450,8 @@
         }
       ],
       "lead_eligible": false,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
     },
     {
       "id": "github-blog-1424f24a3ea4",
@@ -2428,14 +2469,14 @@
       "original_summary": "In April, we experienced 10 incidents that resulted in degraded performance across GitHub services. The post GitHub availability report: April 2026 appeared first on The GitHub Blog .",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "这类更像值班记录，能进归档，但别让它抢头条。",
-      "watch_next": "看源站是否给出后续细节",
+      "watch_next": "看GitHub在开发入口上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0017"
+        "evidence-0010"
       ],
       "editorial_score": 35,
       "editorial_signals": [
@@ -2481,7 +2522,8 @@
         }
       ],
       "lead_eligible": false,
-      "core_eligible": false
+      "core_eligible": false,
+      "primary_section": "agents"
     },
     {
       "id": "mit-tech-review-ai-c6510feac174",
@@ -2498,15 +2540,15 @@
       "summary": "MIT Tech Review 的研究内容值得放进观察名单，它不等于产品发布，但可能预告下一波能力方向。",
       "original_summary": "When Jennifer got a job doing research for a nonprofit in 2023, she ran her new professional headshot through a facial recognition program. She wanted to see if the tech would pull up the porn videos she’d made more t...",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "MIT Tech Review这条不必喊口号，先看它会不会把研究信号变成可用入口。",
+      "watch_next": "看MIT Tech Review这条商业动作是否有真实用户。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0021"
+        "evidence-0014"
       ],
       "editorial_score": 8,
       "editorial_signals": [],
@@ -2520,7 +2562,8 @@
         }
       ],
       "lead_eligible": false,
-      "core_eligible": false
+      "core_eligible": false,
+      "primary_section": "open_source"
     }
   ],
   "homepage_items": [
@@ -2530,6 +2573,10 @@
       "title": "OpenAI 新论文冒头，先看能否复现",
       "source": "OpenAI",
       "category": "models",
+      "summary": "OpenAI 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看OpenAI是否开放 API、价格和企业权限。",
       "visual": "assets/news-visuals/2026-05-15-lead.svg"
     },
     {
@@ -2538,6 +2585,10 @@
       "title": "OpenAI 新论文冒头，先看能否复现",
       "source": "OpenAI",
       "category": "models",
+      "summary": "OpenAI 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看OpenAI是否开放 API、价格和企业权限。",
       "visual": "assets/news-visuals/2026-05-15-signal-1.svg"
     },
     {
@@ -2546,6 +2597,10 @@
       "title": "GitHub 围绕开发入口开始落到团队里",
       "source": "GitHub Blog",
       "category": "agents",
+      "summary": "GitHub 给出了一条关于开发入口的新信号，适合和今天其他新闻一起看，不必单独拔高。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看开发入口是否进入默认开发工作流。",
       "visual": "assets/news-visuals/2026-05-15-signal-2.svg"
     },
     {
@@ -2554,6 +2609,10 @@
       "title": "GitHub 围绕开发入口开始落到团队里",
       "source": "GitHub Blog",
       "category": "agents",
+      "summary": "GitHub 给出了一条关于开发入口的新信号，适合和今天其他新闻一起看，不必单独拔高。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看开发入口是否进入默认开发工作流。",
       "visual": "assets/news-visuals/2026-05-15-signal-3.svg"
     },
     {
@@ -2562,7 +2621,10 @@
       "title": "OpenAI 押注 Codex，开发开始代理化",
       "source": "OpenAI",
       "category": "models",
-      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看OpenAI在Codex上的产品入口。"
     },
     {
       "role": "compact",
@@ -2570,7 +2632,10 @@
       "title": "AWS 把智能体继续推向开发者",
       "source": "AWS Machine Learning Blog",
       "category": "business",
-      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。"
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看AWS能否把商业动作落成具体产品。"
     },
     {
       "role": "compact",
@@ -2578,7 +2643,10 @@
       "title": "AWS 把智能体继续推向开发者",
       "source": "AWS Machine Learning Blog",
       "category": "business",
-      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。"
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看AWS在商业动作上的产品入口。"
     },
     {
       "role": "compact",
@@ -2586,7 +2654,10 @@
       "title": "OpenAI 围绕Codex开始落到团队里",
       "source": "OpenAI",
       "category": "models",
-      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看OpenAI这条Codex是否有真实用户。"
     },
     {
       "role": "compact",
@@ -2594,7 +2665,10 @@
       "title": "OpenAI 围绕Codex开始落到团队里",
       "source": "OpenAI",
       "category": "models",
-      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看Codex是否被OpenAI继续推向默认流程。"
     },
     {
       "role": "compact",
@@ -2602,7 +2676,10 @@
       "title": "OpenAI 围绕Codex开始落到团队里",
       "source": "OpenAI",
       "category": "models",
-      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。"
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看OpenAI第8条Codex的落地位置。"
     }
   ],
   "hidden_items": [
@@ -2743,14 +2820,14 @@
       "original_summary": "Sea Limited's CPO explains why the company is deploying Codex across engineering teams to accelerate AI-native software development in Asia.",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看OpenAI在Codex上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0006"
+        "evidence-0020"
       ],
       "editorial_score": 160,
       "editorial_signals": [
@@ -2772,7 +2849,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "aws-machine-learning-6fdfeec691e9",
@@ -2790,11 +2868,11 @@
       "original_summary": "In this post, you will configure Chrome enterprise policies to restrict a browser agent to a specific website, observe the policy enforcement through session recording, and demonstrate custom root CA certificates usin...",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看AWS能否把商业动作落成具体产品。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0025"
@@ -2825,7 +2903,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "aws-machine-learning-0e89d78bb059",
@@ -2843,11 +2922,11 @@
       "original_summary": "In this post, you learn how to combine Stream's Vision Agents open-source framework with Amazon Bedrock and Amazon Nova 2 Sonic to build real-time voice agents that can be production-ready in minutes. You'll learn how...",
       "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
       "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看开发者是否真的迁移工作流",
+      "watch_next": "看AWS在商业动作上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0023"
@@ -2872,7 +2951,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-542a320d78bf",
@@ -2889,15 +2969,15 @@
       "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
       "original_summary": "See how business operations teams can use Codex to create initiative briefs, strategy updates, leadership decision packets, progress updates, and more from real work inputs.",
       "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看OpenAI这条Codex是否有真实用户。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0001"
+        "evidence-0015"
       ],
       "editorial_score": 125,
       "editorial_signals": [
@@ -2911,7 +2991,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-ccc81d221bea",
@@ -2928,15 +3009,15 @@
       "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
       "original_summary": "See how data science teams can use Codex to build root-cause briefs, impact readouts, KPI memos, scoped analyses, and dashboard specs from real work inputs.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看Codex是否被OpenAI继续推向默认流程。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0003"
+        "evidence-0017"
       ],
       "editorial_score": 125,
       "editorial_signals": [
@@ -2950,7 +3031,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     },
     {
       "id": "openai-news-0536bbd158bb",
@@ -2967,15 +3049,15 @@
       "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
       "original_summary": "See how sales teams can use Codex to create pipeline briefs, meeting prep packets, forecast reviews, account plans, and stalled-deal diagnoses from real work inputs.",
       "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "这条先按源站事实看，别急着拔高成时代宣言。",
-      "watch_next": "看源站是否给出后续细节",
+      "janet_take": "OpenAI这条不必喊口号，先看它会不会把Codex变成可用入口。",
+      "watch_next": "看OpenAI第8条Codex的落地位置。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-18T06:32:04.197Z",
+      "verified_at": "2026-05-18T06:50:35.059Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0005"
+        "evidence-0019"
       ],
       "editorial_score": 125,
       "editorial_signals": [
@@ -2989,7 +3071,8 @@
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
-      "core_eligible": true
+      "core_eligible": true,
+      "primary_section": "agents"
     }
   ]
 }

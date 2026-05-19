@@ -433,7 +433,7 @@ function chineseSourceName(source) {
 }
 
 function normalizeTopic(item) {
-  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+  const text = `${item.original_title || ''} ${item.title || ''} ${item.original_summary || ''} ${item.summary || ''}`.toLowerCase();
   if (/codex/.test(text)) return 'Codex';
   if (/copilot/.test(text)) return 'Copilot';
   if (/agent|agentic/.test(text)) return '智能体';
@@ -444,26 +444,84 @@ function normalizeTopic(item) {
   if (/availability report|status report|incident|outage|maintenance/.test(text)) return '可用性报告';
   if (/model|reasoning|multimodal|llm/.test(text)) return '模型能力';
   if (/github/.test(text)) return '开发入口';
-  return item.category === 'research' ? '研究进展' : item.category === 'business' ? '商业动作' : 'AI 工具';
+  return item.category === 'research' ? '研究进展' : item.category === 'business' ? '产品落点' : 'AI 工具';
 }
 
 function chineseVerb(item) {
-  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+  const text = `${item.original_title || ''} ${item.title || ''} ${item.original_summary || ''} ${item.summary || ''}`.toLowerCase();
   if (/launch|introduc|announce|release/.test(text)) return '发布新动作';
   if (/deploy|adopt|use|using/.test(text)) return '开始落到团队里';
   if (/future|view|vision/.test(text)) return '押注下一步';
   if (/report|availability|status/.test(text)) return '交出运行报告';
   if (/benchmark|paper|research/.test(text)) return '给出研究信号';
   if (/fund|partner|customer|enterprise/.test(text)) return '把商业线往前推';
-  return '放出一个新信号';
+  return '露出新落点';
+}
+
+function rawStoryText(item) {
+  return `${item.original_title || ''} ${item.title || ''} ${item.original_summary || ''} ${item.summary || ''}`;
+}
+
+function storyBrief(item) {
+  const raw = rawStoryText(item);
+  const text = raw.toLowerCase();
+  const source = chineseSourceName(item.source);
+  if (/siri/.test(text) && /auto-delet|deleting chat|delete/.test(text)) {
+    return {
+      title: /apple/.test(text) ? '苹果重做 Siri，聊天记录可能自动清除' : 'Siri 改版或加入聊天自动清除',
+      summary: `从${source}报道看，Siri 改版据称会加入聊天自动清除，重点不是又多一个聊天框，而是 AI 助手如何处理隐私、留痕和默认记忆。`,
+      why: `${source}这条提醒普通用户和产品团队：语音助手一旦进入聊天场景，记录保存和删除规则会直接影响信任。`,
+      janet: `${source}这次看点不只是 Siri 变聪明，而是“聊完要不要留下”也成了产品选择。`,
+      watch: '看苹果是否公布 Siri 隐私和记录规则。'
+    };
+  }
+  if (/musk|elon/.test(text) && /openai/.test(text) && /trial|trust|lawsuit/.test(text)) {
+    return {
+      title: '马斯克与 OpenAI 诉讼，信任成核心问题',
+      summary: `${source}把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。`,
+      why: '企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。',
+      janet: '这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。',
+      watch: '看法庭如何处理 OpenAI 的使命与商业边界。'
+    };
+  }
+  if (/commencement speech|graduation|boo|cheerleading/.test(text) && /ai/.test(text)) {
+    return {
+      title: /boo|eric schmidt|arizona/.test(text) ? '学生嘘声回应 AI 助威' : '毕业演讲别再硬塞 AI',
+      summary: `${source}记录到校园场景里的 AI 叙事开始遇到反弹：听众不只想听“AI 会改变一切”，他们更在意具体代价、就业压力和真实帮助。`,
+      why: `${source}这条提醒创作者、学校和企业传播团队：AI 叙事已经不能只靠热词推进，受众开始要求具体答案。`,
+      janet: `${source}这里的反应不是“不懂 AI”，而是听够了没有落点的 AI 鸡血。`,
+      watch: '看高校和企业怎样重写 AI 叙事。'
+    };
+  }
+  if (/automotive|mobility|skills arms race|car|vehicle/.test(text) && /ai/.test(text)) {
+    return {
+      title: '汽车业开始抢 AI 技能',
+      summary: `${source}把汽车行业的 AI 竞争指向人才和能力储备，真正的分水岭可能不是谁会宣传，而是谁能把 AI 塞进研发、制造和服务链路。`,
+      why: '车企和供应链要看：AI 能力会影响研发效率、软件体验和岗位结构，竞争会先体现在团队能力上。',
+      janet: '车圈的 AI 竞赛不只在座舱屏幕上，也在招聘和组织结构里。',
+      watch: '看车企是否把 AI 技能写进核心岗位。'
+    };
+  }
+  if (/drive-thru|drive thru|chatbots/.test(text)) {
+    return {
+      title: '得来速聊天机器人只是开场',
+      summary: `${source}提到得来速聊天机器人，说明 AI 客服正在进入更嘈杂、更高压的真实服务场景，接下来考验的是稳定性、纠错和人工接管。`,
+      why: '餐饮、零售和客服团队要看：AI 能不能在真实环境里降低成本，而不是只在演示里答得漂亮。',
+      janet: '点餐窗口不是实验室，机器人在这里出错，后面排队的人会立刻投票。',
+      watch: '看餐饮连锁是否公开人工接管比例。'
+    };
+  }
+  return null;
 }
 
 function makeChineseTitle(item) {
   if (hasChinese(item.title) && englishWordCount(item.title) < 5) return clamp(item.title, 34);
+  const brief = storyBrief(item);
+  if (brief?.title) return brief.title;
   const source = chineseSourceName(item.source);
   const topic = normalizeTopic(item);
   const verb = chineseVerb(item);
-  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+  const text = rawStoryText(item).toLowerCase();
 
   if (/availability report|status report|incident|outage|maintenance/.test(text)) {
     return `${source} 可用性报告，放进归档就好`;
@@ -475,13 +533,15 @@ function makeChineseTitle(item) {
   if (/hugging face|open source|weights|dataset/.test(text)) return `${source} 放出开源信号，社区有活干了`;
   if (/arxiv|paper|benchmark/.test(text)) return `${source} 新论文冒头，先看能否复现`;
   if (/api|sdk|developer|workflow|agent/.test(text)) return `${source} 把${topic}继续推向开发者`;
-  return `${source} 围绕${topic}${verb}`;
+  return `${source}追踪${topic}，${verb}`;
 }
 
 function makeChineseSummary(item) {
+  const brief = storyBrief(item);
+  if (brief?.summary) return brief.summary;
   const source = chineseSourceName(item.source);
   const topic = normalizeTopic(item);
-  const text = `${item.title || ''} ${item.summary || ''}`.toLowerCase();
+  const text = rawStoryText(item).toLowerCase();
   if (/availability report|status report|incident|outage|maintenance/.test(text)) {
     return `${source} 这条更像服务运行记录，不适合作为头条，但可以帮助判断工具稳定性和平台状态。`;
   }
@@ -500,7 +560,7 @@ function makeChineseSummary(item) {
   if (/enterprise|customer|pricing|partnership|funding/.test(text)) {
     return `${source} 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。`;
   }
-  return `${source} 给出了一条关于${topic}的新信号，适合和今天其他新闻一起看，不必单独拔高。`;
+  return `${source} 这条新闻指向${topic}的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。`;
 }
 
 function keywordHits(text, keywords = []) {
@@ -675,21 +735,94 @@ function signalMapForEdition(stories) {
   const groups = [
     { label: '模型上新', test: (story) => /model|launch|release|introduce|announc|openai|google/i.test(`${story.title} ${story.summary} ${story.source}`) },
     { label: '工具收口', test: (story) => /api|sdk|agent|copilot|github|developer|workflow|tool/i.test(`${story.title} ${story.summary} ${story.source}`) },
-    { label: '开源补位', test: (story) => /hugging face|open source|github|arxiv|paper|benchmark|dataset|weights/i.test(`${story.title} ${story.summary} ${story.source}`) }
+    { label: '开源补位', test: (story) => /hugging face|open source|github|arxiv|paper|benchmark|dataset|weights/i.test(`${story.title} ${story.summary} ${story.source}`) },
+    { label: '商业落点', test: (story) => /pricing|enterprise|customer|trial|lawsuit|automotive|drive-thru|business|mobility|技能|诉讼|得来速|汽车/i.test(`${story.title} ${story.summary} ${story.source} ${story.original_title}`) },
+    { label: '用户反应', test: (story) => /student|commencement|speech|boo|creator|media|用户|学生|演讲/i.test(`${story.title} ${story.summary} ${story.source} ${story.original_title}`) }
   ];
-  return groups.map((group) => {
-    const picks = stories.filter(group.test).slice(0, 2);
-    const first = picks[0] || stories[0] || {};
-    return {
+  const used = new Set();
+  const signals = [];
+  for (const group of groups) {
+    const first = stories.find((story) => !used.has(story.id) && group.test(story));
+    if (!first) continue;
+    used.add(first.id);
+    const evidence = [first];
+    used.add(first.id);
+    signals.push({
       signal: group.label,
-      evidence: picks.length ? picks.map((story) => story.id) : [first.id].filter(Boolean),
-      janet_view: clamp(`${sourceNames(picks.length ? picks : [first], 2).join('、') || first.source || '公开源'}给了信号：${group.label}不是口号，是今天具体新闻里能点开的变化。`, 45)
+      evidence: evidence.map((story) => story.id),
+      janet_view: clamp(first.summary || first.janet_take || first.title, 70)
+    });
+    if (signals.length >= 3) break;
+  }
+  return signals;
+}
+
+function homepageStoryItem(role, story, visual) {
+  return {
+    role,
+    story_id: story?.id || '',
+    title: story?.title || '',
+    source: story?.source || '',
+    category: story?.category || '',
+    summary: story?.summary || '',
+    why_it_matters: story?.why_it_matters || '',
+    janet_take: story?.janet_take || '',
+    watch_next: story?.watch_next || '',
+    visual: visual || story?.visual || ''
+  };
+}
+
+function uniqueStoryList(items) {
+  const used = new Set();
+  const result = [];
+  for (const item of items) {
+    if (!item?.id || used.has(item.id)) continue;
+    used.add(item.id);
+    result.push(item);
+  }
+  return result;
+}
+
+function buildHomepageAssembly(stories, date) {
+  const lead = stories[0];
+  const used = new Set([lead.id]);
+  const maxSignals = Math.min(3, Math.max(0, stories.length - 1 - 4));
+  const signalMap = signalMapForEdition(stories.filter((story) => story.id !== lead.id)).slice(0, maxSignals).map((signal, index) => {
+    const story = stories.find((item) => signal.evidence.includes(item.id) && !used.has(item.id));
+    if (!story) return null;
+    used.add(story.id);
+    return {
+      ...signal,
+      label: signal.signal,
+      summary: story.summary,
+      story_id: story.id,
+      story_title: story.title,
+      source: story.source,
+      visual: writeNewsVisual(`${date}-signal-${index + 1}.svg`, signal.signal, story.source || 'Janet', story.category || 'models')
     };
+  }).filter(Boolean);
+
+  const compactPool = uniqueStoryList(stories).filter((story) => !used.has(story.id));
+  const compactNews = [
+    ...compactPool.filter((story) => story.core_eligible),
+    ...compactPool.filter((story) => !story.core_eligible)
+  ].slice(0, 6);
+  compactNews.forEach((story) => used.add(story.id));
+
+  const homepageItems = [homepageStoryItem('lead', lead)];
+  signalMap.forEach((signal) => {
+    const story = stories.find((item) => item.id === signal.story_id);
+    homepageItems.push(homepageStoryItem('signal', story, signal.visual));
   });
+  compactNews.forEach((story) => homepageItems.push(homepageStoryItem('compact', story)));
+
+  return { signalMap, compactNews, homepageItems };
 }
 
 function whyItMatters(story) {
-  const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
+  const brief = storyBrief(story);
+  if (brief?.why) return brief.why;
+  const text = `${story.original_title || ''} ${story.title} ${story.original_summary || ''} ${story.summary} ${story.source}`.toLowerCase();
   const audience = /api|sdk|github|copilot|developer|workflow|agent/.test(text)
     ? '开发者'
     : /arxiv|paper|benchmark|training|inference|alignment|evaluation/.test(text)
@@ -703,7 +836,9 @@ function whyItMatters(story) {
 }
 
 function janetTake(story) {
-  const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
+  const brief = storyBrief(story);
+  if (brief?.janet) return brief.janet;
+  const text = `${story.original_title || ''} ${story.title} ${story.original_summary || ''} ${story.summary} ${story.source}`.toLowerCase();
   const source = chineseSourceName(story.source);
   const topic = normalizeTopic(story);
   if (/availability report|status report|incident|outage|maintenance/.test(text)) {
@@ -725,7 +860,9 @@ function janetTake(story) {
 }
 
 function watchNext(story) {
-  const text = `${story.title} ${story.summary} ${story.source}`.toLowerCase();
+  const brief = storyBrief(story);
+  if (brief?.watch) return brief.watch;
+  const text = `${story.original_title || ''} ${story.title} ${story.original_summary || ''} ${story.summary} ${story.source}`.toLowerCase();
   const source = chineseSourceName(story.source);
   const topic = normalizeTopic(story);
   if (/openai|model|reasoning|multimodal/.test(text)) return `看${source}是否开放 API、价格和企业权限。`;
@@ -882,60 +1019,10 @@ function buildContent(template, included, date, editionType, rules) {
   }
 
   const theme = titleForEdition(stories, rules, date);
-  const signalMap = signalMapForEdition(stories).map((signal, index) => {
-    const story = stories.find((item) => signal.evidence.includes(item.id)) || stories[index + 1] || stories[0];
-    return {
-      ...signal,
-      label: signal.signal,
-      summary: signal.janet_view,
-      story_id: story?.id || '',
-      story_title: story?.title || '',
-      source: story?.source || '',
-      visual: writeNewsVisual(`${date}-signal-${index + 1}.svg`, signal.signal, story?.source || 'Janet', story?.category || 'models')
-    };
-  });
-  homepageItems.push({
-    role: 'lead',
-    story_id: stories[0]?.id || '',
-    title: stories[0]?.title || '',
-    source: stories[0]?.source || '',
-    category: stories[0]?.category || '',
-    summary: stories[0]?.summary || '',
-    why_it_matters: stories[0]?.why_it_matters || '',
-    janet_take: stories[0]?.janet_take || '',
-    watch_next: stories[0]?.watch_next || '',
-    visual: stories[0]?.visual || ''
-  });
-  signalMap.forEach((signal) => {
-    const story = stories.find((item) => item.id === signal.story_id) || {};
-    homepageItems.push({
-      role: 'signal',
-      story_id: signal.story_id,
-      title: signal.story_title,
-      source: signal.source,
-      category: story.category || '',
-      summary: story.summary || signal.summary || '',
-      why_it_matters: story.why_it_matters || '',
-      janet_take: story.janet_take || '',
-      watch_next: story.watch_next || '',
-      visual: signal.visual
-    });
-  });
-  const signalIds = new Set(signalMap.map((signal) => signal.story_id).filter(Boolean));
-  const compactNews = stories
-    .filter((story) => story.id !== stories[0]?.id && !signalIds.has(story.id) && story.core_eligible)
-    .slice(0, 6);
-  compactNews.forEach((story) => homepageItems.push({
-    role: 'compact',
-    story_id: story.id,
-    title: story.title,
-    source: story.source,
-    category: story.category,
-    summary: story.summary,
-    why_it_matters: story.why_it_matters,
-    janet_take: story.janet_take,
-    watch_next: story.watch_next
-  }));
+  const homepageAssembly = buildHomepageAssembly(stories, date);
+  const signalMap = homepageAssembly.signalMap;
+  const compactNews = homepageAssembly.compactNews;
+  homepageItems.push(...homepageAssembly.homepageItems);
   const homepageIds = new Set(homepageItems.map((item) => item.story_id).filter(Boolean));
   for (const story of stories) {
     if (!homepageIds.has(story.id)) {

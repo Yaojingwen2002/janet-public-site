@@ -11,6 +11,7 @@ const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
 const EDITORIAL_COPY_RULES = resolve(ROOT, '.github/scripts/editorial-copy-rules.json');
 const EDITORIAL_QUALITY_OUT = resolve(ROOT, 'data/editorial-quality-check.json');
 const EDITORIAL_REDESIGN_OUT = resolve(ROOT, 'data/editorial-redesign-check.json');
+const EDITORIAL_ARCHITECTURE_OUT = resolve(ROOT, 'data/editorial-architecture-check.json');
 const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
 const SOURCE_COVERAGE = resolve(ROOT, 'data/source-coverage-report.json');
 const LEAKS = ['/Volumes/', 'file://', '/Users/', 'localhost', '127.0.0.1'];
@@ -231,6 +232,30 @@ function runEditorialRedesignQa(content, status, rules, copyRules) {
   };
 }
 
+function validateEditorialArchitectureV2(content, summary, edition) {
+  const issues = [];
+  const architectureCheck = readJson(EDITORIAL_ARCHITECTURE_OUT, null);
+  if (!architectureCheck) {
+    issues.push('editorial architecture check missing');
+  } else {
+    if (architectureCheck.latest_edition_id !== edition) issues.push('editorial architecture latest_edition_id mismatch');
+    if (architectureCheck.qa_passed !== true) issues.push('editorial architecture qa did not pass');
+  }
+
+  if (!Array.isArray(content?.raw_items) || !content.raw_items.length) issues.push('v2 raw_items missing');
+  if (!Array.isArray(content?.stories || content?.articles) || !(content.stories || content.articles).length) issues.push('v2 stories/articles missing');
+  if (!Array.isArray(content?.modules || content?.topic_modules) || !(content.modules || content.topic_modules).length) issues.push('v2 modules/topic_modules missing');
+  if (!content?.cover || !content.cover.cover_title || !content.cover.cover_summary || !content.cover.lead_story_id) issues.push('v2 cover missing');
+  if (!content?.homepage || !Array.isArray(content.homepage.compact_news)) issues.push('v2 homepage missing');
+  if (!content?.detail || !Array.isArray(content.detail.stories)) issues.push('v2 detail missing');
+
+  if (!(summary?.daily_brief || summary?.daily_title || summary?.title)) issues.push('summary daily_brief/daily_title missing');
+  if (!summary?.cover) issues.push('summary cover missing');
+  if (!Array.isArray(summary?.modules) || !summary.modules.length) issues.push('summary modules missing');
+  if (!Array.isArray(summary?.compact_articles || summary?.homepage_items || summary?.compact_news)) issues.push('summary compact_articles/homepage_items missing');
+  return issues;
+}
+
 function main() {
   const status = readJson(STATUS_PATH, {});
   const issues = [];
@@ -287,7 +312,7 @@ function main() {
     }
     readJson(resolve(ROOT, 'data', edition, 'content.json'));
     const content = readJson(resolve(ROOT, 'data', edition, 'content.json'));
-    readJson(resolve(ROOT, 'data', edition, 'news-summary.json'));
+    const summary = readJson(resolve(ROOT, 'data', edition, 'news-summary.json'));
     const html = existsSync(resolve(ROOT, 'data', edition, 'output.html'))
       ? readFileSync(resolve(ROOT, 'data', edition, 'output.html'), 'utf8')
       : '';
@@ -298,6 +323,7 @@ function main() {
     editorialRedesign = runEditorialRedesignQa(content, status, rules, readJson(EDITORIAL_COPY_RULES, { forbidden_public_phrases: [] }));
     issues.push(...editorialQuality.issues);
     issues.push(...editorialRedesign.issues);
+    issues.push(...validateEditorialArchitectureV2(content, summary, edition));
   } else if (/^dry_run_/.test(status.status || '')) {
     // Dry run is allowed locally; workflow uses non-dry-run mode.
   } else {

@@ -36,6 +36,12 @@ jobs:
       - name: Audit source coverage
         run: node .github/scripts/source-coverage-audit.mjs
 
+      - name: QA semantic copy
+        run: node scripts/qa-semantic-copy.mjs
+
+      - name: QA editorial architecture
+        run: node scripts/qa-editorial-architecture.mjs
+
       - name: QA generated news
         run: node .github/scripts/qa-daily-news-output.mjs
 

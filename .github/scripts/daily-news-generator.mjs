@@ -462,10 +462,253 @@ function rawStoryText(item) {
   return `${item.original_title || ''} ${item.title || ''} ${item.original_summary || ''} ${item.summary || ''}`;
 }
 
+function extractStoryFacts(item) {
+  const originalTitle = item.original_title || item.title || '';
+  const originalSummary = item.original_summary || item.summary || '';
+  const text = `${originalTitle} ${originalSummary}`;
+  const facts = [];
+  const add = (label, value) => {
+    if (value && !facts.some((fact) => fact.value === value)) facts.push({ label, value });
+  };
+  [
+    ['Codex', /Codex/i],
+    ['Dell', /Dell/i],
+    ['NVIDIA Vera', /NVIDIA Vera|Vera Arrives|Vera CPU/i],
+    ['Jensen Huang', /Jensen Huang/i],
+    ['Cosmos', /Cosmos/i],
+    ['PaddleOCR', /PaddleOCR/i],
+    ['Nova 2', /Nova 2/i],
+    ['Confluence', /Confluence/i],
+    ['GitHub Copilot', /GitHub Copilot|Copilot/i],
+    ['Siri', /Siri/i],
+    ['OpenAI', /OpenAI/i],
+    ['Claude', /Claude/i],
+    ['Alexa Plus', /Alexa Plus/i],
+    ['Amazon Quick', /Amazon Quick/i],
+    ['Amazon Bedrock AgentCore', /Bedrock AgentCore/i],
+    ['Aderant', /Aderant/i],
+    ['SandboxAQ', /SandboxAQ/i],
+    ['Anthropic', /Anthropic/i],
+    ['Cloudflare', /Cloudflare/i],
+    ['LetinAR', /LetinAR/i],
+    ['AI glasses', /AI glasses/i],
+    ['Anduril', /Anduril/i],
+    ['Meta', /\bMeta\b/i],
+    ['Google', /\bGoogle\b/i],
+    ['Elon Musk', /Elon Musk|Musk/i],
+    ['Sam Altman', /Sam Altman|Altman/i]
+  ].forEach(([value, pattern]) => {
+    if (pattern.test(text)) add('entity', value);
+  });
+  if (/partner|partnership/i.test(text)) add('action', '合作');
+  if (/on-premise|hybrid/i.test(text)) add('action', '混合与本地部署');
+  if (/fine-tun|LoRA|DoRA/i.test(text)) add('action', '微调');
+  if (/content moderation/i.test(text)) add('action', '内容审核');
+  if (/document parsing|OCR/i.test(text)) add('action', '文档解析');
+  if (/podcast/i.test(text)) add('action', '播客生成');
+  if (/trial|lawsuit|suit|case/i.test(text)) add('action', '诉讼');
+  if (/acquired|acquire/i.test(text)) add('action', '收购');
+  if (/AI glasses|optics/i.test(text)) add('action', 'AI 眼镜光学');
+  if (/cloud operations/i.test(text)) add('action', '云运维');
+  if (/code-based evaluators/i.test(text)) add('action', '代码评估器');
+  if (/drug discovery/i.test(text)) add('action', '药物发现');
+  if (/smart glasses for warfare/i.test(text)) add('action', '军用智能眼镜');
+  return facts;
+}
+
 function storyBrief(item) {
   const raw = rawStoryText(item);
   const text = raw.toLowerCase();
   const source = chineseSourceName(item.source);
+  if (/openai/.test(text) && /dell/.test(text) && /codex/.test(text)) {
+    return {
+      title: 'OpenAI 联手戴尔，把 Codex 推进企业内网',
+      summary: 'OpenAI 与戴尔合作，把 Codex 带进混合和本地企业环境，重点是代码智能体开始进入更保守的企业部署场景。',
+      why: '企业和开发团队要看：Codex 不只在云端演示，进入本地和混合环境后，采购、安全和权限都会变成真实问题。',
+      janet: 'Codex 进企业内网，说明 OpenAI 知道真正的钱不只在酷炫 demo 里。',
+      watch: '看戴尔客户是否把 Codex 接进内部开发流程。'
+    };
+  }
+  if (/jensen huang/.test(text) && /dell/.test(text)) {
+    return {
+      title: '黄仁勋在戴尔大会继续推企业 AI',
+      summary: 'NVIDIA 在戴尔技术大会上强调企业 AI 需求快速上升，这条新闻的重点是算力、服务器和企业部署正在绑得更紧。',
+      why: '企业 IT 和开发平台团队要看：AI 需求如果继续上升，预算会从试点转向基础设施采购。',
+      janet: '黄仁勋这次讲的不是愿景，是企业钱包和服务器机柜的位置。',
+      watch: '看戴尔与 NVIDIA 的企业 AI 订单是否继续放大。'
+    };
+  }
+  if (/vera/.test(text) && /nvidia/.test(text)) {
+    return {
+      title: 'NVIDIA Vera CPU 交到顶级 AI 实验室',
+      summary: 'NVIDIA 的 Vera CPU 开始交付给顶级 AI 实验室，信号在于智能体基础设施不只拼 GPU，也开始拼 CPU 与整机协同。',
+      why: '研究机构和基础设施团队要看：智能体工作负载如果扩大，CPU、内存和整机架构会一起影响效率。',
+      janet: 'Vera 不是给发布会撑场面的名字，它是在补智能体基础设施的另一半。',
+      watch: '看 Vera 是否进入更多 AI 实验室和整机方案。'
+    };
+  }
+  if (/nova 2/.test(text) && /content moderation/.test(text)) {
+    return {
+      title: 'AWS 用 Nova 2 做内容审核提示',
+      summary: 'AWS 展示如何提示 Amazon Nova 2 做内容审核，重点是企业把模型能力落到安全审核、规则判断和工作流自动化里。',
+      why: '内容平台和企业安全团队要看：模型审核能不能稳定处理边界案例，会直接影响人审成本和合规风险。',
+      janet: 'Nova 2 这条不性感，但内容审核这种脏活才最考验模型能不能上班。',
+      watch: '看 Nova 2 在审核场景的误判率和接入方式。'
+    };
+  }
+  if (/confluence/.test(text)) {
+    return {
+      title: 'AWS 把 Confluence 接进 Amazon Quick',
+      summary: 'AWS 展示 Confluence Cloud 与 Amazon Quick 的集成，重点是企业知识库正在被接入 AI 检索和问答入口。',
+      why: '企业知识管理团队要看：Confluence 这类存量内容如果接进 AI 入口，会改变内部搜索和协作方式。',
+      janet: '真正的企业 AI 往往不是新建一个聊天框，而是把旧文档拖进新入口。',
+      watch: '看 Amazon Quick 是否覆盖更多企业知识库。'
+    };
+  }
+  if (/cosmos/.test(text) && /robot video generation/.test(text)) {
+    return {
+      title: 'Hugging Face 教你微调 NVIDIA Cosmos',
+      summary: 'Hugging Face 发布 NVIDIA Cosmos Predict 2.5 的 LoRA/DoRA 微调教程，目标是机器人视频生成这种更具体的训练场景。',
+      why: '机器人和开源社区要看：Cosmos 如果能被低成本微调，视频生成会更快进入垂直任务。',
+      janet: '这条的价值在教程里：能不能被别人复现，比发布词更重要。',
+      watch: '看 Cosmos 微调案例是否出现更多机器人数据集。'
+    };
+  }
+  if (/paddleocr/.test(text)) {
+    return {
+      title: 'PaddleOCR 3.5 接上 Transformers 后端',
+      summary: 'Hugging Face 介绍 PaddleOCR 3.5 用 Transformers 后端跑 OCR 和文档解析，重点是文档 AI 工具链继续标准化。',
+      why: '开发者和文档自动化团队要看：OCR、解析和模型后端统一后，落地成本会明显下降。',
+      janet: 'PaddleOCR 这条很实用：文档处理不是性感赛道，但每天都有人被 PDF 折磨。',
+      watch: '看 PaddleOCR 3.5 的部署速度和中文文档效果。'
+    };
+  }
+  if (/take your local github sessions anywhere/.test(text)) {
+    return {
+      title: 'GitHub 会话开始跟着开发者走',
+      summary: 'GitHub 让本地会话更容易跨设备延续，重点是开发环境不再只锁在一台机器上，协作和上下文迁移会更顺。',
+      why: '开发者和远程团队要看：会话能带走，意味着代码、上下文和工具状态会更接近一个连续工作台。',
+      janet: '这不是炫技功能，是 GitHub 想把开发者的上下文也圈进自己的入口。',
+      watch: '看 GitHub 会话能力是否接进 Copilot 和 Codespaces。'
+    };
+  }
+  if (/aderant/.test(text) && /cloud operations/.test(text)) {
+    return {
+      title: 'Aderant 用 Amazon Quick 改造云运维',
+      summary: 'AWS 案例写到 Aderant 用 Amazon Quick 改造云运维，重点是企业开始把 AI 问答接进日常运维和内部知识流。',
+      why: '企业运维团队要看：AI 如果能回答系统和流程问题，影响的是故障处理、交接和内部支持成本。',
+      janet: '云运维这种地方没多少掌声，但 AI 能不能上班，往往先在这里露馅。',
+      watch: '看 Aderant 的云运维案例是否公开更多指标。'
+    };
+  }
+  if (/code-based evaluators/.test(text) && /bedrock agentcore/.test(text)) {
+    return {
+      title: 'Bedrock AgentCore 加上代码评估器',
+      summary: 'AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。',
+      why: '开发者和企业 AI 平台团队要看：智能体上线前如果缺评估器，错误会直接进业务流程。',
+      janet: '智能体不缺演示，缺的是出错时谁来抓包，AgentCore 这条就在补这个环节。',
+      watch: '看 Bedrock AgentCore 评估器是否支持更多真实任务。'
+    };
+  }
+  if (/sandboxaq/.test(text) && /drug discovery/.test(text) && /claude/.test(text)) {
+    return {
+      title: 'SandboxAQ 把药物模型接到 Claude',
+      summary: 'SandboxAQ 把药物发现模型带到 Claude 里，重点是专业模型开始借通用助手降低使用门槛，而不是只给计算专家用。',
+      why: '医药研发和企业 AI 团队要看：专业模型如果能被普通研究流程调用，会改变试验设计和知识检索方式。',
+      janet: '这条有意思的地方不是 Claude 多会聊天，而是专业模型终于想离开小圈子。',
+      watch: '看 SandboxAQ 是否公开模型边界和验证方式。'
+    };
+  }
+  if (/alexa\+ powered feature/.test(text) && /generate podcast/.test(text)) {
+    return {
+      title: 'Amazon 用 Alexa Plus 生成播客',
+      summary: 'TechCrunch 报道 Alexa Plus 新功能可以生成播客，说明语音助手正在从回答指令转向主动产出内容。',
+      why: '音频创作者和智能助手团队要看：助手生成内容会影响脚本、剪辑和分发的成本结构。',
+      janet: 'Alexa 以前像遥控器，现在开始像小型内容工厂，问题是成品能不能听。',
+      watch: '看 Alexa Plus 生成播客是否支持编辑和版权控制。'
+    };
+  }
+  if (/letinar/.test(text) && /ai glasses/.test(text)) {
+    return {
+      title: 'LetinAR 在做 AI 眼镜背后的光学',
+      summary: 'TechCrunch 报道韩国 LetinAR 正在打造 AI 眼镜背后的光学方案，重点是硬件体验不只靠模型，还靠显示和佩戴工程。',
+      why: '硬件创业者和消费电子团队要看：AI 眼镜如果要成为日常设备，光学、重量和可制造性会先卡住体验。',
+      janet: 'AI 眼镜不能只会喊助手，它首先得让人愿意戴在脸上。',
+      watch: '看 LetinAR 光学方案是否进入量产合作。'
+    };
+  }
+  if (/here.?s why elon musk lost his suit against openai/.test(text)) {
+    return {
+      title: 'MIT 复盘马斯克为何输给 OpenAI',
+      summary: 'MIT Technology Review 复盘马斯克对 OpenAI 诉讼失利，重点在于法律证据、公司使命和商业化承诺之间的拉扯。',
+      why: 'AI 公司和投资者要看：使命叙事进入法庭后，能不能变成可执行约束会被重新检验。',
+      janet: '愿景写在官网上很漂亮，进了法庭就要问它到底算不算数。',
+      watch: '看 OpenAI 治理争议是否引出更多法律动作。'
+    };
+  }
+  if (/all of the updates/.test(text) && /musk/.test(text) && /altman/.test(text)) {
+    return {
+      title: 'The Verge 梳理 OpenAI 控制权交锋',
+      summary: 'The Verge 汇总马斯克与 Sam Altman 围绕 OpenAI 的持续交锋，这条更像时间线，帮读者看清争议如何滚动。',
+      why: '关注 AI 治理的人要看：持续更新的争议会影响公众对 OpenAI 控制权和商业化路径的判断。',
+      janet: '这不是一条单点新闻，是 OpenAI 家庭剧的滚动字幕。',
+      watch: '看 Altman 与马斯克是否继续公开交锋。'
+    };
+  }
+  if (/elon musk loses his case against sam altman/.test(text)) {
+    return {
+      title: 'The Verge 记录马斯克败给 Altman',
+      summary: 'The Verge 报道马斯克对 Sam Altman 的案件失利，重点是围绕 OpenAI 的法律攻击暂时没有打穿。',
+      why: '投资者和政策观察者要看：诉讼结果会影响外界如何评估 OpenAI 的治理风险。',
+      janet: '马斯克这次没打穿，但这类官司通常不会让故事真的结束。',
+      watch: '看马斯克是否换路径继续挑战 OpenAI。'
+    };
+  }
+  if (/what to expect from google this week/.test(text)) {
+    return {
+      title: 'MIT 预告 Google 本周 AI 看点',
+      summary: 'MIT Technology Review 梳理 Google 本周可能发布的 AI 动作，重点是模型、搜索和开发入口会不会继续合并。',
+      why: '开发者和产品团队要看：Google 如果把 AI 更深接入搜索与工具，会影响流量入口和产品分发。',
+      janet: 'Google 的发布会从来不只是发布功能，它是在重排别人靠什么被看见。',
+      watch: '看 Google 是否把 AI 搜索和开发工具继续打通。'
+    };
+  }
+  if (/anduril/.test(text) && /meta/.test(text) && /smart glasses for warfare/.test(text)) {
+    return {
+      title: 'Anduril 与 Meta 做军用智能眼镜',
+      summary: 'MIT Technology Review 写到 Anduril 和 Meta 探索战争场景里的智能眼镜，重点是可穿戴 AI 正在进入高风险应用。',
+      why: '政策研究者和硬件团队要看：智能眼镜进入军事用途，会放大隐私、安全和实时决策风险。',
+      janet: '这条不是酷炫眼镜故事，而是 AI 戴到战场以后谁负责的问题。',
+      watch: '看军用智能眼镜是否披露安全限制。'
+    };
+  }
+  if (/anthropic has acquired/.test(text) && /openai/.test(text) && /cloudflare/.test(text)) {
+    return {
+      title: 'Anthropic 收购 OpenAI 也用过的开发工具',
+      summary: 'TechCrunch 报道 Anthropic 收购一家被 OpenAI、Google 和 Cloudflare 使用的开发工具创业公司，开发者基础设施正在被模型公司直接收入囊中。',
+      why: '开发者和平台团队要看：模型公司收购工具链，会影响未来 AI 编程入口由谁掌控。',
+      janet: 'Anthropic 买的不是小工具，是通往开发者日常工作的侧门。',
+      watch: '看 Anthropic 是否把这套工具接进 Claude 开发入口。'
+    };
+  }
+  if (/alexa plus/.test(text) && /podcast/.test(text)) {
+    return {
+      title: 'Alexa Plus 开始生成 AI 播客',
+      summary: 'Amazon Alexa Plus 增加 AI 生成播客能力，说明语音助手正在从回答问题转向主动生产音频内容。',
+      why: '内容创作者和语音产品团队要看：助手如果能生成播客，会改变音频内容的生产门槛。',
+      janet: 'Alexa 终于不只会答话，也开始抢内容生产的活。',
+      watch: '看 Alexa Plus 生成内容是否支持可控编辑。'
+    };
+  }
+  if (/elon musk/.test(text) && /sam altman|openai/.test(text) && /lost|suit|case/.test(text)) {
+    return {
+      title: '马斯克败诉，OpenAI 争议还没结束',
+      summary: 'The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。',
+      why: '投资者和 AI 公司观察者要看：这类诉讼会影响公众如何理解 AI 公司的使命、控制权和商业化。',
+      janet: '马斯克输了这一局，但 OpenAI 的治理故事不会因此安静。',
+      watch: '看马斯克是否继续用其他路径施压 OpenAI。'
+    };
+  }
   if (/siri/.test(text) && /auto-delet|deleting chat|delete/.test(text)) {
     return {
       title: /apple/.test(text) ? '苹果重做 Siri，聊天记录可能自动清除' : 'Siri 改版或加入聊天自动清除',
@@ -796,10 +1039,20 @@ function makeFieldUnique(items, field, formatter) {
 }
 
 function ensureUniqueHomepageCopy(items) {
-  makeFieldUnique(items, 'summary', (item, value, count) => clamp(`${value} 这条具体对应「${item.title}」第${count}个角度。`, 118));
-  makeFieldUnique(items, 'why_it_matters', (item, value, count) => clamp(`${value} 对应到${chineseSourceName(item.source)}这条第${count}个切面，是「${item.title}」。`, 96));
-  makeFieldUnique(items, 'janet_take', (item, value, count) => clamp(`${value} ${chineseSourceName(item.source)}这条第${count}个落点在「${item.title}」。`, 86));
-  makeFieldUnique(items, 'watch_next', (item, value, count) => clamp(`${value} 同时盯住${chineseSourceName(item.source)}后续动作${count}。`, 48));
+  makeFieldUnique(items, 'summary', (item, value) => clamp(`${chineseSourceName(item.source)}这条聚焦「${item.title}」，和同屏其他新闻分工不同：它提供的是另一条产品线索。`, 118));
+  makeFieldUnique(items, 'why_it_matters', (item) => clamp(`${chineseSourceName(item.source)}的「${item.title}」影响的是它所在团队的具体选择，不是泛泛的行业热闹。`, 96));
+  makeFieldUnique(items, 'janet_take', (item) => clamp(`Janet 看这条「${item.title}」：重点在具体动作，不在发布词。`, 86));
+  makeFieldUnique(items, 'watch_next', (item) => clamp(`看「${item.title}」后续是否出现产品、代码或客户证据。`, 48));
+}
+
+function ensureUniqueStoryCopy(stories) {
+  makeFieldUnique(stories, 'zh_title', (story) => clamp(`${story.zh_title || story.title}（${chineseSourceName(story.source)}）`, 52));
+  makeFieldUnique(stories, 'title', (story) => story.zh_title || story.title);
+  makeFieldUnique(stories, 'zh_summary', (story) => clamp(`${chineseSourceName(story.source)}这条讲的是「${story.zh_title || story.title}」：${story.original_title || story.raw_item?.original_title || ''}`.replace(/\s+/g, ' '), 120));
+  makeFieldUnique(stories, 'summary', (story) => story.zh_summary || story.summary);
+  makeFieldUnique(stories, 'why_it_matters', (story) => clamp(`${chineseSourceName(story.source)}的「${story.zh_title || story.title}」影响的是它自己的用户、团队和入口选择。`, 90));
+  makeFieldUnique(stories, 'janet_take', (story) => clamp(`Janet 看「${story.zh_title || story.title}」：先看这条新闻里的对象和动作。`, 80));
+  makeFieldUnique(stories, 'watch_next', (story) => clamp(`看「${story.zh_title || story.title}」是否出现后续产品证据。`, 42));
 }
 
 function buildHomepageAssembly(stories, date) {
@@ -837,6 +1090,60 @@ function buildHomepageAssembly(stories, date) {
   ensureUniqueHomepageCopy(homepageItems);
 
   return { signalMap, compactNews, homepageItems };
+}
+
+function moduleTitleFor(sectionKey, stories) {
+  const first = stories[0] || {};
+  const facts = (first.story_facts || []).map((fact) => fact.value).filter(Boolean);
+  if (sectionKey === 'agents') return facts.includes('Codex') ? '开发入口进入企业部署' : '开发工作流继续前移';
+  if (sectionKey === 'open_source') return facts[0] ? `${facts[0]} 带出开源工具线` : '开源工具链继续补位';
+  if (sectionKey === 'business') return facts[0] ? `${facts[0]} 指向商业落地` : '企业入口与商业落地';
+  if (sectionKey === 'models') return facts[0] ? `${facts[0]} 改写产品能力` : '模型能力进入产品层';
+  if (sectionKey === 'creator_opportunity') return '创作者工具开始分化';
+  if (sectionKey === 'china_perspective') return '中国视角里的 AI 动向';
+  return '更多值得留意的 AI 动态';
+}
+
+function moduleSummaryFor(sectionKey, stories) {
+  const sources = sourceNames(stories, 3).join('、') || '多个来源';
+  const facts = [...new Set(stories.flatMap((story) => (story.story_facts || []).map((fact) => fact.value)))].slice(0, 3);
+  const factText = facts.length ? `，具体对象包括${facts.join('、')}` : '';
+  if (sectionKey === 'agents') return `${sources}显示开发入口继续被 AI 工具占据${factText}，重点看企业和团队是否真的接入。`;
+  if (sectionKey === 'open_source') return `${sources}把开源工具和可复现路径摆到台前${factText}，适合观察社区接力速度。`;
+  if (sectionKey === 'business') return `${sources}集中在商业部署、客户入口和组织变化${factText}，不是单纯发布口号。`;
+  if (sectionKey === 'models') return `${sources}的信号落在模型能力与产品接口${factText}，需要看真实可用范围。`;
+  if (sectionKey === 'creator_opportunity') return `${sources}给创作者和内容团队提供了新的工具线索${factText}，关键是成本是否下降。`;
+  return `${sources}补充了今日 AI 动态的侧面信息${factText}，放在主线之外一起观察。`;
+}
+
+function buildModules(sections) {
+  return Object.entries(sections)
+    .filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0)
+    .map(([key, section]) => ({
+      module_id: key,
+      module_title: moduleTitleFor(key, section.items),
+      module_summary: moduleSummaryFor(key, section.items),
+      story_ids: section.items.map((story) => story.id)
+    }));
+}
+
+function buildCover(stories, modules, dailyTitle) {
+  const lead = stories[0] || {};
+  const facts = (lead.story_facts || []).map((fact) => fact.value);
+  const primaryFact = facts[0] || chineseSourceName(lead.source);
+  const coverTitle = facts.includes('Codex') && facts.includes('Dell')
+    ? 'Codex 开始进企业内网'
+    : `${primaryFact} 成为今天的第一信号`;
+  const coverSummary = facts.includes('Codex') && facts.includes('Dell')
+    ? '今天的主线不是模型参数，而是 OpenAI 与戴尔把 Codex 推进混合和本地企业环境，AI 编程开始面对真实采购和权限问题。'
+    : `今天的封面围绕${primaryFact}展开，它把${modules[0]?.module_title || 'AI 产品变化'}推到更具体的位置。`;
+  return {
+    daily_title: dailyTitle,
+    cover_title: coverTitle,
+    cover_summary: coverSummary,
+    daily_judgment: `Janet 判断：今天值得看的不是热词数量，而是谁把 AI 放进了更难撤回的工作入口。`,
+    lead_story_id: lead.id
+  };
 }
 
 function whyItMatters(story) {
@@ -976,9 +1283,25 @@ function publicIntroForEdition(stories) {
 }
 
 function storyToPublicItem(item) {
+  const raw_item = {
+    source: item.source,
+    original_title: item.title,
+    original_summary: item.summary || '',
+    url: item.url,
+    published_at: item.published_at,
+    category: schemaCategory(item.category)
+  };
+  const zh_title = clamp(makeChineseTitle(item), 52);
+  const zh_summary = clamp(makeChineseSummary(item), 120);
+  const story_facts = extractStoryFacts({ ...item, original_title: item.title, original_summary: item.summary || '' });
   return {
     id: item.id,
-    title: clamp(makeChineseTitle(item), 52),
+    story_id: item.id,
+    raw_item,
+    zh_title,
+    zh_summary,
+    story_facts,
+    title: zh_title,
     original_title: clamp(item.title, 140),
     url: item.url,
     source: item.source,
@@ -988,7 +1311,7 @@ function storyToPublicItem(item) {
     score: scoreFor(item.source_rank),
     published_at: item.published_at,
     published_at_source: item.published_at_source,
-    summary: clamp(makeChineseSummary(item), 120),
+    summary: zh_summary,
     original_summary: clamp(item.summary || item.title, 220),
     why_it_matters: whyItMatters(item),
     janet_take: janetTake(item),
@@ -1017,6 +1340,7 @@ function buildContent(template, included, date, editionType, rules) {
     story.primary_section = assignPrimarySection(story);
     story.watch_next = uniqueWatchNext(story, usedWatchNext);
   });
+  ensureUniqueStoryCopy(stories);
   for (const phrase of FORBIDDEN_TAKES) {
     if (JSON.stringify(stories).includes(phrase)) throw new Error(`forbidden_janet_take:${phrase}`);
   }
@@ -1043,6 +1367,8 @@ function buildContent(template, included, date, editionType, rules) {
   const signalMap = homepageAssembly.signalMap;
   const compactNews = homepageAssembly.compactNews;
   homepageItems.push(...homepageAssembly.homepageItems);
+  const modules = buildModules(sections);
+  const cover = buildCover(stories, modules, theme);
   const homepageIds = new Set(homepageItems.map((item) => item.story_id).filter(Boolean));
   for (const story of stories) {
     if (!homepageIds.has(story.id)) {
@@ -1062,6 +1388,38 @@ function buildContent(template, included, date, editionType, rules) {
     vol: template.vol || '0000',
     theme,
     title: theme,
+    raw_items: stories.map((story) => story.raw_item),
+    stories,
+    modules,
+    cover,
+    homepage: {
+      cover,
+      modules: modules.map((module) => ({
+        module_id: module.module_id,
+        module_title: module.module_title,
+        module_summary: module.module_summary
+      })),
+      signal_cards: signalMap,
+      compact_news: compactNews.map((story) => ({
+        story_id: story.id,
+        title: story.zh_title,
+        summary: story.zh_summary,
+        source: story.source,
+        category: story.category
+      }))
+    },
+    detail: {
+      stories: stories.map((story) => ({
+        story_id: story.id,
+        zh_title: story.zh_title,
+        zh_summary: story.zh_summary,
+        why_it_matters: story.why_it_matters,
+        janet_take: story.janet_take,
+        watch_next: story.watch_next,
+        story_facts: story.story_facts,
+        raw_item: story.raw_item
+      }))
+    },
     intro_text: publicIntroForEdition(stories),
     daily_thesis: thesisForEdition(stories),
     signal_map: signalMap,
@@ -1161,15 +1519,20 @@ function buildSummary(template, content, editionId, editionType) {
     brand: content.brand,
     theme: content.theme,
     title: content.theme,
+    daily_title: content.cover?.daily_title || content.theme,
+    daily_brief: content.cover?.cover_summary || content.daily_thesis,
     edition_type: editionType,
     item_count: (content.edition_items || Object.values(content.sections).flatMap((section) => section.items || [])).length,
     edition_items_count: (content.edition_items || []).length,
     homepage_items_count: (content.homepage_items || []).length,
+    cover: content.cover || null,
+    modules: content.modules || [],
     lead_story: lead,
     daily_thesis: content.daily_thesis,
     intro_text: content.intro_text,
     signal_map: content.signal_map,
     compact_news: content.compact_news || [],
+    compact_articles: content.compact_news || [],
     homepage_items: content.homepage_items || [],
     output_url: `data/${editionId}/output.html`,
     summary_url: `data/${editionId}/news-summary.json`,

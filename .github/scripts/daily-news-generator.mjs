@@ -465,6 +465,7 @@ function normalizeTopic(item) {
   const text = `${item.original_title || ''} ${item.title || ''} ${item.original_summary || ''} ${item.summary || ''}`.toLowerCase();
   if (/codex/.test(text)) return 'Codex';
   if (/copilot/.test(text)) return 'Copilot';
+  if (/leaderboard|ranking|evaluation|benchmark/.test(text) && /agent|agentic/.test(text)) return '智能体评测榜单';
   if (/agent|agentic/.test(text)) return '智能体';
   if (/api|sdk/.test(text)) return 'API';
   if (/open source|weights|hugging face/.test(text)) return '开源模型';
@@ -509,6 +510,7 @@ function extractStoryFacts(item) {
     ['Nova 2', /Nova 2/i],
     ['Confluence', /Confluence/i],
     ['GitHub Copilot', /GitHub Copilot|Copilot/i],
+    ['Open Agent Leaderboard', /Open Agent Leaderboard/i],
     ['Siri', /Siri/i],
     ['OpenAI', /OpenAI/i],
     ['Claude', /Claude/i],
@@ -533,6 +535,8 @@ function extractStoryFacts(item) {
   if (/on-premise|hybrid/i.test(text)) add('action', '混合与本地部署');
   if (/fine-tun|LoRA|DoRA/i.test(text)) add('action', '微调');
   if (/content moderation/i.test(text)) add('action', '内容审核');
+  if (/leaderboard|ranking/i.test(text)) add('action', '榜单排名');
+  if (/evaluation|evaluators?|benchmark/i.test(text)) add('action', '评测');
   if (/document parsing|OCR/i.test(text)) add('action', '文档解析');
   if (/podcast/i.test(text)) add('action', '播客生成');
   if (/trial|lawsuit|suit|case/i.test(text)) add('action', '诉讼');
@@ -556,6 +560,15 @@ function storyBrief(item) {
       why: '企业和开发团队要看：Codex 不只在云端演示，进入本地和混合环境后，采购、安全和权限都会变成真实问题。',
       janet: 'Codex 进企业内网，说明 OpenAI 知道真正的钱不只在酷炫 demo 里。',
       watch: '看戴尔客户是否把 Codex 接进内部开发流程。'
+    };
+  }
+  if (/open agent leaderboard/.test(text) || (/leaderboard|ranking|benchmark|evaluation/.test(text) && /agent/.test(text) && /hugging face/.test(text))) {
+    return {
+      title: 'Hugging Face 推出开放智能体榜单',
+      summary: 'Hugging Face 发布 Open Agent Leaderboard，把智能体能力放进公开评测和排名里，重点是让不同智能体不只靠演示互相比较。',
+      why: '开发者和研究团队要看：智能体如果有公开榜单，模型选择、工具链评估和复现实验会更容易对齐。',
+      janet: '智能体终于要上考场了。榜单不等于真能干活，但至少比各家自夸更好查。',
+      watch: '看 Open Agent Leaderboard 是否公开任务集和评分细则。'
     };
   }
   if (/jensen huang/.test(text) && /dell/.test(text)) {
@@ -804,7 +817,7 @@ function makeChineseTitle(item) {
   if (/copilot/.test(text)) return `${source} 继续把 Copilot 往工作流里塞`;
   if (/hugging face|open source|weights|dataset/.test(text)) return `${source} 放出开源信号，社区有活干了`;
   if (/arxiv|paper|benchmark/.test(text)) return `${source} 新论文冒头，先看能否复现`;
-  if (/api|sdk|developer|workflow|agent/.test(text)) return `${source} 把${topic}继续推向开发者`;
+  if (/api|sdk|developer|workflow|agent/.test(text)) return `${source}更新${topic}，先看谁能用起来`;
   return `${source}追踪${topic}，${verb}`;
 }
 
@@ -821,7 +834,7 @@ function makeChineseSummary(item) {
     return `${source} 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。`;
   }
   if (/api|sdk|developer|workflow|copilot|agent/.test(text)) {
-    return `${source} 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。`;
+    return `${source}这条把 AI 功能放到具体产品或流程里，重点看它影响哪类使用者，以及是否带来可验证的功能变化。`;
   }
   if (/hugging face|open source|weights|dataset/.test(text)) {
     return `${source} 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。`;
@@ -1188,7 +1201,7 @@ function whyItMatters(story) {
         : /enterprise|pricing|customer|funding|partnership|business/.test(text)
           ? '企业'
           : '创作者和产品团队';
-  return clamp(`${audience}要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。`, 90);
+  return clamp(`${audience}要看这条：它可能改变选型、评估或交付方式，关键是是否有清晰功能、价格或开放边界。`, 90);
 }
 
 function janetTake(story) {
@@ -1201,7 +1214,7 @@ function janetTake(story) {
     return '这类更像值班记录，能进归档，但别让它抢头条。';
   }
   if (/api|sdk|developer|workflow|copilot|github|agent/.test(text)) {
-    return '重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。';
+    return '先别急着鼓掌，关键看它有没有让真实任务少绕一步。';
   }
   if (/hugging face|open source|weights|dataset|repository/.test(text)) {
     return '开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。';

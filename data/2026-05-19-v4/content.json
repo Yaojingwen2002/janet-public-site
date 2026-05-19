@@ -2,9 +2,9 @@
   "date": "2026-05-19",
   "vol": "0000",
   "brand": "Janet 快车箱",
-  "theme": "开发者入口开始进工位",
-  "intro_text": "今天最值得看的不是热闹数量，而是OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog把Codex推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。",
-  "daily_thesis": "今天窗口里，OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog把开源补位摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
+  "theme": "开发者入口把开发流程收紧了",
+  "intro_text": "今天最值得看的不是热闹数量，而是OpenAI、NVIDIA AI、Hugging Face、GitHub Blog把Codex推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。",
+  "daily_thesis": "今天窗口里，OpenAI、NVIDIA AI、Hugging Face、GitHub Blog把产品和研究摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
   "signal_map": [
     {
       "signal": "模型上新",
@@ -33,16 +33,16 @@
       "visual": "assets/news-visuals/2026-05-19-signal-2.svg"
     },
     {
-      "signal": "商业落点",
+      "signal": "开源补位",
       "evidence": [
-        "the-verge-ai-4bdaa74b7f1b"
+        "huggingface-blog-ecc0f07478f6"
       ],
-      "janet_view": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
-      "label": "商业落点",
-      "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
-      "story_id": "the-verge-ai-4bdaa74b7f1b",
-      "story_title": "马斯克与 OpenAI 诉讼，信任成核心问题",
-      "source": "The Verge AI",
+      "janet_view": "Hugging Face 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "label": "开源补位",
+      "summary": "Hugging Face 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "story_id": "huggingface-blog-ecc0f07478f6",
+      "story_title": "Hugging Face 把智能体继续推向开发者",
+      "source": "Hugging Face",
       "visual": "assets/news-visuals/2026-05-19-signal-3.svg"
     }
   ],
@@ -72,10 +72,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0003"
+            "evidence-0005"
           ],
           "editorial_score": 175,
           "editorial_signals": [
@@ -134,10 +134,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0001"
+            "evidence-0022"
           ],
           "editorial_score": 173,
           "editorial_signals": [
@@ -176,6 +176,60 @@
           "primary_section": "agents"
         },
         {
+          "id": "huggingface-blog-ecc0f07478f6",
+          "title": "Hugging Face 把智能体继续推向开发者",
+          "original_title": "The Open Agent Leaderboard",
+          "url": "https://huggingface.co/blog/ibm-research/open-agent-leaderboard",
+          "source": "Hugging Face",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "open_source",
+          "score": 8,
+          "published_at": "2026-05-18T14:12:58.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Hugging Face 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "The Open Agent Leaderboard",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看Hugging Face在智能体上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:35:00.450Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0003"
+          ],
+          "editorial_score": 170,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "Hugging Face"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
           "id": "github-blog-53b6ecd830d4",
           "title": "GitHub 继续把 Copilot 往工作流里塞",
           "original_title": "Take your local GitHub sessions anywhere",
@@ -195,10 +249,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0012"
+            "evidence-0004"
           ],
           "editorial_score": 160,
           "editorial_signals": [
@@ -250,10 +304,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0002"
+            "evidence-0023"
           ],
           "editorial_score": 138,
           "editorial_signals": [
@@ -297,10 +351,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0018"
+            "evidence-0019"
           ],
           "editorial_score": 95,
           "editorial_signals": [
@@ -337,10 +391,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0020"
+            "evidence-0021"
           ],
           "editorial_score": 95,
           "editorial_signals": [
@@ -392,10 +446,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0010"
+            "evidence-0016"
           ],
           "editorial_score": 48,
           "editorial_signals": [
@@ -440,10 +494,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0005"
+            "evidence-0007"
           ],
           "editorial_score": 5,
           "editorial_signals": [
@@ -496,10 +550,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0017"
+            "evidence-0018"
           ],
           "editorial_score": 115,
           "editorial_signals": [
@@ -526,6 +580,91 @@
         }
       ]
     },
+    "open_source": {
+      "title": "开源与论文",
+      "items": [
+        {
+          "id": "huggingface-blog-4120a94e160d",
+          "title": "Hugging Face追踪AI 工具，露出新落点",
+          "original_title": "Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation",
+          "url": "https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation",
+          "source": "Hugging Face",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "open_source",
+          "score": 8,
+          "published_at": "2026-05-18T16:00:21.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation",
+          "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+          "watch_next": "看Hugging Face社区复现速度和许可边界。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:35:00.450Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0001"
+          ],
+          "editorial_score": 110,
+          "editorial_signals": [
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "Hugging Face"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "open_source"
+        },
+        {
+          "id": "huggingface-blog-c533f02e8e3f",
+          "title": "Hugging Face追踪AI 工具，露出新落点",
+          "original_title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+          "url": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+          "source": "Hugging Face",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "open_source",
+          "score": 8,
+          "published_at": "2026-05-18T15:12:46.000Z",
+          "published_at_source": "pubDate",
+          "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+          "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+          "watch_next": "看Hugging Face在开源模型上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:35:00.450Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0002"
+          ],
+          "editorial_score": 110,
+          "editorial_signals": [
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "Hugging Face"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "open_source"
+        }
+      ]
+    },
     "business": {
       "title": "商业与入口",
       "items": [
@@ -549,10 +688,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0019"
+            "evidence-0020"
           ],
           "editorial_score": 110,
           "editorial_signals": [
@@ -596,10 +735,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0008"
+            "evidence-0010"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -628,10 +767,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0015"
+            "evidence-0013"
           ],
           "editorial_score": 55,
           "editorial_signals": [],
@@ -660,10 +799,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0011"
+            "evidence-0017"
           ],
           "editorial_score": 8,
           "editorial_signals": [],
@@ -705,10 +844,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0004"
+            "evidence-0006"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -737,10 +876,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0006"
+            "evidence-0008"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -769,10 +908,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0007"
+            "evidence-0009"
           ],
           "editorial_score": 60,
           "editorial_signals": [],
@@ -801,10 +940,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0009"
+            "evidence-0015"
           ],
           "editorial_score": 58,
           "editorial_signals": [],
@@ -833,10 +972,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0014"
+            "evidence-0012"
           ],
           "editorial_score": 55,
           "editorial_signals": [],
@@ -865,10 +1004,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0016"
+            "evidence-0014"
           ],
           "editorial_score": 55,
           "editorial_signals": [],
@@ -897,10 +1036,10 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-05-19T02:33:45.171Z",
+          "verified_at": "2026-05-19T02:35:00.450Z",
           "duplicate_group": null,
           "evidence_ids": [
-            "evidence-0013"
+            "evidence-0011"
           ],
           "editorial_score": 35,
           "editorial_signals": [],
@@ -920,7 +1059,7 @@
       ]
     }
   },
-  "source_summary": "今日重点：OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog。完整来源与覆盖情况见状态页。",
+  "source_summary": "今日重点：OpenAI、NVIDIA AI、Hugging Face、GitHub Blog。完整来源与覆盖情况见状态页。",
   "source_ledger": [
     {
       "news_id": "openai-news-765fa93f522f",
@@ -944,6 +1083,18 @@
       "risk_note": null,
       "should_include": true,
       "editorial_score": 173,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "huggingface-blog-ecc0f07478f6",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://huggingface.co/blog/ibm-research/open-agent-leaderboard",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 170,
       "editorial_penalties": []
     },
     {
@@ -983,11 +1134,35 @@
       "editorial_penalties": []
     },
     {
+      "news_id": "huggingface-blog-4120a94e160d",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 110,
+      "editorial_penalties": []
+    },
+    {
       "news_id": "aws-machine-learning-e13b480f73de",
       "source": "AWS Machine Learning Blog",
       "source_type": "official",
       "source_rank": "A",
       "verified_url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 110,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "huggingface-blog-c533f02e8e3f",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
       "duplicate_group": null,
       "risk_note": null,
       "should_include": true,
@@ -1207,11 +1382,11 @@
   "what_to_watch_next": [
     "看OpenAI是否开放 API、价格和企业权限。",
     "看智能体是否进入默认开发工作流。",
-    "看Copilot是否进入默认开发工作流。"
+    "看Hugging Face在智能体上的产品入口。"
   ],
   "edition_id": "2026-05-16-v4",
-  "title": "开发者入口开始进工位",
-  "collected_items_count": 20,
+  "title": "开发者入口把开发流程收紧了",
+  "collected_items_count": 23,
   "edition_items": [
     {
       "id": "openai-news-765fa93f522f",
@@ -1233,10 +1408,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0003"
+        "evidence-0005"
       ],
       "editorial_score": 175,
       "editorial_signals": [
@@ -1290,10 +1465,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0001"
+        "evidence-0022"
       ],
       "editorial_score": 173,
       "editorial_signals": [
@@ -1332,6 +1507,60 @@
       "primary_section": "agents"
     },
     {
+      "id": "huggingface-blog-ecc0f07478f6",
+      "title": "Hugging Face 把智能体继续推向开发者",
+      "original_title": "The Open Agent Leaderboard",
+      "url": "https://huggingface.co/blog/ibm-research/open-agent-leaderboard",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "open_source",
+      "score": 8,
+      "published_at": "2026-05-18T14:12:58.000Z",
+      "published_at_source": "pubDate",
+      "summary": "Hugging Face 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "The Open Agent Leaderboard",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看Hugging Face在智能体上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:35:00.450Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0003"
+      ],
+      "editorial_score": 170,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "open_source_release",
+          "weight": 25,
+          "hits": [
+            "Hugging Face"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
       "id": "github-blog-53b6ecd830d4",
       "title": "GitHub 继续把 Copilot 往工作流里塞",
       "original_title": "Take your local GitHub sessions anywhere",
@@ -1351,10 +1580,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0012"
+        "evidence-0004"
       ],
       "editorial_score": 160,
       "editorial_signals": [
@@ -1406,10 +1635,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0002"
+        "evidence-0023"
       ],
       "editorial_score": 138,
       "editorial_signals": [
@@ -1453,10 +1682,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0017"
+        "evidence-0018"
       ],
       "editorial_score": 115,
       "editorial_signals": [
@@ -1482,6 +1711,46 @@
       "primary_section": "creator_opportunity"
     },
     {
+      "id": "huggingface-blog-4120a94e160d",
+      "title": "Hugging Face追踪AI 工具，露出新落点",
+      "original_title": "Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation",
+      "url": "https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "open_source",
+      "score": 8,
+      "published_at": "2026-05-18T16:00:21.000Z",
+      "published_at_source": "pubDate",
+      "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation",
+      "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+      "watch_next": "看Hugging Face社区复现速度和许可边界。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:35:00.450Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0001"
+      ],
+      "editorial_score": 110,
+      "editorial_signals": [
+        {
+          "name": "open_source_release",
+          "weight": 25,
+          "hits": [
+            "Hugging Face"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "open_source"
+    },
+    {
       "id": "aws-machine-learning-e13b480f73de",
       "title": "AWS追踪企业落地，把商业线往前推",
       "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
@@ -1501,10 +1770,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0019"
+        "evidence-0020"
       ],
       "editorial_score": 110,
       "editorial_signals": [
@@ -1529,6 +1798,46 @@
       "primary_section": "business"
     },
     {
+      "id": "huggingface-blog-c533f02e8e3f",
+      "title": "Hugging Face追踪AI 工具，露出新落点",
+      "original_title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+      "url": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "open_source",
+      "score": 8,
+      "published_at": "2026-05-18T15:12:46.000Z",
+      "published_at_source": "pubDate",
+      "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+      "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+      "watch_next": "看Hugging Face在开源模型上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:35:00.450Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0002"
+      ],
+      "editorial_score": 110,
+      "editorial_signals": [
+        {
+          "name": "open_source_release",
+          "weight": 25,
+          "hits": [
+            "Hugging Face"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "open_source"
+    },
+    {
       "id": "aws-machine-learning-948b959a8194",
       "title": "AWS 把产品落点继续推向开发者",
       "original_title": "Aderant transforms cloud operations with Amazon Quick",
@@ -1548,10 +1857,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0018"
+        "evidence-0019"
       ],
       "editorial_score": 95,
       "editorial_signals": [
@@ -1588,10 +1897,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0020"
+        "evidence-0021"
       ],
       "editorial_score": 95,
       "editorial_signals": [
@@ -1643,10 +1952,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0004"
+        "evidence-0006"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
@@ -1675,10 +1984,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0006"
+        "evidence-0008"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
@@ -1707,10 +2016,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0007"
+        "evidence-0009"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
@@ -1739,10 +2048,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0008"
+        "evidence-0010"
       ],
       "editorial_score": 60,
       "editorial_signals": [],
@@ -1771,10 +2080,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0009"
+        "evidence-0015"
       ],
       "editorial_score": 58,
       "editorial_signals": [],
@@ -1803,10 +2112,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0014"
+        "evidence-0012"
       ],
       "editorial_score": 55,
       "editorial_signals": [],
@@ -1835,10 +2144,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0015"
+        "evidence-0013"
       ],
       "editorial_score": 55,
       "editorial_signals": [],
@@ -1867,10 +2176,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0016"
+        "evidence-0014"
       ],
       "editorial_score": 55,
       "editorial_signals": [],
@@ -1899,10 +2208,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0010"
+        "evidence-0016"
       ],
       "editorial_score": 48,
       "editorial_signals": [
@@ -1947,10 +2256,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0013"
+        "evidence-0011"
       ],
       "editorial_score": 35,
       "editorial_signals": [],
@@ -1987,10 +2296,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0011"
+        "evidence-0017"
       ],
       "editorial_score": 8,
       "editorial_signals": [],
@@ -2027,10 +2336,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0005"
+        "evidence-0007"
       ],
       "editorial_score": 5,
       "editorial_signals": [
@@ -2098,14 +2407,14 @@
     },
     {
       "role": "signal",
-      "story_id": "the-verge-ai-4bdaa74b7f1b",
-      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
-      "source": "The Verge AI",
-      "category": "business",
-      "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
-      "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。 对应到The Verge这条第2个切面，是「马斯克与 OpenAI 诉讼，信任成核心问题」。",
-      "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。 The Verge这条第2个落点在「马斯克与 OpenAI 诉讼，信任成核心问题」。",
-      "watch_next": "看The Verge在产品落点上的产品入口。",
+      "story_id": "huggingface-blog-ecc0f07478f6",
+      "title": "Hugging Face 把智能体继续推向开发者",
+      "source": "Hugging Face",
+      "category": "open_source",
+      "summary": "Hugging Face 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到Hugging Face这条第3个切面，是「Hugging Face 把智能体继续推向开发者」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 Hugging Face这条第3个落点在「Hugging Face 把智能体继续推向开发者」。",
+      "watch_next": "看Hugging Face在智能体上的产品入口。",
       "visual": "assets/news-visuals/2026-05-19-signal-3.svg"
     },
     {
@@ -2115,8 +2424,8 @@
       "source": "NVIDIA AI",
       "category": "business",
       "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
-      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到NVIDIA这条第3个切面，是「NVIDIA 把智能体继续推向开发者」。",
-      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 NVIDIA这条第3个落点在「NVIDIA 把智能体继续推向开发者」。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到NVIDIA这条第4个切面，是「NVIDIA 把智能体继续推向开发者」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 NVIDIA这条第4个落点在「NVIDIA 把智能体继续推向开发者」。",
       "watch_next": "看智能体是否进入默认开发工作流。",
       "visual": ""
     },
@@ -2127,8 +2436,8 @@
       "source": "NVIDIA AI",
       "category": "business",
       "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。 这条具体对应「NVIDIA 把智能体继续推向开发者」第2个角度。",
-      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到NVIDIA这条第4个切面，是「NVIDIA 把智能体继续推向开发者」。",
-      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 NVIDIA这条第4个落点在「NVIDIA 把智能体继续推向开发者」。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到NVIDIA这条第5个切面，是「NVIDIA 把智能体继续推向开发者」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 NVIDIA这条第5个落点在「NVIDIA 把智能体继续推向开发者」。",
       "watch_next": "看NVIDIA是否开放 API、价格和企业权限。",
       "visual": ""
     },
@@ -2146,6 +2455,18 @@
     },
     {
       "role": "compact",
+      "story_id": "huggingface-blog-4120a94e160d",
+      "title": "Hugging Face追踪AI 工具，露出新落点",
+      "source": "Hugging Face",
+      "category": "open_source",
+      "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。 Hugging Face这条第2个落点在「Hugging Face追踪AI 工具，露出新落点」。",
+      "watch_next": "看Hugging Face社区复现速度和许可边界。",
+      "visual": ""
+    },
+    {
+      "role": "compact",
       "story_id": "aws-machine-learning-e13b480f73de",
       "title": "AWS追踪企业落地，把商业线往前推",
       "source": "AWS Machine Learning Blog",
@@ -2158,30 +2479,32 @@
     },
     {
       "role": "compact",
-      "story_id": "aws-machine-learning-948b959a8194",
-      "title": "AWS 把产品落点继续推向开发者",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
-      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到AWS这条第5个切面，是「AWS 把产品落点继续推向开发者」。",
-      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 AWS这条第5个落点在「AWS 把产品落点继续推向开发者」。",
-      "watch_next": "看产品落点是否进入默认开发工作流。",
-      "visual": ""
-    },
-    {
-      "role": "compact",
-      "story_id": "aws-machine-learning-59a2c5c9125f",
-      "title": "AWS 把智能体继续推向开发者",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。 这条具体对应「AWS 把智能体继续推向开发者」第2个角度。",
-      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到AWS这条第6个切面，是「AWS 把智能体继续推向开发者」。",
-      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 AWS这条第6个落点在「AWS 把智能体继续推向开发者」。",
-      "watch_next": "看AWS在智能体上的产品入口。",
+      "story_id": "huggingface-blog-c533f02e8e3f",
+      "title": "Hugging Face追踪AI 工具，露出新落点",
+      "source": "Hugging Face",
+      "category": "open_source",
+      "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。 这条具体对应「Hugging Face追踪AI 工具，露出新落点」第2个角度。",
+      "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到Hugging Face这条第2个切面，是「Hugging Face追踪AI 工具，露出新落点」。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。 Hugging Face这条第3个落点在「Hugging Face追踪AI 工具，露出新落点」。",
+      "watch_next": "看Hugging Face在开源模型上的产品入口。",
       "visual": ""
     }
   ],
   "hidden_items": [
+    {
+      "id": "aws-machine-learning-948b959a8194",
+      "title": "AWS 把产品落点继续推向开发者",
+      "source": "AWS Machine Learning Blog",
+      "reason": "not_home_slot",
+      "editorial_score": 95
+    },
+    {
+      "id": "aws-machine-learning-59a2c5c9125f",
+      "title": "AWS 把智能体继续推向开发者",
+      "source": "AWS Machine Learning Blog",
+      "reason": "not_home_slot",
+      "editorial_score": 95
+    },
     {
       "id": "techcrunch-ai-efc6fd2c5aea",
       "title": "TechCrunch追踪模型能力，露出新落点",
@@ -2209,6 +2532,13 @@
       "source": "MIT Technology Review AI",
       "reason": "not_home_slot",
       "editorial_score": 58
+    },
+    {
+      "id": "the-verge-ai-4bdaa74b7f1b",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "source": "The Verge AI",
+      "reason": "not_home_slot",
+      "editorial_score": 55
     },
     {
       "id": "the-verge-ai-905369627f97",
@@ -2274,10 +2604,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0001"
+        "evidence-0022"
       ],
       "editorial_score": 173,
       "editorial_signals": [
@@ -2335,10 +2665,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0002"
+        "evidence-0023"
       ],
       "editorial_score": 138,
       "editorial_signals": [
@@ -2382,10 +2712,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0017"
+        "evidence-0018"
       ],
       "editorial_score": 115,
       "editorial_signals": [
@@ -2411,6 +2741,46 @@
       "primary_section": "creator_opportunity"
     },
     {
+      "id": "huggingface-blog-4120a94e160d",
+      "title": "Hugging Face追踪AI 工具，露出新落点",
+      "original_title": "Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation",
+      "url": "https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation",
+      "source": "Hugging Face",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "open_source",
+      "score": 8,
+      "published_at": "2026-05-18T16:00:21.000Z",
+      "published_at_source": "pubDate",
+      "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "Fine-Tuning NVIDIA Cosmos Predict 2.5 with LoRA/DoRA for Robot Video Generation",
+      "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+      "watch_next": "看Hugging Face社区复现速度和许可边界。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:35:00.450Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0001"
+      ],
+      "editorial_score": 110,
+      "editorial_signals": [
+        {
+          "name": "open_source_release",
+          "weight": 25,
+          "hits": [
+            "Hugging Face"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "open_source"
+    },
+    {
       "id": "aws-machine-learning-e13b480f73de",
       "title": "AWS追踪企业落地，把商业线往前推",
       "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
@@ -2430,10 +2800,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0019"
+        "evidence-0020"
       ],
       "editorial_score": 110,
       "editorial_signals": [
@@ -2458,99 +2828,44 @@
       "primary_section": "business"
     },
     {
-      "id": "aws-machine-learning-948b959a8194",
-      "title": "AWS 把产品落点继续推向开发者",
-      "original_title": "Aderant transforms cloud operations with Amazon Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
-      "source": "AWS Machine Learning Blog",
+      "id": "huggingface-blog-c533f02e8e3f",
+      "title": "Hugging Face追踪AI 工具，露出新落点",
+      "original_title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+      "url": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+      "source": "Hugging Face",
       "source_type": "official",
       "source_rank": "A",
-      "category": "business",
+      "category": "open_source",
       "score": 8,
-      "published_at": "2026-05-18T17:26:40.000Z",
+      "published_at": "2026-05-18T15:12:46.000Z",
       "published_at_source": "pubDate",
-      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
-      "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 perce...",
-      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看产品落点是否进入默认开发工作流。",
+      "summary": "Hugging Face 这条新闻指向AI 工具的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+      "why_it_matters": "开源社区要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+      "watch_next": "看Hugging Face在开源模型上的产品入口。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
+      "verified_at": "2026-05-19T02:35:00.450Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0018"
+        "evidence-0002"
       ],
-      "editorial_score": 95,
+      "editorial_score": 110,
       "editorial_signals": [
         {
-          "name": "developer_tooling",
+          "name": "open_source_release",
           "weight": 25,
           "hits": [
-            "workflow"
+            "Hugging Face"
           ]
         }
       ],
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
-    },
-    {
-      "id": "aws-machine-learning-59a2c5c9125f",
-      "title": "AWS 把智能体继续推向开发者",
-      "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
-      "source": "AWS Machine Learning Blog",
-      "source_type": "official",
-      "source_rank": "A",
-      "category": "business",
-      "score": 8,
-      "published_at": "2026-05-18T15:07:15.000Z",
-      "published_at_source": "pubDate",
-      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
-      "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to c...",
-      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
-      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
-      "watch_next": "看AWS在智能体上的产品入口。",
-      "image": null,
-      "image_source": null,
-      "image_credit": null,
-      "verified_at": "2026-05-19T02:33:45.171Z",
-      "duplicate_group": null,
-      "evidence_ids": [
-        "evidence-0020"
-      ],
-      "editorial_score": 95,
-      "editorial_signals": [
-        {
-          "name": "model_release",
-          "weight": 35,
-          "hits": [
-            "agent"
-          ]
-        },
-        {
-          "name": "developer_tooling",
-          "weight": 25,
-          "hits": [
-            "agent"
-          ]
-        }
-      ],
-      "editorial_penalties": [
-        {
-          "name": "event_or_marketing",
-          "weight": -35,
-          "hits": [
-            "register"
-          ]
-        }
-      ],
-      "lead_eligible": true,
-      "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "open_source"
     }
   ]
 }

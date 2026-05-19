@@ -1,0 +1,2556 @@
+{
+  "date": "2026-05-19",
+  "vol": "0000",
+  "brand": "Janet 快车箱",
+  "theme": "开发者入口开始进工位",
+  "intro_text": "今天最值得看的不是热闹数量，而是OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog把Codex推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。",
+  "daily_thesis": "今天窗口里，OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog把开源补位摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
+  "signal_map": [
+    {
+      "signal": "模型上新",
+      "evidence": [
+        "techcrunch-ai-fc9d9b7a3f0a"
+      ],
+      "janet_view": "TechCrunch把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "label": "模型上新",
+      "summary": "TechCrunch把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "story_id": "techcrunch-ai-fc9d9b7a3f0a",
+      "story_title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "source": "TechCrunch AI",
+      "visual": "assets/news-visuals/2026-05-19-signal-1.svg"
+    },
+    {
+      "signal": "工具收口",
+      "evidence": [
+        "github-blog-53b6ecd830d4"
+      ],
+      "janet_view": "GitHub 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "label": "工具收口",
+      "summary": "GitHub 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "story_id": "github-blog-53b6ecd830d4",
+      "story_title": "GitHub 继续把 Copilot 往工作流里塞",
+      "source": "GitHub Blog",
+      "visual": "assets/news-visuals/2026-05-19-signal-2.svg"
+    },
+    {
+      "signal": "商业落点",
+      "evidence": [
+        "the-verge-ai-4bdaa74b7f1b"
+      ],
+      "janet_view": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "label": "商业落点",
+      "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "story_id": "the-verge-ai-4bdaa74b7f1b",
+      "story_title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "source": "The Verge AI",
+      "visual": "assets/news-visuals/2026-05-19-signal-3.svg"
+    }
+  ],
+  "past_context": [],
+  "lead_story_id": "openai-news-765fa93f522f",
+  "sections": {
+    "lead_story": {
+      "title": "今日封面",
+      "items": [
+        {
+          "id": "openai-news-765fa93f522f",
+          "title": "OpenAI 押注 Codex，开发开始代理化",
+          "original_title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
+          "url": "https://openai.com/index/dell-codex-enterprise-partnership",
+          "source": "OpenAI",
+          "source_type": "official",
+          "source_rank": "S",
+          "category": "models",
+          "score": 9.5,
+          "published_at": "2026-05-18T10:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+          "original_summary": "OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows.",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看OpenAI是否开放 API、价格和企业权限。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0003"
+          ],
+          "editorial_score": 175,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "Codex",
+                "agent",
+                "workflow"
+              ]
+            },
+            {
+              "name": "business_impact",
+              "weight": 15,
+              "hits": [
+                "enterprise"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents",
+          "visual": "assets/news-visuals/2026-05-19-lead.svg"
+        }
+      ]
+    },
+    "agents": {
+      "title": "Agent 与工具",
+      "items": [
+        {
+          "id": "nvidia-ai-blog-e1c9447bd1b4",
+          "title": "NVIDIA 把智能体继续推向开发者",
+          "original_title": "NVIDIA CEO Jensen Huang at Dell Technologies World: ‘Demand Is Going Parabolic, Utterly Parabolic’",
+          "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
+          "source": "NVIDIA AI",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-18T22:28:59.000Z",
+          "published_at_source": "pubDate",
+          "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "Agentic AI inference at one-tenth the cost per token with NVIDIA Vera Rubin NVL72. Agent sandboxes run 50% faster on NVIDIA Vera than traditional CPUs — while enterprise data queries are up to 3x faster with the Vera...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看智能体是否进入默认开发工作流。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0001"
+          ],
+          "editorial_score": 173,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "research_signal",
+              "weight": 20,
+              "hits": [
+                "inference"
+              ]
+            },
+            {
+              "name": "business_impact",
+              "weight": 15,
+              "hits": [
+                "enterprise"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "github-blog-53b6ecd830d4",
+          "title": "GitHub 继续把 Copilot 往工作流里塞",
+          "original_title": "Take your local GitHub sessions anywhere",
+          "url": "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/",
+          "source": "GitHub Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "agents",
+          "score": 8,
+          "published_at": "2026-05-18T16:54:53.000Z",
+          "published_at_source": "pubDate",
+          "summary": "GitHub 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "Kick off work in VS Code or the CLI, finish it from your phone. Remote control for GitHub Copilot sessions is now generally available on github.com and GitHub Mobile. The post Take your local GitHub sessions anywhere...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看Copilot是否进入默认开发工作流。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0012"
+          ],
+          "editorial_score": 160,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "GitHub Copilot",
+                "agent"
+              ]
+            },
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "GitHub"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "nvidia-ai-blog-7f23df8fcf70",
+          "title": "NVIDIA 把智能体继续推向开发者",
+          "original_title": "Vera Arrives: NVIDIA’s First CPU Built for Agents Lands at Top AI Labs",
+          "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+          "source": "NVIDIA AI",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-18T21:48:17.000Z",
+          "published_at_source": "pubDate",
+          "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "The first NVIDIA Vera CPUs arrived at three of the world's leading AI labs on Friday — Anthropic in San Francisco, OpenAI in Mission Bay, SpaceXAI in Palo Alto — followed by a delivery to Oracle Cloud Infrastructure i...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看NVIDIA是否开放 API、价格和企业权限。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0002"
+          ],
+          "editorial_score": 138,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "aws-machine-learning-948b959a8194",
+          "title": "AWS 把产品落点继续推向开发者",
+          "original_title": "Aderant transforms cloud operations with Amazon Quick",
+          "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+          "source": "AWS Machine Learning Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-18T17:26:40.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 perce...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看产品落点是否进入默认开发工作流。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0018"
+          ],
+          "editorial_score": 95,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "workflow"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "aws-machine-learning-59a2c5c9125f",
+          "title": "AWS 把智能体继续推向开发者",
+          "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
+          "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+          "source": "AWS Machine Learning Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-18T15:07:15.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to c...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看AWS在智能体上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0020"
+          ],
+          "editorial_score": 95,
+          "editorial_signals": [
+            {
+              "name": "model_release",
+              "weight": 35,
+              "hits": [
+                "agent"
+              ]
+            },
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "agent"
+              ]
+            }
+          ],
+          "editorial_penalties": [
+            {
+              "name": "event_or_marketing",
+              "weight": -35,
+              "hits": [
+                "register"
+              ]
+            }
+          ],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "mit-tech-review-ai-d601d722ee22",
+          "title": "MIT Tech Review 把模型能力继续推向开发者",
+          "original_title": "What to expect from Google this week",
+          "url": "https://www.technologyreview.com/2026/05/18/1137439/what-to-expect-from-google-this-week/",
+          "source": "MIT Technology Review AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T17:35:43.000Z",
+          "published_at_source": "pubDate",
+          "summary": "MIT Tech Review 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+          "original_summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. When Google opens its doors tomorrow for its annual developer conference, I/O,...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+          "watch_next": "看MIT Tech Review在产品落点上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0010"
+          ],
+          "editorial_score": 48,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "developer"
+              ]
+            }
+          ],
+          "editorial_penalties": [
+            {
+              "name": "event_or_marketing",
+              "weight": -35,
+              "hits": [
+                "conference"
+              ]
+            }
+          ],
+          "lead_eligible": false,
+          "core_eligible": true,
+          "primary_section": "agents"
+        },
+        {
+          "id": "techcrunch-ai-90e94189f7af",
+          "title": "TechCrunch 可用性报告，放进归档就好",
+          "original_title": "Anthropic has acquired the dev tools startup used by OpenAI, Google, and Cloudflare",
+          "url": "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T19:27:52.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch 这条更像服务运行记录，不适合作为头条，但可以帮助判断工具稳定性和平台状态。",
+          "original_summary": "Stainless, a New York-based startup, founded in 2022, rose to prominence in the emerging AI industry for automating the creation and maintenance of software development kits, or SDKs — the libraries developers use to...",
+          "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "这类更像值班记录，能进归档，但别让它抢头条。",
+          "watch_next": "看TechCrunch在API上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0005"
+          ],
+          "editorial_score": 5,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "API",
+                "SDK",
+                "developer",
+                "tool"
+              ]
+            }
+          ],
+          "editorial_penalties": [
+            {
+              "name": "status_or_availability",
+              "weight": -80,
+              "hits": [
+                "maintenance"
+              ]
+            }
+          ],
+          "lead_eligible": false,
+          "core_eligible": false,
+          "primary_section": "agents"
+        }
+      ]
+    },
+    "creator_opportunity": {
+      "title": "创作者机会",
+      "items": [
+        {
+          "id": "aws-machine-learning-c46056cb1f23",
+          "title": "AWS 放出开源信号，社区有活干了",
+          "original_title": "Prompting Amazon Nova 2 for content moderation",
+          "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+          "source": "AWS Machine Learning Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-18T18:56:36.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AWS 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。",
+          "original_summary": "In this post, you learn how to prompt Amazon Nova 2 Lite for content moderation using structured and free-form approaches, grounded in the MLCommons AILuminate Assessment Standard. The prompting techniques use the AIL...",
+          "why_it_matters": "研究者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+          "watch_next": "看创作者工具是否真正降低制作成本。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0017"
+          ],
+          "editorial_score": 115,
+          "editorial_signals": [
+            {
+              "name": "open_source_release",
+              "weight": 25,
+              "hits": [
+                "dataset",
+                "benchmark"
+              ]
+            },
+            {
+              "name": "research_signal",
+              "weight": 20,
+              "hits": [
+                "benchmark"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "creator_opportunity"
+        }
+      ]
+    },
+    "business": {
+      "title": "商业与入口",
+      "items": [
+        {
+          "id": "aws-machine-learning-e13b480f73de",
+          "title": "AWS追踪企业落地，把商业线往前推",
+          "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
+          "url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
+          "source": "AWS Machine Learning Blog",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "business",
+          "score": 8,
+          "published_at": "2026-05-18T15:37:55.000Z",
+          "published_at_source": "pubDate",
+          "summary": "AWS 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。",
+          "original_summary": "In this post, you will learn how to set up the Confluence Cloud integration with Quick. This includes creating a knowledge base for semantic search, setting up Actions to query and manage Confluence pages, and organiz...",
+          "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
+          "watch_next": "看AWS能否把产品落点落成具体产品。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0019"
+          ],
+          "editorial_score": 110,
+          "editorial_signals": [
+            {
+              "name": "developer_tooling",
+              "weight": 25,
+              "hits": [
+                "integration"
+              ]
+            },
+            {
+              "name": "business_impact",
+              "weight": 15,
+              "hits": [
+                "enterprise"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "business"
+        },
+        {
+          "id": "techcrunch-ai-d57cfade0048",
+          "title": "TechCrunch追踪产品落点，露出新落点",
+          "original_title": "South Korea&#8217;s LetinAR is building optics behind AI glasses",
+          "url": "https://techcrunch.com/2026/05/18/south-koreas-letinar-is-building-the-optics-behind-ai-glasses/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T11:00:00.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "A lens the size of a thumbnail — and the South Korean startup that makes it — could become the optical backbone of the AI glasses era.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+          "watch_next": "看TechCrunch能否把产品落点落成具体产品。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0008"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "business"
+        },
+        {
+          "id": "the-verge-ai-905369627f97",
+          "title": "The Verge追踪产品落点，露出新落点",
+          "original_title": "Elon Musk loses his case against Sam Altman",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/932383/jury-verdict-musk-v-altman-openai-trial",
+          "source": "The Verge AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T17:39:32.000Z",
+          "published_at_source": "published",
+          "summary": "The Verge 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "After around two hours of deliberation, the jury has reached a unanimous verdict in Musk v. Altman, the tech trial of the year. The group found that two claims were barred by the statute of limitations, and a third fa...",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "The Verge这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+          "watch_next": "看The Verge的客户、定价和入口变化。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0015"
+          ],
+          "editorial_score": 55,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "business"
+        },
+        {
+          "id": "mit-tech-review-ai-991173046339",
+          "title": "汽车业开始抢 AI 技能",
+          "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+          "url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+          "source": "MIT Technology Review AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T16:01:39.000Z",
+          "published_at_source": "pubDate",
+          "summary": "MIT Tech Review把汽车行业的 AI 竞争指向人才和能力储备，真正的分水岭可能不是谁会宣传，而是谁能把 AI 塞进研发、制造和服务链路。",
+          "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice command...",
+          "why_it_matters": "车企和供应链要看：AI 能力会影响研发效率、软件体验和岗位结构，竞争会先体现在团队能力上。",
+          "janet_take": "车圈的 AI 竞赛不只在座舱屏幕上，也在招聘和组织结构里。",
+          "watch_next": "看MIT Tech Review能否把产品落点落成具体产品。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0011"
+          ],
+          "editorial_score": 8,
+          "editorial_signals": [],
+          "editorial_penalties": [
+            {
+              "name": "jobs_or_hr",
+              "weight": -50,
+              "hits": [
+                "career"
+              ]
+            }
+          ],
+          "lead_eligible": true,
+          "core_eligible": false,
+          "primary_section": "business"
+        }
+      ]
+    },
+    "models": {
+      "title": "模型与产品",
+      "items": [
+        {
+          "id": "techcrunch-ai-efc6fd2c5aea",
+          "title": "TechCrunch追踪模型能力，露出新落点",
+          "original_title": "SandboxAQ brings its drug discovery models to Claude — no PhD in computing required",
+          "url": "https://techcrunch.com/2026/05/18/sandboxaq-brings-its-drug-discovery-models-to-claude-no-phd-in-computing-required/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T21:29:31.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch 这条新闻指向模型能力的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "Other venture-backed companies like Chai Discovery and Isomorphic Labs have raced to build better models. SandboxAQ is betting that access is the bigger obstacle and that Claude solves it.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把模型能力变成可用入口。",
+          "watch_next": "看TechCrunch是否开放 API、价格和企业权限。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0004"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "models"
+        },
+        {
+          "id": "techcrunch-ai-fc9d9b7a3f0a",
+          "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+          "original_title": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
+          "url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T17:34:43.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+          "original_summary": "Elon Musk's claim that he was mistreated by his OpenAI co-founders failed after nine California jurors decided in a unanimous verdict that his lawsuits had been filed too late.",
+          "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。",
+          "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。",
+          "watch_next": "看法庭如何处理 OpenAI 的使命与商业边界。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0006"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "models"
+        },
+        {
+          "id": "techcrunch-ai-9a05454b24f4",
+          "title": "TechCrunch追踪产品落点，露出新落点",
+          "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
+          "url": "https://techcrunch.com/2026/05/18/amazons-new-alexa-powered-feature-can-generate-podcast-episodes/",
+          "source": "TechCrunch AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T14:56:47.000Z",
+          "published_at_source": "pubDate",
+          "summary": "TechCrunch 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "Amazon’s Alexa+ can now generate custom AI podcasts on demand, as the company expands its assistant into a personalized AI content platform.",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "TechCrunch这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+          "watch_next": "看TechCrunch在产品落点上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0007"
+          ],
+          "editorial_score": 60,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "models"
+        },
+        {
+          "id": "mit-tech-review-ai-8970aa509b85",
+          "title": "MIT Tech Review追踪产品落点，发布新动作",
+          "original_title": "Here’s why Elon Musk lost his suit against OpenAI",
+          "url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+          "source": "MIT Technology Review AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-19T00:53:10.000Z",
+          "published_at_source": "pubDate",
+          "summary": "MIT Tech Review 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "On Monday, the jury in Musk v. Altman dealt Elon Musk a major blow—reaching a unanimous advisory verdict that he had sued OpenAI too late and, as a result, his claims are barred by the applicable statutes of limitatio...",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "MIT Tech Review这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+          "watch_next": "看MIT Tech Review是否开放 API、价格和企业权限。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0009"
+          ],
+          "editorial_score": 58,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "models"
+        },
+        {
+          "id": "the-verge-ai-4bdaa74b7f1b",
+          "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+          "original_title": "All of the updates from Elon Musk and Sam Altman’s battle over OpenAI",
+          "url": "https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
+          "source": "The Verge AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T17:49:49.000Z",
+          "published_at_source": "published",
+          "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+          "original_summary": "Sam Altman and Elon Musk are facing off in a high-stakes trial that could alter the future of OpenAI and its most well-known product, ChatGPT. In 2024, Musk filed a lawsuit accusing OpenAI of abandoning its founding m...",
+          "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。",
+          "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。",
+          "watch_next": "看The Verge在产品落点上的产品入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0014"
+          ],
+          "editorial_score": 55,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "models"
+        },
+        {
+          "id": "the-verge-ai-ae1139b3549a",
+          "title": "The Verge追踪产品落点，发布新动作",
+          "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
+          "url": "https://www.theverge.com/tech/932375/amazon-alexa-plus-ai-podcasts",
+          "source": "The Verge AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T15:55:25.000Z",
+          "published_at_source": "published",
+          "summary": "The Verge 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+          "original_summary": "Alexa Plus, Amazon's upgraded AI assistant, can now generate podcasts on \"virtually any topic,\" according to an announcement on Monday. With the update, Amazon says you can give Alexa Plus a topic, and the AI assistan...",
+          "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+          "janet_take": "The Verge这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+          "watch_next": "看The Verge是否把产品落点做成默认入口。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0016"
+          ],
+          "editorial_score": 55,
+          "editorial_signals": [],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "models"
+        },
+        {
+          "id": "the-verge-ai-950eb931129f",
+          "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+          "original_title": "Musk v. Altman proved that AI is led by the wrong people",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/932464/musk-v-altman-proved-that-ai-is-led-by-the-wrong-people",
+          "source": "The Verge AI",
+          "source_type": "media",
+          "source_rank": "B",
+          "category": "business",
+          "score": 6.5,
+          "published_at": "2026-05-18T19:00:00.000Z",
+          "published_at_source": "published",
+          "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+          "original_summary": "The tech trial of the year, Musk v. Altman, was ultimately a fight for control. Elon Musk argued that Sam Altman, with whom he helped found the now-massive company OpenAI, shouldn't direct the future of AI. Altman's l...",
+          "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。",
+          "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。",
+          "watch_next": "看The Verge这条产品落点是否有真实用户。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-05-19T02:33:45.171Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "evidence-0013"
+          ],
+          "editorial_score": 35,
+          "editorial_signals": [],
+          "editorial_penalties": [
+            {
+              "name": "generic_ai_fluff",
+              "weight": -20,
+              "hits": [
+                "future of AI"
+              ]
+            }
+          ],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "primary_section": "models"
+        }
+      ]
+    }
+  },
+  "source_summary": "今日重点：OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog。完整来源与覆盖情况见状态页。",
+  "source_ledger": [
+    {
+      "news_id": "openai-news-765fa93f522f",
+      "source": "OpenAI",
+      "source_type": "official",
+      "source_rank": "S",
+      "verified_url": "https://openai.com/index/dell-codex-enterprise-partnership",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 175,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "nvidia-ai-blog-e1c9447bd1b4",
+      "source": "NVIDIA AI",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 173,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "github-blog-53b6ecd830d4",
+      "source": "GitHub Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 160,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "nvidia-ai-blog-7f23df8fcf70",
+      "source": "NVIDIA AI",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 138,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "aws-machine-learning-c46056cb1f23",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 115,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "aws-machine-learning-e13b480f73de",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 110,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "aws-machine-learning-948b959a8194",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 95,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "aws-machine-learning-59a2c5c9125f",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "verified_url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 95,
+      "editorial_penalties": [
+        {
+          "name": "event_or_marketing",
+          "weight": -35,
+          "hits": [
+            "register"
+          ]
+        }
+      ]
+    },
+    {
+      "news_id": "techcrunch-ai-efc6fd2c5aea",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/18/sandboxaq-brings-its-drug-discovery-models-to-claude-no-phd-in-computing-required/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 60,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-fc9d9b7a3f0a",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 60,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-9a05454b24f4",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/18/amazons-new-alexa-powered-feature-can-generate-podcast-episodes/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 60,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "techcrunch-ai-d57cfade0048",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/18/south-koreas-letinar-is-building-the-optics-behind-ai-glasses/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 60,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "mit-tech-review-ai-8970aa509b85",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 58,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "the-verge-ai-4bdaa74b7f1b",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 55,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "the-verge-ai-905369627f97",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://www.theverge.com/ai-artificial-intelligence/932383/jury-verdict-musk-v-altman-openai-trial",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 55,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "the-verge-ai-ae1139b3549a",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://www.theverge.com/tech/932375/amazon-alexa-plus-ai-podcasts",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 55,
+      "editorial_penalties": []
+    },
+    {
+      "news_id": "mit-tech-review-ai-d601d722ee22",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://www.technologyreview.com/2026/05/18/1137439/what-to-expect-from-google-this-week/",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 48,
+      "editorial_penalties": [
+        {
+          "name": "event_or_marketing",
+          "weight": -35,
+          "hits": [
+            "conference"
+          ]
+        }
+      ]
+    },
+    {
+      "news_id": "the-verge-ai-950eb931129f",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://www.theverge.com/ai-artificial-intelligence/932464/musk-v-altman-proved-that-ai-is-led-by-the-wrong-people",
+      "duplicate_group": null,
+      "risk_note": null,
+      "should_include": true,
+      "editorial_score": 35,
+      "editorial_penalties": [
+        {
+          "name": "generic_ai_fluff",
+          "weight": -20,
+          "hits": [
+            "future of AI"
+          ]
+        }
+      ]
+    },
+    {
+      "news_id": "mit-tech-review-ai-991173046339",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "duplicate_group": null,
+      "risk_note": "low_editorial_score_archived_only",
+      "should_include": false,
+      "editorial_score": 8,
+      "editorial_penalties": [
+        {
+          "name": "jobs_or_hr",
+          "weight": -50,
+          "hits": [
+            "career"
+          ]
+        }
+      ]
+    },
+    {
+      "news_id": "techcrunch-ai-90e94189f7af",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "verified_url": "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/",
+      "duplicate_group": null,
+      "risk_note": "low_editorial_score_archived_only",
+      "should_include": false,
+      "editorial_score": 5,
+      "editorial_penalties": [
+        {
+          "name": "status_or_availability",
+          "weight": -80,
+          "hits": [
+            "maintenance"
+          ]
+        }
+      ]
+    }
+  ],
+  "editorial_angle": "每日公开源编辑晨报",
+  "what_to_watch_next": [
+    "看OpenAI是否开放 API、价格和企业权限。",
+    "看智能体是否进入默认开发工作流。",
+    "看Copilot是否进入默认开发工作流。"
+  ],
+  "edition_id": "2026-05-16-v4",
+  "title": "开发者入口开始进工位",
+  "collected_items_count": 20,
+  "edition_items": [
+    {
+      "id": "openai-news-765fa93f522f",
+      "title": "OpenAI 押注 Codex，开发开始代理化",
+      "original_title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
+      "url": "https://openai.com/index/dell-codex-enterprise-partnership",
+      "source": "OpenAI",
+      "source_type": "official",
+      "source_rank": "S",
+      "category": "models",
+      "score": 9.5,
+      "published_at": "2026-05-18T10:00:00.000Z",
+      "published_at_source": "pubDate",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "original_summary": "OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows.",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看OpenAI是否开放 API、价格和企业权限。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0003"
+      ],
+      "editorial_score": 175,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "Codex",
+            "agent",
+            "workflow"
+          ]
+        },
+        {
+          "name": "business_impact",
+          "weight": 15,
+          "hits": [
+            "enterprise"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents",
+      "visual": "assets/news-visuals/2026-05-19-lead.svg"
+    },
+    {
+      "id": "nvidia-ai-blog-e1c9447bd1b4",
+      "title": "NVIDIA 把智能体继续推向开发者",
+      "original_title": "NVIDIA CEO Jensen Huang at Dell Technologies World: ‘Demand Is Going Parabolic, Utterly Parabolic’",
+      "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
+      "source": "NVIDIA AI",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T22:28:59.000Z",
+      "published_at_source": "pubDate",
+      "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "Agentic AI inference at one-tenth the cost per token with NVIDIA Vera Rubin NVL72. Agent sandboxes run 50% faster on NVIDIA Vera than traditional CPUs — while enterprise data queries are up to 3x faster with the Vera...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看智能体是否进入默认开发工作流。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0001"
+      ],
+      "editorial_score": 173,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "inference"
+          ]
+        },
+        {
+          "name": "business_impact",
+          "weight": 15,
+          "hits": [
+            "enterprise"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "github-blog-53b6ecd830d4",
+      "title": "GitHub 继续把 Copilot 往工作流里塞",
+      "original_title": "Take your local GitHub sessions anywhere",
+      "url": "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/",
+      "source": "GitHub Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "agents",
+      "score": 8,
+      "published_at": "2026-05-18T16:54:53.000Z",
+      "published_at_source": "pubDate",
+      "summary": "GitHub 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "Kick off work in VS Code or the CLI, finish it from your phone. Remote control for GitHub Copilot sessions is now generally available on github.com and GitHub Mobile. The post Take your local GitHub sessions anywhere...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看Copilot是否进入默认开发工作流。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0012"
+      ],
+      "editorial_score": 160,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "GitHub Copilot",
+            "agent"
+          ]
+        },
+        {
+          "name": "open_source_release",
+          "weight": 25,
+          "hits": [
+            "GitHub"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "nvidia-ai-blog-7f23df8fcf70",
+      "title": "NVIDIA 把智能体继续推向开发者",
+      "original_title": "Vera Arrives: NVIDIA’s First CPU Built for Agents Lands at Top AI Labs",
+      "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "source": "NVIDIA AI",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T21:48:17.000Z",
+      "published_at_source": "pubDate",
+      "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "The first NVIDIA Vera CPUs arrived at three of the world's leading AI labs on Friday — Anthropic in San Francisco, OpenAI in Mission Bay, SpaceXAI in Palo Alto — followed by a delivery to Oracle Cloud Infrastructure i...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看NVIDIA是否开放 API、价格和企业权限。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0002"
+      ],
+      "editorial_score": 138,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "aws-machine-learning-c46056cb1f23",
+      "title": "AWS 放出开源信号，社区有活干了",
+      "original_title": "Prompting Amazon Nova 2 for content moderation",
+      "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T18:56:36.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。",
+      "original_summary": "In this post, you learn how to prompt Amazon Nova 2 Lite for content moderation using structured and free-form approaches, grounded in the MLCommons AILuminate Assessment Standard. The prompting techniques use the AIL...",
+      "why_it_matters": "研究者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+      "watch_next": "看创作者工具是否真正降低制作成本。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0017"
+      ],
+      "editorial_score": 115,
+      "editorial_signals": [
+        {
+          "name": "open_source_release",
+          "weight": 25,
+          "hits": [
+            "dataset",
+            "benchmark"
+          ]
+        },
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "benchmark"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
+    },
+    {
+      "id": "aws-machine-learning-e13b480f73de",
+      "title": "AWS追踪企业落地，把商业线往前推",
+      "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T15:37:55.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。",
+      "original_summary": "In this post, you will learn how to set up the Confluence Cloud integration with Quick. This includes creating a knowledge base for semantic search, setting up Actions to query and manage Confluence pages, and organiz...",
+      "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
+      "watch_next": "看AWS能否把产品落点落成具体产品。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0019"
+      ],
+      "editorial_score": 110,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "integration"
+          ]
+        },
+        {
+          "name": "business_impact",
+          "weight": 15,
+          "hits": [
+            "enterprise"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "business"
+    },
+    {
+      "id": "aws-machine-learning-948b959a8194",
+      "title": "AWS 把产品落点继续推向开发者",
+      "original_title": "Aderant transforms cloud operations with Amazon Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T17:26:40.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 perce...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看产品落点是否进入默认开发工作流。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0018"
+      ],
+      "editorial_score": 95,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "workflow"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "aws-machine-learning-59a2c5c9125f",
+      "title": "AWS 把智能体继续推向开发者",
+      "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T15:07:15.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to c...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看AWS在智能体上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0020"
+      ],
+      "editorial_score": 95,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        }
+      ],
+      "editorial_penalties": [
+        {
+          "name": "event_or_marketing",
+          "weight": -35,
+          "hits": [
+            "register"
+          ]
+        }
+      ],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "techcrunch-ai-efc6fd2c5aea",
+      "title": "TechCrunch追踪模型能力，露出新落点",
+      "original_title": "SandboxAQ brings its drug discovery models to Claude — no PhD in computing required",
+      "url": "https://techcrunch.com/2026/05/18/sandboxaq-brings-its-drug-discovery-models-to-claude-no-phd-in-computing-required/",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T21:29:31.000Z",
+      "published_at_source": "pubDate",
+      "summary": "TechCrunch 这条新闻指向模型能力的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "Other venture-backed companies like Chai Discovery and Isomorphic Labs have raced to build better models. SandboxAQ is betting that access is the bigger obstacle and that Claude solves it.",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把模型能力变成可用入口。",
+      "watch_next": "看TechCrunch是否开放 API、价格和企业权限。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0004"
+      ],
+      "editorial_score": 60,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "models"
+    },
+    {
+      "id": "techcrunch-ai-fc9d9b7a3f0a",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "original_title": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
+      "url": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T17:34:43.000Z",
+      "published_at_source": "pubDate",
+      "summary": "TechCrunch把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "original_summary": "Elon Musk's claim that he was mistreated by his OpenAI co-founders failed after nine California jurors decided in a unanimous verdict that his lawsuits had been filed too late.",
+      "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。",
+      "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。",
+      "watch_next": "看法庭如何处理 OpenAI 的使命与商业边界。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0006"
+      ],
+      "editorial_score": 60,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "models"
+    },
+    {
+      "id": "techcrunch-ai-9a05454b24f4",
+      "title": "TechCrunch追踪产品落点，露出新落点",
+      "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
+      "url": "https://techcrunch.com/2026/05/18/amazons-new-alexa-powered-feature-can-generate-podcast-episodes/",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T14:56:47.000Z",
+      "published_at_source": "pubDate",
+      "summary": "TechCrunch 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "Amazon’s Alexa+ can now generate custom AI podcasts on demand, as the company expands its assistant into a personalized AI content platform.",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+      "watch_next": "看TechCrunch在产品落点上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0007"
+      ],
+      "editorial_score": 60,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "models"
+    },
+    {
+      "id": "techcrunch-ai-d57cfade0048",
+      "title": "TechCrunch追踪产品落点，露出新落点",
+      "original_title": "South Korea&#8217;s LetinAR is building optics behind AI glasses",
+      "url": "https://techcrunch.com/2026/05/18/south-koreas-letinar-is-building-the-optics-behind-ai-glasses/",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T11:00:00.000Z",
+      "published_at_source": "pubDate",
+      "summary": "TechCrunch 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "A lens the size of a thumbnail — and the South Korean startup that makes it — could become the optical backbone of the AI glasses era.",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "TechCrunch这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+      "watch_next": "看TechCrunch能否把产品落点落成具体产品。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0008"
+      ],
+      "editorial_score": 60,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "business"
+    },
+    {
+      "id": "mit-tech-review-ai-8970aa509b85",
+      "title": "MIT Tech Review追踪产品落点，发布新动作",
+      "original_title": "Here’s why Elon Musk lost his suit against OpenAI",
+      "url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-19T00:53:10.000Z",
+      "published_at_source": "pubDate",
+      "summary": "MIT Tech Review 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "On Monday, the jury in Musk v. Altman dealt Elon Musk a major blow—reaching a unanimous advisory verdict that he had sued OpenAI too late and, as a result, his claims are barred by the applicable statutes of limitatio...",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "MIT Tech Review这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+      "watch_next": "看MIT Tech Review是否开放 API、价格和企业权限。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0009"
+      ],
+      "editorial_score": 58,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "models"
+    },
+    {
+      "id": "the-verge-ai-4bdaa74b7f1b",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "original_title": "All of the updates from Elon Musk and Sam Altman’s battle over OpenAI",
+      "url": "https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T17:49:49.000Z",
+      "published_at_source": "published",
+      "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "original_summary": "Sam Altman and Elon Musk are facing off in a high-stakes trial that could alter the future of OpenAI and its most well-known product, ChatGPT. In 2024, Musk filed a lawsuit accusing OpenAI of abandoning its founding m...",
+      "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。",
+      "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。",
+      "watch_next": "看The Verge在产品落点上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0014"
+      ],
+      "editorial_score": 55,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "models"
+    },
+    {
+      "id": "the-verge-ai-905369627f97",
+      "title": "The Verge追踪产品落点，露出新落点",
+      "original_title": "Elon Musk loses his case against Sam Altman",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/932383/jury-verdict-musk-v-altman-openai-trial",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T17:39:32.000Z",
+      "published_at_source": "published",
+      "summary": "The Verge 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "After around two hours of deliberation, the jury has reached a unanimous verdict in Musk v. Altman, the tech trial of the year. The group found that two claims were barred by the statute of limitations, and a third fa...",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "The Verge这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+      "watch_next": "看The Verge的客户、定价和入口变化。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0015"
+      ],
+      "editorial_score": 55,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "business"
+    },
+    {
+      "id": "the-verge-ai-ae1139b3549a",
+      "title": "The Verge追踪产品落点，发布新动作",
+      "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
+      "url": "https://www.theverge.com/tech/932375/amazon-alexa-plus-ai-podcasts",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T15:55:25.000Z",
+      "published_at_source": "published",
+      "summary": "The Verge 这条新闻指向产品落点的具体落点，适合和同日新闻一起看它影响谁、改变什么入口。",
+      "original_summary": "Alexa Plus, Amazon's upgraded AI assistant, can now generate podcasts on \"virtually any topic,\" according to an announcement on Monday. With the update, Amazon says you can give Alexa Plus a topic, and the AI assistan...",
+      "why_it_matters": "创作者和产品团队要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "The Verge这条不必喊口号，先看它会不会把产品落点变成可用入口。",
+      "watch_next": "看The Verge是否把产品落点做成默认入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0016"
+      ],
+      "editorial_score": 55,
+      "editorial_signals": [],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "models"
+    },
+    {
+      "id": "mit-tech-review-ai-d601d722ee22",
+      "title": "MIT Tech Review 把模型能力继续推向开发者",
+      "original_title": "What to expect from Google this week",
+      "url": "https://www.technologyreview.com/2026/05/18/1137439/what-to-expect-from-google-this-week/",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T17:35:43.000Z",
+      "published_at_source": "pubDate",
+      "summary": "MIT Tech Review 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. When Google opens its doors tomorrow for its annual developer conference, I/O,...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看MIT Tech Review在产品落点上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0010"
+      ],
+      "editorial_score": 48,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "developer"
+          ]
+        }
+      ],
+      "editorial_penalties": [
+        {
+          "name": "event_or_marketing",
+          "weight": -35,
+          "hits": [
+            "conference"
+          ]
+        }
+      ],
+      "lead_eligible": false,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "the-verge-ai-950eb931129f",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "original_title": "Musk v. Altman proved that AI is led by the wrong people",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/932464/musk-v-altman-proved-that-ai-is-led-by-the-wrong-people",
+      "source": "The Verge AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T19:00:00.000Z",
+      "published_at_source": "published",
+      "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "original_summary": "The tech trial of the year, Musk v. Altman, was ultimately a fight for control. Elon Musk argued that Sam Altman, with whom he helped found the now-massive company OpenAI, shouldn't direct the future of AI. Altman's l...",
+      "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。",
+      "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。",
+      "watch_next": "看The Verge这条产品落点是否有真实用户。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0013"
+      ],
+      "editorial_score": 35,
+      "editorial_signals": [],
+      "editorial_penalties": [
+        {
+          "name": "generic_ai_fluff",
+          "weight": -20,
+          "hits": [
+            "future of AI"
+          ]
+        }
+      ],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "models"
+    },
+    {
+      "id": "mit-tech-review-ai-991173046339",
+      "title": "汽车业开始抢 AI 技能",
+      "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+      "url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T16:01:39.000Z",
+      "published_at_source": "pubDate",
+      "summary": "MIT Tech Review把汽车行业的 AI 竞争指向人才和能力储备，真正的分水岭可能不是谁会宣传，而是谁能把 AI 塞进研发、制造和服务链路。",
+      "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice command...",
+      "why_it_matters": "车企和供应链要看：AI 能力会影响研发效率、软件体验和岗位结构，竞争会先体现在团队能力上。",
+      "janet_take": "车圈的 AI 竞赛不只在座舱屏幕上，也在招聘和组织结构里。",
+      "watch_next": "看MIT Tech Review能否把产品落点落成具体产品。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0011"
+      ],
+      "editorial_score": 8,
+      "editorial_signals": [],
+      "editorial_penalties": [
+        {
+          "name": "jobs_or_hr",
+          "weight": -50,
+          "hits": [
+            "career"
+          ]
+        }
+      ],
+      "lead_eligible": true,
+      "core_eligible": false,
+      "primary_section": "business"
+    },
+    {
+      "id": "techcrunch-ai-90e94189f7af",
+      "title": "TechCrunch 可用性报告，放进归档就好",
+      "original_title": "Anthropic has acquired the dev tools startup used by OpenAI, Google, and Cloudflare",
+      "url": "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/",
+      "source": "TechCrunch AI",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "business",
+      "score": 6.5,
+      "published_at": "2026-05-18T19:27:52.000Z",
+      "published_at_source": "pubDate",
+      "summary": "TechCrunch 这条更像服务运行记录，不适合作为头条，但可以帮助判断工具稳定性和平台状态。",
+      "original_summary": "Stainless, a New York-based startup, founded in 2022, rose to prominence in the emerging AI industry for automating the creation and maintenance of software development kits, or SDKs — the libraries developers use to...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "这类更像值班记录，能进归档，但别让它抢头条。",
+      "watch_next": "看TechCrunch在API上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0005"
+      ],
+      "editorial_score": 5,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "API",
+            "SDK",
+            "developer",
+            "tool"
+          ]
+        }
+      ],
+      "editorial_penalties": [
+        {
+          "name": "status_or_availability",
+          "weight": -80,
+          "hits": [
+            "maintenance"
+          ]
+        }
+      ],
+      "lead_eligible": false,
+      "core_eligible": false,
+      "primary_section": "agents"
+    }
+  ],
+  "homepage_items": [
+    {
+      "role": "lead",
+      "story_id": "openai-news-765fa93f522f",
+      "title": "OpenAI 押注 Codex，开发开始代理化",
+      "source": "OpenAI",
+      "category": "models",
+      "summary": "OpenAI 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看OpenAI是否开放 API、价格和企业权限。",
+      "visual": "assets/news-visuals/2026-05-19-lead.svg"
+    },
+    {
+      "role": "signal",
+      "story_id": "techcrunch-ai-fc9d9b7a3f0a",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "summary": "TechCrunch把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。",
+      "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。",
+      "watch_next": "看法庭如何处理 OpenAI 的使命与商业边界。",
+      "visual": "assets/news-visuals/2026-05-19-signal-1.svg"
+    },
+    {
+      "role": "signal",
+      "story_id": "github-blog-53b6ecd830d4",
+      "title": "GitHub 继续把 Copilot 往工作流里塞",
+      "source": "GitHub Blog",
+      "category": "agents",
+      "summary": "GitHub 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到GitHub这条第2个切面，是「GitHub 继续把 Copilot 往工作流里塞」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 GitHub这条第2个落点在「GitHub 继续把 Copilot 往工作流里塞」。",
+      "watch_next": "看Copilot是否进入默认开发工作流。",
+      "visual": "assets/news-visuals/2026-05-19-signal-2.svg"
+    },
+    {
+      "role": "signal",
+      "story_id": "the-verge-ai-4bdaa74b7f1b",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "source": "The Verge AI",
+      "category": "business",
+      "summary": "The Verge把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。",
+      "why_it_matters": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。 对应到The Verge这条第2个切面，是「马斯克与 OpenAI 诉讼，信任成核心问题」。",
+      "janet_take": "这场官司真正吵的不是情绪，是 AI 公司说过的话还能不能算数。 The Verge这条第2个落点在「马斯克与 OpenAI 诉讼，信任成核心问题」。",
+      "watch_next": "看The Verge在产品落点上的产品入口。",
+      "visual": "assets/news-visuals/2026-05-19-signal-3.svg"
+    },
+    {
+      "role": "compact",
+      "story_id": "nvidia-ai-blog-e1c9447bd1b4",
+      "title": "NVIDIA 把智能体继续推向开发者",
+      "source": "NVIDIA AI",
+      "category": "business",
+      "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到NVIDIA这条第3个切面，是「NVIDIA 把智能体继续推向开发者」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 NVIDIA这条第3个落点在「NVIDIA 把智能体继续推向开发者」。",
+      "watch_next": "看智能体是否进入默认开发工作流。",
+      "visual": ""
+    },
+    {
+      "role": "compact",
+      "story_id": "nvidia-ai-blog-7f23df8fcf70",
+      "title": "NVIDIA 把智能体继续推向开发者",
+      "source": "NVIDIA AI",
+      "category": "business",
+      "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。 这条具体对应「NVIDIA 把智能体继续推向开发者」第2个角度。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到NVIDIA这条第4个切面，是「NVIDIA 把智能体继续推向开发者」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 NVIDIA这条第4个落点在「NVIDIA 把智能体继续推向开发者」。",
+      "watch_next": "看NVIDIA是否开放 API、价格和企业权限。",
+      "visual": ""
+    },
+    {
+      "role": "compact",
+      "story_id": "aws-machine-learning-c46056cb1f23",
+      "title": "AWS 放出开源信号，社区有活干了",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "summary": "AWS 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。",
+      "why_it_matters": "研究者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+      "watch_next": "看创作者工具是否真正降低制作成本。",
+      "visual": ""
+    },
+    {
+      "role": "compact",
+      "story_id": "aws-machine-learning-e13b480f73de",
+      "title": "AWS追踪企业落地，把商业线往前推",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "summary": "AWS 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。",
+      "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
+      "watch_next": "看AWS能否把产品落点落成具体产品。",
+      "visual": ""
+    },
+    {
+      "role": "compact",
+      "story_id": "aws-machine-learning-948b959a8194",
+      "title": "AWS 把产品落点继续推向开发者",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到AWS这条第5个切面，是「AWS 把产品落点继续推向开发者」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 AWS这条第5个落点在「AWS 把产品落点继续推向开发者」。",
+      "watch_next": "看产品落点是否进入默认开发工作流。",
+      "visual": ""
+    },
+    {
+      "role": "compact",
+      "story_id": "aws-machine-learning-59a2c5c9125f",
+      "title": "AWS 把智能体继续推向开发者",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。 这条具体对应「AWS 把智能体继续推向开发者」第2个角度。",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。 对应到AWS这条第6个切面，是「AWS 把智能体继续推向开发者」。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。 AWS这条第6个落点在「AWS 把智能体继续推向开发者」。",
+      "watch_next": "看AWS在智能体上的产品入口。",
+      "visual": ""
+    }
+  ],
+  "hidden_items": [
+    {
+      "id": "techcrunch-ai-efc6fd2c5aea",
+      "title": "TechCrunch追踪模型能力，露出新落点",
+      "source": "TechCrunch AI",
+      "reason": "not_home_slot",
+      "editorial_score": 60
+    },
+    {
+      "id": "techcrunch-ai-9a05454b24f4",
+      "title": "TechCrunch追踪产品落点，露出新落点",
+      "source": "TechCrunch AI",
+      "reason": "not_home_slot",
+      "editorial_score": 60
+    },
+    {
+      "id": "techcrunch-ai-d57cfade0048",
+      "title": "TechCrunch追踪产品落点，露出新落点",
+      "source": "TechCrunch AI",
+      "reason": "not_home_slot",
+      "editorial_score": 60
+    },
+    {
+      "id": "mit-tech-review-ai-8970aa509b85",
+      "title": "MIT Tech Review追踪产品落点，发布新动作",
+      "source": "MIT Technology Review AI",
+      "reason": "not_home_slot",
+      "editorial_score": 58
+    },
+    {
+      "id": "the-verge-ai-905369627f97",
+      "title": "The Verge追踪产品落点，露出新落点",
+      "source": "The Verge AI",
+      "reason": "not_home_slot",
+      "editorial_score": 55
+    },
+    {
+      "id": "the-verge-ai-ae1139b3549a",
+      "title": "The Verge追踪产品落点，发布新动作",
+      "source": "The Verge AI",
+      "reason": "not_home_slot",
+      "editorial_score": 55
+    },
+    {
+      "id": "mit-tech-review-ai-d601d722ee22",
+      "title": "MIT Tech Review 把模型能力继续推向开发者",
+      "source": "MIT Technology Review AI",
+      "reason": "not_home_slot",
+      "editorial_score": 48
+    },
+    {
+      "id": "the-verge-ai-950eb931129f",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "source": "The Verge AI",
+      "reason": "not_home_slot",
+      "editorial_score": 35
+    },
+    {
+      "id": "mit-tech-review-ai-991173046339",
+      "title": "汽车业开始抢 AI 技能",
+      "source": "MIT Technology Review AI",
+      "reason": "low_editorial_score",
+      "editorial_score": 8
+    },
+    {
+      "id": "techcrunch-ai-90e94189f7af",
+      "title": "TechCrunch 可用性报告，放进归档就好",
+      "source": "TechCrunch AI",
+      "reason": "low_editorial_score",
+      "editorial_score": 5
+    }
+  ],
+  "compact_news": [
+    {
+      "id": "nvidia-ai-blog-e1c9447bd1b4",
+      "title": "NVIDIA 把智能体继续推向开发者",
+      "original_title": "NVIDIA CEO Jensen Huang at Dell Technologies World: ‘Demand Is Going Parabolic, Utterly Parabolic’",
+      "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
+      "source": "NVIDIA AI",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T22:28:59.000Z",
+      "published_at_source": "pubDate",
+      "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "Agentic AI inference at one-tenth the cost per token with NVIDIA Vera Rubin NVL72. Agent sandboxes run 50% faster on NVIDIA Vera than traditional CPUs — while enterprise data queries are up to 3x faster with the Vera...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看智能体是否进入默认开发工作流。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0001"
+      ],
+      "editorial_score": 173,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "inference"
+          ]
+        },
+        {
+          "name": "business_impact",
+          "weight": 15,
+          "hits": [
+            "enterprise"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "nvidia-ai-blog-7f23df8fcf70",
+      "title": "NVIDIA 把智能体继续推向开发者",
+      "original_title": "Vera Arrives: NVIDIA’s First CPU Built for Agents Lands at Top AI Labs",
+      "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "source": "NVIDIA AI",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T21:48:17.000Z",
+      "published_at_source": "pubDate",
+      "summary": "NVIDIA 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "The first NVIDIA Vera CPUs arrived at three of the world's leading AI labs on Friday — Anthropic in San Francisco, OpenAI in Mission Bay, SpaceXAI in Palo Alto — followed by a delivery to Oracle Cloud Infrastructure i...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看NVIDIA是否开放 API、价格和企业权限。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0002"
+      ],
+      "editorial_score": 138,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "aws-machine-learning-c46056cb1f23",
+      "title": "AWS 放出开源信号，社区有活干了",
+      "original_title": "Prompting Amazon Nova 2 for content moderation",
+      "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T18:56:36.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 释放了开源侧信号，真正要看的是社区能否快速复现、封装，并把它变成可用工具。",
+      "original_summary": "In this post, you learn how to prompt Amazon Nova 2 Lite for content moderation using structured and free-form approaches, grounded in the MLCommons AILuminate Assessment Standard. The prompting techniques use the AIL...",
+      "why_it_matters": "研究者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "开源这边的信号很直接：别只看巨头发布会，能复用的东西才会长腿。",
+      "watch_next": "看创作者工具是否真正降低制作成本。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0017"
+      ],
+      "editorial_score": 115,
+      "editorial_signals": [
+        {
+          "name": "open_source_release",
+          "weight": 25,
+          "hits": [
+            "dataset",
+            "benchmark"
+          ]
+        },
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "benchmark"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "creator_opportunity"
+    },
+    {
+      "id": "aws-machine-learning-e13b480f73de",
+      "title": "AWS追踪企业落地，把商业线往前推",
+      "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T15:37:55.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 这条更偏商业落地，重点看客户、价格和入口是否真的发生变化。",
+      "original_summary": "In this post, you will learn how to set up the Confluence Cloud integration with Quick. This includes creating a knowledge base for semantic search, setting up Actions to query and manage Confluence pages, and organiz...",
+      "why_it_matters": "企业要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "商业新闻的看点是钱和入口流向谁，口号先放一边。",
+      "watch_next": "看AWS能否把产品落点落成具体产品。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0019"
+      ],
+      "editorial_score": 110,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "integration"
+          ]
+        },
+        {
+          "name": "business_impact",
+          "weight": 15,
+          "hits": [
+            "enterprise"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "business"
+    },
+    {
+      "id": "aws-machine-learning-948b959a8194",
+      "title": "AWS 把产品落点继续推向开发者",
+      "original_title": "Aderant transforms cloud operations with Amazon Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T17:26:40.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 perce...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看产品落点是否进入默认开发工作流。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0018"
+      ],
+      "editorial_score": 95,
+      "editorial_signals": [
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "workflow"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    },
+    {
+      "id": "aws-machine-learning-59a2c5c9125f",
+      "title": "AWS 把智能体继续推向开发者",
+      "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "source": "AWS Machine Learning Blog",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "business",
+      "score": 8,
+      "published_at": "2026-05-18T15:07:15.000Z",
+      "published_at_source": "pubDate",
+      "summary": "AWS 正在把 AI 能力塞进开发者工作流，影响的是入口、工具选择和团队每天怎么交付。",
+      "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to c...",
+      "why_it_matters": "开发者要看这条：它影响的是入口、成本或可用工具，而不是一句泛泛的 AI 热闹。",
+      "janet_take": "重点不是多一个按钮，是开发者每天工作的入口又被模型咬住一块。",
+      "watch_next": "看AWS在智能体上的产品入口。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-05-19T02:33:45.171Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "evidence-0020"
+      ],
+      "editorial_score": 95,
+      "editorial_signals": [
+        {
+          "name": "model_release",
+          "weight": 35,
+          "hits": [
+            "agent"
+          ]
+        },
+        {
+          "name": "developer_tooling",
+          "weight": 25,
+          "hits": [
+            "agent"
+          ]
+        }
+      ],
+      "editorial_penalties": [
+        {
+          "name": "event_or_marketing",
+          "weight": -35,
+          "hits": [
+            "register"
+          ]
+        }
+      ],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "primary_section": "agents"
+    }
+  ]
+}

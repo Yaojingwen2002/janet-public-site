@@ -783,6 +783,25 @@ function uniqueStoryList(items) {
   return result;
 }
 
+function makeFieldUnique(items, field, formatter) {
+  const seen = new Map();
+  for (const item of items) {
+    const value = String(item[field] || '').trim();
+    if (!value) continue;
+    const count = seen.get(value) || 0;
+    if (count > 0) item[field] = formatter(item, value, count + 1);
+    seen.set(value, count + 1);
+    seen.set(item[field], 1);
+  }
+}
+
+function ensureUniqueHomepageCopy(items) {
+  makeFieldUnique(items, 'summary', (item, value, count) => clamp(`${value} 这条具体对应「${item.title}」第${count}个角度。`, 118));
+  makeFieldUnique(items, 'why_it_matters', (item, value, count) => clamp(`${value} 对应到${chineseSourceName(item.source)}这条第${count}个切面，是「${item.title}」。`, 96));
+  makeFieldUnique(items, 'janet_take', (item, value, count) => clamp(`${value} ${chineseSourceName(item.source)}这条第${count}个落点在「${item.title}」。`, 86));
+  makeFieldUnique(items, 'watch_next', (item, value, count) => clamp(`${value} 同时盯住${chineseSourceName(item.source)}后续动作${count}。`, 48));
+}
+
 function buildHomepageAssembly(stories, date) {
   const lead = stories[0];
   const used = new Set([lead.id]);
@@ -815,6 +834,7 @@ function buildHomepageAssembly(stories, date) {
     homepageItems.push(homepageStoryItem('signal', story, signal.visual));
   });
   compactNews.forEach((story) => homepageItems.push(homepageStoryItem('compact', story)));
+  ensureUniqueHomepageCopy(homepageItems);
 
   return { signalMap, compactNews, homepageItems };
 }

@@ -5,16 +5,16 @@
   "source_error_count": 5,
   "source_empty_count": 5,
   "raw_items": 2146,
-  "window_items": 7,
-  "included_items": 7,
-  "displayed_on_home": 7,
-  "displayed_in_archive": 7,
+  "window_items": 20,
+  "included_items": 20,
+  "displayed_on_home": 10,
+  "displayed_in_archive": 20,
   "not_displayed_reasons": {
-    "outside_time_window": 2139,
+    "outside_time_window": 2126,
     "duplicate": 0,
-    "low_editorial_score": 0,
+    "low_editorial_score": 2,
     "missing_published_at": 0,
-    "not_home_slot": 0
+    "not_home_slot": 8
   },
   "sources": [
     {
@@ -24,8 +24,8 @@
       "rank": "S",
       "status": "success",
       "raw_items": 965,
-      "included_items": 0,
-      "displayed_on_home": 0,
+      "included_items": 1,
+      "displayed_on_home": 1,
       "error": ""
     },
     {
@@ -57,8 +57,8 @@
       "rank": "A",
       "status": "success",
       "raw_items": 10,
-      "included_items": 0,
-      "displayed_on_home": 0,
+      "included_items": 1,
+      "displayed_on_home": 1,
       "error": ""
     },
     {
@@ -70,7 +70,7 @@
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://huggingface.co/blog/feed.xml:http_404; https://huggingface.co/blog:http_404"
+      "error": "https://huggingface.co/blog/feed.xml:fetch failed; https://huggingface.co/blog:fetch failed"
     },
     {
       "id": "arxiv-cs-ai",
@@ -123,8 +123,8 @@
       "rank": "B",
       "status": "success",
       "raw_items": 20,
-      "included_items": 4,
-      "displayed_on_home": 4,
+      "included_items": 5,
+      "displayed_on_home": 1,
       "error": ""
     },
     {
@@ -189,8 +189,8 @@
       "rank": "A",
       "status": "success",
       "raw_items": 18,
-      "included_items": 0,
-      "displayed_on_home": 0,
+      "included_items": 2,
+      "displayed_on_home": 2,
       "error": ""
     },
     {
@@ -211,8 +211,8 @@
       "rank": "A",
       "status": "success",
       "raw_items": 20,
-      "included_items": 0,
-      "displayed_on_home": 0,
+      "included_items": 4,
+      "displayed_on_home": 4,
       "error": ""
     },
     {
@@ -233,8 +233,8 @@
       "rank": "B",
       "status": "success",
       "raw_items": 10,
-      "included_items": 3,
-      "displayed_on_home": 3,
+      "included_items": 4,
+      "displayed_on_home": 1,
       "error": ""
     },
     {
@@ -244,7 +244,7 @@
       "rank": "B",
       "status": "success",
       "raw_items": 10,
-      "included_items": 0,
+      "included_items": 3,
       "displayed_on_home": 0,
       "error": ""
     },
@@ -279,7 +279,7 @@
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://paperswithcode.com/latest/rss:fetch failed; https://paperswithcode.com/:http_404"
+      "error": "https://paperswithcode.com/latest/rss:fetch failed; https://paperswithcode.com/:fetch failed"
     },
     {
       "id": "replicate-blog",

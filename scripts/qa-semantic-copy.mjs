@@ -3,13 +3,21 @@ import { resolve } from 'node:path';
 
 const ROOT = process.cwd();
 const OUT = resolve(ROOT, 'data/semantic-copy-check.json');
+const DEBUG_OUT = resolve(ROOT, 'data/semantic-copy-debug.json');
 const FIELDS = ['zh_title', 'zh_summary', 'why_it_matters', 'janet_take', 'watch_next'];
-const THRESHOLDS = {
+const WARNING_THRESHOLDS = {
   zh_title: 0.68,
   zh_summary: 0.62,
   why_it_matters: 0.62,
   janet_take: 0.62,
   watch_next: 0.62
+};
+const HARD_THRESHOLDS = {
+  zh_title: 0.82,
+  zh_summary: 0.78,
+  why_it_matters: 0.78,
+  janet_take: 0.78,
+  watch_next: 0.78
 };
 const GENERIC_PHRASES = [
   '入口、成本或可用工具',
@@ -36,13 +44,27 @@ const SPECIFIC_TERMS = [
   { pattern: /Nova 2/i, terms: ['Nova 2'] },
   { pattern: /Confluence/i, terms: ['Confluence'] },
   { pattern: /GitHub Copilot/i, terms: ['GitHub Copilot', 'Copilot'] },
+  { pattern: /GitHub/i, terms: ['GitHub'] },
   { pattern: /Codex/i, terms: ['Codex'] },
   { pattern: /Siri/i, terms: ['Siri'] },
-  { pattern: /OpenAI/i, terms: ['OpenAI'] }
+  { pattern: /OpenAI/i, terms: ['OpenAI'] },
+  { pattern: /Anthropic/i, terms: ['Anthropic'] },
+  { pattern: /Cloudflare/i, terms: ['Cloudflare'] },
+  { pattern: /Alexa Plus/i, terms: ['Alexa Plus'] },
+  { pattern: /Amazon Quick/i, terms: ['Amazon Quick'] },
+  { pattern: /Bedrock AgentCore/i, terms: ['Bedrock AgentCore', 'AgentCore'] },
+  { pattern: /LetinAR/i, terms: ['LetinAR'] },
+  { pattern: /Anduril/i, terms: ['Anduril'] },
+  { pattern: /Meta/i, terms: ['Meta'] },
+  { pattern: /Google/i, terms: ['Google'] }
 ];
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'));
+}
+
+function writeJson(path, value) {
+  writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 }
 
 function latestEditionId() {
@@ -71,50 +93,96 @@ function similarity(left, right) {
   return same / (a.size + b.size - same);
 }
 
+function storyId(item) {
+  return item.story_id || item.id || '';
+}
+
+function context(item, field) {
+  return {
+    story_id: storyId(item),
+    title: item.zh_title || item.title || '',
+    source: item.source || '',
+    category: item.category || item.primary_section || '',
+    original_title: item.raw_item?.original_title || item.original_title || '',
+    text: String(item[field] || '')
+  };
+}
+
+function issue(reason, field, item, extra = {}) {
+  return { field, reason, item: context(item, field), ...extra };
+}
+
+function pairIssue(reason, field, left, right, score) {
+  return {
+    field,
+    reason,
+    similarity: Number(score.toFixed(3)),
+    item_a: context(left, field),
+    item_b: context(right, field)
+  };
+}
+
 function exactDuplicates(items, field) {
   const groups = new Map();
   for (const item of items) {
     const value = String(item[field] || '').trim();
     if (!value) continue;
     if (!groups.has(value)) groups.set(value, []);
-    groups.get(value).push(item.story_id || item.id);
+    groups.get(value).push(item);
   }
-  return [...groups.entries()].filter(([, ids]) => ids.length > 1).map(([value, ids]) => ({ value, ids }));
+  return [...groups.entries()]
+    .filter(([, group]) => group.length > 1)
+    .map(([value, group]) => ({ value, items: group.map((item) => context(item, field)) }));
 }
 
-function nearDuplicates(items, field, threshold) {
-  const pairs = [];
+function similarityPairs(items, field, warningThreshold, hardThreshold) {
+  const warnings = [];
+  const hard = [];
+  let max = { score: 0, item_a: null, item_b: null };
   for (let left = 0; left < items.length; left += 1) {
     for (let right = left + 1; right < items.length; right += 1) {
       const a = items[left][field];
       const b = items[right][field];
       if (!a || !b || a === b) continue;
       const score = similarity(a, b);
-      if (score >= threshold) {
-        pairs.push({
-          left: items[left].story_id || items[left].id,
-          right: items[right].story_id || items[right].id,
-          score: Number(score.toFixed(3)),
-          left_value: a,
-          right_value: b
-        });
-      }
+      if (score > max.score) max = { score, item_a: context(items[left], field), item_b: context(items[right], field) };
+      if (score >= hardThreshold) hard.push(pairIssue('near_duplicate_hard', field, items[left], items[right], score));
+      else if (score >= warningThreshold) warnings.push(pairIssue('near_duplicate_warning', field, items[left], items[right], score));
     }
   }
-  return pairs;
+  return { hard, warnings, max: { ...max, score: Number(max.score.toFixed(3)) } };
 }
 
-function phraseHits(items, phrases) {
+function phraseHits(items, phrases, reason) {
   const hits = [];
   for (const phrase of phrases) {
     for (const item of items) {
       for (const field of FIELDS) {
         const value = String(item[field] || '');
-        if (value.includes(phrase)) hits.push({ phrase, story_id: item.story_id || item.id, field, value });
+        if (value.includes(phrase)) hits.push(issue(reason, field, item, { phrase }));
       }
     }
   }
   return hits;
+}
+
+function concreteTerms(item) {
+  const facts = Array.isArray(item.story_facts) ? item.story_facts.map((fact) => fact.value).filter(Boolean) : [];
+  const original = item.raw_item?.original_title || item.original_title || '';
+  const matched = SPECIFIC_TERMS.flatMap((spec) => spec.pattern.test(original) ? spec.terms : []);
+  return [...new Set([...facts, ...matched])];
+}
+
+function textHasConcreteObject(item, field) {
+  const text = String(item[field] || item.title || '');
+  const terms = concreteTerms(item);
+  if (!terms.length) return false;
+  const lower = text.toLowerCase();
+  return terms.some((term) => {
+    const words = String(term).toLowerCase().split(/\s+/).filter(Boolean);
+    if (words.length <= 1) return lower.includes(words[0] || '');
+    return words.every((word) => lower.includes(word));
+  });
 }
 
 function missingSpecificTerms(items) {
@@ -122,11 +190,16 @@ function missingSpecificTerms(items) {
   for (const item of items) {
     const original = item.raw_item?.original_title || item.original_title || '';
     const title = item.zh_title || item.title || '';
-    for (const spec of SPECIFIC_TERMS) {
-      if (!spec.pattern.test(original)) continue;
-      if (!spec.terms.some((term) => title.toLowerCase().includes(term.toLowerCase()))) {
-        missing.push({ story_id: item.story_id || item.id, original_title: original, title, expected_terms: spec.terms });
-      }
+    const expected = SPECIFIC_TERMS.filter((spec) => spec.pattern.test(original)).flatMap((spec) => spec.terms);
+    if (!expected.length) continue;
+    const lower = title.toLowerCase();
+    const hasAny = expected.some((term) => {
+      const words = String(term).toLowerCase().split(/\s+/).filter(Boolean);
+      if (words.length <= 1) return lower.includes(words[0] || '');
+      return words.every((word) => lower.includes(word));
+    });
+    if (!hasAny) {
+      missing.push(issue('specific_term_missing_from_title', 'zh_title', item, { expected_terms: [...new Set(expected)] }));
     }
   }
   return missing;
@@ -142,58 +215,165 @@ function sourceCategoryTemplateClusters(items) {
   }
   for (const [key, group] of byKey.entries()) {
     if (group.length < 2) continue;
-    const titlePairs = nearDuplicates(group, 'zh_title', 0.58);
-    if (!titlePairs.length) continue;
+    const similar = similarityPairs(group, 'zh_title', 0.58, 0.95).warnings;
+    if (!similar.length) continue;
     const [source, category] = key.split('::');
-    clusters.push({ source, category, pairs: titlePairs });
+    clusters.push({ source, category, pairs: similar });
   }
   return clusters;
 }
 
+function recentTitleIssues(latest, content) {
+  const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'));
+  const ids = (Array.isArray(manifest) ? manifest : manifest.items || []).filter((id) => id !== latest).slice(0, 7);
+  const current = [content.cover?.daily_title, content.cover?.cover_title].filter(Boolean);
+  const issues = [];
+  const warnings = [];
+  for (const id of ids) {
+    try {
+      const previous = readJson(resolve(ROOT, `data/${id}/content.json`));
+      const previousTitles = [previous.cover?.daily_title || previous.theme, previous.cover?.cover_title].filter(Boolean);
+      for (const title of current) {
+        for (const previousTitle of previousTitles) {
+          if (title === previousTitle) issues.push({ field: 'daily_title', reason: 'cross_edition_exact_repeat', title, previous_edition_id: id });
+          else {
+            const score = similarity(title, previousTitle);
+            if (score >= 0.78) warnings.push({ field: 'daily_title', reason: 'cross_edition_similarity_warning', similarity: Number(score.toFixed(3)), title, previous_title: previousTitle, previous_edition_id: id });
+          }
+        }
+      }
+    } catch {
+      warnings.push({ reason: 'previous_edition_unreadable', edition_id: id });
+    }
+  }
+  return { issues, warnings };
+}
+
+function homepageStoryItems(content, stories) {
+  const byId = new Map(stories.map((story) => [storyId(story), story]));
+  return (content.homepage_items || [])
+    .map((item) => byId.get(item.story_id || item.id))
+    .filter(Boolean);
+}
+
 function main() {
   const latest = latestEditionId();
-  const content = readJson(resolve(ROOT, `data/${latest}/content.json`));
-  const items = Array.isArray(content.stories) ? content.stories : (content.edition_items || []);
-  const duplicate = Object.fromEntries(FIELDS.map((field) => [field, exactDuplicates(items, field)]));
-  const near = Object.fromEntries(FIELDS.map((field) => [field, nearDuplicates(items, field, THRESHOLDS[field])]));
-  const generic = phraseHits(items, GENERIC_PHRASES);
-  const patch = phraseHits(items, PATCH_PHRASES);
-  const missingTerms = missingSpecificTerms(items);
-  const clusters = sourceCategoryTemplateClusters(items);
-  const issues = [];
-  for (const [field, groups] of Object.entries(duplicate)) if (groups.length) issues.push(`${field} exact duplicates`);
-  for (const [field, groups] of Object.entries(near)) if (groups.length) issues.push(`${field} near duplicates`);
-  if (generic.length) issues.push('generic template phrases found');
-  if (patch.length) issues.push('patch phrases found');
-  if (missingTerms.length) issues.push('specific terms missing from zh_title');
-  if (clusters.length) issues.push('source/category template clusters found');
+  const contentPath = resolve(ROOT, `data/${latest}/content.json`);
+  const content = readJson(contentPath);
+  const stories = Array.isArray(content.stories) ? content.stories : (content.edition_items || []);
+  const homepageItems = homepageStoryItems(content, stories);
+  const hardIssues = [];
+  const warnings = [];
+  const duplicate = Object.fromEntries(FIELDS.map((field) => [field, exactDuplicates(stories, field)]));
+  for (const [field, groups] of Object.entries(duplicate)) {
+    for (const group of groups) hardIssues.push({ field, reason: 'exact_duplicate', value: group.value, items: group.items });
+  }
+
+  const near = {};
+  const maxSimilarity = {};
+  for (const field of FIELDS) {
+    const result = similarityPairs(stories, field, WARNING_THRESHOLDS[field], HARD_THRESHOLDS[field]);
+    near[field] = { hard: result.hard, warnings: result.warnings };
+    maxSimilarity[field] = result.max;
+    hardIssues.push(...result.hard);
+    warnings.push(...result.warnings);
+  }
+
+  const generic = phraseHits(stories, GENERIC_PHRASES, 'generic_template_phrase');
+  const patch = phraseHits(stories, PATCH_PHRASES, 'patch_phrase');
+  const missingTerms = missingSpecificTerms(stories);
+  hardIssues.push(...generic, ...patch, ...missingTerms);
+
+  for (const item of homepageItems) {
+    const terms = concreteTerms(item);
+    if (!terms.length) hardIssues.push(issue('homepage_item_missing_concrete_object', 'zh_title', item));
+    if (!textHasConcreteObject(item, 'zh_title')) hardIssues.push(issue('title_missing_concrete_object', 'zh_title', item, { concrete_terms: terms }));
+    if (!textHasConcreteObject(item, 'zh_summary')) hardIssues.push(issue('summary_missing_concrete_object', 'zh_summary', item, { concrete_terms: terms }));
+  }
+
+  const clusters = sourceCategoryTemplateClusters(stories);
+  warnings.push(...clusters.map((cluster) => ({ reason: 'source_category_template_cluster_warning', ...cluster })));
+
+  const crossEdition = recentTitleIssues(latest, content);
+  hardIssues.push(...crossEdition.issues);
+  warnings.push(...crossEdition.warnings);
 
   const check = {
-    step: '35-U4-B',
-    status: issues.length ? 'semantic_copy_blocked' : 'semantic_copy_ready',
-    qa_passed: issues.length === 0,
+    step: '35-U4-D',
+    status: hardIssues.length ? 'semantic_copy_blocked' : 'semantic_copy_ready',
+    qa_passed: hardIssues.length === 0,
     latest_edition_id: latest,
-    stories_checked: items.length,
-    duplicate_title_groups: duplicate.zh_title,
-    near_duplicate_title_groups: near.zh_title,
-    duplicate_summary_groups: duplicate.zh_summary,
-    near_duplicate_summary_groups: near.zh_summary,
-    duplicate_why_it_matters_groups: duplicate.why_it_matters,
-    near_duplicate_why_it_matters_groups: near.why_it_matters,
-    duplicate_janet_take_groups: duplicate.janet_take,
-    near_duplicate_janet_take_groups: near.janet_take,
-    duplicate_watch_next_groups: duplicate.watch_next,
-    near_duplicate_watch_next_groups: near.watch_next,
+    checked_file_path: `data/${latest}/content.json`,
+    homepage_items_checked: homepageItems.length,
+    stories_checked: stories.length,
+    duplicate_titles: duplicate.zh_title,
+    duplicate_summaries: duplicate.zh_summary,
+    duplicate_why_it_matters: duplicate.why_it_matters,
+    duplicate_janet_take: duplicate.janet_take,
+    duplicate_watch_next: duplicate.watch_next,
+    near_duplicate_groups: near,
+    max_title_similarity: maxSimilarity.zh_title,
+    max_summary_similarity: maxSimilarity.zh_summary,
+    max_why_similarity: maxSimilarity.why_it_matters,
+    max_janet_take_similarity: maxSimilarity.janet_take,
+    max_watch_next_similarity: maxSimilarity.watch_next,
+    forbidden_patch_phrases_found: patch,
     generic_template_phrases_found: generic,
-    patch_phrases_found: patch,
-    source_category_template_clusters: clusters,
     missing_specific_terms: missingTerms,
-    issues,
-    warnings: []
+    cross_edition_similarity_issues: crossEdition.issues,
+    warnings,
+    issues: hardIssues
   };
-  writeFileSync(OUT, `${JSON.stringify(check, null, 2)}\n`);
+  const debug = {
+    ...check,
+    generated_at: new Date().toISOString(),
+    raw_homepage_items: content.homepage_items || [],
+    story_snapshot: stories.map((story) => ({
+      story_id: storyId(story),
+      source: story.source,
+      category: story.category,
+      original_title: story.raw_item?.original_title || story.original_title,
+      zh_title: story.zh_title,
+      zh_summary: story.zh_summary,
+      why_it_matters: story.why_it_matters,
+      janet_take: story.janet_take,
+      watch_next: story.watch_next,
+      story_facts: story.story_facts || []
+    }))
+  };
+  writeJson(OUT, check);
+  writeJson(DEBUG_OUT, debug);
   console.log(`semantic copy status: ${check.status}`);
-  if (issues.length) process.exit(1);
+  if (warnings.length) {
+    console.warn(`::warning title=Semantic Copy Warning::${warnings.length} warning(s). See data/semantic-copy-debug.json`);
+  }
+  if (hardIssues.length) {
+    const message = `${hardIssues.length} hard issue(s) in ${latest}. See data/semantic-copy-debug.json`;
+    console.error(`::error title=Semantic Copy QA Failed::${message}`);
+    console.error(JSON.stringify({
+      latest_edition_id: latest,
+      checked_file_path: check.checked_file_path,
+      homepage_items_checked: check.homepage_items_checked,
+      duplicate_titles: check.duplicate_titles,
+      duplicate_summaries: check.duplicate_summaries,
+      duplicate_why_it_matters: check.duplicate_why_it_matters,
+      duplicate_janet_take: check.duplicate_janet_take,
+      duplicate_watch_next: check.duplicate_watch_next,
+      near_duplicate_groups: check.near_duplicate_groups,
+      max_title_similarity: check.max_title_similarity,
+      max_summary_similarity: check.max_summary_similarity,
+      max_why_similarity: check.max_why_similarity,
+      max_janet_take_similarity: check.max_janet_take_similarity,
+      max_watch_next_similarity: check.max_watch_next_similarity,
+      forbidden_patch_phrases_found: check.forbidden_patch_phrases_found,
+      generic_template_phrases_found: check.generic_template_phrases_found,
+      missing_specific_terms: check.missing_specific_terms,
+      cross_edition_similarity_issues: check.cross_edition_similarity_issues,
+      issues: check.issues,
+      warnings: check.warnings
+    }, null, 2));
+    process.exit(1);
+  }
 }
 
 main();

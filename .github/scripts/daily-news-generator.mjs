@@ -16,6 +16,7 @@ const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
 const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
 const EDITORIAL_COPY_RULES = resolve(ROOT, '.github/scripts/editorial-copy-rules.json');
 const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
+const LIVE_SOURCE_SNAPSHOT = resolve(ROOT, 'data/live-source-snapshot.json');
 const VISUAL_DIR = resolve(ROOT, 'assets/news-visuals');
 const FORBIDDEN_TAKES = [
   'AI 正在改变世界',
@@ -319,6 +320,34 @@ function filterWindow(items, window) {
   }
 
   return { included, excluded };
+}
+
+function writeLiveSourceSnapshot({ date, window, status, rawItems, included, excluded }) {
+  writeJson(LIVE_SOURCE_SNAPSHOT, {
+    generated_at: new Date().toISOString(),
+    target_date: date,
+    timezone: TZ,
+    window_start: window.window_start,
+    window_end: window.window_end,
+    source_count: Number(status.source_count || 0),
+    source_success_count: Number(status.source_success_count || 0),
+    source_error_count: Number(status.source_error_count || 0),
+    raw_item_count: rawItems.length,
+    window_item_count: included.length,
+    included_item_count: included.length,
+    included_items: included.map((item) => ({
+      source: item.source || '',
+      original_title: item.title || '',
+      url: item.url || '',
+      published_at: item.published_at || '',
+      story_id: item.id || '',
+      category: item.category || ''
+    })),
+    excluded_summary: excluded.reduce((acc, item) => {
+      acc[item.excluded_reason] = (acc[item.excluded_reason] || 0) + 1;
+      return acc;
+    }, {})
+  });
 }
 
 function clamp(input, max) {
@@ -1616,6 +1645,7 @@ function main() {
       acc[item.excluded_reason] = (acc[item.excluded_reason] || 0) + 1;
       return acc;
     }, {});
+    writeLiveSourceSnapshot({ date, window, status, rawItems, included, excluded });
 
     if (included.length < Number(pool.min_publish_count || 5)) {
       status.status = 'blocked_insufficient_fresh_news';

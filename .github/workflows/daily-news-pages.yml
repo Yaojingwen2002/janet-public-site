@@ -39,6 +39,27 @@ jobs:
       - name: QA semantic copy
         run: node scripts/qa-semantic-copy.mjs
 
+      - name: Upload QA debug artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: janet-news-qa-debug
+          path: |
+            data/semantic-copy-check.json
+            data/semantic-copy-debug.json
+            data/live-source-snapshot.json
+            data/live-source-stability-check.json
+            data/editorial-architecture-check.json
+            data/homepage-assembly-check.json
+            data/daily-news-run-status.json
+            data/2026-*-v4/news-summary.json
+            data/2026-*-v4/content.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: QA live source stability
+        run: node scripts/qa-live-source-stability.mjs
+
       - name: QA editorial architecture
         run: node scripts/qa-editorial-architecture.mjs
 

@@ -1,23 +1,142 @@
 {
-  "step": "35-U4-B",
+  "step": "35-U4-D",
   "status": "semantic_copy_ready",
   "qa_passed": true,
   "latest_edition_id": "2026-05-19-v4",
+  "checked_file_path": "data/2026-05-19-v4/content.json",
+  "homepage_items_checked": 10,
   "stories_checked": 20,
-  "duplicate_title_groups": [],
-  "near_duplicate_title_groups": [],
-  "duplicate_summary_groups": [],
-  "near_duplicate_summary_groups": [],
-  "duplicate_why_it_matters_groups": [],
-  "near_duplicate_why_it_matters_groups": [],
-  "duplicate_janet_take_groups": [],
-  "near_duplicate_janet_take_groups": [],
-  "duplicate_watch_next_groups": [],
-  "near_duplicate_watch_next_groups": [],
+  "duplicate_titles": [],
+  "duplicate_summaries": [],
+  "duplicate_why_it_matters": [],
+  "duplicate_janet_take": [],
+  "duplicate_watch_next": [],
+  "near_duplicate_groups": {
+    "zh_title": {
+      "hard": [],
+      "warnings": []
+    },
+    "zh_summary": {
+      "hard": [],
+      "warnings": []
+    },
+    "why_it_matters": {
+      "hard": [],
+      "warnings": []
+    },
+    "janet_take": {
+      "hard": [],
+      "warnings": []
+    },
+    "watch_next": {
+      "hard": [],
+      "warnings": []
+    }
+  },
+  "max_title_similarity": {
+    "score": 0.4,
+    "item_a": {
+      "story_id": "techcrunch-ai-9a05454b24f4",
+      "title": "Amazon 用 Alexa Plus 生成播客",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
+      "text": "Amazon 用 Alexa Plus 生成播客"
+    },
+    "item_b": {
+      "story_id": "the-verge-ai-ae1139b3549a",
+      "title": "Alexa Plus 开始生成 AI 播客",
+      "source": "The Verge AI",
+      "category": "business",
+      "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
+      "text": "Alexa Plus 开始生成 AI 播客"
+    }
+  },
+  "max_summary_similarity": {
+    "score": 0.443,
+    "item_a": {
+      "story_id": "techcrunch-ai-fc9d9b7a3f0a",
+      "title": "马斯克败诉，OpenAI 争议还没结束",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
+      "text": "The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。"
+    },
+    "item_b": {
+      "story_id": "the-verge-ai-905369627f97",
+      "title": "The Verge 记录马斯克败给 Altman",
+      "source": "The Verge AI",
+      "category": "business",
+      "original_title": "Elon Musk loses his case against Sam Altman",
+      "text": "The Verge 报道马斯克对 Sam Altman 的案件失利，重点是围绕 OpenAI 的法律攻击暂时没有打穿。"
+    }
+  },
+  "max_why_similarity": {
+    "score": 0.214,
+    "item_a": {
+      "story_id": "mit-tech-review-ai-8970aa509b85",
+      "title": "MIT 复盘马斯克为何输给 OpenAI",
+      "source": "MIT Technology Review AI",
+      "category": "business",
+      "original_title": "Here’s why Elon Musk lost his suit against OpenAI",
+      "text": "AI 公司和投资者要看：使命叙事进入法庭后，能不能变成可执行约束会被重新检验。"
+    },
+    "item_b": {
+      "story_id": "the-verge-ai-950eb931129f",
+      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
+      "source": "The Verge AI",
+      "category": "business",
+      "original_title": "Musk v. Altman proved that AI is led by the wrong people",
+      "text": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。"
+    }
+  },
+  "max_janet_take_similarity": {
+    "score": 0.133,
+    "item_a": {
+      "story_id": "techcrunch-ai-9a05454b24f4",
+      "title": "Amazon 用 Alexa Plus 生成播客",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
+      "text": "Alexa 以前像遥控器，现在开始像小型内容工厂，问题是成品能不能听。"
+    },
+    "item_b": {
+      "story_id": "the-verge-ai-ae1139b3549a",
+      "title": "Alexa Plus 开始生成 AI 播客",
+      "source": "The Verge AI",
+      "category": "business",
+      "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
+      "text": "Alexa 终于不只会答话，也开始抢内容生产的活。"
+    }
+  },
+  "max_watch_next_similarity": {
+    "score": 0.5,
+    "item_a": {
+      "story_id": "techcrunch-ai-9a05454b24f4",
+      "title": "Amazon 用 Alexa Plus 生成播客",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
+      "text": "看 Alexa Plus 生成播客是否支持编辑和版权控制。"
+    },
+    "item_b": {
+      "story_id": "the-verge-ai-ae1139b3549a",
+      "title": "Alexa Plus 开始生成 AI 播客",
+      "source": "The Verge AI",
+      "category": "business",
+      "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
+      "text": "看 Alexa Plus 生成内容是否支持可控编辑。"
+    }
+  },
+  "forbidden_patch_phrases_found": [],
   "generic_template_phrases_found": [],
-  "patch_phrases_found": [],
-  "source_category_template_clusters": [],
   "missing_specific_terms": [],
-  "issues": [],
-  "warnings": []
+  "cross_edition_similarity_issues": [],
+  "warnings": [
+    {
+      "reason": "previous_edition_unreadable",
+      "edition_id": "2026-05-10"
+    }
+  ],
+  "issues": []
 }

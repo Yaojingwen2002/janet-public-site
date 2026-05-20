@@ -5,7 +5,7 @@
   "latest_edition_id": "2026-05-20-v4",
   "checked_file_path": "data/2026-05-20-v4/content.json",
   "homepage_items_checked": 10,
-  "stories_checked": 14,
+  "stories_checked": 15,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -221,10 +221,22 @@
     }
   ],
   "issues": [],
-  "generated_at": "2026-05-20T02:03:22.869Z",
+  "generated_at": "2026-05-20T04:50:05.300Z",
   "raw_homepage_items": [
     {
       "role": "lead",
+      "story_id": "openai-news-e8a8c4af6836",
+      "title": "Introducing OpenAI出现合作新进展",
+      "source": "OpenAI",
+      "category": "models",
+      "summary": "OpenAI这条新闻的具体对象是Introducing OpenAI，动作是合作；原文线索是「Introducing OpenAI for Singapore」。",
+      "why_it_matters": "企业团队和投资者要看Introducing OpenAI：合作会影响它接下来能否进入真实使用场景。",
+      "janet_take": "Introducing OpenAI有明确动作，先别喊革命，看它有没有真实用户和可复查结果。",
+      "watch_next": "看Introducing OpenAI是否出现真实使用证据。",
+      "visual": "assets/news-visuals/2026-05-20-lead.svg"
+    },
+    {
+      "role": "signal",
       "story_id": "google-ai-blog-f3b06e3adbce",
       "title": "agentic Gemini era出现智能体能力新进展",
       "source": "Google AI",
@@ -233,18 +245,6 @@
       "why_it_matters": "普通用户和产品团队要看agentic Gemini era：智能体只有进入具体任务，才知道是帮忙还是添乱。",
       "janet_take": "agentic Gemini era有明确动作，先别喊革命，看它有没有真实用户和可复查结果。",
       "watch_next": "看agentic Gemini era能否完成连续任务。",
-      "visual": "assets/news-visuals/2026-05-20-lead.svg"
-    },
-    {
-      "role": "signal",
-      "story_id": "venturebeat-ai-85c5d168a62e",
-      "title": "search box出现合作新进展",
-      "source": "VentureBeat AI",
-      "category": "business",
-      "summary": "VentureBeat这条新闻的具体对象是search box，动作是合作；原文线索是「Google just redesigned the search box for the first tim...」。",
-      "why_it_matters": "开发者和平台团队要看search box：合作会影响它接下来能否进入真实使用场景。",
-      "janet_take": "search box有明确动作，先别喊革命，看它有没有真实用户和可复查结果。",
-      "watch_next": "看search box是否出现真实使用证据。",
       "visual": "assets/news-visuals/2026-05-20-signal-1.svg"
     },
     {
@@ -270,6 +270,18 @@
       "janet_take": "马斯克输了这一局，但 OpenAI 的治理故事不会因此安静。",
       "watch_next": "看马斯克是否继续用其他路径施压 OpenAI。",
       "visual": "assets/news-visuals/2026-05-20-signal-3.svg"
+    },
+    {
+      "role": "compact",
+      "story_id": "venturebeat-ai-85c5d168a62e",
+      "title": "search box出现合作新进展",
+      "source": "VentureBeat AI",
+      "category": "business",
+      "summary": "VentureBeat这条新闻的具体对象是search box，动作是合作；原文线索是「Google just redesigned the search box for the first tim...」。",
+      "why_it_matters": "开发者和平台团队要看search box：合作会影响它接下来能否进入真实使用场景。",
+      "janet_take": "search box有明确动作，先别喊革命，看它有没有真实用户和可复查结果。",
+      "watch_next": "看search box是否出现真实使用证据。",
+      "visual": ""
     },
     {
       "role": "compact",
@@ -330,21 +342,82 @@
       "janet_take": "Google Workspace有明确动作，先别喊革命，看它有没有真实用户和可复查结果。",
       "watch_next": "看Google Workspace是否支持编辑和版权控制。",
       "visual": ""
-    },
-    {
-      "role": "compact",
-      "story_id": "techcrunch-ai-68933002869c",
-      "title": "Karpathy 加入 Anthropic 预训练团队",
-      "source": "TechCrunch AI",
-      "category": "business",
-      "summary": "TechCrunch报道 Andrej Karpathy 加入 Anthropic 预训练团队，这条的重点是顶级模型训练经验继续向头部实验室集中。",
-      "why_it_matters": "研究者和模型团队要看：预训练人才流动会影响下一代模型的训练路线和团队竞争。",
-      "janet_take": "Karpathy 换位置，比很多产品更新更值得看，因为模型能力最后还是人训出来的。",
-      "watch_next": "看 Anthropic 预训练团队后续论文和模型节奏。",
-      "visual": ""
     }
   ],
   "story_snapshot": [
+    {
+      "story_id": "openai-news-e8a8c4af6836",
+      "source": "OpenAI",
+      "category": "models",
+      "original_title": "Introducing OpenAI for Singapore",
+      "zh_title": "Introducing OpenAI出现合作新进展",
+      "zh_summary": "OpenAI这条新闻的具体对象是Introducing OpenAI，动作是合作；原文线索是「Introducing OpenAI for Singapore」。",
+      "why_it_matters": "企业团队和投资者要看Introducing OpenAI：合作会影响它接下来能否进入真实使用场景。",
+      "janet_take": "Introducing OpenAI有明确动作，先别喊革命，看它有没有真实用户和可复查结果。",
+      "watch_next": "看Introducing OpenAI是否出现真实使用证据。",
+      "story_fact": {
+        "concrete_object": "Introducing OpenAI",
+        "entities": [
+          "OpenAI",
+          "Introducing OpenAI",
+          "Singapore"
+        ],
+        "products": [
+          "OpenAI",
+          "Introducing OpenAI",
+          "Singapore"
+        ],
+        "action": "合作",
+        "audience": "企业团队和投资者",
+        "editorial_angle": "Introducing OpenAI的合作会影响企业团队和投资者",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "OpenAI"
+          },
+          {
+            "label": "entity",
+            "value": "Introducing OpenAI"
+          },
+          {
+            "label": "entity",
+            "value": "Singapore"
+          },
+          {
+            "label": "action",
+            "value": "合作"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Introducing OpenAI"
+          }
+        ],
+        "original_title": "Introducing OpenAI for Singapore",
+        "original_summary": "OpenAI for Singapore launches a multi-year AI partnership to expand deployment, build local talent, and support businesses and public services with AI."
+      },
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "OpenAI"
+        },
+        {
+          "label": "entity",
+          "value": "Introducing OpenAI"
+        },
+        {
+          "label": "entity",
+          "value": "Singapore"
+        },
+        {
+          "label": "action",
+          "value": "合作"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Introducing OpenAI"
+        }
+      ]
+    },
     {
       "story_id": "google-ai-blog-f3b06e3adbce",
       "source": "Google AI",

@@ -64,6 +64,7 @@ jobs:
             data/editorial-architecture-check.json
             data/homepage-assembly-check.json
             data/homepage-surface-copy-check.json
+            data/news-visuals-check.json
             data/daily-news-run-status.json
             data/2026-*-v4/news-summary.json
             data/2026-*-v4/content.json
@@ -75,6 +76,9 @@ jobs:
 
       - name: QA homepage surface copy
         run: node scripts/qa-homepage-surface-copy.mjs
+
+      - name: QA news visuals
+        run: node scripts/qa-news-visuals.mjs
 
       - name: QA site polish
         run: node scripts/qa-site-polish.mjs

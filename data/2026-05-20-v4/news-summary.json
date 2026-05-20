@@ -14,7 +14,8 @@
       "original_summary": "OpenAI for Singapore launches a multi-year AI partnership to expand deployment, build local talent, and support businesses and public services with AI.",
       "url": "https://openai.com/index/introducing-openai-for-singapore",
       "published_at": "2026-05-19T20:30:00.000Z",
-      "category": "models"
+      "category": "models",
+      "image_candidates": []
     },
     "story_fact": {
       "concrete_object": "Singapore",
@@ -88,7 +89,7 @@
     "image": null,
     "image_source": null,
     "image_credit": null,
-    "verified_at": "2026-05-20T07:15:53.770Z",
+    "verified_at": "2026-05-20T08:11:25.157Z",
     "duplicate_group": null,
     "evidence_ids": [
       "evidence-0021"
@@ -114,7 +115,24 @@
     "lead_eligible": true,
     "core_eligible": true,
     "primary_section": "models",
-    "visual": "assets/news-visuals/2026-05-20-lead.svg"
+    "visual": {
+      "status": "ready",
+      "mode": "open_license_image",
+      "src": "assets/news-visuals/2026-05-20-v4/openai-news-e8a8c4af6836.jpg",
+      "local_path": "assets/news-visuals/2026-05-20-v4/openai-news-e8a8c4af6836.jpg",
+      "alt": "新闻视觉：Singapore出现合作新进展",
+      "caption": "开放授权图片，用来辅助呈现「Singapore」相关对象。",
+      "credit": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_Singapore_Flyer_--_2019_--_4474.jpg",
+      "matched_terms": [
+        "Singapore",
+        "OpenAI"
+      ],
+      "relevance_score": 0.66,
+      "fallback_reason": "",
+      "template": ""
+    }
   },
   "output_url": "data/2026-05-20-v4/output.html",
   "summary_url": "data/2026-05-20-v4/news-summary.json",
@@ -135,7 +153,23 @@
       "story_id": "google-ai-blog-f3b06e3adbce",
       "story_title": "Gemini出现智能体能力新进展",
       "source": "Google AI",
-      "visual": "assets/news-visuals/2026-05-20-signal-1.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
+        "alt": "新闻视觉：Gemini出现智能体能力新进展",
+        "caption": "Google AI源站图片，对应「Gemini」的智能体能力。",
+        "credit": "Google AI",
+        "license": "source article image / editorial reference",
+        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/SundarKeynote_tempsocial.width-1300.png",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "signal": "工具收口",
@@ -148,7 +182,24 @@
       "story_id": "aws-machine-learning-63bc5a915489",
       "story_title": "Amazon Bedrock AgentCore Memory加入对话记忆",
       "source": "AWS Machine Learning Blog",
-      "visual": "assets/news-visuals/2026-05-20-signal-2.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-63bc5a915489.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-63bc5a915489.png",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore Memory加入对话记忆",
+        "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore Memory」的记忆扩展。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/19/ml-19844.png",
+        "matched_terms": [
+          "Amazon Bedrock AgentCore Memory",
+          "Amazon Bedrock AgentCore"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "signal": "商业落点",
@@ -161,7 +212,24 @@
       "story_id": "techcrunch-ai-42e31aff521b",
       "story_title": "马斯克败诉，OpenAI 争议还没结束",
       "source": "TechCrunch AI",
-      "visual": "assets/news-visuals/2026-05-20-signal-3.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-42e31aff521b.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-42e31aff521b.jpg",
+        "alt": "新闻视觉：马斯克败诉，OpenAI 争议还没结束",
+        "caption": "TechCrunch原文分享图，用来对应「Sam Altman」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/04/musk-court-2273245544.jpg?resize=1200,801",
+        "matched_terms": [
+          "Sam Altman",
+          "OpenAI"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ],
   "edition_items_count": 15,
@@ -176,7 +244,10 @@
         "original_summary": "For a quarter century, the Google search box has been one of the most recognizable interfaces in computing: a thin white rectangle, a blinking cursor, a few typed words, and a list of blue links. On Tuesday, Google will formally retire that paradigm. At its annual I/O developer conference , Google announced a sweeping redesign of the search box itself — the literal text field where billions of queries begin every day — transforming it from a simple keyword input into a dynamic, AI-driven conversation starter that can accept text, images, PDFs, videos, and even open Chrome tabs as inputs. The company is also merging its AI Overviews and AI Mode features into a single, seamless search flow, eliminating the friction that previously forced users to choose between a traditional results page and an AI-forward experience. Liz Reid, Google&#x27;s vice president and head of Search, called it \"the biggest upgrade to our iconic search box since its debut over 25 years ago\" during a press briefing on Monday. The announcement arrived alongside a blizzard of other news — new Gemini models , a personal AI agent called Spark , an intelligent shopping cart , a reimagined developer platform — but the search box redesign may prove to be the most consequential. It is the clearest signal yet that Google views the future of its flagship product not as a place where users type fragmented keywords, but as an interface where they hold open-ended, multimodal conversations with an AI system backed by the entire web. The new search box expands, accepts files, and coaches you on what to ask The changes show a fundamental shift in how Google expects people to interact with the product that generates the vast majority of Alphabet&#x27;s revenue. The box itself now dynamically expands to accommodate longer, more conversational queries. Where the old interface subtly encouraged brevity — a narrow field suited to two- or three-word keyword strings — the new design invites users to fully articulate complex questions in granular detail. It also now supports multimodal inputs directly. Users can upload images, PDFs, files, and videos, or drag in content from Chrome tabs, right from the main search interface. Previously, some of these capabilities existed in AI Mode, but reaching them required extra steps. Now they sit at the primary entry point. Google is also deploying what it describes as an AI-powered query suggestion system that \"goes beyond autocomplete.\" Rather than simply predicting the next word a user might type based on popular searches, the system helps users formulate complex, nuanced queries — essentially coaching them toward the kind of detailed questions that AI Mode handles best. The new search box is starting to roll out immediately in all countries and languages where AI Mode is available. Google is merging AI overviews and AI mode into one seamless experience Perhaps more significant than the box itself is the architectural change happening behind it. Google is unifying AI Overviews — the AI-generated summary panels that appear atop traditional search results — with AI Mode , the more immersive conversational search experience the company launched at I/O one year ago. Starting Tuesday, this merged experience will be live across mobile and desktop worldwide. A user can type a question, receive an AI Overview alongside traditional results, and then continue directly into a back-and-forth AI Mode conversation to ask follow-up questions — all without navigating to a separate interface. Reid explained the logic during the press briefing: the new AI search box is \"an upgrade of our traditional search box, and so the results take you directly to main search rather than AI mode.\" She noted that while some power users actively sought out AI Mode, \"for most users, they don&#x27;t actually want to have to think about, do they want more of a traditional page or an AI-forward search experience.\" The goal, she said, was to ensure that \"for most users, they don&#x27;t have to think about where to go, they can just go to the search box they&#x27;re familiar with, and it feels like they get the best experience afterwards.\" One billion users and doubling queries reveal how fast search behavior is shifting Google&#x27;s decision to redesign the foundational interface of its most important product did not happen in a vacuum. The company shared a set of usage statistics during the briefing that reveal just how rapidly user behavior is already changing. AI Mode , which launched in the United States at I/O 2025, has surpassed one billion monthly users in its first year. AI Mode queries have been doubling every quarter since launch. AI Overviews, the lighter-weight AI summaries, now reach more than 2.5 billion monthly users. And overall search query volume hit an all-time high last quarter — a data point the company had previously disclosed on its earnings call. Sundar Pichai, Google&#x27;s CEO, framed these figures as evidence that AI features are additive, not cannibalistic, to search usage. \"When people use our AI-powered features in search, they use search more,\" he said. He added that he loves \"how search has become less about individual queries and feels more like an ongoing conversation, giving users deeper insights and connecting you with the vastness of the web.\" Reid reinforced the point: \"It&#x27;s not just that people are searching more, it&#x27;s that they&#x27;re searching differently. They&#x27;re fully expressing their questions in granular detail, asking those follow-up questions and searching across modalities.\" Gemini 3.5 Flash gives Google&#x27;s AI search the speed it needs to work at scale Under the hood, the new search experience runs on Gemini 3.5 Flash , Google&#x27;s newest AI model, which the company also introduced at I/O. Google upgraded AI Mode&#x27;s underlying model to 3.5 Flash to deliver what Reid described as \"an even more powerful AI search experience.\" Gemini 3.5 Flash is the workhorse of this year&#x27;s announcements. Google claims it outperforms its previous frontier model, Gemini 3.1 Pro , on nearly all benchmarks while running four times faster in output tokens per second than comparable frontier models. Pichai described it as being \"in a league of its own in the top right quadrant\" of the Artificial Analysis index , which plots intelligence against speed — meaning it delivers near-frontier quality at dramatically lower latency. That speed matters enormously for search. A conversational AI search experience that feels sluggish would be dead on arrival for a product that serves billions of queries daily. By coupling the redesigned interface with a model optimized for both quality and throughput, Google is attempting to make AI-powered search feel as instantaneous as the old keyword experience — while being dramatically more capable. Search can now build interactive visuals and custom mini apps on the fly The redesigned search box is also the gateway to a set of new capabilities that push search far beyond text-based answers. Google announced what it calls \" generative UI \" — the ability for search to dynamically build custom widgets, interactive visualizations, and even mini applications in real time, tailored to a user&#x27;s specific question. Reid offered a concrete example during the briefing: a user could ask \"How do black holes affect space time?\" and receive an interactive visual in an AI Overview that brings the concept to life. Follow-up questions would trigger the system to dynamically generate entirely new visuals in real time. This is possible, she explained, because of \"a novel real-time code generation system we built in partnership with the Google DeepMind team\" that runs on Gemini 3.5 Flash. Generative UI capabilities will roll out to everyone this summer, free of charge. But Google is going further still. For ongoing tasks — planning a wedding, organizing a move, tracking a fitness routine — users will be able to build what the company describes as customizable, stateful experiences within search, powered by its Antigravity development platform . These require no coding expertise. Users simply describe what they want in natural language, and search builds it. Those experiences will be available in coming months, starting with Google AI Pro and Ultra subscribers in the United States. AI agents that monitor the web around the clock are coming to search results The redesign also opens the door to what Google calls \" information agents \" — AI agents that users can configure directly within search to monitor the web 24/7 for specific conditions and deliver synthesized updates when those conditions are met. A user could, for example, set up an agent to track market movements in a particular sector with specific parameters. The agent would create a monitoring plan, tap into real-time finance data, and proactively notify the user when conditions are met — complete with links and context for further research. Other use cases include apartment hunting, tracking sneaker drops, or monitoring any topic a user cares about. Information agents will launch first for Google AI Pro and Ultra subscribers this summer. These agents sit within a much larger strategic pivot that Google articulated throughout the briefing: the company is going all-in on AI systems that don&#x27;t just answer questions but proactively take actions on users&#x27; behalf. Beyond search, Google introduced Gemini Spark , a 24/7 personal AI agent that runs on dedicated virtual machines in Google Cloud. It unveiled the Universal Cart , an intelligent cross-merchant shopping cart. It announced the Agent Payments Protocol for agents to make secure purchases. And it expanded its Antigravity developer platform into a full ecosystem for building autonomous AI agents. Publishers, advertisers, and SEO professionals face a new reality The redesign raises profound questions for the sprawling ecosystem — publishers, advertisers, SEO professionals — that has been built around the old model of keyword search and blue links. If users increasingly express their needs as full, conversational sentences rather than fragmented keywords, the entire discipline of search engine optimization will need to evolve. Keyword-density strategies become less relevant when the AI is parsing natural language intent rather than matching strings. Content that answers deep, nuanced questions in authoritative ways becomes more valuable; content engineered to rank for two-word keyword fragments becomes less so. For publishers, the stakes are existential . AI Overviews already synthesize information from across the web and present it directly in search results, reducing the need for users to click through to source material. The new seamless AI Mode integration deepens that dynamic: users can now get an AI-generated answer and ask multiple follow-up questions without ever leaving the search page. Google has consistently maintained that its AI features drive more traffic to publishers, but the redesign puts that claim under renewed scrutiny as the search results page becomes more self-contained. For advertisers — who fund the vast majority of Google&#x27;s revenue — the shift from keywords to conversations changes the calculus of ad targeting. Conversational queries contain richer intent signals, which could make ad targeting more precise and valuable. But they also create new ambiguities: when a user is in the middle of a multi-turn conversation with AI Mode, where does an ad naturally fit? Google did not detail changes to its advertising model during the briefing, but the structural shift in the interface will inevitably reshape how ads are surfaced and measured. The search box was always more than a product — it was a habit for billions of people There is a reason Google chose to redesign the search box rather than simply adding new features behind it. The search box is not just a product element at this point; it is a cultural artifact — one of the few pieces of digital infrastructure used by essentially the entire internet-connected world. Changing it sends an unmistakable message about where the company believes computing is headed. For 25 years, the search box trained billions of people to think in keywords — to compress their curiosity into the shortest possible string of words. The new box invites them to do the opposite: to think out loud, to upload what they&#x27;re looking at, to ask follow-up questions, to let an AI system handle the compression. Pichai tied the company&#x27;s broader ambitions to a striking statistic: Google&#x27;s surfaces now process over 3.2 quadrillion tokens per month, up seven-fold from a year ago. The company expects capital expenditures of approximately $180 to $190 billion in 2026 — roughly six times the $31 billion it spent four years ago — largely to support the infrastructure required for this AI transformation. When asked about the future of traditional search, he was direct. \"Search is the most used AI product in the world,\" he said. The blinking cursor in Google&#x27;s search box still invites you to type. But after 25 years of teaching the world to speak in keywords, Google is now asking it to speak in sentences — and betting roughly $190 billion that it will.",
         "url": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
         "published_at": "2026-05-19T17:45:00.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": [
+          "https://images.ctfassets.net/jdtwqhzvc2n1/1TD0Sl7Zq6nnBSZMK9FXpl/41ce2cc6da055da7647670c71ba8aa6b/Nuneybits_Vector_art_of_an_oversized_white_search_bar_rimmed_in_695cac3f-1536-4438-acc1-51c16e2ff51f.webp?w=300&amp;q=30"
+        ]
       },
       "story_fact": {
         "concrete_object": "search box",
@@ -250,10 +321,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0045"
+        "evidence-0023"
       ],
       "editorial_score": 140,
       "editorial_signals": [
@@ -310,7 +381,25 @@
       ],
       "lead_eligible": false,
       "core_eligible": true,
-      "primary_section": "creator_opportunity"
+      "primary_section": "creator_opportunity",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
+        "alt": "新闻视觉：search box出现合作新进展",
+        "caption": "开放授权图片，用来辅助呈现「search box」相关对象。",
+        "credit": "Hans Holbein the Younger",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Hans_Holbein_der_J%C3%BCngere_-_Der_Kaufmann_Georg_Gisze_-_Google_Art_Project.jpg",
+        "matched_terms": [
+          "search box",
+          "Google"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "aws-machine-learning-d11174ce5c3d",
@@ -321,7 +410,8 @@
         "original_summary": "In this post, we show three ways to implement Programmatic tool calling (PTC) on Amazon Bedrock: a self-hosted Docker sandbox on ECS for maximum control, a managed solution using Amazon Bedrock AgentCore Code Interpreter, and an Anthropic SDK-compatible path through a proxy for teams that prefer that developer experience.",
         "url": "https://aws.amazon.com/blogs/machine-learning/implementing-programmatic-tool-calling-on-amazon-bedrock/",
         "published_at": "2026-05-19T15:17:00.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "Amazon Bedrock AgentCore",
@@ -405,10 +495,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0037"
+        "evidence-0044"
       ],
       "editorial_score": 130,
       "editorial_signals": [
@@ -433,7 +523,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-d11174ce5c3d.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-d11174ce5c3d.png",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore补上程序化工具调用",
+        "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的工具调用。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/19/ml-20707.png",
+        "matched_terms": [
+          "Amazon Bedrock AgentCore"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "techcrunch-ai-36eaeeab6825",
@@ -444,7 +551,8 @@
         "original_summary": "Google is launching AI-powered “information agents” that can monitor topics in the background and proactively alert users to updates and changes.",
         "url": "https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/",
         "published_at": "2026-05-19T21:16:25.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "AI agents",
@@ -518,7 +626,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0004"
@@ -543,7 +651,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-36eaeeab6825.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-36eaeeab6825.png",
+        "alt": "新闻视觉：AI agents正在改写搜索入口",
+        "caption": "TechCrunch原文分享图，用来对应「AI agents」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/G-information-agents.png?resize=1200,750",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "techcrunch-ai-c9204413ad6d",
@@ -554,7 +679,8 @@
         "original_summary": "Ocean, an agentic email security platform, claims its AI can thoroughly analyze the context of every incoming email to detect fraud and impersonation attempts.",
         "url": "https://techcrunch.com/2026/05/19/from-teen-hacker-to-iron-dome-researcher-this-founder-raised-28m-to-fight-ai-phishing/",
         "published_at": "2026-05-19T21:08:51.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "AI phishing",
@@ -628,7 +754,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0005"
@@ -653,7 +779,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-c9204413ad6d.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-c9204413ad6d.jpg",
+        "alt": "新闻视觉：AI phishing拿到融资，押注AI 安全",
+        "caption": "TechCrunch原文分享图，用来对应「AI phishing」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/Copy-of-IMG_8655.jpg?resize=1200,800",
+        "matched_terms": [
+          "AI phishing"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "techcrunch-ai-5e0d08ff693d",
@@ -664,7 +807,8 @@
         "original_summary": "Google is debuting a new AI Ultra plan priced at $100, which will give users 5x more usage limit than the AI Pro plan alongside the Antigravity 2.0 launch.",
         "url": "https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/",
         "published_at": "2026-05-19T17:45:00.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "Antigravity 2.0",
@@ -758,10 +902,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0016"
+        "evidence-0017"
       ],
       "editorial_score": 120,
       "editorial_signals": [
@@ -783,7 +927,26 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "business"
+      "primary_section": "business",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
+        "alt": "新闻视觉：Antigravity 2.0出现开发工具升级新进展",
+        "caption": "TechCrunch原文分享图，用来对应「Antigravity 2.0」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/google-developer-antigravity.jpg?resize=1200,900",
+        "matched_terms": [
+          "Google",
+          "Antigravity",
+          "CLI"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "google-ai-blog-a9d4fac24d10",
@@ -794,7 +957,10 @@
         "original_summary": "Announcing new voice capabilities in Gmail, Docs and Keep, a new design tool called Google Pics and updates to AI Inbox.",
         "url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
         "published_at": "2026-05-19T17:45:00.000Z",
-        "category": "models"
+        "category": "models",
+        "image_candidates": [
+          "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GoogleWorkspace-IO.max-600x600.format-webp.webp"
+        ]
       },
       "story_fact": {
         "concrete_object": "Google Workspace",
@@ -868,10 +1034,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0040"
+        "evidence-0036"
       ],
       "editorial_score": 115,
       "editorial_signals": [
@@ -886,7 +1052,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "models"
+      "primary_section": "models",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-a9d4fac24d10.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-a9d4fac24d10.png",
+        "alt": "新闻视觉：Google Workspace开始生成内容",
+        "caption": "Google AI源站图片，对应「Google Workspace」的生成。",
+        "credit": "Google AI",
+        "license": "source article image / editorial reference",
+        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GoogleWorkspace-IO.width-1300.png",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ],
   "homepage_items": [
@@ -900,7 +1083,24 @@
       "why_it_matters": "企业团队和投资者要看Singapore：合作会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
       "watch_next": "看Singapore是否公布接口、限制或客户案例。",
-      "visual": "assets/news-visuals/2026-05-20-lead.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-05-20-v4/openai-news-e8a8c4af6836.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/openai-news-e8a8c4af6836.jpg",
+        "alt": "新闻视觉：Singapore出现合作新进展",
+        "caption": "开放授权图片，用来辅助呈现「Singapore」相关对象。",
+        "credit": "Dietmar Rabich",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_Singapore_Flyer_--_2019_--_4474.jpg",
+        "matched_terms": [
+          "Singapore",
+          "OpenAI"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "signal",
@@ -912,7 +1112,23 @@
       "why_it_matters": "普通用户和产品团队要看Gemini：智能体只有进入具体任务，才知道是帮忙还是添乱。",
       "janet_take": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
       "watch_next": "看Gemini能否完成连续任务。",
-      "visual": "assets/news-visuals/2026-05-20-signal-1.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
+        "alt": "新闻视觉：Gemini出现智能体能力新进展",
+        "caption": "Google AI源站图片，对应「Gemini」的智能体能力。",
+        "credit": "Google AI",
+        "license": "source article image / editorial reference",
+        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/SundarKeynote_tempsocial.width-1300.png",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "signal",
@@ -924,7 +1140,24 @@
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Amazon Bedrock AgentCore Memory补记忆这事很实在，智能体没上下文就像刚睡醒的同事。",
       "watch_next": "看Amazon Bedrock AgentCore Memory是否公布接口、...",
-      "visual": "assets/news-visuals/2026-05-20-signal-2.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-63bc5a915489.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-63bc5a915489.png",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore Memory加入对话记忆",
+        "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore Memory」的记忆扩展。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/19/ml-19844.png",
+        "matched_terms": [
+          "Amazon Bedrock AgentCore Memory",
+          "Amazon Bedrock AgentCore"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "signal",
@@ -936,7 +1169,24 @@
       "why_it_matters": "投资者和 AI 公司观察者要看：这类诉讼会影响公众如何理解 AI 公司的使命、控制权和商业化。",
       "janet_take": "马斯克输了这一局，但 OpenAI 的治理故事不会因此安静。",
       "watch_next": "看马斯克是否继续用其他路径施压 OpenAI。",
-      "visual": "assets/news-visuals/2026-05-20-signal-3.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-42e31aff521b.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-42e31aff521b.jpg",
+        "alt": "新闻视觉：马斯克败诉，OpenAI 争议还没结束",
+        "caption": "TechCrunch原文分享图，用来对应「Sam Altman」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/04/musk-court-2273245544.jpg?resize=1200,801",
+        "matched_terms": [
+          "Sam Altman",
+          "OpenAI"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -948,7 +1198,24 @@
       "why_it_matters": "开发者和平台团队要看search box：合作会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "search box这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
       "watch_next": "看search box是否公布接口、限制或客户案例。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
+        "alt": "新闻视觉：search box出现合作新进展",
+        "caption": "开放授权图片，用来辅助呈现「search box」相关对象。",
+        "credit": "Hans Holbein the Younger",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Hans_Holbein_der_J%C3%BCngere_-_Der_Kaufmann_Georg_Gisze_-_Google_Art_Project.jpg",
+        "matched_terms": [
+          "search box",
+          "Google"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -960,7 +1227,23 @@
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Amazon Bedrock AgentCore开始认真处理工具调用，说明智能体终于要学会按流程干活。",
       "watch_next": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-d11174ce5c3d.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-d11174ce5c3d.png",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore补上程序化工具调用",
+        "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的工具调用。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/19/ml-20707.png",
+        "matched_terms": [
+          "Amazon Bedrock AgentCore"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -972,7 +1255,23 @@
       "why_it_matters": "普通用户和产品团队要看AI agents：搜索入口变主动后，内容分发、广告和用户路径都会被重新分配。",
       "janet_take": "AI agents这事不小，搜索框一变，很多流量游戏就要重新算账。",
       "watch_next": "看AI agents是否改变流量和广告分配。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-36eaeeab6825.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-36eaeeab6825.png",
+        "alt": "新闻视觉：AI agents正在改写搜索入口",
+        "caption": "TechCrunch原文分享图，用来对应「AI agents」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/G-information-agents.png?resize=1200,750",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -984,7 +1283,23 @@
       "why_it_matters": "研究者和评测团队要看AI phishing：资金流向说明市场正在押注哪个具体痛点。",
       "janet_take": "AI phishing拿到钱只是开场，接下来要证明它不是又一个安全 PPT。",
       "watch_next": "看AI phishing资金后是否给出产品指标。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-c9204413ad6d.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-c9204413ad6d.jpg",
+        "alt": "新闻视觉：AI phishing拿到融资，押注AI 安全",
+        "caption": "TechCrunch原文分享图，用来对应「AI phishing」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/Copy-of-IMG_8655.jpg?resize=1200,800",
+        "matched_terms": [
+          "AI phishing"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -996,7 +1311,25 @@
       "why_it_matters": "相关产品团队和使用者要看Antigravity 2.0：CLI 和编码入口一旦顺手，会直接改变团队日常开发节奏。",
       "janet_take": "Antigravity 2.0如果真能少敲几步命令，开发者会比发布会掌声更诚实。",
       "watch_next": "看Antigravity 2.0是否进入默认开发命令。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
+        "alt": "新闻视觉：Antigravity 2.0出现开发工具升级新进展",
+        "caption": "TechCrunch原文分享图，用来对应「Antigravity 2.0」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/google-developer-antigravity.jpg?resize=1200,900",
+        "matched_terms": [
+          "Google",
+          "Antigravity",
+          "CLI"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -1008,7 +1341,23 @@
       "why_it_matters": "创作者和内容团队要看Google Workspace：生成会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Google Workspace这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
       "watch_next": "看Google Workspace是否支持编辑和版权控制。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-a9d4fac24d10.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-a9d4fac24d10.png",
+        "alt": "新闻视觉：Google Workspace开始生成内容",
+        "caption": "Google AI源站图片，对应「Google Workspace」的生成。",
+        "credit": "Google AI",
+        "license": "source article image / editorial reference",
+        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GoogleWorkspace-IO.width-1300.png",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ],
   "daily_title": "Singapore和OpenAI都有新动作",
@@ -1026,7 +1375,25 @@
     "cover_title": "Singapore把合作摆到封面",
     "cover_summary": "OpenAI这条围绕Singapore的合作展开，影响的是企业团队和投资者对功能边界和接入方式的判断。",
     "daily_judgment": "Janet 判断：Singapore这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
-    "lead_story_id": "openai-news-e8a8c4af6836"
+    "lead_story_id": "openai-news-e8a8c4af6836",
+    "visual": {
+      "status": "ready",
+      "mode": "open_license_image",
+      "src": "assets/news-visuals/2026-05-20-v4/openai-news-e8a8c4af6836.jpg",
+      "local_path": "assets/news-visuals/2026-05-20-v4/openai-news-e8a8c4af6836.jpg",
+      "alt": "新闻视觉：Singapore出现合作新进展",
+      "caption": "开放授权图片，用来辅助呈现「Singapore」相关对象。",
+      "credit": "Dietmar Rabich",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Singapore_(SG),_Singapore_Flyer_--_2019_--_4474.jpg",
+      "matched_terms": [
+        "Singapore",
+        "OpenAI"
+      ],
+      "relevance_score": 0.66,
+      "fallback_reason": "",
+      "template": ""
+    }
   },
   "modules": [
     {
@@ -1082,7 +1449,10 @@
         "original_summary": "For a quarter century, the Google search box has been one of the most recognizable interfaces in computing: a thin white rectangle, a blinking cursor, a few typed words, and a list of blue links. On Tuesday, Google will formally retire that paradigm. At its annual I/O developer conference , Google announced a sweeping redesign of the search box itself — the literal text field where billions of queries begin every day — transforming it from a simple keyword input into a dynamic, AI-driven conversation starter that can accept text, images, PDFs, videos, and even open Chrome tabs as inputs. The company is also merging its AI Overviews and AI Mode features into a single, seamless search flow, eliminating the friction that previously forced users to choose between a traditional results page and an AI-forward experience. Liz Reid, Google&#x27;s vice president and head of Search, called it \"the biggest upgrade to our iconic search box since its debut over 25 years ago\" during a press briefing on Monday. The announcement arrived alongside a blizzard of other news — new Gemini models , a personal AI agent called Spark , an intelligent shopping cart , a reimagined developer platform — but the search box redesign may prove to be the most consequential. It is the clearest signal yet that Google views the future of its flagship product not as a place where users type fragmented keywords, but as an interface where they hold open-ended, multimodal conversations with an AI system backed by the entire web. The new search box expands, accepts files, and coaches you on what to ask The changes show a fundamental shift in how Google expects people to interact with the product that generates the vast majority of Alphabet&#x27;s revenue. The box itself now dynamically expands to accommodate longer, more conversational queries. Where the old interface subtly encouraged brevity — a narrow field suited to two- or three-word keyword strings — the new design invites users to fully articulate complex questions in granular detail. It also now supports multimodal inputs directly. Users can upload images, PDFs, files, and videos, or drag in content from Chrome tabs, right from the main search interface. Previously, some of these capabilities existed in AI Mode, but reaching them required extra steps. Now they sit at the primary entry point. Google is also deploying what it describes as an AI-powered query suggestion system that \"goes beyond autocomplete.\" Rather than simply predicting the next word a user might type based on popular searches, the system helps users formulate complex, nuanced queries — essentially coaching them toward the kind of detailed questions that AI Mode handles best. The new search box is starting to roll out immediately in all countries and languages where AI Mode is available. Google is merging AI overviews and AI mode into one seamless experience Perhaps more significant than the box itself is the architectural change happening behind it. Google is unifying AI Overviews — the AI-generated summary panels that appear atop traditional search results — with AI Mode , the more immersive conversational search experience the company launched at I/O one year ago. Starting Tuesday, this merged experience will be live across mobile and desktop worldwide. A user can type a question, receive an AI Overview alongside traditional results, and then continue directly into a back-and-forth AI Mode conversation to ask follow-up questions — all without navigating to a separate interface. Reid explained the logic during the press briefing: the new AI search box is \"an upgrade of our traditional search box, and so the results take you directly to main search rather than AI mode.\" She noted that while some power users actively sought out AI Mode, \"for most users, they don&#x27;t actually want to have to think about, do they want more of a traditional page or an AI-forward search experience.\" The goal, she said, was to ensure that \"for most users, they don&#x27;t have to think about where to go, they can just go to the search box they&#x27;re familiar with, and it feels like they get the best experience afterwards.\" One billion users and doubling queries reveal how fast search behavior is shifting Google&#x27;s decision to redesign the foundational interface of its most important product did not happen in a vacuum. The company shared a set of usage statistics during the briefing that reveal just how rapidly user behavior is already changing. AI Mode , which launched in the United States at I/O 2025, has surpassed one billion monthly users in its first year. AI Mode queries have been doubling every quarter since launch. AI Overviews, the lighter-weight AI summaries, now reach more than 2.5 billion monthly users. And overall search query volume hit an all-time high last quarter — a data point the company had previously disclosed on its earnings call. Sundar Pichai, Google&#x27;s CEO, framed these figures as evidence that AI features are additive, not cannibalistic, to search usage. \"When people use our AI-powered features in search, they use search more,\" he said. He added that he loves \"how search has become less about individual queries and feels more like an ongoing conversation, giving users deeper insights and connecting you with the vastness of the web.\" Reid reinforced the point: \"It&#x27;s not just that people are searching more, it&#x27;s that they&#x27;re searching differently. They&#x27;re fully expressing their questions in granular detail, asking those follow-up questions and searching across modalities.\" Gemini 3.5 Flash gives Google&#x27;s AI search the speed it needs to work at scale Under the hood, the new search experience runs on Gemini 3.5 Flash , Google&#x27;s newest AI model, which the company also introduced at I/O. Google upgraded AI Mode&#x27;s underlying model to 3.5 Flash to deliver what Reid described as \"an even more powerful AI search experience.\" Gemini 3.5 Flash is the workhorse of this year&#x27;s announcements. Google claims it outperforms its previous frontier model, Gemini 3.1 Pro , on nearly all benchmarks while running four times faster in output tokens per second than comparable frontier models. Pichai described it as being \"in a league of its own in the top right quadrant\" of the Artificial Analysis index , which plots intelligence against speed — meaning it delivers near-frontier quality at dramatically lower latency. That speed matters enormously for search. A conversational AI search experience that feels sluggish would be dead on arrival for a product that serves billions of queries daily. By coupling the redesigned interface with a model optimized for both quality and throughput, Google is attempting to make AI-powered search feel as instantaneous as the old keyword experience — while being dramatically more capable. Search can now build interactive visuals and custom mini apps on the fly The redesigned search box is also the gateway to a set of new capabilities that push search far beyond text-based answers. Google announced what it calls \" generative UI \" — the ability for search to dynamically build custom widgets, interactive visualizations, and even mini applications in real time, tailored to a user&#x27;s specific question. Reid offered a concrete example during the briefing: a user could ask \"How do black holes affect space time?\" and receive an interactive visual in an AI Overview that brings the concept to life. Follow-up questions would trigger the system to dynamically generate entirely new visuals in real time. This is possible, she explained, because of \"a novel real-time code generation system we built in partnership with the Google DeepMind team\" that runs on Gemini 3.5 Flash. Generative UI capabilities will roll out to everyone this summer, free of charge. But Google is going further still. For ongoing tasks — planning a wedding, organizing a move, tracking a fitness routine — users will be able to build what the company describes as customizable, stateful experiences within search, powered by its Antigravity development platform . These require no coding expertise. Users simply describe what they want in natural language, and search builds it. Those experiences will be available in coming months, starting with Google AI Pro and Ultra subscribers in the United States. AI agents that monitor the web around the clock are coming to search results The redesign also opens the door to what Google calls \" information agents \" — AI agents that users can configure directly within search to monitor the web 24/7 for specific conditions and deliver synthesized updates when those conditions are met. A user could, for example, set up an agent to track market movements in a particular sector with specific parameters. The agent would create a monitoring plan, tap into real-time finance data, and proactively notify the user when conditions are met — complete with links and context for further research. Other use cases include apartment hunting, tracking sneaker drops, or monitoring any topic a user cares about. Information agents will launch first for Google AI Pro and Ultra subscribers this summer. These agents sit within a much larger strategic pivot that Google articulated throughout the briefing: the company is going all-in on AI systems that don&#x27;t just answer questions but proactively take actions on users&#x27; behalf. Beyond search, Google introduced Gemini Spark , a 24/7 personal AI agent that runs on dedicated virtual machines in Google Cloud. It unveiled the Universal Cart , an intelligent cross-merchant shopping cart. It announced the Agent Payments Protocol for agents to make secure purchases. And it expanded its Antigravity developer platform into a full ecosystem for building autonomous AI agents. Publishers, advertisers, and SEO professionals face a new reality The redesign raises profound questions for the sprawling ecosystem — publishers, advertisers, SEO professionals — that has been built around the old model of keyword search and blue links. If users increasingly express their needs as full, conversational sentences rather than fragmented keywords, the entire discipline of search engine optimization will need to evolve. Keyword-density strategies become less relevant when the AI is parsing natural language intent rather than matching strings. Content that answers deep, nuanced questions in authoritative ways becomes more valuable; content engineered to rank for two-word keyword fragments becomes less so. For publishers, the stakes are existential . AI Overviews already synthesize information from across the web and present it directly in search results, reducing the need for users to click through to source material. The new seamless AI Mode integration deepens that dynamic: users can now get an AI-generated answer and ask multiple follow-up questions without ever leaving the search page. Google has consistently maintained that its AI features drive more traffic to publishers, but the redesign puts that claim under renewed scrutiny as the search results page becomes more self-contained. For advertisers — who fund the vast majority of Google&#x27;s revenue — the shift from keywords to conversations changes the calculus of ad targeting. Conversational queries contain richer intent signals, which could make ad targeting more precise and valuable. But they also create new ambiguities: when a user is in the middle of a multi-turn conversation with AI Mode, where does an ad naturally fit? Google did not detail changes to its advertising model during the briefing, but the structural shift in the interface will inevitably reshape how ads are surfaced and measured. The search box was always more than a product — it was a habit for billions of people There is a reason Google chose to redesign the search box rather than simply adding new features behind it. The search box is not just a product element at this point; it is a cultural artifact — one of the few pieces of digital infrastructure used by essentially the entire internet-connected world. Changing it sends an unmistakable message about where the company believes computing is headed. For 25 years, the search box trained billions of people to think in keywords — to compress their curiosity into the shortest possible string of words. The new box invites them to do the opposite: to think out loud, to upload what they&#x27;re looking at, to ask follow-up questions, to let an AI system handle the compression. Pichai tied the company&#x27;s broader ambitions to a striking statistic: Google&#x27;s surfaces now process over 3.2 quadrillion tokens per month, up seven-fold from a year ago. The company expects capital expenditures of approximately $180 to $190 billion in 2026 — roughly six times the $31 billion it spent four years ago — largely to support the infrastructure required for this AI transformation. When asked about the future of traditional search, he was direct. \"Search is the most used AI product in the world,\" he said. The blinking cursor in Google&#x27;s search box still invites you to type. But after 25 years of teaching the world to speak in keywords, Google is now asking it to speak in sentences — and betting roughly $190 billion that it will.",
         "url": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
         "published_at": "2026-05-19T17:45:00.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": [
+          "https://images.ctfassets.net/jdtwqhzvc2n1/1TD0Sl7Zq6nnBSZMK9FXpl/41ce2cc6da055da7647670c71ba8aa6b/Nuneybits_Vector_art_of_an_oversized_white_search_bar_rimmed_in_695cac3f-1536-4438-acc1-51c16e2ff51f.webp?w=300&amp;q=30"
+        ]
       },
       "story_fact": {
         "concrete_object": "search box",
@@ -1156,10 +1526,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0045"
+        "evidence-0023"
       ],
       "editorial_score": 140,
       "editorial_signals": [
@@ -1216,7 +1586,25 @@
       ],
       "lead_eligible": false,
       "core_eligible": true,
-      "primary_section": "creator_opportunity"
+      "primary_section": "creator_opportunity",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
+        "alt": "新闻视觉：search box出现合作新进展",
+        "caption": "开放授权图片，用来辅助呈现「search box」相关对象。",
+        "credit": "Hans Holbein the Younger",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Hans_Holbein_der_J%C3%BCngere_-_Der_Kaufmann_Georg_Gisze_-_Google_Art_Project.jpg",
+        "matched_terms": [
+          "search box",
+          "Google"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "aws-machine-learning-d11174ce5c3d",
@@ -1227,7 +1615,8 @@
         "original_summary": "In this post, we show three ways to implement Programmatic tool calling (PTC) on Amazon Bedrock: a self-hosted Docker sandbox on ECS for maximum control, a managed solution using Amazon Bedrock AgentCore Code Interpreter, and an Anthropic SDK-compatible path through a proxy for teams that prefer that developer experience.",
         "url": "https://aws.amazon.com/blogs/machine-learning/implementing-programmatic-tool-calling-on-amazon-bedrock/",
         "published_at": "2026-05-19T15:17:00.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "Amazon Bedrock AgentCore",
@@ -1311,10 +1700,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0037"
+        "evidence-0044"
       ],
       "editorial_score": 130,
       "editorial_signals": [
@@ -1339,7 +1728,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-d11174ce5c3d.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/aws-machine-learning-d11174ce5c3d.png",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore补上程序化工具调用",
+        "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的工具调用。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/19/ml-20707.png",
+        "matched_terms": [
+          "Amazon Bedrock AgentCore"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "techcrunch-ai-36eaeeab6825",
@@ -1350,7 +1756,8 @@
         "original_summary": "Google is launching AI-powered “information agents” that can monitor topics in the background and proactively alert users to updates and changes.",
         "url": "https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/",
         "published_at": "2026-05-19T21:16:25.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "AI agents",
@@ -1424,7 +1831,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0004"
@@ -1449,7 +1856,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-36eaeeab6825.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-36eaeeab6825.png",
+        "alt": "新闻视觉：AI agents正在改写搜索入口",
+        "caption": "TechCrunch原文分享图，用来对应「AI agents」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/G-information-agents.png?resize=1200,750",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "techcrunch-ai-c9204413ad6d",
@@ -1460,7 +1884,8 @@
         "original_summary": "Ocean, an agentic email security platform, claims its AI can thoroughly analyze the context of every incoming email to detect fraud and impersonation attempts.",
         "url": "https://techcrunch.com/2026/05/19/from-teen-hacker-to-iron-dome-researcher-this-founder-raised-28m-to-fight-ai-phishing/",
         "published_at": "2026-05-19T21:08:51.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "AI phishing",
@@ -1534,7 +1959,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
         "evidence-0005"
@@ -1559,7 +1984,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-c9204413ad6d.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-c9204413ad6d.jpg",
+        "alt": "新闻视觉：AI phishing拿到融资，押注AI 安全",
+        "caption": "TechCrunch原文分享图，用来对应「AI phishing」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/Copy-of-IMG_8655.jpg?resize=1200,800",
+        "matched_terms": [
+          "AI phishing"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "techcrunch-ai-5e0d08ff693d",
@@ -1570,7 +2012,8 @@
         "original_summary": "Google is debuting a new AI Ultra plan priced at $100, which will give users 5x more usage limit than the AI Pro plan alongside the Antigravity 2.0 launch.",
         "url": "https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/",
         "published_at": "2026-05-19T17:45:00.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
       },
       "story_fact": {
         "concrete_object": "Antigravity 2.0",
@@ -1664,10 +2107,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0016"
+        "evidence-0017"
       ],
       "editorial_score": 120,
       "editorial_signals": [
@@ -1689,7 +2132,26 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "business"
+      "primary_section": "business",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
+        "alt": "新闻视觉：Antigravity 2.0出现开发工具升级新进展",
+        "caption": "TechCrunch原文分享图，用来对应「Antigravity 2.0」这条新闻。",
+        "credit": "TechCrunch AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/google-developer-antigravity.jpg?resize=1200,900",
+        "matched_terms": [
+          "Google",
+          "Antigravity",
+          "CLI"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "google-ai-blog-a9d4fac24d10",
@@ -1700,7 +2162,10 @@
         "original_summary": "Announcing new voice capabilities in Gmail, Docs and Keep, a new design tool called Google Pics and updates to AI Inbox.",
         "url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
         "published_at": "2026-05-19T17:45:00.000Z",
-        "category": "models"
+        "category": "models",
+        "image_candidates": [
+          "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GoogleWorkspace-IO.max-600x600.format-webp.webp"
+        ]
       },
       "story_fact": {
         "concrete_object": "Google Workspace",
@@ -1774,10 +2239,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-20T07:15:53.770Z",
+      "verified_at": "2026-05-20T08:11:25.157Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0040"
+        "evidence-0036"
       ],
       "editorial_score": 115,
       "editorial_signals": [
@@ -1792,7 +2257,24 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "models"
+      "primary_section": "models",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-a9d4fac24d10.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-a9d4fac24d10.png",
+        "alt": "新闻视觉：Google Workspace开始生成内容",
+        "caption": "Google AI源站图片，对应「Google Workspace」的生成。",
+        "credit": "Google AI",
+        "license": "source article image / editorial reference",
+        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/GoogleWorkspace-IO.width-1300.png",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ]
 }

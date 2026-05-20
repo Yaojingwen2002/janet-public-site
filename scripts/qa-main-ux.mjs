@@ -60,6 +60,7 @@ function main() {
   const content = readJson(`data/${edition}/content.json`, {});
   const summary = readJson(`data/${edition}/news-summary.json`, {});
   const surfaceCheck = readJson('data/homepage-surface-copy-check.json', null);
+  const visualCheck = readJson('data/news-visuals-check.json', null);
   const indexHtml = read('index.html');
   const newsJs = read('scripts/news.js');
   const siteNav = read('scripts/site-nav.js');
@@ -72,6 +73,12 @@ function main() {
 
   if (!surfaceCheck) issues.push('homepage surface copy check missing');
   else if (surfaceCheck.qa_passed !== true) issues.push('homepage surface copy check failed');
+  if (!visualCheck) issues.push('news visuals check missing');
+  else {
+    if (visualCheck.qa_passed !== true) issues.push('news visuals check failed');
+    if (Number(visualCheck.legacy_green_visual_count || 0) > 0) issues.push('legacy green visuals still appear on frontend');
+    if (Number(visualCheck.placeholder_visual_count || 0) > 0) issues.push('placeholder visuals still appear on frontend');
+  }
 
   if ((indexHtml.match(/浏览晨报归档/g) || []).length > 0) issues.push('homepage still has static duplicate archive button');
   if (/查看运行状态|news-status\.html/.test(indexHtml)) issues.push('homepage main html still links automation status');

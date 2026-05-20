@@ -63,6 +63,23 @@
     return '#';
   }
 
+  function visualSrc(visual) {
+    if (!visual) return '';
+    if (typeof visual === 'string') return visual;
+    return visual.src || visual.local_path || '';
+  }
+
+  function visualAlt(visual, fallback) {
+    if (!visual || typeof visual === 'string') return fallback || 'Janet 快车箱新闻视觉';
+    return visual.alt || fallback || 'Janet 快车箱新闻视觉';
+  }
+
+  function visualCaption(visual) {
+    if (!visual || typeof visual === 'string') return '';
+    const bits = [visual.caption, visual.credit].filter(Boolean);
+    return bits.join(' · ');
+  }
+
   function getItemText(item) {
     return item.content || item.summary || item.critique || '';
   }
@@ -207,9 +224,10 @@
     }, 0);
 
     const signalCards = signalMap.map(function(signal, index) {
-      const visual = safeLocalPath(signal.visual || '');
+      const visual = safeLocalPath(visualSrc(signal.visual));
+      const caption = visualCaption(signal.visual);
       return '<article class="news-signal-card janet-card">' +
-        (visual !== '#' ? '<img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(signal.label || signal.signal || '今日信号') + '" loading="lazy" decoding="async">' : '<div class="news-signal-visual-fallback"></div>') +
+        (visual !== '#' ? '<figure class="news-visual-frame"><img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(visualAlt(signal.visual, signal.label || signal.signal || '今日信号')) + '" loading="lazy" decoding="async">' + (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') + '</figure>' : '') +
         '<div class="news-signal-card__copy">' +
           '<span>0' + (index + 1) + ' · ' + escapeHtml(signal.source || 'Janet') + '</span>' +
           '<strong>' + escapeHtml(signal.label || signal.signal || '今日信号') + '</strong>' +
@@ -220,8 +238,10 @@
     }).join('');
 
     const compactCards = compactNews.map(function(item) {
+      const visual = safeLocalPath(visualSrc(item.visual));
+      const caption = visualCaption(item.visual);
       return '<article class="news-compact-card janet-card">' +
-        '<div class="news-compact-card__icon">' + escapeHtml((item.category || 'AI').slice(0, 2).toUpperCase()) + '</div>' +
+        (visual !== '#' ? '<figure class="news-compact-visual"><img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(visualAlt(item.visual, item.title || '今日新闻')) + '" loading="lazy" decoding="async">' + (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') + '</figure>' : '<div class="news-compact-card__icon">' + escapeHtml((item.category || 'AI').slice(0, 2).toUpperCase()) + '</div>') +
         '<div>' +
           '<span>' + escapeHtml(item.source || 'Janet') + '</span>' +
           '<strong>' + escapeHtml(item.title || '今日新闻') + '</strong>' +
@@ -257,7 +277,7 @@
             '</div>' +
           '</div>' +
           '<div class="news-v4-panel news-v4-visual-panel">' +
-            (lead.visual ? '<img class="news-v4-lead-visual" src="' + escapeHtml(safeLocalPath(lead.visual)) + '" alt="' + escapeHtml(lead.title || '今日封面新闻') + '" loading="lazy" decoding="async">' : '<div class="news-signal-visual-fallback"></div>') +
+            (visualSrc(lead.visual) ? '<figure class="news-v4-lead-figure"><img class="news-v4-lead-visual" src="' + escapeHtml(safeLocalPath(visualSrc(lead.visual))) + '" alt="' + escapeHtml(visualAlt(lead.visual, lead.title || '今日封面新闻')) + '" loading="lazy" decoding="async">' + (visualCaption(lead.visual) ? '<figcaption>' + escapeHtml(visualCaption(lead.visual)) + '</figcaption>' : '') + '</figure>' : '') +
             '<span class="news-v4-panel-note">今日 ' + escapeHtml(count || 0) + ' 条有效新闻</span>' +
           '</div>' +
         '</div>' +

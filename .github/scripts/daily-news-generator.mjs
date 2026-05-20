@@ -231,6 +231,7 @@ function parseFeed(text, source) {
     const published = publishedFromRss(block);
     const summary = tag(block, 'description') || tag(block, 'summary') || tag(block, 'content') || tag(block, 'content:encoded');
     const normalizedUrl = normalizeUrl(url, source.url);
+    const image_candidates = rssImageCandidates(block, source.url);
     items.push({
       id: hashId(source.id, `${normalizedUrl}:${title}`),
       title,
@@ -243,11 +244,33 @@ function parseFeed(text, source) {
       summary,
       collected_at: new Date().toISOString(),
       raw_source_id: source.id,
+      image_candidates,
       evidence_ids: []
     });
   }
 
   return items;
+}
+
+function rssImageCandidates(block, baseUrl) {
+  const candidates = [];
+  const mediaTags = [
+    ...block.matchAll(/<media:content\b[^>]*>/gi),
+    ...block.matchAll(/<media:thumbnail\b[^>]*>/gi),
+    ...block.matchAll(/<enclosure\b[^>]*>/gi),
+    ...block.matchAll(/<image\b[^>]*>/gi)
+  ];
+  for (const match of mediaTags) {
+    const tagText = match[0];
+    const url = tagText.match(/\burl=["']([^"']+)["']/i)?.[1] || '';
+    const type = tagText.match(/\btype=["']([^"']+)["']/i)?.[1] || '';
+    if (!url) continue;
+    if (type && !/^image\//i.test(type)) continue;
+    candidates.push(normalizeUrl(url, baseUrl));
+  }
+  const imageTag = tag(block, 'image');
+  if (imageTag) candidates.push(normalizeUrl(imageTag, baseUrl));
+  return [...new Set(candidates)].filter(Boolean);
 }
 
 function feedLinksFromHtml(html, baseUrl) {
@@ -1522,7 +1545,7 @@ function buildHomepageAssembly(stories, date) {
       story_id: story.id,
       story_title: story.title,
       source: story.source,
-      visual: writeNewsVisual(`${date}-signal-${index + 1}.svg`, signalLabelFor(signal, story), story.source || 'Janet', story.category || 'models')
+      visual: story.visual
     };
   }).filter(Boolean);
 
@@ -1600,7 +1623,8 @@ function buildCover(stories, modules, dailyBrief) {
     cover_title: coverTitle === dailyBrief.daily_title ? `${primaryFact}成为封面线索` : coverTitle,
     cover_summary: coverSummary,
     daily_judgment: dailyBrief.daily_judgment,
-    lead_story_id: lead.id
+    lead_story_id: lead.id,
+    visual: lead.visual || null
   };
 }
 
@@ -1727,6 +1751,320 @@ function writeNewsVisual(fileName, title, subtitle, category) {
   return rel;
 }
 
+function visualTerms(story) {
+  const fact = story?.story_fact || {};
+  return [
+    fact.concrete_object,
+    ...(fact.entities || []),
+    ...(fact.products || []),
+    fact.action,
+    fact.domain,
+    story?.source
+  ].filter(Boolean).map((term) => String(term).trim()).filter(Boolean);
+}
+
+function visualObject(story) {
+  return visualTerms(story).find((term) => term.length >= 2 && !isGenericObject(term)) || story?.source || 'Janet';
+}
+
+function chineseVisualAlt(story) {
+  return `新闻视觉：${story?.title || visualObject(story)}`;
+}
+
+function chineseVisualCaption(story, mode) {
+  const object = visualObject(story);
+  const action = story?.story_fact?.action || '变化';
+  const source = chineseSourceName(story?.source || '');
+  if (mode === 'official_image') return `${source}原文分享图，用来对应「${object}」这条新闻。`;
+  if (mode === 'source_image') return `${source}源站图片，对应「${object}」的${action}。`;
+  if (mode === 'open_license_image') return `开放授权图片，用来辅助呈现「${object}」相关对象。`;
+  return `Janet 根据「${object}」和「${action}」生成的新闻视觉。`;
+}
+
+function isHttpsImageUrl(url) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== 'https:') return false;
+    if (/data:|tracking|pixel|favicon|logo/i.test(url)) return false;
+    return /\.(jpe?g|png|webp|svg)(?:$|[?#])/i.test(parsed.pathname + parsed.search);
+  } catch {
+    return false;
+  }
+}
+
+function imageExt(url, contentType = '') {
+  const path = (() => {
+    try { return new URL(url).pathname; } catch { return url; }
+  })();
+  const ext = path.match(/\.(jpe?g|png|webp|svg)$/i)?.[1]?.toLowerCase();
+  if (ext) return ext === 'jpeg' ? 'jpg' : ext;
+  if (/png/i.test(contentType)) return 'png';
+  if (/webp/i.test(contentType)) return 'webp';
+  if (/svg/i.test(contentType)) return 'svg';
+  return 'jpg';
+}
+
+function officialSourceDomains(source) {
+  const lower = String(source || '').toLowerCase();
+  if (lower.includes('openai')) return ['openai.com'];
+  if (lower.includes('anthropic')) return ['anthropic.com'];
+  if (lower.includes('google')) return ['google.com', 'blog.google', 'deepmind.google'];
+  if (lower.includes('github')) return ['github.blog', 'github.com'];
+  if (lower.includes('hugging face')) return ['huggingface.co'];
+  if (lower.includes('aws') || lower.includes('amazon')) return ['aws.amazon.com', 'amazon.com'];
+  if (lower.includes('microsoft')) return ['microsoft.com'];
+  if (lower.includes('nvidia')) return ['nvidia.com'];
+  return [];
+}
+
+function sameTrustedDomain(imageUrl, sourceUrl, source) {
+  try {
+    const imageHost = new URL(imageUrl).hostname.replace(/^www\./, '');
+    const sourceHost = new URL(sourceUrl).hostname.replace(/^www\./, '');
+    if (imageHost === sourceHost || imageHost.endsWith(`.${sourceHost}`)) return true;
+    return officialSourceDomains(source).some((domain) => imageHost === domain || imageHost.endsWith(`.${domain}`));
+  } catch {
+    return false;
+  }
+}
+
+async function fetchWithTimeout(url, options = {}, timeoutMs = 7000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function htmlImageCandidates(html, baseUrl) {
+  const candidates = [];
+  const metaPatterns = [
+    /<meta\b[^>]*property=["']og:image(?::secure_url)?["'][^>]*content=["']([^"']+)["'][^>]*>/gi,
+    /<meta\b[^>]*content=["']([^"']+)["'][^>]*property=["']og:image(?::secure_url)?["'][^>]*>/gi,
+    /<meta\b[^>]*name=["']twitter:image["'][^>]*content=["']([^"']+)["'][^>]*>/gi,
+    /<meta\b[^>]*content=["']([^"']+)["'][^>]*name=["']twitter:image["'][^>]*>/gi
+  ];
+  for (const re of metaPatterns) {
+    for (const match of html.matchAll(re)) candidates.push(normalizeUrl(match[1], baseUrl));
+  }
+  for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const parsed = JSON.parse(decodeText(match[1]));
+      const nodes = Array.isArray(parsed) ? parsed : [parsed, ...(parsed['@graph'] || [])];
+      for (const node of nodes.filter(Boolean)) {
+        const image = node.image;
+        if (typeof image === 'string') candidates.push(normalizeUrl(image, baseUrl));
+        if (Array.isArray(image)) image.filter((item) => typeof item === 'string').forEach((item) => candidates.push(normalizeUrl(item, baseUrl)));
+        if (image?.url) candidates.push(normalizeUrl(image.url, baseUrl));
+      }
+    } catch {
+      // Ignore malformed schema blocks.
+    }
+  }
+  return [...new Set(candidates)].filter(isHttpsImageUrl);
+}
+
+async function downloadImageToLocal(url, editionId, storyId) {
+  try {
+    const response = await fetchWithTimeout(url, {
+      headers: { 'user-agent': 'JanetDailyNewsBot/visual-resolver', accept: 'image/avif,image/webp,image/png,image/jpeg,image/svg+xml;q=0.8,*/*;q=0.2' },
+      redirect: 'follow'
+    }, 8000);
+    if (!response.ok) throw new Error(`http_${response.status}`);
+    const type = response.headers.get('content-type') || '';
+    if (!/^image\//i.test(type)) throw new Error('not_image_response');
+    const buffer = Buffer.from(await response.arrayBuffer());
+    if (buffer.length < 2048) throw new Error('image_too_small');
+    if (buffer.length > 5000000) throw new Error('image_too_large');
+    const ext = imageExt(url, type);
+    const rel = `assets/news-visuals/${editionId}/${storyId}.${ext}`;
+    ensureDir(resolve(ROOT, rel));
+    writeFileSync(resolve(ROOT, rel), buffer);
+    return rel;
+  } catch {
+    return '';
+  }
+}
+
+function visualRecord({ mode, src, localPath = '', story, sourceUrl = '', credit = '', license = '', matchedTerms = [], relevanceScore = 0, fallbackReason = '', template = '' }) {
+  return {
+    status: 'ready',
+    mode,
+    src,
+    local_path: localPath,
+    alt: chineseVisualAlt(story),
+    caption: chineseVisualCaption(story, mode),
+    credit,
+    license,
+    source_url: sourceUrl,
+    matched_terms: [...new Set(matchedTerms.filter(Boolean))],
+    relevance_score: Number(relevanceScore.toFixed(2)),
+    fallback_reason: fallbackReason,
+    template
+  };
+}
+
+async function resolveSourceImage(rawItem, story, editionId) {
+  const candidates = [...(rawItem?.image_candidates || [])].filter(isHttpsImageUrl);
+  if (rawItem?.url) {
+    try {
+      const response = await fetchWithTimeout(rawItem.url, {
+        headers: { 'user-agent': 'JanetDailyNewsBot/visual-resolver', accept: 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.2' },
+        redirect: 'follow'
+      }, 7000);
+      if (response.ok) {
+        const html = await response.text();
+        candidates.push(...htmlImageCandidates(html, rawItem.url));
+      }
+    } catch {
+      // Source image resolution is best-effort; generated story SVG is the hard fallback.
+    }
+  }
+  const unique = [...new Set(candidates)].filter((url) => isHttpsImageUrl(url) && !/favicon|logo|sprite|pixel/i.test(url));
+  for (const candidate of unique.slice(0, 4)) {
+    const matchedTerms = visualTerms(story).filter((term) => candidate.toLowerCase().includes(String(term).toLowerCase()) || String(rawItem?.url || '').toLowerCase().includes(String(term).toLowerCase()));
+    const official = sameTrustedDomain(candidate, rawItem?.url || '', story?.source || '');
+    const score = official ? 0.82 : Math.max(0.75, matchedTerms.length ? 0.78 : 0.75);
+    const localPath = await downloadImageToLocal(candidate, editionId, story.id);
+    if (!localPath) continue;
+    return visualRecord({
+      mode: official ? 'official_image' : 'source_image',
+      src: localPath,
+      localPath,
+      story,
+      sourceUrl: candidate,
+      credit: story.source || 'Source article',
+      license: official ? 'source-provided / editorial use reference' : 'source article image / editorial reference',
+      matchedTerms: matchedTerms.length ? matchedTerms : visualTerms(story).slice(0, 2),
+      relevanceScore: score,
+      fallbackReason: ''
+    });
+  }
+  return null;
+}
+
+async function resolveOpenLicenseImage(story, editionId) {
+  const terms = visualTerms(story).filter((term) => term.length >= 3 && !isGenericObject(term)).slice(0, 3);
+  if (!terms.length) return null;
+  const query = encodeURIComponent(terms.slice(0, 2).join(' '));
+  const api = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${query}&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=1200&format=json&origin=*`;
+  try {
+    const response = await fetchWithTimeout(api, { headers: { 'user-agent': 'JanetDailyNewsBot/visual-resolver' } }, 7000);
+    if (!response.ok) return null;
+    const json = await response.json();
+    const pages = Object.values(json?.query?.pages || {});
+    for (const page of pages) {
+      const info = page?.imageinfo?.[0];
+      const meta = info?.extmetadata || {};
+      const imageUrl = info?.thumburl || info?.url || '';
+      const license = meta.LicenseShortName?.value || meta.License?.value || '';
+      const credit = meta.Artist?.value || meta.Credit?.value || meta.ObjectName?.value || 'Wikimedia Commons';
+      const sourceUrl = info?.descriptionurl || '';
+      if (!isHttpsImageUrl(imageUrl) || !license || !credit || !sourceUrl) continue;
+      const localPath = await downloadImageToLocal(imageUrl, editionId, story.id);
+      if (!localPath) continue;
+      return visualRecord({
+        mode: 'open_license_image',
+        src: localPath,
+        localPath,
+        story,
+        sourceUrl,
+        credit: decodeText(credit),
+        license: decodeText(license),
+        matchedTerms: terms,
+        relevanceScore: 0.66
+      });
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+function eventTypeForStory(story) {
+  const text = `${story.original_title || ''} ${story.title || ''} ${story.summary || ''} ${story.category || ''} ${story.story_fact?.action || ''}`.toLowerCase();
+  if (/leaderboard|benchmark|评测|榜单|evaluation|score/.test(text)) return 'agent_benchmark';
+  if (/codex|copilot|github|developer|sdk|api|cli|workflow|agentcore|开发|工具调用/.test(text)) return 'developer_tooling';
+  if (/enterprise|business|customer|workspace|confluence|bedrock|企业|客户|知识库/.test(text)) return 'enterprise_integration';
+  if (/chip|gpu|cpu|nvidia|vera|rack|compute|芯片|算力/.test(text)) return 'hardware_infrastructure';
+  if (/safety|moderation|policy|governance|审核|安全|治理/.test(text)) return 'safety_moderation';
+  if (/creator|video|audio|image|design|podcast|media|创作|视频|图像|播客/.test(text)) return 'creator_tool';
+  if (/lawsuit|trial|court|legal|诉讼|法庭/.test(text)) return 'legal_or_governance';
+  if (/funding|market|pricing|finance|融资|定价|商业/.test(text)) return 'market_signal';
+  if (/model|gemini|openai|siri|assistant|multimodal|模型/.test(text)) return 'model_release';
+  return 'other';
+}
+
+function storySvgTemplate(eventType, accent, objectLabel, sourceLabel, actionLabel) {
+  const commonText = `<text x="70" y="74" fill="${accent}" font-family="Arial, sans-serif" font-size="20" font-weight="700">${escapeHtml(sourceLabel)}</text><text x="70" y="398" fill="#f3fff8" font-family="Arial, sans-serif" font-size="42" font-weight="800">${escapeHtml(visualTitle(objectLabel))}</text><text x="74" y="438" fill="rgba(243,255,248,.68)" font-family="Arial, sans-serif" font-size="22">${escapeHtml(visualTitle(actionLabel))}</text>`;
+  if (eventType === 'agent_benchmark') return `<g>${[0, 1, 2, 3].map((i) => `<rect x="${120 + i * 120}" y="${250 - i * 34}" width="82" height="${150 + i * 34}" rx="16" fill="${accent}" opacity="${0.28 + i * 0.12}"/>`).join('')}<path d="M640 170h310M640 245h230M640 320h270" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity=".18"/></g>${commonText}`;
+  if (eventType === 'developer_tooling') return `<g><rect x="105" y="125" width="520" height="250" rx="22" fill="rgba(255,255,255,.07)" stroke="${accent}" opacity=".9"/><path d="M150 190h210M150 245h330M150 300h260" stroke="${accent}" stroke-width="12" stroke-linecap="round" opacity=".55"/><path d="M705 150c115 40 160 120 120 240" fill="none" stroke="#fff" stroke-width="7" opacity=".22"/></g>${commonText}`;
+  if (eventType === 'enterprise_integration') return `<g><rect x="120" y="145" width="210" height="120" rx="20" fill="${accent}" opacity=".22"/><rect x="430" y="92" width="260" height="172" rx="26" fill="rgba(255,255,255,.08)" stroke="${accent}"/><rect x="790" y="170" width="230" height="130" rx="20" fill="${accent}" opacity=".18"/><path d="M330 205h100M690 184l100 45" stroke="#fff" stroke-width="5" opacity=".3"/></g>${commonText}`;
+  if (eventType === 'hardware_infrastructure') return `<g><rect x="165" y="110" width="310" height="250" rx="28" fill="none" stroke="${accent}" stroke-width="6"/><path d="M220 170h200M220 220h200M220 270h200" stroke="${accent}" stroke-width="9" opacity=".55"/><path d="M610 120h300v240H610zM650 170h220M650 230h220M650 290h220" stroke="#fff" stroke-width="5" opacity=".2" fill="none"/></g>${commonText}`;
+  if (eventType === 'safety_moderation') return `<g><path d="M300 95l170 70v130c0 90-65 150-170 190-105-40-170-100-170-190V165z" fill="${accent}" opacity=".2" stroke="${accent}" stroke-width="6"/><path d="M650 155h280M650 225h220M650 295h260" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity=".18"/></g>${commonText}`;
+  if (eventType === 'creator_tool') return `<g><rect x="120" y="120" width="400" height="250" rx="28" fill="rgba(255,255,255,.07)" stroke="${accent}"/><circle cx="210" cy="210" r="45" fill="${accent}" opacity=".42"/><path d="M150 325h330M650 150h90v190h-90zM780 120h140v250H780z" fill="${accent}" opacity=".2"/></g>${commonText}`;
+  if (eventType === 'legal_or_governance') return `<g><path d="M160 105h300l95 95v260H160z" fill="rgba(255,255,255,.06)" stroke="${accent}" stroke-width="5"/><path d="M235 245h240M235 310h190M720 120v260M640 185h160M600 380h240" stroke="#fff" stroke-width="10" opacity=".2"/></g>${commonText}`;
+  if (eventType === 'market_signal') return `<g><path d="M130 360l160-120 135 70 160-180 180 88 180-130" fill="none" stroke="${accent}" stroke-width="8"/><rect x="685" y="255" width="230" height="110" rx="20" fill="${accent}" opacity=".18"/><path d="M725 305h145" stroke="#fff" stroke-width="12" opacity=".22"/></g>${commonText}`;
+  if (eventType === 'model_release') return `<g><circle cx="340" cy="225" r="90" fill="${accent}" opacity=".20" stroke="${accent}" stroke-width="5"/><circle cx="340" cy="225" r="34" fill="${accent}" opacity=".55"/><path d="M340 95v260M210 225h260M610 150h280M610 225h220M610 300h260" stroke="#fff" stroke-width="8" opacity=".2"/></g>${commonText}`;
+  return `<g><path d="M155 300c125-145 280-170 430-75s260 70 405-45" fill="none" stroke="${accent}" stroke-width="8" opacity=".72"/><circle cx="220" cy="300" r="32" fill="${accent}" opacity=".55"/><circle cx="560" cy="215" r="42" fill="${accent}" opacity=".28"/><circle cx="920" cy="180" r="32" fill="${accent}" opacity=".42"/></g>${commonText}`;
+}
+
+function generateStorySpecificSvg(story, editionId) {
+  const eventType = eventTypeForStory(story);
+  const palette = {
+    model_release: '#66e6ff',
+    developer_tooling: '#ffd166',
+    enterprise_integration: '#9cffb8',
+    hardware_infrastructure: '#ff9f7a',
+    safety_moderation: '#ff6b8a',
+    agent_benchmark: '#b69cff',
+    creator_tool: '#7dd3fc',
+    legal_or_governance: '#f4d35e',
+    market_signal: '#f78c6b',
+    other: '#8be9d6'
+  };
+  const accent = palette[eventType] || palette.other;
+  const objectLabel = visualObject(story);
+  const sourceLabel = chineseSourceName(story.source || 'Janet');
+  const actionLabel = story.story_fact?.action || eventType;
+  const rel = `assets/news-visuals/${editionId}/${story.id}.svg`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="${escapeHtml(chineseVisualAlt(story))}">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#060807"/><stop offset=".55" stop-color="#101414"/><stop offset="1" stop-color="#17120e"/></linearGradient>
+    <radialGradient id="wash" cx="18%" cy="18%" r="82%"><stop offset="0" stop-color="${accent}" stop-opacity=".22"/><stop offset=".55" stop-color="${accent}" stop-opacity=".05"/><stop offset="1" stop-color="${accent}" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <rect width="960" height="540" fill="url(#wash)"/>
+  <rect x="38" y="38" width="884" height="464" rx="32" fill="rgba(255,255,255,.035)" stroke="rgba(255,255,255,.12)"/>
+  ${storySvgTemplate(eventType, accent, objectLabel, sourceLabel, actionLabel)}
+</svg>`;
+  writeText(resolve(ROOT, rel), svg);
+  return { rel, eventType };
+}
+
+async function resolveStoryVisual(story, rawItem, options = {}) {
+  const editionId = options.editionId || `${options.date || defaultDateShanghai()}-v4`;
+  const sourceVisual = await resolveSourceImage(rawItem, story, editionId);
+  if (sourceVisual) return sourceVisual;
+  const openLicenseVisual = await resolveOpenLicenseImage(story, editionId);
+  if (openLicenseVisual) return openLicenseVisual;
+  const generated = generateStorySpecificSvg(story, editionId);
+  return visualRecord({
+    mode: 'generated_story_svg',
+    src: generated.rel,
+    localPath: generated.rel,
+    story,
+    credit: 'Generated by Janet visual resolver',
+    license: 'generated',
+    matchedTerms: visualTerms(story).slice(0, 4),
+    relevanceScore: 0.62,
+    fallbackReason: 'no_qualified_external_image',
+    template: generated.eventType
+  });
+}
+
 function publicIntroForEdition(stories) {
   const lead = stories[0] || {};
   const sources = sourceNames(stories.slice(0, 6), 4).join('、');
@@ -1741,7 +2079,8 @@ function storyToPublicItem(item) {
     original_summary: item.summary || '',
     url: item.url,
     published_at: item.published_at,
-    category: schemaCategory(item.category)
+    category: schemaCategory(item.category),
+    image_candidates: item.image_candidates || []
   };
   const storyFact = buildStoryFact({ ...item, original_title: item.title, original_summary: item.summary || '' });
   const gate = isSpecificStory(storyFact, item);
@@ -1805,7 +2144,7 @@ function storyToPublicItem(item) {
   };
 }
 
-function buildContent(template, included, date, editionType, rules) {
+async function buildContent(template, included, date, editionType, rules) {
   const now = new Date().toISOString();
   const ordered = orderStoriesForEdition(included, rules);
   const excludedItems = [];
@@ -1855,6 +2194,10 @@ function buildContent(template, included, date, editionType, rules) {
     story.watch_next = uniqueWatchNext(story, usedWatchNext);
   });
   ensureUniqueStoryCopy(stories);
+  const editionId = `${date}-v4`;
+  for (const story of stories) {
+    story.visual = await resolveStoryVisual(story, story.raw_item, { date, editionId });
+  }
   const serializedStories = JSON.stringify(stories);
   for (const phrase of FORBIDDEN_GENERIC_COPY) {
     if (serializedStories.includes(phrase)) throw new Error(`forbidden_generic_copy:${phrase}`);
@@ -1868,11 +2211,6 @@ function buildContent(template, included, date, editionType, rules) {
   };
   const homepageItems = [];
   const hiddenItems = [];
-  stories.forEach((story, index) => {
-    if (index === 0) {
-      story.visual = writeNewsVisual(`${date}-lead.svg`, story.title, story.source, story.category);
-    }
-  });
   sections.lead_story.items.push(stories[0]);
   for (const story of stories.slice(1)) {
     const section = story.primary_section || sectionFor(story.category);
@@ -1939,7 +2277,8 @@ function buildContent(template, included, date, editionType, rules) {
         title: story.zh_title,
         summary: story.zh_summary,
         source: story.source,
-        category: story.category
+        category: story.category,
+        visual: story.visual
       }))
     },
     detail: {
@@ -1951,6 +2290,7 @@ function buildContent(template, included, date, editionType, rules) {
         janet_take: story.janet_take,
         watch_next: story.watch_next,
         story_facts: story.story_facts,
+        visual: story.visual,
         raw_item: story.raw_item
       }))
     },
@@ -1992,6 +2332,18 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
+function visualSrc(value) {
+  if (!value) return '';
+  if (typeof value === 'string') return value;
+  return value.src || value.local_path || '';
+}
+
+function visualAlt(value, fallback = '新闻视觉') {
+  if (!value) return fallback;
+  if (typeof value === 'string') return fallback;
+  return value.alt || fallback;
+}
+
 function renderHtml(content) {
   const allItems = Object.values(content.sections).flatMap((section) => section.items || []);
   const lead = content.sections.lead_story.items[0] || {};
@@ -2020,10 +2372,10 @@ function renderHtml(content) {
   <h1>${escapeHtml(content.theme)}</h1>
   <p>${escapeHtml(content.intro_text)}</p>
   <p>${escapeHtml(content.daily_thesis)}</p>
-  ${lead.visual ? `<img class="visual" src="../../${escapeHtml(lead.visual)}" alt="${escapeHtml(lead.title)}">` : ''}
+  ${visualSrc(lead.visual) ? `<img class="visual" src="../../${escapeHtml(visualSrc(lead.visual))}" alt="${escapeHtml(visualAlt(lead.visual, lead.title))}">` : ''}
   <section>
     <div class="k">今日三条主线</div>
-    <div class="signal">${content.signal_map.map((item) => `<div class="card">${item.visual ? `<img src="../../${escapeHtml(item.visual)}" alt="${escapeHtml(item.label || item.signal)}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></div>`).join('')}</div>
+    <div class="signal">${content.signal_map.map((item) => `<div class="card">${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.label || item.signal))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></div>`).join('')}</div>
   </section>
   <section>
     <div class="k">今日封面</div>
@@ -2033,7 +2385,7 @@ function renderHtml(content) {
   </section>
   <section>
     <div class="k">今日更多</div>
-    <div class="signal">${(content.compact_news || []).map((item) => `<div class="card"><small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></div>`).join('')}</div>
+    <div class="signal">${(content.compact_news || []).map((item) => `<div class="card">${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.title))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></div>`).join('')}</div>
   </section>
   ${Object.entries(content.sections).filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0).map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
   <section>
@@ -2116,7 +2468,7 @@ function main() {
   };
 
   const rawItems = [];
-  const processItems = (rawItemList, included, excluded, snapshot = null) => {
+  const processItems = async (rawItemList, included, excluded, snapshot = null) => {
     status.raw_items = Number(snapshot?.raw_item_count || rawItemList.length);
     status.included = included.length;
     status.excluded = excluded.length;
@@ -2152,7 +2504,7 @@ function main() {
     const editionId = `${date}-v4`;
     const outDir = resolve(ROOT, `data/${editionId}`);
     const draftEditionType = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
-    const content = buildContent(templateContent, included, date, draftEditionType, editorialRules);
+    const content = await buildContent(templateContent, included, date, draftEditionType, editorialRules);
     const publishableCount = (content.edition_items || []).length;
     const genericBlocked = (content.excluded_items || []).filter((item) => item.reason === 'generic_fallback_blocked').length;
     status.included = publishableCount;

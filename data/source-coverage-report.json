@@ -1,16 +1,16 @@
 {
   "step": "35-R",
   "source_count": 27,
-  "source_success_count": 18,
-  "source_error_count": 1,
-  "source_empty_count": 8,
-  "raw_items": 3220,
+  "source_success_count": 17,
+  "source_error_count": 5,
+  "source_empty_count": 5,
+  "raw_items": 2437,
   "window_items": 15,
   "included_items": 15,
   "displayed_on_home": 10,
   "displayed_in_archive": 15,
   "not_displayed_reasons": {
-    "outside_time_window": 3175,
+    "outside_time_window": 2393,
     "duplicate": 0,
     "low_editorial_score": 0,
     "missing_published_at": 0,
@@ -66,11 +66,11 @@
       "source": "Hugging Face",
       "category": "open_source",
       "rank": "A",
-      "status": "success",
-      "raw_items": 783,
+      "status": "error",
+      "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": ""
+      "error": "https://huggingface.co/blog/feed.xml:fetch failed; https://huggingface.co/blog:fetch failed"
     },
     {
       "id": "arxiv-cs-ai",
@@ -165,22 +165,22 @@
       "source": "Meta AI",
       "category": "open_source",
       "rank": "A",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://ai.meta.com/blog/:no_feed_items"
+      "error": "https://ai.meta.com/blog/:fetch failed"
     },
     {
       "id": "mistral-news",
       "source": "Mistral AI",
       "category": "models",
       "rank": "A",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://mistral.ai/news/:no_feed_items"
+      "error": "https://mistral.ai/news/:fetch failed"
     },
     {
       "id": "nvidia-ai-blog",
@@ -275,11 +275,11 @@
       "source": "Papers with Code Blog",
       "category": "research",
       "rank": "B",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://paperswithcode.com/latest/rss:no_feed_items; https://paperswithcode.com/:no_feed_items"
+      "error": "https://paperswithcode.com/latest/rss:fetch failed; https://paperswithcode.com/:fetch failed"
     },
     {
       "id": "replicate-blog",

@@ -33,6 +33,22 @@
     return value ? `<span>${escapeHtml(value)}</span>` : '';
   }
 
+  function visualSrc(visual) {
+    if (!visual) return '';
+    if (typeof visual === 'string') return visual;
+    return visual.src || visual.local_path || '';
+  }
+
+  function visualAlt(visual, fallback) {
+    if (!visual || typeof visual === 'string') return fallback || '新闻视觉图';
+    return visual.alt || fallback || '新闻视觉图';
+  }
+
+  function visualCaption(visual) {
+    if (!visual || typeof visual === 'string') return '';
+    return [visual.caption, visual.credit].filter(Boolean).join(' · ');
+  }
+
   function renderStoryList(edition, content, stories) {
     document.getElementById('news-detail-title').textContent = `${content.date || edition} 新闻列表`;
     document.getElementById('news-detail-summary').textContent = content.daily_thesis || content.intro_text || '';
@@ -56,6 +72,8 @@
   }
 
   function renderStory(edition, content, story) {
+    const src = visualSrc(story.visual);
+    const caption = visualCaption(story.visual);
     document.title = `${story.title} · Janet 快车箱`;
     document.getElementById('news-detail-title').textContent = story.title || '新闻详情';
     document.getElementById('news-detail-summary').textContent = story.summary || '';
@@ -67,7 +85,7 @@
     ].join('');
     document.getElementById('news-detail-content').innerHTML = `
       <article class="news-story-detail">
-        ${story.visual ? `<img class="news-detail-visual" src="${escapeHtml(story.visual)}" alt="${escapeHtml(story.title || '新闻视觉图')}" loading="lazy" decoding="async">` : ''}
+        ${src ? `<figure class="news-detail-visual-frame"><img class="news-detail-visual" src="${escapeHtml(src)}" alt="${escapeHtml(visualAlt(story.visual, story.title || '新闻视觉图'))}" loading="lazy" decoding="async">${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ''}</figure>` : ''}
         ${story.janet_take ? `<section><span class="section-kicker">Janet 判断</span><p>${escapeHtml(story.janet_take)}</p></section>` : ''}
         ${story.why_it_matters ? `<section><span class="section-kicker">为什么重要</span><p>${escapeHtml(story.why_it_matters)}</p></section>` : ''}
         ${story.watch_next ? `<section><span class="section-kicker">接下来观察</span><p>${escapeHtml(story.watch_next)}</p></section>` : ''}

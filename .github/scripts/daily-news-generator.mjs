@@ -26,6 +26,49 @@ const FORBIDDEN_TAKES = [
   '值得关注',
   '持续关注'
 ];
+const GENERIC_OBJECTS = new Set([
+  '智能体',
+  'AI 工具',
+  '产品落点',
+  '商业动作',
+  '用户',
+  '团队',
+  '入口',
+  '新动作',
+  '工作流',
+  '平台',
+  '模型能力',
+  '研究信号',
+  '企业落地',
+  '开发入口',
+  '开源模型',
+  'AI'
+]);
+const GENERIC_ACTIONS = new Set(['更新', '追踪', '推向', '发布新动作', '继续', '露出', '发布']);
+const COMPANY_ENTITIES = new Set(['Google', 'OpenAI', 'Anthropic', 'Meta', 'AWS', 'Amazon', 'Microsoft', 'TechCrunch', 'The Verge', 'Hugging Face']);
+const FORBIDDEN_GENERIC_COPY = [
+  '更新智能体',
+  '先看谁能用起来',
+  '追踪AI 工具',
+  '发布新动作',
+  '追踪产品落点',
+  '露出新落点',
+  '继续推向开发者',
+  '押注下一步',
+  '围绕商业动作',
+  '正在把 AI 能力塞进开发者工作流',
+  '影响的是入口、工具选择和团队每天怎么交付',
+  '影响的是它自己的用户、团队和入口选择',
+  '入口、成本或可用工具',
+  '选型、评估或交付方式',
+  '清晰功能、价格或开放边界',
+  'AI 热闹',
+  '不是普通更新',
+  '看谁能用起来',
+  '看是否有清晰边界',
+  '看是否进入默认工作流',
+  '看产品落点是否落成具体产品'
+];
 const SECTION_DEFS = [
   { key: 'models', label: '模型与产品', categories: ['models'], min: 1, max: 4 },
   { key: 'agents', label: 'Agent 与工具', categories: ['agents', 'developer_tooling'], min: 1, max: 4 },
@@ -549,6 +592,294 @@ function extractStoryFacts(item) {
   return facts;
 }
 
+function sourceAliases(source) {
+  const sourceName = chineseSourceName(source);
+  return new Set([
+    String(source || '').toLowerCase(),
+    sourceName.toLowerCase(),
+    sourceName.replace(/\s+/g, '').toLowerCase()
+  ]);
+}
+
+function isGenericObject(value) {
+  const text = String(value || '').trim();
+  if (!text) return true;
+  const compact = text.replace(/\s+/g, '');
+  return GENERIC_OBJECTS.has(text) || GENERIC_OBJECTS.has(compact);
+}
+
+function isGenericAction(value) {
+  return GENERIC_ACTIONS.has(String(value || '').trim());
+}
+
+function titleEntityCandidates(title, source) {
+  const cleaned = decodeText(title).replace(/[’']/g, "'");
+  const sourceSet = sourceAliases(source);
+  const candidates = [];
+  const add = (value) => {
+    const normalized = String(value || '')
+      .replace(/^(The|How|With|Would|Welcome to|Everything new in our|New ways to)\s+/i, '')
+      .replace(/[,:;.!?]+$/g, '')
+      .trim();
+    if (!normalized || normalized.length < 3) return;
+    const lower = normalized.toLowerCase();
+    if (sourceSet.has(lower) || sourceSet.has(lower.replace(/\s+/g, ''))) return;
+    if (/^(from|with|using|this|that|how|why|here|what|when|where|new|the|and|for|at|in|on|to|of|is|are)$/i.test(normalized)) return;
+    if (isGenericObject(normalized)) return;
+    if (!candidates.includes(normalized)) candidates.push(normalized);
+  };
+
+  [
+    /Open Agent Leaderboard/ig,
+    /Amazon Bedrock AgentCore Memory/ig,
+    /Amazon Bedrock AgentCore/ig,
+    /Amazon Nova Sonic/ig,
+    /Amazon Nova 2/ig,
+    /Android CLI/ig,
+    /Antigravity 2\.0/ig,
+    /Google I\/O 2026/ig,
+    /Google Search/ig,
+    /search box/ig,
+    /Google AI Mode/ig,
+    /AI Mode/ig,
+    /AI agents?/ig,
+    /AI Search/ig,
+    /AI design/ig,
+    /Google AI subscriptions?/ig,
+    /Google Workspace/ig,
+    /Universal Cart/ig,
+    /Gemini Spark/ig,
+    /Gemini 3\.5 Flash/ig,
+    /agentic Gemini era/ig,
+    /Gemini app/ig,
+    /Gemini/ig,
+    /smart glasses/ig,
+    /audio-powered smart glasses/ig,
+    /Alexa\+?|Alexa Plus/ig,
+    /AI phishing/ig,
+    /Iron Dome/ig,
+    /robots spend your money/ig,
+    /Kiro CLI/ig,
+    /Siri/ig,
+    /Codex/ig,
+    /Copilot/ig,
+    /Confluence/ig,
+    /PaddleOCR/ig,
+    /Cosmos/ig,
+    /Volvo/ig,
+    /OpenAI/ig,
+    /Anthropic/ig,
+    /ChatGPT/ig,
+    /Claude/ig
+  ].forEach((pattern) => {
+    for (const match of cleaned.matchAll(pattern)) add(match[0]);
+  });
+
+  const phraseMatches = cleaned.match(/\b(?:[A-Z][A-Za-z0-9+.-]*(?:\s+[A-Z][A-Za-z0-9+.-]*){0,4})\b/g) || [];
+  for (const phrase of phraseMatches) add(phrase);
+  return candidates;
+}
+
+function actionFromTitle(title) {
+  const text = decodeText(title).toLowerCase();
+  if (/leaderboard|ranking/.test(text)) return '榜单排名';
+  if (/benchmark|evaluation|evaluators?/.test(text)) return '评测';
+  if (/raised|funding|fund|series [a-z]|\$/.test(text)) return '融资';
+  if (/lawsuit|trial|case|suit|court/.test(text)) return '诉讼';
+  if (/auto-delet|delete/.test(text)) return '自动清除';
+  if (/generate|create|podcast/.test(text)) return '生成';
+  if (/tool calling/.test(text)) return '工具调用';
+  if (/memory/.test(text)) return '记忆扩展';
+  if (/search/.test(text)) return '搜索改版';
+  if (/subscription|pricing|price/.test(text)) return '订阅调整';
+  if (/shopping|cart|spend your money/.test(text)) return '购物代理';
+  if (/assistant|agentic|agent/.test(text)) return '智能体能力';
+  if (/coding|cli/.test(text)) return '开发工具升级';
+  if (/camera|parking|sign/.test(text)) return '视觉识别';
+  if (/design/.test(text)) return '设计工具';
+  if (/join|hire|team/.test(text)) return '团队变动';
+  if (/announce|introduce|launch|release|unveil/.test(text)) return '推出';
+  return '';
+}
+
+function audienceFromItem(item, concreteObject) {
+  const text = rawStoryText(item).toLowerCase();
+  if (/developer|github|codex|copilot|api|sdk|tool calling|bedrock|agentcore|kiro/.test(text)) return '开发者和平台团队';
+  if (/benchmark|evaluation|paper|arxiv|research|leaderboard/.test(text)) return '研究者和评测团队';
+  if (/open source|hugging face|weights|dataset|model/.test(text)) return '开源社区和模型使用者';
+  if (/enterprise|customer|aws|bedrock|subscription|pricing|business|funding|lawsuit|trial/.test(text)) return '企业团队和投资者';
+  if (/creator|podcast|video|image|design|media|content/.test(text)) return '创作者和内容团队';
+  if (/siri|alexa|search|shopping|cart|assistant|gemini/.test(text)) return '普通用户和产品团队';
+  return concreteObject ? '相关产品团队和使用者' : '';
+}
+
+function buildStoryFact(item) {
+  const originalTitle = item.original_title || item.title || '';
+  const originalSummary = item.original_summary || item.summary || '';
+  const facts = extractStoryFacts(item);
+  const entities = [];
+  const addEntity = (value) => {
+    const text = String(value || '').trim();
+    if (!text || isGenericObject(text)) return;
+    if (!entities.includes(text)) entities.push(text);
+  };
+  facts.filter((fact) => fact.label === 'entity').forEach((fact) => addEntity(fact.value));
+  titleEntityCandidates(originalTitle, item.source).forEach(addEntity);
+
+  const action = facts.find((fact) => fact.label === 'action' && !isGenericAction(fact.value))?.value || actionFromTitle(originalTitle);
+  const sourceSet = sourceAliases(item.source);
+  const concreteObject = entities
+    .slice()
+    .sort((a, b) => {
+      const aCompany = COMPANY_ENTITIES.has(a) ? 1 : 0;
+      const bCompany = COMPANY_ENTITIES.has(b) ? 1 : 0;
+      if (aCompany !== bCompany) return aCompany - bCompany;
+      return b.length - a.length;
+    })
+    .find((entity) => !sourceSet.has(entity.toLowerCase()) && !isGenericObject(entity)) || '';
+  const audience = audienceFromItem(item, concreteObject);
+  const editorialAngle = concreteObject && action
+    ? `${concreteObject}的${action}会影响${audience || '具体使用者'}`
+    : '';
+  const storyFacts = [
+    ...entities.map((value) => ({ label: 'entity', value })),
+    ...(action ? [{ label: 'action', value: action }] : []),
+    ...(concreteObject ? [{ label: 'concrete_object', value: concreteObject }] : [])
+  ];
+
+  return {
+    concrete_object: concreteObject,
+    entities,
+    products: entities,
+    action,
+    audience,
+    editorial_angle: editorialAngle,
+    story_facts: storyFacts,
+    original_title: originalTitle,
+    original_summary: originalSummary
+  };
+}
+
+function isSpecificStory(storyFact, rawItem) {
+  const whyFailed = [];
+  const sourceSet = sourceAliases(rawItem.source);
+  const concreteObject = storyFact?.concrete_object || '';
+  const action = storyFact?.action || '';
+  const entities = Array.isArray(storyFact?.entities) ? storyFact.entities : [];
+  const hasNonSourceEntity = entities.some((entity) => {
+    const lower = String(entity).toLowerCase();
+    return lower && !sourceSet.has(lower) && !sourceSet.has(lower.replace(/\s+/g, '')) && !isGenericObject(entity);
+  });
+  if (!concreteObject || isGenericObject(concreteObject)) whyFailed.push('missing_or_generic_concrete_object');
+  if (!entities.length) whyFailed.push('missing_entities');
+  if (!hasNonSourceEntity) whyFailed.push('entities_only_source_or_generic');
+  if (!action || isGenericAction(action)) whyFailed.push('missing_or_generic_action');
+  if (!storyFact?.audience) whyFailed.push('missing_audience');
+  if (!storyFact?.editorial_angle || FORBIDDEN_GENERIC_COPY.some((phrase) => storyFact.editorial_angle.includes(phrase))) {
+    whyFailed.push('missing_or_generic_editorial_angle');
+  }
+  return { ok: whyFailed.length === 0, why_failed: whyFailed };
+}
+
+function titleFromStoryFact(item, storyFact) {
+  const source = chineseSourceName(item.source);
+  const object = storyFact.concrete_object;
+  const action = storyFact.action;
+  if (action === '榜单排名' || action === '评测') return `${source}把${object}放进公开评测`;
+  if (action === '融资') return `${object}拿到融资，押注${source.includes('TechCrunch') ? 'AI 安全' : 'AI 落地'}`;
+  if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
+  if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
+  if (action === '生成') return `${object}开始生成内容`;
+  if (action === '工具调用') return `${object}补上程序化工具调用`;
+  if (action === '记忆扩展') return `${object}加入对话记忆`;
+  if (action === '搜索改版') return `${object}正在改写搜索入口`;
+  if (action === '订阅调整') return `${object}订阅能力重新打包`;
+  if (action === '购物代理') return `${object}想接管购物流程`;
+  if (action === '视觉识别') return `${object}接入外部摄像头识别`;
+  if (action === '设计工具') return `${object}把 AI 设计摆上台面`;
+  if (action === '推出') return `${object}推出新版本或新功能`;
+  return `${object}出现${action}新进展`;
+}
+
+function summaryFromStoryFact(item, storyFact) {
+  const object = storyFact.concrete_object;
+  const action = storyFact.action;
+  const source = chineseSourceName(item.source);
+  const original = clamp(storyFact.original_title || item.title || '', 58);
+  if (action === '搜索改版') return `${source}报道的重点是${object}：搜索正在从“输入关键词”转向更主动的 AI 入口，原文线索是「${original}」。`;
+  if (action === '开发工具升级') return `${source}把${object}放在开发工具语境里，关键不是概念，而是 CLI、编码流程和实际接入方式是否变顺。`;
+  if (action === '智能体能力') return `${source}这条围绕${object}展开，重点看它是否把智能体从演示带到更具体的任务入口。`;
+  if (action === '购物代理') return `${source}写到${object}，意思是 AI 不只推荐商品，还可能进入跨站购物流程，风险和便利都会一起出现。`;
+  if (action === '订阅调整') return `${source}这条指向${object}的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。`;
+  if (action === '生成') return `${source}把${object}放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。`;
+  if (action === '融资') return `${source}报道${object}拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。`;
+  if (action === '诉讼') return `${source}围绕${object}的法律争议继续发酵，重点是 AI 公司治理、承诺和商业化之间的拉扯。`;
+  if (action === '评测' || action === '榜单排名') return `${source}把${object}放进评测语境，重点是任务集、评分方法和结果是否经得起复现。`;
+  if (action === '视觉识别') return `${source}提到${object}的视觉识别能力，真正要看的是它在真实环境里能否稳定读懂场景。`;
+  if (action === '设计工具') return `${source}把${object}推到设计工具层面，关键是它能否改变原型、素材和协作流程。`;
+  if (action === '团队变动') return `${source}这条围绕${object}的人才流动展开，说明前沿模型团队仍在争夺训练和研究经验。`;
+  if (action === '推出') return `${source}报道${object}的新功能或版本，原文线索是「${original}」，重点看它具体补上了哪一段能力。`;
+  return `${source}这条新闻的具体对象是${object}，动作是${action}；原文线索是「${original}」。`;
+}
+
+function whyFromStoryFact(item, storyFact) {
+  const object = storyFact.concrete_object;
+  const action = storyFact.action;
+  const audience = storyFact.audience;
+  if (action === '搜索改版') return `${audience}要看${object}：搜索入口变主动后，内容分发、广告和用户路径都会被重新分配。`;
+  if (action === '开发工具升级') return `${audience}要看${object}：CLI 和编码入口一旦顺手，会直接改变团队日常开发节奏。`;
+  if (action === '智能体能力') return `${audience}要看${object}：智能体只有进入具体任务，才知道是帮忙还是添乱。`;
+  if (action === '购物代理') return `${audience}要看${object}：AI 如果开始代办购物，支付、推荐和责任边界都会变敏感。`;
+  if (action === '订阅调整') return `${audience}要看${object}：能力打包方式会决定谁能用、花多少钱、被锁在哪个入口。`;
+  if (action === '融资') return `${audience}要看${object}：资金流向说明市场正在押注哪个具体痛点。`;
+  if (action === '评测' || action === '榜单排名') return `${audience}要看${object}：公开评测能让能力比较少一点玄学，多一点可复查证据。`;
+  if (action === '推出') return `${audience}要看${object}：新功能是否改变现有产品路径，而不是只增加发布会信息量。`;
+  return `${audience}要看${object}：${action}会影响它接下来能否进入真实使用场景。`;
+}
+
+function janetFromStoryFact(item, storyFact) {
+  const object = storyFact.concrete_object;
+  const action = storyFact.action;
+  if (action === '搜索改版') return `${object}这事不小，搜索框一变，很多流量游戏就要重新算账。`;
+  if (action === '开发工具升级') return `${object}如果真能少敲几步命令，开发者会比发布会掌声更诚实。`;
+  if (action === '记忆扩展') return `${object}补记忆这事很实在，智能体没上下文就像刚睡醒的同事。`;
+  if (action === '工具调用') return `${object}开始认真处理工具调用，说明智能体终于要学会按流程干活。`;
+  if (action === '购物代理') return `${object}听起来方便，但让 AI 花钱这件事，最好先问清楚谁背锅。`;
+  if (action === '融资') return `${object}拿到钱只是开场，接下来要证明它不是又一个安全 PPT。`;
+  if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
+  if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
+  return `${object}有明确动作，先别喊革命，看它有没有真实用户和可复查结果。`;
+}
+
+function watchFromStoryFact(item, storyFact) {
+  const object = storyFact.concrete_object;
+  const action = storyFact.action;
+  if (action === '搜索改版') return `看${object}是否改变流量和广告分配。`;
+  if (action === '开发工具升级') return `看${object}是否进入默认开发命令。`;
+  if (action === '智能体能力') return `看${object}能否完成连续任务。`;
+  if (action === '购物代理') return `看${object}的支付和责任边界。`;
+  if (action === '订阅调整') return `看${object}哪些能力被放进付费档。`;
+  if (action === '生成') return `看${object}是否支持编辑和版权控制。`;
+  if (action === '融资') return `看${object}资金后是否给出产品指标。`;
+  if (action === '诉讼') return `看${object}后续是否影响治理承诺。`;
+  if (action === '评测' || action === '榜单排名') return `看${object}是否公开任务集和评分细则。`;
+  if (action === '推出') return `看${object}是否给出可用入口和限制。`;
+  return `看${object}是否出现真实使用证据。`;
+}
+
+function copyFromStoryFact(item, storyFact) {
+  const brief = storyBrief(item);
+  if (brief) return brief;
+  const title = titleFromStoryFact(item, storyFact);
+  return {
+    title,
+    summary: clamp(summaryFromStoryFact(item, storyFact), 118),
+    why: clamp(whyFromStoryFact(item, storyFact), 90),
+    janet: clamp(janetFromStoryFact(item, storyFact), 76),
+    watch: clamp(watchFromStoryFact(item, storyFact), 42)
+  };
+}
+
 function storyBrief(item) {
   const raw = rawStoryText(item);
   const text = raw.toLowerCase();
@@ -623,6 +954,15 @@ function storyBrief(item) {
       why: '开发者和文档自动化团队要看：OCR、解析和模型后端统一后，落地成本会明显下降。',
       janet: 'PaddleOCR 这条很实用：文档处理不是性感赛道，但每天都有人被 PDF 折磨。',
       watch: '看 PaddleOCR 3.5 的部署速度和中文文档效果。'
+    };
+  }
+  if (/karpathy/.test(text) && /anthropic/.test(text)) {
+    return {
+      title: 'Karpathy 加入 Anthropic 预训练团队',
+      summary: `${source}报道 Andrej Karpathy 加入 Anthropic 预训练团队，这条的重点是顶级模型训练经验继续向头部实验室集中。`,
+      why: '研究者和模型团队要看：预训练人才流动会影响下一代模型的训练路线和团队竞争。',
+      janet: 'Karpathy 换位置，比很多产品更新更值得看，因为模型能力最后还是人训出来的。',
+      watch: '看 Anthropic 预训练团队后续论文和模型节奏。'
     };
   }
   if (/take your local github sessions anywhere/.test(text)) {
@@ -778,7 +1118,7 @@ function storyBrief(item) {
       watch: '看高校和企业怎样重写 AI 叙事。'
     };
   }
-  if (/automotive|mobility|skills arms race|car|vehicle/.test(text) && /ai/.test(text)) {
+  if (/automotive|mobility|skills arms race|\bcar\b|vehicle/.test(text) && /ai/.test(text)) {
     return {
       title: '汽车业开始抢 AI 技能',
       summary: `${source}把汽车行业的 AI 竞争指向人才和能力储备，真正的分水岭可能不是谁会宣传，而是谁能把 AI 塞进研发、制造和服务链路。`,
@@ -1081,8 +1421,8 @@ function makeFieldUnique(items, field, formatter) {
 }
 
 function ensureUniqueHomepageCopy(items) {
-  makeFieldUnique(items, 'summary', (item, value) => clamp(`${chineseSourceName(item.source)}这条聚焦「${item.title}」，和同屏其他新闻分工不同：它提供的是另一条产品线索。`, 118));
-  makeFieldUnique(items, 'why_it_matters', (item) => clamp(`${chineseSourceName(item.source)}的「${item.title}」影响的是它所在团队的具体选择，不是泛泛的行业热闹。`, 96));
+  makeFieldUnique(items, 'summary', (item) => clamp(`这条聚焦「${item.title}」，和同屏其他新闻分工不同：它提供的是另一条具体产品或研究线索。`, 118));
+  makeFieldUnique(items, 'why_it_matters', (item) => clamp(`「${item.title}」会影响相关团队对这项能力的使用、评估或采购判断。`, 96));
   makeFieldUnique(items, 'janet_take', (item) => clamp(`Janet 看这条「${item.title}」：重点在具体动作，不在发布词。`, 86));
   makeFieldUnique(items, 'watch_next', (item) => clamp(`看「${item.title}」后续是否出现产品、代码或客户证据。`, 48));
 }
@@ -1092,7 +1432,7 @@ function ensureUniqueStoryCopy(stories) {
   makeFieldUnique(stories, 'title', (story) => story.zh_title || story.title);
   makeFieldUnique(stories, 'zh_summary', (story) => clamp(`${chineseSourceName(story.source)}这条讲的是「${story.zh_title || story.title}」：${story.original_title || story.raw_item?.original_title || ''}`.replace(/\s+/g, ' '), 120));
   makeFieldUnique(stories, 'summary', (story) => story.zh_summary || story.summary);
-  makeFieldUnique(stories, 'why_it_matters', (story) => clamp(`${chineseSourceName(story.source)}的「${story.zh_title || story.title}」影响的是它自己的用户、团队和入口选择。`, 90));
+  makeFieldUnique(stories, 'why_it_matters', (story) => clamp(`「${story.zh_title || story.title}」会影响相关团队对这项能力的使用、评估或采购判断。`, 90));
   makeFieldUnique(stories, 'janet_take', (story) => clamp(`Janet 看「${story.zh_title || story.title}」：先看这条新闻里的对象和动作。`, 80));
   makeFieldUnique(stories, 'watch_next', (story) => clamp(`看「${story.zh_title || story.title}」是否出现后续产品证据。`, 42));
 }
@@ -1100,7 +1440,7 @@ function ensureUniqueStoryCopy(stories) {
 function buildHomepageAssembly(stories, date) {
   const lead = stories[0];
   const used = new Set([lead.id]);
-  const maxSignals = Math.min(3, Math.max(0, stories.length - 1 - 4));
+  const maxSignals = Math.min(3, Math.max(0, stories.length - 1));
   const signalMap = signalMapForEdition(stories.filter((story) => story.id !== lead.id)).slice(0, maxSignals).map((signal, index) => {
     const story = stories.find((item) => signal.evidence.includes(item.id) && !used.has(item.id));
     if (!story) return null;
@@ -1137,11 +1477,11 @@ function buildHomepageAssembly(stories, date) {
 function moduleTitleFor(sectionKey, stories) {
   const first = stories[0] || {};
   const facts = (first.story_facts || []).map((fact) => fact.value).filter(Boolean);
-  if (sectionKey === 'agents') return facts.includes('Codex') ? '开发入口进入企业部署' : '开发工作流继续前移';
+  if (sectionKey === 'agents') return facts[0] ? `${facts[0]} 进入开发链路` : '开发工具进入任务链路';
   if (sectionKey === 'open_source') return facts[0] ? `${facts[0]} 带出开源工具线` : '开源工具链继续补位';
   if (sectionKey === 'business') return facts[0] ? `${facts[0]} 指向商业落地` : '企业入口与商业落地';
   if (sectionKey === 'models') return facts[0] ? `${facts[0]} 改写产品能力` : '模型能力进入产品层';
-  if (sectionKey === 'creator_opportunity') return '创作者工具开始分化';
+  if (sectionKey === 'creator_opportunity') return facts[0] ? `${facts[0]} 给创作工具添变量` : '创作者工具出现新变量';
   if (sectionKey === 'china_perspective') return '中国视角里的 AI 动向';
   return '更多值得留意的 AI 动态';
 }
@@ -1248,13 +1588,13 @@ function uniqueWatchNext(story, used) {
   const source = chineseSourceName(story.source);
   const topic = normalizeTopic(story);
   const candidates = [
-    watchNext(story),
-    `看${source}在${topic}上的产品入口。`,
-    `看${source}这条${topic}是否有真实用户。`,
-    `看${topic}是否被${source}继续推向默认流程。`
+    story.watch_next,
+    `看「${story.title}」是否公布使用范围。`,
+    `看「${story.title}」是否出现真实案例。`,
+    `看「${story.title}」是否给出可复查证据。`
   ];
   let selected = candidates.find((item) => item && !used.has(item));
-  if (!selected) selected = `看${source}第${used.size + 1}条${topic}的落地位置。`;
+  if (!selected) selected = `看「${story.title}」后续证据 ${used.size + 1}。`;
   used.add(selected);
   return clamp(selected, 42);
 }
@@ -1333,13 +1673,36 @@ function storyToPublicItem(item) {
     published_at: item.published_at,
     category: schemaCategory(item.category)
   };
-  const zh_title = clamp(makeChineseTitle(item), 52);
-  const zh_summary = clamp(makeChineseSummary(item), 120);
-  const story_facts = extractStoryFacts({ ...item, original_title: item.title, original_summary: item.summary || '' });
+  const storyFact = buildStoryFact({ ...item, original_title: item.title, original_summary: item.summary || '' });
+  const gate = isSpecificStory(storyFact, item);
+  if (!gate.ok) {
+    return {
+      blocked: true,
+      excluded_item: {
+        raw_id: item.id || '',
+        source: item.source || '',
+        original_title: item.title || '',
+        url: item.url || '',
+        published_at: item.published_at || '',
+        reason: 'generic_fallback_blocked',
+        details: {
+          concrete_object: storyFact.concrete_object || '',
+          entities: storyFact.entities || [],
+          action: storyFact.action || '',
+          why_failed: gate.why_failed
+        }
+      }
+    };
+  }
+  const copy = copyFromStoryFact(item, storyFact);
+  const zh_title = clamp(copy.title, 52);
+  const zh_summary = clamp(copy.summary, 120);
+  const story_facts = storyFact.story_facts;
   return {
     id: item.id,
     story_id: item.id,
     raw_item,
+    story_fact: storyFact,
     zh_title,
     zh_summary,
     story_facts,
@@ -1355,9 +1718,9 @@ function storyToPublicItem(item) {
     published_at_source: item.published_at_source,
     summary: zh_summary,
     original_summary: clamp(item.summary || item.title, 220),
-    why_it_matters: whyItMatters(item),
-    janet_take: janetTake(item),
-    watch_next: watchNext(item),
+    why_it_matters: copy.why,
+    janet_take: copy.janet,
+    watch_next: copy.watch,
     image: null,
     image_source: null,
     image_credit: null,
@@ -1375,7 +1738,46 @@ function storyToPublicItem(item) {
 function buildContent(template, included, date, editionType, rules) {
   const now = new Date().toISOString();
   const ordered = orderStoriesForEdition(included, rules);
-  const stories = ordered.map(storyToPublicItem);
+  const excludedItems = [];
+  const stories = [];
+  const actionCounts = new Map();
+  const actionLimit = (action) => (
+    ['搜索改版', '智能体能力', '推出', '视觉识别', '购物代理'].includes(action) ? 1 : 2
+  );
+  for (const item of ordered) {
+    const publicItem = storyToPublicItem(item);
+    if (publicItem.blocked) {
+      excludedItems.push(publicItem.excluded_item);
+      continue;
+    }
+    const action = publicItem.story_fact?.action || '';
+    const count = actionCounts.get(action) || 0;
+    if (count >= actionLimit(action)) {
+      excludedItems.push({
+        raw_id: item.id || '',
+        source: item.source || '',
+        original_title: item.title || '',
+        url: item.url || '',
+        published_at: item.published_at || '',
+        reason: 'story_fact_cluster_duplicate',
+        details: {
+          concrete_object: publicItem.story_fact?.concrete_object || '',
+          entities: publicItem.story_fact?.entities || [],
+          action,
+          why_failed: ['too_many_similar_action_items']
+        }
+      });
+      continue;
+    }
+    actionCounts.set(action, count + 1);
+    stories.push(publicItem);
+  }
+  if (!stories.length) {
+    const error = new Error('blocked_no_specific_frontpage_stories');
+    error.code = 'blocked_no_specific_frontpage_stories';
+    error.excluded_items = excludedItems;
+    throw error;
+  }
   const usedWatchNext = new Set();
   stories.forEach((story) => {
     story.verified_at = now;
@@ -1383,6 +1785,10 @@ function buildContent(template, included, date, editionType, rules) {
     story.watch_next = uniqueWatchNext(story, usedWatchNext);
   });
   ensureUniqueStoryCopy(stories);
+  const serializedStories = JSON.stringify(stories);
+  for (const phrase of FORBIDDEN_GENERIC_COPY) {
+    if (serializedStories.includes(phrase)) throw new Error(`forbidden_generic_copy:${phrase}`);
+  }
   for (const phrase of FORBIDDEN_TAKES) {
     if (JSON.stringify(stories).includes(phrase)) throw new Error(`forbidden_janet_take:${phrase}`);
   }
@@ -1471,6 +1877,7 @@ function buildContent(template, included, date, editionType, rules) {
     edition_items: stories,
     homepage_items: homepageItems,
     hidden_items: hiddenItems,
+    excluded_items: excludedItems,
     compact_news: compactNews,
     source_summary: `今日重点：${sourceNames(stories, 4).join('、')}。完整来源与覆盖情况见状态页。`,
     source_ledger: ordered.map((story) => ({
@@ -1619,6 +2026,90 @@ function main() {
   };
 
   const rawItems = [];
+  const processItems = (rawItemList, included, excluded, snapshot = null) => {
+    status.raw_items = Number(snapshot?.raw_item_count || rawItemList.length);
+    status.included = included.length;
+    status.excluded = excluded.length;
+    status.exclusion_reasons = excluded.reduce((acc, item) => {
+      acc[item.excluded_reason] = (acc[item.excluded_reason] || 0) + 1;
+      return acc;
+    }, {});
+    writeLiveSourceSnapshot({ date, window, status, rawItems: rawItemList, included, excluded });
+
+    if (included.length < Number(pool.min_publish_count || 5)) {
+      status.status = 'blocked_insufficient_fresh_news';
+      status.edition_type = 'blocked';
+      status.published = false;
+      writeJson(STATUS_PATH, status);
+      console.log(`status: ${status.status}`);
+      return;
+    }
+
+    if (dryRun) {
+      status.status = 'dry_run_candidate_ready';
+      status.edition_type = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
+      status.published = false;
+      writeJson(STATUS_PATH, status);
+      console.log(`status: ${status.status}`);
+      return;
+    }
+
+    const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
+    const templateId = manifest[0] || '2026-05-14-v4';
+    const templateContent = readJson(resolve(ROOT, `data/${templateId}/content.json`));
+    const templateSummary = readJson(resolve(ROOT, `data/${templateId}/news-summary.json`), {});
+    const editorialRules = readJson(EDITORIAL_RULES, { positive_signals: [], negative_signals: [], source_priority: {}, forbidden_frontend_phrases: [] });
+    const editionId = `${date}-v4`;
+    const outDir = resolve(ROOT, `data/${editionId}`);
+    const draftEditionType = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
+    const content = buildContent(templateContent, included, date, draftEditionType, editorialRules);
+    const publishableCount = (content.edition_items || []).length;
+    const genericBlocked = (content.excluded_items || []).filter((item) => item.reason === 'generic_fallback_blocked').length;
+    status.included = publishableCount;
+    status.excluded = excluded.length + genericBlocked;
+    status.exclusion_reasons.generic_fallback_blocked = genericBlocked;
+    const editionType = publishableCount >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
+    const statusName = editionType === 'full_edition' ? 'published_full_edition' : 'published_limited_edition';
+    status.status = statusName;
+    status.edition_type = editionType;
+
+    writeJson(resolve(outDir, 'content.json'), content);
+    writeText(resolve(outDir, 'output.html'), renderHtml(content));
+    writeJson(resolve(outDir, 'news-summary.json'), buildSummary(templateSummary, content, editionId, editionType));
+    updateManifest(editionId);
+
+    status.published = true;
+    status.published_edition_id = editionId;
+    writeJson(STATUS_PATH, status);
+    console.log(`status: ${status.status}`);
+  };
+
+  if (args['use-snapshot']) {
+    const snapshot = readJson(resolve(ROOT, String(args['use-snapshot'])));
+    const sourceByName = new Map((pool.sources || []).map((source) => [source.source, source]));
+    status.source_count = Number(snapshot.source_count || status.source_count || 0);
+    status.source_success_count = Number(snapshot.source_success_count || 0);
+    status.source_error_count = Number(snapshot.source_error_count || 0);
+    const snapshotItems = (snapshot.included_items || []).map((item, index) => {
+      const source = sourceByName.get(item.source) || {};
+      return {
+        id: item.story_id || hashId(source.id || item.source || 'snapshot', `${item.url}:${item.original_title}`),
+        title: item.original_title || '',
+        url: item.url || '',
+        source: item.source || '',
+        category: item.category || source.category || 'business',
+        source_rank: source.rank || 'B',
+        published_at: item.published_at || '',
+        published_at_source: 'snapshot.published_at',
+        summary: item.original_summary || '',
+        collected_at: snapshot.generated_at || new Date().toISOString(),
+        raw_source_id: source.id || item.source || '',
+        evidence_ids: [`evidence-${String(index + 1).padStart(4, '0')}`]
+      };
+    });
+    return Promise.resolve(processItems(snapshotItems, snapshotItems, [], snapshot));
+  }
+
   const promises = pool.sources.filter((item) => item.enabled).map(async (source) => {
     const result = await fetchSource(source);
     const report = {
@@ -1650,54 +2141,8 @@ function main() {
   });
 
   return Promise.all(promises).then(() => {
-    status.raw_items = rawItems.length;
     const { included, excluded } = filterWindow(rawItems, window);
-    status.included = included.length;
-    status.excluded = excluded.length;
-    status.exclusion_reasons = excluded.reduce((acc, item) => {
-      acc[item.excluded_reason] = (acc[item.excluded_reason] || 0) + 1;
-      return acc;
-    }, {});
-    writeLiveSourceSnapshot({ date, window, status, rawItems, included, excluded });
-
-    if (included.length < Number(pool.min_publish_count || 5)) {
-      status.status = 'blocked_insufficient_fresh_news';
-      status.edition_type = 'blocked';
-      status.published = false;
-      writeJson(STATUS_PATH, status);
-      console.log(`status: ${status.status}`);
-      return;
-    }
-
-    const editionType = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
-    const statusName = editionType === 'full_edition' ? 'published_full_edition' : 'published_limited_edition';
-    status.status = dryRun ? `dry_run_${statusName}` : statusName;
-    status.edition_type = editionType;
-
-    if (dryRun) {
-      status.published = false;
-      writeJson(STATUS_PATH, status);
-      console.log(`status: ${status.status}`);
-      return;
-    }
-
-    const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
-    const templateId = manifest[0] || '2026-05-14-v4';
-    const templateContent = readJson(resolve(ROOT, `data/${templateId}/content.json`));
-    const templateSummary = readJson(resolve(ROOT, `data/${templateId}/news-summary.json`), {});
-    const editorialRules = readJson(EDITORIAL_RULES, { positive_signals: [], negative_signals: [], source_priority: {}, forbidden_frontend_phrases: [] });
-    const editionId = `${date}-v4`;
-    const outDir = resolve(ROOT, `data/${editionId}`);
-    const content = buildContent(templateContent, included, date, editionType, editorialRules);
-    writeJson(resolve(outDir, 'content.json'), content);
-    writeText(resolve(outDir, 'output.html'), renderHtml(content));
-    writeJson(resolve(outDir, 'news-summary.json'), buildSummary(templateSummary, content, editionId, editionType));
-    updateManifest(editionId);
-
-    status.published = true;
-    status.published_edition_id = editionId;
-    writeJson(STATUS_PATH, status);
-    console.log(`status: ${status.status}`);
+    processItems(rawItems, included, excluded);
   });
 }
 

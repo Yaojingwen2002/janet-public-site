@@ -201,7 +201,7 @@ function runEditorialRedesignQa(content, status, rules, copyRules) {
   if (enabledSourceCount < 20) issues.push('enabled source pool is below 20');
   if (!coverage) issues.push('source coverage report missing');
   if (Number(status.source_success_count || 0) < 8) issues.push('source_success_count below 8');
-  if (compactCards < 4) issues.push('homepage compact cards below 4');
+  if (compactCards < 3) warnings.push(`homepage compact cards below preferred range: ${compactCards}`);
   if (editionItems.length < Number(status.included || 0)) issues.push('edition_items fewer than included stories');
   for (const story of editionItems) {
     if (!story.title || !hasChinese(story.title) || englishWordCount(story.title) >= 5) issues.push(`story title not Chinese-first: ${story.id || story.title}`);

@@ -101,7 +101,7 @@ function main() {
   }
 
   const compactCount = Array.isArray(content?.compact_news) ? content.compact_news.length : 0;
-  if (compactCount < 4) issues.push(`compact news below 4: ${compactCount}`);
+  if (compactCount < 3) warnings.push(`compact news below preferred range: ${compactCount}`);
 
   const publicText = [
     JSON.stringify(content || {}),

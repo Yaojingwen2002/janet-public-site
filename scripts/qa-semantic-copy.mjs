@@ -29,12 +29,26 @@ const GENERIC_PHRASES = [
   'AI 热闹',
   '继续推向开发者',
   '露出新落点',
+  '更新智能体',
+  '先看谁能用起来',
+  '追踪AI 工具',
+  '发布新动作',
+  '追踪产品落点',
+  '它自己的用户、团队',
+  '选型、评估或交付方式',
+  '清晰功能、价格或开放边界',
+  '看谁能用起来',
+  '看是否有清晰边界',
+  '看是否进入默认工作流',
+  '看产品落点是否落成具体产品',
   '围绕商业动作',
   '放出一个新信号',
   '不是口号',
   '今天具体新闻里能点开的变化'
 ];
 const PATCH_PHRASES = ['第2个切面', '第3个切面', '第2个落点', '第3个落点', '对应到', '这条第', '第2个角度', '第3个角度'];
+const GENERIC_OBJECTS = new Set(['智能体', 'AI 工具', '产品落点', '商业动作', '用户', '团队', '入口', '新动作', '工作流', '平台', '模型能力', '研究信号', '企业落地', '开发入口', '开源模型', 'AI']);
+const GENERIC_ACTIONS = new Set(['更新', '追踪', '推向', '发布新动作', '继续', '露出', '发布']);
 const SPECIFIC_TERMS = [
   { pattern: /NVIDIA Vera/i, terms: ['NVIDIA Vera', 'Vera'] },
   { pattern: /Jensen Huang/i, terms: ['黄仁勋', 'Jensen Huang'] },
@@ -167,10 +181,16 @@ function phraseHits(items, phrases, reason) {
 }
 
 function concreteTerms(item) {
+  const factObject = item.story_fact || {};
+  const objectTerms = [
+    factObject.concrete_object,
+    ...(Array.isArray(factObject.entities) ? factObject.entities : []),
+    ...(Array.isArray(factObject.products) ? factObject.products : [])
+  ].filter(Boolean);
   const facts = Array.isArray(item.story_facts) ? item.story_facts.map((fact) => fact.value).filter(Boolean) : [];
   const original = item.raw_item?.original_title || item.original_title || '';
   const matched = SPECIFIC_TERMS.flatMap((spec) => spec.pattern.test(original) ? spec.terms : []);
-  return [...new Set([...facts, ...matched])];
+  return [...new Set([...objectTerms, ...facts, ...matched])];
 }
 
 function textHasConcreteObject(item, field) {
@@ -185,9 +205,31 @@ function textHasConcreteObject(item, field) {
   });
 }
 
+function storyFactIssues(items) {
+  const problems = [];
+  for (const item of items) {
+    const fact = item.story_fact || {};
+    const source = String(item.source || '').toLowerCase();
+    const concrete = String(fact.concrete_object || '').trim();
+    const action = String(fact.action || '').trim();
+    const entities = Array.isArray(fact.entities) ? fact.entities : [];
+    if (!concrete || GENERIC_OBJECTS.has(concrete) || GENERIC_OBJECTS.has(concrete.replace(/\s+/g, ''))) {
+      problems.push(issue('generic_or_missing_concrete_object', 'zh_title', item, { concrete_object: concrete }));
+    }
+    if (!entities.some((entity) => String(entity).toLowerCase() !== source && !GENERIC_OBJECTS.has(String(entity).trim()))) {
+      problems.push(issue('entities_missing_or_source_only', 'zh_title', item, { entities }));
+    }
+    if (!action || GENERIC_ACTIONS.has(action)) {
+      problems.push(issue('generic_or_missing_action', 'zh_summary', item, { action }));
+    }
+  }
+  return problems;
+}
+
 function missingSpecificTerms(items) {
   const missing = [];
   for (const item of items) {
+    if (textHasConcreteObject(item, 'zh_title')) continue;
     const original = item.raw_item?.original_title || item.original_title || '';
     const title = item.zh_title || item.title || '';
     const expected = SPECIFIC_TERMS.filter((spec) => spec.pattern.test(original)).flatMap((spec) => spec.terms);
@@ -282,7 +324,7 @@ function main() {
   const generic = phraseHits(stories, GENERIC_PHRASES, 'generic_template_phrase');
   const patch = phraseHits(stories, PATCH_PHRASES, 'patch_phrase');
   const missingTerms = missingSpecificTerms(stories);
-  hardIssues.push(...generic, ...patch, ...missingTerms);
+  hardIssues.push(...generic, ...patch, ...missingTerms, ...storyFactIssues(stories));
 
   for (const item of homepageItems) {
     const terms = concreteTerms(item);
@@ -338,6 +380,7 @@ function main() {
       why_it_matters: story.why_it_matters,
       janet_take: story.janet_take,
       watch_next: story.watch_next,
+      story_fact: story.story_fact || null,
       story_facts: story.story_facts || []
     }))
   };

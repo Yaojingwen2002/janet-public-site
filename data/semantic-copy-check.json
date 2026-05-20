@@ -2,10 +2,10 @@
   "step": "35-U4-D",
   "status": "semantic_copy_ready",
   "qa_passed": true,
-  "latest_edition_id": "2026-05-19-v4",
-  "checked_file_path": "data/2026-05-19-v4/content.json",
+  "latest_edition_id": "2026-05-20-v4",
+  "checked_file_path": "data/2026-05-20-v4/content.json",
   "homepage_items_checked": 10,
-  "stories_checked": 20,
+  "stories_checked": 14,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -22,7 +22,29 @@
     },
     "why_it_matters": {
       "hard": [],
-      "warnings": []
+      "warnings": [
+        {
+          "field": "why_it_matters",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.77,
+          "item_a": {
+            "story_id": "aws-machine-learning-63bc5a915489",
+            "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+            "text": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会影响它接下来能否进入真实使用场景。"
+          },
+          "item_b": {
+            "story_id": "aws-machine-learning-d11174ce5c3d",
+            "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+            "text": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会影响它接下来能否进入真实使用场景。"
+          }
+        }
+      ]
     },
     "janet_take": {
       "hard": [],
@@ -30,102 +52,124 @@
     },
     "watch_next": {
       "hard": [],
-      "warnings": []
+      "warnings": [
+        {
+          "field": "watch_next",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.757,
+          "item_a": {
+            "story_id": "aws-machine-learning-63bc5a915489",
+            "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+            "text": "看Amazon Bedrock AgentCore Memory是否出现真实使..."
+          },
+          "item_b": {
+            "story_id": "aws-machine-learning-d11174ce5c3d",
+            "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+            "text": "看Amazon Bedrock AgentCore是否出现真实使用证据。"
+          }
+        }
+      ]
     }
   },
   "max_title_similarity": {
-    "score": 0.4,
+    "score": 0.525,
     "item_a": {
-      "story_id": "techcrunch-ai-9a05454b24f4",
-      "title": "Amazon 用 Alexa Plus 生成播客",
-      "source": "TechCrunch AI",
+      "story_id": "aws-machine-learning-63bc5a915489",
+      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
-      "text": "Amazon 用 Alexa Plus 生成播客"
+      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+      "text": "Amazon Bedrock AgentCore Memory加入对话记忆"
     },
     "item_b": {
-      "story_id": "the-verge-ai-ae1139b3549a",
-      "title": "Alexa Plus 开始生成 AI 播客",
-      "source": "The Verge AI",
+      "story_id": "aws-machine-learning-d11174ce5c3d",
+      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
-      "text": "Alexa Plus 开始生成 AI 播客"
+      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+      "text": "Amazon Bedrock AgentCore补上程序化工具调用"
     }
   },
   "max_summary_similarity": {
-    "score": 0.443,
+    "score": 0.463,
     "item_a": {
-      "story_id": "techcrunch-ai-fc9d9b7a3f0a",
-      "title": "马斯克败诉，OpenAI 争议还没结束",
-      "source": "TechCrunch AI",
+      "story_id": "aws-machine-learning-63bc5a915489",
+      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
-      "text": "The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。"
+      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+      "text": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore Memory，动作是记忆扩展；原文线索是「Extending conversational memory in Kiro CLI using Amazo...."
     },
     "item_b": {
-      "story_id": "the-verge-ai-905369627f97",
-      "title": "The Verge 记录马斯克败给 Altman",
-      "source": "The Verge AI",
+      "story_id": "aws-machine-learning-d11174ce5c3d",
+      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Elon Musk loses his case against Sam Altman",
-      "text": "The Verge 报道马斯克对 Sam Altman 的案件失利，重点是围绕 OpenAI 的法律攻击暂时没有打穿。"
+      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+      "text": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore，动作是工具调用；原文线索是「Implementing programmatic tool calling on Amazon Bedrock」。"
     }
   },
   "max_why_similarity": {
-    "score": 0.214,
+    "score": 0.77,
     "item_a": {
-      "story_id": "mit-tech-review-ai-8970aa509b85",
-      "title": "MIT 复盘马斯克为何输给 OpenAI",
-      "source": "MIT Technology Review AI",
+      "story_id": "aws-machine-learning-63bc5a915489",
+      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Here’s why Elon Musk lost his suit against OpenAI",
-      "text": "AI 公司和投资者要看：使命叙事进入法庭后，能不能变成可执行约束会被重新检验。"
+      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+      "text": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会影响它接下来能否进入真实使用场景。"
     },
     "item_b": {
-      "story_id": "the-verge-ai-950eb931129f",
-      "title": "马斯克与 OpenAI 诉讼，信任成核心问题",
-      "source": "The Verge AI",
+      "story_id": "aws-machine-learning-d11174ce5c3d",
+      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Musk v. Altman proved that AI is led by the wrong people",
-      "text": "企业和投资者要看：AI 公司讲开放、使命和商业化时，合同与治理会不会被重新审视。"
+      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+      "text": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会影响它接下来能否进入真实使用场景。"
     }
   },
   "max_janet_take_similarity": {
-    "score": 0.133,
+    "score": 0.585,
     "item_a": {
-      "story_id": "techcrunch-ai-9a05454b24f4",
-      "title": "Amazon 用 Alexa Plus 生成播客",
-      "source": "TechCrunch AI",
+      "story_id": "venturebeat-ai-85c5d168a62e",
+      "title": "search box出现合作新进展",
+      "source": "VentureBeat AI",
       "category": "business",
-      "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
-      "text": "Alexa 以前像遥控器，现在开始像小型内容工厂，问题是成品能不能听。"
+      "original_title": "Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.",
+      "text": "search box有明确动作，先别喊革命，看它有没有真实用户和可复查结果。"
     },
     "item_b": {
-      "story_id": "the-verge-ai-ae1139b3549a",
-      "title": "Alexa Plus 开始生成 AI 播客",
-      "source": "The Verge AI",
+      "story_id": "techcrunch-ai-cf4394e143ac",
+      "title": "AI design接入外部摄像头识别",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
-      "text": "Alexa 终于不只会答话，也开始抢内容生产的活。"
+      "original_title": "Google just declared itself a contender in AI design at IO 2026",
+      "text": "AI design有明确动作，先别喊革命，看它有没有真实用户和可复查结果。"
     }
   },
   "max_watch_next_similarity": {
-    "score": 0.5,
+    "score": 0.757,
     "item_a": {
-      "story_id": "techcrunch-ai-9a05454b24f4",
-      "title": "Amazon 用 Alexa Plus 生成播客",
-      "source": "TechCrunch AI",
+      "story_id": "aws-machine-learning-63bc5a915489",
+      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Amazon&#8217;s new Alexa+ powered feature can generate podcast episodes",
-      "text": "看 Alexa Plus 生成播客是否支持编辑和版权控制。"
+      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+      "text": "看Amazon Bedrock AgentCore Memory是否出现真实使..."
     },
     "item_b": {
-      "story_id": "the-verge-ai-ae1139b3549a",
-      "title": "Alexa Plus 开始生成 AI 播客",
-      "source": "The Verge AI",
+      "story_id": "aws-machine-learning-d11174ce5c3d",
+      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Amazon Alexa Plus can now create AI-generated podcasts",
-      "text": "看 Alexa Plus 生成内容是否支持可控编辑。"
+      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+      "text": "看Amazon Bedrock AgentCore是否出现真实使用证据。"
     }
   },
   "forbidden_patch_phrases_found": [],
@@ -134,8 +178,46 @@
   "cross_edition_similarity_issues": [],
   "warnings": [
     {
-      "reason": "previous_edition_unreadable",
-      "edition_id": "2026-05-10"
+      "field": "why_it_matters",
+      "reason": "near_duplicate_warning",
+      "similarity": 0.77,
+      "item_a": {
+        "story_id": "aws-machine-learning-63bc5a915489",
+        "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+        "source": "AWS Machine Learning Blog",
+        "category": "business",
+        "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+        "text": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会影响它接下来能否进入真实使用场景。"
+      },
+      "item_b": {
+        "story_id": "aws-machine-learning-d11174ce5c3d",
+        "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+        "source": "AWS Machine Learning Blog",
+        "category": "business",
+        "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+        "text": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会影响它接下来能否进入真实使用场景。"
+      }
+    },
+    {
+      "field": "watch_next",
+      "reason": "near_duplicate_warning",
+      "similarity": 0.757,
+      "item_a": {
+        "story_id": "aws-machine-learning-63bc5a915489",
+        "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
+        "source": "AWS Machine Learning Blog",
+        "category": "business",
+        "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
+        "text": "看Amazon Bedrock AgentCore Memory是否出现真实使..."
+      },
+      "item_b": {
+        "story_id": "aws-machine-learning-d11174ce5c3d",
+        "title": "Amazon Bedrock AgentCore补上程序化工具调用",
+        "source": "AWS Machine Learning Blog",
+        "category": "business",
+        "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
+        "text": "看Amazon Bedrock AgentCore是否出现真实使用证据。"
+      }
     }
   ],
   "issues": []

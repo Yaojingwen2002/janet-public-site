@@ -4,6 +4,9 @@ import { resolve } from 'node:path';
 const ROOT = process.cwd();
 const OUT = resolve(ROOT, 'data/editorial-architecture-check.json');
 const PATCH_PHRASES = ['第2个切面', '第3个切面', '第2个落点', '第3个落点', '对应到', '这条第', '第2个角度', '第3个角度'];
+const GENERIC_OBJECTS = new Set(['智能体', 'AI 工具', '产品落点', '商业动作', '用户', '团队', '入口', '新动作', '工作流', '平台', '模型能力', '研究信号', '企业落地', '开发入口', '开源模型', 'AI']);
+const GENERIC_ACTIONS = new Set(['更新', '追踪', '推向', '发布新动作', '继续', '露出', '发布']);
+const GENERIC_COPY = ['更新智能体', '先看谁能用起来', '追踪AI 工具', '发布新动作', '追踪产品落点', '露出新落点', '它自己的用户、团队', '选型、评估或交付方式', '清晰功能、价格或开放边界', 'AI 热闹', '入口又被模型咬住', '不是普通更新'];
 const SPECIFIC_TERMS = [
   { pattern: /NVIDIA Vera/i, terms: ['NVIDIA Vera', 'Vera'] },
   { pattern: /Jensen Huang/i, terms: ['黄仁勋', 'Jensen Huang'] },
@@ -60,8 +63,12 @@ function duplicates(items, field) {
 }
 
 function hasSpecificTerm(story) {
+  const concrete = story.story_fact?.concrete_object || '';
+  const titleText = story.zh_title || story.title || '';
+  if (concrete && titleText.toLowerCase().includes(String(concrete).toLowerCase())) return null;
+  if (concrete && String(concrete).split(/\s+/).some((part) => part.length > 3 && titleText.toLowerCase().includes(part.toLowerCase()))) return null;
   const original = story.raw_item?.original_title || story.original_title || '';
-  const title = story.zh_title || story.title || '';
+  const title = titleText;
   for (const spec of SPECIFIC_TERMS) {
     if (!spec.pattern.test(original)) continue;
     if (!spec.terms.some((term) => title.toLowerCase().includes(term.toLowerCase()))) {
@@ -100,6 +107,18 @@ function main() {
       if (!story[field]) issues.push(`story missing ${field}: ${story.id || story.story_id}`);
     }
     if (!Array.isArray(story.story_facts) || !story.story_facts.length) warnings.push(`story_facts empty: ${story.id || story.story_id}`);
+    const fact = story.story_fact || {};
+    const concrete = String(fact.concrete_object || '').trim();
+    const action = String(fact.action || '').trim();
+    const entities = Array.isArray(fact.entities) ? fact.entities : [];
+    const source = String(story.source || '').toLowerCase();
+    if (!concrete || GENERIC_OBJECTS.has(concrete) || GENERIC_OBJECTS.has(concrete.replace(/\s+/g, ''))) {
+      issues.push(`generic concrete_object: ${story.id || story.story_id} ${concrete}`);
+    }
+    if (!entities.some((entity) => String(entity).toLowerCase() !== source && !GENERIC_OBJECTS.has(String(entity).trim()))) {
+      issues.push(`entities missing or source-only: ${story.id || story.story_id}`);
+    }
+    if (!action || GENERIC_ACTIONS.has(action)) issues.push(`generic action: ${story.id || story.story_id} ${action}`);
     const missing = hasSpecificTerm(story);
     if (missing) issues.push(`specific term missing: ${JSON.stringify(missing)}`);
   }
@@ -169,6 +188,8 @@ function main() {
   const serialized = JSON.stringify(content);
   const patchPhrasesFound = PATCH_PHRASES.filter((phrase) => serialized.includes(phrase));
   if (patchPhrasesFound.length) issues.push(`patch phrases found: ${patchPhrasesFound.join(', ')}`);
+  const genericPhrasesFound = GENERIC_COPY.filter((phrase) => serialized.includes(phrase));
+  if (genericPhrasesFound.length) issues.push(`generic copy found: ${genericPhrasesFound.join(', ')}`);
 
   const check = {
     step: '35-U4',
@@ -185,6 +206,7 @@ function main() {
     duplicate_story_summary_count: duplicateStorySummaries.length,
     homepage_semantic_collision_count: semanticCollisions.length,
     patch_phrases_found: patchPhrasesFound,
+    generic_phrases_found: genericPhrasesFound,
     summaries,
     issues,
     warnings

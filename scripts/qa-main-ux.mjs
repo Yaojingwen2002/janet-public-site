@@ -59,6 +59,7 @@ function main() {
   const edition = manifest[0] || '2026-05-15-v4';
   const content = readJson(`data/${edition}/content.json`, {});
   const summary = readJson(`data/${edition}/news-summary.json`, {});
+  const surfaceCheck = readJson('data/homepage-surface-copy-check.json', null);
   const indexHtml = read('index.html');
   const newsJs = read('scripts/news.js');
   const siteNav = read('scripts/site-nav.js');
@@ -68,6 +69,9 @@ function main() {
   const visuals = existsSync(resolve(ROOT, 'assets/news-visuals'))
     ? walk(resolve(ROOT, 'assets/news-visuals')).filter((file) => file.endsWith('.svg'))
     : [];
+
+  if (!surfaceCheck) issues.push('homepage surface copy check missing');
+  else if (surfaceCheck.qa_passed !== true) issues.push('homepage surface copy check failed');
 
   if ((indexHtml.match(/浏览晨报归档/g) || []).length > 0) issues.push('homepage still has static duplicate archive button');
   if (/查看运行状态|news-status\.html/.test(indexHtml)) issues.push('homepage main html still links automation status');

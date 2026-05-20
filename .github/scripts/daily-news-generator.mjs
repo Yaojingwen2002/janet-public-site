@@ -69,6 +69,23 @@ const FORBIDDEN_GENERIC_COPY = [
   '看是否进入默认工作流',
   '看产品落点是否落成具体产品'
 ];
+const FORBIDDEN_SURFACE_COPY = [
+  '开发者入口把开发流程收紧了',
+  '模型能力正在往开发、开源和研究的日常环节里挤',
+  '把智能体推到了台前',
+  '谁在抢入口',
+  '谁在补工具',
+  '不是热闹数量',
+  '进入真实使用场景',
+  '真实使用证据',
+  '先看谁能用起来',
+  '入口选择',
+  '日常环节里挤',
+  '有明确动作',
+  '先别喊革命',
+  '看它有没有真实用户和可复查结果',
+  '出现新进展'
+];
 const SECTION_DEFS = [
   { key: 'models', label: '模型与产品', categories: ['models'], min: 1, max: 4 },
   { key: 'agents', label: 'Agent 与工具', categories: ['agents', 'developer_tooling'], min: 1, max: 4 },
@@ -617,14 +634,19 @@ function titleEntityCandidates(title, source) {
   const sourceSet = sourceAliases(source);
   const candidates = [];
   const add = (value) => {
-    const normalized = String(value || '')
+    let normalized = String(value || '')
       .replace(/^(The|How|With|Would|Welcome to|Everything new in our|New ways to)\s+/i, '')
+      .replace(/^Introducing\s+/i, '')
+      .replace(/^Welcome\s+(?:to\s+)?/i, '')
+      .replace(/^Extending\s+/i, '')
+      .replace(/^Implementing\s+/i, '')
       .replace(/[,:;.!?]+$/g, '')
       .trim();
+    if (/^agentic gemini era$/i.test(normalized)) normalized = 'Gemini';
     if (!normalized || normalized.length < 3) return;
     const lower = normalized.toLowerCase();
     if (sourceSet.has(lower) || sourceSet.has(lower.replace(/\s+/g, ''))) return;
-    if (/^(from|with|using|this|that|how|why|here|what|when|where|new|the|and|for|at|in|on|to|of|is|are)$/i.test(normalized)) return;
+    if (/^(from|with|using|this|that|how|why|here|what|when|where|new|the|and|for|at|in|on|to|of|is|are|welcome|introducing|extending|implementing)$/i.test(normalized)) return;
     if (isGenericObject(normalized)) return;
     if (!candidates.includes(normalized)) candidates.push(normalized);
   };
@@ -834,7 +856,7 @@ function whyFromStoryFact(item, storyFact) {
   if (action === '融资') return `${audience}要看${object}：资金流向说明市场正在押注哪个具体痛点。`;
   if (action === '评测' || action === '榜单排名') return `${audience}要看${object}：公开评测能让能力比较少一点玄学，多一点可复查证据。`;
   if (action === '推出') return `${audience}要看${object}：新功能是否改变现有产品路径，而不是只增加发布会信息量。`;
-  return `${audience}要看${object}：${action}会影响它接下来能否进入真实使用场景。`;
+  return `${audience}要看${object}：${action}会改变具体接入方式、使用边界或采购判断。`;
 }
 
 function janetFromStoryFact(item, storyFact) {
@@ -848,7 +870,7 @@ function janetFromStoryFact(item, storyFact) {
   if (action === '融资') return `${object}拿到钱只是开场，接下来要证明它不是又一个安全 PPT。`;
   if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
   if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
-  return `${object}有明确动作，先别喊革命，看它有没有真实用户和可复查结果。`;
+  return `${object}这条要看细节，真正有用的部分藏在功能边界和接入门槛里。`;
 }
 
 function watchFromStoryFact(item, storyFact) {
@@ -864,7 +886,7 @@ function watchFromStoryFact(item, storyFact) {
   if (action === '诉讼') return `看${object}后续是否影响治理承诺。`;
   if (action === '评测' || action === '榜单排名') return `看${object}是否公开任务集和评分细则。`;
   if (action === '推出') return `看${object}是否给出可用入口和限制。`;
-  return `看${object}是否出现真实使用证据。`;
+  return `看${object}是否公布接口、限制或客户案例。`;
 }
 
 function copyFromStoryFact(item, storyFact) {
@@ -1290,70 +1312,112 @@ function fillTitlePattern(pattern, subject, verb, object) {
 }
 
 function titleForEdition(stories, rules, date) {
-  const lead = stories[0] || {};
-  const top = stories.slice(0, 5);
-  const sources = sourceNames(top, 4);
-  const hasOpenSource = stories.some((story) => story.category === 'open_source' || /hugging face|github/i.test(story.source || story.title || ''));
-  const hasResearch = stories.some((story) => story.category === 'research' || /arxiv|paper|benchmark/i.test(story.source || story.title || ''));
-  const hasTools = stories.some((story) => /api|sdk|agent|copilot|workflow|developer|tool/i.test(`${story.title} ${story.summary}`));
-  const hasModel = stories.some((story) => /openai|anthropic|google|deepmind|mistral|model|reasoning|multimodal/i.test(`${story.source} ${story.title} ${story.summary}`));
-  const subject = hasTools
-    ? '开发者入口'
-    : hasOpenSource
-      ? '开源模型'
-      : hasResearch
-        ? '研究侧'
-        : hasModel
-          ? '模型'
-          : 'AI 工位';
-  const object = hasTools
-    ? '开发流程'
-    : hasOpenSource
-      ? '开源战场'
-      : hasResearch
-        ? '评测短板'
-        : hasModel
-          ? '模型入口'
-          : '企业工作流';
-  const verb = hasTools ? '进工位' : hasOpenSource ? '补位' : hasResearch ? '换挡' : '抢入口';
-  const titleRules = rules.title_generation || {};
-  const patterns = titleRules.title_patterns || [];
-  const generated = patterns.map((pattern) => fillTitlePattern(pattern, subject, verb, object));
-  const concrete = [
-    lead.source ? `${chineseSourceName(lead.source)}把入口往前挪` : '',
-    sources.includes('OpenAI') ? 'OpenAI把开发流往前推' : '',
-    sources.includes('GitHub Blog') ? 'GitHub继续收开发入口' : '',
-    sources.includes('Hugging Face') ? '开源侧今天继续补位' : '',
-    hasResearch ? '论文先把短板照出来' : '',
-    `${subject}今天有实事`
-  ];
-  const candidates = [...generated, ...concrete]
+  const objects = concreteObjectsFor(stories, 4).map(displayObject);
+  const actions = concreteActionsFor(stories, 3);
+  const first = objects[0] || chineseSourceName(stories[0]?.source);
+  const second = objects[1] || objects[0] || date.replaceAll('-', '.');
+  const action = actions[0] || '更新';
+  const candidates = [
+    objects.length >= 2 ? `${first}和${second}都有新动作` : '',
+    objects.length >= 2 ? `${first}和${second}推近产品层` : '',
+    `${first}今天盯上${action}`,
+    `${first}这次看${action}`,
+    objects.length >= 2 ? `${first}牵出${second}的新变化` : '',
+    '今天的 AI 更新分散在几个具体产品里'
+  ]
     .filter(Boolean)
     .map((item) => String(item).replace(/\s+/g, '').trim());
   const forbidden = [...(rules.forbidden_frontend_phrases || []), '工具链又拧紧了', '公开源池晨报'];
-  const history = recentTitles(Number(titleRules.forbid_repeat_days || 7));
-  const maxLength = Number(titleRules.max_length_cn || 18);
+  const history = recentTitles(Number(rules.title_generation?.forbid_repeat_days || 7));
   const selected = candidates.find((item) => (
-    item.length <= maxLength + 6 &&
     !history.includes(item) &&
     !forbidden.some((phrase) => item.includes(phrase)) &&
+    !FORBIDDEN_SURFACE_COPY.some((phrase) => item.includes(phrase)) &&
     hasChinese(item)
   ));
   if (selected) return selected;
-  const suffix = sources[0] ? chineseSourceName(sources[0]) : date.replaceAll('-', '.');
-  const fallback = `${subject}换挡：${suffix}`;
+  const fallback = `${first}和${second}继续交出具体动作`;
   if (!history.includes(fallback)) return fallback;
-  return `${subject}换挡${date.slice(5).replace('-', '')}`;
+  return `今天 AI 新闻看${first}`;
 }
 
 function thesisForEdition(stories) {
-  const top = stories.slice(0, 5);
-  const sources = sourceNames(top, 5).join('、');
-  const verbs = top
-    .map((story) => story.editorial_signals?.[0]?.name)
-    .filter(Boolean);
-  const focus = verbs.includes('developer_tooling') ? '工具入口' : verbs.includes('open_source_release') ? '开源补位' : verbs.includes('research_signal') ? '研究信号' : '产品和研究';
-  return clamp(`今天窗口里，${sources || '公开源'}把${focus}摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。`, 140);
+  const objects = concreteObjectsFor(stories, 5).map(displayObject);
+  const actions = concreteActionsFor(stories, 4);
+  const sources = sourceNames(stories.slice(0, 5), 4).join('、');
+  const objectText = objects.slice(0, 4).join('、') || sources || '今天这几条具体产品';
+  const actionText = actions.slice(0, 3).join('、') || '功能边界、接入方式和评测方法';
+  return clamp(`今天值得看的对象是${objectText}：它们分别牵出${actionText}，重点不在声量，而在这些产品和评测会怎样改变具体使用路径。`, 150);
+}
+
+function displayObject(value) {
+  const text = String(value || '').trim();
+  const map = [
+    [/Amazon Bedrock AgentCore Memory/i, 'AgentCore Memory'],
+    [/Amazon Bedrock AgentCore/i, 'Bedrock AgentCore'],
+    [/Introducing OpenAI/i, 'OpenAI'],
+    [/agentic Gemini era/i, 'Gemini'],
+    [/Google Workspace/i, 'Workspace'],
+    [/Google Search|search box/i, 'Google 搜索框'],
+    [/Antigravity/i, 'Antigravity'],
+    [/Open Agent Leaderboard/i, '智能体榜单']
+  ];
+  for (const [pattern, replacement] of map) {
+    if (pattern.test(text)) return replacement;
+  }
+  return text.length > 20 ? text.slice(0, 20).trim() : text;
+}
+
+function concreteObjectsFor(stories, limit = 5) {
+  const objects = [];
+  for (const story of stories) {
+    const candidates = [
+      story.story_fact?.concrete_object,
+      ...(story.story_fact?.products || []),
+      ...(story.story_fact?.entities || []),
+      ...(story.story_facts || []).map((fact) => fact.value)
+    ];
+    for (const value of candidates) {
+      const text = String(value || '').trim();
+      if (!text || isGenericObject(text)) continue;
+      if (!objects.includes(text)) objects.push(text);
+      if (objects.length >= limit) return objects;
+    }
+  }
+  return objects;
+}
+
+function concreteActionsFor(stories, limit = 4) {
+  const actions = [];
+  for (const story of stories) {
+    const value = String(story.story_fact?.action || '').trim();
+    if (!value || isGenericAction(value)) continue;
+    if (!actions.includes(value)) actions.push(value);
+    if (actions.length >= limit) break;
+  }
+  return actions;
+}
+
+function buildDailyBrief(stories, modules, rules, date) {
+  const dailyTitle = titleForEdition(stories, rules, date);
+  const objects = concreteObjectsFor(stories, 5).map(displayObject);
+  const actions = concreteActionsFor(stories, 4);
+  const leadObject = objects[0] || chineseSourceName(stories[0]?.source);
+  const secondObject = objects[1] || objects[0] || '另一条具体产品线';
+  const theme = `${leadObject}牵出${secondObject}`;
+  const dailySummary = clamp(`今天的主线落在${objects.slice(0, 4).join('、') || leadObject}，看点是${actions.slice(0, 3).join('、') || '功能边界和接入方式'}，不是抽象趋势。`, 118);
+  const dailyJudgment = clamp(`Janet 判断：${leadObject}这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。`, 92);
+  const thesis = thesisForEdition(stories);
+  const intro = clamp(`${leadObject}先把今天的注意力拉住；${secondObject}补上另一条线索。今天先看这些具体产品怎么动。`, 110);
+  return {
+    daily_title: dailyTitle,
+    theme: theme === dailyTitle ? `${leadObject}今天给出具体线索` : theme,
+    daily_summary: dailySummary,
+    daily_judgment: dailyJudgment,
+    daily_thesis: thesis,
+    intro_text: intro,
+    module_count: modules.length
+  };
 }
 
 function signalMapForEdition(stories) {
@@ -1380,6 +1444,12 @@ function signalMapForEdition(stories) {
     if (signals.length >= 3) break;
   }
   return signals;
+}
+
+function signalLabelFor(signal, story) {
+  const object = story?.story_fact?.concrete_object || concreteObjectsFor([story], 1)[0] || signal.signal;
+  const action = story?.story_fact?.action || concreteActionsFor([story], 1)[0] || '变化';
+  return `${object}的${action}`;
 }
 
 function homepageStoryItem(role, story, visual) {
@@ -1421,10 +1491,10 @@ function makeFieldUnique(items, field, formatter) {
 }
 
 function ensureUniqueHomepageCopy(items) {
-  makeFieldUnique(items, 'summary', (item) => clamp(`这条聚焦「${item.title}」，和同屏其他新闻分工不同：它提供的是另一条具体产品或研究线索。`, 118));
-  makeFieldUnique(items, 'why_it_matters', (item) => clamp(`「${item.title}」会影响相关团队对这项能力的使用、评估或采购判断。`, 96));
-  makeFieldUnique(items, 'janet_take', (item) => clamp(`Janet 看这条「${item.title}」：重点在具体动作，不在发布词。`, 86));
-  makeFieldUnique(items, 'watch_next', (item) => clamp(`看「${item.title}」后续是否出现产品、代码或客户证据。`, 48));
+  makeFieldUnique(items, 'summary', (item) => clamp(`这条聚焦「${item.title}」，同屏里它提供另一组产品对象、评测方法或接入边界。`, 118));
+  makeFieldUnique(items, 'why_it_matters', (item) => clamp(`「${item.title}」会影响相关团队对接口、权限、评测或采购路径的判断。`, 96));
+  makeFieldUnique(items, 'janet_take', (item) => clamp(`Janet 看「${item.title}」：别看发布词，看对象、动作和限制条件。`, 86));
+  makeFieldUnique(items, 'watch_next', (item) => clamp(`看「${item.title}」是否公布接口、价格或评测细则。`, 48));
 }
 
 function ensureUniqueStoryCopy(stories) {
@@ -1432,9 +1502,9 @@ function ensureUniqueStoryCopy(stories) {
   makeFieldUnique(stories, 'title', (story) => story.zh_title || story.title);
   makeFieldUnique(stories, 'zh_summary', (story) => clamp(`${chineseSourceName(story.source)}这条讲的是「${story.zh_title || story.title}」：${story.original_title || story.raw_item?.original_title || ''}`.replace(/\s+/g, ' '), 120));
   makeFieldUnique(stories, 'summary', (story) => story.zh_summary || story.summary);
-  makeFieldUnique(stories, 'why_it_matters', (story) => clamp(`「${story.zh_title || story.title}」会影响相关团队对这项能力的使用、评估或采购判断。`, 90));
-  makeFieldUnique(stories, 'janet_take', (story) => clamp(`Janet 看「${story.zh_title || story.title}」：先看这条新闻里的对象和动作。`, 80));
-  makeFieldUnique(stories, 'watch_next', (story) => clamp(`看「${story.zh_title || story.title}」是否出现后续产品证据。`, 42));
+  makeFieldUnique(stories, 'why_it_matters', (story) => clamp(`「${story.zh_title || story.title}」会影响相关团队对接口、权限、评测或采购路径的判断。`, 90));
+  makeFieldUnique(stories, 'janet_take', (story) => clamp(`Janet 看「${story.zh_title || story.title}」：先看对象、动作和限制条件。`, 80));
+  makeFieldUnique(stories, 'watch_next', (story) => clamp(`看「${story.zh_title || story.title}」是否公布接口或评测细则。`, 42));
 }
 
 function buildHomepageAssembly(stories, date) {
@@ -1447,12 +1517,12 @@ function buildHomepageAssembly(stories, date) {
     used.add(story.id);
     return {
       ...signal,
-      label: signal.signal,
+      label: signalLabelFor(signal, story),
       summary: story.summary,
       story_id: story.id,
       story_title: story.title,
       source: story.source,
-      visual: writeNewsVisual(`${date}-signal-${index + 1}.svg`, signal.signal, story.source || 'Janet', story.category || 'models')
+      visual: writeNewsVisual(`${date}-signal-${index + 1}.svg`, signalLabelFor(signal, story), story.source || 'Janet', story.category || 'models')
     };
   }).filter(Boolean);
 
@@ -1476,26 +1546,31 @@ function buildHomepageAssembly(stories, date) {
 
 function moduleTitleFor(sectionKey, stories) {
   const first = stories[0] || {};
-  const facts = (first.story_facts || []).map((fact) => fact.value).filter(Boolean);
-  if (sectionKey === 'agents') return facts[0] ? `${facts[0]} 进入开发链路` : '开发工具进入任务链路';
-  if (sectionKey === 'open_source') return facts[0] ? `${facts[0]} 带出开源工具线` : '开源工具链继续补位';
-  if (sectionKey === 'business') return facts[0] ? `${facts[0]} 指向商业落地` : '企业入口与商业落地';
-  if (sectionKey === 'models') return facts[0] ? `${facts[0]} 改写产品能力` : '模型能力进入产品层';
-  if (sectionKey === 'creator_opportunity') return facts[0] ? `${facts[0]} 给创作工具添变量` : '创作者工具出现新变量';
-  if (sectionKey === 'china_perspective') return '中国视角里的 AI 动向';
-  return '更多值得留意的 AI 动态';
+  const objects = concreteObjectsFor(stories, 2);
+  const actions = concreteActionsFor(stories, 2);
+  const object = objects[0] || first.title || chineseSourceName(first.source);
+  const second = objects[1] || actions[0] || '具体能力';
+  if (sectionKey === 'agents') return `${object}把${second}接进任务链路`;
+  if (sectionKey === 'open_source') return `${object}把${second}放到可复查路径里`;
+  if (sectionKey === 'business') return `${object}牵出${second}的商业边界`;
+  if (sectionKey === 'models') return `${object}把${second}落到产品层`;
+  if (sectionKey === 'creator_opportunity') return `${object}改写${second}的创作流程`;
+  if (sectionKey === 'china_perspective') return `${object}给中国视角补上${second}`;
+  return `${object}补充今天的${second}`;
 }
 
 function moduleSummaryFor(sectionKey, stories) {
   const sources = sourceNames(stories, 3).join('、') || '多个来源';
-  const facts = [...new Set(stories.flatMap((story) => (story.story_facts || []).map((fact) => fact.value)))].slice(0, 3);
-  const factText = facts.length ? `，具体对象包括${facts.join('、')}` : '';
-  if (sectionKey === 'agents') return `${sources}显示开发入口继续被 AI 工具占据${factText}，重点看企业和团队是否真的接入。`;
-  if (sectionKey === 'open_source') return `${sources}把开源工具和可复现路径摆到台前${factText}，适合观察社区接力速度。`;
-  if (sectionKey === 'business') return `${sources}集中在商业部署、客户入口和组织变化${factText}，不是单纯发布口号。`;
-  if (sectionKey === 'models') return `${sources}的信号落在模型能力与产品接口${factText}，需要看真实可用范围。`;
-  if (sectionKey === 'creator_opportunity') return `${sources}给创作者和内容团队提供了新的工具线索${factText}，关键是成本是否下降。`;
-  return `${sources}补充了今日 AI 动态的侧面信息${factText}，放在主线之外一起观察。`;
+  const objects = concreteObjectsFor(stories, 3);
+  const actions = concreteActionsFor(stories, 3);
+  const objectText = objects.join('、') || stories[0]?.title || sources;
+  const actionText = actions.join('、') || '接入方式';
+  if (sectionKey === 'agents') return `${sources}这组集中在${objectText}，看点是${actionText}怎样影响开发和平台团队。`;
+  if (sectionKey === 'open_source') return `${sources}这组围绕${objectText}，重点是${actionText}能不能被复现、比较或接入。`;
+  if (sectionKey === 'business') return `${sources}这组把${objectText}推到商业语境里，关键是${actionText}会不会改变客户路径。`;
+  if (sectionKey === 'models') return `${sources}这组看${objectText}，重点是${actionText}是否进入可用产品。`;
+  if (sectionKey === 'creator_opportunity') return `${sources}这组看${objectText}，关键是${actionText}能不能降低创作成本。`;
+  return `${sources}这组补充${objectText}，把${actionText}放在主线之外观察。`;
 }
 
 function buildModules(sections) {
@@ -1509,21 +1584,22 @@ function buildModules(sections) {
     }));
 }
 
-function buildCover(stories, modules, dailyTitle) {
+function buildCover(stories, modules, dailyBrief) {
   const lead = stories[0] || {};
-  const facts = (lead.story_facts || []).map((fact) => fact.value);
-  const primaryFact = facts[0] || chineseSourceName(lead.source);
-  const coverTitle = facts.includes('Codex') && facts.includes('Dell')
+  const objects = concreteObjectsFor([lead], 2);
+  const primaryFact = objects[0] || chineseSourceName(lead.source);
+  const leadAction = lead.story_fact?.action || concreteActionsFor([lead], 1)[0] || '具体动作';
+  const coverTitle = objects.includes('Codex') && objects.includes('Dell')
     ? 'Codex 开始进企业内网'
-    : `${primaryFact} 成为今天的第一信号`;
-  const coverSummary = facts.includes('Codex') && facts.includes('Dell')
+    : `${primaryFact}把${leadAction}摆到封面`;
+  const coverSummary = objects.includes('Codex') && objects.includes('Dell')
     ? '今天的主线不是模型参数，而是 OpenAI 与戴尔把 Codex 推进混合和本地企业环境，AI 编程开始面对真实采购和权限问题。'
-    : `今天的封面围绕${primaryFact}展开，它把${modules[0]?.module_title || 'AI 产品变化'}推到更具体的位置。`;
+    : `${lead.source || '来源'}这条围绕${primaryFact}的${leadAction}展开，影响的是${lead.story_fact?.audience || '相关使用者'}对功能边界和接入方式的判断。`;
   return {
-    daily_title: dailyTitle,
-    cover_title: coverTitle,
+    daily_title: dailyBrief.daily_title,
+    cover_title: coverTitle === dailyBrief.daily_title ? `${primaryFact}成为封面线索` : coverTitle,
     cover_summary: coverSummary,
-    daily_judgment: `Janet 判断：今天值得看的不是热词数量，而是谁把 AI 放进了更难撤回的工作入口。`,
+    daily_judgment: dailyBrief.daily_judgment,
     lead_story_id: lead.id
   };
 }
@@ -1531,17 +1607,11 @@ function buildCover(stories, modules, dailyTitle) {
 function whyItMatters(story) {
   const brief = storyBrief(story);
   if (brief?.why) return brief.why;
-  const text = `${story.original_title || ''} ${story.title} ${story.original_summary || ''} ${story.summary} ${story.source}`.toLowerCase();
-  const audience = /api|sdk|github|copilot|developer|workflow|agent/.test(text)
-    ? '开发者'
-    : /arxiv|paper|benchmark|training|inference|alignment|evaluation/.test(text)
-      ? '研究者'
-      : /hugging face|open source|dataset|weights|repository/.test(text)
-        ? '开源社区'
-        : /enterprise|pricing|customer|funding|partnership|business/.test(text)
-          ? '企业'
-          : '创作者和产品团队';
-  return clamp(`${audience}要看这条：它可能改变选型、评估或交付方式，关键是是否有清晰功能、价格或开放边界。`, 90);
+  const fact = story.story_fact || buildStoryFact(story);
+  const object = fact.concrete_object || normalizeTopic(story);
+  const action = fact.action || '具体功能';
+  const audience = fact.audience || '相关团队';
+  return clamp(`${audience}要看${object}：${action}会影响接口、权限、评测或采购路径。`, 90);
 }
 
 function janetTake(story) {
@@ -1565,7 +1635,7 @@ function janetTake(story) {
   if (/enterprise|pricing|funding|partnership|customer/.test(text)) {
     return '商业新闻的看点是钱和入口流向谁，口号先放一边。';
   }
-  return `${source}这条不必喊口号，先看它会不会把${topic}变成可用入口。`;
+  return `${topic}这条要看${source}给出的对象、动作和限制条件。`;
 }
 
 function watchNext(story) {
@@ -1575,13 +1645,13 @@ function watchNext(story) {
   const source = chineseSourceName(story.source);
   const topic = normalizeTopic(story);
   if (/openai|model|reasoning|multimodal/.test(text)) return `看${source}是否开放 API、价格和企业权限。`;
-  if (/github|codex|copilot|api|sdk|developer|workflow|agent/.test(text)) return `看${topic}是否进入默认开发工作流。`;
+  if (/github|codex|copilot|api|sdk|developer|workflow|agent/.test(text)) return `看${topic}是否公布接口、权限或接入限制。`;
   if (/hugging face|open source|weights|dataset/.test(text)) return `看${source}社区复现速度和许可边界。`;
   if (/arxiv|paper|benchmark/.test(text)) return '看这篇论文有没有代码和基准跟进。';
   if (/creator|video|image|audio|design|media|content/.test(text)) return '看创作者工具是否真正降低制作成本。';
   if (/pricing|enterprise|customer|partnership|funding|trial|lawsuit|finance/.test(text)) return `看${source}的客户、定价和入口变化。`;
-  if (/apple|siri|chatbot|assistant|drive-thru|automotive/.test(text)) return `看${source}是否把${topic}做成默认入口。`;
-  return `看${source}能否把${topic}落成具体产品。`;
+  if (/apple|siri|chatbot|assistant|drive-thru|automotive/.test(text)) return `看${topic}是否公布隐私、支付或人工接管规则。`;
+  return `看${topic}是否给出接口、价格或评测细则。`;
 }
 
 function uniqueWatchNext(story, used) {
@@ -1590,8 +1660,8 @@ function uniqueWatchNext(story, used) {
   const candidates = [
     story.watch_next,
     `看「${story.title}」是否公布使用范围。`,
-    `看「${story.title}」是否出现真实案例。`,
-    `看「${story.title}」是否给出可复查证据。`
+    `看「${story.title}」是否公布接口限制。`,
+    `看「${story.title}」是否给出评测细则。`
   ];
   let selected = candidates.find((item) => item && !used.has(item));
   if (!selected) selected = `看「${story.title}」后续证据 ${used.size + 1}。`;
@@ -1810,13 +1880,28 @@ function buildContent(template, included, date, editionType, rules) {
     sections[section].items.push(story);
   }
 
-  const theme = titleForEdition(stories, rules, date);
   const homepageAssembly = buildHomepageAssembly(stories, date);
   const signalMap = homepageAssembly.signalMap;
   const compactNews = homepageAssembly.compactNews;
   homepageItems.push(...homepageAssembly.homepageItems);
   const modules = buildModules(sections);
-  const cover = buildCover(stories, modules, theme);
+  const dailyBrief = buildDailyBrief(stories, modules, rules, date);
+  const cover = buildCover(stories, modules, dailyBrief);
+  const surfaceText = JSON.stringify({
+    title: dailyBrief.daily_title,
+    theme: dailyBrief.theme,
+    intro_text: dailyBrief.intro_text,
+    daily_thesis: dailyBrief.daily_thesis,
+    daily_brief: dailyBrief,
+    cover,
+    modules,
+    signal_map: signalMap,
+    compact_news: compactNews,
+    homepage_items: homepageItems
+  });
+  for (const phrase of FORBIDDEN_SURFACE_COPY) {
+    if (surfaceText.includes(phrase)) throw new Error(`forbidden_surface_copy:${phrase}`);
+  }
   const homepageIds = new Set(homepageItems.map((item) => item.story_id).filter(Boolean));
   for (const story of stories) {
     if (!homepageIds.has(story.id)) {
@@ -1834,8 +1919,9 @@ function buildContent(template, included, date, editionType, rules) {
     ...template,
     date,
     vol: template.vol || '0000',
-    theme,
-    title: theme,
+    theme: dailyBrief.theme,
+    title: dailyBrief.daily_title,
+    daily_brief: dailyBrief,
     raw_items: stories.map((story) => story.raw_item),
     stories,
     modules,
@@ -1868,8 +1954,8 @@ function buildContent(template, included, date, editionType, rules) {
         raw_item: story.raw_item
       }))
     },
-    intro_text: publicIntroForEdition(stories),
-    daily_thesis: thesisForEdition(stories),
+    intro_text: dailyBrief.intro_text,
+    daily_thesis: dailyBrief.daily_thesis,
     signal_map: signalMap,
     lead_story_id: stories[0].id,
     sections,
@@ -1967,9 +2053,13 @@ function buildSummary(template, content, editionId, editionType) {
     vol: content.vol,
     brand: content.brand,
     theme: content.theme,
-    title: content.theme,
+    title: content.title || content.cover?.daily_title || content.theme,
     daily_title: content.cover?.daily_title || content.theme,
-    daily_brief: content.cover?.cover_summary || content.daily_thesis,
+    daily_brief: content.daily_brief || {
+      daily_title: content.cover?.daily_title || content.title || content.theme,
+      daily_summary: content.cover?.cover_summary || content.daily_thesis,
+      daily_judgment: content.cover?.daily_judgment || ''
+    },
     edition_type: editionType,
     item_count: (content.edition_items || Object.values(content.sections).flatMap((section) => section.items || [])).length,
     edition_items_count: (content.edition_items || []).length,

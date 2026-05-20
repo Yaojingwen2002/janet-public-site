@@ -177,7 +177,7 @@
     if (intro && !isEngineeringCopy(intro)) return intro;
     const source = lead.source || '今天的几个关键来源';
     const title = lead.title || 'AI 新闻';
-    return source + ' 把 "' + title + '" 推到台前。今天先看谁在抢入口、谁在补工具、谁只是发声明。';
+    return source + ' 把 "' + title + '" 放到首页。先看这条新闻里的对象、动作和限制条件。';
   }
 
   function renderV4HomepageNews(bundle) {

@@ -36,9 +36,6 @@ jobs:
       - name: Audit source coverage
         run: node .github/scripts/source-coverage-audit.mjs
 
-      - name: QA generated news
-        run: node .github/scripts/qa-daily-news-output.mjs
-
       - name: QA live source stability
         run: node scripts/qa-live-source-stability.mjs
 
@@ -65,6 +62,8 @@ jobs:
             data/homepage-assembly-check.json
             data/homepage-surface-copy-check.json
             data/news-visuals-check.json
+            data/public-reader-copy-check.json
+            data/public-reader-copy-audit.json
             data/daily-news-run-status.json
             data/2026-*-v4/news-summary.json
             data/2026-*-v4/content.json
@@ -79,6 +78,12 @@ jobs:
 
       - name: QA news visuals
         run: node scripts/qa-news-visuals.mjs
+
+      - name: QA public reader copy
+        run: node scripts/qa-public-reader-copy.mjs
+
+      - name: QA generated news
+        run: node .github/scripts/qa-daily-news-output.mjs
 
       - name: QA site polish
         run: node scripts/qa-site-polish.mjs

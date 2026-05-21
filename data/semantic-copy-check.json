@@ -5,7 +5,7 @@
   "latest_edition_id": "2026-05-20-v4",
   "checked_file_path": "data/2026-05-20-v4/content.json",
   "homepage_items_checked": 10,
-  "stories_checked": 15,
+  "stories_checked": 12,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -52,6 +52,27 @@
         {
           "field": "janet_take",
           "reason": "near_duplicate_warning",
+          "similarity": 0.625,
+          "item_a": {
+            "story_id": "openai-news-cd25fdf565bc",
+            "title": "Education出现合作新进展",
+            "source": "OpenAI",
+            "category": "models",
+            "original_title": "The next phase of OpenAI’s Education for Countries",
+            "text": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          },
+          "item_b": {
+            "story_id": "techcrunch-ai-cf4394e143ac",
+            "title": "AI design接入外部摄像头识别",
+            "source": "TechCrunch AI",
+            "category": "business",
+            "original_title": "Google just declared itself a contender in AI design at IO 2026",
+            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          }
+        },
+        {
+          "field": "janet_take",
+          "reason": "near_duplicate_warning",
           "similarity": 0.658,
           "item_a": {
             "story_id": "openai-news-e8a8c4af6836",
@@ -59,7 +80,7 @@
             "source": "OpenAI",
             "category": "models",
             "original_title": "Introducing OpenAI for Singapore",
-            "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           },
           "item_b": {
             "story_id": "google-ai-blog-f3b06e3adbce",
@@ -67,7 +88,7 @@
             "source": "Google AI",
             "category": "models",
             "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-            "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           }
         },
         {
@@ -80,7 +101,7 @@
             "source": "OpenAI",
             "category": "models",
             "original_title": "Introducing OpenAI for Singapore",
-            "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           },
           "item_b": {
             "story_id": "techcrunch-ai-cf4394e143ac",
@@ -88,7 +109,7 @@
             "source": "TechCrunch AI",
             "category": "business",
             "original_title": "Google just declared itself a contender in AI design at IO 2026",
-            "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           }
         },
         {
@@ -101,7 +122,7 @@
             "source": "Google AI",
             "category": "models",
             "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-            "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           },
           "item_b": {
             "story_id": "techcrunch-ai-cf4394e143ac",
@@ -109,7 +130,7 @@
             "source": "TechCrunch AI",
             "category": "business",
             "original_title": "Google just declared itself a contender in AI design at IO 2026",
-            "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           }
         }
       ]
@@ -120,14 +141,14 @@
         {
           "field": "watch_next",
           "reason": "near_duplicate_warning",
-          "similarity": 0.675,
+          "similarity": 0.7,
           "item_a": {
             "story_id": "aws-machine-learning-63bc5a915489",
             "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
             "source": "AWS Machine Learning Blog",
             "category": "business",
             "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-            "text": "看Amazon Bedrock AgentCore Memory是否公布接口、..."
+            "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
           },
           "item_b": {
             "story_id": "aws-machine-learning-d11174ce5c3d",
@@ -135,7 +156,7 @@
             "source": "AWS Machine Learning Blog",
             "category": "business",
             "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-            "text": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。"
+            "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
           }
         }
       ]
@@ -161,22 +182,22 @@
     }
   },
   "max_summary_similarity": {
-    "score": 0.463,
+    "score": 0.475,
     "item_a": {
-      "story_id": "aws-machine-learning-63bc5a915489",
-      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-      "text": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore Memory，动作是记忆扩展；原文线索是「Extending conversational memory in Kiro CLI using Amazo...."
+      "story_id": "openai-news-cd25fdf565bc",
+      "title": "Education出现合作新进展",
+      "source": "OpenAI",
+      "category": "models",
+      "original_title": "The next phase of OpenAI’s Education for Countries",
+      "text": "OpenAI把Education带到相关产品团队和使用者面前，重点看合作怎样改变使用路径和产品边界。"
     },
     "item_b": {
-      "story_id": "aws-machine-learning-d11174ce5c3d",
-      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-      "text": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore，动作是工具调用；原文线索是「Implementing programmatic tool calling on Amazon Bedrock」。"
+      "story_id": "openai-news-e8a8c4af6836",
+      "title": "Singapore出现合作新进展",
+      "source": "OpenAI",
+      "category": "models",
+      "original_title": "Introducing OpenAI for Singapore",
+      "text": "OpenAI把Singapore带到企业团队和投资者面前，重点看合作怎样改变使用路径和产品边界。"
     }
   },
   "max_why_similarity": {
@@ -206,7 +227,7 @@
       "source": "OpenAI",
       "category": "models",
       "original_title": "Introducing OpenAI for Singapore",
-      "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+      "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     },
     "item_b": {
       "story_id": "google-ai-blog-f3b06e3adbce",
@@ -214,18 +235,18 @@
       "source": "Google AI",
       "category": "models",
       "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-      "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+      "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     }
   },
   "max_watch_next_similarity": {
-    "score": 0.675,
+    "score": 0.7,
     "item_a": {
       "story_id": "aws-machine-learning-63bc5a915489",
       "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-      "text": "看Amazon Bedrock AgentCore Memory是否公布接口、..."
+      "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
     },
     "item_b": {
       "story_id": "aws-machine-learning-d11174ce5c3d",
@@ -233,7 +254,7 @@
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-      "text": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。"
+      "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
     }
   },
   "forbidden_patch_phrases_found": [],
@@ -265,6 +286,27 @@
     {
       "field": "janet_take",
       "reason": "near_duplicate_warning",
+      "similarity": 0.625,
+      "item_a": {
+        "story_id": "openai-news-cd25fdf565bc",
+        "title": "Education出现合作新进展",
+        "source": "OpenAI",
+        "category": "models",
+        "original_title": "The next phase of OpenAI’s Education for Countries",
+        "text": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      },
+      "item_b": {
+        "story_id": "techcrunch-ai-cf4394e143ac",
+        "title": "AI design接入外部摄像头识别",
+        "source": "TechCrunch AI",
+        "category": "business",
+        "original_title": "Google just declared itself a contender in AI design at IO 2026",
+        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      }
+    },
+    {
+      "field": "janet_take",
+      "reason": "near_duplicate_warning",
       "similarity": 0.658,
       "item_a": {
         "story_id": "openai-news-e8a8c4af6836",
@@ -272,7 +314,7 @@
         "source": "OpenAI",
         "category": "models",
         "original_title": "Introducing OpenAI for Singapore",
-        "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       },
       "item_b": {
         "story_id": "google-ai-blog-f3b06e3adbce",
@@ -280,7 +322,7 @@
         "source": "Google AI",
         "category": "models",
         "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-        "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       }
     },
     {
@@ -293,7 +335,7 @@
         "source": "OpenAI",
         "category": "models",
         "original_title": "Introducing OpenAI for Singapore",
-        "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       },
       "item_b": {
         "story_id": "techcrunch-ai-cf4394e143ac",
@@ -301,7 +343,7 @@
         "source": "TechCrunch AI",
         "category": "business",
         "original_title": "Google just declared itself a contender in AI design at IO 2026",
-        "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       }
     },
     {
@@ -314,7 +356,7 @@
         "source": "Google AI",
         "category": "models",
         "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-        "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       },
       "item_b": {
         "story_id": "techcrunch-ai-cf4394e143ac",
@@ -322,20 +364,20 @@
         "source": "TechCrunch AI",
         "category": "business",
         "original_title": "Google just declared itself a contender in AI design at IO 2026",
-        "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       }
     },
     {
       "field": "watch_next",
       "reason": "near_duplicate_warning",
-      "similarity": 0.675,
+      "similarity": 0.7,
       "item_a": {
         "story_id": "aws-machine-learning-63bc5a915489",
         "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
         "source": "AWS Machine Learning Blog",
         "category": "business",
         "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-        "text": "看Amazon Bedrock AgentCore Memory是否公布接口、..."
+        "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
       },
       "item_b": {
         "story_id": "aws-machine-learning-d11174ce5c3d",
@@ -343,7 +385,7 @@
         "source": "AWS Machine Learning Blog",
         "category": "business",
         "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-        "text": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。"
+        "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
       }
     }
   ],

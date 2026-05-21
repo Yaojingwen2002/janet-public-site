@@ -61,6 +61,7 @@ function main() {
   const summary = readJson(`data/${edition}/news-summary.json`, {});
   const surfaceCheck = readJson('data/homepage-surface-copy-check.json', null);
   const visualCheck = readJson('data/news-visuals-check.json', null);
+  const publicReaderCheck = readJson('data/public-reader-copy-check.json', null);
   const indexHtml = read('index.html');
   const newsJs = read('scripts/news.js');
   const siteNav = read('scripts/site-nav.js');
@@ -73,6 +74,8 @@ function main() {
 
   if (!surfaceCheck) issues.push('homepage surface copy check missing');
   else if (surfaceCheck.qa_passed !== true) issues.push('homepage surface copy check failed');
+  if (!publicReaderCheck) issues.push('public reader copy check missing');
+  else if (publicReaderCheck.qa_passed !== true) issues.push('public reader copy check failed');
   if (!visualCheck) issues.push('news visuals check missing');
   else {
     if (visualCheck.qa_passed !== true) issues.push('news visuals check failed');

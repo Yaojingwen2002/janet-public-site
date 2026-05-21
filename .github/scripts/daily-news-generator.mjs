@@ -850,10 +850,11 @@ function summaryFromStoryFact(item, storyFact) {
   const object = storyFact.concrete_object;
   const action = storyFact.action;
   const source = chineseSourceName(item.source);
-  const original = clamp(storyFact.original_title || item.title || '', 58);
-  if (action === '搜索改版') return `${source}报道的重点是${object}：搜索正在从“输入关键词”转向更主动的 AI 入口，原文线索是「${original}」。`;
+  if (action === '搜索改版') return `${source}把${object}推到搜索入口前台，搜索正在从关键词输入转向更主动的 AI 任务入口。`;
   if (action === '开发工具升级') return `${source}把${object}放在开发工具语境里，关键不是概念，而是 CLI、编码流程和实际接入方式是否变顺。`;
-  if (action === '智能体能力') return `${source}这条围绕${object}展开，重点看它是否把智能体从演示带到更具体的任务入口。`;
+  if (action === '记忆扩展') return `${source}在${object}里扩展记忆能力，说明智能体的长期上下文正在从概念变成开发者可调用的基础能力。`;
+  if (action === '工具调用') return `${source}让${object}更稳定地调用外部工具，重点是智能体能否按流程执行任务，而不是停在聊天式回答。`;
+  if (action === '智能体能力') return `${source}把${object}放进智能体场景，重点是它能否从演示走向连续任务和真实产品入口。`;
   if (action === '购物代理') return `${source}写到${object}，意思是 AI 不只推荐商品，还可能进入跨站购物流程，风险和便利都会一起出现。`;
   if (action === '订阅调整') return `${source}这条指向${object}的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。`;
   if (action === '生成') return `${source}把${object}放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。`;
@@ -862,9 +863,9 @@ function summaryFromStoryFact(item, storyFact) {
   if (action === '评测' || action === '榜单排名') return `${source}把${object}放进评测语境，重点是任务集、评分方法和结果是否经得起复现。`;
   if (action === '视觉识别') return `${source}提到${object}的视觉识别能力，真正要看的是它在真实环境里能否稳定读懂场景。`;
   if (action === '设计工具') return `${source}把${object}推到设计工具层面，关键是它能否改变原型、素材和协作流程。`;
-  if (action === '团队变动') return `${source}这条围绕${object}的人才流动展开，说明前沿模型团队仍在争夺训练和研究经验。`;
-  if (action === '推出') return `${source}报道${object}的新功能或版本，原文线索是「${original}」，重点看它具体补上了哪一段能力。`;
-  return `${source}这条新闻的具体对象是${object}，动作是${action}；原文线索是「${original}」。`;
+  if (action === '团队变动') return `${source}把${object}的人才流动放到前沿模型竞争里看，训练经验和研究判断仍是稀缺资源。`;
+  if (action === '推出') return `${source}报道${object}的新功能或版本，重点看它补上哪段能力、面向谁开放。`;
+  return `${source}把${object}带到${storyFact.audience || '相关使用者'}面前，重点看${action}怎样改变使用路径和产品边界。`;
 }
 
 function whyFromStoryFact(item, storyFact) {
@@ -893,7 +894,7 @@ function janetFromStoryFact(item, storyFact) {
   if (action === '融资') return `${object}拿到钱只是开场，接下来要证明它不是又一个安全 PPT。`;
   if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
   if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
-  return `${object}这条要看细节，真正有用的部分藏在功能边界和接入门槛里。`;
+  return `${object}值得看，因为它把发布词落到了具体入口、权限和使用门槛上。`;
 }
 
 function watchFromStoryFact(item, storyFact) {
@@ -909,7 +910,7 @@ function watchFromStoryFact(item, storyFact) {
   if (action === '诉讼') return `看${object}后续是否影响治理承诺。`;
   if (action === '评测' || action === '榜单排名') return `看${object}是否公开任务集和评分细则。`;
   if (action === '推出') return `看${object}是否给出可用入口和限制。`;
-  return `看${object}是否公布接口、限制或客户案例。`;
+  return `看${object}后续是否公布可用入口、权限范围和真实案例。`;
 }
 
 function copyFromStoryFact(item, storyFact) {
@@ -1202,7 +1203,7 @@ function makeChineseTitle(item) {
   if (/copilot/.test(text)) return `${source} 继续把 Copilot 往工作流里塞`;
   if (/hugging face|open source|weights|dataset/.test(text)) return `${source} 放出开源信号，社区有活干了`;
   if (/arxiv|paper|benchmark/.test(text)) return `${source} 新论文冒头，先看能否复现`;
-  if (/api|sdk|developer|workflow|agent/.test(text)) return `${source}更新${topic}，先看谁能用起来`;
+  if (/api|sdk|developer|workflow|agent/.test(text)) return `${source}更新${topic}，看入口和权限`;
   return `${source}追踪${topic}，${verb}`;
 }
 
@@ -1216,7 +1217,7 @@ function makeChineseSummary(item) {
     return `${source} 这条更像服务运行记录，不适合作为头条，但可以帮助判断工具稳定性和平台状态。`;
   }
   if (/codex/.test(text)) {
-    return `${source} 这条围绕 Codex 和软件开发展开，重点是智能体不再只做演示，而是被推向真实工程团队。`;
+    return `${source}把 Codex 放进软件开发现场，重点是智能体不再只做演示，而是被推向真实工程团队。`;
   }
   if (/api|sdk|developer|workflow|copilot|agent/.test(text)) {
     return `${source}这条把 AI 功能放到具体产品或流程里，重点看它影响哪类使用者，以及是否带来可验证的功能变化。`;
@@ -1476,12 +1477,16 @@ function signalLabelFor(signal, story) {
 }
 
 function homepageStoryItem(role, story, visual) {
+  const url = story?.url || story?.source_url || story?.external_url || '';
   return {
     role,
     story_id: story?.id || '',
     title: story?.title || '',
     source: story?.source || '',
     category: story?.category || '',
+    url,
+    source_url: story?.source_url || url,
+    external_url: story?.external_url || url,
     summary: story?.summary || '',
     why_it_matters: story?.why_it_matters || '',
     janet_take: story?.janet_take || '',
@@ -1545,6 +1550,9 @@ function buildHomepageAssembly(stories, date) {
       story_id: story.id,
       story_title: story.title,
       source: story.source,
+      url: story.url || story.source_url || story.external_url || '',
+      source_url: story.source_url || story.url || story.external_url || '',
+      external_url: story.external_url || story.url || story.source_url || '',
       visual: story.visual
     };
   }).filter(Boolean);
@@ -1617,7 +1625,7 @@ function buildCover(stories, modules, dailyBrief) {
     : `${primaryFact}把${leadAction}摆到封面`;
   const coverSummary = objects.includes('Codex') && objects.includes('Dell')
     ? '今天的主线不是模型参数，而是 OpenAI 与戴尔把 Codex 推进混合和本地企业环境，AI 编程开始面对真实采购和权限问题。'
-    : `${lead.source || '来源'}这条围绕${primaryFact}的${leadAction}展开，影响的是${lead.story_fact?.audience || '相关使用者'}对功能边界和接入方式的判断。`;
+    : `${lead.source || '来源'}把${primaryFact}的${leadAction}放到封面位置，影响${lead.story_fact?.audience || '相关使用者'}对功能边界和接入方式的判断。`;
   return {
     daily_title: dailyBrief.daily_title,
     cover_title: coverTitle === dailyBrief.daily_title ? `${primaryFact}成为封面线索` : coverTitle,
@@ -2118,6 +2126,8 @@ function storyToPublicItem(item) {
     title: zh_title,
     original_title: clamp(item.title, 140),
     url: item.url,
+    source_url: item.url,
+    external_url: item.url,
     source: item.source,
     source_type: sourceType(item.source),
     source_rank: item.source_rank,
@@ -2344,9 +2354,21 @@ function visualAlt(value, fallback = '新闻视觉') {
   return value.alt || fallback;
 }
 
+function externalHref(value) {
+  const url = String(value || '').trim();
+  if (!/^https?:\/\//.test(url)) return '';
+  return escapeHtml(url);
+}
+
+function externalAttrs(value) {
+  const href = externalHref(value);
+  return href ? ` href="${href}" target="_blank" rel="noopener noreferrer"` : '';
+}
+
 function renderHtml(content) {
   const allItems = Object.values(content.sections).flatMap((section) => section.items || []);
   const lead = content.sections.lead_story.items[0] || {};
+  const leadAttrs = externalAttrs(lead.url || lead.source_url || lead.external_url);
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -2363,7 +2385,9 @@ function renderHtml(content) {
     small,p{color:rgba(240,240,240,.72);line-height:1.75}
     .visual{width:100%;border-radius:22px;border:1px solid rgba(255,255,255,.1);margin:24px 0}
     .signal{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .card{border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;background:rgba(255,255,255,.025)}
+    .card{display:block;color:inherit;text-decoration:none;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;background:rgba(255,255,255,.025)}
+    .card:hover,.lead-link:hover{border-color:rgba(24,226,153,.36);transform:translateY(-2px)}
+    .lead-link{display:block;color:inherit;text-decoration:none}
   </style>
 </head>
 <body>
@@ -2372,22 +2396,22 @@ function renderHtml(content) {
   <h1>${escapeHtml(content.theme)}</h1>
   <p>${escapeHtml(content.intro_text)}</p>
   <p>${escapeHtml(content.daily_thesis)}</p>
-  ${visualSrc(lead.visual) ? `<img class="visual" src="../../${escapeHtml(visualSrc(lead.visual))}" alt="${escapeHtml(visualAlt(lead.visual, lead.title))}">` : ''}
+  ${visualSrc(lead.visual) ? `<a class="lead-link"${leadAttrs}><img class="visual" src="../../${escapeHtml(visualSrc(lead.visual))}" alt="${escapeHtml(visualAlt(lead.visual, lead.title))}"></a>` : ''}
   <section>
     <div class="k">今日三条主线</div>
-    <div class="signal">${content.signal_map.map((item) => `<div class="card">${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.label || item.signal))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></div>`).join('')}</div>
+    <div class="signal">${content.signal_map.map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.label || item.signal))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></a>`).join('')}</div>
   </section>
   <section>
     <div class="k">今日封面</div>
-    <h2>${escapeHtml(lead.title || '')}</h2>
+    <h2>${leadAttrs ? `<a${leadAttrs}>${escapeHtml(lead.title || '')}</a>` : escapeHtml(lead.title || '')}</h2>
     ${lead.original_title ? `<small>原文：${escapeHtml(lead.original_title)}</small>` : ''}
     <p>${escapeHtml(lead.summary || '')}</p>
   </section>
   <section>
     <div class="k">今日更多</div>
-    <div class="signal">${(content.compact_news || []).map((item) => `<div class="card">${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.title))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></div>`).join('')}</div>
+    <div class="signal">${(content.compact_news || []).map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.title))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></a>`).join('')}</div>
   </section>
-  ${Object.entries(content.sections).filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0).map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a href="${escapeHtml(item.url)}">原文</a></article>`).join('')}</section>`).join('')}
+  ${Object.entries(content.sections).filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0).map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${externalAttrs(item.url || item.source_url || item.external_url) ? `<a${externalAttrs(item.url || item.source_url || item.external_url)}>${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a${externalAttrs(item.url || item.source_url || item.external_url)}>原文</a></article>`).join('')}</section>`).join('')}
   <section>
     <div class="k">接下来观察</div>
     <ul>${content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>

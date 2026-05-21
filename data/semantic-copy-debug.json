@@ -5,7 +5,7 @@
   "latest_edition_id": "2026-05-20-v4",
   "checked_file_path": "data/2026-05-20-v4/content.json",
   "homepage_items_checked": 10,
-  "stories_checked": 15,
+  "stories_checked": 12,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -52,6 +52,27 @@
         {
           "field": "janet_take",
           "reason": "near_duplicate_warning",
+          "similarity": 0.625,
+          "item_a": {
+            "story_id": "openai-news-cd25fdf565bc",
+            "title": "Education出现合作新进展",
+            "source": "OpenAI",
+            "category": "models",
+            "original_title": "The next phase of OpenAI’s Education for Countries",
+            "text": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          },
+          "item_b": {
+            "story_id": "techcrunch-ai-cf4394e143ac",
+            "title": "AI design接入外部摄像头识别",
+            "source": "TechCrunch AI",
+            "category": "business",
+            "original_title": "Google just declared itself a contender in AI design at IO 2026",
+            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          }
+        },
+        {
+          "field": "janet_take",
+          "reason": "near_duplicate_warning",
           "similarity": 0.658,
           "item_a": {
             "story_id": "openai-news-e8a8c4af6836",
@@ -59,7 +80,7 @@
             "source": "OpenAI",
             "category": "models",
             "original_title": "Introducing OpenAI for Singapore",
-            "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           },
           "item_b": {
             "story_id": "google-ai-blog-f3b06e3adbce",
@@ -67,7 +88,7 @@
             "source": "Google AI",
             "category": "models",
             "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-            "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           }
         },
         {
@@ -80,7 +101,7 @@
             "source": "OpenAI",
             "category": "models",
             "original_title": "Introducing OpenAI for Singapore",
-            "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           },
           "item_b": {
             "story_id": "techcrunch-ai-cf4394e143ac",
@@ -88,7 +109,7 @@
             "source": "TechCrunch AI",
             "category": "business",
             "original_title": "Google just declared itself a contender in AI design at IO 2026",
-            "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           }
         },
         {
@@ -101,7 +122,7 @@
             "source": "Google AI",
             "category": "models",
             "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-            "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           },
           "item_b": {
             "story_id": "techcrunch-ai-cf4394e143ac",
@@ -109,7 +130,7 @@
             "source": "TechCrunch AI",
             "category": "business",
             "original_title": "Google just declared itself a contender in AI design at IO 2026",
-            "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
           }
         }
       ]
@@ -120,14 +141,14 @@
         {
           "field": "watch_next",
           "reason": "near_duplicate_warning",
-          "similarity": 0.675,
+          "similarity": 0.7,
           "item_a": {
             "story_id": "aws-machine-learning-63bc5a915489",
             "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
             "source": "AWS Machine Learning Blog",
             "category": "business",
             "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-            "text": "看Amazon Bedrock AgentCore Memory是否公布接口、..."
+            "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
           },
           "item_b": {
             "story_id": "aws-machine-learning-d11174ce5c3d",
@@ -135,7 +156,7 @@
             "source": "AWS Machine Learning Blog",
             "category": "business",
             "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-            "text": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。"
+            "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
           }
         }
       ]
@@ -161,22 +182,22 @@
     }
   },
   "max_summary_similarity": {
-    "score": 0.463,
+    "score": 0.475,
     "item_a": {
-      "story_id": "aws-machine-learning-63bc5a915489",
-      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-      "text": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore Memory，动作是记忆扩展；原文线索是「Extending conversational memory in Kiro CLI using Amazo...."
+      "story_id": "openai-news-cd25fdf565bc",
+      "title": "Education出现合作新进展",
+      "source": "OpenAI",
+      "category": "models",
+      "original_title": "The next phase of OpenAI’s Education for Countries",
+      "text": "OpenAI把Education带到相关产品团队和使用者面前，重点看合作怎样改变使用路径和产品边界。"
     },
     "item_b": {
-      "story_id": "aws-machine-learning-d11174ce5c3d",
-      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-      "text": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore，动作是工具调用；原文线索是「Implementing programmatic tool calling on Amazon Bedrock」。"
+      "story_id": "openai-news-e8a8c4af6836",
+      "title": "Singapore出现合作新进展",
+      "source": "OpenAI",
+      "category": "models",
+      "original_title": "Introducing OpenAI for Singapore",
+      "text": "OpenAI把Singapore带到企业团队和投资者面前，重点看合作怎样改变使用路径和产品边界。"
     }
   },
   "max_why_similarity": {
@@ -206,7 +227,7 @@
       "source": "OpenAI",
       "category": "models",
       "original_title": "Introducing OpenAI for Singapore",
-      "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+      "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     },
     "item_b": {
       "story_id": "google-ai-blog-f3b06e3adbce",
@@ -214,18 +235,18 @@
       "source": "Google AI",
       "category": "models",
       "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-      "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+      "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     }
   },
   "max_watch_next_similarity": {
-    "score": 0.675,
+    "score": 0.7,
     "item_a": {
       "story_id": "aws-machine-learning-63bc5a915489",
       "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-      "text": "看Amazon Bedrock AgentCore Memory是否公布接口、..."
+      "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
     },
     "item_b": {
       "story_id": "aws-machine-learning-d11174ce5c3d",
@@ -233,7 +254,7 @@
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-      "text": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。"
+      "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
     }
   },
   "forbidden_patch_phrases_found": [],
@@ -265,6 +286,27 @@
     {
       "field": "janet_take",
       "reason": "near_duplicate_warning",
+      "similarity": 0.625,
+      "item_a": {
+        "story_id": "openai-news-cd25fdf565bc",
+        "title": "Education出现合作新进展",
+        "source": "OpenAI",
+        "category": "models",
+        "original_title": "The next phase of OpenAI’s Education for Countries",
+        "text": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      },
+      "item_b": {
+        "story_id": "techcrunch-ai-cf4394e143ac",
+        "title": "AI design接入外部摄像头识别",
+        "source": "TechCrunch AI",
+        "category": "business",
+        "original_title": "Google just declared itself a contender in AI design at IO 2026",
+        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      }
+    },
+    {
+      "field": "janet_take",
+      "reason": "near_duplicate_warning",
       "similarity": 0.658,
       "item_a": {
         "story_id": "openai-news-e8a8c4af6836",
@@ -272,7 +314,7 @@
         "source": "OpenAI",
         "category": "models",
         "original_title": "Introducing OpenAI for Singapore",
-        "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       },
       "item_b": {
         "story_id": "google-ai-blog-f3b06e3adbce",
@@ -280,7 +322,7 @@
         "source": "Google AI",
         "category": "models",
         "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-        "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       }
     },
     {
@@ -293,7 +335,7 @@
         "source": "OpenAI",
         "category": "models",
         "original_title": "Introducing OpenAI for Singapore",
-        "text": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       },
       "item_b": {
         "story_id": "techcrunch-ai-cf4394e143ac",
@@ -301,7 +343,7 @@
         "source": "TechCrunch AI",
         "category": "business",
         "original_title": "Google just declared itself a contender in AI design at IO 2026",
-        "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       }
     },
     {
@@ -314,7 +356,7 @@
         "source": "Google AI",
         "category": "models",
         "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-        "text": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       },
       "item_b": {
         "story_id": "techcrunch-ai-cf4394e143ac",
@@ -322,20 +364,20 @@
         "source": "TechCrunch AI",
         "category": "business",
         "original_title": "Google just declared itself a contender in AI design at IO 2026",
-        "text": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。"
+        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
       }
     },
     {
       "field": "watch_next",
       "reason": "near_duplicate_warning",
-      "similarity": 0.675,
+      "similarity": 0.7,
       "item_a": {
         "story_id": "aws-machine-learning-63bc5a915489",
         "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
         "source": "AWS Machine Learning Blog",
         "category": "business",
         "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-        "text": "看Amazon Bedrock AgentCore Memory是否公布接口、..."
+        "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
       },
       "item_b": {
         "story_id": "aws-machine-learning-d11174ce5c3d",
@@ -343,23 +385,58 @@
         "source": "AWS Machine Learning Blog",
         "category": "business",
         "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-        "text": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。"
+        "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
       }
     }
   ],
   "issues": [],
-  "generated_at": "2026-05-20T08:17:24.573Z",
+  "generated_at": "2026-05-21T01:40:45.579Z",
   "raw_homepage_items": [
     {
       "role": "lead",
+      "story_id": "openai-news-cd25fdf565bc",
+      "title": "Education出现合作新进展",
+      "source": "OpenAI",
+      "category": "models",
+      "url": "https://openai.com/index/the-next-phase-of-education-for-countries",
+      "source_url": "https://openai.com/index/the-next-phase-of-education-for-countries",
+      "external_url": "https://openai.com/index/the-next-phase-of-education-for-countries",
+      "summary": "OpenAI把Education带到相关产品团队和使用者面前，重点看合作怎样改变使用路径和产品边界。",
+      "why_it_matters": "相关产品团队和使用者要看Education：合作会改变具体接入方式、使用边界或采购判断。",
+      "janet_take": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
+      "watch_next": "看Education后续是否公布可用入口、权限范围和真实案例。",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-05-20-v4/openai-news-cd25fdf565bc.jpg",
+        "local_path": "assets/news-visuals/2026-05-20-v4/openai-news-cd25fdf565bc.jpg",
+        "alt": "新闻视觉：Education出现合作新进展",
+        "caption": "开放授权图片，用来辅助呈现「Education」相关对象。",
+        "credit": "Jernej Furman from Slovenia",
+        "license": "CC BY 2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Smartphone_with_ChatGPT_on_keyboard_(52917311050).jpg",
+        "matched_terms": [
+          "Education",
+          "OpenAI"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "role": "signal",
       "story_id": "openai-news-e8a8c4af6836",
       "title": "Singapore出现合作新进展",
       "source": "OpenAI",
       "category": "models",
-      "summary": "OpenAI这条新闻的具体对象是Singapore，动作是合作；原文线索是「Introducing OpenAI for Singapore」。",
+      "url": "https://openai.com/index/introducing-openai-for-singapore",
+      "source_url": "https://openai.com/index/introducing-openai-for-singapore",
+      "external_url": "https://openai.com/index/introducing-openai-for-singapore",
+      "summary": "OpenAI把Singapore带到企业团队和投资者面前，重点看合作怎样改变使用路径和产品边界。",
       "why_it_matters": "企业团队和投资者要看Singapore：合作会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
-      "watch_next": "看Singapore是否公布接口、限制或客户案例。",
+      "janet_take": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
+      "watch_next": "看Singapore后续是否公布可用入口、权限范围和真实案例。",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
@@ -381,42 +458,17 @@
     },
     {
       "role": "signal",
-      "story_id": "google-ai-blog-f3b06e3adbce",
-      "title": "Gemini出现智能体能力新进展",
-      "source": "Google AI",
-      "category": "models",
-      "summary": "Google AI这条围绕Gemini展开，重点看它是否把智能体从演示带到更具体的任务入口。",
-      "why_it_matters": "普通用户和产品团队要看Gemini：智能体只有进入具体任务，才知道是帮忙还是添乱。",
-      "janet_take": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
-      "watch_next": "看Gemini能否完成连续任务。",
-      "visual": {
-        "status": "ready",
-        "mode": "source_image",
-        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
-        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
-        "alt": "新闻视觉：Gemini出现智能体能力新进展",
-        "caption": "Google AI源站图片，对应「Gemini」的智能体能力。",
-        "credit": "Google AI",
-        "license": "source article image / editorial reference",
-        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/SundarKeynote_tempsocial.width-1300.png",
-        "matched_terms": [
-          "Google"
-        ],
-        "relevance_score": 0.78,
-        "fallback_reason": "",
-        "template": ""
-      }
-    },
-    {
-      "role": "signal",
       "story_id": "aws-machine-learning-63bc5a915489",
       "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
       "source": "AWS Machine Learning Blog",
       "category": "business",
-      "summary": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore Memory，动作是记忆扩展；原文线索是「Extending conversational memory in Kiro CLI using Amazo....",
+      "url": "https://aws.amazon.com/blogs/machine-learning/extending-conversational-memory-in-kiro-cli-using-amazon-bedrock-agentcore-memory/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/extending-conversational-memory-in-kiro-cli-using-amazon-bedrock-agentcore-memory/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/extending-conversational-memory-in-kiro-cli-using-amazon-bedrock-agentcore-memory/",
+      "summary": "AWS在Amazon Bedrock AgentCore Memory里扩展记忆能力，说明智能体的长期上下文正在从概念变成开发者可调用的基础能力。",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Amazon Bedrock AgentCore Memory补记忆这事很实在，智能体没上下文就像刚睡醒的同事。",
-      "watch_next": "看Amazon Bedrock AgentCore Memory是否公布接口、...",
+      "watch_next": "看Amazon Bedrock AgentCore Memory后续是否公布可...",
       "visual": {
         "status": "ready",
         "mode": "source_image",
@@ -442,6 +494,9 @@
       "title": "马斯克败诉，OpenAI 争议还没结束",
       "source": "TechCrunch AI",
       "category": "business",
+      "url": "https://techcrunch.com/2026/05/19/elon-musk-said-sam-altman-stole-a-non-profit-but-the-trial-showed-he-had-similar-aims/",
+      "source_url": "https://techcrunch.com/2026/05/19/elon-musk-said-sam-altman-stole-a-non-profit-but-the-trial-showed-he-had-similar-aims/",
+      "external_url": "https://techcrunch.com/2026/05/19/elon-musk-said-sam-altman-stole-a-non-profit-but-the-trial-showed-he-had-similar-aims/",
       "summary": "The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。",
       "why_it_matters": "投资者和 AI 公司观察者要看：这类诉讼会影响公众如何理解 AI 公司的使命、控制权和商业化。",
       "janet_take": "马斯克输了这一局，但 OpenAI 的治理故事不会因此安静。",
@@ -467,29 +522,31 @@
     },
     {
       "role": "compact",
-      "story_id": "venturebeat-ai-85c5d168a62e",
-      "title": "search box出现合作新进展",
-      "source": "VentureBeat AI",
-      "category": "business",
-      "summary": "VentureBeat这条新闻的具体对象是search box，动作是合作；原文线索是「Google just redesigned the search box for the first tim...」。",
-      "why_it_matters": "开发者和平台团队要看search box：合作会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "search box这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
-      "watch_next": "看search box是否公布接口、限制或客户案例。",
+      "story_id": "google-ai-blog-f3b06e3adbce",
+      "title": "Gemini出现智能体能力新进展",
+      "source": "Google AI",
+      "category": "models",
+      "url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+      "source_url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+      "external_url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+      "summary": "Google AI把Gemini放进智能体场景，重点是它能否从演示走向连续任务和真实产品入口。",
+      "why_it_matters": "普通用户和产品团队要看Gemini：智能体只有进入具体任务，才知道是帮忙还是添乱。",
+      "janet_take": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
+      "watch_next": "看Gemini能否完成连续任务。",
       "visual": {
         "status": "ready",
-        "mode": "open_license_image",
-        "src": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
-        "local_path": "assets/news-visuals/2026-05-20-v4/venturebeat-ai-85c5d168a62e.jpg",
-        "alt": "新闻视觉：search box出现合作新进展",
-        "caption": "开放授权图片，用来辅助呈现「search box」相关对象。",
-        "credit": "Hans Holbein the Younger",
-        "license": "Public domain",
-        "source_url": "https://commons.wikimedia.org/wiki/File:Hans_Holbein_der_J%C3%BCngere_-_Der_Kaufmann_Georg_Gisze_-_Google_Art_Project.jpg",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-f3b06e3adbce.png",
+        "alt": "新闻视觉：Gemini出现智能体能力新进展",
+        "caption": "Google AI源站图片，对应「Gemini」的智能体能力。",
+        "credit": "Google AI",
+        "license": "source article image / editorial reference",
+        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/SundarKeynote_tempsocial.width-1300.png",
         "matched_terms": [
-          "search box",
           "Google"
         ],
-        "relevance_score": 0.66,
+        "relevance_score": 0.78,
         "fallback_reason": "",
         "template": ""
       }
@@ -500,10 +557,13 @@
       "title": "Amazon Bedrock AgentCore补上程序化工具调用",
       "source": "AWS Machine Learning Blog",
       "category": "business",
-      "summary": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore，动作是工具调用；原文线索是「Implementing programmatic tool calling on Amazon Bedrock」。",
+      "url": "https://aws.amazon.com/blogs/machine-learning/implementing-programmatic-tool-calling-on-amazon-bedrock/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/implementing-programmatic-tool-calling-on-amazon-bedrock/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/implementing-programmatic-tool-calling-on-amazon-bedrock/",
+      "summary": "AWS让Amazon Bedrock AgentCore更稳定地调用外部工具，重点是智能体能否按流程执行任务，而不是停在聊天式回答。",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Amazon Bedrock AgentCore开始认真处理工具调用，说明智能体终于要学会按流程干活。",
-      "watch_next": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。",
+      "watch_next": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范...",
       "visual": {
         "status": "ready",
         "mode": "source_image",
@@ -528,7 +588,10 @@
       "title": "AI agents正在改写搜索入口",
       "source": "TechCrunch AI",
       "category": "business",
-      "summary": "TechCrunch报道的重点是AI agents：搜索正在从“输入关键词”转向更主动的 AI 入口，原文线索是「How to use Google’s new AI agents to go beyond your sta...」。",
+      "url": "https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/",
+      "source_url": "https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/",
+      "external_url": "https://techcrunch.com/2026/05/19/how-to-use-googles-new-ai-agents-to-go-beyond-your-standard-searches/",
+      "summary": "TechCrunch把AI agents推到搜索入口前台，搜索正在从关键词输入转向更主动的 AI 任务入口。",
       "why_it_matters": "普通用户和产品团队要看AI agents：搜索入口变主动后，内容分发、广告和用户路径都会被重新分配。",
       "janet_take": "AI agents这事不小，搜索框一变，很多流量游戏就要重新算账。",
       "watch_next": "看AI agents是否改变流量和广告分配。",
@@ -556,6 +619,9 @@
       "title": "AI phishing拿到融资，押注AI 安全",
       "source": "TechCrunch AI",
       "category": "business",
+      "url": "https://techcrunch.com/2026/05/19/from-teen-hacker-to-iron-dome-researcher-this-founder-raised-28m-to-fight-ai-phishing/",
+      "source_url": "https://techcrunch.com/2026/05/19/from-teen-hacker-to-iron-dome-researcher-this-founder-raised-28m-to-fight-ai-phishing/",
+      "external_url": "https://techcrunch.com/2026/05/19/from-teen-hacker-to-iron-dome-researcher-this-founder-raised-28m-to-fight-ai-phishing/",
       "summary": "TechCrunch报道AI phishing拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。",
       "why_it_matters": "研究者和评测团队要看AI phishing：资金流向说明市场正在押注哪个具体痛点。",
       "janet_take": "AI phishing拿到钱只是开场，接下来要证明它不是又一个安全 PPT。",
@@ -580,43 +646,16 @@
     },
     {
       "role": "compact",
-      "story_id": "techcrunch-ai-5e0d08ff693d",
-      "title": "Antigravity 2.0出现开发工具升级新进展",
-      "source": "TechCrunch AI",
-      "category": "business",
-      "summary": "TechCrunch把Antigravity 2.0放在开发工具语境里，关键不是概念，而是 CLI、编码流程和实际接入方式是否变顺。",
-      "why_it_matters": "相关产品团队和使用者要看Antigravity 2.0：CLI 和编码入口一旦顺手，会直接改变团队日常开发节奏。",
-      "janet_take": "Antigravity 2.0如果真能少敲几步命令，开发者会比发布会掌声更诚实。",
-      "watch_next": "看Antigravity 2.0是否进入默认开发命令。",
-      "visual": {
-        "status": "ready",
-        "mode": "official_image",
-        "src": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
-        "local_path": "assets/news-visuals/2026-05-20-v4/techcrunch-ai-5e0d08ff693d.jpg",
-        "alt": "新闻视觉：Antigravity 2.0出现开发工具升级新进展",
-        "caption": "TechCrunch原文分享图，用来对应「Antigravity 2.0」这条新闻。",
-        "credit": "TechCrunch AI",
-        "license": "source-provided / editorial use reference",
-        "source_url": "https://techcrunch.com/wp-content/uploads/2026/05/google-developer-antigravity.jpg?resize=1200,900",
-        "matched_terms": [
-          "Google",
-          "Antigravity",
-          "CLI"
-        ],
-        "relevance_score": 0.82,
-        "fallback_reason": "",
-        "template": ""
-      }
-    },
-    {
-      "role": "compact",
       "story_id": "google-ai-blog-a9d4fac24d10",
       "title": "Google Workspace开始生成内容",
       "source": "Google AI",
       "category": "models",
+      "url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+      "source_url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+      "external_url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
       "summary": "Google AI把Google Workspace放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。",
       "why_it_matters": "创作者和内容团队要看Google Workspace：生成会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "Google Workspace这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
+      "janet_take": "Google Workspace值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
       "watch_next": "看Google Workspace是否支持编辑和版权控制。",
       "visual": {
         "status": "ready",
@@ -635,19 +674,123 @@
         "fallback_reason": "",
         "template": ""
       }
+    },
+    {
+      "role": "compact",
+      "story_id": "google-ai-blog-bb5f72521e8a",
+      "title": "Google AI subscriptions订阅能力重新打包",
+      "source": "Google AI",
+      "category": "models",
+      "url": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+      "source_url": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+      "external_url": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+      "summary": "Google AI这条指向Google AI subscriptions的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。",
+      "why_it_matters": "企业团队和投资者要看Google AI subscriptions：能力打包方式会决定谁能用、花多少钱、被锁在哪个入口。",
+      "janet_take": "Google AI subscriptions值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
+      "watch_next": "看Google AI subscriptions哪些能力被放进付费档。",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-20-v4/google-ai-blog-bb5f72521e8a.png",
+        "local_path": "assets/news-visuals/2026-05-20-v4/google-ai-blog-bb5f72521e8a.png",
+        "alt": "新闻视觉：Google AI subscriptions订阅能力重新打包",
+        "caption": "Google AI源站图片，对应「Google AI subscriptions」的订阅调整。",
+        "credit": "Google AI",
+        "license": "source article image / editorial reference",
+        "source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/I_O_Subs_social_share_image_1.width-1300.png",
+        "matched_terms": [
+          "Google"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ],
   "story_snapshot": [
+    {
+      "story_id": "openai-news-cd25fdf565bc",
+      "source": "OpenAI",
+      "category": "models",
+      "original_title": "The next phase of OpenAI’s Education for Countries",
+      "zh_title": "Education出现合作新进展",
+      "zh_summary": "OpenAI把Education带到相关产品团队和使用者面前，重点看合作怎样改变使用路径和产品边界。",
+      "why_it_matters": "相关产品团队和使用者要看Education：合作会改变具体接入方式、使用边界或采购判断。",
+      "janet_take": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
+      "watch_next": "看Education后续是否公布可用入口、权限范围和真实案例。",
+      "story_fact": {
+        "concrete_object": "Education",
+        "entities": [
+          "OpenAI",
+          "Education",
+          "Countries"
+        ],
+        "products": [
+          "OpenAI",
+          "Education",
+          "Countries"
+        ],
+        "action": "合作",
+        "audience": "相关产品团队和使用者",
+        "editorial_angle": "Education的合作会影响相关产品团队和使用者",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "OpenAI"
+          },
+          {
+            "label": "entity",
+            "value": "Education"
+          },
+          {
+            "label": "entity",
+            "value": "Countries"
+          },
+          {
+            "label": "action",
+            "value": "合作"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Education"
+          }
+        ],
+        "original_title": "The next phase of OpenAI’s Education for Countries",
+        "original_summary": "OpenAI advances Education for Countries, expanding AI adoption in schools with new partnerships, teacher training, and tools to improve global learning outcomes."
+      },
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "OpenAI"
+        },
+        {
+          "label": "entity",
+          "value": "Education"
+        },
+        {
+          "label": "entity",
+          "value": "Countries"
+        },
+        {
+          "label": "action",
+          "value": "合作"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Education"
+        }
+      ]
+    },
     {
       "story_id": "openai-news-e8a8c4af6836",
       "source": "OpenAI",
       "category": "models",
       "original_title": "Introducing OpenAI for Singapore",
       "zh_title": "Singapore出现合作新进展",
-      "zh_summary": "OpenAI这条新闻的具体对象是Singapore，动作是合作；原文线索是「Introducing OpenAI for Singapore」。",
+      "zh_summary": "OpenAI把Singapore带到企业团队和投资者面前，重点看合作怎样改变使用路径和产品边界。",
       "why_it_matters": "企业团队和投资者要看Singapore：合作会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "Singapore这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
-      "watch_next": "看Singapore是否公布接口、限制或客户案例。",
+      "janet_take": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
+      "watch_next": "看Singapore后续是否公布可用入口、权限范围和真实案例。",
       "story_fact": {
         "concrete_object": "Singapore",
         "entities": [
@@ -707,9 +850,9 @@
       "category": "models",
       "original_title": "I/O 2026: Welcome to the agentic Gemini era",
       "zh_title": "Gemini出现智能体能力新进展",
-      "zh_summary": "Google AI这条围绕Gemini展开，重点看它是否把智能体从演示带到更具体的任务入口。",
+      "zh_summary": "Google AI把Gemini放进智能体场景，重点是它能否从演示走向连续任务和真实产品入口。",
       "why_it_matters": "普通用户和产品团队要看Gemini：智能体只有进入具体任务，才知道是帮忙还是添乱。",
-      "janet_take": "Gemini这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
+      "janet_take": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
       "watch_next": "看Gemini能否完成连续任务。",
       "story_fact": {
         "concrete_object": "Gemini",
@@ -765,78 +908,15 @@
       ]
     },
     {
-      "story_id": "venturebeat-ai-85c5d168a62e",
-      "source": "VentureBeat AI",
-      "category": "business",
-      "original_title": "Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.",
-      "zh_title": "search box出现合作新进展",
-      "zh_summary": "VentureBeat这条新闻的具体对象是search box，动作是合作；原文线索是「Google just redesigned the search box for the first tim...」。",
-      "why_it_matters": "开发者和平台团队要看search box：合作会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "search box这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
-      "watch_next": "看search box是否公布接口、限制或客户案例。",
-      "story_fact": {
-        "concrete_object": "search box",
-        "entities": [
-          "Google",
-          "search box"
-        ],
-        "products": [
-          "Google",
-          "search box"
-        ],
-        "action": "合作",
-        "audience": "开发者和平台团队",
-        "editorial_angle": "search box的合作会影响开发者和平台团队",
-        "story_facts": [
-          {
-            "label": "entity",
-            "value": "Google"
-          },
-          {
-            "label": "entity",
-            "value": "search box"
-          },
-          {
-            "label": "action",
-            "value": "合作"
-          },
-          {
-            "label": "concrete_object",
-            "value": "search box"
-          }
-        ],
-        "original_title": "Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.",
-        "original_summary": "For a quarter century, the Google search box has been one of the most recognizable interfaces in computing: a thin white rectangle, a blinking cursor, a few typed words, and a list of blue links. On Tuesday, Google will formally retire that paradigm. At its annual I/O developer conference , Google announced a sweeping redesign of the search box itself — the literal text field where billions of queries begin every day — transforming it from a simple keyword input into a dynamic, AI-driven conversation starter that can accept text, images, PDFs, videos, and even open Chrome tabs as inputs. The company is also merging its AI Overviews and AI Mode features into a single, seamless search flow, eliminating the friction that previously forced users to choose between a traditional results page and an AI-forward experience. Liz Reid, Google&#x27;s vice president and head of Search, called it \"the biggest upgrade to our iconic search box since its debut over 25 years ago\" during a press briefing on Monday. The announcement arrived alongside a blizzard of other news — new Gemini models , a personal AI agent called Spark , an intelligent shopping cart , a reimagined developer platform — but the search box redesign may prove to be the most consequential. It is the clearest signal yet that Google views the future of its flagship product not as a place where users type fragmented keywords, but as an interface where they hold open-ended, multimodal conversations with an AI system backed by the entire web. The new search box expands, accepts files, and coaches you on what to ask The changes show a fundamental shift in how Google expects people to interact with the product that generates the vast majority of Alphabet&#x27;s revenue. The box itself now dynamically expands to accommodate longer, more conversational queries. Where the old interface subtly encouraged brevity — a narrow field suited to two- or three-word keyword strings — the new design invites users to fully articulate complex questions in granular detail. It also now supports multimodal inputs directly. Users can upload images, PDFs, files, and videos, or drag in content from Chrome tabs, right from the main search interface. Previously, some of these capabilities existed in AI Mode, but reaching them required extra steps. Now they sit at the primary entry point. Google is also deploying what it describes as an AI-powered query suggestion system that \"goes beyond autocomplete.\" Rather than simply predicting the next word a user might type based on popular searches, the system helps users formulate complex, nuanced queries — essentially coaching them toward the kind of detailed questions that AI Mode handles best. The new search box is starting to roll out immediately in all countries and languages where AI Mode is available. Google is merging AI overviews and AI mode into one seamless experience Perhaps more significant than the box itself is the architectural change happening behind it. Google is unifying AI Overviews — the AI-generated summary panels that appear atop traditional search results — with AI Mode , the more immersive conversational search experience the company launched at I/O one year ago. Starting Tuesday, this merged experience will be live across mobile and desktop worldwide. A user can type a question, receive an AI Overview alongside traditional results, and then continue directly into a back-and-forth AI Mode conversation to ask follow-up questions — all without navigating to a separate interface. Reid explained the logic during the press briefing: the new AI search box is \"an upgrade of our traditional search box, and so the results take you directly to main search rather than AI mode.\" She noted that while some power users actively sought out AI Mode, \"for most users, they don&#x27;t actually want to have to think about, do they want more of a traditional page or an AI-forward search experience.\" The goal, she said, was to ensure that \"for most users, they don&#x27;t have to think about where to go, they can just go to the search box they&#x27;re familiar with, and it feels like they get the best experience afterwards.\" One billion users and doubling queries reveal how fast search behavior is shifting Google&#x27;s decision to redesign the foundational interface of its most important product did not happen in a vacuum. The company shared a set of usage statistics during the briefing that reveal just how rapidly user behavior is already changing. AI Mode , which launched in the United States at I/O 2025, has surpassed one billion monthly users in its first year. AI Mode queries have been doubling every quarter since launch. AI Overviews, the lighter-weight AI summaries, now reach more than 2.5 billion monthly users. And overall search query volume hit an all-time high last quarter — a data point the company had previously disclosed on its earnings call. Sundar Pichai, Google&#x27;s CEO, framed these figures as evidence that AI features are additive, not cannibalistic, to search usage. \"When people use our AI-powered features in search, they use search more,\" he said. He added that he loves \"how search has become less about individual queries and feels more like an ongoing conversation, giving users deeper insights and connecting you with the vastness of the web.\" Reid reinforced the point: \"It&#x27;s not just that people are searching more, it&#x27;s that they&#x27;re searching differently. They&#x27;re fully expressing their questions in granular detail, asking those follow-up questions and searching across modalities.\" Gemini 3.5 Flash gives Google&#x27;s AI search the speed it needs to work at scale Under the hood, the new search experience runs on Gemini 3.5 Flash , Google&#x27;s newest AI model, which the company also introduced at I/O. Google upgraded AI Mode&#x27;s underlying model to 3.5 Flash to deliver what Reid described as \"an even more powerful AI search experience.\" Gemini 3.5 Flash is the workhorse of this year&#x27;s announcements. Google claims it outperforms its previous frontier model, Gemini 3.1 Pro , on nearly all benchmarks while running four times faster in output tokens per second than comparable frontier models. Pichai described it as being \"in a league of its own in the top right quadrant\" of the Artificial Analysis index , which plots intelligence against speed — meaning it delivers near-frontier quality at dramatically lower latency. That speed matters enormously for search. A conversational AI search experience that feels sluggish would be dead on arrival for a product that serves billions of queries daily. By coupling the redesigned interface with a model optimized for both quality and throughput, Google is attempting to make AI-powered search feel as instantaneous as the old keyword experience — while being dramatically more capable. Search can now build interactive visuals and custom mini apps on the fly The redesigned search box is also the gateway to a set of new capabilities that push search far beyond text-based answers. Google announced what it calls \" generative UI \" — the ability for search to dynamically build custom widgets, interactive visualizations, and even mini applications in real time, tailored to a user&#x27;s specific question. Reid offered a concrete example during the briefing: a user could ask \"How do black holes affect space time?\" and receive an interactive visual in an AI Overview that brings the concept to life. Follow-up questions would trigger the system to dynamically generate entirely new visuals in real time. This is possible, she explained, because of \"a novel real-time code generation system we built in partnership with the Google DeepMind team\" that runs on Gemini 3.5 Flash. Generative UI capabilities will roll out to everyone this summer, free of charge. But Google is going further still. For ongoing tasks — planning a wedding, organizing a move, tracking a fitness routine — users will be able to build what the company describes as customizable, stateful experiences within search, powered by its Antigravity development platform . These require no coding expertise. Users simply describe what they want in natural language, and search builds it. Those experiences will be available in coming months, starting with Google AI Pro and Ultra subscribers in the United States. AI agents that monitor the web around the clock are coming to search results The redesign also opens the door to what Google calls \" information agents \" — AI agents that users can configure directly within search to monitor the web 24/7 for specific conditions and deliver synthesized updates when those conditions are met. A user could, for example, set up an agent to track market movements in a particular sector with specific parameters. The agent would create a monitoring plan, tap into real-time finance data, and proactively notify the user when conditions are met — complete with links and context for further research. Other use cases include apartment hunting, tracking sneaker drops, or monitoring any topic a user cares about. Information agents will launch first for Google AI Pro and Ultra subscribers this summer. These agents sit within a much larger strategic pivot that Google articulated throughout the briefing: the company is going all-in on AI systems that don&#x27;t just answer questions but proactively take actions on users&#x27; behalf. Beyond search, Google introduced Gemini Spark , a 24/7 personal AI agent that runs on dedicated virtual machines in Google Cloud. It unveiled the Universal Cart , an intelligent cross-merchant shopping cart. It announced the Agent Payments Protocol for agents to make secure purchases. And it expanded its Antigravity developer platform into a full ecosystem for building autonomous AI agents. Publishers, advertisers, and SEO professionals face a new reality The redesign raises profound questions for the sprawling ecosystem — publishers, advertisers, SEO professionals — that has been built around the old model of keyword search and blue links. If users increasingly express their needs as full, conversational sentences rather than fragmented keywords, the entire discipline of search engine optimization will need to evolve. Keyword-density strategies become less relevant when the AI is parsing natural language intent rather than matching strings. Content that answers deep, nuanced questions in authoritative ways becomes more valuable; content engineered to rank for two-word keyword fragments becomes less so. For publishers, the stakes are existential . AI Overviews already synthesize information from across the web and present it directly in search results, reducing the need for users to click through to source material. The new seamless AI Mode integration deepens that dynamic: users can now get an AI-generated answer and ask multiple follow-up questions without ever leaving the search page. Google has consistently maintained that its AI features drive more traffic to publishers, but the redesign puts that claim under renewed scrutiny as the search results page becomes more self-contained. For advertisers — who fund the vast majority of Google&#x27;s revenue — the shift from keywords to conversations changes the calculus of ad targeting. Conversational queries contain richer intent signals, which could make ad targeting more precise and valuable. But they also create new ambiguities: when a user is in the middle of a multi-turn conversation with AI Mode, where does an ad naturally fit? Google did not detail changes to its advertising model during the briefing, but the structural shift in the interface will inevitably reshape how ads are surfaced and measured. The search box was always more than a product — it was a habit for billions of people There is a reason Google chose to redesign the search box rather than simply adding new features behind it. The search box is not just a product element at this point; it is a cultural artifact — one of the few pieces of digital infrastructure used by essentially the entire internet-connected world. Changing it sends an unmistakable message about where the company believes computing is headed. For 25 years, the search box trained billions of people to think in keywords — to compress their curiosity into the shortest possible string of words. The new box invites them to do the opposite: to think out loud, to upload what they&#x27;re looking at, to ask follow-up questions, to let an AI system handle the compression. Pichai tied the company&#x27;s broader ambitions to a striking statistic: Google&#x27;s surfaces now process over 3.2 quadrillion tokens per month, up seven-fold from a year ago. The company expects capital expenditures of approximately $180 to $190 billion in 2026 — roughly six times the $31 billion it spent four years ago — largely to support the infrastructure required for this AI transformation. When asked about the future of traditional search, he was direct. \"Search is the most used AI product in the world,\" he said. The blinking cursor in Google&#x27;s search box still invites you to type. But after 25 years of teaching the world to speak in keywords, Google is now asking it to speak in sentences — and betting roughly $190 billion that it will."
-      },
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "Google"
-        },
-        {
-          "label": "entity",
-          "value": "search box"
-        },
-        {
-          "label": "action",
-          "value": "合作"
-        },
-        {
-          "label": "concrete_object",
-          "value": "search box"
-        }
-      ]
-    },
-    {
       "story_id": "aws-machine-learning-63bc5a915489",
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
       "zh_title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-      "zh_summary": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore Memory，动作是记忆扩展；原文线索是「Extending conversational memory in Kiro CLI using Amazo....",
+      "zh_summary": "AWS在Amazon Bedrock AgentCore Memory里扩展记忆能力，说明智能体的长期上下文正在从概念变成开发者可调用的基础能力。",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Amazon Bedrock AgentCore Memory补记忆这事很实在，智能体没上下文就像刚睡醒的同事。",
-      "watch_next": "看Amazon Bedrock AgentCore Memory是否公布接口、...",
+      "watch_next": "看Amazon Bedrock AgentCore Memory后续是否公布可...",
       "story_fact": {
         "concrete_object": "Amazon Bedrock AgentCore Memory",
         "entities": [
@@ -906,10 +986,10 @@
       "category": "business",
       "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
       "zh_title": "Amazon Bedrock AgentCore补上程序化工具调用",
-      "zh_summary": "AWS这条新闻的具体对象是Amazon Bedrock AgentCore，动作是工具调用；原文线索是「Implementing programmatic tool calling on Amazon Bedrock」。",
+      "zh_summary": "AWS让Amazon Bedrock AgentCore更稳定地调用外部工具，重点是智能体能否按流程执行任务，而不是停在聊天式回答。",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会改变具体接入方式、使用边界或采购判断。",
       "janet_take": "Amazon Bedrock AgentCore开始认真处理工具调用，说明智能体终于要学会按流程干活。",
-      "watch_next": "看Amazon Bedrock AgentCore是否公布接口、限制或客户案例。",
+      "watch_next": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范...",
       "story_fact": {
         "concrete_object": "Amazon Bedrock AgentCore",
         "entities": [
@@ -979,7 +1059,7 @@
       "category": "business",
       "original_title": "How to use Google’s new AI agents to go beyond your standard searches",
       "zh_title": "AI agents正在改写搜索入口",
-      "zh_summary": "TechCrunch报道的重点是AI agents：搜索正在从“输入关键词”转向更主动的 AI 入口，原文线索是「How to use Google’s new AI agents to go beyond your sta...」。",
+      "zh_summary": "TechCrunch把AI agents推到搜索入口前台，搜索正在从关键词输入转向更主动的 AI 任务入口。",
       "why_it_matters": "普通用户和产品团队要看AI agents：搜索入口变主动后，内容分发、广告和用户路径都会被重新分配。",
       "janet_take": "AI agents这事不小，搜索框一变，很多流量游戏就要重新算账。",
       "watch_next": "看AI agents是否改变流量和广告分配。",
@@ -1100,89 +1180,6 @@
       ]
     },
     {
-      "story_id": "techcrunch-ai-5e0d08ff693d",
-      "source": "TechCrunch AI",
-      "category": "business",
-      "original_title": "Google launches Antigravity 2.0 with an updated desktop app and CLI tool at IO 2026",
-      "zh_title": "Antigravity 2.0出现开发工具升级新进展",
-      "zh_summary": "TechCrunch把Antigravity 2.0放在开发工具语境里，关键不是概念，而是 CLI、编码流程和实际接入方式是否变顺。",
-      "why_it_matters": "相关产品团队和使用者要看Antigravity 2.0：CLI 和编码入口一旦顺手，会直接改变团队日常开发节奏。",
-      "janet_take": "Antigravity 2.0如果真能少敲几步命令，开发者会比发布会掌声更诚实。",
-      "watch_next": "看Antigravity 2.0是否进入默认开发命令。",
-      "story_fact": {
-        "concrete_object": "Antigravity 2.0",
-        "entities": [
-          "Google",
-          "Antigravity 2.0",
-          "Antigravity",
-          "CLI"
-        ],
-        "products": [
-          "Google",
-          "Antigravity 2.0",
-          "Antigravity",
-          "CLI"
-        ],
-        "action": "开发工具升级",
-        "audience": "相关产品团队和使用者",
-        "editorial_angle": "Antigravity 2.0的开发工具升级会影响相关产品团队和使用者",
-        "story_facts": [
-          {
-            "label": "entity",
-            "value": "Google"
-          },
-          {
-            "label": "entity",
-            "value": "Antigravity 2.0"
-          },
-          {
-            "label": "entity",
-            "value": "Antigravity"
-          },
-          {
-            "label": "entity",
-            "value": "CLI"
-          },
-          {
-            "label": "action",
-            "value": "开发工具升级"
-          },
-          {
-            "label": "concrete_object",
-            "value": "Antigravity 2.0"
-          }
-        ],
-        "original_title": "Google launches Antigravity 2.0 with an updated desktop app and CLI tool at IO 2026",
-        "original_summary": "Google is debuting a new AI Ultra plan priced at $100, which will give users 5x more usage limit than the AI Pro plan alongside the Antigravity 2.0 launch."
-      },
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "Google"
-        },
-        {
-          "label": "entity",
-          "value": "Antigravity 2.0"
-        },
-        {
-          "label": "entity",
-          "value": "Antigravity"
-        },
-        {
-          "label": "entity",
-          "value": "CLI"
-        },
-        {
-          "label": "action",
-          "value": "开发工具升级"
-        },
-        {
-          "label": "concrete_object",
-          "value": "Antigravity 2.0"
-        }
-      ]
-    },
-    {
       "story_id": "google-ai-blog-a9d4fac24d10",
       "source": "Google AI",
       "category": "models",
@@ -1190,7 +1187,7 @@
       "zh_title": "Google Workspace开始生成内容",
       "zh_summary": "Google AI把Google Workspace放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。",
       "why_it_matters": "创作者和内容团队要看Google Workspace：生成会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "Google Workspace这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
+      "janet_take": "Google Workspace值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
       "watch_next": "看Google Workspace是否支持编辑和版权控制。",
       "story_fact": {
         "concrete_object": "Google Workspace",
@@ -1246,172 +1243,6 @@
       ]
     },
     {
-      "story_id": "techcrunch-ai-68933002869c",
-      "source": "TechCrunch AI",
-      "category": "business",
-      "original_title": "OpenAI co-founder Andrej Karpathy joins Anthropic&#8217;s pre-training team",
-      "zh_title": "Karpathy 加入 Anthropic 预训练团队",
-      "zh_summary": "TechCrunch报道 Andrej Karpathy 加入 Anthropic 预训练团队，这条的重点是顶级模型训练经验继续向头部实验室集中。",
-      "why_it_matters": "研究者和模型团队要看：预训练人才流动会影响下一代模型的训练路线和团队竞争。",
-      "janet_take": "Karpathy 换位置，比很多产品更新更值得看，因为模型能力最后还是人训出来的。",
-      "watch_next": "看 Anthropic 预训练团队后续论文和模型节奏。",
-      "story_fact": {
-        "concrete_object": "Andrej Karpathy",
-        "entities": [
-          "OpenAI",
-          "Claude",
-          "Anthropic",
-          "Andrej Karpathy"
-        ],
-        "products": [
-          "OpenAI",
-          "Claude",
-          "Anthropic",
-          "Andrej Karpathy"
-        ],
-        "action": "团队变动",
-        "audience": "开源社区和模型使用者",
-        "editorial_angle": "Andrej Karpathy的团队变动会影响开源社区和模型使用者",
-        "story_facts": [
-          {
-            "label": "entity",
-            "value": "OpenAI"
-          },
-          {
-            "label": "entity",
-            "value": "Claude"
-          },
-          {
-            "label": "entity",
-            "value": "Anthropic"
-          },
-          {
-            "label": "entity",
-            "value": "Andrej Karpathy"
-          },
-          {
-            "label": "action",
-            "value": "团队变动"
-          },
-          {
-            "label": "concrete_object",
-            "value": "Andrej Karpathy"
-          }
-        ],
-        "original_title": "OpenAI co-founder Andrej Karpathy joins Anthropic&#8217;s pre-training team",
-        "original_summary": "Pre-training is responsible for the large-scale training runs that give Claude its core knowledge and capabilities, according to the company. It's also one of the most expensive, compute-intensive phases of building a frontier model."
-      },
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "OpenAI"
-        },
-        {
-          "label": "entity",
-          "value": "Claude"
-        },
-        {
-          "label": "entity",
-          "value": "Anthropic"
-        },
-        {
-          "label": "entity",
-          "value": "Andrej Karpathy"
-        },
-        {
-          "label": "action",
-          "value": "团队变动"
-        },
-        {
-          "label": "concrete_object",
-          "value": "Andrej Karpathy"
-        }
-      ]
-    },
-    {
-      "story_id": "techcrunch-ai-a51ec0c1e464",
-      "source": "TechCrunch AI",
-      "category": "business",
-      "original_title": "Google takes a page out of Meta&#8217;s book, announces new audio-powered smart glasses at IO 2026",
-      "zh_title": "audio-powered smart glasses推出新版本或新功能",
-      "zh_summary": "TechCrunch报道audio-powered smart glasses的新功能或版本，原文线索是「Google takes a page out of Meta&#8217;s book, announces...」，重点...",
-      "why_it_matters": "普通用户和产品团队要看audio-powered smart glasses：新功能是否改变现有产品路径，而不是只增加发布会信息量。",
-      "janet_take": "audio-powered smart glasses这类发布不缺声量，缺的是用户第二天还会不会打开。",
-      "watch_next": "看audio-powered smart glasses是否给出可用入口和限制。",
-      "story_fact": {
-        "concrete_object": "audio-powered smart glasses",
-        "entities": [
-          "Meta",
-          "Google",
-          "smart glasses",
-          "audio-powered smart glasses"
-        ],
-        "products": [
-          "Meta",
-          "Google",
-          "smart glasses",
-          "audio-powered smart glasses"
-        ],
-        "action": "推出",
-        "audience": "普通用户和产品团队",
-        "editorial_angle": "audio-powered smart glasses的推出会影响普通用户和产品团队",
-        "story_facts": [
-          {
-            "label": "entity",
-            "value": "Meta"
-          },
-          {
-            "label": "entity",
-            "value": "Google"
-          },
-          {
-            "label": "entity",
-            "value": "smart glasses"
-          },
-          {
-            "label": "entity",
-            "value": "audio-powered smart glasses"
-          },
-          {
-            "label": "action",
-            "value": "推出"
-          },
-          {
-            "label": "concrete_object",
-            "value": "audio-powered smart glasses"
-          }
-        ],
-        "original_title": "Google takes a page out of Meta&#8217;s book, announces new audio-powered smart glasses at IO 2026",
-        "original_summary": "Google is calling the new devices \"audio glasses,\" in that users will be able to issue verbal commands to them and get things done via its ecosystem of apps and services, including Gemini."
-      },
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "Meta"
-        },
-        {
-          "label": "entity",
-          "value": "Google"
-        },
-        {
-          "label": "entity",
-          "value": "smart glasses"
-        },
-        {
-          "label": "entity",
-          "value": "audio-powered smart glasses"
-        },
-        {
-          "label": "action",
-          "value": "推出"
-        },
-        {
-          "label": "concrete_object",
-          "value": "audio-powered smart glasses"
-        }
-      ]
-    },
-    {
       "story_id": "google-ai-blog-bb5f72521e8a",
       "source": "Google AI",
       "category": "models",
@@ -1419,7 +1250,7 @@
       "zh_title": "Google AI subscriptions订阅能力重新打包",
       "zh_summary": "Google AI这条指向Google AI subscriptions的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。",
       "why_it_matters": "企业团队和投资者要看Google AI subscriptions：能力打包方式会决定谁能用、花多少钱、被锁在哪个入口。",
-      "janet_take": "Google AI subscriptions这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
+      "janet_take": "Google AI subscriptions值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
       "watch_next": "看Google AI subscriptions哪些能力被放进付费档。",
       "story_fact": {
         "concrete_object": "Google AI subscriptions",
@@ -1492,8 +1323,8 @@
       "zh_title": "AI design接入外部摄像头识别",
       "zh_summary": "TechCrunch提到AI design的视觉识别能力，真正要看的是它在真实环境里能否稳定读懂场景。",
       "why_it_matters": "企业团队和投资者要看AI design：视觉识别会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "AI design这条要看细节，真正有用的部分藏在功能边界和接入门槛里。",
-      "watch_next": "看AI design是否公布接口、限制或客户案例。",
+      "janet_take": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。",
+      "watch_next": "看AI design后续是否公布可用入口、权限范围和真实案例。",
       "story_fact": {
         "concrete_object": "AI design",
         "entities": [
@@ -1621,65 +1452,115 @@
       ]
     },
     {
-      "story_id": "techcrunch-ai-741af86b9693",
-      "source": "TechCrunch AI",
+      "story_id": "mit-tech-review-ai-c18be57e15b8",
+      "source": "MIT Technology Review AI",
       "category": "business",
-      "original_title": "Google&#8217;s new Universal Cart wants to follow your entire shopping journey across the internet",
-      "zh_title": "Universal Cart想接管购物流程",
-      "zh_summary": "TechCrunch写到Universal Cart，意思是 AI 不只推荐商品，还可能进入跨站购物流程，风险和便利都会一起出现。",
-      "why_it_matters": "普通用户和产品团队要看Universal Cart：AI 如果开始代办购物，支付、推荐和责任边界都会变敏感。",
-      "janet_take": "Universal Cart听起来方便，但让 AI 花钱这件事，最好先问清楚谁背锅。",
-      "watch_next": "看Universal Cart的支付和责任边界。",
+      "original_title": "Roundtables: Inside the Musk v. Altman Trial",
+      "zh_title": "马斯克败诉，OpenAI 争议还没结束（MIT Tech Review）",
+      "zh_summary": "MIT Tech Review这条讲的是「马斯克败诉，OpenAI 争议还没结束（MIT Tech Review）」：Roundtables: Inside the Musk v. Altman Trial",
+      "why_it_matters": "「马斯克败诉，OpenAI 争议还没结束（MIT Tech Review）」会影响相关团队对接口、权限、评测或采购路径的判断。",
+      "janet_take": "Janet 看「马斯克败诉，OpenAI 争议还没结束（MIT Tech Review）」：先看对象、动作和限制条件。",
+      "watch_next": "看「马斯克败诉，OpenAI 争议还没结束」是否公布使用范围。",
       "story_fact": {
-        "concrete_object": "Universal Cart",
+        "concrete_object": "Altman Trial",
         "entities": [
-          "Google",
-          "Universal Cart"
+          "OpenAI",
+          "Elon Musk",
+          "Sam Altman",
+          "Roundtables",
+          "Inside",
+          "Musk",
+          "Altman Trial"
         ],
         "products": [
-          "Google",
-          "Universal Cart"
+          "OpenAI",
+          "Elon Musk",
+          "Sam Altman",
+          "Roundtables",
+          "Inside",
+          "Musk",
+          "Altman Trial"
         ],
-        "action": "购物代理",
-        "audience": "普通用户和产品团队",
-        "editorial_angle": "Universal Cart的购物代理会影响普通用户和产品团队",
+        "action": "诉讼",
+        "audience": "企业团队和投资者",
+        "editorial_angle": "Altman Trial的诉讼会影响企业团队和投资者",
         "story_facts": [
           {
             "label": "entity",
-            "value": "Google"
+            "value": "OpenAI"
           },
           {
             "label": "entity",
-            "value": "Universal Cart"
+            "value": "Elon Musk"
+          },
+          {
+            "label": "entity",
+            "value": "Sam Altman"
+          },
+          {
+            "label": "entity",
+            "value": "Roundtables"
+          },
+          {
+            "label": "entity",
+            "value": "Inside"
+          },
+          {
+            "label": "entity",
+            "value": "Musk"
+          },
+          {
+            "label": "entity",
+            "value": "Altman Trial"
           },
           {
             "label": "action",
-            "value": "购物代理"
+            "value": "诉讼"
           },
           {
             "label": "concrete_object",
-            "value": "Universal Cart"
+            "value": "Altman Trial"
           }
         ],
-        "original_title": "Google&#8217;s new Universal Cart wants to follow your entire shopping journey across the internet",
-        "original_summary": "Most people shop across multiple devices, many retailers, and over the course of many days, which is why Google is launching Universal Cart."
+        "original_title": "Roundtables: Inside the Musk v. Altman Trial",
+        "original_summary": "Listen to the session or watch below Elon Musk lost his suit against OpenAI, in which he alleged CEO Sam Altman and President Greg Brockman had deceived him over the company’s non-profit status. Watch as AI reporter and attorney Michelle Kim, who covered the trial for MIT Technology Review, joins in conversation with editor in&#8230;"
       },
       "story_facts": [
         {
           "label": "entity",
-          "value": "Google"
+          "value": "OpenAI"
         },
         {
           "label": "entity",
-          "value": "Universal Cart"
+          "value": "Elon Musk"
+        },
+        {
+          "label": "entity",
+          "value": "Sam Altman"
+        },
+        {
+          "label": "entity",
+          "value": "Roundtables"
+        },
+        {
+          "label": "entity",
+          "value": "Inside"
+        },
+        {
+          "label": "entity",
+          "value": "Musk"
+        },
+        {
+          "label": "entity",
+          "value": "Altman Trial"
         },
         {
           "label": "action",
-          "value": "购物代理"
+          "value": "诉讼"
         },
         {
           "label": "concrete_object",
-          "value": "Universal Cart"
+          "value": "Altman Trial"
         }
       ]
     }

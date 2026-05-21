@@ -1,20 +1,20 @@
 {
   "step": "35-R",
   "source_count": 27,
-  "source_success_count": 18,
-  "source_error_count": 1,
-  "source_empty_count": 8,
-  "raw_items": 3220,
-  "window_items": 15,
-  "included_items": 15,
+  "source_success_count": 17,
+  "source_error_count": 5,
+  "source_empty_count": 5,
+  "raw_items": 2440,
+  "window_items": 12,
+  "included_items": 12,
   "displayed_on_home": 10,
-  "displayed_in_archive": 15,
+  "displayed_in_archive": 12,
   "not_displayed_reasons": {
-    "outside_time_window": 3175,
+    "outside_time_window": 2413,
     "duplicate": 0,
     "low_editorial_score": 0,
     "missing_published_at": 0,
-    "not_home_slot": 5
+    "not_home_slot": 2
   },
   "sources": [
     {
@@ -23,9 +23,9 @@
       "category": "models",
       "rank": "S",
       "status": "success",
-      "raw_items": 967,
-      "included_items": 1,
-      "displayed_on_home": 1,
+      "raw_items": 970,
+      "included_items": 2,
+      "displayed_on_home": 2,
       "error": ""
     },
     {
@@ -36,7 +36,7 @@
       "status": "success",
       "raw_items": 20,
       "included_items": 3,
-      "displayed_on_home": 2,
+      "displayed_on_home": 3,
       "error": ""
     },
     {
@@ -66,11 +66,11 @@
       "source": "Hugging Face",
       "category": "open_source",
       "rank": "A",
-      "status": "success",
-      "raw_items": 783,
+      "status": "error",
+      "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": ""
+      "error": "https://huggingface.co/blog/feed.xml:fetch failed; https://huggingface.co/blog:fetch failed"
     },
     {
       "id": "arxiv-cs-ai",
@@ -123,8 +123,8 @@
       "rank": "B",
       "status": "success",
       "raw_items": 20,
-      "included_items": 8,
-      "displayed_on_home": 4,
+      "included_items": 4,
+      "displayed_on_home": 3,
       "error": ""
     },
     {
@@ -134,8 +134,8 @@
       "rank": "B",
       "status": "success",
       "raw_items": 7,
-      "included_items": 1,
-      "displayed_on_home": 1,
+      "included_items": 0,
+      "displayed_on_home": 0,
       "error": ""
     },
     {
@@ -165,22 +165,22 @@
       "source": "Meta AI",
       "category": "open_source",
       "rank": "A",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://ai.meta.com/blog/:no_feed_items"
+      "error": "https://ai.meta.com/blog/:fetch failed"
     },
     {
       "id": "mistral-news",
       "source": "Mistral AI",
       "category": "models",
       "rank": "A",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://mistral.ai/news/:no_feed_items"
+      "error": "https://mistral.ai/news/:fetch failed"
     },
     {
       "id": "nvidia-ai-blog",
@@ -244,7 +244,7 @@
       "rank": "B",
       "status": "success",
       "raw_items": 10,
-      "included_items": 0,
+      "included_items": 1,
       "displayed_on_home": 0,
       "error": ""
     },
@@ -275,11 +275,11 @@
       "source": "Papers with Code Blog",
       "category": "research",
       "rank": "B",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://paperswithcode.com/latest/rss:no_feed_items; https://paperswithcode.com/:no_feed_items"
+      "error": "https://paperswithcode.com/latest/rss:fetch failed; https://paperswithcode.com/:fetch failed"
     },
     {
       "id": "replicate-blog",

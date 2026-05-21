@@ -80,6 +80,16 @@
     return bits.join(' · ');
   }
 
+  function storyExternalUrl(item) {
+    return safeExternalUrl(item && (item.url || item.source_url || item.external_url));
+  }
+
+  function renderExternalCard(className, url, innerHtml, ariaLabel) {
+    const href = safeExternalUrl(url);
+    if (href === '#') return '<article class="' + className + '">' + innerHtml + '</article>';
+    return '<a class="' + className + ' janet-clickable-card" href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(ariaLabel || '打开新闻源站') + '">' + innerHtml + '</a>';
+  }
+
   function getItemText(item) {
     return item.content || item.summary || item.critique || '';
   }
@@ -226,28 +236,28 @@
     const signalCards = signalMap.map(function(signal, index) {
       const visual = safeLocalPath(visualSrc(signal.visual));
       const caption = visualCaption(signal.visual);
-      return '<article class="news-signal-card janet-card">' +
+      const signalInner =
         (visual !== '#' ? '<figure class="news-visual-frame"><img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(visualAlt(signal.visual, signal.label || signal.signal || '今日信号')) + '" loading="lazy" decoding="async">' + (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') + '</figure>' : '') +
         '<div class="news-signal-card__copy">' +
           '<span>0' + (index + 1) + ' · ' + escapeHtml(signal.source || 'Janet') + '</span>' +
           '<strong>' + escapeHtml(signal.label || signal.signal || '今日信号') + '</strong>' +
           '<p>' + escapeHtml(signal.summary || signal.janet_view || '') + '</p>' +
           (signal.story_title ? '<em>' + escapeHtml(signal.story_title) + '</em>' : '') +
-        '</div>' +
-      '</article>';
+        '</div>';
+      return renderExternalCard('news-signal-card janet-card', storyExternalUrl(signal), signalInner, '查看新闻源：' + (signal.story_title || signal.label || signal.signal || '今日信号'));
     }).join('');
 
     const compactCards = compactNews.map(function(item) {
       const visual = safeLocalPath(visualSrc(item.visual));
       const caption = visualCaption(item.visual);
-      return '<article class="news-compact-card janet-card">' +
+      const compactInner =
         (visual !== '#' ? '<figure class="news-compact-visual"><img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(visualAlt(item.visual, item.title || '今日新闻')) + '" loading="lazy" decoding="async">' + (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') + '</figure>' : '<div class="news-compact-card__icon">' + escapeHtml((item.category || 'AI').slice(0, 2).toUpperCase()) + '</div>') +
         '<div>' +
           '<span>' + escapeHtml(item.source || 'Janet') + '</span>' +
           '<strong>' + escapeHtml(item.title || '今日新闻') + '</strong>' +
           '<p>' + escapeHtml(item.summary || '') + '</p>' +
-        '</div>' +
-      '</article>';
+        '</div>';
+      return renderExternalCard('news-compact-card janet-card', storyExternalUrl(item), compactInner, '查看新闻源：' + (item.title || '今日新闻'));
     }).join('');
 
     container.innerHTML =
@@ -263,13 +273,12 @@
             '<h3 class="news-v4-theme">' + escapeHtml(summary.theme || '今日 AI 快车箱') + '</h3>' +
             '<p class="news-v4-intro">' + escapeHtml(readerIntro(summary, lead)) + '</p>' +
             (lead.title ? (
-              '<div class="news-v4-lead">' +
+              (leadUrl !== '#' ? '<a class="news-v4-lead janet-clickable-card" href="' + escapeHtml(leadUrl) + '" target="_blank" rel="noopener noreferrer" aria-label="查看新闻源：' + escapeHtml(lead.title) + '">' : '<div class="news-v4-lead">') +
                 '<span class="news-v4-lead-label">今日封面新闻</span>' +
                 '<strong>' + escapeHtml(lead.title) + '</strong>' +
                 (lead.original_title ? '<small class="news-v4-original-title">原文：' + escapeHtml(lead.original_title) + '</small>' : '') +
                 '<em>' + escapeHtml(lead.summary || '') + '</em>' +
-                (lead.url ? '<a class="news-v4-lead-source" href="' + escapeHtml(leadUrl) + '" target="_blank" rel="noopener noreferrer">查看头条源站 ↗</a>' : '') +
-              '</div>'
+                (leadUrl !== '#' ? '<span class="news-v4-lead-source">查看头条源站 ↗</span></a>' : '</div>')
             ) : '') +
             '<div class="news-v4-actions">' +
               '<a class="news-v4-open" href="' + escapeHtml(outputUrl) + '" target="_blank" rel="noopener noreferrer">打开完整晨报 →</a>' +
@@ -277,7 +286,7 @@
             '</div>' +
           '</div>' +
           '<div class="news-v4-panel news-v4-visual-panel">' +
-            (visualSrc(lead.visual) ? '<figure class="news-v4-lead-figure"><img class="news-v4-lead-visual" src="' + escapeHtml(safeLocalPath(visualSrc(lead.visual))) + '" alt="' + escapeHtml(visualAlt(lead.visual, lead.title || '今日封面新闻')) + '" loading="lazy" decoding="async">' + (visualCaption(lead.visual) ? '<figcaption>' + escapeHtml(visualCaption(lead.visual)) + '</figcaption>' : '') + '</figure>' : '') +
+            (visualSrc(lead.visual) ? (leadUrl !== '#' ? '<a class="news-v4-lead-figure-link janet-clickable-card" href="' + escapeHtml(leadUrl) + '" target="_blank" rel="noopener noreferrer" aria-label="查看新闻源：' + escapeHtml(lead.title || '今日封面新闻') + '">' : '') + '<figure class="news-v4-lead-figure"><img class="news-v4-lead-visual" src="' + escapeHtml(safeLocalPath(visualSrc(lead.visual))) + '" alt="' + escapeHtml(visualAlt(lead.visual, lead.title || '今日封面新闻')) + '" loading="lazy" decoding="async">' + (visualCaption(lead.visual) ? '<figcaption>' + escapeHtml(visualCaption(lead.visual)) + '</figcaption>' : '') + '</figure>' + (leadUrl !== '#' ? '</a>' : '') : '') +
             '<span class="news-v4-panel-note">今日 ' + escapeHtml(count || 0) + ' 条有效新闻</span>' +
           '</div>' +
         '</div>' +

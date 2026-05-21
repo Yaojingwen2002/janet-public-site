@@ -2,10 +2,10 @@
   "step": "35-U4-D",
   "status": "semantic_copy_ready",
   "qa_passed": true,
-  "latest_edition_id": "2026-05-20-v4",
-  "checked_file_path": "data/2026-05-20-v4/content.json",
-  "homepage_items_checked": 10,
-  "stories_checked": 12,
+  "latest_edition_id": "2026-05-21-v4",
+  "checked_file_path": "data/2026-05-21-v4/content.json",
+  "homepage_items_checked": 9,
+  "stories_checked": 10,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -18,243 +18,136 @@
     },
     "zh_summary": {
       "hard": [],
-      "warnings": []
+      "warnings": [
+        {
+          "field": "zh_summary",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.695,
+          "item_a": {
+            "story_id": "techcrunch-ai-432fd2c1857c",
+            "title": "Jensen Huang拿到融资，押注AI 安全",
+            "source": "TechCrunch AI",
+            "category": "business",
+            "original_title": "Jensen Huang says he&#8217;s found a &#8216;brand new&#8217; $200B market for Nvidia",
+            "text": "TechCrunch报道Jensen Huang拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。"
+          },
+          "item_b": {
+            "story_id": "techcrunch-ai-2fe006634309",
+            "title": "NanoClaw拿到融资，押注AI 安全",
+            "source": "TechCrunch AI",
+            "category": "business",
+            "original_title": "NanoClaw creator turns down $20M buyout offer, raises $12M seed instead",
+            "text": "TechCrunch报道NanoClaw拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。"
+          }
+        }
+      ]
     },
     "why_it_matters": {
       "hard": [],
-      "warnings": [
-        {
-          "field": "why_it_matters",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.774,
-          "item_a": {
-            "story_id": "aws-machine-learning-63bc5a915489",
-            "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-            "source": "AWS Machine Learning Blog",
-            "category": "business",
-            "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-            "text": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会改变具体接入方式、使用边界或采购判断。"
-          },
-          "item_b": {
-            "story_id": "aws-machine-learning-d11174ce5c3d",
-            "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-            "source": "AWS Machine Learning Blog",
-            "category": "business",
-            "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-            "text": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会改变具体接入方式、使用边界或采购判断。"
-          }
-        }
-      ]
+      "warnings": []
     },
     "janet_take": {
       "hard": [],
-      "warnings": [
-        {
-          "field": "janet_take",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.625,
-          "item_a": {
-            "story_id": "openai-news-cd25fdf565bc",
-            "title": "Education出现合作新进展",
-            "source": "OpenAI",
-            "category": "models",
-            "original_title": "The next phase of OpenAI’s Education for Countries",
-            "text": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          },
-          "item_b": {
-            "story_id": "techcrunch-ai-cf4394e143ac",
-            "title": "AI design接入外部摄像头识别",
-            "source": "TechCrunch AI",
-            "category": "business",
-            "original_title": "Google just declared itself a contender in AI design at IO 2026",
-            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          }
-        },
-        {
-          "field": "janet_take",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.658,
-          "item_a": {
-            "story_id": "openai-news-e8a8c4af6836",
-            "title": "Singapore出现合作新进展",
-            "source": "OpenAI",
-            "category": "models",
-            "original_title": "Introducing OpenAI for Singapore",
-            "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          },
-          "item_b": {
-            "story_id": "google-ai-blog-f3b06e3adbce",
-            "title": "Gemini出现智能体能力新进展",
-            "source": "Google AI",
-            "category": "models",
-            "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-            "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          }
-        },
-        {
-          "field": "janet_take",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.625,
-          "item_a": {
-            "story_id": "openai-news-e8a8c4af6836",
-            "title": "Singapore出现合作新进展",
-            "source": "OpenAI",
-            "category": "models",
-            "original_title": "Introducing OpenAI for Singapore",
-            "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          },
-          "item_b": {
-            "story_id": "techcrunch-ai-cf4394e143ac",
-            "title": "AI design接入外部摄像头识别",
-            "source": "TechCrunch AI",
-            "category": "business",
-            "original_title": "Google just declared itself a contender in AI design at IO 2026",
-            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          }
-        },
-        {
-          "field": "janet_take",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.632,
-          "item_a": {
-            "story_id": "google-ai-blog-f3b06e3adbce",
-            "title": "Gemini出现智能体能力新进展",
-            "source": "Google AI",
-            "category": "models",
-            "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-            "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          },
-          "item_b": {
-            "story_id": "techcrunch-ai-cf4394e143ac",
-            "title": "AI design接入外部摄像头识别",
-            "source": "TechCrunch AI",
-            "category": "business",
-            "original_title": "Google just declared itself a contender in AI design at IO 2026",
-            "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-          }
-        }
-      ]
+      "warnings": []
     },
     "watch_next": {
       "hard": [],
-      "warnings": [
-        {
-          "field": "watch_next",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.7,
-          "item_a": {
-            "story_id": "aws-machine-learning-63bc5a915489",
-            "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-            "source": "AWS Machine Learning Blog",
-            "category": "business",
-            "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-            "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
-          },
-          "item_b": {
-            "story_id": "aws-machine-learning-d11174ce5c3d",
-            "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-            "source": "AWS Machine Learning Blog",
-            "category": "business",
-            "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-            "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
-          }
-        }
-      ]
+      "warnings": []
     }
   },
   "max_title_similarity": {
-    "score": 0.525,
+    "score": 0.385,
     "item_a": {
-      "story_id": "aws-machine-learning-63bc5a915489",
-      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "techcrunch-ai-432fd2c1857c",
+      "title": "Jensen Huang拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-      "text": "Amazon Bedrock AgentCore Memory加入对话记忆"
+      "original_title": "Jensen Huang says he&#8217;s found a &#8216;brand new&#8217; $200B market for Nvidia",
+      "text": "Jensen Huang拿到融资，押注AI 安全"
     },
     "item_b": {
-      "story_id": "aws-machine-learning-d11174ce5c3d",
-      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "techcrunch-ai-2fe006634309",
+      "title": "NanoClaw拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-      "text": "Amazon Bedrock AgentCore补上程序化工具调用"
+      "original_title": "NanoClaw creator turns down $20M buyout offer, raises $12M seed instead",
+      "text": "NanoClaw拿到融资，押注AI 安全"
     }
   },
   "max_summary_similarity": {
-    "score": 0.475,
+    "score": 0.695,
     "item_a": {
-      "story_id": "openai-news-cd25fdf565bc",
-      "title": "Education出现合作新进展",
-      "source": "OpenAI",
-      "category": "models",
-      "original_title": "The next phase of OpenAI’s Education for Countries",
-      "text": "OpenAI把Education带到相关产品团队和使用者面前，重点看合作怎样改变使用路径和产品边界。"
+      "story_id": "techcrunch-ai-432fd2c1857c",
+      "title": "Jensen Huang拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Jensen Huang says he&#8217;s found a &#8216;brand new&#8217; $200B market for Nvidia",
+      "text": "TechCrunch报道Jensen Huang拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。"
     },
     "item_b": {
-      "story_id": "openai-news-e8a8c4af6836",
-      "title": "Singapore出现合作新进展",
-      "source": "OpenAI",
-      "category": "models",
-      "original_title": "Introducing OpenAI for Singapore",
-      "text": "OpenAI把Singapore带到企业团队和投资者面前，重点看合作怎样改变使用路径和产品边界。"
+      "story_id": "techcrunch-ai-2fe006634309",
+      "title": "NanoClaw拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "NanoClaw creator turns down $20M buyout offer, raises $12M seed instead",
+      "text": "TechCrunch报道NanoClaw拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。"
     }
   },
   "max_why_similarity": {
-    "score": 0.774,
+    "score": 0.37,
     "item_a": {
-      "story_id": "aws-machine-learning-63bc5a915489",
-      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "techcrunch-ai-432fd2c1857c",
+      "title": "Jensen Huang拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-      "text": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会改变具体接入方式、使用边界或采购判断。"
+      "original_title": "Jensen Huang says he&#8217;s found a &#8216;brand new&#8217; $200B market for Nvidia",
+      "text": "相关产品团队和使用者要看Jensen Huang：资金流向说明市场正在押注哪个具体痛点。"
     },
     "item_b": {
-      "story_id": "aws-machine-learning-d11174ce5c3d",
-      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "techcrunch-ai-2fe006634309",
+      "title": "NanoClaw拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-      "text": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会改变具体接入方式、使用边界或采购判断。"
+      "original_title": "NanoClaw creator turns down $20M buyout offer, raises $12M seed instead",
+      "text": "创作者和内容团队要看NanoClaw：资金流向说明市场正在押注哪个具体痛点。"
     }
   },
   "max_janet_take_similarity": {
-    "score": 0.658,
+    "score": 0.615,
     "item_a": {
-      "story_id": "openai-news-e8a8c4af6836",
-      "title": "Singapore出现合作新进展",
-      "source": "OpenAI",
-      "category": "models",
-      "original_title": "Introducing OpenAI for Singapore",
-      "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      "story_id": "techcrunch-ai-0c32afdef287",
+      "title": "Figma出现智能体能力新进展",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Figma adds an AI assistant to its collaborative canvas",
+      "text": "Figma值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     },
     "item_b": {
-      "story_id": "google-ai-blog-f3b06e3adbce",
-      "title": "Gemini出现智能体能力新进展",
+      "story_id": "google-ai-blog-ebf6fd65ff46",
+      "title": "Google Beam出现混合与本地部署新进展",
       "source": "Google AI",
       "category": "models",
-      "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-      "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      "original_title": "A new experiment brings better group meetings to Google Beam",
+      "text": "Google Beam值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     }
   },
   "max_watch_next_similarity": {
-    "score": 0.7,
+    "score": 0.379,
     "item_a": {
-      "story_id": "aws-machine-learning-63bc5a915489",
-      "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "techcrunch-ai-432fd2c1857c",
+      "title": "Jensen Huang拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-      "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
+      "original_title": "Jensen Huang says he&#8217;s found a &#8216;brand new&#8217; $200B market for Nvidia",
+      "text": "看Jensen Huang资金后是否给出产品指标。"
     },
     "item_b": {
-      "story_id": "aws-machine-learning-d11174ce5c3d",
-      "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "techcrunch-ai-2fe006634309",
+      "title": "NanoClaw拿到融资，押注AI 安全",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-      "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
+      "original_title": "NanoClaw creator turns down $20M buyout offer, raises $12M seed instead",
+      "text": "看NanoClaw资金后是否给出产品指标。"
     }
   },
   "forbidden_patch_phrases_found": [],
@@ -263,129 +156,24 @@
   "cross_edition_similarity_issues": [],
   "warnings": [
     {
-      "field": "why_it_matters",
+      "field": "zh_summary",
       "reason": "near_duplicate_warning",
-      "similarity": 0.774,
+      "similarity": 0.695,
       "item_a": {
-        "story_id": "aws-machine-learning-63bc5a915489",
-        "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-        "source": "AWS Machine Learning Blog",
-        "category": "business",
-        "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-        "text": "开发者和平台团队要看Amazon Bedrock AgentCore Memory：记忆扩展会改变具体接入方式、使用边界或采购判断。"
-      },
-      "item_b": {
-        "story_id": "aws-machine-learning-d11174ce5c3d",
-        "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-        "source": "AWS Machine Learning Blog",
-        "category": "business",
-        "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-        "text": "开发者和平台团队要看Amazon Bedrock AgentCore：工具调用会改变具体接入方式、使用边界或采购判断。"
-      }
-    },
-    {
-      "field": "janet_take",
-      "reason": "near_duplicate_warning",
-      "similarity": 0.625,
-      "item_a": {
-        "story_id": "openai-news-cd25fdf565bc",
-        "title": "Education出现合作新进展",
-        "source": "OpenAI",
-        "category": "models",
-        "original_title": "The next phase of OpenAI’s Education for Countries",
-        "text": "Education值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-      },
-      "item_b": {
-        "story_id": "techcrunch-ai-cf4394e143ac",
-        "title": "AI design接入外部摄像头识别",
+        "story_id": "techcrunch-ai-432fd2c1857c",
+        "title": "Jensen Huang拿到融资，押注AI 安全",
         "source": "TechCrunch AI",
         "category": "business",
-        "original_title": "Google just declared itself a contender in AI design at IO 2026",
-        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-      }
-    },
-    {
-      "field": "janet_take",
-      "reason": "near_duplicate_warning",
-      "similarity": 0.658,
-      "item_a": {
-        "story_id": "openai-news-e8a8c4af6836",
-        "title": "Singapore出现合作新进展",
-        "source": "OpenAI",
-        "category": "models",
-        "original_title": "Introducing OpenAI for Singapore",
-        "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+        "original_title": "Jensen Huang says he&#8217;s found a &#8216;brand new&#8217; $200B market for Nvidia",
+        "text": "TechCrunch报道Jensen Huang拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。"
       },
       "item_b": {
-        "story_id": "google-ai-blog-f3b06e3adbce",
-        "title": "Gemini出现智能体能力新进展",
-        "source": "Google AI",
-        "category": "models",
-        "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-        "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-      }
-    },
-    {
-      "field": "janet_take",
-      "reason": "near_duplicate_warning",
-      "similarity": 0.625,
-      "item_a": {
-        "story_id": "openai-news-e8a8c4af6836",
-        "title": "Singapore出现合作新进展",
-        "source": "OpenAI",
-        "category": "models",
-        "original_title": "Introducing OpenAI for Singapore",
-        "text": "Singapore值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-      },
-      "item_b": {
-        "story_id": "techcrunch-ai-cf4394e143ac",
-        "title": "AI design接入外部摄像头识别",
+        "story_id": "techcrunch-ai-2fe006634309",
+        "title": "NanoClaw拿到融资，押注AI 安全",
         "source": "TechCrunch AI",
         "category": "business",
-        "original_title": "Google just declared itself a contender in AI design at IO 2026",
-        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-      }
-    },
-    {
-      "field": "janet_take",
-      "reason": "near_duplicate_warning",
-      "similarity": 0.632,
-      "item_a": {
-        "story_id": "google-ai-blog-f3b06e3adbce",
-        "title": "Gemini出现智能体能力新进展",
-        "source": "Google AI",
-        "category": "models",
-        "original_title": "I/O 2026: Welcome to the agentic Gemini era",
-        "text": "Gemini值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-      },
-      "item_b": {
-        "story_id": "techcrunch-ai-cf4394e143ac",
-        "title": "AI design接入外部摄像头识别",
-        "source": "TechCrunch AI",
-        "category": "business",
-        "original_title": "Google just declared itself a contender in AI design at IO 2026",
-        "text": "AI design值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
-      }
-    },
-    {
-      "field": "watch_next",
-      "reason": "near_duplicate_warning",
-      "similarity": 0.7,
-      "item_a": {
-        "story_id": "aws-machine-learning-63bc5a915489",
-        "title": "Amazon Bedrock AgentCore Memory加入对话记忆",
-        "source": "AWS Machine Learning Blog",
-        "category": "business",
-        "original_title": "Extending conversational memory in Kiro CLI using Amazon Bedrock AgentCore Memory",
-        "text": "看Amazon Bedrock AgentCore Memory后续是否公布可..."
-      },
-      "item_b": {
-        "story_id": "aws-machine-learning-d11174ce5c3d",
-        "title": "Amazon Bedrock AgentCore补上程序化工具调用",
-        "source": "AWS Machine Learning Blog",
-        "category": "business",
-        "original_title": "Implementing programmatic tool calling on Amazon Bedrock",
-        "text": "看Amazon Bedrock AgentCore后续是否公布可用入口、权限范..."
+        "original_title": "NanoClaw creator turns down $20M buyout offer, raises $12M seed instead",
+        "text": "TechCrunch报道NanoClaw拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。"
       }
     }
   ],

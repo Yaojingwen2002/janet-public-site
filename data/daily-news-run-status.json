@@ -1,30 +1,21 @@
 {
-  "status": "published_full_edition",
-  "run_at": "2026-05-21T04:58:17.613Z",
+  "status": "published_limited_edition",
+  "run_at": "2026-05-21T06:55:31.370Z",
   "timezone": "Asia/Shanghai",
   "window_start": "2026-05-20 17:00:00",
   "window_end": "2026-05-21 09:00:00",
   "source_count": 27,
-  "source_success_count": 18,
-  "source_error_count": 1,
-  "source_empty_count": 8,
-  "raw_items": 3174,
-  "included": 10,
-  "excluded": 3158,
+  "source_success_count": 17,
+  "source_error_count": 5,
+  "source_empty_count": 5,
+  "raw_items": 2391,
+  "included": 9,
+  "excluded": 2380,
   "exclusion_reasons": {
-    "outside_time_window": 3145,
-    "generic_fallback_blocked": 13
+    "outside_time_window": 2362,
+    "generic_fallback_blocked": 18
   },
   "source_reports": [
-    {
-      "id": "github-blog",
-      "source": "GitHub Blog",
-      "category": "agents",
-      "rank": "A",
-      "status": "success",
-      "item_count": 10,
-      "error": ""
-    },
     {
       "id": "microsoft-ai-blog",
       "source": "Microsoft AI",
@@ -32,15 +23,6 @@
       "rank": "A",
       "status": "success",
       "item_count": 10,
-      "error": ""
-    },
-    {
-      "id": "huggingface-blog",
-      "source": "Hugging Face",
-      "category": "open_source",
-      "rank": "A",
-      "status": "success",
-      "item_count": 783,
       "error": ""
     },
     {
@@ -53,12 +35,30 @@
       "error": ""
     },
     {
-      "id": "openai-news",
-      "source": "OpenAI",
-      "category": "models",
-      "rank": "S",
+      "id": "nvidia-ai-blog",
+      "source": "NVIDIA AI",
+      "category": "business",
+      "rank": "A",
       "status": "success",
-      "item_count": 970,
+      "item_count": 18,
+      "error": ""
+    },
+    {
+      "id": "github-blog",
+      "source": "GitHub Blog",
+      "category": "agents",
+      "rank": "A",
+      "status": "success",
+      "item_count": 10,
+      "error": ""
+    },
+    {
+      "id": "microsoft-research-ai",
+      "source": "Microsoft Research AI",
+      "category": "research",
+      "rank": "A",
+      "status": "success",
+      "item_count": 10,
       "error": ""
     },
     {
@@ -71,21 +71,12 @@
       "error": "https://research.google/blog/:no_feed_items"
     },
     {
-      "id": "nvidia-ai-blog",
-      "source": "NVIDIA AI",
+      "id": "the-verge-ai",
+      "source": "The Verge AI",
       "category": "business",
-      "rank": "A",
+      "rank": "B",
       "status": "success",
-      "item_count": 18,
-      "error": ""
-    },
-    {
-      "id": "aws-machine-learning",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "rank": "A",
-      "status": "success",
-      "item_count": 20,
+      "item_count": 10,
       "error": ""
     },
     {
@@ -98,12 +89,57 @@
       "error": ""
     },
     {
-      "id": "the-verge-ai",
-      "source": "The Verge AI",
-      "category": "business",
+      "id": "openai-news",
+      "source": "OpenAI",
+      "category": "models",
+      "rank": "S",
+      "status": "success",
+      "item_count": 970,
+      "error": ""
+    },
+    {
+      "id": "replicate-blog",
+      "source": "Replicate Blog",
+      "category": "open_source",
       "rank": "B",
       "status": "success",
+      "item_count": 121,
+      "error": ""
+    },
+    {
+      "id": "berkeley-bair",
+      "source": "Berkeley BAIR",
+      "category": "research",
+      "rank": "A",
+      "status": "success",
       "item_count": 10,
+      "error": ""
+    },
+    {
+      "id": "huggingface-blog",
+      "source": "Hugging Face",
+      "category": "open_source",
+      "rank": "A",
+      "status": "error",
+      "item_count": 0,
+      "error": "https://huggingface.co/blog/feed.xml:fetch failed; https://huggingface.co/blog:fetch failed"
+    },
+    {
+      "id": "google-ai-blog",
+      "source": "Google AI",
+      "category": "models",
+      "rank": "S",
+      "status": "success",
+      "item_count": 20,
+      "error": ""
+    },
+    {
+      "id": "aws-machine-learning",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "rank": "A",
+      "status": "success",
+      "item_count": 20,
       "error": ""
     },
     {
@@ -116,22 +152,31 @@
       "error": "https://hai.stanford.edu/news/rss.xml:no_feed_items; https://hai.stanford.edu/news:no_feed_items"
     },
     {
-      "id": "replicate-blog",
-      "source": "Replicate Blog",
-      "category": "open_source",
+      "id": "venturebeat-ai",
+      "source": "VentureBeat AI",
+      "category": "business",
       "rank": "B",
       "status": "success",
-      "item_count": 121,
+      "item_count": 7,
       "error": ""
     },
     {
-      "id": "mistral-news",
-      "source": "Mistral AI",
-      "category": "models",
-      "rank": "A",
+      "id": "google-deepmind-blog",
+      "source": "Google DeepMind",
+      "category": "research",
+      "rank": "S",
       "status": "empty",
       "item_count": 0,
-      "error": "https://mistral.ai/news/:no_feed_items"
+      "error": "https://deepmind.google/discover/blog/:no_feed_items"
+    },
+    {
+      "id": "llamaindex-blog",
+      "source": "LlamaIndex Blog",
+      "category": "agents",
+      "rank": "A",
+      "status": "error",
+      "item_count": 0,
+      "error": "https://www.llamaindex.ai/blog/rss.xml:http_404; https://www.llamaindex.ai/blog:no_feed_items"
     },
     {
       "id": "arxiv-cs-cl",
@@ -149,24 +194,6 @@
       "rank": "A",
       "status": "success",
       "item_count": 65,
-      "error": ""
-    },
-    {
-      "id": "llamaindex-blog",
-      "source": "LlamaIndex Blog",
-      "category": "agents",
-      "rank": "A",
-      "status": "error",
-      "item_count": 0,
-      "error": "https://www.llamaindex.ai/blog/rss.xml:http_404; https://www.llamaindex.ai/blog:no_feed_items"
-    },
-    {
-      "id": "google-ai-blog",
-      "source": "Google AI",
-      "category": "models",
-      "rank": "S",
-      "status": "success",
-      "item_count": 20,
       "error": ""
     },
     {
@@ -188,67 +215,13 @@
       "error": ""
     },
     {
-      "id": "microsoft-research-ai",
-      "source": "Microsoft Research AI",
-      "category": "research",
-      "rank": "A",
-      "status": "success",
-      "item_count": 10,
-      "error": ""
-    },
-    {
-      "id": "venturebeat-ai",
-      "source": "VentureBeat AI",
-      "category": "business",
-      "rank": "B",
-      "status": "success",
-      "item_count": 7,
-      "error": ""
-    },
-    {
       "id": "papers-with-code-blog",
       "source": "Papers with Code Blog",
       "category": "research",
       "rank": "B",
-      "status": "empty",
+      "status": "error",
       "item_count": 0,
-      "error": "https://paperswithcode.com/latest/rss:no_feed_items; https://paperswithcode.com/:no_feed_items"
-    },
-    {
-      "id": "google-deepmind-blog",
-      "source": "Google DeepMind",
-      "category": "research",
-      "rank": "S",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://deepmind.google/discover/blog/:no_feed_items"
-    },
-    {
-      "id": "berkeley-bair",
-      "source": "Berkeley BAIR",
-      "category": "research",
-      "rank": "A",
-      "status": "success",
-      "item_count": 10,
-      "error": ""
-    },
-    {
-      "id": "langchain-blog",
-      "source": "LangChain Blog",
-      "category": "agents",
-      "rank": "A",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://blog.langchain.com/rss/:no_feed_items; https://blog.langchain.com/:no_feed_items"
-    },
-    {
-      "id": "meta-ai-blog",
-      "source": "Meta AI",
-      "category": "open_source",
-      "rank": "A",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://ai.meta.com/blog/:no_feed_items"
+      "error": "https://paperswithcode.com/latest/rss:fetch failed; https://paperswithcode.com/:fetch failed"
     },
     {
       "id": "anthropic-news",
@@ -258,17 +231,60 @@
       "status": "empty",
       "item_count": 0,
       "error": "https://www.anthropic.com/news:no_feed_items"
+    },
+    {
+      "id": "meta-ai-blog",
+      "source": "Meta AI",
+      "category": "open_source",
+      "rank": "A",
+      "status": "error",
+      "item_count": 0,
+      "error": "https://ai.meta.com/blog/:fetch failed"
+    },
+    {
+      "id": "mistral-news",
+      "source": "Mistral AI",
+      "category": "models",
+      "rank": "A",
+      "status": "error",
+      "item_count": 0,
+      "error": "https://mistral.ai/news/:fetch failed"
+    },
+    {
+      "id": "langchain-blog",
+      "source": "LangChain Blog",
+      "category": "agents",
+      "rank": "A",
+      "status": "empty",
+      "item_count": 0,
+      "error": "https://blog.langchain.com/rss/:no_feed_items; https://blog.langchain.com/:no_feed_items"
     }
   ],
-  "edition_type": "full_edition",
+  "edition_type": "limited_edition",
   "published": true,
   "published_edition_id": "2026-05-21-v4",
   "used_sample_data": false,
   "published_at_window_enforced": true,
   "errors": [
     {
+      "source_id": "huggingface-blog",
+      "error": "https://huggingface.co/blog/feed.xml:fetch failed; https://huggingface.co/blog:fetch failed"
+    },
+    {
       "source_id": "llamaindex-blog",
       "error": "https://www.llamaindex.ai/blog/rss.xml:http_404; https://www.llamaindex.ai/blog:no_feed_items"
+    },
+    {
+      "source_id": "papers-with-code-blog",
+      "error": "https://paperswithcode.com/latest/rss:fetch failed; https://paperswithcode.com/:fetch failed"
+    },
+    {
+      "source_id": "meta-ai-blog",
+      "error": "https://ai.meta.com/blog/:fetch failed"
+    },
+    {
+      "source_id": "mistral-news",
+      "error": "https://mistral.ai/news/:fetch failed"
     }
   ]
 }

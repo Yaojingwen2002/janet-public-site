@@ -8,17 +8,14 @@
   "duplicate_display_text_groups": [],
   "near_duplicate_display_text_groups": [],
   "daily_title_specificity": {
-    "value": "JensenHuang和Nvidia推近产品层",
+    "value": "StabilityAI和生成都有新动作",
     "concrete_objects": [
-      "Jensen Huang",
-      "Nvidia",
-      "融资",
-      "Jensen Huang拿到融资，押注AI 安全",
       "Stability AI",
       "生成",
       "Stability AI开始生成内容",
       "NanoClaw",
-      "NanoClaw拿到融资，押注AI 安全",
+      "融资",
+      "NanoClaw完成融资，验证具体市场",
       "Figma",
       "智能体能力",
       "Figma出现智能体能力新进展",
@@ -38,7 +35,7 @@
       "IPO",
       "September",
       "诉讼",
-      "马斯克败诉，OpenAI 争议还没结束",
+      "马斯克案件受挫，OpenAI 争议还没结束",
       "AI search",
       "搜索改版",
       "AI search正在改写搜索入口",
@@ -50,43 +47,56 @@
     "generic": false
   },
   "theme_specificity": {
-    "value": "Jensen Huang牵出Nvidia",
+    "value": "Stability AI牵出生成",
     "equals_title": false,
     "contains_concrete_object": true,
     "generic": false
   },
   "daily_thesis_specificity": {
-    "value": "今天值得看的对象是Jensen Huang、Nvidia、融资、Stability AI：它们分别牵出融资、生成、智能体能力，重点不在声量，而在这些产品和评测会怎样改变具体使用路径。",
+    "value": "今天值得看的对象是Stability AI、生成、NanoClaw、融资：它们分别牵出生成、融资、智能体能力，重点不在声量，而在这些产品和评测会怎样改变具体使用路径。",
     "contains_concrete_object": true
   },
   "cover_specificity": {
-    "lead_story_id": "techcrunch-ai-432fd2c1857c",
+    "lead_story_id": "techcrunch-ai-92f47f2928a4",
     "concrete_objects": [
-      "Jensen Huang",
-      "Nvidia",
-      "融资",
-      "Jensen Huang拿到融资，押注AI 安全"
+      "Stability AI",
+      "生成",
+      "Stability AI开始生成内容"
     ],
-    "cover_title": "Jensen Huang把融资摆到封面",
-    "cover_summary": "TechCrunch AI把Jensen Huang的融资放到封面位置，影响相关产品团队和使用者对功能边界和接入方式的判断。",
+    "cover_title": "Stability AI把生成摆到封面",
+    "cover_summary": "TechCrunch AI把Stability AI的生成放到封面位置，影响开源社区和模型使用者对功能边界和接入方式的判断。",
     "title_ok": true,
     "summary_ok": true
   },
   "module_specificity": [
     {
-      "module_id": "models",
-      "module_title": "Stability AI把生成落到产品层",
+      "module_id": "agents",
+      "module_title": "NanoClaw把融资接进任务链路",
       "story_ids": [
-        "techcrunch-ai-92f47f2928a4",
+        "techcrunch-ai-2fe006634309",
+        "techcrunch-ai-0c32afdef287"
+      ],
+      "concrete_objects": [
+        "NanoClaw",
+        "融资",
+        "NanoClaw完成融资，验证具体市场",
+        "Figma",
+        "智能体能力",
+        "Figma出现智能体能力新进展"
+      ],
+      "title_ok": true,
+      "summary_ok": true
+    },
+    {
+      "module_id": "models",
+      "module_title": "MLLM-as-a-judge把Multimodal落到产品层",
+      "story_ids": [
         "aws-machine-learning-a7895ef8fd8e",
         "google-ai-blog-37b7b93d55f5",
         "google-ai-blog-ebf6fd65ff46",
         "techcrunch-ai-ec09bfc92a05"
       ],
       "concrete_objects": [
-        "Stability AI",
-        "生成",
-        "Stability AI开始生成内容",
         "MLLM-as-a-judge",
         "Multimodal",
         "Strands Evals",
@@ -103,25 +113,7 @@
         "IPO",
         "September",
         "诉讼",
-        "马斯克败诉，OpenAI 争议还没结束"
-      ],
-      "title_ok": true,
-      "summary_ok": true
-    },
-    {
-      "module_id": "agents",
-      "module_title": "NanoClaw把融资接进任务链路",
-      "story_ids": [
-        "techcrunch-ai-2fe006634309",
-        "techcrunch-ai-0c32afdef287"
-      ],
-      "concrete_objects": [
-        "NanoClaw",
-        "融资",
-        "NanoClaw拿到融资，押注AI 安全",
-        "Figma",
-        "智能体能力",
-        "Figma出现智能体能力新进展"
+        "马斯克案件受挫，OpenAI 争议还没结束"
       ],
       "title_ok": true,
       "summary_ok": true

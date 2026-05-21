@@ -252,7 +252,7 @@
       const caption = visualCaption(item.visual);
       const compactInner =
         (visual !== '#' ? '<figure class="news-compact-visual"><img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(visualAlt(item.visual, item.title || '今日新闻')) + '" loading="lazy" decoding="async">' + (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') + '</figure>' : '<div class="news-compact-card__icon">' + escapeHtml((item.category || 'AI').slice(0, 2).toUpperCase()) + '</div>') +
-        '<div>' +
+        '<div class="news-compact-card__copy">' +
           '<span>' + escapeHtml(item.source || 'Janet') + '</span>' +
           '<strong>' + escapeHtml(item.title || '今日新闻') + '</strong>' +
           '<p>' + escapeHtml(item.summary || '') + '</p>' +

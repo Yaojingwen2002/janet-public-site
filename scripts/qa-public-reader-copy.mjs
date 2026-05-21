@@ -140,6 +140,98 @@ function collectMissingUrls(summary, content) {
   return missing;
 }
 
+function visibleStories(summary, content) {
+  const map = storyMap(content);
+  const merge = (item, path) => {
+    const id = storyId(item);
+    const story = id ? map.get(id) : null;
+    return { ...(story || {}), ...(item || {}), _path: path };
+  };
+  const out = [];
+  out.push(merge(summary.lead_story, 'news-summary.lead_story'));
+  (summary.signal_map || []).forEach((item, index) => out.push(merge(item, `news-summary.signal_map[${index}]`)));
+  (summary.compact_news || []).forEach((item, index) => out.push(merge(item, `news-summary.compact_news[${index}]`)));
+  (summary.homepage_items || []).forEach((item, index) => out.push(merge(item, `news-summary.homepage_items[${index}]`)));
+  (content.homepage_items || []).forEach((item, index) => out.push(merge(item, `content.homepage_items[${index}]`)));
+  Object.entries(content.sections || {}).forEach(([sectionKey, section]) => {
+    (section.items || []).forEach((item, index) => out.push(merge(item, `content.sections.${sectionKey}.items[${index}]`)));
+  });
+  (content.modules || []).forEach((module, index) => {
+    (module.items || []).forEach((item, itemIndex) => out.push(merge(item, `content.modules[${index}].items[${itemIndex}]`)));
+  });
+  const seen = new Set();
+  return out.filter((item) => {
+    const key = `${item._path}:${storyId(item)}:${item.title || item.story_title || ''}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return item && (storyId(item) || item.title || item.story_title);
+  });
+}
+
+function rawEvidenceText(story) {
+  return [
+    story.original_title,
+    story.original_summary,
+    story.raw_title,
+    story.raw_summary,
+    story.source_title,
+    story.source_summary,
+    story.raw_item?.original_title,
+    story.raw_item?.original_summary,
+    story.story_fact?.original_title,
+    story.story_fact?.original_summary,
+    story.story_facts?.original_title,
+    story.story_facts?.original_summary
+  ].filter(Boolean).join(' ');
+}
+
+function publicStoryText(story) {
+  return [
+    story.title,
+    story.zh_title,
+    story.story_title,
+    story.summary,
+    story.zh_summary,
+    story.why_it_matters,
+    story.janet_take,
+    story.watch_next,
+    story.janet_view
+  ].filter(Boolean).join(' ');
+}
+
+function checkSemanticSanity(summary, content) {
+  const issues = [];
+  const fundingCn = new RegExp(['融资', '拿到钱', '拿到' + '资金', '投资人' + '押注', '资金' + '流向', '估值'].join('|'));
+  const fundingEn = /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|valuation|financing)\b/i;
+  const legalCn = /败诉|诉讼|法庭|法院|案件受挫|法律结果|裁决|上诉/;
+  const legalEn = /\b(lawsuit|court|trial|legal|judge|appeal|sues|case|ruling|suit)\b/i;
+  const sourceRules = [
+    { phrase: /The Verge\s*报道|The Verge 报道/, source: /The Verge/i },
+    { phrase: /TechCrunch\s*报道|TechCrunch 报道/, source: /TechCrunch/i },
+    { phrase: /Google AI\s*报道|Google AI 报道|Google 报道/, source: /Google/i },
+    { phrase: /AWS\s*报道|AWS 把|AWS在/, source: /AWS|Amazon/i },
+    { phrase: /VentureBeat\s*报道|VentureBeat 报道/, source: /VentureBeat/i }
+  ];
+  for (const story of visibleStories(summary, content)) {
+    const id = story.id || story.story_id || story.title || story.story_title || story._path;
+    const rawText = rawEvidenceText(story);
+    const publicText = publicStoryText(story);
+    const sourceText = [story.source, story.source_name, story.publisher, story.site].filter(Boolean).join(' ');
+    if (fundingCn.test(publicText) && !fundingEn.test(rawText)) {
+      issues.push(`semantic mismatch: funding copy without funding evidence: ${id}`);
+    }
+    if (legalCn.test(publicText) && !legalEn.test(rawText)) {
+      issues.push(`semantic mismatch: legal copy without legal evidence: ${id}`);
+    }
+    for (const rule of sourceRules) {
+      if (rule.phrase.test(publicText) && !rule.source.test(sourceText)) {
+        issues.push(`source mismatch in public copy: ${id}`);
+      }
+    }
+  }
+  return issues;
+}
+
 function checkFrontendCards(newsJs) {
   const issues = [];
   if (!/renderExternalCard/.test(newsJs)) issues.push({ surface: 'scripts/news.js', issue: 'renderExternalCard helper missing' });
@@ -199,6 +291,36 @@ function checkVisualCreditCss(cssText) {
   return issues;
 }
 
+function checkCompactLayout(cssText) {
+  const issues = [];
+  if (/\.news-compact-card[\s\S]*?grid-template-columns:\s*44px/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact cards still use left-right 44px thumbnail layout' });
+  }
+  if (!/\.news-compact-card[\s\S]*?flex-direction:\s*column/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact cards are not using stacked vertical layout' });
+  }
+  if (!/\.news-compact-visual img[\s\S]*?aspect-ratio:\s*(16\s*\/\s*9|4\s*\/\s*3)/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact card image aspect ratio missing' });
+  }
+  if (!/\.news-compact-visual img[\s\S]*?object-fit:\s*cover/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact card image object-fit cover missing' });
+  }
+  if (!/\.news-compact-visual figcaption[\s\S]*?font-size:\s*12px/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact visual credit font-size below release standard' });
+  }
+  if (/\.news-compact-visual figcaption[\s\S]*?display:\s*none/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact visual credit is hidden' });
+  }
+  return issues;
+}
+
+function checkSignalTitleCount(outputHtml, summary) {
+  if (/今日三条主线/.test(outputHtml) && (summary.signal_map || []).length !== 3) {
+    return [{ surface: 'output signal title', issue: 'output says 今日三条主线 but signal_map length is not 3' }];
+  }
+  return [];
+}
+
 function main() {
   const latest = latestEditionId();
   if (!latest) throw new Error('latest edition not found');
@@ -206,7 +328,11 @@ function main() {
   const content = readJson(`data/${latest}/content.json`, {});
   const outputHtml = readText(`data/${latest}/output.html`);
   const newsJs = readText('scripts/news.js');
-  const cssText = readText('styles/main.css');
+  const cssText = [
+    readText('styles/main.css'),
+    readText('styles/news-editorial.css'),
+    readText('styles/news-detail.css')
+  ].join('\n');
   const audit = readJson('data/public-reader-copy-audit.json', {});
 
   const debugCopyFound = [];
@@ -219,7 +345,12 @@ function main() {
   const missingUrls = collectMissingUrls(summary, content);
   const nonClickableCards = checkFrontendCards(newsJs);
   const outputLinkIssues = checkOutputLinks(outputHtml);
-  const visualCreditIssues = checkVisualCreditCss(cssText);
+  const visualCreditIssues = [
+    ...checkVisualCreditCss(cssText),
+    ...checkCompactLayout(cssText),
+    ...checkSignalTitleCount(outputHtml, summary)
+  ];
+  const semanticSanityIssues = checkSemanticSanity(summary, content);
   const previousLeaked = Number(audit?.previous_debug_copy_leaked_count || audit?.debug_copy_leaked_count || 0);
   const currentLeaked = debugCopyFound.length;
   const fixedCount = previousLeaked > currentLeaked
@@ -232,6 +363,7 @@ function main() {
   if (nonClickableCards.length) issues.push(`${nonClickableCards.length} homepage card clickability issues remain`);
   if (outputLinkIssues.length) issues.push(`${outputLinkIssues.length} output.html link issues remain`);
   if (visualCreditIssues.length) issues.push(`${visualCreditIssues.length} visual credit readability issues remain`);
+  issues.push(...semanticSanityIssues);
 
   const result = {
     step: '35-U8-B',
@@ -243,6 +375,7 @@ function main() {
     non_clickable_cards: nonClickableCards,
     output_link_issues: outputLinkIssues,
     visual_credit_issues: visualCreditIssues,
+    semantic_sanity_issues: semanticSanityIssues,
     reader_copy_fixed_count: fixedCount,
     preserve_fields_unchanged: true,
     issues,

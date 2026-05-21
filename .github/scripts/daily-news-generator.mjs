@@ -575,6 +575,15 @@ function rawStoryText(item) {
   return `${item.original_title || ''} ${item.title || ''} ${item.original_summary || ''} ${item.summary || ''}`;
 }
 
+function hasFundingEvidence(text) {
+  return /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|valuation|financing)\b/i.test(String(text || ''));
+}
+
+function hasLegalEvidence(text) {
+  return /\b(lawsuit|court|trial|legal|judge|appeal|sues|case|ruling|suit)\b/i.test(String(text || '')) ||
+    /诉讼|法院|法庭|法官|败诉|案件|裁决|上诉/.test(String(text || ''));
+}
+
 function extractStoryFacts(item) {
   const originalTitle = item.original_title || item.title || '';
   const originalSummary = item.original_summary || item.summary || '';
@@ -622,7 +631,7 @@ function extractStoryFacts(item) {
   if (/evaluation|evaluators?|benchmark/i.test(text)) add('action', '评测');
   if (/document parsing|OCR/i.test(text)) add('action', '文档解析');
   if (/podcast/i.test(text)) add('action', '播客生成');
-  if (/trial|lawsuit|suit|case/i.test(text)) add('action', '诉讼');
+  if (hasLegalEvidence(text)) add('action', '诉讼');
   if (/acquired|acquire/i.test(text)) add('action', '收购');
   if (/AI glasses|optics/i.test(text)) add('action', 'AI 眼镜光学');
   if (/cloud operations/i.test(text)) add('action', '云运维');
@@ -729,8 +738,8 @@ function actionFromTitle(title) {
   const text = decodeText(title).toLowerCase();
   if (/leaderboard|ranking/.test(text)) return '榜单排名';
   if (/benchmark|evaluation|evaluators?/.test(text)) return '评测';
-  if (/raised|funding|fund|series [a-z]|\$/.test(text)) return '融资';
-  if (/lawsuit|trial|case|suit|court/.test(text)) return '诉讼';
+  if (hasFundingEvidence(text)) return '融资';
+  if (hasLegalEvidence(text)) return '诉讼';
   if (/auto-delet|delete/.test(text)) return '自动清除';
   if (/generate|create|podcast/.test(text)) return '生成';
   if (/tool calling/.test(text)) return '工具调用';
@@ -831,7 +840,7 @@ function titleFromStoryFact(item, storyFact) {
   const object = storyFact.concrete_object;
   const action = storyFact.action;
   if (action === '榜单排名' || action === '评测') return `${source}把${object}放进公开评测`;
-  if (action === '融资') return `${object}拿到融资，押注${source.includes('TechCrunch') ? 'AI 安全' : 'AI 落地'}`;
+  if (action === '融资') return `${object}完成融资，验证具体市场`;
   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
   if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
   if (action === '生成') return `${object}开始生成内容`;
@@ -858,7 +867,7 @@ function summaryFromStoryFact(item, storyFact) {
   if (action === '购物代理') return `${source}写到${object}，意思是 AI 不只推荐商品，还可能进入跨站购物流程，风险和便利都会一起出现。`;
   if (action === '订阅调整') return `${source}这条指向${object}的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。`;
   if (action === '生成') return `${source}把${object}放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。`;
-  if (action === '融资') return `${source}报道${object}拿到资金，说明投资人押注的不是 AI 口号，而是更具体的安全或产品问题。`;
+  if (action === '融资') return `${source}报道${object}完成融资，重点看这笔钱会投向哪个具体产品问题。`;
   if (action === '诉讼') return `${source}围绕${object}的法律争议继续发酵，重点是 AI 公司治理、承诺和商业化之间的拉扯。`;
   if (action === '评测' || action === '榜单排名') return `${source}把${object}放进评测语境，重点是任务集、评分方法和结果是否经得起复现。`;
   if (action === '视觉识别') return `${source}提到${object}的视觉识别能力，真正要看的是它在真实环境里能否稳定读懂场景。`;
@@ -877,7 +886,7 @@ function whyFromStoryFact(item, storyFact) {
   if (action === '智能体能力') return `${audience}要看${object}：智能体只有进入具体任务，才知道是帮忙还是添乱。`;
   if (action === '购物代理') return `${audience}要看${object}：AI 如果开始代办购物，支付、推荐和责任边界都会变敏感。`;
   if (action === '订阅调整') return `${audience}要看${object}：能力打包方式会决定谁能用、花多少钱、被锁在哪个入口。`;
-  if (action === '融资') return `${audience}要看${object}：资金流向说明市场正在押注哪个具体痛点。`;
+  if (action === '融资') return `${audience}要看${object}：融资方向说明市场正在验证哪个具体痛点。`;
   if (action === '评测' || action === '榜单排名') return `${audience}要看${object}：公开评测能让能力比较少一点玄学，多一点可复查证据。`;
   if (action === '推出') return `${audience}要看${object}：新功能是否改变现有产品路径，而不是只增加发布会信息量。`;
   return `${audience}要看${object}：${action}会改变具体接入方式、使用边界或采购判断。`;
@@ -891,7 +900,7 @@ function janetFromStoryFact(item, storyFact) {
   if (action === '记忆扩展') return `${object}补记忆这事很实在，智能体没上下文就像刚睡醒的同事。`;
   if (action === '工具调用') return `${object}开始认真处理工具调用，说明智能体终于要学会按流程干活。`;
   if (action === '购物代理') return `${object}听起来方便，但让 AI 花钱这件事，最好先问清楚谁背锅。`;
-  if (action === '融资') return `${object}拿到钱只是开场，接下来要证明它不是又一个安全 PPT。`;
+  if (action === '融资') return `${object}融资只是开场，接下来要证明它不是又一个安全 PPT。`;
   if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
   if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
   return `${object}值得看，因为它把发布词落到了具体入口、权限和使用门槛上。`;
@@ -906,7 +915,7 @@ function watchFromStoryFact(item, storyFact) {
   if (action === '购物代理') return `看${object}的支付和责任边界。`;
   if (action === '订阅调整') return `看${object}哪些能力被放进付费档。`;
   if (action === '生成') return `看${object}是否支持编辑和版权控制。`;
-  if (action === '融资') return `看${object}资金后是否给出产品指标。`;
+  if (action === '融资') return `看${object}融资后是否给出产品指标。`;
   if (action === '诉讼') return `看${object}后续是否影响治理承诺。`;
   if (action === '评测' || action === '榜单排名') return `看${object}是否公开任务集和评分细则。`;
   if (action === '推出') return `看${object}是否给出可用入口和限制。`;
@@ -1076,8 +1085,8 @@ function storyBrief(item) {
   }
   if (/all of the updates/.test(text) && /musk/.test(text) && /altman/.test(text)) {
     return {
-      title: 'The Verge 梳理 OpenAI 控制权交锋',
-      summary: 'The Verge 汇总马斯克与 Sam Altman 围绕 OpenAI 的持续交锋，这条更像时间线，帮读者看清争议如何滚动。',
+      title: `${source}梳理 OpenAI 控制权交锋`,
+      summary: `${source}汇总马斯克与 Sam Altman 围绕 OpenAI 的持续交锋，这条更像时间线，帮读者看清争议如何滚动。`,
       why: '关注 AI 治理的人要看：持续更新的争议会影响公众对 OpenAI 控制权和商业化路径的判断。',
       janet: '这不是一条单点新闻，是 OpenAI 家庭剧的滚动字幕。',
       watch: '看 Altman 与马斯克是否继续公开交锋。'
@@ -1085,8 +1094,8 @@ function storyBrief(item) {
   }
   if (/elon musk loses his case against sam altman/.test(text)) {
     return {
-      title: 'The Verge 记录马斯克败给 Altman',
-      summary: 'The Verge 报道马斯克对 Sam Altman 的案件失利，重点是围绕 OpenAI 的法律攻击暂时没有打穿。',
+      title: `${source}记录马斯克案件受挫`,
+      summary: `${source}报道马斯克对 Sam Altman 的案件失利，重点是围绕 OpenAI 的法律攻击暂时没有打穿。`,
       why: '投资者和政策观察者要看：诉讼结果会影响外界如何评估 OpenAI 的治理风险。',
       janet: '马斯克这次没打穿，但这类官司通常不会让故事真的结束。',
       watch: '看马斯克是否换路径继续挑战 OpenAI。'
@@ -1128,10 +1137,10 @@ function storyBrief(item) {
       watch: '看 Alexa Plus 生成内容是否支持可控编辑。'
     };
   }
-  if (/elon musk/.test(text) && /sam altman|openai/.test(text) && /lost|suit|case/.test(text)) {
+  if (hasLegalEvidence(raw) && /elon musk/.test(text) && /sam altman|openai/.test(text) && /lost|suit|case/.test(text)) {
     return {
-      title: '马斯克败诉，OpenAI 争议还没结束',
-      summary: 'The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。',
+      title: '马斯克案件受挫，OpenAI 争议还没结束',
+      summary: `${source}报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。`,
       why: '投资者和 AI 公司观察者要看：这类诉讼会影响公众如何理解 AI 公司的使命、控制权和商业化。',
       janet: '马斯克输了这一局，但 OpenAI 的治理故事不会因此安静。',
       watch: '看马斯克是否继续用其他路径施压 OpenAI。'
@@ -1146,7 +1155,7 @@ function storyBrief(item) {
       watch: '看苹果是否公布 Siri 隐私和记录规则。'
     };
   }
-  if (/musk|elon/.test(text) && /openai/.test(text) && /trial|trust|lawsuit/.test(text)) {
+  if (hasLegalEvidence(raw) && /musk|elon/.test(text) && /openai/.test(text) && /trial|trust|lawsuit/.test(text)) {
     return {
       title: '马斯克与 OpenAI 诉讼，信任成核心问题',
       summary: `${source}把马斯克与 OpenAI 的诉讼焦点放在“谁能被信任”上，这不是普通法务新闻，而是 AI 公司治理和商业承诺的压力测试。`,
@@ -2369,6 +2378,7 @@ function renderHtml(content) {
   const allItems = Object.values(content.sections).flatMap((section) => section.items || []);
   const lead = content.sections.lead_story.items[0] || {};
   const leadAttrs = externalAttrs(lead.url || lead.source_url || lead.external_url);
+  const signalTitle = (content.signal_map || []).length >= 3 ? '今日三条主线' : '今日主线';
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -2398,7 +2408,7 @@ function renderHtml(content) {
   <p>${escapeHtml(content.daily_thesis)}</p>
   ${visualSrc(lead.visual) ? `<a class="lead-link"${leadAttrs}><img class="visual" src="../../${escapeHtml(visualSrc(lead.visual))}" alt="${escapeHtml(visualAlt(lead.visual, lead.title))}"></a>` : ''}
   <section>
-    <div class="k">今日三条主线</div>
+    <div class="k">${escapeHtml(signalTitle)}</div>
     <div class="signal">${content.signal_map.map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.label || item.signal))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></a>`).join('')}</div>
   </section>
   <section>

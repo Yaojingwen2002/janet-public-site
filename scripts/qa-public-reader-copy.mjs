@@ -199,10 +199,35 @@ function publicStoryText(story) {
   ].filter(Boolean).join(' ');
 }
 
+const BANNED_WORDS = [
+  'Jensen Huang拿到融资',
+  '拿到资金',
+  '投资人押注',
+  '资金流向',
+  '马斯克败诉',
+  'The Verge 报道马斯克'
+];
+
+function checkBannedWords(outputHtml, newsSummary, contentJson) {
+  const issues = [];
+  const texts = [outputHtml, newsSummary, contentJson].map((t) => String(t || ''));
+  for (const word of BANNED_WORDS) {
+    for (let i = 0; i < texts.length; i++) {
+      if (texts[i].includes(word)) {
+        const source = ['output.html', 'news-summary.json', 'content.json'][i];
+        const idx = texts[i].indexOf(word);
+        const context = texts[i].slice(Math.max(0, idx - 40), idx + word.length + 40);
+        issues.push({ banned_word: word, in: source, context });
+      }
+    }
+  }
+  return issues;
+}
+
 function checkSemanticSanity(summary, content) {
   const issues = [];
-  const fundingCn = new RegExp(['融资', '拿到钱', '拿到' + '资金', '投资人' + '押注', '资金' + '流向', '估值'].join('|'));
-  const fundingEn = /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|valuation|financing|buyout)\b/i;
+  const fundingCn = new RegExp(['融资', '拿到钱', '投资人' + '押注', '估值'].join('|'));
+  const fundingEn = /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|financing|buyout)\b/i;
   const legalCn = /败诉|诉讼|法庭|法院|案件受挫|法律结果|裁决|上诉/;
   const legalEn = /\b(lawsuit|court|trial|legal|judge|appeal|sues|case|ruling|suit)\b/i;
   const sourceRules = [
@@ -378,6 +403,7 @@ function main() {
     ...checkSignalTitleCount(outputHtml, summary)
   ];
   const semanticSanityIssues = checkSemanticSanity(summary, content);
+  const bannedWordIssues = checkBannedWords(outputHtml, JSON.stringify(summary), JSON.stringify(content));
   const previousLeaked = Number(audit?.previous_debug_copy_leaked_count || audit?.debug_copy_leaked_count || 0);
   const currentLeaked = debugCopyFound.length;
   const fixedCount = previousLeaked > currentLeaked
@@ -390,7 +416,8 @@ function main() {
   if (nonClickableCards.length) issues.push(`${nonClickableCards.length} homepage card clickability issues remain`);
   if (outputLinkIssues.length) issues.push(`${outputLinkIssues.length} output.html link issues remain`);
   if (visualCreditIssues.length) issues.push(`${visualCreditIssues.length} visual credit readability issues remain`);
-  issues.push(...semanticSanityIssues);
+  if (bannedWordIssues.length) issues.push(`banned words found: ${bannedWordIssues.map((b) => b.banned_word).join(', ')}`);
+  if (semanticSanityIssues.length) issues.push(...semanticSanityIssues);
 
   const result = {
     step: '35-U8-D',

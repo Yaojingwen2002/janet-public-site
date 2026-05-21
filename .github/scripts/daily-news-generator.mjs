@@ -576,7 +576,7 @@ function rawStoryText(item) {
 }
 
 function hasFundingEvidence(text) {
-  return /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|valuation|financing|buyout)\b/i.test(String(text || ''));
+  return /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|financing|buyout)\b/i.test(String(text || ''));
 }
 
 function hasLegalEvidence(text) {

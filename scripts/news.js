@@ -90,6 +90,14 @@
     return '<a class="' + className + ' janet-clickable-card" href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(ariaLabel || '打开新闻源站') + '">' + innerHtml + '</a>';
   }
 
+  function sourceBadge(source) {
+    return '<span class="news-source-badge">' + escapeHtml(source || 'Janet') + '</span>';
+  }
+
+  function externalHint(label) {
+    return '<span class="news-external-hint">' + escapeHtml(label || '原文') + ' ↗</span>';
+  }
+
   function getItemText(item) {
     return item.content || item.summary || item.critique || '';
   }
@@ -239,7 +247,7 @@
       const signalInner =
         (visual !== '#' ? '<figure class="news-visual-frame"><img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(visualAlt(signal.visual, signal.label || signal.signal || '今日信号')) + '" loading="lazy" decoding="async">' + (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') + '</figure>' : '') +
         '<div class="news-signal-card__copy">' +
-          '<span>0' + (index + 1) + ' · ' + escapeHtml(signal.source || 'Janet') + '</span>' +
+          '<div class="news-card-meta">' + sourceBadge(signal.source) + '<span class="news-card-index">0' + (index + 1) + '</span>' + externalHint('原文') + '</div>' +
           '<strong>' + escapeHtml(signal.label || signal.signal || '今日信号') + '</strong>' +
           '<p>' + escapeHtml(signal.summary || signal.janet_view || '') + '</p>' +
           (signal.story_title ? '<em>' + escapeHtml(signal.story_title) + '</em>' : '') +
@@ -253,7 +261,7 @@
       const compactInner =
         (visual !== '#' ? '<figure class="news-compact-visual"><img src="' + escapeHtml(visual) + '" alt="' + escapeHtml(visualAlt(item.visual, item.title || '今日新闻')) + '" loading="lazy" decoding="async">' + (caption ? '<figcaption>' + escapeHtml(caption) + '</figcaption>' : '') + '</figure>' : '<div class="news-compact-card__icon">' + escapeHtml((item.category || 'AI').slice(0, 2).toUpperCase()) + '</div>') +
         '<div class="news-compact-card__copy">' +
-          '<span>' + escapeHtml(item.source || 'Janet') + '</span>' +
+          '<div class="news-card-meta">' + sourceBadge(item.source) + externalHint('原文') + '</div>' +
           '<strong>' + escapeHtml(item.title || '今日新闻') + '</strong>' +
           '<p>' + escapeHtml(item.summary || '') + '</p>' +
         '</div>';

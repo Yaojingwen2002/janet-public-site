@@ -314,6 +314,32 @@ function checkCompactLayout(cssText) {
   return issues;
 }
 
+function checkReleaseSurfacePolish(cssText, newsJs) {
+  const issues = [];
+  if (!/\.janet-clickable-card:focus-visible/.test(cssText)) {
+    issues.push({ surface: 'clickable cards', issue: 'focus-visible release feedback missing' });
+  }
+  if (!/\.news-compact-card:hover[\s\S]*?translateY\(-3px\)/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact hover lift feedback missing' });
+  }
+  if (!/\.news-compact-card:active[\s\S]*?scale\(0\.985\)/.test(cssText)) {
+    issues.push({ surface: 'compact card css', issue: 'compact active press feedback missing' });
+  }
+  if (!/\.news-signal-card:hover[\s\S]*?translateY\(-3px\)/.test(cssText)) {
+    issues.push({ surface: 'signal card css', issue: 'signal hover lift feedback missing' });
+  }
+  if (!/\.news-source-badge/.test(cssText) || !/sourceBadge/.test(newsJs)) {
+    issues.push({ surface: 'source badge', issue: 'source badge style or renderer missing' });
+  }
+  if (!/\.news-external-hint/.test(cssText) || !/externalHint/.test(newsJs) || !/↗/.test(newsJs)) {
+    issues.push({ surface: 'external hint', issue: 'external source hint missing' });
+  }
+  if (!/@media \(max-width: 640px\)[\s\S]*?\.news-compact-card__copy[\s\S]*?padding:\s*13px/.test(cssText)) {
+    issues.push({ surface: 'mobile density', issue: 'mobile compact card density rule missing' });
+  }
+  return issues;
+}
+
 function checkSignalTitleCount(outputHtml, summary) {
   if (/今日三条主线/.test(outputHtml) && (summary.signal_map || []).length !== 3) {
     return [{ surface: 'output signal title', issue: 'output says 今日三条主线 but signal_map length is not 3' }];
@@ -348,6 +374,7 @@ function main() {
   const visualCreditIssues = [
     ...checkVisualCreditCss(cssText),
     ...checkCompactLayout(cssText),
+    ...checkReleaseSurfacePolish(cssText, newsJs),
     ...checkSignalTitleCount(outputHtml, summary)
   ];
   const semanticSanityIssues = checkSemanticSanity(summary, content);
@@ -366,7 +393,7 @@ function main() {
   issues.push(...semanticSanityIssues);
 
   const result = {
-    step: '35-U8-C',
+    step: '35-U8-D',
     status: issues.length ? 'public_reader_copy_blocked' : 'public_reader_copy_ready',
     qa_passed: issues.length === 0,
     latest_edition_id: latest,

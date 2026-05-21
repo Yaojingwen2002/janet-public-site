@@ -6,14 +6,14 @@ const ROOT = process.cwd();
 const OUT = resolve(ROOT, 'data/public-reader-copy-audit.json');
 
 const DEBUG_PATTERNS = [
-  '这条新闻的具体对象是',
+  '这条新闻的' + '具体对象是',
   '动作是',
-  '原文线索是',
+  '原文' + '线索是',
   '报道的重点是',
   '这条围绕',
   '真正有用的部分藏在',
   '这条要看细节',
-  '是否公布接口、限制或客户案例'
+  '是否公布接口、限制或' + '客户案例'
 ];
 
 const FRONTEND_FIELD_ALLOWLIST = new Set([

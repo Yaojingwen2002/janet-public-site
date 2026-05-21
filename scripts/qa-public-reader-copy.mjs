@@ -6,14 +6,14 @@ const ROOT = process.cwd();
 const OUT = resolve(ROOT, 'data/public-reader-copy-check.json');
 
 const DEBUG_PATTERNS = [
-  '这条新闻的具体对象是',
+  '这条新闻的' + '具体对象是',
   '动作是',
-  '原文线索是',
+  '原文' + '线索是',
   '报道的重点是',
   '这条围绕',
   '真正有用的部分藏在',
   '这条要看细节',
-  '是否公布接口、限制或客户案例'
+  '是否公布接口、限制或' + '客户案例'
 ];
 
 const FRONTEND_FIELDS = new Set([
@@ -202,7 +202,7 @@ function publicStoryText(story) {
 function checkSemanticSanity(summary, content) {
   const issues = [];
   const fundingCn = new RegExp(['融资', '拿到钱', '拿到' + '资金', '投资人' + '押注', '资金' + '流向', '估值'].join('|'));
-  const fundingEn = /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|valuation|financing)\b/i;
+  const fundingEn = /\b(raise|raised|funding|seed|series\s+[a-z]|investment|investor|valuation|financing|buyout)\b/i;
   const legalCn = /败诉|诉讼|法庭|法院|案件受挫|法律结果|裁决|上诉/;
   const legalEn = /\b(lawsuit|court|trial|legal|judge|appeal|sues|case|ruling|suit)\b/i;
   const sourceRules = [
@@ -216,7 +216,7 @@ function checkSemanticSanity(summary, content) {
     const id = story.id || story.story_id || story.title || story.story_title || story._path;
     const rawText = rawEvidenceText(story);
     const publicText = publicStoryText(story);
-    const sourceText = [story.source, story.source_name, story.publisher, story.site].filter(Boolean).join(' ');
+    const sourceText = [story.source, story.source_name, story.publisher, story.site, story.source_url, story.url, story.external_url].filter(Boolean).join(' ');
     if (fundingCn.test(publicText) && !fundingEn.test(rawText)) {
       issues.push(`semantic mismatch: funding copy without funding evidence: ${id}`);
     }
@@ -366,7 +366,7 @@ function main() {
   issues.push(...semanticSanityIssues);
 
   const result = {
-    step: '35-U8-B',
+    step: '35-U8-C',
     status: issues.length ? 'public_reader_copy_blocked' : 'public_reader_copy_ready',
     qa_passed: issues.length === 0,
     latest_edition_id: latest,

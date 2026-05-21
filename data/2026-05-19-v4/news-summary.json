@@ -1,10 +1,10 @@
 {
   "status": "content_generated",
-  "edition_type": "full_edition",
+  "edition_type": "limited_edition",
   "date": "2026-05-19",
   "brand": "Janet 快车箱",
-  "theme": "开发者入口开始进工位",
-  "item_count": 20,
+  "theme": "Codex牵出Dell",
+  "item_count": 7,
   "lead_story": {
     "id": "openai-news-765fa93f522f",
     "story_id": "openai-news-765fa93f522f",
@@ -14,7 +14,48 @@
       "original_summary": "OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows.",
       "url": "https://openai.com/index/dell-codex-enterprise-partnership",
       "published_at": "2026-05-18T10:00:00.000Z",
-      "category": "models"
+      "category": "models",
+      "image_candidates": []
+    },
+    "story_fact": {
+      "concrete_object": "Codex",
+      "entities": [
+        "Codex",
+        "Dell",
+        "OpenAI"
+      ],
+      "products": [
+        "Codex",
+        "Dell",
+        "OpenAI"
+      ],
+      "action": "合作",
+      "audience": "开发者和平台团队",
+      "editorial_angle": "Codex的合作会影响开发者和平台团队",
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "Codex"
+        },
+        {
+          "label": "entity",
+          "value": "Dell"
+        },
+        {
+          "label": "entity",
+          "value": "OpenAI"
+        },
+        {
+          "label": "action",
+          "value": "合作"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Codex"
+        }
+      ],
+      "original_title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
+      "original_summary": "OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows."
     },
     "zh_title": "OpenAI 联手戴尔，把 Codex 推进企业内网",
     "zh_summary": "OpenAI 与戴尔合作，把 Codex 带进混合和本地企业环境，重点是代码智能体开始进入更保守的企业部署场景。",
@@ -36,13 +77,15 @@
         "value": "合作"
       },
       {
-        "label": "action",
-        "value": "混合与本地部署"
+        "label": "concrete_object",
+        "value": "Codex"
       }
     ],
     "title": "OpenAI 联手戴尔，把 Codex 推进企业内网",
     "original_title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
     "url": "https://openai.com/index/dell-codex-enterprise-partnership",
+    "source_url": "https://openai.com/index/dell-codex-enterprise-partnership",
+    "external_url": "https://openai.com/index/dell-codex-enterprise-partnership",
     "source": "OpenAI",
     "source_type": "official",
     "source_rank": "S",
@@ -58,7 +101,7 @@
     "image": null,
     "image_source": null,
     "image_credit": null,
-    "verified_at": "2026-05-19T08:06:37.245Z",
+    "verified_at": "2026-05-21T07:17:53.415Z",
     "duplicate_group": null,
     "evidence_ids": [
       "evidence-0001"
@@ -93,145 +136,101 @@
     "lead_eligible": true,
     "core_eligible": true,
     "primary_section": "agents",
-    "visual": "assets/news-visuals/2026-05-19-lead.svg"
+    "visual": {
+      "status": "ready",
+      "mode": "open_license_image",
+      "src": "assets/news-visuals/2026-05-19-v4/openai-news-765fa93f522f.jpg",
+      "local_path": "assets/news-visuals/2026-05-19-v4/openai-news-765fa93f522f.jpg",
+      "alt": "新闻视觉：OpenAI 联手戴尔，把 Codex 推进企业内网",
+      "caption": "开放授权图片，用来辅助呈现「Codex」相关对象。",
+      "credit": "Unknown author Unknown author",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Codex_Suprasliensis.jpg",
+      "matched_terms": [
+        "Codex",
+        "Dell"
+      ],
+      "relevance_score": 0.66,
+      "fallback_reason": "",
+      "template": ""
+    }
   },
   "output_url": "data/2026-05-19-v4/output.html",
   "summary_url": "data/2026-05-19-v4/news-summary.json",
   "content_url": "data/2026-05-19-v4/content.json",
   "vol": "0000",
-  "title": "开发者入口开始进工位",
-  "intro_text": "今天最值得看的不是热闹数量，而是OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog把Codex推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。",
-  "daily_thesis": "今天窗口里，OpenAI、NVIDIA AI、GitHub Blog、AWS Machine Learning Blog把开源补位摆在台面上：不是每条都惊天动地，但它们共同说明，模型能力正在往开发、开源和研究的日常环节里挤。",
+  "title": "Codex和Dell都有新动作",
+  "intro_text": "Codex先把今天的注意力拉住；Dell补上另一条线索。今天先看这些具体产品怎么动。",
+  "daily_thesis": "今天值得看的对象是Codex、Dell、OpenAI、合作：它们分别牵出合作、智能体能力、内容审核，重点不在声量，而在这些产品和评测会怎样改变具体使用路径。",
   "signal_map": [
     {
       "signal": "模型上新",
       "evidence": [
-        "techcrunch-ai-fc9d9b7a3f0a"
-      ],
-      "janet_view": "The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。",
-      "label": "模型上新",
-      "summary": "The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。",
-      "story_id": "techcrunch-ai-fc9d9b7a3f0a",
-      "story_title": "马斯克败诉，OpenAI 争议还没结束",
-      "source": "TechCrunch AI",
-      "visual": "assets/news-visuals/2026-05-19-signal-1.svg"
-    },
-    {
-      "signal": "工具收口",
-      "evidence": [
-        "github-blog-53b6ecd830d4"
-      ],
-      "janet_view": "GitHub 让本地会话更容易跨设备延续，重点是开发环境不再只锁在一台机器上，协作和上下文迁移会更顺。",
-      "label": "工具收口",
-      "summary": "GitHub 让本地会话更容易跨设备延续，重点是开发环境不再只锁在一台机器上，协作和上下文迁移会更顺。",
-      "story_id": "github-blog-53b6ecd830d4",
-      "story_title": "GitHub 会话开始跟着开发者走",
-      "source": "GitHub Blog",
-      "visual": "assets/news-visuals/2026-05-19-signal-2.svg"
-    },
-    {
-      "signal": "商业落点",
-      "evidence": [
         "mit-tech-review-ai-8970aa509b85"
       ],
       "janet_view": "MIT Technology Review 复盘马斯克对 OpenAI 诉讼失利，重点在于法律证据、公司使命和商业化承诺之间的拉扯。",
-      "label": "商业落点",
+      "label": "Sam Altman的诉讼",
       "summary": "MIT Technology Review 复盘马斯克对 OpenAI 诉讼失利，重点在于法律证据、公司使命和商业化承诺之间的拉扯。",
       "story_id": "mit-tech-review-ai-8970aa509b85",
       "story_title": "MIT 复盘马斯克为何输给 OpenAI",
       "source": "MIT Technology Review AI",
-      "visual": "assets/news-visuals/2026-05-19-signal-3.svg"
+      "url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+      "source_url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+      "external_url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-8970aa509b85.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-8970aa509b85.jpg",
+        "alt": "新闻视觉：MIT 复盘马斯克为何输给 OpenAI",
+        "caption": "MIT Tech Review原文分享图，用来对应「Sam Altman」这条新闻。",
+        "credit": "MIT Technology Review AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://wp.technologyreview.com/wp-content/uploads/2026/05/AP26138720752056.jpg?resize=1200,600",
+        "matched_terms": [
+          "OpenAI"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "signal": "工具收口",
+      "evidence": [
+        "aws-machine-learning-59a2c5c9125f"
+      ],
+      "janet_view": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
+      "label": "Amazon Bedrock AgentCore的评测",
+      "summary": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
+      "story_id": "aws-machine-learning-59a2c5c9125f",
+      "story_title": "Bedrock AgentCore 加上代码评估器",
+      "source": "AWS Machine Learning Blog",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-59a2c5c9125f.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-59a2c5c9125f.png",
+        "alt": "新闻视觉：Bedrock AgentCore 加上代码评估器",
+        "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的评测。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ml-20799.png",
+        "matched_terms": [
+          "Build"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ],
-  "edition_items_count": 20,
-  "homepage_items_count": 10,
+  "edition_items_count": 7,
+  "homepage_items_count": 7,
   "compact_news": [
-    {
-      "id": "nvidia-ai-blog-e1c9447bd1b4",
-      "story_id": "nvidia-ai-blog-e1c9447bd1b4",
-      "raw_item": {
-        "source": "NVIDIA AI",
-        "original_title": "NVIDIA CEO Jensen Huang at Dell Technologies World: ‘Demand Is Going Parabolic, Utterly Parabolic’",
-        "original_summary": "Agentic AI inference at one-tenth the cost per token with NVIDIA Vera Rubin NVL72. Agent sandboxes run 50% faster on NVIDIA Vera than traditional CPUs — while enterprise data queries are up to 3x faster with the Vera CPU. And 5,000 enterprises like Lilly, Samsung and Honeywell are running AI workloads on Dell AI Factories [&#8230;]",
-        "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
-        "published_at": "2026-05-18T22:28:59.000Z",
-        "category": "business"
-      },
-      "zh_title": "黄仁勋在戴尔大会继续推企业 AI",
-      "zh_summary": "NVIDIA 在戴尔技术大会上强调企业 AI 需求快速上升，这条新闻的重点是算力、服务器和企业部署正在绑得更紧。",
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "Dell"
-        },
-        {
-          "label": "entity",
-          "value": "NVIDIA Vera"
-        },
-        {
-          "label": "entity",
-          "value": "Jensen Huang"
-        }
-      ],
-      "title": "黄仁勋在戴尔大会继续推企业 AI",
-      "original_title": "NVIDIA CEO Jensen Huang at Dell Technologies World: ‘Demand Is Going Parabolic, Utterly Parabolic’",
-      "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
-      "source": "NVIDIA AI",
-      "source_type": "official",
-      "source_rank": "A",
-      "category": "business",
-      "score": 8,
-      "published_at": "2026-05-18T22:28:59.000Z",
-      "published_at_source": "pubDate",
-      "summary": "NVIDIA 在戴尔技术大会上强调企业 AI 需求快速上升，这条新闻的重点是算力、服务器和企业部署正在绑得更紧。",
-      "original_summary": "Agentic AI inference at one-tenth the cost per token with NVIDIA Vera Rubin NVL72. Agent sandboxes run 50% faster on NVIDIA Vera than traditional CPUs — while enterprise data queries are up to 3x faster with the Vera...",
-      "why_it_matters": "企业 IT 和开发平台团队要看：AI 需求如果继续上升，预算会从试点转向基础设施采购。",
-      "janet_take": "黄仁勋这次讲的不是愿景，是企业钱包和服务器机柜的位置。",
-      "watch_next": "看戴尔与 NVIDIA 的企业 AI 订单是否继续放大。",
-      "image": null,
-      "image_source": null,
-      "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
-      "duplicate_group": null,
-      "evidence_ids": [
-        "evidence-0007"
-      ],
-      "editorial_score": 173,
-      "editorial_signals": [
-        {
-          "name": "model_release",
-          "weight": 35,
-          "hits": [
-            "agent"
-          ]
-        },
-        {
-          "name": "developer_tooling",
-          "weight": 25,
-          "hits": [
-            "agent"
-          ]
-        },
-        {
-          "name": "research_signal",
-          "weight": 20,
-          "hits": [
-            "inference"
-          ]
-        },
-        {
-          "name": "business_impact",
-          "weight": 15,
-          "hits": [
-            "enterprise"
-          ]
-        }
-      ],
-      "editorial_penalties": [],
-      "lead_eligible": true,
-      "core_eligible": true,
-      "primary_section": "agents"
-    },
     {
       "id": "nvidia-ai-blog-7f23df8fcf70",
       "story_id": "nvidia-ai-blog-7f23df8fcf70",
@@ -241,7 +240,74 @@
         "original_summary": "The first NVIDIA Vera CPUs arrived at three of the world's leading AI labs on Friday — Anthropic in San Francisco, OpenAI in Mission Bay, SpaceXAI in Palo Alto — followed by a delivery to Oracle Cloud Infrastructure in Santa Clara on Monday. NVIDIA Vice President of Hyperscale and High-Performance Computing Ian Buck hand-delivered them.",
         "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
         "published_at": "2026-05-18T21:48:17.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": [
+          "https://blogs.nvidia.com/wp-content/uploads/2026/05/Vera-CPU_Tray_Open-34_Wide_R6C-FNL-5260651.jpg"
+        ]
+      },
+      "story_fact": {
+        "concrete_object": "First CPU Built",
+        "entities": [
+          "NVIDIA Vera",
+          "OpenAI",
+          "Anthropic",
+          "Vera Arrives",
+          "First CPU Built",
+          "Agents Lands",
+          "Top AI Labs"
+        ],
+        "products": [
+          "NVIDIA Vera",
+          "OpenAI",
+          "Anthropic",
+          "Vera Arrives",
+          "First CPU Built",
+          "Agents Lands",
+          "Top AI Labs"
+        ],
+        "action": "智能体能力",
+        "audience": "相关产品团队和使用者",
+        "editorial_angle": "First CPU Built的智能体能力会影响相关产品团队和使用者",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "NVIDIA Vera"
+          },
+          {
+            "label": "entity",
+            "value": "OpenAI"
+          },
+          {
+            "label": "entity",
+            "value": "Anthropic"
+          },
+          {
+            "label": "entity",
+            "value": "Vera Arrives"
+          },
+          {
+            "label": "entity",
+            "value": "First CPU Built"
+          },
+          {
+            "label": "entity",
+            "value": "Agents Lands"
+          },
+          {
+            "label": "entity",
+            "value": "Top AI Labs"
+          },
+          {
+            "label": "action",
+            "value": "智能体能力"
+          },
+          {
+            "label": "concrete_object",
+            "value": "First CPU Built"
+          }
+        ],
+        "original_title": "Vera Arrives: NVIDIA’s First CPU Built for Agents Lands at Top AI Labs",
+        "original_summary": "The first NVIDIA Vera CPUs arrived at three of the world's leading AI labs on Friday — Anthropic in San Francisco, OpenAI in Mission Bay, SpaceXAI in Palo Alto — followed by a delivery to Oracle Cloud Infrastructure in Santa Clara on Monday. NVIDIA Vice President of Hyperscale and High-Performance Computing Ian Buck hand-delivered them."
       },
       "zh_title": "NVIDIA Vera CPU 交到顶级 AI 实验室",
       "zh_summary": "NVIDIA 的 Vera CPU 开始交付给顶级 AI 实验室，信号在于智能体基础设施不只拼 GPU，也开始拼 CPU 与整机协同。",
@@ -257,11 +323,37 @@
         {
           "label": "entity",
           "value": "Anthropic"
+        },
+        {
+          "label": "entity",
+          "value": "Vera Arrives"
+        },
+        {
+          "label": "entity",
+          "value": "First CPU Built"
+        },
+        {
+          "label": "entity",
+          "value": "Agents Lands"
+        },
+        {
+          "label": "entity",
+          "value": "Top AI Labs"
+        },
+        {
+          "label": "action",
+          "value": "智能体能力"
+        },
+        {
+          "label": "concrete_object",
+          "value": "First CPU Built"
         }
       ],
       "title": "NVIDIA Vera CPU 交到顶级 AI 实验室",
       "original_title": "Vera Arrives: NVIDIA’s First CPU Built for Agents Lands at Top AI Labs",
       "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "source_url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "external_url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
       "source": "NVIDIA AI",
       "source_type": "official",
       "source_rank": "A",
@@ -277,10 +369,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0008"
+        "evidence-0003"
       ],
       "editorial_score": 138,
       "editorial_signals": [
@@ -302,7 +394,25 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/nvidia-ai-blog-7f23df8fcf70.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/nvidia-ai-blog-7f23df8fcf70.jpg",
+        "alt": "新闻视觉：NVIDIA Vera CPU 交到顶级 AI 实验室",
+        "caption": "NVIDIA原文分享图，用来对应「First CPU Built」这条新闻。",
+        "credit": "NVIDIA AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://blogs.nvidia.com/wp-content/uploads/2023/03/Ian-Finder-96x96.jpg",
+        "matched_terms": [
+          "First CPU Built",
+          "NVIDIA Vera"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "aws-machine-learning-c46056cb1f23",
@@ -313,7 +423,48 @@
         "original_summary": "In this post, you learn how to prompt Amazon Nova 2 Lite for content moderation using structured and free-form approaches, grounded in the MLCommons AILuminate Assessment Standard. The prompting techniques use the AILuminate taxonomy as an example, but they work equally well with your own custom moderation policy. You can swap in your own category definitions and the prompt structure stays the same. We also benchmark the content moderation capabilities of Amazon Nova 2 Lite against several foundation models (FMs) on three public datasets.",
         "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
         "published_at": "2026-05-18T18:56:36.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Prompting Amazon Nova",
+        "entities": [
+          "Nova 2",
+          "Amazon Nova 2",
+          "Prompting Amazon Nova"
+        ],
+        "products": [
+          "Nova 2",
+          "Amazon Nova 2",
+          "Prompting Amazon Nova"
+        ],
+        "action": "内容审核",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Prompting Amazon Nova的内容审核会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Nova 2"
+          },
+          {
+            "label": "entity",
+            "value": "Amazon Nova 2"
+          },
+          {
+            "label": "entity",
+            "value": "Prompting Amazon Nova"
+          },
+          {
+            "label": "action",
+            "value": "内容审核"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Prompting Amazon Nova"
+          }
+        ],
+        "original_title": "Prompting Amazon Nova 2 for content moderation",
+        "original_summary": "In this post, you learn how to prompt Amazon Nova 2 Lite for content moderation using structured and free-form approaches, grounded in the MLCommons AILuminate Assessment Standard. The prompting techniques use the AILuminate taxonomy as an example, but they work equally well with your own custom moderation policy. You can swap in your own category definitions and the prompt structure stays the same. We also benchmark the content moderation capabilities of Amazon Nova 2 Lite against several foundation models (FMs) on three public datasets."
       },
       "zh_title": "AWS 用 Nova 2 做内容审核提示",
       "zh_summary": "AWS 展示如何提示 Amazon Nova 2 做内容审核，重点是企业把模型能力落到安全审核、规则判断和工作流自动化里。",
@@ -323,17 +474,27 @@
           "value": "Nova 2"
         },
         {
+          "label": "entity",
+          "value": "Amazon Nova 2"
+        },
+        {
+          "label": "entity",
+          "value": "Prompting Amazon Nova"
+        },
+        {
           "label": "action",
           "value": "内容审核"
         },
         {
-          "label": "action",
-          "value": "评测"
+          "label": "concrete_object",
+          "value": "Prompting Amazon Nova"
         }
       ],
       "title": "AWS 用 Nova 2 做内容审核提示",
       "original_title": "Prompting Amazon Nova 2 for content moderation",
       "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
       "source": "AWS Machine Learning Blog",
       "source_type": "official",
       "source_rank": "A",
@@ -349,10 +510,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0017"
+        "evidence-0008"
       ],
       "editorial_score": 115,
       "editorial_signals": [
@@ -375,75 +536,25 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "creator_opportunity"
-    },
-    {
-      "id": "aws-machine-learning-e13b480f73de",
-      "story_id": "aws-machine-learning-e13b480f73de",
-      "raw_item": {
-        "source": "AWS Machine Learning Blog",
-        "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
-        "original_summary": "In this post, you will learn how to set up the Confluence Cloud integration with Quick. This includes creating a knowledge base for semantic search, setting up Actions to query and manage Confluence pages, and organizing resources in Quick Spaces. Quick integrates with your current enterprise technology stack, from internal knowledge repositories and corporate intranets to business-critical applications and AWS data services.",
-        "url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
-        "published_at": "2026-05-18T15:37:55.000Z",
-        "category": "business"
-      },
-      "zh_title": "AWS 把 Confluence 接进 Amazon Quick",
-      "zh_summary": "AWS 展示 Confluence Cloud 与 Amazon Quick 的集成，重点是企业知识库正在被接入 AI 检索和问答入口。",
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "Confluence"
-        },
-        {
-          "label": "entity",
-          "value": "Amazon Quick"
-        }
-      ],
-      "title": "AWS 把 Confluence 接进 Amazon Quick",
-      "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
-      "source": "AWS Machine Learning Blog",
-      "source_type": "official",
-      "source_rank": "A",
-      "category": "business",
-      "score": 8,
-      "published_at": "2026-05-18T15:37:55.000Z",
-      "published_at_source": "pubDate",
-      "summary": "AWS 展示 Confluence Cloud 与 Amazon Quick 的集成，重点是企业知识库正在被接入 AI 检索和问答入口。",
-      "original_summary": "In this post, you will learn how to set up the Confluence Cloud integration with Quick. This includes creating a knowledge base for semantic search, setting up Actions to query and manage Confluence pages, and organiz...",
-      "why_it_matters": "企业知识管理团队要看：Confluence 这类存量内容如果接进 AI 入口，会改变内部搜索和协作方式。",
-      "janet_take": "真正的企业 AI 往往不是新建一个聊天框，而是把旧文档拖进新入口。",
-      "watch_next": "看 Amazon Quick 是否覆盖更多企业知识库。",
-      "image": null,
-      "image_source": null,
-      "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
-      "duplicate_group": null,
-      "evidence_ids": [
-        "evidence-0019"
-      ],
-      "editorial_score": 110,
-      "editorial_signals": [
-        {
-          "name": "developer_tooling",
-          "weight": 25,
-          "hits": [
-            "integration"
-          ]
-        },
-        {
-          "name": "business_impact",
-          "weight": 15,
-          "hits": [
-            "enterprise"
-          ]
-        }
-      ],
-      "editorial_penalties": [],
-      "lead_eligible": true,
-      "core_eligible": true,
-      "primary_section": "business"
+      "primary_section": "creator_opportunity",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-c46056cb1f23.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-c46056cb1f23.png",
+        "alt": "新闻视觉：AWS 用 Nova 2 做内容审核提示",
+        "caption": "AWS源站图片，对应「Prompting Amazon Nova」的内容审核。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ml-20856.png",
+        "matched_terms": [
+          "Prompting Amazon Nova",
+          "Nova 2"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "aws-machine-learning-948b959a8194",
@@ -454,7 +565,42 @@
         "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 percent documentation acceleration, and how others can apply these approaches to their operations.",
         "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
         "published_at": "2026-05-18T17:26:40.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Amazon Quick",
+        "entities": [
+          "Amazon Quick",
+          "Aderant"
+        ],
+        "products": [
+          "Amazon Quick",
+          "Aderant"
+        ],
+        "action": "云运维",
+        "audience": "普通用户和产品团队",
+        "editorial_angle": "Amazon Quick的云运维会影响普通用户和产品团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Amazon Quick"
+          },
+          {
+            "label": "entity",
+            "value": "Aderant"
+          },
+          {
+            "label": "action",
+            "value": "云运维"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Amazon Quick"
+          }
+        ],
+        "original_title": "Aderant transforms cloud operations with Amazon Quick",
+        "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 percent documentation acceleration, and how others can apply these approaches to their operations."
       },
       "zh_title": "Aderant 用 Amazon Quick 改造云运维",
       "zh_summary": "AWS 案例写到 Aderant 用 Amazon Quick 改造云运维，重点是企业开始把 AI 问答接进日常运维和内部知识流。",
@@ -470,11 +616,17 @@
         {
           "label": "action",
           "value": "云运维"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Amazon Quick"
         }
       ],
       "title": "Aderant 用 Amazon Quick 改造云运维",
       "original_title": "Aderant transforms cloud operations with Amazon Quick",
       "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
       "source": "AWS Machine Learning Blog",
       "source_type": "official",
       "source_rank": "A",
@@ -490,10 +642,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0018"
+        "evidence-0009"
       ],
       "editorial_score": 95,
       "editorial_signals": [
@@ -508,87 +660,168 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-948b959a8194.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-948b959a8194.png",
+        "alt": "新闻视觉：Aderant 用 Amazon Quick 改造云运维",
+        "caption": "AWS源站图片，对应「Amazon Quick」的云运维。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ML-20523.png",
+        "matched_terms": [
+          "Aderant"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
-      "id": "aws-machine-learning-59a2c5c9125f",
-      "story_id": "aws-machine-learning-59a2c5c9125f",
+      "id": "mit-tech-review-ai-991173046339",
+      "story_id": "mit-tech-review-ai-991173046339",
       "raw_item": {
-        "source": "AWS Machine Learning Blog",
-        "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
-        "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to combine custom code-based evaluators with built-in evaluators and how to call other AWS services for grounded fact-checking, PII detection, and real-time alerting.",
-        "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
-        "published_at": "2026-05-18T15:07:15.000Z",
-        "category": "business"
+        "source": "MIT Technology Review AI",
+        "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+        "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice commands. Quay Barnett, who leads the efforts as a vice president at Anduril following a career in the Army’s Special Operations Command, says his fundamental&#8230;",
+        "url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+        "published_at": "2026-05-18T16:01:39.000Z",
+        "category": "business",
+        "image_candidates": []
       },
-      "zh_title": "Bedrock AgentCore 加上代码评估器",
-      "zh_summary": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
+      "story_fact": {
+        "concrete_object": "Inside Anduril",
+        "entities": [
+          "Anduril",
+          "Meta",
+          "smart glasses",
+          "Inside Anduril"
+        ],
+        "products": [
+          "Anduril",
+          "Meta",
+          "smart glasses",
+          "Inside Anduril"
+        ],
+        "action": "军用智能眼镜",
+        "audience": "相关产品团队和使用者",
+        "editorial_angle": "Inside Anduril的军用智能眼镜会影响相关产品团队和使用者",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Anduril"
+          },
+          {
+            "label": "entity",
+            "value": "Meta"
+          },
+          {
+            "label": "entity",
+            "value": "smart glasses"
+          },
+          {
+            "label": "entity",
+            "value": "Inside Anduril"
+          },
+          {
+            "label": "action",
+            "value": "军用智能眼镜"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Inside Anduril"
+          }
+        ],
+        "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+        "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice commands. Quay Barnett, who leads the efforts as a vice president at Anduril following a career in the Army’s Special Operations Command, says his fundamental&#8230;"
+      },
+      "zh_title": "Anduril 与 Meta 做军用智能眼镜",
+      "zh_summary": "MIT Technology Review 写到 Anduril 和 Meta 探索战争场景里的智能眼镜，重点是可穿戴 AI 正在进入高风险应用。",
       "story_facts": [
         {
           "label": "entity",
-          "value": "Amazon Bedrock AgentCore"
+          "value": "Anduril"
+        },
+        {
+          "label": "entity",
+          "value": "Meta"
+        },
+        {
+          "label": "entity",
+          "value": "smart glasses"
+        },
+        {
+          "label": "entity",
+          "value": "Inside Anduril"
         },
         {
           "label": "action",
-          "value": "评测"
+          "value": "军用智能眼镜"
         },
         {
-          "label": "action",
-          "value": "代码评估器"
+          "label": "concrete_object",
+          "value": "Inside Anduril"
         }
       ],
-      "title": "Bedrock AgentCore 加上代码评估器",
-      "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
-      "source": "AWS Machine Learning Blog",
-      "source_type": "official",
-      "source_rank": "A",
+      "title": "Anduril 与 Meta 做军用智能眼镜",
+      "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+      "url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "source_url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "external_url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
       "category": "business",
-      "score": 8,
-      "published_at": "2026-05-18T15:07:15.000Z",
+      "score": 6.5,
+      "published_at": "2026-05-18T16:01:39.000Z",
       "published_at_source": "pubDate",
-      "summary": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
-      "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to c...",
-      "why_it_matters": "开发者和企业 AI 平台团队要看：智能体上线前如果缺评估器，错误会直接进业务流程。",
-      "janet_take": "智能体不缺演示，缺的是出错时谁来抓包，AgentCore 这条就在补这个环节。",
-      "watch_next": "看 Bedrock AgentCore 评估器是否支持更多真实任务。",
+      "summary": "MIT Technology Review 写到 Anduril 和 Meta 探索战争场景里的智能眼镜，重点是可穿戴 AI 正在进入高风险应用。",
+      "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice command...",
+      "why_it_matters": "政策研究者和硬件团队要看：智能眼镜进入军事用途，会放大隐私、安全和实时决策风险。",
+      "janet_take": "这条不是酷炫眼镜故事，而是 AI 戴到战场以后谁负责的问题。",
+      "watch_next": "看军用智能眼镜是否披露安全限制。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0020"
+        "evidence-0007"
       ],
-      "editorial_score": 95,
-      "editorial_signals": [
-        {
-          "name": "model_release",
-          "weight": 35,
-          "hits": [
-            "agent"
-          ]
-        },
-        {
-          "name": "developer_tooling",
-          "weight": 25,
-          "hits": [
-            "agent"
-          ]
-        }
-      ],
+      "editorial_score": 8,
+      "editorial_signals": [],
       "editorial_penalties": [
         {
-          "name": "event_or_marketing",
-          "weight": -35,
+          "name": "jobs_or_hr",
+          "weight": -50,
           "hits": [
-            "register"
+            "career"
           ]
         }
       ],
       "lead_eligible": true,
-      "core_eligible": true,
-      "primary_section": "agents"
+      "core_eligible": false,
+      "primary_section": "business",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-991173046339.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-991173046339.jpg",
+        "alt": "新闻视觉：Anduril 与 Meta 做军用智能眼镜",
+        "caption": "MIT Tech Review原文分享图，用来对应「Inside Anduril」这条新闻。",
+        "credit": "MIT Technology Review AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://wp.technologyreview.com/wp-content/uploads/2026/05/2026-EE-Mar-Studio-Config2-WM-1_1.jpg?resize=1200,600",
+        "matched_terms": [
+          "Anduril",
+          "Meta"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ],
   "homepage_items": [
@@ -598,35 +831,31 @@
       "title": "OpenAI 联手戴尔，把 Codex 推进企业内网",
       "source": "OpenAI",
       "category": "models",
+      "url": "https://openai.com/index/dell-codex-enterprise-partnership",
+      "source_url": "https://openai.com/index/dell-codex-enterprise-partnership",
+      "external_url": "https://openai.com/index/dell-codex-enterprise-partnership",
       "summary": "OpenAI 与戴尔合作，把 Codex 带进混合和本地企业环境，重点是代码智能体开始进入更保守的企业部署场景。",
       "why_it_matters": "企业和开发团队要看：Codex 不只在云端演示，进入本地和混合环境后，采购、安全和权限都会变成真实问题。",
       "janet_take": "Codex 进企业内网，说明 OpenAI 知道真正的钱不只在酷炫 demo 里。",
       "watch_next": "看戴尔客户是否把 Codex 接进内部开发流程。",
-      "visual": "assets/news-visuals/2026-05-19-lead.svg"
-    },
-    {
-      "role": "signal",
-      "story_id": "techcrunch-ai-fc9d9b7a3f0a",
-      "title": "马斯克败诉，OpenAI 争议还没结束",
-      "source": "TechCrunch AI",
-      "category": "business",
-      "summary": "The Verge 报道马斯克对 Sam Altman 和 OpenAI 的案件受挫，法律结果暂时落定，但 AI 公司治理争议仍会继续。",
-      "why_it_matters": "投资者和 AI 公司观察者要看：这类诉讼会影响公众如何理解 AI 公司的使命、控制权和商业化。",
-      "janet_take": "马斯克输了这一局，但 OpenAI 的治理故事不会因此安静。",
-      "watch_next": "看马斯克是否继续用其他路径施压 OpenAI。",
-      "visual": "assets/news-visuals/2026-05-19-signal-1.svg"
-    },
-    {
-      "role": "signal",
-      "story_id": "github-blog-53b6ecd830d4",
-      "title": "GitHub 会话开始跟着开发者走",
-      "source": "GitHub Blog",
-      "category": "agents",
-      "summary": "GitHub 让本地会话更容易跨设备延续，重点是开发环境不再只锁在一台机器上，协作和上下文迁移会更顺。",
-      "why_it_matters": "开发者和远程团队要看：会话能带走，意味着代码、上下文和工具状态会更接近一个连续工作台。",
-      "janet_take": "这不是炫技功能，是 GitHub 想把开发者的上下文也圈进自己的入口。",
-      "watch_next": "看 GitHub 会话能力是否接进 Copilot 和 Codespaces。",
-      "visual": "assets/news-visuals/2026-05-19-signal-2.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-05-19-v4/openai-news-765fa93f522f.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/openai-news-765fa93f522f.jpg",
+        "alt": "新闻视觉：OpenAI 联手戴尔，把 Codex 推进企业内网",
+        "caption": "开放授权图片，用来辅助呈现「Codex」相关对象。",
+        "credit": "Unknown author Unknown author",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Codex_Suprasliensis.jpg",
+        "matched_terms": [
+          "Codex",
+          "Dell"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "signal",
@@ -634,23 +863,61 @@
       "title": "MIT 复盘马斯克为何输给 OpenAI",
       "source": "MIT Technology Review AI",
       "category": "business",
+      "url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+      "source_url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
+      "external_url": "https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/",
       "summary": "MIT Technology Review 复盘马斯克对 OpenAI 诉讼失利，重点在于法律证据、公司使命和商业化承诺之间的拉扯。",
       "why_it_matters": "AI 公司和投资者要看：使命叙事进入法庭后，能不能变成可执行约束会被重新检验。",
       "janet_take": "愿景写在官网上很漂亮，进了法庭就要问它到底算不算数。",
       "watch_next": "看 OpenAI 治理争议是否引出更多法律动作。",
-      "visual": "assets/news-visuals/2026-05-19-signal-3.svg"
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-8970aa509b85.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-8970aa509b85.jpg",
+        "alt": "新闻视觉：MIT 复盘马斯克为何输给 OpenAI",
+        "caption": "MIT Tech Review原文分享图，用来对应「Sam Altman」这条新闻。",
+        "credit": "MIT Technology Review AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://wp.technologyreview.com/wp-content/uploads/2026/05/AP26138720752056.jpg?resize=1200,600",
+        "matched_terms": [
+          "OpenAI"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
-      "role": "compact",
-      "story_id": "nvidia-ai-blog-e1c9447bd1b4",
-      "title": "黄仁勋在戴尔大会继续推企业 AI",
-      "source": "NVIDIA AI",
+      "role": "signal",
+      "story_id": "aws-machine-learning-59a2c5c9125f",
+      "title": "Bedrock AgentCore 加上代码评估器",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "summary": "NVIDIA 在戴尔技术大会上强调企业 AI 需求快速上升，这条新闻的重点是算力、服务器和企业部署正在绑得更紧。",
-      "why_it_matters": "企业 IT 和开发平台团队要看：AI 需求如果继续上升，预算会从试点转向基础设施采购。",
-      "janet_take": "黄仁勋这次讲的不是愿景，是企业钱包和服务器机柜的位置。",
-      "watch_next": "看戴尔与 NVIDIA 的企业 AI 订单是否继续放大。",
-      "visual": ""
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
+      "summary": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
+      "why_it_matters": "开发者和企业 AI 平台团队要看：智能体上线前如果缺评估器，错误会直接进业务流程。",
+      "janet_take": "智能体不缺演示，缺的是出错时谁来抓包，AgentCore 这条就在补这个环节。",
+      "watch_next": "看 Bedrock AgentCore 评估器是否支持更多真实任务。",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-59a2c5c9125f.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-59a2c5c9125f.png",
+        "alt": "新闻视觉：Bedrock AgentCore 加上代码评估器",
+        "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的评测。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ml-20799.png",
+        "matched_terms": [
+          "Build"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -658,11 +925,31 @@
       "title": "NVIDIA Vera CPU 交到顶级 AI 实验室",
       "source": "NVIDIA AI",
       "category": "business",
+      "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "source_url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "external_url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
       "summary": "NVIDIA 的 Vera CPU 开始交付给顶级 AI 实验室，信号在于智能体基础设施不只拼 GPU，也开始拼 CPU 与整机协同。",
       "why_it_matters": "研究机构和基础设施团队要看：智能体工作负载如果扩大，CPU、内存和整机架构会一起影响效率。",
       "janet_take": "Vera 不是给发布会撑场面的名字，它是在补智能体基础设施的另一半。",
       "watch_next": "看 Vera 是否进入更多 AI 实验室和整机方案。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/nvidia-ai-blog-7f23df8fcf70.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/nvidia-ai-blog-7f23df8fcf70.jpg",
+        "alt": "新闻视觉：NVIDIA Vera CPU 交到顶级 AI 实验室",
+        "caption": "NVIDIA原文分享图，用来对应「First CPU Built」这条新闻。",
+        "credit": "NVIDIA AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://blogs.nvidia.com/wp-content/uploads/2023/03/Ian-Finder-96x96.jpg",
+        "matched_terms": [
+          "First CPU Built",
+          "NVIDIA Vera"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -670,23 +957,31 @@
       "title": "AWS 用 Nova 2 做内容审核提示",
       "source": "AWS Machine Learning Blog",
       "category": "business",
+      "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
       "summary": "AWS 展示如何提示 Amazon Nova 2 做内容审核，重点是企业把模型能力落到安全审核、规则判断和工作流自动化里。",
       "why_it_matters": "内容平台和企业安全团队要看：模型审核能不能稳定处理边界案例，会直接影响人审成本和合规风险。",
       "janet_take": "Nova 2 这条不性感，但内容审核这种脏活才最考验模型能不能上班。",
       "watch_next": "看 Nova 2 在审核场景的误判率和接入方式。",
-      "visual": ""
-    },
-    {
-      "role": "compact",
-      "story_id": "aws-machine-learning-e13b480f73de",
-      "title": "AWS 把 Confluence 接进 Amazon Quick",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "summary": "AWS 展示 Confluence Cloud 与 Amazon Quick 的集成，重点是企业知识库正在被接入 AI 检索和问答入口。",
-      "why_it_matters": "企业知识管理团队要看：Confluence 这类存量内容如果接进 AI 入口，会改变内部搜索和协作方式。",
-      "janet_take": "真正的企业 AI 往往不是新建一个聊天框，而是把旧文档拖进新入口。",
-      "watch_next": "看 Amazon Quick 是否覆盖更多企业知识库。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-c46056cb1f23.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-c46056cb1f23.png",
+        "alt": "新闻视觉：AWS 用 Nova 2 做内容审核提示",
+        "caption": "AWS源站图片，对应「Prompting Amazon Nova」的内容审核。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ml-20856.png",
+        "matched_terms": [
+          "Prompting Amazon Nova",
+          "Nova 2"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
@@ -694,170 +989,136 @@
       "title": "Aderant 用 Amazon Quick 改造云运维",
       "source": "AWS Machine Learning Blog",
       "category": "business",
+      "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
       "summary": "AWS 案例写到 Aderant 用 Amazon Quick 改造云运维，重点是企业开始把 AI 问答接进日常运维和内部知识流。",
       "why_it_matters": "企业运维团队要看：AI 如果能回答系统和流程问题，影响的是故障处理、交接和内部支持成本。",
       "janet_take": "云运维这种地方没多少掌声，但 AI 能不能上班，往往先在这里露馅。",
       "watch_next": "看 Aderant 的云运维案例是否公开更多指标。",
-      "visual": ""
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-948b959a8194.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-948b959a8194.png",
+        "alt": "新闻视觉：Aderant 用 Amazon Quick 改造云运维",
+        "caption": "AWS源站图片，对应「Amazon Quick」的云运维。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ML-20523.png",
+        "matched_terms": [
+          "Aderant"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "role": "compact",
-      "story_id": "aws-machine-learning-59a2c5c9125f",
-      "title": "Bedrock AgentCore 加上代码评估器",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "mit-tech-review-ai-991173046339",
+      "title": "Anduril 与 Meta 做军用智能眼镜",
+      "source": "MIT Technology Review AI",
       "category": "business",
-      "summary": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
-      "why_it_matters": "开发者和企业 AI 平台团队要看：智能体上线前如果缺评估器，错误会直接进业务流程。",
-      "janet_take": "智能体不缺演示，缺的是出错时谁来抓包，AgentCore 这条就在补这个环节。",
-      "watch_next": "看 Bedrock AgentCore 评估器是否支持更多真实任务。",
-      "visual": ""
+      "url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "source_url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "external_url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "summary": "MIT Technology Review 写到 Anduril 和 Meta 探索战争场景里的智能眼镜，重点是可穿戴 AI 正在进入高风险应用。",
+      "why_it_matters": "政策研究者和硬件团队要看：智能眼镜进入军事用途，会放大隐私、安全和实时决策风险。",
+      "janet_take": "这条不是酷炫眼镜故事，而是 AI 戴到战场以后谁负责的问题。",
+      "watch_next": "看军用智能眼镜是否披露安全限制。",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-991173046339.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-991173046339.jpg",
+        "alt": "新闻视觉：Anduril 与 Meta 做军用智能眼镜",
+        "caption": "MIT Tech Review原文分享图，用来对应「Inside Anduril」这条新闻。",
+        "credit": "MIT Technology Review AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://wp.technologyreview.com/wp-content/uploads/2026/05/2026-EE-Mar-Studio-Config2-WM-1_1.jpg?resize=1200,600",
+        "matched_terms": [
+          "Anduril",
+          "Meta"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ],
-  "daily_title": "开发者入口开始进工位",
-  "daily_brief": "今天的主线不是模型参数，而是 OpenAI 与戴尔把 Codex 推进混合和本地企业环境，AI 编程开始面对真实采购和权限问题。",
+  "daily_title": "Codex和Dell都有新动作",
+  "daily_brief": {
+    "daily_title": "Codex和Dell都有新动作",
+    "theme": "Codex牵出Dell",
+    "daily_summary": "今天的主线落在Codex、Dell、OpenAI、合作，看点是合作、智能体能力、内容审核，不是抽象趋势。",
+    "daily_judgment": "Janet 判断：Codex这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
+    "daily_thesis": "今天值得看的对象是Codex、Dell、OpenAI、合作：它们分别牵出合作、智能体能力、内容审核，重点不在声量，而在这些产品和评测会怎样改变具体使用路径。",
+    "intro_text": "Codex先把今天的注意力拉住；Dell补上另一条线索。今天先看这些具体产品怎么动。",
+    "module_count": 4
+  },
   "cover": {
-    "daily_title": "开发者入口开始进工位",
+    "daily_title": "Codex和Dell都有新动作",
     "cover_title": "Codex 开始进企业内网",
     "cover_summary": "今天的主线不是模型参数，而是 OpenAI 与戴尔把 Codex 推进混合和本地企业环境，AI 编程开始面对真实采购和权限问题。",
-    "daily_judgment": "Janet 判断：今天值得看的不是热词数量，而是谁把 AI 放进了更难撤回的工作入口。",
-    "lead_story_id": "openai-news-765fa93f522f"
+    "daily_judgment": "Janet 判断：Codex这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
+    "lead_story_id": "openai-news-765fa93f522f",
+    "visual": {
+      "status": "ready",
+      "mode": "open_license_image",
+      "src": "assets/news-visuals/2026-05-19-v4/openai-news-765fa93f522f.jpg",
+      "local_path": "assets/news-visuals/2026-05-19-v4/openai-news-765fa93f522f.jpg",
+      "alt": "新闻视觉：OpenAI 联手戴尔，把 Codex 推进企业内网",
+      "caption": "开放授权图片，用来辅助呈现「Codex」相关对象。",
+      "credit": "Unknown author Unknown author",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Codex_Suprasliensis.jpg",
+      "matched_terms": [
+        "Codex",
+        "Dell"
+      ],
+      "relevance_score": 0.66,
+      "fallback_reason": "",
+      "template": ""
+    }
   },
   "modules": [
     {
       "module_id": "agents",
-      "module_title": "开发工作流继续前移",
-      "module_summary": "NVIDIA AI、GitHub Blog、AWS Machine Learning Blog显示开发入口继续被 AI 工具占据，具体对象包括Dell、NVIDIA Vera、Jensen Huang，重点看企业和团队是否真的接入。",
+      "module_title": "First CPU Built把NVIDIA Vera接进任务链路",
+      "module_summary": "NVIDIA AI、AWS Machine Learning Blog这组集中在First CPU Built、NVIDIA Vera、OpenAI，看点是智能体能力、云运维、评测怎样影响开发和平台团队。",
       "story_ids": [
-        "nvidia-ai-blog-e1c9447bd1b4",
-        "github-blog-53b6ecd830d4",
         "nvidia-ai-blog-7f23df8fcf70",
         "aws-machine-learning-948b959a8194",
-        "aws-machine-learning-59a2c5c9125f",
-        "mit-tech-review-ai-d601d722ee22",
-        "techcrunch-ai-90e94189f7af"
+        "aws-machine-learning-59a2c5c9125f"
       ]
     },
     {
       "module_id": "creator_opportunity",
-      "module_title": "创作者工具开始分化",
-      "module_summary": "AWS Machine Learning Blog给创作者和内容团队提供了新的工具线索，具体对象包括Nova 2、内容审核、评测，关键是成本是否下降。",
+      "module_title": "Prompting Amazon Nova改写Nova 2的创作流程",
+      "module_summary": "AWS Machine Learning Blog这组看Prompting Amazon Nova、Nova 2、Amazon Nova 2，关键是内容审核能不能降低创作成本。",
       "story_ids": [
         "aws-machine-learning-c46056cb1f23"
       ]
     },
     {
-      "module_id": "business",
-      "module_title": "Confluence 指向商业落地",
-      "module_summary": "AWS Machine Learning Blog、TechCrunch AI、MIT Technology Review AI集中在商业部署、客户入口和组织变化，具体对象包括Confluence、Amazon Quick、LetinAR，不是单纯发布口号。",
+      "module_id": "models",
+      "module_title": "Sam Altman把OpenAI落到产品层",
+      "module_summary": "MIT Technology Review AI这组看Sam Altman、OpenAI、Elon Musk，重点是诉讼是否进入可用产品。",
       "story_ids": [
-        "aws-machine-learning-e13b480f73de",
-        "techcrunch-ai-d57cfade0048",
-        "mit-tech-review-ai-991173046339"
+        "mit-tech-review-ai-8970aa509b85"
       ]
     },
     {
-      "module_id": "models",
-      "module_title": "Claude 改写产品能力",
-      "module_summary": "TechCrunch AI、MIT Technology Review AI、The Verge AI的信号落在模型能力与产品接口，具体对象包括Claude、SandboxAQ、药物发现，需要看真实可用范围。",
+      "module_id": "business",
+      "module_title": "Inside Anduril牵出Anduril的商业边界",
+      "module_summary": "MIT Technology Review AI这组把Inside Anduril、Anduril、Meta推到商业语境里，关键是军用智能眼镜会不会改变客户路径。",
       "story_ids": [
-        "techcrunch-ai-efc6fd2c5aea",
-        "techcrunch-ai-fc9d9b7a3f0a",
-        "techcrunch-ai-9a05454b24f4",
-        "mit-tech-review-ai-8970aa509b85",
-        "the-verge-ai-4bdaa74b7f1b",
-        "the-verge-ai-905369627f97",
-        "the-verge-ai-ae1139b3549a",
-        "the-verge-ai-950eb931129f"
+        "mit-tech-review-ai-991173046339"
       ]
     }
   ],
   "compact_articles": [
-    {
-      "id": "nvidia-ai-blog-e1c9447bd1b4",
-      "story_id": "nvidia-ai-blog-e1c9447bd1b4",
-      "raw_item": {
-        "source": "NVIDIA AI",
-        "original_title": "NVIDIA CEO Jensen Huang at Dell Technologies World: ‘Demand Is Going Parabolic, Utterly Parabolic’",
-        "original_summary": "Agentic AI inference at one-tenth the cost per token with NVIDIA Vera Rubin NVL72. Agent sandboxes run 50% faster on NVIDIA Vera than traditional CPUs — while enterprise data queries are up to 3x faster with the Vera CPU. And 5,000 enterprises like Lilly, Samsung and Honeywell are running AI workloads on Dell AI Factories [&#8230;]",
-        "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
-        "published_at": "2026-05-18T22:28:59.000Z",
-        "category": "business"
-      },
-      "zh_title": "黄仁勋在戴尔大会继续推企业 AI",
-      "zh_summary": "NVIDIA 在戴尔技术大会上强调企业 AI 需求快速上升，这条新闻的重点是算力、服务器和企业部署正在绑得更紧。",
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "Dell"
-        },
-        {
-          "label": "entity",
-          "value": "NVIDIA Vera"
-        },
-        {
-          "label": "entity",
-          "value": "Jensen Huang"
-        }
-      ],
-      "title": "黄仁勋在戴尔大会继续推企业 AI",
-      "original_title": "NVIDIA CEO Jensen Huang at Dell Technologies World: ‘Demand Is Going Parabolic, Utterly Parabolic’",
-      "url": "https://blogs.nvidia.com/blog/dell-technologies-agent-enterprise-ai/",
-      "source": "NVIDIA AI",
-      "source_type": "official",
-      "source_rank": "A",
-      "category": "business",
-      "score": 8,
-      "published_at": "2026-05-18T22:28:59.000Z",
-      "published_at_source": "pubDate",
-      "summary": "NVIDIA 在戴尔技术大会上强调企业 AI 需求快速上升，这条新闻的重点是算力、服务器和企业部署正在绑得更紧。",
-      "original_summary": "Agentic AI inference at one-tenth the cost per token with NVIDIA Vera Rubin NVL72. Agent sandboxes run 50% faster on NVIDIA Vera than traditional CPUs — while enterprise data queries are up to 3x faster with the Vera...",
-      "why_it_matters": "企业 IT 和开发平台团队要看：AI 需求如果继续上升，预算会从试点转向基础设施采购。",
-      "janet_take": "黄仁勋这次讲的不是愿景，是企业钱包和服务器机柜的位置。",
-      "watch_next": "看戴尔与 NVIDIA 的企业 AI 订单是否继续放大。",
-      "image": null,
-      "image_source": null,
-      "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
-      "duplicate_group": null,
-      "evidence_ids": [
-        "evidence-0007"
-      ],
-      "editorial_score": 173,
-      "editorial_signals": [
-        {
-          "name": "model_release",
-          "weight": 35,
-          "hits": [
-            "agent"
-          ]
-        },
-        {
-          "name": "developer_tooling",
-          "weight": 25,
-          "hits": [
-            "agent"
-          ]
-        },
-        {
-          "name": "research_signal",
-          "weight": 20,
-          "hits": [
-            "inference"
-          ]
-        },
-        {
-          "name": "business_impact",
-          "weight": 15,
-          "hits": [
-            "enterprise"
-          ]
-        }
-      ],
-      "editorial_penalties": [],
-      "lead_eligible": true,
-      "core_eligible": true,
-      "primary_section": "agents"
-    },
     {
       "id": "nvidia-ai-blog-7f23df8fcf70",
       "story_id": "nvidia-ai-blog-7f23df8fcf70",
@@ -867,7 +1128,74 @@
         "original_summary": "The first NVIDIA Vera CPUs arrived at three of the world's leading AI labs on Friday — Anthropic in San Francisco, OpenAI in Mission Bay, SpaceXAI in Palo Alto — followed by a delivery to Oracle Cloud Infrastructure in Santa Clara on Monday. NVIDIA Vice President of Hyperscale and High-Performance Computing Ian Buck hand-delivered them.",
         "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
         "published_at": "2026-05-18T21:48:17.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": [
+          "https://blogs.nvidia.com/wp-content/uploads/2026/05/Vera-CPU_Tray_Open-34_Wide_R6C-FNL-5260651.jpg"
+        ]
+      },
+      "story_fact": {
+        "concrete_object": "First CPU Built",
+        "entities": [
+          "NVIDIA Vera",
+          "OpenAI",
+          "Anthropic",
+          "Vera Arrives",
+          "First CPU Built",
+          "Agents Lands",
+          "Top AI Labs"
+        ],
+        "products": [
+          "NVIDIA Vera",
+          "OpenAI",
+          "Anthropic",
+          "Vera Arrives",
+          "First CPU Built",
+          "Agents Lands",
+          "Top AI Labs"
+        ],
+        "action": "智能体能力",
+        "audience": "相关产品团队和使用者",
+        "editorial_angle": "First CPU Built的智能体能力会影响相关产品团队和使用者",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "NVIDIA Vera"
+          },
+          {
+            "label": "entity",
+            "value": "OpenAI"
+          },
+          {
+            "label": "entity",
+            "value": "Anthropic"
+          },
+          {
+            "label": "entity",
+            "value": "Vera Arrives"
+          },
+          {
+            "label": "entity",
+            "value": "First CPU Built"
+          },
+          {
+            "label": "entity",
+            "value": "Agents Lands"
+          },
+          {
+            "label": "entity",
+            "value": "Top AI Labs"
+          },
+          {
+            "label": "action",
+            "value": "智能体能力"
+          },
+          {
+            "label": "concrete_object",
+            "value": "First CPU Built"
+          }
+        ],
+        "original_title": "Vera Arrives: NVIDIA’s First CPU Built for Agents Lands at Top AI Labs",
+        "original_summary": "The first NVIDIA Vera CPUs arrived at three of the world's leading AI labs on Friday — Anthropic in San Francisco, OpenAI in Mission Bay, SpaceXAI in Palo Alto — followed by a delivery to Oracle Cloud Infrastructure in Santa Clara on Monday. NVIDIA Vice President of Hyperscale and High-Performance Computing Ian Buck hand-delivered them."
       },
       "zh_title": "NVIDIA Vera CPU 交到顶级 AI 实验室",
       "zh_summary": "NVIDIA 的 Vera CPU 开始交付给顶级 AI 实验室，信号在于智能体基础设施不只拼 GPU，也开始拼 CPU 与整机协同。",
@@ -883,11 +1211,37 @@
         {
           "label": "entity",
           "value": "Anthropic"
+        },
+        {
+          "label": "entity",
+          "value": "Vera Arrives"
+        },
+        {
+          "label": "entity",
+          "value": "First CPU Built"
+        },
+        {
+          "label": "entity",
+          "value": "Agents Lands"
+        },
+        {
+          "label": "entity",
+          "value": "Top AI Labs"
+        },
+        {
+          "label": "action",
+          "value": "智能体能力"
+        },
+        {
+          "label": "concrete_object",
+          "value": "First CPU Built"
         }
       ],
       "title": "NVIDIA Vera CPU 交到顶级 AI 实验室",
       "original_title": "Vera Arrives: NVIDIA’s First CPU Built for Agents Lands at Top AI Labs",
       "url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "source_url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
+      "external_url": "https://blogs.nvidia.com/blog/vera-cpu-delivery/",
       "source": "NVIDIA AI",
       "source_type": "official",
       "source_rank": "A",
@@ -903,10 +1257,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0008"
+        "evidence-0003"
       ],
       "editorial_score": 138,
       "editorial_signals": [
@@ -928,7 +1282,25 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/nvidia-ai-blog-7f23df8fcf70.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/nvidia-ai-blog-7f23df8fcf70.jpg",
+        "alt": "新闻视觉：NVIDIA Vera CPU 交到顶级 AI 实验室",
+        "caption": "NVIDIA原文分享图，用来对应「First CPU Built」这条新闻。",
+        "credit": "NVIDIA AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://blogs.nvidia.com/wp-content/uploads/2023/03/Ian-Finder-96x96.jpg",
+        "matched_terms": [
+          "First CPU Built",
+          "NVIDIA Vera"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "aws-machine-learning-c46056cb1f23",
@@ -939,7 +1311,48 @@
         "original_summary": "In this post, you learn how to prompt Amazon Nova 2 Lite for content moderation using structured and free-form approaches, grounded in the MLCommons AILuminate Assessment Standard. The prompting techniques use the AILuminate taxonomy as an example, but they work equally well with your own custom moderation policy. You can swap in your own category definitions and the prompt structure stays the same. We also benchmark the content moderation capabilities of Amazon Nova 2 Lite against several foundation models (FMs) on three public datasets.",
         "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
         "published_at": "2026-05-18T18:56:36.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Prompting Amazon Nova",
+        "entities": [
+          "Nova 2",
+          "Amazon Nova 2",
+          "Prompting Amazon Nova"
+        ],
+        "products": [
+          "Nova 2",
+          "Amazon Nova 2",
+          "Prompting Amazon Nova"
+        ],
+        "action": "内容审核",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Prompting Amazon Nova的内容审核会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Nova 2"
+          },
+          {
+            "label": "entity",
+            "value": "Amazon Nova 2"
+          },
+          {
+            "label": "entity",
+            "value": "Prompting Amazon Nova"
+          },
+          {
+            "label": "action",
+            "value": "内容审核"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Prompting Amazon Nova"
+          }
+        ],
+        "original_title": "Prompting Amazon Nova 2 for content moderation",
+        "original_summary": "In this post, you learn how to prompt Amazon Nova 2 Lite for content moderation using structured and free-form approaches, grounded in the MLCommons AILuminate Assessment Standard. The prompting techniques use the AILuminate taxonomy as an example, but they work equally well with your own custom moderation policy. You can swap in your own category definitions and the prompt structure stays the same. We also benchmark the content moderation capabilities of Amazon Nova 2 Lite against several foundation models (FMs) on three public datasets."
       },
       "zh_title": "AWS 用 Nova 2 做内容审核提示",
       "zh_summary": "AWS 展示如何提示 Amazon Nova 2 做内容审核，重点是企业把模型能力落到安全审核、规则判断和工作流自动化里。",
@@ -949,17 +1362,27 @@
           "value": "Nova 2"
         },
         {
+          "label": "entity",
+          "value": "Amazon Nova 2"
+        },
+        {
+          "label": "entity",
+          "value": "Prompting Amazon Nova"
+        },
+        {
           "label": "action",
           "value": "内容审核"
         },
         {
-          "label": "action",
-          "value": "评测"
+          "label": "concrete_object",
+          "value": "Prompting Amazon Nova"
         }
       ],
       "title": "AWS 用 Nova 2 做内容审核提示",
       "original_title": "Prompting Amazon Nova 2 for content moderation",
       "url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/prompting-amazon-nova-2-for-content-moderation/",
       "source": "AWS Machine Learning Blog",
       "source_type": "official",
       "source_rank": "A",
@@ -975,10 +1398,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0017"
+        "evidence-0008"
       ],
       "editorial_score": 115,
       "editorial_signals": [
@@ -1001,75 +1424,25 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "creator_opportunity"
-    },
-    {
-      "id": "aws-machine-learning-e13b480f73de",
-      "story_id": "aws-machine-learning-e13b480f73de",
-      "raw_item": {
-        "source": "AWS Machine Learning Blog",
-        "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
-        "original_summary": "In this post, you will learn how to set up the Confluence Cloud integration with Quick. This includes creating a knowledge base for semantic search, setting up Actions to query and manage Confluence pages, and organizing resources in Quick Spaces. Quick integrates with your current enterprise technology stack, from internal knowledge repositories and corporate intranets to business-critical applications and AWS data services.",
-        "url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
-        "published_at": "2026-05-18T15:37:55.000Z",
-        "category": "business"
-      },
-      "zh_title": "AWS 把 Confluence 接进 Amazon Quick",
-      "zh_summary": "AWS 展示 Confluence Cloud 与 Amazon Quick 的集成，重点是企业知识库正在被接入 AI 检索和问答入口。",
-      "story_facts": [
-        {
-          "label": "entity",
-          "value": "Confluence"
-        },
-        {
-          "label": "entity",
-          "value": "Amazon Quick"
-        }
-      ],
-      "title": "AWS 把 Confluence 接进 Amazon Quick",
-      "original_title": "Integrate Atlassian Confluence Cloud with Amazon Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/integrate-atlassian-confluence-cloud-with-amazon-quick/",
-      "source": "AWS Machine Learning Blog",
-      "source_type": "official",
-      "source_rank": "A",
-      "category": "business",
-      "score": 8,
-      "published_at": "2026-05-18T15:37:55.000Z",
-      "published_at_source": "pubDate",
-      "summary": "AWS 展示 Confluence Cloud 与 Amazon Quick 的集成，重点是企业知识库正在被接入 AI 检索和问答入口。",
-      "original_summary": "In this post, you will learn how to set up the Confluence Cloud integration with Quick. This includes creating a knowledge base for semantic search, setting up Actions to query and manage Confluence pages, and organiz...",
-      "why_it_matters": "企业知识管理团队要看：Confluence 这类存量内容如果接进 AI 入口，会改变内部搜索和协作方式。",
-      "janet_take": "真正的企业 AI 往往不是新建一个聊天框，而是把旧文档拖进新入口。",
-      "watch_next": "看 Amazon Quick 是否覆盖更多企业知识库。",
-      "image": null,
-      "image_source": null,
-      "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
-      "duplicate_group": null,
-      "evidence_ids": [
-        "evidence-0019"
-      ],
-      "editorial_score": 110,
-      "editorial_signals": [
-        {
-          "name": "developer_tooling",
-          "weight": 25,
-          "hits": [
-            "integration"
-          ]
-        },
-        {
-          "name": "business_impact",
-          "weight": 15,
-          "hits": [
-            "enterprise"
-          ]
-        }
-      ],
-      "editorial_penalties": [],
-      "lead_eligible": true,
-      "core_eligible": true,
-      "primary_section": "business"
+      "primary_section": "creator_opportunity",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-c46056cb1f23.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-c46056cb1f23.png",
+        "alt": "新闻视觉：AWS 用 Nova 2 做内容审核提示",
+        "caption": "AWS源站图片，对应「Prompting Amazon Nova」的内容审核。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ml-20856.png",
+        "matched_terms": [
+          "Prompting Amazon Nova",
+          "Nova 2"
+        ],
+        "relevance_score": 0.75,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
       "id": "aws-machine-learning-948b959a8194",
@@ -1080,7 +1453,42 @@
         "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 percent documentation acceleration, and how others can apply these approaches to their operations.",
         "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
         "published_at": "2026-05-18T17:26:40.000Z",
-        "category": "business"
+        "category": "business",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Amazon Quick",
+        "entities": [
+          "Amazon Quick",
+          "Aderant"
+        ],
+        "products": [
+          "Amazon Quick",
+          "Aderant"
+        ],
+        "action": "云运维",
+        "audience": "普通用户和产品团队",
+        "editorial_angle": "Amazon Quick的云运维会影响普通用户和产品团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Amazon Quick"
+          },
+          {
+            "label": "entity",
+            "value": "Aderant"
+          },
+          {
+            "label": "action",
+            "value": "云运维"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Amazon Quick"
+          }
+        ],
+        "original_title": "Aderant transforms cloud operations with Amazon Quick",
+        "original_summary": "In this post, we share how Aderant used the AI-powered capabilities of Amazon Quick to unify search across six vendor systems and automate documentation workflows, achieving 90 percent faster search times and 75 percent documentation acceleration, and how others can apply these approaches to their operations."
       },
       "zh_title": "Aderant 用 Amazon Quick 改造云运维",
       "zh_summary": "AWS 案例写到 Aderant 用 Amazon Quick 改造云运维，重点是企业开始把 AI 问答接进日常运维和内部知识流。",
@@ -1096,11 +1504,17 @@
         {
           "label": "action",
           "value": "云运维"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Amazon Quick"
         }
       ],
       "title": "Aderant 用 Amazon Quick 改造云运维",
       "original_title": "Aderant transforms cloud operations with Amazon Quick",
       "url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "source_url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
+      "external_url": "https://aws.amazon.com/blogs/machine-learning/aderant-transforms-cloud-operations-with-amazon-quick/",
       "source": "AWS Machine Learning Blog",
       "source_type": "official",
       "source_rank": "A",
@@ -1116,10 +1530,10 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0018"
+        "evidence-0009"
       ],
       "editorial_score": 95,
       "editorial_signals": [
@@ -1134,87 +1548,168 @@
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
-      "primary_section": "agents"
+      "primary_section": "agents",
+      "visual": {
+        "status": "ready",
+        "mode": "source_image",
+        "src": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-948b959a8194.png",
+        "local_path": "assets/news-visuals/2026-05-19-v4/aws-machine-learning-948b959a8194.png",
+        "alt": "新闻视觉：Aderant 用 Amazon Quick 改造云运维",
+        "caption": "AWS源站图片，对应「Amazon Quick」的云运维。",
+        "credit": "AWS Machine Learning Blog",
+        "license": "source article image / editorial reference",
+        "source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/05/18/ML-20523.png",
+        "matched_terms": [
+          "Aderant"
+        ],
+        "relevance_score": 0.78,
+        "fallback_reason": "",
+        "template": ""
+      }
     },
     {
-      "id": "aws-machine-learning-59a2c5c9125f",
-      "story_id": "aws-machine-learning-59a2c5c9125f",
+      "id": "mit-tech-review-ai-991173046339",
+      "story_id": "mit-tech-review-ai-991173046339",
       "raw_item": {
-        "source": "AWS Machine Learning Blog",
-        "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
-        "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to combine custom code-based evaluators with built-in evaluators and how to call other AWS services for grounded fact-checking, PII detection, and real-time alerting.",
-        "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
-        "published_at": "2026-05-18T15:07:15.000Z",
-        "category": "business"
+        "source": "MIT Technology Review AI",
+        "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+        "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice commands. Quay Barnett, who leads the efforts as a vice president at Anduril following a career in the Army’s Special Operations Command, says his fundamental&#8230;",
+        "url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+        "published_at": "2026-05-18T16:01:39.000Z",
+        "category": "business",
+        "image_candidates": []
       },
-      "zh_title": "Bedrock AgentCore 加上代码评估器",
-      "zh_summary": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
+      "story_fact": {
+        "concrete_object": "Inside Anduril",
+        "entities": [
+          "Anduril",
+          "Meta",
+          "smart glasses",
+          "Inside Anduril"
+        ],
+        "products": [
+          "Anduril",
+          "Meta",
+          "smart glasses",
+          "Inside Anduril"
+        ],
+        "action": "军用智能眼镜",
+        "audience": "相关产品团队和使用者",
+        "editorial_angle": "Inside Anduril的军用智能眼镜会影响相关产品团队和使用者",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Anduril"
+          },
+          {
+            "label": "entity",
+            "value": "Meta"
+          },
+          {
+            "label": "entity",
+            "value": "smart glasses"
+          },
+          {
+            "label": "entity",
+            "value": "Inside Anduril"
+          },
+          {
+            "label": "action",
+            "value": "军用智能眼镜"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Inside Anduril"
+          }
+        ],
+        "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+        "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice commands. Quay Barnett, who leads the efforts as a vice president at Anduril following a career in the Army’s Special Operations Command, says his fundamental&#8230;"
+      },
+      "zh_title": "Anduril 与 Meta 做军用智能眼镜",
+      "zh_summary": "MIT Technology Review 写到 Anduril 和 Meta 探索战争场景里的智能眼镜，重点是可穿戴 AI 正在进入高风险应用。",
       "story_facts": [
         {
           "label": "entity",
-          "value": "Amazon Bedrock AgentCore"
+          "value": "Anduril"
+        },
+        {
+          "label": "entity",
+          "value": "Meta"
+        },
+        {
+          "label": "entity",
+          "value": "smart glasses"
+        },
+        {
+          "label": "entity",
+          "value": "Inside Anduril"
         },
         {
           "label": "action",
-          "value": "评测"
+          "value": "军用智能眼镜"
         },
         {
-          "label": "action",
-          "value": "代码评估器"
+          "label": "concrete_object",
+          "value": "Inside Anduril"
         }
       ],
-      "title": "Bedrock AgentCore 加上代码评估器",
-      "original_title": "Build custom code-based evaluators in Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-custom-code-based-evaluators-in-amazon-bedrock-agentcore/",
-      "source": "AWS Machine Learning Blog",
-      "source_type": "official",
-      "source_rank": "A",
+      "title": "Anduril 与 Meta 做军用智能眼镜",
+      "original_title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+      "url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "source_url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "external_url": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "source": "MIT Technology Review AI",
+      "source_type": "media",
+      "source_rank": "B",
       "category": "business",
-      "score": 8,
-      "published_at": "2026-05-18T15:07:15.000Z",
+      "score": 6.5,
+      "published_at": "2026-05-18T16:01:39.000Z",
       "published_at_source": "pubDate",
-      "summary": "AWS 介绍在 Amazon Bedrock AgentCore 里构建代码型评估器，重点是智能体从“能跑”进入“能被测试和约束”。",
-      "original_summary": "In this post, you will implement four Lambda-based custom code evaluators for a financial market-intelligence agent, register each with AgentCore, and run them in on-demand and online modes. You will also see how to c...",
-      "why_it_matters": "开发者和企业 AI 平台团队要看：智能体上线前如果缺评估器，错误会直接进业务流程。",
-      "janet_take": "智能体不缺演示，缺的是出错时谁来抓包，AgentCore 这条就在补这个环节。",
-      "watch_next": "看 Bedrock AgentCore 评估器是否支持更多真实任务。",
+      "summary": "MIT Technology Review 写到 Anduril 和 Meta 探索战争场景里的智能眼镜，重点是可穿戴 AI 正在进入高风险应用。",
+      "original_summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice command...",
+      "why_it_matters": "政策研究者和硬件团队要看：智能眼镜进入军事用途，会放大隐私、安全和实时决策风险。",
+      "janet_take": "这条不是酷炫眼镜故事，而是 AI 戴到战场以后谁负责的问题。",
+      "watch_next": "看军用智能眼镜是否披露安全限制。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-19T08:06:37.245Z",
+      "verified_at": "2026-05-21T07:17:53.415Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "evidence-0020"
+        "evidence-0007"
       ],
-      "editorial_score": 95,
-      "editorial_signals": [
-        {
-          "name": "model_release",
-          "weight": 35,
-          "hits": [
-            "agent"
-          ]
-        },
-        {
-          "name": "developer_tooling",
-          "weight": 25,
-          "hits": [
-            "agent"
-          ]
-        }
-      ],
+      "editorial_score": 8,
+      "editorial_signals": [],
       "editorial_penalties": [
         {
-          "name": "event_or_marketing",
-          "weight": -35,
+          "name": "jobs_or_hr",
+          "weight": -50,
           "hits": [
-            "register"
+            "career"
           ]
         }
       ],
       "lead_eligible": true,
-      "core_eligible": true,
-      "primary_section": "agents"
+      "core_eligible": false,
+      "primary_section": "business",
+      "visual": {
+        "status": "ready",
+        "mode": "official_image",
+        "src": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-991173046339.jpg",
+        "local_path": "assets/news-visuals/2026-05-19-v4/mit-tech-review-ai-991173046339.jpg",
+        "alt": "新闻视觉：Anduril 与 Meta 做军用智能眼镜",
+        "caption": "MIT Tech Review原文分享图，用来对应「Inside Anduril」这条新闻。",
+        "credit": "MIT Technology Review AI",
+        "license": "source-provided / editorial use reference",
+        "source_url": "https://wp.technologyreview.com/wp-content/uploads/2026/05/2026-EE-Mar-Studio-Config2-WM-1_1.jpg?resize=1200,600",
+        "matched_terms": [
+          "Anduril",
+          "Meta"
+        ],
+        "relevance_score": 0.82,
+        "fallback_reason": "",
+        "template": ""
+      }
     }
   ]
 }

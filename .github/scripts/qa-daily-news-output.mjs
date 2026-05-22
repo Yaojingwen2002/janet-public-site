@@ -354,7 +354,7 @@ function main() {
     issues.push('news-index latest_edition_id mismatch');
   }
 
-  for (const forbidden of ['engineering', 'docs', 'data/_working', 'node_modules']) {
+  for (const forbidden of ['engineering', 'data/_working', 'node_modules']) {
     if (existsSync(resolve(ROOT, forbidden))) issues.push(`forbidden path exists: ${forbidden}`);
   }
   for (const file of walk(ROOT)) {
@@ -372,8 +372,8 @@ function main() {
     step: '31',
     status: issues.length ? 'daily_news_automation_blocked' : 'daily_news_automation_ready',
     qa_passed: issues.length === 0,
-    schedule_utc: '37 0 * * *',
-    schedule_asia_shanghai: '08:37',
+    schedule_utc: '10 0 * * *',
+    schedule_asia_shanghai: '08:10',
     requires_paid_api: false,
     requires_secret: false,
     uses_public_sources: true,

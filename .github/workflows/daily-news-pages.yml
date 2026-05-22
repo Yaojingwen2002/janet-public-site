@@ -97,6 +97,9 @@ jobs:
       - name: QA main UX polish
         run: node scripts/qa-main-ux.mjs
 
+      - name: QA release gate
+        run: node scripts/qa-release-gate.mjs
+
       - name: Commit generated news files
         run: |
           git config user.name "janet-news-bot"

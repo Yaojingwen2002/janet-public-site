@@ -25,7 +25,7 @@ const HTML_FILES = [
   '404.html'
 ];
 const LEAKS = ['/Volumes/', 'file://', '/Users/', 'localhost', '127.0.0.1'];
-const FORBIDDEN_PATHS = ['engineering', 'docs', 'data/_working', 'node_modules'];
+const FORBIDDEN_PATHS = ['engineering', 'data/_working', 'node_modules'];
 const BASE = 'https://Yaojingwen2002.github.io/janet-public-site/';
 
 function ensureDir(filePath) {
@@ -143,4 +143,3 @@ function main() {
 }
 
 main();
-

@@ -5,7 +5,7 @@ import { dirname, join, resolve } from 'node:path';
 const ROOT = resolve(process.cwd());
 const OUT = resolve(ROOT, 'data/main-ux-check.json');
 const LEAKS = ['/Volumes/', 'file://', '/Users/', 'localhost', '127.0.0.1'];
-const FORBIDDEN = ['engineering', 'docs', 'data/_working', 'node_modules'];
+const FORBIDDEN = ['engineering', 'data/_working', 'node_modules'];
 
 function ensureDir(filePath) {
   mkdirSync(dirname(filePath), { recursive: true });

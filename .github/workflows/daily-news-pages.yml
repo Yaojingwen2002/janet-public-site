@@ -3,7 +3,8 @@ name: Daily Janet News
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 0 * * *"
+    # GitHub Actions cron uses UTC. 00:10 UTC = 08:10 Asia/Shanghai / Asia/Taipei.
+    - cron: "10 0 * * *"
 
 permissions:
   contents: write
@@ -29,6 +30,11 @@ jobs:
 
       - name: Generate daily news
         run: node .github/scripts/daily-news-generator.mjs
+        env:
+          JANET_WORKFLOW_EVENT: ${{ github.event_name }}
+          JANET_WORKFLOW_RUN_ID: ${{ github.run_id }}
+          JANET_WORKFLOW_REF: ${{ github.ref }}
+          JANET_WORKFLOW_SHA: ${{ github.sha }}
 
       - name: Build news index
         run: node .github/scripts/build-news-index.mjs

@@ -2,10 +2,10 @@
   "step": "35-U4-D",
   "status": "semantic_copy_ready",
   "qa_passed": true,
-  "latest_edition_id": "2026-05-21-v4",
-  "checked_file_path": "data/2026-05-21-v4/content.json",
-  "homepage_items_checked": 9,
-  "stories_checked": 9,
+  "latest_edition_id": "2026-05-22-v4",
+  "checked_file_path": "data/2026-05-22-v4/content.json",
+  "homepage_items_checked": 10,
+  "stories_checked": 14,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -26,7 +26,92 @@
     },
     "janet_take": {
       "hard": [],
-      "warnings": []
+      "warnings": [
+        {
+          "field": "janet_take",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.651,
+          "item_a": {
+            "story_id": "microsoft-research-ai-af556ccc8aff",
+            "title": "MagenticBrain出现智能体能力新进展",
+            "source": "Microsoft Research AI",
+            "category": "papers",
+            "original_title": "MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models",
+            "text": "MagenticBrain值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          },
+          "item_b": {
+            "story_id": "aws-machine-learning-baae138cd177",
+            "title": "Intelligent诉讼继续牵动 AI 治理",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Intelligent radiology workflow optimization with AI agents",
+            "text": "Intelligent值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          }
+        },
+        {
+          "field": "janet_take",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.622,
+          "item_a": {
+            "story_id": "microsoft-research-ai-af556ccc8aff",
+            "title": "MagenticBrain出现智能体能力新进展",
+            "source": "Microsoft Research AI",
+            "category": "papers",
+            "original_title": "MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models",
+            "text": "MagenticBrain值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          },
+          "item_b": {
+            "story_id": "the-verge-ai-4bec4b6109ec",
+            "title": "AI-generated开始生成内容",
+            "source": "The Verge AI",
+            "category": "business",
+            "original_title": "Spotify is launching AI-generated remixes",
+            "text": "AI-generated值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          }
+        },
+        {
+          "field": "janet_take",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.628,
+          "item_a": {
+            "story_id": "aws-machine-learning-baae138cd177",
+            "title": "Intelligent诉讼继续牵动 AI 治理",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Intelligent radiology workflow optimization with AI agents",
+            "text": "Intelligent值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          },
+          "item_b": {
+            "story_id": "the-verge-ai-4bec4b6109ec",
+            "title": "AI-generated开始生成内容",
+            "source": "The Verge AI",
+            "category": "business",
+            "original_title": "Spotify is launching AI-generated remixes",
+            "text": "AI-generated值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          }
+        },
+        {
+          "field": "janet_take",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.651,
+          "item_a": {
+            "story_id": "the-verge-ai-4bec4b6109ec",
+            "title": "AI-generated开始生成内容",
+            "source": "The Verge AI",
+            "category": "business",
+            "original_title": "Spotify is launching AI-generated remixes",
+            "text": "AI-generated值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          },
+          "item_b": {
+            "story_id": "techcrunch-ai-53bc76a2a20d",
+            "title": "AI-powered Q出现播客生成新进展",
+            "source": "TechCrunch AI",
+            "category": "business",
+            "original_title": "Spotify adds AI-powered Q&#038;A and briefing generation features to podcasts",
+            "text": "AI-powered Q值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+          }
+        }
+      ]
     },
     "watch_next": {
       "hard": [],
@@ -34,104 +119,189 @@
     }
   },
   "max_title_similarity": {
-    "score": 0.167,
+    "score": 0.308,
     "item_a": {
-      "story_id": "google-ai-blog-37b7b93d55f5",
-      "title": "Google推出新版本或新功能",
-      "source": "Google AI",
-      "category": "models",
-      "original_title": "100 things we announced at I/O 2026",
-      "text": "Google推出新版本或新功能"
+      "story_id": "the-verge-ai-cd3749849a3f",
+      "title": "Elon Musk出现合作新进展",
+      "source": "The Verge AI",
+      "category": "business",
+      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
+      "text": "Elon Musk出现合作新进展"
     },
     "item_b": {
-      "story_id": "google-ai-blog-ebf6fd65ff46",
-      "title": "Google Beam出现混合与本地部署新进展",
-      "source": "Google AI",
-      "category": "models",
-      "original_title": "A new experiment brings better group meetings to Google Beam",
-      "text": "Google Beam出现混合与本地部署新进展"
+      "story_id": "techcrunch-ai-093c24bfb470",
+      "title": "Universal Music出现合作新进展",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
+      "text": "Universal Music出现合作新进展"
     }
   },
   "max_summary_similarity": {
-    "score": 0.16,
+    "score": 0.508,
     "item_a": {
-      "story_id": "techcrunch-ai-92f47f2928a4",
-      "title": "Stability AI开始生成内容",
-      "source": "TechCrunch AI",
+      "story_id": "the-verge-ai-cd3749849a3f",
+      "title": "Elon Musk出现合作新进展",
+      "source": "The Verge AI",
       "category": "business",
-      "original_title": "Stability AI releases a new audio model that can create 6-minute songs",
-      "text": "TechCrunch把Stability AI放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。"
+      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
+      "text": "The Verge把Elon Musk带到相关产品团队和使用者面前，重点看合作怎样改变使用路径和产品边界。"
     },
     "item_b": {
-      "story_id": "techcrunch-ai-0c32afdef287",
-      "title": "Figma出现智能体能力新进展",
+      "story_id": "techcrunch-ai-093c24bfb470",
+      "title": "Universal Music出现合作新进展",
       "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Figma adds an AI assistant to its collaborative canvas",
-      "text": "TechCrunch把Figma放进智能体场景，重点是它能否从演示走向连续任务和真实产品入口。"
+      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
+      "text": "TechCrunch把Universal Music带到相关产品团队和使用者面前，重点看合作怎样改变使用路径和产品边界。"
     }
   },
   "max_why_similarity": {
-    "score": 0.303,
+    "score": 0.608,
     "item_a": {
-      "story_id": "techcrunch-ai-92f47f2928a4",
-      "title": "Stability AI开始生成内容",
-      "source": "TechCrunch AI",
+      "story_id": "the-verge-ai-cd3749849a3f",
+      "title": "Elon Musk出现合作新进展",
+      "source": "The Verge AI",
       "category": "business",
-      "original_title": "Stability AI releases a new audio model that can create 6-minute songs",
-      "text": "开源社区和模型使用者要看Stability AI：生成会改变具体接入方式、使用边界或采购判断。"
+      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
+      "text": "相关产品团队和使用者要看Elon Musk：合作会改变具体接入方式、使用边界或采购判断。"
     },
     "item_b": {
-      "story_id": "google-ai-blog-ebf6fd65ff46",
-      "title": "Google Beam出现混合与本地部署新进展",
-      "source": "Google AI",
-      "category": "models",
-      "original_title": "A new experiment brings better group meetings to Google Beam",
-      "text": "相关产品团队和使用者要看Google Beam：混合与本地部署会改变具体接入方式、使用边界或采购判断。"
+      "story_id": "techcrunch-ai-093c24bfb470",
+      "title": "Universal Music出现合作新进展",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
+      "text": "相关产品团队和使用者要看Universal Music：合作会改变具体接入方式、使用边界或采购判断。"
     }
   },
   "max_janet_take_similarity": {
-    "score": 0.615,
+    "score": 0.651,
     "item_a": {
-      "story_id": "techcrunch-ai-0c32afdef287",
-      "title": "Figma出现智能体能力新进展",
-      "source": "TechCrunch AI",
-      "category": "business",
-      "original_title": "Figma adds an AI assistant to its collaborative canvas",
-      "text": "Figma值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      "story_id": "microsoft-research-ai-af556ccc8aff",
+      "title": "MagenticBrain出现智能体能力新进展",
+      "source": "Microsoft Research AI",
+      "category": "papers",
+      "original_title": "MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models",
+      "text": "MagenticBrain值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     },
     "item_b": {
-      "story_id": "google-ai-blog-ebf6fd65ff46",
-      "title": "Google Beam出现混合与本地部署新进展",
-      "source": "Google AI",
-      "category": "models",
-      "original_title": "A new experiment brings better group meetings to Google Beam",
-      "text": "Google Beam值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      "story_id": "aws-machine-learning-baae138cd177",
+      "title": "Intelligent诉讼继续牵动 AI 治理",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "original_title": "Intelligent radiology workflow optimization with AI agents",
+      "text": "Intelligent值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
     }
   },
   "max_watch_next_similarity": {
-    "score": 0.278,
+    "score": 0.5,
     "item_a": {
-      "story_id": "google-ai-blog-37b7b93d55f5",
-      "title": "Google推出新版本或新功能",
-      "source": "Google AI",
-      "category": "models",
-      "original_title": "100 things we announced at I/O 2026",
-      "text": "看Google是否给出可用入口和限制。"
+      "story_id": "the-verge-ai-cd3749849a3f",
+      "title": "Elon Musk出现合作新进展",
+      "source": "The Verge AI",
+      "category": "business",
+      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
+      "text": "看Elon Musk后续是否公布可用入口、权限范围和真实案例。"
     },
     "item_b": {
-      "story_id": "google-ai-blog-ebf6fd65ff46",
-      "title": "Google Beam出现混合与本地部署新进展",
-      "source": "Google AI",
-      "category": "models",
-      "original_title": "A new experiment brings better group meetings to Google Beam",
-      "text": "看Google Beam后续是否公布可用入口、权限范围和真实案例。"
+      "story_id": "techcrunch-ai-093c24bfb470",
+      "title": "Universal Music出现合作新进展",
+      "source": "TechCrunch AI",
+      "category": "business",
+      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
+      "text": "看Universal Music后续是否公布可用入口、权限范围和真实案例。"
     }
   },
   "forbidden_patch_phrases_found": [],
   "generic_template_phrases_found": [],
   "missing_specific_terms": [],
   "cross_edition_similarity_issues": [],
-  "warnings": [],
+  "warnings": [
+    {
+      "field": "janet_take",
+      "reason": "near_duplicate_warning",
+      "similarity": 0.651,
+      "item_a": {
+        "story_id": "microsoft-research-ai-af556ccc8aff",
+        "title": "MagenticBrain出现智能体能力新进展",
+        "source": "Microsoft Research AI",
+        "category": "papers",
+        "original_title": "MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models",
+        "text": "MagenticBrain值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      },
+      "item_b": {
+        "story_id": "aws-machine-learning-baae138cd177",
+        "title": "Intelligent诉讼继续牵动 AI 治理",
+        "source": "AWS Machine Learning Blog",
+        "category": "business",
+        "original_title": "Intelligent radiology workflow optimization with AI agents",
+        "text": "Intelligent值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      }
+    },
+    {
+      "field": "janet_take",
+      "reason": "near_duplicate_warning",
+      "similarity": 0.622,
+      "item_a": {
+        "story_id": "microsoft-research-ai-af556ccc8aff",
+        "title": "MagenticBrain出现智能体能力新进展",
+        "source": "Microsoft Research AI",
+        "category": "papers",
+        "original_title": "MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models",
+        "text": "MagenticBrain值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      },
+      "item_b": {
+        "story_id": "the-verge-ai-4bec4b6109ec",
+        "title": "AI-generated开始生成内容",
+        "source": "The Verge AI",
+        "category": "business",
+        "original_title": "Spotify is launching AI-generated remixes",
+        "text": "AI-generated值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      }
+    },
+    {
+      "field": "janet_take",
+      "reason": "near_duplicate_warning",
+      "similarity": 0.628,
+      "item_a": {
+        "story_id": "aws-machine-learning-baae138cd177",
+        "title": "Intelligent诉讼继续牵动 AI 治理",
+        "source": "AWS Machine Learning Blog",
+        "category": "business",
+        "original_title": "Intelligent radiology workflow optimization with AI agents",
+        "text": "Intelligent值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      },
+      "item_b": {
+        "story_id": "the-verge-ai-4bec4b6109ec",
+        "title": "AI-generated开始生成内容",
+        "source": "The Verge AI",
+        "category": "business",
+        "original_title": "Spotify is launching AI-generated remixes",
+        "text": "AI-generated值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      }
+    },
+    {
+      "field": "janet_take",
+      "reason": "near_duplicate_warning",
+      "similarity": 0.651,
+      "item_a": {
+        "story_id": "the-verge-ai-4bec4b6109ec",
+        "title": "AI-generated开始生成内容",
+        "source": "The Verge AI",
+        "category": "business",
+        "original_title": "Spotify is launching AI-generated remixes",
+        "text": "AI-generated值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      },
+      "item_b": {
+        "story_id": "techcrunch-ai-53bc76a2a20d",
+        "title": "AI-powered Q出现播客生成新进展",
+        "source": "TechCrunch AI",
+        "category": "business",
+        "original_title": "Spotify adds AI-powered Q&#038;A and briefing generation features to podcasts",
+        "text": "AI-powered Q值得看，因为它把发布词落到了具体入口、权限和使用门槛上。"
+      }
+    }
+  ],
   "issues": []
 }

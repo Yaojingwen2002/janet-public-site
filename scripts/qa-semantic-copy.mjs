@@ -50,6 +50,9 @@ const PATCH_PHRASES = ['第2个切面', '第3个切面', '第2个落点', '第3�
 const GENERIC_OBJECTS = new Set(['智能体', 'AI 工具', '产品落点', '商业动作', '用户', '团队', '入口', '新动作', '工作流', '平台', '模型能力', '研究信号', '企业落地', '开发入口', '开源模型', 'AI']);
 const GENERIC_ACTIONS = new Set(['更新', '追踪', '推向', '发布新动作', '继续', '露出', '发布']);
 const SPECIFIC_TERMS = [
+  { pattern: /Spotify/i, terms: ['Spotify'] },
+  { pattern: /ElevenLabs/i, terms: ['ElevenLabs'] },
+  { pattern: /audiobook/i, terms: ['有声书', 'audiobook'] },
   { pattern: /NVIDIA Vera/i, terms: ['NVIDIA Vera', 'Vera'] },
   { pattern: /Jensen Huang/i, terms: ['黄仁勋', 'Jensen Huang'] },
   { pattern: /Dell/i, terms: ['戴尔', 'Dell'] },
@@ -226,6 +229,29 @@ function storyFactIssues(items) {
   return problems;
 }
 
+function semanticCrosswireIssues(items) {
+  const problems = [];
+  for (const item of items) {
+    const rawText = [
+      item.raw_item?.original_title,
+      item.raw_item?.original_summary,
+      item.original_title,
+      item.original_summary,
+      item.story_fact?.original_title,
+      item.story_fact?.original_summary,
+      ...(Array.isArray(item.story_facts) ? item.story_facts.map((fact) => fact.value) : [])
+    ].filter(Boolean).join(' ');
+    const publicText = FIELDS.map((field) => item[field]).filter(Boolean).join(' ');
+    if (/spotify|elevenlabs|audiobook/i.test(rawText) && /学生|嘘声|助威|毕业|commencement|graduation|boo|cheer/i.test(publicText)) {
+      problems.push(issue('semantic_crosswire_spotify_audiobook_to_graduation_copy', 'zh_title', item, {
+        raw_anchor: 'Spotify / ElevenLabs / audiobook',
+        forbidden_public_copy: 'student / boo / cheer / graduation'
+      }));
+    }
+  }
+  return problems;
+}
+
 function missingSpecificTerms(items) {
   const missing = [];
   for (const item of items) {
@@ -324,7 +350,7 @@ function main() {
   const generic = phraseHits(stories, GENERIC_PHRASES, 'generic_template_phrase');
   const patch = phraseHits(stories, PATCH_PHRASES, 'patch_phrase');
   const missingTerms = missingSpecificTerms(stories);
-  hardIssues.push(...generic, ...patch, ...missingTerms, ...storyFactIssues(stories));
+  hardIssues.push(...generic, ...patch, ...missingTerms, ...storyFactIssues(stories), ...semanticCrosswireIssues(stories));
 
   for (const item of homepageItems) {
     const terms = concreteTerms(item);

@@ -606,6 +606,9 @@ function extractStoryFacts(item) {
     ['Siri', /Siri/i],
     ['OpenAI', /OpenAI/i],
     ['Claude', /Claude/i],
+    ['Spotify', /Spotify/i],
+    ['ElevenLabs', /ElevenLabs/i],
+    ['有声书工具', /audiobook creation tool|audiobook/i],
     ['Alexa Plus', /Alexa Plus/i],
     ['Amazon Quick', /Amazon Quick/i],
     ['Amazon Bedrock AgentCore', /Bedrock AgentCore/i],
@@ -630,6 +633,7 @@ function extractStoryFacts(item) {
   if (/leaderboard|ranking/i.test(text)) add('action', '榜单排名');
   if (/evaluation|evaluators?|benchmark/i.test(text)) add('action', '评测');
   if (/document parsing|OCR/i.test(text)) add('action', '文档解析');
+  if (/audiobook/i.test(text)) add('action', '有声书生成');
   if (/podcast/i.test(text)) add('action', '播客生成');
   if (hasLegalEvidence(text)) add('action', '诉讼');
   if (/acquired|acquire/i.test(text)) add('action', '收购');
@@ -701,6 +705,11 @@ function titleEntityCandidates(title, source) {
     /AI design/ig,
     /Google AI subscriptions?/ig,
     /Google Workspace/ig,
+    /ElevenLabs-powered audiobook creation tool/ig,
+    /audiobook creation tool/ig,
+    /ElevenLabs/ig,
+    /Spotify Studio/ig,
+    /Spotify/ig,
     /Universal Cart/ig,
     /Gemini Spark/ig,
     /Gemini 3\.5 Flash/ig,
@@ -741,6 +750,7 @@ function actionFromTitle(title) {
   if (hasFundingEvidence(text)) return '融资';
   if (hasLegalEvidence(text)) return '诉讼';
   if (/auto-delet|delete/.test(text)) return '自动清除';
+  if (/audiobook/.test(text)) return '有声书生成';
   if (/generate|create|podcast/.test(text)) return '生成';
   if (/tool calling/.test(text)) return '工具调用';
   if (/memory/.test(text)) return '记忆扩展';
@@ -844,6 +854,7 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
   if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
   if (action === '生成') return `${object}开始生成内容`;
+  if (action === '有声书生成') return `${object}推出 AI 有声书制作工具`;
   if (action === '工具调用') return `${object}补上程序化工具调用`;
   if (action === '记忆扩展') return `${object}加入对话记忆`;
   if (action === '搜索改版') return `${object}正在改写搜索入口`;
@@ -867,6 +878,7 @@ function summaryFromStoryFact(item, storyFact) {
   if (action === '购物代理') return `${source}写到${object}，意思是 AI 不只推荐商品，还可能进入跨站购物流程，风险和便利都会一起出现。`;
   if (action === '订阅调整') return `${source}这条指向${object}的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。`;
   if (action === '生成') return `${source}把${object}放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。`;
+  if (action === '有声书生成') return `${source}报道${object}，重点是把 AI 配音和有声书制作流程变成创作者可以直接调用的工具。`;
   if (action === '融资') return `${source}报道${object}完成融资，重点看这笔钱会投向哪个具体产品问题。`;
   if (action === '诉讼') return `${source}围绕${object}的法律争议继续发酵，重点是 AI 公司治理、承诺和商业化之间的拉扯。`;
   if (action === '评测' || action === '榜单排名') return `${source}把${object}放进评测语境，重点是任务集、评分方法和结果是否经得起复现。`;
@@ -889,6 +901,7 @@ function whyFromStoryFact(item, storyFact) {
   if (action === '融资') return `${audience}要看${object}：融资方向说明市场正在验证哪个具体痛点。`;
   if (action === '评测' || action === '榜单排名') return `${audience}要看${object}：公开评测能让能力比较少一点玄学，多一点可复查证据。`;
   if (action === '推出') return `${audience}要看${object}：新功能是否改变现有产品路径，而不是只增加发布会信息量。`;
+  if (action === '有声书生成') return `${audience}要看${object}：有声书制作门槛下降后，版权、配音质量和分发规则都会变重要。`;
   return `${audience}要看${object}：${action}会改变具体接入方式、使用边界或采购判断。`;
 }
 
@@ -903,6 +916,7 @@ function janetFromStoryFact(item, storyFact) {
   if (action === '融资') return `${object}融资只是开场，接下来要证明它不是又一个安全 PPT。`;
   if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
   if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
+  if (action === '有声书生成') return `${object}不是“AI 很会说话”的故事，而是音频制作开始变成按钮级工具。`;
   return `${object}值得看，因为它把发布词落到了具体入口、权限和使用门槛上。`;
 }
 
@@ -915,6 +929,7 @@ function watchFromStoryFact(item, storyFact) {
   if (action === '购物代理') return `看${object}的支付和责任边界。`;
   if (action === '订阅调整') return `看${object}哪些能力被放进付费档。`;
   if (action === '生成') return `看${object}是否支持编辑和版权控制。`;
+  if (action === '有声书生成') return `看${object}是否公布配音版权和编辑能力。`;
   if (action === '融资') return `看${object}融资后是否给出产品指标。`;
   if (action === '诉讼') return `看${object}后续是否影响治理承诺。`;
   if (action === '评测' || action === '榜单排名') return `看${object}是否公开任务集和评分细则。`;
@@ -1155,6 +1170,15 @@ function storyBrief(item) {
       watch: '看苹果是否公布 Siri 隐私和记录规则。'
     };
   }
+  if (/spotify/.test(text) && /elevenlabs|audiobook/.test(text)) {
+    return {
+      title: 'Spotify 接入 ElevenLabs，推出 AI 有声书工具',
+      summary: `${source}报道 Spotify 推出 ElevenLabs 支持的有声书制作工具，重点是把 AI 配音和长音频生产放进更低门槛的创作者流程。`,
+      why: '创作者和出版团队要看：有声书制作如果被工具化，配音版权、审核和分发规则都会被重新拉到台前。',
+      janet: '这不是校园反弹故事，是 Spotify 把 AI 配音塞进有声书生产线。',
+      watch: '看 Spotify 是否公布配音版权和编辑能力。'
+    };
+  }
   if (hasLegalEvidence(raw) && /musk|elon/.test(text) && /openai/.test(text) && /trial|trust|lawsuit/.test(text)) {
     return {
       title: '马斯克与 OpenAI 诉讼，信任成核心问题',
@@ -1164,7 +1188,7 @@ function storyBrief(item) {
       watch: '看法庭如何处理 OpenAI 的使命与商业边界。'
     };
   }
-  if (/commencement speech|graduation|boo|cheerleading/.test(text) && /ai/.test(text)) {
+  if (/commencement speech|graduation|boo|cheerleading/.test(text) && /ai/.test(text) && !/spotify|elevenlabs|audiobook|podcast/.test(text)) {
     return {
       title: /boo|eric schmidt|arizona/.test(text) ? '学生嘘声回应 AI 助威' : '毕业演讲别再硬塞 AI',
       summary: `${source}记录到校园场景里的 AI 叙事开始遇到反弹：听众不只想听“AI 会改变一切”，他们更在意具体代价、就业压力和真实帮助。`,
@@ -1350,12 +1374,15 @@ function titleForEdition(stories, rules, date) {
   const first = objects[0] || chineseSourceName(stories[0]?.source);
   const second = objects[1] || objects[0] || date.replaceAll('-', '.');
   const action = actions[0] || '更新';
+  const shortFirst = first.length > 14 ? first.slice(0, 14) : first;
+  const shortSecond = second.length > 10 ? second.slice(0, 10) : second;
   const candidates = [
-    objects.length >= 2 ? `${first}和${second}都有新动作` : '',
-    objects.length >= 2 ? `${first}和${second}推近产品层` : '',
-    `${first}今天盯上${action}`,
-    `${first}这次看${action}`,
-    objects.length >= 2 ? `${first}牵出${second}的新变化` : '',
+    `${shortFirst}带出${action}`,
+    objects.length >= 2 ? `${shortFirst}和${shortSecond}都有新动作` : '',
+    objects.length >= 2 ? `${shortFirst}和${shortSecond}推近产品层` : '',
+    `${shortFirst}今天盯上${action}`,
+    `${shortFirst}这次看${action}`,
+    objects.length >= 2 ? `${shortFirst}牵出${shortSecond}` : '',
     '今天的 AI 更新分散在几个具体产品里'
   ]
     .filter(Boolean)
@@ -1364,14 +1391,15 @@ function titleForEdition(stories, rules, date) {
   const history = recentTitles(Number(rules.title_generation?.forbid_repeat_days || 7));
   const selected = candidates.find((item) => (
     !history.includes(item) &&
+    [...item].length <= 24 &&
     !forbidden.some((phrase) => item.includes(phrase)) &&
     !FORBIDDEN_SURFACE_COPY.some((phrase) => item.includes(phrase)) &&
     hasChinese(item)
   ));
   if (selected) return selected;
-  const fallback = `${first}和${second}继续交出具体动作`;
+  const fallback = `${shortFirst}带出${action || '新动作'}`;
   if (!history.includes(fallback)) return fallback;
-  return `今天 AI 新闻看${first}`;
+  return `${shortFirst}有新动作`;
 }
 
 function thesisForEdition(stories) {
@@ -1437,7 +1465,9 @@ function buildDailyBrief(stories, modules, rules, date) {
   const actions = concreteActionsFor(stories, 4);
   const leadObject = objects[0] || chineseSourceName(stories[0]?.source);
   const secondObject = objects[1] || objects[0] || '另一条具体产品线';
-  const theme = `${leadObject}牵出${secondObject}`;
+  const shortLeadObject = leadObject.length > 14 ? leadObject.slice(0, 14) : leadObject;
+  const shortSecondObject = secondObject.length > 8 ? secondObject.slice(0, 8) : secondObject;
+  const theme = `${shortLeadObject}牵出${shortSecondObject}`;
   const dailySummary = clamp(`今天的主线落在${objects.slice(0, 4).join('、') || leadObject}，看点是${actions.slice(0, 3).join('、') || '功能边界和接入方式'}，不是抽象趋势。`, 118);
   const dailyJudgment = clamp(`Janet 判断：${leadObject}这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。`, 92);
   const thesis = thesisForEdition(stories);
@@ -2472,16 +2502,36 @@ function updateManifest(editionId) {
   writeJson(manifestPath, next);
 }
 
+function workflowContext() {
+  return {
+    workflow_event: process.env.JANET_WORKFLOW_EVENT || '',
+    workflow_run_id: process.env.JANET_WORKFLOW_RUN_ID || '',
+    workflow_ref: process.env.JANET_WORKFLOW_REF || '',
+    workflow_sha: process.env.JANET_WORKFLOW_SHA || ''
+  };
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const date = args.date || defaultDateShanghai();
+  const editionId = `${date}-v4`;
   const dryRun = args['dry-run'] === true;
   const window = computeWindow(date);
   const pool = readJson(SOURCE_POOL, { sources: [], min_publish_count: 5, full_edition_count: 10 });
+  const previousLatestEditionId = readJson(resolve(ROOT, 'data/MANIFEST.json'), [])[0] || '';
   const status = {
     status: 'running',
     run_at: new Date().toISOString(),
+    target_date: date,
+    target_edition_id: editionId,
     timezone: TZ,
+    date_source: 'args.date || defaultDateShanghai()',
+    ...workflowContext(),
+    created_new_edition: false,
+    previous_latest_edition_id: previousLatestEditionId,
+    no_new_edition_reason: '',
+    candidate_count: 0,
+    selected_count: 0,
     window_start: window.window_start,
     window_end: window.window_end,
     source_count: pool.sources.filter((source) => source.enabled).length,
@@ -2505,6 +2555,8 @@ function main() {
   const processItems = async (rawItemList, included, excluded, snapshot = null) => {
     status.raw_items = Number(snapshot?.raw_item_count || rawItemList.length);
     status.included = included.length;
+    status.candidate_count = included.length;
+    status.selected_count = included.length;
     status.excluded = excluded.length;
     status.exclusion_reasons = excluded.reduce((acc, item) => {
       acc[item.excluded_reason] = (acc[item.excluded_reason] || 0) + 1;
@@ -2516,6 +2568,9 @@ function main() {
       status.status = 'blocked_insufficient_fresh_news';
       status.edition_type = 'blocked';
       status.published = false;
+      status.created_new_edition = false;
+      status.no_new_edition_reason = `fresh_news_below_min_publish_count:${included.length}/${Number(pool.min_publish_count || 5)}`;
+      status.selected_count = 0;
       writeJson(STATUS_PATH, status);
       console.log(`status: ${status.status}`);
       return;
@@ -2525,6 +2580,8 @@ function main() {
       status.status = 'dry_run_candidate_ready';
       status.edition_type = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
       status.published = false;
+      status.created_new_edition = false;
+      status.no_new_edition_reason = 'dry_run';
       writeJson(STATUS_PATH, status);
       console.log(`status: ${status.status}`);
       return;
@@ -2535,13 +2592,13 @@ function main() {
     const templateContent = readJson(resolve(ROOT, `data/${templateId}/content.json`));
     const templateSummary = readJson(resolve(ROOT, `data/${templateId}/news-summary.json`), {});
     const editorialRules = readJson(EDITORIAL_RULES, { positive_signals: [], negative_signals: [], source_priority: {}, forbidden_frontend_phrases: [] });
-    const editionId = `${date}-v4`;
     const outDir = resolve(ROOT, `data/${editionId}`);
     const draftEditionType = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
     const content = await buildContent(templateContent, included, date, draftEditionType, editorialRules);
     const publishableCount = (content.edition_items || []).length;
     const genericBlocked = (content.excluded_items || []).filter((item) => item.reason === 'generic_fallback_blocked').length;
     status.included = publishableCount;
+    status.selected_count = publishableCount;
     status.excluded = excluded.length + genericBlocked;
     status.exclusion_reasons.generic_fallback_blocked = genericBlocked;
     const editionType = publishableCount >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
@@ -2556,6 +2613,8 @@ function main() {
 
     status.published = true;
     status.published_edition_id = editionId;
+    status.created_new_edition = true;
+    status.no_new_edition_reason = '';
     writeJson(STATUS_PATH, status);
     console.log(`status: ${status.status}`);
   };
@@ -2623,10 +2682,24 @@ function main() {
 }
 
 main().catch((error) => {
+  const args = parseArgs(process.argv.slice(2));
+  const date = args.date || defaultDateShanghai();
+  const editionId = `${date}-v4`;
+  const manifest = readJson(resolve(ROOT, 'data/MANIFEST.json'), []);
   writeJson(STATUS_PATH, {
     status: 'failed',
     run_at: new Date().toISOString(),
+    target_date: date,
+    target_edition_id: editionId,
     timezone: TZ,
+    date_source: 'args.date || defaultDateShanghai()',
+    ...workflowContext(),
+    created_new_edition: false,
+    published_edition_id: '',
+    previous_latest_edition_id: manifest[0] || '',
+    no_new_edition_reason: error.message || 'generator_failed',
+    candidate_count: 0,
+    selected_count: 0,
     used_sample_data: false,
     published_at_window_enforced: true,
     published: false,

@@ -1,5 +1,12 @@
 # Janet Editorial Voice
 
+## Canonical References
+
+本文档的最高优先级参考源为：
+
+- `docs/editorial/JANET-FULL-PROFILE.md`
+- `/Volumes/Janet/公众号 AI 推文/`
+
 Janet 快车箱不是中立聚合器。它是站在中国创作者、中小企业和急需用 AI 降本增效的人这边的 AI 科技媒体。
 
 ## Identity

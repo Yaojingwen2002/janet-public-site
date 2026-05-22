@@ -16,6 +16,7 @@ const REQUIRED_CHECKS = [
 const TEMPLATE_PATTERNS = [
   { label: '今日封面', pattern: /今日封面/g },
   { label: '重点是', pattern: /重点是/g },
+  { label: '今天值得看', pattern: /今天值得看/g },
   { label: '值得看，因为', pattern: /值得看，因为/g },
   { label: '出现.*新进展', pattern: /出现.{0,16}新进展/g },
   { label: '开始生成内容', pattern: /开始生成内容/g },
@@ -76,6 +77,10 @@ function findTemplateHits(files) {
   return hits;
 }
 
+function cnCharCount(text) {
+  return (String(text || '').match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
 const issues = [];
 const warnings = [];
 const duplicateFileFindings = [];
@@ -110,8 +115,30 @@ if (templateCopyHits.length) {
 
 const content = latest ? readJson(`${latestDir}/content.json`, {}) : {};
 const summary = latest ? readJson(`${latestDir}/news-summary.json`, {}) : {};
-if (content?.edition_id && content.edition_id !== latest) issues.push('content.json edition_id does not match MANIFEST latest');
-if (summary?.edition_id && summary.edition_id !== latest) issues.push('news-summary.json edition_id does not match MANIFEST latest');
+if (content?.edition_id !== latest) issues.push('content.json edition_id does not match MANIFEST latest');
+if (summary?.edition_id !== latest) issues.push('news-summary.json edition_id does not match MANIFEST latest');
+
+if (!content?.daily_editorial_summary) {
+  issues.push('daily_editorial_summary missing from content.json');
+} else {
+  if (cnCharCount(content.daily_editorial_summary.body) < 350) issues.push('daily_editorial_summary.body below 350 Chinese chars');
+  if (!Array.isArray(content.daily_editorial_summary.source_story_ids) || !content.daily_editorial_summary.source_story_ids.length) {
+    issues.push('daily_editorial_summary.source_story_ids missing');
+  }
+}
+
+const stories = Array.isArray(content?.stories) ? content.stories : [];
+if (!stories.length) issues.push('content.stories missing');
+for (const story of stories) {
+  const id = story.story_id || story.id || story.title || 'unknown-story';
+  if (cnCharCount(story.content) < 280) issues.push(`story.content below 280 Chinese chars: ${id}`);
+  if (!String(story.content || '').includes('Janet 锐评：')) issues.push(`story.content missing Janet 锐评： ${id}`);
+  if (cnCharCount(story.janet_take) < 60) issues.push(`story.janet_take below 60 Chinese chars: ${id}`);
+}
+
+if ((summary?.lead_story?.summary || '') === (content?.daily_editorial_summary?.body || '')) {
+  issues.push('homepage summary equals lead story summary');
+}
 
 if (existsSync(resolve(ROOT, 'data/semantic-copy-audit.json'))) duplicateFileFindings.push('data/semantic-copy-audit.json is an old one-off audit artifact');
 if (existsSync(resolve(ROOT, 'data/news-visuals-audit.json'))) duplicateFileFindings.push('data/news-visuals-audit.json is an old one-off audit artifact');

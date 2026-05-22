@@ -182,6 +182,7 @@
       vol: content.vol || '',
       brand: content.brand || 'Janet 快车箱',
       theme: content.theme || '今日 AI 快车箱',
+      daily_editorial_summary: content.daily_editorial_summary || null,
       intro_text: content.intro_text || '',
       daily_thesis: content.daily_thesis || '',
       lead_story: lead ? {
@@ -234,6 +235,9 @@
     const leadUrl = safeExternalUrl(lead.url);
     const issueLabel = formatIssueLabel(summary, bundle.entry);
     const freshnessLabel = summary.date === todayShanghai() ? '今日精选' : '最近一期';
+    const editorialSummary = summary.daily_editorial_summary || (bundle.content && bundle.content.daily_editorial_summary) || null;
+    const topTitle = editorialSummary && editorialSummary.title ? editorialSummary.title : (summary.theme || '今日 AI 快车箱');
+    const topIntro = editorialSummary && editorialSummary.body ? editorialSummary.body : readerIntro(summary, lead);
 
     if (btnFull) btnFull.href = outputUrl;
 
@@ -278,11 +282,11 @@
         '</div>' +
         '<div class="news-v4-main">' +
           '<div class="news-v4-copy">' +
-            '<h3 class="news-v4-theme">' + escapeHtml(summary.theme || '今日 AI 快车箱') + '</h3>' +
-            '<p class="news-v4-intro">' + escapeHtml(readerIntro(summary, lead)) + '</p>' +
+            '<h3 class="news-v4-theme">' + escapeHtml(topTitle) + '</h3>' +
+            '<p class="news-v4-intro">' + escapeHtml(topIntro) + '</p>' +
             (lead.title ? (
               (leadUrl !== '#' ? '<a class="news-v4-lead janet-clickable-card" href="' + escapeHtml(leadUrl) + '" target="_blank" rel="noopener noreferrer" aria-label="查看新闻源：' + escapeHtml(lead.title) + '">' : '<div class="news-v4-lead">') +
-                '<span class="news-v4-lead-label">今日封面新闻</span>' +
+                '<span class="news-v4-lead-label">头条新闻</span>' +
                 '<strong>' + escapeHtml(lead.title) + '</strong>' +
                 (lead.original_title ? '<small class="news-v4-original-title">原文：' + escapeHtml(lead.original_title) + '</small>' : '') +
                 '<em>' + escapeHtml(lead.summary || '') + '</em>' +
@@ -294,7 +298,7 @@
             '</div>' +
           '</div>' +
           '<div class="news-v4-panel news-v4-visual-panel">' +
-            (visualSrc(lead.visual) ? (leadUrl !== '#' ? '<a class="news-v4-lead-figure-link janet-clickable-card" href="' + escapeHtml(leadUrl) + '" target="_blank" rel="noopener noreferrer" aria-label="查看新闻源：' + escapeHtml(lead.title || '今日封面新闻') + '">' : '') + '<figure class="news-v4-lead-figure"><img class="news-v4-lead-visual" src="' + escapeHtml(safeLocalPath(visualSrc(lead.visual))) + '" alt="' + escapeHtml(visualAlt(lead.visual, lead.title || '今日封面新闻')) + '" loading="lazy" decoding="async">' + (visualCaption(lead.visual) ? '<figcaption>' + escapeHtml(visualCaption(lead.visual)) + '</figcaption>' : '') + '</figure>' + (leadUrl !== '#' ? '</a>' : '') : '') +
+            (visualSrc(lead.visual) ? (leadUrl !== '#' ? '<a class="news-v4-lead-figure-link janet-clickable-card" href="' + escapeHtml(leadUrl) + '" target="_blank" rel="noopener noreferrer" aria-label="查看新闻源：' + escapeHtml(lead.title || '头条新闻') + '">' : '') + '<figure class="news-v4-lead-figure"><img class="news-v4-lead-visual" src="' + escapeHtml(safeLocalPath(visualSrc(lead.visual))) + '" alt="' + escapeHtml(visualAlt(lead.visual, lead.title || '头条新闻')) + '" loading="lazy" decoding="async">' + (visualCaption(lead.visual) ? '<figcaption>' + escapeHtml(visualCaption(lead.visual)) + '</figcaption>' : '') + '</figure>' + (leadUrl !== '#' ? '</a>' : '') : '') +
             '<span class="news-v4-panel-note">今日 ' + escapeHtml(count || 0) + ' 条有效新闻</span>' +
           '</div>' +
         '</div>' +

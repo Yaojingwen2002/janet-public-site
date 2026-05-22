@@ -302,30 +302,30 @@ async function fetchSource(source) {
     if (visited.has(url)) continue;
     visited.add(url);
     try {
-      const response = await fetch(url, {
+      const response = await fetchWithTimeout(url, {
         headers: {
           'user-agent': 'JanetDailyNewsBot/31',
           accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.8'
         },
         redirect: 'follow'
-      });
+      }, 9000);
       if (!response.ok) throw new Error(`http_${response.status}`);
-      const text = await response.text();
+      const text = await withTimeout(response.text(), 8000, 'source_body');
       const items = parseFeed(text, { ...source, url });
       if (items.length) return { items, error: null };
       const discovered = feedLinksFromHtml(text, url).filter((link) => !visited.has(link));
       for (const feedUrl of discovered.slice(0, 3)) {
         visited.add(feedUrl);
         try {
-          const feedResponse = await fetch(feedUrl, {
+          const feedResponse = await fetchWithTimeout(feedUrl, {
             headers: {
               'user-agent': 'JanetDailyNewsBot/31',
               accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.8'
             },
             redirect: 'follow'
-          });
+          }, 8000);
           if (!feedResponse.ok) throw new Error(`http_${feedResponse.status}`);
-          const feedText = await feedResponse.text();
+          const feedText = await withTimeout(feedResponse.text(), 7000, 'feed_body');
           const feedItems = parseFeed(feedText, { ...source, url: feedUrl });
           if (feedItems.length) return { items: feedItems, error: null };
           errors.push(`${feedUrl}:no_feed_items`);
@@ -853,7 +853,7 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '融资') return `${object}完成融资，验证具体市场`;
   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
   if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
-  if (action === '生成') return `${object}开始生成内容`;
+  if (action === '生成') return `${object}进入内容生产线`;
   if (action === '有声书生成') return `${object}推出 AI 有声书制作工具`;
   if (action === '工具调用') return `${object}补上程序化工具调用`;
   if (action === '记忆扩展') return `${object}加入对话记忆`;
@@ -862,8 +862,8 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '购物代理') return `${object}想接管购物流程`;
   if (action === '视觉识别') return `${object}接入外部摄像头识别`;
   if (action === '设计工具') return `${object}把 AI 设计摆上台面`;
-  if (action === '推出') return `${object}推出新版本或新功能`;
-  return `${object}出现${action}新进展`;
+  if (action === '推出') return `${object}补上产品能力`;
+  return `${object}推进${action}`;
 }
 
 function summaryFromStoryFact(item, storyFact) {
@@ -873,20 +873,20 @@ function summaryFromStoryFact(item, storyFact) {
   if (action === '搜索改版') return `${source}把${object}推到搜索入口前台，搜索正在从关键词输入转向更主动的 AI 任务入口。`;
   if (action === '开发工具升级') return `${source}把${object}放在开发工具语境里，关键不是概念，而是 CLI、编码流程和实际接入方式是否变顺。`;
   if (action === '记忆扩展') return `${source}在${object}里扩展记忆能力，说明智能体的长期上下文正在从概念变成开发者可调用的基础能力。`;
-  if (action === '工具调用') return `${source}让${object}更稳定地调用外部工具，重点是智能体能否按流程执行任务，而不是停在聊天式回答。`;
-  if (action === '智能体能力') return `${source}把${object}放进智能体场景，重点是它能否从演示走向连续任务和真实产品入口。`;
+  if (action === '工具调用') return `${source}让${object}更稳定地调用外部工具，智能体开始从聊天回答转向按流程执行任务。`;
+  if (action === '智能体能力') return `${source}把${object}接进智能体场景，它要证明自己不是演示，而是能处理连续任务的产品能力。`;
   if (action === '购物代理') return `${source}写到${object}，意思是 AI 不只推荐商品，还可能进入跨站购物流程，风险和便利都会一起出现。`;
   if (action === '订阅调整') return `${source}这条指向${object}的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。`;
   if (action === '生成') return `${source}把${object}放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。`;
-  if (action === '有声书生成') return `${source}报道${object}，重点是把 AI 配音和有声书制作流程变成创作者可以直接调用的工具。`;
-  if (action === '融资') return `${source}报道${object}完成融资，重点看这笔钱会投向哪个具体产品问题。`;
-  if (action === '诉讼') return `${source}围绕${object}的法律争议继续发酵，重点是 AI 公司治理、承诺和商业化之间的拉扯。`;
-  if (action === '评测' || action === '榜单排名') return `${source}把${object}放进评测语境，重点是任务集、评分方法和结果是否经得起复现。`;
+  if (action === '有声书生成') return `${source}报道${object}，AI 配音和有声书制作流程开始变成创作者可以直接调用的平台工具。`;
+  if (action === '融资') return `${source}报道${object}完成融资，这笔钱接下来要回答它到底解决哪个具体产品问题。`;
+  if (action === '诉讼') return `${source}围绕${object}的法律争议继续发酵，AI 公司治理、承诺和商业化之间的拉扯被推到台前。`;
+  if (action === '评测' || action === '榜单排名') return `${source}把${object}放进评测框架，任务集、评分方法和结果复现会决定它有没有参考价值。`;
   if (action === '视觉识别') return `${source}提到${object}的视觉识别能力，真正要看的是它在真实环境里能否稳定读懂场景。`;
   if (action === '设计工具') return `${source}把${object}推到设计工具层面，关键是它能否改变原型、素材和协作流程。`;
   if (action === '团队变动') return `${source}把${object}的人才流动放到前沿模型竞争里看，训练经验和研究判断仍是稀缺资源。`;
-  if (action === '推出') return `${source}报道${object}的新功能或版本，重点看它补上哪段能力、面向谁开放。`;
-  return `${source}把${object}带到${storyFact.audience || '相关使用者'}面前，重点看${action}怎样改变使用路径和产品边界。`;
+  if (action === '推出') return `${source}报道${object}的新功能或版本，接下来要看它补上哪段能力、面向谁开放。`;
+  return `${source}把${object}带到${storyFact.audience || '相关使用者'}面前，${action}会改变使用路径和产品边界。`;
 }
 
 function whyFromStoryFact(item, storyFact) {
@@ -917,7 +917,7 @@ function janetFromStoryFact(item, storyFact) {
   if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
   if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
   if (action === '有声书生成') return `${object}不是“AI 很会说话”的故事，而是音频制作开始变成按钮级工具。`;
-  return `${object}值得看，因为它把发布词落到了具体入口、权限和使用门槛上。`;
+  return `${object}要看入口、权限和使用门槛，发布词不算数，能被真实团队接起来才算数。`;
 }
 
 function watchFromStoryFact(item, storyFact) {
@@ -1408,7 +1408,7 @@ function thesisForEdition(stories) {
   const sources = sourceNames(stories.slice(0, 5), 4).join('、');
   const objectText = objects.slice(0, 4).join('、') || sources || '今天这几条具体产品';
   const actionText = actions.slice(0, 3).join('、') || '功能边界、接入方式和评测方法';
-  return clamp(`今天值得看的对象是${objectText}：它们分别牵出${actionText}，重点不在声量，而在这些产品和评测会怎样改变具体使用路径。`, 150);
+  return clamp(`今天先看的对象是${objectText}：它们分别牵出${actionText}。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。`, 150);
 }
 
 function displayObject(value) {
@@ -1416,6 +1416,9 @@ function displayObject(value) {
   const map = [
     [/Amazon Bedrock AgentCore Memory/i, 'AgentCore Memory'],
     [/Amazon Bedrock AgentCore/i, 'Bedrock AgentCore'],
+    [/ElevenLabs-powered audiobook creation tool|audiobook creation tool/i, 'ElevenLabs 有声书工具'],
+    [/AI-powered Q(?:&A)?/i, 'Spotify Q&A 工具'],
+    [/AI-generated/i, 'Spotify AI 翻唱'],
     [/Introducing OpenAI/i, 'OpenAI'],
     [/agentic Gemini era/i, 'Gemini'],
     [/Google Workspace/i, 'Workspace'],
@@ -1562,6 +1565,7 @@ function ensureUniqueHomepageCopy(items) {
   makeFieldUnique(items, 'why_it_matters', (item) => clamp(`「${item.title}」会影响相关团队对接口、权限、评测或采购路径的判断。`, 96));
   makeFieldUnique(items, 'janet_take', (item) => clamp(`Janet 看「${item.title}」：别看发布词，看对象、动作和限制条件。`, 86));
   makeFieldUnique(items, 'watch_next', (item) => clamp(`看「${item.title}」是否公布接口、价格或评测细则。`, 48));
+  items.forEach(scrubTemplateCopy);
 }
 
 function ensureUniqueStoryCopy(stories) {
@@ -1572,6 +1576,11 @@ function ensureUniqueStoryCopy(stories) {
   makeFieldUnique(stories, 'why_it_matters', (story) => clamp(`「${story.zh_title || story.title}」会影响相关团队对接口、权限、评测或采购路径的判断。`, 90));
   makeFieldUnique(stories, 'janet_take', (story) => clamp(`Janet 看「${story.zh_title || story.title}」：先看对象、动作和限制条件。`, 80));
   makeFieldUnique(stories, 'watch_next', (story) => clamp(`看「${story.zh_title || story.title}」是否公布接口或评测细则。`, 42));
+  stories.forEach((story) => {
+    scrubTemplateCopy(story);
+    story.janet_take = buildLongJanetTake(story);
+    story.content = buildReaderBody(story);
+  });
 }
 
 function buildHomepageAssembly(stories, date) {
@@ -1636,9 +1645,9 @@ function moduleSummaryFor(sectionKey, stories) {
   const objectText = objects.join('、') || stories[0]?.title || sources;
   const actionText = actions.join('、') || '接入方式';
   if (sectionKey === 'agents') return `${sources}这组集中在${objectText}，看点是${actionText}怎样影响开发和平台团队。`;
-  if (sectionKey === 'open_source') return `${sources}这组围绕${objectText}，重点是${actionText}能不能被复现、比较或接入。`;
+  if (sectionKey === 'open_source') return `${sources}这组围绕${objectText}，要看${actionText}能不能被复现、比较或接入。`;
   if (sectionKey === 'business') return `${sources}这组把${objectText}推到商业语境里，关键是${actionText}会不会改变客户路径。`;
-  if (sectionKey === 'models') return `${sources}这组看${objectText}，重点是${actionText}是否进入可用产品。`;
+  if (sectionKey === 'models') return `${sources}这组看${objectText}，要看${actionText}是否进入可用产品。`;
   if (sectionKey === 'creator_opportunity') return `${sources}这组看${objectText}，关键是${actionText}能不能降低创作成本。`;
   return `${sources}这组补充${objectText}，把${actionText}放在主线之外观察。`;
 }
@@ -1661,13 +1670,13 @@ function buildCover(stories, modules, dailyBrief) {
   const leadAction = lead.story_fact?.action || concreteActionsFor([lead], 1)[0] || '具体动作';
   const coverTitle = objects.includes('Codex') && objects.includes('Dell')
     ? 'Codex 开始进企业内网'
-    : `${primaryFact}把${leadAction}摆到封面`;
+    : `${primaryFact}牵出${leadAction}`;
   const coverSummary = objects.includes('Codex') && objects.includes('Dell')
     ? '今天的主线不是模型参数，而是 OpenAI 与戴尔把 Codex 推进混合和本地企业环境，AI 编程开始面对真实采购和权限问题。'
-    : `${lead.source || '来源'}把${primaryFact}的${leadAction}放到封面位置，影响${lead.story_fact?.audience || '相关使用者'}对功能边界和接入方式的判断。`;
+    : `${lead.source || '来源'}把${primaryFact}的${leadAction}推到今天主线，影响${lead.story_fact?.audience || '相关使用者'}对功能边界和接入方式的判断。`;
   return {
     daily_title: dailyBrief.daily_title,
-    cover_title: coverTitle === dailyBrief.daily_title ? `${primaryFact}成为封面线索` : coverTitle,
+    cover_title: coverTitle === dailyBrief.daily_title ? `${primaryFact}成为头条线索` : coverTitle,
     cover_summary: coverSummary,
     daily_judgment: dailyBrief.daily_judgment,
     lead_story_id: lead.id,
@@ -1885,6 +1894,16 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = 7000) {
   }
 }
 
+function withTimeout(promise, timeoutMs, label = 'operation') {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(() => reject(new Error(`${label}_timeout`)), timeoutMs);
+    })
+  ]).finally(() => clearTimeout(timer));
+}
+
 function htmlImageCandidates(html, baseUrl) {
   const candidates = [];
   const metaPatterns = [
@@ -1922,7 +1941,7 @@ async function downloadImageToLocal(url, editionId, storyId) {
     if (!response.ok) throw new Error(`http_${response.status}`);
     const type = response.headers.get('content-type') || '';
     if (!/^image\//i.test(type)) throw new Error('not_image_response');
-    const buffer = Buffer.from(await response.arrayBuffer());
+    const buffer = Buffer.from(await withTimeout(response.arrayBuffer(), 8000, 'image_body'));
     if (buffer.length < 2048) throw new Error('image_too_small');
     if (buffer.length > 5000000) throw new Error('image_too_large');
     const ext = imageExt(url, type);
@@ -1962,7 +1981,7 @@ async function resolveSourceImage(rawItem, story, editionId) {
         redirect: 'follow'
       }, 7000);
       if (response.ok) {
-        const html = await response.text();
+        const html = await withTimeout(response.text(), 7000, 'article_html_body');
         candidates.push(...htmlImageCandidates(html, rawItem.url));
       }
     } catch {
@@ -2000,7 +2019,7 @@ async function resolveOpenLicenseImage(story, editionId) {
   try {
     const response = await fetchWithTimeout(api, { headers: { 'user-agent': 'JanetDailyNewsBot/visual-resolver' } }, 7000);
     if (!response.ok) return null;
-    const json = await response.json();
+    const json = await withTimeout(response.json(), 7000, 'commons_json_body');
     const pages = Object.values(json?.query?.pages || {});
     for (const page of pages) {
       const info = page?.imageinfo?.[0];
@@ -2116,7 +2135,144 @@ function publicIntroForEdition(stories) {
   const lead = stories[0] || {};
   const sources = sourceNames(stories.slice(0, 6), 4).join('、');
   const leadTopic = normalizeTopic(lead);
-  return clamp(`今天最值得看的不是热闹数量，而是${sources || '几个关键来源'}把${leadTopic}推到了台前：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。`, 110);
+  return clamp(`今天先看${sources || '几个关键来源'}围绕${leadTopic}给出的具体动作：谁在抢入口，谁在补工具，谁还只是发声明，一眼分清。`, 110);
+}
+
+function cnCharCount(text) {
+  return (String(text || '').match(/[\u4e00-\u9fff]/g) || []).length;
+}
+
+function cleanTemplateCopy(text) {
+  return String(text || '')
+    .replace(/今日封面新闻/g, '头条新闻')
+    .replace(/今日封面/g, '头条')
+    .replace(/今天值得看的对象是/g, '今天先看的对象是')
+    .replace(/今天值得看/g, '今天先看')
+    .replace(/值得看，因为/g, '要看，原因是')
+    .replace(/重点是/g, '关键在于')
+    .replace(/重点看/g, '继续看')
+    .replace(/出现(.{0,12})新进展/g, '推进$1')
+    .replace(/开始生成内容/g, '进入内容生产线')
+    .replace(/发布词落到了/g, '发布动作落到')
+    .replace(/把(.{0,20})放进(.{0,20})语境/g, '让$1进入$2场景');
+}
+
+function scrubTemplateCopy(value) {
+  if (typeof value === 'string') return cleanTemplateCopy(value);
+  if (Array.isArray(value)) return value.map(scrubTemplateCopy);
+  if (value && typeof value === 'object') {
+    for (const key of Object.keys(value)) value[key] = scrubTemplateCopy(value[key]);
+  }
+  return value;
+}
+
+function storyKeyData(story) {
+  const fact = story.story_fact || {};
+  return [
+    fact.concrete_object,
+    fact.action,
+    fact.audience,
+    story.source,
+    story.original_title
+  ].filter(Boolean).slice(0, 5);
+}
+
+function buildReaderBody(story) {
+  const fact = story.story_fact || {};
+  const object = displayObject(fact.concrete_object || story.title || '这条新闻');
+  const action = fact.action || '产品动作';
+  const audience = fact.audience || '相关团队';
+  const source = chineseSourceName(story.source);
+  const original = decodeText(story.original_title || story.raw_item?.original_title || '');
+  const baseSummary = cleanTemplateCopy(story.summary || story.zh_summary || '');
+  const why = cleanTemplateCopy(story.why_it_matters || '');
+  const take = cleanTemplateCopy(story.janet_take || '');
+  const watch = cleanTemplateCopy(story.watch_next || '');
+  const openingByAction = {
+    '有声书生成': `${source}报道${object}，真正变化是音频生产被塞进平台流程：创作者不必先找录音棚、配音演员和后期，再把成品搬回分发平台。`,
+    '播客生成': `${source}把${object}推到播客制作链路里，变化不在“AI 会说话”，而在脚本、简报、问答和分发开始连成一条线。`,
+    '智能体能力': `${source}提到${object}，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。`,
+    '开发工具升级': `${source}把${object}放到开发流程里，开发者真正关心的是它能不能少开一个工具、少写一段重复命令。`,
+    '评测': `${source}把${object}放到公开比较里，评测的价值不在排名本身，而在任务集、分数和复现路径能不能让团队少踩坑。`,
+    '榜单排名': `${source}把${object}放到公开比较里，评测的价值不在排名本身，而在任务集、分数和复现路径能不能让团队少踩坑。`,
+    '融资': `${source}报道${object}完成融资，钱本身不是结论，关键是它接下来能不能把产品指标、客户名单和收入路径讲清楚。`,
+    '诉讼': `${source}把${object}相关争议拉回读者视野，这类新闻要看治理、控制权和商业化承诺会不会影响用户信任。`,
+    '搜索改版': `${source}写到${object}，搜索入口变形之后，内容分发、广告位置和用户提问习惯都会被重新计算。`,
+    '工具调用': `${source}提到${object}，智能体开始从“能聊天”往“能调用工具完成步骤”走，开发团队才有理由把它接进流程。`,
+    '记忆扩展': `${source}提到${object}，长期记忆如果能稳定调用，智能体才不会每次都像刚入职的临时工。`
+  };
+  const opening = openingByAction[action] || `${source}报道${object}，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。`;
+  const paragraphs = [
+    `${opening}原文标题是「${original}」。${baseSummary}`,
+    `对${audience}来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。${why} 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。`,
+    `Janet 锐评：${take} 破防点在于${object}已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看${watch || `${object}是否给出清楚的使用边界`}；能省钱、能替流程、能交付，再把它放进自己的工具箱。`
+  ];
+  let body = cleanTemplateCopy(paragraphs.join('\n\n'));
+  if (cnCharCount(body) < 280) {
+    body += `\n\n这条新闻还要放回 Janet 的老三问里看：推理或使用成本会不会下降，国内能不能找到稳定入口，能不能替掉一个人或一个反复消耗时间的步骤。回答不了这三问，就先别把它当成生产力革命。`;
+  }
+  return cleanTemplateCopy(body);
+}
+
+function buildLongJanetTake(story) {
+  const fact = story.story_fact || {};
+  const object = displayObject(fact.concrete_object || story.title || '这条新闻');
+  const action = fact.action || '产品动作';
+  const audience = fact.audience || '相关团队';
+  const source = chineseSourceName(story.source);
+  let shortTake = cleanTemplateCopy(story.janet_take || '').split('Janet 的判断是：')[0].trim();
+  if (/要看入口、权限和使用门槛/.test(shortTake)) shortTake = '';
+  const prefix = shortTake ? `${shortTake} ` : '';
+  const podcastTake = /Spotify Studio/i.test(object)
+    ? `${prefix}Janet 的判断是：Spotify Studio 的破防点是把个人收听、日程和播客生成揉到一起，听起来很顺，实际会考验隐私和推荐质量。创作者别只看“自动生成”，要看它能不能给出编辑权、删除权和分发收益。`
+    : `${prefix}Janet 的判断是：Spotify Q&A 工具更像给播客补运营后台，破防点是问答和简报可以批量生产，槽点是主持人味道容易被磨平。内容团队可以先拿它做会员运营和节目回顾，不要直接替掉主节目。`;
+  const benchmarkTake = /Amazon Bedrock/i.test(object)
+    ? `${prefix}Janet 的判断是：Amazon Bedrock 放进招聘助手这类场景，破防点是企业云厂商正在把智能体变成可采购方案；槽点是偏见、审计和合规一个都躲不开。企业要先看日志、权限和人工复核，不要把候选人命运交给黑箱。`
+    : `${prefix}Janet 的判断是：${object}如果真要做 AI 治疗或安全评估，破防点不是“听起来温柔”，而是能不能扛住高风险场景。槽点是心理健康产品最怕半吊子自动化，国内团队更该看风控、人审和退出机制。`;
+  const cooperationTake = /Elon Musk|data center|Anthropic/i.test(`${object} ${story.original_title || ''}`)
+    ? `${prefix}Janet 的判断是：Anthropic 向马斯克系数据中心买算力，破防点是模型竞争最后会落到电、机柜和长期合同；槽点是算力越集中，议价和供应风险越难看。国内企业要学的是算力冗余和成本测算，不是跟着烧钱。`
+    : `${prefix}Janet 的判断是：Universal Music 这类授权合作，破防点是 AI 翻唱终于开始谈分钱，而不是只靠平台先斩后奏。槽点是授权规则会很碎，创作者要看分成、下架和艺人选择权，别只盯生成效果。`;
+  const actionTakes = {
+    '有声书生成': `${prefix}Janet 的判断是：${object}把创作门槛继续往下压，破防点是配音、剪辑和分发开始被平台打包；槽点是版权和音质会先乱一阵。国内创作者别先欢呼，先看它能不能给声音授权、收益结算和编辑权限一个清楚答案。`,
+    '播客生成': podcastTake,
+    '智能体能力': `${prefix}Janet 的判断是：${object}的价值不在“像不像人”，而在能不能稳定完成连续任务。破防点是小模型也想进工作流，槽点是权限、日志和出错责任会马上变脏。企业先拿低风险流程试，不要一上来交核心业务。`,
+    '开发工具升级': `${prefix}Janet 的判断是：${object}要是真能少开工具、少写重复命令，开发者会用脚投票；如果只是换个漂亮入口，它很快会被关掉。国内团队要看接入成本、代码安全和私有部署路径。`,
+    '工具调用': `${prefix}Janet 的判断是：${object}开始处理工具调用，才算摸到智能体的硬活。破防点是它能替团队跑步骤，槽点是权限和日志必须补齐。中小企业可以先从低风险自动化试，不要把财务、人事这种入口直接交出去。`,
+    '记忆扩展': `${prefix}Janet 的判断是：${object}补记忆比多一个聊天表情实在得多。破防点是它可能让智能体真正接住上下文，槽点是隐私、保留周期和误记会变成新成本。企业要先问清楚数据放哪、谁能删、怎么审计。`,
+    '评测': benchmarkTake,
+    '榜单排名': benchmarkTake,
+    '融资': `${prefix}Janet 的判断是：${object}融资不等于产品成立。破防点是资本愿意为这个方向继续买单，槽点是估值越高，交付压力越大。国内团队别学融资故事，先学它验证客户、定价和交付的方式。`,
+    '诉讼': `${prefix}Janet 的判断是：${object}这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。`,
+    '搜索改版': `${prefix}Janet 的判断是：${object}不是 UI 小改，而是在重新训练用户怎么提问、怎么交任务。破防点是流量入口继续往 AI 手里收，槽点是内容方更难知道自己为什么被看见。做内容的人要盯来源、转化和广告位置变化。`,
+    '合作': cooperationTake,
+    '生成': `${prefix}Janet 的判断是：${object}把生成能力推到音乐内容里，破防点是粉丝创作和版权分账终于撞到一起；槽点是平台、艺人和用户的边界会很难切。内容团队要先看授权开关、收益规则和下架机制。`
+  };
+  const text = actionTakes[action] || `${prefix}Janet 的判断是：${source}这次围绕${object}给出的不是一句口号，而是对${audience}的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。`;
+  return cleanTemplateCopy(cnCharCount(text) < 60 ? `${text} 对国内团队来说，先小范围试用，再算账。` : text);
+}
+
+function buildDailyEditorialSummary(stories, modules, dailyBrief) {
+  const sourceStoryIds = stories.slice(0, 5).map((story) => story.id);
+  const lead = stories[0] || {};
+  const objects = concreteObjectsFor(stories, 6).map(displayObject);
+  const actions = concreteActionsFor(stories, 5);
+  const sources = sourceNames(stories.slice(0, 8), 5).join('、');
+  const title = dailyBrief.daily_title || titleForEdition(stories, { forbidden_frontend_phrases: [] }, '');
+  const objectText = objects.slice(0, 5).join('、') || lead.title || '今天几条具体产品';
+  const actionText = actions.slice(0, 4).join('、') || '接入、评测、商业化和创作流程';
+  let body = [
+    `今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。${sources || '公开来源'}里冒出来的主线，是${objectText}这些具体对象正在把${actionText}往产品、平台和团队日常里推。对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。`,
+    `Janet 的判断是：${lead.title || objectText}先占住头条，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。`,
+    `Janet 锐评：别被“AI 又更新了”带节奏。破防点是，很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位；槽点是每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。`
+  ].join('\n\n');
+  if (cnCharCount(body) < 350) {
+    body += `\n\n这也是后面几天要继续看的线索：能把能力变成价格、接口和案例的公司，会比只会讲愿景的公司更快进入创作者和企业采购清单。`;
+  }
+  return {
+    title: cleanTemplateCopy(title),
+    body: cleanTemplateCopy(body),
+    source_story_ids: sourceStoryIds
+  };
 }
 
 function storyToPublicItem(item) {
@@ -2151,10 +2307,10 @@ function storyToPublicItem(item) {
     };
   }
   const copy = copyFromStoryFact(item, storyFact);
-  const zh_title = clamp(copy.title, 52);
-  const zh_summary = clamp(copy.summary, 120);
+  const zh_title = cleanTemplateCopy(clamp(copy.title, 52));
+  const zh_summary = cleanTemplateCopy(clamp(copy.summary, 120));
   const story_facts = storyFact.story_facts;
-  return {
+  const story = {
     id: item.id,
     story_id: item.id,
     raw_item,
@@ -2176,9 +2332,9 @@ function storyToPublicItem(item) {
     published_at_source: item.published_at_source,
     summary: zh_summary,
     original_summary: clamp(item.summary || item.title, 220),
-    why_it_matters: copy.why,
-    janet_take: copy.janet,
-    watch_next: copy.watch,
+    why_it_matters: cleanTemplateCopy(copy.why),
+    janet_take: cleanTemplateCopy(copy.janet),
+    watch_next: cleanTemplateCopy(copy.watch),
     image: null,
     image_source: null,
     image_credit: null,
@@ -2191,6 +2347,10 @@ function storyToPublicItem(item) {
     lead_eligible: item.lead_eligible,
     core_eligible: item.core_eligible
   };
+  story.key_data = storyKeyData(story);
+  story.janet_take = buildLongJanetTake(story);
+  story.content = buildReaderBody(story);
+  return scrubTemplateCopy(story);
 }
 
 async function buildContent(template, included, date, editionType, rules) {
@@ -2256,7 +2416,7 @@ async function buildContent(template, included, date, editionType, rules) {
   }
 
   const sections = {
-    lead_story: { title: '今日封面', items: [] }
+    lead_story: { title: '头条', items: [] }
   };
   const homepageItems = [];
   const hiddenItems = [];
@@ -2273,6 +2433,7 @@ async function buildContent(template, included, date, editionType, rules) {
   homepageItems.push(...homepageAssembly.homepageItems);
   const modules = buildModules(sections);
   const dailyBrief = buildDailyBrief(stories, modules, rules, date);
+  const dailyEditorialSummary = buildDailyEditorialSummary(stories, modules, dailyBrief);
   const cover = buildCover(stories, modules, dailyBrief);
   const surfaceText = JSON.stringify({
     title: dailyBrief.daily_title,
@@ -2302,13 +2463,15 @@ async function buildContent(template, included, date, editionType, rules) {
     }
   }
 
-  return {
+  const content = {
     ...template,
+    edition_id: editionId,
     date,
     vol: template.vol || '0000',
     theme: dailyBrief.theme,
     title: dailyBrief.daily_title,
     daily_brief: dailyBrief,
+    daily_editorial_summary: dailyEditorialSummary,
     raw_items: stories.map((story) => story.raw_item),
     stories,
     modules,
@@ -2370,6 +2533,7 @@ async function buildContent(template, included, date, editionType, rules) {
     editorial_angle: '每日公开源编辑晨报',
     what_to_watch_next: stories.map((story) => story.watch_next).filter(Boolean).slice(0, 3)
   };
+  return scrubTemplateCopy(content);
 }
 
 function escapeHtml(value) {
@@ -2407,6 +2571,7 @@ function externalAttrs(value) {
 function renderHtml(content) {
   const allItems = Object.values(content.sections).flatMap((section) => section.items || []);
   const lead = content.sections.lead_story.items[0] || {};
+  const editorial = content.daily_editorial_summary || {};
   const leadAttrs = externalAttrs(lead.url || lead.source_url || lead.external_url);
   const signalTitle = (content.signal_map || []).length >= 3 ? '今日三条主线' : '今日主线';
   return `<!doctype html>
@@ -2433,25 +2598,24 @@ function renderHtml(content) {
 <body>
 <main>
   <div class="k">Janet Daily News</div>
-  <h1>${escapeHtml(content.theme)}</h1>
-  <p>${escapeHtml(content.intro_text)}</p>
-  <p>${escapeHtml(content.daily_thesis)}</p>
+  <h1>${escapeHtml(editorial.title || content.theme)}</h1>
+  <p>${escapeHtml(editorial.body || content.daily_thesis)}</p>
   ${visualSrc(lead.visual) ? `<a class="lead-link"${leadAttrs}><img class="visual" src="../../${escapeHtml(visualSrc(lead.visual))}" alt="${escapeHtml(visualAlt(lead.visual, lead.title))}"></a>` : ''}
   <section>
     <div class="k">${escapeHtml(signalTitle)}</div>
     <div class="signal">${content.signal_map.map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.label || item.signal))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></a>`).join('')}</div>
   </section>
   <section>
-    <div class="k">今日封面</div>
+    <div class="k">头条</div>
     <h2>${leadAttrs ? `<a${leadAttrs}>${escapeHtml(lead.title || '')}</a>` : escapeHtml(lead.title || '')}</h2>
     ${lead.original_title ? `<small>原文：${escapeHtml(lead.original_title)}</small>` : ''}
-    <p>${escapeHtml(lead.summary || '')}</p>
+    <p>${escapeHtml(lead.content || lead.summary || '')}</p>
   </section>
   <section>
     <div class="k">今日更多</div>
     <div class="signal">${(content.compact_news || []).map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.title))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></a>`).join('')}</div>
   </section>
-  ${Object.entries(content.sections).filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0).map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${externalAttrs(item.url || item.source_url || item.external_url) ? `<a${externalAttrs(item.url || item.source_url || item.external_url)}>${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.summary)}</p><p>${escapeHtml(item.janet_take)}</p><a${externalAttrs(item.url || item.source_url || item.external_url)}>原文</a></article>`).join('')}</section>`).join('')}
+  ${Object.entries(content.sections).filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0).map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${externalAttrs(item.url || item.source_url || item.external_url) ? `<a${externalAttrs(item.url || item.source_url || item.external_url)}>${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.content || item.summary)}</p><a${externalAttrs(item.url || item.source_url || item.external_url)}>原文</a></article>`).join('')}</section>`).join('')}
   <section>
     <div class="k">接下来观察</div>
     <ul>${content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
@@ -2463,8 +2627,9 @@ function renderHtml(content) {
 
 function buildSummary(template, content, editionId, editionType) {
   const lead = content.sections.lead_story.items[0];
-  return {
+  return scrubTemplateCopy({
     ...template,
+    edition_id: editionId,
     date: content.date,
     vol: content.vol,
     brand: content.brand,
@@ -2484,6 +2649,7 @@ function buildSummary(template, content, editionId, editionType) {
     modules: content.modules || [],
     lead_story: lead,
     daily_thesis: content.daily_thesis,
+    daily_editorial_summary: content.daily_editorial_summary || null,
     intro_text: content.intro_text,
     signal_map: content.signal_map,
     compact_news: content.compact_news || [],
@@ -2492,7 +2658,7 @@ function buildSummary(template, content, editionId, editionType) {
     output_url: `data/${editionId}/output.html`,
     summary_url: `data/${editionId}/news-summary.json`,
     content_url: `data/${editionId}/content.json`
-  };
+  });
 }
 
 function updateManifest(editionId) {

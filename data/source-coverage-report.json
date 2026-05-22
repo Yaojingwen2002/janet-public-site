@@ -1,16 +1,16 @@
 {
   "step": "35-R",
   "source_count": 27,
-  "source_success_count": 18,
-  "source_error_count": 1,
-  "source_empty_count": 8,
-  "raw_items": 3175,
+  "source_success_count": 17,
+  "source_error_count": 5,
+  "source_empty_count": 5,
+  "raw_items": 2264,
   "window_items": 14,
   "included_items": 14,
   "displayed_on_home": 10,
   "displayed_in_archive": 14,
   "not_displayed_reasons": {
-    "outside_time_window": 3137,
+    "outside_time_window": 2226,
     "duplicate": 0,
     "low_editorial_score": 1,
     "missing_published_at": 0,
@@ -66,11 +66,11 @@
       "source": "Hugging Face",
       "category": "open_source",
       "rank": "A",
-      "status": "success",
-      "raw_items": 783,
+      "status": "error",
+      "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": ""
+      "error": "https://huggingface.co/blog/feed.xml:This operation was aborted; https://huggingface.co/blog:This operation was aborted"
     },
     {
       "id": "arxiv-cs-ai",
@@ -78,7 +78,7 @@
       "category": "research",
       "rank": "A",
       "status": "success",
-      "raw_items": 460,
+      "raw_items": 389,
       "included_items": 0,
       "displayed_on_home": 0,
       "error": ""
@@ -89,7 +89,7 @@
       "category": "research",
       "rank": "A",
       "status": "success",
-      "raw_items": 171,
+      "raw_items": 163,
       "included_items": 0,
       "displayed_on_home": 0,
       "error": ""
@@ -100,7 +100,7 @@
       "category": "research",
       "rank": "A",
       "status": "success",
-      "raw_items": 459,
+      "raw_items": 419,
       "included_items": 0,
       "displayed_on_home": 0,
       "error": ""
@@ -111,7 +111,7 @@
       "category": "research",
       "rank": "A",
       "status": "success",
-      "raw_items": 65,
+      "raw_items": 56,
       "included_items": 0,
       "displayed_on_home": 0,
       "error": ""
@@ -165,22 +165,22 @@
       "source": "Meta AI",
       "category": "open_source",
       "rank": "A",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://ai.meta.com/blog/:no_feed_items"
+      "error": "https://ai.meta.com/blog/:This operation was aborted"
     },
     {
       "id": "mistral-news",
       "source": "Mistral AI",
       "category": "models",
       "rank": "A",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://mistral.ai/news/:no_feed_items"
+      "error": "https://mistral.ai/news/:This operation was aborted"
     },
     {
       "id": "nvidia-ai-blog",
@@ -275,11 +275,11 @@
       "source": "Papers with Code Blog",
       "category": "research",
       "rank": "B",
-      "status": "empty",
+      "status": "error",
       "raw_items": 0,
       "included_items": 0,
       "displayed_on_home": 0,
-      "error": "https://paperswithcode.com/latest/rss:no_feed_items; https://paperswithcode.com/:no_feed_items"
+      "error": "https://paperswithcode.com/latest/rss:This operation was aborted; https://paperswithcode.com/:This operation was aborted"
     },
     {
       "id": "replicate-blog",

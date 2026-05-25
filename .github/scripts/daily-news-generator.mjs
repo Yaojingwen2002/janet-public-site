@@ -409,6 +409,10 @@ function writeLiveSourceSnapshot({ date, window, status, rawItems, included, exc
   writeJson(LIVE_SOURCE_SNAPSHOT, {
     generated_at: new Date().toISOString(),
     target_date: date,
+    edition_id: status.target_edition_id || `${date}-v4`,
+    target_edition_id: status.target_edition_id || `${date}-v4`,
+    published_edition_id: status.published_edition_id || '',
+    created_new_edition: status.created_new_edition === true,
     timezone: TZ,
     window_start: window.window_start,
     window_end: window.window_end,
@@ -2711,7 +2715,7 @@ function main() {
     source_reports: [],
     edition_type: '',
     published: false,
-    published_edition_id: '',
+    published_edition_id: previousLatestEditionId,
     used_sample_data: false,
     published_at_window_enforced: true,
     errors: []
@@ -2736,6 +2740,7 @@ function main() {
       status.published = false;
       status.created_new_edition = false;
       status.no_new_edition_reason = `fresh_news_below_min_publish_count:${included.length}/${Number(pool.min_publish_count || 5)}`;
+      status.published_edition_id = previousLatestEditionId;
       status.selected_count = 0;
       writeJson(STATUS_PATH, status);
       console.log(`status: ${status.status}`);
@@ -2748,6 +2753,7 @@ function main() {
       status.published = false;
       status.created_new_edition = false;
       status.no_new_edition_reason = 'dry_run';
+      status.published_edition_id = previousLatestEditionId;
       writeJson(STATUS_PATH, status);
       console.log(`status: ${status.status}`);
       return;
@@ -2861,7 +2867,7 @@ main().catch((error) => {
     date_source: 'args.date || defaultDateShanghai()',
     ...workflowContext(),
     created_new_edition: false,
-    published_edition_id: '',
+    published_edition_id: manifest[0] || '',
     previous_latest_edition_id: manifest[0] || '',
     no_new_edition_reason: error.message || 'generator_failed',
     candidate_count: 0,

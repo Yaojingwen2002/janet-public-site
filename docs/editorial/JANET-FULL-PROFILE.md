@@ -64,7 +64,7 @@ Janet 的内容始终站在**中国创作者和中国企业**的视角看全球 
 - **频率**：每天上午 9:00（Asia/Taipei）
 - **结构**：5-4-4-3-1（要闻 5 条 + 模型动态 4 条 + 技术深度 4 条 + 投资视角 3 条 + 创作者工具 1 条）
 - **期号**：1 + (当天日期 - 2025-10-01) 的天数差
-- **输出**：content.json + output.html，写入 `/Volumes/Janet/公众号 AI 推文/daily/<日期>/`
+- **输出**：content.json + output.html，写入 `公众号 AI 推文/daily/<日期>/`
 
 ### 晨报风格要求
 
@@ -86,8 +86,8 @@ Janet 的内容始终站在**中国创作者和中国企业**的视角看全球 
 
 ## 四、个人网站
 
-- **项目目录**：`/Volumes/Janet/网页/`
-- **本地预览**：http://localhost:8082/index.html
+- **项目目录**：`Janet 网页项目/`
+- **本地预览**：本地预览页面
 - **设计风格**：基于 Mintlify 设计系统，黑白线条极简风
 - **核心模块**：今日新闻（主页）+ 新闻归档 + 视频作品集
 - **导航断点**：1100px（769-1100px 自动切汉堡菜单）
@@ -155,10 +155,10 @@ Janet 的内容始终站在**中国创作者和中国企业**的视角看全球 
 
 ### 常用目录
 
-- 工作区：`/Users/yaojw/.openclaw/workspace/`
-- 晨报：`/Volumes/Janet/公众号 AI 推文/daily/`
-- 网页：`/Volumes/Janet/网页/`
-- 技能：`/Users/yaojw/.openclaw/workspace/skills/`
+- 工作区：`OpenClaw workspace/`
+- 晨报：`公众号 AI 推文/daily/`
+- 网页：`Janet 网页项目/`
+- 技能：`OpenClaw skills workspace/`
 
 ### 技能系统
 

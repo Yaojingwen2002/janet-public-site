@@ -1,14 +1,14 @@
 {
   "status": "blocked_insufficient_fresh_news",
-  "run_at": "2026-05-25T08:36:03.555Z",
+  "run_at": "2026-05-25T08:49:28.992Z",
   "target_date": "2026-05-25",
   "target_edition_id": "2026-05-25-v4",
   "timezone": "Asia/Shanghai",
   "date_source": "args.date || defaultDateShanghai()",
   "workflow_event": "workflow_dispatch",
-  "workflow_run_id": "26391479211",
+  "workflow_run_id": "26392040268",
   "workflow_ref": "refs/heads/main",
-  "workflow_sha": "3da854a6025ed52b107fd1d89d0a94b9e87c3804",
+  "workflow_sha": "da11f68fe3ec6a444182cfc464ff05588f85f6bc",
   "created_new_edition": false,
   "previous_latest_edition_id": "2026-05-22-v4",
   "no_new_edition_reason": "fresh_news_below_min_publish_count:3/5",
@@ -16,30 +16,31 @@
   "selected_count": 0,
   "window_start": "2026-05-24 17:00:00",
   "window_end": "2026-05-25 09:00:00",
-  "source_count": 27,
-  "source_success_count": 18,
+  "source_count": 22,
+  "source_success_count": 21,
   "source_error_count": 1,
-  "source_empty_count": 8,
-  "raw_items": 2826,
+  "source_empty_count": 0,
+  "raw_items": 3041,
   "included": 3,
-  "excluded": 2823,
+  "excluded": 3038,
   "exclusion_reasons": {
-    "outside_time_window": 2823
+    "outside_time_window": 3034,
+    "missing_title": 4
   },
   "source_reports": [
     {
-      "id": "microsoft-ai-blog",
-      "source": "Microsoft AI",
-      "category": "business",
+      "id": "github-blog",
+      "source": "GitHub Blog",
+      "category": "agents",
       "rank": "A",
       "status": "success",
       "item_count": 10,
       "error": ""
     },
     {
-      "id": "github-blog",
-      "source": "GitHub Blog",
-      "category": "agents",
+      "id": "microsoft-ai-blog",
+      "source": "Microsoft AI",
+      "category": "business",
       "rank": "A",
       "status": "success",
       "item_count": 10,
@@ -61,6 +62,15 @@
       "rank": "B",
       "status": "success",
       "item_count": 20,
+      "error": ""
+    },
+    {
+      "id": "anthropic-news",
+      "source": "Anthropic",
+      "category": "models",
+      "rank": "S",
+      "status": "success",
+      "item_count": 15,
       "error": ""
     },
     {
@@ -86,9 +96,9 @@
       "source": "Google Research",
       "category": "research",
       "rank": "A",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://research.google/blog/:no_feed_items"
+      "status": "success",
+      "item_count": 100,
+      "error": ""
     },
     {
       "id": "the-verge-ai",
@@ -118,13 +128,13 @@
       "error": ""
     },
     {
-      "id": "stanford-hai",
-      "source": "Stanford HAI",
-      "category": "research",
+      "id": "langchain-blog",
+      "source": "LangChain Blog",
+      "category": "agents",
       "rank": "A",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://hai.stanford.edu/news/rss.xml:no_feed_items; https://hai.stanford.edu/news:no_feed_items"
+      "status": "success",
+      "item_count": 100,
+      "error": ""
     },
     {
       "id": "replicate-blog",
@@ -181,15 +191,6 @@
       "error": ""
     },
     {
-      "id": "venturebeat-ai",
-      "source": "VentureBeat AI",
-      "category": "business",
-      "rank": "B",
-      "status": "success",
-      "item_count": 7,
-      "error": ""
-    },
-    {
       "id": "llamaindex-blog",
       "source": "LlamaIndex Blog",
       "category": "agents",
@@ -199,13 +200,13 @@
       "error": "https://www.llamaindex.ai/blog/rss.xml:http_404; https://www.llamaindex.ai/blog:no_feed_items"
     },
     {
-      "id": "mistral-news",
-      "source": "Mistral AI",
-      "category": "models",
-      "rank": "A",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://mistral.ai/news/:no_feed_items"
+      "id": "venturebeat-ai",
+      "source": "VentureBeat AI",
+      "category": "business",
+      "rank": "B",
+      "status": "success",
+      "item_count": 7,
+      "error": ""
     },
     {
       "id": "berkeley-bair",
@@ -217,33 +218,6 @@
       "error": ""
     },
     {
-      "id": "langchain-blog",
-      "source": "LangChain Blog",
-      "category": "agents",
-      "rank": "A",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://blog.langchain.com/rss/:no_feed_items; https://blog.langchain.com/:no_feed_items"
-    },
-    {
-      "id": "papers-with-code-blog",
-      "source": "Papers with Code Blog",
-      "category": "research",
-      "rank": "B",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://paperswithcode.com/latest/rss:no_feed_items; https://paperswithcode.com/:no_feed_items"
-    },
-    {
-      "id": "google-deepmind-blog",
-      "source": "Google DeepMind",
-      "category": "research",
-      "rank": "S",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://deepmind.google/discover/blog/:no_feed_items"
-    },
-    {
       "id": "microsoft-research-ai",
       "source": "Microsoft Research AI",
       "category": "research",
@@ -251,24 +225,6 @@
       "status": "success",
       "item_count": 10,
       "error": ""
-    },
-    {
-      "id": "meta-ai-blog",
-      "source": "Meta AI",
-      "category": "open_source",
-      "rank": "A",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://ai.meta.com/blog/:no_feed_items"
-    },
-    {
-      "id": "anthropic-news",
-      "source": "Anthropic",
-      "category": "models",
-      "rank": "S",
-      "status": "empty",
-      "item_count": 0,
-      "error": "https://www.anthropic.com/news:no_feed_items"
     }
   ],
   "edition_type": "blocked",

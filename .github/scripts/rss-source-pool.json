@@ -99,8 +99,9 @@
     },
     {
       "id": "google-deepmind-blog",
-      "enabled": true,
+      "enabled": false,
       "url": "https://deepmind.google/discover/blog/",
+      "disabled_reason": "no stable RSS feed verified",
       "source": "Google DeepMind",
       "category": "research",
       "rank": "S"
@@ -108,23 +109,25 @@
     {
       "id": "google-research-blog",
       "enabled": true,
-      "url": "https://research.google/blog/",
+      "url": "https://research.google/blog/rss/",
       "source": "Google Research",
       "category": "research",
       "rank": "A"
     },
     {
       "id": "meta-ai-blog",
-      "enabled": true,
+      "enabled": false,
       "url": "https://ai.meta.com/blog/",
+      "disabled_reason": "no stable RSS feed verified",
       "source": "Meta AI",
       "category": "open_source",
       "rank": "A"
     },
     {
       "id": "mistral-news",
-      "enabled": true,
+      "enabled": false,
       "url": "https://mistral.ai/news/",
+      "disabled_reason": "no stable RSS feed verified",
       "source": "Mistral AI",
       "category": "models",
       "rank": "A"
@@ -140,7 +143,9 @@
     {
       "id": "anthropic-news",
       "enabled": true,
-      "url": "https://www.anthropic.com/news",
+      "url": "https://raw.githubusercontent.com/taobojlen/anthropic-rss-feed/main/anthropic_news_rss.xml",
+      "third_party_feed": true,
+      "feed_note": "third-party RSS bridge for Anthropic news",
       "source": "Anthropic",
       "category": "models",
       "rank": "S"
@@ -183,9 +188,10 @@
     },
     {
       "id": "stanford-hai",
-      "enabled": true,
+      "enabled": false,
       "url": "https://hai.stanford.edu/news/rss.xml",
       "fallback_url": "https://hai.stanford.edu/news",
+      "disabled_reason": "no stable RSS feed verified",
       "source": "Stanford HAI",
       "category": "research",
       "rank": "A"
@@ -201,9 +207,10 @@
     },
     {
       "id": "papers-with-code-blog",
-      "enabled": true,
+      "enabled": false,
       "url": "https://paperswithcode.com/latest/rss",
       "fallback_url": "https://paperswithcode.com/",
+      "disabled_reason": "no stable RSS feed verified",
       "source": "Papers with Code Blog",
       "category": "research",
       "rank": "B"
@@ -220,8 +227,8 @@
     {
       "id": "langchain-blog",
       "enabled": true,
-      "url": "https://blog.langchain.com/rss/",
-      "fallback_url": "https://blog.langchain.com/",
+      "url": "https://www.langchain.com/blog/rss.xml",
+      "fallback_url": "https://www.langchain.com/blog",
       "source": "LangChain Blog",
       "category": "agents",
       "rank": "A"

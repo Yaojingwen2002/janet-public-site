@@ -61,7 +61,7 @@ function main() {
       mode = 'no_new_edition_allowed';
       if (!targetDate) issues.push('target_date missing for no-new-edition run');
       if (!targetEditionId) issues.push('target_edition_id missing for no-new-edition run');
-      if (snapshot.target_date !== targetDate) issues.push(`snapshot target_date mismatch with run status: ${snapshot.target_date} != ${targetDate}`);
+      if (snapshot.target_date !== targetDate) warnings.push(`snapshot target_date older than run status target: ${snapshot.target_date} != ${targetDate} (no new edition, expected)`);
       if (!noNewEditionReason) issues.push('no_new_edition_reason missing for no-new-edition run');
       if (!publishedEditionId) issues.push('published_edition_id missing for no-new-edition run');
       if (snapshot.target_date !== latestDate) warnings.push(`no new edition published: target_date ${snapshot.target_date}, latest ${latest}`);

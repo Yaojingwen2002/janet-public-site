@@ -41,6 +41,7 @@
   function updateNav() {
     const currentY = window.scrollY;
 
+    if (!nav) { ticking = false; return; }
     if (mobileOpen) { ticking = false; return; }
 
     if (currentY < hideThreshold) {

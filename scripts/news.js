@@ -90,6 +90,19 @@
     return '<a class="' + className + ' janet-clickable-card" href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(ariaLabel || '打开新闻源站') + '">' + innerHtml + '</a>';
   }
 
+  function renderNewsSkeleton(container) {
+    if (!container) return;
+    container.innerHTML =
+      '<div class="news-loading-skeleton" aria-label="Janet 快车箱正在加载">' +
+        '<div class="news-skeleton-cover">' +
+          '<span></span><span></span><span></span>' +
+        '</div>' +
+        '<div class="news-skeleton-grid">' +
+          '<span></span><span></span><span></span>' +
+        '</div>' +
+      '</div>';
+  }
+
   function sourceBadge(source) {
     return '<span class="news-source-badge">' + escapeHtml(source || 'Janet') + '</span>';
   }
@@ -374,6 +387,7 @@
 
   async function renderHomepageNews() {
     const btnFull = document.getElementById('btn-full-briefing');
+    renderNewsSkeleton(document.getElementById('news-editorial'));
     const manifest = await getManifest();
     const candidates = (manifest || []).concat([dateStr]);
     const seen = new Set();

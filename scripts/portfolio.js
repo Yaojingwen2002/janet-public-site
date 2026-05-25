@@ -122,6 +122,22 @@
     `;
   }
 
+  function getSeriesInfo(value) {
+    const text = String(value || '').toLowerCase();
+    if (/shuttle|穿梭|宇宙/.test(text)) {
+      return { label: '穿梭宇宙', className: 'work-series-band--shuttle' };
+    }
+    if (/misaligned|错位|名场面/.test(text)) {
+      return { label: '错位名场面', className: 'work-series-band--misaligned' };
+    }
+    return { label: 'Janet Works', className: 'work-series-band--default' };
+  }
+
+  function renderSeriesBand(value) {
+    const series = getSeriesInfo(value);
+    return '<div class="work-series-band ' + series.className + '"><span>' + escapeHtml(series.label) + '</span></div>';
+  }
+
   function renderVideoButton(videoUrl, buttonClass, label) {
     const safeUrl = escapeHtml(videoUrl || '#');
 
@@ -249,9 +265,11 @@
           const detailUrl = resolveDetailUrl(item, id);
           const thumbSrc = getCoverSrc(item);
           const tags = parseTags(item.tags);
+          const seriesHint = [title, subtitle, type, tags.join(' ')].join(' ');
 
           return `
             <article class="card portfolio-item">
+              ${renderSeriesBand(seriesHint)}
               <a href="${escapeHtml(detailUrl)}" class="portfolio-item-main" aria-label="查看完整项目：${escapeHtml(title)}">
                 <div class="thumbnail portfolio-item-thumb">
                   <img src="${escapeHtml(thumbSrc)}"
@@ -323,9 +341,11 @@
           const detailUrl = resolveDetailUrl(item, id);
           const thumbSrc = getCoverSrc(item);
           const tags = parseTags(item.tags);
+          const seriesHint = [title, subtitle, type, category, tags.join(' ')].join(' ');
 
           return `
             <article class="portfolio-full-card">
+              ${renderSeriesBand(seriesHint)}
               <a href="${escapeHtml(detailUrl)}" class="portfolio-full-card-main" aria-label="查看完整项目：${escapeHtml(title)}">
                 <div class="portfolio-full-thumb">
                   <img src="${escapeHtml(thumbSrc)}"
@@ -403,6 +423,7 @@
 
       return `
         <article class="works-project-card works-project-card--${escapeHtml(project.id)}">
+          ${renderSeriesBand(project.id || project.title)}
           <div class="works-project-card__meta">
             <span>${escapeHtml(project.type || '')}</span>
             <span>${escapeHtml(project.work_count || 0)} works</span>
@@ -476,6 +497,7 @@
 
       return `
         <article class="works-overview-card" data-project-id="${escapeHtml(project.id)}">
+          ${renderSeriesBand(project.id || project.title)}
           <div class="work-archive-card__meta">
             <span>${escapeHtml(project.type || '')}</span>
             <span>${escapeHtml(project.work_count || 0)} works</span>
@@ -514,6 +536,7 @@
 
       return `
         <article class="work-archive-card" data-project-id="${escapeHtml(work.project_id)}">
+          ${renderSeriesBand(work.project_id || work.title)}
           <div class="work-archive-card__meta">
             <span>${escapeHtml(getProjectLabel(work.project_id))}</span>
             <span>${escapeHtml(work.type || '')}</span>

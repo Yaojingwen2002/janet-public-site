@@ -11,22 +11,19 @@ const REQUIRED_FILES = [
   'assets/og/janet-og.svg',
   'assets/og/news-og.svg',
   'assets/og/works-og.svg',
-  'scripts/site-meta.js',
-  'scripts/site-nav.js',
-  'styles/site-polish.css'
+  'scripts/nav.js',
+  'styles/main.css'
 ];
 const HTML_FILES = [
   'index.html',
   'portfolio.html',
   'project-detail.html',
   'news.html',
-  'news-detail.html',
-  'news-status.html',
   '404.html'
 ];
 const LEAKS = ['/Volumes/', 'file://', '/Users/', 'localhost', '127.0.0.1'];
 const FORBIDDEN_PATHS = ['engineering', 'data/_working', 'node_modules'];
-const BASE = 'https://Yaojingwen2002.github.io/janet-public-site/';
+const BASE = 'https://yaojingwen2002.github.io/janet-public-site/';
 
 function ensureDir(filePath) {
   mkdirSync(dirname(filePath), { recursive: true });
@@ -82,12 +79,12 @@ function main() {
     const checks = [
       ['title', /<title>[^<]+<\/title>/i],
       ['meta description', /<meta\s+name=["']description["']\s+content=["'][^"']+["']/i],
-      ['canonical', /<link\s+rel=["']canonical["']\s+href=["']https:\/\/Yaojingwen2002\.github\.io\/janet-public-site\/[^"']*["']/i],
+      ['canonical', /<link\s+rel=["']canonical["']\s+href=["']https:\/\/yaojingwen2002\.github\.io\/janet-public-site\/[^"']*["']/i],
       ['og:title', /<meta\s+property=["']og:title["']\s+content=["'][^"']+["']/i],
       ['og:description', /<meta\s+property=["']og:description["']\s+content=["'][^"']+["']/i],
       ['og:type', /<meta\s+property=["']og:type["']\s+content=["']website["']/i],
-      ['og:url', /<meta\s+property=["']og:url["']\s+content=["']https:\/\/Yaojingwen2002\.github\.io\/janet-public-site\/[^"']*["']/i],
-      ['og:image', /<meta\s+property=["']og:image["']\s+content=["']https:\/\/Yaojingwen2002\.github\.io\/janet-public-site\/assets\/og\/[^"']+\.svg["']/i],
+      ['og:url', /<meta\s+property=["']og:url["']\s+content=["']https:\/\/yaojingwen2002\.github\.io\/janet-public-site\/[^"']*["']/i],
+      ['og:image', /<meta\s+property=["']og:image["']\s+content=["']https:\/\/yaojingwen2002\.github\.io\/janet-public-site\/assets\/og\/[^"']+\.svg["']/i],
       ['og:site_name', /<meta\s+property=["']og:site_name["']\s+content=["']Janet["']/i],
       ['twitter:card', /<meta\s+name=["']twitter:card["']\s+content=["']summary_large_image["']/i]
     ];

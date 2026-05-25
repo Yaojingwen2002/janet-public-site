@@ -64,8 +64,8 @@ function main() {
   const publicReaderCheck = readJson('data/public-reader-copy-check.json', null);
   const indexHtml = read('index.html');
   const newsJs = read('scripts/news.js');
-  const siteNav = read('scripts/site-nav.js');
-  const sitePolish = read('styles/site-polish.css');
+  const navJs = read('scripts/nav.js');
+  const mainCss = read('styles/main.css');
   const stories = allStories(content);
   const lead = content?.sections?.lead_story?.items?.[0] || {};
   const visuals = existsSync(resolve(ROOT, 'assets/news-visuals'))
@@ -84,17 +84,15 @@ function main() {
   }
 
   if ((indexHtml.match(/浏览晨报归档/g) || []).length > 0) issues.push('homepage still has static duplicate archive button');
-  if (/查看运行状态|news-status\.html/.test(indexHtml)) issues.push('homepage main html still links automation status');
-  if (!/janet-status-link/.test(siteNav)) issues.push('footer status link missing');
-  if ((siteNav.match(/href="news-status\.html"/g) || []).length !== 1) issues.push('automation status should exist only once in site footer script');
+  if (/查看运行状态|自动化状态/.test(indexHtml)) issues.push('homepage main html still links automation status');
   if (/入选信号/.test(indexHtml) || /入选信号/.test(newsJs)) issues.push('selected signals block text still exists');
   if (/news-v4-panel-number|news-v4-chip-grid/.test(newsJs)) issues.push('old signals count panel still rendered');
   if (!/news-signal-map/.test(newsJs)) issues.push('signal map cards are not rendered on homepage');
-  if (!/is-compact|is-floating-up|requestAnimationFrame/.test(siteNav)) issues.push('nav scroll motion script missing');
-  if (!/backdrop-filter:\s*blur\(18px\)\s*saturate\(150%\)/.test(sitePolish)) issues.push('glass nav style missing');
-  if (!/cubic-bezier\(\.16,\s*1,\s*\.3,\s*1\)/.test(sitePolish)) issues.push('curved nav transition missing');
-  if (!/prefers-reduced-motion/.test(sitePolish)) issues.push('reduced motion guard missing');
-  if (!/translateY\(-2px\)/.test(sitePolish) || !/scale\(0\.96\)/.test(sitePolish)) issues.push('button elastic motion missing');
+  if (!/requestAnimationFrame/.test(navJs) || !/scrolled/.test(navJs)) issues.push('nav scroll motion script missing');
+  if (!/backdrop-filter:\s*blur\((?:18|20|24)px\)/.test(mainCss)) issues.push('glass nav style missing');
+  if (!/linear\(0,\s*0\.\d+,\s*0\.\d+,\s*1\.\d+/.test(mainCss)) issues.push('curved nav transition missing');
+  if (!/prefers-reduced-motion/.test(mainCss)) issues.push('reduced motion guard missing');
+  if (!/translateY\(-2px\)/.test(mainCss) || !/scale\(0\.96\)/.test(mainCss)) issues.push('button elastic motion missing');
   if (!hasChinese(summary.title || summary.theme)) issues.push('news-summary title is not Chinese');
   if (!hasChinese(summary.lead_story?.summary || summary.summary || '')) issues.push('news-summary summary is not Chinese');
   if (!hasChinese(lead.title) || englishWordCount(lead.title) >= 5) issues.push('lead title is not Chinese-first');

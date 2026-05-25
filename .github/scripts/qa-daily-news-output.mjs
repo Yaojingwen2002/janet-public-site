@@ -6,10 +6,8 @@ import { dirname, join, resolve } from 'node:path';
 
 const ROOT = resolve(process.cwd());
 const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
-const OUT = resolve(ROOT, 'data/daily-news-automation-result.json');
 const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
 const EDITORIAL_COPY_RULES = resolve(ROOT, '.github/scripts/editorial-copy-rules.json');
-const EDITORIAL_QUALITY_OUT = resolve(ROOT, 'data/editorial-quality-check.json');
 const EDITORIAL_REDESIGN_OUT = resolve(ROOT, 'data/editorial-redesign-check.json');
 const EDITORIAL_ARCHITECTURE_OUT = resolve(ROOT, 'data/editorial-architecture-check.json');
 const SOURCE_POOL = resolve(ROOT, '.github/scripts/rss-source-pool.json');
@@ -332,14 +330,8 @@ function main() {
 
   const experienceFiles = [
     'news.html',
-    'news-detail.html',
-    'news-status.html',
     'scripts/news-archive.js',
-    'scripts/news-detail.js',
-    'scripts/news-status.js',
     'styles/news-archive.css',
-    'styles/news-detail.css',
-    'styles/news-status.css',
     'data/news-index.json'
   ];
   for (const file of experienceFiles) {
@@ -383,9 +375,7 @@ function main() {
     issues
   };
 
-  writeJson(EDITORIAL_QUALITY_OUT, editorialQuality);
   writeJson(EDITORIAL_REDESIGN_OUT, editorialRedesign);
-  writeJson(OUT, result);
   console.log(`status: ${result.status}`);
   if (issues.length) process.exit(1);
 }

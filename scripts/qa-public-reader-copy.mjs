@@ -382,7 +382,7 @@ function main() {
   const cssText = [
     readText('styles/main.css'),
     readText('styles/news-editorial.css'),
-    readText('styles/news-detail.css')
+    readText('styles/news-archive.css')
   ].join('\n');
   const audit = readJson('data/public-reader-copy-audit.json', {});
 

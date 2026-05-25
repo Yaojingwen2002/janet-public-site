@@ -64,8 +64,7 @@
         <p>${escapeHtml(edition.summary || edition.lead_story?.title || '')}</p>
         <div class="news-chip-row">${sources}${categories}</div>
         <div class="news-edition-actions">
-          <a href="${escapeHtml(edition.url)}">打开完整晨报</a>
-          <a href="news-detail.html?edition=${encodeURIComponent(edition.edition_id)}">查看本期新闻列表</a>
+          <a href="${escapeHtml(edition.url)}" target="_blank" rel="noopener noreferrer">打开完整晨报 ↗</a>
         </div>
       </article>
     `;

@@ -237,7 +237,7 @@ function main() {
   const content = readJson(`data/${latest}/content.json`, {});
   const outputHtml = readText(`data/${latest}/output.html`);
   const newsJs = readText('scripts/news.js');
-  const cssText = [readText('styles/main.css'), readText('styles/site-polish.css'), readText('styles/news-archive.css'), readText('styles/news-detail.css')].join('\n');
+  const cssText = [readText('styles/main.css'), readText('styles/news-editorial.css'), readText('styles/news-archive.css')].join('\n');
   const fields = [];
   collectFields(summary, 'news-summary', 'news-summary', fields);
   collectFields(content, 'content', 'content', fields);

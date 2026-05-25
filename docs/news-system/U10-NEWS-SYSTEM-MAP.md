@@ -47,10 +47,7 @@ Current schedule:
   - Hydrates homepage Janet news block from `news-summary.json` and `content.json`.
 - `scripts/news-archive.js`
   - Hydrates `news.html` archive from `data/news-index.json`.
-- `scripts/news-detail.js`
-  - Hydrates `news-detail.html` from edition `content.json`.
-- `scripts/news-status.js`
-  - Hydrates `news-status.html` from status and check JSON.
+  - Archive cards link directly to the generated briefing output.
 
 ## Active QA Scripts
 
@@ -94,12 +91,10 @@ Production final checks:
 Intermediate or diagnostic checks:
 
 - `data/editorial-architecture-check.json`
-- `data/editorial-quality-check.json`
 - `data/editorial-redesign-check.json`
 - `data/homepage-assembly-check.json`
 - `data/live-source-stability-check.json`
 - `data/section-hydration-check.json`
-- `data/site-polish-check.json`
 - `data/source-coverage-report.json`
 - `data/semantic-copy-debug.json`
 
@@ -138,7 +133,6 @@ These remain because the workflow or frontend still uses them:
 - `.github/scripts/qa-daily-news-output.mjs`
 - `.github/scripts/source-coverage-audit.mjs`
 - `scripts/news.js`
-- `scripts/news-detail.js`
 - `scripts/news-archive.js`
 - `scripts/qa-public-reader-copy.mjs`
 - `scripts/qa-main-ux.mjs`

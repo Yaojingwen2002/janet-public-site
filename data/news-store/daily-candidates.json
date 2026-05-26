@@ -1,0 +1,1389 @@
+{
+  "status": "daily_candidates_ready",
+  "run_at": "2026-05-26T18:47:45+08:00",
+  "target_date": "2026-05-26",
+  "timezone": "Asia/Shanghai",
+  "window_hours": 24,
+  "window_start": "2026-05-25T15:59:59.000Z",
+  "window_end": "2026-05-26T15:59:59.000Z",
+  "expanded_window_reason": "",
+  "item_pool_count": 533,
+  "qualified_count": 200,
+  "weak_count": 0,
+  "selected_count": 12,
+  "min_full_edition_count": 8,
+  "min_limited_edition_count": 5,
+  "publish_recommendation": "full_edition",
+  "no_new_edition_reason": "",
+  "selected": [
+    {
+      "id": "arxiv-cs-ai-42deebffafee",
+      "source_id": "arxiv-cs-ai",
+      "source_name": "arXiv cs.AI",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "Toward Reliable Design of LLM-Enabled Agentic Workflows: Optimizing Latency-Reliability-Cost Tradeoffs",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.23929v1 Announce Type: new Abstract: Modern AI systems increasingly rely on workflows composed of multiple interacting agents, some powered by large language models (LLMs) and others by conventional computational modules. This paper analyzes the fundamental tradeoffs between latency, reliability, and cost in LLM-enabled agentic workflows. We introduce performance models for both LLM and non-LLM agents that capture the relationship between computational effort and output quality, incorporating the impact of reasoning and output tokens for LLM agents using a parametric exponential reliability function. Then, we study the design of sequential workflows under latency and cost constraints. Main results include a water-filling token allocation policy and characterizations of optimal workflow reliability in terms of shadow prices.",
+      "url": "https://arxiv.org/abs/2605.23929",
+      "canonical_url": "https://arxiv.org/abs/2605.23929",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:00+08:00",
+      "content_hash": "4371075d8010b68ed1ca",
+      "dedupe_key": "https://arxiv.org/abs/2605.23929",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-cl-587e35c91718",
+      "source_id": "arxiv-cs-cl",
+      "source_name": "arXiv cs.CL",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "Raon-Speech Technical Report",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.23912v1 Announce Type: new Abstract: We present Raon-Speech, a top-performing 9B-parameter speech language model (SpeechLM) for English and Korean speech understanding, answering, and generation, and Raon-SpeechChat, a high-performing full-duplex extension for natural real-time conversation. Raon-Speech successfully transforms a pre-trained LLM into a SpeechLM that both understands and generates speech while preserving strong text capabilities. It trains on 1.38M hours of highly curated English and Korean speech and text datasets with the following training stages: (1) speech modules alignment, (2) end-to-end SpeechLM pre-training with knowledge distillation, and (3) multi-task preference optimization-based post-training. Across 42 English and Korean speech and text benchmarks, Raon-Speech establishes the strongest overall profile on speech-centric tasks in our comparison against eight similarly sized recent audio foundation models, including Qwen2.5-Omni and Fun-Audio-Chat, while preserving strong text question answering performance. Building upon it, Raon-SpeechChat enables natural full-duplex conversation by continual training on 119K hours of time-aligned real and synthetic dialogue data. It proceeds through three complementary training stages: (1) causal encoder adaptation, (2) full-duplex pre-training, (3) full-duplex fine-tuning for voice and role-control. On multiple full-duplex benchmarks, Raon-SpeechChat shows its clearest strengths on the turn-taking and interruption-sensitive behaviors covered by FDB v1.0, and remains competitive across the broader full-duplex evaluation suite. We open-source all model checkpoints, the training and inference pipeline, and an interactive demo.",
+      "url": "https://arxiv.org/abs/2605.23912",
+      "canonical_url": "https://arxiv.org/abs/2605.23912",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:02+08:00",
+      "content_hash": "fcfbc5c694cacbb7e64e",
+      "dedupe_key": "https://arxiv.org/abs/2605.23912",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "models",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-lg-d5ea709dcfdf",
+      "source_id": "arxiv-cs-lg",
+      "source_name": "arXiv cs.LG",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "Parameter Efficient Multi-Class Intelligent Scheduling for Multimodal Online Distributed Industrial Anomaly Detection",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.23984v1 Announce Type: new Abstract: Industrial anomaly detection has attracted significant attention as a fundamental challenge in industrial systems. The rapid advancement of heterogeneous industrial sensors has driven industrial anomaly detection from unimodal to multimodal paradigms. However, existing methods are primarily designed for centralized and offline settings, overlooking the distributed and continuously generated data characteristic of real-world industrial environments. With the advancement of edge intelligence, modern edge devices are increasingly capable of not only data acquisition but also distributed model training, enabling collaborative intelligence across the system. Industrial anomaly detection represents a critical application in this context. Motivated by these challenges, we propose a novel framework termed Multimodal Online Distributed Industrial Anomaly Detection (MODIAD). We first present a comprehensive workflow for MODIAD and then formulate a Multi-class Intelligent Scheduling (MIS) problem to coordinate cross class model updates by balancing data sufficiency and class update frequency. To efficiently solve this problem, we design a Sequential Marginal Gain Greedy (SMG) algorithm that enables effective multi-class training under resource constraints. Furthermore, to improve the computational and communication efficiency during training, we propose an Resource Efficient Class-Wise Low Rank Adaptation (REC-LoRA) strategy, which significantly reduces system overhead while preserving detection performance. Extensive experiments on two representative multimodal industrial anomaly detection datasets, MVTec 3D-AD and Eyecandies demonstrate that the proposed approach achieves superior performance and efficiency under the MODIAD scenario.",
+      "url": "https://arxiv.org/abs/2605.23984",
+      "canonical_url": "https://arxiv.org/abs/2605.23984",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:03+08:00",
+      "content_hash": "5ae9ad4ca3be75c941b3",
+      "dedupe_key": "https://arxiv.org/abs/2605.23984",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-stat-ml-3d42e1f8d06c",
+      "source_id": "arxiv-stat-ml",
+      "source_name": "arXiv stat.ML",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "Detecting Metastable Basins in High Dimensions via Marginal Trajectory Distribution Discrimination",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.24136v1 Announce Type: new Abstract: We study the problem of identifying dynamically distinct basins of attraction in high dimensional time-homogeneous Markov processes using only trajectory sampling. This problem is fundamental in the analysis of metastable dynamical systems, where the process rapidly mixes within basins while transitions between basins occur rarely on the timescale of interest, or even when the state space is reducible. Existing approaches typically rely on spatial discretization or spectral analysis of estimated transition operators, which can become unreliable in high dimensional settings or when the underlying basin geometry is highly nonlinear. We propose a discriminative approach to basin identification based on marginal trajectory distribution comparison. We prove a simple risk separation result: if two initial states belong to the same basin, the Bayes-optimal classifier distinguishing their marginal trajectory distributions achieves risk close to 1/2, whereas if they lie in distinct basins, the optimal risk is close to zero. This observation reduces basin detection to a two-sample discrimination problem between marginal trajectory distributions. Motivated by this principle, we develop a neural algorithm that receives a set of candidate basin representatives and iteratively merges them by estimating classification risk with a neural network that approximates the Bayes classifier. We evaluate the method on various metastable systems. These include synthetic systems constructed by embedding low-dimensional dynamics into high dimensional noisy ambient spaces. In these settings, standard spectral and clustering-based methods often fail, while our approach accurately recovers the underlying basin structure. These results display a shortcoming of existing methods and highlight trajectory discrimination as an effective tool for identifying dynamical basins in high dimensional stochastic systems.",
+      "url": "https://arxiv.org/abs/2605.24136",
+      "canonical_url": "https://arxiv.org/abs/2605.24136",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:05+08:00",
+      "content_hash": "38f9e4cb78872b1d9368",
+      "dedupe_key": "https://arxiv.org/abs/2605.24136",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "research",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "mit-tech-review-ai-52ea08825c92",
+      "source_id": "mit-tech-review-ai",
+      "source_name": "MIT Technology Review AI",
+      "source_rank": "B",
+      "category_hint": "business",
+      "title": "A reality check on the AI jobs hysteria",
+      "title_zh": "",
+      "summary_raw": "Haven’t you heard? White-collar jobs are going away, decimated by AI. Waves of layoffs in the tech sector (most recently at Coinbase and Meta and Cisco) are said to presage what will soon come for all of us knowledge workers. But before you quit your job as a software developer or financial analyst—or tech journalist—and…",
+      "url": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria",
+      "canonical_url": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria",
+      "published_at": "2026-05-26T09:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:21+08:00",
+      "content_hash": "c3900a5a431aaa758318",
+      "dedupe_key": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 62,
+      "score_reasons": [
+        "source_rank_B:+16",
+        "freshness:+21",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "the-verge-ai-d02e2f88c864",
+      "source_id": "the-verge-ai",
+      "source_name": "The Verge AI",
+      "source_rank": "B",
+      "category_hint": "business",
+      "title": "Uber president says AI spending is getting ‘harder to justify’",
+      "title_zh": "",
+      "summary_raw": "After reportedly exhausting its annual AI budget just four months into 2026, Uber is now questioning whether it's actually seeing meaningful returns on its investments. In an interview with Rapid Response, Uber president and chief operating officer Andrew Macdonald said the company isn't seeing a connection between rising token consumption for Claude Code and more […]",
+      "url": "https://www.theverge.com/transportation/937116/uber-ai-investment-hard-to-justify",
+      "canonical_url": "https://www.theverge.com/transportation/937116/uber-ai-investment-hard-to-justify",
+      "published_at": "2026-05-26T09:55:09.000Z",
+      "fetched_at": "2026-05-26T18:46:19+08:00",
+      "content_hash": "9eb6a9de8be6b0e2871e",
+      "dedupe_key": "https://www.theverge.com/transportation/937116/uber-ai-investment-hard-to-justify",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "models",
+      "score": 53,
+      "score_reasons": [
+        "source_rank_B:+16",
+        "freshness:+21",
+        "specific_entity:+10",
+        "has_data:+6"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "github-blog-31c316d1bb33",
+      "source_id": "github-blog",
+      "source_name": "GitHub Blog",
+      "source_rank": "A",
+      "category_hint": "agents",
+      "title": "GitHub for Beginners: Getting started with Git and GitHub in VS Code",
+      "title_zh": "",
+      "summary_raw": "Discover how to use VS Code to interact with GitHub and maintain your projects. The post GitHub for Beginners: Getting started with Git and GitHub in VS Code appeared first on The GitHub Blog .",
+      "url": "https://github.blog/developer-skills/github/github-for-beginners-getting-started-with-git-and-github-in-vs-code",
+      "canonical_url": "https://github.blog/developer-skills/github/github-for-beginners-getting-started-with-git-and-github-in-vs-code",
+      "published_at": "2026-05-25T16:00:00.000Z",
+      "fetched_at": "2026-05-26T18:45:50+08:00",
+      "content_hash": "e2eaad80935f51e219f7",
+      "dedupe_key": "https://github.blog/developer-skills/github/github-for-beginners-getting-started-with-git-and-github-in-vs-code",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 46,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+12",
+        "specific_entity:+10"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "techcrunch-ai-e60ec0f4539f",
+      "source_id": "techcrunch-ai",
+      "source_name": "TechCrunch AI",
+      "source_rank": "B",
+      "category_hint": "business",
+      "title": "What ClickUp’s mass layoff tells us about the future of work",
+      "title_zh": "",
+      "summary_raw": "The nine-year-old startup is replacing hundreds of employees with thousands of AI agents.",
+      "url": "https://techcrunch.com/2026/05/25/what-clickups-mass-layoff-tells-us-about-the-future-of-work",
+      "canonical_url": "https://techcrunch.com/2026/05/25/what-clickups-mass-layoff-tells-us-about-the-future-of-work",
+      "published_at": "2026-05-25T16:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:07+08:00",
+      "content_hash": "89f918b2e28855b4d818",
+      "dedupe_key": "https://techcrunch.com/2026/05/25/what-clickups-mass-layoff-tells-us-about-the-future-of-work",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 38,
+      "score_reasons": [
+        "source_rank_B:+16",
+        "freshness:+12",
+        "specific_entity:+10"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-ai-02f53e62dc9b",
+      "source_id": "arxiv-cs-ai",
+      "source_name": "arXiv cs.AI",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "MEMOR-E: In-Context and Fine-Tuned LLM Personalization for Alzheimer's Assistive Robotics",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.23941v1 Announce Type: new Abstract: Alzheimer's disease is a neurodegenerative disorder marked by progressive declines in memory and language that reduce independence in daily life, motivating socially assistive robotic support. This paper presents MEMOR-E, a mobile quadruped robot with an interactive tablet interface that assists patients and caregivers through medication reminders, routine guidance, memory oriented interactions, and companionship. We evaluated the feasibility of fine tuning large language models (LLMs) to emulate stage consistent cognitive behavior and interpret responses across standard neuropsychological language tasks, using audio transcriptions from 235 Alzheimer's patients and synthetically generated healthy controls. We also report findings on using in context learning (ICL) in LLMs, where a second LLM produced domain and severity level cognitive error summaries. Our results show that MEMOR-E can generate stage aware, non diagnostic cognitive summaries that support personalized assistive interactions, while explainable AI mechanisms translate model outputs into transparent, human readable evidence to enable caregiver oversight and trustworthy human robot interaction.",
+      "url": "https://arxiv.org/abs/2605.23941",
+      "canonical_url": "https://arxiv.org/abs/2605.23941",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:00+08:00",
+      "content_hash": "a1aa7f78ed7aaa251a92",
+      "dedupe_key": "https://arxiv.org/abs/2605.23941",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "models",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-ai-31b3ef1566be",
+      "source_id": "arxiv-cs-ai",
+      "source_name": "arXiv cs.AI",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "QUIVER: A Formal Framework for Quantifying Perturbation Propagation and Bifurcation in Compound AI Systems",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.23956v1 Announce Type: new Abstract: Compound AI systems that chain multiple LLM calls into directed computation graphs are now the dominant architecture for production AI. Although these architectures leverage heterogeneous nodes with mixed-mode outputs, no existing framework quantifies how perturbations propagate through such pipelines, where nodes are stochastic and execution paths can diverge structurally. We introduce QUIVER, a formal framework for measuring perturbation propagation in graph-structured LLM pipelines. The framework defines: (1) a sensitivity matrix with type-dispatched distance metrics that classifies edges as amplifiers, absorbers, or threshold-sensitive, complemented by occurrence-lift; (2) trajectory divergence decomposing variation into value drift, structural path divergence, and iteration count divergence; (3) bifurcation thresholds identifying the smallest perturbation that causes structural execution path changes; and (4) distribution faithfulness, quantifying when per node evaluation datasets diverge from production distributions. We validate on two production enterprise pipelines and a public DSPy multihop QA pipeline, three structurally distinct architectures. Across 8,200+ instrumented traces (32,000+ pair comparisons), we demonstrate that QUIVER reveals distinct sensitivity profiles across architectures, distinguishes mechanistically different cascade patterns producing identical divergence rates, predicts nodes prone to trajectory bifurcation from observational data alone, and localizes stale evaluation artifacts to specific node-field categories that aggregate metrics cannot surface.",
+      "url": "https://arxiv.org/abs/2605.23956",
+      "canonical_url": "https://arxiv.org/abs/2605.23956",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:00+08:00",
+      "content_hash": "75c81375e6f4578260b4",
+      "dedupe_key": "https://arxiv.org/abs/2605.23956",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "research",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-cl-c68d48167c93",
+      "source_id": "arxiv-cs-cl",
+      "source_name": "arXiv cs.CL",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "Improving the Completeness and Comparability of Segment Disclosures: A Large Language Model Approach",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.23924v1 Announce Type: new Abstract: Segment-level disclosures are a central component of financial reporting, providing insight into firms' internal organization and the allocation of economic activities across operating units. However, segment information is often presented in both qualitative and quantitative forms, dispersed across tables and narrative sections of Form 10-K filings. Empirical research relying on structured databases faces both completeness and comparability challenges, as some firm-year observations may be missing, nested segment disclosures are not captured, and support for longitudinal and cross-firm comparability is limited. This study develops a large language model-based framework to extract segment disclosures directly from Form 10-K filings and to preserve both reportable and nested segment information. We further design a retrieval augmented system that incorporates information across multiple filings to support comparability. We use two representative settings to demonstrate its application: longitudinal analysis within a firm to interpret segment changes over time, and cross firm alignment of geographic segments across firms with different reporting structures. The results indicate that the artifact accurately extracts segment-level information and effectively addresses questions that require cross-period knowledge, demonstrating the potential of LLM-based approaches to enhance the measurement and interpretation of segment disclosures.",
+      "url": "https://arxiv.org/abs/2605.23924",
+      "canonical_url": "https://arxiv.org/abs/2605.23924",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:02+08:00",
+      "content_hash": "64b106a0ee86dcad96b3",
+      "dedupe_key": "https://arxiv.org/abs/2605.23924",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "models",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-cl-3a57354a4626",
+      "source_id": "arxiv-cs-cl",
+      "source_name": "arXiv cs.CL",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "TriVAL: A Tri-Validation Framework for Faithful Automatic Optimization Modeling",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.23966v1 Announce Type: new Abstract: Optimization modeling serves as the pivotal bridge between natural-language problem descriptions and optimization solvers, and remains a cornerstone for bringing operations research (OR) into real-world decision making. Recent advances in large language models (LLMs) have driven significant progress in automatic optimization modeling. However, existing methods still lack explicit validation during the modeling process, allowing errors introduced in earlier stages to carry through the pipeline and ultimately reduce final modeling accuracy. To address this challenge, we introduce TriVAL, a tri-validation framework that performs explicit validation at three stages of automatic optimization modeling: semantic specification, mathematical formulation, and code generation. At each stage, TriVAL follows a construct-validate-revise loop that assesses the current result against stage-specific criteria and revises it when needed. This design helps identify and correct errors before they accumulate across stages, helping preserve faithfulness throughout the modeling process. To evaluate automatic optimization modeling on more challenging combinatorial problems, we further introduce NL4COP, a benchmark of 150 instances across 50 diverse problem types with more complex decision logic, more tightly coupled constraints, and more demanding modeling requirements than existing benchmarks. Experiments on NL4COP and established benchmarks show that TriVAL consistently outperforms state-ofthe-art methods, with the largest gains on the most challenging problems.",
+      "url": "https://arxiv.org/abs/2605.23966",
+      "canonical_url": "https://arxiv.org/abs/2605.23966",
+      "published_at": "2026-05-26T04:00:00.000Z",
+      "fetched_at": "2026-05-26T18:46:02+08:00",
+      "content_hash": "db4179455dca0fc416b5",
+      "dedupe_key": "https://arxiv.org/abs/2605.23966",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "models",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    }
+  ],
+  "blocked": [
+    {
+      "id": "microsoft-ai-blog-f0b0ccdcbc19",
+      "title": "The opportunity at home – can AI drive innovation in personal assistant devices and sign language?",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-cec658d51483",
+      "title": "Microsoft’s framework for building AI systems responsibly",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-f2ff8c8a174f",
+      "title": "Singapore develops Asia’s first AI-based mobile app for shark and ray fin identification to combat illegal wildlife trade",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-741deadbb1e4",
+      "title": "How data and AI will transform contact centres for financial services",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-ee6dbf3214c0",
+      "title": "AI-equipped drones study dolphins on the edge of extinction",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-5f560e1585c0",
+      "title": "Online math tutoring service uses AI to help boost students’ skills and confidence",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-1eccd616c7cd",
+      "title": "AI-Mimi is building inclusive TV experiences for Deaf and Hard of Hearing user in Japan",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-380fc74f8437",
+      "title": "From Hot Wheels to handling content: How brands are using Microsoft AI to be more productive and imaginative",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-b8a2b44032ed",
+      "title": "Microsoft open sources its ‘farm of the future’ toolkit",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-ai-blog-c9e62ef565ba",
+      "title": "A conversation with Kevin Scott: What’s next in AI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-64a8fbf9b4d3",
+      "title": "Fine-tune FLUX.1 to create images of yourself",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-f89db37d7d08",
+      "title": "Using synthetic training data to improve Flux finetunes",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-19839b1dd8a4",
+      "title": "Fine-tune FLUX.1 with an API",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-08c14a71f530",
+      "title": "Ideogram v2 is an outstanding new inpainting model",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-d6ebe0f53e47",
+      "title": "Stable Diffusion 3.5 is here",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-44ab3bce9698",
+      "title": "FLUX is fast and it's open source",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-a8a2692cbecb",
+      "title": "FLUX1.1 [pro] is here",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-6d680457bdf4",
+      "title": "FLUX fine-tunes are now fast",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-12536a237666",
+      "title": "FLUX.1 Tools – Control and steerability for FLUX",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-619f598c1c81",
+      "title": "NVIDIA L40S GPUs are here",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-46bd71aa2eaf",
+      "title": "AI video is having its Stable Diffusion moment",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-e9d993595486",
+      "title": "You can now fine-tune open-source video models",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-e9a2adaa8a03",
+      "title": "Generate short videos with the Replicate playground",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-8da1e6a751c9",
+      "title": "Scaling Up Reinforcement Learning for Traffic Smoothing: A 100-AV Highway Deployment",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-2b780060d74f",
+      "title": "Creative roundup: avatars, lightsabers, and LoRA tricks",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-224b94e2dee8",
+      "title": "Wan2.1: generate videos with an API",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-d15148eaca1a",
+      "title": "Wan2.1 parameter sweep",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-3c0320eeac7b",
+      "title": "Defending against Prompt Injection with Structured Queries (StruQ) and Preference Optimization (SecAlign)",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-ddf389d0ac18",
+      "title": "Repurposing Protein Folding Models for Generation with Latent Diffusion",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-74749a96c5fd",
+      "title": "Easel AI is now on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-190da48cc3b0",
+      "title": "Stylized video with Wan2.1",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-a1f39d16bee9",
+      "title": "Use FLUX.1 Kontext to edit images with words",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-67df6191c9cc",
+      "title": "Generate incredible images with Google's Imagen 4",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-6d361461c50e",
+      "title": "Run OpenAI’s latest models on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-94b881f5e200",
+      "title": "NVIDIA H100 GPUs are here",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-603a92184af1",
+      "title": "Run 30,000+ LoRAs on Hugging Face with Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-e0e33fa97de6",
+      "title": "Ideogram 3.0 on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-2ba241477d2f",
+      "title": "Run MiniMax Speech-02 models with an API",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-463588ab2a89",
+      "title": "How to prompt Veo 3 for the best results",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-ca495d410478",
+      "title": "Get the most from Google Veo 3",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-f903e1c62936",
+      "title": "FLUX.1 Kontext from the community",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-70480742787f",
+      "title": "Whole-Body Conditioned Egocentric Video Prediction",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-9844f81108a5",
+      "title": "Open source video is back",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-23f917827938",
+      "title": "Generate consistent characters",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-ecf7540f54f1",
+      "title": "Bria is now on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-a8d7b80cf252",
+      "title": "How we optimized FLUX.1 Kontext [dev]",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-6fc64ea12dd0",
+      "title": "Compare AI video models",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-b3c1067265d2",
+      "title": "The FLUX.1 Kontext hackathon",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-6ad9b13dbb39",
+      "title": "Announcing Replicate's remote MCP server",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-d0ac4fcff76e",
+      "title": "How to prompt Veo 3 with images",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-2c91de1d44c7",
+      "title": "What exactly does word2vec learn?",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-d2f75b199f35",
+      "title": "Which image editing model should I use?",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-53d015bebd0d",
+      "title": "Introducing our new search API",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-be9ceffd6b46",
+      "title": "Torch compile caching for inference speed",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-3de1818689c0",
+      "title": "Extract text from documents and images with Datalab Marker and OCR",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-157e9a9ea08e",
+      "title": "How to prompt Veo 3.1",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-ade6db99fc2c",
+      "title": "IBM's Granite 4.0 is now on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-c0de7a0fbb23",
+      "title": "Reducing EV range anxiety: How a simple AI model predicts port availability",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-9935e3074e50",
+      "title": "Real-time speech-to-speech translation",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-9b54d48c72b8",
+      "title": "Generative UI: A rich, custom, visual interactive user experience for any prompt",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-fb15ee6e1591",
+      "title": "RL without TD learning",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-8fbd37539a22",
+      "title": "Run Isaac 0.1 on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-98cf511205ea",
+      "title": "Run FLUX.2 on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-3d411d1c6940",
+      "title": "How to prompt Nano Banana Pro",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-12c6d2ae4b6a",
+      "title": "Retro Diffusion's pixel art models are now on Replicate",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-702beacd2a5f",
+      "title": "Replicate is joining Cloudflare",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-090774b7716b",
+      "title": "Google Research 2025: Bolder breakthroughs, bigger impact",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-373782761018",
+      "title": "Gemini-backed Paper Assistant Tool provides automated feedback for theoretical computer scientists at STOC 2026",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-08bec54e20b7",
+      "title": "Spotlight on innovation: Google-sponsored Data Science for Health Ideathon across Africa",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-ef5db1bca0bb",
+      "title": "A differentially private framework for gaining insights into AI chatbot use",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-c8af072ebac4",
+      "title": "Titans + MIRAS: Helping AI have long-term memory",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-32e9955e4283",
+      "title": "From Waveforms to Wisdom: The New Benchmark for Auditory Intelligence",
+      "reason": "outside_window"
+    },
+    {
+      "id": "venturebeat-ai-153f3066406b",
+      "title": "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+      "reason": "outside_window"
+    },
+    {
+      "id": "venturebeat-ai-7f96b809b58c",
+      "title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+      "reason": "outside_window"
+    },
+    {
+      "id": "venturebeat-ai-26adfe014170",
+      "title": "Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews",
+      "reason": "outside_window"
+    },
+    {
+      "id": "venturebeat-ai-4143ec6f5c16",
+      "title": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "venturebeat-ai-8aadbbf9804d",
+      "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+      "reason": "outside_window"
+    },
+    {
+      "id": "venturebeat-ai-fed46196ed24",
+      "title": "Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-06ddb484b42f",
+      "title": "Towards a science of scaling agent systems: When and why agent systems work",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-98d43823eaf4",
+      "title": "ATLAS: Practical scaling laws for multilingual models",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-f5236ab2fcd3",
+      "title": "Introducing GIST: The next stage in smart sampling",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-42594c45f9e1",
+      "title": "Small models, big results: Achieving superior intent extraction through decomposition",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-71c81e020145",
+      "title": "Unlocking health insights: Estimating advanced walking metrics with smartwatches",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-945598498609",
+      "title": "Hard-braking events as indicators of road segment crash risk",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-ba0a166fb386",
+      "title": "Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-5a6f185f1a11",
+      "title": "Dynamic surface codes open new avenues for quantum error correction",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-9b0b1673550d",
+      "title": "NeuralGCM harnesses AI to better simulate long-range global precipitation",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-98ecc907e165",
+      "title": "Information-Driven Design of Imaging Systems",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-93abe183ad3b",
+      "title": "Teaching AI to read a map",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-8fd262687875",
+      "title": "Scheduling in a changing world: Maximizing throughput with time-varying capacity",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-8f766304d0e3",
+      "title": "Beyond one-on-one: Authoring, simulating, and testing dynamic human-AI group conversations",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-2b180420f9a8",
+      "title": "How AI trained on birds is surfacing underwater mysteries",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-bcf233bf3cd4",
+      "title": "How AI tools can redefine universal design to increase accessibility",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-85912f21b4e9",
+      "title": "​Sequential Attention: Making AI models leaner and faster without sacrificing accuracy",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-069655971144",
+      "title": "Collaborating on a nationwide randomized study of AI in real-world virtual care",
+      "reason": "outside_window"
+    },
+    {
+      "id": "anthropic-news-26de9866b27d",
+      "title": "Claude is a space to think",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-a89762c07a51",
+      "title": "How to prompt Seedream 5.0",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-db97b9f90a64",
+      "title": "Recraft V4: image generation with design taste",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-3b56822db3be",
+      "title": "Building better AI benchmarks: How many raters are enough?",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-cbc689114875",
+      "title": "Safeguarding cryptocurrency by disclosing quantum vulnerabilities responsibly",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-6418e2a0799f",
+      "title": "Vibe Coding XR: Accelerating AI + XR prototyping with XR Blocks and Gemini",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-aae15c176dde",
+      "title": "TurboQuant: Redefining AI efficiency with extreme compression",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-d7a371224cc5",
+      "title": "Mapping the modern world: How S2Vec learns the language of our cities",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-ad86e5730a77",
+      "title": "Google Research at The Check Up: from healthcare innovation to real-world care settings",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-2fe9ffcf829f",
+      "title": "Improving breast cancer screening workflows with machine learning",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-23c143d82b12",
+      "title": "Testing LLMs on superconductivity research questions",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-5d939c8414b6",
+      "title": "Protecting cities with AI-driven flash flood forecasting",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-4cee81c2123f",
+      "title": "Introducing Groundsource: Turning news reports into data with Gemini",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-dd861a801564",
+      "title": "Exploring the feasibility of conversational diagnostic AI in a real-world clinical study",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-704c21d6354a",
+      "title": "WAXAL: A large-scale open resource for African language speech technology",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-adf8d4fa7cba",
+      "title": "Where wild things roam: Identifying wildlife with SpeciesNet",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-2fc6c2eaabdf",
+      "title": "Teaching LLMs to reason like Bayesians",
+      "reason": "outside_window"
+    },
+    {
+      "id": "anthropic-news-7e5d897264a4",
+      "title": "What 81,000 people want from AI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-dffc0d84ddb9",
+      "title": "Identifying Interactions at Scale for LLMs",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-92f8ee26a85a",
+      "title": "Introducing Advanced Account Security",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-6ce07af346a4",
+      "title": "Where the goblins came from",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-ai-blog-c076edccb35c",
+      "title": "Celebrating 20 years of Google Translate: Fun facts, tips and new features to try",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-ai-blog-faca0c75fcd6",
+      "title": "Join the new AI Agents Vibe Coding Course from Google and Kaggle",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-ai-blog-b22dc58429a0",
+      "title": "8 Gemini tips for organizing your space (and life)",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-c1fd0865d246",
+      "title": "Four ways Google Research scientists have been using Empirical Research Assistance",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-09026d225060",
+      "title": "It's all about the angle: Your photos, re-composed",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-98ac536e28b0",
+      "title": "ReasoningBank: Enabling agents to learn from experience",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-9b37315ee36f",
+      "title": "Designing synthetic datasets for the real world: Mechanism design and reasoning from first principles",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-f90892f6ca72",
+      "title": "AI-generated synthetic neurons speed up brain mapping",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-8dcda457e2fa",
+      "title": "Towards developing future-ready skills with generative AI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-f2dbd68ba5e6",
+      "title": "ConvApparel: Measuring and bridging the realism gap in user simulators",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-b50ee1c35847",
+      "title": "Improving the academic workflow: Introducing two AI agents for better figures and peer review",
+      "reason": "outside_window"
+    },
+    {
+      "id": "google-research-blog-62dca9d8d673",
+      "title": "Evaluating alignment of behavioral dispositions in LLMs",
+      "reason": "outside_window"
+    },
+    {
+      "id": "anthropic-news-0deaf33f30ef",
+      "title": "Project Glasswing",
+      "reason": "outside_window"
+    },
+    {
+      "id": "anthropic-news-8ffed2502175",
+      "title": "Introducing Claude Opus 4.7",
+      "reason": "outside_window"
+    },
+    {
+      "id": "anthropic-news-afabafae0730",
+      "title": "Introducing Claude Design by Anthropic Labs",
+      "reason": "outside_window"
+    },
+    {
+      "id": "microsoft-research-ai-d6e8960920df",
+      "title": "Red-teaming a network of agents: Understanding what breaks when AI agents interact at scale",
+      "reason": "outside_window"
+    },
+    {
+      "id": "berkeley-bair-ad212735eb1e",
+      "title": "Gradient-based Planning for World Models at Longer Horizons",
+      "reason": "outside_window"
+    },
+    {
+      "id": "replicate-blog-ec148f894647",
+      "title": "How to make remarkable videos with Seedance 2.0",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-46e250c1b10d",
+      "title": "Agent Observability: How to Monitor and Evaluate LLM Agents in Production",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-9ae3d72c5ad5",
+      "title": "Agentic Engineering: How Swarms of AI Agents Are Redefining Software Engineering",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-b23782293238",
+      "title": "Test Run Comparisons",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-cd5575871794",
+      "title": "Iterating Towards LLM Reliability with Evaluation Driven Development",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-89ed84cc2041",
+      "title": "Announcing LangSmith is now a transactable offering in the Azure Marketplace",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-77d4bbcbc180",
+      "title": "Regression Testing with LangSmith",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-3127125dcd34",
+      "title": "Aligning LLM-as-a-Judge with Human Preferences",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-8eee4b95528a",
+      "title": "What is an AI agent?",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-62b9d8f47fc4",
+      "title": "Improving Memory Retrieval: How New Computer achieved 50% higher recall with LangSmith",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-777e93295956",
+      "title": "Building a Data Visualization Agent with LangGraph Cloud",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-2486fae38f33",
+      "title": "Pushing LangSmith to new limits with Replit Agent's complex workflows",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-8a2db3fa8261",
+      "title": "Promptim: an experimental library for prompt optimization",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-06e4c64f3884",
+      "title": "Introducing OpenTelemetry support for LangSmith",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-c5734d5820b9",
+      "title": "Quickly Start Evaluating LLMs With OpenEvals",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-71fb47347a5e",
+      "title": "Introducing End-to-End OpenTelemetry Support in LangSmith",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-70009e9f89b6",
+      "title": "Building LangGraph: Designing an Agent Runtime from first principles",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-36730a4b8986",
+      "title": "Evaluating Deep Agents: Our Learnings",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-90ec32ca6aad",
+      "title": "On Agent Frameworks and Agent Observability",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-fe1257170ac1",
+      "title": "How to Debug & Evaluate AI Agents with Observability — LangChain Guide",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-093ef056e04b",
+      "title": "Agent Evaluation Readiness Checklist",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-b4b54ba0bd98",
+      "title": "Build and deploy a RAG app with Pinecone Serverless",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-08d5efe93217",
+      "title": "GPTwitter",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-98c5c9ee557f",
+      "title": "Chat-Your-Data Submissions",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-2eec3054a4d5",
+      "title": "Chat with your data using OpenAI, Pinecone, Airbyte and Langchain",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-4792e5cf1f25",
+      "title": "Kay x Cybersyn x LangChain: Embedding SEC Filings for RAG",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-abd69713f3b1",
+      "title": "Handling PII data in LangChain",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-7abba064a44a",
+      "title": "Generating Usable Text with AI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "langchain-blog-c84e3b201095",
+      "title": "Benchmarking Query Analysis in High Cardinality Situations",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-2958e44acb3b",
+      "title": "OpenAI, Grupo Folha and Grupo UOL announce strategic content partnership",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-4ce39150a4dc",
+      "title": "How Virgin Atlantic ships faster with Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-ef1db9edff97",
+      "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-85a3fdb43c80",
+      "title": "AdventHealth advances whole-person care with OpenAI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-7f625f666338",
+      "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-cb920945cfca",
+      "title": "How Ramp engineers accelerate code review with Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-52bd1afbd88b",
+      "title": "The next phase of OpenAI’s Education for Countries",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-e0640ad0320c",
+      "title": "Introducing OpenAI for Singapore",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-4f1431164463",
+      "title": "Advancing content provenance for a safer, more transparent AI ecosystem",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-210c7a7c7826",
+      "title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-f0106247dee4",
+      "title": "OpenAI and Malta partner to bring ChatGPT Plus to all citizens",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-cca00ce68781",
+      "title": "How data science teams use Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-ada6c1425188",
+      "title": "A new personal finance experience in ChatGPT",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-c64312c3121c",
+      "title": "Databricks brings GPT-5.5 to enterprise agent workflows",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-248b5ff06999",
+      "title": "How sales teams use Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-b5b1610b252a",
+      "title": "How business operations teams use Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-ca03c8de33d6",
+      "title": "Sea's View on the Future of Agentic Software Development with Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-3e12c6920827",
+      "title": "Work with Codex from anywhere",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-fd608667e64c",
+      "title": "Helping ChatGPT better recognize context in sensitive conversations",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-5502a50a46d6",
+      "title": "Building a safe, effective sandbox to enable Codex on Windows",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-49432bd70e08",
+      "title": "Our response to the TanStack npm supply chain attack",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-7d12c750a4ea",
+      "title": "How finance teams use Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-c31ba2e9026b",
+      "title": "What Parameter Golf taught us about AI-assisted research",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-8a196e8c3ae2",
+      "title": "AutoScout24 scales engineering with AI-powered workflows",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-6498bc3d3050",
+      "title": "How NVIDIA engineers and researchers build with Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-e13dc335beb0",
+      "title": "How ChatGPT adoption broadened in early 2026",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-ee5564e4d43f",
+      "title": "OpenAI Campus Network: Student club interest form",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-4ca12da2ae6a",
+      "title": "How enterprises are scaling AI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-68e94ee2f13a",
+      "title": "OpenAI launches DeployCo to help businesses build around intelligence",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-91ec1ce9a5cf",
+      "title": "Running Codex safely at OpenAI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-288ea344bbe0",
+      "title": "Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-e41b9b9c2133",
+      "title": "Parloa builds service agents customers want to talk to",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-4ba89a634a8b",
+      "title": "Advancing voice intelligence with new models in the API",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-fe948365c4d6",
+      "title": "Introducing Trusted Contact in ChatGPT",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-de2ca3d7578d",
+      "title": "Testing ads in ChatGPT",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-eed85cf61ed4",
+      "title": "Simplex rethinks software development with Codex",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-9195cc0cde7d",
+      "title": "How ChatGPT learns about the world while protecting privacy",
+      "reason": "outside_window"
+    },
+    {
+      "id": "openai-news-bdecd9008a33",
+      "title": "Introducing ChatGPT Futures: Class of 2026",
+      "reason": "outside_window"
+    }
+  ],
+  "source_mix": {
+    "arxiv-cs-ai": 3,
+    "arxiv-cs-cl": 3,
+    "arxiv-cs-lg": 1,
+    "arxiv-stat-ml": 1,
+    "mit-tech-review-ai": 1,
+    "the-verge-ai": 1,
+    "github-blog": 1,
+    "techcrunch-ai": 1
+  },
+  "source_status_summary": {
+    "source_count": 27,
+    "source_success_count": 20,
+    "source_error_count": 2,
+    "source_not_modified_count": 0
+  }
+}

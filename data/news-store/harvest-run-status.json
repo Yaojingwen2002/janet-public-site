@@ -1,0 +1,24 @@
+{
+  "status": "harvest_completed",
+  "run_at": "2026-05-26T18:45:44+08:00",
+  "source_count": 27,
+  "source_success_count": 20,
+  "source_error_count": 2,
+  "source_not_modified_count": 0,
+  "raw_items_seen": 542,
+  "items_considered": 542,
+  "new_items_added": 533,
+  "duplicate_items": 5,
+  "invalid_items": 4,
+  "missing_date_items": 0,
+  "errors": [
+    {
+      "source_id": "huggingface-blog",
+      "error": "fetch failed"
+    },
+    {
+      "source_id": "llamaindex-blog",
+      "error": "http_404"
+    }
+  ]
+}

@@ -12,7 +12,9 @@ const REQUIRED_FILES = [
   'assets/og/news-og.svg',
   'assets/og/works-og.svg',
   'scripts/nav.js',
-  'styles/main.css'
+  'scripts/effects.js',
+  'styles/main.css',
+  'styles/news-archive.css'
 ];
 const HTML_FILES = [
   'index.html',

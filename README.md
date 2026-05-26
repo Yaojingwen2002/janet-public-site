@@ -1,19 +1,27 @@
 # Janet Public Site
 
-This repository contains the public static build for Janet site.
+Public GitHub Pages site for Janet's personal homepage, portfolio, and AI daily news.
 
-It is intended for GitHub Pages deployment from the repository root.
+## Public URL
 
-No source workspace, working data, engineering scripts, local secrets, or package archives are included.
+https://yaojingwen2002.github.io/janet-public-site/
+
+## Core Pages
+
+- Home: `index.html`
+- Portfolio: `portfolio.html`
+- News archive: `news.html`
+- Project detail: `project-detail.html`
+- 404 page: `404.html`
 
 ## Daily News Automation
 
-This public site uses GitHub Actions to generate Janet daily news automatically.
+This site uses GitHub Actions to generate Janet daily news.
 
 Schedule:
 
-- 00:37 UTC
-- 08:37 Asia/Shanghai
+- `00:10 UTC`
+- `08:10 Asia/Shanghai / Asia/Taipei`
 
 Workflow:
 
@@ -23,55 +31,70 @@ Generator:
 
 - `.github/scripts/daily-news-generator.mjs`
 
-Status:
+RSS source pool:
+
+- `.github/scripts/rss-source-pool.json`
+
+Release runner:
+
+- `.github/scripts/run-daily-release.mjs`
+
+Important status files:
 
 - `data/daily-news-run-status.json`
-- `data/daily-news-automation-result.json`
-
-No paid API is required.  
-No secrets are required.  
-The generator only uses public RSS / Atom / official feeds.
-
-## Daily News Automation Status
-
-Current status: live.
-
-- Workflow: `.github/workflows/daily-news-pages.yml`
-- Schedule: 00:37 UTC / 08:37 Asia/Shanghai
-- Source type: public RSS / Atom / official feeds
-- Paid API required: no
-- Secret required: no
-- Sample data: not used
-
-Public status files:
-
-- `data/daily-news-run-status.json`
-- `data/daily-news-automation-result.json`
-- `data/daily-news-automation-acceptance.json`
-- `data/editorial-quality-check.json`
+- `data/release-gate-check.json`
 - `data/news-index.json`
+- `data/MANIFEST.json`
 
-Latest verified manual run:
+Notes:
 
-- Status: `published_full_edition`
-- Edition: `2026-05-15-v4`
-- Included stories: 16
+- No paid API is required.
+- No secrets are required.
+- Sample data is not used.
+- If fresh news is below the publish threshold, the workflow may keep the latest published edition and record the reason in `data/daily-news-run-status.json`.
+
+## Current News Behavior
+
+The latest published edition is controlled by `data/MANIFEST.json`.
+
+A workflow run can finish successfully without creating a new edition when fresh source count is below the minimum publish threshold. In that case:
+
+- `created_new_edition = false`
+- `no_new_edition_reason` records the reason
+- `data/daily-news-run-status.json` remains the source of run status truth
 
 ## News Experience
 
-- Archive: `news.html`
-- Story detail: `news-detail.html`
-- Automation status: `news-status.html`
+- News archive: `news.html`
+- News cards link to original source URLs where applicable
+- Standalone story detail and automation status pages have been removed
 
-The archive supports source, category, date, and keyword filtering. The status page explains whether a run published, blocked because of insufficient fresh news, or needs attention.
+## Editorial System
 
-## Site Polish
+Current editorial references:
 
-The public site includes shared navigation, SEO metadata, Open Graph / Twitter Card tags, static share images, a custom 404 page, sitemap, robots.txt, and a site-polish QA check.
+- `docs/editorial/JANET-FULL-PROFILE.md`
+- `docs/editorial/JANET-EDITORIAL-VOICE.md`
+- `docs/editorial/NEWS-CONTENT-CONTRACT.v5.md`
+- `docs/editorial/OLD-NEWS-STYLE-EXAMPLES.md`
 
-Public QA:
+## QA
 
-- `data/site-polish-check.json`
-- `sitemap.xml`
-- `robots.txt`
-- `404.html`
+Key QA files include:
+
+- `.github/scripts/qa-daily-news-output.mjs`
+- `scripts/qa-release-gate.mjs`
+- `scripts/qa-public-reader-copy.mjs`
+- `scripts/qa-main-ux.mjs`
+- `scripts/qa-news-visuals.mjs`
+- `scripts/qa-semantic-copy.mjs`
+- `scripts/qa-live-source-stability.mjs`
+
+## Deployment
+
+GitHub Pages deploys from this repository.
+
+Pages deployment may be handled by:
+
+- `Deploy Janet Site to GitHub Pages`
+- `Daily Janet News` workflow after successful generation and QA

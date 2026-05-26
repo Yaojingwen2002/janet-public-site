@@ -130,6 +130,9 @@
     if (/misaligned|错位|名场面/.test(text)) {
       return { label: '错位名场面', className: 'work-series-band--misaligned' };
     }
+    if (/igpt|gpt-image|prompt|handbook|提示词|手册/.test(text)) {
+      return { label: 'Prompt Handbook', className: 'work-series-band--default' };
+    }
     return { label: 'Janet Works', className: 'work-series-band--default' };
   }
 
@@ -432,8 +435,8 @@
           <p>${escapeHtml(project.description || '')}</p>
           <div class="works-project-card__tags">${tags}</div>
           <div class="works-project-card__method">${method}</div>
-          <a href="portfolio.html?project=${encodeURIComponent(project.id)}" class="works-project-card__link">
-            查看项目作品 →
+          <a href="${escapeHtml(project.url || ('portfolio.html?project=' + encodeURIComponent(project.id)))}" class="works-project-card__link">
+            ${project.url ? '打开项目页面 →' : '查看项目作品 →'}
           </a>
         </article>
       `;
@@ -477,13 +480,14 @@
   function getProjectLabel(projectId) {
     if (projectId === 'shuttle-universe') return '穿梭宇宙';
     if (projectId === 'misaligned-scenes') return '错位名场面';
+    if (projectId === 'igpt-image2-handbook') return 'iGPT-Image2 手册';
     return projectId || 'Unknown';
   }
 
   function getInitialProjectFilter() {
     const params = new URLSearchParams(window.location.search);
     const project = params.get('project');
-    if (project === 'shuttle-universe' || project === 'misaligned-scenes') return project;
+    if (project === 'shuttle-universe' || project === 'misaligned-scenes' || project === 'igpt-image2-handbook') return project;
     return 'all';
   }
 
@@ -506,6 +510,7 @@
           <h3>${escapeHtml(project.title)}</h3>
           <p>${escapeHtml(project.description || '')}</p>
           <div class="work-archive-card__tags">${tags}</div>
+          ${project.url ? `<a class="work-archive-card__link" href="${escapeHtml(project.url)}">打开项目页面 →</a>` : ''}
         </article>
       `;
     }).join('');
@@ -532,7 +537,8 @@
     grid.innerHTML = filtered.map((work) => {
       const stats = work.stats || {};
       const tags = (work.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
-      const detailHref = 'project-detail.html?work=' + encodeURIComponent(work.id);
+      const detailHref = work.url || work.detail_url || ('project-detail.html?work=' + encodeURIComponent(work.id));
+      const actionLabel = work.url ? '打开项目页面 →' : '查看制作档案 →';
 
       return `
         <article class="work-archive-card" data-project-id="${escapeHtml(work.project_id)}">
@@ -554,7 +560,7 @@
           </div>
 
           <div class="work-archive-card__tags">${tags}</div>
-          <a class="work-archive-card__link" href="${escapeHtml(detailHref)}">查看制作档案 →</a>
+          <a class="work-archive-card__link" href="${escapeHtml(detailHref)}">${escapeHtml(actionLabel)}</a>
         </article>
       `;
     }).join('');

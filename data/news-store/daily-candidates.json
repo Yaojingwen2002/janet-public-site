@@ -1,21 +1,141 @@
 {
   "status": "daily_candidates_ready",
-  "run_at": "2026-05-27T11:16:13+08:00",
+  "run_at": "2026-05-27T21:49:23+08:00",
   "target_date": "2026-05-27",
   "timezone": "Asia/Shanghai",
   "window_hours": 24,
   "window_start": "2026-05-26T15:59:59.000Z",
   "window_end": "2026-05-27T15:59:59.000Z",
   "expanded_window_reason": "",
-  "item_pool_count": 552,
-  "qualified_count": 11,
+  "item_pool_count": 806,
+  "qualified_count": 212,
   "weak_count": 0,
-  "selected_count": 11,
+  "selected_count": 12,
   "min_full_edition_count": 8,
   "min_limited_edition_count": 5,
   "publish_recommendation": "full_edition",
   "no_new_edition_reason": "",
   "selected": [
+    {
+      "id": "arxiv-cs-ai-8aa8c703057b",
+      "source_id": "arxiv-cs-ai",
+      "source_name": "arXiv cs.AI",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "Constraint acquisition needs better benchmarks",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.26279v1 Announce Type: new Abstract: Constraint Acquisition (CA) and related research on the validation and enhancement of Mathematical Programming (MP) models from domain knowledge artifacts are currently limited by inadequate benchmarks. This deficiency impedes reproducibility and cross-study comparability, slowing the maturation of CA methods. Existing benchmarks were designed for solver evaluation rather than for assessing CA algorithms. They are loosely organized, treat individual problems inconsistently, and omit the domain knowledge artifacts required by CA methods. This work presents MPMMine, a benchmark suite designed to assess algorithms that discover, validate, and enhance MP models using diverse domain knowledge artifacts. MPMMine is guided by consistency, standardization, completeness, extensibility, openness, and version control. It adopts a uniform structure and relies on open formats: MiniZinc, CommonMark, and JSON. It provides multiple models per problem, tens of instances per model, and thousands of solutions and non-solutions in both integer and continuous domains, alongside natural-language descriptions to support text-to-model methods.",
+      "url": "https://arxiv.org/abs/2605.26279",
+      "canonical_url": "https://arxiv.org/abs/2605.26279",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "6d5cd31e2a38b490863a",
+      "dedupe_key": "https://arxiv.org/abs/2605.26279",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "models",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-cl-70361ec8ee69",
+      "source_id": "arxiv-cs-cl",
+      "source_name": "arXiv cs.CL",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "Self-Verified Distillation: Your Language Model Is Secretly Its Own Synthetic Data Pipeline",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.26132v1 Announce Type: new Abstract: Can post-trained large language models (LLMs) further improve themselves using only unlabeled prompts, without external teachers or feedback from tools? We study this setting starting only from unlabeled seed questions with no ground-truth solutions, across three reasoning domains: math, science, and coding. We propose Self-Verified Distillation, a simple post-training refinement algorithm in which the model generates candidate solutions to these seed questions, filters them using prompt-based self-verification, and trains on the resulting self-curated dataset. Inspired by the UQ benchmark's use of multiple validators to screen candidate answers to hard unsolved questions, we adapt this validation-based filtering idea to self-training: the model filters its own generated solutions through a three-stage cascade of cycle-consistency, factuality, and correctness checks, accepting a solution only if it passes all stages with unanimous judge votes. We find that sampling more candidate generations and using a larger verification budget during training data construction produces higher-quality self-curated data and, in turn, better reasoning models. We then train Qwen3 models at multiple scales with Self-Verified Distillation and obtain gains across all three domains. For Qwen3-4B, our method improves aggregate held-out pass@1 by +16.7 points in math (AIME26 and HMMT), +11.1 points in science (GPQA Diamond and HLE), and +8.3 points in coding (LCBv5 and LCBv6), with gains also extending to 0.6B and 8B models. Compared to our test-time-only baseline (UQ-TTC), which improves performance by spending extra compute at inference time, Self-Verified Distillation achieves better performance in most settings while requiring only a single inference call at test time.",
+      "url": "https://arxiv.org/abs/2605.26132",
+      "canonical_url": "https://arxiv.org/abs/2605.26132",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "8f84be6d79ab3bfb4350",
+      "dedupe_key": "https://arxiv.org/abs/2605.26132",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-cs-lg-e96735b4474d",
+      "source_id": "arxiv-cs-lg",
+      "source_name": "arXiv cs.LG",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "The Constraint Tax: Measuring Validity-Correctness Tradeoffs in Structured Outputs for Small Language Models",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.26128v1 Announce Type: new Abstract: Production LLM systems increasingly require machine-readable outputs: JSON objects, typed traces, regex-constrained fields, and tool-call schemas. This paper targets on-device and low-cost small language model (SLM) deployments, where sub-3B models are attractive for privacy, latency, and commodity hardware but have limited capacity to satisfy schemas while solving tasks. The usual engineering assumption is that hard output constraints improve reliability without changing the underlying answer. We show that this assumption is unsafe for small models. We introduce \\emph{constraint tax}, a measurement protocol for isolating the answer and executable-accuracy loss caused by structured-output constraints at fixed model, fixed task distribution, and fixed problem instances. Across 15,000 commodity-GPU generations with Qwen2.5-0.5B, Qwen2.5-1.5B, and SmolLM2-1.7B, hard answer-only schema decoding raises schema validity from 61.5\\% to 100.0\\%, but lowers answer accuracy from 19.7\\% to 11.0\\% and increases wrong-valid-schema outputs from 49.5\\% to 88.9\\%. The strongest industry analogue is a deterministic calendar tool-call task: Qwen2.5-1.5B achieves 91.5\\% executable accuracy with prompt-only JSON but only 48.0\\% under the same hard tool-call schema, while both modes are 100.0\\% schema-valid. The error is semantic, not structural. We also show that the 3B boundary still pays a direct-schema tax and that delayed packaging supports a constructive design pattern: reason free, constrain late. The practical conclusion is direct: production systems should report schema validity, answer accuracy, executable accuracy, and wrong-valid-schema rate separately.",
+      "url": "https://arxiv.org/abs/2605.26128",
+      "canonical_url": "https://arxiv.org/abs/2605.26128",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "e4e5feae4a5ac1c38748",
+      "dedupe_key": "https://arxiv.org/abs/2605.26128",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "arxiv-stat-ml-eea7e7acdb24",
+      "source_id": "arxiv-stat-ml",
+      "source_name": "arXiv stat.ML",
+      "source_rank": "A",
+      "category_hint": "research",
+      "title": "CART Random Forests as Sequential Allocation over Random Opportunity Sets: A Stochastic-Control Theory of Ensemble Risk",
+      "title_zh": "",
+      "summary_raw": "arXiv:2605.26675v1 Announce Type: new Abstract: CART random forests are among the most widely used modern predictive methods, with well-documented empirical success. Yet, at the mechanistic level, the algorithm is often treated as a black box because of its complexity. In this paper, we develop a stochastic-control perspective on feature-subsampled CART random forests, named CART random opportunity-set allocation (CART-ROSA). At each node, the random subset of features is interpreted as a random feasible action set, and the CART split rule as a masked-action allocation policy. This policy induces a controlled stochastic process over informative split-count states, whose terminal law determines both single-tree error and cross-tree interaction terms in the forest mean squared error (MSE). Such representation opens the black box of CART-forests by separating two design levers: the informative-opportunity rate induced by feature subsampling, and the contraction strength from the within-mask split policy. We establish that the CART policy is locally stabilizing: it contracts imbalances in informative split allocations and concentrates terminal tree geometry. At the system level, however, it can be globally suboptimal for the forest objective. Specializing to the linear model, we derive the MSE risk expansion explicitly. Our results show how an operations-research perspective makes tractable a theoretical gap difficult to access from the standard algorithmic description of CART forests.",
+      "url": "https://arxiv.org/abs/2605.26675",
+      "canonical_url": "https://arxiv.org/abs/2605.26675",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "992d4a751083d0ab48e4",
+      "dedupe_key": "https://arxiv.org/abs/2605.26675",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "models",
+      "score": 73,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+18",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
     {
       "id": "aws-machine-learning-bfb67468788c",
       "source_id": "aws-machine-learning",
@@ -47,59 +167,58 @@
       "publishability": "eligible"
     },
     {
-      "id": "techcrunch-ai-3eedeecd0c03",
+      "id": "techcrunch-ai-61b018a3a4a2",
       "source_id": "techcrunch-ai",
       "source_name": "TechCrunch AI",
       "source_rank": "B",
       "category_hint": "business",
-      "title": "OpenRouter more than doubles valuation to $1.3B in a year",
+      "title": "YouTube will now automatically label AI videos",
       "title_zh": "",
-      "summary_raw": "OpenRouter has raised a $113 million Series B led by CapitalG. Its 5x growth in usage over six months indicates the multi-AI-model future is here.",
-      "url": "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year",
-      "canonical_url": "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year",
-      "published_at": "2026-05-26T18:33:01.000Z",
-      "fetched_at": "2026-05-27T11:15:55+08:00",
-      "content_hash": "adf4d32afd5d1a22c871",
-      "dedupe_key": "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year",
+      "summary_raw": "YouTube will now automatically label videos that use significant photorealistic AI, instead of relying solely on creators to disclose AI-generated content themselves. It's also making AI labels more prominent.",
+      "url": "https://techcrunch.com/2026/05/27/youtube-will-now-automatically-label-ai-videos",
+      "canonical_url": "https://techcrunch.com/2026/05/27/youtube-will-now-automatically-label-ai-videos",
+      "published_at": "2026-05-27T13:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "908314e1922b7f5680a1",
+      "dedupe_key": "https://techcrunch.com/2026/05/27/youtube-will-now-automatically-label-ai-videos",
       "tags": [],
       "quality_flags": [],
       "status": "new",
-      "janet_category": "models",
-      "score": 53,
+      "janet_category": "creator_tools",
+      "score": 56,
       "score_reasons": [
         "source_rank_B:+16",
-        "freshness:+13",
+        "freshness:+23",
         "specific_entity:+10",
-        "clear_ai_signal:+8",
-        "has_data:+6"
+        "janet_relevance:+7"
       ],
       "publishability": "eligible"
     },
     {
-      "id": "the-verge-ai-cce08bbed68c",
+      "id": "the-verge-ai-98ff7fa7290f",
       "source_id": "the-verge-ai",
       "source_name": "The Verge AI",
       "source_rank": "B",
       "category_hint": "business",
-      "title": "Did the Pope use AI to write about the dangers of AI?",
+      "title": "YouTube is putting AI labels where you’ll actually see them",
       "title_zh": "",
-      "summary_raw": "It's possible that AI was used to write parts of Pope Leo XIV's latest encyclical about AI's impact on humanity. An analysis by Linch Zhang posted on the forum LessWrong found certain paragraphs of Magnifica Humanitas to be between 40 percent and 100 percent written by AI, according to the popular AI detector Pangram. The […]",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/937801/pope-leo-xiv-magnifica-humanitas-ai-pangram",
-      "canonical_url": "https://www.theverge.com/ai-artificial-intelligence/937801/pope-leo-xiv-magnifica-humanitas-ai-pangram",
-      "published_at": "2026-05-27T00:38:11.000Z",
-      "fetched_at": "2026-05-27T11:16:05+08:00",
-      "content_hash": "9668b8dabf17ba159bc3",
-      "dedupe_key": "https://www.theverge.com/ai-artificial-intelligence/937801/pope-leo-xiv-magnifica-humanitas-ai-pangram",
+      "summary_raw": "In the wake of Google expanding its AI verification efforts at I/O, YouTube is now finally going to start taking AI labeling seriously. YouTube has announced that it's relocating AI disclosures on Shorts and long-form videos to make them easier to spot and will start automatically identifying and labeling AI-generated content on the platform. For […]",
+      "url": "https://www.theverge.com/streaming/937915/youtube-ai-labels-shorts-automatic-identification-updates",
+      "canonical_url": "https://www.theverge.com/streaming/937915/youtube-ai-labels-shorts-automatic-identification-updates",
+      "published_at": "2026-05-27T13:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:22+08:00",
+      "content_hash": "16ae65c33739dc10a531",
+      "dedupe_key": "https://www.theverge.com/streaming/937915/youtube-ai-labels-shorts-automatic-identification-updates",
       "tags": [],
       "quality_flags": [],
       "status": "new",
-      "janet_category": "business",
-      "score": 48,
+      "janet_category": "creator_tools",
+      "score": 56,
       "score_reasons": [
         "source_rank_B:+16",
-        "freshness:+16",
+        "freshness:+23",
         "specific_entity:+10",
-        "has_data:+6"
+        "janet_relevance:+7"
       ],
       "publishability": "eligible"
     },
@@ -131,199 +250,122 @@
       "publishability": "eligible"
     },
     {
-      "id": "aws-machine-learning-9be2bc4f4f33",
-      "source_id": "aws-machine-learning",
-      "source_name": "AWS Machine Learning Blog",
+      "id": "arxiv-cs-ai-d7e97a251234",
+      "source_id": "arxiv-cs-ai",
+      "source_name": "arXiv cs.AI",
       "source_rank": "A",
-      "category_hint": "business",
-      "title": "Build high-performance generative AI systems with Strands Agents, NVIDIA NIM, and Amazon Bedrock AgentCore",
+      "category_hint": "research",
+      "title": "Experiments in Agentic AI for Science",
       "title_zh": "",
-      "summary_raw": "In this post you'll learn how to build a multi-agent campaign review system that demonstrates parallel reasoning, context persistence, and traceable execution paths using an integrated architecture that combines NVIDIA NIM for GPU-accelerated inference. Amazon Bedrock AgentCore provides managed runtime, shared memory and built-in observability and Strands Agents provide serverless multi-agent orchestration. This approach supports performance, scalability, and operational insight in production environments. While the example focuses on marketing content review, the same pattern applies to digital assistants, review automation, and retrieval-augmented generation pipelines.",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-high-performance-generative-ai-systems-with-strands-agents-nvidia-nim-and-amazon-bedrock-agentcore",
-      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/build-high-performance-generative-ai-systems-with-strands-agents-nvidia-nim-and-amazon-bedrock-agentcore",
-      "published_at": "2026-05-26T17:39:46.000Z",
-      "fetched_at": "2026-05-27T11:16:02+08:00",
-      "content_hash": "70b84a06619b444a808a",
-      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/build-high-performance-generative-ai-systems-with-strands-agents-nvidia-nim-and-amazon-bedrock-agentcore",
+      "summary_raw": "arXiv:2605.26305v1 Announce Type: new Abstract: This paper details two novel frameworks for developing autonomous, agentic AI in scientific workflows. Both systems leverage a hybrid Local Body, Remote Brain architecture via Google Colab, utilizing Python-based local orchestrators to invoke large language model (LLM) cloud backends. The first agent, DeepTS/DeepCollector, automates the large-scale curation, extraction, and deduplication of time-series datasets. The second, DeepScribe, is an autonomous presentation analyzer that converts visually dense, mathematically complex physics lectures into structured scientific reports. Through practical systems engineering-such as granular attribute extraction (Cellular RAG), remote data inspection, and distributed concurrency controls-we demonstrate how agentic AI can overcome the context and reasoning limitations of current state-of-the-art systems to rigorously support scientific workflows. Finally, we outline a generalization of DeepTS to support deep knowledge graphs and discuss the application of this conceptual approach to high-energy physics (DeepQCD).",
+      "url": "https://arxiv.org/abs/2605.26305",
+      "canonical_url": "https://arxiv.org/abs/2605.26305",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "fce47103c5dcf64d03be",
+      "dedupe_key": "https://arxiv.org/abs/2605.26305",
       "tags": [],
       "quality_flags": [],
       "status": "new",
       "janet_category": "agents",
-      "score": 62,
+      "score": 73,
       "score_reasons": [
         "source_rank_A:+24",
-        "freshness:+13",
+        "freshness:+18",
         "specific_entity:+10",
         "clear_ai_signal:+8",
+        "has_data:+6",
         "janet_relevance:+7"
       ],
       "publishability": "eligible"
     },
     {
-      "id": "aws-machine-learning-5b5994f96dbd",
-      "source_id": "aws-machine-learning",
-      "source_name": "AWS Machine Learning Blog",
+      "id": "arxiv-cs-ai-96f718db4619",
+      "source_id": "arxiv-cs-ai",
+      "source_name": "arXiv cs.AI",
       "source_rank": "A",
-      "category_hint": "business",
-      "title": "Build an enterprise observability solution for Amazon Quick",
+      "category_hint": "research",
+      "title": "Advancing Creative Physical Intelligence in Large Multimodal Models",
       "title_zh": "",
-      "summary_raw": "When hundreds to thousands of users are onboarded to an enterprise AI platform, business leaders and platform owners need visibility into who is using the platform, whether users are satisfied with the answers they receive, and which capabilities are driving the most engagement. Without a centralized observability solution, this data is scattered across multiple AWS […]",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-an-enterprise-observability-solution-for-amazon-quick",
-      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/build-an-enterprise-observability-solution-for-amazon-quick",
-      "published_at": "2026-05-26T16:09:06.000Z",
-      "fetched_at": "2026-05-27T11:16:02+08:00",
-      "content_hash": "5177f9ae368c5c4e8a5f",
-      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/build-an-enterprise-observability-solution-for-amazon-quick",
+      "summary_raw": "arXiv:2605.26396v1 Announce Type: new Abstract: Large multimodal models (LMMs) have rapidly advanced in perception and reasoning; however, it remains unclear whether these capabilities generalize to discovering visually grounded solutions in open-ended environments, beyond pattern recognition. In such settings, intelligence requires more than answering well-posed questions: it involves identifying how elements in a scene can be repurposed in non-obvious yet physically feasible ways. This form of creative problem-solving is central to human intelligence, but remains largely untested in current benchmarks. To evaluate this ability, we introduce MM-CreativityBench, a benchmark for affordance-grounded creative tool use in visually rich, physically constrained environments. Each instance presents a scenario image with structured views of candidate entities and their parts, enabling fine-grained, interactive evaluation of how models iteratively inspect the scene, identify relevant affordances, and compose visually and physically grounded solutions. Our experiments show that current LMMs often fall short, not due to lack of generative capability, but because they do not sustain grounded exploration. Models often overlook relevant entities, under-examine critical parts, or hallucinate attributes not grounded in the image. Motivated by this failure mode, we propose affordance-grounded alignment, which casts creative tool use as a preference learning problem. Using Direct Preference Optimization, we encourage models to prefer attribute-affordance reasoning grounded in visual evidence over hallucinated alternatives. In addition, we incorporate supervision derived from an affordance knowledge base to guide broader entity exploration and multi-turn planning. Our results show consistent gains in selecting the correct entities and parts, while substantially reducing hallucination and grounding-related errors.",
+      "url": "https://arxiv.org/abs/2605.26396",
+      "canonical_url": "https://arxiv.org/abs/2605.26396",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "e45e012d33adc54de115",
+      "dedupe_key": "https://arxiv.org/abs/2605.26396",
       "tags": [],
       "quality_flags": [],
       "status": "new",
-      "janet_category": "business",
-      "score": 61,
+      "janet_category": "models",
+      "score": 73,
       "score_reasons": [
         "source_rank_A:+24",
-        "freshness:+12",
+        "freshness:+18",
         "specific_entity:+10",
         "clear_ai_signal:+8",
+        "has_data:+6",
         "janet_relevance:+7"
       ],
       "publishability": "eligible"
     },
     {
-      "id": "aws-machine-learning-2715154a135f",
-      "source_id": "aws-machine-learning",
-      "source_name": "AWS Machine Learning Blog",
+      "id": "arxiv-cs-ai-2bfe47a0b024",
+      "source_id": "arxiv-cs-ai",
+      "source_name": "arXiv cs.AI",
       "source_rank": "A",
-      "category_hint": "business",
-      "title": "Technical deep dive: AgentCore payments and innovation in agentic commerce",
+      "category_hint": "research",
+      "title": "FAST-GOAL: Fast and Efficient Global-local Object Alignment Learning",
       "title_zh": "",
-      "summary_raw": "Amazon Bedrock AgentCore payments is now available in preview, it provides instant payments to paid external services with no manual billing setup per provider, stablecoin support for cost-effective microtransactions that make sub-cent transactions economically viable, and configurable spending guardrails that give you fine-grained control over agent budgets and transaction limits. In this post, we walk you through a technical deep dive of AgentCore payments.",
-      "url": "https://aws.amazon.com/blogs/machine-learning/technical-deep-dive-agentcore-payments-and-innovation-in-agentic-commerce",
-      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/technical-deep-dive-agentcore-payments-and-innovation-in-agentic-commerce",
-      "published_at": "2026-05-26T17:57:18.000Z",
-      "fetched_at": "2026-05-27T11:16:02+08:00",
-      "content_hash": "8db57fcb89fad41ad181",
-      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/technical-deep-dive-agentcore-payments-and-innovation-in-agentic-commerce",
+      "summary_raw": "arXiv:2605.26615v1 Announce Type: new Abstract: Vision-language models such as CLIP have shown impressive capabilities in aligning images and text, but they often struggle with lengthy and detailed text descriptions due to pre-training on short and concise captions. We present FAST-GOAL (Fast and Efficient Global-local Object Alignment Learning), an efficient fine-tuning method that enhances ability of CLIP to handle lengthy text through global-local semantic alignment. Our method consists of two key components. First, Fast Local Image-Sentence Matching (FLISM) efficiently extracts local image regions through object detection and spatial division, then matches them with corresponding sentences. Second, Token Similarity-based Learning (TSL) maximizes the similarity between patch tokens from specific regions in the image and their corresponding region embeddings, applying the same principle to text, which enhances the ability of the model to capture detailed correspondences. Additionally, we introduce GLIT100k, a dataset that provides both global image-lengthy caption pairs and context-derived local pairs, where local descriptions are extracted from global captions to maintain semantic coherence. Through extensive experiments on long caption datasets (DOCCI, DCI) and short caption datasets (MSCOCO, Flickr30k), we demonstrate that FAST-GOAL achieves significant improvements over baselines, enabling effective adaptation of CLIP to detailed textual descriptions while maintaining computational efficiency.",
+      "url": "https://arxiv.org/abs/2605.26615",
+      "canonical_url": "https://arxiv.org/abs/2605.26615",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "648df8e5c385d8d9c534",
+      "dedupe_key": "https://arxiv.org/abs/2605.26615",
       "tags": [],
       "quality_flags": [],
       "status": "new",
-      "janet_category": "agents",
-      "score": 55,
+      "janet_category": "models",
+      "score": 73,
       "score_reasons": [
         "source_rank_A:+24",
-        "freshness:+13",
+        "freshness:+18",
         "specific_entity:+10",
-        "clear_ai_signal:+8"
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
       ],
       "publishability": "eligible"
     },
     {
-      "id": "techcrunch-ai-077d35556946",
-      "source_id": "techcrunch-ai",
-      "source_name": "TechCrunch AI",
-      "source_rank": "B",
-      "category_hint": "business",
-      "title": "DuckDuckGo installs are up 30% as users reject being ‘force-fed’ Google’s AI Search",
-      "title_zh": "",
-      "summary_raw": "Google overhauled Search at I/O 2026, replacing blue links with AI agents. The backlash has been swift. DuckDuckGo app installs spiked 30% as users seek a way out.",
-      "url": "https://techcrunch.com/2026/05/26/duckduckgo-installs-are-up-30-as-users-reject-being-force-fed-googles-ai-search",
-      "canonical_url": "https://techcrunch.com/2026/05/26/duckduckgo-installs-are-up-30-as-users-reject-being-force-fed-googles-ai-search",
-      "published_at": "2026-05-26T22:32:56.000Z",
-      "fetched_at": "2026-05-27T11:15:55+08:00",
-      "content_hash": "20782070e7490ecdfbca",
-      "dedupe_key": "https://techcrunch.com/2026/05/26/duckduckgo-installs-are-up-30-as-users-reject-being-force-fed-googles-ai-search",
-      "tags": [],
-      "quality_flags": [],
-      "status": "new",
-      "janet_category": "agents",
-      "score": 47,
-      "score_reasons": [
-        "source_rank_B:+16",
-        "freshness:+15",
-        "specific_entity:+10",
-        "has_data:+6"
-      ],
-      "publishability": "eligible"
-    },
-    {
-      "id": "techcrunch-ai-71d4fbf28f57",
-      "source_id": "techcrunch-ai",
-      "source_name": "TechCrunch AI",
-      "source_rank": "B",
-      "category_hint": "business",
-      "title": "This startup is betting India’s gig economy can train the world’s robots",
-      "title_zh": "",
-      "summary_raw": "Human Archive, a startup founded by UC Berkeley and Stanford researchers, is paying gig workers in India to wear camera-equipped caps and sensor devices to collect the real-world physical training data that AI and robotics labs are racing to acquire.",
-      "url": "https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai",
-      "canonical_url": "https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai",
-      "published_at": "2026-05-26T16:00:00.000Z",
-      "fetched_at": "2026-05-27T11:15:55+08:00",
-      "content_hash": "08ac9d1104dfc5edc2ed",
-      "dedupe_key": "https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai",
-      "tags": [],
-      "quality_flags": [],
-      "status": "new",
-      "janet_category": "research",
-      "score": 38,
-      "score_reasons": [
-        "source_rank_B:+16",
-        "freshness:+12",
-        "specific_entity:+10"
-      ],
-      "publishability": "eligible"
-    },
-    {
-      "id": "aws-machine-learning-527745d698eb",
-      "source_id": "aws-machine-learning",
-      "source_name": "AWS Machine Learning Blog",
+      "id": "arxiv-cs-cl-dfd7f5854272",
+      "source_id": "arxiv-cs-cl",
+      "source_name": "arXiv cs.CL",
       "source_rank": "A",
-      "category_hint": "business",
-      "title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
+      "category_hint": "research",
+      "title": "Model Unlearning Objectives Vary for Distinct Language Functions",
       "title_zh": "",
-      "summary_raw": "In this post, we provide a solution to build highly scalable, serverless multi-agent generative AI systems on AWS using LangGraph Agents as orchestrators integrated with Amazon Bedrock AgentCore Memory and Amazon Bedrock AgentCore Observability.",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
-      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
-      "published_at": "2026-05-26T17:41:26.000Z",
-      "fetched_at": "2026-05-27T11:16:02+08:00",
-      "content_hash": "375c2c33d24cdf86daf0",
-      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
+      "summary_raw": "arXiv:2605.26454v1 Announce Type: new Abstract: Large language models (LLMs) learn undesirable properties during pretraining, including dangerous knowledge and toxic text generation. Just as post-training uses different objectives to shape different behaviors, we argue that unlearning methods should be designed for the language function at issue. To study this, we consider two mechanistically distinct unlearning goals, dangerous-knowledge unlearning and toxicity unlearning. For dangerous knowledge, we introduce a cosine-based, meta-learned variant of RMU. For toxicity, we propose a multi-layer objective based on layer-specific probe directions. Across four open-source 7-8B models, our methods achieve strong results, based on distinct training objectives for the two types of unlearning. Overall, our results suggest that unlearning should be studied as a family of problems, analogous to the multiple types of LLM post-training.",
+      "url": "https://arxiv.org/abs/2605.26454",
+      "canonical_url": "https://arxiv.org/abs/2605.26454",
+      "published_at": "2026-05-27T04:00:00.000Z",
+      "fetched_at": "2026-05-27T21:49:20+08:00",
+      "content_hash": "33056cf931330b645501",
+      "dedupe_key": "https://arxiv.org/abs/2605.26454",
       "tags": [],
       "quality_flags": [],
       "status": "new",
-      "janet_category": "agents",
-      "score": 55,
+      "janet_category": "models",
+      "score": 73,
       "score_reasons": [
         "source_rank_A:+24",
-        "freshness:+13",
+        "freshness:+18",
         "specific_entity:+10",
-        "clear_ai_signal:+8"
-      ],
-      "publishability": "eligible"
-    },
-    {
-      "id": "aws-machine-learning-2438153ecafe",
-      "source_id": "aws-machine-learning",
-      "source_name": "AWS Machine Learning Blog",
-      "source_rank": "A",
-      "category_hint": "business",
-      "title": "From idea to AI app: Creating intelligent research assistants with Strands",
-      "title_zh": "",
-      "summary_raw": "Building an AI app shouldn’t require a PhD in machine learning (ML) or months of wrestling with complex architectures. Yet that’s exactly what happens when you try to orchestrate multiple API calls, manage conversation state, and create agents that can reason on their own. I’ve seen straightforward AI ideas balloon into sprawling projects that demand […]",
-      "url": "https://aws.amazon.com/blogs/machine-learning/from-idea-to-ai-app-creating-intelligent-research-assistants-with-strands",
-      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/from-idea-to-ai-app-creating-intelligent-research-assistants-with-strands",
-      "published_at": "2026-05-26T16:28:08.000Z",
-      "fetched_at": "2026-05-27T11:16:02+08:00",
-      "content_hash": "1456f5f06f627cfd89de",
-      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/from-idea-to-ai-app-creating-intelligent-research-assistants-with-strands",
-      "tags": [],
-      "quality_flags": [],
-      "status": "new",
-      "janet_category": "agents",
-      "score": 54,
-      "score_reasons": [
-        "source_rank_A:+24",
-        "freshness:+12",
-        "specific_entity:+10",
-        "clear_ai_signal:+8"
+        "clear_ai_signal:+8",
+        "has_data:+6",
+        "janet_relevance:+7"
       ],
       "publishability": "eligible"
     }
@@ -820,6 +862,26 @@
       "reason": "outside_window"
     },
     {
+      "id": "huggingface-blog-e44d72287f61",
+      "title": "Mixture of Experts (MoEs) in Transformers",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-ca4b92433d4b",
+      "title": "GGML and llama.cpp join HF to ensure the long-term progress of Local AI",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-921e5a859005",
+      "title": "Train AI models with Unsloth and Hugging Face Jobs for FREE",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-a48598059a69",
+      "title": "IBM and UC Berkeley Diagnose Why Enterprise Agents Fail Using IT-Bench and MAST",
+      "reason": "outside_window"
+    },
+    {
       "id": "google-research-blog-3b56822db3be",
       "title": "Building better AI benchmarks: How many raters are enough?",
       "reason": "outside_window"
@@ -897,6 +959,81 @@
     {
       "id": "berkeley-bair-dffc0d84ddb9",
       "title": "Identifying Interactions at Scale for LLMs",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-3984d84784ef",
+      "title": "Granite 4.0 3B Vision: Compact Multimodal Intelligence for Enterprise Documents",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-9a29ebd2d423",
+      "title": "Training mRNA Language Models Across 25 Species for $165",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-1f5256fffe0b",
+      "title": "TRL v1.0: Post-Training Library Built to Move with the Field",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-51a02dc6c0ff",
+      "title": "Liberate your OpenClaw",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-05345d1651b6",
+      "title": "A New Framework for Evaluating Voice Agents (EVA)",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-c1a4d7d6313d",
+      "title": "Build a Domain-Specific Embedding Model in Under a Day",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-429881ea07c5",
+      "title": "State of Open Source on Hugging Face: Spring 2026",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-c07825b4f460",
+      "title": "Holotron-12B - High Throughput Computer Use Agent",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-2ae52e2df01b",
+      "title": "Introducing Storage Buckets on the Hugging Face Hub",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-cf14fb4125ba",
+      "title": "Keep the Tokens Flowing: Lessons from 16 Open-Source RL Libraries",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-59a06e2a252a",
+      "title": "Ulysses Sequence Parallelism: Training with Million-Token Contexts",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-96b2284ecdf3",
+      "title": "LeRobot v0.5.0: Scaling Every Dimension",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-e8788bf50532",
+      "title": "Bringing Robotics AI to Embedded Platforms: Dataset Recording, VLA Fine‑Tuning, and On‑Device Optimizations",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-41daf44b6dc9",
+      "title": "Introducing Modular Diffusers - Composable Building Blocks for Diffusion Pipelines",
+      "reason": "outside_window"
+    },
+    {
+      "id": "huggingface-blog-0490fd40e37c",
+      "title": "PRX Part 3 — Training a Text-to-Image Model in 24h!",
       "reason": "outside_window"
     },
     {
@@ -1140,206 +1277,115 @@
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-2958e44acb3b",
-      "title": "OpenAI, Grupo Folha and Grupo UOL announce strategic content partnership",
+      "id": "huggingface-blog-6af9b6a70003",
+      "title": "Granite 4.1 LLMs: How They’re Built",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-4ce39150a4dc",
-      "title": "How Virgin Atlantic ships faster with Codex",
+      "id": "huggingface-blog-a89e6f10b7ac",
+      "title": "DeepInfra on Hugging Face Inference Providers 🔥",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-ef1db9edff97",
-      "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
+      "id": "huggingface-blog-5b7c46b20d14",
+      "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-85a3fdb43c80",
-      "title": "AdventHealth advances whole-person care with OpenAI",
+      "id": "huggingface-blog-e548e0e285fc",
+      "title": "How to build scalable web apps with OpenAI's Privacy Filter",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-7f625f666338",
-      "title": "An OpenAI model has disproved a central conjecture in discrete geometry",
+      "id": "huggingface-blog-b2ff62f993e1",
+      "title": "DeepSeek-V4: a million-token context that agents can actually use",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-cb920945cfca",
-      "title": "How Ramp engineers accelerate code review with Codex",
+      "id": "huggingface-blog-4a3a5411219d",
+      "title": "How to Use Transformers.js in a Chrome Extension",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-52bd1afbd88b",
-      "title": "The next phase of OpenAI’s Education for Countries",
+      "id": "huggingface-blog-24e2166b86b9",
+      "title": "QIMMA قِمّة ⛰: A Quality-First Arabic LLM Leaderboard",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-e0640ad0320c",
-      "title": "Introducing OpenAI for Singapore",
+      "id": "huggingface-blog-cd40c18e81f2",
+      "title": "AI and the Future of Cybersecurity: Why Openness Matters",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-4f1431164463",
-      "title": "Advancing content provenance for a safer, more transparent AI ecosystem",
+      "id": "huggingface-blog-cfdeed39e562",
+      "title": "Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-210c7a7c7826",
-      "title": "OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments",
+      "id": "huggingface-blog-48afc81fb0a9",
+      "title": "The PR you would have opened yourself",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-f0106247dee4",
-      "title": "OpenAI and Malta partner to bring ChatGPT Plus to all citizens",
+      "id": "huggingface-blog-cda2d0b1dc42",
+      "title": "Training and Finetuning Multimodal Embedding & Reranker Models with Sentence Transformers",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-cca00ce68781",
-      "title": "How data science teams use Codex",
+      "id": "huggingface-blog-b96c649f09f8",
+      "title": "Inside VAKRA: Reasoning, Tool Use, and Failure Modes of Agents",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-ada6c1425188",
-      "title": "A new personal finance experience in ChatGPT",
+      "id": "huggingface-blog-3977e92d92e9",
+      "title": "Meet HoloTab by HCompany. Your AI browser companion.",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-c64312c3121c",
-      "title": "Databricks brings GPT-5.5 to enterprise agent workflows",
+      "id": "huggingface-blog-a3ef54c12f07",
+      "title": "Waypoint-1.5: Higher-Fidelity Interactive Worlds for Everyday GPUs",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-248b5ff06999",
-      "title": "How sales teams use Codex",
+      "id": "huggingface-blog-89c4c4ec4b95",
+      "title": "Multimodal Embedding & Reranker Models with Sentence Transformers",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-b5b1610b252a",
-      "title": "How business operations teams use Codex",
+      "id": "huggingface-blog-aa892ef06770",
+      "title": "Safetensors is Joining the PyTorch Foundation",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-ca03c8de33d6",
-      "title": "Sea's View on the Future of Agentic Software Development with Codex",
+      "id": "huggingface-blog-ded9bca8355a",
+      "title": "Welcome Gemma 4: Frontier multimodal intelligence on device",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-3e12c6920827",
-      "title": "Work with Codex from anywhere",
+      "id": "huggingface-blog-427e27dd0160",
+      "title": "Falcon Perception",
       "reason": "outside_window"
     },
     {
-      "id": "openai-news-fd608667e64c",
-      "title": "Helping ChatGPT better recognize context in sensitive conversations",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-5502a50a46d6",
-      "title": "Building a safe, effective sandbox to enable Codex on Windows",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-49432bd70e08",
-      "title": "Our response to the TanStack npm supply chain attack",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-7d12c750a4ea",
-      "title": "How finance teams use Codex",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-c31ba2e9026b",
-      "title": "What Parameter Golf taught us about AI-assisted research",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-8a196e8c3ae2",
-      "title": "AutoScout24 scales engineering with AI-powered workflows",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-6498bc3d3050",
-      "title": "How NVIDIA engineers and researchers build with Codex",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-e13dc335beb0",
-      "title": "How ChatGPT adoption broadened in early 2026",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-ee5564e4d43f",
-      "title": "OpenAI Campus Network: Student club interest form",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-4ca12da2ae6a",
-      "title": "How enterprises are scaling AI",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-68e94ee2f13a",
-      "title": "OpenAI launches DeployCo to help businesses build around intelligence",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-91ec1ce9a5cf",
-      "title": "Running Codex safely at OpenAI",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-288ea344bbe0",
-      "title": "Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-e41b9b9c2133",
-      "title": "Parloa builds service agents customers want to talk to",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-4ba89a634a8b",
-      "title": "Advancing voice intelligence with new models in the API",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-fe948365c4d6",
-      "title": "Introducing Trusted Contact in ChatGPT",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-de2ca3d7578d",
-      "title": "Testing ads in ChatGPT",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-eed85cf61ed4",
-      "title": "Simplex rethinks software development with Codex",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-9195cc0cde7d",
-      "title": "How ChatGPT learns about the world while protecting privacy",
-      "reason": "outside_window"
-    },
-    {
-      "id": "openai-news-bdecd9008a33",
-      "title": "Introducing ChatGPT Futures: Class of 2026",
+      "id": "huggingface-blog-60fb05c77980",
+      "title": "Any Custom Frontend with Gradio's Backend",
       "reason": "outside_window"
     }
   ],
   "source_mix": {
-    "aws-machine-learning": 6,
-    "techcrunch-ai": 3,
+    "arxiv-cs-ai": 4,
+    "arxiv-cs-cl": 2,
+    "arxiv-cs-lg": 1,
+    "arxiv-stat-ml": 1,
+    "aws-machine-learning": 1,
+    "techcrunch-ai": 1,
     "the-verge-ai": 1,
     "langchain-blog": 1
   },
   "source_status_summary": {
     "source_count": 27,
-    "source_success_count": 15,
-    "source_error_count": 2,
-    "source_not_modified_count": 5
+    "source_success_count": 19,
+    "source_error_count": 1,
+    "source_not_modified_count": 2
   }
 }

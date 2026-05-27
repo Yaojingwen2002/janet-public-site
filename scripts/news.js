@@ -226,7 +226,7 @@
     if (intro && !isEngineeringCopy(intro)) return intro;
     const source = lead.source || '今天的几个关键来源';
     const title = lead.title || 'AI 新闻';
-    return source + ' 把 "' + title + '" 放到首页。先看这条新闻里的对象、动作和限制条件。';
+    return source + ' 收录 "' + title + '"。看对象、动作和限制条件。';
   }
 
   function renderV4HomepageNews(bundle) {
@@ -316,7 +316,7 @@
           '</div>' +
         '</div>' +
         (signalCards ? '<div class="news-signal-map">' + signalCards + '</div>' : '') +
-        (compactCards ? '<div class="news-more-strip"><div class="news-more-strip__head"><span>今日更多</span><small>不是所有新闻都适合当头条，但这些也值得看一眼。</small></div><div class="news-compact-grid">' + compactCards + '</div></div>' : '') +
+        (compactCards ? '<div class="news-more-strip"><div class="news-more-strip__head"><span>补充观察</span><small>不是所有新闻都适合当头条，但这些也需要留意。</small></div><div class="news-compact-grid">' + compactCards + '</div></div>' : '') +
       '</article>';
 
     if (countEl) countEl.textContent = '今日 ' + String(count || 0) + ' 条';

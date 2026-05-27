@@ -1,14 +1,14 @@
 {
   "status": "daily_candidates_ready",
-  "run_at": "2026-05-28T04:29:07+08:00",
+  "run_at": "2026-05-28T07:37:21+08:00",
   "target_date": "2026-05-28",
   "timezone": "Asia/Shanghai",
   "window_hours": 24,
   "window_start": "2026-05-27T15:59:59.000Z",
   "window_end": "2026-05-28T15:59:59.000Z",
   "expanded_window_reason": "",
-  "item_pool_count": 832,
-  "qualified_count": 12,
+  "item_pool_count": 836,
+  "qualified_count": 13,
   "weak_count": 0,
   "selected_count": 12,
   "min_full_edition_count": 8,
@@ -159,6 +159,35 @@
       "publishability": "eligible"
     },
     {
+      "id": "aws-machine-learning-a1eb1c846fa8",
+      "source_id": "aws-machine-learning",
+      "source_name": "AWS Machine Learning Blog",
+      "source_rank": "A",
+      "category_hint": "business",
+      "title": "Process financial documents using Amazon Bedrock Data Automation",
+      "title_zh": "",
+      "summary_raw": "In this post, we explore how Amazon Bedrock Data Automation can accurately extract information from four common types of financial documents: bank statements, W-2 forms, 1099-B tax forms, and vendor contracts. We highlight the complexity in the documents, detail the custom extraction created in Amazon Bedrock Data Automation, and describe the outcomes of the extraction process.",
+      "url": "https://aws.amazon.com/blogs/machine-learning/process-financial-documents-using-amazon-bedrock-data-automation",
+      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/process-financial-documents-using-amazon-bedrock-data-automation",
+      "published_at": "2026-05-27T21:28:53.000Z",
+      "fetched_at": "2026-05-28T07:37:20+08:00",
+      "content_hash": "5091450c5b03f5118051",
+      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/process-financial-documents-using-amazon-bedrock-data-automation",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "business",
+      "score": 62,
+      "score_reasons": [
+        "source_rank_A:+24",
+        "freshness:+15",
+        "specific_entity:+10",
+        "has_data:+6",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
       "id": "aws-machine-learning-2b8b97c4fc57",
       "source_id": "aws-machine-learning",
       "source_name": "AWS Machine Learning Blog",
@@ -211,33 +240,6 @@
         "freshness:+14",
         "specific_entity:+10",
         "has_data:+6"
-      ],
-      "publishability": "eligible"
-    },
-    {
-      "id": "aws-machine-learning-fced7285c6cf",
-      "source_id": "aws-machine-learning",
-      "source_name": "AWS Machine Learning Blog",
-      "source_rank": "A",
-      "category_hint": "business",
-      "title": "How AWS SMGS uses an AI-powered conversational assistant to transform business management with Amazon Bedrock AgentCore",
-      "title_zh": "",
-      "summary_raw": "In this post, we share how we built NarrateAI using Amazon Bedrock AgentCore to deliver business intelligence at scale for the AWS SMGS (Sales, Marketing and Global Services) organization. You will learn about: the two-layer architecture that separates batch processing from real-time interaction, the specialized AI agents that power intelligent routing and validation, key engineering patterns for production deployment, and how to build similar solutions with AWS services.",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore",
-      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore",
-      "published_at": "2026-05-27T18:51:45.000Z",
-      "fetched_at": "2026-05-28T04:29:04+08:00",
-      "content_hash": "016a746c0a44c0c469d5",
-      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore",
-      "tags": [],
-      "quality_flags": [],
-      "status": "new",
-      "janet_category": "agents",
-      "score": 47,
-      "score_reasons": [
-        "source_rank_A:+24",
-        "freshness:+13",
-        "specific_entity:+10"
       ],
       "publishability": "eligible"
     },
@@ -326,30 +328,29 @@
       "publishability": "eligible"
     },
     {
-      "id": "techcrunch-ai-ad519d6bebe8",
-      "source_id": "techcrunch-ai",
-      "source_name": "TechCrunch AI",
-      "source_rank": "B",
+      "id": "aws-machine-learning-fced7285c6cf",
+      "source_id": "aws-machine-learning",
+      "source_name": "AWS Machine Learning Blog",
+      "source_rank": "A",
       "category_hint": "business",
-      "title": "AI coding startup Cognition raises $1B at $25B pre-money valuation",
+      "title": "How AWS SMGS uses an AI-powered conversational assistant to transform business management with Amazon Bedrock AgentCore",
       "title_zh": "",
-      "summary_raw": "As Cognition reaches $492 million in annualized revenue run rate, it more than doubled its valuation in eight months, it says.",
-      "url": "https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation",
-      "canonical_url": "https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation",
-      "published_at": "2026-05-27T16:00:00.000Z",
-      "fetched_at": "2026-05-28T01:32:09+08:00",
-      "content_hash": "72c5896440a8f62dbb39",
-      "dedupe_key": "https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation",
+      "summary_raw": "In this post, we share how we built NarrateAI using Amazon Bedrock AgentCore to deliver business intelligence at scale for the AWS SMGS (Sales, Marketing and Global Services) organization. You will learn about: the two-layer architecture that separates batch processing from real-time interaction, the specialized AI agents that power intelligent routing and validation, key engineering patterns for production deployment, and how to build similar solutions with AWS services.",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore",
+      "canonical_url": "https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore",
+      "published_at": "2026-05-27T18:51:45.000Z",
+      "fetched_at": "2026-05-28T04:29:04+08:00",
+      "content_hash": "016a746c0a44c0c469d5",
+      "dedupe_key": "https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore",
       "tags": [],
       "quality_flags": [],
       "status": "new",
       "janet_category": "agents",
-      "score": 44,
+      "score": 47,
       "score_reasons": [
-        "source_rank_B:+16",
-        "freshness:+12",
-        "specific_entity:+10",
-        "has_data:+6"
+        "source_rank_A:+24",
+        "freshness:+13",
+        "specific_entity:+10"
       ],
       "publishability": "eligible"
     }
@@ -1358,10 +1359,10 @@
   ],
   "source_mix": {
     "huggingface-blog": 1,
-    "aws-machine-learning": 4,
+    "aws-machine-learning": 5,
     "google-research-blog": 1,
     "microsoft-research-ai": 1,
-    "techcrunch-ai": 5
+    "techcrunch-ai": 4
   },
   "source_status_summary": {
     "source_count": 27,

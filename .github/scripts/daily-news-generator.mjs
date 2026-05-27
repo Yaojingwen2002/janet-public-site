@@ -17,6 +17,7 @@ const EDITORIAL_RULES = resolve(ROOT, '.github/scripts/editorial-rules.json');
 const EDITORIAL_COPY_RULES = resolve(ROOT, '.github/scripts/editorial-copy-rules.json');
 const STATUS_PATH = resolve(ROOT, 'data/daily-news-run-status.json');
 const LIVE_SOURCE_SNAPSHOT = resolve(ROOT, 'data/live-source-snapshot.json');
+const NEWS_STORE_CANDIDATES = resolve(ROOT, 'data/news-store/daily-candidates.json');
 const VISUAL_DIR = resolve(ROOT, 'assets/news-visuals');
 const FORBIDDEN_TAKES = [
   'AI 正在改变世界',
@@ -437,6 +438,62 @@ function writeLiveSourceSnapshot({ date, window, status, rawItems, included, exc
   });
 }
 
+function newsStoreCandidateToRawItem(item, index) {
+  return {
+    id: item.id || hashId(item.source_id || 'news-store', `${item.url}:${item.title}`),
+    title: item.title || '',
+    url: item.url || item.canonical_url || '',
+    source: item.source_name || item.source || item.source_id || '',
+    category: item.category_hint || item.janet_category || 'business',
+    source_rank: item.source_rank || 'B',
+    published_at: item.published_at || '',
+    published_at_source: 'news-store.published_at',
+    summary: item.summary_raw || item.summary || item.title || '',
+    collected_at: item.fetched_at || new Date().toISOString(),
+    raw_source_id: item.source_id || '',
+    evidence_ids: [`news-store-${String(index + 1).padStart(4, '0')}`],
+    canonical_url: item.canonical_url || item.url || '',
+    dedupe_key: item.dedupe_key || item.canonical_url || item.url || item.id || '',
+    editorial_score: item.score,
+    editorial_signals: item.score_reasons || [],
+    editorial_penalties: [],
+    lead_eligible: item.publishability !== 'blocked',
+    core_eligible: item.publishability !== 'blocked',
+    news_store_candidate: true
+  };
+}
+
+function loadNewsStoreCandidates(date) {
+  const candidates = readJson(NEWS_STORE_CANDIDATES, null);
+  if (!candidates) {
+    return { ok: false, reason: 'news_store_candidates_missing', candidates: null, items: [] };
+  }
+  if (candidates.target_date !== date) {
+    return {
+      ok: false,
+      reason: `news_store_candidates_date_mismatch:${candidates.target_date || 'missing'}!=${date}`,
+      candidates,
+      items: []
+    };
+  }
+  const selected = Array.isArray(candidates.selected) ? candidates.selected : [];
+  const selectedCount = Number(candidates.selected_count ?? selected.length);
+  if (selectedCount < 8 || selected.length < 8) {
+    return {
+      ok: false,
+      reason: `news_store_candidates_below_publish_threshold:${Math.min(selectedCount, selected.length)}/8`,
+      candidates,
+      items: []
+    };
+  }
+  return {
+    ok: true,
+    reason: '',
+    candidates,
+    items: selected.map(newsStoreCandidateToRawItem)
+  };
+}
+
 function clamp(input, max) {
   const text = decodeText(input);
   return text.length <= max ? text : `${text.slice(0, Math.max(0, max - 3)).trimEnd()}...`;
@@ -616,6 +673,19 @@ function extractStoryFacts(item) {
     ['Alexa Plus', /Alexa Plus/i],
     ['Amazon Quick', /Amazon Quick/i],
     ['Amazon Bedrock AgentCore', /Bedrock AgentCore/i],
+    ['AgentWatch', /AgentWatch/i],
+    ['Strands Agents', /Strands Agents/i],
+    ['Strands', /\bStrands\b/i],
+    ['NVIDIA NIM', /NVIDIA NIM/i],
+    ['OpenRouter', /OpenRouter/i],
+    ['DuckDuckGo', /DuckDuckGo/i],
+    ['LangSmith', /LangSmith/i],
+    ['Kubernetes', /Kubernetes/i],
+    ['AgentCore payments', /AgentCore payments/i],
+    ['agentic commerce', /agentic commerce/i],
+    ['research assistants', /research assistants?/i],
+    ['gig economy robot training', /gig economy.*train.*robots?|train.*robots?.*gig economy/i],
+    ['Pope Leo XIV', /Pope Leo XIV|Pope/i],
     ['Aderant', /Aderant/i],
     ['SandboxAQ', /SandboxAQ/i],
     ['Anthropic', /Anthropic/i],
@@ -639,10 +709,20 @@ function extractStoryFacts(item) {
   if (/document parsing|OCR/i.test(text)) add('action', '文档解析');
   if (/audiobook/i.test(text)) add('action', '有声书生成');
   if (/podcast/i.test(text)) add('action', '播客生成');
+  if (/train.*robots?|robots?.*train/i.test(text)) add('action', '机器人训练');
   if (hasLegalEvidence(text)) add('action', '诉讼');
   if (/acquired|acquire/i.test(text)) add('action', '收购');
   if (/AI glasses|optics/i.test(text)) add('action', 'AI 眼镜光学');
   if (/cloud operations/i.test(text)) add('action', '云运维');
+  if (/valuation/i.test(text)) add('action', '估值变化');
+  if (/installs are up|install.*up/i.test(text)) add('action', '安装增长');
+  if (/monitoring|ambient agents/i.test(text)) add('action', '主动监控');
+  if (/observability/i.test(text)) add('action', '可观测性');
+  if (/self-hosted|kubernetes/i.test(text)) add('action', '自托管部署');
+  if (/payments?|agentic commerce|commerce/i.test(text)) add('action', '支付链路');
+  if (/research assistants?/i.test(text)) add('action', '研究助手');
+  if (/pope|dangers of ai|write about/i.test(text)) add('action', 'AI 写作争议');
+  if (/langgraph|multi-agent systems|serverless/i.test(text)) add('action', '多智能体部署');
   if (/code-based evaluators/i.test(text)) add('action', '代码评估器');
   if (/drug discovery/i.test(text)) add('action', '药物发现');
   if (/smart glasses for warfare/i.test(text)) add('action', '军用智能眼镜');
@@ -678,15 +758,21 @@ function titleEntityCandidates(title, source) {
       .replace(/^(The|How|With|Would|Welcome to|Everything new in our|New ways to)\s+/i, '')
       .replace(/^Introducing\s+/i, '')
       .replace(/^Welcome\s+(?:to\s+)?/i, '')
+      .replace(/^Build(?:ing)?\s+/i, '')
+      .replace(/^Technical\s+deep\s+dive:\s*/i, '')
+      .replace(/^From\s+idea\s+to\s+AI\s+app:\s*/i, '')
+      .replace(/^Mission\s+Control\s+for\s+/i, '')
       .replace(/^Extending\s+/i, '')
       .replace(/^Implementing\s+/i, '')
       .replace(/[,:;.!?]+$/g, '')
       .trim();
     if (/^agentic gemini era$/i.test(normalized)) normalized = 'Gemini';
+    if (/gig economy.*robots?/i.test(normalized)) normalized = 'India gig economy robot training';
+    if (/^research assistants?$/i.test(normalized)) normalized = 'Strands research assistants';
     if (!normalized || normalized.length < 3) return;
     const lower = normalized.toLowerCase();
     if (sourceSet.has(lower) || sourceSet.has(lower.replace(/\s+/g, ''))) return;
-    if (/^(from|with|using|this|that|how|why|here|what|when|where|new|the|and|for|at|in|on|to|of|is|are|welcome|introducing|extending|implementing)$/i.test(normalized)) return;
+    if (/^(from|with|using|this|that|how|why|here|what|when|where|new|the|and|for|at|in|on|to|of|is|are|build|building|technical|mission|control|welcome|introducing|extending|implementing)$/i.test(normalized)) return;
     if (isGenericObject(normalized)) return;
     if (!candidates.includes(normalized)) candidates.push(normalized);
   };
@@ -695,6 +781,20 @@ function titleEntityCandidates(title, source) {
     /Open Agent Leaderboard/ig,
     /Amazon Bedrock AgentCore Memory/ig,
     /Amazon Bedrock AgentCore/ig,
+    /AgentCore payments/ig,
+    /AgentWatch/ig,
+    /Amazon Quick/ig,
+    /OpenRouter/ig,
+    /DuckDuckGo/ig,
+    /LangSmith/ig,
+    /Kubernetes/ig,
+    /Strands Agents/ig,
+    /NVIDIA NIM/ig,
+    /Strands/ig,
+    /research assistants?/ig,
+    /gig economy.*robots?/ig,
+    /Pope Leo XIV/ig,
+    /Pope/ig,
     /Amazon Nova Sonic/ig,
     /Amazon Nova 2/ig,
     /Android CLI/ig,
@@ -751,6 +851,7 @@ function actionFromTitle(title) {
   const text = decodeText(title).toLowerCase();
   if (/leaderboard|ranking/.test(text)) return '榜单排名';
   if (/benchmark|evaluation|evaluators?/.test(text)) return '评测';
+  if (/valuation/.test(text)) return '估值变化';
   if (hasFundingEvidence(text)) return '融资';
   if (hasLegalEvidence(text)) return '诉讼';
   if (/auto-delet|delete/.test(text)) return '自动清除';
@@ -759,6 +860,15 @@ function actionFromTitle(title) {
   if (/tool calling/.test(text)) return '工具调用';
   if (/memory/.test(text)) return '记忆扩展';
   if (/search/.test(text)) return '搜索改版';
+  if (/installs are up|install.*up/.test(text)) return '安装增长';
+  if (/monitoring|ambient agents/.test(text)) return '主动监控';
+  if (/observability/.test(text)) return '可观测性';
+  if (/self-hosted|kubernetes/.test(text)) return '自托管部署';
+  if (/payments?|agentic commerce|commerce/.test(text)) return '支付链路';
+  if (/research assistants?/.test(text)) return '研究助手';
+  if (/train.*robots?|robots?.*train/.test(text)) return '机器人训练';
+  if (/pope|dangers of ai|write about/.test(text)) return 'AI 写作争议';
+  if (/langgraph|multi-agent systems|serverless/.test(text)) return '多智能体部署';
   if (/subscription|pricing|price/.test(text)) return '订阅调整';
   if (/shopping|cart|spend your money/.test(text)) return '购物代理';
   if (/assistant|agentic|agent/.test(text)) return '智能体能力';
@@ -866,6 +976,16 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '购物代理') return `${object}想接管购物流程`;
   if (action === '视觉识别') return `${object}接入外部摄像头识别`;
   if (action === '设计工具') return `${object}把 AI 设计摆上台面`;
+  if (action === '估值变化') return `${object}估值变化，市场开始重新定价`;
+  if (action === '安装增长') return `${object}安装增长，搜索入口竞争升温`;
+  if (action === '主动监控') return `${object}把监控交给环境智能体`;
+  if (action === '可观测性') return `${object}补上企业可观测性`;
+  if (action === '自托管部署') return `${object}进入自托管运维`;
+  if (action === '支付链路') return `${object}开始处理智能体支付`;
+  if (action === '研究助手') return `${object}把研究助手做成应用`;
+  if (action === '机器人训练') return `印度零工数据盯上机器人训练`;
+  if (action === 'AI 写作争议') return `${object}牵出 AI 写作争议`;
+  if (action === '多智能体部署') return `${object}走向多智能体部署`;
   if (action === '推出') return `${object}补上产品能力`;
   return `${object}推进${action}`;
 }
@@ -889,6 +1009,16 @@ function summaryFromStoryFact(item, storyFact) {
   if (action === '视觉识别') return `${source}提到${object}的视觉识别能力，真正要看的是它在真实环境里能否稳定读懂场景。`;
   if (action === '设计工具') return `${source}把${object}推到设计工具层面，关键是它能否改变原型、素材和协作流程。`;
   if (action === '团队变动') return `${source}把${object}的人才流动放到前沿模型竞争里看，训练经验和研究判断仍是稀缺资源。`;
+  if (action === '估值变化') return `${source}报道${object}估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。`;
+  if (action === '安装增长') return `${source}写到${object}安装增长，说明用户正在用脚投票，搜索入口的默认权力开始被 AI 搜索体验重新挑战。`;
+  if (action === '主动监控') return `${source}把${object}放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。`;
+  if (action === '可观测性') return `${source}围绕${object}讲企业可观测性，关键是它能不能把日志、指标和排障流程接成一个可用入口。`;
+  if (action === '自托管部署') return `${source}把${object}放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。`;
+  if (action === '支付链路') return `${source}写到${object}，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。`;
+  if (action === '研究助手') return `${source}把${object}做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。`;
+  if (action === '机器人训练') return `${source}把${object}和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。`;
+  if (action === 'AI 写作争议') return `${source}围绕${object}讨论 AI 写作争议，重点是权威文本、公众信任和生成工具边界会被放到一起审视。`;
+  if (action === '多智能体部署') return `${source}把${object}推向多智能体部署，企业要看的不是 agent 数量，而是编排、成本和故障边界。`;
   if (action === '推出') return `${source}报道${object}的新功能或版本，接下来要看它补上哪段能力、面向谁开放。`;
   return `${source}把${object}带到${storyFact.audience || '相关使用者'}面前，${action}会改变使用路径和产品边界。`;
 }
@@ -906,6 +1036,12 @@ function whyFromStoryFact(item, storyFact) {
   if (action === '评测' || action === '榜单排名') return `${audience}要看${object}：公开评测能让能力比较少一点玄学，多一点可复查证据。`;
   if (action === '推出') return `${audience}要看${object}：新功能是否改变现有产品路径，而不是只增加发布会信息量。`;
   if (action === '有声书生成') return `${audience}要看${object}：有声书制作门槛下降后，版权、配音质量和分发规则都会变重要。`;
+  if (action === '估值变化') return `${audience}要看${object}：估值变化会倒逼它证明流量、收入或开发者入口真能成立。`;
+  if (action === '安装增长') return `${audience}要看${object}：入口迁移一旦发生，搜索分发和广告预算都会跟着挪动。`;
+  if (action === '主动监控') return `${audience}要看${object}：监控如果变主动，值班、告警和排障成本都会重新计算。`;
+  if (action === '自托管部署') return `${audience}要看${object}：自托管能力决定它能不能进入更敏感的企业环境。`;
+  if (action === '支付链路') return `${audience}要看${object}：智能体碰到支付后，权限和责任边界会比模型能力更要命。`;
+  if (action === '机器人训练') return `${audience}要看${object}：机器人需要现实数据，数据来源会影响成本、质量和合规。`;
   return `${audience}要看${object}：${action}会改变具体接入方式、使用边界或采购判断。`;
 }
 
@@ -921,6 +1057,12 @@ function janetFromStoryFact(item, storyFact) {
   if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
   if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
   if (action === '有声书生成') return `${object}不是“AI 很会说话”的故事，而是音频制作开始变成按钮级工具。`;
+  if (action === '估值变化') return `${object}被重新定价，说明市场开始问它到底卡住了哪个入口。`;
+  if (action === '安装增长') return `${object}增长不是虚热，用户愿意换默认入口才是真信号。`;
+  if (action === '主动监控') return `${object}这类能力很朴素，但能少叫醒几次人，就有预算价值。`;
+  if (action === '自托管部署') return `${object}进自托管，说明企业终于开始问“我能不能自己管住它”。`;
+  if (action === '支付链路') return `${object}一碰支付就不再是玩具，权限设计会立刻变成生死线。`;
+  if (action === '机器人训练') return `${object}这事现实得很：机器人缺的是可用数据、标注成本和稳定客户。`;
   return `${object}要看入口、权限和使用门槛，发布词不算数，能被真实团队接起来才算数。`;
 }
 
@@ -937,6 +1079,12 @@ function watchFromStoryFact(item, storyFact) {
   if (action === '融资') return `看${object}融资后是否给出产品指标。`;
   if (action === '诉讼') return `看${object}后续是否影响治理承诺。`;
   if (action === '评测' || action === '榜单排名') return `看${object}是否公开任务集和评分细则。`;
+  if (action === '估值变化') return `看${object}是否公布收入或使用指标。`;
+  if (action === '安装增长') return `看${object}是否持续抢走默认搜索入口。`;
+  if (action === '主动监控') return `看${object}是否公开告警准确率和接入方式。`;
+  if (action === '自托管部署') return `看${object}是否给出升级、权限和审计方案。`;
+  if (action === '支付链路') return `看${object}是否公开授权、退款和责任规则。`;
+  if (action === '机器人训练') return `看${object}是否公布数据质量和客户案例。`;
   if (action === '推出') return `看${object}是否给出可用入口和限制。`;
   return `看${object}后续是否公布可用入口、权限范围和真实案例。`;
 }
@@ -1590,11 +1738,23 @@ function ensureUniqueStoryCopy(stories) {
 function buildHomepageAssembly(stories, date) {
   const lead = stories[0];
   const used = new Set([lead.id]);
-  const maxSignals = Math.min(3, Math.max(0, stories.length - 1));
-  const signalMap = signalMapForEdition(stories.filter((story) => story.id !== lead.id)).slice(0, maxSignals).map((signal, index) => {
-    const story = stories.find((item) => signal.evidence.includes(item.id) && !used.has(item.id));
-    if (!story) return null;
+  const sourceCounts = new Map([[lead.source, 1]]);
+  const canUseOnHomepage = (story) => {
+    if (!story || used.has(story.id)) return false;
+    const source = story.source || '';
+    return (sourceCounts.get(source) || 0) < 2;
+  };
+  const markHomepageStory = (story) => {
+    if (!story) return;
     used.add(story.id);
+    const source = story.source || '';
+    sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
+  };
+  const maxSignals = Math.min(3, Math.max(0, stories.length - 1));
+  const signalMap = signalMapForEdition(stories.filter((story) => story.id !== lead.id)).map((signal, index) => {
+    const story = stories.find((item) => signal.evidence.includes(item.id) && canUseOnHomepage(item));
+    if (!story) return null;
+    markHomepageStory(story);
     return {
       ...signal,
       label: signalLabelFor(signal, story),
@@ -1607,14 +1767,14 @@ function buildHomepageAssembly(stories, date) {
       external_url: story.external_url || story.url || story.source_url || '',
       visual: story.visual
     };
-  }).filter(Boolean);
+  }).filter(Boolean).slice(0, maxSignals);
 
-  const compactPool = uniqueStoryList(stories).filter((story) => !used.has(story.id));
+  const compactPool = uniqueStoryList(stories).filter((story) => canUseOnHomepage(story));
   const compactNews = [
     ...compactPool.filter((story) => story.core_eligible),
     ...compactPool.filter((story) => !story.core_eligible)
   ].slice(0, 6);
-  compactNews.forEach((story) => used.add(story.id));
+  compactNews.forEach(markHomepageStory);
 
   const homepageItems = [homepageStoryItem('lead', lead)];
   signalMap.forEach((signal) => {
@@ -2205,7 +2365,7 @@ function buildReaderBody(story) {
     '工具调用': `${source}提到${object}，智能体开始从“能聊天”往“能调用工具完成步骤”走，开发团队才有理由把它接进流程。`,
     '记忆扩展': `${source}提到${object}，长期记忆如果能稳定调用，智能体才不会每次都像刚入职的临时工。`
   };
-  const opening = openingByAction[action] || `${source}报道${object}，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。`;
+  const opening = openingByAction[action] || `${source}报道${object}，这次已经落到产品、合作、评测或商业路径里的具体动作。`;
   const paragraphs = [
     `${opening}原文标题是「${original}」。${baseSummary}`,
     `对${audience}来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。${why} 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。`,
@@ -2251,7 +2411,7 @@ function buildLongJanetTake(story) {
     '合作': cooperationTake,
     '生成': `${prefix}Janet 的判断是：${object}把生成能力推到音乐内容里，破防点是粉丝创作和版权分账终于撞到一起；槽点是平台、艺人和用户的边界会很难切。内容团队要先看授权开关、收益规则和下架机制。`
   };
-  const text = actionTakes[action] || `${prefix}Janet 的判断是：${source}这次围绕${object}给出的不是一句口号，而是对${audience}的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。`;
+  const text = actionTakes[action] || `${prefix}Janet 的判断是：${source}这次围绕${object}给出的是对${audience}的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。`;
   return cleanTemplateCopy(cnCharCount(text) < 60 ? `${text} 对国内团队来说，先小范围试用，再算账。` : text);
 }
 
@@ -2718,6 +2878,8 @@ function main() {
     published_edition_id: previousLatestEditionId,
     used_sample_data: false,
     published_at_window_enforced: true,
+    input_source: '',
+    candidate_selected_count: 0,
     errors: []
   };
 
@@ -2816,6 +2978,34 @@ function main() {
     });
     return Promise.resolve(processItems(snapshotItems, snapshotItems, [], snapshot));
   }
+
+  const newsStore = loadNewsStoreCandidates(date);
+  status.input_source = 'news-store-daily-candidates';
+  status.candidate_selected_count = Number(newsStore.candidates?.selected_count || newsStore.items.length || 0);
+  if (!newsStore.ok) {
+    status.status = 'no_new_edition_allowed';
+    status.edition_type = 'blocked';
+    status.published = false;
+    status.created_new_edition = false;
+    status.no_new_edition_reason = newsStore.reason || 'news_store_candidates_unavailable';
+    status.published_edition_id = previousLatestEditionId;
+    status.selected_count = 0;
+    status.source_success_count = Number(newsStore.candidates?.source_status_summary?.source_success_count || 0);
+    status.source_error_count = Number(newsStore.candidates?.source_status_summary?.source_error_count || 0);
+    status.source_count = Number(newsStore.candidates?.source_status_summary?.source_count || status.source_count || 0);
+    writeLiveSourceSnapshot({ date, window, status, rawItems: [], included: [], excluded: [] });
+    writeJson(STATUS_PATH, status);
+    console.log(`status: ${status.status}`);
+    return Promise.resolve();
+  }
+  status.source_count = Number(newsStore.candidates?.source_status_summary?.source_count || status.source_count || 0);
+  status.source_success_count = Number(newsStore.candidates?.source_status_summary?.source_success_count || 0);
+  status.source_error_count = Number(newsStore.candidates?.source_status_summary?.source_error_count || 0);
+  status.source_empty_count = 0;
+  status.raw_items = newsStore.items.length;
+  status.candidate_count = newsStore.items.length;
+  status.selected_count = newsStore.items.length;
+  return Promise.resolve(processItems(newsStore.items, newsStore.items, []));
 
   const promises = pool.sources.filter((item) => item.enabled).map(async (source) => {
     const result = await fetchSource(source);

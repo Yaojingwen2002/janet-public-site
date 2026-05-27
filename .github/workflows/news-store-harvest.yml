@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "10 */2 * * *"
-    - cron: "30 11 * * *" # TEMP-U13-B-FIX3 one-shot test, remove after first run
 
 permissions:
   contents: write

@@ -25,6 +25,7 @@ const HTML_FILES = [
 ];
 const LEAKS = ['/Volumes/', 'file://', '/Users/', 'localhost', '127.0.0.1'];
 const FORBIDDEN_PATHS = ['engineering', 'data/_working', 'node_modules'];
+const ALLOWED_WORKING_RE = /^data\/_working\/deployment\/U13-[A-Z0-9-]+.*\.md$/;
 const BASE = 'https://yaojingwen2002.github.io/janet-public-site/';
 
 function ensureDir(filePath) {
@@ -47,6 +48,13 @@ function walk(dir) {
     else out.push(full);
   }
   return out;
+}
+
+function dataWorkingOnlyHasDeploymentReports() {
+  const dir = resolve(ROOT, 'data/_working');
+  if (!existsSync(dir)) return true;
+  const files = walk(dir).map((file) => file.replace(ROOT + '/', ''));
+  return files.length > 0 && files.every((file) => ALLOWED_WORKING_RE.test(file));
 }
 
 function read(file) {
@@ -100,6 +108,7 @@ function main() {
   }
 
   for (const forbidden of FORBIDDEN_PATHS) {
+    if (forbidden === 'data/_working' && dataWorkingOnlyHasDeploymentReports()) continue;
     if (existsSync(resolve(ROOT, forbidden))) forbiddenFilesFound.push(forbidden);
   }
 

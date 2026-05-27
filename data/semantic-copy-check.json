@@ -2,10 +2,10 @@
   "step": "35-U4-D",
   "status": "semantic_copy_ready",
   "qa_passed": true,
-  "latest_edition_id": "2026-05-22-v4",
-  "checked_file_path": "data/2026-05-22-v4/content.json",
-  "homepage_items_checked": 10,
-  "stories_checked": 14,
+  "latest_edition_id": "2026-05-27-v4",
+  "checked_file_path": "data/2026-05-27-v4/content.json",
+  "homepage_items_checked": 9,
+  "stories_checked": 10,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -26,29 +26,7 @@
     },
     "janet_take": {
       "hard": [],
-      "warnings": [
-        {
-          "field": "janet_take",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.667,
-          "item_a": {
-            "story_id": "aws-machine-learning-baae138cd177",
-            "title": "Intelligent诉讼继续牵动 AI 治理",
-            "source": "AWS Machine Learning Blog",
-            "category": "business",
-            "original_title": "Intelligent radiology workflow optimization with AI agents",
-            "text": "Janet 的判断是：Intelligent这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。"
-          },
-          "item_b": {
-            "story_id": "the-verge-ai-4bdaa74b7f1b",
-            "title": "The Verge梳理 OpenAI 控制权交锋",
-            "source": "The Verge AI",
-            "category": "business",
-            "original_title": "All of the updates from Elon Musk and Sam Altman’s battle over OpenAI",
-            "text": "这不是一条单点新闻，是 OpenAI 家庭剧的滚动字幕。 Janet 的判断是：Sam Altman这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。"
-          }
-        }
-      ]
+      "warnings": []
     },
     "watch_next": {
       "hard": [],
@@ -56,126 +34,104 @@
     }
   },
   "max_title_similarity": {
-    "score": 0.217,
+    "score": 0.553,
     "item_a": {
-      "story_id": "the-verge-ai-cd3749849a3f",
-      "title": "Elon Musk推进合作",
-      "source": "The Verge AI",
+      "story_id": "aws-machine-learning-9be2bc4f4f33",
+      "title": "Amazon Bedrock AgentCore补上企业可观测性",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
-      "text": "Elon Musk推进合作"
+      "original_title": "Build high-performance generative AI systems with Strands Agents, NVIDIA NIM, and Amazon Bedrock AgentCore",
+      "text": "Amazon Bedrock AgentCore补上企业可观测性"
     },
     "item_b": {
-      "story_id": "techcrunch-ai-093c24bfb470",
-      "title": "Universal Music推进合作",
-      "source": "TechCrunch AI",
+      "story_id": "aws-machine-learning-2715154a135f",
+      "title": "Amazon Bedrock AgentCore开始处理智能体支付",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
-      "text": "Universal Music推进合作"
+      "original_title": "Technical deep dive: AgentCore payments and innovation in agentic commerce",
+      "text": "Amazon Bedrock AgentCore开始处理智能体支付"
     }
   },
   "max_summary_similarity": {
-    "score": 0.475,
+    "score": 0.261,
     "item_a": {
-      "story_id": "the-verge-ai-cd3749849a3f",
-      "title": "Elon Musk推进合作",
-      "source": "The Verge AI",
+      "story_id": "aws-machine-learning-9be2bc4f4f33",
+      "title": "Amazon Bedrock AgentCore补上企业可观测性",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
-      "text": "The Verge把Elon Musk带到相关产品团队和使用者面前，合作会改变使用路径和产品边界。"
+      "original_title": "Build high-performance generative AI systems with Strands Agents, NVIDIA NIM, and Amazon Bedrock AgentCore",
+      "text": "AWS围绕Amazon Bedrock AgentCore讲企业可观测性，关键是它能不能把日志、指标和排障流程接成一个可用入口。"
     },
     "item_b": {
-      "story_id": "techcrunch-ai-093c24bfb470",
-      "title": "Universal Music推进合作",
-      "source": "TechCrunch AI",
+      "story_id": "aws-machine-learning-2715154a135f",
+      "title": "Amazon Bedrock AgentCore开始处理智能体支付",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
-      "text": "TechCrunch把Universal Music带到相关产品团队和使用者面前，合作会改变使用路径和产品边界。"
+      "original_title": "Technical deep dive: AgentCore payments and innovation in agentic commerce",
+      "text": "AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。"
     }
   },
   "max_why_similarity": {
-    "score": 0.608,
+    "score": 0.421,
     "item_a": {
-      "story_id": "the-verge-ai-cd3749849a3f",
-      "title": "Elon Musk推进合作",
-      "source": "The Verge AI",
+      "story_id": "aws-machine-learning-9be2bc4f4f33",
+      "title": "Amazon Bedrock AgentCore补上企业可观测性",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
-      "text": "相关产品团队和使用者要看Elon Musk：合作会改变具体接入方式、使用边界或采购判断。"
+      "original_title": "Build high-performance generative AI systems with Strands Agents, NVIDIA NIM, and Amazon Bedrock AgentCore",
+      "text": "开发者和平台团队要看Amazon Bedrock AgentCore：可观测性会改变具体接入方式、使用边界或采购判断。"
     },
     "item_b": {
-      "story_id": "techcrunch-ai-093c24bfb470",
-      "title": "Universal Music推进合作",
-      "source": "TechCrunch AI",
+      "story_id": "aws-machine-learning-2715154a135f",
+      "title": "Amazon Bedrock AgentCore开始处理智能体支付",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
-      "text": "相关产品团队和使用者要看Universal Music：合作会改变具体接入方式、使用边界或采购判断。"
+      "original_title": "Technical deep dive: AgentCore payments and innovation in agentic commerce",
+      "text": "开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。"
     }
   },
   "max_janet_take_similarity": {
-    "score": 0.667,
+    "score": 0.573,
     "item_a": {
-      "story_id": "aws-machine-learning-baae138cd177",
-      "title": "Intelligent诉讼继续牵动 AI 治理",
-      "source": "AWS Machine Learning Blog",
+      "story_id": "techcrunch-ai-077d35556946",
+      "title": "DuckDuckGo安装增长，搜索入口竞争升温",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "Intelligent radiology workflow optimization with AI agents",
-      "text": "Janet 的判断是：Intelligent这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。"
+      "original_title": "DuckDuckGo installs are up 30% as users reject being ‘force-fed’ Google’s AI Search",
+      "text": "DuckDuckGo增长不是虚热，用户愿意换默认入口才是真信号。 Janet 的判断是：TechCrunch这次围绕DuckDuckGo给出的不是一句漂亮话，而是对普通用户和产品团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
     },
     "item_b": {
-      "story_id": "the-verge-ai-4bdaa74b7f1b",
-      "title": "The Verge梳理 OpenAI 控制权交锋",
-      "source": "The Verge AI",
+      "story_id": "techcrunch-ai-3eedeecd0c03",
+      "title": "OpenRouter估值变化，市场开始重新定价",
+      "source": "TechCrunch AI",
       "category": "business",
-      "original_title": "All of the updates from Elon Musk and Sam Altman’s battle over OpenAI",
-      "text": "这不是一条单点新闻，是 OpenAI 家庭剧的滚动字幕。 Janet 的判断是：Sam Altman这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。"
+      "original_title": "OpenRouter more than doubles valuation to $1.3B in a year",
+      "text": "OpenRouter被重新定价，说明市场开始问它到底卡住了哪个入口。 Janet 的判断是：TechCrunch这次围绕OpenRouter给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
     }
   },
   "max_watch_next_similarity": {
-    "score": 0.5,
+    "score": 0.182,
     "item_a": {
-      "story_id": "the-verge-ai-cd3749849a3f",
-      "title": "Elon Musk推进合作",
-      "source": "The Verge AI",
-      "category": "business",
-      "original_title": "Anthropic is paying $15 billion a year for access to Elon Musk’s data centers",
-      "text": "看Elon Musk后续是否公布可用入口、权限范围和真实案例。"
+      "story_id": "langchain-blog-2e23f43a7334",
+      "title": "LangSmith进入自托管运维",
+      "source": "LangChain Blog",
+      "category": "agents",
+      "original_title": "Mission Control for Self-Hosted LangSmith on Kubernetes",
+      "text": "看 LangSmith 是否给出升级、权限和审计方案。"
     },
     "item_b": {
-      "story_id": "techcrunch-ai-093c24bfb470",
-      "title": "Universal Music推进合作",
-      "source": "TechCrunch AI",
+      "story_id": "aws-machine-learning-527745d698eb",
+      "title": "LangGraph 多智能体迁到 AWS 无服务器",
+      "source": "AWS Machine Learning Blog",
       "category": "business",
-      "original_title": "Spotify and Universal Music strike deal allowing fan-made AI covers and remixes",
-      "text": "看Universal Music后续是否公布可用入口、权限范围和真实案例。"
+      "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
+      "text": "看 LangGraph 方案是否给出压测数据、状态管理和故障恢复样例。"
     }
   },
   "forbidden_patch_phrases_found": [],
   "generic_template_phrases_found": [],
   "missing_specific_terms": [],
   "cross_edition_similarity_issues": [],
-  "warnings": [
-    {
-      "field": "janet_take",
-      "reason": "near_duplicate_warning",
-      "similarity": 0.667,
-      "item_a": {
-        "story_id": "aws-machine-learning-baae138cd177",
-        "title": "Intelligent诉讼继续牵动 AI 治理",
-        "source": "AWS Machine Learning Blog",
-        "category": "business",
-        "original_title": "Intelligent radiology workflow optimization with AI agents",
-        "text": "Janet 的判断是：Intelligent这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。"
-      },
-      "item_b": {
-        "story_id": "the-verge-ai-4bdaa74b7f1b",
-        "title": "The Verge梳理 OpenAI 控制权交锋",
-        "source": "The Verge AI",
-        "category": "business",
-        "original_title": "All of the updates from Elon Musk and Sam Altman’s battle over OpenAI",
-        "text": "这不是一条单点新闻，是 OpenAI 家庭剧的滚动字幕。 Janet 的判断是：Sam Altman这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。"
-      }
-    }
-  ],
+  "warnings": [],
   "issues": []
 }

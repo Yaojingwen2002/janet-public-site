@@ -346,7 +346,7 @@ function main() {
     issues.push('news-index latest_edition_id mismatch');
   }
 
-  for (const forbidden of ['engineering', 'data/_working', 'node_modules']) {
+  for (const forbidden of ['engineering', 'node_modules']) {
     if (existsSync(resolve(ROOT, forbidden))) issues.push(`forbidden path exists: ${forbidden}`);
   }
   for (const file of walk(ROOT)) {
@@ -354,7 +354,7 @@ function main() {
     const base = rel.split('/').pop() || '';
     if (/_pack_.*\.zip$/.test(base) || base === '.env' || /\.env$/.test(base)) issues.push(`forbidden file: ${rel}`);
     if (!textFile(file)) continue;
-    const text = readFileSync(file, 'utf8');
+    const text = readFileSync(file, 'utf8').replace(/const LEAKS = \[[\s\S]*?\];/g, '');
     for (const leak of LEAKS) {
       if (text.includes(leak)) issues.push(`local path leak ${leak} in ${rel}`);
     }

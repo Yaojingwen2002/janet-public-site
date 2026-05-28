@@ -9,7 +9,19 @@ const FORBIDDEN = [
   '给出了一条关于商业动作的新信号',
   '不是口号',
   '今天具体新闻里能点开的变化',
-  '看源站是否给出后续细节'
+  '看源站是否给出后续细节',
+  'Janet 的判断是',
+  'Janet 锐评',
+  '破防点',
+  '槽点',
+  '这件事要拆成三层看',
+  '接下来要盯的是',
+  '先看对象、动作和限制条件',
+  '先看这条新闻里的对象',
+  '能省钱、能替流程、能交付，再把它放进自己的工具箱',
+  '这不是一句抽象趋势',
+  '不是一句漂亮话',
+  '工作流试探'
 ];
 
 function readJson(path, fallback = null) {
@@ -87,6 +99,7 @@ function main() {
   ].join('\n');
   const forbiddenFound = FORBIDDEN.filter((phrase) => searchable.includes(phrase));
   if (forbiddenFound.length) issues.push(`forbidden template copy remains: ${forbiddenFound.join(', ')}`);
+  if (/<div class="k">(?:头条|headline|top story)<\/div>/i.test(output)) issues.push('duplicate headline section rendered in output');
   if (signalMap.length > 1 && new Set(signalIds).size !== signalIds.length) issues.push('signal_map does not use unique stories');
   if (signalMap.length > 3) warnings.push('signal_map has more than three items');
 

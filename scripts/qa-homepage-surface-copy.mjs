@@ -20,7 +20,19 @@ const FORBIDDEN_SURFACE_PHRASES = [
   '有明确动作',
   '先别喊革命',
   '看它有没有真实用户和可复查结果',
-  '出现新进展'
+  '出现新进展',
+  'Janet 的判断是',
+  'Janet 锐评',
+  '破防点',
+  '槽点',
+  '这件事要拆成三层看',
+  '接下来要盯的是',
+  '先看对象、动作和限制条件',
+  '先看这条新闻里的对象',
+  '能省钱、能替流程、能交付，再把它放进自己的工具箱',
+  '这不是一句抽象趋势',
+  '不是一句漂亮话',
+  '工作流试探'
 ];
 const GENERIC_TITLE_WORDS = ['开发者', '入口', '流程', '工具', '产品', '模型能力', '智能体'];
 const META_FIELDS = new Set(['date', 'source', 'brand', 'edition_type', 'status', 'output_url', 'summary_url', 'content_url', 'url', 'visual', 'id', 'story_id', 'lead_story_id', 'category', 'role', 'original_title']);

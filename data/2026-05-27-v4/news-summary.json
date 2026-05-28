@@ -3,7 +3,7 @@
   "edition_type": "full_edition",
   "date": "2026-05-27",
   "brand": "Janet 快车箱",
-  "theme": "自托管部署接上AgentCore",
+  "theme": "Self-Hosted La牵出LangSmit",
   "item_count": 10,
   "lead_story": {
     "id": "langchain-blog-2e23f43a7334",
@@ -33,7 +33,7 @@
       ],
       "action": "自托管部署",
       "audience": "相关产品团队和使用者",
-      "editorial_angle": "LangSmith 的自托管部署会影响相关产品团队和使用者",
+      "editorial_angle": "Self-Hosted LangSmith的自托管部署会影响相关产品团队和使用者",
       "story_facts": [
         {
           "label": "entity",
@@ -63,8 +63,8 @@
       "original_title": "Mission Control for Self-Hosted LangSmith on Kubernetes",
       "original_summary": "How Mission Control helps teams operate self-hosted LangSmith on Kubernetes with in-cluster config, preflight checks, health views, releases, and diagnostics."
     },
-    "zh_title": "LangSmith进入自托管运维",
-    "zh_summary": "LangChain把 LangSmith 放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。",
+    "zh_title": "LangSmith自托管进入自托管运维",
+    "zh_summary": "LangChain把Self-Hosted LangSmith放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。",
     "story_facts": [
       {
         "label": "entity",
@@ -91,7 +91,7 @@
         "value": "Self-Hosted LangSmith"
       }
     ],
-    "title": "LangSmith进入自托管运维",
+    "title": "LangSmith自托管进入自托管运维",
     "original_title": "Mission Control for Self-Hosted LangSmith on Kubernetes",
     "url": "https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes",
     "source_url": "https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes",
@@ -103,15 +103,15 @@
     "score": 8,
     "published_at": "2026-05-26T17:32:52.000Z",
     "published_at_source": "news-store.published_at",
-    "summary": "LangChain把 LangSmith 放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。",
+    "summary": "LangChain把Self-Hosted LangSmith放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。",
     "original_summary": "How Mission Control helps teams operate self-hosted LangSmith on Kubernetes with in-cluster config, preflight checks, health views, releases, and diagnostics.",
-    "why_it_matters": "相关产品团队和使用者要看LangSmith：自托管能力决定它能不能进入更敏感的企业环境。",
-    "janet_take": "LangSmith 进自托管，说明企业终于开始问“我能不能自己管住它”。Janet 会看升级、权限、审计和 Kubernetes 运维成本：能进内网是第一步，能长期稳定才是采购理由。国内团队如果要替代云端观测，先算清楚谁来维护、谁来背锅。",
-    "watch_next": "看 LangSmith 是否给出升级、权限和审计方案。",
+    "why_it_matters": "相关产品团队和使用者要看Self-Hosted LangSmith：自托管能力决定它能不能进入更敏感的企业环境。",
+    "janet_take": "LangChain这次围绕LangSmith给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
+    "watch_next": "继续看升级、权限和审计方案。",
     "image": null,
     "image_source": null,
     "image_credit": null,
-    "verified_at": "2026-05-27T03:33:49.768Z",
+    "verified_at": "2026-05-28T01:12:52.457Z",
     "duplicate_group": null,
     "evidence_ids": [
       "news-store-0004"
@@ -151,14 +151,14 @@
       "LangChain Blog",
       "Mission Control for Self-Hosted LangSmith on Kubernetes"
     ],
-    "content": "LangChain报道Self-Hosted LangSmith，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「Mission Control for Self-Hosted LangSmith on Kubernetes」。LangChain把 LangSmith 放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。\n\n对相关产品团队和使用者来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。相关产品团队和使用者要看LangSmith：自托管能力决定它能不能进入更敏感的企业环境。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：LangSmith 进自托管，说明企业终于开始问“我能不能自己管住它”。 Janet 的判断是：LangChain这次围绕Self-Hosted LangSmith给出的不是一句漂亮话，而是对相关产品团队和使用者的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Self-Hosted LangSmith已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看 LangSmith 是否给出升级、权限和审计方案。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+    "content": "LangChain报道LangSmith，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Mission Control for Self-Hosted LangSmith on Kubernetes」。LangChain把Self-Hosted LangSmith放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。 相关产品团队和使用者要看Self-Hosted LangSmith：自托管能力决定它能不能进入更敏感的企业环境。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 LangChain这次围绕LangSmith给出的是对相关产品团队和使用者的落地路径测试。 它可能省掉一段重复流程，但成本、权限和稳定性还得实测。 国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 继续看升级、权限和审计方案。 LangSmith已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看升级、权限和审计方案。。",
     "primary_section": "agents",
     "visual": {
       "status": "ready",
       "mode": "source_image",
       "src": "assets/news-visuals/2026-05-27-v4/langchain-blog-2e23f43a7334.png",
       "local_path": "assets/news-visuals/2026-05-27-v4/langchain-blog-2e23f43a7334.png",
-      "alt": "新闻视觉：LangSmith进入自托管运维",
+      "alt": "新闻视觉：LangSmith自托管进入自托管运维",
       "caption": "LangChain源站图片，对应「Self-Hosted LangSmith」的自托管部署。",
       "credit": "LangChain Blog",
       "license": "source article image / editorial reference",
@@ -176,9 +176,9 @@
   "summary_url": "data/2026-05-27-v4/news-summary.json",
   "content_url": "data/2026-05-27-v4/content.json",
   "vol": "0000",
-  "title": "LangSmith进内网",
-  "intro_text": "LangSmith 自托管先把今天的注意力拉住；AWS 智能体链路补上另一条线索。今天先看这些具体产品怎么动。",
-  "daily_thesis": "今天先看的对象是 LangSmith、Kubernetes、Bedrock AgentCore 和 LangGraph：它们分别牵出自托管部署、可观测性、支付链路。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
+  "title": "Self-HostedLa带出自托管部署",
+  "intro_text": "LangSmith先把今天的注意力拉住；LangSmith补上另一条线索。今天先看这些具体产品怎么动。",
+  "daily_thesis": "今天先看的对象是LangSmith、LangSmith、Kubernetes、Mission Control：它们分别牵出自托管部署、可观测性、支付链路。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
   "signal_map": [
     {
       "signal": "工具收口",
@@ -350,12 +350,12 @@
       "summary": "AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。",
       "original_summary": "Amazon Bedrock AgentCore payments is now available in preview, it provides instant payments to paid external services with no manual billing setup per provider, stablecoin support for cost-effective microtransactions...",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。",
-      "janet_take": "Amazon Bedrock AgentCore 一碰支付就不再是演示工具，授权、预算上限和交易回滚会立刻变成产品生死线。Janet 更关心它怎么证明“智能体代付”没有越权：谁批准、谁留痕、谁承担退款。国内团队可以先研究 guardrails 设计，别急着让代理接真钱。",
-      "watch_next": "看 Amazon Bedrock AgentCore 是否公开授权、退款和责任规则。",
+      "janet_take": "Bedrock AgentCore碰到支付链路后，智能体就从助手变成交易参与者。授权、退款、风控和人工确认会决定它能不能进真实业务，而不是只停在概念图里。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "继续看授权、退款和责任规则是否讲清。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0007"
@@ -387,7 +387,7 @@
         "AWS Machine Learning Blog",
         "Technical deep dive: AgentCore payments and innovation in agentic commerce"
       ],
-      "content": "AWS报道Bedrock AgentCore，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「Technical deep dive: AgentCore payments and innovation in agentic commerce」。AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Amazon Bedrock AgentCore一碰支付就不再是玩具，权限设计会立刻变成生死线。 Janet 的判断是：AWS这次围绕Bedrock AgentCore给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Bedrock AgentCore已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看Amazon Bedrock AgentCore是否公开授权、退款和责任规则。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Bedrock AgentCore，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Technical deep dive: AgentCore payments and innovation in agentic commerce」。AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。 开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 Bedrock AgentCore碰到支付链路后，智能体就从助手变成交易参与者。 授权、退款、风控和人工确认会决定它能不能进真实业务，而不是只停在概念图里。 对国内团队来说，先小范围试用，再算账。 继续看授权、退款和责任规则是否讲清。 Bedrock AgentCore已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看授权、退款和责任规则是否讲清。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -453,8 +453,8 @@
         "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
         "original_summary": "In this post, we provide a solution to build highly scalable, serverless multi-agent generative AI systems on AWS using LangGraph Agents as orchestrators integrated with Amazon Bedrock AgentCore Memory and Amazon Bedrock AgentCore Observability."
       },
-      "zh_title": "LangGraph 多智能体迁到 AWS 无服务器",
-      "zh_summary": "AWS把 LangGraph、Bedrock AgentCore Memory 和 Observability 绑进无服务器方案，核心问题是多智能体系统能不能在扩容时仍然可追踪。",
+      "zh_title": "Amazon Bedrock AgentCore转向多智能体编排",
+      "zh_summary": "AWS这条讲的是「Amazon Bedrock AgentCore转向多智能体编排」：Build highly scalable serverless LangGraph multi-agent systems in AWS with...",
       "story_facts": [
         {
           "label": "entity",
@@ -473,7 +473,7 @@
           "value": "Amazon Bedrock AgentCore"
         }
       ],
-      "title": "LangGraph 多智能体迁到 AWS 无服务器",
+      "title": "Amazon Bedrock AgentCore转向多智能体编排",
       "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
       "url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
       "source_url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
@@ -485,15 +485,15 @@
       "score": 8,
       "published_at": "2026-05-26T17:41:26.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "AWS把 LangGraph、Bedrock AgentCore Memory 和 Observability 绑进无服务器方案，核心问题是多智能体系统能不能在扩容时仍然可追踪。",
+      "summary": "AWS这条讲的是「Amazon Bedrock AgentCore转向多智能体编排」：Build highly scalable serverless LangGraph multi-agent systems in AWS with...",
       "original_summary": "In this post, we provide a solution to build highly scalable, serverless multi-agent generative AI systems on AWS using LangGraph Agents as orchestrators integrated with Amazon Bedrock AgentCore Memory and Amazon Bedr...",
-      "why_it_matters": "开发者和平台团队要看 LangGraph 这条线：编排、记忆和可观测性被打包后，多智能体应用的运维门槛会明显变化。",
-      "janet_take": "LangGraph 上 AWS 的重点不是“又一个多智能体教程”，而是把编排、记忆和观测塞进可扩容模板里。Janet 会盯两个细节：状态丢了怎么补，代理互相甩锅时日志能不能还原现场。对国内团队来说，它更像架构清单；真正落地前，要先替换云服务依赖并做压力测试。",
-      "watch_next": "看 LangGraph 方案是否给出压测数据、状态管理和故障恢复样例。",
+      "why_it_matters": "「Amazon Bedrock AgentCore转向多智能体编排」会影响相关团队对接口、权限、评测或采购路径的判断。",
+      "janet_take": "「Amazon Bedrock AgentCore转向多智能体编排」要看清具体对象、产品动作和限制条件。 Bedrock AgentCore补可观测性，说明智能体产品开始进入运维硬区。团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。",
+      "watch_next": "继续看企业监控接入成本和权限边界。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0010"
@@ -525,14 +525,14 @@
         "AWS Machine Learning Blog",
         "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore"
       ],
-      "content": "AWS报道Bedrock AgentCore，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore」。AWS这条讲的是 LangGraph、Bedrock AgentCore Memory 和 Observability 的组合：重点不在单点能力，而在多智能体系统能否稳定扩容。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看 LangGraph 这条线：编排、记忆和可观测性被打包后，多智能体应用的运维门槛会明显变化。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Janet 看「LangGraph 多智能体迁到 AWS 无服务器」：先看对象、动作和限制条件。 Janet 的判断是：AWS这次围绕Bedrock AgentCore给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Bedrock AgentCore已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看 LangGraph 方案是否给出压测数据、状态管理和故障恢复样例。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Bedrock AgentCore，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore」。AWS这条讲的是「Amazon Bedrock AgentCore转向多智能体编排」：Build highly scalable serverless LangGraph multi-agent systems in AWS with... 「Amazon Bedrock AgentCore转向多智能体编排」会影响相关团队对接口、权限、评测或采购路径的判断。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 「Amazon Bedrock AgentCore转向多智能体编排」要看清具体对象、产品动作和限制条件。 Bedrock AgentCore补可观测性，说明智能体产品开始进入运维硬区。 团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。 继续看企业监控接入成本和权限边界。 Bedrock AgentCore已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看企业监控接入成本和权限边界。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
         "mode": "source_image",
         "src": "assets/news-visuals/2026-05-27-v4/aws-machine-learning-527745d698eb.png",
         "local_path": "assets/news-visuals/2026-05-27-v4/aws-machine-learning-527745d698eb.png",
-        "alt": "新闻视觉：LangGraph 多智能体迁到 AWS 无服务器",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore转向多智能体编排",
         "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的可观测性。",
         "credit": "AWS Machine Learning Blog",
         "license": "source article image / editorial reference",
@@ -626,12 +626,12 @@
       "summary": "AWS把Proactive AWS放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。",
       "original_summary": "In this post, we demonstrate the capabilities of AgentWatch through practical implementation. You will see how the solution performs infrastructure checks every 15 minutes, summarizing CloudWatch metrics, logs, and al...",
       "why_it_matters": "企业团队和投资者要看Proactive AWS：监控如果变主动，值班、告警和排障成本都会重新计算。",
-      "janet_take": "AgentWatch 把监控做成环境智能体，价值不在“会聊天”，而在它能不能少漏一次告警、少叫醒一次值班。Janet 会先看误报率、权限边界和 Slack 报告是否能被审计。企业可以小范围接只读系统，别一上来就让它改生产配置。",
-      "watch_next": "看Proactive AWS是否公开告警准确率和接入方式。",
+      "janet_take": "Proactive AWS这类能力很朴素，但能少叫醒几次人，就有预算价值。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。它要证明的是准确率、噪声控制和接入成本。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。它要证明的是准确率、噪声控制和接入成本。",
+      "watch_next": "继续看告警准确率和接入方式。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0001"
@@ -663,7 +663,7 @@
         "AWS Machine Learning Blog",
         "AgentWatch: Proactive AWS monitoring with ambient agents"
       ],
-      "content": "AWS报道Proactive AWS，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「AgentWatch: Proactive AWS monitoring with ambient agents」。AWS把Proactive AWS放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。\n\n对企业团队和投资者来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。企业团队和投资者要看Proactive AWS：监控如果变主动，值班、告警和排障成本都会重新计算。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Proactive AWS这类能力很朴素，但能少叫醒几次人，就有预算价值。 Janet 的判断是：AWS这次围绕Proactive AWS给出的不是一句漂亮话，而是对企业团队和投资者的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Proactive AWS已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看Proactive AWS是否公开告警准确率和接入方式。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Proactive AWS，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「AgentWatch: Proactive AWS monitoring with ambient agents」。AWS把Proactive AWS放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。 企业团队和投资者要看Proactive AWS：监控如果变主动，值班、告警和排障成本都会重新计算。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 Proactive AWS这类能力很朴素，但能少叫醒几次人，就有预算价值。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。 它要证明的是准确率、噪声控制和接入成本。 继续看告警准确率和接入方式。 Proactive AWS已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看告警准确率和接入方式。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -784,12 +784,12 @@
       "summary": "AWS把Strands research assistants做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。",
       "original_summary": "Building an AI app shouldn’t require a PhD in machine learning (ML) or months of wrestling with complex architectures. Yet that’s exactly what happens when you try to orchestrate multiple API calls, manage conversatio...",
       "why_it_matters": "开发者和平台团队要看Strands research assistants：研究助手会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "Strands research assistants 这条更像把研究流程产品化：资料收集、推理、生成应用被串成一条可复用链路。Janet 会看它能不能保留引用、复现步骤和失败记录；如果只会生成漂亮回答，研究团队还是会回到人工校验。国内团队可以借它拆自己的知识工作流，而不是照搬界面。",
-      "watch_next": "看 Strands research assistants 是否公开引用追踪和复现实验模板。",
+      "janet_take": "Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。 对国内团队来说，先小范围试用，再算账。 Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。",
+      "watch_next": "继续看检索、资料处理和生成应用能否串起来。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0011"
@@ -822,7 +822,7 @@
         "AWS Machine Learning Blog",
         "From idea to AI app: Creating intelligent research assistants with Strands"
       ],
-      "content": "AWS报道Strands research ass，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「From idea to AI app: Creating intelligent research assistants with Strands」。AWS把Strands research assistants做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看Strands research assistants：研究助手会改变具体接入方式、使用边界或采购判断。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Janet 的判断是：AWS这次围绕Strands research ass给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Strands research ass已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看Strands research assistants后续是否公布可用入口、...；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Strands research ass，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「From idea to AI app: Creating intelligent research assistants with Strands」。AWS把Strands research assistants做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。 开发者和平台团队要看Strands research assistants：研究助手会改变具体接入方式、使用边界或采购判断。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。 能沉淀模板才有复用价值，只会生成一段文字还不够。 对国内团队来说，先小范围试用，再算账。 继续看检索、资料处理和生成应用能否串起来。 Strands research ass已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看检索、资料处理和生成应用能否串起来。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -914,12 +914,12 @@
       "summary": "TechCrunch报道OpenRouter估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。",
       "original_summary": "OpenRouter has raised a $113 million Series B led by CapitalG. Its 5x growth in usage over six months indicates the multi-AI-model future is here.",
       "why_it_matters": "开发者和平台团队要看OpenRouter：估值变化会倒逼它证明流量、收入或开发者入口真能成立。",
-      "janet_take": "OpenRouter被重新定价，说明市场开始问它到底卡住了哪个入口。 Janet 的判断是：TechCrunch这次围绕OpenRouter给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
+      "janet_take": "TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
       "watch_next": "看OpenRouter是否公布收入或使用指标。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0002"
@@ -944,7 +944,7 @@
         "TechCrunch AI",
         "OpenRouter more than doubles valuation to $1.3B in a year"
       ],
-      "content": "TechCrunch报道OpenRouter，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「OpenRouter more than doubles valuation to $1.3B in a year」。TechCrunch报道OpenRouter估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看OpenRouter：估值变化会倒逼它证明流量、收入或开发者入口真能成立。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：OpenRouter被重新定价，说明市场开始问它到底卡住了哪个入口。 Janet 的判断是：TechCrunch这次围绕OpenRouter给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于OpenRouter已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看OpenRouter是否公布收入或使用指标。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "TechCrunch报道OpenRouter，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「OpenRouter more than doubles valuation to $1.3B in a year」。TechCrunch报道OpenRouter估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。 开发者和平台团队要看OpenRouter：估值变化会倒逼它证明流量、收入或开发者入口真能成立。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。 它可能省掉一段重复流程，但成本、权限和稳定性还得实测。 国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 看OpenRouter是否公布收入或使用指标。 OpenRouter已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看OpenRouter是否公布收入或使用指标。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -1055,12 +1055,12 @@
       "summary": "TechCrunch把India gig economy robot training和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。",
       "original_summary": "Human Archive, a startup founded by UC Berkeley and Stanford researchers, is paying gig workers in India to wear camera-equipped caps and sensor devices to collect the real-world physical training data that AI and rob...",
       "why_it_matters": "研究者和评测团队要看India gig economy robot training：机器人需要现实数据，数据来源会影响成本、质量和合规。",
-      "janet_take": "印度零工数据进入机器人训练，真正的看点是“便宜数据”能不能变成可靠数据。Janet 会盯标注质量、劳动合规和任务覆盖度：机器人学到的不是网页文本，而是现实动作里的脏细节。国内团队如果做具身智能，先问数据授权和质检流程，再谈模型效果。",
-      "watch_next": "看 India gig economy robot training 是否公布数据质检、劳动合规和客户案例。",
+      "janet_take": "India gig economy ro把零工数据和机器人训练连在一起，真正的分歧会落到数据质量、标注成本和劳动合规。便宜数据不等于可用数据，客户会拿任务成功率说话。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看India gig economy robot training是否公布数据...",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0009"
@@ -1085,7 +1085,7 @@
         "TechCrunch AI",
         "This startup is betting India’s gig economy can train the world’s robots"
       ],
-      "content": "TechCrunch报道India gig economy ro，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「This startup is betting India’s gig economy can train the world’s robots」。TechCrunch把India gig economy robot training和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。\n\n对研究者和评测团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。研究者和评测团队要看India gig economy robot training：机器人需要现实数据，数据来源会影响成本、质量和合规。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：India gig economy robot training这事现实得很：机器人真正缺的是稳定、可授权、能复现的任务数据。 Janet 的判断是：TechCrunch这次围绕India gig economy ro给出的不是一句漂亮话，而是对研究者和评测团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于India gig economy ro已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看India gig economy robot training是否公布数据...；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "TechCrunch报道India gig economy ro，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「This startup is betting India’s gig economy can train the world’s robots」。TechCrunch把India gig economy robot training和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。 研究者和评测团队要看India gig economy robot training：机器人需要现实数据，数据来源会影响成本、质量和合规。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 India gig economy ro把零工数据和机器人训练连在一起，真正的分歧会落到数据质量、标注成本和劳动合规。 便宜数据不等于可用数据，客户会拿任务成功率说话。 对国内团队来说，先小范围试用，再算账。 看India gig economy robot training是否公布数据... India gig economy ro已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看India gig economy robot training是否公布数据...。",
       "primary_section": "open_source",
       "visual": {
         "status": "ready",
@@ -1110,22 +1110,22 @@
     {
       "role": "lead",
       "story_id": "langchain-blog-2e23f43a7334",
-      "title": "LangSmith进入自托管运维",
+      "title": "LangSmith自托管进入自托管运维",
       "source": "LangChain Blog",
       "category": "agents",
       "url": "https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes",
       "source_url": "https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes",
       "external_url": "https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes",
-      "summary": "LangChain把 LangSmith 放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。",
-      "why_it_matters": "相关产品团队和使用者要看LangSmith：自托管能力决定它能不能进入更敏感的企业环境。",
-      "janet_take": "LangSmith 进自托管，说明企业终于开始问“我能不能自己管住它”。Janet 会看升级、权限、审计和 Kubernetes 运维成本：能进内网是第一步，能长期稳定才是采购理由。国内团队如果要替代云端观测，先算清楚谁来维护、谁来背锅。",
-      "watch_next": "看 LangSmith 是否给出升级、权限和审计方案。",
+      "summary": "LangChain把Self-Hosted LangSmith放到自托管和 Kubernetes 运维里，企业要看的不是酷功能，而是权限、升级和稳定性。",
+      "why_it_matters": "相关产品团队和使用者要看Self-Hosted LangSmith：自托管能力决定它能不能进入更敏感的企业环境。",
+      "janet_take": "LangChain这次围绕LangSmith给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
+      "watch_next": "继续看升级、权限和审计方案。",
       "visual": {
         "status": "ready",
         "mode": "source_image",
         "src": "assets/news-visuals/2026-05-27-v4/langchain-blog-2e23f43a7334.png",
         "local_path": "assets/news-visuals/2026-05-27-v4/langchain-blog-2e23f43a7334.png",
-        "alt": "新闻视觉：LangSmith进入自托管运维",
+        "alt": "新闻视觉：LangSmith自托管进入自托管运维",
         "caption": "LangChain源站图片，对应「Self-Hosted LangSmith」的自托管部署。",
         "credit": "LangChain Blog",
         "license": "source article image / editorial reference",
@@ -1150,8 +1150,8 @@
       "external_url": "https://aws.amazon.com/blogs/machine-learning/build-high-performance-generative-ai-systems-with-strands-agents-nvidia-nim-and-amazon-bedrock-agentcore",
       "summary": "AWS围绕Amazon Bedrock AgentCore讲企业可观测性，关键是它能不能把日志、指标和排障流程接成一个可用入口。",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore：可观测性会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "这条不是单纯接入 Bedrock AgentCore，而是把 Strands Agents、NVIDIA NIM 和观测链路放到同一套性能叙事里。Janet 会先看三件事：吞吐能不能撑住真实任务，日志能不能定位责任，GPU 成本会不会把省下的人力吃回去。国内团队适合拿它做高负载智能体压测参考，不要直接照抄架构。",
-      "watch_next": "看 AWS 是否补充端到端延迟、故障定位和 GPU 成本样例。",
+      "janet_take": "Bedrock AgentCore补可观测性，说明智能体产品开始进入运维硬区。团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。 对国内团队来说，先小范围试用，再算账。 Bedrock AgentCore补可观测性，说明智能体产品开始进入运维硬区。团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。",
+      "watch_next": "继续看日志、指标和排障入口是否打通。",
       "visual": {
         "status": "ready",
         "mode": "source_image",
@@ -1181,7 +1181,7 @@
       "external_url": "https://techcrunch.com/2026/05/26/duckduckgo-installs-are-up-30-as-users-reject-being-force-fed-googles-ai-search",
       "summary": "TechCrunch写到DuckDuckGo安装增长，说明用户正在用脚投票，搜索入口的默认权力开始被 AI 搜索体验重新挑战。",
       "why_it_matters": "普通用户和产品团队要看DuckDuckGo：入口迁移一旦发生，搜索分发和广告预算都会跟着挪动。",
-      "janet_take": "DuckDuckGo增长不是虚热，用户愿意换默认入口才是真信号。 Janet 的判断是：TechCrunch这次围绕DuckDuckGo给出的不是一句漂亮话，而是对普通用户和产品团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
+      "janet_take": "TechCrunch这次围绕DuckDuckGo给出的是对普通用户和产品团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
       "watch_next": "看DuckDuckGo是否持续抢走默认搜索入口。",
       "visual": {
         "status": "ready",
@@ -1213,8 +1213,8 @@
       "external_url": "https://aws.amazon.com/blogs/machine-learning/technical-deep-dive-agentcore-payments-and-innovation-in-agentic-commerce",
       "summary": "AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。",
-      "janet_take": "Amazon Bedrock AgentCore 一碰支付就不再是演示工具，授权、预算上限和交易回滚会立刻变成产品生死线。Janet 更关心它怎么证明“智能体代付”没有越权：谁批准、谁留痕、谁承担退款。国内团队可以先研究 guardrails 设计，别急着让代理接真钱。",
-      "watch_next": "看 Amazon Bedrock AgentCore 是否公开授权、退款和责任规则。",
+      "janet_take": "Bedrock AgentCore碰到支付链路后，智能体就从助手变成交易参与者。授权、退款、风控和人工确认会决定它能不能进真实业务，而不是只停在概念图里。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "继续看授权、退款和责任规则是否讲清。",
       "visual": {
         "status": "ready",
         "mode": "source_image",
@@ -1236,22 +1236,22 @@
     {
       "role": "compact",
       "story_id": "aws-machine-learning-527745d698eb",
-      "title": "LangGraph 多智能体迁到 AWS 无服务器",
+      "title": "Amazon Bedrock AgentCore转向多智能体编排",
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
       "source_url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
       "external_url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
-      "summary": "AWS把 LangGraph、Bedrock AgentCore Memory 和 Observability 绑进无服务器方案，核心问题是多智能体系统能不能在扩容时仍然可追踪。",
-      "why_it_matters": "开发者和平台团队要看 LangGraph 这条线：编排、记忆和可观测性被打包后，多智能体应用的运维门槛会明显变化。",
-      "janet_take": "LangGraph 上 AWS 的重点不是“又一个多智能体教程”，而是把编排、记忆和观测塞进可扩容模板里。Janet 会盯两个细节：状态丢了怎么补，代理互相甩锅时日志能不能还原现场。对国内团队来说，它更像架构清单；真正落地前，要先替换云服务依赖并做压力测试。",
-      "watch_next": "看 LangGraph 方案是否给出压测数据、状态管理和故障恢复样例。",
+      "summary": "AWS这条讲的是「Amazon Bedrock AgentCore转向多智能体编排」：Build highly scalable serverless LangGraph multi-agent systems in AWS with...",
+      "why_it_matters": "「Amazon Bedrock AgentCore转向多智能体编排」会影响相关团队对接口、权限、评测或采购路径的判断。",
+      "janet_take": "「Amazon Bedrock AgentCore转向多智能体编排」要看清具体对象、产品动作和限制条件。 Bedrock AgentCore补可观测性，说明智能体产品开始进入运维硬区。团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。",
+      "watch_next": "继续看企业监控接入成本和权限边界。",
       "visual": {
         "status": "ready",
         "mode": "source_image",
         "src": "assets/news-visuals/2026-05-27-v4/aws-machine-learning-527745d698eb.png",
         "local_path": "assets/news-visuals/2026-05-27-v4/aws-machine-learning-527745d698eb.png",
-        "alt": "新闻视觉：LangGraph 多智能体迁到 AWS 无服务器",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore转向多智能体编排",
         "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的可观测性。",
         "credit": "AWS Machine Learning Blog",
         "license": "source article image / editorial reference",
@@ -1275,8 +1275,8 @@
       "external_url": "https://aws.amazon.com/blogs/machine-learning/agentwatch-proactive-aws-monitoring-with-ambient-agents",
       "summary": "AWS把Proactive AWS放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。",
       "why_it_matters": "企业团队和投资者要看Proactive AWS：监控如果变主动，值班、告警和排障成本都会重新计算。",
-      "janet_take": "AgentWatch 把监控做成环境智能体，价值不在“会聊天”，而在它能不能少漏一次告警、少叫醒一次值班。Janet 会先看误报率、权限边界和 Slack 报告是否能被审计。企业可以小范围接只读系统，别一上来就让它改生产配置。",
-      "watch_next": "看Proactive AWS是否公开告警准确率和接入方式。",
+      "janet_take": "Proactive AWS这类能力很朴素，但能少叫醒几次人，就有预算价值。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。它要证明的是准确率、噪声控制和接入成本。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。它要证明的是准确率、噪声控制和接入成本。",
+      "watch_next": "继续看告警准确率和接入方式。",
       "visual": {
         "status": "ready",
         "mode": "source_image",
@@ -1306,8 +1306,8 @@
       "external_url": "https://aws.amazon.com/blogs/machine-learning/from-idea-to-ai-app-creating-intelligent-research-assistants-with-strands",
       "summary": "AWS把Strands research assistants做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。",
       "why_it_matters": "开发者和平台团队要看Strands research assistants：研究助手会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "Strands research assistants 这条更像把研究流程产品化：资料收集、推理、生成应用被串成一条可复用链路。Janet 会看它能不能保留引用、复现步骤和失败记录；如果只会生成漂亮回答，研究团队还是会回到人工校验。国内团队可以借它拆自己的知识工作流，而不是照搬界面。",
-      "watch_next": "看 Strands research assistants 是否公开引用追踪和复现实验模板。",
+      "janet_take": "Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。 对国内团队来说，先小范围试用，再算账。 Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。",
+      "watch_next": "继续看检索、资料处理和生成应用能否串起来。",
       "visual": {
         "status": "ready",
         "mode": "source_image",
@@ -1338,7 +1338,7 @@
       "external_url": "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year",
       "summary": "TechCrunch报道OpenRouter估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。",
       "why_it_matters": "开发者和平台团队要看OpenRouter：估值变化会倒逼它证明流量、收入或开发者入口真能成立。",
-      "janet_take": "OpenRouter被重新定价，说明市场开始问它到底卡住了哪个入口。 Janet 的判断是：TechCrunch这次围绕OpenRouter给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
+      "janet_take": "TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
       "watch_next": "看OpenRouter是否公布收入或使用指标。",
       "visual": {
         "status": "ready",
@@ -1369,8 +1369,8 @@
       "external_url": "https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai",
       "summary": "TechCrunch把India gig economy robot training和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。",
       "why_it_matters": "研究者和评测团队要看India gig economy robot training：机器人需要现实数据，数据来源会影响成本、质量和合规。",
-      "janet_take": "印度零工数据进入机器人训练，真正的看点是“便宜数据”能不能变成可靠数据。Janet 会盯标注质量、劳动合规和任务覆盖度：机器人学到的不是网页文本，而是现实动作里的脏细节。国内团队如果做具身智能，先问数据授权和质检流程，再谈模型效果。",
-      "watch_next": "看 India gig economy robot training 是否公布数据质检、劳动合规和客户案例。",
+      "janet_take": "India gig economy ro把零工数据和机器人训练连在一起，真正的分歧会落到数据质量、标注成本和劳动合规。便宜数据不等于可用数据，客户会拿任务成功率说话。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看India gig economy robot training是否公布数据...",
       "visual": {
         "status": "ready",
         "mode": "official_image",
@@ -1390,28 +1390,28 @@
       }
     }
   ],
-  "daily_title": "LangSmith进内网",
+  "daily_title": "Self-HostedLa带出自托管部署",
   "daily_brief": {
-    "daily_title": "LangSmith进内网",
-    "theme": "自托管部署接上AgentCore",
-    "daily_summary": "今天的主线落在 LangSmith、Kubernetes、Bedrock AgentCore 和 LangGraph，看点是自托管部署、可观测性、支付链路，不是抽象趋势。",
-    "daily_judgment": "Janet 判断：LangSmith 自托管这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
-    "daily_thesis": "今天先看的对象是 LangSmith、Kubernetes、Bedrock AgentCore 和 LangGraph：它们分别牵出自托管部署、可观测性、支付链路。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
-    "intro_text": "LangSmith 自托管先把今天的注意力拉住；AWS 智能体链路补上另一条线索。今天先看这些具体产品怎么动。",
+    "daily_title": "Self-HostedLa带出自托管部署",
+    "theme": "Self-Hosted La牵出LangSmit",
+    "daily_summary": "今天的主线落在LangSmith、LangSmith、Kubernetes、Mission Control，看点是自托管部署、可观测性、支付链路，不是抽象趋势。",
+    "daily_judgment": "LangSmith这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
+    "daily_thesis": "今天先看的对象是LangSmith、LangSmith、Kubernetes、Mission Control：它们分别牵出自托管部署、可观测性、支付链路。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
+    "intro_text": "LangSmith先把今天的注意力拉住；LangSmith补上另一条线索。今天先看这些具体产品怎么动。",
     "module_count": 3
   },
   "cover": {
-    "daily_title": "LangSmith进内网",
-    "cover_title": "LangSmith自托管进入K8s运维",
-    "cover_summary": "LangChain Blog把 LangSmith 自托管部署推到今天主线，影响相关产品团队和使用者对功能边界和接入方式的判断。",
-    "daily_judgment": "Janet 判断：LangSmith 自托管这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
+    "daily_title": "Self-HostedLa带出自托管部署",
+    "cover_title": "Self-Hosted LangSmith牵出自托管部署",
+    "cover_summary": "LangChain Blog把Self-Hosted LangSmith的自托管部署推到今天主线，影响相关产品团队和使用者对功能边界和接入方式的判断。",
+    "daily_judgment": "LangSmith这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
     "lead_story_id": "langchain-blog-2e23f43a7334",
     "visual": {
       "status": "ready",
       "mode": "source_image",
       "src": "assets/news-visuals/2026-05-27-v4/langchain-blog-2e23f43a7334.png",
       "local_path": "assets/news-visuals/2026-05-27-v4/langchain-blog-2e23f43a7334.png",
-      "alt": "新闻视觉：LangSmith进入自托管运维",
+      "alt": "新闻视觉：LangSmith自托管进入自托管运维",
       "caption": "LangChain源站图片，对应「Self-Hosted LangSmith」的自托管部署。",
       "credit": "LangChain Blog",
       "license": "source article image / editorial reference",
@@ -1559,12 +1559,12 @@
       "summary": "AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。",
       "original_summary": "Amazon Bedrock AgentCore payments is now available in preview, it provides instant payments to paid external services with no manual billing setup per provider, stablecoin support for cost-effective microtransactions...",
       "why_it_matters": "开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。",
-      "janet_take": "Amazon Bedrock AgentCore 一碰支付就不再是演示工具，授权、预算上限和交易回滚会立刻变成产品生死线。Janet 更关心它怎么证明“智能体代付”没有越权：谁批准、谁留痕、谁承担退款。国内团队可以先研究 guardrails 设计，别急着让代理接真钱。",
-      "watch_next": "看 Amazon Bedrock AgentCore 是否公开授权、退款和责任规则。",
+      "janet_take": "Bedrock AgentCore碰到支付链路后，智能体就从助手变成交易参与者。授权、退款、风控和人工确认会决定它能不能进真实业务，而不是只停在概念图里。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "继续看授权、退款和责任规则是否讲清。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0007"
@@ -1596,7 +1596,7 @@
         "AWS Machine Learning Blog",
         "Technical deep dive: AgentCore payments and innovation in agentic commerce"
       ],
-      "content": "AWS报道Bedrock AgentCore，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「Technical deep dive: AgentCore payments and innovation in agentic commerce」。AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Amazon Bedrock AgentCore一碰支付就不再是玩具，权限设计会立刻变成生死线。 Janet 的判断是：AWS这次围绕Bedrock AgentCore给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Bedrock AgentCore已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看Amazon Bedrock AgentCore是否公开授权、退款和责任规则。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Bedrock AgentCore，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Technical deep dive: AgentCore payments and innovation in agentic commerce」。AWS写到Amazon Bedrock AgentCore，说明智能体正在碰支付、授权和交易确认这类更敏感的商业环节。 开发者和平台团队要看Amazon Bedrock AgentCore：智能体碰到支付后，权限和责任边界会比模型能力更要命。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 Bedrock AgentCore碰到支付链路后，智能体就从助手变成交易参与者。 授权、退款、风控和人工确认会决定它能不能进真实业务，而不是只停在概念图里。 对国内团队来说，先小范围试用，再算账。 继续看授权、退款和责任规则是否讲清。 Bedrock AgentCore已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看授权、退款和责任规则是否讲清。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -1662,8 +1662,8 @@
         "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
         "original_summary": "In this post, we provide a solution to build highly scalable, serverless multi-agent generative AI systems on AWS using LangGraph Agents as orchestrators integrated with Amazon Bedrock AgentCore Memory and Amazon Bedrock AgentCore Observability."
       },
-      "zh_title": "LangGraph 多智能体迁到 AWS 无服务器",
-      "zh_summary": "AWS把 LangGraph、Bedrock AgentCore Memory 和 Observability 绑进无服务器方案，核心问题是多智能体系统能不能在扩容时仍然可追踪。",
+      "zh_title": "Amazon Bedrock AgentCore转向多智能体编排",
+      "zh_summary": "AWS这条讲的是「Amazon Bedrock AgentCore转向多智能体编排」：Build highly scalable serverless LangGraph multi-agent systems in AWS with...",
       "story_facts": [
         {
           "label": "entity",
@@ -1682,7 +1682,7 @@
           "value": "Amazon Bedrock AgentCore"
         }
       ],
-      "title": "LangGraph 多智能体迁到 AWS 无服务器",
+      "title": "Amazon Bedrock AgentCore转向多智能体编排",
       "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
       "url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
       "source_url": "https://aws.amazon.com/blogs/machine-learning/build-highly-scalable-serverless-langgraph-multi-agent-systems-in-aws-with-amazon-bedrock-agentcore",
@@ -1694,15 +1694,15 @@
       "score": 8,
       "published_at": "2026-05-26T17:41:26.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "AWS把 LangGraph、Bedrock AgentCore Memory 和 Observability 绑进无服务器方案，核心问题是多智能体系统能不能在扩容时仍然可追踪。",
+      "summary": "AWS这条讲的是「Amazon Bedrock AgentCore转向多智能体编排」：Build highly scalable serverless LangGraph multi-agent systems in AWS with...",
       "original_summary": "In this post, we provide a solution to build highly scalable, serverless multi-agent generative AI systems on AWS using LangGraph Agents as orchestrators integrated with Amazon Bedrock AgentCore Memory and Amazon Bedr...",
-      "why_it_matters": "开发者和平台团队要看 LangGraph 这条线：编排、记忆和可观测性被打包后，多智能体应用的运维门槛会明显变化。",
-      "janet_take": "LangGraph 上 AWS 的重点不是“又一个多智能体教程”，而是把编排、记忆和观测塞进可扩容模板里。Janet 会盯两个细节：状态丢了怎么补，代理互相甩锅时日志能不能还原现场。对国内团队来说，它更像架构清单；真正落地前，要先替换云服务依赖并做压力测试。",
-      "watch_next": "看 LangGraph 方案是否给出压测数据、状态管理和故障恢复样例。",
+      "why_it_matters": "「Amazon Bedrock AgentCore转向多智能体编排」会影响相关团队对接口、权限、评测或采购路径的判断。",
+      "janet_take": "「Amazon Bedrock AgentCore转向多智能体编排」要看清具体对象、产品动作和限制条件。 Bedrock AgentCore补可观测性，说明智能体产品开始进入运维硬区。团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。",
+      "watch_next": "继续看企业监控接入成本和权限边界。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0010"
@@ -1734,14 +1734,14 @@
         "AWS Machine Learning Blog",
         "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore"
       ],
-      "content": "AWS报道Bedrock AgentCore，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore」。AWS这条讲的是 LangGraph、Bedrock AgentCore Memory 和 Observability 的组合：重点不在单点能力，而在多智能体系统能否稳定扩容。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看 LangGraph 这条线：编排、记忆和可观测性被打包后，多智能体应用的运维门槛会明显变化。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Janet 看「LangGraph 多智能体迁到 AWS 无服务器」：先看对象、动作和限制条件。 Janet 的判断是：AWS这次围绕Bedrock AgentCore给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Bedrock AgentCore已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看 LangGraph 方案是否给出压测数据、状态管理和故障恢复样例。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Bedrock AgentCore，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore」。AWS这条讲的是「Amazon Bedrock AgentCore转向多智能体编排」：Build highly scalable serverless LangGraph multi-agent systems in AWS with... 「Amazon Bedrock AgentCore转向多智能体编排」会影响相关团队对接口、权限、评测或采购路径的判断。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 「Amazon Bedrock AgentCore转向多智能体编排」要看清具体对象、产品动作和限制条件。 Bedrock AgentCore补可观测性，说明智能体产品开始进入运维硬区。 团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。 继续看企业监控接入成本和权限边界。 Bedrock AgentCore已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看企业监控接入成本和权限边界。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
         "mode": "source_image",
         "src": "assets/news-visuals/2026-05-27-v4/aws-machine-learning-527745d698eb.png",
         "local_path": "assets/news-visuals/2026-05-27-v4/aws-machine-learning-527745d698eb.png",
-        "alt": "新闻视觉：LangGraph 多智能体迁到 AWS 无服务器",
+        "alt": "新闻视觉：Amazon Bedrock AgentCore转向多智能体编排",
         "caption": "AWS源站图片，对应「Amazon Bedrock AgentCore」的可观测性。",
         "credit": "AWS Machine Learning Blog",
         "license": "source article image / editorial reference",
@@ -1835,12 +1835,12 @@
       "summary": "AWS把Proactive AWS放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。",
       "original_summary": "In this post, we demonstrate the capabilities of AgentWatch through practical implementation. You will see how the solution performs infrastructure checks every 15 minutes, summarizing CloudWatch metrics, logs, and al...",
       "why_it_matters": "企业团队和投资者要看Proactive AWS：监控如果变主动，值班、告警和排障成本都会重新计算。",
-      "janet_take": "AgentWatch 把监控做成环境智能体，价值不在“会聊天”，而在它能不能少漏一次告警、少叫醒一次值班。Janet 会先看误报率、权限边界和 Slack 报告是否能被审计。企业可以小范围接只读系统，别一上来就让它改生产配置。",
-      "watch_next": "看Proactive AWS是否公开告警准确率和接入方式。",
+      "janet_take": "Proactive AWS这类能力很朴素，但能少叫醒几次人，就有预算价值。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。它要证明的是准确率、噪声控制和接入成本。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。它要证明的是准确率、噪声控制和接入成本。",
+      "watch_next": "继续看告警准确率和接入方式。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0001"
@@ -1872,7 +1872,7 @@
         "AWS Machine Learning Blog",
         "AgentWatch: Proactive AWS monitoring with ambient agents"
       ],
-      "content": "AWS报道Proactive AWS，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「AgentWatch: Proactive AWS monitoring with ambient agents」。AWS把Proactive AWS放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。\n\n对企业团队和投资者来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。企业团队和投资者要看Proactive AWS：监控如果变主动，值班、告警和排障成本都会重新计算。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Proactive AWS这类能力很朴素，但能少叫醒几次人，就有预算价值。 Janet 的判断是：AWS这次围绕Proactive AWS给出的不是一句漂亮话，而是对企业团队和投资者的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Proactive AWS已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看Proactive AWS是否公开告警准确率和接入方式。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Proactive AWS，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「AgentWatch: Proactive AWS monitoring with ambient agents」。AWS把Proactive AWS放进主动监控场景，AI 不只是回答问题，而是开始替团队盯系统、发现异常和提醒下一步。 企业团队和投资者要看Proactive AWS：监控如果变主动，值班、告警和排障成本都会重新计算。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 Proactive AWS这类能力很朴素，但能少叫醒几次人，就有预算价值。 Proactive AWS把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。 它要证明的是准确率、噪声控制和接入成本。 继续看告警准确率和接入方式。 Proactive AWS已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看告警准确率和接入方式。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -1993,12 +1993,12 @@
       "summary": "AWS把Strands research assistants做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。",
       "original_summary": "Building an AI app shouldn’t require a PhD in machine learning (ML) or months of wrestling with complex architectures. Yet that’s exactly what happens when you try to orchestrate multiple API calls, manage conversatio...",
       "why_it_matters": "开发者和平台团队要看Strands research assistants：研究助手会改变具体接入方式、使用边界或采购判断。",
-      "janet_take": "Strands research assistants 这条更像把研究流程产品化：资料收集、推理、生成应用被串成一条可复用链路。Janet 会看它能不能保留引用、复现步骤和失败记录；如果只会生成漂亮回答，研究团队还是会回到人工校验。国内团队可以借它拆自己的知识工作流，而不是照搬界面。",
-      "watch_next": "看 Strands research assistants 是否公开引用追踪和复现实验模板。",
+      "janet_take": "Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。 对国内团队来说，先小范围试用，再算账。 Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。",
+      "watch_next": "继续看检索、资料处理和生成应用能否串起来。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0011"
@@ -2031,7 +2031,7 @@
         "AWS Machine Learning Blog",
         "From idea to AI app: Creating intelligent research assistants with Strands"
       ],
-      "content": "AWS报道Strands research ass，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「From idea to AI app: Creating intelligent research assistants with Strands」。AWS把Strands research assistants做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看Strands research assistants：研究助手会改变具体接入方式、使用边界或采购判断。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：Janet 的判断是：AWS这次围绕Strands research ass给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于Strands research ass已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看Strands research assistants后续是否公布可用入口、...；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "AWS报道Strands research ass，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「From idea to AI app: Creating intelligent research assistants with Strands」。AWS把Strands research assistants做成研究助手，价值在于能不能从资料、检索到生成应用形成一条可复用流程。 开发者和平台团队要看Strands research assistants：研究助手会改变具体接入方式、使用边界或采购判断。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 Strands research ass把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。 能沉淀模板才有复用价值，只会生成一段文字还不够。 对国内团队来说，先小范围试用，再算账。 继续看检索、资料处理和生成应用能否串起来。 Strands research ass已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看继续看检索、资料处理和生成应用能否串起来。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -2123,12 +2123,12 @@
       "summary": "TechCrunch报道OpenRouter估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。",
       "original_summary": "OpenRouter has raised a $113 million Series B led by CapitalG. Its 5x growth in usage over six months indicates the multi-AI-model future is here.",
       "why_it_matters": "开发者和平台团队要看OpenRouter：估值变化会倒逼它证明流量、收入或开发者入口真能成立。",
-      "janet_take": "OpenRouter被重新定价，说明市场开始问它到底卡住了哪个入口。 Janet 的判断是：TechCrunch这次围绕OpenRouter给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
+      "janet_take": "TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。",
       "watch_next": "看OpenRouter是否公布收入或使用指标。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0002"
@@ -2153,7 +2153,7 @@
         "TechCrunch AI",
         "OpenRouter more than doubles valuation to $1.3B in a year"
       ],
-      "content": "TechCrunch报道OpenRouter，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「OpenRouter more than doubles valuation to $1.3B in a year」。TechCrunch报道OpenRouter估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。\n\n对开发者和平台团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。开发者和平台团队要看OpenRouter：估值变化会倒逼它证明流量、收入或开发者入口真能成立。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：OpenRouter被重新定价，说明市场开始问它到底卡住了哪个入口。 Janet 的判断是：TechCrunch这次围绕OpenRouter给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于OpenRouter已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看OpenRouter是否公布收入或使用指标。；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "TechCrunch报道OpenRouter，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「OpenRouter more than doubles valuation to $1.3B in a year」。TechCrunch报道OpenRouter估值变化，真正要看的是它背后哪类流量、模型接入或开发者入口被市场重新定价。 开发者和平台团队要看OpenRouter：估值变化会倒逼它证明流量、收入或开发者入口真能成立。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。 它可能省掉一段重复流程，但成本、权限和稳定性还得实测。 国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 看OpenRouter是否公布收入或使用指标。 OpenRouter已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看OpenRouter是否公布收入或使用指标。。",
       "primary_section": "agents",
       "visual": {
         "status": "ready",
@@ -2264,12 +2264,12 @@
       "summary": "TechCrunch把India gig economy robot training和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。",
       "original_summary": "Human Archive, a startup founded by UC Berkeley and Stanford researchers, is paying gig workers in India to wear camera-equipped caps and sensor devices to collect the real-world physical training data that AI and rob...",
       "why_it_matters": "研究者和评测团队要看India gig economy robot training：机器人需要现实数据，数据来源会影响成本、质量和合规。",
-      "janet_take": "印度零工数据进入机器人训练，真正的看点是“便宜数据”能不能变成可靠数据。Janet 会盯标注质量、劳动合规和任务覆盖度：机器人学到的不是网页文本，而是现实动作里的脏细节。国内团队如果做具身智能，先问数据授权和质检流程，再谈模型效果。",
-      "watch_next": "看 India gig economy robot training 是否公布数据质检、劳动合规和客户案例。",
+      "janet_take": "India gig economy ro把零工数据和机器人训练连在一起，真正的分歧会落到数据质量、标注成本和劳动合规。便宜数据不等于可用数据，客户会拿任务成功率说话。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看India gig economy robot training是否公布数据...",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-05-27T03:33:49.768Z",
+      "verified_at": "2026-05-28T01:12:52.457Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0009"
@@ -2294,7 +2294,7 @@
         "TechCrunch AI",
         "This startup is betting India’s gig economy can train the world’s robots"
       ],
-      "content": "TechCrunch报道India gig economy ro，这不是一句抽象趋势，而是一次已经落到产品、合作、评测或商业路径里的动作。原文标题是「This startup is betting India’s gig economy can train the world’s robots」。TechCrunch把India gig economy robot training和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。\n\n对研究者和评测团队来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。研究者和评测团队要看India gig economy robot training：机器人需要现实数据，数据来源会影响成本、质量和合规。 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。\n\nJanet 锐评：India gig economy robot training这事现实得很：机器人真正缺的是稳定、可授权、能复现的任务数据。 Janet 的判断是：TechCrunch这次围绕India gig economy ro给出的不是一句漂亮话，而是对研究者和评测团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。 破防点在于India gig economy ro已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看India gig economy robot training是否公布数据...；能省钱、能替流程、能交付，再把它放进自己的工具箱。",
+      "content": "TechCrunch报道India gig economy ro，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「This startup is betting India’s gig economy can train the world’s robots」。TechCrunch把India gig economy robot training和机器人训练连起来，说明真实世界任务的数据供给正在变成 AI 公司新的争夺点。 研究者和评测团队要看India gig economy robot training：机器人需要现实数据，数据来源会影响成本、质量和合规。 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。 India gig economy ro把零工数据和机器人训练连在一起，真正的分歧会落到数据质量、标注成本和劳动合规。 便宜数据不等于可用数据，客户会拿任务成功率说话。 对国内团队来说，先小范围试用，再算账。 看India gig economy robot training是否公布数据... India gig economy ro已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看看India gig economy robot training是否公布数据...。",
       "primary_section": "open_source",
       "visual": {
         "status": "ready",
@@ -2317,8 +2317,8 @@
   ],
   "edition_id": "2026-05-27-v4",
   "daily_editorial_summary": {
-    "title": "LangSmith进内网",
-    "body": "今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。LangChain Blog、AWS Machine Learning Blog、TechCrunch AI里冒出来的主线，是Self-Hosted LangSmith、LangSmith、Kubernetes、Mission Control、自托管部署这些具体对象正在把自托管部署、可观测性、支付链路、主动监控往产品、平台和团队日常里推。对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。\n\nJanet 的判断是：LangSmith进入自托管运维先占住头条，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。\n\nJanet 锐评：别被“AI 又更新了”带节奏。破防点是，很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位；槽点是每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。",
+    "title": "Self-HostedLa带出自托管部署",
+    "body": "今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。LangChain Blog、AWS Machine Learning Blog、TechCrunch AI里冒出来的主线，是LangSmith、LangSmith、Kubernetes、Mission Control、自托管部署这些具体对象正在把自托管部署、可观测性、支付链路、主动监控往产品、平台和团队日常里推。对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。 LangSmith自托管进入自托管运维先占住主线位置，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。 别被“AI 又更新了”带节奏。很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位。每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。",
     "source_story_ids": [
       "langchain-blog-2e23f43a7334",
       "aws-machine-learning-9be2bc4f4f33",

@@ -15,6 +15,20 @@ const DEBUG_PATTERNS = [
   '这条要看细节',
   '是否公布接口、限制或' + '客户案例'
 ];
+const READER_TEMPLATE_PHRASES = [
+  'Janet 的判断是',
+  'Janet 锐评',
+  '破防点',
+  '槽点',
+  '这件事要拆成三层看',
+  '接下来要盯的是',
+  '先看对象、动作和限制条件',
+  '先看这条新闻里的对象',
+  '能省钱、能替流程、能交付，再把它放进自己的工具箱',
+  '这不是一句抽象趋势',
+  '不是一句漂亮话',
+  '工作流试探'
+];
 
 const FRONTEND_FIELDS = new Set([
   'title',
@@ -288,7 +302,7 @@ function checkOutputLinks(outputHtml) {
   if (/今日三条主线/.test(outputHtml) && !/今日三条主线[\s\S]*?<a class="card"[^>]+href=/.test(outputHtml)) {
     issues.push({ surface: 'output signal cards', issue: 'signal cards are not whole-card source links' });
   }
-  if (/今日更多/.test(outputHtml) && !/今日更多[\s\S]*?<a class="card"[^>]+href=/.test(outputHtml)) {
+  if (/补充观察/.test(outputHtml) && !/补充观察[\s\S]*?<a class="card"[^>]+href=/.test(outputHtml)) {
     issues.push({ surface: 'output compact cards', issue: 'compact cards are not whole-card source links' });
   }
   if (/<article><small>[\s\S]*?<h3>/.test(outputHtml) && !/<h3><a[^>]+href=/.test(outputHtml)) {
@@ -372,12 +386,45 @@ function checkSignalTitleCount(outputHtml, summary) {
   return [];
 }
 
+function collectReaderTemplateIssues(outputHtml, newsSummaryText, contentText, newsJs) {
+  const issues = [];
+  const surfaces = [
+    ['output.html', outputHtml],
+    ['news-summary.json', newsSummaryText],
+    ['content.json', contentText],
+    ['scripts/news.js', newsJs]
+  ];
+  for (const [surface, text] of surfaces) {
+    for (const phrase of READER_TEMPLATE_PHRASES) {
+      if (String(text || '').includes(phrase)) issues.push({ surface, phrase });
+    }
+  }
+  return issues;
+}
+
+function checkDuplicateHeadlineOutput(outputHtml, content) {
+  const issues = [];
+  const lead = content.sections?.lead_story?.items?.[0] || content.stories?.[0] || {};
+  const leadTitle = String(lead.title || lead.zh_title || '').trim();
+  if (/<div class="k">(?:头条|headline|top story)<\/div>/i.test(outputHtml)) {
+    issues.push({ surface: 'output.html', issue: 'duplicate standalone headline section rendered' });
+  }
+  if (leadTitle) {
+    const escaped = leadTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const headingRepeats = (outputHtml.match(new RegExp(`<h[23][^>]*>[\\s\\S]*?${escaped}[\\s\\S]*?<\\/h[23]>`, 'g')) || []).length;
+    if (headingRepeats > 0) issues.push({ surface: 'output.html', issue: 'lead story rendered again as section heading' });
+  }
+  return issues;
+}
+
 function main() {
   const latest = latestEditionId();
   if (!latest) throw new Error('latest edition not found');
   const summary = readJson(`data/${latest}/news-summary.json`, {});
   const content = readJson(`data/${latest}/content.json`, {});
   const outputHtml = readText(`data/${latest}/output.html`);
+  const newsSummaryText = readText(`data/${latest}/news-summary.json`);
+  const contentText = readText(`data/${latest}/content.json`);
   const newsJs = readText('scripts/news.js');
   const cssText = [
     readText('styles/main.css'),
@@ -402,6 +449,8 @@ function main() {
     ...checkReleaseSurfacePolish(cssText, newsJs),
     ...checkSignalTitleCount(outputHtml, summary)
   ];
+  const readerTemplateIssues = collectReaderTemplateIssues(outputHtml, newsSummaryText, contentText, newsJs);
+  const duplicateHeadlineIssues = checkDuplicateHeadlineOutput(outputHtml, content);
   const semanticSanityIssues = checkSemanticSanity(summary, content);
   const bannedWordIssues = checkBannedWords(outputHtml, JSON.stringify(summary), JSON.stringify(content));
   const previousLeaked = Number(audit?.previous_debug_copy_leaked_count || audit?.debug_copy_leaked_count || 0);
@@ -416,6 +465,8 @@ function main() {
   if (nonClickableCards.length) issues.push(`${nonClickableCards.length} homepage card clickability issues remain`);
   if (outputLinkIssues.length) issues.push(`${outputLinkIssues.length} output.html link issues remain`);
   if (visualCreditIssues.length) issues.push(`${visualCreditIssues.length} visual credit readability issues remain`);
+  if (readerTemplateIssues.length) issues.push(`${readerTemplateIssues.length} reader template labels remain`);
+  if (duplicateHeadlineIssues.length) issues.push(`${duplicateHeadlineIssues.length} duplicate headline render issues remain`);
   if (bannedWordIssues.length) issues.push(`banned words found: ${bannedWordIssues.map((b) => b.banned_word).join(', ')}`);
   if (semanticSanityIssues.length) issues.push(...semanticSanityIssues);
 
@@ -429,6 +480,8 @@ function main() {
     non_clickable_cards: nonClickableCards,
     output_link_issues: outputLinkIssues,
     visual_credit_issues: visualCreditIssues,
+    reader_template_issues: readerTemplateIssues,
+    duplicate_headline_issues: duplicateHeadlineIssues,
     semantic_sanity_issues: semanticSanityIssues,
     reader_copy_fixed_count: fixedCount,
     preserve_fields_unchanged: true,
@@ -441,7 +494,7 @@ function main() {
   console.log(`latest edition: ${latest}`);
   console.log(`reader copy fixed: ${result.reader_copy_fixed_count}`);
   if (!result.qa_passed) {
-    console.error(JSON.stringify({ issues, debug_copy_found: debugCopyFound.slice(0, 8), missing_urls: missingUrls.slice(0, 8), non_clickable_cards: nonClickableCards, output_link_issues: outputLinkIssues, visual_credit_issues: visualCreditIssues }, null, 2));
+    console.error(JSON.stringify({ issues, debug_copy_found: debugCopyFound.slice(0, 8), missing_urls: missingUrls.slice(0, 8), non_clickable_cards: nonClickableCards, output_link_issues: outputLinkIssues, visual_credit_issues: visualCreditIssues, reader_template_issues: readerTemplateIssues.slice(0, 12), duplicate_headline_issues: duplicateHeadlineIssues }, null, 2));
     process.exit(1);
   }
 }

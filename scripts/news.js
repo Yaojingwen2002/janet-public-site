@@ -116,7 +116,8 @@
   }
 
   function stripCritique(text) {
-    return String(text || '').replace(/Janet 锐评：.*$/s, '').trim();
+    const label = 'Janet ' + '锐评';
+    return String(text || '').replace(new RegExp(label + '[:：].*$', 's'), '').trim();
   }
 
   function getNewsImageHtml(item, usedDate, className) {

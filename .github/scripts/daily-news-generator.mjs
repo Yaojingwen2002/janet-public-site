@@ -87,6 +87,24 @@ const FORBIDDEN_SURFACE_COPY = [
   '看它有没有真实用户和可复查结果',
   '出现新进展'
 ];
+const READER_TEMPLATE_LABELS = [
+  'Janet 的判断是：',
+  'Janet 的判断是',
+  'Janet 锐评：',
+  'Janet 锐评',
+  '破防点是',
+  '破防点',
+  '槽点是',
+  '槽点',
+  '这件事要拆成三层看',
+  '接下来要盯的是',
+  '先看对象、动作和限制条件',
+  '先看这条新闻里的对象',
+  '能省钱、能替流程、能交付，再把它放进自己的工具箱',
+  '这不是一句抽象趋势',
+  '不是一句漂亮话',
+  '工作流试探'
+];
 const SECTION_DEFS = [
   { key: 'models', label: '模型与产品', categories: ['models'], min: 1, max: 4 },
   { key: 'agents', label: 'Agent 与工具', categories: ['agents', 'developer_tooling'], min: 1, max: 4 },
@@ -963,6 +981,8 @@ function titleFromStoryFact(item, storyFact) {
   const source = chineseSourceName(item.source);
   const object = storyFact.concrete_object;
   const action = storyFact.action;
+  const originalTitle = decodeText(item.original_title || item.title || '').toLowerCase();
+  if (/langgraph|multi-agent systems|serverless/.test(originalTitle)) return `${object}转向多智能体编排`;
   if (action === '榜单排名' || action === '评测') return `${source}把${object}放进公开评测`;
   if (action === '融资') return `${object}完成融资，验证具体市场`;
   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
@@ -1715,7 +1735,7 @@ function makeFieldUnique(items, field, formatter) {
 function ensureUniqueHomepageCopy(items) {
   makeFieldUnique(items, 'summary', (item) => clamp(`这条聚焦「${item.title}」，同屏里它提供另一组产品对象、评测方法或接入边界。`, 118));
   makeFieldUnique(items, 'why_it_matters', (item) => clamp(`「${item.title}」会影响相关团队对接口、权限、评测或采购路径的判断。`, 96));
-  makeFieldUnique(items, 'janet_take', (item) => clamp(`Janet 看「${item.title}」：别看发布词，看对象、动作和限制条件。`, 86));
+  makeFieldUnique(items, 'janet_take', (item) => clamp(`「${item.title}」要看清具体对象、产品动作和限制条件。`, 86));
   makeFieldUnique(items, 'watch_next', (item) => clamp(`看「${item.title}」是否公布接口、价格或评测细则。`, 48));
   items.forEach(scrubTemplateCopy);
 }
@@ -1726,7 +1746,7 @@ function ensureUniqueStoryCopy(stories) {
   makeFieldUnique(stories, 'zh_summary', (story) => clamp(`${chineseSourceName(story.source)}这条讲的是「${story.zh_title || story.title}」：${story.original_title || story.raw_item?.original_title || ''}`.replace(/\s+/g, ' '), 120));
   makeFieldUnique(stories, 'summary', (story) => story.zh_summary || story.summary);
   makeFieldUnique(stories, 'why_it_matters', (story) => clamp(`「${story.zh_title || story.title}」会影响相关团队对接口、权限、评测或采购路径的判断。`, 90));
-  makeFieldUnique(stories, 'janet_take', (story) => clamp(`Janet 看「${story.zh_title || story.title}」：先看对象、动作和限制条件。`, 80));
+  makeFieldUnique(stories, 'janet_take', (story) => clamp(`「${story.zh_title || story.title}」要看清具体对象、产品动作和限制条件。`, 80));
   makeFieldUnique(stories, 'watch_next', (story) => clamp(`看「${story.zh_title || story.title}」是否公布接口或评测细则。`, 42));
   stories.forEach((story) => {
     scrubTemplateCopy(story);
@@ -1840,7 +1860,7 @@ function buildCover(stories, modules, dailyBrief) {
     : `${lead.source || '来源'}把${primaryFact}的${leadAction}推到今天主线，影响${lead.story_fact?.audience || '相关使用者'}对功能边界和接入方式的判断。`;
   return {
     daily_title: dailyBrief.daily_title,
-    cover_title: coverTitle === dailyBrief.daily_title ? `${primaryFact}成为头条线索` : coverTitle,
+    cover_title: coverTitle === dailyBrief.daily_title ? `${primaryFact}成为主线线索` : coverTitle,
     cover_summary: coverSummary,
     daily_judgment: dailyBrief.daily_judgment,
     lead_story_id: lead.id,
@@ -1899,16 +1919,44 @@ function watchNext(story) {
 }
 
 function uniqueWatchNext(story, used) {
-  const source = chineseSourceName(story.source);
-  const topic = normalizeTopic(story);
+  const action = story.story_fact?.action || '';
+  const object = displayObject(story.story_fact?.concrete_object || normalizeTopic(story));
+  const actionCandidates = {
+    '可观测性': [
+      '继续看日志、指标和排障入口是否打通。',
+      '继续看企业监控接入成本和权限边界。'
+    ],
+    '支付链路': [
+      '继续看授权、退款和责任规则是否讲清。',
+      '继续看支付确认流程有没有人工兜底。'
+    ],
+    '多智能体部署': [
+      '继续看编排、弹性和故障恢复细节。',
+      '继续看多智能体系统能否稳定扩容。'
+    ],
+    '主动监控': [
+      '继续看告警准确率和接入方式。',
+      '继续看值班流程会不会真的少一步。'
+    ],
+    '研究助手': [
+      '继续看检索、资料处理和生成应用能否串起来。',
+      '继续看研究助手是否开放模板和成本细节。'
+    ],
+    '自托管部署': [
+      '继续看升级、权限和审计方案。',
+      '继续看企业内网部署是否给出迁移路径。'
+    ]
+  };
+  const existingWatch = cleanTemplateCopy(story.watch_next || '');
+  const existingCopiesTitle = normalizeStoryTitle(existingWatch).includes(normalizeStoryTitle(story.title || story.zh_title || ''));
   const candidates = [
-    story.watch_next,
-    `看「${story.title}」是否公布使用范围。`,
-    `看「${story.title}」是否公布接口限制。`,
-    `看「${story.title}」是否给出评测细则。`
-  ];
+    ...(actionCandidates[action] || []),
+    existingCopiesTitle ? '' : existingWatch,
+    `继续看${object}的可用入口和权限边界。`,
+    `继续看${object}是否补上价格、接口和真实案例。`
+  ].map(cleanTemplateCopy);
   let selected = candidates.find((item) => item && !used.has(item));
-  if (!selected) selected = `看「${story.title}」后续证据 ${used.size + 1}。`;
+  if (!selected) selected = `继续看后续证据 ${used.size + 1}。`;
   used.add(selected);
   return clamp(selected, 42);
 }
@@ -2308,6 +2356,28 @@ function cnCharCount(text) {
 
 function cleanTemplateCopy(text) {
   return String(text || '')
+    .replace(/Self-Hosted LangSmit\b/g, 'LangSmith')
+    .replace(/Self-Hosted LangSmith进入/g, 'LangSmith自托管进入')
+    .replace(/Janet 的判断是[:：]?\s*/g, '')
+    .replace(/Janet 锐评[:：]?\s*/g, '')
+    .replace(/Janet 判断[:：]?\s*/g, '')
+    .replace(/破防点是[:：]?\s*/g, '')
+    .replace(/破防点在于/g, '')
+    .replace(/破防点[:：]?\s*/g, '')
+    .replace(/槽点是[:：]?\s*/g, '')
+    .replace(/槽点[:：]?\s*/g, '')
+    .replace(/这件事要拆成三层看[:：]?/g, '')
+    .replace(/接下来要盯的是[:：]?/g, '')
+    .replace(/先看对象、动作和限制条件/g, '看清具体对象、产品动作和限制条件')
+    .replace(/先看这条新闻里的对象/g, '看清这条新闻里的具体对象')
+    .replace(/这不是一句抽象趋势，而是/g, '')
+    .replace(/这不是一句抽象趋势/g, '这不是抽象趋势')
+    .replace(/不是一句漂亮话，而是/g, '')
+    .replace(/不是一句漂亮话/g, '不是漂亮话')
+    .replace(/工作流试探/g, '落地路径测试')
+    .replace(/对[^。]{0,40}来说，这件事要拆成三层看[:：]?/g, '')
+    .replace(/；能省钱、能替流程、能交付，再把它放进自己的工具箱。?/g, '')
+    .replace(/能省钱、能替流程、能交付，再把它放进自己的工具箱。?/g, '')
     .replace(/今日封面新闻/g, '头条新闻')
     .replace(/今日封面/g, '头条')
     .replace(/今天值得看的对象是/g, '今天先看的对象是')
@@ -2316,9 +2386,47 @@ function cleanTemplateCopy(text) {
     .replace(/重点是/g, '关键在于')
     .replace(/重点看/g, '继续看')
     .replace(/出现(.{0,12})新进展/g, '推进$1')
+    .replace(/把(.{0,20})放到首页/g, '收录$1')
     .replace(/开始生成内容/g, '进入内容生产线')
     .replace(/发布词落到了/g, '发布动作落到')
-    .replace(/把(.{0,20})放进(.{0,20})语境/g, '让$1进入$2场景');
+    .replace(/把(.{0,20})放进(.{0,20})语境/g, '让$1进入$2场景')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function cleanReaderLabel(text) {
+  return cleanTemplateCopy(text);
+}
+
+function splitSentences(text) {
+  return String(text || '')
+    .split(/(?<=[。！？!?])\s*/u)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function dedupeSentences(parts) {
+  const seen = new Set();
+  const out = [];
+  for (const part of parts) {
+    for (const sentence of splitSentences(part)) {
+      const key = sentence.replace(/[，。！？、：；,.!?;:"'“”‘’()[\]{}<>《》/\s]+/g, '');
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      out.push(sentence);
+    }
+  }
+  return out;
+}
+
+function renderPublicJanetTake(story) {
+  const parts = [
+    story.janet_take,
+    story.janet_view,
+    story.janet_comment,
+    story.watch_next
+  ].map(cleanReaderLabel).filter(Boolean);
+  return dedupeSentences(parts).join(' ');
 }
 
 function scrubTemplateCopy(value) {
@@ -2368,8 +2476,8 @@ function buildReaderBody(story) {
   const opening = openingByAction[action] || `${source}报道${object}，这次已经落到产品、合作、评测或商业路径里的具体动作。`;
   const paragraphs = [
     `${opening}原文标题是「${original}」。${baseSummary}`,
-    `对${audience}来说，这件事要拆成三层看：第一，它会不会降低某段工作流的成本；第二，国内团队能不能直接接入或找到替代路径；第三，它能不能替掉一个重复岗位、一段外包流程，或者至少让团队少绕一个工具。${why} 接下来要盯的是可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。`,
-    `Janet 锐评：${take} 破防点在于${object}已经开始挤进实际使用链路，槽点是成本、版权、权限或稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看${watch || `${object}是否给出清楚的使用边界`}；能省钱、能替流程、能交付，再把它放进自己的工具箱。`
+    `${why} 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。`,
+    `${renderPublicJanetTake(story)} ${object}已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看${watch || `${object}是否给出清楚的使用边界`}。`
   ];
   let body = cleanTemplateCopy(paragraphs.join('\n\n'));
   if (cnCharCount(body) < 280) {
@@ -2385,33 +2493,40 @@ function buildLongJanetTake(story) {
   const audience = fact.audience || '相关团队';
   const source = chineseSourceName(story.source);
   let shortTake = cleanTemplateCopy(story.janet_take || '').split('Janet 的判断是：')[0].trim();
-  if (/要看入口、权限和使用门槛/.test(shortTake)) shortTake = '';
+  if (/要看入口、权限和使用门槛/.test(shortTake) || cnCharCount(shortTake) > 70 || /国内团队先小范围试用/.test(shortTake)) shortTake = '';
   const prefix = shortTake ? `${shortTake} ` : '';
   const podcastTake = /Spotify Studio/i.test(object)
-    ? `${prefix}Janet 的判断是：Spotify Studio 的破防点是把个人收听、日程和播客生成揉到一起，听起来很顺，实际会考验隐私和推荐质量。创作者别只看“自动生成”，要看它能不能给出编辑权、删除权和分发收益。`
-    : `${prefix}Janet 的判断是：Spotify Q&A 工具更像给播客补运营后台，破防点是问答和简报可以批量生产，槽点是主持人味道容易被磨平。内容团队可以先拿它做会员运营和节目回顾，不要直接替掉主节目。`;
+    ? `${prefix}Spotify Studio 把个人收听、日程和播客生成揉到一起，听起来很顺，实际会考验隐私和推荐质量。创作者别只看“自动生成”，要看它能不能给出编辑权、删除权和分发收益。`
+    : `${prefix}Spotify Q&A 工具更像给播客补运营后台，问答和简报可以批量生产，但主持人味道也容易被磨平。内容团队可以先拿它做会员运营和节目回顾，不要直接替掉主节目。`;
   const benchmarkTake = /Amazon Bedrock/i.test(object)
-    ? `${prefix}Janet 的判断是：Amazon Bedrock 放进招聘助手这类场景，破防点是企业云厂商正在把智能体变成可采购方案；槽点是偏见、审计和合规一个都躲不开。企业要先看日志、权限和人工复核，不要把候选人命运交给黑箱。`
-    : `${prefix}Janet 的判断是：${object}如果真要做 AI 治疗或安全评估，破防点不是“听起来温柔”，而是能不能扛住高风险场景。槽点是心理健康产品最怕半吊子自动化，国内团队更该看风控、人审和退出机制。`;
+    ? `${prefix}Amazon Bedrock 放进招聘助手这类场景，说明企业云厂商正在把智能体变成可采购方案；偏见、审计和合规一个都躲不开。企业要先看日志、权限和人工复核，不要把候选人命运交给黑箱。`
+    : `${prefix}${object}如果真要做 AI 治疗或安全评估，关键不是“听起来温柔”，而是能不能扛住高风险场景。心理健康产品最怕半吊子自动化，国内团队更该看风控、人审和退出机制。`;
   const cooperationTake = /Elon Musk|data center|Anthropic/i.test(`${object} ${story.original_title || ''}`)
-    ? `${prefix}Janet 的判断是：Anthropic 向马斯克系数据中心买算力，破防点是模型竞争最后会落到电、机柜和长期合同；槽点是算力越集中，议价和供应风险越难看。国内企业要学的是算力冗余和成本测算，不是跟着烧钱。`
-    : `${prefix}Janet 的判断是：Universal Music 这类授权合作，破防点是 AI 翻唱终于开始谈分钱，而不是只靠平台先斩后奏。槽点是授权规则会很碎，创作者要看分成、下架和艺人选择权，别只盯生成效果。`;
+    ? `${prefix}Anthropic 向马斯克系数据中心买算力，说明模型竞争最后会落到电、机柜和长期合同；算力越集中，议价和供应风险越难看。国内企业要学的是算力冗余和成本测算，不是跟着烧钱。`
+    : `${prefix}Universal Music 这类授权合作，说明 AI 翻唱终于开始谈分钱，而不是只靠平台先斩后奏。授权规则会很碎，创作者要看分成、下架和艺人选择权，别只盯生成效果。`;
   const actionTakes = {
-    '有声书生成': `${prefix}Janet 的判断是：${object}把创作门槛继续往下压，破防点是配音、剪辑和分发开始被平台打包；槽点是版权和音质会先乱一阵。国内创作者别先欢呼，先看它能不能给声音授权、收益结算和编辑权限一个清楚答案。`,
+    '有声书生成': `${prefix}${object}把创作门槛继续往下压，配音、剪辑和分发开始被平台打包；版权和音质会先乱一阵。国内创作者别先欢呼，先看它能不能给声音授权、收益结算和编辑权限一个清楚答案。`,
     '播客生成': podcastTake,
-    '智能体能力': `${prefix}Janet 的判断是：${object}的价值不在“像不像人”，而在能不能稳定完成连续任务。破防点是小模型也想进工作流，槽点是权限、日志和出错责任会马上变脏。企业先拿低风险流程试，不要一上来交核心业务。`,
-    '开发工具升级': `${prefix}Janet 的判断是：${object}要是真能少开工具、少写重复命令，开发者会用脚投票；如果只是换个漂亮入口，它很快会被关掉。国内团队要看接入成本、代码安全和私有部署路径。`,
-    '工具调用': `${prefix}Janet 的判断是：${object}开始处理工具调用，才算摸到智能体的硬活。破防点是它能替团队跑步骤，槽点是权限和日志必须补齐。中小企业可以先从低风险自动化试，不要把财务、人事这种入口直接交出去。`,
-    '记忆扩展': `${prefix}Janet 的判断是：${object}补记忆比多一个聊天表情实在得多。破防点是它可能让智能体真正接住上下文，槽点是隐私、保留周期和误记会变成新成本。企业要先问清楚数据放哪、谁能删、怎么审计。`,
+    '智能体能力': `${prefix}${object}的价值不在“像不像人”，而在能不能稳定完成连续任务。小模型也想进工作流，权限、日志和出错责任会马上变脏。企业先拿低风险流程试，不要一上来交核心业务。`,
+    '开发工具升级': `${prefix}${object}要是真能少开工具、少写重复命令，开发者会用脚投票；如果只是换个漂亮入口，它很快会被关掉。国内团队要看接入成本、代码安全和私有部署路径。`,
+    '工具调用': `${prefix}${object}开始处理工具调用，才算摸到智能体的硬活。它能替团队跑步骤，但权限和日志必须补齐。中小企业可以先从低风险自动化试，不要把财务、人事这种入口直接交出去。`,
+    '记忆扩展': `${prefix}${object}补记忆比多一个聊天表情实在得多。它可能让智能体真正接住上下文，但隐私、保留周期和误记会变成新成本。企业要先问清楚数据放哪、谁能删、怎么审计。`,
+    '可观测性': `${prefix}${object}补可观测性，说明智能体产品开始进入运维硬区。团队真正要看的不是演示，而是日志能不能追、指标能不能比、出了错能不能回滚。`,
+    '支付链路': `${prefix}${object}碰到支付链路后，智能体就从助手变成交易参与者。授权、退款、风控和人工确认会决定它能不能进真实业务，而不是只停在概念图里。`,
+    '多智能体部署': `${prefix}${object}转向多智能体编排，难点不在 agent 数量，而在任务拆分、状态同步和失败恢复。企业要先看成本曲线，再看它能不能少掉一段人工协调。`,
+    '主动监控': `${prefix}${object}把监控往主动提醒上推，价值很朴素：少漏一次告警、少叫醒一次值班的人。它要证明的是准确率、噪声控制和接入成本。`,
+    '研究助手': `${prefix}${object}把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。`,
+    '机器人训练': `${prefix}${object}把零工数据和机器人训练连在一起，真正的分歧会落到数据质量、标注成本和劳动合规。便宜数据不等于可用数据，客户会拿任务成功率说话。`,
+    'AI 写作争议': `${prefix}${object}牵出 AI 写作争议，问题不只是“有没有用工具”，而是权威文本的署名、解释权和信任边界。越是公共人物，越不能把生成过程藏成黑箱。`,
     '评测': benchmarkTake,
     '榜单排名': benchmarkTake,
-    '融资': `${prefix}Janet 的判断是：${object}融资不等于产品成立。破防点是资本愿意为这个方向继续买单，槽点是估值越高，交付压力越大。国内团队别学融资故事，先学它验证客户、定价和交付的方式。`,
-    '诉讼': `${prefix}Janet 的判断是：${object}这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。破防点是信任成本开始显性化，槽点是用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。`,
-    '搜索改版': `${prefix}Janet 的判断是：${object}不是 UI 小改，而是在重新训练用户怎么提问、怎么交任务。破防点是流量入口继续往 AI 手里收，槽点是内容方更难知道自己为什么被看见。做内容的人要盯来源、转化和广告位置变化。`,
+    '融资': `${prefix}${object}融资不等于产品成立。资本愿意为这个方向继续买单，但估值越高，交付压力越大。国内团队别学融资故事，先学它验证客户、定价和交付的方式。`,
+    '诉讼': `${prefix}${object}这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。信任成本开始显性化，用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。`,
+    '搜索改版': `${prefix}${object}不是 UI 小改，而是在重新训练用户怎么提问、怎么交任务。流量入口继续往 AI 手里收，内容方更难知道自己为什么被看见。做内容的人要盯来源、转化和广告位置变化。`,
     '合作': cooperationTake,
-    '生成': `${prefix}Janet 的判断是：${object}把生成能力推到音乐内容里，破防点是粉丝创作和版权分账终于撞到一起；槽点是平台、艺人和用户的边界会很难切。内容团队要先看授权开关、收益规则和下架机制。`
+    '生成': `${prefix}${object}把生成能力推到音乐内容里，粉丝创作和版权分账终于撞到一起；平台、艺人和用户的边界会很难切。内容团队要先看授权开关、收益规则和下架机制。`
   };
-  const text = actionTakes[action] || `${prefix}Janet 的判断是：${source}这次围绕${object}给出的是对${audience}的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。`;
+  const text = actionTakes[action] || `${prefix}${source}这次围绕${object}给出的是对${audience}的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。`;
   return cleanTemplateCopy(cnCharCount(text) < 60 ? `${text} 对国内团队来说，先小范围试用，再算账。` : text);
 }
 
@@ -2426,8 +2541,8 @@ function buildDailyEditorialSummary(stories, modules, dailyBrief) {
   const actionText = actions.slice(0, 4).join('、') || '接入、评测、商业化和创作流程';
   let body = [
     `今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。${sources || '公开来源'}里冒出来的主线，是${objectText}这些具体对象正在把${actionText}往产品、平台和团队日常里推。对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。`,
-    `Janet 的判断是：${lead.title || objectText}先占住头条，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。`,
-    `Janet 锐评：别被“AI 又更新了”带节奏。破防点是，很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位；槽点是每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。`
+    `${lead.title || objectText}先占住主线位置，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。`,
+    `别被“AI 又更新了”带节奏。很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位。每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。`
   ].join('\n\n');
   if (cnCharCount(body) < 350) {
     body += `\n\n这也是后面几天要继续看的线索：能把能力变成价格、接口和案例的公司，会比只会讲愿景的公司更快进入创作者和企业采购清单。`;
@@ -2732,12 +2847,35 @@ function externalAttrs(value) {
   return href ? ` href="${href}" target="_blank" rel="noopener noreferrer"` : '';
 }
 
+function normalizeStoryUrl(value) {
+  return String(value || '').trim().replace(/[?#].*$/, '').replace(/\/$/, '').toLowerCase();
+}
+
+function normalizeStoryTitle(value) {
+  return String(value || '').trim().replace(/[，。！？、：；,.!?;:"'“”‘’()[\]{}<>《》/\s]+/g, '').toLowerCase();
+}
+
 function renderHtml(content) {
-  const allItems = Object.values(content.sections).flatMap((section) => section.items || []);
   const lead = content.sections.lead_story.items[0] || {};
   const editorial = content.daily_editorial_summary || {};
   const leadAttrs = externalAttrs(lead.url || lead.source_url || lead.external_url);
   const signalTitle = (content.signal_map || []).length >= 3 ? '今日三条主线' : '今日主线';
+  const usedStoryIds = new Set([lead.story_id, lead.id].filter(Boolean));
+  const usedUrls = new Set([lead.url, lead.source_url, lead.external_url].map(normalizeStoryUrl).filter(Boolean));
+  const usedTitles = new Set([lead.title, lead.zh_title].map(normalizeStoryTitle).filter(Boolean));
+  const isLeadDuplicate = (item) => {
+    if (!item) return false;
+    if (usedStoryIds.has(item.story_id) || usedStoryIds.has(item.id)) return true;
+    const itemUrl = normalizeStoryUrl(item.url || item.source_url || item.external_url);
+    if (itemUrl && usedUrls.has(itemUrl)) return true;
+    const itemTitle = normalizeStoryTitle(item.title || item.zh_title);
+    return itemTitle && usedTitles.has(itemTitle);
+  };
+  const compactItems = (content.compact_news || []).filter((item) => !isLeadDuplicate(item));
+  const detailSections = Object.entries(content.sections)
+    .filter(([key, section]) => !['lead_story', 'headline', 'top_story'].includes(key) && Array.isArray(section.items) && section.items.length > 0)
+    .map(([key, section]) => [key, { ...section, items: section.items.filter((item) => !isLeadDuplicate(item)) }])
+    .filter(([, section]) => section.items.length > 0);
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -2764,22 +2902,16 @@ function renderHtml(content) {
   <div class="k">Janet Daily News</div>
   <h1>${escapeHtml(editorial.title || content.theme)}</h1>
   <p>${escapeHtml(editorial.body || content.daily_thesis)}</p>
-  ${visualSrc(lead.visual) ? `<a class="lead-link"${leadAttrs}><img class="visual" src="../../${escapeHtml(visualSrc(lead.visual))}" alt="${escapeHtml(visualAlt(lead.visual, lead.title))}"></a>` : ''}
+  ${visualSrc(lead.visual) ? `<a class="lead-link"${leadAttrs}><img class="visual" src="../../${escapeHtml(visualSrc(lead.visual))}" alt="${escapeHtml(editorial.title || content.theme || '今日头图')}"></a>` : ''}
   <section>
     <div class="k">${escapeHtml(signalTitle)}</div>
     <div class="signal">${content.signal_map.map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.label || item.signal))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<strong>${escapeHtml(item.label || item.signal)}</strong><p>${escapeHtml(item.summary || item.janet_view)}</p><small>${escapeHtml(item.story_title || '')} · ${escapeHtml(item.source || '')}</small></a>`).join('')}</div>
   </section>
   <section>
-    <div class="k">头条</div>
-    <h2>${leadAttrs ? `<a${leadAttrs}>${escapeHtml(lead.title || '')}</a>` : escapeHtml(lead.title || '')}</h2>
-    ${lead.original_title ? `<small>原文：${escapeHtml(lead.original_title)}</small>` : ''}
-    <p>${escapeHtml(lead.content || lead.summary || '')}</p>
+    <div class="k">补充观察</div>
+    <div class="signal">${compactItems.map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.title))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></a>`).join('')}</div>
   </section>
-  <section>
-    <div class="k">今日更多</div>
-    <div class="signal">${(content.compact_news || []).map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.title))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></a>`).join('')}</div>
-  </section>
-  ${Object.entries(content.sections).filter(([key, section]) => key !== 'lead_story' && Array.isArray(section.items) && section.items.length > 0).map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${externalAttrs(item.url || item.source_url || item.external_url) ? `<a${externalAttrs(item.url || item.source_url || item.external_url)}>${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.content || item.summary)}</p><a${externalAttrs(item.url || item.source_url || item.external_url)}>原文</a></article>`).join('')}</section>`).join('')}
+  ${detailSections.map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${externalAttrs(item.url || item.source_url || item.external_url) ? `<a${externalAttrs(item.url || item.source_url || item.external_url)}>${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.content || item.summary)}</p><a${externalAttrs(item.url || item.source_url || item.external_url)}>原文</a></article>`).join('')}</section>`).join('')}
   <section>
     <div class="k">接下来观察</div>
     <ul>${content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>

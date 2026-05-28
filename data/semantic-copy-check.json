@@ -26,7 +26,29 @@
     },
     "janet_take": {
       "hard": [],
-      "warnings": []
+      "warnings": [
+        {
+          "field": "janet_take",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.697,
+          "item_a": {
+            "story_id": "techcrunch-ai-077d35556946",
+            "title": "DuckDuckGo安装增长，搜索入口竞争升温",
+            "source": "TechCrunch AI",
+            "category": "business",
+            "original_title": "DuckDuckGo installs are up 30% as users reject being ‘force-fed’ Google’s AI Search",
+            "text": "TechCrunch这次围绕DuckDuckGo给出的是对普通用户和产品团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+          },
+          "item_b": {
+            "story_id": "techcrunch-ai-3eedeecd0c03",
+            "title": "OpenRouter估值变化，市场开始重新定价",
+            "source": "TechCrunch AI",
+            "category": "business",
+            "original_title": "OpenRouter more than doubles valuation to $1.3B in a year",
+            "text": "TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+          }
+        }
+      ]
     },
     "watch_next": {
       "hard": [],
@@ -34,22 +56,22 @@
     }
   },
   "max_title_similarity": {
-    "score": 0.553,
+    "score": 0.639,
     "item_a": {
-      "story_id": "aws-machine-learning-9be2bc4f4f33",
-      "title": "Amazon Bedrock AgentCore补上企业可观测性",
-      "source": "AWS Machine Learning Blog",
-      "category": "business",
-      "original_title": "Build high-performance generative AI systems with Strands Agents, NVIDIA NIM, and Amazon Bedrock AgentCore",
-      "text": "Amazon Bedrock AgentCore补上企业可观测性"
-    },
-    "item_b": {
       "story_id": "aws-machine-learning-2715154a135f",
       "title": "Amazon Bedrock AgentCore开始处理智能体支付",
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "original_title": "Technical deep dive: AgentCore payments and innovation in agentic commerce",
       "text": "Amazon Bedrock AgentCore开始处理智能体支付"
+    },
+    "item_b": {
+      "story_id": "aws-machine-learning-527745d698eb",
+      "title": "Amazon Bedrock AgentCore转向多智能体编排",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
+      "text": "Amazon Bedrock AgentCore转向多智能体编排"
     }
   },
   "max_summary_similarity": {
@@ -91,14 +113,14 @@
     }
   },
   "max_janet_take_similarity": {
-    "score": 0.573,
+    "score": 0.697,
     "item_a": {
       "story_id": "techcrunch-ai-077d35556946",
       "title": "DuckDuckGo安装增长，搜索入口竞争升温",
       "source": "TechCrunch AI",
       "category": "business",
       "original_title": "DuckDuckGo installs are up 30% as users reject being ‘force-fed’ Google’s AI Search",
-      "text": "DuckDuckGo增长不是虚热，用户愿意换默认入口才是真信号。 Janet 的判断是：TechCrunch这次围绕DuckDuckGo给出的不是一句漂亮话，而是对普通用户和产品团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+      "text": "TechCrunch这次围绕DuckDuckGo给出的是对普通用户和产品团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
     },
     "item_b": {
       "story_id": "techcrunch-ai-3eedeecd0c03",
@@ -106,32 +128,82 @@
       "source": "TechCrunch AI",
       "category": "business",
       "original_title": "OpenRouter more than doubles valuation to $1.3B in a year",
-      "text": "OpenRouter被重新定价，说明市场开始问它到底卡住了哪个入口。 Janet 的判断是：TechCrunch这次围绕OpenRouter给出的不是一句漂亮话，而是对开发者和平台团队的工作流试探。破防点是它可能省掉一段重复流程，槽点是成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+      "text": "TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
     }
   },
   "max_watch_next_similarity": {
-    "score": 0.182,
+    "score": 0.13,
     "item_a": {
       "story_id": "langchain-blog-2e23f43a7334",
-      "title": "LangSmith进入自托管运维",
+      "title": "LangSmith自托管进入自托管运维",
       "source": "LangChain Blog",
       "category": "agents",
       "original_title": "Mission Control for Self-Hosted LangSmith on Kubernetes",
-      "text": "看 LangSmith 是否给出升级、权限和审计方案。"
+      "text": "继续看升级、权限和审计方案。"
     },
     "item_b": {
       "story_id": "aws-machine-learning-527745d698eb",
-      "title": "LangGraph 多智能体迁到 AWS 无服务器",
+      "title": "Amazon Bedrock AgentCore转向多智能体编排",
       "source": "AWS Machine Learning Blog",
       "category": "business",
       "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
-      "text": "看 LangGraph 方案是否给出压测数据、状态管理和故障恢复样例。"
+      "text": "继续看企业监控接入成本和权限边界。"
     }
   },
   "forbidden_patch_phrases_found": [],
   "generic_template_phrases_found": [],
   "missing_specific_terms": [],
   "cross_edition_similarity_issues": [],
-  "warnings": [],
+  "warnings": [
+    {
+      "field": "janet_take",
+      "reason": "near_duplicate_warning",
+      "similarity": 0.697,
+      "item_a": {
+        "story_id": "techcrunch-ai-077d35556946",
+        "title": "DuckDuckGo安装增长，搜索入口竞争升温",
+        "source": "TechCrunch AI",
+        "category": "business",
+        "original_title": "DuckDuckGo installs are up 30% as users reject being ‘force-fed’ Google’s AI Search",
+        "text": "TechCrunch这次围绕DuckDuckGo给出的是对普通用户和产品团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+      },
+      "item_b": {
+        "story_id": "techcrunch-ai-3eedeecd0c03",
+        "title": "OpenRouter估值变化，市场开始重新定价",
+        "source": "TechCrunch AI",
+        "category": "business",
+        "original_title": "OpenRouter more than doubles valuation to $1.3B in a year",
+        "text": "TechCrunch这次围绕OpenRouter给出的是对开发者和平台团队的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+      }
+    },
+    {
+      "reason": "source_category_template_cluster_warning",
+      "source": "AWS Machine Learning Blog",
+      "category": "business",
+      "pairs": [
+        {
+          "field": "zh_title",
+          "reason": "near_duplicate_warning",
+          "similarity": 0.639,
+          "item_a": {
+            "story_id": "aws-machine-learning-2715154a135f",
+            "title": "Amazon Bedrock AgentCore开始处理智能体支付",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Technical deep dive: AgentCore payments and innovation in agentic commerce",
+            "text": "Amazon Bedrock AgentCore开始处理智能体支付"
+          },
+          "item_b": {
+            "story_id": "aws-machine-learning-527745d698eb",
+            "title": "Amazon Bedrock AgentCore转向多智能体编排",
+            "source": "AWS Machine Learning Blog",
+            "category": "business",
+            "original_title": "Build highly scalable serverless LangGraph multi-agent systems in AWS with Amazon Bedrock AgentCore",
+            "text": "Amazon Bedrock AgentCore转向多智能体编排"
+          }
+        }
+      ]
+    }
+  ],
   "issues": []
 }

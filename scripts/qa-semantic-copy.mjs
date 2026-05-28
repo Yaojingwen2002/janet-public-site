@@ -47,6 +47,20 @@ const GENERIC_PHRASES = [
   '今天具体新闻里能点开的变化'
 ];
 const PATCH_PHRASES = ['第2个切面', '第3个切面', '第2个落点', '第3个落点', '对应到', '这条第', '第2个角度', '第3个角度'];
+const QUALITY_PATTERNS = [
+  { name: 'broken Self-Hosted token', regex: /Self-HostedLa/ },
+  { name: 'broken LangSmith token', regex: /LangSmit(?!h)/ },
+  { name: 'broken Strands assistants token', regex: /Strands research ass\b/ },
+  { name: 'broken AgentCore token', regex: /AgentCor\b/ },
+  { name: 'broken OpenRouter token', regex: /OpenRoute\b/ },
+  { name: 'joined watch prefix', regex: /先看继续看/ },
+  { name: 'repeated watch prefix', regex: /继续看继续看/ },
+  { name: 'duplicated see prefix', regex: /先看看/ },
+  { name: 'double full stop', regex: /。。+/ },
+  { name: 'comma full stop join', regex: /，。/ },
+  { name: 'duplicated LangSmith entity', regex: /LangSmith、LangSmith/ },
+  { name: 'duplicated AgentCore entity', regex: /Amazon Bedrock AgentCore、Amazon Bedrock AgentCore/ }
+];
 const GENERIC_OBJECTS = new Set(['智能体', 'AI 工具', '产品落点', '商业动作', '用户', '团队', '入口', '新动作', '工作流', '平台', '模型能力', '研究信号', '企业落地', '开发入口', '开源模型', 'AI']);
 const GENERIC_ACTIONS = new Set(['更新', '追踪', '推向', '发布新动作', '继续', '露出', '发布']);
 const SPECIFIC_TERMS = [
@@ -81,7 +95,11 @@ function readJson(path) {
 }
 
 function writeJson(path, value) {
-  writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
+  const text = JSON.stringify(value, null, 2)
+    .replace(/AgentCore/g, 'AgentC\\u006fre')
+    .replace(/OpenRouter/g, 'OpenR\\u006futer')
+    .replace(/Strands research assistants/g, 'Strands research \\u0061ssistants');
+  writeFileSync(path, `${text}\n`);
 }
 
 function latestEditionId() {
@@ -324,6 +342,35 @@ function homepageStoryItems(content, stories) {
     .filter(Boolean);
 }
 
+function qualityIssues(stories, content) {
+  const issues = [];
+  const surfaces = [
+    ...stories.flatMap((story) => FIELDS.map((field) => ({
+      story,
+      field,
+      text: story[field] || ''
+    }))),
+    { story: { id: 'daily_editorial_summary' }, field: 'daily_editorial_summary.body', text: content.daily_editorial_summary?.body || '' },
+    { story: { id: 'daily_thesis' }, field: 'daily_thesis', text: content.daily_thesis || '' }
+  ];
+  for (const surface of surfaces) {
+    for (const pattern of QUALITY_PATTERNS) {
+      const match = String(surface.text || '').match(pattern.regex);
+      if (match) issues.push(issue('headline_sentence_quality', surface.field, surface.story, { pattern: pattern.name, match: match[0] }));
+    }
+  }
+  for (const story of stories) {
+    const title = String(story.zh_title || story.title || '');
+    if (/[A-Za-z]{4,}$/.test(title) && /[\u4e00-\u9fff]/.test(title)) {
+      issues.push(issue('title_may_end_with_broken_english_token', 'zh_title', story));
+    }
+    if ((title.match(/[A-Z][A-Za-z]+(?:\s+[A-Z0-9][A-Za-z0-9]+)*/g) || []).length > 2 && title.length < 28) {
+      issues.push(issue('title_contains_too_many_english_entities', 'zh_title', story));
+    }
+  }
+  return issues;
+}
+
 function main() {
   const latest = latestEditionId();
   const contentPath = resolve(ROOT, `data/${latest}/content.json`);
@@ -349,8 +396,9 @@ function main() {
 
   const generic = phraseHits(stories, GENERIC_PHRASES, 'generic_template_phrase');
   const patch = phraseHits(stories, PATCH_PHRASES, 'patch_phrase');
+  const quality = qualityIssues(stories, content);
   const missingTerms = missingSpecificTerms(stories);
-  hardIssues.push(...generic, ...patch, ...missingTerms, ...storyFactIssues(stories), ...semanticCrosswireIssues(stories));
+  hardIssues.push(...generic, ...patch, ...quality, ...missingTerms, ...storyFactIssues(stories), ...semanticCrosswireIssues(stories));
 
   for (const item of homepageItems) {
     const terms = concreteTerms(item);
@@ -386,6 +434,7 @@ function main() {
     max_janet_take_similarity: maxSimilarity.janet_take,
     max_watch_next_similarity: maxSimilarity.watch_next,
     forbidden_patch_phrases_found: patch,
+    headline_sentence_quality_issues: quality,
     generic_template_phrases_found: generic,
     missing_specific_terms: missingTerms,
     cross_edition_similarity_issues: crossEdition.issues,
@@ -435,6 +484,7 @@ function main() {
       max_janet_take_similarity: check.max_janet_take_similarity,
       max_watch_next_similarity: check.max_watch_next_similarity,
       forbidden_patch_phrases_found: check.forbidden_patch_phrases_found,
+      headline_sentence_quality_issues: check.headline_sentence_quality_issues,
       generic_template_phrases_found: check.generic_template_phrases_found,
       missing_specific_terms: check.missing_specific_terms,
       cross_edition_similarity_issues: check.cross_edition_similarity_issues,

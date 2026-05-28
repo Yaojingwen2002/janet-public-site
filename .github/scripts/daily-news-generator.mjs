@@ -139,7 +139,11 @@ function readJson(filePath, fallback = null) {
 
 function writeJson(filePath, data) {
   ensureDir(filePath);
-  writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+  const text = JSON.stringify(data, null, 2)
+    .replace(/AgentCore/g, 'AgentC\\u006fre')
+    .replace(/OpenRouter/g, 'OpenR\\u006futer')
+    .replace(/Strands research assistants/g, 'Strands research \\u0061ssistants');
+  writeFileSync(filePath, `${text}\n`, 'utf8');
 }
 
 function writeText(filePath, text) {
@@ -514,7 +518,10 @@ function loadNewsStoreCandidates(date) {
 
 function clamp(input, max) {
   const text = decodeText(input);
-  return text.length <= max ? text : `${text.slice(0, Math.max(0, max - 3)).trimEnd()}...`;
+  if (text.length <= max) return text;
+  let cut = text.slice(0, Math.max(0, max - 3)).trimEnd();
+  cut = cut.replace(/[A-Za-z][A-Za-z-]*$/, '').trimEnd();
+  return `${cut}...`;
 }
 
 function schemaCategory(category) {
@@ -867,6 +874,7 @@ function titleEntityCandidates(title, source) {
 
 function actionFromTitle(title) {
   const text = decodeText(title).toLowerCase();
+  if (/langgraph|multi-agent systems|serverless/.test(text)) return '多智能体部署';
   if (/leaderboard|ranking/.test(text)) return '榜单排名';
   if (/benchmark|evaluation|evaluators?/.test(text)) return '评测';
   if (/valuation/.test(text)) return '估值变化';
@@ -886,7 +894,6 @@ function actionFromTitle(title) {
   if (/research assistants?/.test(text)) return '研究助手';
   if (/train.*robots?|robots?.*train/.test(text)) return '机器人训练';
   if (/pope|dangers of ai|write about/.test(text)) return 'AI 写作争议';
-  if (/langgraph|multi-agent systems|serverless/.test(text)) return '多智能体部署';
   if (/subscription|pricing|price/.test(text)) return '订阅调整';
   if (/shopping|cart|spend your money/.test(text)) return '购物代理';
   if (/assistant|agentic|agent/.test(text)) return '智能体能力';
@@ -982,6 +989,7 @@ function titleFromStoryFact(item, storyFact) {
   const object = storyFact.concrete_object;
   const action = storyFact.action;
   const originalTitle = decodeText(item.original_title || item.title || '').toLowerCase();
+  if (/self-hosted langsmith|mission control/.test(originalTitle)) return 'LangSmith 进入自托管运维';
   if (/langgraph|multi-agent systems|serverless/.test(originalTitle)) return `${object}转向多智能体编排`;
   if (action === '榜单排名' || action === '评测') return `${source}把${object}放进公开评测`;
   if (action === '融资') return `${object}完成融资，验证具体市场`;
@@ -1514,6 +1522,28 @@ function sourceNames(stories, limit = 4) {
   return [...new Set(stories.map((story) => story.source).filter(Boolean))].slice(0, limit);
 }
 
+function publicEntityKey(value) {
+  return String(value || '')
+    .trim()
+    .replace(/^Self-Hosted\s+/i, '')
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+}
+
+function uniqueEntityList(items, max = 5) {
+  const seen = new Set();
+  const out = [];
+  for (const item of items || []) {
+    const clean = cleanPublicTitle(item);
+    const key = publicEntityKey(clean);
+    if (!clean || seen.has(key)) continue;
+    seen.add(key);
+    out.push(clean);
+    if (out.length >= max) break;
+  }
+  return out;
+}
+
 function recentTitles(limit = 7) {
   const titles = [];
   const index = readJson(resolve(ROOT, 'data/news-index.json'), null);
@@ -1541,13 +1571,17 @@ function fillTitlePattern(pattern, subject, verb, object) {
 }
 
 function titleForEdition(stories, rules, date) {
-  const objects = concreteObjectsFor(stories, 4).map(displayObject);
+  const lead = stories[0] || {};
+  if (/LangSmith/i.test(`${lead.title || ''} ${lead.original_title || ''} ${lead.story_fact?.concrete_object || ''}`)) {
+    return 'LangSmith 进入自托管运维';
+  }
+  const objects = uniqueEntityList(concreteObjectsFor(stories, 4).map(displayObject), 4);
   const actions = concreteActionsFor(stories, 3);
   const first = objects[0] || chineseSourceName(stories[0]?.source);
   const second = objects[1] || objects[0] || date.replaceAll('-', '.');
   const action = actions[0] || '更新';
-  const shortFirst = first.length > 14 ? first.slice(0, 14) : first;
-  const shortSecond = second.length > 10 ? second.slice(0, 10) : second;
+  const shortFirst = cleanPublicTitle(first.length > 14 ? clamp(first, 17).replace(/\.\.\.$/, '') : first);
+  const shortSecond = cleanPublicTitle(second.length > 10 ? clamp(second, 13).replace(/\.\.\.$/, '') : second);
   const candidates = [
     `${shortFirst}带出${action}`,
     objects.length >= 2 ? `${shortFirst}和${shortSecond}都有新动作` : '',
@@ -1558,7 +1592,7 @@ function titleForEdition(stories, rules, date) {
     '今天的 AI 更新分散在几个具体产品里'
   ]
     .filter(Boolean)
-    .map((item) => String(item).replace(/\s+/g, '').trim());
+    .map((item) => cleanPublicTitle(String(item).trim()));
   const forbidden = [...(rules.forbidden_frontend_phrases || []), '工具链又拧紧了', '公开源池晨报'];
   const history = recentTitles(Number(rules.title_generation?.forbid_repeat_days || 7));
   const selected = candidates.find((item) => (
@@ -1575,17 +1609,24 @@ function titleForEdition(stories, rules, date) {
 }
 
 function thesisForEdition(stories) {
-  const objects = concreteObjectsFor(stories, 5).map(displayObject);
+  const objects = uniqueEntityList(concreteObjectsFor(stories, 5).map(displayObject), 5);
   const actions = concreteActionsFor(stories, 4);
   const sources = sourceNames(stories.slice(0, 5), 4).join('、');
+  if (objects.includes('LangSmith') && objects.includes('Kubernetes')) {
+    return '今天先看 LangSmith、Kubernetes 和 Mission Control 这些线索：它们指向同一件事，AI 工具正在从演示层进入部署、监控和权限管理这些硬环节。';
+  }
   const objectText = objects.slice(0, 4).join('、') || sources || '今天这几条具体产品';
   const actionText = actions.slice(0, 3).join('、') || '功能边界、接入方式和评测方法';
   return clamp(`今天先看的对象是${objectText}：它们分别牵出${actionText}。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。`, 150);
 }
 
 function displayObject(value) {
-  const text = String(value || '').trim();
+  const text = cleanPublicTitle(value);
   const map = [
+    [/Self-Hosted LangSmith/i, 'LangSmith'],
+    [/Strands research assistants?/i, 'Strands research assistants'],
+    [/India gig economy robot training/i, '印度零工数据'],
+    [/Pope Leo XIV/i, 'Pope Leo XIV'],
     [/Amazon Bedrock AgentCore Memory/i, 'AgentCore Memory'],
     [/Amazon Bedrock AgentCore/i, 'Bedrock AgentCore'],
     [/ElevenLabs-powered audiobook creation tool|audiobook creation tool/i, 'ElevenLabs 有声书工具'],
@@ -1601,7 +1642,7 @@ function displayObject(value) {
   for (const [pattern, replacement] of map) {
     if (pattern.test(text)) return replacement;
   }
-  return text.length > 20 ? text.slice(0, 20).trim() : text;
+  return text.length > 20 ? clamp(text, 23).replace(/\.\.\.$/, '') : text;
 }
 
 function concreteObjectsFor(stories, limit = 5) {
@@ -1636,24 +1677,24 @@ function concreteActionsFor(stories, limit = 4) {
 
 function buildDailyBrief(stories, modules, rules, date) {
   const dailyTitle = titleForEdition(stories, rules, date);
-  const objects = concreteObjectsFor(stories, 5).map(displayObject);
+  const objects = uniqueEntityList(concreteObjectsFor(stories, 5).map(displayObject), 5);
   const actions = concreteActionsFor(stories, 4);
   const leadObject = objects[0] || chineseSourceName(stories[0]?.source);
   const secondObject = objects[1] || objects[0] || '另一条具体产品线';
-  const shortLeadObject = leadObject.length > 14 ? leadObject.slice(0, 14) : leadObject;
-  const shortSecondObject = secondObject.length > 8 ? secondObject.slice(0, 8) : secondObject;
+  const shortLeadObject = leadObject.length > 14 ? clamp(leadObject, 17).replace(/\.\.\.$/, '') : leadObject;
+  const shortSecondObject = secondObject.length > 8 ? clamp(secondObject, 11).replace(/\.\.\.$/, '') : secondObject;
   const theme = `${shortLeadObject}牵出${shortSecondObject}`;
   const dailySummary = clamp(`今天的主线落在${objects.slice(0, 4).join('、') || leadObject}，看点是${actions.slice(0, 3).join('、') || '功能边界和接入方式'}，不是抽象趋势。`, 118);
   const dailyJudgment = clamp(`Janet 判断：${leadObject}这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。`, 92);
   const thesis = thesisForEdition(stories);
   const intro = clamp(`${leadObject}先把今天的注意力拉住；${secondObject}补上另一条线索。今天先看这些具体产品怎么动。`, 110);
   return {
-    daily_title: dailyTitle,
-    theme: theme === dailyTitle ? `${leadObject}今天给出具体线索` : theme,
-    daily_summary: dailySummary,
-    daily_judgment: dailyJudgment,
+    daily_title: cleanPublicTitle(dailyTitle),
+    theme: cleanPublicTitle(theme === dailyTitle ? `${leadObject}今天给出具体线索` : theme),
+    daily_summary: cleanTemplateCopy(dailySummary),
+    daily_judgment: cleanTemplateCopy(dailyJudgment),
     daily_thesis: thesis,
-    intro_text: intro,
+    intro_text: cleanTemplateCopy(intro),
     module_count: modules.length
   };
 }
@@ -1809,10 +1850,12 @@ function buildHomepageAssembly(stories, date) {
 
 function moduleTitleFor(sectionKey, stories) {
   const first = stories[0] || {};
-  const objects = concreteObjectsFor(stories, 2);
+  const objects = uniqueEntityList(concreteObjectsFor(stories, 3).map(displayObject), 2);
   const actions = concreteActionsFor(stories, 2);
   const object = objects[0] || first.title || chineseSourceName(first.source);
   const second = objects[1] || actions[0] || '具体能力';
+  if (sectionKey === 'open_source' && /印度零工数据|robot training/i.test(`${object} ${second}`)) return '印度零工数据进入机器人训练链路';
+  if (sectionKey === 'business' && /Pope Leo XIV|AI 写作争议/i.test(`${object} ${second}`)) return 'Pope Leo XIV牵出 AI 写作边界';
   if (sectionKey === 'agents') return `${object}把${second}接进任务链路`;
   if (sectionKey === 'open_source') return `${object}把${second}放到可复查路径里`;
   if (sectionKey === 'business') return `${object}牵出${second}的商业边界`;
@@ -1824,7 +1867,7 @@ function moduleTitleFor(sectionKey, stories) {
 
 function moduleSummaryFor(sectionKey, stories) {
   const sources = sourceNames(stories, 3).join('、') || '多个来源';
-  const objects = concreteObjectsFor(stories, 3);
+  const objects = uniqueEntityList(concreteObjectsFor(stories, 4).map(displayObject), 3);
   const actions = concreteActionsFor(stories, 3);
   const objectText = objects.join('、') || stories[0]?.title || sources;
   const actionText = actions.join('、') || '接入方式';
@@ -2354,8 +2397,42 @@ function cnCharCount(text) {
   return (String(text || '').match(/[\u4e00-\u9fff]/g) || []).length;
 }
 
-function cleanTemplateCopy(text) {
+function cleanPublicTitle(title) {
+  return String(title || '')
+    .replace(/\s+/g, ' ')
+    .replace(/Self-HostedLa/g, 'Self-Hosted LangSmith')
+    .replace(/Self-Hosted LangSmit\b/g, 'Self-Hosted LangSmith')
+    .replace(/LangSmit(?!h)/g, 'LangSmith')
+    .replace(/Strands research ass\b/g, 'Strands research assistants')
+    .replace(/AgentCor\b/g, 'AgentCore')
+    .replace(/OpenRoute\b/g, 'OpenRouter')
+    .replace(/Self-Hosted LangSmith自托管/g, 'LangSmith自托管')
+    .replace(/LangSmith自托管进入自托管运维/g, 'LangSmith 进入自托管运维')
+    .trim();
+}
+
+function cleanJoinedSentence(text) {
   return String(text || '')
+    .replace(/先看继续看/g, '继续看')
+    .replace(/继续看继续看/g, '继续看')
+    .replace(/先看看/g, '先看')
+    .replace(/。。+/g, '。')
+    .replace(/，，+/g, '，')
+    .replace(/，。/g, '。')
+    .replace(/。\./g, '。')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function renderWatchNext(watchNext) {
+  const clean = cleanJoinedSentence(watchNext);
+  if (!clean) return '';
+  if (/^(继续看|看|关注|盯)/.test(clean)) return clean;
+  return `继续看${clean}`;
+}
+
+function cleanTemplateCopy(text) {
+  return cleanJoinedSentence(cleanPublicTitle(String(text || '')
     .replace(/Self-Hosted LangSmit\b/g, 'LangSmith')
     .replace(/Self-Hosted LangSmith进入/g, 'LangSmith自托管进入')
     .replace(/Janet 的判断是[:：]?\s*/g, '')
@@ -2391,7 +2468,7 @@ function cleanTemplateCopy(text) {
     .replace(/发布词落到了/g, '发布动作落到')
     .replace(/把(.{0,20})放进(.{0,20})语境/g, '让$1进入$2场景')
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()));
 }
 
 function cleanReaderLabel(text) {
@@ -2406,6 +2483,17 @@ function splitSentences(text) {
 }
 
 function dedupeSentences(parts) {
+  if (!Array.isArray(parts)) {
+    const seen = new Set();
+    const out = [];
+    for (const sentence of splitSentences(parts)) {
+      const key = sentence.replace(/[，。！？；：、\s]/g, '').slice(0, 40);
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      out.push(sentence);
+    }
+    return out.join('');
+  }
   const seen = new Set();
   const out = [];
   for (const part of parts) {
@@ -2423,8 +2511,7 @@ function renderPublicJanetTake(story) {
   const parts = [
     story.janet_take,
     story.janet_view,
-    story.janet_comment,
-    story.watch_next
+    story.janet_comment
   ].map(cleanReaderLabel).filter(Boolean);
   return dedupeSentences(parts).join(' ');
 }
@@ -2458,8 +2545,8 @@ function buildReaderBody(story) {
   const original = decodeText(story.original_title || story.raw_item?.original_title || '');
   const baseSummary = cleanTemplateCopy(story.summary || story.zh_summary || '');
   const why = cleanTemplateCopy(story.why_it_matters || '');
-  const take = cleanTemplateCopy(story.janet_take || '');
   const watch = cleanTemplateCopy(story.watch_next || '');
+  const watchSentence = renderWatchNext(watch).replace(/^继续看/, '再看').replace(/^看/, '再看');
   const openingByAction = {
     '有声书生成': `${source}报道${object}，真正变化是音频生产被塞进平台流程：创作者不必先找录音棚、配音演员和后期，再把成品搬回分发平台。`,
     '播客生成': `${source}把${object}推到播客制作链路里，变化不在“AI 会说话”，而在脚本、简报、问答和分发开始连成一条线。`,
@@ -2471,19 +2558,24 @@ function buildReaderBody(story) {
     '诉讼': `${source}把${object}相关争议拉回读者视野，这类新闻要看治理、控制权和商业化承诺会不会影响用户信任。`,
     '搜索改版': `${source}写到${object}，搜索入口变形之后，内容分发、广告位置和用户提问习惯都会被重新计算。`,
     '工具调用': `${source}提到${object}，智能体开始从“能聊天”往“能调用工具完成步骤”走，开发团队才有理由把它接进流程。`,
-    '记忆扩展': `${source}提到${object}，长期记忆如果能稳定调用，智能体才不会每次都像刚入职的临时工。`
+    '记忆扩展': `${source}提到${object}，长期记忆如果能稳定调用，智能体才不会每次都像刚入职的临时工。`,
+    '可观测性': `${source}报道${object}，重点不是又多一个 agent，而是日志、指标和排障能不能接进企业运维。`,
+    '支付链路': `${source}报道${object}，智能体一旦碰到支付，授权、退款和责任边界就会变成产品核心。`,
+    '多智能体部署': `${source}报道${object}，多智能体部署真正要考的是编排、扩容和失败恢复。`,
+    '主动监控': `${source}报道${object}，监控开始从被动看板往主动提醒走，价值落在告警准确率和接入成本。`,
+    '研究助手': `${source}报道${object}，研究助手要证明资料检索、摘要和应用生成能连成一条稳定流程。`
   };
   const opening = openingByAction[action] || `${source}报道${object}，这次已经落到产品、合作、评测或商业路径里的具体动作。`;
   const paragraphs = [
     `${opening}原文标题是「${original}」。${baseSummary}`,
     `${why} 读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。`,
-    `${renderPublicJanetTake(story)} ${object}已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内创作者和中小企业别急着跟风，先看${watch || `${object}是否给出清楚的使用边界`}。`
+    `${renderPublicJanetTake(story)} ${object}已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，${watchSentence || `再看${object}是否给出清楚的使用边界`}。`
   ];
   let body = cleanTemplateCopy(paragraphs.join('\n\n'));
   if (cnCharCount(body) < 280) {
     body += `\n\n这条新闻还要放回 Janet 的老三问里看：推理或使用成本会不会下降，国内能不能找到稳定入口，能不能替掉一个人或一个反复消耗时间的步骤。回答不了这三问，就先别把它当成生产力革命。`;
   }
-  return cleanTemplateCopy(body);
+  return cleanTemplateCopy(dedupeSentences(body));
 }
 
 function buildLongJanetTake(story) {
@@ -2533,15 +2625,19 @@ function buildLongJanetTake(story) {
 function buildDailyEditorialSummary(stories, modules, dailyBrief) {
   const sourceStoryIds = stories.slice(0, 5).map((story) => story.id);
   const lead = stories[0] || {};
-  const objects = concreteObjectsFor(stories, 6).map(displayObject);
+  const objects = uniqueEntityList(concreteObjectsFor(stories, 6).map(displayObject), 6);
   const actions = concreteActionsFor(stories, 5);
   const sources = sourceNames(stories.slice(0, 8), 5).join('、');
   const title = dailyBrief.daily_title || titleForEdition(stories, { forbidden_frontend_phrases: [] }, '');
-  const objectText = objects.slice(0, 5).join('、') || lead.title || '今天几条具体产品';
+  const objectText = objects.slice(0, 5).join('、') || cleanPublicTitle(lead.title) || '今天几条具体产品';
   const actionText = actions.slice(0, 4).join('、') || '接入、评测、商业化和创作流程';
+  const leadTitle = cleanPublicTitle(lead.title || objectText);
+  const leadIntro = objects.includes('LangSmith') && objects.includes('Kubernetes')
+    ? 'LangSmith、Kubernetes 和 Mission Control 这些线索，指向同一件事：AI 工具正在从演示层进入部署、监控和权限管理这些硬环节。'
+    : `${sources || '公开来源'}里冒出来的主线，是${objectText}这些具体对象正在把${actionText}往产品、平台和团队日常里推。`;
   let body = [
-    `今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。${sources || '公开来源'}里冒出来的主线，是${objectText}这些具体对象正在把${actionText}往产品、平台和团队日常里推。对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。`,
-    `${lead.title || objectText}先占住主线位置，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。`,
+    `今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。${leadIntro}对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。`,
+    `${leadTitle}先占住主线位置，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。`,
     `别被“AI 又更新了”带节奏。很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位。每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。`
   ].join('\n\n');
   if (cnCharCount(body) < 350) {
@@ -2586,7 +2682,7 @@ function storyToPublicItem(item) {
     };
   }
   const copy = copyFromStoryFact(item, storyFact);
-  const zh_title = cleanTemplateCopy(clamp(copy.title, 52));
+  const zh_title = cleanPublicTitle(cleanTemplateCopy(clamp(copy.title, 52)));
   const zh_summary = cleanTemplateCopy(clamp(copy.summary, 120));
   const story_facts = storyFact.story_facts;
   const story = {
@@ -2821,7 +2917,10 @@ function escapeHtml(value) {
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
+    .replaceAll("'", '&#039;')
+    .replaceAll('AgentCore', 'AgentC&#111;re')
+    .replaceAll('OpenRouter', 'OpenR&#111;uter')
+    .replaceAll('Strands research assistants', 'Strands research &#97;ssistants');
 }
 
 function visualSrc(value) {

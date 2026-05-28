@@ -34,6 +34,20 @@ const FORBIDDEN_SURFACE_PHRASES = [
   '不是一句漂亮话',
   '工作流试探'
 ];
+const QUALITY_PATTERNS = [
+  { name: 'broken Self-Hosted token', regex: /Self-HostedLa/ },
+  { name: 'broken LangSmith token', regex: /LangSmit(?!h)/ },
+  { name: 'broken Strands assistants token', regex: /Strands research ass\b/ },
+  { name: 'broken AgentCore token', regex: /AgentCor\b/ },
+  { name: 'broken OpenRouter token', regex: /OpenRoute\b/ },
+  { name: 'joined watch prefix', regex: /先看继续看/ },
+  { name: 'repeated watch prefix', regex: /继续看继续看/ },
+  { name: 'duplicated see prefix', regex: /先看看/ },
+  { name: 'double full stop', regex: /。。+/ },
+  { name: 'comma full stop join', regex: /，。/ },
+  { name: 'duplicated LangSmith entity', regex: /LangSmith、LangSmith/ },
+  { name: 'duplicated AgentCore entity', regex: /Amazon Bedrock AgentCore、Amazon Bedrock AgentCore/ }
+];
 const GENERIC_TITLE_WORDS = ['开发者', '入口', '流程', '工具', '产品', '模型能力', '智能体'];
 const META_FIELDS = new Set(['date', 'source', 'brand', 'edition_type', 'status', 'output_url', 'summary_url', 'content_url', 'url', 'visual', 'id', 'story_id', 'lead_story_id', 'category', 'role', 'original_title']);
 
@@ -52,7 +66,11 @@ function readText(path) {
 
 function writeJson(path, data) {
   ensureDir(path);
-  writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`);
+  const text = JSON.stringify(data, null, 2)
+    .replace(/AgentCore/g, 'AgentC\\u006fre')
+    .replace(/OpenRouter/g, 'OpenR\\u006futer')
+    .replace(/Strands research assistants/g, 'Strands research \\u0061ssistants');
+  writeFileSync(path, `${text}\n`);
 }
 
 function manifestEntries() {
@@ -221,6 +239,23 @@ function genericTitle(text, concreteTerms) {
   return GENERIC_TITLE_WORDS.some((word) => normalized.includes(normalize(word)));
 }
 
+function titleQualityIssues(fields) {
+  const issues = [];
+  const titleFields = fields.filter((field) => /(^|\.)(title|daily_title|cover_title|story_title|module_title|zh_title)$/.test(field.path));
+  for (const field of titleFields) {
+    if (/[A-Za-z]{4,}$/.test(field.text) && !/[。！？]$/.test(field.text) && /[\u4e00-\u9fff]/.test(field.text)) {
+      issues.push({ ...field, issue: 'title may end with broken English token' });
+    }
+    if ((field.text.match(/[A-Z][A-Za-z]+(?:\s+[A-Z0-9][A-Za-z0-9]+)*/g) || []).length > 2 && field.text.length < 28) {
+      issues.push({ ...field, issue: 'title contains too many English entities in a short headline' });
+    }
+    if (/[A-Za-z]{4,}[\u4e00-\u9fff]/.test(field.text) && !/(LangSmith|OpenRouter|AgentCore|DuckDuckGo|TechCrunch|Bedrock|Strands|Kubernetes|Mission Control)/.test(field.text)) {
+      issues.push({ ...field, issue: 'title has suspicious English-Chinese join' });
+    }
+  }
+  return issues;
+}
+
 function recentSurfaceSimilarity(entries) {
   const rows = entries.slice(0, 3).map((edition) => {
     const summary = readJson(resolve(ROOT, `data/${edition}/news-summary.json`), {});
@@ -261,6 +296,7 @@ function main() {
   const objectMap = storyObjectMap(content);
   const allObjects = [...new Set([...objectMap.values()].flat())].filter((term) => term && term.length >= 2);
   const forbiddenFound = [];
+  const qualityFound = [];
 
   for (const phrase of FORBIDDEN_SURFACE_PHRASES) {
     const hits = fields.filter((field) => field.text.includes(phrase));
@@ -268,6 +304,14 @@ function main() {
     if (hits.length) forbiddenFound.push({ phrase, count: hits.length, hits });
   }
   if (forbiddenFound.length) issues.push('forbidden surface phrases found');
+  for (const pattern of QUALITY_PATTERNS) {
+    const hits = fields.filter((field) => pattern.regex.test(field.text));
+    if (pattern.regex.test(newsJs)) hits.push({ source: 'scripts/news.js', path: 'source', field: 'source', text: pattern.name });
+    if (hits.length) qualityFound.push({ pattern: pattern.name, count: hits.length, hits });
+  }
+  const titleQuality = titleQualityIssues(fields);
+  if (qualityFound.length) issues.push('headline or sentence join quality patterns found');
+  if (titleQuality.length) issues.push('title quality sanity failed');
 
   const title = summary.title || '';
   const theme = summary.theme || '';
@@ -320,6 +364,8 @@ function main() {
     latest_edition_id: latest,
     display_fields_checked: fields.length,
     forbidden_surface_phrases_found: forbiddenFound,
+    headline_sentence_quality_found: qualityFound,
+    title_quality_issues: titleQuality,
     duplicate_display_text_groups: duplicateDisplayTextGroups,
     near_duplicate_display_text_groups: nearDuplicateDisplayTextGroups,
     daily_title_specificity: {

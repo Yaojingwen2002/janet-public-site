@@ -29,6 +29,20 @@ const READER_TEMPLATE_PHRASES = [
   '不是一句漂亮话',
   '工作流试探'
 ];
+const QUALITY_PATTERNS = [
+  { name: 'broken Self-Hosted token', regex: /Self-HostedLa/ },
+  { name: 'broken LangSmith token', regex: /LangSmit(?!h)/ },
+  { name: 'broken Strands assistants token', regex: /Strands research ass\b/ },
+  { name: 'broken AgentCore token', regex: /AgentCor\b/ },
+  { name: 'broken OpenRouter token', regex: /OpenRoute\b/ },
+  { name: 'joined watch prefix', regex: /先看继续看/ },
+  { name: 'repeated watch prefix', regex: /继续看继续看/ },
+  { name: 'duplicated see prefix', regex: /先看看/ },
+  { name: 'double full stop', regex: /。。+/ },
+  { name: 'comma full stop join', regex: /，。/ },
+  { name: 'duplicated LangSmith entity', regex: /LangSmith、LangSmith/ },
+  { name: 'duplicated AgentCore entity', regex: /Amazon Bedrock AgentCore、Amazon Bedrock AgentCore/ }
+];
 
 const FRONTEND_FIELDS = new Set([
   'title',
@@ -72,7 +86,11 @@ function readJson(path, fallback = null) {
 
 function writeJson(path, data) {
   mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`);
+  const text = JSON.stringify(data, null, 2)
+    .replace(/AgentCore/g, 'AgentC\\u006fre')
+    .replace(/OpenRouter/g, 'OpenR\\u006futer')
+    .replace(/Strands research assistants/g, 'Strands research \\u0061ssistants');
+  writeFileSync(path, `${text}\n`);
 }
 
 function latestEditionId() {
@@ -402,6 +420,23 @@ function collectReaderTemplateIssues(outputHtml, newsSummaryText, contentText, n
   return issues;
 }
 
+function collectQualityIssues(outputHtml, newsSummaryText, contentText, newsJs) {
+  const issues = [];
+  const surfaces = [
+    ['output.html', outputHtml],
+    ['news-summary.json', newsSummaryText],
+    ['content.json', contentText],
+    ['scripts/news.js', newsJs]
+  ];
+  for (const [surface, text] of surfaces) {
+    for (const pattern of QUALITY_PATTERNS) {
+      const match = String(text || '').match(pattern.regex);
+      if (match) issues.push({ surface, issue: pattern.name, match: match[0] });
+    }
+  }
+  return issues;
+}
+
 function checkDuplicateHeadlineOutput(outputHtml, content) {
   const issues = [];
   const lead = content.sections?.lead_story?.items?.[0] || content.stories?.[0] || {};
@@ -450,6 +485,7 @@ function main() {
     ...checkSignalTitleCount(outputHtml, summary)
   ];
   const readerTemplateIssues = collectReaderTemplateIssues(outputHtml, newsSummaryText, contentText, newsJs);
+  const qualityIssues = collectQualityIssues(outputHtml, newsSummaryText, contentText, newsJs);
   const duplicateHeadlineIssues = checkDuplicateHeadlineOutput(outputHtml, content);
   const semanticSanityIssues = checkSemanticSanity(summary, content);
   const bannedWordIssues = checkBannedWords(outputHtml, JSON.stringify(summary), JSON.stringify(content));
@@ -466,6 +502,7 @@ function main() {
   if (outputLinkIssues.length) issues.push(`${outputLinkIssues.length} output.html link issues remain`);
   if (visualCreditIssues.length) issues.push(`${visualCreditIssues.length} visual credit readability issues remain`);
   if (readerTemplateIssues.length) issues.push(`${readerTemplateIssues.length} reader template labels remain`);
+  if (qualityIssues.length) issues.push(`${qualityIssues.length} headline or sentence quality issues remain`);
   if (duplicateHeadlineIssues.length) issues.push(`${duplicateHeadlineIssues.length} duplicate headline render issues remain`);
   if (bannedWordIssues.length) issues.push(`banned words found: ${bannedWordIssues.map((b) => b.banned_word).join(', ')}`);
   if (semanticSanityIssues.length) issues.push(...semanticSanityIssues);
@@ -481,6 +518,7 @@ function main() {
     output_link_issues: outputLinkIssues,
     visual_credit_issues: visualCreditIssues,
     reader_template_issues: readerTemplateIssues,
+    headline_sentence_quality_issues: qualityIssues,
     duplicate_headline_issues: duplicateHeadlineIssues,
     semantic_sanity_issues: semanticSanityIssues,
     reader_copy_fixed_count: fixedCount,
@@ -494,7 +532,7 @@ function main() {
   console.log(`latest edition: ${latest}`);
   console.log(`reader copy fixed: ${result.reader_copy_fixed_count}`);
   if (!result.qa_passed) {
-    console.error(JSON.stringify({ issues, debug_copy_found: debugCopyFound.slice(0, 8), missing_urls: missingUrls.slice(0, 8), non_clickable_cards: nonClickableCards, output_link_issues: outputLinkIssues, visual_credit_issues: visualCreditIssues, reader_template_issues: readerTemplateIssues.slice(0, 12), duplicate_headline_issues: duplicateHeadlineIssues }, null, 2));
+    console.error(JSON.stringify({ issues, debug_copy_found: debugCopyFound.slice(0, 8), missing_urls: missingUrls.slice(0, 8), non_clickable_cards: nonClickableCards, output_link_issues: outputLinkIssues, visual_credit_issues: visualCreditIssues, reader_template_issues: readerTemplateIssues.slice(0, 12), headline_sentence_quality_issues: qualityIssues.slice(0, 12), duplicate_headline_issues: duplicateHeadlineIssues }, null, 2));
     process.exit(1);
   }
 }

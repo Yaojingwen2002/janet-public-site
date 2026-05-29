@@ -1,14 +1,14 @@
 {
   "status": "daily_candidates_ready",
-  "run_at": "2026-05-29T12:39:54+08:00",
+  "run_at": "2026-05-29T18:13:11+08:00",
   "target_date": "2026-05-29",
   "timezone": "Asia/Shanghai",
   "window_hours": 24,
   "window_start": "2026-05-28T15:59:59.000Z",
   "window_end": "2026-05-29T15:59:59.000Z",
   "expanded_window_reason": "",
-  "item_pool_count": 1270,
-  "qualified_count": 217,
+  "item_pool_count": 1276,
+  "qualified_count": 219,
   "weak_count": 0,
   "selected_count": 12,
   "min_full_edition_count": 8,
@@ -256,6 +256,35 @@
       "publishability": "eligible"
     },
     {
+      "id": "the-verge-ai-875677d6fc7e",
+      "source_id": "the-verge-ai",
+      "source_name": "The Verge AI",
+      "source_rank": "B",
+      "category_hint": "business",
+      "title": "Adobe’s conversational AI agent is a mediocre design intern",
+      "title_zh": "",
+      "summary_raw": "AI image tools rarely make me feel like I'm part of the creative process. They are, after all, mostly designed so that people with no design experience can type in a few words and get back a usable result. So I was pleasantly surprised by Adobe's latest take on an AI image assistant: it's a […]",
+      "url": "https://www.theverge.com/tech/939686/adobes-conversational-ai-agent-is-a-mediocre-design-intern",
+      "canonical_url": "https://www.theverge.com/tech/939686/adobes-conversational-ai-agent-is-a-mediocre-design-intern",
+      "published_at": "2026-05-29T10:00:00.000Z",
+      "fetched_at": "2026-05-29T18:13:10+08:00",
+      "content_hash": "7f280857a9cbb5f062d3",
+      "dedupe_key": "https://www.theverge.com/tech/939686/adobes-conversational-ai-agent-is-a-mediocre-design-intern",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "agents",
+      "score": 62,
+      "score_reasons": [
+        "source_rank_B:+16",
+        "freshness:+21",
+        "specific_entity:+10",
+        "clear_ai_signal:+8",
+        "janet_relevance:+7"
+      ],
+      "publishability": "eligible"
+    },
+    {
       "id": "langchain-blog-f3294fb990b0",
       "source_id": "langchain-blog",
       "source_name": "LangChain Blog",
@@ -312,61 +341,29 @@
       "publishability": "eligible"
     },
     {
-      "id": "the-verge-ai-11e6e2adfb18",
-      "source_id": "the-verge-ai",
-      "source_name": "The Verge AI",
+      "id": "mit-tech-review-ai-d620112abded",
+      "source_id": "mit-tech-review-ai",
+      "source_name": "MIT Technology Review AI",
       "source_rank": "B",
       "category_hint": "business",
-      "title": "Microsoft 365 Copilot gets a speed boost and cleaner design",
+      "title": "How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment",
       "title_zh": "",
-      "summary_raw": "Microsoft is launching a revamped version of Microsoft 365 Copilot, offering a cleaner design that the company claims loads twice as fast. As part of this update, Copilot will provide more reliable and structured responses that are easier to scan, according to Microsoft. The redesign, which is rolling out across desktop and mobile devices, comes […]",
-      "url": "https://www.theverge.com/tech/939273/microsoft-365-copilot-redesign",
-      "canonical_url": "https://www.theverge.com/tech/939273/microsoft-365-copilot-redesign",
-      "published_at": "2026-05-28T20:14:07.000Z",
-      "fetched_at": "2026-05-29T04:36:38+08:00",
-      "content_hash": "b2f02558cd006f0eba56",
-      "dedupe_key": "https://www.theverge.com/tech/939273/microsoft-365-copilot-redesign",
+      "summary_raw": "Pope Leo XIV’s new encyclical on artificial intelligence includes a statement that warrants serious attention from technologists and policymakers: “Technology is never neutral.” Magnifica Humanitas (“Magnificent Humanity”) is a clarion call to all people to act with courage and solidarity as we enter an age already being transformed by artificial intelligence, the greatest change in…",
+      "url": "https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment",
+      "canonical_url": "https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment",
+      "published_at": "2026-05-29T10:00:00.000Z",
+      "fetched_at": "2026-05-29T18:13:10+08:00",
+      "content_hash": "4cea1eb0f3b42e12219b",
+      "dedupe_key": "https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment",
       "tags": [],
       "quality_flags": [],
       "status": "new",
-      "janet_category": "agents",
-      "score": 53,
+      "janet_category": "business",
+      "score": 47,
       "score_reasons": [
         "source_rank_B:+16",
-        "freshness:+14",
-        "specific_entity:+10",
-        "has_data:+6",
-        "janet_relevance:+7"
-      ],
-      "publishability": "eligible"
-    },
-    {
-      "id": "arxiv-cs-ai-26b98f159384",
-      "source_id": "arxiv-cs-ai",
-      "source_name": "arXiv cs.AI",
-      "source_rank": "A",
-      "category_hint": "research",
-      "title": "BEAMS: Benchmarking and Evaluating AI for Modeling and Simulation",
-      "title_zh": "",
-      "summary_raw": "arXiv:2605.28994v1 Announce Type: new Abstract: AI tools to support real world decision making must be able to build simulation models that inform their recommendations and render them interpretable. Tools that can automate aspects of modeling practice must complement human expertise, not replace it. The BEAMS Initiative aims to guide the development of AI tools for modeling and simulation toward forms that are responsible and ethical by establishing benchmarks for human centered modeling and simulation practices. The initiative uses open digital and organizational infrastructure to collaboratively evaluate AI tools for modeling and simulation. The open source sd ai project hosted by the initiative establishes transparency and enables contributions to be shared broadly. A steering group focuses on prioritizing potential benchmarks, while a technical group focuses on implementing the benchmarks in the form of automated tests. Tests for several distinct categories of evaluation have been implemented and applied to AI tools that support qualitative model building, quantitative model building, and model discussion. These include tests for causal translation, model iteration, causal reasoning, conformance, model behavior explanation, suggested model building steps, and suggested model fixes. When engines from the sd ai project are coupled with different LLMs, their performance on these evaluations reveals variability across different AI tools. The evaluations implemented by the initiative demonstrate that AI enabled modeling tools perform better at discussion and basic qualitative tasks than with causal reasoning and quantitative error fixing. No single LLM dominates across engine types, highlighting the importance of specific tasks and tradeoffs between speed and accuracy. Ongoing efforts of the initiative aim to incorporate benchmarks that address concerns about bias by considering alternative perspectives and human centered use cases.",
-      "url": "https://arxiv.org/abs/2605.28994",
-      "canonical_url": "https://arxiv.org/abs/2605.28994",
-      "published_at": "2026-05-29T04:00:00.000Z",
-      "fetched_at": "2026-05-29T12:39:52+08:00",
-      "content_hash": "ba9001bdb9860e4e8eac",
-      "dedupe_key": "https://arxiv.org/abs/2605.28994",
-      "tags": [],
-      "quality_flags": [],
-      "status": "new",
-      "janet_category": "models",
-      "score": 73,
-      "score_reasons": [
-        "source_rank_A:+24",
-        "freshness:+18",
-        "specific_entity:+10",
-        "clear_ai_signal:+8",
-        "has_data:+6",
-        "janet_relevance:+7"
+        "freshness:+21",
+        "specific_entity:+10"
       ],
       "publishability": "eligible"
     }
@@ -1374,7 +1371,7 @@
     }
   ],
   "source_mix": {
-    "arxiv-cs-ai": 2,
+    "arxiv-cs-ai": 1,
     "arxiv-cs-cl": 1,
     "arxiv-cs-lg": 1,
     "arxiv-stat-ml": 1,
@@ -1382,14 +1379,15 @@
     "aws-machine-learning": 1,
     "techcrunch-ai": 1,
     "github-blog": 1,
+    "the-verge-ai": 1,
     "langchain-blog": 1,
     "google-research-blog": 1,
-    "the-verge-ai": 1
+    "mit-tech-review-ai": 1
   },
   "source_status_summary": {
     "source_count": 27,
-    "source_success_count": 16,
+    "source_success_count": 12,
     "source_error_count": 1,
-    "source_not_modified_count": 5
+    "source_not_modified_count": 9
   }
 }

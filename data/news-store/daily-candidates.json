@@ -1,16 +1,16 @@
 {
   "status": "daily_candidates_ready",
-  "run_at": "2026-05-31T19:49:11+08:00",
+  "run_at": "2026-05-31T22:09:19+08:00",
   "target_date": "2026-05-31",
   "timezone": "Asia/Shanghai",
   "window_hours": 36,
   "window_start": "2026-05-30T03:59:59.000Z",
   "window_end": "2026-05-31T15:59:59.000Z",
   "expanded_window_reason": "qualified_items_below_minimum",
-  "item_pool_count": 1308,
-  "qualified_count": 8,
+  "item_pool_count": 1309,
+  "qualified_count": 9,
   "weak_count": 0,
-  "selected_count": 8,
+  "selected_count": 9,
   "min_full_edition_count": 8,
   "min_limited_edition_count": 5,
   "publish_recommendation": "full_edition",
@@ -69,6 +69,34 @@
       "score_reasons": [
         "source_rank_B:+16",
         "freshness:+15",
+        "specific_entity:+10",
+        "has_data:+6"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "the-verge-ai-2fb8fa2bf432",
+      "source_id": "the-verge-ai",
+      "source_name": "The Verge AI",
+      "source_rank": "B",
+      "category_hint": "business",
+      "title": "I went looking for the AI weed vape that gives you Bitcoin for smoking",
+      "title_zh": "",
+      "summary_raw": "The crypto weed vape found me on 4/20, the high holiday of cannabis enthusiasts everywhere. It arrived over Slack with the thumbnail of a man exhaling a plume of vapor, the words \"every hit delivers Bitcoin\" emblazoned across it. It claimed to be advertising a device called Gudtrip, and I thought everything about it sounded […]",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/933916/ai-powered-crypto-cannabis-vape",
+      "canonical_url": "https://www.theverge.com/ai-artificial-intelligence/933916/ai-powered-crypto-cannabis-vape",
+      "published_at": "2026-05-31T13:00:00.000Z",
+      "fetched_at": "2026-05-31T22:09:18+08:00",
+      "content_hash": "7970b08c7a0746c2ed50",
+      "dedupe_key": "https://www.theverge.com/ai-artificial-intelligence/933916/ai-powered-crypto-cannabis-vape",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "business",
+      "score": 55,
+      "score_reasons": [
+        "source_rank_B:+16",
+        "freshness:+23",
         "specific_entity:+10",
         "has_data:+6"
       ],
@@ -1244,13 +1272,13 @@
     }
   ],
   "source_mix": {
-    "the-verge-ai": 3,
+    "the-verge-ai": 4,
     "techcrunch-ai": 5
   },
   "source_status_summary": {
     "source_count": 27,
-    "source_success_count": 9,
+    "source_success_count": 11,
     "source_error_count": 1,
-    "source_not_modified_count": 12
+    "source_not_modified_count": 10
   }
 }

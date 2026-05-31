@@ -1,16 +1,16 @@
 {
   "status": "daily_candidates_ready",
-  "run_at": "2026-06-01T03:39:46+08:00",
+  "run_at": "2026-06-01T05:14:15+08:00",
   "target_date": "2026-06-01",
   "timezone": "Asia/Shanghai",
   "window_hours": 48,
   "window_start": "2026-05-30T15:59:59.000Z",
   "window_end": "2026-06-01T15:59:59.000Z",
   "expanded_window_reason": "qualified_items_below_minimum",
-  "item_pool_count": 1310,
-  "qualified_count": 3,
+  "item_pool_count": 1311,
+  "qualified_count": 4,
   "weak_count": 1,
-  "selected_count": 3,
+  "selected_count": 4,
   "min_full_edition_count": 8,
   "min_limited_edition_count": 5,
   "publish_recommendation": "no_new_edition_allowed",
@@ -41,6 +41,33 @@
         "freshness:+11",
         "specific_entity:+10",
         "has_data:+6"
+      ],
+      "publishability": "eligible"
+    },
+    {
+      "id": "techcrunch-ai-3f27b704bb71",
+      "source_id": "techcrunch-ai",
+      "source_name": "TechCrunch AI",
+      "source_rank": "B",
+      "category_hint": "business",
+      "title": "Erin Brockovich takes aim at data center secrecy",
+      "title_zh": "",
+      "summary_raw": "Environmental activist Erin Brockovich has a new mission.",
+      "url": "https://techcrunch.com/2026/05/31/erin-brockovich-takes-aim-at-data-center-secrecy",
+      "canonical_url": "https://techcrunch.com/2026/05/31/erin-brockovich-takes-aim-at-data-center-secrecy",
+      "published_at": "2026-05-31T21:05:14.000Z",
+      "fetched_at": "2026-06-01T05:14:12+08:00",
+      "content_hash": "c5aaac6336a3a157c949",
+      "dedupe_key": "https://techcrunch.com/2026/05/31/erin-brockovich-takes-aim-at-data-center-secrecy",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "janet_category": "business",
+      "score": 41,
+      "score_reasons": [
+        "source_rank_B:+16",
+        "freshness:+15",
+        "specific_entity:+10"
       ],
       "publishability": "eligible"
     },
@@ -1104,12 +1131,12 @@
   ],
   "source_mix": {
     "the-verge-ai": 1,
-    "techcrunch-ai": 2
+    "techcrunch-ai": 3
   },
   "source_status_summary": {
     "source_count": 27,
-    "source_success_count": 12,
+    "source_success_count": 11,
     "source_error_count": 1,
-    "source_not_modified_count": 9
+    "source_not_modified_count": 10
   }
 }

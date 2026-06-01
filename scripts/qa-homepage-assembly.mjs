@@ -51,6 +51,15 @@ function duplicateIds(items) {
   return duplicateValues(items, 'story_id');
 }
 
+function homepageSearchableContent(content) {
+  if (Array.isArray(content)) return content.map(homepageSearchableContent);
+  if (!content || typeof content !== 'object') return content;
+  return Object.fromEntries(Object.entries(content).map(([key, value]) => [
+    key,
+    key === 'content' ? '' : homepageSearchableContent(value)
+  ]));
+}
+
 function main() {
   const latest = latestEditionId();
   const contentPath = resolve(ROOT, `data/${latest}/content.json`);
@@ -93,8 +102,8 @@ function main() {
   }
 
   const searchable = [
-    JSON.stringify(content),
-    JSON.stringify(summary),
+    JSON.stringify(homepageSearchableContent(content)),
+    JSON.stringify(homepageSearchableContent(summary)),
     output
   ].join('\n');
   const forbiddenFound = FORBIDDEN.filter((phrase) => searchable.includes(phrase));

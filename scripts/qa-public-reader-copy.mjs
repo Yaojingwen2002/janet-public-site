@@ -17,7 +17,6 @@ const DEBUG_PATTERNS = [
 ];
 const READER_TEMPLATE_PHRASES = [
   'Janet 的判断是',
-  'Janet 锐评',
   '破防点',
   '槽点',
   '这件事要拆成三层看',

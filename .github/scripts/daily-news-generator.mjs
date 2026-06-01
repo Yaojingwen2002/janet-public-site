@@ -1021,8 +1021,8 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '榜单排名' || action === '评测') return `${source}把${object}放进公开评测`;
   if (action === '融资') return `${object}完成融资，验证具体市场`;
   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
-  if (action === '风险提示') return /codex/i.test(object) ? 'Codex工具暴露安全风险' : `安全风险指向${object}`;
-  if (action === '研究突破') return `研究突破指向${object}`;
+  if (action === '风险提示') return /codex/i.test(object) ? 'Codex 工具暴露 OpenAI 令牌风险' : `安全风险指向 ${displayObject(object)}`;
+  if (action === '研究突破') return /openai|数学|猜想|80年/i.test(`${object} ${originalTitle}`) ? 'OpenAI 模型推翻数学猜想' : `研究突破指向 ${displayObject(object)}`;
   if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
   if (action === '生成') return `${object}进入内容生产线`;
   if (action === '有声书生成') return `${object}推出 AI 有声书制作工具`;
@@ -1043,8 +1043,9 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '机器人训练') return `印度零工数据盯上机器人训练`;
   if (action === 'AI 写作争议') return `${object}牵出 AI 写作争议`;
   if (action === '多智能体部署') return `${object}走向多智能体部署`;
-  if (action === '推出') return `${object}补上产品能力`;
-  return `${object}推进${action}`;
+  if (action === '团队变动' && /anthropic|vulnerability scanner|ibm|glasswing/i.test(`${object} ${originalTitle}`)) return 'Anthropic 漏洞扫描器进入企业测试';
+  if (action === '推出') return `${displayObject(object)}补上产品能力`;
+  return `${displayObject(object)}推进${action}`;
 }
 
 function summaryFromStoryFact(item, storyFact) {
@@ -1388,6 +1389,24 @@ function storyBrief(item) {
       watch: '看 Spotify 是否公布配音版权和编辑能力。'
     };
   }
+  if (/ai statistic 2026|startup playbook|market, funding, enterprise/i.test(raw)) {
+    return {
+      title: '创业市场手册梳理AI融资市场',
+      summary: `${source}发布 AI Statistic 2026 与 StartUp Playbook，重点不是单家公司融资，而是把市场规模、企业采用和创业融资放进同一张表。`,
+      why: '投资者和创业团队要看这份手册：如果企业采用和预算方向一起变化，早期项目的定价、获客和退出预期都会被重新校准。',
+      janet: '创业市场手册这类资料适合拿来做基准线，不适合当作创业鸡血。它真正有用的地方，是帮团队分清哪些赛道还有预算，哪些只是被 AI 标签暂时抬高。',
+      watch: '看这份手册是否给出细分市场数据。'
+    };
+  }
+  if (/N1X/i.test(raw) && /Windows|Arm|英伟达|微软/i.test(raw)) {
+    return {
+      title: 'N1X 把终端AI芯片带上台面',
+      summary: `${source}把 N1X 放进 Windows、Arm、英伟达和微软的同一条线索里看，重点是终端 AI 芯片路线开始被更具体地讨论。`,
+      why: 'PC 厂商和开发团队要看 N1X：如果终端算力、功耗和软件兼容能同时成立，AI PC 的产品路线会更清楚。',
+      janet: 'N1X 这类消息不是只看芯片参数，而是看 Windows 生态能不能把端侧 AI 真接起来。',
+      watch: '看 N1X 是否公开性能、功耗和软件支持。'
+    };
+  }
   if (hasLegalEvidence(raw) && /musk|elon/.test(text) && /openai/.test(text) && /trial|trust|lawsuit/.test(text)) {
     return {
       title: '马斯克与 OpenAI 诉讼，信任成核心问题',
@@ -1666,7 +1685,14 @@ function displayObject(value) {
     [/Google Workspace/i, 'Workspace'],
     [/Google Search|search box/i, 'Google 搜索框'],
     [/Antigravity/i, 'Antigravity'],
-    [/Open Agent Leaderboard/i, '智能体榜单']
+    [/Open Agent Leaderboard/i, '智能体榜单'],
+    [/Download Codex UI Tool Secretly|Download Codex UI|Codex UI Tool/i, 'Codex 刷新令牌'],
+    [/AI Vulnerability Scanner/i, 'Anthropic 漏洞扫描器'],
+    [/StartUp Playbook/i, '创业市场手册'],
+    [/AI Statistic/i, 'AI 统计报告'],
+    [/OpenAI模型/i, 'OpenAI 模型'],
+    [/Codex工具/i, 'Codex 工具'],
+    [/Windows/i, 'Windows 终端']
   ];
   for (const [pattern, replacement] of map) {
     if (pattern.test(text)) return replacement;
@@ -1713,7 +1739,10 @@ function buildDailyBrief(stories, modules, rules, date) {
   const shortLeadObject = leadObject.length > 14 ? clamp(leadObject, 17).replace(/\.\.\.$/, '') : leadObject;
   const shortSecondObject = secondObject.length > 8 ? clamp(secondObject, 11).replace(/\.\.\.$/, '') : secondObject;
   const themeCandidate = `${shortLeadObject}牵出${shortSecondObject}`;
-  const theme = themeCandidate.length <= 24 ? themeCandidate : dailyTitle;
+  let theme = themeCandidate.length <= 24 ? themeCandidate : `${shortLeadObject}成为今日主线`;
+  if (cleanPublicTitle(theme) === cleanPublicTitle(dailyTitle)) {
+    theme = `${shortLeadObject}带出另一条线索`;
+  }
   const dailySummary = clamp(`今天的主线落在${objects.slice(0, 4).join('、') || leadObject}，看点是${actions.slice(0, 3).join('、') || '功能边界和接入方式'}，不是抽象趋势。`, 118);
   const dailyJudgment = clamp(`Janet 判断：${leadObject}这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。`, 92);
   const thesis = thesisForEdition(stories);
@@ -1886,10 +1915,11 @@ function moduleTitleFor(sectionKey, stories) {
   const second = objects[1] || actions[0] || '具体能力';
   if (sectionKey === 'open_source' && /印度零工数据|robot training/i.test(`${object} ${second}`)) return '印度零工数据进入机器人训练链路';
   if (sectionKey === 'business' && /Pope Leo XIV|AI 写作争议/i.test(`${object} ${second}`)) return 'Pope Leo XIV牵出 AI 写作边界';
-  if (sectionKey === 'agents') return `${object}把${second}接进任务链路`;
-  if (sectionKey === 'open_source') return `${object}把${second}放到可复查路径里`;
+  if (sectionKey === 'business' && /创业市场手册|StartUp Playbook|AI 统计报告|AI Statistic/i.test(`${object} ${second}`)) return 'StartUp Playbook 牵出 AI Statistic 商业边界';
+  if (sectionKey === 'agents') return `${object} 把 ${second} 接进任务链路`;
+  if (sectionKey === 'open_source') return `${object} 把 ${second} 放到可复查路径里`;
   if (sectionKey === 'business') return `${object}牵出${second}的商业边界`;
-  if (sectionKey === 'models') return `${object}把${second}落到产品层`;
+  if (sectionKey === 'models') return `${object} 把 ${second} 落到产品层`;
   if (sectionKey === 'creator_opportunity') return `${object}改写${second}的创作流程`;
   if (sectionKey === 'china_perspective') return `${object}给中国视角补上${second}`;
   return `${object}补充今天的${second}`;
@@ -2505,6 +2535,18 @@ function cleanReaderLabel(text) {
   return cleanTemplateCopy(text);
 }
 
+function ensureReaderJanetLabel(text) {
+  const clean = cleanTemplateCopy(text);
+  if (!clean) return '';
+  if (clean.includes('Janet 锐评：')) return clean;
+  const paragraphs = clean.split(/\n\n+/).map((part) => part.trim()).filter(Boolean);
+  if (paragraphs.length >= 3) {
+    paragraphs[2] = `Janet 锐评：${paragraphs[2]}`;
+    return paragraphs.join('\n\n');
+  }
+  return `${clean}\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。`;
+}
+
 function splitSentences(text) {
   return String(text || '')
     .split(/(?<=[。！？!?])\s*/u)
@@ -2550,7 +2592,11 @@ function scrubTemplateCopy(value) {
   if (typeof value === 'string') return cleanTemplateCopy(value);
   if (Array.isArray(value)) return value.map(scrubTemplateCopy);
   if (value && typeof value === 'object') {
-    for (const key of Object.keys(value)) value[key] = scrubTemplateCopy(value[key]);
+    for (const key of Object.keys(value)) {
+      value[key] = key === 'content' && typeof value[key] === 'string'
+        ? ensureReaderJanetLabel(value[key])
+        : scrubTemplateCopy(value[key]);
+    }
   }
   return value;
 }
@@ -2605,7 +2651,7 @@ function buildReaderBody(story) {
   if (cnCharCount(body) < 280) {
     body += `\n\n这条新闻还要放回 Janet 的老三问里看：推理或使用成本会不会下降，国内能不能找到稳定入口，能不能替掉一个人或一个反复消耗时间的步骤。回答不了这三问，就先别把它当成生产力革命。`;
   }
-  return cleanTemplateCopy(dedupeSentences(body));
+  return ensureReaderJanetLabel(dedupeSentences(body));
 }
 
 function buildLongJanetTake(story) {
@@ -2626,6 +2672,31 @@ function buildLongJanetTake(story) {
   const cooperationTake = /Elon Musk|data center|Anthropic/i.test(`${object} ${story.original_title || ''}`)
     ? `${prefix}Anthropic 向马斯克系数据中心买算力，说明模型竞争最后会落到电、机柜和长期合同；算力越集中，议价和供应风险越难看。国内企业要学的是算力冗余和成本测算，不是跟着烧钱。`
     : `${prefix}Universal Music 这类授权合作，说明 AI 翻唱终于开始谈分钱，而不是只靠平台先斩后奏。授权规则会很碎，创作者要看分成、下架和艺人选择权，别只盯生成效果。`;
+  const raw = `${story.original_title || ''} ${story.original_summary || ''} ${story.title || ''}`;
+  const launchTake = (() => {
+    if (/MEG Vision X2/i.test(raw)) {
+      return `${prefix}MEG Vision X2 AI+这类硬件不是普通台式机换壳，它把本地算力、屏幕交互和“AI 伴侣”一起打包。真正要看的是软件生态能不能长期更新，否则全息屏很快只剩展示价值。`;
+    }
+    if (/千问|AI 眼镜/i.test(raw)) {
+      return `${prefix}千问 AI 眼镜登上热卖榜，说明消费者愿意给可穿戴 AI 一次机会。问题是眼镜不是手机配件，续航、隐私提示和真实识别能力会比发布词更快决定复购。`;
+    }
+    if (/小米|XLA|YU7/i.test(raw)) {
+      return `${prefix}小米把 XLA 认知大模型放进 YU7，车端 AI 开始从语音卖点往驾驶和座舱决策延伸。车企要证明它能在真实路况里稳定工作，而不是只在配置表里好看。`;
+    }
+    if (/N1X|Windows|Arm|英伟达|微软/i.test(raw)) {
+      return `${prefix}N1X 这条看的是 Windows 终端 AI 的芯片路线。英伟达、微软和 Arm 如果真能把端侧算力做顺，PC 厂商就会重新讨论性能、功耗和软件兼容。`;
+    }
+    return `${prefix}${object}这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。`;
+  })();
+  const researchBreakthroughTake = /OpenAI|数学|猜想|80年/i.test(raw)
+    ? `${prefix}OpenAI模型推翻数学经典猜想这类新闻，价值在于把模型能力放进可验证问题里。学界会追问证明过程、复现路径和人类研究者的角色，这比“模型很聪明”更重要。`
+    : `${prefix}${object}如果真能带来研究突破，下一步必须交出可复现证据。研究新闻最怕只剩惊叹号，任务定义、数据和验证过程才是硬通货。`;
+  const riskWarningTake = /Codex|token|stole|secret/i.test(raw)
+    ? `${prefix}Codex UI 工具被曝窃取 refresh token，这不是普通安全小插曲，而是在提醒开发者：AI 编程工具一旦拿到本地会话，权限边界必须当生产系统管理。`
+    : `${prefix}${object}暴露的是 AI 工具链的安全账。越是贴近开发、账号和自动化流程，越不能只按插件心态安装，权限、审计和撤销路径要先看清。`;
+  const teamMoveTake = /Anthropic|Vulnerability Scanner|IBM|Glasswing/i.test(raw)
+    ? `${prefix}Anthropic 漏洞扫描器进入企业 beta，还拉上 IBM 和 Glasswing，说明模型公司正在把安全能力产品化。它要证明的不只是发现漏洞，而是能否减少安全团队的误报和复核成本。`
+    : `${prefix}${object}背后的团队动作值得看，因为 AI 安全和企业采用正在互相靠近。真正能落地的不是口号，而是能进安全流程、留下审计记录的工具。`;
   const actionTakes = {
     '有声书生成': `${prefix}${object}把创作门槛继续往下压，配音、剪辑和分发开始被平台打包；版权和音质会先乱一阵。国内创作者别先欢呼，先看它能不能给声音授权、收益结算和编辑权限一个清楚答案。`,
     '播客生成': podcastTake,
@@ -2646,7 +2717,11 @@ function buildLongJanetTake(story) {
     '诉讼': `${prefix}${object}这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。信任成本开始显性化，用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。`,
     '搜索改版': `${prefix}${object}不是 UI 小改，而是在重新训练用户怎么提问、怎么交任务。流量入口继续往 AI 手里收，内容方更难知道自己为什么被看见。做内容的人要盯来源、转化和广告位置变化。`,
     '合作': cooperationTake,
-    '生成': `${prefix}${object}把生成能力推到音乐内容里，粉丝创作和版权分账终于撞到一起；平台、艺人和用户的边界会很难切。内容团队要先看授权开关、收益规则和下架机制。`
+    '生成': `${prefix}${object}把生成能力推到音乐内容里，粉丝创作和版权分账终于撞到一起；平台、艺人和用户的边界会很难切。内容团队要先看授权开关、收益规则和下架机制。`,
+    '推出': launchTake,
+    '研究突破': researchBreakthroughTake,
+    '风险提示': riskWarningTake,
+    '团队变动': teamMoveTake
   };
   const text = actionTakes[action] || `${prefix}${source}这次围绕${object}给出的是对${audience}的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。`;
   return cleanTemplateCopy(cnCharCount(text) < 60 ? `${text} 对国内团队来说，先小范围试用，再算账。` : text);
@@ -3040,7 +3115,7 @@ function renderHtml(content) {
     <div class="k">补充观察</div>
     <div class="signal">${compactItems.map((item) => `<a class="card"${externalAttrs(item.url || item.source_url || item.external_url)}>${visualSrc(item.visual) ? `<img src="../../${escapeHtml(visualSrc(item.visual))}" alt="${escapeHtml(visualAlt(item.visual, item.title))}" style="width:100%;border-radius:14px;margin-bottom:12px">` : ''}<small>${escapeHtml(item.source)} · ${escapeHtml(item.category)}</small><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.summary)}</p></a>`).join('')}</div>
   </section>
-  ${detailSections.map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${externalAttrs(item.url || item.source_url || item.external_url) ? `<a${externalAttrs(item.url || item.source_url || item.external_url)}>${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(item.content || item.summary)}</p><a${externalAttrs(item.url || item.source_url || item.external_url)}>原文</a></article>`).join('')}</section>`).join('')}
+  ${detailSections.map(([key, section]) => `<section><div class="k">${escapeHtml(section.title || key)}</div>${(section.items || []).map((item) => `<article><small>${escapeHtml(item.source)} · ${escapeHtml(item.source_rank)}</small><h3>${externalAttrs(item.url || item.source_url || item.external_url) ? `<a${externalAttrs(item.url || item.source_url || item.external_url)}>${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h3>${item.original_title ? `<small>原文：${escapeHtml(item.original_title)}</small>` : ''}<p>${escapeHtml(cleanTemplateCopy(item.content || item.summary))}</p><a${externalAttrs(item.url || item.source_url || item.external_url)}>原文</a></article>`).join('')}</section>`).join('')}
   <section>
     <div class="k">接下来观察</div>
     <ul>${content.what_to_watch_next.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>

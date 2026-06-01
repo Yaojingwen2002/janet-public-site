@@ -2,10 +2,11 @@
 // Build Janet news archive index for the public site.
 // Pure Node 20, no dependencies.
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
 const ROOT = resolve(process.cwd());
+const DATA_DIR = resolve(ROOT, 'data');
 const MANIFEST = resolve(ROOT, 'data/MANIFEST.json');
 const OUT = resolve(ROOT, 'data/news-index.json');
 
@@ -49,6 +50,18 @@ function entryDate(entry, summary, content) {
   return match ? match[0] : entry;
 }
 
+function discoverEditions() {
+  if (!existsSync(DATA_DIR)) return [];
+  return readdirSync(DATA_DIR)
+    .filter((name) => /^\d{4}-\d{2}-\d{2}(-v4)?$/.test(name))
+    .filter((name) => {
+      const dir = resolve(DATA_DIR, name);
+      return statSync(dir).isDirectory() &&
+        (existsSync(resolve(dir, 'content.json')) || existsSync(resolve(dir, 'news-summary.json')));
+    })
+    .sort((a, b) => String(b).localeCompare(String(a)));
+}
+
 function buildEdition(entry) {
   const contentPath = resolve(ROOT, `data/${entry}/content.json`);
   const summaryPath = resolve(ROOT, `data/${entry}/news-summary.json`);
@@ -87,12 +100,13 @@ function buildEdition(entry) {
 }
 
 function main() {
-  const manifest = readJson(MANIFEST, []);
-  if (!Array.isArray(manifest) || manifest.length === 0) {
-    throw new Error('data/MANIFEST.json must be a non-empty array');
+  const discovered = discoverEditions();
+  if (!discovered.length) {
+    throw new Error('No data editions discovered');
   }
+  writeJson(MANIFEST, discovered);
 
-  const editions = manifest
+  const editions = discovered
     .map(buildEdition)
     .filter(Boolean)
     .sort((a, b) => String(b.date).localeCompare(String(a.date)));
@@ -100,7 +114,7 @@ function main() {
   const index = {
     schema_version: '1.0.0',
     generated_at: new Date().toISOString(),
-    latest_edition_id: manifest[0],
+    latest_edition_id: discovered[0],
     editions,
     sources: unique(editions.flatMap((edition) => edition.top_sources)),
     categories: unique(editions.flatMap((edition) => edition.top_categories))

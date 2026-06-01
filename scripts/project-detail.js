@@ -52,12 +52,14 @@
   function getProjectLabel(projectId) {
     if (projectId === 'shuttle-universe') return '穿梭宇宙';
     if (projectId === 'misaligned-scenes') return '错位名场面';
+    if (projectId === 'igpt-image2-handbook') return '图像生成手册';
     return projectId || '项目';
   }
 
   function getProjectTypeLabel(projectId) {
     if (projectId === 'shuttle-universe') return '世界观型 AI 短视频';
     if (projectId === 'misaligned-scenes') return '剧情型 AI 短片';
+    if (projectId === 'igpt-image2-handbook') return '图像生成手册';
     return 'AI 创作项目';
   }
 
@@ -116,6 +118,44 @@
     document.getElementById('work-process-flow').innerHTML = getProcessSteps(work).map((step, index) =>
       '<div class="work-process-step"><span>' + String(index + 1).padStart(2, '0') + '</span><strong>' + escapeHtml(step) + '</strong></div>'
     ).join('');
+  }
+
+  function normalizeGallery(work) {
+    const entries = [];
+    if (work.cover) entries.push({ src: work.cover, title: '项目封面' });
+    if (work.thumbnail && work.thumbnail !== work.cover) entries.push({ src: work.thumbnail, title: '缩略图' });
+    const gallery = Array.isArray(work.gallery) ? work.gallery : [];
+    gallery.forEach((item) => {
+      if (typeof item === 'string') entries.push({ src: item, title: '' });
+      else if (item && item.src) entries.push(item);
+    });
+    (Array.isArray(work.images) ? work.images : []).forEach((src) => entries.push({ src, title: '' }));
+    const seen = new Set();
+    return entries.filter((item) => {
+      const src = String(item.src || '').trim();
+      if (!src || seen.has(src)) return false;
+      seen.add(src);
+      return true;
+    });
+  }
+
+  function renderGallery(work) {
+    const section = document.getElementById('work-gallery-section');
+    const grid = document.getElementById('work-gallery-grid');
+    if (!section || !grid) return;
+    const items = normalizeGallery(work);
+    if (!items.length) {
+      section.hidden = true;
+      grid.innerHTML = '';
+      return;
+    }
+    section.hidden = false;
+    grid.innerHTML = items.map((item) => (
+      '<figure class="media-frame work-gallery-media">' +
+        '<img src="' + escapeHtml(item.src) + '" alt="' + escapeHtml(item.title || work.title || '作品图片') + '" loading="lazy">' +
+        (item.title || item.category ? '<figcaption>' + escapeHtml([item.title, item.category].filter(Boolean).join(' · ')) + '</figcaption>' : '') +
+      '</figure>'
+    )).join('');
   }
 
   function getNonEmptyGroups(work) {
@@ -219,6 +259,7 @@
     ].map(item => '<span>' + escapeHtml(item) + '</span>').join('');
     renderStats(work);
     renderProcessFlow(work);
+    renderGallery(work);
     renderDocumentTabs(work, documentContent);
     showWorkDetail();
   }

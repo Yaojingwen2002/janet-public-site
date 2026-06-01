@@ -99,11 +99,11 @@
       <article class="handbook-card" data-category="${escapeHtml(item.category)}">
         <figure class="handbook-card__visual">
           <img src="${escapeHtml(item.image)}"
-            alt="${escapeHtml(item.title)} 待重生成预览图"
+            alt="${escapeHtml(item.title)} 案例图"
             width="1200"
             height="800"
             loading="lazy">
-          <figcaption>预览图待重生成，不直接复用原仓库图片。</figcaption>
+          <figcaption>${escapeHtml(item.title)} · ${escapeHtml(item.category)} 案例图</figcaption>
         </figure>
 
         <div class="handbook-card__body">

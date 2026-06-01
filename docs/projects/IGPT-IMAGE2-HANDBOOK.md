@@ -19,7 +19,7 @@
 
 ## 图片生成说明
 
-本页不直接复用原仓库案例图。当前第一阶段使用本地待重生成 SVG 预览图；后续图片流程会基于完整提示词重新生成，并按批次替换为 `assets/images/gpt-image2-handbook/case-001.*` 到 `case-020.*`。
+本页不直接复用原仓库案例图。站内案例图统一整理到 `assets/works/igpt-image2-handbook/`，并通过 `data/gpt-image2-handbook/handbook-cases.json` 关联到 20 个案例。
 
 ## License 说明
 

@@ -86,29 +86,35 @@
     return [];
   }
 
-  function placeholderImg(color) {
-    const svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="800" height="450">
-        <rect fill="${color || '#111'}" width="800" height="450"/>
-        <text x="400" y="235" text-anchor="middle" fill="#333" font-family="sans-serif" font-size="24">No Image</text>
-      </svg>
-    `;
-
-    return 'data:image/svg+xml,' + encodeURIComponent(svg);
-  }
-
   function getThumbSrc(item) {
     const thumbnail = getField(item, 'thumbnail', '');
     const videoThumb = getField(item, 'videoThumb', '');
 
-    return videoThumb || thumbnail || placeholderImg('#111');
+    return videoThumb || thumbnail || '';
   }
 
   function getCoverSrc(item) {
     const thumbnail = getField(item, 'thumbnail', '');
     const videoThumb = getField(item, 'videoThumb', '');
 
-    return thumbnail || videoThumb || placeholderImg('#111');
+    return thumbnail || videoThumb || getField(item, 'cover', '');
+  }
+
+  function renderMediaFrame(src, alt, className) {
+    const frameClass = className ? 'media-frame ' + className : 'media-frame';
+    if (!src) {
+      return '<div class="' + frameClass + ' media-frame--empty" data-media-fallback="missing-image"><span>暂无图片</span></div>';
+    }
+    return `
+      <figure class="${frameClass}">
+        <img src="${escapeHtml(src)}"
+             alt="${escapeHtml(alt)}"
+             width="1200"
+             height="800"
+             loading="lazy"
+             onerror="this.closest('.media-frame').classList.add('media-frame--empty'); this.closest('.media-frame').innerHTML='<span>暂无图片</span>';">
+      </figure>
+    `;
   }
 
   function renderTagList(tags, className) {
@@ -131,7 +137,7 @@
       return { label: '错位名场面', className: 'work-series-band--misaligned' };
     }
     if (/igpt|gpt-image|prompt|handbook|提示词|手册/.test(text)) {
-      return { label: 'Prompt Handbook', className: 'work-series-band--default' };
+      return { label: '图像生成手册', className: 'work-series-band--default' };
     }
     return { label: 'Janet Works', className: 'work-series-band--default' };
   }
@@ -202,12 +208,7 @@
             <article class="card video-card">
               <a href="${escapeHtml(detailUrl)}" class="video-card-main" aria-label="查看完整项目：${escapeHtml(title)}">
                 <div class="thumbnail video-card-thumb">
-                  <img src="${escapeHtml(thumbSrc)}"
-                       alt="${escapeHtml(title)}"
-                       width="800"
-                       height="450"
-                       loading="lazy"
-                       onerror="this.style.display='none';">
+                  ${renderMediaFrame(thumbSrc, title, 'video-card-media')}
                   <div class="video-card-overlay">
                     <div class="play-btn-small" aria-hidden="true">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -275,12 +276,7 @@
               ${renderSeriesBand(seriesHint)}
               <a href="${escapeHtml(detailUrl)}" class="portfolio-item-main" aria-label="查看完整项目：${escapeHtml(title)}">
                 <div class="thumbnail portfolio-item-thumb">
-                  <img src="${escapeHtml(thumbSrc)}"
-                       alt="${escapeHtml(title)}"
-                       width="800"
-                       height="600"
-                       loading="lazy"
-                       onerror="this.style.display='none';">
+                  ${renderMediaFrame(thumbSrc, title, 'portfolio-item-media')}
                   <div class="portfolio-item-overlay">
                     <span class="portfolio-item-type">${escapeHtml(type)}</span>
                   </div>
@@ -351,12 +347,7 @@
               ${renderSeriesBand(seriesHint)}
               <a href="${escapeHtml(detailUrl)}" class="portfolio-full-card-main" aria-label="查看完整项目：${escapeHtml(title)}">
                 <div class="portfolio-full-thumb">
-                  <img src="${escapeHtml(thumbSrc)}"
-                       alt="${escapeHtml(title)}"
-                       width="800"
-                       height="450"
-                       loading="lazy"
-                       onerror="this.style.display='none';">
+                  ${renderMediaFrame(thumbSrc, title, 'portfolio-full-media')}
                   <div class="portfolio-full-overlay">
                     <span class="portfolio-full-date">${escapeHtml(date)}</span>
                     <span class="portfolio-full-type">${escapeHtml(category)}</span>
@@ -427,6 +418,7 @@
       return `
         <article class="works-project-card works-project-card--${escapeHtml(project.id)}">
           ${renderSeriesBand(project.id || project.title)}
+          ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-project-media')}
           <div class="works-project-card__meta">
             <span>${escapeHtml(project.type || '')}</span>
             <span>${escapeHtml(project.work_count || 0)} works</span>
@@ -480,7 +472,7 @@
   function getProjectLabel(projectId) {
     if (projectId === 'shuttle-universe') return '穿梭宇宙';
     if (projectId === 'misaligned-scenes') return '错位名场面';
-    if (projectId === 'igpt-image2-handbook') return 'iGPT-Image2 手册';
+    if (projectId === 'igpt-image2-handbook') return '图像生成手册';
     return projectId || 'Unknown';
   }
 
@@ -502,6 +494,7 @@
       return `
         <article class="works-overview-card" data-project-id="${escapeHtml(project.id)}">
           ${renderSeriesBand(project.id || project.title)}
+          ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-overview-media')}
           <div class="work-archive-card__meta">
             <span>${escapeHtml(project.type || '')}</span>
             <span>${escapeHtml(project.work_count || 0)} works</span>
@@ -539,10 +532,12 @@
       const tags = (work.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
       const detailHref = work.url || work.detail_url || ('project-detail.html?work=' + encodeURIComponent(work.id));
       const actionLabel = work.url ? '打开项目页面 →' : '查看制作档案 →';
+      const mediaSrc = getCoverSrc(work);
 
       return `
         <article class="work-archive-card" data-project-id="${escapeHtml(work.project_id)}">
           ${renderSeriesBand(work.project_id || work.title)}
+          ${renderMediaFrame(mediaSrc, work.title || '作品封面', 'work-archive-media')}
           <div class="work-archive-card__meta">
             <span>${escapeHtml(getProjectLabel(work.project_id))}</span>
             <span>${escapeHtml(work.type || '')}</span>

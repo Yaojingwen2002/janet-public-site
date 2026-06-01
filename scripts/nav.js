@@ -97,6 +97,9 @@
   // ── 回到顶部 ─────────────────────────────────────────────
   const backToTop = document.getElementById('back-to-top');
   if (backToTop) {
+    backToTop.setAttribute('aria-label', '返回顶部');
+    backToTop.setAttribute('title', '返回顶部');
+
     function updateBackToTop() {
       if (window.scrollY > 300) {
         backToTop.classList.add('visible');
@@ -113,4 +116,12 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // ── 邮箱反爬拼接 ─────────────────────────────────────────
+  document.querySelectorAll('[data-email-user][data-email-domain]').forEach(link => {
+    const email = link.dataset.emailUser + '@' + link.dataset.emailDomain;
+    link.href = 'mailto:' + email;
+    link.textContent = email;
+    link.setAttribute('aria-label', '发送邮件给 Janet');
+  });
 })();

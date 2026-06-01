@@ -28,6 +28,30 @@ jobs:
         with:
           node-version: 20
 
+      - name: Harvest news items
+        run: node .github/scripts/harvest-news-items.mjs
+
+      - name: Harvest search news
+        run: node .github/scripts/harvest-search-news.mjs
+
+      - name: Harvest direct web sources
+        run: node .github/scripts/harvest-direct-web-sources.mjs
+
+      - name: Harvest Chinese AI sources
+        run: node .github/scripts/harvest-chinese-ai-sources.mjs
+
+      - name: Harvest official release notes
+        run: node .github/scripts/harvest-official-release-notes.mjs
+
+      - name: Build daily harvest summary
+        run: node .github/scripts/build-daily-harvest-summary.mjs
+
+      - name: Build daily candidates
+        run: node .github/scripts/build-daily-candidates.mjs
+
+      - name: QA news store
+        run: node scripts/qa-news-store.mjs
+
       - name: Generate daily news
         run: node .github/scripts/daily-news-generator.mjs
         env:

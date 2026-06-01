@@ -376,8 +376,12 @@ function main() {
   };
 
   writeJson(EDITORIAL_REDESIGN_OUT, editorialRedesign);
+  writeJson(resolve(ROOT, 'data/daily-news-output-check.json'), result);
   console.log(`status: ${result.status}`);
-  if (issues.length) process.exit(1);
+  if (issues.length) {
+    console.error(JSON.stringify({ issues }, null, 2));
+    process.exit(1);
+  }
 }
 
 main();

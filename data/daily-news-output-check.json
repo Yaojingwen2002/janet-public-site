@@ -1,12 +1,14 @@
 {
-  "step": "U13-C-final-daily-news-output",
-  "generated_at": "2026-05-27T10:04:35.146Z",
+  "step": "31",
+  "status": "daily_news_automation_ready",
   "qa_passed": true,
-  "status": "ready",
-  "latest_edition_id": "2026-05-27-v4",
-  "target_date": "2026-05-27",
-  "issues": [],
-  "published_edition_id": "2026-05-27-v4",
-  "manifest_latest": "2026-05-27-v4",
-  "news_index_latest": "2026-05-27-v4"
+  "schedule_utc": "10 0 * * *",
+  "schedule_asia_shanghai": "08:10",
+  "requires_paid_api": false,
+  "requires_secret": false,
+  "uses_public_sources": true,
+  "news_experience_layer_passed": true,
+  "workflow": ".github/workflows/daily-news-pages.yml",
+  "generator": ".github/scripts/daily-news-generator.mjs",
+  "issues": []
 }

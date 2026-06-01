@@ -175,10 +175,10 @@ function computeWindow(dateStr) {
   const prev = previousDay(dateStr);
   return {
     timezone: TZ,
-    window_start: `${prev} 17:00:00`,
-    window_end: `${dateStr} 09:00:00`,
-    window_start_iso: localToIso(prev, '17:00:00'),
-    window_end_iso: localToIso(dateStr, '09:00:00')
+    window_start: `${prev} 08:00:00`,
+    window_end: `${dateStr} 08:00:00`,
+    window_start_iso: localToIso(prev, '08:00:00'),
+    window_end_iso: localToIso(dateStr, '08:00:00')
   };
 }
 
@@ -500,10 +500,19 @@ function loadNewsStoreCandidates(date) {
   }
   const selected = Array.isArray(candidates.selected) ? candidates.selected : [];
   const selectedCount = Number(candidates.selected_count ?? selected.length);
-  if (selectedCount < 8 || selected.length < 8) {
+  const uniqueStoryCount = Number(candidates.unique_story_count || 0);
+  if (candidates.publish_recommendation === 'no_new_edition_allowed') {
     return {
       ok: false,
-      reason: `news_store_candidates_below_publish_threshold:${Math.min(selectedCount, selected.length)}/8`,
+      reason: 'news_store_candidates_recommend_no_new_edition',
+      candidates,
+      items: []
+    };
+  }
+  if (uniqueStoryCount < 8 || selectedCount < 8 || selected.length < 8) {
+    return {
+      ok: false,
+      reason: `news_store_candidates_below_publish_threshold:${Math.min(uniqueStoryCount, selectedCount, selected.length)}/8`,
       candidates,
       items: []
     };
@@ -803,6 +812,18 @@ function titleEntityCandidates(title, source) {
   };
 
   [
+    /MEG Vision X2 AI\+?/ig,
+    /N1X\/N1/ig,
+    /\bN1X\b/ig,
+    /\bN1\b/ig,
+    /千问 AI 眼镜/ig,
+    /小米 XLA 认知大模型/ig,
+    /Xiaomi MiMo/ig,
+    /MiMo大模型/ig,
+    /Codex UI Tool/ig,
+    /OpenAI模型/ig,
+    /Claude Mythos/ig,
+    /AI Vulnerability Scanner/ig,
     /Open Agent Leaderboard/ig,
     /Amazon Bedrock AgentCore Memory/ig,
     /Amazon Bedrock AgentCore/ig,
@@ -873,7 +894,13 @@ function titleEntityCandidates(title, source) {
 }
 
 function actionFromTitle(title) {
-  const text = decodeText(title).toLowerCase();
+  const raw = decodeText(title);
+  const text = raw.toLowerCase();
+  if (/联合发布|发布|推出|首销|开启预约|搭载|上线|落地|登顶|亮相/.test(raw)) return '推出';
+  if (/融资|估值|亿美元|投资|收购|并购/.test(raw)) return '融资';
+  if (/合作|伙伴|赋能/.test(raw)) return '合作';
+  if (/风险|隐患|勒索|被骗|安全|漏洞|攻击|窃取|Stole|Secretly Stole/i.test(raw)) return '风险提示';
+  if (/推翻|猜想|学界|论文|研究|实验|模型/.test(raw)) return '研究突破';
   if (/langgraph|multi-agent systems|serverless/.test(text)) return '多智能体部署';
   if (/leaderboard|ranking/.test(text)) return '榜单排名';
   if (/benchmark|evaluation|evaluators?/.test(text)) return '评测';
@@ -994,6 +1021,8 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '榜单排名' || action === '评测') return `${source}把${object}放进公开评测`;
   if (action === '融资') return `${object}完成融资，验证具体市场`;
   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
+  if (action === '风险提示') return /codex/i.test(object) ? 'Codex工具暴露安全风险' : `安全风险指向${object}`;
+  if (action === '研究突破') return `研究突破指向${object}`;
   if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
   if (action === '生成') return `${object}进入内容生产线`;
   if (action === '有声书生成') return `${object}推出 AI 有声书制作工具`;
@@ -1683,14 +1712,15 @@ function buildDailyBrief(stories, modules, rules, date) {
   const secondObject = objects[1] || objects[0] || '另一条具体产品线';
   const shortLeadObject = leadObject.length > 14 ? clamp(leadObject, 17).replace(/\.\.\.$/, '') : leadObject;
   const shortSecondObject = secondObject.length > 8 ? clamp(secondObject, 11).replace(/\.\.\.$/, '') : secondObject;
-  const theme = `${shortLeadObject}牵出${shortSecondObject}`;
+  const themeCandidate = `${shortLeadObject}牵出${shortSecondObject}`;
+  const theme = themeCandidate.length <= 24 ? themeCandidate : dailyTitle;
   const dailySummary = clamp(`今天的主线落在${objects.slice(0, 4).join('、') || leadObject}，看点是${actions.slice(0, 3).join('、') || '功能边界和接入方式'}，不是抽象趋势。`, 118);
   const dailyJudgment = clamp(`Janet 判断：${leadObject}这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。`, 92);
   const thesis = thesisForEdition(stories);
   const intro = clamp(`${leadObject}先把今天的注意力拉住；${secondObject}补上另一条线索。今天先看这些具体产品怎么动。`, 110);
   return {
     daily_title: cleanPublicTitle(dailyTitle),
-    theme: cleanPublicTitle(theme === dailyTitle ? `${leadObject}今天给出具体线索` : theme),
+    theme: cleanPublicTitle(theme),
     daily_summary: cleanTemplateCopy(dailySummary),
     daily_judgment: cleanTemplateCopy(dailyJudgment),
     daily_thesis: thesis,
@@ -2735,7 +2765,7 @@ async function buildContent(template, included, date, editionType, rules) {
   const stories = [];
   const actionCounts = new Map();
   const actionLimit = (action) => (
-    ['搜索改版', '智能体能力', '推出', '视觉识别', '购物代理'].includes(action) ? 1 : 2
+    ['搜索改版', '视觉识别', '购物代理'].includes(action) ? 2 : 4
   );
   for (const item of ordered) {
     const publicItem = storyToPublicItem(item);

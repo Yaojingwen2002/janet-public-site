@@ -1,16 +1,16 @@
 {
   "status": "daily_candidates_ready",
-  "run_at": "2026-06-01T13:14:55+08:00",
+  "run_at": "2026-06-01T15:19:08+08:00",
   "target_date": "2026-06-01",
   "timezone": "Asia/Shanghai",
   "core_window_start": "2026-05-31T00:00:00.000Z",
   "core_window_end": "2026-06-01T00:00:00.000Z",
   "core_window_hours": 24,
-  "historical_pool_count": 2716,
-  "core_window_items_count": 245,
-  "core_window_eligible_count": 82,
+  "historical_pool_count": 2895,
+  "core_window_items_count": 254,
+  "core_window_eligible_count": 85,
   "extended_48h_eligible_count": 68,
-  "weekly_context_count": 796,
+  "weekly_context_count": 797,
   "unique_story_count": 12,
   "selected_count": 12,
   "minimum_unique_story_count": 8,
@@ -18,9 +18,9 @@
   "publish_recommendation": "full_edition",
   "no_new_edition_reason": "",
   "blocked_reason_counts": {
-    "generic_title": 13,
-    "duplicate_story_cluster": 8,
-    "not_weekly_context_priority": 271
+    "generic_title": 15,
+    "duplicate_story_cluster": 9,
+    "not_weekly_context_priority": 277
   },
   "source_mix": {
     "chinese-ithome": 4,
@@ -546,10 +546,28 @@
       "window_role": "core_window"
     },
     {
+      "id": "search-google-ai-music-generation-weekly-voice-ac136ca89b6a",
+      "title": "Rock Raymond Productions has officially launched W AI‑1 Music Radio, the world’s first all‑AI Top 40 radio format - Weekly Voice",
+      "reason": "generic_title",
+      "window_role": "core_window"
+    },
+    {
+      "id": "search-google-ai-music-generation-mix-vale-8435841f78e0",
+      "title": "Updated Google tool creates three-minute musical compositions in the Gemini app - Mix Vale",
+      "reason": "generic_title",
+      "window_role": "core_window"
+    },
+    {
       "id": "chinese-sina-ai-6fa1928893a4",
       "title": "被AI吞没的人：数据劳工的创伤与沉默 - 新浪财经",
       "reason": "duplicate_story_cluster",
       "story_id": "story-cf3db4b94da0"
+    },
+    {
+      "id": "chinese-sina-ai-3ecc54c37df3",
+      "title": "从技术概念到价值引擎 AI重塑企业增长逻辑 - 新浪财经",
+      "reason": "duplicate_story_cluster",
+      "story_id": "story-e9e9af51626c"
     },
     {
       "id": "search-google-ai-startup-funding-ventureburn-c809795c3871",
@@ -1942,24 +1960,6 @@
       "title": "11x Review: Autonomous Sales Automation That Actually Delivers Human Results. - quasa.io",
       "reason": "not_weekly_context_priority",
       "window_role": "weekly_context"
-    },
-    {
-      "id": "search-google-ai-music-generation-quasa-io-1651e51d4ae4",
-      "title": "Hebbia: The Matrix-Powered AI Revolutionizing Investment Banking & PE. - quasa.io",
-      "reason": "not_weekly_context_priority",
-      "window_role": "weekly_context"
-    },
-    {
-      "id": "search-google-ai-startup-funding-business-insider-0e842972f4ef",
-      "title": "A founder raised $16 million to take another swing at Silicon Valley's housing blind spot - Business Insider",
-      "reason": "not_weekly_context_priority",
-      "window_role": "weekly_context"
-    },
-    {
-      "id": "search-google-ai-startup-funding-crunchbase-news-4f10ca94abcd",
-      "title": "Navigating The DPI Crunch And Startup Funding - Crunchbase News",
-      "reason": "not_weekly_context_priority",
-      "window_role": "weekly_context"
     }
   ],
   "weak": [
@@ -2579,6 +2579,47 @@
       "publishability": "weak"
     },
     {
+      "id": "search-google-openai-msn-6114fd4f013e",
+      "source_id": "search-google-openai-msn",
+      "source_name": "MSN",
+      "source_rank": "B",
+      "source_type": "search",
+      "title": "OpenAI chair's AI startup Sierra raises $950M at over $15B valuation - MSN",
+      "title_zh": "",
+      "summary_raw": "OpenAI chair's AI startup Sierra raises $950M at over $15B valuation &nbsp;&nbsp; MSN",
+      "url": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxPQUR3bXpLZzRYWU5jTlVHRXBMNFFmamptRDdPRjVXbHJIVVA2VEFnWmNaMTJYNDVPSmdfLUdWdm1wc3lyX1FKSGtBQV9wTTh3YVZvYTZBTXZ6SE1sdDVwRHJjRE9pd1dKMm1TLWVLMkNncmdkakRtZlhOSDk2dHBsUWx2a3lTWEwxandJdFI4bzVjLWhHbzJUS3dFMlFvSXJfZ1pxVDFUcEZMSzFDVFllRmV6VG5CbzlQcGQzZ2FGcnRKcG9saExxR09ma3FqblBqMkdBYWNoRmIyb3hIQnVJQTJOb2VoU19HLXF4UFAtQWNQNmFjR0JielBWYUZwUVA1UEpmdHl3Q2w2aThJeHBNRE9lazNZY2NwQmhnLVZVTEI0M29rV0NuVkZBNjBqUzc3dXFvb20xWG9XUEhLVEpIZHhkcXV4eEtndV8yQjVMZnZBYVhhaEVoRmpIOUJnODFNSzRN?oc=5",
+      "canonical_url": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxPQUR3bXpLZzRYWU5jTlVHRXBMNFFmamptRDdPRjVXbHJIVVA2VEFnWmNaMTJYNDVPSmdfLUdWdm1wc3lyX1FKSGtBQV9wTTh3YVZvYTZBTXZ6SE1sdDVwRHJjRE9pd1dKMm1TLWVLMkNncmdkakRtZlhOSDk2dHBsUWx2a3lTWEwxandJdFI4bzVjLWhHbzJUS3dFMlFvSXJfZ1pxVDFUcEZMSzFDVFllRmV6VG5CbzlQcGQzZ2FGcnRKcG9saExxR09ma3FqblBqMkdBYWNoRmIyb3hIQnVJQTJOb2VoU19HLXF4UFAtQWNQNmFjR0JielBWYUZwUVA1UEpmdHl3Q2w2aThJeHBNRE9lazNZY2NwQmhnLVZVTEI0M29rV0NuVkZBNjBqUzc3dXFvb20xWG9XUEhLVEpIZHhkcXV4eEtndV8yQjVMZnZBYVhhaEVoRmpIOUJnODFNSzRN?oc=5",
+      "published_at": "2026-05-31T20:41:48.000Z",
+      "published_at_source": "google_news.pubDate",
+      "published_at_confidence": "high",
+      "fetched_at": "2026-06-01T15:18:46+08:00",
+      "content_hash": "beba37445ca9666e4ad5",
+      "dedupe_key": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxPQUR3bXpLZzRYWU5jTlVHRXBMNFFmamptRDdPRjVXbHJIVVA2VEFnWmNaMTJYNDVPSmdfLUdWdm1wc3lyX1FKSGtBQV9wTTh3YVZvYTZBTXZ6SE1sdDVwRHJjRE9pd1dKMm1TLWVLMkNncmdkakRtZlhOSDk2dHBsUWx2a3lTWEwxandJdFI4bzVjLWhHbzJUS3dFMlFvSXJfZ1pxVDFUcEZMSzFDVFllRmV6VG5CbzlQcGQzZ2FGcnRKcG9saExxR09ma3FqblBqMkdBYWNoRmIyb3hIQnVJQTJOb2VoU19HLXF4UFAtQWNQNmFjR0JielBWYUZwUVA1UEpmdHl3Q2w2aThJeHBNRE9lazNZY2NwQmhnLVZVTEI0M29rV0NuVkZBNjBqUzc3dXFvb20xWG9XUEhLVEpIZHhkcXV4eEtndV8yQjVMZnZBYVhhaEVoRmpIOUJnODFNSzRN?oc=5",
+      "category_hint": "models",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "__file": "items-2026-05.jsonl",
+      "__line": 1728,
+      "story_id": "story-63ce7fda23f3",
+      "window_role": "core_window",
+      "display_badge": "今日新闻",
+      "reuse_as_angle": false,
+      "story_reuse_count": 1,
+      "angle": "business",
+      "janet_category": "models",
+      "score": 29,
+      "score_reasons": [
+        "source_rank_B:+18",
+        "freshness:+25",
+        "specific_entity:+10",
+        "has_data:+6",
+        "search_source_penalty:-8",
+        "long_english_lead:-22"
+      ],
+      "publishability": "weak"
+    },
+    {
       "id": "search-google-openai-wkrn-news-2-c45b5288bde4",
       "source_id": "search-google-openai-wkrn-news-2",
       "source_name": "WKRN News 2",
@@ -3147,6 +3188,47 @@
         "freshness:+23",
         "specific_entity:+10",
         "janet_relevance:+7",
+        "search_source_penalty:-8",
+        "long_english_lead:-22"
+      ],
+      "publishability": "weak"
+    },
+    {
+      "id": "search-google-google-gemini-msn-944f5e374516",
+      "source_id": "search-google-google-gemini-msn",
+      "source_name": "MSN",
+      "source_rank": "B",
+      "source_type": "search",
+      "title": "From Android 17, Gemini 4 to AI: Everything to expect at Google I/O 2026 - MSN",
+      "title_zh": "",
+      "summary_raw": "From Android 17, Gemini 4 to AI: Everything to expect at Google I/O 2026 &nbsp;&nbsp; MSN",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPMkJNdklYeDcxekdZNU9udWJyV2hMQVU4TFBPeWxrZDhoS09DR2k0SEZ4WFFudENrdzBvRkFESTlnZWc0T3JVb3BBTmRGOG8xWXVfQnlxbmVhbng0aUVFVzNBWG90YVp2TGd3Mnc4S0g3ZVE1dXF2SXZBekZsYlFaakx0SUJrYVpBTFljYTJKWXNRNFBBY2ZUSXA5SjRkMXg5eEMxdWpqdXJoU2txRVlkYjIzeGVLTWprN3JJQmRDTWZZM1ppZ1hzZ0k2R3ZMNTM3VjFSX1NR?oc=5",
+      "canonical_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPMkJNdklYeDcxekdZNU9udWJyV2hMQVU4TFBPeWxrZDhoS09DR2k0SEZ4WFFudENrdzBvRkFESTlnZWc0T3JVb3BBTmRGOG8xWXVfQnlxbmVhbng0aUVFVzNBWG90YVp2TGd3Mnc4S0g3ZVE1dXF2SXZBekZsYlFaakx0SUJrYVpBTFljYTJKWXNRNFBBY2ZUSXA5SjRkMXg5eEMxdWpqdXJoU2txRVlkYjIzeGVLTWprN3JJQmRDTWZZM1ppZ1hzZ0k2R3ZMNTM3VjFSX1NR?oc=5",
+      "published_at": "2026-05-31T15:25:23.000Z",
+      "published_at_source": "google_news.pubDate",
+      "published_at_confidence": "high",
+      "fetched_at": "2026-06-01T15:18:46+08:00",
+      "content_hash": "e295718147e48520566d",
+      "dedupe_key": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPMkJNdklYeDcxekdZNU9udWJyV2hMQVU4TFBPeWxrZDhoS09DR2k0SEZ4WFFudENrdzBvRkFESTlnZWc0T3JVb3BBTmRGOG8xWXVfQnlxbmVhbng0aUVFVzNBWG90YVp2TGd3Mnc4S0g3ZVE1dXF2SXZBekZsYlFaakx0SUJrYVpBTFljYTJKWXNRNFBBY2ZUSXA5SjRkMXg5eEMxdWpqdXJoU2txRVlkYjIzeGVLTWprN3JJQmRDTWZZM1ppZ1hzZ0k2R3ZMNTM3VjFSX1NR?oc=5",
+      "category_hint": "models",
+      "tags": [],
+      "quality_flags": [],
+      "status": "new",
+      "__file": "items-2026-05.jsonl",
+      "__line": 1731,
+      "story_id": "story-21c4454c79d5",
+      "window_role": "core_window",
+      "display_badge": "今日新闻",
+      "reuse_as_angle": false,
+      "story_reuse_count": 1,
+      "angle": "model",
+      "janet_category": "models",
+      "score": 28,
+      "score_reasons": [
+        "source_rank_B:+18",
+        "freshness:+24",
+        "specific_entity:+10",
+        "has_data:+6",
         "search_source_penalty:-8",
         "long_english_lead:-22"
       ],
@@ -6741,93 +6823,13 @@
         "long_english_lead:-22"
       ],
       "publishability": "weak"
-    },
-    {
-      "id": "search-google-ai-coding-tool-yahoo-finance-3bc55407458f",
-      "source_id": "search-google-ai-coding-tool-yahoo-finance",
-      "source_name": "Yahoo Finance",
-      "source_rank": "B",
-      "source_type": "search",
-      "title": "AI Coding Trade Showing Cracks? Claude Code, Codex Growth Suddenly Slows As Budgets May Be Running Dry, Researcher Says: 'It's Clear That Growth...' - Yahoo Finance",
-      "title_zh": "",
-      "summary_raw": "AI Coding Trade Showing Cracks? Claude Code, Codex Growth Suddenly Slows As Budgets May Be Running Dry, Researcher Says: 'It's Clear That Growth...' &nbsp;&nbsp; Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOUHdwWHJ5LVhSbDJJVEZEOU9HZE1vbW5wUzczMnBHcjZyMENpX1Q2bnBTQ2EtUGY4Qk5PWUsxZXoydHF0LTcxZS02ZjREZTVDRjhQWVJkVHlmVDFGczUxbXlTQWYtRXpEWTFKQUt2bGxOS0MtWDR0RmhiR1pMMDByTGZELU1yVEJaNS0ydUVMZl9JS1AyRmgtMjhNbHBpdlJD?oc=5",
-      "canonical_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOUHdwWHJ5LVhSbDJJVEZEOU9HZE1vbW5wUzczMnBHcjZyMENpX1Q2bnBTQ2EtUGY4Qk5PWUsxZXoydHF0LTcxZS02ZjREZTVDRjhQWVJkVHlmVDFGczUxbXlTQWYtRXpEWTFKQUt2bGxOS0MtWDR0RmhiR1pMMDByTGZELU1yVEJaNS0ydUVMZl9JS1AyRmgtMjhNbHBpdlJD?oc=5",
-      "published_at": "2026-05-31T14:31:12.000Z",
-      "published_at_source": "google_news.pubDate",
-      "published_at_confidence": "high",
-      "fetched_at": "2026-06-01T11:34:35+08:00",
-      "content_hash": "d29488773635a9b93c0b",
-      "dedupe_key": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOUHdwWHJ5LVhSbDJJVEZEOU9HZE1vbW5wUzczMnBHcjZyMENpX1Q2bnBTQ2EtUGY4Qk5PWUsxZXoydHF0LTcxZS02ZjREZTVDRjhQWVJkVHlmVDFGczUxbXlTQWYtRXpEWTFKQUt2bGxOS0MtWDR0RmhiR1pMMDByTGZELU1yVEJaNS0ydUVMZl9JS1AyRmgtMjhNbHBpdlJD?oc=5",
-      "category_hint": "agents",
-      "tags": [],
-      "quality_flags": [],
-      "status": "new",
-      "__file": "items-2026-05.jsonl",
-      "__line": 1463,
-      "story_id": "story-e41d4f0c8dd9",
-      "window_role": "core_window",
-      "display_badge": "今日新闻",
-      "reuse_as_angle": false,
-      "story_reuse_count": 1,
-      "angle": "research",
-      "janet_category": "agents",
-      "score": 22,
-      "score_reasons": [
-        "source_rank_B:+18",
-        "freshness:+24",
-        "specific_entity:+10",
-        "search_source_penalty:-8",
-        "long_english_lead:-22"
-      ],
-      "publishability": "weak"
-    },
-    {
-      "id": "search-google-openai-futurism-1caf124d59ea",
-      "source_id": "search-google-openai-futurism",
-      "source_name": "Futurism",
-      "source_rank": "B",
-      "source_type": "search",
-      "title": "California State University Made a Huge Deal With OpenAI and It’s Been a Disaster - Futurism",
-      "title_zh": "",
-      "summary_raw": "California State University Made a Huge Deal With OpenAI and It’s Been a Disaster &nbsp;&nbsp; Futurism",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNQ1NsdHdXY2pvUThNdnFOUUJ1d25jMHlWN2FwQWFpNENmOEFCR2pWdXVnT01QU2dkY0NKTnBySDFSMERSZC11TEU4enY2MHcwYV85NmlEOF9hWERhTE56M2tiZ25RZ2hXa25ZbG5MY3VSWVA1clI2X3VmWWxqdDg3c3NybEJPX2tSU2xSVjRWQktVNFN3OGJSUg?oc=5",
-      "canonical_url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNQ1NsdHdXY2pvUThNdnFOUUJ1d25jMHlWN2FwQWFpNENmOEFCR2pWdXVnT01QU2dkY0NKTnBySDFSMERSZC11TEU4enY2MHcwYV85NmlEOF9hWERhTE56M2tiZ25RZ2hXa25ZbG5MY3VSWVA1clI2X3VmWWxqdDg3c3NybEJPX2tSU2xSVjRWQktVNFN3OGJSUg?oc=5",
-      "published_at": "2026-05-31T10:00:00.000Z",
-      "published_at_source": "google_news.pubDate",
-      "published_at_confidence": "high",
-      "fetched_at": "2026-06-01T11:34:35+08:00",
-      "content_hash": "c60792de8e30e8ed0bde",
-      "dedupe_key": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNQ1NsdHdXY2pvUThNdnFOUUJ1d25jMHlWN2FwQWFpNENmOEFCR2pWdXVnT01QU2dkY0NKTnBySDFSMERSZC11TEU4enY2MHcwYV85NmlEOF9hWERhTE56M2tiZ25RZ2hXa25ZbG5MY3VSWVA1clI2X3VmWWxqdDg3c3NybEJPX2tSU2xSVjRWQktVNFN3OGJSUg?oc=5",
-      "category_hint": "models",
-      "tags": [],
-      "quality_flags": [],
-      "status": "new",
-      "__file": "items-2026-05.jsonl",
-      "__line": 1113,
-      "story_id": "story-faf9fb6108b4",
-      "window_role": "core_window",
-      "display_badge": "今日新闻",
-      "reuse_as_angle": false,
-      "story_reuse_count": 1,
-      "angle": "model",
-      "janet_category": "models",
-      "score": 21,
-      "score_reasons": [
-        "source_rank_B:+18",
-        "freshness:+23",
-        "specific_entity:+10",
-        "search_source_penalty:-8",
-        "long_english_lead:-22"
-      ],
-      "publishability": "weak"
     }
   ],
   "source_status_summary": {
     "source_count": 79,
-    "source_success_count": 51,
-    "source_error_count": 17,
-    "source_empty_count": 0,
-    "source_not_modified_count": 6
+    "source_success_count": 45,
+    "source_error_count": 16,
+    "source_empty_count": 2,
+    "source_not_modified_count": 11
   }
 }

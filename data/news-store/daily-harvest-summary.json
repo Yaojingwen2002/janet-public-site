@@ -3,24 +3,24 @@
   "timezone": "Asia/Shanghai",
   "core_window_start": "2026-05-31T00:00:00.000Z",
   "core_window_end": "2026-06-01T00:00:00.000Z",
-  "rss_raw_seen": 217,
-  "search_raw_seen": 560,
+  "rss_raw_seen": 517,
+  "search_raw_seen": 600,
   "direct_raw_seen": 283,
-  "chinese_raw_seen": 213,
-  "official_raw_seen": 264,
-  "new_items_added": 995,
-  "historical_pool_count": 2306,
-  "core_window_items_count": 225,
-  "core_window_eligible_count": 76,
+  "chinese_raw_seen": 218,
+  "official_raw_seen": 307,
+  "new_items_added": 410,
+  "historical_pool_count": 2716,
+  "core_window_items_count": 245,
+  "core_window_eligible_count": 82,
   "extended_48h_eligible_count": 68,
   "weekly_context_count": 796,
   "unique_story_count": 12,
   "selected_count": 12,
   "publish_recommendation": "full_edition",
   "blocked_reason_counts": {
-    "generic_title": 12,
-    "duplicate_story_cluster": 4,
-    "not_weekly_context_priority": 261
+    "generic_title": 13,
+    "duplicate_story_cluster": 8,
+    "not_weekly_context_priority": 271
   },
   "source_breakdown": {
     "search-google-openai": {
@@ -29,17 +29,17 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 6,
       "error": ""
     },
     "search-gdelt-openai": {
       "layer": "search",
       "source_name": "GDELT: OpenAI",
-      "status": "error",
-      "raw_seen": 0,
-      "items": 0,
-      "added": 0,
-      "error": "http_429"
+      "status": "success",
+      "raw_seen": 40,
+      "items": 40,
+      "added": 40,
+      "error": ""
     },
     "search-google-chatgpt": {
       "layer": "search",
@@ -47,7 +47,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 39,
+      "added": 6,
       "error": ""
     },
     "search-gdelt-chatgpt": {
@@ -57,7 +57,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "fetch failed"
     },
     "search-google-anthropic-claude": {
       "layer": "search",
@@ -65,7 +65,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 36,
+      "added": 6,
       "error": ""
     },
     "search-gdelt-anthropic-claude": {
@@ -83,7 +83,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 39,
+      "added": 2,
       "error": ""
     },
     "search-gdelt-google-gemini": {
@@ -101,7 +101,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 33,
       "error": ""
     },
     "search-gdelt-nvidia-ai": {
@@ -119,7 +119,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 39,
+      "added": 9,
       "error": ""
     },
     "search-gdelt-ai-agent": {
@@ -137,7 +137,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 1,
       "error": ""
     },
     "search-gdelt-github-copilot": {
@@ -155,7 +155,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 7,
       "error": ""
     },
     "search-gdelt-ai-data-center": {
@@ -173,7 +173,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 39,
+      "added": 4,
       "error": ""
     },
     "search-gdelt-ai-regulation": {
@@ -191,7 +191,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 36,
+      "added": 6,
       "error": ""
     },
     "search-gdelt-ai-model-release": {
@@ -201,7 +201,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
     },
     "search-google-ai-coding-tool": {
       "layer": "search",
@@ -209,7 +209,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 33,
+      "added": 2,
       "error": ""
     },
     "search-gdelt-ai-coding-tool": {
@@ -227,7 +227,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 5,
       "error": ""
     },
     "search-gdelt-ai-video-generation": {
@@ -245,7 +245,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 33,
+      "added": 9,
       "error": ""
     },
     "search-gdelt-ai-music-generation": {
@@ -255,7 +255,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
     },
     "search-google-ai-startup-funding": {
       "layer": "search",
@@ -263,7 +263,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 39,
+      "added": 4,
       "error": ""
     },
     "search-gdelt-ai-startup-funding": {
@@ -273,7 +273,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
+      "error": "http_429"
     },
     "direct-openai-news": {
       "layer": "direct",
@@ -299,7 +299,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 26,
+      "added": 0,
       "error": ""
     },
     "direct-google-ai-blog": {
@@ -308,7 +308,7 @@
       "status": "success",
       "raw_seen": 58,
       "items": 58,
-      "added": 38,
+      "added": 0,
       "error": ""
     },
     "direct-nvidia-news": {
@@ -317,7 +317,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 10,
       "error": ""
     },
     "direct-cnbc-ai-tech": {
@@ -335,7 +335,7 @@
       "status": "success",
       "raw_seen": 42,
       "items": 42,
-      "added": 22,
+      "added": 0,
       "error": ""
     },
     "direct-venturebeat-ai": {
@@ -353,7 +353,7 @@
       "status": "success",
       "raw_seen": 28,
       "items": 28,
-      "added": 28,
+      "added": 0,
       "error": ""
     },
     "direct-mit-tech-review-ai": {
@@ -362,7 +362,7 @@
       "status": "success",
       "raw_seen": 28,
       "items": 28,
-      "added": 18,
+      "added": 0,
       "error": ""
     },
     "chinese-aibase": {
@@ -371,25 +371,25 @@
       "status": "success",
       "raw_seen": 75,
       "items": 60,
-      "added": 60,
+      "added": 3,
       "error": ""
     },
     "chinese-ithome": {
       "layer": "chinese",
       "source_name": "IT之家",
       "status": "success",
-      "raw_seen": 41,
-      "items": 41,
-      "added": 41,
+      "raw_seen": 42,
+      "items": 42,
+      "added": 10,
       "error": ""
     },
     "chinese-tmtpost": {
       "layer": "chinese",
       "source_name": "钛媒体",
       "status": "success",
-      "raw_seen": 50,
-      "items": 50,
-      "added": 50,
+      "raw_seen": 51,
+      "items": 51,
+      "added": 9,
       "error": ""
     },
     "chinese-sina-ai": {
@@ -398,7 +398,7 @@
       "status": "success",
       "raw_seen": 35,
       "items": 35,
-      "added": 35,
+      "added": 26,
       "error": "direct:http_403"
     },
     "chinese-sciencenet": {
@@ -407,17 +407,17 @@
       "status": "success",
       "raw_seen": 12,
       "items": 12,
-      "added": 12,
+      "added": 0,
       "error": ""
     },
     "chinese-setn": {
       "layer": "chinese",
       "source_name": "三立新闻网",
-      "status": "error",
-      "raw_seen": 0,
-      "items": 0,
-      "added": 0,
-      "error": "direct:fetch failed"
+      "status": "success",
+      "raw_seen": 3,
+      "items": 3,
+      "added": 3,
+      "error": ""
     },
     "official-openai-help-release-notes": {
       "layer": "official",
@@ -452,7 +452,7 @@
       "status": "success",
       "raw_seen": 25,
       "items": 25,
-      "added": 5,
+      "added": 0,
       "error": ""
     },
     "official-github-changelog": {
@@ -461,7 +461,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 0,
       "error": ""
     },
     "official-github-blog": {
@@ -470,17 +470,17 @@
       "status": "success",
       "raw_seen": 47,
       "items": 47,
-      "added": 33,
+      "added": 0,
       "error": ""
     },
     "official-huggingface-blog": {
       "layer": "official",
       "source_name": "Hugging Face Blog",
-      "status": "error",
-      "raw_seen": 0,
-      "items": 0,
-      "added": 0,
-      "error": "feed:fetch failed; list:fetch failed"
+      "status": "success",
+      "raw_seen": 43,
+      "items": 43,
+      "added": 16,
+      "error": ""
     },
     "official-langchain-blog": {
       "layer": "official",
@@ -488,7 +488,7 @@
       "status": "success",
       "raw_seen": 70,
       "items": 70,
-      "added": 14,
+      "added": 0,
       "error": ""
     }
   }

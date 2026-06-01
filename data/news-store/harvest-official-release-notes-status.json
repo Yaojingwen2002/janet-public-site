@@ -1,25 +1,21 @@
 {
   "status": "harvest_completed",
   "layer": "official",
-  "run_at": "2026-06-01T11:35:32+08:00",
+  "run_at": "2026-06-01T13:14:48+08:00",
   "source_count": 8,
-  "source_success_count": 6,
-  "source_error_count": 2,
+  "source_success_count": 7,
+  "source_error_count": 1,
   "source_empty_count": 0,
-  "raw_items_seen": 264,
-  "items_considered": 264,
-  "new_items_added": 92,
-  "duplicate_items": 168,
+  "raw_items_seen": 307,
+  "items_considered": 307,
+  "new_items_added": 16,
+  "duplicate_items": 287,
   "invalid_items": 4,
-  "missing_date_items": 121,
+  "missing_date_items": 133,
   "errors": [
     {
       "source_id": "official-openai-help-release-notes",
       "error": "list:http_403"
-    },
-    {
-      "source_id": "official-huggingface-blog",
-      "error": "feed:fetch failed; list:fetch failed"
     }
   ],
   "source_breakdown": {
@@ -52,7 +48,7 @@
       "status": "success",
       "raw_seen": 25,
       "items": 25,
-      "added": 5,
+      "added": 0,
       "error": ""
     },
     "official-github-changelog": {
@@ -60,7 +56,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 40,
+      "added": 0,
       "error": ""
     },
     "official-github-blog": {
@@ -68,23 +64,23 @@
       "status": "success",
       "raw_seen": 47,
       "items": 47,
-      "added": 33,
+      "added": 0,
       "error": ""
     },
     "official-huggingface-blog": {
       "source_name": "Hugging Face Blog",
-      "status": "error",
-      "raw_seen": 0,
-      "items": 0,
-      "added": 0,
-      "error": "feed:fetch failed; list:fetch failed"
+      "status": "success",
+      "raw_seen": 43,
+      "items": 43,
+      "added": 16,
+      "error": ""
     },
     "official-langchain-blog": {
       "source_name": "LangChain Blog",
       "status": "success",
       "raw_seen": 70,
       "items": 70,
-      "added": 14,
+      "added": 0,
       "error": ""
     }
   }

@@ -1,17 +1,17 @@
 {
   "status": "harvest_completed",
   "layer": "search",
-  "run_at": "2026-06-01T20:08:25+08:00",
+  "run_at": "2026-06-02T02:15:50+08:00",
   "source_count": 28,
   "source_success_count": 14,
-  "source_error_count": 14,
-  "source_empty_count": 0,
-  "raw_items_seen": 560,
-  "items_considered": 560,
-  "new_items_added": 166,
-  "duplicate_items": 394,
+  "source_error_count": 13,
+  "source_empty_count": 1,
+  "raw_items_seen": 548,
+  "items_considered": 548,
+  "new_items_added": 250,
+  "duplicate_items": 298,
   "invalid_items": 0,
-  "missing_date_items": 0,
+  "missing_date_items": 28,
   "errors": [
     {
       "source_id": "search-gdelt-openai",
@@ -38,16 +38,12 @@
       "error": "http_429"
     },
     {
-      "source_id": "search-gdelt-github-copilot",
-      "error": "http_429"
-    },
-    {
       "source_id": "search-gdelt-ai-data-center",
       "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
     },
     {
       "source_id": "search-gdelt-ai-regulation",
-      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
+      "error": "http_429"
     },
     {
       "source_id": "search-gdelt-ai-model-release",
@@ -59,7 +55,7 @@
     },
     {
       "source_id": "search-gdelt-ai-video-generation",
-      "error": "http_429"
+      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
     },
     {
       "source_id": "search-gdelt-ai-music-generation",
@@ -67,7 +63,7 @@
     },
     {
       "source_id": "search-gdelt-ai-startup-funding",
-      "error": "http_429"
+      "error": "fetch failed"
     }
   ],
   "source_breakdown": {
@@ -76,7 +72,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 20,
+      "added": 37,
       "error": ""
     },
     "search-gdelt-openai": {
@@ -92,7 +88,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 26,
+      "added": 21,
       "error": ""
     },
     "search-gdelt-chatgpt": {
@@ -108,7 +104,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 7,
+      "added": 34,
       "error": ""
     },
     "search-gdelt-anthropic-claude": {
@@ -124,7 +120,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 8,
+      "added": 18,
       "error": ""
     },
     "search-gdelt-google-gemini": {
@@ -140,7 +136,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 11,
+      "added": 14,
       "error": ""
     },
     "search-gdelt-nvidia-ai": {
@@ -156,7 +152,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 16,
+      "added": 24,
       "error": ""
     },
     "search-gdelt-ai-agent": {
@@ -177,11 +173,11 @@
     },
     "search-gdelt-github-copilot": {
       "source_name": "GDELT: GitHub Copilot",
-      "status": "error",
-      "raw_seen": 0,
-      "items": 0,
-      "added": 0,
-      "error": "http_429"
+      "status": "success",
+      "raw_seen": 28,
+      "items": 28,
+      "added": 14,
+      "error": ""
     },
     "search-google-ai-data-center": {
       "source_name": "Google News: AI data center",
@@ -204,7 +200,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 10,
+      "added": 16,
       "error": ""
     },
     "search-gdelt-ai-regulation": {
@@ -213,14 +209,14 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
+      "error": "http_429"
     },
     "search-google-ai-model-release": {
       "source_name": "Google News: AI model release",
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 6,
+      "added": 9,
       "error": ""
     },
     "search-gdelt-ai-model-release": {
@@ -236,7 +232,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 7,
+      "added": 13,
       "error": ""
     },
     "search-gdelt-ai-coding-tool": {
@@ -252,7 +248,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 5,
+      "added": 9,
       "error": ""
     },
     "search-gdelt-ai-video-generation": {
@@ -261,14 +257,14 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
     },
     "search-google-ai-music-generation": {
       "source_name": "Google News: AI music generation",
-      "status": "success",
-      "raw_seen": 40,
-      "items": 40,
-      "added": 8,
+      "status": "empty",
+      "raw_seen": 0,
+      "items": 0,
+      "added": 0,
       "error": ""
     },
     "search-gdelt-ai-music-generation": {
@@ -284,7 +280,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 10,
+      "added": 9,
       "error": ""
     },
     "search-gdelt-ai-startup-funding": {
@@ -293,7 +289,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "fetch failed"
     }
   }
 }

@@ -453,29 +453,6 @@
 
 // JANET_WORKS_LIBRARY_LISTING_START
 
-  async function loadJson(path) {
-    const response = await fetch(path, { cache: 'no-cache' });
-    if (!response.ok) throw new Error('Cannot load ' + path);
-    return response.json();
-  }
-
-  async function loadWorkDetail(work) {
-    if (!work.detail_json) return work;
-    try {
-      return await loadJson(work.detail_json);
-    } catch (error) {
-      console.warn('[works-library] work detail failed:', work.detail_json, error);
-      return work;
-    }
-  }
-
-  function getProjectLabel(projectId) {
-    if (projectId === 'shuttle-universe') return '穿梭宇宙';
-    if (projectId === 'misaligned-scenes') return '错位名场面';
-    if (projectId === 'igpt-image2-handbook') return '图像生成手册';
-    return projectId || 'Unknown';
-  }
-
   function getInitialProjectFilter() {
     const params = new URLSearchParams(window.location.search);
     const project = params.get('project');
@@ -483,79 +460,46 @@
     return 'all';
   }
 
-  function renderWorksProjectOverview(manifest) {
+  function renderWorksProjectOverview(manifest, activeProject) {
     const container = document.getElementById('works-project-overview');
     if (!container) return;
 
     const projects = manifest.projects || [];
-    container.innerHTML = projects.map((project) => {
+    const filtered = activeProject === 'all'
+      ? projects
+      : projects.filter(project => project.id === activeProject);
+
+    if (!filtered.length) {
+      container.innerHTML = '<p class="works-library-empty">当前分类下暂无项目。</p>';
+      return;
+    }
+
+    container.innerHTML = filtered.map((project) => {
       const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
+      const method = (project.method || []).slice(0, 5).map(item => '<span>' + escapeHtml(item) + '</span>').join('');
+      const cardFilter = activeProject === 'all' ? project.id : 'all';
+      const cardFilterLabel = activeProject === 'all' ? '只看这个类别 →' : '返回全部类别 →';
+      const action = project.url
+        ? '<a class="works-overview-link" href="' + escapeHtml(project.url) + '">打开项目页面 →</a>'
+        : '<button class="works-overview-link works-overview-filter" type="button" data-card-filter="' + escapeHtml(cardFilter) + '">' + escapeHtml(cardFilterLabel) + '</button>';
 
       return `
         <article class="works-overview-card" data-project-id="${escapeHtml(project.id)}">
           ${renderSeriesBand(project.id || project.title)}
           ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-overview-media')}
-          <div class="work-archive-card__meta">
+          <div class="works-overview-meta">
             <span>${escapeHtml(project.type || '')}</span>
-            <span>${escapeHtml(project.work_count || 0)} works</span>
-            <span>${escapeHtml(project.document_count || 0)} docs</span>
           </div>
           <h3>${escapeHtml(project.title)}</h3>
           <p>${escapeHtml(project.description || '')}</p>
-          <div class="work-archive-card__tags">${tags}</div>
-          ${project.url ? `<a class="work-archive-card__link" href="${escapeHtml(project.url)}">打开项目页面 →</a>` : ''}
-        </article>
-      `;
-    }).join('');
-  }
-
-  function renderWorksList(works, activeProject) {
-    const grid = document.getElementById('works-list-grid');
-    const countEl = document.getElementById('works-list-count');
-    if (!grid) return;
-
-    const filtered = activeProject === 'all'
-      ? works
-      : works.filter(work => work.project_id === activeProject);
-
-    if (countEl) {
-      countEl.textContent = filtered.length + ' works';
-    }
-
-    if (!filtered.length) {
-      grid.innerHTML = '<p class="works-library-empty">当前筛选下暂无作品。</p>';
-      return;
-    }
-
-    grid.innerHTML = filtered.map((work) => {
-      const stats = work.stats || {};
-      const tags = (work.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
-      const detailHref = work.url || work.detail_url || ('project-detail.html?work=' + encodeURIComponent(work.id));
-      const actionLabel = work.url ? '打开项目页面 →' : '查看制作档案 →';
-      const mediaSrc = getCoverSrc(work);
-
-      return `
-        <article class="work-archive-card" data-project-id="${escapeHtml(work.project_id)}">
-          ${renderSeriesBand(work.project_id || work.title)}
-          ${renderMediaFrame(mediaSrc, work.title || '作品封面', 'work-archive-media')}
-          <div class="work-archive-card__meta">
-            <span>${escapeHtml(getProjectLabel(work.project_id))}</span>
-            <span>${escapeHtml(work.type || '')}</span>
-            <span>${escapeHtml(work.status || '制作中')}</span>
+          <div class="works-overview-stats" aria-label="${escapeHtml(project.title)} 统计">
+            <span><strong>${escapeHtml(project.work_count || 0)}</strong>works</span>
+            <span><strong>${escapeHtml(project.document_count || 0)}</strong>docs</span>
+            <span><strong>${escapeHtml((project.method || []).length || 0)}</strong>steps</span>
           </div>
-          <h3>${escapeHtml(work.title || '未命名作品')}</h3>
-          <p>${escapeHtml(work.summary || '')}</p>
-
-          <div class="work-archive-card__stats" aria-label="制作材料统计">
-            <span><strong>${escapeHtml(stats.document_count || 0)}</strong>docs</span>
-            <span><strong>${escapeHtml(stats.prompt_count || 0)}</strong>prompts</span>
-            <span><strong>${escapeHtml(stats.subtitle_count || 0)}</strong>subs</span>
-            <span><strong>${escapeHtml(stats.image_count || 0)}</strong>images</span>
-            <span><strong>${escapeHtml(stats.video_count || 0)}</strong>videos</span>
-          </div>
-
-          <div class="work-archive-card__tags">${tags}</div>
-          <a class="work-archive-card__link" href="${escapeHtml(detailHref)}">${escapeHtml(actionLabel)}</a>
+          <div class="works-overview-tags">${tags}</div>
+          <div class="works-project-card__method">${method}</div>
+          ${action}
         </article>
       `;
     }).join('');
@@ -563,45 +507,45 @@
 
   function setActiveFilter(project) {
     document.querySelectorAll('.works-filter-btn').forEach((button) => {
-      button.classList.toggle('active', button.dataset.projectFilter === project);
+      const isActive = button.dataset.projectFilter === project;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
     });
   }
 
   async function initWorksListingPage() {
-    const grid = document.getElementById('works-list-grid');
-    if (!grid) return;
+    const overview = document.getElementById('works-project-overview');
+    if (!overview) return;
 
     try {
       const manifest = await loadWorksManifest();
-      renderWorksProjectOverview(manifest);
-
-      const projectDetails = await Promise.all(
-        (manifest.projects || []).map((project) => loadJson(project.project_json))
-      );
-
-      const workSummaries = projectDetails.flatMap((project) => project.works || []);
-      const works = await Promise.all(workSummaries.map(loadWorkDetail));
       let activeProject = getInitialProjectFilter();
 
-      setActiveFilter(activeProject);
-      renderWorksList(works, activeProject);
+      function updateProjectView(project) {
+        activeProject = project;
+        setActiveFilter(activeProject);
+        renderWorksProjectOverview(manifest, activeProject);
+        overview.querySelectorAll('[data-card-filter]').forEach((button) => {
+          button.addEventListener('click', () => {
+            updateProjectView(button.dataset.cardFilter || 'all');
+          });
+        });
+        const nextUrl = activeProject === 'all'
+          ? 'portfolio.html'
+          : 'portfolio.html?project=' + encodeURIComponent(activeProject);
+        history.replaceState(null, '', nextUrl);
+      }
+
+      updateProjectView(activeProject);
 
       document.querySelectorAll('.works-filter-btn').forEach((button) => {
         button.addEventListener('click', () => {
-          activeProject = button.dataset.projectFilter || 'all';
-          setActiveFilter(activeProject);
-          renderWorksList(works, activeProject);
-          const nextUrl = activeProject === 'all'
-            ? 'portfolio.html'
-            : 'portfolio.html?project=' + encodeURIComponent(activeProject);
-          history.replaceState(null, '', nextUrl);
+          updateProjectView(button.dataset.projectFilter || 'all');
         });
       });
     } catch (error) {
       console.error('[works-library] listing failed:', error);
-      grid.innerHTML = '<p class="works-library-empty">作品库数据暂时无法读取。</p>';
-      const countEl = document.getElementById('works-list-count');
-      if (countEl) countEl.textContent = '0 works';
+      overview.innerHTML = '<p class="works-library-empty">作品库数据暂时无法读取。</p>';
     }
   }
 

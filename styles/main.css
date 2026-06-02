@@ -224,7 +224,7 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 /* 移动端汉堡 */
 .mobile-nav-toggle {
   display: none;
-  position: fixed; top: 16px; right: var(--container-pad);
+  position: fixed; top: 12px; right: var(--container-pad);
   z-index: 200;
   width: 40px; height: 40px;
   background: var(--bg-surface);
@@ -794,20 +794,10 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
   gap: 20px; margin-bottom: var(--space-md);
 }
 
-.works-list-header {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  margin-bottom: 24px; gap: 16px;
-}
-.works-list-header h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-h2); font-weight: 500;
-  color: var(--text-1); letter-spacing: -1px;
-}
-.works-list-count { font-size: var(--body-xs); color: var(--text-4); font-weight: 500; }
-.works-list-grid {
+.works-overview-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
 }
 
 /* ─── 作品详情页 (project-detail.html) ──────────────────────── */
@@ -1120,7 +1110,6 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 
 .works-project-card,
 .works-overview-card,
-.work-archive-card,
 .portfolio-item,
 .portfolio-full-card,
 .video-card {
@@ -1138,7 +1127,6 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 
 .works-project-card:hover,
 .works-overview-card:hover,
-.work-archive-card:hover,
 .portfolio-item:hover,
 .portfolio-full-card:hover,
 .video-card:hover {
@@ -1161,8 +1149,7 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 .portfolio-item:hover .work-series-band,
 .portfolio-full-card:hover .work-series-band,
 .works-project-card:hover .work-series-band,
-.works-overview-card:hover .work-series-band,
-.work-archive-card:hover .work-series-band {
+.works-overview-card:hover .work-series-band {
   transform: scale(1.02);
 }
 
@@ -1197,17 +1184,15 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 }
 
 .works-project-card,
-.works-overview-card,
-.work-archive-card {
+.works-overview-card {
   padding: 18px;
 }
 
 .works-project-card__meta,
-.work-archive-card__meta,
-.work-archive-card__stats,
+.works-overview-meta,
 .works-project-card__tags,
 .works-project-card__method,
-.work-archive-card__tags,
+.works-overview-tags,
 .portfolio-item-tags,
 .portfolio-full-tags {
   display: flex;
@@ -1216,14 +1201,13 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 }
 
 .works-project-card__meta,
-.work-archive-card__meta {
+.works-overview-meta {
   align-items: center;
   justify-content: space-between;
 }
 
 .works-project-card h3,
 .works-overview-card h3,
-.work-archive-card h3,
 .portfolio-item-meta h4,
 .portfolio-full-info h4,
 .video-card-meta h4 {
@@ -1235,7 +1219,6 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 
 .works-project-card p,
 .works-overview-card p,
-.work-archive-card p,
 .portfolio-item-summary,
 .portfolio-full-summary {
   color: var(--text-2);
@@ -1244,7 +1227,7 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 }
 
 .works-project-card__meta span,
-.work-archive-card__meta span,
+.works-overview-meta span,
 .portfolio-item-type,
 .portfolio-full-type,
 .portfolio-full-date {
@@ -1261,7 +1244,7 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 
 .portfolio-item-tags .tag,
 .portfolio-full-tags .tag,
-.work-archive-card__tags span,
+.works-overview-tags span,
 .works-project-card__tags span,
 .works-project-card__method span {
   border: 1px solid var(--border);
@@ -1272,7 +1255,7 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
   font-size: 11px;
 }
 
-.work-archive-card__stats span {
+.works-overview-stats span {
   display: grid;
   gap: 2px;
   min-width: 90px;
@@ -1284,13 +1267,13 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
   font-size: var(--body-xs);
 }
 
-.work-archive-card__stats strong {
+.works-overview-stats strong {
   color: var(--text-1);
   font-size: var(--body-sm);
 }
 
 .works-project-card__link,
-.work-archive-card__link,
+.works-overview-link,
 .portfolio-item-actions .btn,
 .portfolio-full-actions .btn,
 .video-card-actions .btn {
@@ -1298,13 +1281,18 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
 }
 
 .works-project-card__link,
-.work-archive-card__link {
+.works-overview-link {
   display: inline-flex;
   align-items: center;
   width: fit-content;
   color: var(--green);
   font-size: var(--body-sm);
   font-weight: 700;
+}
+
+.works-overview-filter {
+  cursor: pointer;
+  padding: 0;
 }
 
 .portfolio-item-main,
@@ -1373,7 +1361,6 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
   .hero h1 { letter-spacing: -1.5px; }
   .works-project-grid,
   .works-project-overview,
-  .works-list-grid,
   .handbook-grid { grid-template-columns: 1fr; }
   .works-filter-bar {
     display: grid;
@@ -1387,9 +1374,8 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
     padding-left: 12px;
     text-align: center;
   }
-  .works-list-header {
-    align-items: flex-start;
-    flex-direction: column;
+  .works-overview-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .works-page-hero {
     padding-top: 56px;

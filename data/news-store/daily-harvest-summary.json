@@ -3,15 +3,15 @@
   "timezone": "Asia/Shanghai",
   "core_window_start": "2026-06-01T00:00:00.000Z",
   "core_window_end": "2026-06-02T00:00:00.000Z",
-  "rss_raw_seen": 237,
-  "search_raw_seen": 636,
+  "rss_raw_seen": 287,
+  "search_raw_seen": 596,
   "direct_raw_seen": 281,
-  "chinese_raw_seen": 211,
+  "chinese_raw_seen": 208,
   "official_raw_seen": 307,
-  "new_items_added": 47,
-  "historical_pool_count": 3906,
-  "core_window_items_count": 1253,
-  "core_window_eligible_count": 609,
+  "new_items_added": 28,
+  "historical_pool_count": 3934,
+  "core_window_items_count": 1261,
+  "core_window_eligible_count": 610,
   "extended_48h_eligible_count": 72,
   "weekly_context_count": 737,
   "unique_story_count": 12,
@@ -19,7 +19,7 @@
   "publish_recommendation": "full_edition",
   "blocked_reason_counts": {
     "generic_title": 28,
-    "duplicate_story_cluster": 98,
+    "duplicate_story_cluster": 99,
     "not_weekly_context_priority": 411
   },
   "source_breakdown": {
@@ -29,17 +29,17 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 1,
+      "added": 0,
       "error": ""
     },
     "search-gdelt-openai": {
       "layer": "search",
       "source_name": "GDELT: OpenAI",
-      "status": "success",
-      "raw_seen": 40,
-      "items": 40,
-      "added": 30,
-      "error": ""
+      "status": "error",
+      "raw_seen": 0,
+      "items": 0,
+      "added": 0,
+      "error": "fetch failed"
     },
     "search-google-chatgpt": {
       "layer": "search",
@@ -47,7 +47,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 1,
+      "added": 0,
       "error": ""
     },
     "search-gdelt-chatgpt": {
@@ -57,7 +57,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "fetch failed"
     },
     "search-google-anthropic-claude": {
       "layer": "search",
@@ -75,7 +75,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "fetch failed"
     },
     "search-google-google-gemini": {
       "layer": "search",
@@ -83,7 +83,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 0,
+      "added": 1,
       "error": ""
     },
     "search-gdelt-google-gemini": {
@@ -101,7 +101,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 0,
+      "added": 3,
       "error": ""
     },
     "search-gdelt-nvidia-ai": {
@@ -111,7 +111,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
+      "error": "http_429"
     },
     "search-google-ai-agent": {
       "layer": "search",
@@ -129,7 +129,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "http_429"
+      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
     },
     "search-google-github-copilot": {
       "layer": "search",
@@ -137,7 +137,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 0,
+      "added": 2,
       "error": ""
     },
     "search-gdelt-github-copilot": {
@@ -146,7 +146,7 @@
       "status": "success",
       "raw_seen": 36,
       "items": 36,
-      "added": 7,
+      "added": 0,
       "error": ""
     },
     "search-google-ai-data-center": {
@@ -155,7 +155,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 1,
+      "added": 3,
       "error": ""
     },
     "search-gdelt-ai-data-center": {
@@ -173,7 +173,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 0,
+      "added": 2,
       "error": ""
     },
     "search-gdelt-ai-regulation": {
@@ -183,7 +183,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
+      "error": "http_429"
     },
     "search-google-ai-model-release": {
       "layer": "search",
@@ -191,7 +191,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 1,
+      "added": 0,
       "error": ""
     },
     "search-gdelt-ai-model-release": {
@@ -227,7 +227,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 1,
+      "added": 0,
       "error": ""
     },
     "search-gdelt-ai-video-generation": {
@@ -263,7 +263,7 @@
       "status": "success",
       "raw_seen": 40,
       "items": 40,
-      "added": 2,
+      "added": 0,
       "error": ""
     },
     "search-gdelt-ai-startup-funding": {
@@ -273,7 +273,7 @@
       "raw_seen": 0,
       "items": 0,
       "added": 0,
-      "error": "fetch failed"
+      "error": "Unexpected token 'Y', \"Your searc\"... is not valid JSON"
     },
     "direct-openai-news": {
       "layer": "direct",
@@ -371,7 +371,7 @@
       "status": "success",
       "raw_seen": 75,
       "items": 60,
-      "added": 0,
+      "added": 1,
       "error": ""
     },
     "chinese-ithome": {
@@ -380,16 +380,16 @@
       "status": "success",
       "raw_seen": 44,
       "items": 44,
-      "added": 1,
+      "added": 3,
       "error": ""
     },
     "chinese-tmtpost": {
       "layer": "chinese",
       "source_name": "钛媒体",
       "status": "success",
-      "raw_seen": 44,
-      "items": 44,
-      "added": 0,
+      "raw_seen": 40,
+      "items": 40,
+      "added": 1,
       "error": ""
     },
     "chinese-sina-ai": {
@@ -398,7 +398,7 @@
       "status": "success",
       "raw_seen": 35,
       "items": 35,
-      "added": 2,
+      "added": 11,
       "error": "direct:http_403"
     },
     "chinese-sciencenet": {
@@ -414,9 +414,9 @@
       "layer": "chinese",
       "source_name": "三立新闻网",
       "status": "success",
-      "raw_seen": 2,
-      "items": 2,
-      "added": 0,
+      "raw_seen": 3,
+      "items": 3,
+      "added": 1,
       "error": ""
     },
     "official-openai-help-release-notes": {

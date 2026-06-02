@@ -1,0 +1,153 @@
+{
+  "date": "2026-06-02",
+  "vol": "第245期",
+  "intro_text": "昨夜到今晨，AI 的主菜不是聊天，是算力、责任和物理世界。",
+  "cover": {
+    "title": "AI 基建下场",
+    "subtitle": "模型竞赛正在转向物理世界、算力账本和安全责任。",
+    "image_path": "runs/2026-06-02/cover.png",
+    "image_prompt": "21:9 widescreen AI technology magazine cover, theme: AI infrastructure is moving from model racing into the physical world. Abstract data center architecture, chip circuit traces, network lines, subtle humanoid robot silhouette, and a minimal security lock symbol interwoven into one sharp composition. Color palette: deep black, clean white, Janet green (#18E299). Premium financial technology magazine aesthetic, cold, precise, minimal, high contrast, no cartoon, no glowing brain, no cheap cyberpunk neon, no crowded robot faces, no readable text, no logos."
+  },
+  "trend": "AI 基建离开参数表\n\n今天几条线拧在一起：OpenAI 被州检方拖上法庭，NVIDIA 把本地 AI PC、车端推理模型和机器人技能库一起往外推，Anthropic 的安全模型进入欧盟机构。共同主线很清楚，AI 不再只比谁会聊天，开始比谁能接进数据中心、设备、工厂和监管流程。\n\n这对中国创作者和企业的意思是，下一波红利不在复读模型榜单，而在把 AI 接进真实工作流。能降本的，是代码仓库、RAG 存储、机器人采集、工业巡检、审计日志这些脏活；只会转发发布会截图的团队，连预算表都摸不到。\n\n接下来 2-4 周盯三件事：NVIDIA 的开发者工具能不能接进现有机器人和仿真管线，MiniMax M3 的开放权重是否真的可部署，AI 诉讼会不会逼 C 端产品把安全审计做成标配。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "佛州先亮刀",
+          "source": "AP",
+          "url": "https://apnews.com/article/396d70c5a2d9bae7e95a8ee9adaef836",
+          "body": "佛罗里达州起诉 OpenAI 与 Sam Altman，称 ChatGPT 被积极营销给公众，却隐瞒未成年人自伤、犯罪策划等严重风险。州检方称这是美国首个州级直接起诉 OpenAI 的案件。",
+          "janet_take": "这条新闻撕开的是 AI 产品责任，而不是又一轮安全口水仗。模型公司以前最爱把风险写进白皮书，现在州检方要看产品设计、用户提示、内部预警和真实事故之间有没有链条。做 C 端 AI 的中国团队别等监管落地才补系统，先把高危用户识别、人工升级、审计日志做出来，否则增长越快，暴雷时越像裸奔。"
+        },
+        {
+          "title": "Claude要套绳",
+          "source": "AP / AOL",
+          "url": "https://www.aol.com/articles/ai-firm-anthropic-confidentially-files-173026745.html",
+          "body": "Anthropic 已向美国 SEC 秘密递交 IPO 草案，保留在审核完成后上市的选项。报道同时提到公司刚完成 650 亿美元融资，估值来到 9650 亿美元。",
+          "janet_take": "Anthropic 上市不是 Claude 赢麻了，而是它准备把算力账、客户账和安全承诺摊给市场看。公开市场不吃安全人设那一套，收入增速、毛利、云服务绑定、模型训练支出都会被拆得很难看。做企业 AI 的团队可以学它的护城河打法，但别学它的融资叙事，先把可续费客户和单位推理成本算清楚。"
+        },
+        {
+          "title": "安全模型进宫",
+          "source": "TNW",
+          "url": "https://thenextweb.com/news/anthropic-mythos-eu-enisa-cybersecurity-access",
+          "body": "Anthropic 将通过 Project Glasswing 向欧盟网络安全机构 ENISA 开放 Mythos AI，报道称该系统曾发现 10000 多个零日漏洞。ENISA 因此成为首个获得该系统访问权的欧盟机构。",
+          "janet_take": "Mythos 进 ENISA，说明顶级安全模型已经从企业工具变成准公共基础设施。真正的门槛不是会不会找漏洞，而是谁能访问、谁来复核、漏洞披露归谁管，安全能力越强，治理麻烦越大。国内安全公司别再卖扫描器皮肤，应该把模型检测、人工复核、工单闭环和披露流程做成一套能给央国企审的系统。"
+        },
+        {
+          "title": "算力园先吞电",
+          "source": "Related",
+          "url": "https://www.related.com/press-releases/2026-06-01/related-digital-blackstone-oracle-openai-walbridge-and-governor-whitmer",
+          "body": "Related Digital、Blackstone、Oracle、OpenAI、Walbridge 与密歇根州政府庆祝 Saline Township 的 Stargate 数据中心园区开工。项目团队称这是密歇根史上最大单笔经济投资，并新增 1000 万美元社区设施承诺。",
+          "janet_take": "Stargate 这类数据中心新闻，本质不是 AI 浪漫，是电力、水、土地和税收的再分配。大厂把模型能力说得越轻盈，背后的基础设施就越重，社区补偿和能源压力迟早会被摊到价格里。中国企业采购 AI 服务时别只看响应速度，要问供应商算力来源、区域冗余和长期涨价机制，别把业务绑在一张会涨价的电费单上。"
+        },
+        {
+          "title": "AI PC别急跪",
+          "source": "NVIDIA",
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx",
+          "body": "NVIDIA 与 Microsoft 发布 RTX Spark，面向个人 AI agents 的 Windows PC 超级芯片，标称 1 petaflop AI 性能、最高 128GB 统一内存，并支持本地运行 120B 参数模型和 100 万 token 上下文。",
+          "janet_take": "AI PC 终于不只是键盘上加一个按钮，但别被 1 petaflop 和 128GB 统一内存吓到立刻换机。真正难的是散热、续航、Windows on Arm 生态和本地模型工作流，很多创作者只是缺好工具，不是缺一台怪兽电脑。视频团队、代码团队、长文档团队可以先列本地任务清单，只有常驻 agent、长上下文和隐私数据都成立，才值得把预算砸进去。"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "百万窗先别跪",
+          "source": "MiniMax",
+          "url": "https://www.minimax.io/blog/minimax-m3",
+          "body": "MiniMax 发布 M3，称其面向 coding 与 agentic work，使用 MiniMax Sparse Attention，支持最高 100 万 token 上下文、图像和视频输入，并能操作桌面电脑。官方称开放权重与技术报告将在约 10 天内提供。",
+          "janet_take": "百万上下文听起来像神迹，实际先看它在长仓库、多文件修改和桌面自动化里会不会失忆。长窗不是越大越赚钱，输入越长，检索、缓存、推理成本和错误定位都会变成新坑。代码工具团队可以先用 API 跑三类测试：跨仓库重构、GUI 操作回放、长需求拆解，等开放权重到手再谈私有部署。"
+        },
+        {
+          "title": "IDE小模真香",
+          "source": "JetBrains",
+          "url": "https://blog.jetbrains.com/ai/2026/06/mellum2-goes-open-source-a-fast-model-for-ai-workflows/",
+          "body": "JetBrains 开源 Mellum2，一个 12B MoE 模型，每 token 仅激活 2.5B 参数，面向软件工程里的路由、问答、子智能体和私有部署。模型基于 Apache 2.0 发布。",
+          "janet_take": "Mellum2 的聪明点，是不装成万能大模型，而是承认软件工程里有大量小工种。企业 coding agent 最贵的不是写一段代码，而是每次都把贵模型叫出来做路由、摘要、检查这种杂活。内部工具团队可以把它放在私有 IDE 流程里做任务分发和代码上下文整理，把大模型留给架构判断和疑难修复。"
+        },
+        {
+          "title": "老黄不只卖卡",
+          "source": "NVIDIA",
+          "url": "https://nvidianews.nvidia.com/news/enterprise-software-leaders-build-ai-agents-with-nvidia",
+          "body": "NVIDIA 发布 Nemotron 3 Ultra，550B MoE 模型，约 55B 参数激活，面向长运行企业 agents。官方称它可带来最高 5 倍推理速度提升，并让复杂 agentic 任务成本降低最高 30%。",
+          "janet_take": "NVIDIA 现在最狠的地方不是卖 GPU，而是把模型、runtime、技能库和企业软件伙伴绑成一条船。大厂说降本 30% 听着诱人，但长运行 agent 真正烧钱的是工具调用失败、权限漂移和任务回滚。企业做 agent 试点时别先买套装，先拿客服工单、财务对账、内部知识库三类任务测完成率、权限隔离和失败恢复。"
+        },
+        {
+          "title": "车会找理由了",
+          "source": "NVIDIA",
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Alpamayo-2-Super-Open-Reasoning-Model-for-Robotaxis/default.aspx",
+          "body": "NVIDIA 发布 Alpamayo 2 Super，32B 开放 VLA 推理模型，面向 L4 robotaxi 开发。配套还有 AlpaGym 闭环强化学习框架、OmniDreams 生成式世界模型和 Omniverse NuRec 能力。",
+          "janet_take": "自动驾驶模型开始强调推理，不是因为车突然有灵魂，而是监管和事故复盘需要它解释每一次选择。仿真世界越漂亮，越容易让团队忘记真实路况里的脏数据、临时施工和人类乱穿马路。自动驾驶和机器人团队要把仿真、回放、解释日志连成产品能力，能复盘的系统比一段炫技视频值钱。"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Agent该上锁",
+          "source": "Infosecurity Magazine",
+          "url": "https://www.infosecurity-magazine.com/news/owasp-new-agentic-research-council/",
+          "body": "OWASP 在 Infosecurity Europe 2026 正式推出 Agentic Research Council，目标是缩短 agentic AI 能力迭代与传统安全标准之间的时间差。同期还发布面向 agentic AI 治理的研究内容。",
+          "janet_take": "Agent 安全不再是 LLM 安全的附录，因为 agent 会读文件、调工具、写系统、记住用户。风险不是它回答错一句话，而是它带着权限连续做错十步，还把错写进业务系统。做企业 agent 的团队现在就该给每个工具调用加权限、审计、回滚和人工接管，别等客户数据被改坏才补流程。"
+        },
+        {
+          "title": "内存才是暗战",
+          "source": "Micron",
+          "url": "https://investors.micron.com/news-releases/news-release-details/micron-powers-ai-everywhere-computex-2026",
+          "body": "Micron 在 COMPUTEX 2026 展示 AI 内存与存储组合，覆盖 HBM4、256GB SOCAMM2、256GB DDR5 RDIMM、PCIe Gen6 SSD 和 245TB 级 6600 ION。公司称 AI 上下文长度每年增长 30 倍，服务器内存容量三年翻倍。",
+          "janet_take": "长上下文把战场从 GPU 拖到内存和存储，谁的热数据调度更稳，谁就少烧钱。很多团队以为多塞上下文就会更聪明，结果只是让垃圾信息更贵地常驻，答案还不一定更准。做 RAG、本地 agent 和企业知识库的团队，先测 KV cache、热冷数据分层、召回窗口和延迟曲线，再谈买更大的机器。"
+        },
+        {
+          "title": "人形先别冲动",
+          "source": "PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/unitree-announces-h2-plus-an-nvidia-isaac-gr00t-reference-humanoid-robot-for-academic-research-302786748.html",
+          "body": "Unitree 发布 H2 Plus，称其为首个基于 NVIDIA Isaac GR00T 开发平台的人形机器人参考设计。该系统使用 Unitree H2 机身、Sharpa 五指手、Jetson Thor，并提供开放软件栈。",
+          "janet_take": "宇树这类参考设计真正有用的地方，是把机身、手、算力和软件栈凑成可研究平台。别被人形外观骗了，难题仍是数据采集、任务定义、维修成本和安全边界，不是让它摆几个姿势。高校和创业团队买之前先定三件事：采什么数据、做哪个岗位、坏了谁修，否则它就是实验室里最贵的摆设。"
+        },
+        {
+          "title": "工厂比秀场狠",
+          "source": "Pudu Robotics",
+          "url": "https://www.pudurobotics.com/news/pudu-d7-industrial-humanoid-robot-launch",
+          "body": "Pudu Robotics 发布 PUDU D7，面向制造与工业环境的半人形机器人，基于 PuduFM 1.0 具身智能基础模型，强调任务理解、经验学习和工厂流程优化。",
+          "janet_take": "普渡往工业半人形走，比在商场里当迎宾更像正经生意。工厂不会为科幻感买单，只看节拍、停线风险、维护成本和能不能替掉具体岗位，这会把花活机器人直接筛掉。机器人创业团队别先喊通用智能，先拿搬运、巡检、上下料三个场景做 ROI 表，能按件验收才有客户愿意掏钱。"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "谷歌借钱烧AI",
+          "source": "Crowdfund Insider",
+          "url": "https://www.crowdfundinsider.com/2026/06/283046-berkshire-hathaway-to-invest-in-google-alphabet-80-billion-private-placement/",
+          "body": "报道称 Alphabet 正通过私募与公开发行组合筹集 800 亿美元用于 AI 建设，其中 Berkshire Hathaway 承诺投入 100 亿美元。市场主要在评估摊薄与 AI 投入回报。",
+          "janet_take": "如果连 Google 这种现金机器都要用超大融资给 AI 加油，说明算力账已经大到研发预算包不住。800 亿美元不是胜利宣言，而是股东开始追问这堆电费、芯片和数据中心到底什么时候变成利润。中国公司看这条别学金额，学拆账：每一笔 AI 投入都要对应模型能力、产品收入和客户续费。"
+        },
+        {
+          "title": "3D世界还早",
+          "source": "StreetInsider",
+          "url": "https://www.streetinsider.com/Globe%2BNewswire/Tripo%2BAI%2BRaises%2BNearly%2B%24200%2BMillion%2Bin%2BSeries%2BA%2B%2Band%2BSeries%2BA%2B%2B%2BFinancing%2Bto%2BAdvance%2BAI%2B3D%2Band%2BWorld%2BModel%2BRoadmap/26581967.html",
+          "body": "Tripo AI 宣布完成 Series A+ 与 Series A++ 融资，合计接近 2 亿美元，用于扩展 AI 3D 基础模型、world model 研究团队、数据和基础设施。公司同时提出 Project Eden，指向持久、可复用、多人互动世界。",
+          "janet_take": "3D 生成从单个资产走向可互动世界，方向对，但别把融资当成世界已经长出来。最硬的坑是结构一致性、可编辑性、版权边界和游戏引擎接入，demo 好看不等于生产管线能用。3D 创作者和小游戏团队可以先用它做资产草稿、场景原型和分镜预演，不要押宝一键生成完整世界。"
+        },
+        {
+          "title": "细胞AI别吹",
+          "source": "StreetInsider",
+          "url": "https://www.streetinsider.com/Business%2BWire/Waypoint%2BBio%2BRaises%2B%2420M%2BSeries%2BA%2BLed%2Bby%2BAmplify%2BPartners%2Bto%2BAdvance%2BAI-Designed%2BCell%2BTherapies%2BToward%2Bthe%2BClinic/26583071.html",
+          "body": "Waypoint Bio 完成 2000 万美元 Series A，由 Amplify Partners 领投，用于推进 AI 设计的细胞疗法进入临床，并扩展 AI 与空间生物学平台。公司任命前 CTRL-Labs 与 Meta Reality Labs 资深人士 Patrick Kaifosh 为 CTO。",
+          "janet_take": "AI 生物公司的好消息不是模型多神，而是它愿意把结果推进临床路径。这个赛道最怕把湿实验说成软件迭代，监管、样本、毒性和疗效验证每一步都慢得要命。医疗 AI 团队要把算法指标写进实验设计和临床里程碑，给药企卖的是缩短筛选周期，不是又一个漂亮 dashboard。"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "技能库比脸强",
+          "source": "GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2026/06/01/3303991/0/en/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai.html",
+          "body": "NVIDIA 发布一批开源 physical AI agent tools and skills，帮助开发者把机器人、自动驾驶、视觉 AI 和工业数字孪生流程变成 agent 可执行任务。1X、Agile Robots、Agility、FieldAI、NEURA、Skild 等机器人公司在使用相关栈。",
+          "janet_take": "这个工具箱比一堆机器人脸更实在，因为它解决的是数据生成、仿真、训练、评估、部署这些脏活。真正的门槛不是会不会下载技能库，而是有没有场景数据、验收标准和回灌机制。做机器人项目的团队可以拿它搭最小闭环：采集一类任务数据，进仿真压测，出评估报告，再把失败样本回灌模型。"
+        }
+      ]
+    }
+  }
+}

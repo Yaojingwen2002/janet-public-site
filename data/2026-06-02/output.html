@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <title>Janet的快车箱 · AI科技晨报 · 2026-06-02 版</title>
+ <style>
+ :root { 
+ --bg: #ffffff; --text: #0d0d0d; --brand: #18E299; --brand-sub: rgba(24, 226, 153, 0.08);
+ --border: rgba(0,0,0,0.06); --mono: 'Geist Mono', 'SFMono-Regular', monospace;
+ }
+ body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; padding: 60px 20px; line-height: 1.6; }
+ .container { max-width: 800px; margin: 0 auto; }
+ 
+ /* 1. 强化报头 */
+ header { border-bottom: 2px solid var(--text); padding-bottom: 20px; margin-bottom: 30px; }
+ .slogan { font-size: 14px; font-weight: 600; letter-spacing: 0.2em; color: #444; margin-bottom: 8px; text-transform: uppercase; }
+ .main-header { display: flex; justify-content: space-between; align-items: flex-end; }
+ .logo { font-size: 32px; font-weight: 900; letter-spacing: -1.5px; }
+ .date-info { font-family: var(--mono); font-size: 14px; font-weight: 600; }
+ 
+ /* 导航按钮 */
+ 
+ /* 3. 放大标题 (告别蚂蚁字) */
+ .section-tag { font-family: var(--mono); font-size: 14px; font-weight: 800; color: #fff; background: #000; padding: 6px 16px; border-radius: 4px; display: inline-block; margin: 60px 0 25px 0; }
+ 
+ /* 4. 模块结构 */
+ .card { border: 1px solid var(--border); padding: 30px; border-radius: 20px; margin-bottom: 30px; background: #fff; }
+ .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+ .mini-card { border: 1px solid var(--border); padding: 20px; border-radius: 16px; background: #fff; }
+ 
+ h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+ h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+ 
+ /* 吐槽高亮 */
+ .critique { margin-top: 20px; padding: 15px; background: var(--brand-sub); border-left: 4px solid var(--brand); border-radius: 0 12px 12px 0; }
+ .critique b { font-family: var(--mono); color: var(--brand); font-size: 12px; margin-right: 8px; text-transform: uppercase; }
+ .critique span { font-style: italic; font-weight: 600; font-size: 14px; }
+
+ /* 趋势模块 */
+ .trend-card { border: 2px solid var(--brand); padding: 30px; border-radius: 20px; background: linear-gradient(135deg, rgba(24,226,153,0.05), rgba(24,226,153,0.02)); margin-bottom: 30px; }
+ .trend-card h2 { color: var(--brand); }
+
+ /* 第四模块：投资视角/大胆预测 */
+ .prediction-box { background: #000; color: #fff; padding: 30px; border-radius: 20px; }
+ .prediction-box b { color: var(--brand); }
+
+ /* 第五模块：工具箱 */
+ .tools-grid { background: #fdfdfd; border: 2px dashed var(--brand); padding: 25px; border-radius: 20px; }
+
+ /* 5. 页脚信息全回正 */
+ footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; color: #888; font-size: 12px; font-family: var(--mono); }
+ 
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+</head>
+<body>
+ <div class="container">
+ <header>
+ <div class="slogan">中国创作者视角 • 全球AI前沿 • 每日晨报</div>
+ <div class="main-header">
+ <div class="logo">Janet's Express Box</div>
+ <div class="date-info">2026-06-02 // VOL_245</div>
+ </div>
+ </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="AI 基建下场" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-06-02 // VOL_245</div>
+   <h1>AI 基建下场</h1>
+   <p>模型竞赛正在转向物理世界、算力账本和安全责任。</p>
+  </div>
+ </section>
+
+
+ <div class="intro-box">
+ 昨夜到今晨，AI 的主菜不是聊天，是算力、责任和物理世界。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。 </div>
+
+ <div class="trend-card">
+  <h2>📌 今日趋势：AI 基建离开参数表</h2>
+  <p>今天几条线拧在一起：OpenAI 被州检方拖上法庭，NVIDIA 把本地 AI PC、车端推理模型和机器人技能库一起往外推，Anthropic 的安全模型进入欧盟机构。共同主线很清楚，AI 不再只比谁会聊天，开始比谁能接进数据中心、设备、工厂和监管流程。</p>
+  <p>这对中国创作者和企业的意思是，下一波红利不在复读模型榜单，而在把 AI 接进真实工作流。能降本的，是代码仓库、RAG 存储、机器人采集、工业巡检、审计日志这些脏活；只会转发发布会截图的团队，连预算表都摸不到。</p>
+  <p>接下来 2-4 周盯三件事：NVIDIA 的开发者工具能不能接进现有机器人和仿真管线，MiniMax M3 的开放权重是否真的可部署，AI 诉讼会不会逼 C 端产品把安全审计做成标配。</p>
+</div>
+
+ <div class="section-tag">01 / KEY INTELLIGENCE (全球要闻)</div>
+ <div class="top-stories"><div class="card">
+  <h2>佛州先亮刀</h2>
+  <p class="item-meta">来源: AP · 2026-06-02 · <a href="https://apnews.com/article/396d70c5a2d9bae7e95a8ee9adaef836" target="_blank" rel="noopener">原文链接</a></p>
+  <p>佛罗里达州起诉 OpenAI 与 Sam Altman，称 ChatGPT 被积极营销给公众，却隐瞒未成年人自伤、犯罪策划等严重风险。州检方称这是美国首个州级直接起诉 OpenAI 的案件。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是 AI 产品责任，而不是又一轮安全口水仗。模型公司以前最爱把风险写进白皮书，现在州检方要看产品设计、用户提示、内部预警和真实事故之间有没有链条。做 C 端 AI 的中国团队别等监管落地才补系统，先把高危用户识别、人工升级、审计日志做出来，否则增长越快，暴雷时越像裸奔。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Claude要套绳</h2>
+  <p class="item-meta">来源: AP / AOL · 2026-06-02 · <a href="https://www.aol.com/articles/ai-firm-anthropic-confidentially-files-173026745.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 已向美国 SEC 秘密递交 IPO 草案，保留在审核完成后上市的选项。报道同时提到公司刚完成 650 亿美元融资，估值来到 9650 亿美元。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Anthropic 上市不是 Claude 赢麻了，而是它准备把算力账、客户账和安全承诺摊给市场看。公开市场不吃安全人设那一套，收入增速、毛利、云服务绑定、模型训练支出都会被拆得很难看。做企业 AI 的团队可以学它的护城河打法，但别学它的融资叙事，先把可续费客户和单位推理成本算清楚。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>安全模型进宫</h2>
+  <p class="item-meta">来源: TNW · 2026-06-02 · <a href="https://thenextweb.com/news/anthropic-mythos-eu-enisa-cybersecurity-access" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 将通过 Project Glasswing 向欧盟网络安全机构 ENISA 开放 Mythos AI，报道称该系统曾发现 10000 多个零日漏洞。ENISA 因此成为首个获得该系统访问权的欧盟机构。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Mythos 进 ENISA，说明顶级安全模型已经从企业工具变成准公共基础设施。真正的门槛不是会不会找漏洞，而是谁能访问、谁来复核、漏洞披露归谁管，安全能力越强，治理麻烦越大。国内安全公司别再卖扫描器皮肤，应该把模型检测、人工复核、工单闭环和披露流程做成一套能给央国企审的系统。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>算力园先吞电</h2>
+  <p class="item-meta">来源: Related · 2026-06-02 · <a href="https://www.related.com/press-releases/2026-06-01/related-digital-blackstone-oracle-openai-walbridge-and-governor-whitmer" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Related Digital、Blackstone、Oracle、OpenAI、Walbridge 与密歇根州政府庆祝 Saline Township 的 Stargate 数据中心园区开工。项目团队称这是密歇根史上最大单笔经济投资，并新增 1000 万美元社区设施承诺。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Stargate 这类数据中心新闻，本质不是 AI 浪漫，是电力、水、土地和税收的再分配。大厂把模型能力说得越轻盈，背后的基础设施就越重，社区补偿和能源压力迟早会被摊到价格里。中国企业采购 AI 服务时别只看响应速度，要问供应商算力来源、区域冗余和长期涨价机制，别把业务绑在一张会涨价的电费单上。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>AI PC别急跪</h2>
+  <p class="item-meta">来源: NVIDIA · 2026-06-02 · <a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Microsoft-Reinvent-Windows-PCs-for-the-Age-of-Personal-AI/default.aspx" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 与 Microsoft 发布 RTX Spark，面向个人 AI agents 的 Windows PC 超级芯片，标称 1 petaflop AI 性能、最高 128GB 统一内存，并支持本地运行 120B 参数模型和 100 万 token 上下文。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI PC 终于不只是键盘上加一个按钮，但别被 1 petaflop 和 128GB 统一内存吓到立刻换机。真正难的是散热、续航、Windows on Arm 生态和本地模型工作流，很多创作者只是缺好工具，不是缺一台怪兽电脑。视频团队、代码团队、长文档团队可以先列本地任务清单，只有常驻 agent、长上下文和隐私数据都成立，才值得把预算砸进去。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">02 / MODEL UPDATES (模型动态)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <h3>百万窗先别跪</h3>
+  <p class="item-meta">来源: MiniMax · 2026-06-02 · <a href="https://www.minimax.io/blog/minimax-m3" target="_blank" rel="noopener">原文链接</a></p>
+  <p>MiniMax 发布 M3，称其面向 coding 与 agentic work，使用 MiniMax Sparse Attention，支持最高 100 万 token 上下文、图像和视频输入，并能操作桌面电脑。官方称开放权重与技术报告将在约 10 天内提供。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>百万上下文听起来像神迹，实际先看它在长仓库、多文件修改和桌面自动化里会不会失忆。长窗不是越大越赚钱，输入越长，检索、缓存、推理成本和错误定位都会变成新坑。代码工具团队可以先用 API 跑三类测试：跨仓库重构、GUI 操作回放、长需求拆解，等开放权重到手再谈私有部署。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>IDE小模真香</h3>
+  <p class="item-meta">来源: JetBrains · 2026-06-02 · <a href="https://blog.jetbrains.com/ai/2026/06/mellum2-goes-open-source-a-fast-model-for-ai-workflows/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>JetBrains 开源 Mellum2，一个 12B MoE 模型，每 token 仅激活 2.5B 参数，面向软件工程里的路由、问答、子智能体和私有部署。模型基于 Apache 2.0 发布。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Mellum2 的聪明点，是不装成万能大模型，而是承认软件工程里有大量小工种。企业 coding agent 最贵的不是写一段代码，而是每次都把贵模型叫出来做路由、摘要、检查这种杂活。内部工具团队可以把它放在私有 IDE 流程里做任务分发和代码上下文整理，把大模型留给架构判断和疑难修复。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>老黄不只卖卡</h3>
+  <p class="item-meta">来源: NVIDIA · 2026-06-02 · <a href="https://nvidianews.nvidia.com/news/enterprise-software-leaders-build-ai-agents-with-nvidia" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 发布 Nemotron 3 Ultra，550B MoE 模型，约 55B 参数激活，面向长运行企业 agents。官方称它可带来最高 5 倍推理速度提升，并让复杂 agentic 任务成本降低最高 30%。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>NVIDIA 现在最狠的地方不是卖 GPU，而是把模型、runtime、技能库和企业软件伙伴绑成一条船。大厂说降本 30% 听着诱人，但长运行 agent 真正烧钱的是工具调用失败、权限漂移和任务回滚。企业做 agent 试点时别先买套装，先拿客服工单、财务对账、内部知识库三类任务测完成率、权限隔离和失败恢复。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>车会找理由了</h3>
+  <p class="item-meta">来源: NVIDIA · 2026-06-02 · <a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Alpamayo-2-Super-Open-Reasoning-Model-for-Robotaxis/default.aspx" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 发布 Alpamayo 2 Super，32B 开放 VLA 推理模型，面向 L4 robotaxi 开发。配套还有 AlpaGym 闭环强化学习框架、OmniDreams 生成式世界模型和 Omniverse NuRec 能力。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>自动驾驶模型开始强调推理，不是因为车突然有灵魂，而是监管和事故复盘需要它解释每一次选择。仿真世界越漂亮，越容易让团队忘记真实路况里的脏数据、临时施工和人类乱穿马路。自动驾驶和机器人团队要把仿真、回放、解释日志连成产品能力，能复盘的系统比一段炫技视频值钱。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">03 / TECH INSIGHTS (技术深度)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <h3>Agent该上锁</h3>
+  <p class="item-meta">来源: Infosecurity Magazine · 2026-06-02 · <a href="https://www.infosecurity-magazine.com/news/owasp-new-agentic-research-council/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OWASP 在 Infosecurity Europe 2026 正式推出 Agentic Research Council，目标是缩短 agentic AI 能力迭代与传统安全标准之间的时间差。同期还发布面向 agentic AI 治理的研究内容。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Agent 安全不再是 LLM 安全的附录，因为 agent 会读文件、调工具、写系统、记住用户。风险不是它回答错一句话，而是它带着权限连续做错十步，还把错写进业务系统。做企业 agent 的团队现在就该给每个工具调用加权限、审计、回滚和人工接管，别等客户数据被改坏才补流程。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>内存才是暗战</h3>
+  <p class="item-meta">来源: Micron · 2026-06-02 · <a href="https://investors.micron.com/news-releases/news-release-details/micron-powers-ai-everywhere-computex-2026" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Micron 在 COMPUTEX 2026 展示 AI 内存与存储组合，覆盖 HBM4、256GB SOCAMM2、256GB DDR5 RDIMM、PCIe Gen6 SSD 和 245TB 级 6600 ION。公司称 AI 上下文长度每年增长 30 倍，服务器内存容量三年翻倍。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>长上下文把战场从 GPU 拖到内存和存储，谁的热数据调度更稳，谁就少烧钱。很多团队以为多塞上下文就会更聪明，结果只是让垃圾信息更贵地常驻，答案还不一定更准。做 RAG、本地 agent 和企业知识库的团队，先测 KV cache、热冷数据分层、召回窗口和延迟曲线，再谈买更大的机器。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>人形先别冲动</h3>
+  <p class="item-meta">来源: PRNewswire · 2026-06-02 · <a href="https://www.prnewswire.com/news-releases/unitree-announces-h2-plus-an-nvidia-isaac-gr00t-reference-humanoid-robot-for-academic-research-302786748.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Unitree 发布 H2 Plus，称其为首个基于 NVIDIA Isaac GR00T 开发平台的人形机器人参考设计。该系统使用 Unitree H2 机身、Sharpa 五指手、Jetson Thor，并提供开放软件栈。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>宇树这类参考设计真正有用的地方，是把机身、手、算力和软件栈凑成可研究平台。别被人形外观骗了，难题仍是数据采集、任务定义、维修成本和安全边界，不是让它摆几个姿势。高校和创业团队买之前先定三件事：采什么数据、做哪个岗位、坏了谁修，否则它就是实验室里最贵的摆设。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>工厂比秀场狠</h3>
+  <p class="item-meta">来源: Pudu Robotics · 2026-06-02 · <a href="https://www.pudurobotics.com/news/pudu-d7-industrial-humanoid-robot-launch" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Pudu Robotics 发布 PUDU D7，面向制造与工业环境的半人形机器人，基于 PuduFM 1.0 具身智能基础模型，强调任务理解、经验学习和工厂流程优化。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>普渡往工业半人形走，比在商场里当迎宾更像正经生意。工厂不会为科幻感买单，只看节拍、停线风险、维护成本和能不能替掉具体岗位，这会把花活机器人直接筛掉。机器人创业团队别先喊通用智能，先拿搬运、巡检、上下料三个场景做 ROI 表，能按件验收才有客户愿意掏钱。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">04 / INVESTMENT & PREDICTION (投资视角/大胆预测)</div>
+ <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <h3>谷歌借钱烧AI</h3>
+  <p class="item-meta inverted">来源: Crowdfund Insider · 2026-06-02 · <a href="https://www.crowdfundinsider.com/2026/06/283046-berkshire-hathaway-to-invest-in-google-alphabet-80-billion-private-placement/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>报道称 Alphabet 正通过私募与公开发行组合筹集 800 亿美元用于 AI 建设，其中 Berkshire Hathaway 承诺投入 100 亿美元。市场主要在评估摊薄与 AI 投入回报。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>如果连 Google 这种现金机器都要用超大融资给 AI 加油，说明算力账已经大到研发预算包不住。800 亿美元不是胜利宣言，而是股东开始追问这堆电费、芯片和数据中心到底什么时候变成利润。中国公司看这条别学金额，学拆账：每一笔 AI 投入都要对应模型能力、产品收入和客户续费。</span>
+  </div>
+  <h3>3D世界还早</h3>
+  <p class="item-meta inverted">来源: StreetInsider · 2026-06-02 · <a href="https://www.streetinsider.com/Globe%2BNewswire/Tripo%2BAI%2BRaises%2BNearly%2B%24200%2BMillion%2Bin%2BSeries%2BA%2B%2Band%2BSeries%2BA%2B%2B%2BFinancing%2Bto%2BAdvance%2BAI%2B3D%2Band%2BWorld%2BModel%2BRoadmap/26581967.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Tripo AI 宣布完成 Series A+ 与 Series A++ 融资，合计接近 2 亿美元，用于扩展 AI 3D 基础模型、world model 研究团队、数据和基础设施。公司同时提出 Project Eden，指向持久、可复用、多人互动世界。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>3D 生成从单个资产走向可互动世界，方向对，但别把融资当成世界已经长出来。最硬的坑是结构一致性、可编辑性、版权边界和游戏引擎接入，demo 好看不等于生产管线能用。3D 创作者和小游戏团队可以先用它做资产草稿、场景原型和分镜预演，不要押宝一键生成完整世界。</span>
+  </div>
+  <h3>细胞AI别吹</h3>
+  <p class="item-meta inverted">来源: StreetInsider · 2026-06-02 · <a href="https://www.streetinsider.com/Business%2BWire/Waypoint%2BBio%2BRaises%2B%2420M%2BSeries%2BA%2BLed%2Bby%2BAmplify%2BPartners%2Bto%2BAdvance%2BAI-Designed%2BCell%2BTherapies%2BToward%2Bthe%2BClinic/26583071.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Waypoint Bio 完成 2000 万美元 Series A，由 Amplify Partners 领投，用于推进 AI 设计的细胞疗法进入临床，并扩展 AI 与空间生物学平台。公司任命前 CTRL-Labs 与 Meta Reality Labs 资深人士 Patrick Kaifosh 为 CTO。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>AI 生物公司的好消息不是模型多神，而是它愿意把结果推进临床路径。这个赛道最怕把湿实验说成软件迭代，监管、样本、毒性和疗效验证每一步都慢得要命。医疗 AI 团队要把算法指标写进实验设计和临床里程碑，给药企卖的是缩短筛选周期，不是又一个漂亮 dashboard。</span>
+  </div>
+</div>
+
+
+ <div class="section-tag">05 / CREATOR TOOLBOX (创作者工具箱)</div>
+ <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <h2>技能库比脸强</h2>
+  <p class="item-meta">来源: GlobeNewswire · 2026-06-02 · <a href="https://www.globenewswire.com/news-release/2026/06/01/3303991/0/en/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 发布一批开源 physical AI agent tools and skills，帮助开发者把机器人、自动驾驶、视觉 AI 和工业数字孪生流程变成 agent 可执行任务。1X、Agile Robots、Agility、FieldAI、NEURA、Skild 等机器人公司在使用相关栈。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这个工具箱比一堆机器人脸更实在，因为它解决的是数据生成、仿真、训练、评估、部署这些脏活。真正的门槛不是会不会下载技能库，而是有没有场景数据、验收标准和回灌机制。做机器人项目的团队可以拿它搭最小闭环：采集一类任务数据，进仿真压测，出评估报告，再把失败样本回灌模型。</span>
+  </div>
+</div>
+</div>
+
+
+ <footer>
+ Janet的快车箱 · AI科技晨报 · 2026-06-02 版<br>
+ DATA SOURCES: AP, AP / AOL, TNW, Related, NVIDIA, MiniMax, JetBrains, Infosecurity Magazine, Micron, PRNewswire, Pudu Robotics, Crowdfund Insider, StreetInsider, GlobeNewswire<br>
+ QUALITY CHECK: 5+4+4+3+1 STRUCTURE VERIFIED<br>
+ 中国创作者视角 · 全球AI前沿 · 每日晨报
+ </footer>
+ </div>
+</body>
+</html>

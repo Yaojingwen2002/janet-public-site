@@ -1,13 +1,13 @@
 {
   "status": "daily_candidates_ready",
-  "run_at": "2026-06-02T10:49:14+08:00",
+  "run_at": "2026-06-02T10:56:13+08:00",
   "target_date": "2026-06-02",
   "timezone": "Asia/Shanghai",
   "core_window_start": "2026-06-01T00:00:00.000Z",
   "core_window_end": "2026-06-02T00:00:00.000Z",
   "core_window_hours": 24,
-  "historical_pool_count": 3859,
-  "core_window_items_count": 1251,
+  "historical_pool_count": 3906,
+  "core_window_items_count": 1253,
   "core_window_eligible_count": 609,
   "extended_48h_eligible_count": 72,
   "weekly_context_count": 737,
@@ -19,7 +19,7 @@
   "no_new_edition_reason": "",
   "blocked_reason_counts": {
     "generic_title": 28,
-    "duplicate_story_cluster": 96,
+    "duplicate_story_cluster": 98,
     "not_weekly_context_priority": 411
   },
   "source_mix": {
@@ -748,6 +748,12 @@
       "story_id": "story-96e7466f6b7b"
     },
     {
+      "id": "chinese-sina-ai-c347ba73f411",
+      "title": "孙正义：人工智能革命规模将远超互联网泡沫热潮，体量可达其50倍 - 新浪财经",
+      "reason": "duplicate_story_cluster",
+      "story_id": "story-96e7466f6b7b"
+    },
+    {
       "id": "chinese-sina-ai-08bb8bb70bb3",
       "title": "博通：市场仍可能低估的人工智能基础设施层 - 新浪财经",
       "reason": "duplicate_story_cluster",
@@ -806,6 +812,12 @@
       "title": "Nvidia chases $200B CPU market with AI agent PCs from Microsoft, Dell, and HP - TechCrunch",
       "reason": "duplicate_story_cluster",
       "story_id": "story-78f46bef6e0d"
+    },
+    {
+      "id": "search-google-ai-startup-funding-millenniumpost-f4e7bad73788",
+      "title": "Indian startup funding declines 27.2% month-on-month to $630 million in May - MillenniumPost",
+      "reason": "duplicate_story_cluster",
+      "story_id": "story-7d2bfbcf35ed"
     },
     {
       "id": "search-google-ai-agent-business-wire-e998067a0563",
@@ -1926,18 +1938,6 @@
     {
       "id": "search-google-chatgpt-yahoo-a9a02e48adc3",
       "title": "I used ChatGPT to adopt a ‘Million Dollar’ mindset — now I'm rewriting my career goals - Yahoo",
-      "reason": "not_weekly_context_priority",
-      "window_role": "weekly_context"
-    },
-    {
-      "id": "search-google-chatgpt-aol-com-7ca653ef0f7e",
-      "title": "I read my boyfriend's ChatGPT and it ended our relationship - AOL.com",
-      "reason": "not_weekly_context_priority",
-      "window_role": "weekly_context"
-    },
-    {
-      "id": "search-google-anthropic-claude-investopedia-370598a1997d",
-      "title": "Anthropic's Valuation Jumped to Nearly $1 Trillion. Here's What That Means for the IPO Market - Investopedia",
       "reason": "not_weekly_context_priority",
       "window_role": "weekly_context"
     }
@@ -6857,9 +6857,9 @@
   ],
   "source_status_summary": {
     "source_count": 79,
-    "source_success_count": 47,
-    "source_error_count": 18,
+    "source_success_count": 45,
+    "source_error_count": 16,
     "source_empty_count": 0,
-    "source_not_modified_count": 9
+    "source_not_modified_count": 13
   }
 }

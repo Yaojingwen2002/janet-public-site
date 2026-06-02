@@ -1,37 +1,40 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-06-02T03:14:58.818Z",
-  "latest_edition_id": "2026-06-02-v4",
+  "generated_at": "2026-06-02T11:22:40.864Z",
+  "latest_edition_id": "2026-06-02",
   "editions": [
     {
-      "edition_id": "2026-06-02-v4",
+      "edition_id": "2026-06-02",
       "date": "2026-06-02",
-      "title": "Learning-to-Defer 今天盯上研究",
-      "summary": "今天先看的对象是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI：它们分别牵出研究、智能体能力、AI 资本支出。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
-      "edition_type": "limited_edition",
-      "signal_count": 9,
-      "edition_items_count": 9,
-      "homepage_items_count": 9,
-      "url": "data/2026-06-02-v4/output.html",
-      "content_url": "data/2026-06-02-v4/content.json",
-      "summary_url": "data/2026-06-02-v4/news-summary.json",
+      "title": "AI 基建下场",
+      "summary": "AI 基建离开参数表 今天几条线拧在一起：OpenAI 被州检方拖上法庭，NVIDIA 把本地 AI PC、车端推理模型和机器人技能库一起往外推，Anthropic 的安全模型进入欧盟机构。共同主线很清楚，AI 不再只比谁会聊天，开始比谁能接进数据中心、设备、工厂和监管流程。 这对中国创作者和企业的意思是，下一波红利不在复读模型榜单，而在把 AI 接进真实工作流。能降本的，是代码仓库、RAG 存储、机器人采集、工业巡检、审计日志这些脏活；只会转发发布会截图的团队，连预算表都摸不到。 接下来 2-4 周盯三件事：NV",
+      "edition_type": "codex_briefing",
+      "signal_count": 17,
+      "edition_items_count": 17,
+      "homepage_items_count": 5,
+      "url": "data/2026-06-02/output.html",
+      "content_url": "data/2026-06-02/content.json",
       "top_sources": [
-        "arXiv cs.CL",
-        "arXiv cs.LG",
-        "arXiv stat.ML",
-        "IT 之家",
-        "新浪 AI 热点",
-        "钛媒体"
+        "AP",
+        "AP / AOL",
+        "TNW",
+        "Related",
+        "NVIDIA",
+        "MiniMax",
+        "JetBrains",
+        "Infosecurity Magazine"
       ],
       "top_categories": [
-        "china",
-        "papers"
+        "news",
+        "models",
+        "insights",
+        "insights2",
+        "tools"
       ],
       "lead_story": {
-        "id": "arxiv-stat-ml-0dff84a7e9db",
-        "title": "Expert-Conditional 研究新方法",
-        "source": "arXiv stat.ML",
-        "url": "https://arxiv.org/abs/2603.14324"
+        "title": "佛州先亮刀",
+        "source": "AP",
+        "url": "https://apnews.com/article/396d70c5a2d9bae7e95a8ee9adaef836"
       }
     },
     {
@@ -670,6 +673,20 @@
     }
   ],
   "sources": [
+    "AP",
+    "AP / AOL",
+    "TNW",
+    "Related",
+    "NVIDIA",
+    "MiniMax",
+    "JetBrains",
+    "Infosecurity Magazine",
+    "Micron",
+    "PRNewswire",
+    "Pudu Robotics",
+    "Crowdfund Insider",
+    "StreetInsider",
+    "GlobeNewswire",
     "9to5Google",
     "AI Business Review",
     "Amazon官方公告 / The Next Web",
@@ -741,11 +758,15 @@
     "钛媒体"
   ],
   "categories": [
+    "news",
+    "models",
+    "insights",
+    "insights2",
+    "tools",
     "agents",
     "business",
     "china",
     "creator",
-    "models",
     "papers"
   ]
 }

@@ -82,6 +82,7 @@
   function codexRunsBaseCandidates() {
     return uniq([
       window.JANET_CODEX_RUNS_BASE_URL,
+      'data',
       CODEX_RUNS_ABSOLUTE_PATH,
       '/codex-briefing-system/runs',
       '../codex-briefing-system/runs',

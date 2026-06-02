@@ -1152,7 +1152,7 @@ function summaryFromStoryFact(item, storyFact) {
   if (action === '订阅调整') return `${source}这条指向${object}的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。`;
   if (action === '生成') return `${source}把${object}放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。`;
   if (action === '有声书生成') return `${source}报道${object}，AI 配音和有声书制作流程开始变成创作者可以直接调用的平台工具。`;
-  if (action === 'AI资本支出') return `${source}报道${object}围绕 800 亿美元资金推进 AI 建设，重点不是一轮融资，而是数据中心、算力和云基础设施的长期投入。`;
+  if (action === 'AI资本支出') return `${source}报道${object}围绕 800 亿美元资金推进 AI 建设，重点不是短期募资话术，而是数据中心、算力和云基础设施的长期投入。`;
   if (action === '融资') return `${source}报道${object}完成融资，这笔钱接下来要回答它到底解决哪个具体产品问题。`;
   if (action === '诉讼') return `${source}围绕${object}的法律争议继续发酵，AI 公司治理、承诺和商业化之间的拉扯被推到台前。`;
   if (action === '评测' || action === '榜单排名') return `${source}把${object}放进评测框架，任务集、评分方法和结果复现会决定它有没有参考价值。`;
@@ -1268,7 +1268,7 @@ function storyBrief(item) {
       title: 'Expert-Conditional Advice 研究学习何时转交专家',
       summary: 'arXiv stat.ML 这篇 Learning-to-Defer 论文研究在专家条件建议下，模型什么时候该自己预测、什么时候该把决策交给专家。',
       why: '研究者和高风险产品团队要看：Learning-to-Defer 会影响医疗、安全审核这类场景里的人机分工和责任边界。',
-      janet: 'Expert-Conditional Advice 的价值不在多一个模型名，而在提醒团队：有些任务应该让模型退一步，把判断交给更可靠的人或系统。',
+      janet: 'Expert-Conditional Advice 的价值不在多一个模型名，而在提醒团队：医疗、安全审核这类任务里，有些判断应该让模型退一步，把决策交给专家或更可靠的系统；会转交，比硬撑一个答案更值钱。',
       watch: '看论文是否给出可复现实验和高风险任务设置。'
     };
   }
@@ -1277,7 +1277,7 @@ function storyBrief(item) {
       title: 'Incremental BPE Tokenization 研究增量分词',
       summary: 'arXiv cs.CL 这篇论文关注 Incremental BPE Tokenization，重点是让分词在流式和增量场景里更高效地更新。',
       why: '模型工程团队要看：增量 BPE 如果稳定，会影响长文本、实时输入和多轮生成里的延迟与缓存策略。',
-      janet: 'Incremental BPE Tokenization 很底层，但底层优化最会偷偷省钱。它不负责让模型更聪明，却可能让实时交互少等几拍。',
+      janet: 'Incremental BPE Tokenization 很底层，但底层优化最会偷偷省钱。它不负责让模型更聪明，却可能让流式输入、长文本和多轮生成少等几拍；真正价值会体现在延迟、缓存和推理账单里。',
       watch: '看它在流式生成和长上下文任务里的延迟数据。'
     };
   }
@@ -1286,7 +1286,7 @@ function storyBrief(item) {
       title: 'Speculative Decoding Across Languages 比较多语言解码',
       summary: 'arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，重点是不同语言下加速效果是否稳定。',
       why: '多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。',
-      janet: 'Speculative Decoding 这条看的是推理成本，不是模型炫技。多语言一上来，很多英文场景里省下的钱可能就没那么好复制。',
+      janet: 'Speculative Decoding Across Languages 这条看的是推理成本，不是模型炫技。多语言一上来，很多英文场景里省下的钱可能就没那么好复制；中文和小语种的速度、质量折损，才是平台真正要重新算的账。',
       watch: '看论文是否公开各语言的速度和质量折损。'
     };
   }
@@ -1304,7 +1304,7 @@ function storyBrief(item) {
       title: '讯灵 AI GEO+Agent 主打内容与智能体生态',
       summary: 'IT之家报道讯灵 AI GEO+Agent 双引擎生态，重点是把数据、内容和智能体能力打包成企业增长方案。',
       why: '营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。',
-      janet: '讯灵 AI GEO+Agent 这条更像企业营销基础设施生意。别只看“双引擎”说法，要看它能不能把内容、数据和执行结果对上。',
+      janet: '讯灵 AI GEO+Agent 这条更像企业营销基础设施生意。别只看“双引擎”说法，要看它能不能把内容生产、数据分析和智能体执行结果对上；如果不能证明转化指标，生态包装就很容易变成热词拼盘。',
       watch: '看讯灵是否公布客户案例和转化指标。'
     };
   }
@@ -1313,7 +1313,7 @@ function storyBrief(item) {
       title: '扣子 Coze 3.0 升级 Agent 平台',
       summary: '钛媒体报道字节跳动扣子 Coze 3.0 上线，重点是把 AI Agent 平台能力继续往企业和开发者场景推进。',
       why: '开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。',
-      janet: 'Coze 3.0 的压力不在发布词，而在能不能让开发者少搭几层工具。字节有流量和生态，但 Agent 平台最后要靠可部署、可维护、可计费。',
+      janet: 'Coze 3.0 的压力不在发布词，而在能不能让开发者少搭几层工具。字节有流量和生态，但 Agent 平台最后要靠可部署、可维护、可计费；插件、权限和企业交付细节，才会决定它能不能成为默认入口。',
       watch: '看 Coze 3.0 的插件、部署和企业权限细则。'
     };
   }
@@ -1781,8 +1781,8 @@ function titleForEdition(stories, rules, date) {
   const first = objects[0] || chineseSourceName(stories[0]?.source);
   const second = objects[1] || objects[0] || date.replaceAll('-', '.');
   const action = actions[0] || '更新';
-  const shortFirst = cleanPublicTitle(first.length > 14 ? clamp(first, 17).replace(/\.\.\.$/, '') : first);
-  const shortSecond = cleanPublicTitle(second.length > 10 ? clamp(second, 13).replace(/\.\.\.$/, '') : second);
+  const shortFirst = shortHeadlineObject(first, 17);
+  const shortSecond = shortHeadlineObject(second, 13);
   const candidates = [
     `${shortFirst}带出${action}`,
     objects.length >= 2 ? `${shortFirst}和${shortSecond}都有新动作` : '',
@@ -1801,10 +1801,12 @@ function titleForEdition(stories, rules, date) {
     [...item].length <= 24 &&
     !forbidden.some((phrase) => item.includes(phrase)) &&
     !FORBIDDEN_SURFACE_COPY.some((phrase) => item.includes(phrase)) &&
+    hasConcreteHeadlineObject(item, objects) &&
     hasChinese(item)
   ));
   if (selected) return selected;
-  const fallback = `${shortFirst}带出${action || '新动作'}`;
+  const leadTitle = cleanPublicTitle(lead.zh_title || lead.title || '');
+  const fallback = hasConcreteHeadlineObject(leadTitle, objects) ? leadTitle : `${shortFirst}带出${action || '新动作'}`;
   if (!history.includes(fallback)) return fallback;
   return `${shortFirst}有新动作`;
 }
@@ -1853,6 +1855,37 @@ function displayObject(value) {
   return text.length > 20 ? clamp(text, 23).replace(/\.\.\.$/, '') : text;
 }
 
+function shortHeadlineObject(value, max = 16) {
+  const cleaned = cleanPublicTitle(displayObject(value));
+  const aliases = [
+    [/Expert-Conditional(?: Advice)?/i, 'Learning-to-Defer'],
+    [/Learning-to-Defer/i, 'Learning-to-Defer'],
+    [/Incremental BPE(?: Tokenization)?/i, '增量 BPE'],
+    [/Speculative(?: Decoding Across Languages)?/i, '多语言推测解码'],
+    [/AI GEO\+Agent/i, 'GEO+Agent']
+  ];
+  for (const [pattern, replacement] of aliases) {
+    if (pattern.test(cleaned)) return replacement;
+  }
+  if ([...cleaned].length <= max) return cleaned;
+  if (/^[A-Za-z0-9+ .-]+$/.test(cleaned)) {
+    const words = cleaned.split(/\s+/).filter(Boolean);
+    return words.slice(0, 2).join(' ') || cleaned;
+  }
+  return clamp(cleaned, max + 3).replace(/\.\.\.$/, '');
+}
+
+function hasConcreteHeadlineObject(title, objects) {
+  const text = cleanPublicTitle(title);
+  if (!text || /^(带出|牵出)?(?:推出|融资|合作|诉讼|AI资本支出|智能体能力|具体动作|更新)$/.test(text)) return false;
+  const normalized = normalizeEventText(text);
+  const objectTerms = objects.flatMap((object) => [object, displayObject(object), shortHeadlineObject(object, 24)].filter(Boolean));
+  return objectTerms.some((term) => {
+    const clean = normalizeEventText(term);
+    return clean && (normalized.includes(clean) || clean.includes(normalized));
+  }) || cnCharCount(text) >= 4;
+}
+
 function concreteObjectsFor(stories, limit = 5) {
   const objects = [];
   for (const story of stories) {
@@ -1860,7 +1893,9 @@ function concreteObjectsFor(stories, limit = 5) {
       story.story_fact?.concrete_object,
       ...(story.story_fact?.products || []),
       ...(story.story_fact?.entities || []),
-      ...(story.story_facts || []).map((fact) => fact.value)
+      ...(story.story_facts || [])
+        .filter((fact) => ['entity', 'product', 'concrete_object'].includes(fact.label))
+        .map((fact) => fact.value)
     ];
     for (const value of candidates) {
       const text = String(value || '').trim();
@@ -1889,10 +1924,12 @@ function buildDailyBrief(stories, modules, rules, date) {
   const actions = concreteActionsFor(stories, 4);
   const leadObject = objects[0] || chineseSourceName(stories[0]?.source);
   const secondObject = objects[1] || objects[0] || '另一条具体产品线';
-  const shortLeadObject = leadObject.length > 14 ? clamp(leadObject, 17).replace(/\.\.\.$/, '') : leadObject;
-  const shortSecondObject = secondObject.length > 8 ? clamp(secondObject, 11).replace(/\.\.\.$/, '') : secondObject;
-  const themeCandidate = `${shortLeadObject}牵出${shortSecondObject}`;
-  let theme = themeCandidate.length <= 24 ? themeCandidate : `${shortLeadObject}成为今日主线`;
+  const shortLeadObject = shortHeadlineObject(leadObject, 17);
+  const shortSecondObject = shortHeadlineObject(secondObject, 11);
+  const themeCandidate = shortLeadObject === shortSecondObject
+    ? `${shortLeadObject}成为今日主线`
+    : `${shortLeadObject}牵出${shortSecondObject}`;
+  let theme = themeCandidate.length <= 24 && hasConcreteHeadlineObject(themeCandidate, objects) ? themeCandidate : `${shortLeadObject}成为今日主线`;
   if (cleanPublicTitle(theme) === cleanPublicTitle(dailyTitle)) {
     theme = `${shortLeadObject}带出另一条线索`;
   }
@@ -2010,7 +2047,7 @@ function uniqueWhyCopy(item) {
 function uniqueJanetTakeCopy(item) {
   const { object, action, source, amount } = uniqueCopyParts(item);
   if (action === 'AI资本支出') {
-    return clamp(`${object}${amount || '这笔'} AI 基建投入要看算力、机房和云收入能否对上账，${source}这条不能再写成普通融资故事。`, 100);
+    return clamp(`${object}${amount || '这笔'} AI 基建投入要看算力、机房和云收入能否对上账，${source}这条不能再写成普通资本故事。`, 100);
   }
   return clamp(`${object}这次${action}要贴着${source}给出的事实看：谁使用、钱花在哪、限制是什么，比套一句趋势判断更重要。`, 96);
 }
@@ -2100,8 +2137,8 @@ function moduleTitleFor(sectionKey, stories) {
   const first = stories[0] || {};
   const objects = uniqueEntityList(concreteObjectsFor(stories, 3).map(displayObject), 2);
   const actions = concreteActionsFor(stories, 2);
-  const object = objects[0] || first.title || chineseSourceName(first.source);
-  const second = objects[1] || actions[0] || '具体能力';
+  const object = shortHeadlineObject(objects[0] || first.title || chineseSourceName(first.source), 16);
+  const second = shortHeadlineObject(objects[1] || actions[0] || '具体能力', 12);
   if (sectionKey === 'open_source' && /印度零工数据|robot training/i.test(`${object} ${second}`)) return '印度零工数据进入机器人训练链路';
   if (sectionKey === 'business' && /Pope Leo XIV|AI 写作争议/i.test(`${object} ${second}`)) return 'Pope Leo XIV牵出 AI 写作边界';
   if (sectionKey === 'business' && /创业市场手册|StartUp Playbook|AI 统计报告|AI Statistic/i.test(`${object} ${second}`)) return 'StartUp Playbook 牵出 AI Statistic 商业边界';
@@ -2142,7 +2179,7 @@ function buildModules(sections) {
 function buildCover(stories, modules, dailyBrief) {
   const lead = stories[0] || {};
   const objects = concreteObjectsFor([lead], 2);
-  const primaryFact = objects[0] || chineseSourceName(lead.source);
+  const primaryFact = shortHeadlineObject(objects[0] || chineseSourceName(lead.source), 18);
   const leadAction = lead.story_fact?.action || concreteActionsFor([lead], 1)[0] || '具体动作';
   const coverTitle = objects.includes('Codex') && objects.includes('Dell')
     ? 'Codex 开始进企业内网'
@@ -2649,6 +2686,8 @@ function cnCharCount(text) {
 function cleanPublicTitle(title) {
   return String(title || '')
     .replace(/\s+/g, ' ')
+    .replace(/([A-Za-z0-9+.-])([\u4e00-\u9fff])/g, '$1 $2')
+    .replace(/([\u4e00-\u9fff])([A-Za-z0-9+.-])/g, '$1 $2')
     .replace(/Self-HostedLa/g, 'Self-Hosted LangSmith')
     .replace(/Self-Hosted LangSmit\b/g, 'Self-Hosted LangSmith')
     .replace(/LangSmit(?!h)/g, 'LangSmith')
@@ -2864,22 +2903,22 @@ function buildLongJanetTake(story) {
     : `${prefix}Universal Music 这类授权合作，说明 AI 翻唱终于开始谈分钱，而不是只靠平台先斩后奏。授权规则会很碎，创作者要看分成、下架和艺人选择权，别只盯生成效果。`;
   const raw = `${story.original_title || ''} ${story.original_summary || ''} ${story.title || ''}`;
   if (/learning-to-defer with expert-conditional advice/i.test(raw)) {
-    return cleanTemplateCopy('Expert-Conditional Advice 这篇的关键是“什么时候该让模型闭嘴”。在医疗、安全审核这类高风险流程里，会拒答、会转交专家，比硬撑一个答案更有价值。');
+    return cleanTemplateCopy('Expert-Conditional Advice 这篇的关键是“什么时候该让模型闭嘴”。在医疗、安全审核这类高风险流程里，会拒答、会转交专家，比硬撑一个答案更有价值；产品团队要把转交规则、责任边界和复核流程一起设计出来。');
   }
   if (/incremental bpe tokenization/i.test(raw)) {
-    return cleanTemplateCopy('Incremental BPE Tokenization 看起来很底层，但它盯的是流式输入和长文本里的等待时间。分词少重算一次，实时产品就少卡一拍，推理成本也更容易压下来。');
+    return cleanTemplateCopy('Incremental BPE Tokenization 看起来很底层，但它盯的是流式输入和长文本里的等待时间。分词少重算一次，实时产品就少卡一拍，推理成本也更容易压下来；模型工程团队要把延迟、缓存命中和质量折损一起测。');
   }
   if (/speculative decoding across languages/i.test(raw)) {
-    return cleanTemplateCopy('Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损。');
+    return cleanTemplateCopy('Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。');
   }
   if (/企查查MCP/i.test(raw)) {
     return cleanTemplateCopy('企查查 MCP 这条不是泛泛讲 Agent，而是把实时企业数据塞进工具调用里。它能不能减少幻觉，要看数据权限、更新频率和错误回滚，而不是只看接了多少行业。');
   }
   if (/讯灵AI GEO\+Agent|双引擎生态/i.test(raw)) {
-    return cleanTemplateCopy('讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起。');
+    return cleanTemplateCopy('讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起；客户案例和转化指标会比生态口号更有说服力。');
   }
   if (/扣子Coze上线3\.0|Coze.*3\.0/i.test(raw)) {
-    return cleanTemplateCopy('Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口。');
+    return cleanTemplateCopy('Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口；插件、权限和企业交付细节会决定它能不能长期留在工作流里。');
   }
   const launchTake = (() => {
     if (/MEG Vision X2/i.test(raw)) {
@@ -2921,7 +2960,7 @@ function buildLongJanetTake(story) {
     'AI 写作争议': `${prefix}${object}牵出 AI 写作争议，问题不只是“有没有用工具”，而是权威文本的署名、解释权和信任边界。越是公共人物，越不能把生成过程藏成黑箱。`,
     '评测': benchmarkTake,
     '榜单排名': benchmarkTake,
-    'AI资本支出': `${prefix}${object}把 800 亿美元放到 AI 基建上，看的不是一张融资新闻图，而是数据中心、芯片供应和云服务回收周期。对国内团队来说，这条提醒很现实：AI 成本会先从算力账单里冒出来，再倒逼产品定价和客户筛选。`,
+    'AI资本支出': `${prefix}${object}把 800 亿美元放到 AI 基建上，看的不是一张资本新闻图，而是数据中心、芯片供应和云服务回收周期。对国内团队来说，这条提醒很现实：AI 成本会先从算力账单里冒出来，再倒逼产品定价和客户筛选。`,
     '融资': `${prefix}${object}拿到钱以后，压力会落到客户、收入和交付节奏上。投资人买的是增长路径，不是发布词；团队要拆的是这笔资金会补销售、算力、模型训练还是行业渠道。`,
     '诉讼': `${prefix}${object}这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。信任成本开始显性化，用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。`,
     '搜索改版': `${prefix}${object}不是 UI 小改，而是在重新训练用户怎么提问、怎么交任务。流量入口继续往 AI 手里收，内容方更难知道自己为什么被看见。做内容的人要盯来源、转化和广告位置变化。`,

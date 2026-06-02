@@ -3377,6 +3377,7 @@ body {
 .news-compact-visual img {
   aspect-ratio: 16 / 9;
   min-height: 120px;
+  object-fit: cover;
 }
 
 .news-compact-visual img {
@@ -4300,7 +4301,7 @@ h3 {
   width: 100%;
   height: auto;
   max-height: 420px;
-  object-fit: contain;
+  object-fit: cover;
   transform: none !important;
 }
 

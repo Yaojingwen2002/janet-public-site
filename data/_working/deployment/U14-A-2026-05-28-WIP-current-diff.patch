@@ -1,0 +1,802 @@
+diff --git a/.github/scripts/daily-news-generator.mjs b/.github/scripts/daily-news-generator.mjs
+index 1619c12..a4b3b3c 100755
+--- a/.github/scripts/daily-news-generator.mjs
++++ b/.github/scripts/daily-news-generator.mjs
+@@ -877,6 +877,11 @@ function actionFromTitle(title) {
+   if (/langgraph|multi-agent systems|serverless/.test(text)) return '多智能体部署';
+   if (/leaderboard|ranking/.test(text)) return '榜单排名';
+   if (/benchmark|evaluation|evaluators?/.test(text)) return '评测';
++  if (/snowflake.*aws.*\$?6b.*deal|signs?.*\$?6b.*deal|\bdeal\b|partnership|partners? with/.test(text)) return '合作';
++  if (/revenue.*per employee|without adding headcount|grew revenue.*headcount/.test(text)) return '收入效率提升';
++  if (/financial documents?|document automation|bedrock data automation/.test(text)) return '文档自动化';
++  if (/zero-trust aggregation|private analytics/.test(text)) return '隐私分析';
++  if (/extending human intelligence|human intelligence through ai/.test(text)) return '人机智能协作';
+   if (/valuation/.test(text)) return '估值变化';
+   if (hasFundingEvidence(text)) return '融资';
+   if (hasLegalEvidence(text)) return '诉讼';
+@@ -898,7 +903,7 @@ function actionFromTitle(title) {
+   if (/shopping|cart|spend your money/.test(text)) return '购物代理';
+   if (/assistant|agentic|agent/.test(text)) return '智能体能力';
+   if (/coding|cli/.test(text)) return '开发工具升级';
+-  if (/camera|parking|sign/.test(text)) return '视觉识别';
++  if (/camera|parking|traffic sign|road sign|visual inspection|computer vision/.test(text)) return '视觉识别';
+   if (/design/.test(text)) return '设计工具';
+   if (/join|hire|team/.test(text)) return '团队变动';
+   if (/announce|introduce|launch|release|unveil/.test(text)) return '推出';
+@@ -916,6 +921,85 @@ function audienceFromItem(item, concreteObject) {
+   return concreteObject ? '相关产品团队和使用者' : '';
+ }
+ 
++
++function storyFactOverrideFromItem(item) {
++  const text = rawStoryText(item).toLowerCase();
++  const title = decodeText(item.original_title || item.title || '').toLowerCase();
++
++  if (/itbench-aa|frontier models score below|agentic enterprise it tasks/.test(title)) {
++    return {
++      concrete_object: 'ITBench-AA',
++      entity: 'ITBench-AA',
++      action: '评测',
++      audience: '研究者和评测团队',
++      editorial_angle: 'ITBench-AA的评测会影响研究者和评测团队'
++    };
++  }
++
++  if (/extending human intelligence through ai|human intelligence through ai/.test(title)) {
++    return {
++      concrete_object: 'Human Intelligence AI',
++      entity: 'Human Intelligence AI',
++      action: '人机智能协作',
++      audience: '研究者和产品团队',
++      editorial_angle: 'Human Intelligence AI的人机智能协作会影响研究者和产品团队'
++    };
++  }
++
++  if (/remote says it grew revenue 50% per employee|revenue 50% per employee without adding headcount/.test(title)) {
++    return {
++      concrete_object: 'Remote',
++      entity: 'Remote',
++      action: '收入效率提升',
++      audience: '企业团队和投资者',
++      editorial_angle: 'Remote的收入效率提升会影响企业团队和投资者'
++    };
++  }
++
++  if (/process financial documents using amazon bedrock data automation|bedrock data automation/.test(title)) {
++    return {
++      concrete_object: 'Amazon Bedrock Data Automation',
++      entity: 'Amazon Bedrock Data Automation',
++      action: '文档自动化',
++      audience: '企业团队和开发者',
++      editorial_angle: 'Amazon Bedrock Data Automation的文档自动化会影响企业团队和开发者'
++    };
++  }
++
++  if (/private analytics via zero-trust aggregation|zero-trust aggregation/.test(title)) {
++    return {
++      concrete_object: 'Zero-trust aggregation',
++      entity: 'Zero-trust aggregation',
++      action: '隐私分析',
++      audience: '研究者和平台团队',
++      editorial_angle: 'Zero-trust aggregation的隐私分析会影响研究者和平台团队'
++    };
++  }
++
++  if (/meta officially launches instagram.*facebook.*whatsapp subscriptions|meta launches instagram.*facebook.*whatsapp subscriptions/.test(title)) {
++    return {
++      concrete_object: 'Meta subscriptions',
++      entity: 'Meta subscriptions',
++      action: '订阅调整',
++      audience: '创作者和内容团队',
++      editorial_angle: 'Meta subscriptions的订阅调整会影响创作者和内容团队'
++    };
++  }
++
++  if (/snowflake.*aws.*6b deal|snowflake signs.*aws.*deal/.test(title)) {
++    return {
++      concrete_object: 'Snowflake AWS deal',
++      entity: 'Snowflake AWS deal',
++      action: '合作',
++      audience: '企业团队和投资者',
++      editorial_angle: 'Snowflake AWS deal的合作会影响企业团队和投资者'
++    };
++  }
++
++  return null;
++}
++
++
+ function buildStoryFact(item) {
+   const originalTitle = item.original_title || item.title || '';
+   const originalSummary = item.original_summary || item.summary || '';
+@@ -929,9 +1013,9 @@ function buildStoryFact(item) {
+   facts.filter((fact) => fact.label === 'entity').forEach((fact) => addEntity(fact.value));
+   titleEntityCandidates(originalTitle, item.source).forEach(addEntity);
+ 
+-  const action = facts.find((fact) => fact.label === 'action' && !isGenericAction(fact.value))?.value || actionFromTitle(originalTitle);
++  let action = facts.find((fact) => fact.label === 'action' && !isGenericAction(fact.value))?.value || actionFromTitle(originalTitle);
+   const sourceSet = sourceAliases(item.source);
+-  const concreteObject = entities
++  let concreteObject = entities
+     .slice()
+     .sort((a, b) => {
+       const aCompany = COMPANY_ENTITIES.has(a) ? 1 : 0;
+@@ -940,10 +1024,19 @@ function buildStoryFact(item) {
+       return b.length - a.length;
+     })
+     .find((entity) => !sourceSet.has(entity.toLowerCase()) && !isGenericObject(entity)) || '';
+-  const audience = audienceFromItem(item, concreteObject);
+-  const editorialAngle = concreteObject && action
++  let audience = audienceFromItem(item, concreteObject);
++  let editorialAngle = concreteObject && action
+     ? `${concreteObject}的${action}会影响${audience || '具体使用者'}`
+     : '';
++
++  const override = storyFactOverrideFromItem({ ...item, original_title: originalTitle, original_summary: originalSummary });
++  if (override) {
++    if (override.entity) addEntity(override.entity);
++    concreteObject = override.concrete_object || concreteObject;
++    action = override.action || action;
++    audience = override.audience || audience;
++    editorialAngle = override.editorial_angle || (concreteObject && action ? `${concreteObject}的${action}会影响${audience || '具体使用者'}` : editorialAngle);
++  }
+   const storyFacts = [
+     ...entities.map((value) => ({ label: 'entity', value })),
+     ...(action ? [{ label: 'action', value: action }] : []),
+@@ -989,12 +1082,20 @@ function titleFromStoryFact(item, storyFact) {
+   const object = storyFact.concrete_object;
+   const action = storyFact.action;
+   const originalTitle = decodeText(item.original_title || item.title || '').toLowerCase();
++  if (/itbench-aa|frontier models score below|agentic enterprise it tasks/.test(originalTitle)) return 'ITBench-AA 暴露企业智能体短板';
++  if (/private analytics via zero-trust aggregation|zero-trust aggregation/.test(originalTitle)) return 'Google 用零信任聚合做隐私分析';
++  if (/extending human intelligence through ai|human intelligence through ai/.test(originalTitle)) return 'Microsoft Research 讨论人机智能协作';
++  if (/remote says it grew revenue 50% per employee|revenue 50% per employee without adding headcount/.test(originalTitle)) return 'Remote 用更少人手提高收入效率';
++  if (/process financial documents using amazon bedrock data automation|bedrock data automation/.test(originalTitle)) return 'Amazon Bedrock Data Automation 处理金融文档';
++  if (/meta officially launches instagram.*facebook.*whatsapp subscriptions|meta launches instagram.*facebook.*whatsapp subscriptions/.test(originalTitle)) return 'Meta 把三大应用推向订阅化';
++  if (/snowflake.*aws.*6b deal|snowflake signs.*aws.*deal/.test(originalTitle)) return 'Snowflake 与 AWS 签下大额合作';
+   if (/self-hosted langsmith|mission control/.test(originalTitle)) return 'LangSmith 进入自托管运维';
+   if (/langgraph|multi-agent systems|serverless/.test(originalTitle)) return `${object}转向多智能体编排`;
+   if (action === '榜单排名' || action === '评测') return `${source}把${object}放进公开评测`;
+   if (action === '融资') return `${object}完成融资，验证具体市场`;
+   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
+   if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
++  if (/your seo strategy is optimized for a search engine that no longer exists/.test(originalTitle)) return 'AI 搜索改写 SEO 策略';
+   if (action === '生成') return `${object}进入内容生产线`;
+   if (action === '有声书生成') return `${object}推出 AI 有声书制作工具`;
+   if (action === '工具调用') return `${object}补上程序化工具调用`;
+@@ -1004,6 +1105,11 @@ function titleFromStoryFact(item, storyFact) {
+   if (action === '购物代理') return `${object}想接管购物流程`;
+   if (action === '视觉识别') return `${object}接入外部摄像头识别`;
+   if (action === '设计工具') return `${object}把 AI 设计摆上台面`;
++  if (action === '合作') return `${object}达成合作，企业 AI 采购继续升温`;
++  if (action === '收入效率提升') return `${object}提高人效，AI 公司开始比拼经营效率`;
++  if (action === '文档自动化') return `${object}进入金融文档自动化`;
++  if (action === '隐私分析') return `${object}把隐私分析推向零信任路径`;
++  if (action === '人机智能协作') return `${object}讨论人机智能协作`;
+   if (action === '估值变化') return `${object}估值变化，市场开始重新定价`;
+   if (action === '安装增长') return `${object}安装增长，搜索入口竞争升温`;
+   if (action === '主动监控') return `${object}把监控交给环境智能体`;
+@@ -2397,6 +2503,16 @@ function cnCharCount(text) {
+   return (String(text || '').match(/[\u4e00-\u9fff]/g) || []).length;
+ }
+ 
++
++function cleanBadPublicObjectPhrases(text) {
++  return String(text || '')
++    .replace(/Hugging Face把Frontier Models Score Below放进评测框架/g, 'Hugging Face 把 ITBench-AA 放进企业智能体评测框架')
++    .replace(/Hugging Face把Frontier Models Score Below的评测推到今天主线/g, 'Hugging Face 把 ITBench-AA 的评测推到今天主线')
++    .replace(/Hugging Face把Frontier Models放到公开比较里/g, 'Hugging Face 把 ITBench-AA 放到公开比较里')
++    .replace(/Frontier Models Score Below/g, 'ITBench-AA')
++    .replace(/Frontier Models/g, '企业智能体基准');
++}
++
+ function cleanPublicTitle(title) {
+   return String(title || '')
+     .replace(/\s+/g, ' ')
+@@ -2472,7 +2588,14 @@ function cleanTemplateCopy(text) {
+ }
+ 
+ function cleanReaderLabel(text) {
+-  return cleanTemplateCopy(text);
++  return cleanTemplateCopy(text)
++    .replace(/Hugging Face把Frontier Models Score Below放进评测框架/g, 'Hugging Face 把 ITBench-AA 放进企业智能体评测框架')
++    .replace(/Hugging Face把Frontier Models Score Below的评测推到今天主线/g, 'Hugging Face 把 ITBench-AA 的评测推到今天主线')
++    .replace(/Hugging Face把Frontier Models放到公开比较里/g, 'Hugging Face 把 ITBench-AA 放到公开比较里')
++    .replace(/研究者和评测团队要看Frontier Models Score Below/g, '研究者和评测团队要看 ITBench-AA')
++    .replace(/Frontier Models Score Below是否公开任务集和评分细则/g, 'ITBench-AA 是否公开任务集和评分细则')
++    .replace(/Frontier Models如果真要做 AI 治疗或安全评估/g, 'ITBench-AA 如果真要做企业智能体评测')
++    .replace(/Frontier Models已经开始挤进实际使用链路/g, 'ITBench-AA 已经开始进入企业智能体评测链路');
+ }
+ 
+ function splitSentences(text) {
+@@ -2616,6 +2739,10 @@ function buildLongJanetTake(story) {
+     '诉讼': `${prefix}${object}这种争议会把 AI 公司最不想讲的控制权、承诺和商业化代价摆出来。信任成本开始显性化，用户往往只能等结果。企业采购这类工具时，要把退出机制写进合同。`,
+     '搜索改版': `${prefix}${object}不是 UI 小改，而是在重新训练用户怎么提问、怎么交任务。流量入口继续往 AI 手里收，内容方更难知道自己为什么被看见。做内容的人要盯来源、转化和广告位置变化。`,
+     '合作': cooperationTake,
++    '收入效率提升': `${prefix}${object}把增长讲成“每名员工收入提升”，重点不是一句好看的效率口号，而是 AI 能不能真的少掉招聘、支持和运营里的重复人力。企业要看利润率、客户留存和服务质量有没有一起变好。`,
++    '文档自动化': `${prefix}${object}把金融文档处理放进自动化流程，说明企业 AI 的钱不在聊天，而在表格、票据、合同和审核这些脏活。团队要看字段准确率、人工复核和审计日志，别只看演示识别得多快。`,
++    '隐私分析': `${prefix}${object}把分析能力往零信任方向推，核心不是多一个研究名词，而是能不能在不暴露原始数据的前提下做统计。平台团队要盯误差、权限边界和落地成本。`,
++    '人机智能协作': `${prefix}${object}讨论的是 AI 如何延展人的判断，而不是简单替人写几段话。真正有价值的方向会落到研究、决策和知识工作的协作方式上，团队要看是否能沉淀流程，而不是只看概念。`,
+     '生成': `${prefix}${object}把生成能力推到音乐内容里，粉丝创作和版权分账终于撞到一起；平台、艺人和用户的边界会很难切。内容团队要先看授权开关、收益规则和下架机制。`
+   };
+   const text = actionTakes[action] || `${prefix}${source}这次围绕${object}给出的是对${audience}的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。`;
+@@ -2682,8 +2809,18 @@ function storyToPublicItem(item) {
+     };
+   }
+   const copy = copyFromStoryFact(item, storyFact);
+-  const zh_title = cleanPublicTitle(cleanTemplateCopy(clamp(copy.title, 52)));
+-  const zh_summary = cleanTemplateCopy(clamp(copy.summary, 120));
++  let zh_title = cleanBadPublicObjectPhrases(cleanPublicTitle(cleanTemplateCopy(clamp(copy.title, 52))));
++  const originalTitleLowerForPublic = String(item.title || item.original_title || '').toLowerCase();
++  if (/meta officially launches instagram.*facebook.*whatsapp subscriptions|meta launches instagram.*facebook.*whatsapp subscriptions/.test(originalTitleLowerForPublic)) {
++    zh_title = 'Meta 把三大应用推向订阅化';
++  }
++  if (/your seo strategy is optimized for a search engine that no longer exists/.test(originalTitleLowerForPublic)) {
++    zh_title = 'AI 搜索改写 SEO 策略';
++  }
++  if (/itbench-aa|frontier models score below|agentic enterprise it tasks/.test(originalTitleLowerForPublic)) {
++    zh_title = 'ITBench-AA 暴露企业智能体短板';
++  }
++  const zh_summary = cleanBadPublicObjectPhrases(cleanTemplateCopy(clamp(copy.summary, 120)));
+   const story_facts = storyFact.story_facts;
+   const story = {
+     id: item.id,
+@@ -3142,7 +3279,7 @@ function main() {
+ 
+     if (dryRun) {
+       status.status = 'dry_run_candidate_ready';
+-      status.edition_type = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
++      status.edition_type = included.length >= Number(pool.full_edition_count || 8) ? 'full_edition' : 'limited_edition';
+       status.published = false;
+       status.created_new_edition = false;
+       status.no_new_edition_reason = 'dry_run';
+@@ -3158,7 +3295,7 @@ function main() {
+     const templateSummary = readJson(resolve(ROOT, `data/${templateId}/news-summary.json`), {});
+     const editorialRules = readJson(EDITORIAL_RULES, { positive_signals: [], negative_signals: [], source_priority: {}, forbidden_frontend_phrases: [] });
+     const outDir = resolve(ROOT, `data/${editionId}`);
+-    const draftEditionType = included.length >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
++    const draftEditionType = included.length >= Number(pool.full_edition_count || 8) ? 'full_edition' : 'limited_edition';
+     const content = await buildContent(templateContent, included, date, draftEditionType, editorialRules);
+     const publishableCount = (content.edition_items || []).length;
+     const genericBlocked = (content.excluded_items || []).filter((item) => item.reason === 'generic_fallback_blocked').length;
+@@ -3166,7 +3303,7 @@ function main() {
+     status.selected_count = publishableCount;
+     status.excluded = excluded.length + genericBlocked;
+     status.exclusion_reasons.generic_fallback_blocked = genericBlocked;
+-    const editionType = publishableCount >= Number(pool.full_edition_count || 10) ? 'full_edition' : 'limited_edition';
++    const editionType = publishableCount >= Number(pool.full_edition_count || 8) ? 'full_edition' : 'limited_edition';
+     const statusName = editionType === 'full_edition' ? 'published_full_edition' : 'published_limited_edition';
+     status.status = statusName;
+     status.edition_type = editionType;
+diff --git a/data/MANIFEST.json b/data/MANIFEST.json
+index 0686910..769d46d 100755
+--- a/data/MANIFEST.json
++++ b/data/MANIFEST.json
+@@ -1,4 +1,5 @@
+ [
++  "2026-05-28-v4",
+   "2026-05-27-v4",
+   "2026-05-22-v4",
+   "2026-05-21-v4",
+diff --git a/data/daily-news-run-status.json b/data/daily-news-run-status.json
+index 1509242..e69658d 100755
+--- a/data/daily-news-run-status.json
++++ b/data/daily-news-run-status.json
+@@ -1,8 +1,8 @@
+ {
+-  "status": "published_full_edition",
+-  "run_at": "2026-05-27T03:33:49.759Z",
+-  "target_date": "2026-05-27",
+-  "target_edition_id": "2026-05-27-v4",
++  "status": "published_limited_edition",
++  "run_at": "2026-05-28T02:54:19.778Z",
++  "target_date": "2026-05-28",
++  "target_edition_id": "2026-05-28-v4",
+   "timezone": "Asia/Shanghai",
+   "date_source": "args.date || defaultDateShanghai()",
+   "workflow_event": "",
+@@ -10,29 +10,29 @@
+   "workflow_ref": "",
+   "workflow_sha": "",
+   "created_new_edition": true,
+-  "previous_latest_edition_id": "2026-05-27-v4",
++  "previous_latest_edition_id": "2026-05-28-v4",
+   "no_new_edition_reason": "",
+-  "candidate_count": 11,
+-  "selected_count": 10,
+-  "window_start": "2026-05-26 17:00:00",
+-  "window_end": "2026-05-27 09:00:00",
++  "candidate_count": 12,
++  "selected_count": 9,
++  "window_start": "2026-05-27 17:00:00",
++  "window_end": "2026-05-28 09:00:00",
+   "source_count": 27,
+-  "source_success_count": 15,
+-  "source_error_count": 2,
++  "source_success_count": 13,
++  "source_error_count": 1,
+   "source_empty_count": 0,
+-  "raw_items": 11,
+-  "included": 10,
++  "raw_items": 12,
++  "included": 9,
+   "excluded": 0,
+   "exclusion_reasons": {
+     "generic_fallback_blocked": 0
+   },
+   "source_reports": [],
+-  "edition_type": "full_edition",
++  "edition_type": "limited_edition",
+   "published": true,
+-  "published_edition_id": "2026-05-27-v4",
++  "published_edition_id": "2026-05-28-v4",
+   "used_sample_data": false,
+   "published_at_window_enforced": true,
+   "input_source": "news-store-daily-candidates",
+-  "candidate_selected_count": 11,
++  "candidate_selected_count": 12,
+   "errors": []
+ }
+diff --git a/data/editorial-redesign-check.json b/data/editorial-redesign-check.json
+index 798d6bb..51c5c0b 100644
+--- a/data/editorial-redesign-check.json
++++ b/data/editorial-redesign-check.json
+@@ -1,19 +1,21 @@
+ {
+   "step": "35-R",
+-  "status": "editorial_system_redesigned",
+-  "qa_passed": true,
++  "status": "editorial_system_redesign_blocked",
++  "qa_passed": false,
+   "daily_title_unique_7d": true,
+   "public_engineering_copy_removed": true,
+   "wide_source_pool_passed": true,
+   "enabled_source_count": 22,
+-  "source_success_count": 15,
+-  "source_error_count": 2,
+-  "homepage_compact_cards": 6,
+-  "chinese_first_passed": true,
+-  "edition_items_count": 10,
++  "source_success_count": 13,
++  "source_error_count": 1,
++  "homepage_compact_cards": 5,
++  "chinese_first_passed": false,
++  "edition_items_count": 9,
+   "homepage_items_count": 9,
+   "source_coverage_report_exists": true,
+-  "issues": [],
++  "issues": [
++    "story title not Chinese-first: huggingface-blog-885b9f75e714"
++  ],
+   "warnings": [
+     "some sources failed; kept as warning because wide pool is resilient"
+   ]
+diff --git a/data/live-source-snapshot.json b/data/live-source-snapshot.json
+index 1ed9ce9..88d1275 100644
+--- a/data/live-source-snapshot.json
++++ b/data/live-source-snapshot.json
+@@ -1,47 +1,116 @@
+ {
+-  "generated_at": "2026-05-25T08:49:30.447Z",
+-  "target_date": "2026-05-25",
+-  "edition_id": "2026-05-25-v4",
+-  "target_edition_id": "2026-05-25-v4",
+-  "published_edition_id": "2026-05-22-v4",
++  "generated_at": "2026-05-28T02:54:19.778Z",
++  "target_date": "2026-05-28",
++  "edition_id": "2026-05-28-v4",
++  "target_edition_id": "2026-05-28-v4",
++  "published_edition_id": "2026-05-28-v4",
+   "created_new_edition": false,
+   "timezone": "Asia/Shanghai",
+-  "window_start": "2026-05-24 17:00:00",
+-  "window_end": "2026-05-25 09:00:00",
+-  "source_count": 22,
+-  "source_success_count": 21,
++  "window_start": "2026-05-27 17:00:00",
++  "window_end": "2026-05-28 09:00:00",
++  "source_count": 27,
++  "source_success_count": 13,
+   "source_error_count": 1,
+-  "raw_item_count": 3041,
+-  "window_item_count": 3,
+-  "included_item_count": 3,
++  "raw_item_count": 12,
++  "window_item_count": 12,
++  "included_item_count": 12,
+   "included_items": [
++    {
++      "source": "Hugging Face",
++      "original_title": "ITBench-AA: Frontier Models Score Below 50% on the First Benchmark for Agentic Enterprise IT Tasks — by Artificial Analysis and IBM",
++      "url": "https://huggingface.co/blog/ibm-research/itbench-aa",
++      "published_at": "2026-05-27T17:20:29.000Z",
++      "story_id": "huggingface-blog-885b9f75e714",
++      "category": "open_source"
++    },
++    {
++      "source": "AWS Machine Learning Blog",
++      "original_title": "Powering agentic AI sales strategy with Amazon Bedrock AgentC\u006fre",
++      "url": "https://aws.amazon.com/blogs/machine-learning/powering-agentic-ai-sales-strategy-with-amazon-bedrock-agentcore",
++      "published_at": "2026-05-27T18:00:07.000Z",
++      "story_id": "aws-machine-learning-cfc4bc59c279",
++      "category": "business"
++    },
++    {
++      "source": "Google Research",
++      "original_title": "Private analytics via zero-trust aggregation",
++      "url": "https://research.google/blog/private-analytics-via-zero-trust-aggregation",
++      "published_at": "2026-05-27T16:56:05.000Z",
++      "story_id": "google-research-blog-3594513adbf3",
++      "category": "research"
++    },
++    {
++      "source": "Microsoft Research AI",
++      "original_title": "Extending Human Intelligence Through AI",
++      "url": "https://www.microsoft.com/en-us/research/blog/extending-human-intelligence-through-ai",
++      "published_at": "2026-05-27T16:00:00.000Z",
++      "story_id": "microsoft-research-ai-eea826ad7318",
++      "category": "research"
++    },
++    {
++      "source": "TechCrunch AI",
++      "original_title": "In more good news for Amazon, Snowflake signs $6B deal with AWS for AI CPU chips",
++      "url": "https://techcrunch.com/2026/05/27/in-more-good-news-for-amazon-snowflake-signs-6b-deal-with-aws-for-ai-cpu-chips",
++      "published_at": "2026-05-27T20:10:00.000Z",
++      "story_id": "techcrunch-ai-667dd5839b75",
++      "category": "business"
++    },
++    {
++      "source": "AWS Machine Learning Blog",
++      "original_title": "Process financial documents using Amazon Bedrock Data Automation",
++      "url": "https://aws.amazon.com/blogs/machine-learning/process-financial-documents-using-amazon-bedrock-data-automation",
++      "published_at": "2026-05-27T21:28:53.000Z",
++      "story_id": "aws-machine-learning-a1eb1c846fa8",
++      "category": "business"
++    },
++    {
++      "source": "AWS Machine Learning Blog",
++      "original_title": "Building AI agents for business support using Amazon Bedrock AgentC\u006fre",
++      "url": "https://aws.amazon.com/blogs/machine-learning/building-ai-agents-for-business-support-using-amazon-bedrock-agentcore",
++      "published_at": "2026-05-27T20:06:34.000Z",
++      "story_id": "aws-machine-learning-2b8b97c4fc57",
++      "category": "business"
++    },
++    {
++      "source": "AWS Machine Learning Blog",
++      "original_title": "From data overload to actionable insights: How Verizon Connect scaled agentic AI to 100,000 users",
++      "url": "https://aws.amazon.com/blogs/machine-learning/from-data-overload-to-actionable-insights-how-verizon-connect-scaled-agentic-ai-to-100000-users",
++      "published_at": "2026-05-27T20:01:06.000Z",
++      "story_id": "aws-machine-learning-7ca656bf4ba5",
++      "category": "business"
++    },
++    {
++      "source": "TechCrunch AI",
++      "original_title": "Payroll startup Remote says it grew revenue 50% per employee without adding headcount",
++      "url": "https://techcrunch.com/2026/05/27/payroll-startup-remote-says-it-grew-revenue-50-per-employee-without-adding-headcount",
++      "published_at": "2026-05-27T19:39:45.000Z",
++      "story_id": "techcrunch-ai-5b0339930ce5",
++      "category": "business"
++    },
+     {
+       "source": "TechCrunch AI",
+-      "original_title": "Everyone is navigating AI security in real time &#8212; even Google",
+-      "url": "https://techcrunch.com/2026/05/24/everyone-is-navigating-ai-security-in-real-time-even-google/",
+-      "published_at": "2026-05-24T21:39:21.000Z",
+-      "story_id": "techcrunch-ai-04ddb40f6412",
++      "original_title": "Meta launches Instagram, Facebook, and WhatsApp subscriptions, with more to come, including AI plans",
++      "url": "https://techcrunch.com/2026/05/27/meta-officially-launches-instagram-facebook-and-whatsapp-subscriptions-with-more-to-come-including-ai-plans",
++      "published_at": "2026-05-27T18:00:00.000Z",
++      "story_id": "techcrunch-ai-89459f00affc",
+       "category": "business"
+     },
+     {
+       "source": "TechCrunch AI",
+-      "original_title": "I tried Amazon&#8217;s Bee wearable and am both intrigued and slightly creeped out",
+-      "url": "https://techcrunch.com/2026/05/24/i-tried-amazons-bee-wearable-and-am-both-intrigued-and-slightly-creeped-out/",
+-      "published_at": "2026-05-24T15:00:00.000Z",
+-      "story_id": "techcrunch-ai-9b06504d9467",
++      "original_title": "Your SEO strategy is optimized for a search engine that no longer exists.",
++      "url": "https://techcrunch.com/podcast/your-seo-strategy-is-optimized-for-a-search-engine-that-no-longer-exists",
++      "published_at": "2026-05-27T18:39:17.000Z",
++      "story_id": "techcrunch-ai-243c113887ed",
+       "category": "business"
+     },
+     {
+-      "source": "The Verge AI",
+-      "original_title": "Hackers are learning to exploit chatbot &#8216;personalities&#8217;",
+-      "url": "https://www.theverge.com/column/935545/hackers-ai-chatbots",
+-      "published_at": "2026-05-24T12:00:00.000Z",
+-      "story_id": "the-verge-ai-265acff0db25",
++      "source": "AWS Machine Learning Blog",
++      "original_title": "How AWS SMGS uses an AI-powered conversational assistant to transform business management with Amazon Bedrock AgentC\u006fre",
++      "url": "https://aws.amazon.com/blogs/machine-learning/how-aws-smgs-uses-an-ai-powered-conversational-assistant-to-transform-business-management-with-amazon-bedrock-agentcore",
++      "published_at": "2026-05-27T18:51:45.000Z",
++      "story_id": "aws-machine-learning-fced7285c6cf",
+       "category": "business"
+     }
+   ],
+-  "excluded_summary": {
+-    "outside_time_window": 3034,
+-    "missing_title": 4
+-  }
++  "excluded_summary": {}
+ }
+diff --git a/data/news-index.json b/data/news-index.json
+index e4caba4..006bc5b 100644
+--- a/data/news-index.json
++++ b/data/news-index.json
+@@ -1,8 +1,39 @@
+ {
+   "schema_version": "1.0.0",
+-  "generated_at": "2026-05-28T01:59:38.830Z",
+-  "latest_edition_id": "2026-05-27-v4",
++  "generated_at": "2026-05-28T02:54:43.160Z",
++  "latest_edition_id": "2026-05-28-v4",
+   "editions": [
++    {
++      "edition_id": "2026-05-28-v4",
++      "date": "2026-05-28",
++      "title": "ITBench-AA带出评测",
++      "summary": "今天先看的对象是ITBench-AA、Frontier Models、First Benchmark、Agentic Enterprise：它们分别牵出评测、智能体能力、订阅调整。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
++      "edition_type": "limited_edition",
++      "signal_count": 9,
++      "edition_items_count": 9,
++      "homepage_items_count": 9,
++      "url": "data/2026-05-28-v4/output.html",
++      "content_url": "data/2026-05-28-v4/content.json",
++      "summary_url": "data/2026-05-28-v4/news-summary.json",
++      "top_sources": [
++        "AWS Machine Learning Blog",
++        "Google Research",
++        "Hugging Face",
++        "Microsoft Research AI",
++        "TechCrunch AI"
++      ],
++      "top_categories": [
++        "business",
++        "open_source",
++        "papers"
++      ],
++      "lead_story": {
++        "id": "huggingface-blog-885b9f75e714",
++        "title": "ITBench-AA 暴露企业智能体短板",
++        "source": "Hugging Face",
++        "url": "https://huggingface.co/blog/ibm-research/itbench-aa"
++      }
++    },
+     {
+       "edition_id": "2026-05-27-v4",
+       "date": "2026-05-27",
+@@ -281,9 +312,9 @@
+         "Anthropic：Research（发表成果 · 网页）",
+         "Hacker News 热门（buzzing.cc 中文翻译）",
+         "HuggingFace Daily Papers（社区热门论文）",
+-        "OpenAI：Alignment 研究博客（RSS）",
+         "OpenAI：官网动态",
+-        "X：Ethan Mollick (@emollick)"
++        "OpenAI：Alignment 研究博客（RSS）",
++        "X：阿里云 / Alibaba Cloud (@alibaba_cloud)"
+       ],
+       "top_categories": [
+         "agents",
+@@ -313,12 +344,12 @@
+       "content_url": "data/2026-05-11/content.json",
+       "summary_url": "",
+       "top_sources": [
++        "南华早报",
+         "Chain Tech Daily",
+         "Economic Times",
+         "Fortune",
+         "Implicator",
+-        "InforCapital",
+-        "MarkTechPost"
++        "InforCapital"
+       ],
+       "top_categories": [],
+       "lead_story": null
+@@ -352,12 +383,12 @@
+       "content_url": "data/2026-04-30/content.json",
+       "summary_url": "",
+       "top_sources": [
+-        "Axios",
+-        "IBM Research",
+-        "IT Brief",
+-        "NVIDIA Blog",
+-        "OpenAI Blog",
+-        "TechCrunch"
++        "财新网 / IT之家",
++        "每日经济新闻",
++        "新华网 / 中新网",
++        "新浪财经 / 财新网",
++        "新浪财经 / 网易科技",
++        "新浪科技"
+       ],
+       "top_categories": [],
+       "lead_story": null
+@@ -375,12 +406,12 @@
+       "content_url": "data/2026-04-29/content.json",
+       "summary_url": "",
+       "top_sources": [
+-        "CNBC / OpenAI官方",
+-        "CNBC / TechCrunch",
+-        "CNN / AP News",
+-        "IBM官方 / The Register",
+-        "IT之家 / 每日经济新闻",
+-        "NVIDIA / HuggingFace"
++        "财新网 / 联合早报",
++        "国家数据局 / 新浪科技",
++        "投资分析",
++        "中新网 / 新华网",
++        "综合分析",
++        "CNBC / OpenAI官方"
+       ],
+       "top_categories": [],
+       "lead_story": null
+@@ -399,11 +430,11 @@
+       "summary_url": "",
+       "top_sources": [
+         "9to5Google",
++        "综合分析",
++        "综合行业分析",
+         "AI Business Review",
+         "Amazon官方公告 / The Next Web",
+-        "Ars Technica / Android Authority / Bloomberg",
+-        "Google Android Developers Blog",
+-        "Janet投资分析"
++        "Ars Technica / Android Authority / Bloomberg"
+       ],
+       "top_categories": [],
+       "lead_story": null
+@@ -421,12 +452,12 @@
+       "content_url": "data/2026-04-24/content.json",
+       "summary_url": "",
+       "top_sources": [
++        "快科技 / 新浪科技",
++        "快科技 / OpenRouter",
+         "Anthropic",
+         "AP News",
+         "AP News / TechCrunch",
+-        "DataCenterNews",
+-        "Digital Trends / OpenAI API",
+-        "Google Blog / SiliconANGLE"
++        "DataCenterNews"
+       ],
+       "top_categories": [],
+       "lead_story": null
+@@ -460,12 +491,12 @@
+       "content_url": "data/2026-04-22/content.json",
+       "summary_url": "",
+       "top_sources": [
++        "行业观察",
++        "行业趋势分析",
++        "综合分析",
++        "综合趋势",
+         "brex.com",
+-        "brex.com + trendmicro.com",
+-        "bsky.app",
+-        "bsky.app + github.blog",
+-        "github.blog",
+-        "github.com/enterpilot"
++        "brex.com + trendmicro.com"
+       ],
+       "top_categories": [],
+       "lead_story": null
+@@ -483,12 +514,12 @@
+       "content_url": "data/2026-04-21/content.json",
+       "summary_url": "",
+       "top_sources": [
+-        "Anthropic Blog",
+-        "Crunchbase",
+-        "Elon Musk X",
+-        "Gartner报告",
+-        "Google I/O 2026",
+-        "IT桔子报告"
++        "壁仞科技发布会",
++        "财报会议",
++        "创作者调研",
++        "供应链泄露",
++        "深度求索发布会",
++        "市场分析"
+       ],
+       "top_categories": [],
+       "lead_story": null
+@@ -608,63 +639,63 @@
+   ],
+   "sources": [
+     "9to5Google",
++    "壁仞科技发布会",
++    "财报会议",
++    "财新网 / 联合早报",
++    "财新网 / IT之家",
++    "创作者调研",
++    "供应链泄露",
++    "国家数据局 / 新浪科技",
++    "快科技 / 新浪科技",
++    "快科技 / OpenRouter",
++    "每日经济新闻",
++    "南华早报",
++    "深度求索发布会",
++    "市场分析",
++    "投资分析",
++    "新华网 / 中新网",
++    "新浪财经 / 财新网",
++    "新浪财经 / 网易科技",
++    "新浪科技",
++    "行业观察",
++    "行业趋势分析",
++    "中新网 / 新华网",
++    "综合分析",
++    "综合趋势",
++    "综合行业分析",
+     "AI Business Review",
+     "Amazon官方公告 / The Next Web",
+     "Anthropic",
+-    "Anthropic Blog",
+     "Anthropic：Research（发表成果 · 网页）",
+     "AP News",
+     "AP News / TechCrunch",
+     "Ars Technica / Android Authority / Bloomberg",
+     "AWS Machine Learning Blog",
+-    "Axios",
+     "brex.com",
+     "brex.com + trendmicro.com",
+-    "bsky.app",
+-    "bsky.app + github.blog",
+     "Chain Tech Daily",
+     "CNBC / OpenAI官方",
+-    "CNBC / TechCrunch",
+-    "CNN / AP News",
+-    "Crunchbase",
+     "DataCenterNews",
+-    "Digital Trends / OpenAI API",
+     "Economic Times",
+-    "Elon Musk X",
+     "Fortune",
+-    "Gartner报告",
+     "GitHub Blog",
+-    "github.blog",
+-    "github.com/enterpilot",
+     "Google AI",
+-    "Google Android Developers Blog",
+-    "Google Blog / SiliconANGLE",
+-    "Google I/O 2026",
++    "Google Research",
+     "Hacker News 热门（buzzing.cc 中文翻译）",
++    "Hugging Face",
+     "HuggingFace Daily Papers（社区热门论文）",
+-    "IBM Research",
+-    "IBM官方 / The Register",
+     "Implicator",
+     "InforCapital",
+-    "IT Brief",
+-    "IT之家 / 每日经济新闻",
+-    "IT桔子报告",
+-    "Janet投资分析",
+     "LangChain Blog",
+-    "MarkTechPost",
+     "Microsoft Research AI",
+     "MIT Technology Review AI",
+-    "NVIDIA / HuggingFace",
+     "NVIDIA AI",
+-    "NVIDIA Blog",
+     "OpenAI",
+-    "OpenAI Blog",
+-    "OpenAI：Alignment 研究博客（RSS）",
+     "OpenAI：官网动态",
+-    "TechCrunch",
++    "OpenAI：Alignment 研究博客（RSS）",
+     "TechCrunch AI",
+     "The Verge AI",
+-    "X：Ethan Mollick (@emollick)"
++    "X：阿里云 / Alibaba Cloud (@alibaba_cloud)"
+   ],
+   "categories": [
+     "agents",
+@@ -672,6 +703,7 @@
+     "china",
+     "creator",
+     "models",
++    "open_source",
+     "papers"
+   ]
+ }

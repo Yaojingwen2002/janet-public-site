@@ -18,6 +18,8 @@
 
   let cases = [];
   let activeFilter = 'all';
+  let currentItems = [];
+  let activePreviewIndex = -1;
 
   function escapeHtml(value) {
     return String(value ?? '')
@@ -98,11 +100,13 @@
     return `
       <article class="handbook-card" data-category="${escapeHtml(item.category)}">
         <figure class="handbook-card__visual">
-          <img src="${escapeHtml(item.image)}"
-            alt="${escapeHtml(item.title)} 案例图"
-            width="1200"
-            height="800"
-            loading="lazy">
+          <button class="handbook-card__preview" type="button" data-preview-case="${escapeHtml(item.id)}" aria-label="预览 ${escapeHtml(item.title)}">
+            <img src="${escapeHtml(item.image)}"
+              alt="${escapeHtml(item.title)} 案例图"
+              width="1200"
+              height="800"
+              loading="lazy">
+          </button>
           <figcaption>${escapeHtml(item.title)} · ${escapeHtml(item.category)} 案例图</figcaption>
         </figure>
 
@@ -144,6 +148,63 @@
     `;
   }
 
+  function getLightboxElements() {
+    return {
+      root: document.getElementById('handbook-lightbox'),
+      image: document.getElementById('handbook-lightbox-image'),
+      title: document.getElementById('handbook-lightbox-title'),
+      count: document.getElementById('handbook-lightbox-count'),
+      caption: document.getElementById('handbook-lightbox-caption')
+    };
+  }
+
+  function renderLightbox() {
+    const { root, image, title, count, caption } = getLightboxElements();
+    const item = currentItems[activePreviewIndex];
+    if (!root || !image || !title || !count || !caption || !item) return;
+
+    image.src = item.image;
+    image.alt = `${item.title} 案例图`;
+    title.textContent = item.title || '';
+    count.textContent = `${activePreviewIndex + 1} / ${currentItems.length}`;
+    caption.textContent = `${item.category || '未分类'} · ${item.summary || ''}`;
+  }
+
+  function openLightbox(itemId) {
+    const { root } = getLightboxElements();
+    if (!root) return;
+
+    const index = currentItems.findIndex(item => item.id === itemId);
+    if (index < 0) return;
+
+    activePreviewIndex = index;
+    root.hidden = false;
+    document.body.classList.add('handbook-lightbox-open');
+    renderLightbox();
+
+    const closeButton = root.querySelector('[data-lightbox-close]');
+    if (closeButton) closeButton.focus({ preventScroll: true });
+  }
+
+  function closeLightbox() {
+    const { root, image } = getLightboxElements();
+    if (!root) return;
+
+    root.hidden = true;
+    document.body.classList.remove('handbook-lightbox-open');
+    activePreviewIndex = -1;
+    if (image) {
+      image.removeAttribute('src');
+      image.alt = '';
+    }
+  }
+
+  function stepLightbox(direction) {
+    if (activePreviewIndex < 0 || !currentItems.length) return;
+    activePreviewIndex = (activePreviewIndex + direction + currentItems.length) % currentItems.length;
+    renderLightbox();
+  }
+
   function renderCards() {
     const grid = document.getElementById('handbook-grid');
     const count = document.getElementById('handbook-count');
@@ -152,6 +213,7 @@
     const filtered = activeFilter === 'all'
       ? cases
       : cases.filter(item => item.category === activeFilter);
+    currentItems = filtered;
 
     if (count) {
       count.textContent = `${filtered.length} cases`;
@@ -163,6 +225,12 @@
     }
 
     grid.innerHTML = filtered.map(renderCard).join('');
+
+    grid.querySelectorAll('[data-preview-case]').forEach((button) => {
+      button.addEventListener('click', () => {
+        openLightbox(button.dataset.previewCase);
+      });
+    });
 
     grid.querySelectorAll('[data-copy-prompt]').forEach((button) => {
       button.addEventListener('click', async () => {
@@ -186,6 +254,27 @@
     });
   }
 
+  function bindLightboxControls() {
+    const { root } = getLightboxElements();
+    if (!root) return;
+
+    root.querySelectorAll('[data-lightbox-close]').forEach((button) => {
+      button.addEventListener('click', closeLightbox);
+    });
+
+    const prev = root.querySelector('[data-lightbox-prev]');
+    const next = root.querySelector('[data-lightbox-next]');
+    if (prev) prev.addEventListener('click', () => stepLightbox(-1));
+    if (next) next.addEventListener('click', () => stepLightbox(1));
+
+    document.addEventListener('keydown', (event) => {
+      if (root.hidden) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'ArrowLeft') stepLightbox(-1);
+      if (event.key === 'ArrowRight') stepLightbox(1);
+    });
+  }
+
   async function init() {
     const grid = document.getElementById('handbook-grid');
     try {
@@ -204,5 +293,8 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', () => {
+    bindLightboxControls();
+    init();
+  });
 })();

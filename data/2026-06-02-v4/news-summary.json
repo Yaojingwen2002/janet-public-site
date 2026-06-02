@@ -27,9 +27,9 @@
         "Learning-to-Defer",
         "Expert-Conditional Advice"
       ],
-      "action": "推出",
+      "action": "研究",
       "audience": "研究者和评测团队",
-      "editorial_angle": "Expert-Conditional Advice 的推出会影响研究者和评测团队",
+      "editorial_angle": "Expert-Conditional Advice 的研究会影响研究者和评测团队",
       "story_facts": [
         {
           "label": "entity",
@@ -41,7 +41,7 @@
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "研究"
         },
         {
           "label": "concrete_object",
@@ -51,8 +51,8 @@
       "original_title": "Learning-to-Defer with Expert-Conditional Advice",
       "original_summary": "arXiv:2603.14324v5 Announce Type: replace Abstract: Learning-to-Defer routes each input to the expert that minimizes expected cost, but it assumes that the information available to every expert is fixed at decision time. Many modern systems violate this assumption: after selecting an expert, one may also choose what additional information that expert should receive, such as retrieved documents, tool outputs, or escalation context. We study this problem and call it Learning-to-Defer with advice. We show that a broad family of natural separated surrogates, which learn routing and advice with distinct heads, is inconsistent even in the smallest non-trivial setting. We then introduce an augmented surrogate that operates on the composite expert--advice action space and prove an $\\mathcal{H}$-consistency guarantee together with an excess-risk transfer bound, yielding recovery of the Bayes-optimal policy in the limit. Experiments on tabular, language, and multi-modal tasks show that the resulting method improves over standard Learning-to-Defer while adapting its advice-acquisition behavior to the cost regime; a synthetic benchmark confirms the failure mode predicted for separated surrogates."
     },
-    "zh_title": "Expert-Conditional Advice 研究学习何时转交专家",
-    "zh_summary": "arXiv stat.ML 这篇 Learning-to-Defer 论文研究在专家条件建议下，模型什么时候该自己预测、什么时候该把决策交给专家。",
+    "zh_title": "Expert-Conditional 研究新方法",
+    "zh_summary": "arXiv 这篇研究围绕 Expert-Conditional Advice 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
     "story_facts": [
       {
         "label": "entity",
@@ -64,14 +64,14 @@
       },
       {
         "label": "action",
-        "value": "推出"
+        "value": "研究"
       },
       {
         "label": "concrete_object",
         "value": "Expert-Conditional Advice"
       }
     ],
-    "title": "Expert-Conditional Advice 研究学习何时转交专家",
+    "title": "Expert-Conditional 研究新方法",
     "original_title": "Learning-to-Defer with Expert-Conditional Advice",
     "url": "https://arxiv.org/abs/2603.14324",
     "source_url": "https://arxiv.org/abs/2603.14324",
@@ -83,15 +83,15 @@
     "score": 8,
     "published_at": "2026-06-01T04:00:00.000Z",
     "published_at_source": "news-store.published_at",
-    "summary": "arXiv stat.ML 这篇 Learning-to-Defer 论文研究在专家条件建议下，模型什么时候该自己预测、什么时候该把决策交给专家。",
+    "summary": "arXiv 这篇研究围绕 Expert-Conditional Advice 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
     "original_summary": "arXiv:2603.14324v5 Announce Type: replace Abstract: Learning-to-Defer routes each input to the expert that minimizes expected cost, but it assumes that the information available to every expert is fixed at decision...",
-    "why_it_matters": "研究者和高风险产品团队要看：Learning-to-Defer 会影响医疗、安全审核这类场景里的人机分工和责任边界。",
-    "janet_take": "Expert-Conditional Advice 这篇的关键是“什么时候该让模型闭嘴”。在医疗、安全审核这类高风险流程里，会拒答、会转交专家，比硬撑一个答案更有价值；产品团队要把转交规则、责任边界和复核流程一起设计出来。",
-    "watch_next": "看论文是否给出可复现实验和高风险任务设置。",
+    "why_it_matters": "高风险产品团队要看 Expert-Conditional Advice：模型什么时候转交专家，会影响医疗、安全审核这类流程的责任边界。",
+    "janet_take": "Expert-Conditional 问的是模型什么时候该退一步。在医疗、安全审核这类高风险流程里，会转交专家比硬撑答案更值钱；产品团队要把转交规则、责任边界和复核流程一起设计。",
+    "watch_next": "看 Expert-Conditional Advice 是否公开代码、数据和复 ...",
     "image": null,
     "image_source": null,
     "image_credit": null,
-    "verified_at": "2026-06-02T02:56:13.808Z",
+    "verified_at": "2026-06-02T03:11:15.505Z",
     "duplicate_group": null,
     "evidence_ids": [
       "news-store-0001"
@@ -126,19 +126,19 @@
     "core_eligible": true,
     "key_data": [
       "Expert-Conditional Advice",
-      "推出",
+      "研究",
       "研究者和评测团队",
       "arXiv stat.ML",
       "Learning-to-Defer with Expert-Conditional Advice"
     ],
-    "content": "arXiv 报道 Expert-Conditional，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning-to-Defer with Expert-Conditional Advice」。arXiv stat.ML 这篇 Learning-to-Defer 论文研究在专家条件建议下，模型什么时候该自己预测、什么时候该把决策交给专家。研究者和高风险产品团队要看：Learning-to-Defer 会影响医疗、安全审核这类场景里的人机分工和责任边界。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Expert-Conditional Advice 这篇的关键是“什么时候该让模型闭嘴”。在医疗、安全审核这类高风险流程里，会拒答、会转交专家，比硬撑一个答案更有价值；产品团队要把转交规则、责任边界和复核流程一起设计出来。Expert-Conditional 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否给出可复现实验和高风险任务设置。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+    "content": "arXiv 报道 Expert-Conditional，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning-to-Defer with Expert-Conditional Advice」。arXiv 这篇研究围绕 Expert-Conditional Advice 展开，关键是问题设置、实验方法和复现路径是否足够清楚。高风险产品团队要看 Expert-Conditional Advice：模型什么时候转交专家，会影响医疗、安全审核这类流程的责任边界。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Expert-Conditional 问的是模型什么时候该退一步。在医疗、安全审核这类高风险流程里，会转交专家比硬撑答案更值钱；产品团队要把转交规则、责任边界和复核流程一起设计。Expert-Conditional 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Expert-Conditional Advice 是否公开代码、数据和复 ...。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
     "primary_section": "open_source",
     "visual": {
       "status": "ready",
       "mode": "open_license_image",
       "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-0dff84a7e9db.jpg",
       "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-0dff84a7e9db.jpg",
-      "alt": "新闻视觉：Expert-Conditional Advice 研究学习何时转交专家",
+      "alt": "新闻视觉：Expert-Conditional 研究新方法",
       "caption": "开放授权图片，用来辅助呈现「Expert-Conditional Advice」相关对象。",
       "credit": "Packe, Christopher, 1686-1749",
       "license": "Public domain",
@@ -156,20 +156,20 @@
   "summary_url": "data/2026-06-02-v4/news-summary.json",
   "content_url": "data/2026-06-02-v4/content.json",
   "vol": "0000",
-  "title": "Learning-to-Defer 今天盯上推出",
+  "title": "Learning-to-Defer 带出研究",
   "intro_text": "Expert-Conditional 先把今天的注意力拉住；Learning-to-Defer 补上另一条线索。今天先看这些具体产品怎么动。",
-  "daily_thesis": "今天先看的对象是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI：它们分别牵出推出、智能体能力、AI 资本支出。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
+  "daily_thesis": "今天先看的对象是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI：它们分别牵出研究、智能体能力、AI 资本支出。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
   "signal_map": [
     {
       "signal": "工具收口",
       "evidence": [
         "chinese-sina-ai-3f4fa3bd2e89"
       ],
-      "janet_view": "企查查把 MCP 接进 30 多个行业，让 AI Agent 能调用实时企业数据，关键在于减少幻觉和 Token 消耗。",
+      "janet_view": "新浪 AI 热点写到 AI Agent 接入实时企业数据，关键在于智能体能否在查询、尽调和风控里少编答案、少耗 Token。",
       "label": "AI Agent 的智能体能力",
-      "summary": "企查查把 MCP 接进 30 多个行业，让 AI Agent 能调用实时企业数据，关键在于减少幻觉和 Token 消耗。",
+      "summary": "新浪 AI 热点写到 AI Agent 接入实时企业数据，关键在于智能体能否在查询、尽调和风控里少编答案、少耗 Token。",
       "story_id": "chinese-sina-ai-3f4fa3bd2e89",
-      "story_title": "企查查 MCP 接入 30+ 行业企业数据",
+      "story_title": "AI Agent 推进智能体能力",
       "source": "新浪 AI 热点",
       "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBvX0JfLTBuMEJkdU5IVWtkS1hfdnQwT2tzTGNQM3VyQmpkU3JBd3pNN0FNdjJoYXF2Y0I0QTJCd1JSN01ib1FKaE5tdVgzVl9McEVnYjZVbEJCYXUzQlBaYmU1emk4U2pPV2wxNGtudFVWQnlRX0tnRQ?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBvX0JfLTBuMEJkdU5IVWtkS1hfdnQwT2tzTGNQM3VyQmpkU3JBd3pNN0FNdjJoYXF2Y0I0QTJCd1JSN01ib1FKaE5tdVgzVl9McEVnYjZVbEJCYXUzQlBaYmU1emk4U2pPV2wxNGtudFVWQnlRX0tnRQ?oc=5",
@@ -179,7 +179,7 @@
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-3f4fa3bd2e89.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-3f4fa3bd2e89.jpg",
-        "alt": "新闻视觉：企查查 MCP 接入 30+ 行业企业数据",
+        "alt": "新闻视觉：AI Agent 推进智能体能力",
         "caption": "开放授权图片，用来辅助呈现「AI Agent」相关对象。",
         "credit": "Stanford Institute for Human-Centered Artificial Intelligence (permission obtained by email from the AI index research manager)",
         "license": "CC BY-SA 4.0",
@@ -198,11 +198,11 @@
       "evidence": [
         "arxiv-cs-cl-6ec8b283e1a3"
       ],
-      "janet_view": "arXiv cs.CL 这篇论文关注 Incremental BPE Tokenization，关键在于让分词在流式和增量场景里更高效 ...",
-      "label": "Incremental BPE Tokenization 的推出",
-      "summary": "arXiv cs.CL 这篇论文关注 Incremental BPE Tokenization，关键在于让分词在流式和增量场景里更高效地更新。",
+      "janet_view": "arXiv 这篇研究围绕 Incremental BPE Tokenization 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
+      "label": "Incremental BPE Tokenization 的研究",
+      "summary": "arXiv 这篇研究围绕 Incremental BPE Tokenization 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "story_id": "arxiv-cs-cl-6ec8b283e1a3",
-      "story_title": "Incremental BPE Tokenization 研究增量分词",
+      "story_title": "Incremental BPE 研究新方法",
       "source": "arXiv cs.CL",
       "url": "https://arxiv.org/abs/2605.30813",
       "source_url": "https://arxiv.org/abs/2605.30813",
@@ -212,8 +212,8 @@
         "mode": "generated_story_svg",
         "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-6ec8b283e1a3.svg",
         "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-6ec8b283e1a3.svg",
-        "alt": "新闻视觉：Incremental BPE Tokenization 研究增量分词",
-        "caption": "Janet 根据「Incremental BPE Tokenization」和「推出」生成的新闻视觉。",
+        "alt": "新闻视觉：Incremental BPE 研究新方法",
+        "caption": "Janet 根据「Incremental BPE Tokenization」和「研究」生成的新闻视觉。",
         "credit": "Generated by Janet visual resolver",
         "license": "generated",
         "source_url": "",
@@ -252,9 +252,9 @@
           "AI Agent",
           "Coze"
         ],
-        "action": "推出",
+        "action": "智能体能力",
         "audience": "相关产品团队和使用者",
-        "editorial_angle": "AI Agent 的推出会影响相关产品团队和使用者",
+        "editorial_angle": "AI Agent 的智能体能力会影响相关产品团队和使用者",
         "story_facts": [
           {
             "label": "entity",
@@ -266,7 +266,7 @@
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "智能体能力"
           },
           {
             "label": "concrete_object",
@@ -276,8 +276,8 @@
         "original_title": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体",
         "original_summary": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 &nbsp;&nbsp; 钛媒体"
       },
-      "zh_title": "扣子 Coze 3.0 升级 Agent 平台",
-      "zh_summary": "钛媒体报道字节跳动扣子 Coze 3.0 上线，关键在于把 AI Agent 平台能力继续往企业和开发者场景推进。",
+      "zh_title": "AI Agent 推进智能体能力（钛媒体）",
+      "zh_summary": "钛媒体报道 AI Agent 平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。",
       "story_facts": [
         {
           "label": "entity",
@@ -289,14 +289,14 @@
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "智能体能力"
         },
         {
           "label": "concrete_object",
           "value": "AI Agent"
         }
       ],
-      "title": "扣子 Coze 3.0 升级 Agent 平台",
+      "title": "AI Agent 推进智能体能力（钛媒体）",
       "original_title": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体",
       "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96RmNIR21UY3ZnVWlYQzNXaGZxQ0dPOWtBbXU3YnplbVpLUG5iVEZxN3Y3clJoaE5kdk1PRm1nNTNlS3h2a054TTg2cjdtM01aT2JZSTZtVEx3UQ?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96RmNIR21UY3ZnVWlYQzNXaGZxQ0dPOWtBbXU3YnplbVpLUG5iVEZxN3Y3clJoaE5kdk1PRm1nNTNlS3h2a054TTg2cjdtM01aT2JZSTZtVEx3UQ?oc=5",
@@ -308,15 +308,15 @@
       "score": 6.5,
       "published_at": "2026-06-01T09:08:00.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "钛媒体报道字节跳动扣子 Coze 3.0 上线，关键在于把 AI Agent 平台能力继续往企业和开发者场景推进。",
+      "summary": "钛媒体报道 AI Agent 平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。",
       "original_summary": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 &nbsp;&nbsp; 钛媒体",
-      "why_it_matters": "开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。",
-      "janet_take": "Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口；插件、权限和企业交付细节会决定它能不能长期留在工作流里。",
-      "watch_next": "看 Coze 3.0 的插件、部署和企业权限细则。",
+      "why_it_matters": "开发者和企业自动化团队要看 AI Agent：插件、部署、权限和维护成本，会决定它能不能成为默认 Agent 平台入口。",
+      "janet_take": "AI Agent 的压力在部署和维护，不在发布会。平台要让开发者少搭工具、少踩权限坑，还要能计费、可审计、可迁移；插件和企业交付细节，才会决定它能不能留在工作流里。",
+      "watch_next": "看 AI Agent 是否给出插件、部署和企业权限细则。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0006"
@@ -343,19 +343,19 @@
       "core_eligible": true,
       "key_data": [
         "AI Agent",
-        "推出",
+        "智能体能力",
         "相关产品团队和使用者",
         "钛媒体",
         "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体"
       ],
-      "content": "钛媒体报道 AI Agent，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体」。钛媒体报道字节跳动扣子 Coze 3.0 上线，关键在于把 AI Agent 平台能力继续往企业和开发者场景推进。开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口；插件、权限和企业交付细节会决定它能不能长期留在工作流里。AI Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Coze 3.0 的插件、部署和企业权限细则。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "钛媒体提到 AI Agent，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体」。钛媒体报道 AI Agent 平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。开发者和企业自动化团队要看 AI Agent：插件、部署、权限和维护成本，会决定它能不能成为默认 Agent 平台入口。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。AI Agent 的压力在部署和维护，不在发布会。平台要让开发者少搭工具、少踩权限坑，还要能计费、可审计、可迁移；插件和企业交付细节，才会决定它能不能留在工作流里。AI Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 AI Agent 是否给出插件、部署和企业权限细则。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-tmtpost-695e9c2a92ec.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-tmtpost-695e9c2a92ec.jpg",
-        "alt": "新闻视觉：扣子 Coze 3.0 升级 Agent 平台",
+        "alt": "新闻视觉：AI Agent 推进智能体能力（钛媒体）",
         "caption": "开放授权图片，用来辅助呈现「AI Agent」相关对象。",
         "credit": "Stanford Institute for Human-Centered Artificial Intelligence (permission obtained by email from the AI index research manager)",
         "license": "CC BY-SA 4.0",
@@ -409,8 +409,8 @@
         "original_title": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家",
         "original_summary": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 &nbsp;&nbsp; IT 之家"
       },
-      "zh_title": "讯灵 AI GEO+Agent 主打内容与智能体生态",
-      "zh_summary": "IT 之家报道讯灵 AI GEO+Agent 双引擎生态，关键在于把数据、内容和智能体能力打包成企业增长方案。",
+      "zh_title": "AI GEO+Agent 推进智能体能力",
+      "zh_summary": "IT 之家写到 AI GEO+Agent 把数据、内容和智能体打包成双引擎方案，关键在于能否给企业增长流程交出指标。",
       "story_facts": [
         {
           "label": "entity",
@@ -425,7 +425,7 @@
           "value": "AI GEO+Agent"
         }
       ],
-      "title": "讯灵 AI GEO+Agent 主打内容与智能体生态",
+      "title": "AI GEO+Agent 推进智能体能力",
       "original_title": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家",
       "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPYjlidG1BLVRiZEd0TUI0TjF0NzhBc2F6T0l4UkpySkFWZFY3VE9FQ04xNUd4Ri1rU2NyNUZaTER1RDNzdUhLQy05SUc?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPYjlidG1BLVRiZEd0TUI0TjF0NzhBc2F6T0l4UkpySkFWZFY3VE9FQ04xNUd4Ri1rU2NyNUZaTER1RDNzdUhLQy05SUc?oc=5",
@@ -437,15 +437,15 @@
       "score": 6.5,
       "published_at": "2026-06-01T07:40:06.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "IT 之家报道讯灵 AI GEO+Agent 双引擎生态，关键在于把数据、内容和智能体能力打包成企业增长方案。",
+      "summary": "IT 之家写到 AI GEO+Agent 把数据、内容和智能体打包成双引擎方案，关键在于能否给企业增长流程交出指标。",
       "original_summary": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 &nbsp;&nbsp; IT 之家",
-      "why_it_matters": "营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。",
-      "janet_take": "讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起；客户案例和转化指标会比生态口号更有说服力。",
-      "watch_next": "看讯灵是否公布客户案例和转化指标。",
+      "why_it_matters": "营销和企业数字化团队要看 AI GEO+Agent：内容生产、数据分析和智能体执行能不能接成闭环，会直接影响客户转化指标。",
+      "janet_take": "AI GEO+Agent 更像企业营销和内容基础设施。所谓生态要成立，必须把内容生产、数据分析和智能体执行结果对上账；如果没有客户案例和转化指标，包装得再完整也只是热词拼盘。",
+      "watch_next": "看 AI GEO+Agent 是否公布客户案例和转化指标。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0007"
@@ -477,14 +477,14 @@
         "IT 之家",
         "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家"
       ],
-      "content": "IT 之家提到 AI GEO+Agent，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家」。IT 之家报道讯灵 AI GEO+Agent 双引擎生态，关键在于把数据、内容和智能体能力打包成企业增长方案。营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起；客户案例和转化指标会比生态口号更有说服力。AI GEO+Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看讯灵是否公布客户案例和转化指标。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "IT 之家提到 AI GEO+Agent，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家」。IT 之家写到 AI GEO+Agent 把数据、内容和智能体打包成双引擎方案，关键在于能否给企业增长流程交出指标。营销和企业数字化团队要看 AI GEO+Agent：内容生产、数据分析和智能体执行能不能接成闭环，会直接影响客户转化指标。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。AI GEO+Agent 更像企业营销和内容基础设施。所谓生态要成立，必须把内容生产、数据分析和智能体执行结果对上账；如果没有客户案例和转化指标，包装得再完整也只是热词拼盘。AI GEO+Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 AI GEO+Agent 是否公布客户案例和转化指标。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-ithome-9e46a2c1e9e7.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-ithome-9e46a2c1e9e7.jpg",
-        "alt": "新闻视觉：讯灵 AI GEO+Agent 主打内容与智能体生态",
+        "alt": "新闻视觉：AI GEO+Agent 推进智能体能力",
         "caption": "开放授权图片，用来辅助呈现「AI GEO+Agent」相关对象。",
         "credit": "Wolf, Eric S.",
         "license": "Public domain",
@@ -517,9 +517,9 @@
         "products": [
           "Speculative Decoding Across Languages"
         ],
-        "action": "推出",
+        "action": "研究",
         "audience": "研究者和评测团队",
-        "editorial_angle": "Speculative Decoding Across Languages 的推出会影响研究者和评测团队",
+        "editorial_angle": "Speculative Decoding Across Languages 的研究会影响研究者和评测团队",
         "story_facts": [
           {
             "label": "entity",
@@ -527,7 +527,7 @@
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "研究"
           },
           {
             "label": "concrete_object",
@@ -537,8 +537,8 @@
         "original_title": "Speculative Decoding Across Languages",
         "original_summary": "arXiv:2605.30580v1 Announce Type: new Abstract: Speculative decoding has become a crucial component of large language model (LLM) inference, enabling faster generation by drafting multiple tokens and verifying them in parallel. However, small draft models tend to suffer from disproportionately poor multilingual capabilities. Thus, when generating text in a non-English language, speculative decoding is far less effective. We compare three strategies to improve speculative decoding efficiency for eleven languages: finetuning the draft model on task-specific data (translation); finetuning the draft model on unlabeled monolingual corpora; and training simple n-gram draft models on the same monolingual corpora. We evaluate efficiency on translation (from English into the target language) and the held-out task of story generation. We find that while task-specific distillation can significantly improve efficiency, distilled models generalize poorly to a new task. Meanwhile, n-gram draft models, despite lower acceptance rates, consistently provide large speed-ups due to much faster draft generation."
       },
-      "zh_title": "Speculative Decoding Across Languages 比较多语言解码",
-      "zh_summary": "arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，关键在于不同语言下加速效果是否稳定。",
+      "zh_title": "Speculative 研究新方法",
+      "zh_summary": "arXiv 这篇研究围绕 Speculative Decoding Across Languages 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "story_facts": [
         {
           "label": "entity",
@@ -546,14 +546,14 @@
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "研究"
         },
         {
           "label": "concrete_object",
           "value": "Speculative Decoding Across Languages"
         }
       ],
-      "title": "Speculative Decoding Across Languages 比较多语言解码",
+      "title": "Speculative 研究新方法",
       "original_title": "Speculative Decoding Across Languages",
       "url": "https://arxiv.org/abs/2605.30580",
       "source_url": "https://arxiv.org/abs/2605.30580",
@@ -565,15 +565,15 @@
       "score": 8,
       "published_at": "2026-06-01T04:00:00.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，关键在于不同语言下加速效果是否稳定。",
+      "summary": "arXiv 这篇研究围绕 Speculative Decoding Across Languages 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "original_summary": "arXiv:2605.30580v1 Announce Type: new Abstract: Speculative decoding has become a crucial component of large language model (LLM) inference, enabling faster generation by drafting multiple tokens and verifying them...",
-      "why_it_matters": "多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。",
-      "janet_take": "Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。",
-      "watch_next": "看论文是否公开各语言的速度和质量折损。",
+      "why_it_matters": "推理平台和多语言产品要看 Speculative Decoding Across Languages：推测解码跨语言不一定同速，中文和小语种的成本曲线要单独计算。",
+      "janet_take": "Speculative 的关键在于多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立；平台要按语言重算速度、接受率和质量折损，不能只拿英文基准做预算。",
+      "watch_next": "看 Speculative Decoding Across...",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0002"
@@ -595,30 +595,29 @@
       "core_eligible": true,
       "key_data": [
         "Speculative Decoding Across Languages",
-        "推出",
+        "研究",
         "研究者和评测团队",
         "arXiv cs.CL",
         "Speculative Decoding Across Languages"
       ],
-      "content": "arXiv 报道 Speculative，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Speculative Decoding Across Languages」。arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，关键在于不同语言下加速效果是否稳定。多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。Speculative 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开各语言的速度和质量折损。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "arXiv 报道 Speculative，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Speculative Decoding Across Languages」。arXiv 这篇研究围绕 Speculative Decoding Across Languages 展开，关键是问题设置、实验方法和复现路径是否足够清楚。推理平台和多语言产品要看 Speculative Decoding Across Languages：推测解码跨语言不一定同速，中文和小语种的成本曲线要单独计算。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Speculative 的关键在于多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立；平台要按语言重算速度、接受率和质量折损，不能只拿英文基准做预算。Speculative 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Speculative Decoding Across...。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "models",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-        "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "alt": "新闻视觉：Speculative 研究新方法",
+        "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+        "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+        "license": "CC BY-SA 3.0 de",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
         "matched_terms": [
-          "Speculative Decoding Across Languages",
-          "推出"
+          "Speculative Decoding Across Languages"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
@@ -641,9 +640,9 @@
         "products": [
           "Predictability Representations"
         ],
-        "action": "推出",
+        "action": "研究",
         "audience": "研究者和评测团队",
-        "editorial_angle": "Predictability Representations 的推出会影响研究者和评测团队",
+        "editorial_angle": "Predictability Representations 的研究会影响研究者和评测团队",
         "story_facts": [
           {
             "label": "entity",
@@ -651,7 +650,7 @@
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "研究"
           },
           {
             "label": "concrete_object",
@@ -661,8 +660,8 @@
         "original_title": "Learning Transferable Predictability Representations",
         "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems."
       },
-      "zh_title": "Predictability Representations 研究可迁移预测",
-      "zh_summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "zh_title": "Predictability 研究新方法",
+      "zh_summary": "arXiv 这篇研究围绕 Predictability Representations 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "story_facts": [
         {
           "label": "entity",
@@ -670,14 +669,14 @@
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "研究"
         },
         {
           "label": "concrete_object",
           "value": "Predictability Representations"
         }
       ],
-      "title": "Predictability Representations 研究可迁移预测",
+      "title": "Predictability 研究新方法",
       "original_title": "Learning Transferable Predictability Representations",
       "url": "https://arxiv.org/abs/2605.30592",
       "source_url": "https://arxiv.org/abs/2605.30592",
@@ -689,15 +688,15 @@
       "score": 8,
       "published_at": "2026-06-01T04:00:00.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "summary": "arXiv 这篇研究围绕 Predictability Representations 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning...",
-      "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
-      "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
-      "watch_next": "看论文是否公开跨域实验和代码。",
+      "why_it_matters": "研究者和模型团队要看 Predictability Representations：可迁移预测表示如果成立，会影响跨任务泛化和小样本评测。",
+      "janet_take": "Predictability 不是产品发布，而是在问模型学到的可预测性是否能跨任务复用。真正要盯的是跨域实验、数据设置和失败案例；这些不清楚，就不能把它当成泛化能力突破。",
+      "watch_next": "看 Predictability Representations 是否公开代码 ...",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0004"
@@ -718,163 +717,143 @@
       "core_eligible": true,
       "key_data": [
         "Predictability Representations",
-        "推出",
+        "研究",
         "研究者和评测团队",
         "arXiv cs.LG",
         "Learning Transferable Predictability Representations"
       ],
-      "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开跨域实验和代码。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv 这篇研究围绕 Predictability Representations 展开，关键是问题设置、实验方法和复现路径是否足够清楚。研究者和模型团队要看 Predictability Representations：可迁移预测表示如果成立，会影响跨任务泛化和小样本评测。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 不是产品发布，而是在问模型学到的可预测性是否能跨任务复用。真正要盯的是跨域实验、数据设置和失败案例；这些不清楚，就不能把它当成泛化能力突破。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Predictability Representations 是否公开代码 ...。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "open_source",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.svg",
-        "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
-        "caption": "Janet 根据「Predictability Representations」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "alt": "新闻视觉：Predictability 研究新方法",
+        "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+        "credit": "Little, Brian S.;Shukla, Shridhar B.",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
         "matched_terms": [
-          "Predictability Representations",
-          "推出"
+          "Predictability Representations"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "model_release"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
-      "id": "arxiv-stat-ml-afccfb168823",
-      "story_id": "arxiv-stat-ml-afccfb168823",
+      "id": "chinese-ithome-6c6b5e77a5b1",
+      "story_id": "chinese-ithome-6c6b5e77a5b1",
       "raw_item": {
-        "source": "arXiv stat.ML",
-        "original_title": "Stochastic Gradients under Nuisances",
-        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
-        "url": "https://arxiv.org/abs/2508.20326",
-        "published_at": "2026-06-01T04:00:00.000Z",
-        "category": "papers",
+        "source": "IT 之家",
+        "original_title": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家",
+        "original_summary": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 &nbsp;&nbsp; IT 之家",
+        "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+        "published_at": "2026-06-01T22:38:44.000Z",
+        "category": "china",
         "image_candidates": []
       },
       "story_fact": {
-        "concrete_object": "Stochastic Gradients",
+        "concrete_object": "Qwen3.7-Plus",
         "entities": [
-          "Stochastic Gradients",
-          "Nuisances"
+          "Qwen3.7-Plus"
         ],
         "products": [
-          "Stochastic Gradients",
-          "Nuisances"
+          "Qwen3.7-Plus"
         ],
-        "action": "推出",
-        "audience": "研究者和评测团队",
-        "editorial_angle": "Stochastic Gradients 的推出会影响研究者和评测团队",
+        "action": "智能体能力",
+        "audience": "相关产品团队和使用者",
+        "editorial_angle": "Qwen3.7-Plus 的智能体能力会影响相关产品团队和使用者",
         "story_facts": [
           {
             "label": "entity",
-            "value": "Stochastic Gradients"
-          },
-          {
-            "label": "entity",
-            "value": "Nuisances"
+            "value": "Qwen3.7-Plus"
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "智能体能力"
           },
           {
             "label": "concrete_object",
-            "value": "Stochastic Gradients"
+            "value": "Qwen3.7-Plus"
           }
         ],
-        "original_title": "Stochastic Gradients under Nuisances",
-        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed."
+        "original_title": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家",
+        "original_summary": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 &nbsp;&nbsp; IT 之家"
       },
-      "zh_title": "Stochastic Gradients under Nuisances 研究噪声梯度",
-      "zh_summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "zh_title": "Qwen3.7-Plus 推进智能体能力",
+      "zh_summary": "IT 之家报道 Qwen3.7-Plus 升级多模态交互和混合智能体能力，关键在于模型输入、工具执行和结果校验能否接成一条链。",
       "story_facts": [
         {
           "label": "entity",
-          "value": "Stochastic Gradients"
-        },
-        {
-          "label": "entity",
-          "value": "Nuisances"
+          "value": "Qwen3.7-Plus"
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "智能体能力"
         },
         {
           "label": "concrete_object",
-          "value": "Stochastic Gradients"
+          "value": "Qwen3.7-Plus"
         }
       ],
-      "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
-      "original_title": "Stochastic Gradients under Nuisances",
-      "url": "https://arxiv.org/abs/2508.20326",
-      "source_url": "https://arxiv.org/abs/2508.20326",
-      "external_url": "https://arxiv.org/abs/2508.20326",
-      "source": "arXiv stat.ML",
-      "source_type": "official",
-      "source_rank": "A",
-      "category": "papers",
-      "score": 8,
-      "published_at": "2026-06-01T04:00:00.000Z",
+      "title": "Qwen3.7-Plus 推进智能体能力",
+      "original_title": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "source_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "source": "IT 之家",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "china",
+      "score": 6.5,
+      "published_at": "2026-06-01T22:38:44.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
-      "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning....",
-      "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
-      "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
-      "watch_next": "看它是否给出噪声条件下的实验复现。",
+      "summary": "IT 之家报道 Qwen3.7-Plus 升级多模态交互和混合智能体能力，关键在于模型输入、工具执行和结果校验能否接成一条链。",
+      "original_summary": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 &nbsp;&nbsp; IT 之家",
+      "why_it_matters": "模型应用团队要看 Qwen3.7-Plus：多模态交互和智能体能力绑在一起后，输入、工具调用和执行边界会一起影响体验。",
+      "janet_take": "Qwen3.7-Plus 这条要看多模态交互和智能体执行是不是一起升级。模型会看图、听指令还不够，关键是能不能把输入理解、工具调用和结果校验串起来；如果只提升演示流畅度，业务价值很快会被权限和稳定性卡住。",
+      "watch_next": "看 Qwen3.7-Plus 是否公布多模态任务、工具调用和稳定性指标。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "news-store-0012"
+        "news-store-0008"
       ],
-      "editorial_score": 98,
-      "editorial_signals": [
-        {
-          "name": "research_signal",
-          "weight": 20,
-          "hits": [
-            "arXiv",
-            "inference"
-          ]
-        }
-      ],
+      "editorial_score": 48,
+      "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
       "key_data": [
-        "Stochastic Gradients",
-        "推出",
-        "研究者和评测团队",
-        "arXiv stat.ML",
-        "Stochastic Gradients under Nuisances"
+        "Qwen3.7-Plus",
+        "智能体能力",
+        "相关产品团队和使用者",
+        "IT 之家",
+        "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家"
       ],
-      "content": "arXiv 报道 Stochastic Gradients，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Stochastic Gradients under Nuisances」。arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Stochastic Gradients 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看它是否给出噪声条件下的实验复现。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
-      "primary_section": "open_source",
+      "content": "IT 之家提到 Qwen3.7-Plus，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家」。IT 之家报道 Qwen3.7-Plus 升级多模态交互和混合智能体能力，关键在于模型输入、工具执行和结果校验能否接成一条链。模型应用团队要看 Qwen3.7-Plus：多模态交互和智能体能力绑在一起后，输入、工具调用和执行边界会一起影响体验。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Qwen3.7-Plus 这条要看多模态交互和智能体执行是不是一起升级。模型会看图、听指令还不够，关键是能不能把输入理解、工具调用和结果校验串起来；如果只提升演示流畅度，业务价值很快会被权限和稳定性卡住。Qwen3.7-Plus 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Qwen3.7-Plus 是否公布多模态任务、工具调用和稳定性指标。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
         "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.svg",
-        "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
-        "caption": "Janet 根据「Stochastic Gradients」和「推出」生成的新闻视觉。",
+        "src": "assets/news-visuals/2026-06-02-v4/chinese-ithome-6c6b5e77a5b1.svg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-ithome-6c6b5e77a5b1.svg",
+        "alt": "新闻视觉：Qwen3.7-Plus 推进智能体能力",
+        "caption": "Janet 根据「Qwen3.7-Plus」和「智能体能力」生成的新闻视觉。",
         "credit": "Generated by Janet visual resolver",
         "license": "generated",
         "source_url": "",
         "matched_terms": [
-          "Stochastic Gradients",
-          "Nuisances"
+          "Qwen3.7-Plus",
+          "智能体能力"
         ],
         "relevance_score": 0.62,
         "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "template": "model_release"
       }
     },
     {
@@ -953,7 +932,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0010"
@@ -995,22 +974,22 @@
     {
       "role": "lead",
       "story_id": "arxiv-stat-ml-0dff84a7e9db",
-      "title": "Expert-Conditional Advice 研究学习何时转交专家",
+      "title": "Expert-Conditional 研究新方法",
       "source": "arXiv stat.ML",
       "category": "papers",
       "url": "https://arxiv.org/abs/2603.14324",
       "source_url": "https://arxiv.org/abs/2603.14324",
       "external_url": "https://arxiv.org/abs/2603.14324",
-      "summary": "arXiv stat.ML 这篇 Learning-to-Defer 论文研究在专家条件建议下，模型什么时候该自己预测、什么时候该把决策交给专家。",
-      "why_it_matters": "研究者和高风险产品团队要看：Learning-to-Defer 会影响医疗、安全审核这类场景里的人机分工和责任边界。",
-      "janet_take": "Expert-Conditional Advice 这篇的关键是“什么时候该让模型闭嘴”。在医疗、安全审核这类高风险流程里，会拒答、会转交专家，比硬撑一个答案更有价值；产品团队要把转交规则、责任边界和复核流程一起设计出来。",
-      "watch_next": "看论文是否给出可复现实验和高风险任务设置。",
+      "summary": "arXiv 这篇研究围绕 Expert-Conditional Advice 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
+      "why_it_matters": "高风险产品团队要看 Expert-Conditional Advice：模型什么时候转交专家，会影响医疗、安全审核这类流程的责任边界。",
+      "janet_take": "Expert-Conditional 问的是模型什么时候该退一步。在医疗、安全审核这类高风险流程里，会转交专家比硬撑答案更值钱；产品团队要把转交规则、责任边界和复核流程一起设计。",
+      "watch_next": "看 Expert-Conditional Advice 是否公开代码、数据和复 ...",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-0dff84a7e9db.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-0dff84a7e9db.jpg",
-        "alt": "新闻视觉：Expert-Conditional Advice 研究学习何时转交专家",
+        "alt": "新闻视觉：Expert-Conditional 研究新方法",
         "caption": "开放授权图片，用来辅助呈现「Expert-Conditional Advice」相关对象。",
         "credit": "Packe, Christopher, 1686-1749",
         "license": "Public domain",
@@ -1027,22 +1006,22 @@
     {
       "role": "signal",
       "story_id": "chinese-sina-ai-3f4fa3bd2e89",
-      "title": "企查查 MCP 接入 30+ 行业企业数据",
+      "title": "AI Agent 推进智能体能力",
       "source": "新浪 AI 热点",
       "category": "china",
       "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBvX0JfLTBuMEJkdU5IVWtkS1hfdnQwT2tzTGNQM3VyQmpkU3JBd3pNN0FNdjJoYXF2Y0I0QTJCd1JSN01ib1FKaE5tdVgzVl9McEVnYjZVbEJCYXUzQlBaYmU1emk4U2pPV2wxNGtudFVWQnlRX0tnRQ?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBvX0JfLTBuMEJkdU5IVWtkS1hfdnQwT2tzTGNQM3VyQmpkU3JBd3pNN0FNdjJoYXF2Y0I0QTJCd1JSN01ib1FKaE5tdVgzVl9McEVnYjZVbEJCYXUzQlBaYmU1emk4U2pPV2wxNGtudFVWQnlRX0tnRQ?oc=5",
       "external_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBvX0JfLTBuMEJkdU5IVWtkS1hfdnQwT2tzTGNQM3VyQmpkU3JBd3pNN0FNdjJoYXF2Y0I0QTJCd1JSN01ib1FKaE5tdVgzVl9McEVnYjZVbEJCYXUzQlBaYmU1emk4U2pPV2wxNGtudFVWQnlRX0tnRQ?oc=5",
-      "summary": "企查查把 MCP 接进 30 多个行业，让 AI Agent 能调用实时企业数据，关键在于减少幻觉和 Token 消耗。",
-      "why_it_matters": "企业服务和 Agent 团队要看：企查查 MCP 把外部数据源接进工具链后，企业查询、尽调和风控流程会更容易自动化。",
-      "janet_take": "企查查 MCP 这条不是泛泛讲 Agent，而是把实时企业数据塞进工具调用里。它能不能减少幻觉，要看数据权限、更新频率和错误回滚，而不是只看接了多少行业。 AI Agent 的价值不在“像不像人”，而在能不能稳定完成连续任务。小模型也想进工作流，权限、日志和出错责任会马上变脏。企业先拿低风险流程试，不要一上来交核心业务。",
-      "watch_next": "看企查查 MCP 是否公开行业接口和调用价格。",
+      "summary": "新浪 AI 热点写到 AI Agent 接入实时企业数据，关键在于智能体能否在查询、尽调和风控里少编答案、少耗 Token。",
+      "why_it_matters": "企业服务和 Agent 团队要看 AI Agent：外部企业数据接进工具调用后，权限、更新频率和错误回滚会决定它能不能减少幻觉。",
+      "janet_take": "AI Agent 这类能力不是再做一个聊天入口，而是把实时数据塞进工具调用里。真正要看的不是接了多少行业，而是数据权限、更新频率和错误回滚；这些没讲清，智能体越勤快越容易把错放大。",
+      "watch_next": "看 AI Agent 是否公开数据权限、更新频率和调用价格。",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-3f4fa3bd2e89.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-3f4fa3bd2e89.jpg",
-        "alt": "新闻视觉：企查查 MCP 接入 30+ 行业企业数据",
+        "alt": "新闻视觉：AI Agent 推进智能体能力",
         "caption": "开放授权图片，用来辅助呈现「AI Agent」相关对象。",
         "credit": "Stanford Institute for Human-Centered Artificial Intelligence (permission obtained by email from the AI index research manager)",
         "license": "CC BY-SA 4.0",
@@ -1059,23 +1038,23 @@
     {
       "role": "signal",
       "story_id": "arxiv-cs-cl-6ec8b283e1a3",
-      "title": "Incremental BPE Tokenization 研究增量分词",
+      "title": "Incremental BPE 研究新方法",
       "source": "arXiv cs.CL",
       "category": "papers",
       "url": "https://arxiv.org/abs/2605.30813",
       "source_url": "https://arxiv.org/abs/2605.30813",
       "external_url": "https://arxiv.org/abs/2605.30813",
-      "summary": "arXiv cs.CL 这篇论文关注 Incremental BPE Tokenization，关键在于让分词在流式和增量场景里更高效地更新。",
-      "why_it_matters": "模型工程团队要看：增量 BPE 如果稳定，会影响长文本、实时输入和多轮生成里的延迟与缓存策略。",
-      "janet_take": "Incremental BPE Tokenization 看起来很底层，但它盯的是流式输入和长文本里的等待时间。分词少重算一次，实时产品就少卡一拍，推理成本也更容易压下来；模型工程团队要把延迟、缓存命中和质量折损一起测。",
-      "watch_next": "看它在流式生成和长上下文任务里的延迟数据。",
+      "summary": "arXiv 这篇研究围绕 Incremental BPE Tokenization 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
+      "why_it_matters": "模型工程团队要看 Incremental BPE Tokenization：增量分词如果能降低流式输入延迟，会直接影响长文本、多轮生成和推理账单。",
+      "janet_take": "Incremental BPE 看起来底层，但它盯的是流式输入和长文本里的等待时间。分词少重算一次，实时产品就少卡一拍；工程团队要把延迟、缓存命中、质量折损和推理账单一起测。",
+      "watch_next": "看 Incremental BPE Tokenization 是否公开代码、数 ...",
       "visual": {
         "status": "ready",
         "mode": "generated_story_svg",
         "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-6ec8b283e1a3.svg",
         "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-6ec8b283e1a3.svg",
-        "alt": "新闻视觉：Incremental BPE Tokenization 研究增量分词",
-        "caption": "Janet 根据「Incremental BPE Tokenization」和「推出」生成的新闻视觉。",
+        "alt": "新闻视觉：Incremental BPE 研究新方法",
+        "caption": "Janet 根据「Incremental BPE Tokenization」和「研究」生成的新闻视觉。",
         "credit": "Generated by Janet visual resolver",
         "license": "generated",
         "source_url": "",
@@ -1091,22 +1070,22 @@
     {
       "role": "compact",
       "story_id": "chinese-tmtpost-695e9c2a92ec",
-      "title": "扣子 Coze 3.0 升级 Agent 平台",
+      "title": "AI Agent 推进智能体能力（钛媒体）",
       "source": "钛媒体",
       "category": "china",
       "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96RmNIR21UY3ZnVWlYQzNXaGZxQ0dPOWtBbXU3YnplbVpLUG5iVEZxN3Y3clJoaE5kdk1PRm1nNTNlS3h2a054TTg2cjdtM01aT2JZSTZtVEx3UQ?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96RmNIR21UY3ZnVWlYQzNXaGZxQ0dPOWtBbXU3YnplbVpLUG5iVEZxN3Y3clJoaE5kdk1PRm1nNTNlS3h2a054TTg2cjdtM01aT2JZSTZtVEx3UQ?oc=5",
       "external_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96RmNIR21UY3ZnVWlYQzNXaGZxQ0dPOWtBbXU3YnplbVpLUG5iVEZxN3Y3clJoaE5kdk1PRm1nNTNlS3h2a054TTg2cjdtM01aT2JZSTZtVEx3UQ?oc=5",
-      "summary": "钛媒体报道字节跳动扣子 Coze 3.0 上线，关键在于把 AI Agent 平台能力继续往企业和开发者场景推进。",
-      "why_it_matters": "开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。",
-      "janet_take": "Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口；插件、权限和企业交付细节会决定它能不能长期留在工作流里。",
-      "watch_next": "看 Coze 3.0 的插件、部署和企业权限细则。",
+      "summary": "钛媒体报道 AI Agent 平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。",
+      "why_it_matters": "开发者和企业自动化团队要看 AI Agent：插件、部署、权限和维护成本，会决定它能不能成为默认 Agent 平台入口。",
+      "janet_take": "AI Agent 的压力在部署和维护，不在发布会。平台要让开发者少搭工具、少踩权限坑，还要能计费、可审计、可迁移；插件和企业交付细节，才会决定它能不能留在工作流里。",
+      "watch_next": "看 AI Agent 是否给出插件、部署和企业权限细则。",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-tmtpost-695e9c2a92ec.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-tmtpost-695e9c2a92ec.jpg",
-        "alt": "新闻视觉：扣子 Coze 3.0 升级 Agent 平台",
+        "alt": "新闻视觉：AI Agent 推进智能体能力（钛媒体）",
         "caption": "开放授权图片，用来辅助呈现「AI Agent」相关对象。",
         "credit": "Stanford Institute for Human-Centered Artificial Intelligence (permission obtained by email from the AI index research manager)",
         "license": "CC BY-SA 4.0",
@@ -1123,22 +1102,22 @@
     {
       "role": "compact",
       "story_id": "chinese-ithome-9e46a2c1e9e7",
-      "title": "讯灵 AI GEO+Agent 主打内容与智能体生态",
+      "title": "AI GEO+Agent 推进智能体能力",
       "source": "IT 之家",
       "category": "china",
       "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPYjlidG1BLVRiZEd0TUI0TjF0NzhBc2F6T0l4UkpySkFWZFY3VE9FQ04xNUd4Ri1rU2NyNUZaTER1RDNzdUhLQy05SUc?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPYjlidG1BLVRiZEd0TUI0TjF0NzhBc2F6T0l4UkpySkFWZFY3VE9FQ04xNUd4Ri1rU2NyNUZaTER1RDNzdUhLQy05SUc?oc=5",
       "external_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPYjlidG1BLVRiZEd0TUI0TjF0NzhBc2F6T0l4UkpySkFWZFY3VE9FQ04xNUd4Ri1rU2NyNUZaTER1RDNzdUhLQy05SUc?oc=5",
-      "summary": "IT 之家报道讯灵 AI GEO+Agent 双引擎生态，关键在于把数据、内容和智能体能力打包成企业增长方案。",
-      "why_it_matters": "营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。",
-      "janet_take": "讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起；客户案例和转化指标会比生态口号更有说服力。",
-      "watch_next": "看讯灵是否公布客户案例和转化指标。",
+      "summary": "IT 之家写到 AI GEO+Agent 把数据、内容和智能体打包成双引擎方案，关键在于能否给企业增长流程交出指标。",
+      "why_it_matters": "营销和企业数字化团队要看 AI GEO+Agent：内容生产、数据分析和智能体执行能不能接成闭环，会直接影响客户转化指标。",
+      "janet_take": "AI GEO+Agent 更像企业营销和内容基础设施。所谓生态要成立，必须把内容生产、数据分析和智能体执行结果对上账；如果没有客户案例和转化指标，包装得再完整也只是热词拼盘。",
+      "watch_next": "看 AI GEO+Agent 是否公布客户案例和转化指标。",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-ithome-9e46a2c1e9e7.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-ithome-9e46a2c1e9e7.jpg",
-        "alt": "新闻视觉：讯灵 AI GEO+Agent 主打内容与智能体生态",
+        "alt": "新闻视觉：AI GEO+Agent 推进智能体能力",
         "caption": "开放授权图片，用来辅助呈现「AI GEO+Agent」相关对象。",
         "credit": "Wolf, Eric S.",
         "license": "Public domain",
@@ -1154,97 +1133,95 @@
     {
       "role": "compact",
       "story_id": "arxiv-cs-cl-b6cff8100719",
-      "title": "Speculative Decoding Across Languages 比较多语言解码",
+      "title": "Speculative 研究新方法",
       "source": "arXiv cs.CL",
       "category": "papers",
       "url": "https://arxiv.org/abs/2605.30580",
       "source_url": "https://arxiv.org/abs/2605.30580",
       "external_url": "https://arxiv.org/abs/2605.30580",
-      "summary": "arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，关键在于不同语言下加速效果是否稳定。",
-      "why_it_matters": "多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。",
-      "janet_take": "Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。",
-      "watch_next": "看论文是否公开各语言的速度和质量折损。",
+      "summary": "arXiv 这篇研究围绕 Speculative Decoding Across Languages 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
+      "why_it_matters": "推理平台和多语言产品要看 Speculative Decoding Across Languages：推测解码跨语言不一定同速，中文和小语种的成本曲线要单独计算。",
+      "janet_take": "Speculative 的关键在于多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立；平台要按语言重算速度、接受率和质量折损，不能只拿英文基准做预算。",
+      "watch_next": "看 Speculative Decoding Across...",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-        "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "alt": "新闻视觉：Speculative 研究新方法",
+        "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+        "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+        "license": "CC BY-SA 3.0 de",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
         "matched_terms": [
-          "Speculative Decoding Across Languages",
-          "推出"
+          "Speculative Decoding Across Languages"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
       "role": "compact",
       "story_id": "arxiv-cs-lg-afe9834a3c40",
-      "title": "Predictability Representations 研究可迁移预测",
+      "title": "Predictability 研究新方法",
       "source": "arXiv cs.LG",
       "category": "papers",
       "url": "https://arxiv.org/abs/2605.30592",
       "source_url": "https://arxiv.org/abs/2605.30592",
       "external_url": "https://arxiv.org/abs/2605.30592",
-      "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
-      "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
-      "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
-      "watch_next": "看论文是否公开跨域实验和代码。",
+      "summary": "arXiv 这篇研究围绕 Predictability Representations 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
+      "why_it_matters": "研究者和模型团队要看 Predictability Representations：可迁移预测表示如果成立，会影响跨任务泛化和小样本评测。",
+      "janet_take": "Predictability 不是产品发布，而是在问模型学到的可预测性是否能跨任务复用。真正要盯的是跨域实验、数据设置和失败案例；这些不清楚，就不能把它当成泛化能力突破。",
+      "watch_next": "看 Predictability Representations 是否公开代码 ...",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.svg",
-        "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
-        "caption": "Janet 根据「Predictability Representations」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "alt": "新闻视觉：Predictability 研究新方法",
+        "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+        "credit": "Little, Brian S.;Shukla, Shridhar B.",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
         "matched_terms": [
-          "Predictability Representations",
-          "推出"
+          "Predictability Representations"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "model_release"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
       "role": "compact",
-      "story_id": "arxiv-stat-ml-afccfb168823",
-      "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
-      "source": "arXiv stat.ML",
-      "category": "papers",
-      "url": "https://arxiv.org/abs/2508.20326",
-      "source_url": "https://arxiv.org/abs/2508.20326",
-      "external_url": "https://arxiv.org/abs/2508.20326",
-      "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
-      "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
-      "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
-      "watch_next": "看它是否给出噪声条件下的实验复现。",
+      "story_id": "chinese-ithome-6c6b5e77a5b1",
+      "title": "Qwen3.7-Plus 推进智能体能力",
+      "source": "IT 之家",
+      "category": "china",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "source_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "summary": "IT 之家报道 Qwen3.7-Plus 升级多模态交互和混合智能体能力，关键在于模型输入、工具执行和结果校验能否接成一条链。",
+      "why_it_matters": "模型应用团队要看 Qwen3.7-Plus：多模态交互和智能体能力绑在一起后，输入、工具调用和执行边界会一起影响体验。",
+      "janet_take": "Qwen3.7-Plus 这条要看多模态交互和智能体执行是不是一起升级。模型会看图、听指令还不够，关键是能不能把输入理解、工具调用和结果校验串起来；如果只提升演示流畅度，业务价值很快会被权限和稳定性卡住。",
+      "watch_next": "看 Qwen3.7-Plus 是否公布多模态任务、工具调用和稳定性指标。",
       "visual": {
         "status": "ready",
         "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.svg",
-        "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
-        "caption": "Janet 根据「Stochastic Gradients」和「推出」生成的新闻视觉。",
+        "src": "assets/news-visuals/2026-06-02-v4/chinese-ithome-6c6b5e77a5b1.svg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-ithome-6c6b5e77a5b1.svg",
+        "alt": "新闻视觉：Qwen3.7-Plus 推进智能体能力",
+        "caption": "Janet 根据「Qwen3.7-Plus」和「智能体能力」生成的新闻视觉。",
         "credit": "Generated by Janet visual resolver",
         "license": "generated",
         "source_url": "",
         "matched_terms": [
-          "Stochastic Gradients",
-          "Nuisances"
+          "Qwen3.7-Plus",
+          "智能体能力"
         ],
         "relevance_score": 0.62,
         "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "template": "model_release"
       }
     },
     {
@@ -1279,20 +1256,20 @@
       }
     }
   ],
-  "daily_title": "Learning-to-Defer 今天盯上推出",
+  "daily_title": "Learning-to-Defer 带出研究",
   "daily_brief": {
-    "daily_title": "Learning-to-Defer 今天盯上推出",
+    "daily_title": "Learning-to-Defer 带出研究",
     "theme": "Learning-to-Defer 成为今日主线",
-    "daily_summary": "今天的主线落在 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI，看点是推出、智能体能力、AI 资本支出，不是抽象趋势。",
+    "daily_summary": "今天的主线落在 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI，看点是研究、智能体能力、AI 资本支出，不是抽象趋势。",
     "daily_judgment": "Expert-Conditional 这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
-    "daily_thesis": "今天先看的对象是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI：它们分别牵出推出、智能体能力、AI 资本支出。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
+    "daily_thesis": "今天先看的对象是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI：它们分别牵出研究、智能体能力、AI 资本支出。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
     "intro_text": "Expert-Conditional 先把今天的注意力拉住；Learning-to-Defer 补上另一条线索。今天先看这些具体产品怎么动。",
     "module_count": 3
   },
   "cover": {
-    "daily_title": "Learning-to-Defer 今天盯上推出",
-    "cover_title": "Learning-to-Defer 牵出推出",
-    "cover_summary": "arXiv stat.ML 把 Learning-to-Defer 的推出推到今天主线，影响研究者和评测团队对功能边界和接入方式的判断。",
+    "daily_title": "Learning-to-Defer 带出研究",
+    "cover_title": "Learning-to-Defer 牵出研究",
+    "cover_summary": "arXiv stat.ML 把 Learning-to-Defer 的研究推到今天主线，影响研究者和评测团队对功能边界和接入方式的判断。",
     "daily_judgment": "Expert-Conditional 这类新闻要看对象和动作，能落到入口、接口或评测方法里才算数。",
     "lead_story_id": "arxiv-stat-ml-0dff84a7e9db",
     "visual": {
@@ -1300,7 +1277,7 @@
       "mode": "open_license_image",
       "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-0dff84a7e9db.jpg",
       "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-0dff84a7e9db.jpg",
-      "alt": "新闻视觉：Expert-Conditional Advice 研究学习何时转交专家",
+      "alt": "新闻视觉：Expert-Conditional 研究新方法",
       "caption": "开放授权图片，用来辅助呈现「Expert-Conditional Advice」相关对象。",
       "credit": "Packe, Christopher, 1686-1749",
       "license": "Public domain",
@@ -1318,28 +1295,28 @@
     {
       "module_id": "open_source",
       "module_title": "增量 BPE 把 OpenAI 放到可复查路径里",
-      "module_summary": "arXiv cs.CL、arXiv cs.LG、arXiv stat.ML 这组围绕 Incremental BPE、OpenAI、Predictability，要看推出能不能被复现、比较或接入。",
+      "module_summary": "arXiv cs.CL、arXiv cs.LG 这组围绕 Incremental BPE、OpenAI、Predictability，要看研究能不能被复现、比较或接入。",
       "story_ids": [
         "arxiv-cs-cl-6ec8b283e1a3",
-        "arxiv-cs-lg-afe9834a3c40",
-        "arxiv-stat-ml-afccfb168823"
+        "arxiv-cs-lg-afe9834a3c40"
       ]
     },
     {
       "module_id": "china_perspective",
       "module_title": "AI Agent 给中国视角补上 MCP",
-      "module_summary": "新浪 AI 热点、钛媒体、IT 之家这组补充 AI Agent、MCP、Token，把智能体能力、推出、AI 资本支出放在主线之外观察。",
+      "module_summary": "新浪 AI 热点、钛媒体、IT 之家这组补充 AI Agent、MCP、Token，把智能体能力、AI 资本支出放在主线之外观察。",
       "story_ids": [
         "chinese-sina-ai-3f4fa3bd2e89",
         "chinese-tmtpost-695e9c2a92ec",
         "chinese-ithome-9e46a2c1e9e7",
+        "chinese-ithome-6c6b5e77a5b1",
         "chinese-sina-ai-80ded116d9e7"
       ]
     },
     {
       "module_id": "models",
-      "module_title": "多语言推测解码 把 推出 落到产品层",
-      "module_summary": "arXiv cs.CL 这组看 Speculative，要看推出是否进入可用产品。",
+      "module_title": "多语言推测解码 把 研究 落到产品层",
+      "module_summary": "arXiv cs.CL 这组看 Speculative，要看研究是否进入可用产品。",
       "story_ids": [
         "arxiv-cs-cl-b6cff8100719"
       ]
@@ -1368,9 +1345,9 @@
           "AI Agent",
           "Coze"
         ],
-        "action": "推出",
+        "action": "智能体能力",
         "audience": "相关产品团队和使用者",
-        "editorial_angle": "AI Agent 的推出会影响相关产品团队和使用者",
+        "editorial_angle": "AI Agent 的智能体能力会影响相关产品团队和使用者",
         "story_facts": [
           {
             "label": "entity",
@@ -1382,7 +1359,7 @@
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "智能体能力"
           },
           {
             "label": "concrete_object",
@@ -1392,8 +1369,8 @@
         "original_title": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体",
         "original_summary": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 &nbsp;&nbsp; 钛媒体"
       },
-      "zh_title": "扣子 Coze 3.0 升级 Agent 平台",
-      "zh_summary": "钛媒体报道字节跳动扣子 Coze 3.0 上线，关键在于把 AI Agent 平台能力继续往企业和开发者场景推进。",
+      "zh_title": "AI Agent 推进智能体能力（钛媒体）",
+      "zh_summary": "钛媒体报道 AI Agent 平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。",
       "story_facts": [
         {
           "label": "entity",
@@ -1405,14 +1382,14 @@
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "智能体能力"
         },
         {
           "label": "concrete_object",
           "value": "AI Agent"
         }
       ],
-      "title": "扣子 Coze 3.0 升级 Agent 平台",
+      "title": "AI Agent 推进智能体能力（钛媒体）",
       "original_title": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体",
       "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96RmNIR21UY3ZnVWlYQzNXaGZxQ0dPOWtBbXU3YnplbVpLUG5iVEZxN3Y3clJoaE5kdk1PRm1nNTNlS3h2a054TTg2cjdtM01aT2JZSTZtVEx3UQ?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE96RmNIR21UY3ZnVWlYQzNXaGZxQ0dPOWtBbXU3YnplbVpLUG5iVEZxN3Y3clJoaE5kdk1PRm1nNTNlS3h2a054TTg2cjdtM01aT2JZSTZtVEx3UQ?oc=5",
@@ -1424,15 +1401,15 @@
       "score": 6.5,
       "published_at": "2026-06-01T09:08:00.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "钛媒体报道字节跳动扣子 Coze 3.0 上线，关键在于把 AI Agent 平台能力继续往企业和开发者场景推进。",
+      "summary": "钛媒体报道 AI Agent 平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。",
       "original_summary": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 &nbsp;&nbsp; 钛媒体",
-      "why_it_matters": "开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。",
-      "janet_take": "Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口；插件、权限和企业交付细节会决定它能不能长期留在工作流里。",
-      "watch_next": "看 Coze 3.0 的插件、部署和企业权限细则。",
+      "why_it_matters": "开发者和企业自动化团队要看 AI Agent：插件、部署、权限和维护成本，会决定它能不能成为默认 Agent 平台入口。",
+      "janet_take": "AI Agent 的压力在部署和维护，不在发布会。平台要让开发者少搭工具、少踩权限坑，还要能计费、可审计、可迁移；插件和企业交付细节，才会决定它能不能留在工作流里。",
+      "watch_next": "看 AI Agent 是否给出插件、部署和企业权限细则。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0006"
@@ -1459,19 +1436,19 @@
       "core_eligible": true,
       "key_data": [
         "AI Agent",
-        "推出",
+        "智能体能力",
         "相关产品团队和使用者",
         "钛媒体",
         "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体"
       ],
-      "content": "钛媒体报道 AI Agent，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体」。钛媒体报道字节跳动扣子 Coze 3.0 上线，关键在于把 AI Agent 平台能力继续往企业和开发者场景推进。开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口；插件、权限和企业交付细节会决定它能不能长期留在工作流里。AI Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Coze 3.0 的插件、部署和企业权限细则。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "钛媒体提到 AI Agent，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体」。钛媒体报道 AI Agent 平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。开发者和企业自动化团队要看 AI Agent：插件、部署、权限和维护成本，会决定它能不能成为默认 Agent 平台入口。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。AI Agent 的压力在部署和维护，不在发布会。平台要让开发者少搭工具、少踩权限坑，还要能计费、可审计、可迁移；插件和企业交付细节，才会决定它能不能留在工作流里。AI Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 AI Agent 是否给出插件、部署和企业权限细则。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-tmtpost-695e9c2a92ec.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-tmtpost-695e9c2a92ec.jpg",
-        "alt": "新闻视觉：扣子 Coze 3.0 升级 Agent 平台",
+        "alt": "新闻视觉：AI Agent 推进智能体能力（钛媒体）",
         "caption": "开放授权图片，用来辅助呈现「AI Agent」相关对象。",
         "credit": "Stanford Institute for Human-Centered Artificial Intelligence (permission obtained by email from the AI index research manager)",
         "license": "CC BY-SA 4.0",
@@ -1525,8 +1502,8 @@
         "original_title": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家",
         "original_summary": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 &nbsp;&nbsp; IT 之家"
       },
-      "zh_title": "讯灵 AI GEO+Agent 主打内容与智能体生态",
-      "zh_summary": "IT 之家报道讯灵 AI GEO+Agent 双引擎生态，关键在于把数据、内容和智能体能力打包成企业增长方案。",
+      "zh_title": "AI GEO+Agent 推进智能体能力",
+      "zh_summary": "IT 之家写到 AI GEO+Agent 把数据、内容和智能体打包成双引擎方案，关键在于能否给企业增长流程交出指标。",
       "story_facts": [
         {
           "label": "entity",
@@ -1541,7 +1518,7 @@
           "value": "AI GEO+Agent"
         }
       ],
-      "title": "讯灵 AI GEO+Agent 主打内容与智能体生态",
+      "title": "AI GEO+Agent 推进智能体能力",
       "original_title": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家",
       "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPYjlidG1BLVRiZEd0TUI0TjF0NzhBc2F6T0l4UkpySkFWZFY3VE9FQ04xNUd4Ri1rU2NyNUZaTER1RDNzdUhLQy05SUc?oc=5",
       "source_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBPYjlidG1BLVRiZEd0TUI0TjF0NzhBc2F6T0l4UkpySkFWZFY3VE9FQ04xNUd4Ri1rU2NyNUZaTER1RDNzdUhLQy05SUc?oc=5",
@@ -1553,15 +1530,15 @@
       "score": 6.5,
       "published_at": "2026-06-01T07:40:06.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "IT 之家报道讯灵 AI GEO+Agent 双引擎生态，关键在于把数据、内容和智能体能力打包成企业增长方案。",
+      "summary": "IT 之家写到 AI GEO+Agent 把数据、内容和智能体打包成双引擎方案，关键在于能否给企业增长流程交出指标。",
       "original_summary": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 &nbsp;&nbsp; IT 之家",
-      "why_it_matters": "营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。",
-      "janet_take": "讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起；客户案例和转化指标会比生态口号更有说服力。",
-      "watch_next": "看讯灵是否公布客户案例和转化指标。",
+      "why_it_matters": "营销和企业数字化团队要看 AI GEO+Agent：内容生产、数据分析和智能体执行能不能接成闭环，会直接影响客户转化指标。",
+      "janet_take": "AI GEO+Agent 更像企业营销和内容基础设施。所谓生态要成立，必须把内容生产、数据分析和智能体执行结果对上账；如果没有客户案例和转化指标，包装得再完整也只是热词拼盘。",
+      "watch_next": "看 AI GEO+Agent 是否公布客户案例和转化指标。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0007"
@@ -1593,14 +1570,14 @@
         "IT 之家",
         "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家"
       ],
-      "content": "IT 之家提到 AI GEO+Agent，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家」。IT 之家报道讯灵 AI GEO+Agent 双引擎生态，关键在于把数据、内容和智能体能力打包成企业增长方案。营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起；客户案例和转化指标会比生态口号更有说服力。AI GEO+Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看讯灵是否公布客户案例和转化指标。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "IT 之家提到 AI GEO+Agent，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家」。IT 之家写到 AI GEO+Agent 把数据、内容和智能体打包成双引擎方案，关键在于能否给企业增长流程交出指标。营销和企业数字化团队要看 AI GEO+Agent：内容生产、数据分析和智能体执行能不能接成闭环，会直接影响客户转化指标。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。AI GEO+Agent 更像企业营销和内容基础设施。所谓生态要成立，必须把内容生产、数据分析和智能体执行结果对上账；如果没有客户案例和转化指标，包装得再完整也只是热词拼盘。AI GEO+Agent 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 AI GEO+Agent 是否公布客户案例和转化指标。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
         "mode": "open_license_image",
         "src": "assets/news-visuals/2026-06-02-v4/chinese-ithome-9e46a2c1e9e7.jpg",
         "local_path": "assets/news-visuals/2026-06-02-v4/chinese-ithome-9e46a2c1e9e7.jpg",
-        "alt": "新闻视觉：讯灵 AI GEO+Agent 主打内容与智能体生态",
+        "alt": "新闻视觉：AI GEO+Agent 推进智能体能力",
         "caption": "开放授权图片，用来辅助呈现「AI GEO+Agent」相关对象。",
         "credit": "Wolf, Eric S.",
         "license": "Public domain",
@@ -1633,9 +1610,9 @@
         "products": [
           "Speculative Decoding Across Languages"
         ],
-        "action": "推出",
+        "action": "研究",
         "audience": "研究者和评测团队",
-        "editorial_angle": "Speculative Decoding Across Languages 的推出会影响研究者和评测团队",
+        "editorial_angle": "Speculative Decoding Across Languages 的研究会影响研究者和评测团队",
         "story_facts": [
           {
             "label": "entity",
@@ -1643,7 +1620,7 @@
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "研究"
           },
           {
             "label": "concrete_object",
@@ -1653,8 +1630,8 @@
         "original_title": "Speculative Decoding Across Languages",
         "original_summary": "arXiv:2605.30580v1 Announce Type: new Abstract: Speculative decoding has become a crucial component of large language model (LLM) inference, enabling faster generation by drafting multiple tokens and verifying them in parallel. However, small draft models tend to suffer from disproportionately poor multilingual capabilities. Thus, when generating text in a non-English language, speculative decoding is far less effective. We compare three strategies to improve speculative decoding efficiency for eleven languages: finetuning the draft model on task-specific data (translation); finetuning the draft model on unlabeled monolingual corpora; and training simple n-gram draft models on the same monolingual corpora. We evaluate efficiency on translation (from English into the target language) and the held-out task of story generation. We find that while task-specific distillation can significantly improve efficiency, distilled models generalize poorly to a new task. Meanwhile, n-gram draft models, despite lower acceptance rates, consistently provide large speed-ups due to much faster draft generation."
       },
-      "zh_title": "Speculative Decoding Across Languages 比较多语言解码",
-      "zh_summary": "arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，关键在于不同语言下加速效果是否稳定。",
+      "zh_title": "Speculative 研究新方法",
+      "zh_summary": "arXiv 这篇研究围绕 Speculative Decoding Across Languages 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "story_facts": [
         {
           "label": "entity",
@@ -1662,14 +1639,14 @@
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "研究"
         },
         {
           "label": "concrete_object",
           "value": "Speculative Decoding Across Languages"
         }
       ],
-      "title": "Speculative Decoding Across Languages 比较多语言解码",
+      "title": "Speculative 研究新方法",
       "original_title": "Speculative Decoding Across Languages",
       "url": "https://arxiv.org/abs/2605.30580",
       "source_url": "https://arxiv.org/abs/2605.30580",
@@ -1681,15 +1658,15 @@
       "score": 8,
       "published_at": "2026-06-01T04:00:00.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，关键在于不同语言下加速效果是否稳定。",
+      "summary": "arXiv 这篇研究围绕 Speculative Decoding Across Languages 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "original_summary": "arXiv:2605.30580v1 Announce Type: new Abstract: Speculative decoding has become a crucial component of large language model (LLM) inference, enabling faster generation by drafting multiple tokens and verifying them...",
-      "why_it_matters": "多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。",
-      "janet_take": "Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。",
-      "watch_next": "看论文是否公开各语言的速度和质量折损。",
+      "why_it_matters": "推理平台和多语言产品要看 Speculative Decoding Across Languages：推测解码跨语言不一定同速，中文和小语种的成本曲线要单独计算。",
+      "janet_take": "Speculative 的关键在于多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立；平台要按语言重算速度、接受率和质量折损，不能只拿英文基准做预算。",
+      "watch_next": "看 Speculative Decoding Across...",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0002"
@@ -1711,30 +1688,29 @@
       "core_eligible": true,
       "key_data": [
         "Speculative Decoding Across Languages",
-        "推出",
+        "研究",
         "研究者和评测团队",
         "arXiv cs.CL",
         "Speculative Decoding Across Languages"
       ],
-      "content": "arXiv 报道 Speculative，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Speculative Decoding Across Languages」。arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，关键在于不同语言下加速效果是否稳定。多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。Speculative 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开各语言的速度和质量折损。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "arXiv 报道 Speculative，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Speculative Decoding Across Languages」。arXiv 这篇研究围绕 Speculative Decoding Across Languages 展开，关键是问题设置、实验方法和复现路径是否足够清楚。推理平台和多语言产品要看 Speculative Decoding Across Languages：推测解码跨语言不一定同速，中文和小语种的成本曲线要单独计算。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Speculative 的关键在于多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立；平台要按语言重算速度、接受率和质量折损，不能只拿英文基准做预算。Speculative 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Speculative Decoding Across...。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "models",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-        "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "alt": "新闻视觉：Speculative 研究新方法",
+        "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+        "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+        "license": "CC BY-SA 3.0 de",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
         "matched_terms": [
-          "Speculative Decoding Across Languages",
-          "推出"
+          "Speculative Decoding Across Languages"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
@@ -1757,9 +1733,9 @@
         "products": [
           "Predictability Representations"
         ],
-        "action": "推出",
+        "action": "研究",
         "audience": "研究者和评测团队",
-        "editorial_angle": "Predictability Representations 的推出会影响研究者和评测团队",
+        "editorial_angle": "Predictability Representations 的研究会影响研究者和评测团队",
         "story_facts": [
           {
             "label": "entity",
@@ -1767,7 +1743,7 @@
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "研究"
           },
           {
             "label": "concrete_object",
@@ -1777,8 +1753,8 @@
         "original_title": "Learning Transferable Predictability Representations",
         "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems."
       },
-      "zh_title": "Predictability Representations 研究可迁移预测",
-      "zh_summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "zh_title": "Predictability 研究新方法",
+      "zh_summary": "arXiv 这篇研究围绕 Predictability Representations 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "story_facts": [
         {
           "label": "entity",
@@ -1786,14 +1762,14 @@
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "研究"
         },
         {
           "label": "concrete_object",
           "value": "Predictability Representations"
         }
       ],
-      "title": "Predictability Representations 研究可迁移预测",
+      "title": "Predictability 研究新方法",
       "original_title": "Learning Transferable Predictability Representations",
       "url": "https://arxiv.org/abs/2605.30592",
       "source_url": "https://arxiv.org/abs/2605.30592",
@@ -1805,15 +1781,15 @@
       "score": 8,
       "published_at": "2026-06-01T04:00:00.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "summary": "arXiv 这篇研究围绕 Predictability Representations 展开，关键是问题设置、实验方法和复现路径是否足够清楚。",
       "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning...",
-      "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
-      "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
-      "watch_next": "看论文是否公开跨域实验和代码。",
+      "why_it_matters": "研究者和模型团队要看 Predictability Representations：可迁移预测表示如果成立，会影响跨任务泛化和小样本评测。",
+      "janet_take": "Predictability 不是产品发布，而是在问模型学到的可预测性是否能跨任务复用。真正要盯的是跨域实验、数据设置和失败案例；这些不清楚，就不能把它当成泛化能力突破。",
+      "watch_next": "看 Predictability Representations 是否公开代码 ...",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0004"
@@ -1834,163 +1810,143 @@
       "core_eligible": true,
       "key_data": [
         "Predictability Representations",
-        "推出",
+        "研究",
         "研究者和评测团队",
         "arXiv cs.LG",
         "Learning Transferable Predictability Representations"
       ],
-      "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开跨域实验和代码。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv 这篇研究围绕 Predictability Representations 展开，关键是问题设置、实验方法和复现路径是否足够清楚。研究者和模型团队要看 Predictability Representations：可迁移预测表示如果成立，会影响跨任务泛化和小样本评测。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 不是产品发布，而是在问模型学到的可预测性是否能跨任务复用。真正要盯的是跨域实验、数据设置和失败案例；这些不清楚，就不能把它当成泛化能力突破。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Predictability Representations 是否公开代码 ...。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
       "primary_section": "open_source",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.svg",
-        "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
-        "caption": "Janet 根据「Predictability Representations」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "alt": "新闻视觉：Predictability 研究新方法",
+        "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+        "credit": "Little, Brian S.;Shukla, Shridhar B.",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
         "matched_terms": [
-          "Predictability Representations",
-          "推出"
+          "Predictability Representations"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "model_release"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
-      "id": "arxiv-stat-ml-afccfb168823",
-      "story_id": "arxiv-stat-ml-afccfb168823",
+      "id": "chinese-ithome-6c6b5e77a5b1",
+      "story_id": "chinese-ithome-6c6b5e77a5b1",
       "raw_item": {
-        "source": "arXiv stat.ML",
-        "original_title": "Stochastic Gradients under Nuisances",
-        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
-        "url": "https://arxiv.org/abs/2508.20326",
-        "published_at": "2026-06-01T04:00:00.000Z",
-        "category": "papers",
+        "source": "IT 之家",
+        "original_title": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家",
+        "original_summary": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 &nbsp;&nbsp; IT 之家",
+        "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+        "published_at": "2026-06-01T22:38:44.000Z",
+        "category": "china",
         "image_candidates": []
       },
       "story_fact": {
-        "concrete_object": "Stochastic Gradients",
+        "concrete_object": "Qwen3.7-Plus",
         "entities": [
-          "Stochastic Gradients",
-          "Nuisances"
+          "Qwen3.7-Plus"
         ],
         "products": [
-          "Stochastic Gradients",
-          "Nuisances"
+          "Qwen3.7-Plus"
         ],
-        "action": "推出",
-        "audience": "研究者和评测团队",
-        "editorial_angle": "Stochastic Gradients 的推出会影响研究者和评测团队",
+        "action": "智能体能力",
+        "audience": "相关产品团队和使用者",
+        "editorial_angle": "Qwen3.7-Plus 的智能体能力会影响相关产品团队和使用者",
         "story_facts": [
           {
             "label": "entity",
-            "value": "Stochastic Gradients"
-          },
-          {
-            "label": "entity",
-            "value": "Nuisances"
+            "value": "Qwen3.7-Plus"
           },
           {
             "label": "action",
-            "value": "推出"
+            "value": "智能体能力"
           },
           {
             "label": "concrete_object",
-            "value": "Stochastic Gradients"
+            "value": "Qwen3.7-Plus"
           }
         ],
-        "original_title": "Stochastic Gradients under Nuisances",
-        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed."
+        "original_title": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家",
+        "original_summary": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 &nbsp;&nbsp; IT 之家"
       },
-      "zh_title": "Stochastic Gradients under Nuisances 研究噪声梯度",
-      "zh_summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "zh_title": "Qwen3.7-Plus 推进智能体能力",
+      "zh_summary": "IT 之家报道 Qwen3.7-Plus 升级多模态交互和混合智能体能力，关键在于模型输入、工具执行和结果校验能否接成一条链。",
       "story_facts": [
         {
           "label": "entity",
-          "value": "Stochastic Gradients"
-        },
-        {
-          "label": "entity",
-          "value": "Nuisances"
+          "value": "Qwen3.7-Plus"
         },
         {
           "label": "action",
-          "value": "推出"
+          "value": "智能体能力"
         },
         {
           "label": "concrete_object",
-          "value": "Stochastic Gradients"
+          "value": "Qwen3.7-Plus"
         }
       ],
-      "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
-      "original_title": "Stochastic Gradients under Nuisances",
-      "url": "https://arxiv.org/abs/2508.20326",
-      "source_url": "https://arxiv.org/abs/2508.20326",
-      "external_url": "https://arxiv.org/abs/2508.20326",
-      "source": "arXiv stat.ML",
-      "source_type": "official",
-      "source_rank": "A",
-      "category": "papers",
-      "score": 8,
-      "published_at": "2026-06-01T04:00:00.000Z",
+      "title": "Qwen3.7-Plus 推进智能体能力",
+      "original_title": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "source_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "external_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00OTUwT0ViOHpVWTRjQXhMRWxHZkozcURjazZfZ1hRUTVqZFhZNVBfS2d1MVV4MjBiNHFFMjdweURhX0NUNEVqRjZyUHQ?oc=5",
+      "source": "IT 之家",
+      "source_type": "media",
+      "source_rank": "B",
+      "category": "china",
+      "score": 6.5,
+      "published_at": "2026-06-01T22:38:44.000Z",
       "published_at_source": "news-store.published_at",
-      "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
-      "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning....",
-      "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
-      "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
-      "watch_next": "看它是否给出噪声条件下的实验复现。",
+      "summary": "IT 之家报道 Qwen3.7-Plus 升级多模态交互和混合智能体能力，关键在于模型输入、工具执行和结果校验能否接成一条链。",
+      "original_summary": "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 &nbsp;&nbsp; IT 之家",
+      "why_it_matters": "模型应用团队要看 Qwen3.7-Plus：多模态交互和智能体能力绑在一起后，输入、工具调用和执行边界会一起影响体验。",
+      "janet_take": "Qwen3.7-Plus 这条要看多模态交互和智能体执行是不是一起升级。模型会看图、听指令还不够，关键是能不能把输入理解、工具调用和结果校验串起来；如果只提升演示流畅度，业务价值很快会被权限和稳定性卡住。",
+      "watch_next": "看 Qwen3.7-Plus 是否公布多模态任务、工具调用和稳定性指标。",
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
-        "news-store-0012"
+        "news-store-0008"
       ],
-      "editorial_score": 98,
-      "editorial_signals": [
-        {
-          "name": "research_signal",
-          "weight": 20,
-          "hits": [
-            "arXiv",
-            "inference"
-          ]
-        }
-      ],
+      "editorial_score": 48,
+      "editorial_signals": [],
       "editorial_penalties": [],
       "lead_eligible": true,
       "core_eligible": true,
       "key_data": [
-        "Stochastic Gradients",
-        "推出",
-        "研究者和评测团队",
-        "arXiv stat.ML",
-        "Stochastic Gradients under Nuisances"
+        "Qwen3.7-Plus",
+        "智能体能力",
+        "相关产品团队和使用者",
+        "IT 之家",
+        "阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家"
       ],
-      "content": "arXiv 报道 Stochastic Gradients，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Stochastic Gradients under Nuisances」。arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Stochastic Gradients 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看它是否给出噪声条件下的实验复现。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
-      "primary_section": "open_source",
+      "content": "IT 之家提到 Qwen3.7-Plus，这类智能体新闻要看它能不能处理连续任务，而不是只在演示里完成一次漂亮回答。原文标题是「阿里发布 Qwen3.7-Plus 模型，升级多模态交互混合 AI 智能体 - IT 之家」。IT 之家报道 Qwen3.7-Plus 升级多模态交互和混合智能体能力，关键在于模型输入、工具执行和结果校验能否接成一条链。模型应用团队要看 Qwen3.7-Plus：多模态交互和智能体能力绑在一起后，输入、工具调用和执行边界会一起影响体验。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Qwen3.7-Plus 这条要看多模态交互和智能体执行是不是一起升级。模型会看图、听指令还不够，关键是能不能把输入理解、工具调用和结果校验串起来；如果只提升演示流畅度，业务价值很快会被权限和稳定性卡住。Qwen3.7-Plus 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看 Qwen3.7-Plus 是否公布多模态任务、工具调用和稳定性指标。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
         "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.svg",
-        "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
-        "caption": "Janet 根据「Stochastic Gradients」和「推出」生成的新闻视觉。",
+        "src": "assets/news-visuals/2026-06-02-v4/chinese-ithome-6c6b5e77a5b1.svg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-ithome-6c6b5e77a5b1.svg",
+        "alt": "新闻视觉：Qwen3.7-Plus 推进智能体能力",
+        "caption": "Janet 根据「Qwen3.7-Plus」和「智能体能力」生成的新闻视觉。",
         "credit": "Generated by Janet visual resolver",
         "license": "generated",
         "source_url": "",
         "matched_terms": [
-          "Stochastic Gradients",
-          "Nuisances"
+          "Qwen3.7-Plus",
+          "智能体能力"
         ],
         "relevance_score": 0.62,
         "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "template": "model_release"
       }
     },
     {
@@ -2069,7 +2025,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:56:13.808Z",
+      "verified_at": "2026-06-02T03:11:15.505Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0010"
@@ -2109,8 +2065,8 @@
   ],
   "edition_id": "2026-06-02-v4",
   "daily_editorial_summary": {
-    "title": "Learning-to-Defer 今天盯上推出",
-    "body": "今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。arXiv stat.ML、arXiv cs.CL、新浪 AI 热点、钛媒体、IT 之家里冒出来的主线，是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI、AI Agent 这些具体对象正在把推出、智能体能力、AI 资本支出往产品、平台和团队日常里推。对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。 Expert-Conditional Advice 研究学习何时转交专家先占住主线位置，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。 别被“AI 又更新了”带节奏。很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位。每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。",
+    "title": "Learning-to-Defer 带出研究",
+    "body": "今天这份快车箱不按发布会热闹排序，而按“能不能改变工作流”排序。arXiv stat.ML、arXiv cs.CL、新浪 AI 热点、钛媒体、IT 之家里冒出来的主线，是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI、AI Agent 这些具体对象正在把研究、智能体能力、AI 资本支出往产品、平台和团队日常里推。对中国创作者和中小企业来说，这类新闻不能只看谁发了声明，要看能不能直连、贵不贵、有没有接口、是否真的能替掉一个外包或岗位。 Expert-Conditional 研究新方法先占住主线位置，不是因为它声音最大，而是它暴露了 AI 产品最现实的竞争方式——谁能把能力变成入口，谁就更接近收入。模型参数当然重要，但今天更该盯的是工具链、评测、版权、企业部署和创作分发这些脏活。它们不好看，却决定一个工具明天会不会出现在账单里。 别被“AI 又更新了”带节奏。很多能力已经不是实验室玩具，而是在抢开发、音频、搜索、企业知识库这些具体工位。每个入口背后都有成本、权限、版权和稳定性坑。国内团队的打法很简单：先找能省钱的环节，能替一个流程就试，不能落地的发布会词先扔一边。 这也是后面几天要继续看的线索：能把能力变成价格、接口和案例的公司，会比只会讲愿景的公司更快进入创作者和企业采购清单。",
     "source_story_ids": [
       "arxiv-stat-ml-0dff84a7e9db",
       "arxiv-cs-cl-6ec8b283e1a3",

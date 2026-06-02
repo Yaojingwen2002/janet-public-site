@@ -817,7 +817,7 @@ function extractStoryFacts(item) {
     if (pattern.test(text)) add('entity', value);
   });
   const signatureAction = eventAction(text);
-  if (signatureAction) add('action', signatureAction);
+  if (signatureAction && !(isResearchSource(item.source) && signatureAction === '推出')) add('action', signatureAction);
   if (/partner|partnership/i.test(text)) add('action', '合作');
   if (/on-premise|hybrid/i.test(text)) add('action', '混合与本地部署');
   if (/fine-tun|LoRA|DoRA/i.test(text)) add('action', '微调');
@@ -868,6 +868,29 @@ function isGenericAction(value) {
   return GENERIC_ACTIONS.has(String(value || '').trim());
 }
 
+function isResearchSource(source) {
+  return /arxiv|paper|research|学术|论文/i.test(String(source || ''));
+}
+
+function normalizeAcademicEntity(value, source) {
+  const text = String(value || '').trim();
+  if (!isResearchSource(source)) return text;
+  const words = text.match(/[A-Z][A-Za-z0-9+.-]*/g) || [];
+  if (/^(Learning|Training|Understanding|Towards?)\s+/i.test(text) && words.length >= 4) return words.slice(-2).join(' ');
+  if (words.length > 4) return words.slice(-3).join(' ');
+  return text;
+}
+
+function actionForStory(item, facts, originalTitle) {
+  const extractedAction = facts.find((fact) => fact.label === 'action' && !isGenericAction(fact.value))?.value || '';
+  if (isResearchSource(item.source)) {
+    return '研究';
+  }
+  const text = rawStoryText({ ...item, original_title: originalTitle }).toLowerCase();
+  if (extractedAction === '推出' && /agent|agentic|智能体|coze|扣子|qwen/i.test(text)) return '智能体能力';
+  return extractedAction || actionFromTitle(originalTitle);
+}
+
 function titleEntityCandidates(title, source) {
   const cleaned = decodeText(title).replace(/[’']/g, "'");
   const sourceSet = sourceAliases(source);
@@ -887,8 +910,8 @@ function titleEntityCandidates(title, source) {
       .trim();
     if (/^agentic gemini era$/i.test(normalized)) normalized = 'Gemini';
     if (/gig economy.*robots?/i.test(normalized)) normalized = 'India gig economy robot training';
-    if (/^learning transferable predictability representations$/i.test(normalized)) normalized = 'Predictability Representations';
     if (/^research assistants?$/i.test(normalized)) normalized = 'Strands research assistants';
+    normalized = normalizeAcademicEntity(normalized, source);
     if (!normalized || normalized.length < 3) return;
     const lower = normalized.toLowerCase();
     if (sourceSet.has(lower) || sourceSet.has(lower.replace(/\s+/g, ''))) return;
@@ -1033,6 +1056,111 @@ function audienceFromItem(item, concreteObject) {
   return concreteObject ? '相关产品团队和使用者' : '';
 }
 
+function agentSpecificWhy(item, object) {
+  const raw = rawStoryText(item);
+  if (/mcp|token|幻觉|企业数据|实时/i.test(raw)) {
+    return `企业服务和 Agent 团队要看${object}：外部企业数据接进工具调用后，权限、更新频率和错误回滚会决定它能不能减少幻觉。`;
+  }
+  if (/qwen|通义|多模态|混合/i.test(raw)) {
+    return `模型应用团队要看${object}：多模态交互和智能体能力绑在一起后，输入、工具调用和执行边界会一起影响体验。`;
+  }
+  if (/geo|双引擎|内容|数据|营销|生态/i.test(raw)) {
+    return `营销和企业数字化团队要看${object}：内容生产、数据分析和智能体执行能不能接成闭环，会直接影响客户转化指标。`;
+  }
+  if (/coze|扣子|插件|部署|平台|企业/i.test(raw)) {
+    return `开发者和企业自动化团队要看${object}：插件、部署、权限和维护成本，会决定它能不能成为默认 Agent 平台入口。`;
+  }
+  return `相关产品团队要看${object}：它是否进入具体任务、给出权限边界，并能留下可复查的执行记录。`;
+}
+
+function agentSpecificTake(story, object) {
+  const raw = rawStoryText(story);
+  if (/mcp|token|幻觉|企业数据|实时/i.test(raw)) {
+    return `${object}这类能力不是再做一个聊天入口，而是把实时数据塞进工具调用里。真正要看的不是接了多少行业，而是数据权限、更新频率和错误回滚；这些没讲清，智能体越勤快越容易把错放大。`;
+  }
+  if (/qwen|通义|多模态|混合/i.test(raw)) {
+    return `${object}这条要看多模态交互和智能体执行是不是一起升级。模型会看图、听指令还不够，关键是能不能把输入理解、工具调用和结果校验串起来；如果只提升演示流畅度，业务价值很快会被权限和稳定性卡住。`;
+  }
+  if (/geo|双引擎|内容|数据|营销|生态/i.test(raw)) {
+    return `${object}更像企业营销和内容基础设施。所谓生态要成立，必须把内容生产、数据分析和智能体执行结果对上账；如果没有客户案例和转化指标，包装得再完整也只是热词拼盘。`;
+  }
+  if (/coze|扣子|插件|部署|平台|企业/i.test(raw)) {
+    return `${object}的压力在部署和维护，不在发布会。平台要让开发者少搭工具、少踩权限坑，还要能计费、可审计、可迁移；插件和企业交付细节，才会决定它能不能留在工作流里。`;
+  }
+  return `${object}要按真实任务来验收：能不能连续执行、权限能不能收住、日志能不能复查。只会演示一次不算 Agent，能在低风险流程里稳定省下一段人工，才有继续扩大的理由。`;
+}
+
+function agentSpecificSummary(item, object) {
+  const raw = rawStoryText(item);
+  const source = chineseSourceName(item.source);
+  if (/mcp|token|幻觉|企业数据|实时/i.test(raw)) {
+    return `${source}写到${object}接入实时企业数据，重点是智能体能否在查询、尽调和风控里少编答案、少耗 Token。`;
+  }
+  if (/qwen|通义|多模态|混合/i.test(raw)) {
+    return `${source}报道${object}升级多模态交互和混合智能体能力，重点是模型输入、工具执行和结果校验能否接成一条链。`;
+  }
+  if (/geo|双引擎|内容|数据|营销|生态/i.test(raw)) {
+    return `${source}写到${object}把数据、内容和智能体打包成双引擎方案，重点是能否给企业增长流程交出指标。`;
+  }
+  if (/coze|扣子|插件|部署|平台|企业/i.test(raw)) {
+    return `${source}报道${object}平台升级，关键是插件、部署、权限和企业交付能不能减少开发者搭建成本。`;
+  }
+  return `${source}把${object}接进智能体场景，它要证明自己不是演示，而是能处理连续任务的产品能力。`;
+}
+
+function agentSpecificWatch(item, object) {
+  const raw = rawStoryText(item);
+  if (/mcp|token|幻觉|企业数据|实时/i.test(raw)) return `看${object}是否公开数据权限、更新频率和调用价格。`;
+  if (/qwen|通义|多模态|混合/i.test(raw)) return `看${object}是否公布多模态任务、工具调用和稳定性指标。`;
+  if (/geo|双引擎|内容|数据|营销|生态/i.test(raw)) return `看${object}是否公布客户案例和转化指标。`;
+  if (/coze|扣子|插件|部署|平台|企业/i.test(raw)) return `看${object}是否给出插件、部署和企业权限细则。`;
+  return `看${object}能否完成连续任务。`;
+}
+
+function researchSpecificWhy(item, object) {
+  const raw = rawStoryText(item);
+  if (/bpe|tokenization|tokenizer|streaming|latency|tiktoken/i.test(raw)) {
+    return `模型工程团队要看${object}：增量分词如果能降低流式输入延迟，会直接影响长文本、多轮生成和推理账单。`;
+  }
+  if (/speculative decoding|multilingual|languages|draft model|n-gram/i.test(raw)) {
+    return `推理平台和多语言产品要看${object}：推测解码跨语言不一定同速，中文和小语种的成本曲线要单独计算。`;
+  }
+  if (/defer|expert|advice/i.test(raw)) {
+    return `高风险产品团队要看${object}：模型什么时候转交专家，会影响医疗、安全审核这类流程的责任边界。`;
+  }
+  if (/predictability|transferable|transfer/i.test(raw)) {
+    return `研究者和模型团队要看${object}：可迁移预测表示如果成立，会影响跨任务泛化和小样本评测。`;
+  }
+  if (/stochastic gradients|nuisance|gradient|noise/i.test(raw)) {
+    return `训练和统计学习团队要看${object}：干扰因素会影响梯度估计、收敛判断和实验复现。`;
+  }
+  return `${storyFactAudience(item, object)}要看${object}：论文价值不在标题新鲜，而在任务定义、实验设定和代码能否复现。`;
+}
+
+function researchSpecificTake(story, object) {
+  const raw = rawStoryText(story);
+  if (/bpe|tokenization|tokenizer|streaming|latency|tiktoken/i.test(raw)) {
+    return `${object}看起来底层，但它盯的是流式输入和长文本里的等待时间。分词少重算一次，实时产品就少卡一拍；工程团队要把延迟、缓存命中、质量折损和推理账单一起测。`;
+  }
+  if (/speculative decoding|multilingual|languages|draft model|n-gram/i.test(raw)) {
+    return `${object}的重点是多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立；平台要按语言重算速度、接受率和质量折损，不能只拿英文基准做预算。`;
+  }
+  if (/defer|expert|advice/i.test(raw)) {
+    return `${object}问的是模型什么时候该退一步。在医疗、安全审核这类高风险流程里，会转交专家比硬撑答案更值钱；产品团队要把转交规则、责任边界和复核流程一起设计。`;
+  }
+  if (/predictability|transferable|transfer/i.test(raw)) {
+    return `${object}不是产品发布，而是在问模型学到的可预测性是否能跨任务复用。真正要盯的是跨域实验、数据设置和失败案例；这些不清楚，就不能把它当成泛化能力突破。`;
+  }
+  if (/stochastic gradients|nuisance|gradient|noise/i.test(raw)) {
+    return `${object}听起来数学，但它碰的是训练里很现实的问题：数据和环境有干扰时，梯度估计还靠不靠谱。工程团队要看假设条件、误差界和噪声实验，别只把它当普通优化论文。`;
+  }
+  return `${object}这条要按研究新闻处理，先看它的问题定义、数据来源、实验设置和复现路径；如果代码、基准和失败案例都不清楚，团队最多放进观察清单，不能直接拿来改路线图。`;
+}
+
+function storyFactAudience(item, object) {
+  return audienceFromItem(item, object) || '相关团队';
+}
+
 function buildStoryFact(item) {
   const originalTitle = item.original_title || item.title || '';
   const originalSummary = item.original_summary || item.summary || '';
@@ -1046,7 +1174,7 @@ function buildStoryFact(item) {
   facts.filter((fact) => fact.label === 'entity').forEach((fact) => addEntity(fact.value));
   titleEntityCandidates(originalTitle, item.source).forEach(addEntity);
 
-  const action = facts.find((fact) => fact.label === 'action' && !isGenericAction(fact.value))?.value || actionFromTitle(originalTitle);
+  const action = actionForStory(item, facts, originalTitle);
   const sourceSet = sourceAliases(item.source);
   const concreteObject = entities
     .slice()
@@ -1113,10 +1241,12 @@ function titleFromStoryFact(item, storyFact) {
   if (action === '融资') return `${object}完成融资，验证具体市场`;
   if (action === '诉讼') return `${object}诉讼继续牵动 AI 治理`;
   if (action === '风险提示') return /codex/i.test(object) ? 'Codex 工具暴露 OpenAI 令牌风险' : `安全风险指向 ${displayObject(object)}`;
+  if (action === '研究') return `${displayObject(object)} 研究新方法`;
   if (action === '研究突破') return /openai|数学|猜想|80年/i.test(`${object} ${originalTitle}`) ? 'OpenAI 模型推翻数学猜想' : `研究突破指向 ${displayObject(object)}`;
   if (action === '自动清除') return `苹果重做 Siri，聊天记录可能自动清除`;
   if (action === '生成') return `${object}进入内容生产线`;
   if (action === '有声书生成') return `${object}推出 AI 有声书制作工具`;
+  if (action === '智能体能力') return `${displayObject(object)}推进智能体能力`;
   if (action === '工具调用') return `${object}补上程序化工具调用`;
   if (action === '记忆扩展') return `${object}加入对话记忆`;
   if (action === '搜索改版') return `${object}正在改写搜索入口`;
@@ -1148,11 +1278,12 @@ function summaryFromStoryFact(item, storyFact) {
   if (action === '开发工具升级') return `${source}把${object}放在开发工具语境里，关键不是概念，而是 CLI、编码流程和实际接入方式是否变顺。`;
   if (action === '记忆扩展') return `${source}在${object}里扩展记忆能力，说明智能体的长期上下文正在从概念变成开发者可调用的基础能力。`;
   if (action === '工具调用') return `${source}让${object}更稳定地调用外部工具，智能体开始从聊天回答转向按流程执行任务。`;
-  if (action === '智能体能力') return `${source}把${object}接进智能体场景，它要证明自己不是演示，而是能处理连续任务的产品能力。`;
+  if (action === '智能体能力') return agentSpecificSummary(item, object);
   if (action === '购物代理') return `${source}写到${object}，意思是 AI 不只推荐商品，还可能进入跨站购物流程，风险和便利都会一起出现。`;
   if (action === '订阅调整') return `${source}这条指向${object}的订阅变化，用户真正要看的是哪些能力被打包、哪些功能需要额外付费。`;
   if (action === '生成') return `${source}把${object}放进生成场景，关键是生成结果能否被编辑、追溯和稳定使用。`;
   if (action === '有声书生成') return `${source}报道${object}，AI 配音和有声书制作流程开始变成创作者可以直接调用的平台工具。`;
+  if (action === '研究') return `${source}这篇研究围绕${object}展开，关键是问题设置、实验方法和复现路径是否足够清楚。`;
   if (action === 'AI资本支出') return `${source}报道${object}围绕 800 亿美元资金推进 AI 建设，重点不是短期募资话术，而是数据中心、算力和云基础设施的长期投入。`;
   if (action === '融资') return `${source}报道${object}完成融资，这笔钱接下来要回答它到底解决哪个具体产品问题。`;
   if (action === '诉讼') return `${source}围绕${object}的法律争议继续发酵，AI 公司治理、承诺和商业化之间的拉扯被推到台前。`;
@@ -1181,11 +1312,12 @@ function whyFromStoryFact(item, storyFact) {
   const audience = storyFact.audience;
   if (action === '搜索改版') return `${audience}要看${object}：搜索入口变主动后，内容分发、广告和用户路径都会被重新分配。`;
   if (action === '开发工具升级') return `${audience}要看${object}：CLI 和编码入口一旦顺手，会直接改变团队日常开发节奏。`;
-  if (action === '智能体能力') return `${audience}要看${object}：智能体只有进入具体任务，才知道是帮忙还是添乱。`;
+  if (action === '智能体能力') return agentSpecificWhy(item, object);
   if (action === '购物代理') return `${audience}要看${object}：AI 如果开始代办购物，支付、推荐和责任边界都会变敏感。`;
   if (action === '订阅调整') return `${audience}要看${object}：能力打包方式会决定谁能用、花多少钱、被锁在哪个入口。`;
   if (action === '融资') return `${audience}要看${object}：融资方向说明市场正在验证哪个具体痛点。`;
   if (action === '评测' || action === '榜单排名') return `${audience}要看${object}：公开评测能让能力比较少一点玄学，多一点可复查证据。`;
+  if (action === '研究') return researchSpecificWhy(item, object);
   if (action === '推出') return `${audience}要看${object}：新功能是否改变现有产品路径，而不是只增加发布会信息量。`;
   if (action === '有声书生成') return `${audience}要看${object}：有声书制作门槛下降后，版权、配音质量和分发规则都会变重要。`;
   if (action === 'AI资本支出') return `${audience}要看${object}：800 亿美元 AI 基建支出会改变算力供给、云服务成本和模型训练节奏。`;
@@ -1209,6 +1341,7 @@ function janetFromStoryFact(item, storyFact) {
   if (action === '购物代理') return `${object}听起来方便，但让 AI 花钱这件事，最好先问清楚谁背锅。`;
   if (action === '融资') return `${object}融资只是开场，接下来要证明它不是又一个安全 PPT。`;
   if (action === '评测' || action === '榜单排名') return `${object}终于要拿分数说话了，虽然榜单也会有自己的小心思。`;
+  if (action === '研究') return researchSpecificTake(item, object);
   if (action === '推出') return `${object}这类发布不缺声量，缺的是用户第二天还会不会打开。`;
   if (action === '有声书生成') return `${object}不是“AI 很会说话”的故事，而是音频制作开始变成按钮级工具。`;
   if (action === 'AI资本支出') return `${object}这 800 亿美元看的是 AI 基建耐力：钱会烧在机房、芯片和云服务上，真正压力是把算力变成可收费产品。`;
@@ -1227,7 +1360,7 @@ function watchFromStoryFact(item, storyFact) {
   const action = storyFact.action;
   if (action === '搜索改版') return `看${object}是否改变流量和广告分配。`;
   if (action === '开发工具升级') return `看${object}是否进入默认开发命令。`;
-  if (action === '智能体能力') return `看${object}能否完成连续任务。`;
+  if (action === '智能体能力') return agentSpecificWatch(item, object);
   if (action === '购物代理') return `看${object}的支付和责任边界。`;
   if (action === '订阅调整') return `看${object}哪些能力被放进付费档。`;
   if (action === '生成') return `看${object}是否支持编辑和版权控制。`;
@@ -1236,6 +1369,7 @@ function watchFromStoryFact(item, storyFact) {
   if (action === '融资') return `看${object}融资后是否给出产品指标。`;
   if (action === '诉讼') return `看${object}后续是否影响治理承诺。`;
   if (action === '评测' || action === '榜单排名') return `看${object}是否公开任务集和评分细则。`;
+  if (action === '研究') return `看${object}是否公开代码、数据和复现实验。`;
   if (action === '估值变化') return `看${object}是否公布收入或使用指标。`;
   if (action === '安装增长') return `看${object}是否持续抢走默认搜索入口。`;
   if (action === '主动监控') return `看${object}是否公开告警准确率和接入方式。`;
@@ -1248,8 +1382,6 @@ function watchFromStoryFact(item, storyFact) {
 }
 
 function copyFromStoryFact(item, storyFact) {
-  const brief = storyBrief(item);
-  if (brief) return brief;
   const title = titleFromStoryFact(item, storyFact);
   return {
     title,
@@ -1264,78 +1396,6 @@ function storyBrief(item) {
   const raw = rawStoryText(item);
   const text = raw.toLowerCase();
   const source = chineseSourceName(item.source);
-  if (/learning-to-defer with expert-conditional advice/.test(text)) {
-    return {
-      title: 'Expert-Conditional Advice 研究学习何时转交专家',
-      summary: 'arXiv stat.ML 这篇 Learning-to-Defer 论文研究在专家条件建议下，模型什么时候该自己预测、什么时候该把决策交给专家。',
-      why: '研究者和高风险产品团队要看：Learning-to-Defer 会影响医疗、安全审核这类场景里的人机分工和责任边界。',
-      janet: 'Expert-Conditional Advice 的价值不在多一个模型名，而在提醒团队：医疗、安全审核这类任务里，有些判断应该让模型退一步，把决策交给专家或更可靠的系统；会转交，比硬撑一个答案更值钱。',
-      watch: '看论文是否给出可复现实验和高风险任务设置。'
-    };
-  }
-  if (/incremental bpe tokenization/.test(text)) {
-    return {
-      title: 'Incremental BPE Tokenization 研究增量分词',
-      summary: 'arXiv cs.CL 这篇论文关注 Incremental BPE Tokenization，重点是让分词在流式和增量场景里更高效地更新。',
-      why: '模型工程团队要看：增量 BPE 如果稳定，会影响长文本、实时输入和多轮生成里的延迟与缓存策略。',
-      janet: 'Incremental BPE Tokenization 很底层，但底层优化最会偷偷省钱。它不负责让模型更聪明，却可能让流式输入、长文本和多轮生成少等几拍；真正价值会体现在延迟、缓存和推理账单里。',
-      watch: '看它在流式生成和长上下文任务里的延迟数据。'
-    };
-  }
-  if (/speculative decoding across languages/.test(text)) {
-    return {
-      title: 'Speculative Decoding Across Languages 比较多语言解码',
-      summary: 'arXiv cs.CL 这篇 Speculative Decoding Across Languages 把推测解码放到多语言场景里比较，重点是不同语言下加速效果是否稳定。',
-      why: '多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。',
-      janet: 'Speculative Decoding Across Languages 这条看的是推理成本，不是模型炫技。多语言一上来，很多英文场景里省下的钱可能就没那么好复制；中文和小语种的速度、质量折损，才是平台真正要重新算的账。',
-      watch: '看论文是否公开各语言的速度和质量折损。'
-    };
-  }
-  if (/learning transferable predictability representations/.test(text)) {
-    return {
-      title: 'Predictability Representations 研究可迁移预测',
-      summary: 'arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，重点是让模型更好判断哪些模式能跨任务复用。',
-      why: '研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。',
-      janet: 'Learning Transferable Predictability Representations 这条不是产品发布，而是在问模型学到的“可预测性”能不能迁移。真正要盯的是跨任务实验、数据设置和失败案例，否则它只会停在漂亮论文标题里。',
-      watch: '看论文是否公开跨域实验和代码。'
-    };
-  }
-  if (/stochastic gradients under nuisances/.test(text)) {
-    return {
-      title: 'Stochastic Gradients under Nuisances 研究噪声梯度',
-      summary: 'arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，重点是训练估计在噪声条件里是否仍然可靠。',
-      why: '模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。',
-      janet: 'Stochastic Gradients under Nuisances 听起来很数学，但它问的是训练里最现实的事：数据和环境有干扰时，梯度还靠不靠谱。工程团队要看假设条件和误差界，别只把它当又一篇优化论文。',
-      watch: '看它是否给出噪声条件下的实验复现。'
-    };
-  }
-  if (/企查查mcp/.test(text)) {
-    return {
-      title: '企查查 MCP 接入 30+ 行业企业数据',
-      summary: '企查查把 MCP 接进 30 多个行业，让 AI Agent 能调用实时企业数据，重点是减少幻觉和 Token 消耗。',
-      why: '企业服务和 Agent 团队要看：企查查 MCP 把外部数据源接进工具链后，企业查询、尽调和风控流程会更容易自动化。',
-      janet: '企查查 MCP 这条比普通 Agent 新闻具体：它给智能体塞的是实时企业数据，不是又一个聊天入口。真正要看调用权限、数据更新和错误回滚。',
-      watch: '看企查查 MCP 是否公开行业接口和调用价格。'
-    };
-  }
-  if (/讯灵ai geo\+agent|双引擎生态/.test(text)) {
-    return {
-      title: '讯灵 AI GEO+Agent 主打内容与智能体生态',
-      summary: 'IT之家报道讯灵 AI GEO+Agent 双引擎生态，重点是把数据、内容和智能体能力打包成企业增长方案。',
-      why: '营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。',
-      janet: '讯灵 AI GEO+Agent 这条更像企业营销基础设施生意。别只看“双引擎”说法，要看它能不能把内容生产、数据分析和智能体执行结果对上；如果不能证明转化指标，生态包装就很容易变成热词拼盘。',
-      watch: '看讯灵是否公布客户案例和转化指标。'
-    };
-  }
-  if (/扣子coze上线3\.0|coze.*3\.0/.test(text)) {
-    return {
-      title: '扣子 Coze 3.0 升级 Agent 平台',
-      summary: '钛媒体报道字节跳动扣子 Coze 3.0 上线，重点是把 AI Agent 平台能力继续往企业和开发者场景推进。',
-      why: '开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。',
-      janet: 'Coze 3.0 的压力不在发布词，而在能不能让开发者少搭几层工具。字节有流量和生态，但 Agent 平台最后要靠可部署、可维护、可计费；插件、权限和企业交付细节，才会决定它能不能成为默认入口。',
-      watch: '看 Coze 3.0 的插件、部署和企业权限细则。'
-    };
-  }
   if (/openai/.test(text) && /dell/.test(text) && /codex/.test(text)) {
     return {
       title: 'OpenAI 联手戴尔，把 Codex 推进企业内网',
@@ -2909,7 +2969,7 @@ function buildLongJanetTake(story) {
   const source = chineseSourceName(story.source);
   let shortTake = cleanTemplateCopy(story.janet_take || '').split('Janet 的判断是：')[0].trim();
   if (/要看入口、权限和使用门槛/.test(shortTake) || cnCharCount(shortTake) > 70 || /国内团队先小范围试用/.test(shortTake)) shortTake = '';
-  if (action === '智能体能力' && /稳定完成连续任务/.test(shortTake)) shortTake = '';
+  if (action === '智能体能力' || action === '研究') shortTake = '';
   const prefix = shortTake ? `${shortTake} ` : '';
   const podcastTake = /Spotify Studio/i.test(object)
     ? `${prefix}Spotify Studio 把个人收听、日程和播客生成揉到一起，听起来很顺，实际会考验隐私和推荐质量。创作者别只看“自动生成”，要看它能不能给出编辑权、删除权和分发收益。`
@@ -2921,24 +2981,6 @@ function buildLongJanetTake(story) {
     ? `${prefix}Anthropic 向马斯克系数据中心买算力，说明模型竞争最后会落到电、机柜和长期合同；算力越集中，议价和供应风险越难看。国内企业要学的是算力冗余和成本测算，不是跟着烧钱。`
     : `${prefix}Universal Music 这类授权合作，说明 AI 翻唱终于开始谈分钱，而不是只靠平台先斩后奏。授权规则会很碎，创作者要看分成、下架和艺人选择权，别只盯生成效果。`;
   const raw = `${story.original_title || ''} ${story.original_summary || ''} ${story.title || ''}`;
-  if (/learning-to-defer with expert-conditional advice/i.test(raw)) {
-    return cleanTemplateCopy('Expert-Conditional Advice 这篇的关键是“什么时候该让模型闭嘴”。在医疗、安全审核这类高风险流程里，会拒答、会转交专家，比硬撑一个答案更有价值；产品团队要把转交规则、责任边界和复核流程一起设计出来。');
-  }
-  if (/incremental bpe tokenization/i.test(raw)) {
-    return cleanTemplateCopy('Incremental BPE Tokenization 看起来很底层，但它盯的是流式输入和长文本里的等待时间。分词少重算一次，实时产品就少卡一拍，推理成本也更容易压下来；模型工程团队要把延迟、缓存命中和质量折损一起测。');
-  }
-  if (/speculative decoding across languages/i.test(raw)) {
-    return cleanTemplateCopy('Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。');
-  }
-  if (/企查查MCP/i.test(raw)) {
-    return cleanTemplateCopy('企查查 MCP 这条不是泛泛讲 Agent，而是把实时企业数据塞进工具调用里。它能不能减少幻觉，要看数据权限、更新频率和错误回滚，而不是只看接了多少行业。');
-  }
-  if (/讯灵AI GEO\+Agent|双引擎生态/i.test(raw)) {
-    return cleanTemplateCopy('讯灵 AI GEO+Agent 更像企业营销和内容基础设施。所谓双引擎要成立，必须把内容生产、数据分析和智能体执行结果对上账，否则只是把三个热词绑在一起；客户案例和转化指标会比生态口号更有说服力。');
-  }
-  if (/扣子Coze上线3\.0|Coze.*3\.0/i.test(raw)) {
-    return cleanTemplateCopy('Coze 3.0 的压力在部署和维护，不在发布会。字节有生态优势，但 Agent 平台要让开发者少搭工具、少踩权限坑，才可能变成默认入口；插件、权限和企业交付细节会决定它能不能长期留在工作流里。');
-  }
   const launchTake = (() => {
     if (/MEG Vision X2/i.test(raw)) {
       return `${prefix}MEG Vision X2 AI+这类硬件不是普通台式机换壳，它把本地算力、屏幕交互和“AI 伴侣”一起打包。真正要看的是软件生态能不能长期更新，否则全息屏很快只剩展示价值。`;
@@ -2966,7 +3008,7 @@ function buildLongJanetTake(story) {
   const actionTakes = {
     '有声书生成': `${prefix}${object}把创作门槛继续往下压，配音、剪辑和分发开始被平台打包；版权和音质会先乱一阵。国内创作者别先欢呼，先看它能不能给声音授权、收益结算和编辑权限一个清楚答案。`,
     '播客生成': podcastTake,
-    '智能体能力': `${prefix}${object}的价值不在“像不像人”，而在能不能稳定完成连续任务。小模型也想进工作流，权限、日志和出错责任会马上变脏。企业先拿低风险流程试，不要一上来交核心业务。`,
+    '智能体能力': `${prefix}${agentSpecificTake(story, object)}`,
     '开发工具升级': `${prefix}${object}要是真能少开工具、少写重复命令，开发者会用脚投票；如果只是换个漂亮入口，它很快会被关掉。国内团队要看接入成本、代码安全和私有部署路径。`,
     '工具调用': `${prefix}${object}开始处理工具调用，才算摸到智能体的硬活。它能替团队跑步骤，但权限和日志必须补齐。中小企业可以先从低风险自动化试，不要把财务、人事这种入口直接交出去。`,
     '记忆扩展': `${prefix}${object}补记忆比多一个聊天表情实在得多。它可能让智能体真正接住上下文，但隐私、保留周期和误记会变成新成本。企业要先问清楚数据放哪、谁能删、怎么审计。`,
@@ -2977,6 +3019,7 @@ function buildLongJanetTake(story) {
     '研究助手': `${prefix}${object}把研究助手做成应用，关键是资料检索、摘要、推理和交付能不能连起来。能沉淀模板才有复用价值，只会生成一段文字还不够。`,
     '机器人训练': `${prefix}${object}把零工数据和机器人训练连在一起，真正的分歧会落到数据质量、标注成本和劳动合规。便宜数据不等于可用数据，客户会拿任务成功率说话。`,
     'AI 写作争议': `${prefix}${object}牵出 AI 写作争议，问题不只是“有没有用工具”，而是权威文本的署名、解释权和信任边界。越是公共人物，越不能把生成过程藏成黑箱。`,
+    '研究': `${prefix}${researchSpecificTake(story, object)}`,
     '评测': benchmarkTake,
     '榜单排名': benchmarkTake,
     'AI资本支出': `${prefix}${object}把 800 亿美元放到 AI 基建上，看的不是一张资本新闻图，而是数据中心、芯片供应和云服务回收周期。对国内团队来说，这条提醒很现实：AI 成本会先从算力账单里冒出来，再倒逼产品定价和客户筛选。`,

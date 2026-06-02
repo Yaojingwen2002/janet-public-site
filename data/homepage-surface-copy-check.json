@@ -8,33 +8,48 @@
   "headline_sentence_quality_found": [],
   "title_quality_issues": [],
   "duplicate_display_text_groups": [],
-  "near_duplicate_display_text_groups": [],
+  "near_duplicate_display_text_groups": [
+    {
+      "similarity": 0.818,
+      "item_a": {
+        "path": "title",
+        "field": "title",
+        "text": "Learning-to-Defer 带出研究",
+        "source": "news-summary"
+      },
+      "item_b": {
+        "path": "cover.cover_title",
+        "field": "cover_title",
+        "text": "Learning-to-Defer 牵出研究",
+        "source": "news-summary"
+      }
+    }
+  ],
   "daily_title_specificity": {
-    "value": "Learning-to-Defer 今天盯上推出",
+    "value": "Learning-to-Defer 带出研究",
     "concrete_objects": [
       "Expert-Conditional Advice",
       "Learning-to-Defer",
-      "推出",
-      "Expert-Conditional Advice 研究学习何时转交专家",
+      "研究",
+      "Expert-Conditional 研究新方法",
       "Incremental BPE Tokenization",
       "OpenAI",
-      "Incremental BPE Tokenization 研究增量分词",
+      "Incremental BPE 研究新方法",
       "AI Agent",
       "MCP",
       "Token",
       "智能体能力",
-      "企查查 MCP 接入 30+ 行业企业数据",
+      "AI Agent 推进智能体能力",
       "Coze",
-      "扣子 Coze 3.0 升级 Agent 平台",
+      "AI Agent 推进智能体能力（钛媒体）",
       "AI GEO+Agent",
-      "讯灵 AI GEO+Agent 主打内容与智能体生态",
+      "AI GEO+Agent 推进智能体能力",
       "Speculative Decoding Across Languages",
-      "Speculative Decoding Across Languages 比较多语言解码",
+      "Speculative 研究新方法",
       "Predictability Representations",
-      "Predictability Representations 研究可迁移预测",
-      "Stochastic Gradients",
-      "Nuisances",
-      "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "Predictability 研究新方法",
+      "Qwen3.7-Plus",
+      "Qwen3.7-Plus 推进智能体能力",
       "Alphabet",
       "AI 资本支出",
       "Alphabet 计划 800 亿美元 AI 基建支出"
@@ -49,7 +64,7 @@
     "generic": false
   },
   "daily_thesis_specificity": {
-    "value": "今天先看的对象是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI：它们分别牵出推出、智能体能力、AI 资本支出。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
+    "value": "今天先看的对象是 Expert-Conditional、Learning-to-Defer、Incremental BPE、OpenAI：它们分别牵出研究、智能体能力、AI 资本支出。别按声量排序，要看这些产品和评测会怎样改变具体使用路径。",
     "contains_concrete_object": true
   },
   "cover_specificity": {
@@ -57,11 +72,11 @@
     "concrete_objects": [
       "Expert-Conditional Advice",
       "Learning-to-Defer",
-      "推出",
-      "Expert-Conditional Advice 研究学习何时转交专家"
+      "研究",
+      "Expert-Conditional 研究新方法"
     ],
-    "cover_title": "Learning-to-Defer 牵出推出",
-    "cover_summary": "arXiv stat.ML 把 Learning-to-Defer 的推出推到今天主线，影响研究者和评测团队对功能边界和接入方式的判断。",
+    "cover_title": "Learning-to-Defer 牵出研究",
+    "cover_summary": "arXiv stat.ML 把 Learning-to-Defer 的研究推到今天主线，影响研究者和评测团队对功能边界和接入方式的判断。",
     "title_ok": true,
     "summary_ok": true
   },
@@ -71,19 +86,15 @@
       "module_title": "增量 BPE 把 OpenAI 放到可复查路径里",
       "story_ids": [
         "arxiv-cs-cl-6ec8b283e1a3",
-        "arxiv-cs-lg-afe9834a3c40",
-        "arxiv-stat-ml-afccfb168823"
+        "arxiv-cs-lg-afe9834a3c40"
       ],
       "concrete_objects": [
         "Incremental BPE Tokenization",
         "OpenAI",
-        "推出",
-        "Incremental BPE Tokenization 研究增量分词",
+        "研究",
+        "Incremental BPE 研究新方法",
         "Predictability Representations",
-        "Predictability Representations 研究可迁移预测",
-        "Stochastic Gradients",
-        "Nuisances",
-        "Stochastic Gradients under Nuisances 研究噪声梯度"
+        "Predictability 研究新方法"
       ],
       "title_ok": true,
       "summary_ok": true
@@ -95,6 +106,7 @@
         "chinese-sina-ai-3f4fa3bd2e89",
         "chinese-tmtpost-695e9c2a92ec",
         "chinese-ithome-9e46a2c1e9e7",
+        "chinese-ithome-6c6b5e77a5b1",
         "chinese-sina-ai-80ded116d9e7"
       ],
       "concrete_objects": [
@@ -102,12 +114,13 @@
         "MCP",
         "Token",
         "智能体能力",
-        "企查查 MCP 接入 30+ 行业企业数据",
+        "AI Agent 推进智能体能力",
         "Coze",
-        "推出",
-        "扣子 Coze 3.0 升级 Agent 平台",
+        "AI Agent 推进智能体能力（钛媒体）",
         "AI GEO+Agent",
-        "讯灵 AI GEO+Agent 主打内容与智能体生态",
+        "AI GEO+Agent 推进智能体能力",
+        "Qwen3.7-Plus",
+        "Qwen3.7-Plus 推进智能体能力",
         "Alphabet",
         "AI 资本支出",
         "Alphabet 计划 800 亿美元 AI 基建支出"
@@ -117,14 +130,14 @@
     },
     {
       "module_id": "models",
-      "module_title": "多语言推测解码 把 推出 落到产品层",
+      "module_title": "多语言推测解码 把 研究 落到产品层",
       "story_ids": [
         "arxiv-cs-cl-b6cff8100719"
       ],
       "concrete_objects": [
         "Speculative Decoding Across Languages",
-        "推出",
-        "Speculative Decoding Across Languages 比较多语言解码"
+        "研究",
+        "Speculative 研究新方法"
       ],
       "title_ok": true,
       "summary_ok": true

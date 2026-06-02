@@ -887,6 +887,7 @@ function titleEntityCandidates(title, source) {
       .trim();
     if (/^agentic gemini era$/i.test(normalized)) normalized = 'Gemini';
     if (/gig economy.*robots?/i.test(normalized)) normalized = 'India gig economy robot training';
+    if (/^learning transferable predictability representations$/i.test(normalized)) normalized = 'Predictability Representations';
     if (/^research assistants?$/i.test(normalized)) normalized = 'Strands research assistants';
     if (!normalized || normalized.length < 3) return;
     const lower = normalized.toLowerCase();
@@ -1288,6 +1289,24 @@ function storyBrief(item) {
       why: '多语言产品和推理平台要看：推测解码如果跨语言表现不稳，中文、小语种和英文产品的成本曲线会不同。',
       janet: 'Speculative Decoding Across Languages 这条看的是推理成本，不是模型炫技。多语言一上来，很多英文场景里省下的钱可能就没那么好复制；中文和小语种的速度、质量折损，才是平台真正要重新算的账。',
       watch: '看论文是否公开各语言的速度和质量折损。'
+    };
+  }
+  if (/learning transferable predictability representations/.test(text)) {
+    return {
+      title: 'Predictability Representations 研究可迁移预测',
+      summary: 'arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，重点是让模型更好判断哪些模式能跨任务复用。',
+      why: '研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。',
+      janet: 'Learning Transferable Predictability Representations 这条不是产品发布，而是在问模型学到的“可预测性”能不能迁移。真正要盯的是跨任务实验、数据设置和失败案例，否则它只会停在漂亮论文标题里。',
+      watch: '看论文是否公开跨域实验和代码。'
+    };
+  }
+  if (/stochastic gradients under nuisances/.test(text)) {
+    return {
+      title: 'Stochastic Gradients under Nuisances 研究噪声梯度',
+      summary: 'arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，重点是训练估计在噪声条件里是否仍然可靠。',
+      why: '模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。',
+      janet: 'Stochastic Gradients under Nuisances 听起来很数学，但它问的是训练里最现实的事：数据和环境有干扰时，梯度还靠不靠谱。工程团队要看假设条件和误差界，别只把它当又一篇优化论文。',
+      watch: '看它是否给出噪声条件下的实验复现。'
     };
   }
   if (/企查查mcp/.test(text)) {
@@ -3177,6 +3196,7 @@ async function buildContent(template, included, date, editionType, rules) {
   const actionCounts = new Map();
   const eventCounts = new Map();
   const actionLimit = (action) => (
+    action === '推出' ? 6 :
     ['搜索改版', '视觉识别', '购物代理'].includes(action) ? 2 : 4
   );
   for (const item of ordered) {

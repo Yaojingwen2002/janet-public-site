@@ -165,7 +165,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-06-02T02:49:14.734Z",
+          "verified_at": "2026-06-02T02:53:00.215Z",
           "duplicate_group": null,
           "evidence_ids": [
             "news-store-0001"
@@ -317,7 +317,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-06-02T02:49:14.734Z",
+          "verified_at": "2026-06-02T02:53:00.215Z",
           "duplicate_group": null,
           "evidence_ids": [
             "news-store-0003"
@@ -369,6 +369,261 @@
             "relevance_score": 0.62,
             "fallback_reason": "no_qualified_external_image",
             "template": "other"
+          }
+        },
+        {
+          "id": "arxiv-cs-lg-afe9834a3c40",
+          "story_id": "arxiv-cs-lg-afe9834a3c40",
+          "raw_item": {
+            "source": "arXiv cs.LG",
+            "original_title": "Learning Transferable Predictability Representations",
+            "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems.",
+            "url": "https://arxiv.org/abs/2605.30592",
+            "published_at": "2026-06-01T04:00:00.000Z",
+            "category": "papers",
+            "image_candidates": []
+          },
+          "story_fact": {
+            "concrete_object": "Predictability Representations",
+            "entities": [
+              "Predictability Representations"
+            ],
+            "products": [
+              "Predictability Representations"
+            ],
+            "action": "推出",
+            "audience": "研究者和评测团队",
+            "editorial_angle": "Predictability Representations 的推出会影响研究者和评测团队",
+            "story_facts": [
+              {
+                "label": "entity",
+                "value": "Predictability Representations"
+              },
+              {
+                "label": "action",
+                "value": "推出"
+              },
+              {
+                "label": "concrete_object",
+                "value": "Predictability Representations"
+              }
+            ],
+            "original_title": "Learning Transferable Predictability Representations",
+            "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems."
+          },
+          "zh_title": "Predictability Representations 研究可迁移预测",
+          "zh_summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+          "story_facts": [
+            {
+              "label": "entity",
+              "value": "Predictability Representations"
+            },
+            {
+              "label": "action",
+              "value": "推出"
+            },
+            {
+              "label": "concrete_object",
+              "value": "Predictability Representations"
+            }
+          ],
+          "title": "Predictability Representations 研究可迁移预测",
+          "original_title": "Learning Transferable Predictability Representations",
+          "url": "https://arxiv.org/abs/2605.30592",
+          "source_url": "https://arxiv.org/abs/2605.30592",
+          "external_url": "https://arxiv.org/abs/2605.30592",
+          "source": "arXiv cs.LG",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "papers",
+          "score": 8,
+          "published_at": "2026-06-01T04:00:00.000Z",
+          "published_at_source": "news-store.published_at",
+          "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+          "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning...",
+          "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
+          "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+          "watch_next": "看论文是否公开跨域实验和代码。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-06-02T02:53:00.215Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "news-store-0004"
+          ],
+          "editorial_score": 100,
+          "editorial_signals": [
+            {
+              "name": "research_signal",
+              "weight": 20,
+              "hits": [
+                "arXiv",
+                "training"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "key_data": [
+            "Predictability Representations",
+            "推出",
+            "研究者和评测团队",
+            "arXiv cs.LG",
+            "Learning Transferable Predictability Representations"
+          ],
+          "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开跨域实验和代码。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+          "primary_section": "open_source",
+          "visual": {
+            "status": "ready",
+            "mode": "open_license_image",
+            "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+            "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+            "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
+            "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+            "credit": "Little, Brian S.;Shukla, Shridhar B.",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
+            "matched_terms": [
+              "Predictability Representations"
+            ],
+            "relevance_score": 0.66,
+            "fallback_reason": "",
+            "template": ""
+          }
+        },
+        {
+          "id": "arxiv-stat-ml-afccfb168823",
+          "story_id": "arxiv-stat-ml-afccfb168823",
+          "raw_item": {
+            "source": "arXiv stat.ML",
+            "original_title": "Stochastic Gradients under Nuisances",
+            "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
+            "url": "https://arxiv.org/abs/2508.20326",
+            "published_at": "2026-06-01T04:00:00.000Z",
+            "category": "papers",
+            "image_candidates": []
+          },
+          "story_fact": {
+            "concrete_object": "Stochastic Gradients",
+            "entities": [
+              "Stochastic Gradients",
+              "Nuisances"
+            ],
+            "products": [
+              "Stochastic Gradients",
+              "Nuisances"
+            ],
+            "action": "推出",
+            "audience": "研究者和评测团队",
+            "editorial_angle": "Stochastic Gradients 的推出会影响研究者和评测团队",
+            "story_facts": [
+              {
+                "label": "entity",
+                "value": "Stochastic Gradients"
+              },
+              {
+                "label": "entity",
+                "value": "Nuisances"
+              },
+              {
+                "label": "action",
+                "value": "推出"
+              },
+              {
+                "label": "concrete_object",
+                "value": "Stochastic Gradients"
+              }
+            ],
+            "original_title": "Stochastic Gradients under Nuisances",
+            "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed."
+          },
+          "zh_title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+          "zh_summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+          "story_facts": [
+            {
+              "label": "entity",
+              "value": "Stochastic Gradients"
+            },
+            {
+              "label": "entity",
+              "value": "Nuisances"
+            },
+            {
+              "label": "action",
+              "value": "推出"
+            },
+            {
+              "label": "concrete_object",
+              "value": "Stochastic Gradients"
+            }
+          ],
+          "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+          "original_title": "Stochastic Gradients under Nuisances",
+          "url": "https://arxiv.org/abs/2508.20326",
+          "source_url": "https://arxiv.org/abs/2508.20326",
+          "external_url": "https://arxiv.org/abs/2508.20326",
+          "source": "arXiv stat.ML",
+          "source_type": "official",
+          "source_rank": "A",
+          "category": "papers",
+          "score": 8,
+          "published_at": "2026-06-01T04:00:00.000Z",
+          "published_at_source": "news-store.published_at",
+          "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+          "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning....",
+          "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
+          "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+          "watch_next": "看它是否给出噪声条件下的实验复现。",
+          "image": null,
+          "image_source": null,
+          "image_credit": null,
+          "verified_at": "2026-06-02T02:53:00.215Z",
+          "duplicate_group": null,
+          "evidence_ids": [
+            "news-store-0012"
+          ],
+          "editorial_score": 98,
+          "editorial_signals": [
+            {
+              "name": "research_signal",
+              "weight": 20,
+              "hits": [
+                "arXiv",
+                "inference"
+              ]
+            }
+          ],
+          "editorial_penalties": [],
+          "lead_eligible": true,
+          "core_eligible": true,
+          "key_data": [
+            "Stochastic Gradients",
+            "推出",
+            "研究者和评测团队",
+            "arXiv stat.ML",
+            "Stochastic Gradients under Nuisances"
+          ],
+          "content": "arXiv 报道 Stochastic Gradients，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Stochastic Gradients under Nuisances」。arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Stochastic Gradients 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看它是否给出噪声条件下的实验复现。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+          "primary_section": "open_source",
+          "visual": {
+            "status": "ready",
+            "mode": "open_license_image",
+            "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+            "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+            "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
+            "caption": "开放授权图片，用来辅助呈现「Stochastic Gradients」相关对象。",
+            "credit": "Asif usa",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Gradient_descent.jpg",
+            "matched_terms": [
+              "Stochastic Gradients",
+              "Nuisances"
+            ],
+            "relevance_score": 0.66,
+            "fallback_reason": "",
+            "template": ""
           }
         }
       ]
@@ -472,7 +727,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-06-02T02:49:14.734Z",
+          "verified_at": "2026-06-02T02:53:00.215Z",
           "duplicate_group": null,
           "evidence_ids": [
             "news-store-0005"
@@ -611,7 +866,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-06-02T02:49:14.734Z",
+          "verified_at": "2026-06-02T02:53:00.215Z",
           "duplicate_group": null,
           "evidence_ids": [
             "news-store-0006"
@@ -740,7 +995,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-06-02T02:49:14.734Z",
+          "verified_at": "2026-06-02T02:53:00.215Z",
           "duplicate_group": null,
           "evidence_ids": [
             "news-store-0007"
@@ -868,7 +1123,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-06-02T02:49:14.734Z",
+          "verified_at": "2026-06-02T02:53:00.215Z",
           "duplicate_group": null,
           "evidence_ids": [
             "news-store-0010"
@@ -889,21 +1144,20 @@
           "primary_section": "china_perspective",
           "visual": {
             "status": "ready",
-            "mode": "generated_story_svg",
-            "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
-            "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
+            "mode": "open_license_image",
+            "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
+            "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
             "alt": "新闻视觉：Alphabet 计划 800 亿美元 AI 基建支出",
-            "caption": "Janet 根据「Alphabet」和「AI 资本支出」生成的新闻视觉。",
-            "credit": "Generated by Janet visual resolver",
-            "license": "generated",
-            "source_url": "",
+            "caption": "开放授权图片，用来辅助呈现「Alphabet」相关对象。",
+            "credit": "Delamotte, F., vectorized & restored by JovanCormac",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Ornamental_Alphabet_-_16th_Century.svg",
             "matched_terms": [
-              "Alphabet",
-              "AI 资本支出"
+              "Alphabet"
             ],
-            "relevance_score": 0.62,
-            "fallback_reason": "no_qualified_external_image",
-            "template": "hardware_infrastructure"
+            "relevance_score": 0.66,
+            "fallback_reason": "",
+            "template": ""
           }
         }
       ]
@@ -987,7 +1241,7 @@
           "image": null,
           "image_source": null,
           "image_credit": null,
-          "verified_at": "2026-06-02T02:49:14.734Z",
+          "verified_at": "2026-06-02T02:53:00.215Z",
           "duplicate_group": null,
           "evidence_ids": [
             "news-store-0002"
@@ -1018,21 +1272,20 @@
           "primary_section": "models",
           "visual": {
             "status": "ready",
-            "mode": "generated_story_svg",
-            "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-            "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
+            "mode": "open_license_image",
+            "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+            "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
             "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-            "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-            "credit": "Generated by Janet visual resolver",
-            "license": "generated",
-            "source_url": "",
+            "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+            "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+            "license": "CC BY-SA 3.0 de",
+            "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
             "matched_terms": [
-              "Speculative Decoding Across Languages",
-              "推出"
+              "Speculative Decoding Across Languages"
             ],
-            "relevance_score": 0.62,
-            "fallback_reason": "no_qualified_external_image",
-            "template": "other"
+            "relevance_score": 0.66,
+            "fallback_reason": "",
+            "template": ""
           }
         }
       ]
@@ -1281,7 +1534,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0001"
@@ -1428,7 +1681,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0003"
@@ -1578,7 +1831,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0005"
@@ -1717,7 +1970,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0006"
@@ -1846,7 +2099,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0007"
@@ -1974,7 +2227,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0002"
@@ -2005,21 +2258,275 @@
       "primary_section": "models",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
         "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-        "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+        "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+        "license": "CC BY-SA 3.0 de",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
         "matched_terms": [
-          "Speculative Decoding Across Languages",
-          "推出"
+          "Speculative Decoding Across Languages"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "id": "arxiv-cs-lg-afe9834a3c40",
+      "story_id": "arxiv-cs-lg-afe9834a3c40",
+      "raw_item": {
+        "source": "arXiv cs.LG",
+        "original_title": "Learning Transferable Predictability Representations",
+        "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems.",
+        "url": "https://arxiv.org/abs/2605.30592",
+        "published_at": "2026-06-01T04:00:00.000Z",
+        "category": "papers",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Predictability Representations",
+        "entities": [
+          "Predictability Representations"
+        ],
+        "products": [
+          "Predictability Representations"
+        ],
+        "action": "推出",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Predictability Representations 的推出会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Predictability Representations"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Predictability Representations"
+          }
+        ],
+        "original_title": "Learning Transferable Predictability Representations",
+        "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems."
+      },
+      "zh_title": "Predictability Representations 研究可迁移预测",
+      "zh_summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "Predictability Representations"
+        },
+        {
+          "label": "action",
+          "value": "推出"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Predictability Representations"
+        }
+      ],
+      "title": "Predictability Representations 研究可迁移预测",
+      "original_title": "Learning Transferable Predictability Representations",
+      "url": "https://arxiv.org/abs/2605.30592",
+      "source_url": "https://arxiv.org/abs/2605.30592",
+      "external_url": "https://arxiv.org/abs/2605.30592",
+      "source": "arXiv cs.LG",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "papers",
+      "score": 8,
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "published_at_source": "news-store.published_at",
+      "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning...",
+      "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
+      "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看论文是否公开跨域实验和代码。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-06-02T02:53:00.215Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "news-store-0004"
+      ],
+      "editorial_score": 100,
+      "editorial_signals": [
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "arXiv",
+            "training"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "key_data": [
+        "Predictability Representations",
+        "推出",
+        "研究者和评测团队",
+        "arXiv cs.LG",
+        "Learning Transferable Predictability Representations"
+      ],
+      "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开跨域实验和代码。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "open_source",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
+        "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+        "credit": "Little, Brian S.;Shukla, Shridhar B.",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
+        "matched_terms": [
+          "Predictability Representations"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "id": "arxiv-stat-ml-afccfb168823",
+      "story_id": "arxiv-stat-ml-afccfb168823",
+      "raw_item": {
+        "source": "arXiv stat.ML",
+        "original_title": "Stochastic Gradients under Nuisances",
+        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
+        "url": "https://arxiv.org/abs/2508.20326",
+        "published_at": "2026-06-01T04:00:00.000Z",
+        "category": "papers",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Stochastic Gradients",
+        "entities": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "products": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "action": "推出",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Stochastic Gradients 的推出会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Stochastic Gradients"
+          },
+          {
+            "label": "entity",
+            "value": "Nuisances"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Stochastic Gradients"
+          }
+        ],
+        "original_title": "Stochastic Gradients under Nuisances",
+        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed."
+      },
+      "zh_title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "zh_summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "Stochastic Gradients"
+        },
+        {
+          "label": "entity",
+          "value": "Nuisances"
+        },
+        {
+          "label": "action",
+          "value": "推出"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Stochastic Gradients"
+        }
+      ],
+      "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "original_title": "Stochastic Gradients under Nuisances",
+      "url": "https://arxiv.org/abs/2508.20326",
+      "source_url": "https://arxiv.org/abs/2508.20326",
+      "external_url": "https://arxiv.org/abs/2508.20326",
+      "source": "arXiv stat.ML",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "papers",
+      "score": 8,
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "published_at_source": "news-store.published_at",
+      "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning....",
+      "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
+      "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看它是否给出噪声条件下的实验复现。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-06-02T02:53:00.215Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "news-store-0012"
+      ],
+      "editorial_score": 98,
+      "editorial_signals": [
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "arXiv",
+            "inference"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "key_data": [
+        "Stochastic Gradients",
+        "推出",
+        "研究者和评测团队",
+        "arXiv stat.ML",
+        "Stochastic Gradients under Nuisances"
+      ],
+      "content": "arXiv 报道 Stochastic Gradients，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Stochastic Gradients under Nuisances」。arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Stochastic Gradients 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看它是否给出噪声条件下的实验复现。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "open_source",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
+        "caption": "开放授权图片，用来辅助呈现「Stochastic Gradients」相关对象。",
+        "credit": "Asif usa",
+        "license": "CC BY-SA 3.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Gradient_descent.jpg",
+        "matched_terms": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
@@ -2098,7 +2605,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0010"
@@ -2119,21 +2626,20 @@
       "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
+        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
         "alt": "新闻视觉：Alphabet 计划 800 亿美元 AI 基建支出",
-        "caption": "Janet 根据「Alphabet」和「AI 资本支出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Alphabet」相关对象。",
+        "credit": "Delamotte, F., vectorized & restored by JovanCormac",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ornamental_Alphabet_-_16th_Century.svg",
         "matched_terms": [
-          "Alphabet",
-          "AI 资本支出"
+          "Alphabet"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "hardware_infrastructure"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     }
   ],
@@ -2312,21 +2818,83 @@
       "watch_next": "看论文是否公开各语言的速度和质量折损。",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
         "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-        "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+        "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+        "license": "CC BY-SA 3.0 de",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
         "matched_terms": [
-          "Speculative Decoding Across Languages",
-          "推出"
+          "Speculative Decoding Across Languages"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "role": "compact",
+      "story_id": "arxiv-cs-lg-afe9834a3c40",
+      "title": "Predictability Representations 研究可迁移预测",
+      "source": "arXiv cs.LG",
+      "category": "papers",
+      "url": "https://arxiv.org/abs/2605.30592",
+      "source_url": "https://arxiv.org/abs/2605.30592",
+      "external_url": "https://arxiv.org/abs/2605.30592",
+      "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
+      "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看论文是否公开跨域实验和代码。",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
+        "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+        "credit": "Little, Brian S.;Shukla, Shridhar B.",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
+        "matched_terms": [
+          "Predictability Representations"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "role": "compact",
+      "story_id": "arxiv-stat-ml-afccfb168823",
+      "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "source": "arXiv stat.ML",
+      "category": "papers",
+      "url": "https://arxiv.org/abs/2508.20326",
+      "source_url": "https://arxiv.org/abs/2508.20326",
+      "external_url": "https://arxiv.org/abs/2508.20326",
+      "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
+      "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看它是否给出噪声条件下的实验复现。",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
+        "caption": "开放授权图片，用来辅助呈现「Stochastic Gradients」相关对象。",
+        "credit": "Asif usa",
+        "license": "CC BY-SA 3.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Gradient_descent.jpg",
+        "matched_terms": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
@@ -2344,21 +2912,20 @@
       "watch_next": "看 Alphabet 是否把 800 亿美元支出转成云收入。",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
+        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
         "alt": "新闻视觉：Alphabet 计划 800 亿美元 AI 基建支出",
-        "caption": "Janet 根据「Alphabet」和「AI 资本支出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Alphabet」相关对象。",
+        "credit": "Delamotte, F., vectorized & restored by JovanCormac",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ornamental_Alphabet_-_16th_Century.svg",
         "matched_terms": [
-          "Alphabet",
-          "AI 资本支出"
+          "Alphabet"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "hardware_infrastructure"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     }
   ],
@@ -2450,7 +3017,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0006"
@@ -2579,7 +3146,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0007"
@@ -2707,7 +3274,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0002"
@@ -2738,21 +3305,275 @@
       "primary_section": "models",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
         "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-        "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+        "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+        "license": "CC BY-SA 3.0 de",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
         "matched_terms": [
-          "Speculative Decoding Across Languages",
-          "推出"
+          "Speculative Decoding Across Languages"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "id": "arxiv-cs-lg-afe9834a3c40",
+      "story_id": "arxiv-cs-lg-afe9834a3c40",
+      "raw_item": {
+        "source": "arXiv cs.LG",
+        "original_title": "Learning Transferable Predictability Representations",
+        "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems.",
+        "url": "https://arxiv.org/abs/2605.30592",
+        "published_at": "2026-06-01T04:00:00.000Z",
+        "category": "papers",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Predictability Representations",
+        "entities": [
+          "Predictability Representations"
+        ],
+        "products": [
+          "Predictability Representations"
+        ],
+        "action": "推出",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Predictability Representations 的推出会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Predictability Representations"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Predictability Representations"
+          }
+        ],
+        "original_title": "Learning Transferable Predictability Representations",
+        "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems."
+      },
+      "zh_title": "Predictability Representations 研究可迁移预测",
+      "zh_summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "Predictability Representations"
+        },
+        {
+          "label": "action",
+          "value": "推出"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Predictability Representations"
+        }
+      ],
+      "title": "Predictability Representations 研究可迁移预测",
+      "original_title": "Learning Transferable Predictability Representations",
+      "url": "https://arxiv.org/abs/2605.30592",
+      "source_url": "https://arxiv.org/abs/2605.30592",
+      "external_url": "https://arxiv.org/abs/2605.30592",
+      "source": "arXiv cs.LG",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "papers",
+      "score": 8,
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "published_at_source": "news-store.published_at",
+      "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning...",
+      "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
+      "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看论文是否公开跨域实验和代码。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-06-02T02:53:00.215Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "news-store-0004"
+      ],
+      "editorial_score": 100,
+      "editorial_signals": [
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "arXiv",
+            "training"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "key_data": [
+        "Predictability Representations",
+        "推出",
+        "研究者和评测团队",
+        "arXiv cs.LG",
+        "Learning Transferable Predictability Representations"
+      ],
+      "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开跨域实验和代码。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "open_source",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
+        "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+        "credit": "Little, Brian S.;Shukla, Shridhar B.",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
+        "matched_terms": [
+          "Predictability Representations"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "id": "arxiv-stat-ml-afccfb168823",
+      "story_id": "arxiv-stat-ml-afccfb168823",
+      "raw_item": {
+        "source": "arXiv stat.ML",
+        "original_title": "Stochastic Gradients under Nuisances",
+        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
+        "url": "https://arxiv.org/abs/2508.20326",
+        "published_at": "2026-06-01T04:00:00.000Z",
+        "category": "papers",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Stochastic Gradients",
+        "entities": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "products": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "action": "推出",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Stochastic Gradients 的推出会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Stochastic Gradients"
+          },
+          {
+            "label": "entity",
+            "value": "Nuisances"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Stochastic Gradients"
+          }
+        ],
+        "original_title": "Stochastic Gradients under Nuisances",
+        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed."
+      },
+      "zh_title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "zh_summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "Stochastic Gradients"
+        },
+        {
+          "label": "entity",
+          "value": "Nuisances"
+        },
+        {
+          "label": "action",
+          "value": "推出"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Stochastic Gradients"
+        }
+      ],
+      "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "original_title": "Stochastic Gradients under Nuisances",
+      "url": "https://arxiv.org/abs/2508.20326",
+      "source_url": "https://arxiv.org/abs/2508.20326",
+      "external_url": "https://arxiv.org/abs/2508.20326",
+      "source": "arXiv stat.ML",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "papers",
+      "score": 8,
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "published_at_source": "news-store.published_at",
+      "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning....",
+      "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
+      "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看它是否给出噪声条件下的实验复现。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-06-02T02:53:00.215Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "news-store-0012"
+      ],
+      "editorial_score": 98,
+      "editorial_signals": [
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "arXiv",
+            "inference"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "key_data": [
+        "Stochastic Gradients",
+        "推出",
+        "研究者和评测团队",
+        "arXiv stat.ML",
+        "Stochastic Gradients under Nuisances"
+      ],
+      "content": "arXiv 报道 Stochastic Gradients，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Stochastic Gradients under Nuisances」。arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Stochastic Gradients 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看它是否给出噪声条件下的实验复现。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "open_source",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
+        "caption": "开放授权图片，用来辅助呈现「Stochastic Gradients」相关对象。",
+        "credit": "Asif usa",
+        "license": "CC BY-SA 3.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Gradient_descent.jpg",
+        "matched_terms": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
@@ -2831,7 +3652,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0010"
@@ -2852,21 +3673,20 @@
       "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
+        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
         "alt": "新闻视觉：Alphabet 计划 800 亿美元 AI 基建支出",
-        "caption": "Janet 根据「Alphabet」和「AI 资本支出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Alphabet」相关对象。",
+        "credit": "Delamotte, F., vectorized & restored by JovanCormac",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ornamental_Alphabet_-_16th_Century.svg",
         "matched_terms": [
-          "Alphabet",
-          "AI 资本支出"
+          "Alphabet"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "hardware_infrastructure"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     }
   ],
@@ -2921,6 +3741,24 @@
       "original_title": "Speculative Decoding Across Languages",
       "original_summary": "arXiv:2605.30580v1 Announce Type: new Abstract: Speculative decoding has become a crucial component of large language model (LLM) inference, enabling faster generation by drafting multiple tokens and verifying them in parallel. However, small draft models tend to suffer from disproportionately poor multilingual capabilities. Thus, when generating text in a non-English language, speculative decoding is far less effective. We compare three strategies to improve speculative decoding efficiency for eleven languages: finetuning the draft model on task-specific data (translation); finetuning the draft model on unlabeled monolingual corpora; and training simple n-gram draft models on the same monolingual corpora. We evaluate efficiency on translation (from English into the target language) and the held-out task of story generation. We find that while task-specific distillation can significantly improve efficiency, distilled models generalize poorly to a new task. Meanwhile, n-gram draft models, despite lower acceptance rates, consistently provide large speed-ups due to much faster draft generation.",
       "url": "https://arxiv.org/abs/2605.30580",
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "category": "papers",
+      "image_candidates": []
+    },
+    {
+      "source": "arXiv cs.LG",
+      "original_title": "Learning Transferable Predictability Representations",
+      "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems.",
+      "url": "https://arxiv.org/abs/2605.30592",
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "category": "papers",
+      "image_candidates": []
+    },
+    {
+      "source": "arXiv stat.ML",
+      "original_title": "Stochastic Gradients under Nuisances",
+      "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
+      "url": "https://arxiv.org/abs/2508.20326",
       "published_at": "2026-06-01T04:00:00.000Z",
       "category": "papers",
       "image_candidates": []
@@ -3022,7 +3860,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0001"
@@ -3169,7 +4007,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0003"
@@ -3319,7 +4157,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0005"
@@ -3458,7 +4296,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0006"
@@ -3587,7 +4425,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0007"
@@ -3715,7 +4553,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0002"
@@ -3746,21 +4584,275 @@
       "primary_section": "models",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
         "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-        "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+        "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+        "license": "CC BY-SA 3.0 de",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
         "matched_terms": [
-          "Speculative Decoding Across Languages",
-          "推出"
+          "Speculative Decoding Across Languages"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "other"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "id": "arxiv-cs-lg-afe9834a3c40",
+      "story_id": "arxiv-cs-lg-afe9834a3c40",
+      "raw_item": {
+        "source": "arXiv cs.LG",
+        "original_title": "Learning Transferable Predictability Representations",
+        "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems.",
+        "url": "https://arxiv.org/abs/2605.30592",
+        "published_at": "2026-06-01T04:00:00.000Z",
+        "category": "papers",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Predictability Representations",
+        "entities": [
+          "Predictability Representations"
+        ],
+        "products": [
+          "Predictability Representations"
+        ],
+        "action": "推出",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Predictability Representations 的推出会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Predictability Representations"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Predictability Representations"
+          }
+        ],
+        "original_title": "Learning Transferable Predictability Representations",
+        "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems."
+      },
+      "zh_title": "Predictability Representations 研究可迁移预测",
+      "zh_summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "Predictability Representations"
+        },
+        {
+          "label": "action",
+          "value": "推出"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Predictability Representations"
+        }
+      ],
+      "title": "Predictability Representations 研究可迁移预测",
+      "original_title": "Learning Transferable Predictability Representations",
+      "url": "https://arxiv.org/abs/2605.30592",
+      "source_url": "https://arxiv.org/abs/2605.30592",
+      "external_url": "https://arxiv.org/abs/2605.30592",
+      "source": "arXiv cs.LG",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "papers",
+      "score": 8,
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "published_at_source": "news-store.published_at",
+      "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+      "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning...",
+      "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
+      "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看论文是否公开跨域实验和代码。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-06-02T02:53:00.215Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "news-store-0004"
+      ],
+      "editorial_score": 100,
+      "editorial_signals": [
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "arXiv",
+            "training"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "key_data": [
+        "Predictability Representations",
+        "推出",
+        "研究者和评测团队",
+        "arXiv cs.LG",
+        "Learning Transferable Predictability Representations"
+      ],
+      "content": "arXiv 报道 Predictability，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Learning Transferable Predictability Representations」。arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Predictability 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看论文是否公开跨域实验和代码。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "open_source",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+        "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
+        "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+        "credit": "Little, Brian S.;Shukla, Shridhar B.",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
+        "matched_terms": [
+          "Predictability Representations"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
+      }
+    },
+    {
+      "id": "arxiv-stat-ml-afccfb168823",
+      "story_id": "arxiv-stat-ml-afccfb168823",
+      "raw_item": {
+        "source": "arXiv stat.ML",
+        "original_title": "Stochastic Gradients under Nuisances",
+        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
+        "url": "https://arxiv.org/abs/2508.20326",
+        "published_at": "2026-06-01T04:00:00.000Z",
+        "category": "papers",
+        "image_candidates": []
+      },
+      "story_fact": {
+        "concrete_object": "Stochastic Gradients",
+        "entities": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "products": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "action": "推出",
+        "audience": "研究者和评测团队",
+        "editorial_angle": "Stochastic Gradients 的推出会影响研究者和评测团队",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Stochastic Gradients"
+          },
+          {
+            "label": "entity",
+            "value": "Nuisances"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Stochastic Gradients"
+          }
+        ],
+        "original_title": "Stochastic Gradients under Nuisances",
+        "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed."
+      },
+      "zh_title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "zh_summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "story_facts": [
+        {
+          "label": "entity",
+          "value": "Stochastic Gradients"
+        },
+        {
+          "label": "entity",
+          "value": "Nuisances"
+        },
+        {
+          "label": "action",
+          "value": "推出"
+        },
+        {
+          "label": "concrete_object",
+          "value": "Stochastic Gradients"
+        }
+      ],
+      "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+      "original_title": "Stochastic Gradients under Nuisances",
+      "url": "https://arxiv.org/abs/2508.20326",
+      "source_url": "https://arxiv.org/abs/2508.20326",
+      "external_url": "https://arxiv.org/abs/2508.20326",
+      "source": "arXiv stat.ML",
+      "source_type": "official",
+      "source_rank": "A",
+      "category": "papers",
+      "score": 8,
+      "published_at": "2026-06-01T04:00:00.000Z",
+      "published_at_source": "news-store.published_at",
+      "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+      "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning....",
+      "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
+      "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+      "watch_next": "看它是否给出噪声条件下的实验复现。",
+      "image": null,
+      "image_source": null,
+      "image_credit": null,
+      "verified_at": "2026-06-02T02:53:00.215Z",
+      "duplicate_group": null,
+      "evidence_ids": [
+        "news-store-0012"
+      ],
+      "editorial_score": 98,
+      "editorial_signals": [
+        {
+          "name": "research_signal",
+          "weight": 20,
+          "hits": [
+            "arXiv",
+            "inference"
+          ]
+        }
+      ],
+      "editorial_penalties": [],
+      "lead_eligible": true,
+      "core_eligible": true,
+      "key_data": [
+        "Stochastic Gradients",
+        "推出",
+        "研究者和评测团队",
+        "arXiv stat.ML",
+        "Stochastic Gradients under Nuisances"
+      ],
+      "content": "arXiv 报道 Stochastic Gradients，这次已经落到产品、合作、评测或商业路径里的具体动作。原文标题是「Stochastic Gradients under Nuisances」。arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。读者可以从三处落点判断它是否值得跟进：能不能降低某段流程成本，国内团队能不能接入或找到替代路径，能不能替掉一个重复岗位或一段外包流程。后续继续看可用入口、权限、价格、评测方法和真实案例，而不是厂商发布时的热闹词。Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。对国内团队来说，先小范围试用，再算账。Stochastic Gradients 已经开始挤进实际使用链路，但成本、版权、权限和稳定性往往会在发布之后才露出来。国内团队先小范围试用，再看它是否给出噪声条件下的实验复现。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。 这条新闻要回到具体对象、产品动作和使用边界里看。\n\nJanet 锐评：这条新闻要回到具体对象、产品动作和使用边界里看。",
+      "primary_section": "open_source",
+      "visual": {
+        "status": "ready",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+        "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
+        "caption": "开放授权图片，用来辅助呈现「Stochastic Gradients」相关对象。",
+        "credit": "Asif usa",
+        "license": "CC BY-SA 3.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Gradient_descent.jpg",
+        "matched_terms": [
+          "Stochastic Gradients",
+          "Nuisances"
+        ],
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     },
     {
@@ -3839,7 +4931,7 @@
       "image": null,
       "image_source": null,
       "image_credit": null,
-      "verified_at": "2026-06-02T02:49:14.734Z",
+      "verified_at": "2026-06-02T02:53:00.215Z",
       "duplicate_group": null,
       "evidence_ids": [
         "news-store-0010"
@@ -3860,21 +4952,20 @@
       "primary_section": "china_perspective",
       "visual": {
         "status": "ready",
-        "mode": "generated_story_svg",
-        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
-        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
+        "mode": "open_license_image",
+        "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
+        "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
         "alt": "新闻视觉：Alphabet 计划 800 亿美元 AI 基建支出",
-        "caption": "Janet 根据「Alphabet」和「AI 资本支出」生成的新闻视觉。",
-        "credit": "Generated by Janet visual resolver",
-        "license": "generated",
-        "source_url": "",
+        "caption": "开放授权图片，用来辅助呈现「Alphabet」相关对象。",
+        "credit": "Delamotte, F., vectorized & restored by JovanCormac",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ornamental_Alphabet_-_16th_Century.svg",
         "matched_terms": [
-          "Alphabet",
-          "AI 资本支出"
+          "Alphabet"
         ],
-        "relevance_score": 0.62,
-        "fallback_reason": "no_qualified_external_image",
-        "template": "hardware_infrastructure"
+        "relevance_score": 0.66,
+        "fallback_reason": "",
+        "template": ""
       }
     }
   ],
@@ -3882,9 +4973,11 @@
     {
       "module_id": "open_source",
       "module_title": "增量 BPE 把 OpenAI 放到可复查路径里",
-      "module_summary": "arXiv cs.CL 这组围绕 Incremental BPE、OpenAI，要看推出能不能被复现、比较或接入。",
+      "module_summary": "arXiv cs.CL、arXiv cs.LG、arXiv stat.ML 这组围绕 Incremental BPE、OpenAI、Predictability，要看推出能不能被复现、比较或接入。",
       "story_ids": [
-        "arxiv-cs-cl-6ec8b283e1a3"
+        "arxiv-cs-cl-6ec8b283e1a3",
+        "arxiv-cs-lg-afe9834a3c40",
+        "arxiv-stat-ml-afccfb168823"
       ]
     },
     {
@@ -3962,7 +5055,7 @@
       {
         "module_id": "open_source",
         "module_title": "增量 BPE 把 OpenAI 放到可复查路径里",
-        "module_summary": "arXiv cs.CL 这组围绕 Incremental BPE、OpenAI，要看推出能不能被复现、比较或接入。"
+        "module_summary": "arXiv cs.CL、arXiv cs.LG、arXiv stat.ML 这组围绕 Incremental BPE、OpenAI、Predictability，要看推出能不能被复现、比较或接入。"
       },
       {
         "module_id": "china_perspective",
@@ -4101,21 +5194,69 @@
         "category": "papers",
         "visual": {
           "status": "ready",
-          "mode": "generated_story_svg",
-          "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
           "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-          "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-          "credit": "Generated by Janet visual resolver",
-          "license": "generated",
-          "source_url": "",
+          "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+          "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+          "license": "CC BY-SA 3.0 de",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
           "matched_terms": [
-            "Speculative Decoding Across Languages",
-            "推出"
+            "Speculative Decoding Across Languages"
           ],
-          "relevance_score": 0.62,
-          "fallback_reason": "no_qualified_external_image",
-          "template": "other"
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
+        }
+      },
+      {
+        "story_id": "arxiv-cs-lg-afe9834a3c40",
+        "title": "Predictability Representations 研究可迁移预测",
+        "summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+        "source": "arXiv cs.LG",
+        "category": "papers",
+        "visual": {
+          "status": "ready",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+          "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
+          "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+          "credit": "Little, Brian S.;Shukla, Shridhar B.",
+          "license": "Public domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
+          "matched_terms": [
+            "Predictability Representations"
+          ],
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
+        }
+      },
+      {
+        "story_id": "arxiv-stat-ml-afccfb168823",
+        "title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+        "summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+        "source": "arXiv stat.ML",
+        "category": "papers",
+        "visual": {
+          "status": "ready",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+          "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
+          "caption": "开放授权图片，用来辅助呈现「Stochastic Gradients」相关对象。",
+          "credit": "Asif usa",
+          "license": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Gradient_descent.jpg",
+          "matched_terms": [
+            "Stochastic Gradients",
+            "Nuisances"
+          ],
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
         }
       },
       {
@@ -4126,21 +5267,20 @@
         "category": "china",
         "visual": {
           "status": "ready",
-          "mode": "generated_story_svg",
-          "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
-          "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
+          "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
           "alt": "新闻视觉：Alphabet 计划 800 亿美元 AI 基建支出",
-          "caption": "Janet 根据「Alphabet」和「AI 资本支出」生成的新闻视觉。",
-          "credit": "Generated by Janet visual resolver",
-          "license": "generated",
-          "source_url": "",
+          "caption": "开放授权图片，用来辅助呈现「Alphabet」相关对象。",
+          "credit": "Delamotte, F., vectorized & restored by JovanCormac",
+          "license": "Public domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Ornamental_Alphabet_-_16th_Century.svg",
           "matched_terms": [
-            "Alphabet",
-            "AI 资本支出"
+            "Alphabet"
           ],
-          "relevance_score": 0.62,
-          "fallback_reason": "no_qualified_external_image",
-          "template": "hardware_infrastructure"
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
         }
       }
     ]
@@ -4434,27 +5574,127 @@
         ],
         "visual": {
           "status": "ready",
-          "mode": "generated_story_svg",
-          "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
-          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.svg",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
+          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-cl-b6cff8100719.jpg",
           "alt": "新闻视觉：Speculative Decoding Across Languages 比较多语言解码",
-          "caption": "Janet 根据「Speculative Decoding Across Languages」和「推出」生成的新闻视觉。",
-          "credit": "Generated by Janet visual resolver",
-          "license": "generated",
-          "source_url": "",
+          "caption": "开放授权图片，用来辅助呈现「Speculative Decoding Across Languages」相关对象。",
+          "credit": "Leonhard Dobusch, Philip Mader, Sigrid Quack (Eds.)",
+          "license": "CC BY-SA 3.0 de",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Governance_across_borders.pdf",
           "matched_terms": [
-            "Speculative Decoding Across Languages",
-            "推出"
+            "Speculative Decoding Across Languages"
           ],
-          "relevance_score": 0.62,
-          "fallback_reason": "no_qualified_external_image",
-          "template": "other"
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
         },
         "raw_item": {
           "source": "arXiv cs.CL",
           "original_title": "Speculative Decoding Across Languages",
           "original_summary": "arXiv:2605.30580v1 Announce Type: new Abstract: Speculative decoding has become a crucial component of large language model (LLM) inference, enabling faster generation by drafting multiple tokens and verifying them in parallel. However, small draft models tend to suffer from disproportionately poor multilingual capabilities. Thus, when generating text in a non-English language, speculative decoding is far less effective. We compare three strategies to improve speculative decoding efficiency for eleven languages: finetuning the draft model on task-specific data (translation); finetuning the draft model on unlabeled monolingual corpora; and training simple n-gram draft models on the same monolingual corpora. We evaluate efficiency on translation (from English into the target language) and the held-out task of story generation. We find that while task-specific distillation can significantly improve efficiency, distilled models generalize poorly to a new task. Meanwhile, n-gram draft models, despite lower acceptance rates, consistently provide large speed-ups due to much faster draft generation.",
           "url": "https://arxiv.org/abs/2605.30580",
+          "published_at": "2026-06-01T04:00:00.000Z",
+          "category": "papers",
+          "image_candidates": []
+        }
+      },
+      {
+        "story_id": "arxiv-cs-lg-afe9834a3c40",
+        "zh_title": "Predictability Representations 研究可迁移预测",
+        "zh_summary": "arXiv cs.LG 这篇 Learning Transferable Predictability Representations 关注可迁移的可预测性表示，关键在于让模型更好判断哪些模式能跨任务复用。",
+        "why_it_matters": "研究者和模型工程团队要看：可迁移预测表示如果成立，会影响小样本任务、跨域泛化和后续评测方法。",
+        "janet_take": "Predictability 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+        "watch_next": "看论文是否公开跨域实验和代码。",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Predictability Representations"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Predictability Representations"
+          }
+        ],
+        "visual": {
+          "status": "ready",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-cs-lg-afe9834a3c40.jpg",
+          "alt": "新闻视觉：Predictability Representations 研究可迁移预测",
+          "caption": "开放授权图片，用来辅助呈现「Predictability Representations」相关对象。",
+          "credit": "Little, Brian S.;Shukla, Shridhar B.",
+          "license": "Public domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:A_technique_for_predictable_real-time_execution_in_the_AN-UYS-2_parallel_signal_processing_architecture_(IA_techniqueforpred00litt).pdf",
+          "matched_terms": [
+            "Predictability Representations"
+          ],
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
+        },
+        "raw_item": {
+          "source": "arXiv cs.LG",
+          "original_title": "Learning Transferable Predictability Representations",
+          "original_summary": "arXiv:2605.30592v1 Announce Type: new Abstract: We study the problem of assigning a scalar score to a short trajectory window that reflects its position on an ordered continuum of predictability regimes, spanning structured deterministic dynamics to unstructured stochastic noise. Existing methods address deterministic-versus-stochastic discrimination within a single system and do not produce scores with a consistent numerical interpretation across systems. We formalize this as ordinal estimation over a five-level predictability ladder and identify a structural source of cross-system ambiguity: ranking supervision alone leaves the score coordinate unfixed up to a monotone reparameterization, which we term the gauge freedom of ordinal scoring. We propose the Gauge-Fixed Ordinal Network (GON), a temporal convolutional model trained with an anchor-and-variance objective that pins level-wise score means to shared target coordinates. GON operates on 2-jet features that expose local trajectory geometry, preserved by smooth flows and disrupted by stochastic surrogate procedures. On five held-out dynamical systems, initializing from a pretrained GON checkpoint consistently outperforms training from scratch across all window budgets, with adaptation depth reflecting geometric proximity to the training family. Zero-shot scores retain ordinal structure at the stochastic boundary, where surrogate procedures most strongly disrupt nonlinear geometry, and pretrained initialization consistently beats scratch across all window budgets. Pairwise discrimination and globally coherent ordinal scoring are distinct properties requiring a stable score coordinate for cross-system transfer, with direct implications for predictability assessment, model selection, and early-warning diagnostics across natural and engineered dynamical systems.",
+          "url": "https://arxiv.org/abs/2605.30592",
+          "published_at": "2026-06-01T04:00:00.000Z",
+          "category": "papers",
+          "image_candidates": []
+        }
+      },
+      {
+        "story_id": "arxiv-stat-ml-afccfb168823",
+        "zh_title": "Stochastic Gradients under Nuisances 研究噪声梯度",
+        "zh_summary": "arXiv stat.ML 这篇 Stochastic Gradients under Nuisances 讨论干扰因素下的随机梯度，关键在于训练估计在噪声条件里是否仍然可靠。",
+        "why_it_matters": "模型训练和统计学习团队要看：干扰因素会影响梯度估计、收敛判断和实验复现，尤其是数据不干净的真实任务。",
+        "janet_take": "Stochastic Gradients 这类发布不缺声量，但能不能留下来，要看入口、价格和后续维护。团队别只看“发布了什么”，要看它有没有稳定场景和清楚边界。 对国内团队来说，先小范围试用，再算账。",
+        "watch_next": "看它是否给出噪声条件下的实验复现。",
+        "story_facts": [
+          {
+            "label": "entity",
+            "value": "Stochastic Gradients"
+          },
+          {
+            "label": "entity",
+            "value": "Nuisances"
+          },
+          {
+            "label": "action",
+            "value": "推出"
+          },
+          {
+            "label": "concrete_object",
+            "value": "Stochastic Gradients"
+          }
+        ],
+        "visual": {
+          "status": "ready",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+          "local_path": "assets/news-visuals/2026-06-02-v4/arxiv-stat-ml-afccfb168823.jpg",
+          "alt": "新闻视觉：Stochastic Gradients under Nuisances 研究噪声梯度",
+          "caption": "开放授权图片，用来辅助呈现「Stochastic Gradients」相关对象。",
+          "credit": "Asif usa",
+          "license": "CC BY-SA 3.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Gradient_descent.jpg",
+          "matched_terms": [
+            "Stochastic Gradients",
+            "Nuisances"
+          ],
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
+        },
+        "raw_item": {
+          "source": "arXiv stat.ML",
+          "original_title": "Stochastic Gradients under Nuisances",
+          "original_summary": "arXiv:2508.20326v2 Announce Type: replace Abstract: Stochastic gradient optimization is the dominant learning paradigm for a variety of scenarios, from classical supervised learning to modern self-supervised learning. We consider stochastic gradient algorithms for learning problems whose objectives rely on unknown nuisance parameters, and establish non-asymptotic convergence guarantees. Our results show that, while the presence of a nuisance can alter the optimum and upset the optimization trajectory, the classical stochastic gradient algorithm may still converge under appropriate conditions, such as Neyman orthogonality. Moreover, even when Neyman orthogonality is not satisfied, we show that an algorithm variant with approximately orthogonalized updates (with an approximately orthogonalized gradient oracle) may achieve similar convergence rates. Examples from orthogonal statistical learning/double machine learning and causal inference are discussed.",
+          "url": "https://arxiv.org/abs/2508.20326",
           "published_at": "2026-06-01T04:00:00.000Z",
           "category": "papers",
           "image_candidates": []
@@ -4483,21 +5723,20 @@
         ],
         "visual": {
           "status": "ready",
-          "mode": "generated_story_svg",
-          "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
-          "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.svg",
+          "mode": "open_license_image",
+          "src": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
+          "local_path": "assets/news-visuals/2026-06-02-v4/chinese-sina-ai-80ded116d9e7.png",
           "alt": "新闻视觉：Alphabet 计划 800 亿美元 AI 基建支出",
-          "caption": "Janet 根据「Alphabet」和「AI 资本支出」生成的新闻视觉。",
-          "credit": "Generated by Janet visual resolver",
-          "license": "generated",
-          "source_url": "",
+          "caption": "开放授权图片，用来辅助呈现「Alphabet」相关对象。",
+          "credit": "Delamotte, F., vectorized & restored by JovanCormac",
+          "license": "Public domain",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Ornamental_Alphabet_-_16th_Century.svg",
           "matched_terms": [
-            "Alphabet",
-            "AI 资本支出"
+            "Alphabet"
           ],
-          "relevance_score": 0.62,
-          "fallback_reason": "no_qualified_external_image",
-          "template": "hardware_infrastructure"
+          "relevance_score": 0.66,
+          "fallback_reason": "",
+          "template": ""
         },
         "raw_item": {
           "source": "新浪 AI 热点",
@@ -4512,43 +5751,6 @@
     ]
   },
   "excluded_items": [
-    {
-      "raw_id": "arxiv-cs-lg-afe9834a3c40",
-      "source": "arXiv cs.LG",
-      "original_title": "Learning Transferable Predictability Representations",
-      "url": "https://arxiv.org/abs/2605.30592",
-      "published_at": "2026-06-01T04:00:00.000Z",
-      "reason": "story_fact_cluster_duplicate",
-      "details": {
-        "concrete_object": "Learning Transferable Predictability Representations",
-        "entities": [
-          "Learning Transferable Predictability Representations"
-        ],
-        "action": "推出",
-        "why_failed": [
-          "too_many_similar_action_items"
-        ]
-      }
-    },
-    {
-      "raw_id": "arxiv-stat-ml-afccfb168823",
-      "source": "arXiv stat.ML",
-      "original_title": "Stochastic Gradients under Nuisances",
-      "url": "https://arxiv.org/abs/2508.20326",
-      "published_at": "2026-06-01T04:00:00.000Z",
-      "reason": "story_fact_cluster_duplicate",
-      "details": {
-        "concrete_object": "Stochastic Gradients",
-        "entities": [
-          "Stochastic Gradients",
-          "Nuisances"
-        ],
-        "action": "推出",
-        "why_failed": [
-          "too_many_similar_action_items"
-        ]
-      }
-    },
     {
       "raw_id": "chinese-sina-ai-33983a41286a",
       "source": "新浪 AI 热点",

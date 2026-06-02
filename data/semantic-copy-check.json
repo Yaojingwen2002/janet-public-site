@@ -4,8 +4,8 @@
   "qa_passed": true,
   "latest_edition_id": "2026-06-02-v4",
   "checked_file_path": "data/2026-06-02-v4/content.json",
-  "homepage_items_checked": 8,
-  "stories_checked": 8,
+  "homepage_items_checked": 7,
+  "stories_checked": 7,
   "duplicate_titles": [],
   "duplicate_summaries": [],
   "duplicate_why_it_matters": [],
@@ -26,29 +26,7 @@
     },
     "janet_take": {
       "hard": [],
-      "warnings": [
-        {
-          "field": "janet_take",
-          "reason": "near_duplicate_warning",
-          "similarity": 0.776,
-          "item_a": {
-            "story_id": "chinese-sina-ai-80ded116d9e7",
-            "title": "Alphabet 计划 800 亿美元 AI 基建支出",
-            "source": "新浪 AI 热点",
-            "category": "china",
-            "original_title": "Alphabet 寻求 800 亿美元资金以推进人工智能建设 - 新浪财经",
-            "text": "新浪 AI 热点这次围绕 Alphabet 给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
-          },
-          "item_b": {
-            "story_id": "chinese-ithome-a7891afe5290",
-            "title": "贝恩调研显示 AI 降本低于预期",
-            "source": "IT 之家",
-            "category": "china",
-            "original_title": "贝恩：AI 降本效果不及预期，四成受访公司成本降幅未超 10% - IT 之家",
-            "text": "IT 之家这次围绕贝恩给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
-          }
-        }
-      ]
+      "warnings": []
     },
     "watch_next": {
       "hard": [],
@@ -94,41 +72,41 @@
     }
   },
   "max_why_similarity": {
-    "score": 0.143,
+    "score": 0.125,
     "item_a": {
-      "story_id": "chinese-sina-ai-80ded116d9e7",
-      "title": "Alphabet 计划 800 亿美元 AI 基建支出",
-      "source": "新浪 AI 热点",
+      "story_id": "chinese-tmtpost-695e9c2a92ec",
+      "title": "扣子 Coze 3.0 升级 Agent 平台",
+      "source": "钛媒体",
       "category": "china",
-      "original_title": "Alphabet 寻求 800 亿美元资金以推进人工智能建设 - 新浪财经",
-      "text": "相关产品团队和使用者要看 Alphabet：800 亿美元 AI 基建支出会改变算力供给、云服务成本和模型训练节奏。"
+      "original_title": "字节跳动 AI Agent 平台扣子 Coze 上线 3.0 全新版本 - 钛媒体",
+      "text": "开发者和企业自动化团队要看：Coze 3.0 如果补齐编排、插件和部署能力，会影响国内 Agent 平台的默认入口。"
     },
     "item_b": {
-      "story_id": "chinese-ithome-a7891afe5290",
-      "title": "贝恩调研显示 AI 降本低于预期",
+      "story_id": "chinese-ithome-9e46a2c1e9e7",
+      "title": "讯灵 AI GEO+Agent 主打内容与智能体生态",
       "source": "IT 之家",
       "category": "china",
-      "original_title": "贝恩：AI 降本效果不及预期，四成受访公司成本降幅未超 10% - IT 之家",
-      "text": "相关产品团队和使用者要看贝恩：如果四成公司降本不到 10%，AI 项目就必须重新核算流程、采购和人效指标。"
+      "original_title": "2026 优选：讯灵 AI GEO+Agent 双引擎生态，数据 + 内容 + 智能体三核驱动 - IT 之家",
+      "text": "营销和企业数字化团队要看：讯灵 AI GEO+Agent 如果要成立，必须证明内容生成、数据分析和智能体执行能接成闭环。"
     }
   },
   "max_janet_take_similarity": {
-    "score": 0.776,
+    "score": 0.074,
     "item_a": {
-      "story_id": "chinese-sina-ai-80ded116d9e7",
-      "title": "Alphabet 计划 800 亿美元 AI 基建支出",
-      "source": "新浪 AI 热点",
-      "category": "china",
-      "original_title": "Alphabet 寻求 800 亿美元资金以推进人工智能建设 - 新浪财经",
-      "text": "新浪 AI 热点这次围绕 Alphabet 给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+      "story_id": "arxiv-cs-cl-6ec8b283e1a3",
+      "title": "Incremental BPE Tokenization 研究增量分词",
+      "source": "arXiv cs.CL",
+      "category": "papers",
+      "original_title": "Incremental BPE Tokenization",
+      "text": "Incremental BPE Tokenization 看起来很底层，但它盯的是流式输入和长文本里的等待时间。分词少重算一次，实时产品就少卡一拍，推理成本也更容易压下来；模型工程团队要把延迟、缓存命中和质量折损一起测。"
     },
     "item_b": {
-      "story_id": "chinese-ithome-a7891afe5290",
-      "title": "贝恩调研显示 AI 降本低于预期",
-      "source": "IT 之家",
-      "category": "china",
-      "original_title": "贝恩：AI 降本效果不及预期，四成受访公司成本降幅未超 10% - IT 之家",
-      "text": "IT 之家这次围绕贝恩给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
+      "story_id": "arxiv-cs-cl-b6cff8100719",
+      "title": "Speculative Decoding Across Languages 比较多语言解码",
+      "source": "arXiv cs.CL",
+      "category": "papers",
+      "original_title": "Speculative Decoding Across Languages",
+      "text": "Speculative Decoding Across Languages 的价值在多语言差异。英文里能省的推理成本，到了中文和小语种未必原样成立，平台要按语言重新算速度和质量折损；多语言产品不能只拿英文基准做预算。"
     }
   },
   "max_watch_next_similarity": {
@@ -158,28 +136,6 @@
   "janet_take_internal_repetition": [],
   "missing_specific_terms": [],
   "cross_edition_similarity_issues": [],
-  "warnings": [
-    {
-      "field": "janet_take",
-      "reason": "near_duplicate_warning",
-      "similarity": 0.776,
-      "item_a": {
-        "story_id": "chinese-sina-ai-80ded116d9e7",
-        "title": "Alphabet 计划 800 亿美元 AI 基建支出",
-        "source": "新浪 AI 热点",
-        "category": "china",
-        "original_title": "Alphabet 寻求 800 亿美元资金以推进人工智能建设 - 新浪财经",
-        "text": "新浪 AI 热点这次围绕 Alphabet 给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
-      },
-      "item_b": {
-        "story_id": "chinese-ithome-a7891afe5290",
-        "title": "贝恩调研显示 AI 降本低于预期",
-        "source": "IT 之家",
-        "category": "china",
-        "original_title": "贝恩：AI 降本效果不及预期，四成受访公司成本降幅未超 10% - IT 之家",
-        "text": "IT 之家这次围绕贝恩给出的是对相关产品团队和使用者的落地路径测试。它可能省掉一段重复流程，但成本、权限和稳定性还得实测。国内团队先小范围试用，算清楚能省多少钱、能替哪一步，再决定要不要扩。"
-      }
-    }
-  ],
+  "warnings": [],
   "issues": []
 }

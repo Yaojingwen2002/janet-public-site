@@ -127,6 +127,11 @@
     return bundle.contentUrl.replace(/content\.json(?:\?.*)?$/, 'cover.png');
   }
 
+  function resolveCodexOutputUrl(bundle) {
+    if (!bundle || !bundle.contentUrl) return '#';
+    return bundle.contentUrl.replace(/content\.json(?:\?.*)?$/, 'output.html');
+  }
+
   function splitTrend(trend) {
     return String(trend || '')
       .split(/\n{2,}/)
@@ -181,6 +186,7 @@
     const lead = news[0] || {};
     const rest = news.slice(1, 5);
     const coverSrc = resolveCodexCoverSrc(bundle);
+    const outputUrl = resolveCodexOutputUrl(bundle);
     const issue = [content.date || bundle.entry, content.vol || ''].filter(Boolean).join(' · ');
 
     container.innerHTML =
@@ -202,6 +208,10 @@
           (lead.title ? renderCodexNewsItem(lead, 0, true) : '') +
           '<div class="codex-news-grid">' + rest.map(function(item, index) { return renderCodexNewsItem(item, index + 1, false); }).join('') + '</div>' +
         '</section>' +
+        '<div class="news-actions codex-news-actions">' +
+          '<a class="btn btn-green" href="' + escapeHtml(outputUrl) + '" target="_blank" rel="noopener noreferrer">浏览当天完整晨报</a>' +
+          '<a class="btn btn-outline" href="news.html">进入新闻归档</a>' +
+        '</div>' +
       '</article>';
 
     if (countEl) countEl.textContent = '全球要闻 5 条';

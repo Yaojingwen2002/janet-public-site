@@ -111,6 +111,77 @@ function normalize(text) {
   return String(text || '').toLowerCase().replace(/[，。！？、：；,.!?;:"'“”‘’()[\]{}<>《》/\s]+/g, '').trim();
 }
 
+function normalizeEventText(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/％/g, '%')
+    .replace(/[，。！？、：；,.!?;:"'“”‘’()[\]{}<>《》/\s_-]+/g, ' ')
+    .trim();
+}
+
+function eventSourceText(item) {
+  return [
+    item.zh_title,
+    item.title,
+    item.raw_item?.original_title,
+    item.original_title,
+    item.raw_item?.original_summary,
+    item.original_summary,
+    item.story_fact?.original_title,
+    item.story_fact?.original_summary,
+    ...(Array.isArray(item.story_facts) ? item.story_facts.map((fact) => fact.value) : [])
+  ].filter(Boolean).join(' ');
+}
+
+function eventEntity(text) {
+  const normalized = normalizeEventText(text);
+  const entities = [
+    ['alphabet', /\b(alphabet|google)\b|谷歌|字母表/],
+    ['openai', /\bopenai\b|奥特曼|sam altman/],
+    ['anthropic', /\banthropic\b|claude/],
+    ['meta', /\bmeta\b/],
+    ['microsoft', /\bmicrosoft\b|微软/],
+    ['nvidia', /\bnvidia\b|英伟达/],
+    ['amazon', /\bamazon\b|aws|亚马逊/],
+    ['apple', /\bapple\b|苹果/],
+    ['xai', /\bxai\b|马斯克/]
+  ];
+  return entities.find(([, pattern]) => pattern.test(normalized))?.[0] || '';
+}
+
+function eventAmount(text) {
+  const normalized = normalizeEventText(text);
+  if (/800\s*亿\s*美元|80\s*b(?:illion)?\s*(?:usd|dollars?)|\$?\s*80\s*b\b|80\s*0?亿美元/.test(normalized)) return '800亿美元';
+  const chinese = normalized.match(/(\d+(?:\.\d+)?)\s*亿\s*美元/);
+  if (chinese) return `${chinese[1]}亿美元`;
+  const billion = normalized.match(/\$?\s*(\d+(?:\.\d+)?)\s*b(?:illion)?\s*(?:usd|dollars?)?/);
+  if (billion) return `${Number(billion[1]) * 10}亿美元`;
+  const million = normalized.match(/\$?\s*(\d+(?:\.\d+)?)\s*m(?:illion)?\s*(?:usd|dollars?)?/);
+  if (million) return `${million[1]}百万美元`;
+  return '';
+}
+
+function eventAction(text) {
+  const normalized = normalizeEventText(text);
+  if (/ai|人工智能/.test(normalized) && /资本支出|支出|建设|基础设施|capex|capital expenditure|spending|infrastructure|股权资本|资金/.test(normalized)) {
+    return 'AI资本支出';
+  }
+  if (/融资|筹资|募集|筹集|funding|financing|raise|raised|investment|investor/.test(normalized)) return '融资';
+  if (/发布|推出|上线|launch|release|announce|introduce/.test(normalized)) return '推出';
+  if (/合作|partner|partnership/.test(normalized)) return '合作';
+  if (/诉讼|lawsuit|court|trial|legal/.test(normalized)) return '诉讼';
+  return '';
+}
+
+function eventSignature(item) {
+  const text = eventSourceText(item);
+  const entity = eventEntity(text);
+  const amount = eventAmount(text);
+  const action = eventAction(text);
+  if (!entity || !amount || !action) return '';
+  return `event:${entity}:${amount}:${action}`;
+}
+
 function bigrams(text) {
   const chars = [...normalize(text)];
   if (chars.length <= 1) return new Set(chars);
@@ -270,6 +341,67 @@ function semanticCrosswireIssues(items) {
   return problems;
 }
 
+function eventDuplicateIssues(items) {
+  const groups = new Map();
+  for (const item of items) {
+    const signature = eventSignature(item);
+    if (!signature) continue;
+    if (!groups.has(signature)) groups.set(signature, []);
+    groups.get(signature).push(item);
+  }
+  return [...groups.entries()]
+    .filter(([, group]) => group.length > 1)
+    .map(([signature, group]) => ({
+      field: 'story_event',
+      reason: 'same_entity_amount_action_duplicate',
+      event_signature: signature,
+      items: group.map((item) => context(item, 'zh_title'))
+    }));
+}
+
+function sameSourceSimilarOriginalTitleIssues(items) {
+  const issues = [];
+  const bySource = new Map();
+  for (const item of items) {
+    const source = item.source || '';
+    if (!bySource.has(source)) bySource.set(source, []);
+    bySource.get(source).push(item);
+  }
+  for (const group of bySource.values()) {
+    for (let left = 0; left < group.length; left += 1) {
+      for (let right = left + 1; right < group.length; right += 1) {
+        const a = group[left].raw_item?.original_title || group[left].original_title || group[left].zh_title || '';
+        const b = group[right].raw_item?.original_title || group[right].original_title || group[right].zh_title || '';
+        if (!a || !b || a === b) continue;
+        const score = similarity(a, b);
+        if (score >= 0.72) issues.push(pairIssue('same_source_similar_original_title', 'zh_title', group[left], group[right], score));
+      }
+    }
+  }
+  return issues;
+}
+
+function repeatedSentenceIssues(items) {
+  const issues = [];
+  for (const item of items) {
+    const seen = new Set();
+    const parts = String(item.janet_take || '')
+      .split(/[。！？!?]\s*/u)
+      .map((part) => part.trim())
+      .filter((part) => part.length >= 10);
+    for (const part of parts) {
+      const key = normalize(part);
+      if (!key) continue;
+      if (seen.has(key)) {
+        issues.push(issue('janet_take_internal_repetition', 'janet_take', item, { repeated_sentence: part }));
+        break;
+      }
+      seen.add(key);
+    }
+  }
+  return issues;
+}
+
 function missingSpecificTerms(items) {
   const missing = [];
   for (const item of items) {
@@ -398,7 +530,20 @@ function main() {
   const patch = phraseHits(stories, PATCH_PHRASES, 'patch_phrase');
   const quality = qualityIssues(stories, content);
   const missingTerms = missingSpecificTerms(stories);
-  hardIssues.push(...generic, ...patch, ...quality, ...missingTerms, ...storyFactIssues(stories), ...semanticCrosswireIssues(stories));
+  const duplicateEvents = eventDuplicateIssues(homepageItems);
+  const similarOriginalTitles = sameSourceSimilarOriginalTitleIssues(homepageItems);
+  const repeatedJanetTake = repeatedSentenceIssues(homepageItems);
+  hardIssues.push(
+    ...generic,
+    ...patch,
+    ...quality,
+    ...missingTerms,
+    ...storyFactIssues(stories),
+    ...semanticCrosswireIssues(stories),
+    ...duplicateEvents,
+    ...similarOriginalTitles,
+    ...repeatedJanetTake
+  );
 
   for (const item of homepageItems) {
     const terms = concreteTerms(item);
@@ -436,6 +581,9 @@ function main() {
     forbidden_patch_phrases_found: patch,
     headline_sentence_quality_issues: quality,
     generic_template_phrases_found: generic,
+    duplicate_story_events: duplicateEvents,
+    same_source_similar_original_titles: similarOriginalTitles,
+    janet_take_internal_repetition: repeatedJanetTake,
     missing_specific_terms: missingTerms,
     cross_edition_similarity_issues: crossEdition.issues,
     warnings,
@@ -486,6 +634,9 @@ function main() {
       forbidden_patch_phrases_found: check.forbidden_patch_phrases_found,
       headline_sentence_quality_issues: check.headline_sentence_quality_issues,
       generic_template_phrases_found: check.generic_template_phrases_found,
+      duplicate_story_events: check.duplicate_story_events,
+      same_source_similar_original_titles: check.same_source_similar_original_titles,
+      janet_take_internal_repetition: check.janet_take_internal_repetition,
       missing_specific_terms: check.missing_specific_terms,
       cross_edition_similarity_issues: check.cross_edition_similarity_issues,
       issues: check.issues,

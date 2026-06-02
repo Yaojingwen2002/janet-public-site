@@ -155,6 +155,75 @@ function normalizeTitle(title) {
     .trim();
 }
 
+function eventText(item) {
+  return [
+    item.title,
+    item.original_title,
+    item.summary_raw,
+    item.summary,
+    item.source_name,
+    item.canonical_url,
+    item.url
+  ].filter(Boolean).join(' ');
+}
+
+function normalizeEventText(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/％/g, '%')
+    .replace(/[，。！？、：；,.!?;:"'“”‘’()[\]{}<>《》/\s_-]+/g, ' ')
+    .trim();
+}
+
+function eventEntity(text) {
+  const normalized = normalizeEventText(text);
+  const entities = [
+    ['alphabet', /\b(alphabet|google)\b|谷歌|字母表/],
+    ['openai', /\bopenai\b|奥特曼|sam altman/],
+    ['anthropic', /\banthropic\b|claude/],
+    ['meta', /\bmeta\b/],
+    ['microsoft', /\bmicrosoft\b|微软/],
+    ['nvidia', /\bnvidia\b|英伟达/],
+    ['amazon', /\bamazon\b|aws|亚马逊/],
+    ['apple', /\bapple\b|苹果/],
+    ['xai', /\bxai\b|马斯克/]
+  ];
+  return entities.find(([, pattern]) => pattern.test(normalized))?.[0] || '';
+}
+
+function eventAmount(text) {
+  const normalized = normalizeEventText(text);
+  if (/800\s*亿\s*美元|80\s*b(?:illion)?\s*(?:usd|dollars?)|\$?\s*80\s*b\b|80\s*0?亿美元/.test(normalized)) return '800亿美元';
+  const chinese = normalized.match(/(\d+(?:\.\d+)?)\s*亿\s*美元/);
+  if (chinese) return `${chinese[1]}亿美元`;
+  const billion = normalized.match(/\$?\s*(\d+(?:\.\d+)?)\s*b(?:illion)?\s*(?:usd|dollars?)?/);
+  if (billion) return `${Number(billion[1]) * 10}亿美元`;
+  const million = normalized.match(/\$?\s*(\d+(?:\.\d+)?)\s*m(?:illion)?\s*(?:usd|dollars?)?/);
+  if (million) return `${million[1]}百万美元`;
+  return '';
+}
+
+function eventAction(text) {
+  const normalized = normalizeEventText(text);
+  if (/ai|人工智能/.test(normalized) && /资本支出|支出|建设|基础设施|capex|capital expenditure|spending|infrastructure|股权资本|资金/.test(normalized)) {
+    return 'ai_capex';
+  }
+  if (/融资|筹资|募集|筹集|funding|financing|raise|raised|investment|investor/.test(normalized)) return 'financing';
+  if (/发布|推出|上线|launch|release|announce|introduce/.test(normalized)) return 'launch';
+  if (/合作|partner|partnership/.test(normalized)) return 'partnership';
+  if (/诉讼|lawsuit|court|trial|legal/.test(normalized)) return 'legal';
+  return '';
+}
+
+function eventSignature(item) {
+  const text = eventText(item);
+  const entity = eventEntity(text);
+  const amount = eventAmount(text);
+  const action = eventAction(text);
+  if (!entity || !amount || !action) return '';
+  return `event:${entity}:${amount}:${action}`;
+}
+
 function titleTokens(title) {
   return new Set(normalizeTitle(title).split(/\s+/).filter((token) => token.length >= 2));
 }
@@ -168,6 +237,7 @@ function jaccard(a, b) {
 
 function storyKeys(item) {
   return [
+    eventSignature(item),
     item.canonical_url ? `canonical:${canonicalizeUrl(item.canonical_url)}` : '',
     item.dedupe_key ? `dedupe:${item.dedupe_key}` : '',
     item.url ? `url:${canonicalizeUrl(item.url)}` : ''

@@ -2,57 +2,15 @@ name: News Store Harvest
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "10 */2 * * *"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  harvest:
+  disabled:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout public site
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Harvest news items
-        run: node .github/scripts/harvest-news-items.mjs
-
-      - name: Harvest search news
-        run: node .github/scripts/harvest-search-news.mjs
-
-      - name: Harvest direct web sources
-        run: node .github/scripts/harvest-direct-web-sources.mjs
-
-      - name: Harvest Chinese AI sources
-        run: node .github/scripts/harvest-chinese-ai-sources.mjs
-
-      - name: Harvest official release notes
-        run: node .github/scripts/harvest-official-release-notes.mjs
-
-      - name: Build daily harvest summary
-        run: node .github/scripts/build-daily-harvest-summary.mjs
-
-      - name: Build daily candidates
-        run: node .github/scripts/build-daily-candidates.mjs
-
-      - name: QA news store
-        run: node scripts/qa-news-store.mjs
-
-      - name: Commit news store summaries and candidates
+      - name: News store harvest disabled
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/news-store data/news-store/daily-harvest-summary.json data/news-store/daily-candidates.json
-          if git diff --cached --quiet; then
-            echo "No news store changes"
-          else
-            git commit -m "Update news store"
-            git push
-          fi
+          echo "janet-public-site news-store harvest is disabled."
+          echo "Codex briefing system is now the only daily briefing data source."

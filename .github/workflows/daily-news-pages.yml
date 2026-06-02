@@ -2,147 +2,15 @@ name: Daily Janet News
 
 on:
   workflow_dispatch:
-  schedule:
-    # GitHub Actions cron uses UTC. 00:10 UTC = 08:10 Asia/Shanghai / Asia/Taipei.
-    - cron: "10 0 * * *"
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: daily-janet-news
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  build-news:
+  disabled:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout public site
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Harvest news items
-        run: node .github/scripts/harvest-news-items.mjs
-
-      - name: Harvest search news
-        run: node .github/scripts/harvest-search-news.mjs
-
-      - name: Harvest direct web sources
-        run: node .github/scripts/harvest-direct-web-sources.mjs
-
-      - name: Harvest Chinese AI sources
-        run: node .github/scripts/harvest-chinese-ai-sources.mjs
-
-      - name: Harvest official release notes
-        run: node .github/scripts/harvest-official-release-notes.mjs
-
-      - name: Build daily harvest summary
-        run: node .github/scripts/build-daily-harvest-summary.mjs
-
-      - name: Build daily candidates
-        run: node .github/scripts/build-daily-candidates.mjs
-
-      - name: QA news store
-        run: node scripts/qa-news-store.mjs
-
-      - name: Generate daily news
-        run: node .github/scripts/daily-news-generator.mjs
-        env:
-          JANET_WORKFLOW_EVENT: ${{ github.event_name }}
-          JANET_WORKFLOW_RUN_ID: ${{ github.run_id }}
-          JANET_WORKFLOW_REF: ${{ github.ref }}
-          JANET_WORKFLOW_SHA: ${{ github.sha }}
-
-      - name: Build news index
-        run: node .github/scripts/build-news-index.mjs
-
-      - name: Audit source coverage
-        run: node .github/scripts/source-coverage-audit.mjs
-
-      - name: QA live source stability
-        run: node scripts/qa-live-source-stability.mjs
-
-      - name: QA section hydration
-        run: node scripts/qa-section-hydration.mjs
-
-      - name: QA homepage assembly
-        run: node scripts/qa-homepage-assembly.mjs
-
-      - name: QA semantic copy
-        run: node scripts/qa-semantic-copy.mjs
-
-      - name: Upload QA debug artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: janet-news-qa-debug
-          path: |
-            data/semantic-copy-check.json
-            data/semantic-copy-debug.json
-            data/live-source-snapshot.json
-            data/live-source-stability-check.json
-            data/editorial-architecture-check.json
-            data/homepage-assembly-check.json
-            data/homepage-surface-copy-check.json
-            data/news-visuals-check.json
-            data/public-reader-copy-check.json
-            data/public-reader-copy-audit.json
-            data/daily-news-run-status.json
-            data/2026-*-v4/news-summary.json
-            data/2026-*-v4/content.json
-          if-no-files-found: warn
-          retention-days: 7
-
-      - name: QA editorial architecture
-        run: node scripts/qa-editorial-architecture.mjs
-
-      - name: QA homepage surface copy
-        run: node scripts/qa-homepage-surface-copy.mjs
-
-      - name: QA news visuals
-        run: node scripts/qa-news-visuals.mjs
-
-      - name: QA public reader copy
-        run: node scripts/qa-public-reader-copy.mjs
-
-      - name: QA generated news
-        run: node .github/scripts/qa-daily-news-output.mjs
-
-      - name: QA site polish
-        run: node scripts/qa-site-polish.mjs
-
-      - name: QA main UX polish
-        run: node scripts/qa-main-ux.mjs
-
-      - name: QA release gate
-        run: node scripts/qa-release-gate.mjs
-
-      - name: Commit generated news files
+      - name: Daily generator disabled
         run: |
-          git config user.name "janet-news-bot"
-          git config user.email "actions@github.com"
-          git add data
-          if git diff --cached --quiet; then
-            echo "No generated changes to commit."
-          else
-            git commit -m "Daily Janet news update"
-            git push
-          fi
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+          echo "janet-public-site daily news generator is disabled."
+          echo "Use /Volumes/Janet/codex-briefing-system/runs/YYYY-MM-DD/content.json as the briefing source."

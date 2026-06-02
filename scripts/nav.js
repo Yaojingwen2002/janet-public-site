@@ -13,10 +13,16 @@
 
   // ── 移动端菜单 ───────────────────────────────────────────
   if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
-      mobileOpen = !mobileOpen;
+    if (mobileMenu && mobileMenu.id) {
+      mobileToggle.setAttribute('aria-controls', mobileMenu.id);
+    }
+    mobileToggle.setAttribute('aria-expanded', 'false');
+
+    function setMobileMenuOpen(nextOpen) {
+      mobileOpen = nextOpen;
       mobileToggle.textContent = mobileOpen ? '✕' : '☰';
       mobileToggle.classList.toggle('active', mobileOpen);
+      mobileToggle.setAttribute('aria-expanded', String(mobileOpen));
 
       if (mobileOpen) {
         document.body.style.overflow = 'hidden';
@@ -25,16 +31,26 @@
         document.body.style.overflow = '';
         if (mobileMenu) mobileMenu.classList.remove('open');
       }
+    }
+
+    mobileToggle.addEventListener('click', () => {
+      setMobileMenuOpen(!mobileOpen);
     });
 
     // 点击链接后关闭菜单
     if (mobileMenu) {
       mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          if (mobileOpen) mobileToggle.click();
+          if (mobileOpen) setMobileMenuOpen(false);
         });
       });
     }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 860 && mobileOpen) {
+        setMobileMenuOpen(false);
+      }
+    });
   }
 
   // ── 导航栏显隐 ───────────────────────────────────────────

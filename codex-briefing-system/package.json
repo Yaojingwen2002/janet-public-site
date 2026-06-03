@@ -1,0 +1,12 @@
+{
+  "name": "janet-codex-briefing-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "bash scripts/run-codex-briefing.sh",
+    "postprocess": "bash scripts/postprocess-briefing.sh",
+    "publish": "node src/publish-to-site.mjs",
+    "qa": "node src/qa-briefing.mjs"
+  }
+}

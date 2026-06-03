@@ -1,0 +1,32 @@
+# Acceptance Checklist
+
+- `data/YYYY-MM-DD/content.json` 已生成。
+- `data/YYYY-MM-DD/output.html` 已生成。
+- `data/YYYY-MM-DD/cover.png` 已生成。
+- `data/MANIFEST.json` 第一项是 `YYYY-MM-DD`。
+- `data/news-index.json` 的 `latest_edition_id` 是 `YYYY-MM-DD`。
+- 期号正确，不是 `VOL_0000`。
+- `VOL = 1 + (今天日期 - 2025-10-01)` 的天数差。
+- `news` 数量为 5。
+- `models` 数量为 4。
+- `insights` 数量为 4。
+- `insights2` 数量为 3。
+- `tools` 数量为 1。
+- 每条有 `url`。
+- 每条有 `Janet 锐评：`。
+- 每条锐评包含 `破防点`、`槽点/代价`、`搞钱/落地指导`。
+- 标题不超过 15 字。
+- 新闻来自前一天 08:01 CST 到当天 08:00 CST。
+- 每天 08:00 CST 跑完整流程：生成、封面、渲染、QA、同步、git push、Pages 检查。
+- 每天 09:00 CST 只做全站扫描：查当天新闻是否显示、图片是否丢失、索引是否正确、线上 URL 是否 200。
+- 09:00 不补写、不发布、不 git push。
+- 没有旧闻。
+- 没有禁忌词。
+- `output.html` 使用原 `template.html` 风格。
+- `output.html` 有封面、今日趋势、Janet 锐评。
+- public site 首页能读取最新 `data/YYYY-MM-DD/content.json`。
+- 新闻归档最新一期指向 `data/YYYY-MM-DD/output.html`。
+- git staged diff 只包含 `data/YYYY-MM-DD/`。
+- public site 首页、CSS、导航、作品库未改动。
+- GitHub Pages deploy 成功。
+- 线上 `index.html`、`data/YYYY-MM-DD/content.json`、`data/YYYY-MM-DD/output.html`、`data/YYYY-MM-DD/cover.png` 返回 200。

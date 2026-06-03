@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <title>Janet的快车箱 · AI科技晨报 · 2026-06-03 版</title>
+ <style>
+ :root { 
+ --bg: #ffffff; --text: #0d0d0d; --brand: #18E299; --brand-sub: rgba(24, 226, 153, 0.08);
+ --border: rgba(0,0,0,0.06); --mono: 'Geist Mono', 'SFMono-Regular', monospace;
+ }
+ body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; padding: 60px 20px; line-height: 1.6; }
+ .container { max-width: 800px; margin: 0 auto; }
+ 
+ /* 1. 强化报头 */
+ header { border-bottom: 2px solid var(--text); padding-bottom: 20px; margin-bottom: 30px; }
+ .slogan { font-size: 14px; font-weight: 600; letter-spacing: 0.2em; color: #444; margin-bottom: 8px; text-transform: uppercase; }
+ .main-header { display: flex; justify-content: space-between; align-items: flex-end; }
+ .logo { font-size: 32px; font-weight: 900; letter-spacing: -1.5px; }
+ .date-info { font-family: var(--mono); font-size: 14px; font-weight: 600; }
+ 
+ /* 导航按钮 */
+ 
+ /* 3. 放大标题 (告别蚂蚁字) */
+ .section-tag { font-family: var(--mono); font-size: 14px; font-weight: 800; color: #fff; background: #000; padding: 6px 16px; border-radius: 4px; display: inline-block; margin: 60px 0 25px 0; }
+ 
+ /* 4. 模块结构 */
+ .card { border: 1px solid var(--border); padding: 30px; border-radius: 20px; margin-bottom: 30px; background: #fff; }
+ .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+ .mini-card { border: 1px solid var(--border); padding: 20px; border-radius: 16px; background: #fff; }
+ 
+ h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+ h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+ 
+ /* 吐槽高亮 */
+ .critique { margin-top: 20px; padding: 15px; background: var(--brand-sub); border-left: 4px solid var(--brand); border-radius: 0 12px 12px 0; }
+ .critique b { font-family: var(--mono); color: var(--brand); font-size: 12px; margin-right: 8px; text-transform: uppercase; }
+ .critique span { font-style: italic; font-weight: 600; font-size: 14px; }
+
+ /* 趋势模块 */
+ .trend-card { border: 2px solid var(--brand); padding: 30px; border-radius: 20px; background: linear-gradient(135deg, rgba(24,226,153,0.05), rgba(24,226,153,0.02)); margin-bottom: 30px; }
+ .trend-card h2 { color: var(--brand); }
+
+ /* 第四模块：投资视角/大胆预测 */
+ .prediction-box { background: #000; color: #fff; padding: 30px; border-radius: 20px; }
+ .prediction-box b { color: var(--brand); }
+
+ /* 第五模块：工具箱 */
+ .tools-grid { background: #fdfdfd; border: 2px dashed var(--brand); padding: 25px; border-radius: 20px; }
+
+ /* 5. 页脚信息全回正 */
+ footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; color: #888; font-size: 12px; font-family: var(--mono); }
+ 
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+</head>
+<body>
+ <div class="container">
+ <header>
+ <div class="slogan">中国创作者视角 • 全球AI前沿 • 每日晨报</div>
+ <div class="main-header">
+ <div class="logo">Janet's Express Box</div>
+ <div class="date-info">2026-06-03 // VOL_246</div>
+ </div>
+ </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="系统战开打" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-06-03 // VOL_246</div>
+   <h1>系统战开打</h1>
+   <p>AI 正从模型竞赛转向工作流、治理和基础设施的全面对撞。</p>
+  </div>
+ </section>
+
+
+ <div class="intro-box">
+ 昨晚到今晨，AI 的关键词不再是更会说，而是更敢接管、更贵、也更容易惹官司。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。 </div>
+
+ <div class="trend-card">
+  <h2>📌 今日趋势：AI 开始拼整套系统</h2>
+  <p>今天最扎眼的信号，不是又多了几个会聊天的模型，而是大厂和监管一起把战场往系统层推。OpenAI 一边被州检方起诉，一边把 Codex 往白领工作流里塞；Anthropic 把 Mythos 扩到关键基础设施；Microsoft、Immuta、Juniper Square 这些玩家都在抢“谁来接管真实流程”的位置。</p>
+  <p>这对中国创作者和企业的含义很直接：下一轮红利不在转发 benchmark 截图，而在谁能把 AI 塞进表格、客服、医疗、投研、销售、合规和本地设备这些脏活里。真正吃预算的会是治理、权限、冷却、电力、审计和数据流，不是发布会上的一句“更智能”。</p>
+  <p>接下来 2-4 周要盯三件事：一是 agent 的权限治理会不会从宣传词变成采购条件，二是更多行业模型会不会拿到真实工作流入口，三是 AI 基建成本会不会继续从 GPU 外溢到内存、冷却和合规防火墙。</p>
+</div>
+
+ <div class="section-tag">01 / KEY INTELLIGENCE (全球要闻)</div>
+ <div class="top-stories"><div class="card">
+  <h2>州政府先掀桌</h2>
+  <p class="item-meta">来源: AP · 2026-06-03 · <a href="https://apnews.com/article/396d70c5a2d9bae7e95a8ee9adaef836" target="_blank" rel="noopener">原文链接</a></p>
+  <p>佛罗里达州起诉 OpenAI 和 Sam Altman，称 ChatGPT 在向公众快速扩张时隐瞒了未成年人自伤、犯罪策划等高风险输出问题。AP 报道指出，这是美国首个由州政府直接对 OpenAI 发起的诉讼。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这不是普通公关危机，这是 AI 产品责任开始进法庭。模型公司以前最会写 system card，现在检方要看的是事故链、营销话术和内部预警到底有没有对上。做 C 端 AI 的国内团队别再迷信“先增长后补安全”，一旦真出事，用户留不住，监管也不会陪你演创新豁免。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>白宫先缩手</h2>
+  <p class="item-meta">来源: TechCrunch · 2026-06-03 · <a href="https://techcrunch.com/2026/06/02/trump-signs-narrower-executive-order-on-ai-oversight-after-industry-objections/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>TechCrunch 报道称，特朗普签署了一版更收缩的 AI oversight 行政令，要求部分 AI 公司在公开发布新模型前 30 天自愿提交政府测试，而不是此前传出的 90 天。新文本还强调，不应把这件事解释成强制许可制度。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这说明美国政府也怕自己管太狠，把大厂直接推去骂街。所谓自愿评测听着温和，本质还是先把 frontier 模型拉进联邦视野，谁先交材料，谁就先被纳入规则。国内做出海模型的团队现在就该准备发布前风险文档、审计链和对外口径，不然一进美国市场就会被制度成本狠狠干醒。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>安全模型扩编</h2>
+  <p class="item-meta">来源: Anthropic · 2026-06-03 · <a href="https://www.anthropic.com/news/expanding-project-glasswing" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 宣布扩大 Project Glasswing，把 Claude Mythos Preview 的合作范围扩到约 150 家新组织，覆盖 15 个以上国家。公司称，早期伙伴已用该模型在代码库中发现超过 10000 个高危或严重漏洞。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>安全模型开始进关键基础设施，说明 AI 不只是在写邮件，它已经准备碰生产系统了。真正的门槛不是找到漏洞，而是谁能访问、谁来复核、谁背披露责任，治理成本只会越来越贵。国内安全团队别再卖扫描器换皮，赶紧把模型检测、人工复核、工单闭环和审计留痕做成一套完整服务。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>深伪来电上锁</h2>
+  <p class="item-meta">来源: TechCrunch · 2026-06-03 · <a href="https://techcrunch.com/2026/06/02/google-rolls-out-fake-call-detection-to-protect-against-ai-deepfake-impersonation-scams/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google 推出利用 AI 识别 deepfake impersonation scam 的通话防护能力，TechCrunch 称该功能会在来电过程中识别可疑的语音和对话模式。它瞄准的是越来越常见的“熟人来电借钱”和实时语音冒充场景。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条线索很关键，AI 风险已经从生成假图升级到实时骗你转账。厂商现在不是比谁能做出更像人的声音，而是比谁愿意先承认这个能力会反咬用户。做语音、客服、直播分身的团队别只顾着上效果 demo，把反滥用检测、身份验证和告警阈值先补上，不然你卖的不是效率，是炸药。</span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>白领也被接管</h2>
+  <p class="item-meta">来源: OpenAI · 2026-06-03 · <a href="https://openai.com/index/codex-for-every-role-tool-workflow/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 在 6 月 2 日发布新一轮 Codex 更新，推出 role-specific plugins、注释和可分享的 Sites 预览，把 Codex 从写代码继续推向分析、运营、设计、研究和投研工作流。官方同时披露 Codex 周活已超过 500 万，非开发者占比约 20%。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这不是功能加法，这是 OpenAI 公开承认自己要吃掉更多白领工位。真正危险的不是它会不会做 PPT，而是它开始拿插件和工作流把企业里的碎任务连成流水线。国内创作者、运营和小团队别再把 agent 当玩具，先从周报、选题研究、数据整理和落地页这些低风险活开刀，谁先把流程接上，谁先省人。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">02 / MODEL UPDATES (模型动态)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <h3>微软养分身</h3>
+  <p class="item-meta">来源: TechCrunch · 2026-06-03 · <a href="https://techcrunch.com/2026/06/02/microsoft-launches-scout-an-openclaw-inspired-personal-assistant/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Microsoft 推出 Scout，一个基于 OpenClaw 框架的常驻式个人 assistant，面向 Microsoft 365 场景，支持持续记忆、技能沉淀和跨桌面与浏览器执行。TechCrunch 报道称，Scout 将通过 Microsoft Frontier 计划向 GitHub Copilot 订阅用户开放。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Scout 的重点不是又多一个聊天框，而是微软想把 agent 变成办公系统的常驻员工。难点不在演示时能不能排日程，而在长期记忆、权限边界和错误操作回滚，这些才是企业敢不敢真开权限的核心。做企业内部助手的团队别学它先学人设，先把审计、批准链和失败恢复做稳，不然你的 agent 迟早把老板日历排成事故现场。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>医疗大模开卷</h3>
+  <p class="item-meta">来源: Microsoft Source · 2026-06-03 · <a href="https://news.microsoft.com/source/2026/06/02/mayo-clinic-and-microsoft-collaborate-to-develop-a-frontier-ai-model-for-healthcare/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Mayo Clinic 与 Microsoft 宣布合作开发面向 healthcare 的 frontier AI model，结合 Mayo 的去标识化临床数据与微软的 AI、cloud 和 engineering 能力。该模型目标是支持更广泛的临床推理、早诊和个性化治疗，并计划通过 Azure Foundry API 向外提供能力。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>行业模型终于不装全能了，医疗这种高风险场景本来就不该拿通用模型硬怼。门槛也摆在这儿：临床数据治理、真实验证、责任归属，哪个都不是一句‘加个 RAG’能糊过去。国内医疗 AI 团队如果还在卷 demo 医生助手，基本是在浪费融资窗口，真正值钱的是能进院内流程、过合规、扛质控。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>会议里混进AI</h3>
+  <p class="item-meta">来源: PR Newswire · 2026-06-03 · <a href="https://www.prnewswire.com/news-releases/in2ition-ai-launches-iris-the-always-on-ai-companion-that-participates-in-conversations-instead-of-analyzing-them-after-they-end-302789131.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>In2ition AI 发布 Iris，一款会直接参与 Zoom、Google Meet 和 Microsoft Teams 对话的 Always-On AI Companion。官方称它不只是会后总结，而是能在销售、招聘、培训和直播演示中实时加入互动。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>会议助理从旁听书记员升级成开口发言，这一步既诱人也吓人。它撕开的缺口是‘实时对话自动化’，但风险是误判、抢话、品牌口径跑偏和隐私边界瞬间变成地雷。做销售培训和客服的团队可以试，但先拿内部演练、FAQ 引导和低风险 demo 场景压测，别一上来就让 AI 替你跟客户谈价。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>药研也要Agent</h3>
+  <p class="item-meta">来源: PR Newswire · 2026-06-03 · <a href="https://www.prnewswire.com/apac/news-releases/nybai-launches-vecura-2-0--bringing-agentic-ai-workflows-to-molecular-discovery-with-nvidia-302787835.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NYB.AI 发布 Vecura 2.0，把 scientific models、molecular simulation、biological databases 和 GPU infrastructure 接到一个 agentic workflow 里，面向分子发现团队。公司强调这套系统是为了减少科研团队在模型、工具和数据之间来回切换的摩擦。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>科研 agent 的价值不在于替科学家装神弄鬼，而是把碎成渣的工具链重新缝起来。这个赛道最贵的是专业数据、算力编排和结果验证，不是大模型那张嘴。做科研、医药、材料方向的国内团队可以借鉴这条路，但要清楚你卖的是 workflow compression，不是‘AI 会发明新药’这种空头支票。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">03 / TECH INSIGHTS (技术深度)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <h3>Agent得立规矩</h3>
+  <p class="item-meta">来源: Infosecurity Magazine · 2026-06-03 · <a href="https://www.infosecurity-magazine.com/news/owasp-new-agentic-research-council/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OWASP 在 Infosecurity Europe 2026 推出 Agentic Research Council，试图缩短 agentic AI 能力迭代与传统安全标准之间的时间差。该 Council 计划把学界、产业、政府和政策方拉进同一条研究与落地链路。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这件事说明 agent 安全已经不能继续挂在 LLM 安全的尾巴上。agent 会读文件、调工具、写系统、改流程，它出错不是一条答案错了，而是一整串动作都可能错。企业做 agent 现在就该补权限分层、执行沙箱、回滚和人工接管，不然你不是在做自动化，是在训练事故放大器。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>数据信任才值钱</h3>
+  <p class="item-meta">来源: PR Newswire · 2026-06-03 · <a href="https://www.prnewswire.com/news-releases/immuta-launches-new-agentic-data-access-capabilities-on-snowflake-ai-data-cloud-302788954.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Immuta 在 Snowflake Summit 26 发布三项新能力，包括用 Snowflake Cortex AI 驱动的 Agentic Data Access，让 AI agents 能用自然语言接触企业数据，同时由 Immuta 在 session 级别做访问边界控制。公司把核心卖点直接定义为 trusted、policy-driven access。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>企业 AI 最贵的从来不是模型，而是‘谁能碰数据’。Immuta 这波很诚实，它卖的不是更聪明，而是敢让老板把真实数据交出去的那点信任。做企业 RAG、BI agent、知识库系统的团队别只卷召回率，真正让客户签单的是权限模型、审计链和异常访问处置。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>边缘芯片想开源</h3>
+  <p class="item-meta">来源: GlobeNewswire · 2026-06-03 · <a href="https://www.globenewswire.com/news-release/2026/06/02/3305225/0/en/Ainekko-s-Edge-AI-Silicon-Platform-is-Now-an-OpenHW-Foundation-Open-Source-Project.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Ainekko 宣布把 CORE-ET Silicon Platform 送入 OpenHW Foundation，主打 many-core RISC-V、MRAM 智能内存和开放开发工具，面向低功耗 edge AI inference。它想推动的是从云侧闭源堆料，转向边缘侧可编排、可协作的 open AI silicon 生态。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻戳破了一个现实：当 AI 从云端往工厂、无人机和设备下沉，闭源硬件栈会越来越卡脖子。开源芯片当然不等于马上能打赢 NVIDIA，但它至少给了边缘场景一个不被单一供应商掐住喉咙的方向。做机器人、工业边缘和嵌入式 AI 的团队值得盯紧这条线，因为未来能省下来的不是一点 BOM，而是整条技术路线的自主权。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <h3>AI先把电吃光</h3>
+  <p class="item-meta">来源: PR Newswire · 2026-06-03 · <a href="https://www.prnewswire.com/news-releases/schneider-electric-introduces-new-uniflair-xca-chiller-line-designed-to-enhance-energy-performance-and-operational-stability-in-high-density-ai-data-centers-302787435.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Schneider Electric 发布 Uniflair XCA chiller line，面向高密度、液冷型 AI data centers，覆盖 1300kW 到 2500kW 级别，强调 energy efficiency ratio 4.66 和更高水温适配能力。它本质上是在补 AI 机房最不性感、但最难躲的冷却账单。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>所有人都在谈模型，真正悄悄涨价的是冷却、用电和运维。AI data center 不是软件故事，它是热管理、机电系统和长期稳定性的硬核生意，谁忽视这层，谁最后都得拿毛利填坑。中国企业采购算力服务时别只盯每 token 单价，问清楚区域供电、液冷方案和扩容成本，不然便宜只会停留在报价单上。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">04 / INVESTMENT & PREDICTION (投资视角/大胆预测)</div>
+ <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <h3>合规墙也能融资</h3>
+  <p class="item-meta inverted">来源: GlobeNewswire · 2026-06-03 · <a href="https://www.globenewswire.com/news-release/2026/06/02/3305264/0/en/zerodrift-raises-10m-seed-round-to-build-the-compliance-firewall-for-ai.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>ZeroDrift 宣布完成 1000 万美元 seed round，定位是 AI compliance firewall，夹在模型与终端用户之间，拦截可能带来监管和记录留存风险的输出。公司点得很准：企业不是不想上 AI，是怕一句话把罚单请进门。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>AI 安全创业终于从喊口号转向卖具体止损工具，这比一堆抽象‘对齐’故事实在多了。它的成本在于客户接入复杂、误判损失高，而且必须比被监管的行业更懂规则。国内做金融、保险、客服合规的团队可以盯这条路，谁先把模型输出审核做成基础设施，谁就先拿到企业预算。</span>
+  </div>
+  <h3>AI陪玩也能融</h3>
+  <p class="item-meta inverted">来源: PR Newswire · 2026-06-03 · <a href="https://www.prnewswire.com/apac/news-releases/aippy-raises-tens-of-millions-of-dollars-at-a-250-million-valuation-to-build-the-future-of-ai-native-interactive-entertainment-302787864.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>新加坡公司 Aippy 宣布首轮融资达到数千万美元，投后估值 2.5 亿美元，主打 AI-native interactive entertainment 与游戏社区。公司称其用户中 Gen Z 和 Gen Alpha 占比显著，押注的是 AI 直接成为互动内容的一部分。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>资本还在给 AI 娱乐下注，说明年轻用户的时间价值依然是大票仓。问题也很明显，这类产品一旦没有持续内容生产、强互动机制和社区留存，增长曲线会掉得比滤镜热度还快。做内容创业的团队可以学它的用户参与设计，但别误会成‘加个 AI NPC 就能起飞’，真正值钱的是能持续产出互动关系。</span>
+  </div>
+  <h3>一线员工也被卷</h3>
+  <p class="item-meta inverted">来源: GlobeNewswire · 2026-06-03 · <a href="https://www.globenewswire.com/news-release/2026/06/02/3305090/0/en/centrical-raises-39m-to-transform-frontline-performance-for-the-ai-era-workforce.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Centrical 完成 3900 万美元 Series D，资金将用于扩张其面向 frontline teams 的 Performance Intelligence 平台，并继续开发管理 human and digital workers 的 AI 工具。它想做的不是替员工聊天，而是把绩效、辅导和执行动作自动串起来。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>这笔钱说明 AI 改造开始从白领办公室往一线运营场景渗透。前台、客服、银行后勤、酒店团队这些看似不性感的岗位，才是企业最愿意为 ROI 付费的地方。国内企业服务团队如果还只盯知识库问答，基本是在错过真钱，真正能签单的是‘提效多少、差错降多少、主管少盯多少’。</span>
+  </div>
+</div>
+
+
+ <div class="section-tag">05 / CREATOR TOOLBOX (创作者工具箱)</div>
+ <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <h2>工作流插件开门</h2>
+  <p class="item-meta">来源: PR Newswire · 2026-06-03 · <a href="https://www.prnewswire.com/news-releases/juniper-square-goes-headless-opening-the-fund-operating-system-to-any-ai-302787825.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Juniper Square 推出 Headless GPX，把私募基金运营系统中的募资、IR、会计、支付和合规能力开放给 Claude、Microsoft Copilot、ChatGPT 以及 MCP-compatible client。它不是单点 AI 功能，而是把整套 fund operating system 变成 agent 可调用的后台。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这类工具真正可怕的地方，是它把 AI 从‘帮你写点东西’推进到‘替你动系统里的真数据’。门槛不是接个模型 API，而是权限隔离、交易校验、审计和责任划分，一个没做好就会直接炸账。做垂直 SaaS、投研、财务自动化的团队都该学这个思路，先把自己的核心流程拆成 AI 可安全调用的模块，别等通用 agent 来抄你后路。</span>
+  </div>
+</div>
+</div>
+
+
+ <footer>
+ Janet的快车箱 · AI科技晨报 · 2026-06-03 版<br>
+ DATA SOURCES: AP, TechCrunch, Anthropic, OpenAI, Microsoft Source, PR Newswire, Infosecurity Magazine, GlobeNewswire<br>
+ QUALITY CHECK: 5+4+4+3+1 STRUCTURE VERIFIED<br>
+ 中国创作者视角 · 全球AI前沿 · 每日晨报
+ </footer>
+ </div>
+</body>
+</html>

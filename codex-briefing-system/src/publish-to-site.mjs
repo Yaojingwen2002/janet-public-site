@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 import { loadEnv, targetDateFromArg } from './lib.mjs';
 import { validateBriefing } from './qa-briefing.mjs';
 
-const ROOT = resolve(new URL('..', import.meta.url).pathname);
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 loadEnv(resolve(ROOT, '.env'));
 
 const date = targetDateFromArg();
@@ -27,6 +27,6 @@ execFileSync('bash', ['scripts/sync-to-site.sh', date], { cwd: ROOT, stdio: 'inh
 console.log(JSON.stringify({
   status: 'briefing_published',
   date,
-  public_site: resolve(new URL('../..', import.meta.url).pathname),
+  public_site: resolve(new URL('../../..', import.meta.url).pathname),
   git: 'pushed'
 }, null, 2));

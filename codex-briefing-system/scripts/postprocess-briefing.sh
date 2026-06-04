@@ -17,6 +17,7 @@ if [[ ! -f "$RUN_CONTENT_PATH" ]]; then
   exit 1
 fi
 
+node src/ensure-item-images.mjs "$DATE"
 node src/render-output.mjs "$DATE"
 node src/qa-briefing.mjs "$DATE"
 

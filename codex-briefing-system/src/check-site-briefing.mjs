@@ -35,6 +35,7 @@ const REQUIRED_COUNTS = {
   insights2: 3,
   tools: 1
 };
+const MIN_ITEM_IMAGE_BYTES = 1_200;
 
 const issues = [];
 
@@ -98,6 +99,22 @@ for (const [section, expected] of Object.entries(REQUIRED_COUNTS)) {
     if (!item.janet_take) issues.push(`item_missing_janet_take:${path}`);
     if (!item.source) issues.push(`item_missing_source:${path}`);
     if (!/^https?:\/\//i.test(String(item.url || ''))) issues.push(`item_invalid_url:${path}`);
+    const image = String(item.image || '').trim();
+    if (!image) {
+      issues.push(`item_missing_image:${path}`);
+    } else if (/^https?:\/\//i.test(image) || image.startsWith('data:')) {
+      issues.push(`item_image_not_uploaded:${path}`);
+    } else if (!image.replace(/^\.?\//, '').startsWith('images/')) {
+      issues.push(`item_image_path_invalid:${path}:${image}`);
+    } else {
+      const imagePath = resolve(dataDir, image.replace(/^\.?\//, ''));
+      if (!existsSync(imagePath)) {
+        issues.push(`item_image_file_missing:${path}:${image}`);
+      } else {
+        const size = statSync(imagePath).size;
+        if (size < MIN_ITEM_IMAGE_BYTES) issues.push(`item_image_too_small:${path}:${size}<${MIN_ITEM_IMAGE_BYTES}`);
+      }
+    }
   });
 }
 
@@ -107,6 +124,12 @@ if (existsSync(outputPath)) {
   if (!output.includes('cover.png')) issues.push('output_missing_cover_png');
   if (!output.includes('今日趋势')) issues.push('output_missing_trend');
   if (!output.includes('Janet 锐评：')) issues.push('output_missing_janet_take');
+  const itemImages = Object.values(content.sections || {}).flatMap((section) =>
+    (section?.items || []).map((item) => String(item.image || '').trim()).filter(Boolean)
+  );
+  for (const image of itemImages) {
+    if (!output.includes(image)) issues.push(`output_missing_item_image:${image}`);
+  }
   for (const term of BLOCKED_OUTPUT_TERMS) {
     if (output.includes(term)) issues.push(`output_blocked_term:${term}`);
   }

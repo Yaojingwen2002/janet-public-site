@@ -4,7 +4,7 @@
 (function() {
   const today = new Date();
   let cachedManifest = null;
-  const CODEX_RUNS_ABSOLUTE_PATH = '/Volumes/Janet/codex-briefing-system/runs';
+  const CODEX_RUNS_ABSOLUTE_PATH = '/Volumes/Janet/janet-public-site/codex-briefing-system/runs';
   const CODEX_LOOKBACK_DAYS = 45;
 
   function todayShanghai() {
@@ -154,10 +154,36 @@
     '</div>';
   }
 
-  function renderCodexNewsItem(item, index, isLead) {
+  function resolveCodexItemImageSrc(bundle, item) {
+    const image = String((item && item.image) || '').trim();
+    if (!image) return '';
+    if (/^(https?:|file:|data:)/i.test(image)) return image;
+    const clean = image.replace(/^\.?\//, '').replace(/\\/g, '/');
+    const base = bundle && bundle.contentUrl ? bundle.contentUrl.replace(/content\.json(?:\?.*)?$/, '') : '';
+    if (clean.startsWith('data/')) return clean;
+    if (clean.startsWith('runs/')) {
+      const parts = clean.split('/');
+      const imageIndex = parts.indexOf('images');
+      if (imageIndex >= 0 && base) return base + parts.slice(imageIndex).join('/');
+    }
+    if (clean.startsWith('images/')) return base + clean;
+    return base + 'images/' + clean;
+  }
+
+  function renderCodexNewsVisual(bundle, item, index, isLead) {
+    const src = resolveCodexItemImageSrc(bundle, item);
+    if (!src) return renderNewsPlaceholder(index + 1, isLead);
+    const credit = String((item && (item.image_credit || item.source)) || '').trim();
+    return '<figure class="' + (isLead ? 'codex-news-image codex-news-image--lead' : 'codex-news-image') + '">' +
+      '<img src="' + escapeHtml(src) + '" alt="' + escapeHtml((item && item.title) || '今日新闻') + '" loading="' + (isLead ? 'eager' : 'lazy') + '" decoding="async">' +
+      (credit ? '<figcaption>' + escapeHtml(credit) + '</figcaption>' : '') +
+    '</figure>';
+  }
+
+  function renderCodexNewsItem(bundle, item, index, isLead) {
     const url = safeExternalUrl(item && item.url);
     const inner =
-      renderNewsPlaceholder(index + 1, isLead) +
+      renderCodexNewsVisual(bundle, item, index, isLead) +
       '<div class="codex-news-copy">' +
         '<div class="codex-news-meta">' +
           '<span>' + escapeHtml(item.source || 'Janet') + '</span>' +
@@ -205,8 +231,8 @@
         '</section>' +
         renderCodexTrend(content.trend || '') +
         '<section class="codex-global-news">' +
-          (lead.title ? renderCodexNewsItem(lead, 0, true) : '') +
-          '<div class="codex-news-grid">' + rest.map(function(item, index) { return renderCodexNewsItem(item, index + 1, false); }).join('') + '</div>' +
+          (lead.title ? renderCodexNewsItem(bundle, lead, 0, true) : '') +
+          '<div class="codex-news-grid">' + rest.map(function(item, index) { return renderCodexNewsItem(bundle, item, index + 1, false); }).join('') + '</div>' +
         '</section>' +
         '<div class="news-actions codex-news-actions">' +
           '<a class="btn btn-green" href="' + escapeHtml(outputUrl) + '" target="_blank" rel="noopener noreferrer">浏览当天完整晨报</a>' +
@@ -247,7 +273,7 @@
 
     if (!selected) {
       const container = document.getElementById('news-editorial');
-      if (container) container.innerHTML = '<p style="text-align:center; color:var(--text-3); padding:60px 0;">Codex 晨报数据未找到。请先生成 /Volumes/Janet/codex-briefing-system/runs/YYYY-MM-DD/content.json。</p>';
+      if (container) container.innerHTML = '<p style="text-align:center; color:var(--text-3); padding:60px 0;">Codex 晨报数据未找到。请先生成 /Volumes/Janet/janet-public-site/codex-briefing-system/runs/YYYY-MM-DD/content.json。</p>';
       const countEl = document.getElementById('news-count');
       if (countEl) countEl.textContent = '0 articles';
       return;

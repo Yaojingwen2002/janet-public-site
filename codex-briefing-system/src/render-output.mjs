@@ -61,22 +61,42 @@ function itemParts(item) {
   };
 }
 
+function itemImageSrc(item) {
+  const image = String(item.image || '').trim();
+  if (!image) return '';
+  if (/^(https?:|file:|data:)/i.test(image)) return image;
+  const clean = webPath(image.replace(/^\.?\//, ''));
+  if (clean.startsWith('runs/')) {
+    const parts = clean.split('/');
+    const imageIndex = parts.indexOf('images');
+    if (imageIndex >= 0) return parts.slice(imageIndex).join('/');
+  }
+  if (clean.startsWith('images/')) return clean;
+  return `images/${clean}`;
+}
+
+function renderItemImage(item, title) {
+  const image = itemImageSrc(item);
+  if (!image) return '';
+  const credit = String(item.image_credit || item.source || '').trim();
+  return (
+    `  <figure class="item-image">\n` +
+    `    <img src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy" decoding="async">\n` +
+    (credit ? `    <figcaption>${escapeHtml(credit)}</figcaption>\n` : '') +
+    `  </figure>\n`
+  );
+}
+
 function buildCard(item, isMini, date) {
   const title = String(item.title || '').trim();
   const source = String(item.source || '').trim();
-  const image = String(item.image || '').trim();
   const link = String(item.link || item.url || '').trim();
   const itemDate = String(item.date || date || '').trim();
   const { bodyText, critique } = itemParts(item);
   const tag = isMini ? 'h3' : 'h2';
   const cardClass = isMini ? 'mini-card' : 'card';
   let html = `<div class="${cardClass}">\n`;
-  if (image) {
-    const imgStyle = isMini
-      ? 'width:100%;border-radius:12px;margin-bottom:12px;object-fit:cover;max-height:160px;'
-      : 'width:100%;border-radius:16px;margin-bottom:16px;object-fit:cover;max-height:280px;';
-    html += `  <img src="images/${escapeHtml(image)}" alt="${escapeHtml(title)}" style="${imgStyle}">\n`;
-  }
+  html += renderItemImage(item, title);
   if (title) html += `  <${tag}>${escapeHtml(title)}</${tag}>\n`;
   if (source || itemDate || link) {
     html += `  <p class="item-meta">${source ? `来源: ${escapeHtml(source)}` : ''}${source && itemDate ? ' · ' : ''}${itemDate ? escapeHtml(itemDate) : ''}${link ? ` · <a href="${escapeHtml(link)}" target="_blank" rel="noopener">原文链接</a>` : ''}</p>\n`;
@@ -106,6 +126,7 @@ function generateInvestment(items, date) {
     const source = String(item.source || '').trim();
     const itemDate = String(item.date || date || '').trim();
     const { bodyText, critique } = itemParts(item);
+    html += renderItemImage(item, title);
     if (title) html += `  <h3>${escapeHtml(title)}</h3>\n`;
     if (source || itemDate || link) {
       html += `  <p class="item-meta inverted">${source ? `来源: ${escapeHtml(source)}` : ''}${source && itemDate ? ' · ' : ''}${itemDate ? escapeHtml(itemDate) : ''}${link ? ` · <a href="${escapeHtml(link)}" target="_blank" rel="noopener">原文链接</a>` : ''}</p>\n`;
@@ -183,6 +204,11 @@ function injectCoverStyles(html) {
  .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
  .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
  .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
  .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
  .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
  .item-meta.inverted { color: rgba(255,255,255,0.62); }

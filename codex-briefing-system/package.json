@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "bash scripts/run-codex-briefing.sh",
     "postprocess": "bash scripts/postprocess-briefing.sh",
+    "images": "node src/ensure-item-images.mjs",
     "publish": "node src/publish-to-site.mjs",
     "qa": "node src/qa-briefing.mjs"
   }

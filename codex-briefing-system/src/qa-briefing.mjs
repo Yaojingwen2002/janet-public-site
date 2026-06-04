@@ -35,6 +35,7 @@ const REQUIRED_COUNTS = {
 };
 
 const MIN_COVER_BYTES = 20_000;
+const MIN_ITEM_IMAGE_BYTES = 1_200;
 const MIN_JANET_TAKE_LENGTH = 120;
 const MIN_TREND_PARAGRAPHS = 3;
 
@@ -58,7 +59,7 @@ export function validateBriefing(content, { date, rootPath = resolve(new URL('..
       continue;
     }
     if (items.length !== count) issues.push(`section_count:${section}:${items.length}!=${count}`);
-    items.forEach((item, index) => validateItem(item, `${section}[${index}]`, issues));
+    items.forEach((item, index) => validateItem(item, `${section}[${index}]`, issues, { rootPath, targetDate }));
   }
 
   const allText = JSON.stringify(content);
@@ -108,6 +109,12 @@ function validateOutputHtml(content, { outputPath }, issues) {
   for (const source of sources) {
     if (!html.includes(source)) issues.push(`output_missing_source:${source}`);
   }
+  const images = [...new Set(Object.values(content.sections || {}).flatMap((section) =>
+    (section?.items || []).map((item) => String(item.image || '').trim()).filter(Boolean)
+  ))];
+  for (const image of images) {
+    if (!html.includes(image)) issues.push(`output_missing_item_image:${image}`);
+  }
 }
 
 function validateCover(content, { targetDate, rootPath, outputPath }, issues) {
@@ -145,7 +152,31 @@ function validateCover(content, { targetDate, rootPath, outputPath }, issues) {
   if (!html.includes(String(cover.title || ''))) issues.push('output_missing_cover_title');
 }
 
-function validateItem(item, path, issues) {
+function validateItemImage(item, path, issues, { rootPath, targetDate }) {
+  const image = String(item.image || '').trim();
+  if (!image) {
+    issues.push(`missing_item_image:${path}`);
+    return;
+  }
+  if (/^https?:\/\//i.test(image) || image.startsWith('data:')) {
+    issues.push(`item_image_not_uploaded:${path}`);
+    return;
+  }
+  const clean = image.replace(/^\.?\//, '');
+  if (!clean.startsWith('images/')) {
+    issues.push(`item_image_path_invalid:${path}:${image}`);
+    return;
+  }
+  const imagePath = resolve(rootPath, 'runs', targetDate, clean);
+  if (!existsSync(imagePath)) {
+    issues.push(`missing_item_image_file:${path}:${clean}`);
+    return;
+  }
+  const size = statSync(imagePath).size;
+  if (size < MIN_ITEM_IMAGE_BYTES) issues.push(`item_image_too_small:${path}:${size}<${MIN_ITEM_IMAGE_BYTES}`);
+}
+
+function validateItem(item, path, issues, context) {
   if (!item || typeof item !== 'object') {
     issues.push(`item_not_object:${path}`);
     return;
@@ -159,6 +190,7 @@ function validateItem(item, path, issues) {
   const content = String(item.content || '');
   if (content) issues.push(`legacy_content_field_present:${path}`);
   if (!item.body) issues.push(`missing_body:${path}`);
+  validateItemImage(item, path, issues, context);
   if (!item.janet_take) {
     issues.push(`missing_janet_take:${path}`);
   } else {

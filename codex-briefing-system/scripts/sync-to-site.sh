@@ -26,6 +26,12 @@ mkdir -p "$DEST_DIR"
 cp "$SRC_DIR/content.json" "$DEST_DIR/content.json"
 cp "$SRC_DIR/output.html" "$DEST_DIR/output.html"
 cp "$SRC_DIR/cover.png" "$DEST_DIR/cover.png"
+if [[ -d "$SRC_DIR/images" ]]; then
+  rm -rf "$DEST_DIR/images"
+  mkdir -p "$DEST_DIR/images"
+  find "$SRC_DIR/images" -maxdepth 1 -type f ! -name '._*' -exec cp {} "$DEST_DIR/images/" \;
+  find "$DEST_DIR/images" -name '._*' -delete
+fi
 rm -f "$DEST_DIR"/._*
 rm -f "$SITE_ROOT/data"/._*
 

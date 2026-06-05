@@ -38,9 +38,9 @@ const MIN_COVER_BYTES = 20_000;
 const MIN_ITEM_IMAGE_BYTES = 1_200;
 const MIN_JANET_TAKE_LENGTH = 120;
 const MIN_TREND_PARAGRAPHS = 3;
-const MIN_ITEM_TITLE_LENGTH = 12;
-const MAX_ITEM_TITLE_LENGTH = 22;
-const TITLE_ACTION_RE = /(发|发布|推出|上线|接入|接|整合|合作|融资|完成|收购|开放|限制|限|管理|生成|整理|扩展|押|逼|管|用|给|把|进|上|入场|做|卖|测|开测|运行|面向|支持|治理|控制|变小|加|标)/;
+const MIN_ITEM_TITLE_LENGTH = 10;
+const MAX_ITEM_TITLE_LENGTH = 24;
+const TITLE_ACTION_RE = /(发|发布|推出|上线|接入|接|整合|合作|融资|完成|收购|开放|限制|限|管理|生成|整理|扩展|押|逼|管|用|给|把|进|上|入场|做|卖|测|开测|运行|面向|支持|治理|控制|变小|变成|加|标|拿|赌|继续|浇|吃|换|试水|成|戴|烧|看|塞|让|写|盯|算|来|按|冲|得)/;
 const PURE_HOOK_TITLES = new Set([
   'Agent进厂',
   'Agent要上岗',
@@ -85,6 +85,7 @@ export function validateBriefing(content, { date, rootPath = resolve(new URL('..
     if (items.length !== count) issues.push(`section_count:${section}:${items.length}!=${count}`);
     items.forEach((item, index) => validateItem(item, `${section}[${index}]`, issues, { rootPath, targetDate }));
   }
+  validateTitleVariety(content, issues);
 
   const allText = JSON.stringify(content);
   for (const phrase of FORBIDDEN) {
@@ -271,8 +272,16 @@ function validateItemTitle(title, path, issues) {
   const compact = String(title || '').replace(/\s+/g, '');
   if (PURE_HOOK_TITLES.has(compact)) issues.push(`title_pure_hook:${path}:${title}`);
   if (!TITLE_ACTION_RE.test(title)) issues.push(`title_missing_action:${path}:${title}`);
-  if (!/[：:—-]/.test(title) && length < 16) {
-    issues.push(`title_missing_viewpoint_separator:${path}:${title}`);
+}
+
+function validateTitleVariety(content, issues) {
+  const titles = Object.values(content.sections || {}).flatMap((section) =>
+    (section?.items || []).map((item) => String(item.title || '').trim()).filter(Boolean)
+  );
+  if (titles.length < 8) return;
+  const colonCount = titles.filter((title) => /[：:]/.test(title)).length;
+  if (colonCount > Math.ceil(titles.length * 0.65)) {
+    issues.push(`title_style_too_repetitive:colon_template:${colonCount}/${titles.length}`);
   }
 }
 

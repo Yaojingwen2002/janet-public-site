@@ -38,6 +38,7 @@ const REQUIRED_COUNTS = {
 const MIN_ITEM_IMAGE_BYTES = 1_200;
 
 const issues = [];
+const allowNotLatest = process.env.ALLOW_NOT_LATEST === '1';
 
 function readJson(filePath, fallback = null) {
   try {
@@ -63,12 +64,12 @@ if (requireFile(coverPath, 'cover_png')) {
 }
 
 const manifest = readJson(manifestPath, []);
-if (!Array.isArray(manifest) || manifest[0] !== date) {
+if (!allowNotLatest && (!Array.isArray(manifest) || manifest[0] !== date)) {
   issues.push(`manifest_latest_mismatch:${manifest?.[0] || 'missing'}!=${date}`);
 }
 
 const index = readJson(indexPath, {});
-if (index.latest_edition_id !== date) {
+if (!allowNotLatest && index.latest_edition_id !== date) {
   issues.push(`news_index_latest_mismatch:${index.latest_edition_id || 'missing'}!=${date}`);
 }
 const indexEntry = Array.isArray(index.editions)

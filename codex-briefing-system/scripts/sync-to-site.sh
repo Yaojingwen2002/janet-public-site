@@ -68,7 +68,7 @@ const oldManifest = readJson(manifestPath, []);
 const manifest = [
   date,
   ...oldManifest.filter((entry) => entry !== date && entry !== `${date}-v4`)
-];
+].sort((a, b) => String(b).localeCompare(String(a)));
 writeJson(manifestPath, manifest);
 
 const oldIndex = readJson(indexPath, {
@@ -105,18 +105,23 @@ const entry = {
 const editions = [
   entry,
   ...(Array.isArray(oldIndex.editions) ? oldIndex.editions : []).filter((item) => item.edition_id !== date && item.edition_id !== `${date}-v4`)
-];
+].sort((a, b) => String(b.edition_id || '').localeCompare(String(a.edition_id || '')));
 writeJson(indexPath, {
   ...oldIndex,
   generated_at: new Date().toISOString(),
-  latest_edition_id: date,
+  latest_edition_id: editions[0]?.edition_id || date,
   editions,
   sources: [...new Set([...(sources || []), ...((oldIndex.sources || []).filter(Boolean))])],
   categories: [...new Set([...(categories || []), ...((oldIndex.categories || []).filter(Boolean))])]
 });
 NODE
 
-node "$ROOT/src/check-site-briefing.mjs" "$DATE"
+LATEST_DATE="$(node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('data/MANIFEST.json','utf8')); console.log(m[0] || '')")"
+if [[ "$LATEST_DATE" == "$DATE" ]]; then
+  node "$ROOT/src/check-site-briefing.mjs" "$DATE"
+else
+  ALLOW_NOT_LATEST=1 node "$ROOT/src/check-site-briefing.mjs" "$DATE"
+fi
 
 git add "data/$DATE/" data/MANIFEST.json data/news-index.json
 

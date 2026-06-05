@@ -75,5 +75,8 @@ export function normalizeUrl(url) {
 }
 
 export function titleLength(title) {
-  return [...String(title || '').replace(/\s+/g, '')].length;
+  const normalized = String(title || '')
+    .replace(/[A-Za-z0-9][A-Za-z0-9+&./-]*/g, 'AA')
+    .replace(/[：:，,。！？!?、；;（）()【】\[\]「」『』《》"'“”‘’\s-]/g, '');
+  return [...normalized].length;
 }

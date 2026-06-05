@@ -38,6 +38,30 @@ const MIN_COVER_BYTES = 20_000;
 const MIN_ITEM_IMAGE_BYTES = 1_200;
 const MIN_JANET_TAKE_LENGTH = 120;
 const MIN_TREND_PARAGRAPHS = 3;
+const MIN_ITEM_TITLE_LENGTH = 12;
+const MAX_ITEM_TITLE_LENGTH = 22;
+const TITLE_ACTION_RE = /(发|发布|推出|上线|接入|接|整合|合作|融资|完成|收购|开放|限制|限|管理|生成|整理|扩展|押|逼|管|用|给|把|进|上|入场|做|卖|测|开测|运行|面向|支持|治理|控制|变小|加|标)/;
+const PURE_HOOK_TITLES = new Set([
+  'Agent进厂',
+  'Agent要上岗',
+  '监控先赚钱',
+  '搜索被迫让路',
+  '知识层抢位',
+  '巨头继续吸钱',
+  '微软自研脑',
+  '图像也入场',
+  'Copilot换芯',
+  '小模型反攻',
+  '上下文成护城河',
+  '权限开始值钱',
+  '搜索流量变账单',
+  '基础设施吸血',
+  '观测层变肥',
+  '记忆开始后台跑',
+  '治理变控制塔',
+  '身份成新防线',
+  'AI花钱该刹车'
+]);
 
 export function validateBriefing(content, { date, rootPath = resolve(new URL('..', import.meta.url).pathname), outputPath } = {}) {
   const issues = [];
@@ -124,7 +148,11 @@ function validateCover(content, { targetDate, rootPath, outputPath }, issues) {
     issues.push('missing_cover');
     return;
   }
-  if (!cover.title) issues.push('missing_cover_title');
+  if (!cover.title) {
+    issues.push('missing_cover_title');
+  } else {
+    validateCoverTitleFreshness(cover.title, { targetDate, rootPath }, issues);
+  }
   if (!cover.subtitle) issues.push('missing_cover_subtitle');
   if (!cover.image_prompt) issues.push('missing_cover_image_prompt');
   if (!cover.image_path) {
@@ -150,6 +178,38 @@ function validateCover(content, { targetDate, rootPath, outputPath }, issues) {
   if (!html.includes('data-janet-cover="true"')) issues.push('output_missing_cover_section');
   if (!html.includes('cover.png')) issues.push('output_missing_cover_image');
   if (!html.includes(String(cover.title || ''))) issues.push('output_missing_cover_title');
+}
+
+function normalizeTitleForCompare(title) {
+  return String(title || '')
+    .toLowerCase()
+    .replace(/[：:，,。！？!?、；;（）()【】\[\]「」『』《》"'“”‘’\s-]/g, '');
+}
+
+function previousDates(dateString, days = 7) {
+  const [year, month, day] = dateString.split('-').map(Number);
+  const base = Date.UTC(year, month - 1, day);
+  return Array.from({ length: days }, (_, index) => {
+    const date = new Date(base - (index + 1) * 86400000);
+    return date.toISOString().slice(0, 10);
+  });
+}
+
+function validateCoverTitleFreshness(title, { targetDate, rootPath }, issues) {
+  const normalized = normalizeTitleForCompare(title);
+  const siteRoot = resolve(rootPath, '..');
+  for (const date of previousDates(targetDate)) {
+    const path = resolve(siteRoot, 'data', date, 'content.json');
+    if (!existsSync(path)) continue;
+    try {
+      const previous = JSON.parse(readFileSync(path, 'utf8'));
+      const previousTitle = previous?.cover?.title || '';
+      if (previousTitle && normalizeTitleForCompare(previousTitle) === normalized) {
+        issues.push(`cover_title_duplicate_recent:${title}:${date}`);
+        return;
+      }
+    } catch {}
+  }
 }
 
 function validateItemImage(item, path, issues, { rootPath, targetDate }) {
@@ -182,7 +242,7 @@ function validateItem(item, path, issues, context) {
     return;
   }
   if (!item.title) issues.push(`missing_title:${path}`);
-  if (item.title && titleLength(item.title) > 15) issues.push(`title_too_long:${path}:${item.title}`);
+  if (item.title) validateItemTitle(item.title, path, issues);
   const url = item.url || item.link;
   if (!url) issues.push(`missing_url:${path}`);
   if (url && !/^https?:\/\//i.test(url)) issues.push(`invalid_url:${path}`);
@@ -201,6 +261,18 @@ function validateItem(item, path, issues, context) {
     if (sentenceCount(janetTake) < 3) {
       issues.push(`janet_take_missing_three_layers:${path}`);
     }
+  }
+}
+
+function validateItemTitle(title, path, issues) {
+  const length = titleLength(title);
+  if (length < MIN_ITEM_TITLE_LENGTH) issues.push(`title_too_short:${path}:${title}`);
+  if (length > MAX_ITEM_TITLE_LENGTH) issues.push(`title_too_long:${path}:${title}`);
+  const compact = String(title || '').replace(/\s+/g, '');
+  if (PURE_HOOK_TITLES.has(compact)) issues.push(`title_pure_hook:${path}:${title}`);
+  if (!TITLE_ACTION_RE.test(title)) issues.push(`title_missing_action:${path}:${title}`);
+  if (!/[：:—-]/.test(title) && length < 16) {
+    issues.push(`title_missing_viewpoint_separator:${path}:${title}`);
   }
 }
 

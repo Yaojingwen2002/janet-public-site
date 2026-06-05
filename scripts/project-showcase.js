@@ -26,6 +26,25 @@
     return 'src="' + escapeHtml(src || '') + '" alt="' + escapeHtml(alt || '') + '" loading="lazy"';
   }
 
+  function getYouTubeUrl(work) {
+    return work.youtube_url || work.video_url || work.videoUrl || '';
+  }
+
+  function getYouTubeId(url) {
+    const raw = String(url || '').trim();
+    if (!raw) return '';
+    try {
+      const parsed = new URL(raw);
+      if (parsed.hostname.includes('youtu.be')) return parsed.pathname.split('/').filter(Boolean)[0] || '';
+      if (parsed.pathname.includes('/shorts/')) return parsed.pathname.split('/shorts/')[1].split('/')[0] || '';
+      if (parsed.pathname.includes('/embed/')) return parsed.pathname.split('/embed/')[1].split('/')[0] || '';
+      return parsed.searchParams.get('v') || '';
+    } catch (error) {
+      const match = raw.match(/(?:shorts\/|youtu\.be\/|embed\/|v=)([A-Za-z0-9_-]{6,})/);
+      return match ? match[1] : '';
+    }
+  }
+
   function renderTags(items, className) {
     const list = Array.isArray(items) ? items.filter(Boolean) : [];
     if (!list.length) return '';
@@ -139,6 +158,28 @@
     `;
   }
 
+  function renderWorkCover(work) {
+    const src = work.cover || work.thumbnail || '';
+    const title = work.title || '作品封面';
+    const youtubeUrl = getYouTubeUrl(work);
+    const youtubeId = getYouTubeId(youtubeUrl);
+    if (youtubeUrl && youtubeId) {
+      return `
+        <div class="project-work-cover youtube-hover-cover" data-youtube-id="${escapeHtml(youtubeId)}" data-youtube-url="${escapeHtml(youtubeUrl)}">
+          <img ${imageAttrs(src, title)}>
+          <div class="youtube-hover-cover__player" aria-hidden="true"></div>
+          <a class="youtube-hover-cover__hit" href="${escapeHtml(youtubeUrl)}" target="_blank" rel="noopener noreferrer" aria-label="在 YouTube 打开${escapeHtml(title)}"></a>
+          <span class="youtube-hover-cover__label" aria-hidden="true">YouTube</span>
+        </div>
+      `;
+    }
+    return `
+      <button class="project-work-cover" type="button" data-preview-src="${escapeHtml(src)}" data-preview-title="${escapeHtml(work.title || '')}">
+        <img ${imageAttrs(src, title)}>
+      </button>
+    `;
+  }
+
   function renderWorks(project) {
     const works = Array.isArray(project.works) ? project.works : [];
     if (!works.length) {
@@ -160,9 +201,7 @@
               return `
                 <article class="project-work-card">
                   <div class="project-work-card__media">
-                    <button class="project-work-cover" type="button" data-preview-src="${escapeHtml(work.cover || work.thumbnail || '')}" data-preview-title="${escapeHtml(work.title || '')}">
-                      <img ${imageAttrs(work.cover || work.thumbnail, work.title || '作品封面')}>
-                    </button>
+                    ${renderWorkCover(work)}
                   </div>
                   <div class="project-work-card__body">
                     <div class="project-work-card__meta">
@@ -229,10 +268,60 @@
     });
   }
 
+  function buildYouTubeCoverSrc(cover) {
+    const videoId = cover.dataset.youtubeId || '';
+    return 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?' + new URLSearchParams({
+      autoplay: '1',
+      mute: '1',
+      controls: '0',
+      playsinline: '1',
+      loop: '1',
+      playlist: videoId,
+      rel: '0',
+      modestbranding: '1'
+    }).toString();
+  }
+
+  function destroyYouTubeCover(cover) {
+    if (!cover) return;
+    const player = cover.querySelector('.youtube-hover-cover__player');
+    if (player) player.innerHTML = '';
+    cover.classList.remove('is-youtube-previewing');
+  }
+
+  function mountYouTubeCover(cover) {
+    if (!cover || !cover.dataset.youtubeId) return;
+    const player = cover.querySelector('.youtube-hover-cover__player');
+    const image = cover.querySelector('img');
+    if (!player || player.querySelector('iframe')) return;
+    player.innerHTML = `
+      <iframe
+        src="${escapeHtml(buildYouTubeCoverSrc(cover))}"
+        title="${escapeHtml(image?.alt || 'YouTube video preview')}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    `;
+    cover.classList.add('is-youtube-previewing');
+  }
+
+  function bindYouTubeCovers() {
+    document.querySelectorAll('.youtube-hover-cover').forEach(cover => {
+      const hit = cover.querySelector('.youtube-hover-cover__hit');
+      cover.addEventListener('mouseenter', () => mountYouTubeCover(cover));
+      cover.addEventListener('mouseleave', () => destroyYouTubeCover(cover));
+      if (hit) {
+        hit.addEventListener('focus', () => mountYouTubeCover(cover));
+        hit.addEventListener('blur', () => destroyYouTubeCover(cover));
+      }
+    });
+  }
+
   function renderProject(project) {
     document.title = (project.title || '项目') + ' · Janet 作品库';
     root.innerHTML = renderHero(project) + renderIntro(project) + renderWorks(project) + renderPreviewDialog();
     bindPreview();
+    bindYouTubeCovers();
   }
 
   async function init() {

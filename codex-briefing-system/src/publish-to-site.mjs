@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadEnv, targetDateFromArg } from './lib.mjs';
 import { validateBriefing } from './qa-briefing.mjs';
 
@@ -27,6 +28,6 @@ execFileSync('bash', ['scripts/sync-to-site.sh', date], { cwd: ROOT, stdio: 'inh
 console.log(JSON.stringify({
   status: 'briefing_published',
   date,
-  public_site: resolve(new URL('../../..', import.meta.url).pathname),
+  public_site: resolve(ROOT, '..'),
   git: 'pushed'
 }, null, 2));

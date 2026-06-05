@@ -1,0 +1,221 @@
+{
+  "date": "2026-06-05",
+  "vol": "248",
+  "intro_text": "昨晚到今晨，AI 的关键词不是更会聊天，而是开始进系统、拿身份、背责任、吞预算。",
+  "cover": {
+    "title": "Agent进厂",
+    "subtitle": "企业 AI 正从演示台走进治理、数据、金融和创作流水线。",
+    "image_path": "runs/2026-06-05/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: 21:9 widescreen cover image for Janet's AI technology briefing. Primary request: Create a premium AI technology magazine cover visual about today's trend: enterprise AI agents are moving from chat demos into governed execution systems, while open/local models compete on cost and infrastructure. Scene/backdrop: abstract black and white enterprise operations control room merged with data center architecture; clean browser windows, permission graphs, database blocks, model cards, security lock geometry, and subtle robotic/agent silhouettes connected by fine network lines. Subject: governed AI agents executing across enterprise systems; open model infrastructure and local laptop inference as secondary visual cues. Composition: cinematic 21:9 horizontal, sharp asymmetric layout, generous empty lower-left area for HTML title overlay, high contrast, premium editorial design. Style: black, white, and Janet green #18E299 accents; cold, precise, minimal, sophisticated technology magazine aesthetic. Avoid: no cartoon, no glowing brain, no cheap cyberpunk neon, no crowded robot faces, no large text, no logos, no dates, no watermarks."
+  },
+  "trend": "Agent开始进系统\n\n今天共同主线很硬：Asana 把人和 agent 放进同一张工作计划，S&P Global 把 agentic workflow 塞进信贷 memo，Cognizant 和 ServiceNow 把 AI 治理做成控制塔，Alibaba Cloud 则把 Qwen、agent 工具和安全中心打包给海外客户。AI 不再只是在聊天框里装聪明，它开始碰 CRM、ERP、信贷、HR、移动应用和企业数据。\n\n这对中国创作者和企业的含义很直接：下一波机会不是再套一个问答壳，而是把 agent 接进具体岗位，并且能解释、能追责、能停机。谁能把角色、数据、动作、审批、日志和成本放进同一套工作流，谁才有资格收企业钱；只会喊“全自动”的团队，迟早被客户的内控表打回原形。\n\n接下来 2-4 周盯三件事：一是 agent 身份和审计会不会变成企业采购硬门槛，二是本地开源模型能不能真正压低多模态工作流成本，三是创作者工具会不会从生成单张素材，升级成能连续交付 app、3D、视频和运营动作的流水线。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Asana要管人机",
+          "body": "Asana 在伦敦 Work Innovation Summit 发布面向 human-agent teams 的操作系统，核心是让人类和 AI agents 在同一计划、同一上下文和同一治理框架下协作。新套件包含行业化 AI Teammates、个人 AI Chief of Staff Asana Dash，以及面向 IT、开发者和专业服务团队的新应用。",
+          "janet_take": "这条新闻撕开的是企业协作软件的老伤口：任务管理不能只管人，马上还要管 agent。门槛不在生成几条待办，而在企业数据、角色边界、跨系统动作和责任链能不能一起跑。国内做项目管理、OA、CRM 的团队应该立刻补 agent 身份、审批和审计日志，否则你的软件会被真正能调度人机工作的系统挤成备忘录。",
+          "source": "Asana Investor Relations",
+          "url": "https://investors.asana.com/news-releases/news-release-details/asana-unveils-operating-system-human-agent-teams",
+          "image_url": "https://investors.asana.com/news-releases/news-release-details/asana-unveils-operating-system-human-agent-teams",
+          "image": "images/news-01-asana.png",
+          "image_source_url": "https://us1.discourse-cdn.com/asana/original/3X/b/1/b1ba2250993eba3b71890dd0233a34ef605b44be.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "信贷也交给Agent",
+          "body": "S&P Global 发布 Credit Memo Builder，用 agentic workflow 聚合 RatingsDirect、RiskGauge、Capital IQ Pro 以及 Kensho 的数据检索能力，帮助贷款委员会、承销和信贷分析师更快生成信用决策报告。官方称重点是减少资料收集和综合时间，让分析师把精力放回风险判断。",
+          "janet_take": "金融场景最现实，因为它不缺数据，缺的是把碎片数据变成可审的决策材料。难点不是 AI 会不会写 memo，而是数据来源、引用、版本、责任人和风险假设能不能被复盘。国内券商、银行和投研团队别先做花哨助手，先把信贷、尽调、授信复核这类高频文档做成可追溯流水线，省下来的才是真人小时。",
+          "source": "SP Global / PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/sp-global-launches-agentic-ai-powered-credit-memo-builder-to-streamline-credit-analysis-302790833.html",
+          "image_url": "https://www.prnewswire.com/news-releases/sp-global-launches-agentic-ai-powered-credit-memo-builder-to-streamline-credit-analysis-302790833.html",
+          "image": "images/news-02-agent.jpg",
+          "image_source_url": "https://www.prnewswire.com/news-releases/sp-global-launches-agentic-ai-powered-credit-memo-builder-to-streamline-credit-analysis-302790833.html",
+          "image_origin": "source"
+        },
+        {
+          "title": "阿里云押Agent",
+          "body": "Alibaba Cloud 在首个国际 Qwen Conference 后对外发布一组 agentic AI 更新，覆盖 Qwen Cloud、JVS Agent Suite、JVS Claw Teams、JVS Mobile、Agent Security Center，并宣布加入 PyTorch Foundation 成为 Platinum member。它还在新加坡推出面向 SMEs 和学生的生成式 AI 与 agentic AI 培训计划。",
+          "janet_take": "阿里云这次真正想卖的不是单个模型，而是一整套海外企业 agent 基建。机会在东南亚，因为当地企业既想用中文大模型生态，又怕系统接入和安全能力跟不上。国内出海团队可以借这个栈做金融、客服、跨境电商和办公自动化方案，但别只会调 Qwen，客户最后买的是部署、运维和安全闭环。",
+          "source": "Thailand4 / Alibaba Cloud",
+          "url": "https://www.thailand4.com/en/3155120",
+          "image_url": "https://www.thailand4.com/en/3155120",
+          "image": "images/news-03-agent.jpg",
+          "image_source_url": "https://www.thailand4.com/en/3155120",
+          "image_origin": "source"
+        },
+        {
+          "title": "IBM抱紧Gemini",
+          "body": "IBM 与 Google Cloud 宣布新的战略合作，成立 Google Cloud Practice，把 IBM Consulting Advantage 的行业 agents 与 Google Cloud 的 Gemini Enterprise Agent Platform、网络安全和数据能力结合，用于帮助企业把 AI 推进生产环境和核心系统现代化。",
+          "janet_take": "咨询公司开始把 agent 写进交付方法论，说明企业 AI 已经从买工具变成买落地队伍。真正贵的是行业知识、旧系统迁移、数据治理和上线后的责任划分，不是模型调用本身。国内 SI 和咨询团队要学的是把 agent 做成可交付包，带行业模板、验收指标和失败回滚，而不是拿一页 PPT 转卖 API。",
+          "source": "IBM / Google Cloud / PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/ibm-and-google-cloud-announce-strategic-partnership-to-scale-ai-with-human-expertise-and-aipowered-delivery-302790899.html",
+          "image_url": "https://www.prnewswire.com/news-releases/ibm-and-google-cloud-announce-strategic-partnership-to-scale-ai-with-human-expertise-and-aipowered-delivery-302790899.html",
+          "image": "images/news-04-ibmgemini.jpg",
+          "image_source_url": "https://www.prnewswire.com/news-releases/ibm-and-google-cloud-announce-strategic-partnership-to-scale-ai-with-human-expertise-and-aipowered-delivery-302790899.html",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta抢商家入口",
+          "body": "TechCrunch 最新归档显示，Meta 的 WhatsApp Business AI agent 已在全球开放，面向商家提供对话、销售和客户支持能力。这个动作把 Meta AI 从消费端聊天继续推进到商家经营入口，目标是让小商家在 WhatsApp 里直接处理客户需求。",
+          "janet_take": "这是平台型 AI 最该让创作者紧张的地方：入口一旦被消息应用拿走，独立工具就很难再抢回客户关系。门槛在本地语言、商品信息、支付流程和人工接管，Meta 有流量但不一定懂每个行业的脏活。国内做私域、跨境电商和客服外包的团队要赶快把 WhatsApp、Instagram、Messenger 的 AI 接待流程标准化，不然客户会被平台原生 agent 直接截走。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/",
+          "image_url": "https://techcrunch.com/2026/06/",
+          "image": "images/news-05-meta.jpg",
+          "image_source_url": "https://techcrunch.com/2026/06/",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Gemma能上笔电",
+          "body": "Google 发布 Gemma 4 12B，这是一个 12B 级开放权重多模态模型，强调 encoder-free 架构，可直接处理文本、图像、视频和原生音频，并面向 16GB VRAM 或统一内存的笔电本地运行。模型以 Apache 2.0 发布，支持 Hugging Face、Kaggle、LM Studio、Ollama、llama.cpp、MLX、vLLM 等生态。",
+          "janet_take": "Gemma 4 12B 的杀伤点不在参数吓人，而在把多模态能力压到普通开发机上。成本门槛会从云端 token 费转到本地显存、量化质量和工程适配，省钱不是自动发生的。做私有知识库、语音整理、视频粗筛和本地 coding agent 的团队可以先拿它跑隐私数据场景，能离线跑稳，比追最大模型更有商业价值。",
+          "source": "Google Blog",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12B/",
+          "image_url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12B/",
+          "image": "images/models-01-gemma.jpg",
+          "image_source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12B/",
+          "image_origin": "source"
+        },
+        {
+          "title": "Qwen打包出海",
+          "body": "Qwen Conference 信息页和 Alibaba Cloud 对外稿显示，Qwen3.7-Max、Qwen Cloud、Model Studio、Agent Security Center、QoderWork、MuleRun、JVS Claw 等被一起推向国际客户。会议主线从 foundation models 转向 agent era，强调模型服务、agent-native cloud 和安全治理组合。",
+          "janet_take": "Qwen 这步不是单纯发模型，而是把模型、工具、云资源和安全中心捆成海外企业可买的包。门槛在多地区部署、合规、数据边界和生态信任，中文模型能力再强，也要过客户安全团队这一关。中国 SaaS 出海团队可以借 Qwen 做低成本 agent 底座，但必须自己补行业数据和交付能力，别幻想云厂商替你卖方案。",
+          "source": "Qwen Cloud / Alibaba Cloud",
+          "url": "https://www.qwencloud.com/events/qwen-conference-2026",
+          "image_url": "https://www.qwencloud.com/events/qwen-conference-2026",
+          "image": "images/models-02-qwen.jpg",
+          "image_source_url": "https://www.qwencloud.com/events/qwen-conference-2026",
+          "image_origin": "source"
+        },
+        {
+          "title": "Nemotron进长任务",
+          "body": "Aible 宣布 AibleClaw 支持 NVIDIA Nemotron 3 Ultra，用于 governed long-running AI agents，并可用其输出对更小的 Nemotron 3 Super 和 Nano 做企业场景后训练。公司称 Nemotron 3 Ultra 面向 coding、deep research 和 enterprise automation，可带来更快推理和更低 agentic task 成本。",
+          "janet_take": "长任务 agent 的真实问题不是一次回答多聪明，而是几十步之后还不跑偏。Nemotron 这类开放模型被企业 agent 平台接入，说明市场开始追求可控、可后训练、可降级的模型链。国内做企业自动化的团队要学会大模型做规划、小模型做执行，把成本和失败范围压住，否则 agent 跑一天就能烧掉一个月预算。",
+          "source": "Newswire / Aible",
+          "url": "https://www.newswire.com/news/aibleclaw-now-powered-by-nvidia-nemotron-3-ultra-delivers-frontier-class",
+          "image_url": "https://www.newswire.com/news/aibleclaw-now-powered-by-nvidia-nemotron-3-ultra-delivers-frontier-class",
+          "image": "images/models-03-nemotron.jpg",
+          "image_source_url": "https://www.newswire.com/news/aibleclaw-now-powered-by-nvidia-nemotron-3-ultra-delivers-frontier-class",
+          "image_origin": "source"
+        },
+        {
+          "title": "记忆开始后台跑",
+          "body": "OpenAI 介绍 ChatGPT memory 的 dreaming 方法，说明 ChatGPT 会在后台自动整理和更新记忆，让用户在新对话里不用反复介绍自己。官方称 dreaming 会参考聊天历史，对记忆做自动管理，并继续围绕用户控制和隐私改进体验。",
+          "janet_take": "这不是普通记忆功能更新，而是 AI 产品开始把长期用户画像当核心资产经营。门槛在隐私、纠错和用户控制，记错一次偏好还好，记错身份、关系和业务背景就会很麻烦。内容创作者和个人品牌团队可以利用长期记忆减少重复设定，但企业知识场景一定要把哪些能记、多久清理、谁能查看写清楚。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/chatgpt-memory-dreaming/",
+          "image_url": "https://openai.com/index/chatgpt-memory-dreaming/",
+          "image": "images/models-04-e000ad46f3.jpg",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "治理变控制塔",
+          "body": "Cognizant 宣布将 Neuro AI Trust 与 ServiceNow 集成，为企业 AI 提供持续 assurance infrastructure。新方案把 ServiceNow AI Control Tower 的可视化和治理，与 Cognizant 的 responsible AI agents、标准库和 guardrails 结合，覆盖模型、agent、AI asset 以及关联身份和许可。",
+          "janet_take": "企业 AI 最大的缺口已经不是能不能上线，而是上线后谁负责。治理从静态制度变成持续监控，说明 agent 开始像员工和系统账号一样需要被盘点、打分和停用。国内做大企业 AI 的团队别把合规当交付后的文档附件，要把发现、监控、审批、告警和回滚做进产品，不然客户风控部门会直接按暂停键。",
+          "source": "Cognizant / ServiceNow / PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/cognizant-announces-servicenow-partnership-to-accelerate-scalable-operationalized-ai-governance-at-enterprise-scale-302791967.html",
+          "image_url": "https://www.prnewswire.com/news-releases/cognizant-announces-servicenow-partnership-to-accelerate-scalable-operationalized-ai-governance-at-enterprise-scale-302791967.html",
+          "image": "images/insights-01-1c753b729f.jpg",
+          "image_source_url": "https://www.prnewswire.com/news-releases/cognizant-announces-servicenow-partnership-to-accelerate-scalable-operationalized-ai-governance-at-enterprise-scale-302791967.html",
+          "image_origin": "source"
+        },
+        {
+          "title": "身份成新防线",
+          "body": "Radiant Logic 发布面向 agentic enterprise 的身份可见性和智能能力，强调跨平台 agent inventory、连续风险评分和控制。它把 agent 当成新的身份对象处理，目标是在不同 agent 平台和治理系统之间提供统一视图。",
+          "janet_take": "agent 安全的下一步不是多写几条提示词，而是把 agent 当成会行动的身份。风险来自它能访问什么、代表谁行动、有没有被过度授权，以及异常行为能不能及时发现。做企业安全和 IAM 的团队要赶快补 agent inventory 和风险评分，因为未来泄漏不一定来自人类账号，也可能来自一个被放养的自动化代理。",
+          "source": "Business Wire / Radiant Logic",
+          "url": "https://cioinfluence.com/security/radiant-logic-extends-its-identity-visibility-and-intelligence-platform-ivip-to-the-agentic-enterprise-with-continuous-real-time-risk-scoring/",
+          "image_url": "https://cioinfluence.com/security/radiant-logic-extends-its-identity-visibility-and-intelligence-platform-ivip-to-the-agentic-enterprise-with-continuous-real-time-risk-scoring/",
+          "image": "images/insights-02-c231d0c795.jpg",
+          "image_source_url": "https://cioinfluence.com/security/radiant-logic-extends-its-identity-visibility-and-intelligence-platform-ivip-to-the-agentic-enterprise-with-continuous-real-time-risk-scoring/",
+          "image_origin": "source"
+        },
+        {
+          "title": "机器人也要管束",
+          "body": "Octon International 在台北宣布 Orion Fabric，这是一个面向企业软件和 physical AI 的 agentic AI governance platform。它通过 Orchestrator、Core、Ingress/Egress Governance、Skill and Endpoint Gateway 等组件，为企业 agent 和 ROS 2、NVIDIA Omniverse / Isaac Sim 相关机器人场景提供安全、审计和 human-in-the-loop 控制。",
+          "janet_take": "physical AI 一旦接进真实设备，错误就不只是写错文档，而是可能动到机器和现场流程。门槛会从模型能力转向工具调用边界、人工确认、仿真回放和事故审计，越靠近物理世界越不能裸跑。机器人和工业 AI 团队现在就该把安全层独立出来，先管动作，再谈智能。",
+          "source": "EINPresswire / Octon",
+          "url": "https://natlawreview.com/press-releases/octon-launches-orion-fabric-enterprise-grade-governance-platform-bringing",
+          "image_url": "https://natlawreview.com/press-releases/octon-launches-orion-fabric-enterprise-grade-governance-platform-bringing",
+          "image": "images/insights-03-f83e8dfd7a.jpg",
+          "image_source_url": "https://natlawreview.com/press-releases/octon-launches-orion-fabric-enterprise-grade-governance-platform-bringing",
+          "image_origin": "source"
+        },
+        {
+          "title": "AI花钱该刹车",
+          "body": "TechCrunch 归档继续显示，Uber 在员工 AI 工具支出超出预算后设置使用上限。相关报道提到，企业一边鼓励工程师使用 coding agents，一边开始追问 AI 使用量和真实产品产出之间的关系。",
+          "janet_take": "这条线最扎心：agent 工具不是免费生产力，它会把预算烧成可见账单。门槛在任务级成本核算、模型路由、缓存、验收和工程产出归因，而不是给每个员工开最高档订阅。国内老板要马上给 AI coding 做 FinOps，把每个 repo、每类任务、每次自动修复的花费算清，不然所谓提效会先把财务打醒。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/02/uber-caps-employee-ai-spending-after-blowing-through-budget-in-four-months/",
+          "image_url": "https://techcrunch.com/2026/06/02/uber-caps-employee-ai-spending-after-blowing-through-budget-in-four-months/",
+          "image": "images/insights-04-ai.jpg",
+          "image_source_url": "https://techcrunch.com/2026/06/02/uber-caps-employee-ai-spending-after-blowing-through-budget-in-four-months/",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Supabase估值翻倍",
+          "body": "Supabase 宣布完成 5 亿美元 Series F，投后估值 105 亿美元，资金将用于扩大 agentic infrastructure 领先优势。公司把自己定位为开源 Postgres 开发平台，并继续受益于 AI coding 和应用生成浪潮。",
+          "janet_take": "Supabase 的融资说明，AI 应用爆发后最肥的不一定是应用本身，而是开发者离不开的数据库和后端底座。门槛在稳定性、迁移成本、开源信任和企业级托管，估值涨得快也意味着增长压力会更凶。国内开发者工具创业者要看懂这条：别只做一个 vibe coding 前端壳，围绕数据、鉴权、部署和可观测性收费，钱更稳。",
+          "source": "Supabase / PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/supabase-raises-500m-at-10-5b-to-accelerate-lead-in-agentic-infrastructure-302791787.html",
+          "image_url": "https://www.prnewswire.com/news-releases/supabase-raises-500m-at-10-5b-to-accelerate-lead-in-agentic-infrastructure-302791787.html",
+          "image": "images/insights2-01-supabase.jpg",
+          "image_source_url": "https://www.prnewswire.com/news-releases/supabase-raises-500m-at-10-5b-to-accelerate-lead-in-agentic-infrastructure-302791787.html",
+          "image_origin": "source"
+        },
+        {
+          "title": "AI视频开始收钱",
+          "body": "Business Standard 报道，企业 AI 视频平台 TrueFan AI 完成 1000 万美元 Series A，由 Baring Private Equity Partners India 和 Z3Partners 领投。公司称平台一年内从 500 万条视频扩展到 2000 万条以上，并计划继续做全球扩张和企业部署。",
+          "janet_take": "AI 视频终于从炫技 demo 走到企业批量生产，投资人看的不是单条视频多惊艳，而是能不能规模化卖给销售、客服、培训和营销部门。门槛在肖像授权、品牌安全、多语言交付和转化数据，生成能力只是入场券。国内视频工具团队要把个性化视频做成 CRM 和电商运营的一部分，用结果收费，而不是靠模板会员硬撑。",
+          "source": "Business Standard",
+          "url": "https://www.business-standard.com/amp/companies/start-ups/ai-startup-truefan-raises-10-million-led-by-baring-pe-india-z3partners-126060400867_1.html",
+          "image_url": "https://www.business-standard.com/amp/companies/start-ups/ai-startup-truefan-raises-10-million-led-by-baring-pe-india-z3partners-126060400867_1.html",
+          "image": "images/insights2-02-ai.jpg",
+          "image_source_url": "https://aigc-cdn.kreadoai.com/blog/2026/1/601c6b23a5ca4b9aaca101336afe16db.jpeg",
+          "image_origin": "search"
+        },
+        {
+          "title": "观测层继续变肥",
+          "body": "Coralogix 官方宣布完成 2 亿美元融资，用于扩展 AI 时代的 observability backbone。公司把增长逻辑押在 AI workloads 和 AI agents 进入生产后，企业需要更强日志、指标、链路、安全和问题排查能力。",
+          "janet_take": "投资上最朴素的逻辑是：agent 越多，监控越值钱。应用层会卷死，但谁能告诉企业 agent 做了什么、哪里失败、花了多少钱，谁就站在预算入口。国内可观测性和安全厂商别只盯传统 APM，要把 token 成本、工具调用、agent 行为回放和异常检测做成新账本。",
+          "source": "Coralogix",
+          "url": "https://coralogix.com/coralogix-raises-200m-to-scale-the-observability-backbone-for-the-age-of-ai/",
+          "image_url": "https://coralogix.com/coralogix-raises-200m-to-scale-the-observability-backbone-for-the-age-of-ai/",
+          "image": "images/insights2-03-86247cc3b8.jpg",
+          "image_source_url": "https://coralogix.com/coralogix-raises-200m-to-scale-the-observability-backbone-for-the-age-of-ai/",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Meshy会聊3D",
+          "body": "Meshy 发布 3D Agent Beta，定位为面向 3D creation 的 conversational workflow。用户可以通过聊天生成批量概念、询问 3D 制作和打印问题，并把选中的概念继续转成可下载 3D 模型，目标用户包括 makers、indie developers、artists 和 designers。",
+          "janet_take": "这个工具对创作者有用，因为它把 3D 生成从单次出图推进到连续工作流。门槛仍然在拓扑、材质、可编辑性、版权和游戏引擎接入，别以为一句话就能替掉成熟 3D 美术。独立游戏、短视频道具和电商展示团队可以先用它做概念批量探索和粗模，再交给人修，省的是前期试错时间。",
+          "source": "Meshy / PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/meshy-launches-3d-agent-beta-the-worlds-first-ai-agent-for-3d-creation-302790052.html",
+          "image_url": "https://www.prnewswire.com/news-releases/meshy-launches-3d-agent-beta-the-worlds-first-ai-agent-for-3d-creation-302790052.html",
+          "image": "images/tools-01-meshy3d.jpg",
+          "image_source_url": "https://www.prnewswire.com/news-releases/meshy-launches-3d-agent-beta-the-worlds-first-ai-agent-for-3d-creation-302790052.html",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

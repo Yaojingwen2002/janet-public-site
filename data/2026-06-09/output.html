@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <title>Janet的快车箱 · AI科技晨报 · 2026-06-09 版</title>
+ <style>
+ :root { 
+ --bg: #ffffff; --text: #0d0d0d; --brand: #18E299; --brand-sub: rgba(24, 226, 153, 0.08);
+ --border: rgba(0,0,0,0.06); --mono: 'Geist Mono', 'SFMono-Regular', monospace;
+ }
+ body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; padding: 60px 20px; line-height: 1.6; }
+ .container { max-width: 800px; margin: 0 auto; }
+ 
+ /* 1. 强化报头 */
+ header { border-bottom: 2px solid var(--text); padding-bottom: 20px; margin-bottom: 30px; }
+ .slogan { font-size: 14px; font-weight: 600; letter-spacing: 0.2em; color: #444; margin-bottom: 8px; text-transform: uppercase; }
+ .main-header { display: flex; justify-content: space-between; align-items: flex-end; }
+ .logo { font-size: 32px; font-weight: 900; letter-spacing: -1.5px; }
+ .date-info { font-family: var(--mono); font-size: 14px; font-weight: 600; }
+ 
+ /* 导航按钮 */
+ 
+ /* 3. 放大标题 (告别蚂蚁字) */
+ .section-tag { font-family: var(--mono); font-size: 14px; font-weight: 800; color: #fff; background: #000; padding: 6px 16px; border-radius: 4px; display: inline-block; margin: 60px 0 25px 0; }
+ 
+ /* 4. 模块结构 */
+ .card { border: 1px solid var(--border); padding: 30px; border-radius: 20px; margin-bottom: 30px; background: #fff; }
+ .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+ .mini-card { border: 1px solid var(--border); padding: 20px; border-radius: 16px; background: #fff; }
+ 
+ h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+ h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+ 
+ /* 吐槽高亮 */
+ .critique { margin-top: 20px; padding: 15px; background: var(--brand-sub); border-left: 4px solid var(--brand); border-radius: 0 12px 12px 0; }
+ .critique b { font-family: var(--mono); color: var(--brand); font-size: 12px; margin-right: 8px; text-transform: uppercase; }
+ .critique span { font-style: italic; font-weight: 600; font-size: 14px; }
+
+ /* 趋势模块 */
+ .trend-card { border: 2px solid var(--brand); padding: 30px; border-radius: 20px; background: linear-gradient(135deg, rgba(24,226,153,0.05), rgba(24,226,153,0.02)); margin-bottom: 30px; }
+ .trend-card h2 { color: var(--brand); }
+
+ /* 第四模块：投资视角/大胆预测 */
+ .prediction-box { background: #000; color: #fff; padding: 30px; border-radius: 20px; }
+ .prediction-box b { color: var(--brand); }
+
+ /* 第五模块：工具箱 */
+ .tools-grid { background: #fdfdfd; border: 2px dashed var(--brand); padding: 25px; border-radius: 20px; }
+
+ /* 5. 页脚信息全回正 */
+ footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; color: #888; font-size: 12px; font-family: var(--mono); }
+ 
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+</head>
+<body>
+ <div class="container">
+ <header>
+ <div class="slogan">中国创作者视角 • 全球AI前沿 • 每日晨报</div>
+ <div class="main-header">
+ <div class="logo">Janet's Express Box</div>
+ <div class="date-info">2026-06-09 // VOL_252</div>
+ </div>
+ </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="AI 基建开始收口" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-06-09 // VOL_252</div>
+   <h1>AI 基建开始收口</h1>
+   <p>模型、算力、治理和 agent 正在被打包成企业操作系统。</p>
+  </div>
+ </section>
+
+
+ <div class="intro-box">
+ 今天这期不再是模型参数秀，而是 AI 开始被塞进算力、电力、内存、浏览器、办公系统和政府预算。大厂在抢控制层，小厂在抢垂直岗位，创作者要看的不是谁会聊天，而是谁能真的替你跑流程。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。 </div>
+
+ <div class="trend-card">
+  <h2>📌 今日趋势：AI 基建开始收口</h2>
+  <p>今天的共同主线很清楚：OpenAI 在公司治理上继续铺路，Apple 把本地 foundation model 开给开发者，NVIDIA 在韩国把内存、云、机器人和主权 AI 串成产业链。AI 新闻不再只是模型谁更聪明，而是控制权、算力入口和业务流程谁来管。</p>
+  <p>这对中国创作者和企业的含义很现实：下一轮红利不在多会写 prompt，而在能不能把模型嵌进具体岗位、具体数据和具体审批里。内容团队要盯浏览器和办公入口，软件团队要盯 agent 权限和日志，老板要盯每个 AI 工具是不是真的省人，还是只多收一层订阅费。</p>
+  <p>接下来 2-4 周盯三件事：一是 OpenAI 的资本化动作会不会加速产品商业化，二是 Apple 本地模型会不会让端侧应用重新起量，三是 NVIDIA 这类 AI factory 打包方案会不会成为云厂、政府和制造业的新预算语言。</p>
+</div>
+
+ <div class="section-tag">01 / KEY INTELLIGENCE (全球要闻)</div>
+ <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-openai-governance.jpg" alt="OpenAI 把公司治理继续铺路" loading="lazy" decoding="async">
+    <figcaption>OpenAI</figcaption>
+  </figure>
+  <h2>OpenAI 把公司治理继续铺路</h2>
+  <p class="item-meta">来源: OpenAI · 2026-06-09 · <a href="https://openai.com/index/built-to-benefit-everyone-our-plan/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 发布新的公司治理说明，强调公益目标、长期使命和现有结构下的改造方向。这个动作表面是解释组织设计，实质是在给更大规模融资、产品商业化和监管沟通铺轨道。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是 AI 巨头从实验室公司变成基础设施公司的缺口。门槛不只是模型能力，而是资本、监管、商业收入和公众信任要同时过关。国内创作者别只盯发布会，真正要盯的是 OpenAI 会不会把 Codex、ChatGPT、浏览器和企业后台做成统一收费入口。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/models-01-apple-app.jpg" alt="Apple 把 AFM 3 摆上台面" loading="lazy" decoding="async">
+    <figcaption>Apple Machine Learning Research</figcaption>
+  </figure>
+  <h2>Apple 把 AFM 3 摆上台面</h2>
+  <p class="item-meta">来源: Apple Machine Learning Research · 2026-06-09 · <a href="https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Apple Machine Learning Research 发布第三代 Apple Foundation Models，列出端侧 AFM 3 Core、20B 稀疏端侧模型、Private Cloud Compute 云端模型和图像模型。重点不是苹果终于承认用 AI，而是它把本地、私有云和 Google/NVIDIA 合作放进同一套架构里。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是端侧 AI 和私有云之间的入口缺口。门槛在芯片、系统版本、模型调度和隐私承诺能不能兑现，而不是发布会上讲得多漂亮。中国独立开发者和工具团队要立刻想清楚：哪些输入法、笔记、剪辑、客服和办公插件可以靠本地模型减少云端成本。真正的机会在默认系统能力，而不是又做一个云端聊天框。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-uk-ai-hardware.jpg" alt="英国把 AI 硬件写进预算" loading="lazy" decoding="async">
+    <figcaption>UK Government</figcaption>
+  </figure>
+  <h2>英国把 AI 硬件写进预算</h2>
+  <p class="item-meta">来源: UK Government · 2026-06-09 · <a href="https://www.gov.uk/government/publications/uk-ai-hardware-plan/uk-ai-hardware-plan" target="_blank" rel="noopener">原文链接</a></p>
+  <p>英国政府公布 AI Hardware Plan，把算力、半导体、数据中心和研发支持放进国家级议程。它不是单纯喊口号，而是承认 AI 竞争已经从模型层打到电力、芯片和机房层。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是主权 AI 的底层缺口。门槛在电网、芯片供应、土地审批和长期资金，绝不是买几台 GPU 就能解决。国内企业要看懂这个信号：未来 AI 成本会越来越像制造业，谁有稳定算力和行业数据，谁才有资格谈长期产品。算力会从采购项变成战略项，谁提前锁资源谁更有议价权。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-nvidia-sk-hynix.jpg" alt="NVIDIA 把 SK hynix 绑进内存战" loading="lazy" decoding="async">
+    <figcaption>NVIDIA / SK hynix</figcaption>
+  </figure>
+  <h2>NVIDIA 把 SK hynix 绑进内存战</h2>
+  <p class="item-meta">来源: NVIDIA / SK hynix · 2026-06-09 · <a href="https://nvidianews.nvidia.com/news/nvidia-and-sk-hynix-announce-multiyear-technology-partnership-to-advance-memory-for-ai-factories" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 与 SK hynix 宣布多年技术合作，围绕 AI factories 需要的先进内存技术推进联合优化。HBM、内存带宽和系统设计正在变成 AI 训练与推理扩张的硬瓶颈。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是模型背后最不性感但最要命的内存缺口。门槛不在 PPT 上的模型多大，而在带宽、封装、供货周期和整机系统能不能稳定跑。国内做推理服务、私有化部署和数据中心方案的团队，别只报价 GPU，内存和系统吞吐才是老板最后会骂人的地方。真正决定毛利的，往往是这些看不见的系统瓶颈。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-openai-superapp.jpg" alt="OpenAI 被传瞄准超级应用" loading="lazy" decoding="async">
+    <figcaption>PYMNTS / Financial Times</figcaption>
+  </figure>
+  <h2>OpenAI 被传瞄准超级应用</h2>
+  <p class="item-meta">来源: PYMNTS / Financial Times · 2026-06-09 · <a href="https://www.pymnts.com/artificial-intelligence-2/2026/openai-turns-chatgpt-into-a-platform-play/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Financial Times 报道称，OpenAI 正在把 ChatGPT 往更完整的工作入口推进，围绕工具、服务和更深的用户关系扩展。即使细节仍要等官方落地，方向已经很明显：聊天框想吞掉更多日常软件入口。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是 AI 产品分发的入口缺口。门槛在用户习惯、支付关系、企业权限和第三方生态，不是多接几个插件就能变超级应用。内容创作者和小团队要警惕：如果 ChatGPT 变成默认工作台，你的工具要么成为它的能力，要么就被它压成一个小按钮。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">02 / MODEL UPDATES (模型动态)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-apple-app.jpg" alt="Apple 让 App 跑本地模型" loading="lazy" decoding="async">
+    <figcaption>Apple Developer</figcaption>
+  </figure>
+  <h3>Apple 让 App 跑本地模型</h3>
+  <p class="item-meta">来源: Apple Developer · 2026-06-09 · <a href="https://developer.apple.com/documentation/foundationmodels" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Apple 的 Foundation Models framework 让开发者在应用内调用 Apple Intelligence 背后的设备端模型能力，强调隐私保护、离线能力和系统级体验。它给模型动态带来的重点，是端侧模型第一次被更系统地交给 App 层使用。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是小模型落地的分发缺口。门槛在模型能力受限、系统版本覆盖和开发者设计能力，而不是能不能调一个云模型。做效率工具、知识管理和创作辅助的团队要尽快做端侧版本，因为本地响应和隐私会成为付费理由。下一波好产品会把模型藏进动作里，不再把聊天框放在台前。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-qwen.jpg" alt="Qwen 把企业模型矩阵继续扩开" loading="lazy" decoding="async">
+    <figcaption>Alibaba Cloud</figcaption>
+  </figure>
+  <h3>Qwen 把企业模型矩阵继续扩开</h3>
+  <p class="item-meta">来源: Alibaba Cloud · 2026-06-09 · <a href="https://www.alibabacloud.com/blog/qwen-updates-and-model-capabilities-june-2026_601995" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Alibaba Cloud 在 6 月 8 日的模型动态中继续强化 Qwen 系列面向企业应用的更新节奏，围绕推理、代码、长上下文和多模态组合能力扩展。国内模型竞争正在从单点参数榜，转向可部署、可组合、可收费的产品矩阵。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是国产模型商业化的组合缺口。门槛在稳定服务、行业适配和客户迁移成本，而不是榜单上多赢一次。中国企业选模型别再问谁最强，应该问你的客服、代码、检索和文档场景能不能被同一套模型矩阵稳定接住。模型厂最后拼的是交付组合，不是单张评测截图。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-nemotron.jpg" alt="Nemotron 3 Ultra 押注长任务" loading="lazy" decoding="async">
+    <figcaption>NVIDIA / CXO Insight</figcaption>
+  </figure>
+  <h3>Nemotron 3 Ultra 押注长任务</h3>
+  <p class="item-meta">来源: NVIDIA / CXO Insight · 2026-06-09 · <a href="https://www.cxoinsightme.com/future/tech/nvidia-has-released-nemotron-3-ultra/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA Nemotron 3 Ultra 在 6 月 8 日继续被企业软件和 agent 场景推到台前，主打长任务、代码、研究和企业流程。它的卖点不是聊天更会说，而是让 agent 在更长上下文里少断线、少花钱。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是开源模型服务长流程任务的能力缺口。门槛在推理吞吐、上下文管理、工具调用稳定性和部署成本，企业不会为一句漂亮回答买单。代码工具团队、研究助手和企业 agent 平台可以盯它，但要先测长任务失败率，不要只看一次性榜单。长流程跑得稳，才是 agent 真正进企业的门槛。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-nvidia.jpg" alt="NVIDIA 把模型跑进韩国云" loading="lazy" decoding="async">
+    <figcaption>NVIDIA / SK Telecom</figcaption>
+  </figure>
+  <h3>NVIDIA 把模型跑进韩国云</h3>
+  <p class="item-meta">来源: NVIDIA / SK Telecom · 2026-06-09 · <a href="https://nvidianews.nvidia.com/news/sk-telecom-and-nvidia-build-ai-infrastructure-to-power-koreas-ai-innovation" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 与韩国伙伴推进面向 AI 的云和工厂基础设施，目标是让本地企业在主权云环境中获得更接近产业现场的 AI 能力。模型竞争正在从谁发布模型，转成模型在哪个国家、哪朵云、哪套产业系统里运行。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是模型落地环境的缺口。门槛在数据驻留、云厂绑定、算力价格和行业系统集成，不是简单把模型下载回来。国内做企业 AI 的团队要学会卖部署场景：金融、制造、政务和医疗客户要的是可控运行环境，不是热闹演示。能把模型放进客户现场，才有长期合同的入口。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">03 / TECH INSIGHTS (技术深度)</div>
+ <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-sk-telecom-ai.jpg" alt="SK Telecom 把 AI 云做成国策" loading="lazy" decoding="async">
+    <figcaption>SK Telecom / NVIDIA</figcaption>
+  </figure>
+  <h3>SK Telecom 把 AI 云做成国策</h3>
+  <p class="item-meta">来源: SK Telecom / NVIDIA · 2026-06-09 · <a href="https://www.sktelecom.com/en/press/press_detail.do?idx=1663" target="_blank" rel="noopener">原文链接</a></p>
+  <p>SK Telecom 与 NVIDIA 推进韩国 AI 基础设施合作，围绕主权 AI、云服务和产业应用建设更大规模的本地能力。电信运营商正在从卖连接，转向卖 AI 算力和行业平台。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是运营商重新入场的缺口。门槛在机房、电力、网络、行业客户和长期投入，轻资产 AI 公司很难复制。中国运营商、园区和地方云厂应该看懂：AI 预算不会只给模型公司，谁掌握本地客户和基础设施，谁就能吃到企业改造的钱。未来卖的是运行能力，不只是网络套餐。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-naver-ai.png" alt="NAVER 把主权 AI 云端化" loading="lazy" decoding="async">
+    <figcaption>NAVER Cloud / NVIDIA</figcaption>
+  </figure>
+  <h3>NAVER 把主权 AI 云端化</h3>
+  <p class="item-meta">来源: NAVER Cloud / NVIDIA · 2026-06-09 · <a href="https://www.navercloudcorp.com/en/news/article/1064" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NAVER Cloud 与 NVIDIA 的合作强调面向韩国企业和公共部门的 AI 云能力，试图把数据、算力和模型服务留在本地体系内。主权 AI 不再只是政治口号，而是云厂争夺大型客户的新包装。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是数据主权和商业云之间的缺口。门槛在本地合规、稳定交付和与客户现有系统的深度绑定，不是换个宣传词。国内云厂和 SaaS 团队要学会把 AI 能力包装成可审计、可控、可部署的行业方案，否则只会被大云厂当生态配件。客户买的是责任边界，不只是模型接口。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-doosan-ai.jpg" alt="Doosan 把机器人接进 AI 工厂" loading="lazy" decoding="async">
+    <figcaption>Doosan / NVIDIA</figcaption>
+  </figure>
+  <h3>Doosan 把机器人接进 AI 工厂</h3>
+  <p class="item-meta">来源: Doosan / NVIDIA · 2026-06-09 · <a href="https://nvidianews.nvidia.com/news/doosan-and-nvidia-collaborate-on-ai-ran-robotics-and-physical-ai" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Doosan 与 NVIDIA 在机器人、AI-RAN 和工业 AI 方向推进合作，把机器人训练、工厂仿真和边缘智能放到同一套产业叙事里。Physical AI 的热词背后，真正要解决的是机器如何在真实现场稳定干活。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是机器人从演示走向生产线的缺口。门槛在传感器、仿真数据、现场安全、维护成本和故障责任，远比视频里挥两下机械臂难。国内工业机器人团队要少拍概念片，多把质检、搬运、巡检和培训流程做成能复用的标准包。能被工厂验收，才算真正的 physical AI。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-nerc-data-center.jpg" alt="NERC 开始盯数据中心负载" loading="lazy" decoding="async">
+    <figcaption>NERC</figcaption>
+  </figure>
+  <h3>NERC 开始盯数据中心负载</h3>
+  <p class="item-meta">来源: NERC · 2026-06-09 · <a href="https://www.nerc.com/globalassets/our-work/guidelines/reliability/RG_Risk-Mitigation-For-Emerging-Large-Loads.pdf" target="_blank" rel="noopener">原文链接</a></p>
+  <p>北美电力可靠性机构 NERC 发布与大型数据中心负载相关的可靠性指导，提醒电网运营者处理 AI 数据中心带来的用电波动和规划压力。AI 的扩张已经开始触碰电力系统的硬约束。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是 AI 基建的电力缺口。门槛在电网接入、长期合同、峰值负载和区域审批，不是云厂自己喊扩容就能解决。中国企业做私有算力或智算中心时，别只算 GPU 报价，电、冷却、运维和利用率才决定项目是不是吞钱机器。电力表会成为 AI 公司最诚实的财务报表。</span>
+  </div>
+</div>
+</div>
+
+ <div class="section-tag">04 / INVESTMENT & PREDICTION (投资视角/大胆预测)</div>
+ <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-amd-uk-ai.jpg" alt="AMD 在英国押下二十亿英镑" loading="lazy" decoding="async">
+    <figcaption>AMD</figcaption>
+  </figure>
+  <h3>AMD 在英国押下二十亿英镑</h3>
+  <p class="item-meta inverted">来源: AMD · 2026-06-09 · <a href="https://www.stocktitan.net/news/AMD/amd-commits-up-to-2-billion-to-accelerate-ai-innovation-and-research-f0q78lpc3phv.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AMD 宣布计划在英国投入 20 亿英镑，围绕 AI、研发和高性能计算扩展本地布局。这类投资不是形象工程，而是芯片公司在 AI 基建国家竞赛里抢位置。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是非 NVIDIA 阵营争夺 AI 基建预算的缺口。门槛在生态、软件栈、客户信任和供货能力，单靠芯片价格便宜不够。国内老板看这类新闻要清醒：多供应商路线可以压成本，但迁移训练和运维能力必须提前准备。便宜硬件只有接上软件生态，才会变成真正选择。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-moonshot-ai.jpg" alt="Moonshot 估值传冲三百亿美元" loading="lazy" decoding="async">
+    <figcaption>Bloomberg</figcaption>
+  </figure>
+  <h3>Moonshot 估值传冲三百亿美元</h3>
+  <p class="item-meta inverted">来源: Bloomberg · 2026-06-09 · <a href="https://www.bloomberg.com/news/articles/2026-06-08/alibaba-backed-moonshot-ai-is-said-to-seek-funding-at-30-billion-value" target="_blank" rel="noopener">原文链接</a></p>
+  <p>市场消息称，Moonshot AI 正在寻求新融资，目标估值可能达到约 300 亿美元。国内大模型公司进入新阶段：不是谁会讲故事，而是谁能证明用户、收入和算力账跑得通。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是国产大模型资本耐心的缺口。门槛在流量转化、推理成本、企业付费和监管边界，烧钱买月活迟早要交账。创作者可以继续用 Kimi 这类工具提效，但投资视角要看商业闭环，不要被估值数字带着跑。下一轮融资会奖励收入质量，而不是只奖励声量。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-physicsx-engineering-ai.jpg" alt="PhysicsX 融资押注工程 AI" loading="lazy" decoding="async">
+    <figcaption>PhysicsX</figcaption>
+  </figure>
+  <h3>PhysicsX 融资押注工程 AI</h3>
+  <p class="item-meta inverted">来源: PhysicsX · 2026-06-09 · <a href="https://www.physicsx.ai/newsroom/physicsx-announces-300m-series-c-to-accelerate-physics-ai-for-industrial-engineering" target="_blank" rel="noopener">原文链接</a></p>
+  <p>工程 AI 公司 PhysicsX 被报道完成大额融资，方向集中在用 AI 加速物理仿真、工程设计和工业研发。投资人正在从通用聊天应用转向能直接压缩研发周期的垂直 AI。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是工业研发软件的岗位缺口。门槛在专业数据、仿真可信度、工程师工作流和客户验证周期，比做一个通用助手难得多。国内制造业、汽车和硬件团队要盯这类工具，因为真正省钱的是少做几轮试验，不是让 AI 写几段漂亮文案。垂直 AI 的价值，会在研发周期里结账。</span>
+  </div>
+</div>
+
+
+ <div class="section-tag">05 / CREATOR TOOLBOX (创作者工具箱)</div>
+ <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-chatgpt-charts.jpg" alt="ChatGPT 直接生成交互图表" loading="lazy" decoding="async">
+    <figcaption>ChatGPT / LatestLY</figcaption>
+  </figure>
+  <h2>ChatGPT 直接生成交互图表</h2>
+  <p class="item-meta">来源: ChatGPT / LatestLY · 2026-06-09 · <a href="https://www.latestly.com/socially/technology/chatgpt-new-feature-update-openai-now-allows-users-to-create-interactive-data-charts-directly-within-the-platform-7464877.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 在 6 月 8 日推送 ChatGPT 新能力，用户可以在 ChatGPT 里把数据和对比内容直接变成交互图表，移动端和网页端都可用。这个工具点很小，但信号很硬：AI 办公正在从写文字，走向直接生成可用界面。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条新闻撕开的是数据分析工具的体验缺口。门槛在数据准确、图表类型选择、可追溯计算和团队复用，不是把柱状图画出来就完事。内容创作者、咨询顾问和运营团队可以马上用它做选题对比、投放复盘和竞品表格，但关键数据仍要自己核一遍。图表生成只是开始，可信分析才是交付物。</span>
+  </div>
+</div>
+</div>
+
+
+ <footer>
+ Janet的快车箱 · AI科技晨报 · 2026-06-09 版<br>
+ DATA SOURCES: OpenAI, Apple Machine Learning Research, UK Government, NVIDIA / SK hynix, PYMNTS / Financial Times, Apple Developer, Alibaba Cloud, NVIDIA / CXO Insight, NVIDIA / SK Telecom, SK Telecom / NVIDIA, NAVER Cloud / NVIDIA, Doosan / NVIDIA, NERC, AMD, Bloomberg, PhysicsX, ChatGPT / LatestLY<br>
+ QUALITY CHECK: 5+4+4+3+1 STRUCTURE VERIFIED<br>
+ 中国创作者视角 · 全球AI前沿 · 每日晨报
+ </footer>
+ </div>
+</body>
+</html>

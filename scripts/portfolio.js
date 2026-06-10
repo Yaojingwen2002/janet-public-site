@@ -433,6 +433,7 @@
         </article>
       `;
     }).join('');
+    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
   async function initHomepageWorksLibrary() {
@@ -503,6 +504,7 @@
         </article>
       `;
     }).join('');
+    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
   function setActiveFilter(project) {

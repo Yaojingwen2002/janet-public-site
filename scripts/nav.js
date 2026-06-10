@@ -131,6 +131,22 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    const darkBackToTopTargets = document.querySelectorAll('#contact, [data-theme="contact"]');
+    if (darkBackToTopTargets.length && 'IntersectionObserver' in window) {
+      const visibleDarkTargets = new Set();
+      const darkObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleDarkTargets.add(entry.target);
+          } else {
+            visibleDarkTargets.delete(entry.target);
+          }
+        });
+        backToTop.classList.toggle('is-on-dark', visibleDarkTargets.size > 0);
+      }, { threshold: 0.18 });
+      darkBackToTopTargets.forEach((target) => darkObserver.observe(target));
+    }
   }
 
   // ── 邮箱反爬拼接 ─────────────────────────────────────────
@@ -140,4 +156,5 @@
     link.textContent = email;
     link.setAttribute('aria-label', '发送邮件给 Janet');
   });
+
 })();

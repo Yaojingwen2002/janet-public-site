@@ -306,10 +306,13 @@
   }
 
   function bindYouTubeCovers() {
+    const canHoverPreview = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     document.querySelectorAll('.youtube-hover-cover').forEach(cover => {
       const hit = cover.querySelector('.youtube-hover-cover__hit');
-      cover.addEventListener('mouseenter', () => mountYouTubeCover(cover));
-      cover.addEventListener('mouseleave', () => destroyYouTubeCover(cover));
+      if (canHoverPreview) {
+        cover.addEventListener('mouseenter', () => mountYouTubeCover(cover));
+        cover.addEventListener('mouseleave', () => destroyYouTubeCover(cover));
+      }
       if (hit) {
         hit.addEventListener('focus', () => mountYouTubeCover(cover));
         hit.addEventListener('blur', () => destroyYouTubeCover(cover));

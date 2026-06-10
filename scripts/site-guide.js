@@ -29,6 +29,16 @@
     if (closeBtn) closeBtn.focus({ preventScroll: true });
   }
 
+  function visitorModalWillOpen() {
+    const auth = window.JanetAuth;
+    if (!auth) return false;
+    try {
+      return !auth.getIdentity() && !window.localStorage.getItem(auth.storage.skipped);
+    } catch (error) {
+      return false;
+    }
+  }
+
   let hasSeen = false;
   try {
     hasSeen = window.localStorage.getItem(storageKey) === 'true';
@@ -36,7 +46,7 @@
     hasSeen = false;
   }
 
-  if (!hasSeen && !window.location.hash) {
+  if (!hasSeen && !window.location.hash && !visitorModalWillOpen()) {
     window.setTimeout(openGuide, 450);
   }
 

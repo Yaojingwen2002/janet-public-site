@@ -1,0 +1,231 @@
+/* Janet motion layer: scroll chapters, living text, card micro-interactions */
+
+body {
+  background-color: var(--page-bg, var(--bg));
+  color: var(--page-text, var(--text-2));
+  transition: background-color 900ms var(--ease), color 700ms var(--ease);
+}
+
+body[data-theme="hero"],
+body[data-theme="about"] {
+  --page-bg: var(--bg);
+  --page-text: var(--text-2);
+  --page-heading: var(--text-1);
+  --page-muted: var(--text-3);
+  --page-border: var(--border);
+}
+
+body[data-theme="briefing"] {
+  --page-bg: var(--bg-surface);
+  --page-text: var(--text-2);
+  --page-heading: var(--text-1);
+  --page-muted: var(--text-3);
+  --page-border: var(--border);
+}
+
+body[data-theme="archive"] {
+  --page-bg: #f0ebe3;
+  --page-text: var(--text-2);
+  --page-heading: var(--text-1);
+  --page-muted: var(--text-3);
+  --page-border: var(--border);
+}
+
+body[data-theme="contact"] {
+  --page-bg: var(--green);
+  --page-text: rgba(255,255,255,.72);
+  --page-heading: #fff;
+  --page-muted: rgba(255,255,255,.52);
+  --page-border: rgba(255,255,255,.14);
+}
+
+[data-theme="contact"] .section-header h2,
+[data-theme="contact"] .contact-note {
+  color: var(--page-heading);
+}
+
+[data-theme="contact"] .section-header .line {
+  background: var(--page-border);
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity .55s calc(var(--i, 0) * 70ms) var(--ease),
+    transform .55s calc(var(--i, 0) * 70ms) cubic-bezier(.22,1,.36,1);
+}
+
+.word.on {
+  opacity: 1;
+  transform: none;
+}
+
+.rv-fade,
+.rv-scale,
+.rv-left,
+.rv-right,
+.reveal {
+  opacity: 0;
+  transition:
+    opacity .65s var(--ease),
+    transform .65s cubic-bezier(.22,1,.36,1);
+}
+
+.rv-fade,
+.reveal {
+  transform: translateY(20px);
+}
+
+.rv-scale {
+  transform: scale(.97);
+}
+
+.rv-left {
+  transform: translateX(-24px);
+}
+
+.rv-right {
+  transform: translateX(24px);
+}
+
+.rv-fade.on,
+.rv-scale.on,
+.rv-left.on,
+.rv-right.on,
+.reveal.on {
+  opacity: 1;
+  transform: none;
+}
+
+.rv-d1 { transition-delay: .08s; }
+.rv-d2 { transition-delay: .16s; }
+.rv-d3 { transition-delay: .24s; }
+
+.chapter-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  color: var(--amber);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+
+.chapter-mark::before {
+  content: "";
+  width: 32px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-block: 1px solid rgba(255,255,255,.14);
+  background: var(--green, #123f2a);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  gap: 34px;
+  padding: 13px 0;
+  animation: janet-ticker 28s linear infinite;
+  will-change: transform;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fffaf0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ticker-item .dot {
+  color: var(--amber, #c7923e);
+  font-size: 18px;
+  line-height: 1;
+}
+
+@keyframes janet-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.wm {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  color: rgba(26,58,42,.045);
+  font-family: var(--font-display);
+  font-size: clamp(86px, 15vw, 210px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.wm-right {
+  right: -28px;
+  bottom: -32px;
+}
+
+.signal-card,
+.codex-news-card,
+.news-edition-card,
+.edition-card,
+.archive-card,
+.works-project-card {
+  transition:
+    transform .28s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .28s var(--ease),
+    border-color .28s var(--ease);
+}
+
+.signal-card:hover,
+.codex-news-card:hover,
+.news-edition-card:hover,
+.edition-card:hover,
+.archive-card:hover,
+.works-project-card:hover {
+  transform: translateY(-6px);
+}
+
+.nav-links a.nav-active {
+  color: var(--green);
+}
+
+.nav-links a.nav-active::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+
+  .word,
+  .rv-fade,
+  .rv-scale,
+  .rv-left,
+  .rv-right,
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

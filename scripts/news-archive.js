@@ -50,21 +50,102 @@
     ].join(' ').toLowerCase().includes(q);
   }
 
+  function editionEngagement(edition, compact) {
+    const editionId = edition.edition_id || edition.date || '';
+    const title = edition.title || 'Janet 快车箱';
+    const url = edition.url || '#';
+    const actionClass = compact ? 'news-secondary-actions' : 'news-card-actions';
+    const safeEditionId = escapeHtml(editionId);
+    const safeTitle = escapeHtml(title);
+    const safeUrl = escapeHtml(url);
+
+    return `
+      <div class="${actionClass}">
+        <div class="news-reactions" data-edition-id="${safeEditionId}" data-edition-title="${safeTitle}" data-edition-url="${safeUrl}" aria-label="本期反馈">
+          <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+            <span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+          </button>
+          <button class="reaction-btn" type="button" data-reaction-type="insightful" aria-label="有洞察">
+            <span aria-hidden="true">💡</span><span>洞察</span><span class="reaction-count" data-reaction-count>0</span>
+          </button>
+          <button class="reaction-btn" type="button" data-reaction-type="trending" aria-label="值得追踪">
+            <span aria-hidden="true">🔥</span><span>追踪</span><span class="reaction-count" data-reaction-count>0</span>
+          </button>
+        </div>
+        <button class="comment-toggle-btn" type="button" data-comment-toggle data-edition-id="${safeEditionId}" data-edition-title="${safeTitle}" data-edition-url="${safeUrl}">
+          评论 <span class="comment-count" data-comment-count data-edition-id="${safeEditionId}">0</span>
+        </button>
+        <div class="share-wrap">
+          <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>
+          <div class="share-menu" role="menu" hidden>
+            <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+            <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+            <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   function editionCard(edition, featured) {
     const sources = (edition.top_sources || []).slice(0, 4).map((source) => `<span>${escapeHtml(source)}</span>`).join('');
     const categories = (edition.top_categories || []).slice(0, 4).map((category) => `<span>${escapeHtml(category)}</span>`).join('');
+    const date = new Date(`${edition.date}T00:00:00+08:00`);
+    const month = Number.isNaN(date.getTime()) ? edition.date.slice(5, 7) : date.toLocaleString('en-US', { month: 'short' });
+    const day = edition.date ? edition.date.slice(8, 10) : '--';
+    const year = edition.date ? edition.date.slice(0, 4) : '----';
+    const signalCount = edition.edition_items_count || edition.signal_count || 0;
+    const sourceCount = (edition.top_sources || []).length;
+    const summary = edition.summary || edition.lead_story?.title || '';
+    const url = edition.url || '#';
+
+    if (featured) {
+      return `
+        <article class="le-card news-edition-card news-edition-card--featured rv-scale">
+          <div class="le-body">
+            <div class="le-meta">
+              <span class="le-issue">${escapeHtml(edition.date)}</span>
+              <span>${escapeHtml(edition.edition_type || 'codex_briefing')}</span>
+            </div>
+            <h3 class="le-title">${escapeHtml(edition.title || 'Janet 快车箱')}</h3>
+            <p class="le-thesis">${escapeHtml(summary)}</p>
+            <div class="news-chip-row">${sources}${categories}</div>
+            <div class="le-stats">
+              <div class="le-stat"><strong>${escapeHtml(signalCount)}</strong>条信号</div>
+              <div class="le-stat"><strong>${escapeHtml(sourceCount)}</strong>个来源</div>
+            </div>
+            <div class="news-edition-actions">
+              <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">打开本期 ↗</a>
+            </div>
+            ${editionEngagement(edition, false)}
+          </div>
+          <div class="le-panel" data-issue="${escapeHtml(edition.date)}">
+            <div class="le-panel-tag">Latest</div>
+            <div class="le-panel-num">${escapeHtml(signalCount)}<span>条精选</span></div>
+          </div>
+        </article>
+      `;
+    }
+
     return `
-      <article class="${featured ? 'news-edition-card news-edition-card--featured' : 'news-edition-card'}">
-        <div class="news-edition-meta">
-          <span>${escapeHtml(edition.date)}</span>
-          <span>${escapeHtml(edition.edition_type || 'edition')}</span>
-          <span>${escapeHtml(edition.edition_items_count || edition.signal_count || 0)} 条新闻</span>
+      <article class="edition-card news-edition-card rv-fade">
+        <div class="ec-date-panel">
+          <div class="ec-month">${escapeHtml(month)}</div>
+          <div class="ec-day">${escapeHtml(day)}</div>
+          <div class="ec-year">${escapeHtml(year)}</div>
         </div>
-        <h3>${escapeHtml(edition.title || 'Janet 快车箱')}</h3>
-        <p>${escapeHtml(edition.summary || edition.lead_story?.title || '')}</p>
-        <div class="news-chip-row">${sources}${categories}</div>
-        <div class="news-edition-actions">
-          <a href="${escapeHtml(edition.url)}" target="_blank" rel="noopener noreferrer">打开完整晨报 ↗</a>
+        <div class="ec-body">
+          <div class="ec-title">${escapeHtml(edition.title || 'Janet 快车箱')}</div>
+          <p class="ec-thesis">${escapeHtml(summary)}</p>
+          <div class="ec-tags news-chip-row">${sources}${categories}</div>
+        </div>
+        <div class="ec-action">
+          <div class="ec-stats">
+            <div class="ec-stat"><strong>${escapeHtml(signalCount)}</strong> 条信号</div>
+            <div class="ec-stat"><strong>${escapeHtml(sourceCount)}</strong> 个来源</div>
+          </div>
+          <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ec-open">打开本期 →</a>
+          ${editionEngagement(edition, true)}
         </div>
       </article>
     `;
@@ -78,6 +159,7 @@
       <span class="section-kicker">Latest</span>
       ${editionCard(latest, true)}
     `;
+    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
   function renderList() {
@@ -86,9 +168,12 @@
     if (!list || !state.index) return;
     const editions = state.index.editions.filter(editionMatches);
     if (count) count.textContent = `${editions.length} editions`;
+    const count2 = document.getElementById('news-result-count-2');
+    if (count2) count2.textContent = `${editions.length} 期`;
     list.innerHTML = editions.length
       ? editions.map((edition) => editionCard(edition, false)).join('')
       : '<p class="news-empty">没有匹配的晨报。</p>';
+    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
   function bindFilters() {

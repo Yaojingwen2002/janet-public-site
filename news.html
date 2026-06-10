@@ -24,63 +24,109 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/news-archive.css">
+  <link rel="stylesheet" href="styles/janet-motion.css">
+  <link rel="stylesheet" href="styles/auth.css">
+  <link rel="stylesheet" href="styles/comments.css">
 
 </head>
 <body>
   <div class="bg-ambient"></div>
 
   <div class="news-page">
-    <nav class="news-topbar">
-      <a href="index.html" class="news-brand">Janet</a>
-      <div>
-        <a href="index.html#news">首页快车箱</a>
-        <a href="portfolio.html">作品库</a>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand nav-brand-logo" aria-label="Janet Home">
+          <img src="assets/icons/logo-mark.svg" alt="" class="nav-logo-mark">
+          <span>Janet</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html#news">快车箱</a></li>
+          <li><a href="index.html#works-library">作品库</a></li>
+          <li><a href="index.html#about">关于</a></li>
+          <li><a href="index.html#contact">联系</a></li>
+        </ul>
       </div>
     </nav>
-    <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="菜单">☰</button>
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle" type="button" aria-label="菜单" aria-controls="mobile-nav-menu" aria-expanded="false">☰</button>
     <div class="mobile-nav-menu" id="mobile-nav-menu">
-      <a href="index.html">首页</a>
       <a href="index.html#news">快车箱</a>
-      <a href="portfolio.html">作品库</a>
+      <a href="index.html#works-library">作品库</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#contact">联系</a>
     </div>
 
     <main>
-      <section class="news-archive-hero">
-        <span class="section-kicker">Janet Daily News</span>
-        <h1>Janet 快车箱归档</h1>
-        <p>回看 Janet 每日快车箱。每一期都按日期沉淀，方便你追踪 AI 入口、工具、创作和商业信号。</p>
-      </section>
-
-      <section id="latest-edition" class="news-latest-card" aria-live="polite"></section>
-
-      <section class="news-filter-panel" aria-label="晨报筛选">
-        <label>
-          <span>搜索</span>
-          <input id="news-search" type="search" placeholder="搜标题 / source / summary">
-        </label>
-        <label>
-          <span>日期</span>
-          <select id="news-date-filter"></select>
-        </label>
-        <label>
-          <span>来源</span>
-          <select id="news-source-filter"></select>
-        </label>
-        <label>
-          <span>分类</span>
-          <select id="news-category-filter"></select>
-        </label>
-      </section>
-
-      <section class="news-list-section">
-        <div class="news-list-head">
-          <div>
-            <span class="section-kicker">Archive</span>
-            <h2>历史晨报</h2>
-          </div>
-          <span id="news-result-count" class="news-result-count">Loading</span>
+      <section class="masthead news-archive-hero" data-theme="hero">
+        <div class="wm wm-right masthead-wm" aria-hidden="true">Archive</div>
+        <div class="masthead-meta rv-fade">
+          <span>Janet 快车箱</span>
+          <span class="sep">·</span>
+          <span>AI 新闻过滤器</span>
+          <span class="sep">·</span>
+          <span class="live">持续更新中</span>
         </div>
-        <div id="news-archive-list" class="news-archive-list"></div>
+        <h1 data-reveal="words">快车箱 Archive</h1>
+        <p class="masthead-sub rv-fade rv-d1">每天过滤 AI 噪音，留下可追踪的信号。这里是所有期刊的完整归档。</p>
+      </section>
+
+      <div class="ticker-wrap" aria-hidden="true">
+        <div class="ticker-track">
+          <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
+          <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
+          <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
+          <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
+          <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
+          <span class="ticker-item"><span class="dot">·</span>过滤噪音，留下信号</span>
+          <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
+          <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
+          <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
+          <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
+          <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
+          <span class="ticker-item"><span class="dot">·</span>过滤噪音，留下信号</span>
+        </div>
+      </div>
+
+      <section class="news-toolbar" aria-label="晨报筛选" data-theme="briefing">
+        <div class="news-toolbar-inner">
+          <label class="toolbar-search">
+            <span class="sr-only">搜索</span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="m13 13 4 4" stroke-linecap="round"/></svg>
+            <input id="news-search" type="search" placeholder="搜索标题 / source / summary">
+          </label>
+          <div class="toolbar-sep" aria-hidden="true"></div>
+          <div class="toolbar-filters">
+            <label>
+              <span>日期</span>
+              <select id="news-date-filter"></select>
+            </label>
+            <label>
+              <span>来源</span>
+              <select id="news-source-filter"></select>
+            </label>
+            <label>
+              <span>分类</span>
+              <select id="news-category-filter"></select>
+            </label>
+          </div>
+          <span id="news-result-count" class="toolbar-count">Loading</span>
+        </div>
+      </section>
+
+      <section class="latest-edition" data-theme="briefing">
+        <div class="ch-mark rv-fade">Latest · 最新一期</div>
+        <div id="latest-edition" class="news-latest-card" aria-live="polite"></div>
+      </section>
+
+      <section class="archive-section news-list-section" data-theme="archive">
+        <div class="archive-head news-list-head rv-fade">
+          <h2>期刊归档</h2>
+          <span id="news-result-count-2" class="archive-result">Loading</span>
+        </div>
+        <div id="news-archive-list" class="archive-timeline news-archive-list"></div>
+      </section>
+
+      <section class="comments-section" id="comments-section" data-edition-id="" data-theme="briefing">
+        <p class="comments-hint">点击上方某期快车箱，查看或发表评论。</p>
       </section>
     </main>
     <footer class="footer news-archive-footer">
@@ -93,7 +139,13 @@
     </footer>
   </div>
   <button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">↑</button>
+  <script src="scripts/supabase-config.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/visitor-modal.js"></script>
   <script src="scripts/news-archive.js"></script>
+  <script src="scripts/comments.js"></script>
+  <script src="scripts/reactions.js"></script>
   <script src="scripts/nav.js"></script>
+  <script src="scripts/janet-motion.js"></script>
 </body>
 </html>

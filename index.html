@@ -24,6 +24,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/news-editorial.css">
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/janet-motion.css">
+  <link rel="stylesheet" href="styles/auth.css">
 
 </head>
 <body>
@@ -82,7 +84,7 @@
     </div>
   </nav>
   <!-- 移动端汉堡菜单 -->
-  <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="菜单">☰</button>
+  <button class="mobile-nav-toggle" id="mobile-nav-toggle" type="button" aria-label="菜单" aria-controls="mobile-nav-menu" aria-expanded="false">☰</button>
   <div class="mobile-nav-menu" id="mobile-nav-menu">
     <a href="#news">快车箱</a>
     <a href="#works-library">作品库</a>
@@ -91,7 +93,7 @@
   </div>
 
   <!-- Hero -->
-  <section class="hero hero-v2" id="hero">
+  <section class="hero hero-v2" id="hero" data-theme="hero">
     <div class="hero-bg"></div>
 
     <div class="container">
@@ -100,15 +102,15 @@
         <span>Janet · AI 信号站</span>
       </div>
 
-      <h1>
+      <h1 data-reveal="words">
         过滤噪音，<em>留下信号。</em>
       </h1>
 
-      <p class="hero-sub hero-sub-wide">
+      <p class="hero-sub hero-sub-wide rv-fade rv-d1" data-reveal="fade">
         我是 Janet，用每日晨报帮你穿越 AI 泡沫，用影像世界观把想象力变成作品。
       </p>
 
-      <div class="hero-actions">
+      <div class="hero-actions rv-fade rv-d2" data-reveal="fade">
         <a href="#news" class="btn btn-green">读今日快车箱</a>
         <a href="#works-library" class="btn btn-outline">看作品</a>
       </div>
@@ -118,10 +120,11 @@
   </section>
 
   <!-- ═══════════ 新闻模块 — Janet 快车箱 ═══════════ -->
-  <section id="news" class="section">
+  <section id="news" class="section" data-theme="briefing">
     <div class="container">
+      <div class="chapter-mark">Daily Briefing</div>
       <div class="section-header">
-        <h2>Janet 快车箱</h2>
+        <h2 data-reveal="words">Janet 快车箱</h2>
         <span class="line"></span>
         <span class="count" id="news-count"></span>
       </div>
@@ -135,16 +138,37 @@
 
   <div class="divider"></div>
 
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
+      <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
+      <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
+      <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
+      <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
+      <span class="ticker-item"><span class="dot">·</span>过滤噪音，留下信号</span>
+      <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
+      <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
+      <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
+      <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
+      <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
+      <span class="ticker-item"><span class="dot">·</span>过滤噪音，留下信号</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
   <!-- Janet 作品库 -->
-  <section id="works-library" class="section works-library-section">
+  <section id="works-library" class="section works-library-section" data-theme="archive">
+    <div class="wm wm-right" aria-hidden="true">WORKS</div>
     <div class="container">
+      <div class="chapter-mark">Works Library</div>
       <div class="section-header works-library-header">
         <span class="section-kicker">创作档案库</span>
-        <h2>Janet 作品库</h2>
+        <h2 data-reveal="words">Janet 作品库</h2>
         <span class="line"></span>
       </div>
 
-      <p class="works-library-description">
+      <p class="works-library-description rv-fade">
         AI 影像、剧情短片与创作流程档案。这里不是成片展示墙，而是 Janet 的创作档案馆：
         从世界观设定、角色设计、镜头运动、提示词、分镜、字幕、封面到发布文案，
         每个作品都保留完整制作链路。
@@ -163,10 +187,11 @@
   <div class="divider"></div>
 
   <!-- 关于 -->
-  <section id="about" class="section">
+  <section id="about" class="section" data-theme="about">
     <div class="container">
+      <div class="chapter-mark">About</div>
       <div class="section-header">
-        <h2>关于 Janet</h2>
+        <h2 data-reveal="words">关于 Janet</h2>
         <span class="line"></span>
       </div>
 
@@ -207,10 +232,11 @@
   </section>
 
   <!-- 联系 -->
-  <section id="contact" class="section">
+  <section id="contact" class="section" data-theme="contact">
     <div class="container">
+      <div class="chapter-mark">Contact</div>
       <div class="section-header">
-        <h2>联系我</h2>
+        <h2 data-reveal="words">联系我</h2>
         <span class="line"></span>
       </div>
 
@@ -288,8 +314,12 @@
 </div>
 <script src="scripts/news.js"></script>
 <script src="scripts/portfolio.js"></script>
+<script src="scripts/supabase-config.js"></script>
+<script src="scripts/auth.js"></script>
+<script src="scripts/visitor-modal.js"></script>
 <script src="scripts/nav.js"></script>
 <script src="scripts/site-guide.js"></script>
 <script src="scripts/effects.js"></script>
+<script src="scripts/janet-motion.js"></script>
 </body>
 </html>

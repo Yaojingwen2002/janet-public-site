@@ -262,6 +262,7 @@
     renderGallery(work);
     renderDocumentTabs(work, documentContent);
     showWorkDetail();
+    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
   function titleToSlug(title) {

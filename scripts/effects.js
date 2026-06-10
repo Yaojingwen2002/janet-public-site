@@ -115,7 +115,7 @@
 
   // ── Hero 视差滚动 ───────────────────────────────────────────
   function initHeroParallax() {
-    const hero = document.getElementById('hero');
+    const hero = document.querySelector('#hero, .hero, .hero-v2');
     const bg = hero ? hero.querySelector('.hero-bg') : null;
     if (!hero || !bg) return;
 

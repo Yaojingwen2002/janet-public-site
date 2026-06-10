@@ -225,6 +225,7 @@
     }
 
     grid.innerHTML = filtered.map(renderCard).join('');
+    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
 
     grid.querySelectorAll('[data-preview-case]').forEach((button) => {
       button.addEventListener('click', () => {

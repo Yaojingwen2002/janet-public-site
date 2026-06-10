@@ -140,6 +140,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
+  height: auto;
   background: var(--surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -388,6 +389,7 @@
 .related-thumb {
   width: 100%;
   aspect-ratio: 16/9;
+  height: auto;
   background: var(--surface-2);
   border-radius: var(--radius);
   overflow: hidden;
@@ -513,6 +515,27 @@
   .detail-bottom .btn-lg {
     width: 100%;
     text-align: center;
+  }
+
+  .detail-video-thumb,
+  .related-thumb {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+}
+
+@media (hover: none), (max-width: 768px) {
+  .detail-video-thumb:hover img,
+  .related-item:hover .related-thumb img,
+  .play-btn-circle:hover {
+    transform: none;
+  }
+
+  .detail-video-thumb,
+  .related-thumb {
+    height: auto;
+    padding-bottom: 0;
   }
 }
 

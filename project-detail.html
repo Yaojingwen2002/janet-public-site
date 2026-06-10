@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/news-editorial.css">
   <link rel="stylesheet" href="styles/project-detail.css">
+  <link rel="stylesheet" href="styles/janet-motion.css">
+  <link rel="stylesheet" href="styles/auth.css">
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
 
 </head>
@@ -73,16 +75,16 @@
   </section>
 
   <main id="work-detail-root" class="work-detail-page" style="display:none;">
-    <section class="work-detail-hero">
+    <section class="work-detail-hero" data-theme="hero">
       <div class="container">
         <a id="work-back-link" class="work-back-link" href="portfolio.html">← 返回作品库</a>
         <span id="work-detail-kicker" class="section-kicker">Work Process Archive</span>
-        <h1 id="work-detail-title">Loading...</h1>
-        <p id="work-detail-summary"></p>
+        <h1 id="work-detail-title" data-reveal="words">Loading...</h1>
+        <p id="work-detail-summary" class="rv-fade"></p>
         <div id="work-detail-meta" class="work-detail-meta"></div>
       </div>
     </section>
-    <section class="work-detail-body">
+    <section class="work-detail-body" data-theme="archive">
       <div class="container">
         <div class="work-detail-layout">
           <aside class="work-detail-sidebar">
@@ -126,8 +128,12 @@
   </footer>
   <button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">↑</button>
 </div>
+<script src="scripts/supabase-config.js"></script>
+<script src="scripts/auth.js"></script>
+<script src="scripts/visitor-modal.js"></script>
 <script src="scripts/nav.js"></script>
 <script src="scripts/effects.js"></script>
 <script src="scripts/project-detail.js"></script>
+<script src="scripts/janet-motion.js"></script>
 </body>
 </html>

@@ -545,6 +545,26 @@ body.project-preview-open {
   }
 }
 
+@media (hover: none), (max-width: 768px) {
+  .project-work-card__media {
+    min-height: 0;
+  }
+
+  .project-work-cover,
+  .youtube-hover-cover {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .project-work-cover:hover img,
+  .project-gallery-thumb:hover img {
+    transform: none;
+  }
+}
+
 @media (max-width: 600px) {
   .project-showcase-hero {
     min-height: 620px;

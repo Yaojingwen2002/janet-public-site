@@ -1,0 +1,221 @@
+{
+  "date": "2026-06-10",
+  "vol": "253",
+  "intro_text": "今天 AI 圈的重点不是谁又多会聊天，而是模型正式进企业入口后，安全、留存、私有云、融资结构和工作流开始一起加闸。Claude 上新、Apple 扩私有云、GitHub 管外部 Agent、Broadcom 拉资本做 AI 基建，信号很直白：AI 上岗可以，但要先交出控制权。",
+  "cover": {
+    "title": "AI 上岗开始加闸",
+    "subtitle": "模型能力继续外溢，企业真正买的是安全、留存、算力和责任边界。",
+    "image_path": "runs/2026-06-10/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: AI technology magazine cover, 21:9 wide hero image for Janet's AI briefing. Create a premium horizontal cover image for the theme AI 上岗开始加闸. Do not put readable text, logos, dates, captions, or watermarks inside the image. Visual concept: a stark black and white enterprise AI control room where model cores, secure cloud vaults, code repositories, legal workflow desks, memory graphs, and data-center financing towers are connected through thin Janet-green circuit lines. Show transparent safety gates, audit locks, policy checkpoints, and private-cloud attestation geometry around the AI systems. Cinematic widescreen, strong negative space in lower-left and center-left for HTML title overlay. Palette strictly black, white, graphite, and Janet green (#18E299). Sharp, restrained, high-end technology magazine cover, minimal, sophisticated, no cartoon, no glowing brain, no neon cyberpunk, no robot face, no embedded text."
+  },
+  "trend": "AI 上岗开始加闸\n\n今天的共同主线很硬：Anthropic 把 Fable 5 推进编码、法律、数据云和 API，Apple 把 Private Cloud Compute 扩到 Google Cloud，GitHub 给第三方编码 Agent 加安全验证，Broadcom 又把资本直接拉进 AI 数据中心。模型能力已经不是孤立卖点，真正的战场变成谁能把模型放进受控环境里稳定干活。\n\n这对中国创作者和企业的含义很现实：下一阶段买 AI，不是买一个更会说话的助手，而是买权限、留存、审计、私有化、成本可见和出错后的责任边界。内容团队要盯记忆和自动化入口，开发团队要盯代码 Agent 的安全验证，老板要盯 AI 工具到底能不能进业务系统，而不是继续堆订阅。\n\n接下来 2-4 周重点盯三件事：一是 Fable 5 这类前沿模型在企业入口里的实测稳定性，二是 Apple 私有云路线会不会带动更多端云混合方案，三是 AI 基建融资会不会从 GPU 采购变成长期金融产品。AI 开始上岗了，但每个岗位前面都会多一道闸。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Anthropic 把 Fable 5 放出来",
+          "body": "Anthropic 在文档中公布 Claude Fable 5 和 Claude Mythos 5，强调更强的编码、推理和企业场景能力，并同步给出模型可用性与版本说明。它不是单纯换名，而是把新模型推向 API、开发平台和垂直行业入口。",
+          "janet_take": "这条新闻撕开的是前沿模型从聊天窗口进入生产岗位的缺口。门槛不只在 benchmark，而在工具调用、上下文稳定、企业数据边界和失败率能不能被客户接受。中国代码工具团队和企业 Agent 团队要立刻测长任务、权限回滚和日志留存，别只看模型一句回答漂不漂亮。",
+          "source": "Anthropic",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
+          "image_url": "",
+          "image": "images/news-01-anthropic-fable-5.jpg",
+          "image_source_url": "https://platform.claude.com/docs/og?locale=en&path=about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
+          "image_origin": "source"
+        },
+        {
+          "title": "Apple 把私有云接上 Google",
+          "body": "Apple 安全研究团队公布 Private Cloud Compute 扩展路线，说明其将通过 Google Cloud Platform 使用 NVIDIA Confidential Computing 技术扩展私有云计算能力。苹果继续强调端侧请求、云端执行和远程证明之间的隐私边界。",
+          "janet_take": "这条新闻撕开的是端侧 AI 扛不住复杂任务后的私有云缺口。门槛在可信执行环境、硬件证明、云厂合作和用户隐私承诺，苹果不是随便租一朵云就能糊弄过去。做 iOS 工具、办公插件和个人数据应用的团队要看懂：未来卖点不是云端更强，而是云端强还要让用户相信你没乱看。",
+          "source": "Apple Security Research",
+          "url": "https://security.apple.com/blog/private-cloud-compute-expands-to-google-cloud-platform/",
+          "image_url": "",
+          "image": "images/news-02-apple-private-cloud.jpg",
+          "image_source_url": "runs/2026-06-09/images/models-01-apple-app.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Broadcom 拉资本做 AI 基建",
+          "body": "Broadcom、Apollo 和 Blackstone 宣布建立战略合作，推出 AI XPV Platform，目标规模最高 350 亿美元，用于支持 AI 基础设施资产和相关融资安排。AI 数据中心正在从技术项目变成资本结构项目。",
+          "janet_take": "这条新闻撕开的是 AI 基建融资的缺口。门槛在长期电力、芯片供货、资产证券化和客户租约，不是买几台 GPU 就能叫智算中心。国内地方园区、云厂和算力服务商要盯这个方向：未来竞争不只拼采购价，还拼谁能把机房、融资和客户现金流打包成可滚动资产。",
+          "source": "Broadcom",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-apollo-and-blackstone-establish-landmark-strategic",
+          "image_url": "",
+          "image": "images/news-03-broadcom-ai-infra.jpg",
+          "image_source_url": "runs/2026-06-09/images/insights-04-nerc-data-center.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "OpenAI 让记忆在后台整理",
+          "body": "OpenAI 推出 ChatGPT 记忆和后台整理相关更新，把用户偏好、历史上下文和主动整理能力继续往产品底层塞。聊天框正在从一次性问答，变成会积累个人上下文的工作入口。",
+          "janet_take": "这条新闻撕开的是个人 AI 工作台的记忆缺口。门槛在隐私、误记、跨设备同步和用户能不能真正控制删除，不是多保存几句话就叫智能。内容创作者和运营团队可以用它减少重复交代背景，但涉及客户资料、报价和账号策略时要分工作区，别把自己的商业脑子全交给默认记忆。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/memory-and-new-controls-for-chatgpt/",
+          "image_url": "",
+          "image": "images/news-04-openai-memory.jpg",
+          "image_source_url": "runs/2026-06-08/images/news-05-openai-chatgpt.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "GitHub 给外部 Agent 上安检",
+          "body": "GitHub 宣布第三方编码 Agent 的 security validation 正式可用，支持用 CodeQL 和相关安全能力验证外部 Agent 生成的代码变更。GitHub 正在把编码 Agent 从功能入口，推进到安全治理入口。",
+          "janet_take": "这条新闻撕开的是 AI 写代码之后谁来背锅的缺口。门槛在静态分析、依赖扫描、审计记录和团队 review 流程，不能让 Agent 生成的漏洞直接进主分支。国内开发团队要把它当成必选基础设施：让 Agent 写代码可以，但每个 PR 都要过机器安检和人类复核，否则省下来的工时会在事故里加倍赔回去。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents-is-now-generally-available/",
+          "image_url": "",
+          "image": "images/news-05-github-agent-security.jpg",
+          "image_source_url": "runs/2026-06-04/images/models-03-copilot.jpg",
+          "image_origin": "local_archive"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Claude Fable 5 接进 Copilot",
+          "body": "GitHub 更新 Copilot 模型选项，Claude Fable 5 进入相关开发者入口。对开发者来说，模型竞争不再只发生在官网，而是发生在每天写代码的 IDE、PR 和 agent 工作流里。",
+          "janet_take": "这条新闻撕开的是模型分发被开发平台截流的缺口。门槛在延迟、上下文、代码库理解和企业权限，不是模型厂自己宣布最强就能赢。中国 SaaS 和 IDE 插件团队要盯这个入口战：真正的用户习惯在编辑器里，不在发布会 PPT 里。谁控制开发入口，谁就能决定模型切换的默认路径。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-06-09-claude-fable-5-is-now-available-in-github-copilot/",
+          "image_url": "",
+          "image": "images/models-01-copilot-fable.jpg",
+          "image_source_url": "runs/2026-06-04/images/models-03-copilot.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Snowflake 把 Fable 塞进数据云",
+          "body": "Snowflake 宣布 Claude Fable 5 进入 Cortex AI private preview，让企业在数据云环境里调用新模型能力。模型动态的关键点变成数据在哪里，模型就要在哪里运行。",
+          "janet_take": "这条新闻撕开的是企业数据不愿离开仓库的缺口。门槛在数据权限、行级安全、审计和成本核算，单独调一个外部 API 很难过企业采购。做 BI、客服分析和企业知识库的团队要跟着数据平台走，因为客户不会为了 AI 把核心数据搬出自己的治理体系。数据云里的模型，才更容易进预算。",
+          "source": "Snowflake",
+          "url": "https://www.snowflake.com/en/blog/claude-fable-5-snowflake-cortex-ai/",
+          "image_url": "",
+          "image": "images/models-02-snowflake-fable.jpg",
+          "image_source_url": "https://www.snowflake.com/content/dam/snowflake-site/blog/2026/02/anthropic-snowflake.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Harvey 让 Fable 5 进法律活",
+          "body": "Harvey 宣布在法律 AI 产品中引入 Claude Fable 5，面向法律研究、合同分析和专业工作流提供更强模型能力。法律行业正在成为大模型企业化落地的高价试验场。",
+          "janet_take": "这条新闻撕开的是专业服务行业把模型当初级员工用的缺口。门槛在引用准确、权限隔离、客户保密和责任归属，法律场景容不得一本正经地胡说。国内律所、财税和咨询团队可以借鉴这个方向，但必须先建模板、证据链和复核流程，别让 AI 直接替你拍板。专业 AI 不是万能律师，是被流程管住的助理。",
+          "source": "Harvey",
+          "url": "https://www.harvey.ai/blog/fable-5-harvey",
+          "image_url": "",
+          "image": "images/models-03-harvey-fable.jpg",
+          "image_source_url": "runs/2026-06-10/images/news-01-anthropic-fable-5.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Mythos 5 把安全牌打到台前",
+          "body": "Anthropic 同步介绍 Claude Mythos 5，把模型能力与安全、控制和企业使用场景一起放进版本说明。前沿模型开始主动把可控性当卖点，而不是只堆推理分数。",
+          "janet_take": "这条新闻撕开的是企业不只买聪明模型的缺口。门槛在拒答策略、越权防护、数据留存和监管解释，越大的客户越怕模型像野马一样乱跑。中国企业选模型时要把安全策略写进验收表，不要只让业务部门用几条 prompt 试爽了就上生产。模型越强，越要有刹车和黑匣子。",
+          "source": "Anthropic",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
+          "image_url": "",
+          "image": "images/models-04-mythos-5.jpg",
+          "image_source_url": "https://platform.claude.com/docs/og?locale=en&path=about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "CodeQL 接管 Agent 代码安检",
+          "body": "GitHub 的第三方编码 Agent 安全验证把 CodeQL 等能力接进 Agent 代码流，目标是让外部 Agent 生成的变更在合并前接受安全检查。AI 编码进入企业后，安全工具开始从旁观者变成门卫。",
+          "janet_take": "这条新闻撕开的是 AI 编码规模化后的质量缺口。门槛在规则覆盖、误报处理、CI 成本和工程师愿不愿意看报告，不是开个扫描就万事大吉。代码团队要把 Agent 产物当外包代码处理：默认不信任、默认扫描、默认留痕，这才是可持续的提效。省人之前，先把事故概率压下去。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents-is-now-generally-available/",
+          "image_url": "",
+          "image": "images/insights-01-codeql-agent.jpg",
+          "image_source_url": "runs/2026-06-04/images/models-03-copilot.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Apple 私有云押注可信执行",
+          "body": "Apple 在 Private Cloud Compute 说明中继续强化远程证明、隔离执行和云端隐私边界。它的技术路线不是把所有 AI 都塞进手机，而是在端侧和私有云之间建立可验证的信任链。",
+          "janet_take": "这条新闻撕开的是端云混合 AI 的信任缺口。门槛在硬件、系统、云厂和应用层共同配合，任何一层松了都会变成隐私事故。中国做个人知识库、输入法、相册和办公助手的团队要学这套叙事：用户不是反对云，而是反对你偷偷把私密数据送去云里裸奔。隐私承诺要能被验证，不能只靠口号。",
+          "source": "Apple Security Research",
+          "url": "https://security.apple.com/blog/private-cloud-compute-expands-to-google-cloud-platform/",
+          "image_url": "",
+          "image": "images/insights-02-apple-pcc.jpg",
+          "image_source_url": "runs/2026-06-09/images/models-01-apple-app.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Android Bench 测长任务更狠",
+          "body": "Google 更新 Android Bench 相关说明，把更复杂的移动端开发与长期任务评测推到台前，并纳入新模型能力比较。模型评测正在从一次性答题，走向能不能在真实工程任务里持续完成。",
+          "janet_take": "这条新闻撕开的是模型评测脱离真实工作的缺口。门槛在环境搭建、上下文保持、工具调用和失败恢复，刷题分数不能代表能交付一个 App。移动开发团队和 AI 编程工具团队要优先看长任务成功率，因为客户买的是最终提交，不是模型中途讲得多有道理。评测越接近真实工程，水分越少。",
+          "source": "Google AI for Developers",
+          "url": "https://developers.googleblog.com/en/android-bench-a-benchmark-for-ai-agents/",
+          "image_url": "",
+          "image": "images/insights-03-android-bench.jpg",
+          "image_source_url": "runs/2026-06-05/images/models-01-gemma.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "OpenAI 记忆把偏好变资产",
+          "body": "ChatGPT 记忆更新继续把个人偏好、历史语境和自动整理推向产品后台。记忆一旦稳定，就会成为 AI 工作台最难迁移的用户资产。",
+          "janet_take": "这条新闻撕开的是 AI 产品留存的缺口。门槛在记忆准确率、用户纠错、隐私解释和多账号隔离，记错一次商业上下文就可能毁掉信任。创作者可以把选题口味、品牌禁忌和客户资料分层喂给工具，但必须保留本地备份和导出习惯，别把自己的工作记忆锁死在一个平台里。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/memory-and-new-controls-for-chatgpt/",
+          "image_url": "",
+          "image": "images/insights-04-openai-memory.jpg",
+          "image_source_url": "runs/2026-06-08/images/news-05-openai-chatgpt.jpg",
+          "image_origin": "local_archive"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "AI 基建融资开始证券化",
+          "body": "Broadcom、Apollo 和 Blackstone 的 AI XPV Platform 把 AI 基础设施和大额资本安排绑在一起，目标规模最高 350 亿美元。芯片、机房、电力和客户租约正在变成金融机构能理解的资产包。",
+          "janet_take": "这条新闻撕开的是 AI 基建从采购走向金融工程的缺口。门槛在资产质量、租约期限、电力稳定和折旧风险，融资漂亮不代表项目能赚钱。国内智算中心和云服务商要小心：GPU 不是摇钱树，利用率和长期客户才是现金流。真正的投资价值不在机器数量，而在谁愿意长期付租金。",
+          "source": "Broadcom",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-apollo-and-blackstone-establish-landmark-strategic",
+          "image_url": "",
+          "image": "images/insights2-01-ai-infra-finance.jpg",
+          "image_source_url": "runs/2026-06-09/images/insights-04-nerc-data-center.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Sandstone 融资押注法律 AI",
+          "body": "法律 AI 公司 Sandstone 宣布完成 3000 万美元融资，方向集中在律师工作流、文档处理和专业服务自动化。投资人继续把钱投向能直接替代高价人力的垂直 AI。",
+          "janet_take": "这条新闻撕开的是专业白领岗位被流程化的缺口。门槛在行业语料、引用可信、客户保密和复核责任，法律 AI 不可能靠通用聊天框硬闯。国内做垂直 Agent 的团队要学会从具体岗位切入，比如合同初筛、尽调摘要和证据目录，而不是一上来就吹全能律师。越贵的岗位，越需要可复核的流程。",
+          "source": "Sandstone",
+          "url": "https://www.sandstone.ai/blog/series-a",
+          "image_url": "",
+          "image": "images/insights2-02-sandstone-legal-ai.png",
+          "image_source_url": "runs/2026-06-08/images/tools-01-her-claude-code-detective.png",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "MANGOS 把估值饥饿摆上桌",
+          "body": "TechCrunch 报道称市场开始用 MANGOS 指代新一批 AI 和科技高估值公司，OpenAI、Anthropic、NVIDIA 等名字被放进同一套叙事里。资本市场正在给 AI 产业链重新造标签。",
+          "janet_take": "这条新闻撕开的是 AI 估值叙事被重新包装的缺口。门槛在真实收入、算力成本和增长质量，换个漂亮缩写不能解决商业模式问题。创作者和小老板别被二级市场热词带节奏，真正要看的是这些公司会把成本转嫁到哪些工具订阅、API 价格和企业合同里。热词越响，越要盯账单。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/09/not-faang-or-magnificent-7-meet-mangos-the-tech-stock-group-to-watch/",
+          "image_url": "",
+          "image": "images/insights2-03-mangos-valuation.jpg",
+          "image_source_url": "runs/2026-06-09/images/insights2-02-moonshot-ai.jpg",
+          "image_origin": "local_archive"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Copilot 可切 Fable 5 写代码",
+          "body": "GitHub Copilot 增加 Claude Fable 5 作为可用模型，开发者可以在编码工作流里直接切换使用。对创作者和小团队来说，模型能力会越来越像工具里的可选引擎，而不是单独打开一个网页。",
+          "janet_take": "这条新闻撕开的是创作者工具从单模型走向多引擎的缺口。门槛在价格、上下文、隐私和不同模型输出风格的可控性，随便切模型也可能切出一堆维护成本。独立开发者可以马上用它处理重构、测试和文档，但要给关键文件设 review 清单，别把生产代码交给模型裸奔。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-06-09-claude-fable-5-is-now-available-in-github-copilot/",
+          "image_url": "",
+          "image": "images/tools-01-copilot-fable.jpg",
+          "image_source_url": "runs/2026-06-04/images/models-03-copilot.jpg",
+          "image_origin": "local_archive"
+        }
+      ]
+    }
+  }
+}

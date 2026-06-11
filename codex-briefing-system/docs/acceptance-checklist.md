@@ -22,7 +22,7 @@
 - 09:00 不补写、不发布、不 git push。
 - 没有旧闻。
 - 没有禁忌词。
-- `output.html` 使用原 `template.html` 风格。
+- `output.html` 使用项目内 `templates/template.html` 风格。
 - `output.html` 有封面、今日趋势、Janet 锐评。
 - public site 首页能读取最新 `data/YYYY-MM-DD/content.json`。
 - 新闻归档最新一期指向 `data/YYYY-MM-DD/output.html`。

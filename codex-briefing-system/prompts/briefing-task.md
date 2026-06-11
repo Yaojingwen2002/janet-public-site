@@ -6,7 +6,7 @@
 
 - `/Users/yaojw/.codex/janet-memory/Janet完整档案.md`
 - `/Volumes/Janet/公众号 AI 推文/engineering/docs/CONTENT_SCHEMA.md`
-- `/Volumes/Janet/公众号 AI 推文/engineering/template.html`
+- `/Volumes/Janet/janet-public-site/codex-briefing-system/templates/template.html`
 - 最近 3-5 天 `/Volumes/Janet/公众号 AI 推文/daily/*/content.json`
 
 ## 任务参数

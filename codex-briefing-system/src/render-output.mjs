@@ -248,7 +248,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const root = resolve(new URL('..', import.meta.url).pathname);
   loadEnv(resolve(root, '.env'));
   const date = targetDateFromArg();
-  const templatePath = process.env.TEMPLATE_PATH || '/Volumes/Janet/公众号 AI 推文/engineering/template.html';
+  const templatePath = process.env.TEMPLATE_PATH || resolve(root, 'templates', 'template.html');
   const contentPath = process.env.RUN_CONTENT_PATH || resolve(root, 'runs', date, 'content.json');
   const outputPath = process.env.RUN_OUTPUT_PATH || resolve(root, 'runs', date, 'output.html');
   const content = JSON.parse(readFileSync(contentPath, 'utf8'));

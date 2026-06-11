@@ -140,8 +140,12 @@ cp .env.example .env
 `.env` 只放本地路径：
 
 ```text
-TEMPLATE_PATH=/Volumes/Janet/公众号 AI 推文/engineering/template.html
+# Optional. 默认使用项目内模板：
+# /Volumes/Janet/janet-public-site/codex-briefing-system/templates/template.html
+# TEMPLATE_PATH=/Volumes/Janet/janet-public-site/codex-briefing-system/templates/template.html
 ```
+
+默认模板已迁移进本项目，不再依赖外部公众号工程。
 
 不要写任何搜索 API key 或模型 API key。
 

@@ -1,0 +1,221 @@
+{
+  "date": "2026-06-11",
+  "vol": "254",
+  "intro_text": "今天 AI 圈的信号很直接：Agent 不再只会写文案和代码，它开始碰支付、云合约、版权、开源模型、风控和运维。真正的分水岭不是谁的 demo 更丝滑，而是谁能把 Agent 放进真实账单、真实责任和真实分发里还能跑得住。",
+  "cover": {
+    "title": "Agent 账单开始见血",
+    "subtitle": "支付、算力、版权和安全同时收紧，Agent 终于从玩具区走进业务区。",
+    "image_path": "runs/2026-06-11/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: AI technology magazine cover, 21:9 wide hero image for Janet's AI briefing. Create a premium horizontal cover image for the theme Agent 账单开始见血. Do not put readable text, logos, dates, captions, or watermarks inside the image. Visual concept: a stark black and white AI operations finance room where autonomous agent workflow panels, token meters, cloud invoices, local GPU boxes, security gates, payment rails, and data-center power lines converge into a sharp control dashboard. Thin Janet-green (#18E299) circuit lines connect model cores, enterprise apps, shopping/payment nodes, and on-device AI hardware. Mood: high-end technology magazine cover, cold, precise, restrained, skeptical. Cinematic 21:9 widescreen composition with strong negative space in lower-left and center-left for HTML title overlay. Palette strictly black, white, graphite, and Janet green. No cartoon, no glowing brain, no neon cyberpunk, no robot face, no embedded text."
+  },
+  "trend": "Agent 账单开始见血\n\n今天的共同主线不是模型变聪明，而是 Agent 终于被推进真实商业系统：OpenAI 和 Visa 把支付试验往前推，OpenAI 又和 Oracle 加码云容量，Warner Music 直接买下音乐 AI 初创公司，Google 和 NVIDIA 把本地扩散模型放到 RTX 设备上。AI 从演示台走进交易、版权、算力和端侧分发，每一步都开始要交账。\n\n这对中国创作者和企业很现实：下一阶段的 AI 红利不在“会不会用 prompt”，而在能不能把 Agent 接到订单、客户、内容资产、财务审批和本地设备里。内容团队要管住版权和素材来源，电商团队要盯支付授权和退款风险，开发团队要把云成本、模型回滚、安全日志一起算进去。\n\n接下来 2-4 周盯三件事：一是 Agent 支付会不会从实验变成平台默认能力，二是大模型公司和云厂的长约会不会继续推高推理成本，三是本地小模型和安全工具能不能把部分工作从云端拿回来。谁能让 Agent 既能干活又能对账，谁才有资格收企业的钱。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI 和 Visa 让 Agent 买单",
+          "body": "OpenAI 和 Visa 宣布围绕 agentic commerce 展开合作，重点是让 AI Agent 在用户授权下完成搜索、比价、下单和支付等流程。支付网络开始把 Agent 当成新交易入口，而不是只把它看成客服或推荐系统。",
+          "janet_take": "这一步比普通购物助手狠，因为它碰到了钱。Agent 一旦能买单，用户体验会变短，但责任链会变长：谁授权、谁退款、谁处理误购，全都不能靠一句“模型建议”糊弄过去。做电商、票务、本地生活和会员订阅的团队现在就该重画流程，把授权额度、确认节点和异常退款做成产品骨架，否则 Agent 只会把售后压力放大。",
+          "source": "OpenAI / Visa",
+          "url": "https://openai.com/index/openai-and-visa/",
+          "image_url": "",
+          "image": "images/news-01-openai-visa-agent.jpg",
+          "image_source_url": "runs/2026-06-08/images/news-05-openai-chatgpt.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "OpenAI 把云长约押给 Oracle",
+          "body": "OpenAI 与 Oracle 扩大云基础设施合作，市场报道和公司信息均指向更大规模的计算容量采购。模型公司正在把未来增长绑定到长期云合约上，训练和推理都不再是轻资产故事。",
+          "janet_take": "别再把 AI 公司想成软件订阅生意，它更像一边卖服务一边吞电的基础设施公司。云合约越大，产品收费就越不可能长期便宜，免费额度和低价 API 迟早要被账本教育。国内创业团队要少做“无限调用”的幻想，尽快把缓存、小模型、任务分层和成本看板做起来，不然增长越快亏得越难看。",
+          "source": "Oracle / OpenAI",
+          "url": "https://www.oracle.com/news/announcement/openai-and-oracle-expand-ai-infrastructure-2026-06-10/",
+          "image_url": "",
+          "image": "images/news-02-openai-oracle-cloud.jpg",
+          "image_source_url": "runs/2026-06-10/images/insights2-01-ai-infra-finance.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "OpenAI 把影响力操作送上清单",
+          "body": "OpenAI 发布报告，披露其发现并处置了多起利用 AI 生成内容进行影响力操作的活动，其中包括围绕不同地区政治、舆论和社交平台的内容生产。生成式 AI 的滥用治理正在从垃圾内容扩展到跨平台舆论操作。",
+          "janet_take": "这类报告不是公关洁癖，而是平台在提前划责任边界。模型能批量写稿、翻译、改口吻，就天然适合被拿去做水军工业化，问题只是谁先被抓出来。做内容矩阵和出海账号的团队要把素材来源、账号分工和审核记录留好，别把自动化误当免死金牌。流量可以用 AI 加速，黑灰产味道一重，平台封你不会手软。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/disrupting-malicious-uses-of-ai-june-2026/",
+          "image_url": "",
+          "image": "images/news-03-openai-influence.jpg",
+          "image_source_url": "runs/2026-06-09/images/news-01-openai-governance.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Warner Music 收购 Sureel AI 做版权闸",
+          "body": "Warner Music Group 宣布收购音乐 AI 公司 Sureel AI，后者聚焦艺术家授权、音乐生成和版权管理相关能力。音乐巨头选择买工具，而不是只在法务桌上反对生成式 AI。",
+          "janet_take": "版权行业正在从“堵住 AI”转向“把 AI 关进收费笼子”。这对音乐人未必全是坏事，前提是授权、分成和训练范围写清楚，而不是把创作者素材变成平台燃料。做短视频、广告配乐和虚拟人内容的团队要看懂方向：未来便宜素材不会消失，但可商用证明会变贵。客户问版权时，你不能只甩一句“AI 生成”。",
+          "source": "Warner Music Group",
+          "url": "https://www.wmg.com/news/warner-music-group-acquires-sureel-ai",
+          "image_url": "",
+          "image": "images/news-04-warner-sureel-ai.png",
+          "image_source_url": "runs/2026-06-08/images/insights-03-agent-pm-integration-bottleneck.png",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Google 和 NVIDIA 把模型塞进本地显卡",
+          "body": "Google 与 NVIDIA 宣布 DiffusionGemma 在 RTX AI PC 和工作站上运行，把图像生成扩散模型推向本地设备生态。端侧 AI 不再只讲隐私和离线，而是开始争夺创作工作流里的实时响应。",
+          "janet_take": "本地模型的价值不是情怀，是少等、少传、少付云账单。图像生成这类高频任务如果能在本地跑稳，创作者会把试错次数直接拉满，云端工具的单次计费压力就会被看见。设计工作室和电商视觉团队可以先用本地模型做草图、改构图、跑批量方案，把精修和最终出片留给更强的云模型，别把每一次灵感试错都交给平台收费。",
+          "source": "NVIDIA / Google",
+          "url": "https://blogs.nvidia.com/blog/google-diffusiongemma-rtx-ai-pcs/",
+          "image_url": "",
+          "image": "images/news-05-google-nvidia-gemma.jpg",
+          "image_source_url": "runs/2026-06-09/images/models-03-gemma.jpg",
+          "image_origin": "local_archive"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "DiffusionGemma 把本地显卡变成生成器",
+          "body": "Google 的 DiffusionGemma 与 NVIDIA RTX 软件栈结合后，可以在支持的本地设备上运行图像生成任务。小型开放模型正在把一部分生成能力从云端平台拿回到个人和团队设备里。",
+          "janet_take": "这类模型不会马上打穿顶级商业图像模型，但它会改变试错成本。创作者最怕的不是一次生成贵，而是每改一个小方向都要排队、扣额度、等云端返回。本地生成适合做初稿、风格探索和批量变体，商业成片再上云精修。工具团队如果能把本地模型、素材库和人工修图流程接顺，反而比单纯拼模型参数更有钱景。",
+          "source": "Google / NVIDIA",
+          "url": "https://developers.googleblog.com/en/diffusiongemma/",
+          "image_url": "",
+          "image": "images/models-01-diffusiongemma.jpg",
+          "image_source_url": "runs/2026-06-09/images/models-03-gemma.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "ChatGPT 模型选择继续收紧",
+          "body": "OpenAI 更新 ChatGPT 的模型选择和产品说明，把不同任务、速度、推理能力和可用范围继续拆开。用户看到的是一个下拉菜单，背后是模型路由、成本控制和产品分层。",
+          "janet_take": "模型选择越细，免费幻想越少。平台把快模型、强模型、长推理和专用工具拆开，本质是在训练用户接受分层收费。内容团队要把常规润色、深度选题、代码调试和资料整理分成不同工作流，不要所有任务都无脑扔给最贵模型。老板要看的不是哪个模型最强，而是哪类任务用哪个模型最省。",
+          "source": "OpenAI Help Center",
+          "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+          "image_url": "",
+          "image": "images/models-02-chatgpt-model-picker.jpg",
+          "image_source_url": "runs/2026-06-10/images/news-04-openai-memory.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Anthropic 把 Claude 编码再细分",
+          "body": "Anthropic 更新 Claude Code 和模型相关文档，继续强调长任务、工具调用、代码库理解和开发者工作流。编码模型正在从“能补全代码”走向“能管理一个工程任务”。",
+          "janet_take": "编码 Agent 的竞争已经不是谁能写出一段函数，而是谁能在真实仓库里少犯低级错。上下文、权限、测试、回滚和变更说明会直接决定它能不能进公司流程。国内 SaaS 和外包团队可以大胆用它做脚手架、重构草案和测试补齐，但必须保留人工 review 和 CI 闸口。把 Agent 当实习生用很香，当负责人用就容易翻车。",
+          "source": "Anthropic Docs",
+          "url": "https://docs.anthropic.com/en/docs/claude-code/overview",
+          "image_url": "",
+          "image": "images/models-03-anthropic-claude.jpg",
+          "image_source_url": "https://claude-code.mintlify.app/_next/image?url=%2F_mintlify%2Fapi%2Fog%3Fdivision%3DGetting%2Bstarted%26appearance%3Dsystem%26title%3DOverview%26description%3DClaude%2BCode%2Bis%2Ban%2Bagentic%2Bcoding%2Btool%2Bthat%2Breads%2Byour%2Bcodebase%252C%2Bedits%2Bfiles%252C%2Bruns%2Bcommands%252C%2Band%2Bintegrates%2Bwith%2Byour%2Bdevelopment%2Btools.%2BAvailable%2Bin%2Byour%2Btermin%26logoLight%3Dhttps%253A%252F%252Fmintcdn.com%252Fclaude-code%252Fc5r9_6tjPMzFdDDT%252Flogo%252Flight.svg%253Ffit%253Dmax%2526auto%253Dformat%2526n%253Dc5r9_6tjPMzFdDDT%2526q%253D85%2526s%253D78fd01ff4f4340295a4f66e2ea54903c%26logoDark%3Dhttps%253A%252F%252Fmintcdn.com%252Fclaude-code%252Fc5r9_6tjPMzFdDDT%252Flogo%252Fdark.svg%253Ffit%253Dmax%2526auto%253Dformat%2526n%253Dc5r9_6tjPMzFdDDT%2526q%253D85%2526s%253D1298a0c3b3a1da603b190d0de0e31712%26primaryColor%3D%25230E0E0E%26lightColor%3D%2523D4A27F%26darkColor%3D%25230E0E0E%26backgroundLight%3D%2523FDFDF7%26backgroundDark%3D%252309090B&w=1200&q=100",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta Llama 工具链继续扩展",
+          "body": "Meta 继续围绕 Llama 开源生态更新模型工具、部署资料和开发者资源，推动企业把开放权重模型放进私有场景。开源模型的价值正在从“能下载”转向“能被组织稳定维护”。",
+          "janet_take": "开源模型不是免费的午餐，它只是把账单从 API 迁到工程团队。你省下调用费，就要补上部署、监控、数据安全和模型升级的人力。对有敏感数据的团队，这是值得算的一笔账；对只想写公众号和短视频脚本的小团队，别装成熟，直接用成熟云服务更划算。技术路线要服务业务，不要服务面子。",
+          "source": "Meta AI",
+          "url": "https://ai.meta.com/llama/",
+          "image_url": "",
+          "image": "images/models-04-meta-llama.jpg",
+          "image_source_url": "runs/2026-06-09/images/models-02-qwen.jpg",
+          "image_origin": "local_archive"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "NVIDIA 给自动驾驶上安全课",
+          "body": "NVIDIA 发布自动驾驶安全相关技术文章，解释其如何把 AI、仿真、传感器和安全验证结合到自动驾驶系统研发里。自动驾驶的 AI 竞争点正在从感知能力扩展到验证体系。",
+          "janet_take": "自动驾驶最难卖的从来不是“看见路”，而是出事时怎么证明系统没瞎跑。仿真、数据闭环和安全验证会变成真正的护城河，因为每一次真实事故都会把炫技叙事打回工程细节。国内做机器人、无人车和工业巡检的团队也一样，别只晒识别率，客户要的是异常处理、日志追溯和责任边界。AI 进物理世界，嘴硬没有用，证据链才有用。",
+          "source": "NVIDIA",
+          "url": "https://blogs.nvidia.com/blog/ai-built-in-safety-automated-driving/",
+          "image_url": "",
+          "image": "images/insights-01-nvidia-driving-safety.jpg",
+          "image_source_url": "runs/2026-06-08/images/insights-01-doosan-nvidia-ai.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Rubrik 把 Agent 安全打包卖",
+          "body": "Rubrik 推出面向 AI Agent 的安全与数据保护方案，强调对 Anthropic 等企业 AI 工作流的治理、数据访问和恢复能力。安全厂商正在把 Agent 当成新的风险入口来卖产品。",
+          "janet_take": "Agent 越像员工，安全产品就越像考勤和门禁。企业最怕的不是模型答错，而是它拿错数据、误删文件、越权调用系统，还找不到责任人。做内部知识库、自动报表和客服 Agent 的团队要先管住数据分级、操作日志和回滚方案。别等老板问“它为什么能删这个表”时，才发现自己只有聊天记录。",
+          "source": "Rubrik",
+          "url": "https://www.rubrik.com/newsroom/press-releases/2026/rubrik-announces-agentic-ai-security",
+          "image_url": "",
+          "image": "images/insights-02-rubrik-agent-security.jpg",
+          "image_source_url": "runs/2026-06-10/images/news-05-github-agent-security.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Gracenote 用幻觉报告敲打 LLM",
+          "body": "Gracenote 发布研究称，大型语言模型在部分娱乐内容识别和事实问答中仍会出现明显幻觉，尤其是涉及人物、节目和元数据时。媒体资产库正在提醒行业：生成模型不能替代权威数据源。",
+          "janet_take": "这是对内容行业很有用的一盆冷水。LLM 很会编顺口答案，但版权、节目单、演员表和品牌素材不能靠顺口，错一次就是客户投诉或法务风险。做影视剪辑、媒体数据库、广告投放和内容运营的人，要把 AI 当检索助手，不要当事实源。真正稳的工作流是模型生成候选，权威库做校验，人工负责最终发布。",
+          "source": "Gracenote",
+          "url": "https://www.gracenote.com/newsroom/2026/gracenote-study-finds-llms-hallucinate-entertainment-facts/",
+          "image_url": "",
+          "image": "images/insights-03-gracenote-llm.jpg",
+          "image_source_url": "runs/2026-06-08/images/insights-03-agent-pm-integration-bottleneck.png",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "GitLab 把 AI 开发交给云管",
+          "body": "GitLab 推进 AI 驱动的软件开发与托管服务，把代码、CI、协作和模型能力继续整合进 DevSecOps 流程。开发平台正在把 AI 从插件层拉进软件交付管线。",
+          "janet_take": "开发者工具的下一轮竞争不是多一个聊天侧栏，而是谁能把需求、代码、测试、安全扫描和部署串成闭环。AI 如果只会写代码，不会过 CI、不懂权限、不留记录，那它就是一个手速很快的风险源。中国团队做内部开发平台时要少迷信“一个 Agent 包打天下”，先把任务拆解、测试覆盖和审计日志做扎实，AI 才能真正省人。",
+          "source": "GitLab",
+          "url": "https://about.gitlab.com/press/releases/2026-06-10-gitlab-expands-ai-native-devsecops/",
+          "image_url": "",
+          "image": "images/insights-04-gitlab-ai-dev.jpg",
+          "image_source_url": "runs/2026-06-10/images/insights-01-codeql-agent.jpg",
+          "image_origin": "local_archive"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Capsa AI 融资押注金融自动化",
+          "body": "Capsa AI 宣布完成 1800 万美元融资，主打面向金融机构和企业团队的 AI 自动化能力。资本继续把钱投向高价值、强流程、可量化省人的岗位。",
+          "janet_take": "金融场景愿意为 AI 付钱，不是因为它潮，而是因为一小时人力、一次审核错误和一份报告延误都能换成钱。这里的机会很肥，但也很难：数据权限、合规审计和客户信任一项都不能少。国内做财务、投研、审计和信贷工具的团队要学会卖结果，不要卖“智能助手”。谁能把一条流程的人工时长砍下来，谁才有资格谈估值。",
+          "source": "Capsa AI",
+          "url": "https://www.capsa.ai/blog/capsa-ai-raises-18m",
+          "image_url": "",
+          "image": "images/insights2-01-capsa-ai.jpg",
+          "image_source_url": "runs/2026-06-09/images/insights2-03-physicsx-engineering-ai.jpg",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "GreyLabs AI 拿钱做语音金融",
+          "body": "GreyLabs AI 宣布获得新一轮融资，聚焦金融服务里的语音分析、客户对话和合规场景。AI 语音不再只是客服质检，而是在往销售、风控和客户经营里钻。",
+          "janet_take": "语音数据是金融机构的金矿，也是雷区。它能还原客户意图、坐席水平和风险信号，但隐私、授权和误判都会直接影响业务。国内保险、券商和银行外包团队可以先从合规质检、话术复盘和客户摘要切入，别一上来就喊全自动销售。金融客户买的是可控增效，不是模型炫技。",
+          "source": "GreyLabs AI",
+          "url": "https://www.greylabs.ai/blog/greylabs-ai-raises-funding",
+          "image_url": "",
+          "image": "images/insights2-02-greylabs-ai.png",
+          "image_source_url": "runs/2026-06-08/images/insights2-02-enabled-talent-ai-hiring.png",
+          "image_origin": "local_archive"
+        },
+        {
+          "title": "Jedify 融资押宝企业知识层",
+          "body": "Jedify 宣布完成 2400 万美元融资，方向是企业知识、AI 搜索和内部工作流自动化。资本继续看好把公司散落数据变成可调用能力的中间层。",
+          "janet_take": "企业知识层听起来老，但钱还在，因为公司数据永远乱。真正难的不是接一个 RAG，而是权限、版本、来源、更新频率和错误答案处理。做企业知识库的团队要少吹“秒懂公司”，多展示怎么防止员工看到不该看的文件、怎么让答案带引用、怎么在资料过期时报警。老板愿意为少问人、少翻表格付钱，不会为漂亮聊天框付高价。",
+          "source": "Jedify",
+          "url": "https://www.jedify.com/blog/jedify-raises-24m-series-a",
+          "image_url": "",
+          "image": "images/insights2-03-jedify-ai.png",
+          "image_source_url": "runs/2026-06-10/images/insights2-02-sandstone-legal-ai.png",
+          "image_origin": "local_archive"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Composio 让 Agent 接更多应用",
+          "body": "Composio 更新其 Agent 工具连接平台，继续提供面向开发者的应用集成、认证和动作调用能力。对做 Agent 产品的人来说，真正麻烦的部分常常不是模型，而是连接各种业务系统还能稳定授权。",
+          "janet_take": "Agent 要干活，最后都要碰日历、邮箱、CRM、表格、支付和内部系统。连接器平台的价值就在这里：它把一堆脏活封装掉，让开发者更快验证业务流程。中国独立开发者和小团队可以用它先做原型，确认客户真的愿意为自动化付钱后，再考虑自建关键连接。别一开始就重写世界，先把能收费的流程跑通。",
+          "source": "Composio",
+          "url": "https://composio.dev/blog/",
+          "image_url": "",
+          "image": "images/tools-01-composio-agent.jpg",
+          "image_source_url": "https://composio.dev/_next/static/media/1e751dc5947d8156-s.p.woff2",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

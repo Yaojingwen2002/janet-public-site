@@ -397,7 +397,135 @@
   async function loadWorksManifest() {
     const response = await fetch('data/works/works-manifest.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Cannot load works manifest');
-    return response.json();
+    const manifest = await response.json();
+    return enrichWorksManifest(manifest);
+  }
+
+  async function loadOptionalJson(path) {
+    if (!path) return null;
+
+    try {
+      const response = await fetch(path, { cache: 'no-cache' });
+      if (!response.ok) return null;
+      return response.json();
+    } catch (error) {
+      console.warn('[works-library] optional JSON failed:', path, error);
+      return null;
+    }
+  }
+
+  async function loadOptionalText(path) {
+    if (!path) return '';
+
+    try {
+      const response = await fetch(path, { cache: 'no-cache' });
+      if (!response.ok) return '';
+      return response.text();
+    } catch (error) {
+      console.warn('[works-library] optional text failed:', path, error);
+      return '';
+    }
+  }
+
+  function toCount(value) {
+    const number = Number(value);
+    if (!Number.isFinite(number) || number < 0) return 0;
+    return Math.floor(number);
+  }
+
+  function getProjectWorks(projectData) {
+    return Array.isArray(projectData && projectData.works) ? projectData.works : [];
+  }
+
+  function sumWorkStat(works, key) {
+    return works.reduce((total, work) => total + toCount(work && work.stats && work.stats[key]), 0);
+  }
+
+  function sumWorkImages(works) {
+    return works.reduce((total, work) => {
+      return total + (Array.isArray(work && work.images) ? work.images.length : 0);
+    }, 0);
+  }
+
+  function countShuttleWorksFromHtml(html) {
+    if (!html) return 0;
+    const matches = html.match(/<article\b(?=[^>]*class=["'][^"']*\bshuttle-work-card\b)(?=[^>]*data-project-id=)[^>]*>/g);
+    return matches ? matches.length : 0;
+  }
+
+  function countDocumentReaderPages(reader) {
+    const documents = Array.isArray(reader && reader.documents) ? reader.documents : [];
+    return documents.reduce((total, documentItem) => {
+      return total + (Array.isArray(documentItem && documentItem.pages) ? documentItem.pages.length : 0);
+    }, 0);
+  }
+
+  function computeProjectWorkCount(project, projectData) {
+    const works = getProjectWorks(projectData);
+
+    if (project.id === 'igpt-image2-handbook') {
+      const promptCount = sumWorkStat(works, 'prompt_count');
+      if (promptCount > 0) return promptCount;
+
+      const imageCount = sumWorkImages(works);
+      if (imageCount > 0) return imageCount;
+    }
+
+    if (works.length > 0) return works.length;
+    return toCount(project.work_count);
+  }
+
+  function computeProjectDocumentCount(project, projectData) {
+    const works = getProjectWorks(projectData);
+    const documentCount = sumWorkStat(works, 'document_count');
+    if (documentCount > 0) return documentCount;
+    return toCount(project.document_count);
+  }
+
+  async function enrichWorksProject(project) {
+    const isShuttleUniverse = project.id === 'shuttle-universe';
+    const [projectData, shuttlePageHtml, shuttleReader] = await Promise.all([
+      loadOptionalJson(project.project_json),
+      isShuttleUniverse ? loadOptionalText('shuttle-universe.html') : Promise.resolve(''),
+      isShuttleUniverse ? loadOptionalJson('assets/works/shuttle-universe/documents/document-reader.json') : Promise.resolve(null)
+    ]);
+
+    let workCount = computeProjectWorkCount(project, projectData);
+    let documentCount = computeProjectDocumentCount(project, projectData);
+    const extra = {};
+
+    if (isShuttleUniverse) {
+      const shuttleWorkCount = countShuttleWorksFromHtml(shuttlePageHtml);
+      const shuttleDocuments = Array.isArray(shuttleReader && shuttleReader.documents) ? shuttleReader.documents.length : 0;
+      const shuttlePages = countDocumentReaderPages(shuttleReader);
+
+      if (shuttleWorkCount > 0) workCount = shuttleWorkCount;
+      if (shuttleDocuments > 0) documentCount = shuttleDocuments;
+      if (shuttlePages > 0) extra.document_page_count = shuttlePages;
+    }
+
+    return {
+      ...project,
+      ...extra,
+      work_count: workCount,
+      document_count: documentCount
+    };
+  }
+
+  async function enrichWorksManifest(manifest) {
+    const projects = await Promise.all((manifest.projects || []).map(project => enrichWorksProject(project)));
+    const stats = {
+      ...(manifest.stats || {}),
+      project_count: projects.length,
+      work_count: projects.reduce((total, project) => total + toCount(project.work_count), 0),
+      document_count: projects.reduce((total, project) => total + toCount(project.document_count), 0)
+    };
+
+    return {
+      ...manifest,
+      projects,
+      stats
+    };
   }
 
   function renderHomepageWorksLibrary(manifest) {

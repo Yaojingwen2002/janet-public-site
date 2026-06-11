@@ -3,8 +3,13 @@
 (function() {
   'use strict';
 
+  const DOC_DATA_URL = 'assets/works/shuttle-universe/documents/document-reader.json';
+
   let activeCard = null;
   let activeCover = null;
+  let documentData = [];
+  let activeDocIndex = -1;
+  let activePageIndex = 0;
 
   function escapeHtml(value) {
     return String(value ?? '')
@@ -174,8 +179,159 @@
     }
   }
 
+  function getDocModalElements() {
+    return {
+      root: document.getElementById('shuttle-doc-modal'),
+      title: document.getElementById('shuttle-doc-modal-title'),
+      subtitle: document.getElementById('shuttle-doc-modal-subtitle'),
+      count: document.getElementById('shuttle-doc-modal-count'),
+      toc: document.getElementById('shuttle-doc-modal-toc'),
+      reader: document.getElementById('shuttle-doc-modal-reader'),
+      download: document.getElementById('shuttle-doc-modal-download')
+    };
+  }
+
+  function activeDocument() {
+    return documentData[activeDocIndex] || null;
+  }
+
+  function activePage() {
+    const doc = activeDocument();
+    return doc?.pages?.[activePageIndex] || null;
+  }
+
+  function renderDocToc(doc, toc) {
+    if (!toc) return;
+    toc.innerHTML = (doc.pages || []).map((page, index) => `
+      <button class="${index === activePageIndex ? 'is-active' : ''}" type="button" data-shuttle-doc-page="${index}">
+        ${escapeHtml(index + 1)}. ${escapeHtml(page.title || `第 ${index + 1} 页`)}
+      </button>
+    `).join('');
+    toc.querySelectorAll('[data-shuttle-doc-page]').forEach((button) => {
+      button.addEventListener('click', () => {
+        activePageIndex = Number(button.dataset.shuttleDocPage || '0');
+        renderDocModal();
+      });
+    });
+  }
+
+  function renderDocReader(page, reader) {
+    if (!reader || !page) return;
+    const paragraphs = page.paragraphs || [];
+    reader.innerHTML = `
+      <div class="shuttle-doc-page">
+        <h3>${escapeHtml(page.title || '文档内容')}</h3>
+        ${paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}
+      </div>
+    `;
+    reader.scrollTop = 0;
+  }
+
+  function renderDocModal() {
+    const { root, title, subtitle, count, toc, reader, download } = getDocModalElements();
+    const doc = activeDocument();
+    const page = activePage();
+    if (!root || !doc || !page) return;
+
+    const docCount = documentData.length;
+    const pageCount = doc.pages?.length || 0;
+    if (title) title.textContent = doc.title || '穿梭宇宙文档';
+    if (subtitle) subtitle.textContent = doc.label || '';
+    if (count) count.textContent = `第 ${activeDocIndex + 1}/${docCount} 份 · 第 ${activePageIndex + 1}/${pageCount} 页`;
+    if (download) download.href = doc.download_url || '#';
+
+    renderDocToc(doc, toc);
+    renderDocReader(page, reader);
+  }
+
+  function openDocModal(docId) {
+    const { root } = getDocModalElements();
+    if (!root) return;
+    const index = documentData.findIndex(doc => doc.id === docId);
+    if (index < 0) return;
+
+    activeDocIndex = index;
+    activePageIndex = 0;
+    root.hidden = false;
+    document.body.classList.add('shuttle-doc-modal-open');
+    renderDocModal();
+
+    const closeButton = root.querySelector('[data-shuttle-doc-close]');
+    if (closeButton) closeButton.focus({ preventScroll: true });
+  }
+
+  function closeDocModal() {
+    const { root } = getDocModalElements();
+    if (!root) return;
+    root.hidden = true;
+    document.body.classList.remove('shuttle-doc-modal-open');
+    activeDocIndex = -1;
+    activePageIndex = 0;
+  }
+
+  function stepDocPage(direction) {
+    if (!documentData.length || activeDocIndex < 0) return;
+    const doc = activeDocument();
+    const pageCount = doc?.pages?.length || 0;
+    activePageIndex += direction;
+
+    if (activePageIndex < 0) {
+      activeDocIndex = (activeDocIndex - 1 + documentData.length) % documentData.length;
+      activePageIndex = Math.max((activeDocument()?.pages?.length || 1) - 1, 0);
+    } else if (activePageIndex >= pageCount) {
+      activeDocIndex = (activeDocIndex + 1) % documentData.length;
+      activePageIndex = 0;
+    }
+
+    renderDocModal();
+  }
+
+  function bindDocModalControls() {
+    const { root } = getDocModalElements();
+    if (!root) return;
+
+    root.querySelectorAll('[data-shuttle-doc-close]').forEach((button) => {
+      button.addEventListener('click', closeDocModal);
+    });
+    root.querySelector('[data-shuttle-doc-prev]')?.addEventListener('click', () => stepDocPage(-1));
+    root.querySelector('[data-shuttle-doc-next]')?.addEventListener('click', () => stepDocPage(1));
+
+    document.addEventListener('keydown', (event) => {
+      if (root.hidden) return;
+      if (event.key === 'Escape') closeDocModal();
+      if (event.key === 'ArrowLeft') stepDocPage(-1);
+      if (event.key === 'ArrowRight') stepDocPage(1);
+    });
+  }
+
+  async function initDocReader() {
+    const buttons = document.querySelectorAll('[data-shuttle-doc]');
+    if (!buttons.length) return;
+
+    bindDocModalControls();
+    try {
+      const response = await fetch(DOC_DATA_URL, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const payload = await response.json();
+      documentData = Array.isArray(payload.documents) ? payload.documents : [];
+    } catch (error) {
+      console.warn('[shuttle-universe] document reader failed:', error);
+      buttons.forEach((button) => {
+        button.disabled = true;
+        const badge = button.querySelector('strong');
+        if (badge) badge.textContent = '暂不可读';
+      });
+      return;
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => openDocModal(button.dataset.shuttleDoc));
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.shuttle-video-card').forEach(bindCard);
     document.querySelectorAll('.youtube-hover-cover').forEach(bindYouTubeCover);
+    initDocReader();
   });
 })();

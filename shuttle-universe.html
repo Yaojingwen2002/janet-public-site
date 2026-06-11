@@ -101,17 +101,19 @@
                 <div class="shuttle-details-grid">
                   <div class="shuttle-detail-section">
                     <h4>参考文档</h4>
-                    <a class="shuttle-doc-link" href="assets/works/shuttle-universe/documents/harry/reference.docx" target="_blank" rel="noopener noreferrer" download>
+                    <button class="shuttle-doc-link" type="button" data-shuttle-doc="harry-reference">
                       <span>哈利波特规避版参考文档</span>
-                      <strong>DOCX</strong>
-                    </a>
+                      <strong>阅读</strong>
+                    </button>
+                    <a class="shuttle-doc-download" href="assets/works/shuttle-universe/documents/harry/reference.docx" target="_blank" rel="noopener noreferrer" download>下载 DOCX</a>
                   </div>
                   <div class="shuttle-detail-section">
                     <h4>生成步骤</h4>
-                    <a class="shuttle-doc-link" href="assets/works/shuttle-universe/documents/harry/generation-steps.docx" target="_blank" rel="noopener noreferrer" download>
+                    <button class="shuttle-doc-link" type="button" data-shuttle-doc="harry-steps">
                       <span>哈利波特规避版生成步骤</span>
-                      <strong>DOCX</strong>
-                    </a>
+                      <strong>阅读</strong>
+                    </button>
+                    <a class="shuttle-doc-download" href="assets/works/shuttle-universe/documents/harry/generation-steps.docx" target="_blank" rel="noopener noreferrer" download>下载 DOCX</a>
                   </div>
                 </div>
               </details>
@@ -147,10 +149,11 @@
                 <div class="shuttle-details-grid">
                   <div class="shuttle-detail-section shuttle-detail-section--wide">
                     <h4>参考文档与生成步骤</h4>
-                    <a class="shuttle-doc-link" href="assets/works/shuttle-universe/documents/mario/reference-and-generation-steps.docx" target="_blank" rel="noopener noreferrer" download>
+                    <button class="shuttle-doc-link" type="button" data-shuttle-doc="mario-reference-steps">
                       <span>马里奥规避版参考文档与生成步骤</span>
-                      <strong>DOCX</strong>
-                    </a>
+                      <strong>阅读</strong>
+                    </button>
+                    <a class="shuttle-doc-download" href="assets/works/shuttle-universe/documents/mario/reference-and-generation-steps.docx" target="_blank" rel="noopener noreferrer" download>下载 DOCX</a>
                   </div>
                 </div>
               </details>
@@ -185,10 +188,11 @@
                 <div class="shuttle-details-grid">
                   <div class="shuttle-detail-section shuttle-detail-section--wide">
                     <h4>参考文档与生成步骤</h4>
-                    <a class="shuttle-doc-link" href="assets/works/shuttle-universe/documents/link/reference-and-generation-steps.docx" target="_blank" rel="noopener noreferrer" download>
+                    <button class="shuttle-doc-link" type="button" data-shuttle-doc="link-reference-steps">
                       <span>林克规避版参考文档与生成步骤</span>
-                      <strong>DOCX</strong>
-                    </a>
+                      <strong>阅读</strong>
+                    </button>
+                    <a class="shuttle-doc-download" href="assets/works/shuttle-universe/documents/link/reference-and-generation-steps.docx" target="_blank" rel="noopener noreferrer" download>下载 DOCX</a>
                   </div>
                 </div>
               </details>
@@ -217,10 +221,11 @@
                 <div class="shuttle-details-grid">
                   <div class="shuttle-detail-section shuttle-detail-section--wide">
                     <h4>参考文档与生成步骤</h4>
-                    <a class="shuttle-doc-link" href="assets/works/shuttle-universe/documents/conan/reference-and-generation-steps.docx" target="_blank" rel="noopener noreferrer" download>
+                    <button class="shuttle-doc-link" type="button" data-shuttle-doc="conan-reference-steps">
                       <span>柯南规避版参考文档与生成步骤</span>
-                      <strong>DOCX</strong>
-                    </a>
+                      <strong>阅读</strong>
+                    </button>
+                    <a class="shuttle-doc-download" href="assets/works/shuttle-universe/documents/conan/reference-and-generation-steps.docx" target="_blank" rel="noopener noreferrer" download>下载 DOCX</a>
                   </div>
                 </div>
               </details>
@@ -258,6 +263,29 @@
   </footer>
 
   <button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">↑</button>
+
+  <div class="shuttle-doc-modal" id="shuttle-doc-modal" role="dialog" aria-modal="true" aria-labelledby="shuttle-doc-modal-title" hidden>
+    <button class="shuttle-doc-modal__backdrop" type="button" data-shuttle-doc-close aria-label="关闭文档"></button>
+    <div class="shuttle-doc-modal__panel">
+      <div class="shuttle-doc-modal__topbar">
+        <div>
+          <span id="shuttle-doc-modal-count" class="shuttle-doc-modal__count"></span>
+          <h2 id="shuttle-doc-modal-title">穿梭宇宙文档</h2>
+          <p id="shuttle-doc-modal-subtitle"></p>
+        </div>
+        <button class="shuttle-doc-modal__close" type="button" data-shuttle-doc-close aria-label="关闭文档">×</button>
+      </div>
+      <div class="shuttle-doc-modal__content">
+        <nav class="shuttle-doc-modal__toc" id="shuttle-doc-modal-toc" aria-label="文档章节"></nav>
+        <article class="shuttle-doc-modal__reader" id="shuttle-doc-modal-reader" tabindex="0"></article>
+      </div>
+      <div class="shuttle-doc-modal__footer">
+        <button class="shuttle-doc-modal__nav" type="button" data-shuttle-doc-prev>‹ 上一页</button>
+        <a class="shuttle-doc-modal__download" id="shuttle-doc-modal-download" href="#" target="_blank" rel="noopener noreferrer" download>下载 DOCX</a>
+        <button class="shuttle-doc-modal__nav" type="button" data-shuttle-doc-next>下一页 ›</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="scripts/shuttle-universe.js"></script>

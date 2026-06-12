@@ -54,10 +54,12 @@
     const editionId = edition.edition_id || edition.date || '';
     const title = edition.title || 'Janet 快车箱';
     const url = edition.url || '#';
+    const commentUrl = url && url !== '#' ? String(url).split('#')[0] + '#daily-comments' : '#daily-comments';
     const actionClass = compact ? 'news-secondary-actions' : 'news-card-actions';
     const safeEditionId = escapeHtml(editionId);
     const safeTitle = escapeHtml(title);
     const safeUrl = escapeHtml(url);
+    const safeCommentUrl = escapeHtml(commentUrl);
 
     return `
       <div class="${actionClass}">
@@ -65,16 +67,10 @@
           <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
             <span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
           </button>
-          <button class="reaction-btn" type="button" data-reaction-type="insightful" aria-label="有洞察">
-            <span aria-hidden="true">💡</span><span>洞察</span><span class="reaction-count" data-reaction-count>0</span>
-          </button>
-          <button class="reaction-btn" type="button" data-reaction-type="trending" aria-label="值得追踪">
-            <span aria-hidden="true">🔥</span><span>追踪</span><span class="reaction-count" data-reaction-count>0</span>
-          </button>
         </div>
-        <button class="comment-toggle-btn" type="button" data-comment-toggle data-edition-id="${safeEditionId}" data-edition-title="${safeTitle}" data-edition-url="${safeUrl}">
+        <a class="comment-toggle-btn" href="${safeCommentUrl}" data-edition-id="${safeEditionId}" data-edition-title="${safeTitle}">
           评论 <span class="comment-count" data-comment-count data-edition-id="${safeEditionId}">0</span>
-        </button>
+        </a>
         <div class="share-wrap">
           <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>
           <div class="share-menu" role="menu" hidden>

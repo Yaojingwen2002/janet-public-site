@@ -1,11 +1,9 @@
 (function() {
   'use strict';
 
-  const TYPES = ['like', 'insightful', 'trending'];
+  const TYPES = ['like'];
   const LABELS = {
-    like: ['👍', '有用'],
-    insightful: ['💡', '有洞察'],
-    trending: ['🔥', '值得追踪']
+    like: ['👍', '有用']
   };
   const warned = new Set();
 

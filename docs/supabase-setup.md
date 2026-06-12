@@ -10,6 +10,7 @@ Run this SQL in the Supabase SQL editor.
 create table if not exists public.comments (
   id uuid primary key default gen_random_uuid(),
   edition_id text not null,
+  parent_comment_id uuid references public.comments(id) on delete cascade,
   user_id uuid references auth.users(id) on delete set null,
   guest_id text,
   display_name text not null default '游客',
@@ -21,7 +22,7 @@ create table if not exists public.comments (
 create table if not exists public.reactions (
   id uuid primary key default gen_random_uuid(),
   edition_id text not null,
-  reaction_type text not null check (reaction_type in ('like', 'insightful', 'trending')),
+  reaction_type text not null check (reaction_type in ('like')),
   user_id uuid references auth.users(id) on delete cascade,
   guest_id text,
   created_at timestamptz not null default now(),
@@ -39,8 +40,28 @@ create unique index if not exists reactions_guest_once
 create index if not exists comments_edition_created
   on public.comments (edition_id, created_at desc);
 
+create index if not exists comments_parent_created
+  on public.comments (parent_comment_id, created_at asc);
+
 create index if not exists reactions_edition_type
   on public.reactions (edition_id, reaction_type);
+```
+
+For an existing Supabase project, run this migration before deploying reply UI:
+
+```sql
+alter table public.comments
+  add column if not exists parent_comment_id uuid references public.comments(id) on delete cascade;
+
+create index if not exists comments_parent_created
+  on public.comments (parent_comment_id, created_at asc);
+
+alter table public.reactions
+  drop constraint if exists reactions_reaction_type_check;
+
+alter table public.reactions
+  add constraint reactions_reaction_type_check
+  check (reaction_type in ('like'));
 ```
 
 ## 2. Enable RLS
@@ -73,7 +94,7 @@ create policy "reactions are readable"
 create policy "any visitor can create reactions"
   on public.reactions for insert
   with check (
-    reaction_type in ('like', 'insightful', 'trending')
+    reaction_type in ('like')
     and (auth.uid() = user_id or user_id is null)
     and (user_id is not null or guest_id is not null)
   );

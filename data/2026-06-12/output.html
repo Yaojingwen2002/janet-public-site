@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-06-12 · VOL 255</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Fraunces (标题) · DM Sans (正文) · Geist Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'Geist Mono', 'SFMono-Regular', 'Fira Code', monospace;
+  --sans:         'DM Sans', 'PingFang SC', system-ui, sans-serif;
+  --display:      'Fraunces', Georgia, 'Noto Serif SC', serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-06-12</div>
+          <div class="vol-info">VOL 255</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="Agent 开始进账本" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-06-12 // VOL_255</div>
+   <h1>Agent 开始进账本</h1>
+   <p>从云、交易到代码流水线，Agent 真正的门票变成预算、审计和责任边界。</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">今天 AI 圈的主线很清楚：Agent 不再只拼会不会回答，它开始被塞进云采购、企业系统、交易账户、CI 流程和安全账本。OpenAI 买 Ona，Anthropic 找 DXC 和数据中心，GitHub 给 Agentic Workflows 上组织账单，Coinbase 让交易 Agent 直接花钱。AI 终于从演示台走进账本。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。</div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>📌 今日趋势：Agent 开始进账本</h2>
+  <p>今天的共同主线不是模型又聪明了一点，而是 Agent 被推进真实预算和真实责任里。OpenAI 买下 Ona，是给长时间运行的 Codex 找云执行底座；Anthropic 拉 DXC 进银行、航空和制造系统，是把 Claude 送进老牌企业流程；GitHub 让 Agentic Workflows 用组织账单跑，Coinbase 让交易 Agent 付费拿研究数据，说明 Agent 正在从聊天窗口变成业务支出项。</p>
+  <p>这对中国创作者和企业的含义很现实：下一阶段比拼的不是谁会写 prompt，而是谁能把 AI 接进订单、代码、财务、客服、研究和合规流程里，同时把花费、审批、日志和回滚管住。创作者要盯能直接减少人工步骤的工具，老板要盯每个 Agent 到底替掉哪段流程，开发团队要把安全扫描和预算上限当成默认配置。</p>
+  <p>接下来 2-4 周重点盯三件事：一是长跑 Agent 的云执行和计费会不会变成大厂标配，二是企业服务商会不会批量把 Claude、Codex 这类模型塞进传统外包合同，三是交易、代码和内容 Agent 出错后谁背锅。Agent 能干活只是上半场，能进账本、能被审计、能停下来，才是真正的下半场。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-openai-ona-codex.jpg" alt="OpenAI 买 Ona 给 Codex 上云" loading="lazy" decoding="async">
+    <figcaption>OpenAI</figcaption>
+  </figure>
+  <h2>OpenAI 买 Ona 给 Codex 上云</h2>
+  <p class="item-meta">来源: OpenAI · 2026-06-12 · <a href="https://openai.com/index/openai-to-acquire-ona/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 宣布将收购 Ona，把后者的安全云执行和编排技术并入 Codex 生态，用来支持跨软件和知识工作的长时间运行 Agent。这个动作把 Codex 从一次性代码助手继续往可控云工作台推。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>OpenAI 不是在买一个漂亮插件，而是在补 Agent 真正上岗前最脏的一块：运行环境。长任务 Agent 如果没有隔离执行、状态管理和客户可控的云底座，只会变成高级脚本事故制造机。做企业自动化和代码工具的团队该立刻复盘自己的执行沙箱、权限回收和日志保留，别只盯模型回答有多聪明。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-02-anthropic-dxc-claude.jpg" alt="Anthropic 让 DXC 带 Claude 进核心系统" loading="lazy" decoding="async">
+    <figcaption>Anthropic</figcaption>
+  </figure>
+  <h2>Anthropic 让 DXC 带 Claude 进核心系统</h2>
+  <p class="item-meta">来源: Anthropic · 2026-06-12 · <a href="https://www.anthropic.com/news/dxc-anthropic-alliance" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 与 DXC Technology 宣布多年全球联盟，DXC 将训练数万名 Claude 认证的前线交付工程师，把 Claude 接入银行、航空、保险、制造和政府机构依赖的系统。DXC 称其 AI 原生编排平台 OASIS 默认由 Claude 支撑 Agent 工作流。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Claude 进 DXC，比普通企业客户案例重得多，因为 DXC 管的是别人的核心系统。大模型进银行和航空，不是靠 demo 打动采购，而是靠交付团队、合规流程和出事后的责任链。国内做企业 AI 的公司要看清楚：真正的钱在系统集成和持续交付里，不在卖一个聊天入口里。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-anthropic.jpg" alt="Anthropic 要租数据中心扛算力" loading="lazy" decoding="async">
+    <figcaption>Reuters</figcaption>
+  </figure>
+  <h2>Anthropic 要租数据中心扛算力</h2>
+  <p class="item-meta">来源: Reuters · 2026-06-12 · <a href="https://wtvbam.com/2026/06/11/anthropic-pursues-data-center-leases-seeks-financial-backing-from-google-the-information-reports/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Reuters 援引 The Information 报道称，Anthropic 正计划租赁并管理自己的数据中心，并寻求 Alphabet 旗下 Google 为租金支付提供金融支持。模型公司的竞争继续从模型本身延伸到算力、租约和资金安排。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这说明前沿模型公司已经不满足于只买云额度，它们要把算力供应链抓得更紧。账单也很直接：租约、电力、折旧和融资压力会一起压到产品定价上。中国企业买模型服务时别只问哪家更强，要问服务商的算力成本会不会突然转嫁到你的账单上。采购 AI 服务时，把价格调整条款、容量保证和退出方案问清楚，比听路线图更实际。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-coinbase-agent.jpg" alt="Coinbase 让 Agent 下单进交易台" loading="lazy" decoding="async">
+    <figcaption>TechCrunch</figcaption>
+  </figure>
+  <h2>Coinbase 让 Agent 下单进交易台</h2>
+  <p class="item-meta">来源: TechCrunch · 2026-06-12 · <a href="https://techcrunch.com/2026/06/11/coinbase-debuts-ai-agent-that-can-trade-and-pay-for-premium-research/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Coinbase 推出可执行交易并付费获取高级研究数据的 AI Agent。该 Agent 可使用 x402 协议访问数据和 API，当前支持加密货币现货和衍生品交易，后续计划支持股票和预测市场。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Agent 碰交易账户，刺激归刺激，但风险也立刻变硬。以前 AI 错了最多写错一段文案，现在错了可能是真金白银下错单。做金融、投研和电商自动化的团队必须把交易额度、确认节点、撤单逻辑和异常报警做进产品骨架，否则所谓自动化就是把亏损速度拉满。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-openai.jpg" alt="OpenAI 接欧盟透明规则上身" loading="lazy" decoding="async">
+    <figcaption>OpenAI</figcaption>
+  </figure>
+  <h2>OpenAI 接欧盟透明规则上身</h2>
+  <p class="item-meta">来源: OpenAI · 2026-06-12 · <a href="https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 表示支持欧盟关于 AI 内容透明度的 Code of Practice，并强调 provenance 标准和帮助用户识别 AI 生成内容的工具。内容生成越普及，来源标记和生成痕迹越会变成产品默认项。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>透明度听起来像合规部门的事，其实会直接改变内容工具的产品设计。以后给欧洲客户做生成式内容，不能只交一张图或一段文案，还要交生成记录、来源声明和可解释的标记。国内出海工具团队别等罚单来了才补，素材链和水印策略现在就该写进工作流。内容团队也要开始保留提示词、素材授权和版本记录，免得交付后被追着问来源。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-deepmind-agent.jpg" alt="DeepMind 给多 Agent 安全投钱" loading="lazy" decoding="async">
+    <figcaption>Google DeepMind</figcaption>
+  </figure>
+  <h3>DeepMind 给多 Agent 安全投钱</h3>
+  <p class="item-meta">来源: Google DeepMind · 2026-06-12 · <a href="https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google DeepMind 联合 Schmidt Sciences、Cooperative AI Foundation、ARIA 和 Google.org，宣布投入多 Agent AI 安全研究。重点从单个模型行为扩展到多个智能体之间的协作、竞争和失控风险。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>多 Agent 不是多开几个聊天窗口那么简单，它会把责任切得更碎，也更难追责。一个 Agent 犯错还能查日志，一群 Agent 互相递任务，错误就可能在链路里被放大。做自动化工作流的团队现在就该限制 Agent 之间的权限传递，别让一个小工具意外变成全公司最高权限。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-tacticai.avif" alt="TacticAI 开始预测球场八秒" loading="lazy" decoding="async">
+    <figcaption>The Next Web</figcaption>
+  </figure>
+  <h3>TacticAI 开始预测球场八秒</h3>
+  <p class="item-meta">来源: The Next Web · 2026-06-12 · <a href="https://thenextweb.com/news/google-deepmind-tacticai-football-palmeiras-predict-plays" target="_blank" rel="noopener">原文链接</a></p>
+  <p>The Next Web 报道称，Google DeepMind 的 TacticAI 可基于球员运动预测足球场上未来八秒的战术走势，并向教练提供调整建议，巴西俱乐部 Palmeiras 成为首个在实时开放比赛分析中使用它的球队。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这类体育 AI 的价值不在噱头，而在把视频、空间位置和决策建议压进实时窗口。八秒听起来短，对比赛和运营决策已经很长。内容团队可以借这个思路做视频拆解，企业团队也该学会把预测结果做成可执行建议，而不是只生成一份漂亮分析报告。真正能收费的 AI，会把下一步动作说清楚，而不是只总结刚才发生了什么。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-nvidia-diffusiongemma.jpg" alt="NVIDIA 让 DiffusionGemma 跑进本地显卡" loading="lazy" decoding="async">
+    <figcaption>NVIDIA</figcaption>
+  </figure>
+  <h3>NVIDIA 让 DiffusionGemma 跑进本地显卡</h3>
+  <p class="item-meta">来源: NVIDIA · 2026-06-12 · <a href="https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 介绍了对 Google DeepMind DiffusionGemma 的本地 AI 加速支持。这个开放模型可并行生成文本，并被优化到 NVIDIA RTX PRO、DGX Spark 和 GeForce RTX GPU 上运行。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>本地模型的意义不是马上打败云端旗舰，而是把试错成本砍下来。团队做初稿、批量变体、内部知识处理时，很多任务根本不需要每次都上云排队付费。独立开发者和小工作室可以把本地模型当草稿机，商业交付再用更强模型精修，这比盲目追最高分更划算。谁能把本地推理做得稳定易用，谁就能吃到预算敏感团队的长尾需求。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-codex.jpg" alt="Codex 被拿去算黑洞模型" loading="lazy" decoding="async">
+    <figcaption>OpenAI</figcaption>
+  </figure>
+  <h3>Codex 被拿去算黑洞模型</h3>
+  <p class="item-meta">来源: OpenAI · 2026-06-12 · <a href="https://openai.com/index/using-codex-to-simulate-black-holes/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 发布应用案例，介绍天体物理学家 Chi-kwan Chan 使用 Codex 构建黑洞模拟，帮助研究极端物理并测试广义相对论。Codex 的叙事继续从写业务代码扩展到科学计算和研究工程。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这类案例不是给普通人看黑洞有多酷，而是在证明代码 Agent 可以进入高门槛研究软件。科学计算最怕的是代码复杂、验证慢、改动风险高，Agent 如果能帮研究者快速重构和检查，就能省下大量低价值工程时间。科研工具和工业仿真团队要盯这条线，模型真正赚钱的地方可能是专业代码里的脏活。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-github-agentic-workflows.jpg" alt="GitHub Agentic Workflows 开放预览" loading="lazy" decoding="async">
+    <figcaption>GitHub Changelog</figcaption>
+  </figure>
+  <h3>GitHub Agentic Workflows 开放预览</h3>
+  <p class="item-meta">来源: GitHub Changelog · 2026-06-12 · <a href="https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GitHub 宣布 Agentic Workflows 进入 public preview，把 Copilot 与 Actions、工作流文件和组织级运行方式进一步结合。开发者可以把 AI 任务从手动聊天推进到可重复的工程流水线。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这才是代码 Agent 该去的地方：不是陪你闲聊，而是进入 CI、任务队列和审批流程。问题也会同步变硬，谁触发、花多少钱、能改哪些文件、失败怎么回滚，都不能靠人肉盯屏。工程团队可以小范围试，但必须从低风险仓库开始，把预算和安全策略先写死。让 Agent 进流水线之前，先把它当成一个会犯错的新同事，而不是神奇自动按钮。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-github-agent-pat.jpg" alt="GitHub 让 Agent 不再拿长期 PAT" loading="lazy" decoding="async">
+    <figcaption>GitHub Changelog</figcaption>
+  </figure>
+  <h3>GitHub 让 Agent 不再拿长期 PAT</h3>
+  <p class="item-meta">来源: GitHub Changelog · 2026-06-12 · <a href="https://github.blog/changelog/2026-06-11-agentic-workflows-no-longer-need-a-personal-access-token/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GitHub 更新 Agentic Workflows，组织仓库中的 Agentic Workflow 不再需要创建和存储个人访问令牌，可通过 Actions token 和组织账单直接运行，同时由 cost centers 和预算工具管理消耗。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>长期 PAT 是自动化系统里的老雷区，GitHub 这次等于承认 Agent 要规模化就不能靠个人令牌裸奔。对企业来说，这不是小优化，是安全边界从个人电脑搬回组织治理。国内团队做 Agent 平台也一样，别让员工用私钥和个人 token 扛生产流程，早晚会炸在审计里。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-github-ai.jpg" alt="GitHub 把 AI 用量报表细分" loading="lazy" decoding="async">
+    <figcaption>GitHub Changelog</figcaption>
+  </figure>
+  <h3>GitHub 把 AI 用量报表细分</h3>
+  <p class="item-meta">来源: GitHub Changelog · 2026-06-12 · <a href="https://github.blog/changelog/2026-06-11-ai-usage-report-updates/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GitHub 更新 AI usage report，并在相关更新中把 Copilot、企业管理和成本工具继续打通。AI 编码进入企业后，管理者需要看到谁在用、用在哪、花了多少，而不是只看订阅席位。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI 工具一旦进企业，老板最关心的不是“员工开心吗”，而是钱花到哪里去了。用量报表会把 Copilot 从福利变成成本中心，也会逼团队拿出产出证据。创作者团队和小公司也该学这一套：订阅费不贵，隐形浪费很贵，先把工具账单和实际产出对上。每月砍掉没人用、没产出的 AI 订阅，比多买一个新工具更清醒。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-bot-pr-ci.jpg" alt="GitHub 让 Bot PR 人工放行跑 CI" loading="lazy" decoding="async">
+    <figcaption>GitHub Changelog</figcaption>
+  </figure>
+  <h3>GitHub 让 Bot PR 人工放行跑 CI</h3>
+  <p class="item-meta">来源: GitHub Changelog · 2026-06-12 · <a href="https://github.blog/changelog/2026-06-11-bot-created-pull-requests-can-run-workflows-if-approved" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GitHub 宣布由 github-actions bot 创建的 pull request 在用户批准后可以运行 CI/CD 工作流，这与 Copilot 生成的 PR 行为一致。此前这类 PR 可能无法跑完整 CI，导致变更在缺少验证时被合并。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI 生成代码最怕两种极端：完全不让跑，或者直接带着敏感权限跑。GitHub 这次走的是中间路线，先让人类批准，再让流水线验证。所有用 Agent 改代码的团队都该照抄这个原则：自动生成可以，人类放行必须有，CI 证据必须留。否则你不是在自动化研发，而是在自动化制造没人敢碰的风险。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Prediction</span>
+        <span class="st-zh">投资视角 · 大胆预测</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-prometheus-ai.jpg" alt="Prometheus 融资把工程 AI 炒热" loading="lazy" decoding="async">
+    <figcaption>GeekWire</figcaption>
+  </figure>
+  <h3>Prometheus 融资把工程 AI 炒热</h3>
+  <p class="item-meta inverted">来源: GeekWire · 2026-06-12 · <a href="https://www.geekwire.com/2026/bezos-ai-startup-prometheus-raises-12b-at-41b-valuation-and-the-ceos-explain-what-theyre-doing/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GeekWire 报道，Jeff Bezos 与 Vik Bajaj 共同领导的 AI 工程初创公司 Prometheus 完成 120 亿美元 Series B 融资，估值达到 410 亿美元。公司目标是用 AI 帮助工程师设计和制造物理产品。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>120 亿美元融资不是普通泡沫，是资本在押“AI 从写字楼走进工厂”。物理世界的工程 AI 很肥，但它不像写文案那样容错高，材料、仿真、制造和安全全都要过硬。中国制造业服务商别只喊智能设计，能不能减少试制次数、缩短验证周期、降低报废率，才是客户愿意付钱的理由。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-phoenixai-agent.png" alt="PhoenixAI 融资押 Agent 数据库" loading="lazy" decoding="async">
+    <figcaption>PR Newswire</figcaption>
+  </figure>
+  <h3>PhoenixAI 融资押 Agent 数据库</h3>
+  <p class="item-meta inverted">来源: PR Newswire · 2026-06-12 · <a href="https://www.prnewswire.com/news-releases/phoenixai-raises-80m-series-b-led-by-sky9-capital-to-power-the-agentic-ai-database-302797544.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>PhoenixAI 宣布完成 8000 万美元 Series B 融资，由 Sky9 Capital 领投。公司定位为 Agentic AI Database，资金将用于 AI 原生数据库研发、市场扩张和面向监管行业的治理能力。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>Agent 跑起来以后，数据库会重新变成战场。普通数据库存数据，Agentic 数据库要处理上下文、行动记录、权限和可追溯状态。国内做 RAG、知识库和企业搜索的团队要警惕：客户以后要的不是“能搜到”，而是“Agent 用了什么数据、为什么这么做、出了错能不能回滚”。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-turnout-ai.jpg" alt="Turnout 融资卖 AI 消费维权" loading="lazy" decoding="async">
+    <figcaption>PR Newswire</figcaption>
+  </figure>
+  <h3>Turnout 融资卖 AI 消费维权</h3>
+  <p class="item-meta inverted">来源: PR Newswire · 2026-06-12 · <a href="https://www.prnewswire.com/news-releases/turnout-raises-35-million-series-a-to-put-an-ai-advocate-in-every-americans-corner-302797380.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Turnout 宣布完成 3500 万美元 Series A 融资，定位为 AI 驱动的消费者倡导服务，帮助用户处理复杂政府和金融流程。公司称自种子轮以来客户基础增长五倍，已记录超过一千万分钟 AI 支持时长。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>这类产品抓的是普通人最烦的流程：电话、表格、申诉、证明和等待。AI 如果能替用户跑这些流程，价值比陪聊高太多。中国创作者和工具团队可以借鉴这个方向，别只做通用助手，去找那些用户愿意付钱逃离的麻烦流程，比如退款、报销、签证、保险和售后。真正的好产品不是让用户多和 AI 聊十轮，而是少被系统折磨十次。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-pool.jpg" alt="Pool 把截图变成可搜记忆库" loading="lazy" decoding="async">
+    <figcaption>TechCrunch</figcaption>
+  </figure>
+  <h2>Pool 把截图变成可搜记忆库</h2>
+  <p class="item-meta">来源: TechCrunch · 2026-06-12 · <a href="https://techcrunch.com/2026/06/11/pools-new-app-turns-your-screenshots-into-a-searchable-memory-bank/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Pool 推出新应用，可自动整理用户截图，把内容归类为个性化集合，并尝试找到截图背后的原始链接。对信息收集者来说，截图不再只是相册垃圾，而是可检索的个人资料库。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这个工具很小，但切得准。创作者每天截一堆图，真正痛苦的是三天后找不到来源、想不起上下文、也不知道能不能引用。Pool 如果能把截图、原链接和主题集合接顺，就能直接省掉素材整理时间。做内容的人可以试，但敏感截图别一股脑上传，个人资料库越聪明，隐私边界越要自己守。</span>
+  </div>
+</div>
+</div>
+
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: OpenAI, Anthropic, Reuters, TechCrunch, Google DeepMind, The Next Web, NVIDIA, GitHub Changelog, GeekWire, PR Newswire<br>
+      本报内容由 AI 辅助采编，经人工校验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+</body>
+</html>

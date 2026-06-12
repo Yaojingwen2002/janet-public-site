@@ -481,6 +481,98 @@
   max-width: 360px;
 }
 
+.home-engagement {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid rgba(26,58,42,.14);
+  border-radius: var(--r-md);
+  background: rgba(255,253,248,.78);
+  box-shadow: 0 14px 34px rgba(26,58,42,.08);
+  padding: 10px;
+}
+
+.home-engagement .news-reactions {
+  width: auto;
+}
+
+.home-engagement .reaction-btn,
+.home-engagement .comment-toggle-btn,
+.home-engagement .share-btn {
+  min-height: 38px;
+}
+
+.briefing-activity-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 920px;
+  margin-top: calc(var(--space-md) * -0.2);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+  pointer-events: auto;
+}
+
+.briefing-activity-ribbon.is-paused {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.briefing-activity-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  max-width: min(280px, 100%);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--r-pill);
+  color: #fff;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0 12px 28px rgba(26,58,42,.13);
+  animation: janet-activity-float 4.8s ease-in-out infinite;
+  animation-delay: calc(var(--pill-index, 0) * -0.7s);
+}
+
+.briefing-activity-pill:hover {
+  transform: translateY(-2px);
+}
+
+.briefing-activity-pill.is-green {
+  background: var(--green);
+}
+
+.briefing-activity-pill.is-signal {
+  background: var(--signal);
+  color: var(--green);
+}
+
+.briefing-activity-pill.is-gold {
+  background: var(--amber);
+}
+
+@keyframes janet-activity-float {
+  0%,
+  100% {
+    opacity: .84;
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(8px, -3px, 0);
+  }
+}
+
 @media (min-width: 1400px) {
   .news-editorial {
     padding: 0 var(--space-lg);
@@ -836,12 +928,23 @@
   .codex-carousel-progress-row {
     gap: 6px;
   }
+  .home-engagement {
+    width: 100%;
+  }
+  .briefing-activity-ribbon {
+    gap: 8px;
+  }
+  .briefing-activity-pill {
+    max-width: 100%;
+    font-size: 11px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .codex-carousel-card,
   .codex-carousel-card.is-active,
   .codex-carousel-progress.is-active span,
+  .briefing-activity-pill,
   .janet-anchor-pulse,
   .janet-anchor-pulse::after {
     animation: none !important;

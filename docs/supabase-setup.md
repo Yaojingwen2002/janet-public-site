@@ -29,6 +29,17 @@ create table if not exists public.reactions (
   check (user_id is not null or guest_id is not null)
 );
 
+create table if not exists public.newsletter_subscribers (
+  id uuid primary key default gen_random_uuid(),
+  email text not null unique,
+  display_name text,
+  subscribed boolean not null default false,
+  source text not null default 'signup',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  last_sent_at timestamptz
+);
+
 create unique index if not exists reactions_user_once
   on public.reactions (edition_id, reaction_type, user_id)
   where user_id is not null;
@@ -45,6 +56,9 @@ create index if not exists comments_parent_created
 
 create index if not exists reactions_edition_type
   on public.reactions (edition_id, reaction_type);
+
+create index if not exists newsletter_subscribers_email
+  on public.newsletter_subscribers (email);
 ```
 
 For an existing Supabase project, run this migration before deploying reply UI:
@@ -62,6 +76,27 @@ alter table public.reactions
 alter table public.reactions
   add constraint reactions_reaction_type_check
   check (reaction_type in ('like'));
+
+create table if not exists public.newsletter_subscribers (
+  id uuid primary key default gen_random_uuid(),
+  email text not null unique,
+  display_name text,
+  subscribed boolean not null default false,
+  source text not null default 'signup',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  last_sent_at timestamptz
+);
+
+alter table public.newsletter_subscribers
+  add column if not exists display_name text,
+  add column if not exists subscribed boolean not null default false,
+  add column if not exists source text not null default 'signup',
+  add column if not exists updated_at timestamptz not null default now(),
+  add column if not exists last_sent_at timestamptz;
+
+create unique index if not exists newsletter_subscribers_email
+  on public.newsletter_subscribers (email);
 ```
 
 ## 2. Enable RLS
@@ -69,6 +104,7 @@ alter table public.reactions
 ```sql
 alter table public.comments enable row level security;
 alter table public.reactions enable row level security;
+alter table public.newsletter_subscribers enable row level security;
 
 create policy "comments are readable"
   on public.comments for select
@@ -105,7 +141,18 @@ create policy "visitors can remove their reactions"
     (auth.uid() = user_id and user_id is not null)
     or (user_id is null and guest_id is not null)
   );
+
+create policy "newsletter signups are allowed"
+  on public.newsletter_subscribers for insert
+  with check (email is not null and email <> '');
+
+create policy "newsletter preferences can be updated"
+  on public.newsletter_subscribers for update
+  using (true)
+  with check (email is not null and email <> '');
 ```
+
+Do not add a public `select` policy for `newsletter_subscribers`; the site only writes or updates the visitor's preference and must not expose the full email list.
 
 ## 3. Configure the site
 

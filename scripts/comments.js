@@ -37,6 +37,14 @@
     return window.JanetAuth && window.JanetAuth.getIdentity();
   }
 
+  function displayName(name, guestId) {
+    const clean = String(name || '').trim();
+    if (/^游客_/i.test(clean)) return 'Janet 游客 ' + clean.replace(/^游客_/i, '').slice(0, 4).toUpperCase();
+    if (clean && !clean.includes('@')) return clean;
+    if (guestId) return 'Janet 游客 ' + String(guestId).replace(/^guest_/, '').slice(0, 4).toUpperCase();
+    return '有读者';
+  }
+
   function ownsComment(comment, identity) {
     if (!identity || !comment) return false;
     if (identity.mode === 'user') return comment.user_id === identity.userId;
@@ -92,7 +100,7 @@
 
   async function saveComment(editionId, content, parentCommentId) {
     const identity = getIdentity();
-    if (!identity) throw new Error('先选择游客或登陆账号。');
+    if (!identity) throw new Error('先选择游客或登录账号。');
     const payload = {
       edition_id: editionId,
       parent_comment_id: parentCommentId || null,
@@ -187,7 +195,8 @@
   function renderComment(comment, identity, replies, isReply) {
     const canDelete = ownsComment(comment, identity);
     const canReply = Boolean(identity) && !isReply;
-    const initial = String(comment.display_name || 'J').trim().slice(0, 1).toUpperCase();
+    const name = displayName(comment.display_name, comment.guest_id);
+    const initial = String(name || 'J').trim().slice(0, 1).toUpperCase();
     const id = escapeHtml(comment.id);
     const childReplies = replies.get(String(comment.id)) || [];
     const actions = [
@@ -199,7 +208,7 @@
       '<article class="comment-item' + (isReply ? ' comment-item--reply' : '') + '">',
       '  <div class="comment-avatar">' + escapeHtml(initial) + '</div>',
       '  <div class="comment-body">',
-      '    <div class="comment-meta"><strong>' + escapeHtml(comment.display_name || '游客') + '</strong><span>' + escapeHtml(timeLabel(comment.created_at)) + '</span></div>',
+      '    <div class="comment-meta"><strong>' + escapeHtml(name) + '</strong><span>' + escapeHtml(timeLabel(comment.created_at)) + '</span></div>',
       '    <p>' + escapeHtml(comment.content || '') + '</p>',
       actions ? '    <div class="comment-actions">' + actions + '</div>' : '',
       childReplies.length ? '    <div class="comment-replies">' + childReplies.map((reply) => renderComment(reply, identity, replies, true)).join('') + '</div>' : '',
@@ -226,7 +235,7 @@
       : '<p class="comments-empty">还没人开口。第一条，留给你。</p>';
 
     const replyNotice = replyTarget
-      ? '<div class="comment-replying"><span>正在回复 ' + escapeHtml(replyTarget.display_name || '游客') + '</span><button class="comment-reply-cancel" type="button" data-comment-reply-cancel>取消</button></div>'
+      ? '<div class="comment-replying"><span>正在回复 ' + escapeHtml(displayName(replyTarget.display_name, replyTarget.guest_id)) + '</span><button class="comment-reply-cancel" type="button" data-comment-reply-cancel>取消</button></div>'
       : '';
 
     const input = identity
@@ -242,7 +251,7 @@
       ].join('')
       : [
         '<div class="comments-login-prompt">',
-        '  <p>登陆或用游客身份后才能评论。</p>',
+        '  <p>登录或用游客身份后才能评论。</p>',
         '  <button class="btn btn-outline" type="button" data-comments-login>选择身份</button>',
         '</div>'
       ].join('');

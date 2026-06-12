@@ -146,6 +146,7 @@ cp .env.example .env
 ```
 
 默认模板已迁移进本项目，不再依赖外部公众号工程。
+默认模板已包含日报互动区：`#daily-comments`、`../../styles/comments.css` 和 `../../scripts/supabase-config.js`、`auth.js`、`comments.js`、`reactions.js`。
 
 不要写任何搜索 API key 或模型 API key。
 

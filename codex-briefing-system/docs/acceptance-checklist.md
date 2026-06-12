@@ -24,6 +24,9 @@
 - 没有禁忌词。
 - `output.html` 使用项目内 `templates/template.html` 风格。
 - `output.html` 有封面、今日趋势、Janet 锐评。
+- `output.html` 在 footer 前包含 `#daily-comments`，且 `data-edition-id` 是当天日期。
+- `output.html` 引用 `../../styles/comments.css`。
+- `output.html` 引用 `../../scripts/supabase-config.js`、`auth.js`、`comments.js`、`reactions.js`。
 - public site 首页能读取最新 `data/YYYY-MM-DD/content.json`。
 - 新闻归档最新一期指向 `data/YYYY-MM-DD/output.html`。
 - git staged diff 只包含 `data/YYYY-MM-DD/`。

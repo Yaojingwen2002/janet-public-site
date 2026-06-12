@@ -107,6 +107,160 @@
     return safeUrl(item && item.url);
   }
 
+  function addCommentsHash(url) {
+    if (!url || url === '#') return '#daily-comments';
+    return String(url).split('#')[0] + '#daily-comments';
+  }
+
+  function shareMenuMarkup() {
+    return '<div class="share-wrap">' +
+      '<button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>' +
+      '<div class="share-menu" role="menu" hidden>' +
+        '<button class="share-item" type="button" data-share-action="copy">复制链接</button>' +
+        '<button class="share-item" type="button" data-share-action="x">转发到 X</button>' +
+        '<button class="share-item" type="button" data-share-action="weibo">转发到微博</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderHomepageEngagement(editionId, title, outputUrl) {
+    const safeEditionId = escapeHtml(editionId);
+    const safeTitle = escapeHtml(title || 'Janet 快车箱');
+    const safeUrl = escapeHtml(outputUrl);
+    const commentUrl = escapeHtml(addCommentsHash(outputUrl));
+
+    return '<div class="home-engagement rv-fade" aria-label="今日快车箱互动">' +
+      '<div class="news-reactions news-reactions--home" data-edition-id="' + safeEditionId + '" data-edition-title="' + safeTitle + '" data-edition-url="' + safeUrl + '">' +
+        '<button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">' +
+          '<span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>' +
+        '</button>' +
+      '</div>' +
+      '<a class="comment-toggle-btn" href="' + commentUrl + '">' +
+        '评论 <span class="comment-count" data-comment-count data-edition-id="' + safeEditionId + '">0</span>' +
+      '</a>' +
+      shareMenuMarkup() +
+    '</div>';
+  }
+
+  function renderActivityRibbon(editionId, outputUrl) {
+    return '<div class="briefing-activity-ribbon rv-fade" data-briefing-activity data-edition-id="' + escapeHtml(editionId) + '" data-edition-url="' + escapeHtml(outputUrl) + '" aria-label="快车箱互动">' +
+      '<a class="briefing-activity-pill is-green" href="' + escapeHtml(addCommentsHash(outputUrl)) + '">有读者正在看今日信号</a>' +
+      '<a class="briefing-activity-pill is-signal" href="' + escapeHtml(addCommentsHash(outputUrl)) + '">本期评论正在打开</a>' +
+      '<a class="briefing-activity-pill is-gold" href="' + escapeHtml(outputUrl) + '">完整晨报已就绪</a>' +
+    '</div>';
+  }
+
+  function readerLabel(name, guestId) {
+    const clean = String(name || '').trim();
+    if (/^游客_/i.test(clean)) return 'Janet 游客 ' + clean.replace(/^游客_/i, '').slice(0, 4).toUpperCase();
+    if (clean && !clean.includes('@')) return clean.slice(0, 14);
+    if (guestId) return 'Janet 游客 ' + String(guestId).replace(/^guest_/, '').slice(0, 4).toUpperCase();
+    return '有读者';
+  }
+
+  function fallbackActivity(outputUrl) {
+    return [
+      { tone: 'is-green', text: '有读者正在看今日信号', url: addCommentsHash(outputUrl) },
+      { tone: 'is-signal', text: '评论区已为本期打开', url: addCommentsHash(outputUrl) },
+      { tone: 'is-gold', text: '完整晨报已就绪', url: outputUrl }
+    ];
+  }
+
+  async function loadSupabaseActivity(editionId, outputUrl) {
+    const client = window.JanetSupabase && window.JanetSupabase.client;
+    if (!client || !window.JanetSupabase.isConfigured) return fallbackActivity(outputUrl);
+
+    const [comments, reactions] = await Promise.all([
+      client
+        .from('comments')
+        .select('display_name, guest_id, content, created_at')
+        .eq('edition_id', editionId)
+        .eq('is_deleted', false)
+        .order('created_at', { ascending: false })
+        .limit(3),
+      client
+        .from('reactions')
+        .select('guest_id, created_at')
+        .eq('edition_id', editionId)
+        .eq('reaction_type', 'like')
+        .order('created_at', { ascending: false })
+        .limit(3)
+    ]);
+
+    const items = [];
+    if (!comments.error) {
+      (comments.data || []).forEach((row) => {
+        items.push({
+          tone: 'is-green',
+          text: readerLabel(row.display_name, row.guest_id) + ' 留下评论',
+          url: addCommentsHash(outputUrl),
+          createdAt: row.created_at
+        });
+      });
+    }
+    if (!reactions.error) {
+      (reactions.data || []).forEach((row) => {
+        items.push({
+          tone: 'is-signal',
+          text: readerLabel('', row.guest_id) + ' 觉得有用',
+          url: outputUrl,
+          createdAt: row.created_at
+        });
+      });
+    }
+
+    return items
+      .sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')))
+      .slice(0, 4)
+      .concat(fallbackActivity(outputUrl))
+      .slice(0, 4);
+  }
+
+  function setActivityPills(ribbon, items) {
+    ribbon.innerHTML = items.map((item, index) => {
+      return '<a class="briefing-activity-pill ' + escapeHtml(item.tone || 'is-green') + '" href="' + escapeHtml(item.url || '#') + '" style="--pill-index:' + index + '">' + escapeHtml(item.text || '有读者正在互动') + '</a>';
+    }).join('');
+  }
+
+  function initBriefingActivityRibbon(root, editionId, outputUrl) {
+    const ribbon = root.querySelector('[data-briefing-activity]');
+    if (!ribbon) return;
+    let newsVisible = true;
+    let worksVisible = false;
+
+    function updateVisibility() {
+      ribbon.classList.toggle('is-paused', !newsVisible || worksVisible);
+    }
+
+    function refreshActivity() {
+      loadSupabaseActivity(editionId, outputUrl)
+        .then((items) => setActivityPills(ribbon, items))
+        .catch(() => setActivityPills(ribbon, fallbackActivity(outputUrl)));
+    }
+
+    if ('IntersectionObserver' in window) {
+      const newsSection = document.getElementById('news');
+      const worksSection = document.getElementById('works-library');
+      if (newsSection) {
+        new IntersectionObserver((entries) => {
+          newsVisible = entries.some((entry) => entry.isIntersecting);
+          updateVisibility();
+        }, { threshold: 0.12 }).observe(newsSection);
+      }
+      if (worksSection) {
+        new IntersectionObserver((entries) => {
+          worksVisible = entries.some((entry) => entry.isIntersecting);
+          updateVisibility();
+        }, { threshold: 0.05 }).observe(worksSection);
+      }
+    }
+
+    refreshActivity();
+    document.addEventListener('janet:supabase-ready', refreshActivity);
+    document.addEventListener('janet:auth-changed', refreshActivity);
+    updateVisibility();
+  }
+
   function isSamePageAnchor(url) {
     if (!url || url === '#') return false;
     try {
@@ -277,6 +431,8 @@
     const cover = content.cover || {};
     const coverSrc = resolveAsset(contentUrl, cover.image_path, 'cover.png');
     const outputUrl = safeUrl(edition.url || String(contentUrl).replace(/content\.json(?:\?.*)?$/, 'output.html'));
+    const editionId = edition.edition_id || content.date || index.latest_edition_id || '';
+    const editionTitle = edition.title || content.title || content.cover?.title || 'Janet 快车箱';
     const news = sectionItems(content, 'news').slice(0, 5);
     const issue = [content.date || edition.date || index.latest_edition_id, content.vol ? 'Vol.' + content.vol : ''].filter(Boolean).join(' · ');
 
@@ -296,6 +452,8 @@
         '</section>' +
         renderTrend(content) +
         renderNewsCarousel(contentUrl, news) +
+        renderHomepageEngagement(editionId, editionTitle, outputUrl) +
+        renderActivityRibbon(editionId, outputUrl) +
         '<div class="news-actions codex-news-actions rv-fade">' +
           '<a class="btn btn-green" href="' + escapeHtml(outputUrl) + '" target="_blank" rel="noopener noreferrer">浏览当天完整晨报</a>' +
           '<a class="btn btn-outline" href="news.html">进入新闻归档</a>' +
@@ -304,6 +462,7 @@
 
     if (countEl) countEl.textContent = countItems(content) + ' 条信号';
     initNewsCarousel(container);
+    initBriefingActivityRibbon(container, editionId, outputUrl);
     document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 

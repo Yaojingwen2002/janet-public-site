@@ -1,35 +1,61 @@
 (function() {
   'use strict';
 
+  const state = {
+    mode: 'login',
+    countdown: { login: 0, create: 0 },
+    timers: { login: null, create: null }
+  };
+
   function modalTemplate() {
     return [
-      '<div class="visitor-modal" id="visitor-modal" role="dialog" aria-modal="true" hidden>',
+      '<div class="visitor-modal" id="visitor-modal" role="dialog" aria-modal="true" aria-labelledby="vm-title" hidden>',
       '  <div class="vm-backdrop" data-vm-close></div>',
       '  <div class="vm-panel">',
-      '    <button class="vm-close" type="button" data-vm-close aria-label="跳过">跳过，先看看 -></button>',
+      '    <button class="vm-close" type="button" data-vm-close aria-label="关闭">×</button>',
       '    <div class="vm-brand"><div class="vm-dot"></div>Janet</div>',
-      '    <h2 class="vm-title">欢迎来到<br><em>Janet 的内容站</em></h2>',
-      '    <p class="vm-desc">选择一种方式进入，游客也可以评论和点赞。</p>',
-      '    <div class="vm-options">',
-      '      <button class="vm-option vm-option--guest" type="button" id="vm-guest"><span class="vm-option-icon">J</span><span><strong>以游客身份浏览</strong><small>可以评论和点赞，显示为游客_XXXX</small></span><span class="vm-option-arr">-></span></button>',
-      '      <button class="vm-option vm-option--email" type="button" id="vm-email-toggle"><span class="vm-option-icon">@</span><span><strong>邮箱注册 / 登陆</strong><small>有昵称，评论更有辨识度</small></span><span class="vm-option-arr">-></span></button>',
-      '      <button class="vm-option vm-option--github" type="button" id="vm-github"><span class="vm-option-icon">GH</span><span><strong>GitHub 账号登陆</strong><small>一键授权，最快捷</small></span><span class="vm-option-arr">-></span></button>',
+      '    <h2 class="vm-title" id="vm-title">登录 Janet</h2>',
+      '    <p class="vm-desc">用邮箱进入 Janet。游客也可以评论和点赞，身份只保存在本地。</p>',
+      '    <div class="vm-tabs" role="tablist" aria-label="账户方式">',
+      '      <button class="vm-tab is-active" type="button" data-vm-mode="login">登录 Janet</button>',
+      '      <button class="vm-tab" type="button" data-vm-mode="create">创建 Janet 账户</button>',
       '    </div>',
-      '    <form class="vm-email-form" id="vm-email-form" hidden>',
-      '      <input type="email" id="vm-email-input" placeholder="你的邮箱" required>',
-      '      <input type="password" id="vm-password-input" placeholder="密码（至少8位）" required minlength="8">',
-      '      <input type="text" id="vm-nickname-input" placeholder="昵称（显示在评论里）">',
-      '      <button type="submit" class="btn btn-green">注册 / 登陆</button>',
-      '      <p class="vm-email-hint">已有账号直接填写邮箱+密码即可登陆</p>',
+      '    <form class="vm-card" id="vm-login-card" data-vm-card="login">',
+      '      <label class="vm-field"><span>邮箱</span><input type="email" id="vm-login-email" name="email" autocomplete="email" placeholder="you@example.com" required></label>',
+      '      <label class="vm-checkbox"><input type="checkbox" id="vm-login-terms"><span>我已阅读并同意 <button class="vm-link" type="button" data-vm-terms>隐私条款</button></span></label>',
+      '      <button class="btn btn-green vm-submit" type="submit" data-vm-submit="login" disabled>发送登录邮件</button>',
+      '      <button class="vm-switch" type="button" data-vm-mode="create">没有账号？创建账户</button>',
       '    </form>',
-      '    <p class="vm-note" id="vm-auth-message"></p>',
+      '    <form class="vm-card" id="vm-create-card" data-vm-card="create" hidden>',
+      '      <label class="vm-field"><span>邮箱</span><input type="email" id="vm-create-email" name="email" autocomplete="email" placeholder="you@example.com" required></label>',
+      '      <label class="vm-field"><span>用户名</span><input type="text" id="vm-create-name" name="display_name" autocomplete="nickname" maxlength="32" placeholder="显示在评论里的名字" required></label>',
+      '      <label class="vm-checkbox vm-newsletter"><input type="checkbox" id="vm-create-newsletter" checked><span><strong>是否订阅每日晨报？</strong><small>每天早上收到 Janet 快车箱晨报，包含今日 AI 信号和主站链接。</small></span></label>',
+      '      <label class="vm-checkbox"><input type="checkbox" id="vm-create-terms"><span>我已阅读并同意 <button class="vm-link" type="button" data-vm-terms>隐私条款</button></span></label>',
+      '      <button class="btn btn-green vm-submit" type="submit" data-vm-submit="create" disabled>创建账户</button>',
+      '      <button class="vm-switch" type="button" data-vm-mode="login">已有账号？登录</button>',
+      '    </form>',
+      '    <div class="vm-guest-row">',
+      '      <button class="vm-guest" type="button" id="vm-guest">以游客身份继续</button>',
+      '    </div>',
+      '    <section class="vm-terms-panel" id="vm-terms-panel" aria-label="隐私条款" hidden>',
+      '      <button class="vm-terms-close" type="button" data-vm-terms-close aria-label="关闭隐私条款">×</button>',
+      '      <h3>隐私条款</h3>',
+      '      <p>本站会保存你的邮箱、用户名、订阅选择、评论、点赞和转发记录，用来显示互动状态和后续扩展账户体验。</p>',
+      '      <p>邮箱只用于登录验证、账户识别和你主动勾选的每日晨报订阅，不会出售给第三方。</p>',
+      '      <p>评论内容会公开显示；游客身份只保存在本机浏览器里。需要退订、删除或修改资料时，可以联系 Janet 处理。</p>',
+      '    </section>',
+      '    <p class="vm-note" id="vm-auth-message" aria-live="polite"></p>',
       '  </div>',
       '</div>'
     ].join('');
   }
 
-  function qs(selector) {
-    return document.querySelector(selector);
+  function qs(selector, parent = document) {
+    return parent.querySelector(selector);
+  }
+
+  function qsa(selector, parent = document) {
+    return Array.from(parent.querySelectorAll(selector));
   }
 
   function getModal() {
@@ -42,10 +68,15 @@
     return modal;
   }
 
-  function open() {
+  function open(mode) {
     const modal = getModal();
+    setMode(mode || 'login');
     modal.hidden = false;
     document.body.classList.add('visitor-modal-open');
+    window.setTimeout(() => {
+      const input = qs(state.mode === 'login' ? '#vm-login-email' : '#vm-create-email');
+      if (input) input.focus();
+    }, 60);
   }
 
   function close(skip) {
@@ -62,46 +93,158 @@
     el.dataset.tone = tone || '';
   }
 
+  function setMode(mode) {
+    state.mode = mode === 'create' ? 'create' : 'login';
+    const modal = getModal();
+    qs('#vm-title', modal).textContent = state.mode === 'create' ? '创建 Janet 账户' : '登录 Janet';
+    qsa('[data-vm-card]', modal).forEach((card) => {
+      card.hidden = card.dataset.vmCard !== state.mode;
+    });
+    qsa('[data-vm-mode]', modal).forEach((button) => {
+      const active = button.dataset.vmMode === state.mode;
+      button.classList.toggle('is-active', active);
+      if (button.classList.contains('vm-tab')) button.setAttribute('aria-selected', String(active));
+    });
+    syncEmailInputs();
+    updateSubmitState();
+    setMessage('', '');
+  }
+
+  function syncEmailInputs(source) {
+    const loginEmail = qs('#vm-login-email');
+    const createEmail = qs('#vm-create-email');
+    if (!loginEmail || !createEmail) return;
+    if (source === loginEmail) createEmail.value = loginEmail.value;
+    else if (source === createEmail) loginEmail.value = createEmail.value;
+    else if (loginEmail.value && !createEmail.value) createEmail.value = loginEmail.value;
+    else if (createEmail.value && !loginEmail.value) loginEmail.value = createEmail.value;
+  }
+
+  function updateSubmitState() {
+    const loginReady = Boolean(qs('#vm-login-terms') && qs('#vm-login-terms').checked) && state.countdown.login <= 0;
+    const createReady = Boolean(qs('#vm-create-terms') && qs('#vm-create-terms').checked) && state.countdown.create <= 0;
+    const loginButton = qs('[data-vm-submit="login"]');
+    const createButton = qs('[data-vm-submit="create"]');
+    if (loginButton) {
+      loginButton.disabled = !loginReady;
+      if (state.countdown.login > 0) loginButton.textContent = '重新发送 ' + state.countdown.login + 's';
+      else loginButton.textContent = '发送登录邮件';
+    }
+    if (createButton) {
+      createButton.disabled = !createReady;
+      if (state.countdown.create > 0) createButton.textContent = '重新发送 ' + state.countdown.create + 's';
+      else createButton.textContent = '创建账户';
+    }
+  }
+
+  function startCountdown(mode) {
+    window.clearInterval(state.timers[mode]);
+    state.countdown[mode] = 60;
+    updateSubmitState();
+    state.timers[mode] = window.setInterval(() => {
+      state.countdown[mode] -= 1;
+      if (state.countdown[mode] <= 0) {
+        state.countdown[mode] = 0;
+        window.clearInterval(state.timers[mode]);
+      }
+      updateSubmitState();
+    }, 1000);
+  }
+
+  function setLoading(mode, isLoading) {
+    const button = qs('[data-vm-submit="' + mode + '"]');
+    if (!button) return;
+    button.classList.toggle('is-loading', Boolean(isLoading));
+    if (isLoading) {
+      button.disabled = true;
+      button.textContent = mode === 'create' ? '正在创建...' : '正在发送...';
+    } else {
+      updateSubmitState();
+    }
+  }
+
+  async function submitLogin(form) {
+    const email = String(new FormData(form).get('email') || '').trim();
+    if (!qs('#vm-login-terms').checked) {
+      setMessage('请先阅读并同意隐私条款。', 'warn');
+      return;
+    }
+    try {
+      setLoading('login', true);
+      await window.JanetAuth.sendLoginEmail(email);
+      setMessage('登录邮件已发送，请去邮箱点击链接。', 'success');
+      startCountdown('login');
+    } catch (error) {
+      setMessage(error.message || '邮件发送失败，请稍后再试。', 'warn');
+    } finally {
+      setLoading('login', false);
+    }
+  }
+
+  async function submitCreate(form) {
+    const data = new FormData(form);
+    const email = String(data.get('email') || '').trim();
+    const displayName = String(data.get('display_name') || '').trim();
+    const subscribed = Boolean(qs('#vm-create-newsletter') && qs('#vm-create-newsletter').checked);
+    if (!qs('#vm-create-terms').checked) {
+      setMessage('请先阅读并同意隐私条款。', 'warn');
+      return;
+    }
+    try {
+      setLoading('create', true);
+      await window.JanetAuth.createAccount({ email, displayName, subscribed });
+      setMessage('验证邮件已发送，请去邮箱点击链接完成创建。', 'success');
+      startCountdown('create');
+    } catch (error) {
+      setMessage(error.message || '创建账户失败，请稍后再试。', 'warn');
+    } finally {
+      setLoading('create', false);
+    }
+  }
+
   function bindModal(modal) {
     modal.querySelectorAll('[data-vm-close]').forEach((button) => {
       button.addEventListener('click', () => close(true));
     });
 
-    qs('#vm-guest').addEventListener('click', () => {
+    qsa('[data-vm-mode]', modal).forEach((button) => {
+      button.addEventListener('click', () => setMode(button.dataset.vmMode));
+    });
+
+    qsa('#vm-login-email, #vm-create-email', modal).forEach((input) => {
+      input.addEventListener('input', () => syncEmailInputs(input));
+    });
+
+    qsa('#vm-login-terms, #vm-create-terms', modal).forEach((input) => {
+      input.addEventListener('change', updateSubmitState);
+    });
+
+    qsa('[data-vm-terms]', modal).forEach((button) => {
+      button.addEventListener('click', () => {
+        qs('#vm-terms-panel', modal).hidden = false;
+      });
+    });
+
+    qsa('[data-vm-terms-close]', modal).forEach((button) => {
+      button.addEventListener('click', () => {
+        qs('#vm-terms-panel', modal).hidden = true;
+      });
+    });
+
+    qs('#vm-guest', modal).addEventListener('click', () => {
       const identity = window.JanetAuth.createGuest();
       setMessage(identity.displayName + ' 已进入。', 'success');
       window.setTimeout(() => close(false), 260);
     });
 
-    qs('#vm-email-toggle').addEventListener('click', () => {
-      qs('#vm-email-form').hidden = !qs('#vm-email-form').hidden;
-      setMessage(window.JanetAuth && window.JanetAuth.isConfigured()
-        ? ''
-        : 'Supabase 还没配置，邮箱/GitHub 暂不可用。', 'warn');
-    });
-
-    qs('#vm-github').addEventListener('click', async () => {
-      try {
-        setMessage('正在跳转 GitHub...', 'info');
-        await window.JanetAuth.signInWithGithub();
-      } catch (error) {
-        setMessage(error.message || 'GitHub 登陆暂不可用。', 'warn');
-      }
-    });
-
-    qs('#vm-email-form').addEventListener('submit', async (event) => {
+    qs('#vm-login-card', modal).addEventListener('submit', (event) => {
       event.preventDefault();
-      const email = qs('#vm-email-input').value.trim();
-      const password = qs('#vm-password-input').value;
-      const nickname = qs('#vm-nickname-input').value.trim();
-      try {
-        setMessage('正在处理...', 'info');
-        await window.JanetAuth.signInOrSignUp(email, password, nickname);
-        setMessage('登陆成功。', 'success');
-        window.setTimeout(() => close(false), 360);
-      } catch (error) {
-        setMessage(error.message || '邮箱登陆失败。', 'warn');
-      }
+      submitLogin(event.currentTarget);
+    });
+
+    qs('#vm-create-card', modal).addEventListener('submit', (event) => {
+      event.preventDefault();
+      submitCreate(event.currentTarget);
     });
   }
 
@@ -111,8 +254,9 @@
     getModal();
     window.setTimeout(() => {
       const identity = window.JanetAuth && window.JanetAuth.getIdentity();
-      const skipped = localStorage.getItem(window.JanetAuth && window.JanetAuth.storage.skipped);
-      if (!identity && !skipped) open();
+      const skippedKey = window.JanetAuth && window.JanetAuth.storage && window.JanetAuth.storage.skipped;
+      const skipped = skippedKey ? localStorage.getItem(skippedKey) : '';
+      if (!identity && !skipped) open('login');
     }, 1500);
   });
 })();

@@ -43,10 +43,20 @@
     return window.JanetAuth && window.JanetAuth.getIdentity();
   }
 
+  function reactionWrapFor(button) {
+    return button.closest('.news-reactions') ||
+      button.closest('.news-card-actions, .news-secondary-actions, .home-engagement, .bottom-interaction-bar')?.querySelector('.news-reactions');
+  }
+
   function getEditionUrl(button) {
-    const wrap = button.closest('.news-reactions');
+    const wrap = reactionWrapFor(button);
     const url = wrap && wrap.dataset.editionUrl ? wrap.dataset.editionUrl : window.location.href;
     return new URL(url, window.location.href).href;
+  }
+
+  function getEditionTitle(button) {
+    const wrap = reactionWrapFor(button);
+    return wrap && wrap.dataset.editionTitle ? wrap.dataset.editionTitle : 'Janet 快车箱';
   }
 
   function getCountsLocal(editionId) {
@@ -159,13 +169,29 @@
     await Promise.all(qsa('.news-reactions').map(renderWrap));
   }
 
-  function openShare(button, explicitAction) {
+  async function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    const input = document.createElement('textarea');
+    input.value = text;
+    input.setAttribute('readonly', '');
+    input.style.position = 'fixed';
+    input.style.left = '-999px';
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    input.remove();
+  }
+
+  async function openShare(button, explicitAction) {
     const wrap = button.closest('.share-wrap');
-    const menu = qs('.share-menu', wrap);
+    const menu = wrap ? qs('.share-menu', wrap) : null;
     const url = getEditionUrl(button);
-    const title = button.closest('.news-reactions')?.dataset.editionTitle || 'Janet 快车箱';
+    const title = getEditionTitle(button);
     if (explicitAction === 'copy') {
-      navigator.clipboard?.writeText(url);
+      await copyText(url);
       button.textContent = '已复制';
       window.setTimeout(() => { button.textContent = '复制链接'; }, 1200);
       return;
@@ -178,7 +204,19 @@
       window.open('https://service.weibo.com/share/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title), '_blank', 'noopener,noreferrer');
       return;
     }
-    if (menu) menu.hidden = !menu.hidden;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+        return;
+      } catch (error) {
+        if (error && error.name === 'AbortError') return;
+      }
+    }
+    if (menu) {
+      menu.hidden = !menu.hidden;
+      const toggle = wrap && qs('[data-share-toggle]', wrap);
+      if (toggle) toggle.setAttribute('aria-expanded', String(!menu.hidden));
+    }
   }
 
   function bind() {
@@ -194,14 +232,14 @@
       const shareBtn = event.target.closest('[data-share-toggle]');
       if (shareBtn) {
         event.preventDefault();
-        openShare(shareBtn);
+        await openShare(shareBtn);
         return;
       }
 
       const shareAction = event.target.closest('[data-share-action]');
       if (shareAction) {
         event.preventDefault();
-        openShare(shareAction, shareAction.dataset.shareAction);
+        await openShare(shareAction, shareAction.dataset.shareAction);
       }
     });
 

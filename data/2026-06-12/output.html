@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/comments.css">
   <style>
 /* ═══════════════════════════════════════════════════
    Janet 快车箱 · 晨报模板
@@ -839,6 +840,27 @@ footer a { color: var(--green); }
 </div>
 
 
+    <div class="news-card-actions output-engagement" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-06-12" data-edition-title="Janet 快车箱 2026-06-12" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        评论 <span class="comment-count" data-comment-count data-edition-id="2026-06-12">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-06-12"></section>
+
     <!-- ══ 页脚 ══════════════════════════════════════════ -->
     <footer>
       <span class="footer-brand">Janet 快车箱</span>
@@ -848,5 +870,9 @@ footer a { color: var(--green); }
     </footer>
 
   </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
 </body>
 </html>

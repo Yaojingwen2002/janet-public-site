@@ -1,0 +1,206 @@
+{
+  "date": "2026-06-16",
+  "vol": "259",
+  "intro_text": "Janet 快车箱今日看点：OpenAI 把伙伴网络做成企业交付渠道，Microsoft 把 Phi 小模型继续压向端侧，NAVER 和 NVIDIA 把主权 AI 工厂推到国家级基础设施，HHS 试用 ChatGPT 则提醒所有人，AI 进公共部门后，审计和责任边界比口号更硬。",
+  "cover": {
+    "title": "AI 变成交付系统",
+    "subtitle": "模型公司不只拼参数，开始拼渠道、算力、主权和责任边界。",
+    "image_path": "runs/2026-06-16/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: AI technology magazine cover, 21:9 wide hero image for Janet AI briefing. Create a premium horizontal cover image for the theme AI 开始变成交付系统. Visual concept: black and white enterprise AI operations floor where partner networks, sovereign AI infrastructure, local model terminals, healthcare audit dashboards, satellite vision systems, and agent workflow control panels converge into one precise deployment command center. Thin Janet-green #18E299 signal lines connect secure model gateways, edge devices, compliance locks, data-center racks, and workflow nodes. Strong negative space in lower-left and center-left for HTML title overlay. Palette black, white, graphite, Janet green only. No readable text, logos, dates, captions, watermark, robot crowd, glowing brain, or neon cyberpunk."
+  },
+  "trend": "AI 变成交付系统\n\n今天的共同主线不是谁又把模型分数刷高了一点，而是 AI 公司开始把模型变成交付系统：OpenAI 推 Partner Network，Microsoft 把 Phi 小模型继续压向端侧和多模态，NAVER 与 NVIDIA 把 AI 工厂讲成国家基础设施，HHS 试用 ChatGPT 又把公共部门责任边界摆到桌面上。\n\n对中国创作者和企业来说，这意味着下一轮红利不在“会不会问模型”，而在能不能把 AI 接进销售、客服、财务、内容生产、政企交付和本地设备里。渠道、数据权限、算力位置、审计日志和失败回滚会比单次回答质量更决定采购。\n\n接下来 2-4 周重点盯三件事：OpenAI 伙伴网络会不会把中小服务商卷进认证体系，端侧小模型能不能真压低批量任务成本，主权 AI 工厂和公共部门试点会不会把模型选择从产品问题变成政策问题。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI 把伙伴网络推上前台",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/introducing-openai-partner-network/",
+          "body": "OpenAI 发布 OpenAI Partner Network，把咨询公司、系统集成商和技术服务商纳入企业 AI 交付体系。它不只是列一个合作伙伴名单，而是要让企业客户通过认证伙伴完成用例识别、部署、培训和持续优化。",
+          "janet_take": "OpenAI 终于承认一件事：模型卖给企业，靠官网下单远远不够。真正的钱在改流程、接系统、训员工和持续交付里，这些脏活必须有人做。国内做 AI 服务商的团队可以对照它的伙伴体系重做产品包，把“帮你用 ChatGPT”升级成可验收的业务改造，否则只会被客户当外包 prompt 工。",
+          "image_url": "https://images.openai.com/blob/",
+          "image": "images/news-01-openai.jpg",
+          "image_source_url": "http://news.cnhubei.com/a/10001/202405/0b66160c63c6347f92e0125481e0b60d.jpeg",
+          "image_origin": "search"
+        },
+        {
+          "title": "HHS 试用 ChatGPT 进医保系统",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/world/us/us-health-agency-trials-chatgpt-key-medicaid-system-2026-06-15/",
+          "body": "Reuters 报道，美国卫生与公众服务部正在一个关键 Medicaid 系统相关工作中试用 ChatGPT，用于辅助部分流程和文档处理。公共部门把生成式 AI 放进医保业务，意味着效率实验开始碰到敏感数据、公共服务和审计责任。",
+          "janet_take": "医疗和医保不是普通办公场景，错一句话可能直接变成责任事故。ChatGPT 进这种系统，真正难点不是能不能写摘要，而是谁能看数据、谁批准输出、出错后谁背锅。做政企 AI 的团队别只讲降本，先把权限、日志、人工复核和可追溯证据链做硬，不然效率故事很快会被风控打回去。",
+          "image": "images/news-02-hhs-chatgpt.jpg",
+          "image_source_url": "https://assets.st-note.com/production/uploads/images/116536197/rectangle_large_type_2_5294d60648909a2b5aa1b4d58230701a.jpeg?fit=bounds&quality=85&width=1280",
+          "image_origin": "search"
+        },
+        {
+          "title": "NAVER 和 NVIDIA 押主权 AI 工厂",
+          "source": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/naver-cloud-sovereign-ai/",
+          "body": "NVIDIA 报道，NAVER Cloud 正与 NVIDIA 推进面向主权 AI 的 AI factory 能力，强调本地语言、数据和算力基础设施。这个方向把 AI 从单纯云服务变成国家和地区级数字基础设施。",
+          "janet_take": "主权 AI 听起来很宏大，本质是客户在问：我的数据、模型和算力到底在谁手里。对大企业和政府来说，最强模型不一定能赢，能本地化、可控、可审计才是门票。中国企业出海和做政企项目时要学会讲数据驻留、合规部署和本地生态，不要只拿模型分数当万能通行证。",
+          "image": "images/news-03-naver-nvidia-ai.jpg",
+          "image_source_url": "https://developer-blogs.nvidia.com/zh-cn-blog/wp-content/uploads/sites/2/2025/05/nvidia-mgx-1-1024x576-1.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta 继续把 AI 塞进眼镜",
+          "source": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-06-15/meta-s-ai-glasses-push-puts-assistant-on-your-face",
+          "body": "Bloomberg 报道，Meta 继续推进 AI 眼镜相关产品和助手能力，把摄像头、语音交互和模型服务绑定到可穿戴入口。AI 硬件的重点正在从“能聊天”转向“能看到你的现场并立刻行动”。",
+          "janet_take": "眼镜入口比手机更狠，因为它拿到的是第一视角。好处是记录、翻译、检索和提醒会更顺，坏处是隐私和社交接受度也会直接炸出来。创作者可以盯第一视角素材、实时字幕和外拍脚本辅助，企业采购则要先问员工和客户是否接受被设备长期看着。AI 戴到脸上，产品能力和伦理成本会一起放大。",
+          "image": "images/news-04-meta-ai.jpg",
+          "image_source_url": "https://n.sinaimg.cn/spider20250421/435/w772h463/20250421/0ac1-8568aa886890a72262c0daec11aea5e7.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Perplexity 逼搜索流量重新付账",
+          "source": "The Verge",
+          "url": "https://www.theverge.com/2026/6/15/perplexity-ai-search-publishers-revenue-sharing",
+          "body": "The Verge 报道，Perplexity 继续推进与出版商、搜索分发和收入分享相关的谈判。AI 答案引擎正在把传统搜索的流量分配问题改写成内容授权和商业结算问题。",
+          "janet_take": "AI 搜索最锋利的地方，是它把网页点击压成答案。出版商当然会急，因为流量少了，广告和订阅账本就会出血。内容团队现在要减少纯资讯搬运，增加观点、数据、模板和私域沉淀；如果你的内容只能被模型一句话概括，那它迟早会被搜索入口白嫖。创作者要把用户关系留在自己手里，不要只给平台当素材供应商。",
+          "image": "images/news-05-perplexity.webp",
+          "image_source_url": "https://www.pythonthree.com/wp-content/uploads/2023/04/1682298062-Perplexity.webp",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Microsoft 让 Phi 小模型继续上设备",
+          "source": "Microsoft",
+          "url": "https://www.microsoft.com/en-us/research/blog/phi-4-reasoning-technical-report/",
+          "body": "Microsoft 继续围绕 Phi-4 reasoning 系列说明小模型的推理、效率和本地部署价值。Phi 路线押的不是最大参数，而是在端侧、私有环境和低成本任务中把推理能力做得更可用。",
+          "janet_take": "小模型不是大模型的廉价替身，它是批量任务的省钱刀。企业内部有大量分类、抽取、质检、客服初筛和文档预处理，不需要每次都请最贵模型出场。团队要把任务拆层，复杂决策给强模型，稳定重复的活给 Phi 这类小模型；省下来的不是几分钱，是整个自动化系统的毛利。",
+          "image": "images/models-01-microsoft-phi.jpg",
+          "image_source_url": "https://gizchina.it/wp-content/uploads/2024/04/microsoft-phi-3-intelligenza-artificiale-ai-ufficiale.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Google 让 Gemma 继续贴近开发者",
+          "source": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/en/gemma-3n/",
+          "body": "Google Developers 持续更新 Gemma 生态，强调开放模型、开发者工具链和本地运行体验。Gemma 系列的价值在于让团队能用更低门槛做原型、微调和端侧实验。",
+          "janet_take": "Gemma 这种路线不负责制造神话，负责降低试错成本。独立开发者和中小团队最缺的不是“世界第一模型”，而是一个能改、能跑、能接进产品的底座。要用它就别只跑聊天 demo，直接测试文档抽取、APP 内离线助手和私有知识库，能稳定省调用费才算真价值。",
+          "image": "images/models-02-google-gemma.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/06.2e16d0ba.fill-1200x600.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Mistral 把欧洲模型继续打包卖",
+          "source": "Mistral AI",
+          "url": "https://mistral.ai/news/",
+          "body": "Mistral AI 继续围绕企业级模型、部署选项和欧洲市场推进产品更新。它的叙事一直很清楚：在美国大厂之外，给企业一个更可控、更贴近欧洲监管环境的模型供应选择。",
+          "janet_take": "Mistral 的机会不在“比 OpenAI 更会聊天”，而在客户害怕被单一美国供应商锁死。欧洲企业买模型，合规、数据位置和合同稳定性会越来越重。国内企业也该学这件事：不要把所有关键流程压在一个模型供应商身上，多模型路由和退出方案不是高级功能，是保命配置。",
+          "image": "images/models-03-mistral.jpg",
+          "image_source_url": "https://mistral.ai/cms-media/api/media/file/OG-mistral-main_1x.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "xAI 继续把 Grok 绑进社交场",
+          "source": "xAI",
+          "url": "https://x.ai/news",
+          "body": "xAI 继续围绕 Grok、X 平台和实时信息入口推进产品更新。Grok 的差异化不是单点能力，而是和社交平台、热点信息、付费订阅以及创作者分发场景绑定。",
+          "janet_take": "Grok 最大的武器不是模型参数，是它站在信息流旁边。实时热点、用户关系和平台分发会让它更像内容操作台，而不是普通聊天框。做内容的人可以盯它的选题、摘要和互动辅助，但别把平台内 AI 当独立资产；入口在人家手里，规则一改，你的工作流就要跟着改。",
+          "image": "images/models-04-xai-grok.png",
+          "image_source_url": "https://help.apiyi.com/wp-content/uploads/2026/01/xai-grok-api-x-search-web-search-guide-image-0.png",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "AI 伙伴制把咨询公司喂肥",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/introducing-openai-partner-network/",
+          "body": "OpenAI Partner Network 显示，大模型企业化正在从 API 销售转向伙伴交付。认证、培训、集成和行业解决方案会成为模型公司扩大企业收入的关键环节。",
+          "janet_take": "这会让一批咨询公司和系统集成商重新吃到红利。企业不是不会买 AI，而是不知道怎么把 AI 变成流程、KPI 和预算项。小团队别再卖泛泛的“AI 咨询”，要做行业化包：比如销售线索清洗、客服质检、财务报表初审、短视频素材流水线。客户愿意付钱的永远是被砍掉的工时。",
+          "image": "images/insights-01-ai.png",
+          "image_source_url": "https://www.781203.com/wp-content/uploads/2024/01/2024011215050783-1024x576.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "主权 AI 把算力变成政策资产",
+          "source": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/naver-cloud-sovereign-ai/",
+          "body": "NAVER Cloud 与 NVIDIA 的主权 AI 工厂叙事说明，AI 基础设施正从商业云服务变成政策、语言、数据和产业安全的一部分。算力在哪里、数据怎么流、模型由谁维护，会变成采购前置问题。",
+          "janet_take": "主权 AI 的底层逻辑很现实：谁控制基础设施，谁就控制产业议价权。对企业来说，最麻烦的不是模型迁移，而是数据和合规链条迁移。出海公司要提前准备多云、多区域和本地化部署方案，别等客户问数据驻留时，才发现自己的架构只有一条海外 API。政企客户买的是可控性，不是发布会气势。",
+          "image": "images/insights-02-ai.jpg",
+          "image_source_url": "https://blogs.nvidia.com/wp-content/uploads/2026/02/sao-paulo-featured-1920x1080-2-960x540.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "公共部门让 AI 审计先上桌",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/world/us/us-health-agency-trials-chatgpt-key-medicaid-system-2026-06-15/",
+          "body": "HHS 试用 ChatGPT 的报道把公共部门 AI 的核心矛盾摆出来：政府想要效率，但系统牵涉医保、公共资金和敏感人群，任何自动化都必须留下可解释、可复核和可追责的链路。",
+          "janet_take": "公共部门不会因为 AI 时髦就放弃审计，相反会把审计变成第一需求。做政府、医疗、教育和金融 AI 的公司，要把人工复核、权限分级、输出留痕和错误回滚做成默认能力。演示里少点炫酷，多给客户看风险怎么被关在笼子里，这比模型多聪明十个百分点更容易成交。",
+          "image": "images/insights-03-ai.jpg",
+          "image_source_url": "https://picx.zhimg.com/v2-d8a24ab3e0e4fa917006ba3174025242_720w.jpg?source=172ae18b",
+          "image_origin": "search"
+        },
+        {
+          "title": "AI 搜索把内容版权逼到牌桌上",
+          "source": "The Verge",
+          "url": "https://www.theverge.com/2026/6/15/perplexity-ai-search-publishers-revenue-sharing",
+          "body": "Perplexity 与出版商相关谈判折射出 AI 搜索的新矛盾：答案引擎需要内容供给，但内容方不愿只做免费训练料和引用背景。搜索分发、授权和收入分成会继续拉扯。",
+          "janet_take": "内容行业以前怕平台抽成，现在还要怕平台直接替你回答。解决办法不是求 AI 别抓，而是提高内容不可替代性。媒体和创作者要把独家数据、观点、社区、工具和交易场景抓在自己手里，单纯资讯快讯会越来越像搜索引擎的燃料，烧完连灰都不剩。能收费的内容必须让用户有理由回到你这里。",
+          "image": "images/insights-04-ai.jpg",
+          "image_source_url": "https://pbs.twimg.com/media/Fv27mjxWAAAAyR8.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "企业 AI 预算开始流向交付商",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/introducing-openai-partner-network/",
+          "body": "OpenAI 建立伙伴网络，说明企业 AI 预算会从单纯模型订阅继续流向咨询、集成、培训和行业解决方案。谁能把模型变成可验收流程，谁就能拿走更高客单价。",
+          "janet_take": "资本和客户都会更偏爱能交付结果的公司。纯模型壳应用很容易被平台吞掉，但行业交付商如果拿住客户流程、数据迁移和培训服务，反而更难被替代。创业者要少讲“我们接入了最强模型”，多讲“我们替哪个岗位省了多少小时”，融资故事也会更硬。预算会先给能验收的人，不会给会讲概念的人。",
+          "image": "images/insights2-01-ai.jpg",
+          "image_source_url": "https://images.ctee.com.tw/newsphoto/2025-08-07/1024/A10AA10_PictureItem_Clipping_04_4.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "主权 AI 让本地云厂商加价",
+          "source": "NVIDIA Blog",
+          "url": "https://blogs.nvidia.com/blog/naver-cloud-sovereign-ai/",
+          "body": "主权 AI 工厂叙事会推高本地云、数据中心、GPU 集群和合规服务的战略价值。客户越重视数据和政策边界，本地基础设施供应商越有议价空间。",
+          "janet_take": "这不是一门轻生意，但会是一门硬生意。数据中心、电力、GPU、网络和合规团队都会从主权 AI 里分到钱，只是回本周期不会像 SaaS 那么漂亮。投资视角要看谁有真实客户、长约和能源条件，别只看发布会上的“国家级”三个字，重资产故事最怕现金流跟不上。",
+          "image": "images/insights2-02-ai.jpg",
+          "image_source_url": "https://blogs.nvidia.com/wp-content/uploads/2026/02/sao-paulo-inception-session-scaled.jpeg",
+          "image_origin": "search"
+        },
+        {
+          "title": "AI 搜索分成逼内容公司重估值",
+          "source": "The Verge",
+          "url": "https://www.theverge.com/2026/6/15/perplexity-ai-search-publishers-revenue-sharing",
+          "body": "AI 搜索与出版商收入分享谈判，会影响内容公司的估值逻辑。未来流量不只来自搜索点击，也可能来自答案引用、授权收入、数据合作和平台分成。",
+          "janet_take": "内容公司的估值要从 PV 逻辑切到资产逻辑。谁拥有可授权资料库、垂直专家网络和高粘性用户，谁还能谈条件；只靠 SEO 长尾流量的站点，会被答案引擎压得很惨。创作者也一样，要把模板、课程、社群和服务做出来，不要把命交给搜索曝光。流量入口会变，但用户信任才是资产。",
+          "image": "images/insights2-03-ai.jpg",
+          "image_source_url": "https://www.yimiaotui.com/d/image/20250721/7e12aab502b7a0a33a4fdd4f3e6451e2.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Google NotebookLM 继续抢研究桌面",
+          "source": "Google Labs",
+          "url": "https://notebooklm.google/",
+          "body": "Google NotebookLM 继续作为资料整理、问答、摘要和音频概览工具扩展使用场景。它把个人资料库变成可对话的研究桌面，适合处理长文档、报告、课程材料和选题资料。",
+          "janet_take": "NotebookLM 真正好用的地方不是炫，而是帮人少翻资料。创作者可以把采访稿、论文、行业报告和竞品页面塞进去，先做选题框架、摘要和反驳点，再自己写观点。别拿它当最终作者，它更适合当资料助理；把来源整理和初筛交给它，人负责判断和表达。资料越多，越要保留原文链接，别让模型替你偷懒。",
+          "image_url": "https://notebooklm.google.com/static/notebooklm_logo.png",
+          "image": "images/tools-01-google-notebooklm.png",
+          "image_source_url": "https://notebooklm.google.com/static/notebooklm_logo.png",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

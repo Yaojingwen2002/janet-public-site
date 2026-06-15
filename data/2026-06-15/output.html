@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-06-15 · VOL 258</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/comments.css">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Fraunces (标题) · DM Sans (正文) · Geist Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'Geist Mono', 'SFMono-Regular', 'Fira Code', monospace;
+  --sans:         'DM Sans', 'PingFang SC', system-ui, sans-serif;
+  --display:      'Fraunces', Georgia, 'Noto Serif SC', serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-06-15</div>
+          <div class="vol-info">VOL 258</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="AI 进入管制区" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-06-15 // VOL_258</div>
+   <h1>AI 进入管制区</h1>
+   <p>模型公司从炫技切到合规、企业和 Agent 入口战</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">OpenAI 刚冲 IPO 就被 42 州检察长调查，Anthropic 因美国政府限制暂停新模型访问，Google 把搜索做成 24/7 信息 Agent，Vercel 推 HarnessAgent 反锁定，LiteLLM 被 CISA 点名。今天的 AI 不是在炫模型，是在被企业、监管和安全现实硬拽上牌桌。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。</div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>📌 今日趋势：模型公司进入管制区</h2>
+  <p>今天的共同主线不是谁又多跑了几个 benchmark，而是 AI 开始被真实世界接管：OpenAI 被州检察长追问用户伤害和数据处理，Anthropic 的新模型被政府限制牵着走，Google 搜索 Agent 和 Vercel HarnessAgent 则把 Agent 从演示拉进日常工作流。</p>
+  <p>对中国创作者和中小企业来说，这意味着选模型不能只看聪明不聪明。你要看它能不能稳定用、成本会不会突然变脸、数据和账号会不会被平台规则卡死。能落地的不是最会聊天的模型，而是能被审计、能替人值班、能接进业务的那一层。</p>
+  <p>接下来 2-4 周重点盯三件事：OpenAI 调查是否扩大到产品限制，Anthropic 的政府访问争议是否影响 API 和企业合同，Google、Vercel、Cloudflare 这些入口型平台会不会把 Agent 标准先抢走。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-openai-42.jpg" alt="OpenAI 被42州检察长盯上" loading="lazy" decoding="async">
+    <figcaption>TechCrunch</figcaption>
+  </figure>
+  <h2>OpenAI 被42州检察长盯上</h2>
+  <p class="item-meta">来源: TechCrunch · 2026-06-15 · <a href="https://techcrunch.com/2026/06/13/openai-faces-investigation-from-state-attorneys-general/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>TechCrunch 报道，美国多州检察长联盟已对 OpenAI 展开调查，纽约总检察长办公室向 OpenAI 发出传票，索取与广告、用户留存、模型 sycophancy、消费者数据、健康数据，以及未成年人和老年人保护相关的文件。时间点很刺眼：OpenAI 近期刚被曝秘密提交上市文件。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>OpenAI 最怕的不是多一个竞品，而是 ChatGPT 从工具变成公共风险样本。只要调查抓住未成年人、健康建议和数据处理，产品迭代就会被法律流程拖慢。做海外 AI 应用的团队现在要把安全日志、用户同意和高风险场景提示补齐，不然你不是在做产品，是在给律师攒素材。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-02-anthropic.jpg" alt="Anthropic 被白宫按下暂停键" loading="lazy" decoding="async">
+    <figcaption>TechCrunch / Seeking Alpha</figcaption>
+  </figure>
+  <h2>Anthropic 被白宫按下暂停键</h2>
+  <p class="item-meta">来源: TechCrunch / Seeking Alpha · 2026-06-15 · <a href="https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>TechCrunch 与 Seeking Alpha 等媒体报道，Anthropic 因美国政府对最新模型访问限制而陷入争议。印度市场也开始讨论：当一家前沿模型公司可以因为政策压力暂停新模型访问，依赖海外闭源模型的国家和企业到底还有多少主动权。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Anthropic 一直卖安全人设，现在轮到它被安全逻辑反噬。政府一出手，所谓全球可用立刻变成分区供给，企业合同也会跟着紧张。国内公司别把关键工作流全押在单一海外模型上，至少要准备国产模型、开源模型和本地缓存三层退路。真正的风险不是模型变笨，是你的业务突然没有备用路。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-google.webp" alt="Google 搜索开始替人盯网" loading="lazy" decoding="async">
+    <figcaption>PPC Land / Moneycontrol</figcaption>
+  </figure>
+  <h2>Google 搜索开始替人盯网</h2>
+  <p class="item-meta">来源: PPC Land / Moneycontrol · 2026-06-15 · <a href="https://ppc.land/google-expands-search-agents-to-all-ai-mode-languages-for-ultra-subscribers/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>PPC Land 报道，Google 已把 Search agents 扩展到所有 AI Mode 语言和市场，面向 Google AI Ultra 订阅用户开放。这些信息 Agent 可以 24/7 监控开放网页、新闻、社交和结构化实时数据，在发现相关变化后主动汇总并推送带链接的结果。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这不是搜索升级，这是 Google 把搜索从一次性问答改成长期值班。创作者最先受影响：选题监控、竞品跟踪、价格观察会被系统自动化，手工刷信息流会越来越蠢。真正要练的是如何给 Agent 写监控任务，而不是每天假装自己很勤奋地刷新网页。谁先把情报任务产品化，谁就少花一半编辑时间。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-agent.jpg" alt="韩国大厂把 Agent 铺到工位" loading="lazy" decoding="async">
+    <figcaption>The Korea Herald</figcaption>
+  </figure>
+  <h2>韩国大厂把 Agent 铺到工位</h2>
+  <p class="item-meta">来源: The Korea Herald · 2026-06-15 · <a href="https://www.koreaherald.com/article/10771250" target="_blank" rel="noopener">原文链接</a></p>
+  <p>The Korea Herald 报道，Samsung、SK、LG 等韩国企业正在加速把 AI Agent 部署到办公场景，从文档、客服、研发协作到内部知识检索，目标不是做演示，而是让每个员工桌面都有可调用的 AI 助手。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>韩国企业这波很现实：不争谁模型更玄学，先看每个工位能不能少耗一个人。老板应该学这个节奏，先从财务、客服、运营、销售支持这些可量化岗位开刀。Agent 不需要一次替掉公司，它只要先吃掉重复劳动，组织成本曲线就会变形。别等完美系统，先让一个部门跑出节省工时的数字。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-litellm.webp" alt="LiteLLM 漏洞把AI网关打成入口" loading="lazy" decoding="async">
+    <figcaption>Help Net Security / CISA</figcaption>
+  </figure>
+  <h2>LiteLLM 漏洞把AI网关打成入口</h2>
+  <p class="item-meta">来源: Help Net Security / CISA · 2026-06-15 · <a href="https://www.helpnetsecurity.com/2026/06/14/week-in-review-exploited-check-point-vpn-zero-day-oracle-peoplesoft-servers-under-attack/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Help Net Security 的周报提到，BerriAI LiteLLM 的命令注入漏洞 CVE-2026-42271 已被攻击者利用，并被 CISA 加入 Known Exploited Vulnerabilities 目录。LiteLLM 常被企业用作统一模型网关，一旦网关被打穿，后面接的模型、密钥和业务系统都会被牵连。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI 网关正在变成新的入口服务器，很多团队还拿它当开发小工具乱部署。最危险的不是模型胡说，是网关拿着一堆密钥还裸奔。做企业 AI 的人今天就该查版本、隔离凭证、限制执行环境，不要等客户数据被拖走才开始补安全课。模型层越统一，安全边界越要前移。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-glm-52.jpg" alt="GLM-5.2 用百万上下文卷代码" loading="lazy" decoding="async">
+    <figcaption>X AI Digest / Threads</figcaption>
+  </figure>
+  <h3>GLM-5.2 用百万上下文卷代码</h3>
+  <p class="item-meta">来源: X AI Digest / Threads · 2026-06-15 · <a href="https://www.threads.com/@unayung/post/DZkGgzNj35h/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>开发者社区 6 月 14 日集中讨论智谱 GLM-5.2 coding model，核心卖点是 1M context、长程编程能力，以及面向 GLM Coding 的计划、API 和聊天入口。它指向的不是普通问答，而是让模型接手更长项目上下文。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>百万上下文不是炫数字，真正价值是少丢项目记忆。代码团队最痛的是模型看不完整个仓库，只能靠人反复喂背景。要试这类模型，别拿小 demo 测，直接丢多模块重构、跨文件 bug 和长文档问答，看它能不能少犯低级失忆病。能稳定吃长仓库，才配谈工程生产力。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-claude-agent.jpg" alt="Claude 计费把Agent工作流拆池" loading="lazy" decoding="async">
+    <figcaption>UsageBox / The AI Consulting Network</figcaption>
+  </figure>
+  <h3>Claude 计费把Agent工作流拆池</h3>
+  <p class="item-meta">来源: UsageBox / The AI Consulting Network · 2026-06-15 · <a href="https://usagebox.com/articles/claude-code-cost-2026-per-token-per-month-june-deadlines" target="_blank" rel="noopener">原文链接</a></p>
+  <p>多家成本管理博客提醒，Anthropic 从 6 月 15 日开始把 agentic Claude 使用从普通订阅池中拆出，自动化工作流将更接近按量计费。Claude Code、长时间任务和企业自动化使用，不再适合用个人订阅思维估算。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这是所有重度 Claude Code 用户迟早要面对的账单真相。平台不会永远补贴你拿订阅跑自动化工厂，算力总会回到单价上。团队要尽快把任务分层：高价值推理给 Claude，批量清洗、摘要和低风险代码交给便宜模型或本地模型。账单结构变了，工作流架构也要跟着变。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-google-secops-agent.png" alt="Google SecOps 让Agent巡防告警" loading="lazy" decoding="async">
+    <figcaption>Google SecOps / Medium</figcaption>
+  </figure>
+  <h3>Google SecOps 让Agent巡防告警</h3>
+  <p class="item-meta">来源: Google SecOps / Medium · 2026-06-15 · <a href="https://medium.com/@thatsiemguy/whats-new-in-google-secops-2026-06-14-8b4182b61310" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google SecOps 6 月 14 日更新中提到 Detection Coverage Agent 等安全运营能力，围绕 Google AI Threat Defense，把检测覆盖、威胁分析和响应建议交给 Agent 协助完成。AI 安全不再只是写规则，而是让系统持续找盲点。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>安全团队缺的不是更多告警，是有人帮你把盲区翻出来。Agent 巡防的价值在于连续性，它不会因为夜里两点就懒得看日志。中小企业买不起大安全团队，可以先从云安全告警整理、漏洞优先级排序和应急报告生成切入。先让 AI 做值班员，再谈自动响应，别上来就幻想全自动防御。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-cloudflare-agent.png" alt="Cloudflare 让Agent状态自己存" loading="lazy" decoding="async">
+    <figcaption>Cloudflare Agents SDK / Threads</figcaption>
+  </figure>
+  <h3>Cloudflare 让Agent状态自己存</h3>
+  <p class="item-meta">来源: Cloudflare Agents SDK / Threads · 2026-06-15 · <a href="https://www.threads.com/@unayung/post/DZkGheKD0g6/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>开发者社区记录 Cloudflare Agents SDK 的新示例和文档更新，重点展示 Hono counter agent 的状态持久化与面向人类、也面向 AI 阅读的项目说明。对边缘计算平台来说，Agent 能记住状态比单次调用更关键。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Agent 如果每次醒来都像失忆，那就只能当高级脚本。状态持久化让它开始像一个小服务，能追踪任务、累积上下文、承接下一步动作。做工具的团队别只包装聊天框，先把状态、回滚和任务记录做扎实，那才是 Agent 产品和玩具的分界线。能记住过程，才有资格接业务流程。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-openai-ipo.jpg" alt="OpenAI IPO 前先撞上合规墙" loading="lazy" decoding="async">
+    <figcaption>TechCrunch / Tom's Hardware</figcaption>
+  </figure>
+  <h3>OpenAI IPO 前先撞上合规墙</h3>
+  <p class="item-meta">来源: TechCrunch / Tom's Hardware · 2026-06-15 · <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/openai-hit-with-sweeping-probe-from-massive-coalition-of-42-us-state-attorneys-general-just-days-after-reported-ipo-filing-subpoena-targets-chatgpt-makers-ads-data-practices-handling-of-minors-model-sycophancy-and-safety-policies" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 的多州调查与秘密上市文件几乎撞在同一周。监管关注点并不窄：广告、用户留存、模型迎合、敏感数据、未成年人和老年人。也就是说，ChatGPT 的商业增长、产品设计和安全承诺都可能被放到同一张桌上审。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>资本市场喜欢增长曲线，监管机构喜欢问增长是怎么来的。OpenAI 现在的问题不是能不能讲 AI 未来，而是能不能证明用户不是被产品机制推着沉迷。中国出海团队要从这里学一课：消费级 AI 不是流量游戏，高风险人群保护会变成产品基础设施。把合规当上线后补丁，后面会很贵。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-anthropic.jpg" alt="Anthropic 用安全牌反咬自己" loading="lazy" decoding="async">
+    <figcaption>AFR / Seeking Alpha</figcaption>
+  </figure>
+  <h3>Anthropic 用安全牌反咬自己</h3>
+  <p class="item-meta">来源: AFR / Seeking Alpha · 2026-06-15 · <a href="https://www.afr.com/world/north-america/anthropic-shuts-down-latest-ai-models-after-sweeping-us-order-20260614-p606ko" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 最近同时面对模型访问限制、政府争议、IPO 预期和计费调整。它过去最强的品牌叙事是安全，但当前局面显示，安全叙事一旦进入政府、资本和企业采购，就会变成限制条件，而不是单纯加分项。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>安全牌好打，但不好兑现。你说自己最安全，政府就会要求你按最严格标准证明；客户也会问为什么模型突然不能用。对企业用户来说，采购 Anthropic 这类前沿模型要同步评估政策风险，不要把安全口号等同于稳定供应。越是核心系统，越要准备第二供应商。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-adcd9d4d9c.webp" alt="搜索从答案框变成值班员" loading="lazy" decoding="async">
+    <figcaption>PPC Land / Google AI Mode Coverage</figcaption>
+  </figure>
+  <h3>搜索从答案框变成值班员</h3>
+  <p class="item-meta">来源: PPC Land / Google AI Mode Coverage · 2026-06-15 · <a href="https://www.moneycontrol.com/news/trends/google-wants-search-to-work-without-you-searching-13949045.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google Search agents 的关键不是回答一次问题，而是持续监控。它把搜索从用户主动输入，改成系统长期代看、代筛、代总结。这会影响 SEO、信息分发、新闻消费，也会改变企业情报和内容生产的节奏。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>以前抢搜索排名，是为了让人点进来；以后你要让 Agent 认为你可信。内容团队别再只研究关键词堆砌，要研究结构化信息、更新频率和可引用证据。谁能被 Agent 稳定抓取和总结，谁才会进入下一代流量入口。网站不是给人看就够了，还要给机器读得懂。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-ai.webp" alt="AI 网关成黑客新靶子" loading="lazy" decoding="async">
+    <figcaption>Help Net Security</figcaption>
+  </figure>
+  <h3>AI 网关成黑客新靶子</h3>
+  <p class="item-meta">来源: Help Net Security · 2026-06-15 · <a href="https://www.helpnetsecurity.com/2026/06/14/week-in-review-exploited-check-point-vpn-zero-day-oracle-peoplesoft-servers-under-attack/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>LiteLLM 漏洞被利用说明，模型网关已经进入攻击者视野。企业为了统一接入 OpenAI、Anthropic、Gemini、开源模型，常把网关放在关键流量路径上；一旦命令注入或凭证泄漏发生，攻击半径会比单个应用更大。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>很多 AI 团队还停留在把 key 塞进环境变量就能上线的阶段。网关越统一，爆炸半径越大，尤其是它同时握着模型密钥、日志和内部调用链。技术负责人今天该补的是最无聊的东西：最小权限、审计日志、依赖更新和网络隔离。别把模型网关放成全公司最肥的靶子。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Prediction</span>
+        <span class="st-zh">投资视角 · 大胆预测</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-ai-ipo.jpg" alt="AI IPO 让资金提前入场" loading="lazy" decoding="async">
+    <figcaption>MLQ Predictions / Market Brief</figcaption>
+  </figure>
+  <h3>AI IPO 让资金提前入场</h3>
+  <p class="item-meta inverted">来源: MLQ Predictions / Market Brief · 2026-06-15 · <a href="https://mlq.ai/prediction/brief/ipos/ipos-markets-brief-june-14-2026-2026-06-14/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI、Anthropic 与围绕 SpaceX、xAI 的资本预期正在把 AI 二级市场故事提前点燃。MLQ 等市场简报把 AI IPO speculation 列为 6 月 14 日 IPO 市场的核心交易主题，说明投资人已经开始抢跑前沿模型公司的上市窗口。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>AI 公司还没证明利润模型，资本市场已经开始排队下注。短期这会抬高估值，长期会逼公司把免费用户、低价订阅和烧钱推理全部重新定价。创业者别被估值新闻冲昏头，现金流和毛利率会比参数表更快决定生死。二级市场不会无限替模型公司买单，最终还是要看收入质量。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-prometheus-ai.png" alt="Prometheus 百亿融资烧实体AI" loading="lazy" decoding="async">
+    <figcaption>The AI Insider</figcaption>
+  </figure>
+  <h3>Prometheus 百亿融资烧实体AI</h3>
+  <p class="item-meta inverted">来源: The AI Insider · 2026-06-15 · <a href="https://theaiinsider.tech/2026/06/12/jeff-bezoss-physical-ai-startup-prometheus-raises-12b-at-41b-valuation/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AI Insider 报道，Jeff Bezos 相关的 physical AI startup Prometheus 完成 120 亿美元融资，估值达到 410 亿美元。虽然原始报道在 6 月 12 日发布，但 6 月 14 日仍在多处 AI 资本新闻中发酵，核心看点是资本开始押注实体世界里的 AI 自动化。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>钱从聊天机器人流向实体 AI，是一个很硬的信号。制造、物流、机器人和材料发现不会像 App 一样轻，但一旦跑通，护城河也更厚。国内企业要看的是供应链场景，不是追 Bezos 名字；谁能把 AI 放进真实工厂，谁才有下一轮议价权。实体场景慢，但一旦绑定流程就很难被替换。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-agent.jpg" alt="韩国企业先用 Agent 换人效" loading="lazy" decoding="async">
+    <figcaption>The Korea Herald</figcaption>
+  </figure>
+  <h3>韩国企业先用 Agent 换人效</h3>
+  <p class="item-meta inverted">来源: The Korea Herald · 2026-06-15 · <a href="https://www.koreaherald.com/article/10771250" target="_blank" rel="noopener">原文链接</a></p>
+  <p>韩国大型企业加速部署办公室 Agent，本质是把 AI 从研发预算转成组织效率账。它不需要等通用智能出现，只要把内部知识、流程审批、客服支持和数据分析先自动化，就能在企业内部形成可见回报。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>投资视角看，这类落地比模型发布更有含金量。员工每天少花 30 分钟处理重复流程，乘以万人组织就是实打实的人效红利。中国老板别只问哪个模型最强，应该问哪三个部门能在一个月内把 Agent 用到 KPI 里。能量化节省，才会进入预算，也才会持续采购。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-vercel-ai-sdk.png" alt="Vercel 用HarnessAgent打反锁定牌" loading="lazy" decoding="async">
+    <figcaption>AI Builders Digest / Vercel</figcaption>
+  </figure>
+  <h2>Vercel 用HarnessAgent打反锁定牌</h2>
+  <p class="item-meta">来源: AI Builders Digest / Vercel · 2026-06-15 · <a href="https://buttondown.com/soumyo/archive/ai-builders-digest-sunday-june-14-2026/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AI Builders Digest 记录，Vercel CEO Guillermo Rauch 宣布 HarnessAgent，这是 Vercel AI SDK 的新抽象层，目标是让开发者在应用中接入不同 AI agent，而不被某个模型或平台锁死。AI Herald 也将其列为 6 月 14 日开发者工具更新之一。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这个工具的价值不是酷，是给开发者留后门。今天用 Claude Code，明天切 Codex，后天换自建 Agent，应用层不该跟着重写。做 SaaS 和内部工具的团队可以盯它：把 Agent 供应商抽象掉，未来谈价格和换模型才有底气。平台抽象层越早做，迁移成本越低。</span>
+  </div>
+</div>
+</div>
+
+
+    <div class="news-card-actions output-engagement" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-06-15" data-edition-title="Janet 快车箱 2026-06-15" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        评论 <span class="comment-count" data-comment-count data-edition-id="2026-06-15">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-06-15"></section>
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: TechCrunch, TechCrunch / Seeking Alpha, PPC Land / Moneycontrol, The Korea Herald, Help Net Security / CISA, X AI Digest / Threads, UsageBox / The AI Consulting Network, Google SecOps / Medium, Cloudflare Agents SDK / Threads, TechCrunch / Tom's Hardware, AFR / Seeking Alpha, PPC Land / Google AI Mode Coverage, Help Net Security, MLQ Predictions / Market Brief, The AI Insider, AI Builders Digest / Vercel<br>
+      本报内容由 AI 辅助采编，经人工校验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
+</body>
+</html>

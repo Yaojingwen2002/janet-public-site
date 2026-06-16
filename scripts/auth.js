@@ -30,6 +30,74 @@
     return 'guest_' + Math.random().toString(36).slice(2, 8).toUpperCase();
   }
 
+  function clearLocalGuest() {
+    localStorage.removeItem(STORAGE.guestId);
+    localStorage.removeItem(STORAGE.guestName);
+  }
+
+  function localGuestProfile(user) {
+    const displayName = profileName(null, user);
+    return {
+      id: user.id,
+      username: displayName,
+      display_name: displayName,
+      email: '',
+      is_guest: true,
+      newsletter_opt_in: false,
+      local_guest: true
+    };
+  }
+
+  function localGuestSession() {
+    const guestId = localStorage.getItem(STORAGE.guestId);
+    const guestName = localStorage.getItem(STORAGE.guestName);
+    if (!guestId || !guestName || validateUsername(guestName)) return null;
+    return {
+      user: {
+        id: guestId,
+        email: '',
+        is_anonymous: true,
+        user_metadata: {
+          username: guestName,
+          display_name: guestName,
+          is_guest: true,
+          local_guest: true
+        }
+      }
+    };
+  }
+
+  function isLocalGuestSession(session) {
+    return Boolean(session && session.user && session.user.user_metadata && session.user.user_metadata.local_guest);
+  }
+
+  function createLocalGuestSession(username) {
+    const guestName = normalizeUsername(username) || randomGuestName();
+    const usernameError = validateUsername(guestName);
+    if (usernameError) throw new Error(usernameError);
+    const guestId = localStorage.getItem(STORAGE.guestId) || ('guest_' + Math.random().toString(36).slice(2, 12).toUpperCase());
+    localStorage.setItem(STORAGE.guestId, guestId);
+    localStorage.setItem(STORAGE.guestName, guestName);
+    currentSession = {
+      user: {
+        id: guestId,
+        email: '',
+        is_anonymous: true,
+        user_metadata: {
+          username: guestName,
+          display_name: guestName,
+          is_guest: true,
+          local_guest: true
+        }
+      }
+    };
+    currentUser = currentSession.user;
+    currentProfile = localGuestProfile(currentUser);
+    ready = true;
+    notify();
+    return getIdentity();
+  }
+
   function normalizeUsername(value) {
     return String(value || '').trim();
   }
@@ -140,21 +208,20 @@
 
   async function refreshSession() {
     if (!isConfigured()) {
-      currentSession = null;
-      currentUser = null;
-      currentProfile = null;
+      currentSession = localGuestSession();
+      currentUser = currentSession ? currentSession.user : null;
+      currentProfile = currentSession ? localGuestProfile(currentSession.user) : null;
       ready = true;
       notify();
-      return null;
+      return currentSession;
     }
 
     const client = supabaseClient();
     const { data } = await client.auth.getSession();
-    currentSession = data && data.session ? data.session : null;
+    currentSession = data && data.session ? data.session : localGuestSession();
     currentUser = currentSession ? currentSession.user : null;
-    currentProfile = currentUser ? await fetchProfile(currentUser.id) : null;
-    localStorage.removeItem(STORAGE.guestId);
-    localStorage.removeItem(STORAGE.guestName);
+    currentProfile = currentUser ? (isLocalGuestSession(currentSession) ? localGuestProfile(currentUser) : await fetchProfile(currentUser.id)) : null;
+    if (data && data.session) clearLocalGuest();
     ready = true;
     notify();
     return currentSession;
@@ -164,11 +231,15 @@
     if (!isConfigured() || authListenerBound) return;
     authListenerBound = true;
     supabaseClient().auth.onAuthStateChange(async (_event, session) => {
-      currentSession = session || null;
+      currentSession = session || localGuestSession();
       currentUser = session && session.user ? session.user : null;
-      currentProfile = currentUser ? await fetchProfile(currentUser.id) : null;
-      localStorage.removeItem(STORAGE.guestId);
-      localStorage.removeItem(STORAGE.guestName);
+      if (session && session.user) {
+        currentProfile = await fetchProfile(session.user.id);
+        clearLocalGuest();
+      } else {
+        currentUser = currentSession ? currentSession.user : null;
+        currentProfile = currentUser ? localGuestProfile(currentUser) : null;
+      }
       ready = true;
       notify();
     });
@@ -187,6 +258,8 @@
     const raw = String(error && error.message ? error.message : error || '');
     const message = raw.toLowerCase();
     if (/invalid login credentials/.test(message)) return '邮箱或密码不正确';
+    if (/email not confirmed|not confirmed|confirm.*email|email.*confirm/.test(message)) return '账号已创建，但邮箱还没确认。请先点确认邮件，或在 Supabase 关闭 Confirm email。';
+    if (/anonymous.*disabled|anonymous sign-?ins?.*disabled|signup.*anonymous|provider.*anonymous/.test(message)) return '游客登录未启用：请在 Supabase 打开 Anonymous Sign-Ins。';
     if (/already registered|user already registered|already exists|duplicate/.test(message)) return '该邮箱已注册，请直接登录';
     if (/password should be at least 6 characters|password.*6/.test(message)) return '密码至少 6 位';
     if (/network|failed to fetch|load failed/.test(message)) return '网络异常，请稍后再试';
@@ -224,6 +297,7 @@
     const cleanEmail = normalizeEmail(email);
     const { error } = await client.auth.signInWithPassword({ email: cleanEmail, password });
     if (error) throw new Error(friendlyAuthError(error));
+    clearLocalGuest();
     await refreshSession();
     return getIdentity();
   }
@@ -240,7 +314,8 @@
     if (password.length < 6) throw new Error('密码至少 6 位');
 
     if (getIdentity() && getIdentity().mode === 'guest') {
-      await client.auth.signOut();
+      if (!isLocalGuestSession(currentSession)) await client.auth.signOut();
+      clearLocalGuest();
       currentSession = null;
       currentUser = null;
       currentProfile = null;
@@ -285,12 +360,18 @@
   }
 
   async function signInAnonymously(options) {
-    const client = await waitForSupabaseClient();
     if (getIdentity()) throw new Error('你已经登录了，请先退出再使用游客身份');
 
     const username = normalizeUsername(options && options.username) || randomGuestName();
     const usernameError = validateUsername(username);
     if (usernameError) throw new Error(usernameError);
+
+    let client;
+    try {
+      client = await waitForSupabaseClient();
+    } catch (_error) {
+      return createLocalGuestSession(username);
+    }
 
     const { error } = await client.auth.signInAnonymously({
       options: {
@@ -301,19 +382,31 @@
         }
       }
     });
-    if (error) throw new Error('游客登录失败，请稍后再试');
+    if (error) {
+      const message = friendlyAuthError(error);
+      if (/游客登录未启用/.test(message)) {
+        console.warn('[auth] anonymous sign-in disabled, using local guest fallback');
+        return createLocalGuestSession(username);
+      }
+      throw new Error(message);
+    }
     await refreshSession();
     return getIdentity();
   }
 
   async function updateUsername(username) {
-    const client = await waitForSupabaseClient();
     const identity = getIdentity();
     if (!identity || !identity.user) throw new Error('请先登录');
 
     const clean = normalizeUsername(username);
     const usernameError = validateUsername(clean);
     if (usernameError) throw new Error(usernameError);
+
+    if (identity.mode === 'guest' && isLocalGuestSession(currentSession)) {
+      return createLocalGuestSession(clean);
+    }
+
+    const client = await waitForSupabaseClient();
 
     const { error: authError } = await client.auth.updateUser({
       data: {
@@ -394,8 +487,7 @@
     currentSession = null;
     currentUser = null;
     currentProfile = null;
-    localStorage.removeItem(STORAGE.guestId);
-    localStorage.removeItem(STORAGE.guestName);
+    clearLocalGuest();
     notify();
   }
 

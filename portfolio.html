@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/janet-motion.css">
-  <link rel="stylesheet" href="styles/auth.css">
+  <link rel="stylesheet" href="styles/potato-center.css">
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
 
 </head>
@@ -48,11 +48,22 @@
     </div>
   </nav>
 
-  <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="菜单">☰</button>
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
   <div class="mobile-nav-menu" id="mobile-nav-menu">
-    <a href="index.html#news">快车箱</a>
-    <a href="index.html#works-library">作品库</a>
-    <a href="index.html#about">关于</a>
+    <a href="index.html">首页</a>
+    <a href="news.html">Janet 快车箱</a>
+    <a href="portfolio.html">作品库</a>
+    <a href="gpt-image2-handbook.html">iGPT-Image2 手册</a>
+    <a href="shuttle-universe.html">穿梭宇宙</a>
+    <a href="misaligned-scenes.html">错位名场面</a>
+    <a href="index.html#about">关于 Janet</a>
     <a href="index.html#contact">联系</a>
   </div>
 
@@ -103,7 +114,7 @@
 <script src="scripts/portfolio.js"></script>
 <script src="scripts/supabase-config.js"></script>
 <script src="scripts/auth.js"></script>
-<script src="scripts/visitor-modal.js"></script>
+<script src="scripts/potato-center.js"></script>
 <script src="scripts/nav.js"></script>
 <script src="scripts/effects.js"></script>
 <script src="scripts/janet-motion.js"></script>

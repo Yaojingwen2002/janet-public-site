@@ -5,6 +5,12 @@ __MACOSX
 .env
 *.env
 node_modules/
+data/news-index-fixed.json
+data/*.bak
+
+# Mirror Plan keeps heavy reference frames/videos local or in private storage.
+镜场计划/frames/**
+镜场计划/outputs/**
 
 # macOS metadata files
 .DS_Store

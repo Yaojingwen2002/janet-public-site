@@ -1,0 +1,360 @@
+/* Janet 土豆中心 */
+.potato-center {
+  position: fixed;
+  top: 11px;
+  right: var(--container-pad, 24px);
+  z-index: 260;
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  border: 1px solid rgba(26, 58, 42, 0.18);
+  border-radius: 999px;
+  background: rgba(247, 244, 239, 0.88);
+  box-shadow: 0 10px 30px rgba(26, 58, 42, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: visible;
+  color: var(--green, #1A3A2A);
+  font-family: var(--font-body, var(--sans, 'DM Sans', 'PingFang SC', system-ui, sans-serif));
+}
+
+.potato-half {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  color: var(--green, #1A3A2A);
+  cursor: pointer;
+  font: 600 14px/1 inherit;
+  letter-spacing: 0;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.potato-user-trigger {
+  width: 52px;
+  border-radius: 999px 0 0 999px;
+  font-size: 15px;
+}
+
+.potato-menu-trigger {
+  width: 44px;
+  border-left: 1px solid rgba(26, 58, 42, 0.14);
+  border-radius: 0 999px 999px 0;
+  font-size: 16px;
+}
+
+.potato-half:hover,
+.potato-half.active {
+  background: rgba(26, 58, 42, 0.06);
+}
+
+.potato-half:active {
+  background: rgba(26, 58, 42, 0.10);
+}
+
+.potato-half:disabled {
+  cursor: progress;
+}
+
+.potato-user-label[data-loading="true"] {
+  opacity: 0.4;
+}
+
+.potato-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  border: 1px solid rgba(26, 58, 42, 0.12);
+  border-radius: 16px;
+  background: #FAFAF7;
+  box-shadow: 0 20px 48px rgba(26, 58, 42, 0.14);
+  z-index: 500;
+  overflow: hidden;
+  color: var(--text-1, var(--ink, #0d0d0d));
+}
+
+.potato-panel {
+  padding: 16px;
+}
+
+.potato-head {
+  display: grid;
+  gap: 4px;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid rgba(26, 58, 42, 0.10);
+}
+
+.potato-kicker {
+  margin: 0;
+  color: var(--text-3, var(--ink-3, #7A7A72));
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.potato-title {
+  margin: 0;
+  font-family: var(--font-display, var(--display, Georgia, serif));
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.potato-sub {
+  margin: 0;
+  color: var(--text-3, var(--ink-3, #7A7A72));
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.potato-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(26, 58, 42, 0.10);
+  background: rgba(242, 237, 230, 0.65);
+}
+
+.potato-tab {
+  min-width: 0;
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-3, #7A7A72);
+  cursor: pointer;
+  font: 700 12px/1.1 inherit;
+}
+
+.potato-tab.is-active {
+  border-color: rgba(26, 58, 42, 0.16);
+  background: #fffdf8;
+  color: var(--green, #1A3A2A);
+}
+
+.potato-form,
+.potato-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.potato-field {
+  display: grid;
+  gap: 6px;
+  color: var(--text-2, #3D3D38);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.potato-field input {
+  width: 100%;
+  height: 42px;
+  border: 1px solid rgba(26, 58, 42, 0.16);
+  border-radius: 8px;
+  background: #fffdf8;
+  color: var(--text-1, #0d0d0d);
+  font: 500 14px/1.2 inherit;
+  padding: 0 12px;
+  outline: none;
+}
+
+.potato-field input:focus {
+  border-color: rgba(26, 58, 42, 0.42);
+  box-shadow: 0 0 0 3px rgba(26, 58, 42, 0.08);
+}
+
+.potato-check {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  color: var(--text-2, #3D3D38);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.potato-check input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--green, #1A3A2A);
+}
+
+.potato-btn,
+.potato-link-btn {
+  min-height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font: 800 13px/1 inherit;
+}
+
+.potato-btn {
+  border: 1px solid var(--green, #1A3A2A);
+  background: var(--green, #1A3A2A);
+  color: #fffdf8;
+}
+
+.potato-btn:disabled {
+  opacity: 0.58;
+  cursor: wait;
+}
+
+.potato-btn--ghost {
+  background: #fffdf8;
+  color: var(--green, #1A3A2A);
+}
+
+.potato-link-btn {
+  border: 0;
+  background: transparent;
+  color: var(--green, #1A3A2A);
+  text-align: left;
+  padding: 0;
+}
+
+.potato-note {
+  margin: 0;
+  color: var(--text-3, #7A7A72);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.potato-warning {
+  margin: 0;
+  border: 1px solid rgba(193, 122, 46, 0.20);
+  border-radius: 8px;
+  background: rgba(193, 122, 46, 0.10);
+  color: #7A4A19;
+  font-size: 12px;
+  line-height: 1.55;
+  padding: 10px;
+}
+
+.potato-error,
+.potato-status {
+  margin: 0 0 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+.potato-error {
+  border: 1px solid rgba(192, 57, 43, 0.18);
+  background: rgba(192, 57, 43, 0.08);
+  color: var(--error, #C0392B);
+}
+
+.potato-status {
+  border: 1px solid rgba(26, 58, 42, 0.14);
+  background: rgba(26, 58, 42, 0.07);
+  color: var(--green, #1A3A2A);
+}
+
+.potato-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.potato-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  border: 1px solid rgba(26, 58, 42, 0.10);
+  border-radius: 8px;
+  background: #fffdf8;
+  color: var(--text-1, #0d0d0d);
+  cursor: pointer;
+  font: 700 13px/1 inherit;
+  padding: 0 12px;
+}
+
+.potato-action:hover {
+  border-color: rgba(26, 58, 42, 0.22);
+  color: var(--green, #1A3A2A);
+}
+
+.potato-sep {
+  height: 1px;
+  background: rgba(26, 58, 42, 0.10);
+  margin: 2px 0;
+}
+
+.potato-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  border: 1px solid rgba(26, 58, 42, 0.10);
+  border-radius: 8px;
+  background: #fffdf8;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.potato-toggle-row input {
+  width: 38px;
+  height: 20px;
+  accent-color: var(--green, #1A3A2A);
+}
+
+.potato-menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1em;
+  line-height: 1;
+}
+
+.mobile-nav-menu {
+  display: none;
+  position: fixed;
+  inset: 64px 0 0;
+  z-index: 150;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  border-top: 1px solid rgba(26, 58, 42, 0.10);
+  background: var(--bg, var(--paper, #F7F4EF));
+}
+
+.mobile-nav-menu.open {
+  display: flex;
+}
+
+.mobile-nav-menu a {
+  color: var(--text-1, var(--ink, #0d0d0d));
+  font-family: var(--font-display, var(--display, Georgia, serif));
+  font-size: clamp(22px, 5vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.mobile-nav-menu a:hover {
+  color: var(--green, #1A3A2A);
+}
+
+@media (max-width: 860px) {
+  .nav-inner {
+    padding-right: calc(var(--container-pad, 20px) + 112px);
+  }
+}
+
+@media (max-width: 400px) {
+  .potato-center {
+    right: 16px;
+  }
+
+  .potato-dropdown {
+    width: calc(100vw - 32px);
+    right: -16px;
+  }
+}

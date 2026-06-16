@@ -1,18 +1,57 @@
 # Janet Public Site
 
-Public GitHub Pages site for Janet's personal homepage, portfolio, and AI daily news.
+Public GitHub Pages site for Janet's personal homepage, portfolio, AI daily news, and visual research entry points.
 
 ## Public URL
 
 https://yaojingwen2002.github.io/janet-public-site/
 
+## Current Release
+
+Latest documented release: `2026-06-16`
+
+- Change log: `CHANGELOG.md`
+- Account and navigation system: Potato Center
+- Local preview used for the latest check: `http://localhost:8097/`
+- GitHub Pages URL: `https://yaojingwen2002.github.io/janet-public-site/`
+
 ## Core Pages
 
 - Home: `index.html`
-- Portfolio: `portfolio.html`
 - News archive: `news.html`
+- Portfolio: `portfolio.html`
 - Project detail: `project-detail.html`
+- iGPT-Image2 handbook: `gpt-image2-handbook.html`
+- Shuttle Universe: `shuttle-universe.html`
+- Misaligned Scenes: `misaligned-scenes.html`
+- Password reset: `auth/reset-password.html`
 - 404 page: `404.html`
+
+## Account And Navigation
+
+The upper-right navigation is now the Potato Center:
+
+- Left half: identity and account center
+- Right half: site-wide menu
+- Logged-out label: `登`
+- Guest label: `游`
+- Signed-in label: first Chinese character, first uppercase Latin character, or email initial
+
+Implemented files:
+
+- `styles/potato-center.css`
+- `scripts/potato-center.js`
+- `scripts/auth.js`
+- `auth/reset-password.html`
+
+Auth mode:
+
+- Supabase email/password
+- Supabase anonymous guest sign-in
+- Password reset through `auth/reset-password.html`
+- No magic link as the main login flow
+
+Supabase setup and SQL are documented in `docs/supabase-setup.md`.
 
 ## Daily News Automation
 
@@ -68,6 +107,7 @@ A workflow run can finish successfully without creating a new edition when fresh
 - News archive: `news.html`
 - News cards link to original source URLs where applicable
 - Standalone story detail and automation status pages have been removed
+- Daily output pages inherit account/navigation integration from `codex-briefing-system/templates/template.html`; generated `data/YYYY-MM-DD/output.html` files should not be hand-edited.
 
 ## Editorial System
 
@@ -77,6 +117,31 @@ Current editorial references:
 - `docs/editorial/JANET-EDITORIAL-VOICE.md`
 - `docs/editorial/NEWS-CONTENT-CONTRACT.v5.md`
 - `docs/editorial/OLD-NEWS-STYLE-EXAMPLES.md`
+
+## Mirror Plan
+
+`镜场计划` is Janet's cinematic visual research track.
+
+Current repository role:
+
+- Keep a readable project entry and public-safe documentation.
+- Preserve latest test records and planning assets.
+- Do not publish raw reference frames, 5-second clips, or unreviewed generation outputs directly from this public site.
+
+Current public-safe files:
+
+- `镜场计划/README.md`
+- `镜场计划/docs/镜场计划_独立项目完全迁移说明书.docx`
+- `镜场计划/docs/镜场计划_可视化执行路线图.docx`
+- `镜场计划/docs/镜场计划_让子弹飞S0-01图像测试调整过程记录.docx`
+- `镜场计划/excels/镜场计划_S0导演电影复刻测试候选表.xlsx`
+- `镜场计划/tests/s0-director-replication/S0-01-test-record-summary.md`
+
+Latest Mirror Plan status:
+
+- S0-01 image test has a v0.1 record.
+- H/I are the current better variants.
+- Next step: keep S0-01 as the calibration sample until it passes the scoring table 3 consecutive times, then move to `02_huang_white_interior_closeup.jpg`.
 
 ## QA
 
@@ -98,3 +163,9 @@ Pages deployment may be handled by:
 
 - `Deploy Janet Site to GitHub Pages`
 - `Daily Janet News` workflow after successful generation and QA
+
+Before publishing account/navigation changes, check:
+
+- `git status --short --branch`
+- `grep -RInE "signInWithOtp|service_role|service-role" scripts *.html auth styles 2>/dev/null`
+- Main page loads the Potato Center instead of the old visitor modal.

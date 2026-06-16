@@ -40,6 +40,17 @@ create table if not exists public.newsletter_subscribers (
   last_sent_at timestamptz
 );
 
+create table if not exists public.profiles (
+  id uuid primary key references auth.users(id) on delete cascade,
+  username text,
+  display_name text,
+  email text,
+  is_guest boolean default false,
+  newsletter_opt_in boolean default false,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
 create unique index if not exists reactions_user_once
   on public.reactions (edition_id, reaction_type, user_id)
   where user_id is not null;
@@ -59,6 +70,43 @@ create index if not exists reactions_edition_type
 
 create index if not exists newsletter_subscribers_email
   on public.newsletter_subscribers (email);
+```
+
+For the Potato Center account layer, also install the profile trigger:
+
+```sql
+create or replace function public.handle_new_user()
+returns trigger
+set search_path = public
+as $$
+begin
+  insert into public.profiles (
+    id,
+    username,
+    display_name,
+    email,
+    is_guest,
+    newsletter_opt_in
+  )
+  values (
+    new.id,
+    nullif(trim(new.raw_user_meta_data->>'username'), ''),
+    nullif(trim(new.raw_user_meta_data->>'username'), ''),
+    new.email,
+    coalesce((new.raw_user_meta_data->>'is_guest')::boolean, false),
+    coalesce((new.raw_user_meta_data->>'newsletter_opt_in')::boolean, false)
+  )
+  on conflict (id) do nothing;
+
+  return new;
+end;
+$$ language plpgsql security definer;
+
+drop trigger if exists on_auth_user_created on auth.users;
+
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute function public.handle_new_user();
 ```
 
 For an existing Supabase project, run this migration before deploying reply UI:
@@ -105,6 +153,7 @@ create unique index if not exists newsletter_subscribers_email
 alter table public.comments enable row level security;
 alter table public.reactions enable row level security;
 alter table public.newsletter_subscribers enable row level security;
+alter table public.profiles enable row level security;
 
 create policy "comments are readable"
   on public.comments for select
@@ -114,13 +163,18 @@ create policy "any visitor can create comments"
   on public.comments for insert
   with check (
     char_length(content) between 10 and 500
-    and (auth.uid() = user_id or user_id is null)
-    and (user_id is not null or guest_id is not null)
+    and (
+      auth.uid() = user_id
+      or (user_id is null and guest_id = auth.uid()::text)
+    )
   );
 
 create policy "authors can soft delete comments"
   on public.comments for update
-  using (auth.uid() = user_id and user_id is not null)
+  using (
+    (auth.uid() = user_id and user_id is not null)
+    or (user_id is null and guest_id = auth.uid()::text)
+  )
   with check (is_deleted = true);
 
 create policy "reactions are readable"
@@ -131,15 +185,17 @@ create policy "any visitor can create reactions"
   on public.reactions for insert
   with check (
     reaction_type in ('like')
-    and (auth.uid() = user_id or user_id is null)
-    and (user_id is not null or guest_id is not null)
+    and (
+      auth.uid() = user_id
+      or (user_id is null and guest_id = auth.uid()::text)
+    )
   );
 
 create policy "visitors can remove their reactions"
   on public.reactions for delete
   using (
     (auth.uid() = user_id and user_id is not null)
-    or (user_id is null and guest_id is not null)
+    or (user_id is null and guest_id = auth.uid()::text)
   );
 
 create policy "newsletter signups are allowed"
@@ -150,6 +206,19 @@ create policy "newsletter preferences can be updated"
   on public.newsletter_subscribers for update
   using (true)
   with check (email is not null and email <> '');
+
+create policy "Profiles are viewable by owner"
+  on public.profiles for select
+  using (auth.uid() = id);
+
+create policy "Users can insert own profile"
+  on public.profiles for insert
+  with check (auth.uid() = id);
+
+create policy "Users can update own profile"
+  on public.profiles for update
+  using (auth.uid() = id)
+  with check (auth.uid() = id);
 ```
 
 Do not add a public `select` policy for `newsletter_subscribers`; the site only writes or updates the visitor's preference and must not expose the full email list.
@@ -164,3 +233,26 @@ const SUPABASE_ANON_KEY = 'your-public-anon-key';
 ```
 
 Only use the public anon key here. Never paste the service-role key into this repository.
+
+## 4. Configure Auth for Potato Center
+
+Authentication → Providers → Email:
+
+- Enable Email provider: ON
+- Confirm email: OFF
+- Enable email/password: ON
+
+Authentication → Providers → Anonymous Sign-Ins:
+
+- Enable Anonymous Sign-Ins: ON
+
+Authentication → URL Configuration:
+
+- Site URL: `https://yaojingwen2002.github.io/janet-public-site/`
+- Additional Redirect URLs:
+  - `https://yaojingwen2002.github.io/janet-public-site/**`
+  - `https://yaojingwen2002.github.io/janet-public-site/auth/reset-password.html`
+  - `http://localhost:8097/**`
+  - `http://127.0.0.1:8097/**`
+
+If local preview uses another port, add that exact port to the allow list before testing password reset.

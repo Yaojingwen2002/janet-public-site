@@ -37,6 +37,16 @@
     return window.JanetAuth && window.JanetAuth.getIdentity();
   }
 
+  function openIdentityMenu(tab) {
+    if (window.JanetPotatoCenter) {
+      window.JanetPotatoCenter.open(tab || 'guest');
+      return;
+    }
+    document.dispatchEvent(new CustomEvent('janet:open-potato-center', {
+      detail: { tab: tab || 'guest' }
+    }));
+  }
+
   function displayName(name, guestId) {
     const clean = String(name || '').trim();
     if (/^游客_/i.test(clean)) return 'Janet 游客 ' + clean.replace(/^游客_/i, '').slice(0, 4).toUpperCase();
@@ -328,12 +338,7 @@
 
       const login = event.target.closest('[data-comments-login]');
       if (login) {
-        if (window.JanetVisitorModal) {
-          window.JanetVisitorModal.open();
-        } else if (window.JanetAuth) {
-          window.JanetAuth.createGuest();
-          await refreshCurrent();
-        }
+        openIdentityMenu('guest');
         return;
       }
 

@@ -43,6 +43,16 @@
     return window.JanetAuth && window.JanetAuth.getIdentity();
   }
 
+  function openIdentityMenu() {
+    if (window.JanetPotatoCenter) {
+      window.JanetPotatoCenter.open('guest');
+      return;
+    }
+    document.dispatchEvent(new CustomEvent('janet:open-potato-center', {
+      detail: { tab: 'guest' }
+    }));
+  }
+
   function reactionWrapFor(button) {
     return button.closest('.news-reactions') ||
       button.closest('.news-card-actions, .news-secondary-actions, .home-engagement, .bottom-interaction-bar')?.querySelector('.news-reactions');
@@ -112,7 +122,7 @@
   async function toggleReaction(editionId, type) {
     const identity = getIdentity();
     if (!identity) {
-      if (window.JanetVisitorModal) window.JanetVisitorModal.open();
+      openIdentityMenu();
       return;
     }
 

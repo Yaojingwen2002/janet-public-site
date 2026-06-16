@@ -2,7 +2,7 @@
 
 (function() {
   const nav = document.getElementById('nav');
-  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  const mobileToggle = document.querySelector('[data-potato-menu-trigger]') || document.getElementById('mobile-nav-toggle');
   const mobileMenu = document.getElementById('mobile-nav-menu');
   const navLinks = document.querySelector('.nav-links');
   let lastScrollY = 0;
@@ -20,7 +20,9 @@
 
     function setMobileMenuOpen(nextOpen) {
       mobileOpen = nextOpen;
-      mobileToggle.textContent = mobileOpen ? '✕' : '☰';
+      const icon = mobileToggle.querySelector('.potato-menu-icon');
+      if (icon) icon.textContent = mobileOpen ? '×' : '☰';
+      else mobileToggle.textContent = mobileOpen ? '×' : '☰';
       mobileToggle.classList.toggle('active', mobileOpen);
       mobileToggle.setAttribute('aria-expanded', String(mobileOpen));
 
@@ -31,6 +33,10 @@
         document.body.style.overflow = '';
         if (mobileMenu) mobileMenu.classList.remove('open');
       }
+
+      document.dispatchEvent(new CustomEvent('janet:site-menu-changed', {
+        detail: { open: mobileOpen }
+      }));
     }
 
     mobileToggle.addEventListener('click', () => {
@@ -51,6 +57,16 @@
         setMobileMenuOpen(false);
       }
     });
+
+    document.addEventListener('janet:close-site-menu', () => {
+      if (mobileOpen) setMobileMenuOpen(false);
+    });
+
+    window.JanetNav = {
+      openSiteMenu: () => setMobileMenuOpen(true),
+      closeSiteMenu: () => setMobileMenuOpen(false),
+      toggleSiteMenu: () => setMobileMenuOpen(!mobileOpen)
+    };
   }
 
   // ── 导航栏显隐 ───────────────────────────────────────────

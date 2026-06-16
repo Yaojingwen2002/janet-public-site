@@ -1,0 +1,182 @@
+[
+  {
+    "来源名称": "OpenAI GPT Image prompting guide",
+    "网址": "https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide",
+    "类型": "官方",
+    "适合 Janet 哪个模块": "结构化提示词骨架 / 图文一致性 / 局部编辑",
+    "可直接参考的结构": "目标 + 主体 + 场景 + 关键细节 + 输出用途 + 明确约束",
+    "风险点": "只引用方法和能力边界，不复制官方示例图和完整示例 prompt。",
+    "是否可公开引用": "是，公开引用链接和方法论。",
+    "是否可进入手册正文": "是，作为方法论和字段标准。"
+  },
+  {
+    "来源名称": "OpenAI Image Generation API Guide",
+    "网址": "https://developers.openai.com/api/docs/guides/image-generation",
+    "类型": "官方",
+    "适合 Janet 哪个模块": "参数边界 / 生成与编辑工作流 / 输出规格",
+    "可直接参考的结构": "model + prompt + size + quality + background + edit/mask 输入",
+    "风险点": "API 参数会迭代，正文要写成能力边界，不写死全部参数。",
+    "是否可公开引用": "是。",
+    "是否可进入手册正文": "是，放在工具设置与生成流程章节。"
+  },
+  {
+    "来源名称": "fal.ai GPT Image 2 Prompting Guide",
+    "网址": "https://fal.ai/learn/tools/prompting-gpt-image-2",
+    "类型": "库",
+    "适合 Janet 哪个模块": "七字段 prompt 骨架 / 生产型提示词模板",
+    "可直接参考的结构": "Scene / Subject / Important details / Use case / Constraints",
+    "风险点": "商业站示例不能原样搬；只吸收字段顺序和约束写法。",
+    "是否可公开引用": "是，引用链接和结构。",
+    "是否可进入手册正文": "是，重写成 Janet 字段模板。"
+  },
+  {
+    "来源名称": "EvoLink GPT Image 2 Prompts",
+    "网址": "https://evolink.ai/gpt-image-2-prompts",
+    "类型": "库",
+    "适合 Janet 哪个模块": "案例拆解 / 产品图 / UI / 角色设定",
+    "可直接参考的结构": "短标题 + 场景目标 + 相机/光线/材质细节 + 负面约束",
+    "风险点": "图库式案例授权不清；避免直接复用商业 prompt 和图片。",
+    "是否可公开引用": "可以引用链接，不公开复刻 prompt。",
+    "是否可进入手册正文": "部分进入，必须 Janet 原创改写。"
+  },
+  {
+    "来源名称": "YouMind awesome-gpt-image-2",
+    "网址": "https://github.com/YouMind-OpenLab/awesome-gpt-image-2",
+    "类型": "库",
+    "适合 Janet 哪个模块": "案例雷达 / 灵感索引 / prompt 分类",
+    "可直接参考的结构": "案例标题 + 效果图 + 原 prompt + 来源索引",
+    "风险点": "大量来自公开社媒，授权混杂；不能把社媒 prompt 当自有内容。",
+    "是否可公开引用": "可以引用仓库链接。",
+    "是否可进入手册正文": "只进来源索引，不直接进正文。"
+  },
+  {
+    "来源名称": "YouMind GPT Image 2 Prompts website",
+    "网址": "https://youmind.com/gpt-image-2-prompts",
+    "类型": "库",
+    "适合 Janet 哪个模块": "灵感检索 / 分类导航",
+    "可直接参考的结构": "按主题浏览 + 复制 prompt + 看原始来源",
+    "风险点": "站内内容主要来自公开来源；公开正文只做结构化评注。",
+    "是否可公开引用": "可以引用链接。",
+    "是否可进入手册正文": "只进参考索引，不搬原文。"
+  },
+  {
+    "来源名称": "wuyoscar GPT Image2 Skill",
+    "网址": "https://github.com/wuyoscar/GPT-Image2-Skill",
+    "类型": "库",
+    "适合 Janet 哪个模块": "技能化工作流 / 批量生成 / 参考图处理",
+    "可直接参考的结构": "输入图或目标 + prompt gallery + CLI/skill 工作流",
+    "风险点": "仓库内容可学流程，不能替代 Janet 自己的风格规则。",
+    "是否可公开引用": "可以引用仓库。",
+    "是否可进入手册正文": "部分进入，作为 workflow 章节。"
+  },
+  {
+    "来源名称": "Morphic ChatGPT Images 2.0 prompt library",
+    "网址": "https://morphic.com/resources/how-to/chatgpt-images-2.0-prompts",
+    "类型": "案例",
+    "适合 Janet 哪个模块": "案例灵感库 / 类目覆盖检查",
+    "可直接参考的结构": "按用途分组的 prompt 卡片",
+    "风险点": "示例版权和平台策略不稳定；只做题材扫描。",
+    "是否可公开引用": "可以引用链接。",
+    "是否可进入手册正文": "不直接进入，只做选题池。"
+  },
+  {
+    "来源名称": "BananaProAI GPT Image prompt library",
+    "网址": "https://bananaproai.com/prompts/gpt-image-prompt/",
+    "类型": "案例",
+    "适合 Janet 哪个模块": "商业图 / 产品图 / 海报灵感",
+    "可直接参考的结构": "用途 + 成品方向 + prompt 文案",
+    "风险点": "商业图库风险；需去品牌、去真实 IP、去平台语法。",
+    "是否可公开引用": "可以引用链接。",
+    "是否可进入手册正文": "不直接进入，只做改写样本。"
+  },
+  {
+    "来源名称": "2Slides GPT Image 2 prompts",
+    "网址": "https://2slides.com/products/gpt-image-2-prompts",
+    "类型": "案例",
+    "适合 Janet 哪个模块": "演示文稿 / PPT 图像 / 商务视觉",
+    "可直接参考的结构": "场景图 + 版式图 + 商务用途 prompt",
+    "风险点": "偏商业模板，容易模板感重；正文要补主体、构图、光线和约束。",
+    "是否可公开引用": "可以引用链接。",
+    "是否可进入手册正文": "部分进入，需 Janet 化重写。"
+  },
+  {
+    "来源名称": "Midlibrary Cinematic Styles",
+    "网址": "https://midlibrary.io/feature/cinematic",
+    "类型": "影视",
+    "适合 Janet 哪个模块": "影视风格 / 镜头语言 / 光线色彩词库",
+    "可直接参考的结构": "风格名称 + 视觉特征 + 样图对照",
+    "风险点": "不能写某导演风格，不能照搬样图；只提取镜头、光线、色彩、材质语言。",
+    "是否可公开引用": "可以引用链接。",
+    "是否可进入手册正文": "是，作为视觉词库，不作为复刻模板。"
+  },
+  {
+    "来源名称": "Midjourney Image Prompts 文档",
+    "网址": "https://docs.midjourney.com/hc/en-us/articles/32040250122381-Image-Prompts",
+    "类型": "影视",
+    "适合 Janet 哪个模块": "参考图 / 图像影响 / 风格迁移边界",
+    "可直接参考的结构": "image reference + text prompt + 权重/影响说明",
+    "风险点": "平台语法不能直接迁移到 GPT Image2；需翻译成自然语言约束。",
+    "是否可公开引用": "可以引用链接。",
+    "是否可进入手册正文": "部分进入，作为参考图章节。"
+  },
+  {
+    "来源名称": "Midjourney Prompt Basics",
+    "网址": "https://docs.midjourney.com/hc/en-us/articles/32023408776205-Prompt-Basics",
+    "类型": "影视",
+    "适合 Janet 哪个模块": "基础字段校验 / 构图光线色彩补全",
+    "可直接参考的结构": "Subject / Medium / Environment / Lighting / Color / Mood",
+    "风险点": "Midjourney 语法和参数不要直接写进 GPT Image2 正文。",
+    "是否可公开引用": "可以引用链接。",
+    "是否可进入手册正文": "部分进入，作为字段检查清单。"
+  },
+  {
+    "来源名称": "freestylefly/awesome-gpt-image-2",
+    "网址": "https://github.com/freestylefly/awesome-gpt-image-2",
+    "类型": "库",
+    "适合 Janet 哪个模块": "现有 50 组来源案例 / 案例拆解参考",
+    "可直接参考的结构": "gallery case + 原始来源 + prompt + MIT 仓库标记",
+    "风险点": "部分 prompt 包含真实品牌、人物、IP 或平台化表达；不直接作为 Janet 安全 prompt。",
+    "是否可公开引用": "可以引用仓库与原始链接。",
+    "是否可进入手册正文": "作为旧案例拆解保留；新增正文需安全改写。"
+  },
+  {
+    "来源名称": "Janet 影像参考室",
+    "网址": "internal://janet/image-reference-room",
+    "类型": "参考图",
+    "适合 Janet 哪个模块": "参考图筛选 / 图像素材归档 / 本地审美库",
+    "可直接参考的结构": "参考图编号 + 可用元素 + 禁用元素 + 可迁移场景",
+    "风险点": "内部资产不可公开外链；公开页面只写抽象方法。",
+    "是否可公开引用": "否。",
+    "是否可进入手册正文": "是，转写成方法，不暴露内部素材。"
+  },
+  {
+    "来源名称": "风格反推",
+    "网址": "internal://janet/style-reverse-engineering",
+    "类型": "参考图",
+    "适合 Janet 哪个模块": "风格拆解 / 去导演化 / 去 IP 化",
+    "可直接参考的结构": "画面事实 + 镜头 + 光线 + 色彩 + 材质 + 禁止复刻对象",
+    "风险点": "不能写真实导演、演员、角色或片名；只保留可迁移视觉变量。",
+    "是否可公开引用": "否。",
+    "是否可进入手册正文": "是，作为 Janet 自研核心模块。"
+  },
+  {
+    "来源名称": "首尾帧 prompt",
+    "网址": "internal://janet/first-last-frame-prompts",
+    "类型": "参考图",
+    "适合 Janet 哪个模块": "短剧 / 长剧 / 电影图片素材 / 视频转场",
+    "可直接参考的结构": "首帧状态 + 变化动作 + 尾帧状态 + 连续性约束",
+    "风险点": "要避免复刻现成影视镜头；只写原创场景调度。",
+    "是否可公开引用": "否。",
+    "是否可进入手册正文": "是，作为高优先级正文模块。"
+  },
+  {
+    "来源名称": "华语影像视觉研究",
+    "网址": "internal://janet/sinic-visual-research",
+    "类型": "参考图",
+    "适合 Janet 哪个模块": "华语场景 / 地域材质 / 生活质感",
+    "可直接参考的结构": "地域场景 + 人物关系 + 空间物件 + 光线色彩 + 可迁移用途",
+    "风险点": "不要复刻具体电影海报、剧照、演员或角色。",
+    "是否可公开引用": "否。",
+    "是否可进入手册正文": "是，作为 Janet 手册差异化模块。"
+  }
+]

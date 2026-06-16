@@ -80,6 +80,18 @@
   color: var(--green);
 }
 
+.handbook-source-internal {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.handbook-source-internal:hover {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text-1);
+  transform: none;
+}
+
 .handbook-body {
   padding: var(--space-lg) 0 var(--space-xl);
 }

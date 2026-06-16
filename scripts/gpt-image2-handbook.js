@@ -86,11 +86,26 @@
 
   function renderCard(item) {
     const promptId = `${item.id}-prompt`;
+    const isPromptOnly = item.image_status === 'prompt_only_pending_visual';
+    const imageAlt = isPromptOnly ? `${item.title} 结构卡封面` : `${item.title} 案例图`;
+    const visualLabel = isPromptOnly
+      ? `${item.title} · Prompt-only 结构卡 / 待生成案例图`
+      : `${item.title} · ${item.category} 案例图`;
+    const sourceUrl = String(item.source_url || '');
+    const isInternalSource = sourceUrl.startsWith('internal://');
+    const sourceAction = isInternalSource
+      ? '<span class="btn btn-outline btn-sm handbook-source-internal" aria-disabled="true">内部来源</span>'
+      : `<a class="btn btn-outline btn-sm" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">
+          查看原始来源
+        </a>`;
     const fields = [
       ['主题', item.theme],
       ['主体', item.subject],
+      ['场景', item.scene],
       ['构图', item.composition],
       ['镜头', item.camera],
+      ['光线', item.lighting],
+      ['色彩', item.color_palette],
       ['材质', item.material],
       ['文字约束', item.text_constraints],
       ['负面约束', item.negative_constraints],
@@ -102,12 +117,12 @@
         <figure class="handbook-card__visual">
           <button class="handbook-card__preview" type="button" data-preview-case="${escapeHtml(item.id)}" aria-label="预览 ${escapeHtml(item.title)}">
             <img src="${escapeHtml(item.image)}"
-              alt="${escapeHtml(item.title)} 案例图"
+              alt="${escapeHtml(imageAlt)}"
               width="1200"
               height="800"
               loading="lazy">
           </button>
-          <figcaption>${escapeHtml(item.title)} · ${escapeHtml(item.category)} 案例图</figcaption>
+          <figcaption>${escapeHtml(visualLabel)}</figcaption>
         </figure>
 
         <div class="handbook-card__body">
@@ -139,9 +154,7 @@
 
           <div class="handbook-card__actions">
             <button class="btn btn-green btn-sm" type="button" data-copy-prompt="${escapeHtml(item.id)}">复制提示词</button>
-            <a class="btn btn-outline btn-sm" href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener noreferrer">
-              查看原始来源
-            </a>
+            ${sourceAction}
           </div>
         </div>
       </article>
@@ -163,11 +176,12 @@
     const item = currentItems[activePreviewIndex];
     if (!root || !image || !title || !count || !caption || !item) return;
 
+    const isPromptOnly = item.image_status === 'prompt_only_pending_visual';
     image.src = item.image;
-    image.alt = `${item.title} 案例图`;
+    image.alt = isPromptOnly ? `${item.title} 结构卡封面` : `${item.title} 案例图`;
     title.textContent = item.title || '';
     count.textContent = `${activePreviewIndex + 1} / ${currentItems.length}`;
-    caption.textContent = `${item.category || '未分类'} · ${item.summary || ''}`;
+    caption.textContent = `${item.category || '未分类'} · ${isPromptOnly ? 'Prompt-only / 待生成案例图 · ' : ''}${item.summary || ''}`;
   }
 
   function openLightbox(itemId) {

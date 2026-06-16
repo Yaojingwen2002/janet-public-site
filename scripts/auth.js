@@ -27,7 +27,7 @@
   }
 
   function randomGuestName() {
-    return '游客-' + Math.random().toString(36).slice(2, 6).toUpperCase();
+    return 'guest_' + Math.random().toString(36).slice(2, 8).toUpperCase();
   }
 
   function normalizeUsername(value) {
@@ -36,8 +36,7 @@
 
   function validateUsername(value) {
     const username = normalizeUsername(value);
-    if (username.length < 2 || username.length > 20) return '用户名需要 2-20 个字符';
-    if (!/^[\u4e00-\u9fa5A-Za-z0-9_]+$/.test(username)) return '用户名只能使用中文、英文、数字、下划线';
+    if (!/^[A-Za-z0-9_]{3,20}$/.test(username)) return '只能使用字母、数字、下划线，3-20 位';
     if (RESERVED_NAMES.includes(username.toLowerCase())) return '这个用户名不能使用';
     return '';
   }
@@ -263,7 +262,7 @@
     if (error) throw new Error(friendlyAuthError(error));
 
     if (data && data.user && data.user.id) {
-      await client.from('profiles').update({
+      const profileUpdate = await client.from('profiles').update({
         username,
         display_name: username,
         email: cleanEmail,
@@ -271,8 +270,16 @@
         newsletter_opt_in: newsletterOptIn,
         updated_at: new Date().toISOString()
       }).eq('id', data.user.id);
+      if (profileUpdate.error) console.warn('[auth] profile update after signup failed:', profileUpdate.error.message);
     }
     await saveNewsletterPreference(cleanEmail, username, newsletterOptIn);
+
+    const { data: sessionData } = await client.auth.getSession();
+    if (!sessionData || !sessionData.session) {
+      const login = await client.auth.signInWithPassword({ email: cleanEmail, password });
+      if (login.error) throw new Error(friendlyAuthError(login.error));
+    }
+
     await refreshSession();
     return getIdentity();
   }

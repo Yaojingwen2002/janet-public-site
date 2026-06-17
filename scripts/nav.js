@@ -17,21 +17,25 @@
       mobileToggle.setAttribute('aria-controls', mobileMenu.id);
     }
     mobileToggle.setAttribute('aria-expanded', 'false');
+    if (mobileMenu) mobileMenu.setAttribute('aria-hidden', 'true');
 
     function setMobileMenuOpen(nextOpen) {
       mobileOpen = nextOpen;
-      const icon = mobileToggle.querySelector('.potato-menu-icon');
-      if (icon) icon.textContent = mobileOpen ? '×' : '☰';
-      else mobileToggle.textContent = mobileOpen ? '×' : '☰';
       mobileToggle.classList.toggle('active', mobileOpen);
+      mobileToggle.classList.toggle('is-open', mobileOpen);
       mobileToggle.setAttribute('aria-expanded', String(mobileOpen));
+      mobileToggle.setAttribute('aria-label', mobileOpen ? '关闭站点菜单' : '打开站点菜单');
 
       if (mobileOpen) {
-        document.body.style.overflow = 'hidden';
-        if (mobileMenu) mobileMenu.classList.add('open');
+        if (mobileMenu) {
+          mobileMenu.classList.add('open');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+        }
       } else {
-        document.body.style.overflow = '';
-        if (mobileMenu) mobileMenu.classList.remove('open');
+        if (mobileMenu) {
+          mobileMenu.classList.remove('open');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+        }
       }
 
       document.dispatchEvent(new CustomEvent('janet:site-menu-changed', {
@@ -60,6 +64,17 @@
 
     document.addEventListener('janet:close-site-menu', () => {
       if (mobileOpen) setMobileMenuOpen(false);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!mobileOpen) return;
+      if (mobileToggle.contains(event.target)) return;
+      if (mobileMenu && mobileMenu.contains(event.target)) return;
+      setMobileMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileOpen) setMobileMenuOpen(false);
     });
 
     window.JanetNav = {

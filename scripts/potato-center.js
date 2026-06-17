@@ -97,9 +97,17 @@
 
   function closeDropdown() {
     if (!state.openCenter) return;
-    const dropdown = qs('.potato-dropdown', state.openCenter);
-    if (dropdown) dropdown.hidden = true;
-    const trigger = qs('[data-potato-user-trigger]', state.openCenter);
+    const closingCenter = state.openCenter;
+    const dropdown = qs('.potato-dropdown', closingCenter);
+    if (dropdown) {
+      dropdown.classList.add('is-closing');
+      window.setTimeout(() => {
+        if (!dropdown.isConnected) return;
+        dropdown.classList.remove('is-closing');
+        if (state.openCenter !== closingCenter) dropdown.hidden = true;
+      }, 190);
+    }
+    const trigger = qs('[data-potato-user-trigger]', closingCenter);
     if (trigger) trigger.setAttribute('aria-expanded', 'false');
     state.openCenter = null;
     state.busy = false;
@@ -295,6 +303,7 @@
       dropdown.setAttribute('aria-label', '土豆中心');
       state.openCenter.appendChild(dropdown);
     }
+    dropdown.classList.remove('is-closing');
 
     const identity = getIdentity();
     let tab = identity && ['login', 'guest'].includes(state.tab) ? 'account' : state.tab;

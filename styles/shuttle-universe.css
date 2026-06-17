@@ -260,6 +260,26 @@
   text-align: left;
   cursor: pointer;
   transition: border-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+  font-weight: 850;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.shuttle-doc-link::after,
+.shuttle-doc-modal__close::after,
+.shuttle-doc-modal__nav::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0turn, transparent 0 34%, rgba(193,122,46,.68) 46%, transparent 62% 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: button-orbit var(--button-ring-speed, 3.4s) linear infinite;
 }
 .shuttle-doc-link:hover {
   border-color: rgba(16, 185, 129, .42);
@@ -386,8 +406,12 @@ body.shuttle-doc-modal-open {
   color: #f8fbf8;
   cursor: pointer;
   font-family: inherit;
+  font-weight: 900;
   line-height: 1;
   transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
 }
 .shuttle-doc-modal__close {
   width: 42px;

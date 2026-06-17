@@ -542,9 +542,12 @@
     grid.innerHTML = projects.map((project) => {
       const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
       const method = (project.method || []).slice(0, 5).map(item => '<span>' + escapeHtml(item) + '</span>').join('');
+      const destination = project.url || ('portfolio.html?project=' + encodeURIComponent(project.id || 'all'));
 
       return `
-        <article class="works-project-card works-project-card--${escapeHtml(project.id)}">
+        <a class="works-project-card works-project-card--${escapeHtml(project.id)}"
+           href="${escapeHtml(destination)}"
+           aria-label="进入${escapeHtml(project.title || '作品项目')}">
           ${renderSeriesBand(project.id || project.title)}
           ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-project-media')}
           <div class="works-project-card__meta">
@@ -555,10 +558,8 @@
           <p>${escapeHtml(project.description || '')}</p>
           <div class="works-project-card__tags">${tags}</div>
           <div class="works-project-card__method">${method}</div>
-          <a href="${escapeHtml(project.url || ('portfolio.html?project=' + encodeURIComponent(project.id)))}" class="works-project-card__link">
-            ${project.url ? '打开项目页面 →' : '查看项目作品 →'}
-          </a>
-        </article>
+          <span class="works-card-cue" aria-hidden="true">↗</span>
+        </a>
       `;
     }).join('');
     document.dispatchEvent(new CustomEvent('janet:content-rendered'));
@@ -606,14 +607,13 @@
     container.innerHTML = filtered.map((project) => {
       const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
       const method = (project.method || []).slice(0, 5).map(item => '<span>' + escapeHtml(item) + '</span>').join('');
-      const cardFilter = activeProject === 'all' ? project.id : 'all';
-      const cardFilterLabel = activeProject === 'all' ? '只看这个类别 →' : '返回全部类别 →';
-      const action = project.url
-        ? '<a class="works-overview-link" href="' + escapeHtml(project.url) + '">打开项目页面 →</a>'
-        : '<button class="works-overview-link works-overview-filter" type="button" data-card-filter="' + escapeHtml(cardFilter) + '">' + escapeHtml(cardFilterLabel) + '</button>';
+      const destination = project.url || ('portfolio.html?project=' + encodeURIComponent(project.id || 'all'));
 
       return `
-        <article class="works-overview-card" data-project-id="${escapeHtml(project.id)}">
+        <a class="works-overview-card"
+           href="${escapeHtml(destination)}"
+           data-project-id="${escapeHtml(project.id)}"
+           aria-label="进入${escapeHtml(project.title || '作品项目')}">
           ${renderSeriesBand(project.id || project.title)}
           ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-overview-media')}
           <div class="works-overview-meta">
@@ -628,8 +628,8 @@
           </div>
           <div class="works-overview-tags">${tags}</div>
           <div class="works-project-card__method">${method}</div>
-          ${action}
-        </article>
+          <span class="works-card-cue" aria-hidden="true">↗</span>
+        </a>
       `;
     }).join('');
     document.dispatchEvent(new CustomEvent('janet:content-rendered'));

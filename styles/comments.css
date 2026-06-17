@@ -40,9 +40,30 @@
   color: var(--comments-text-2);
   padding: 8px 11px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
   text-decoration: none;
   transition: var(--comments-transition);
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.reaction-btn::after,
+.share-btn::after,
+.comment-toggle-btn::after,
+.share-item::after,
+.comments-section .btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0turn, transparent 0 34%, rgba(193,122,46,.64) 46%, transparent 62% 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: button-orbit var(--button-ring-speed, 3.4s) linear infinite;
 }
 
 .reaction-btn {
@@ -163,8 +184,11 @@
   padding: 10px 14px;
   font: inherit;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 900;
   cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
 }
 
 .comments-section .btn-green {
@@ -286,9 +310,12 @@
 .comment-reply,
 .comment-reply-cancel {
   margin-top: 8px;
-  color: var(--comments-text-4);
+  color: var(--comments-green);
   font-size: 12px;
+  font-weight: 900;
   text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .comment-replies {

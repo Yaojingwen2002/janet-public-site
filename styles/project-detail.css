@@ -186,6 +186,26 @@
   color: #000;
   text-decoration: none;
   transition: transform 300ms var(--spring-bouncy), background 200ms;
+  font-weight: 900;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.play-btn-circle::after,
+.work-document-tab::after,
+.btn-lg::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0turn, transparent 0 32%, rgba(193,122,46,.76) 46%, transparent 64% 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: button-orbit var(--button-ring-speed, 3.4s) linear infinite;
 }
 
 .play-btn-circle:hover {
@@ -485,8 +505,12 @@
 }
 
 .btn-lg {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
   padding: 16px 32px;
   font-size: var(--body);
+  font-weight: 900;
 }
 
 /* ── 响应式 ─────────────────────────────────────────────── */
@@ -727,6 +751,10 @@
   background: rgba(255,253,248,0.72);
   color: var(--text-2);
   cursor: pointer;
+  font-weight: 900;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
 }
 
 .work-document-tab.active {

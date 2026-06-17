@@ -48,6 +48,27 @@
   font-size: 22px;
   line-height: 1;
   background: rgba(255,255,255,.72);
+  font-weight: 900;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.vm-close::after,
+.vm-terms-close::after,
+.vm-tab::after,
+.vm-guest::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0turn, transparent 0 34%, rgba(193,122,46,.68) 46%, transparent 62% 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: button-orbit var(--button-ring-speed, 3.4s) linear infinite;
 }
 
 .vm-close {
@@ -112,7 +133,10 @@
   border-radius: var(--r-sm);
   color: var(--text-3);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 900;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
 }
 
 .vm-tab.is-active {
@@ -194,9 +218,10 @@
 .vm-switch,
 .vm-guest {
   color: var(--green);
-  font-weight: 800;
+  font-weight: 900;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .vm-submit {
@@ -225,6 +250,9 @@
 .vm-guest {
   color: var(--text-3);
   font-size: 13px;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
 }
 
 .vm-terms-panel {

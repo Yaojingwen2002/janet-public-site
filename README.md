@@ -8,11 +8,12 @@ https://yaojingwen2002.github.io/janet-public-site/
 
 ## Current Release
 
-Latest documented release: `2026-06-16`
+Latest documented release: `2026-06-17`
 
 - Change log: `CHANGELOG.md`
 - Account and navigation system: Potato Center
-- Local preview used for the latest check: `http://localhost:8097/`
+- Latest UI polish: wide homepage and portfolio cards with card-level entry
+- Local preview used for the latest check: `http://localhost:8098/`
 - GitHub Pages URL: `https://yaojingwen2002.github.io/janet-public-site/`
 
 ## Core Pages

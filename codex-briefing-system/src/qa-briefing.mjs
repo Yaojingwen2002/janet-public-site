@@ -6,28 +6,47 @@ const FORBIDDEN = [
   '总而言之',
   '在这个瞬息万变的时代',
   'AI 是一把双刃剑',
-  '值得关注',
   '值得关注的是',
-  '值得进一步观察',
   '影响行业格局',
   '补上产品能力',
   '验证具体市场',
-  '接口、权限、评测或采购路径',
-  '这条新闻撕开的是',
-  '门槛在',
-  '缺口。'
+  '这条新闻真正的意义',
+  '积极布局',
+  '赋能',
+  '发布了新动作',
+  '值得看'
 ];
 
 const OUTPUT_BLOCKED_TERMS = [
   '事实剥离',
-  '破防点',
-  '槽点',
-  '代价',
-  '搞钱',
-  '落地指导',
   'JANET:',
   'Janet:'
 ];
+
+const TREND_FORBIDDEN_OPENERS = [
+  '今天的共同主线不是',
+  '今天最强的共同信号是'
+];
+
+const JANET_TAKE_TEMPLATE_TERMS = [
+  '企业交付',
+  '流程改造',
+  '合规',
+  '审计',
+  '生态',
+  '赋能',
+  '升级'
+];
+
+const TITLE_PARTICLE_LIMITS = [
+  ['ba_particle', /把/, 1],
+  ['bei_particle', /被/, 1],
+  ['rang_particle', /让/, 1],
+  ['kaishi_particle', /开始/, 1]
+];
+
+const JANET_TAKE_ROLE_RE = /(中国|国内|创作者|创业者|老板|团队|公司|从业者|开发者|产品|研发|运营|销售|客服|法务|财务|内容|代码|RAG|Agent|模型|工具|安全|教育|医疗|工业|投资人)/i;
+const JANET_TAKE_ACTION_RE = /(先|别|要|该|应该|可以|直接|用|做|测|买|接|拿|盯|避开|切|跑|砍|留|投|卖|上|查|准备|优先|停止|放弃|建立)/;
 
 const REQUIRED_COUNTS = {
   news: 5,
@@ -40,10 +59,11 @@ const REQUIRED_COUNTS = {
 const MIN_COVER_BYTES = 20_000;
 const MIN_ITEM_IMAGE_BYTES = 1_200;
 const MIN_JANET_TAKE_LENGTH = 120;
-const MIN_TREND_PARAGRAPHS = 3;
+const MIN_TREND_PARAGRAPHS = 2;
+const MAX_TREND_PARAGRAPHS = 3;
 const MIN_ITEM_TITLE_LENGTH = 10;
-const MAX_ITEM_TITLE_LENGTH = 24;
-const TITLE_ACTION_RE = /(发|发布|推出|上线|接入|接|整合|合作|融资|完成|收购|开放|限制|限|管理|生成|整理|扩展|押|逼|管|用|给|把|进|上|入场|做|卖|测|开测|运行|面向|支持|治理|控制|变小|变成|加|标|拿|赌|继续|浇|吃|换|试水|成|戴|烧|看|塞|让|写|盯|算|来|按|冲|得)/;
+const MAX_ITEM_TITLE_LENGTH = 22;
+const TITLE_ACTION_RE = /(发|发布|推出|推|上线|开业|接入|接|整合|合作|融资|完成|收购|开放|限制|限|管理|生成|整理|扩展|押|逼|管|用|给|把|进|上|入场|做|卖|测|开测|运行|面向|支持|治理|控制|变小|变成|加|标|拿|赌|继续|浇|吃|换|试水|成|戴|烧|看|塞|让|写|盯|算|来|按|冲|得|抢|跑|反超|签|签下|签署|组建|推行|推迟|裁员|起诉|调查|批准|否决|罚|投资|并购|买|砸|组|建|秘密|选|禁|停|关|涨|跌|亏|赚|租|交付|募资|领投|开源|闭源|训练|部署|接管|追责|游说)/;
 const PURE_HOOK_TITLES = new Set([
   'Agent进厂',
   'Agent要上岗',
@@ -89,6 +109,7 @@ export function validateBriefing(content, { date, rootPath = resolve(new URL('..
     items.forEach((item, index) => validateItem(item, `${section}[${index}]`, issues, { rootPath, targetDate }));
   }
   validateTitleVariety(content, issues);
+  validateJanetTakeVariety(content, issues);
 
   const allText = JSON.stringify(content);
   for (const phrase of FORBIDDEN) {
@@ -113,6 +134,11 @@ function sentenceCount(text) {
 function validateTrend(trend, issues) {
   const parts = String(trend || '').split(/\n{2,}/).map((part) => part.trim()).filter(Boolean);
   if (parts.length < MIN_TREND_PARAGRAPHS) issues.push(`trend_too_thin:${parts.length}<${MIN_TREND_PARAGRAPHS}`);
+  if (parts.length > MAX_TREND_PARAGRAPHS) issues.push(`trend_too_long:${parts.length}>${MAX_TREND_PARAGRAPHS}`);
+  const firstParagraph = parts[0] || '';
+  for (const opener of TREND_FORBIDDEN_OPENERS) {
+    if (firstParagraph.startsWith(opener)) issues.push(`trend_forbidden_opener:${opener}`);
+  }
 }
 
 function validateOutputHtml(content, { outputPath }, issues) {
@@ -156,6 +182,7 @@ function validateCover(content, { targetDate, rootPath, outputPath }, issues) {
     issues.push('missing_cover_title');
   } else {
     validateCoverTitleFreshness(cover.title, { targetDate, rootPath }, issues);
+    validateCoverTitleStyle(cover.title, { targetDate, rootPath }, issues);
   }
   if (!cover.subtitle) issues.push('missing_cover_subtitle');
   if (!cover.image_prompt) issues.push('missing_cover_image_prompt');
@@ -182,6 +209,36 @@ function validateCover(content, { targetDate, rootPath, outputPath }, issues) {
   if (!html.includes('data-janet-cover="true"')) issues.push('output_missing_cover_section');
   if (!html.includes('cover.png')) issues.push('output_missing_cover_image');
   if (!html.includes(String(cover.title || ''))) issues.push('output_missing_cover_title');
+}
+
+function coverTitleStartsAiOrAgent(title) {
+  return /^(AI|Agent)\b/i.test(String(title || '').trim());
+}
+
+function validateCoverTitleStyle(title, { targetDate, rootPath }, issues) {
+  const trimmed = String(title || '').trim();
+  const bannedPatterns = [
+    [/^Agent\b.*(账单|进账|见血|商业|合同|开始)/i, 'agent_business_pattern'],
+    [/^AI\b.*(资产|管制|交付|账单|生态|格局|升级|新阶段|变|进入|开始)/i, 'ai_abstract_pattern']
+  ];
+  for (const [pattern, label] of bannedPatterns) {
+    if (pattern.test(trimmed)) issues.push(`cover_title_banned_pattern:${label}:${title}`);
+  }
+  if (!coverTitleStartsAiOrAgent(trimmed)) return;
+
+  const siteRoot = resolve(rootPath, '..');
+  for (const date of previousDates(targetDate, 5)) {
+    const path = resolve(siteRoot, 'data', date, 'content.json');
+    if (!existsSync(path)) continue;
+    try {
+      const previous = JSON.parse(readFileSync(path, 'utf8'));
+      const previousTitle = previous?.cover?.title || '';
+      if (coverTitleStartsAiOrAgent(previousTitle)) {
+        issues.push(`cover_title_repeats_ai_agent_prefix:${title}:${date}`);
+        return;
+      }
+    } catch {}
+  }
 }
 
 function normalizeTitleForCompare(title) {
@@ -254,6 +311,9 @@ function validateItem(item, path, issues, context) {
   const content = String(item.content || '');
   if (content) issues.push(`legacy_content_field_present:${path}`);
   if (!item.body) issues.push(`missing_body:${path}`);
+  if (item.body && /(破防点|槽点|搞钱)[:：]/.test(String(item.body))) {
+    issues.push(`body_contains_janet_take_label:${path}`);
+  }
   validateItemImage(item, path, issues, context);
   if (!item.janet_take) {
     issues.push(`missing_janet_take:${path}`);
@@ -264,6 +324,12 @@ function validateItem(item, path, issues, context) {
     }
     if (sentenceCount(janetTake) < 3) {
       issues.push(`janet_take_missing_three_layers:${path}`);
+    }
+    if (!JANET_TAKE_ROLE_RE.test(janetTake)) {
+      issues.push(`janet_take_missing_role_or_scene:${path}`);
+    }
+    if (!JANET_TAKE_ACTION_RE.test(janetTake)) {
+      issues.push(`janet_take_missing_actionable_advice:${path}`);
     }
   }
 }
@@ -286,6 +352,44 @@ function validateTitleVariety(content, issues) {
   if (colonCount > Math.ceil(titles.length * 0.65)) {
     issues.push(`title_style_too_repetitive:colon_template:${colonCount}/${titles.length}`);
   }
+  for (const [label, pattern, limit] of TITLE_PARTICLE_LIMITS) {
+    const count = titles.filter((title) => pattern.test(title)).length;
+    if (count > limit) issues.push(`title_particle_overused:${label}:${count}>${limit}`);
+  }
+  const repeatedPatterns = [
+    ['ba_sentence', /把.+(进|给|上|送|塞|压)/],
+    ['rang_sentence', /让.+(进|入|带)/],
+    ['bei_sentence', /被.+(盯|按|推|拖)/],
+    ['kaishi_sentence', /开始/]
+  ];
+  for (const [label, pattern] of repeatedPatterns) {
+    const count = titles.filter((title) => pattern.test(title)).length;
+    if (count > 2) issues.push(`title_pattern_repeated:${label}:${count}`);
+  }
+}
+
+function validateJanetTakeVariety(content, issues) {
+  const takes = Object.values(content.sections || {}).flatMap((section) =>
+    (section?.items || []).map((item) => String(item.janet_take || '').trim()).filter(Boolean)
+  );
+  if (!takes.length) return;
+
+  const weakOpeningCount = takes.filter((take) => /^(这|这种|这类|这个|这条|这件事|这比|这就是)/.test(take)).length;
+  if (weakOpeningCount > 2) issues.push(`janet_take_weak_opening_repeated:${weakOpeningCount}`);
+
+  const repeatedSentencePatterns = [
+    ['not_but_sentence', /不是[^。！？]*而是|不是[^。！？]*，是|不是[^。！？]*是/],
+    ['real_x_sentence', /真正(难|贵|该|要|能|的|看|值得|问题)/]
+  ];
+  for (const [label, pattern] of repeatedSentencePatterns) {
+    const count = takes.filter((take) => pattern.test(take)).length;
+    if (count > 3) issues.push(`janet_take_sentence_pattern_repeated:${label}:${count}`);
+  }
+
+  const templateTermCount = takes.filter((take) =>
+    JANET_TAKE_TEMPLATE_TERMS.some((term) => take.includes(term))
+  ).length;
+  if (templateTermCount > 3) issues.push(`janet_take_template_terms_overused:${templateTermCount}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

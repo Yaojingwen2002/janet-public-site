@@ -4,11 +4,6 @@ import { loadEnv, targetDateFromArg } from './lib.mjs';
 
 const RENDER_BLOCKED_TERMS = [
   '事实剥离',
-  '破防点',
-  '槽点',
-  '代价',
-  '搞钱',
-  '落地指导',
   'JANET:',
   'Janet:'
 ];

@@ -19,11 +19,6 @@ const coverPath = resolve(dataDir, 'cover.png');
 
 const BLOCKED_OUTPUT_TERMS = [
   '事实剥离',
-  '破防点',
-  '槽点',
-  '代价',
-  '搞钱',
-  '落地指导',
   'JANET:',
   'Janet:'
 ];

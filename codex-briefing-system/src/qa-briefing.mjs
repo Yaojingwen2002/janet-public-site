@@ -45,9 +45,6 @@ const TITLE_PARTICLE_LIMITS = [
   ['kaishi_particle', /开始/, 1]
 ];
 
-const JANET_TAKE_ROLE_RE = /(中国|国内|创作者|创业者|老板|团队|公司|从业者|开发者|产品|研发|运营|销售|客服|法务|财务|内容|代码|RAG|Agent|模型|工具|安全|教育|医疗|工业|投资人)/i;
-const JANET_TAKE_ACTION_RE = /(先|别|要|该|应该|可以|直接|用|做|测|买|接|拿|盯|避开|切|跑|砍|留|投|卖|上|查|准备|优先|停止|放弃|建立)/;
-
 const REQUIRED_COUNTS = {
   news: 5,
   models: 4,
@@ -58,7 +55,8 @@ const REQUIRED_COUNTS = {
 
 const MIN_COVER_BYTES = 20_000;
 const MIN_ITEM_IMAGE_BYTES = 1_200;
-const MIN_JANET_TAKE_LENGTH = 120;
+const MIN_JANET_TAKE_LENGTH = 45;
+const MAX_JANET_TAKE_LENGTH = 180;
 const MIN_TREND_PARAGRAPHS = 2;
 const MAX_TREND_PARAGRAPHS = 3;
 const MIN_ITEM_TITLE_LENGTH = 10;
@@ -322,14 +320,15 @@ function validateItem(item, path, issues, context) {
     if ([...janetTake].length < MIN_JANET_TAKE_LENGTH) {
       issues.push(`janet_take_too_short:${path}`);
     }
-    if (sentenceCount(janetTake) < 3) {
-      issues.push(`janet_take_missing_three_layers:${path}`);
+    if ([...janetTake].length > MAX_JANET_TAKE_LENGTH) {
+      issues.push(`janet_take_too_long:${path}`);
     }
-    if (!JANET_TAKE_ROLE_RE.test(janetTake)) {
-      issues.push(`janet_take_missing_role_or_scene:${path}`);
+    const sentences = sentenceCount(janetTake);
+    if (sentences < 1) {
+      issues.push(`janet_take_missing_sentence:${path}`);
     }
-    if (!JANET_TAKE_ACTION_RE.test(janetTake)) {
-      issues.push(`janet_take_missing_actionable_advice:${path}`);
+    if (sentences > 4) {
+      issues.push(`janet_take_too_many_sentences:${path}:${sentences}`);
     }
   }
 }
@@ -376,6 +375,16 @@ function validateJanetTakeVariety(content, issues) {
 
   const weakOpeningCount = takes.filter((take) => /^(这|这种|这类|这个|这条|这件事|这比|这就是)/.test(take)).length;
   if (weakOpeningCount > 2) issues.push(`janet_take_weak_opening_repeated:${weakOpeningCount}`);
+
+  const openingCounts = new Map();
+  for (const take of takes) {
+    const opening = take.replace(/^[「『"'“‘\s]+/, '').slice(0, 4);
+    if (!opening) continue;
+    openingCounts.set(opening, (openingCounts.get(opening) || 0) + 1);
+  }
+  for (const [opening, count] of openingCounts) {
+    if (count > 3) issues.push(`janet_take_opening_repeated:${opening}:${count}`);
+  }
 
   const repeatedSentencePatterns = [
     ['not_but_sentence', /不是[^。！？]*而是|不是[^。！？]*，是|不是[^。！？]*是/],

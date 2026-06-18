@@ -1,0 +1,170 @@
+{
+  "date": "2026-06-19",
+  "vol": "262",
+  "intro_text": "昨夜 AI 圈最刺眼的不是某个模型跑分，而是开关权、成本和入口一起摊牌：G7 公开担心美国能随手关模型，Google 核心研究员转投 OpenAI，Adobe、Google、Meta 把 AI 塞进工作台和搜索框，Waymo 又被现实路况按住。今天这期只讲一件事：AI 不再只是能力竞赛，它开始决定谁有入口、谁付账、谁背锅。",
+  "cover": {
+    "title": "开关权成了生意",
+    "subtitle": "模型、工具、硬件和监管同一天亮账本。",
+    "image_path": "runs/2026-06-19/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI briefing 21:9 horizontal magazine cover. Theme: 开关权成了生意. A premium black white and Janet green AI technology magazine cover showing model access switches, creative software timelines, memory chips, robotaxi safety maps and policy ledgers converging into one infrastructure control board. No readable text, no logos, no dates, no watermark, no cartoon, no glowing brain, no cheap neon."
+  },
+  "trend": "G7 领导人把美国模型断供权摆上台面，Noam Shazeer 从 Gemini 转去 OpenAI，Guardrails Alliance 又拿 500 万美元对冲 Big Tech 的 1 亿美元 AI 政治资金。模型能力还在卷，但今天真正亮出来的是控制权：谁能关 API，谁能抢核心研究员，谁能影响监管叙事。\n\n对中国创作者和企业，最实际的信号是别把工作流押在单一入口。Adobe、Google Docs、Meta、ChatGPT 都在把 AI 做成默认层，苹果又提醒内存和存储成本会传导到终端价格；会用工具的人会更快，但不会算账的人也会更快烧钱。\n\n接下来 2-4 周盯三件事：Anthropic 模型禁令会不会逼出更明确的美国 AI 出口规则，OpenAI 和 Google 的人才战是否继续扩散到模型负责人级别，创作软件与办公套件会不会继续把“关掉 AI”做成隐藏技能。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "G7 盯美国模型断供权",
+          "body": "TechCrunch 6 月 17 日报道，G7 午餐会上，法国总统 Emmanuel Macron 和印度总理 Narendra Modi 等领导人担心美国可能随时切断顶级 AI 模型访问。背景是 Trump 政府以国家安全为由限制 Anthropic Mythos 5 和 Fable 5 出口，Macron 直说如果美国能“隔天关开关”，欧洲客户经济和美国 AI 公司都会受伤。",
+          "janet_take": "冷水来了：模型主权落到 API 开关上，一断就是业务事故。做跨境产品别再只接一家模型，至少准备路由、缓存和降级方案。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/world-leaders-want-american-ai-they-just-dont-want-america-to-be-able-to-turn-it-off/",
+          "image": "images/news-01-g7-american-ai-switch.png"
+        },
+        {
+          "title": "OpenAI 抢走 Gemini 核心 Noam Shazeer",
+          "body": "Business Insider 6 月 18 日报道，Google Gemini co-lead、Character.AI 联合创始人 Noam Shazeer 宣布离开 Google 加入 OpenAI。Shazeer 是 2017 年 Transformer 论文共同作者之一，Google 2024 年曾以约 27 亿美元 Character.AI 技术授权和团队回流交易把他带回。",
+          "janet_take": "人才战比融资新闻更诚实，顶级研究员投票用脚，比宣传稿更能说明谁在前线。Google 花大钱买回的人又走了，组织留不住人，模型路线再漂亮也会漏血。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/google-veteran-founded-characterai-is-jumping-to-openai-talent-war-2026-6",
+          "image": "images/news-02-noam-openai.png"
+        },
+        {
+          "title": "Guardrails PAC 拿 500 万美元反击 Big Tech",
+          "body": "TechCrunch 6 月 18 日报道，Shaunna Thomas 和 Leah Hunt-Hendrix 发起 Guardrails Alliance super PAC，主打支持 AI 监管立法，目前约有 500 万美元资金，并计划本周期募资 1500 万美元。它的对手是获得 OpenAI President Greg Brockman 等科技领袖资金支持、资金超过 1 亿美元的 Leading the Future。",
+          "janet_take": "AI 监管已经进选举机器，不再是白皮书辩论。大厂想用钱买规则，员工和受害者家庭也开始组织反击，接下来每条模型政策都会带政治账本。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/18/a-tech-worker-backed-pac-is-bringing-a-5m-knife-to-big-techs-100m-gunfight/",
+          "image": "images/news-03-guardrails-pac.png"
+        },
+        {
+          "title": "Apple 警告 AI 内存荒推高 iPhone 价格",
+          "body": "TechCrunch 6 月 17 日报道，AI 服务器需求造成全球 memory chips 短缺，Apple CEO Tim Cook 警告 Mac、iPhone、iPad 价格上涨“不可避免”。报道称内存芯片价格较去年上涨约 4 倍，TechInsights 估算若要维持利润率，下一代 iPhone Pro 可能需要多加约 270 美元。",
+          "janet_take": "AI 成本终于从云账单跑到消费者口袋里。普通用户没买训练集群，也会替数据中心抢内存买单，硬件创作者今年别乱承诺低价升级。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/ai-is-hurting-apple-in-more-ways-than-one-it-may-force-iphone-price-increases/",
+          "image": "images/news-04-apple-memory.png"
+        },
+        {
+          "title": "Waymo 限制近 4000 辆 robotaxi",
+          "body": "TechCrunch 6 月 18 日报道，Waymo 向 NHTSA 提交自愿软件召回，涉及近 4000 辆 robotaxi，原因是车辆在高速公路施工区表现异常。Waymo 识别出至少 13 起车辆驶入关闭施工路段的事件，并已在 5 月 19 日暂停所有高速行驶，修复仍在开发中。",
+          "janet_take": "自动驾驶最怕的不是宣传片，是锥桶和临时施工牌。Waymo 已跑 1.7 亿英里，也会栽在边界场景；国内 robotaxi 团队别只晒里程，先晒召回和修复能力。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/18/waymo-recalls-nearly-4000-robotaxis-to-stop-them-driving-into-highway-construction-zones/",
+          "image": "images/news-05-waymo-recall.png"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "ChatGPT scheduled tasks 进侧边栏",
+          "body": "OpenAI Help Center 6 月 17 日更新 ChatGPT release notes，Scheduled tasks 新增独立 Scheduled 页面，用户可在侧边栏查看任务、下一次运行时间，并暂停、恢复、编辑或删除。OpenAI 还称任务运行更快、更可靠，通知也更有用。",
+          "janet_take": "提醒和监控这种小功能，正在把助手推成日常工具入口。创作者别只拿 ChatGPT 写段子，把选题监控、复盘提醒、发布检查先自动起来。",
+          "source": "OpenAI Help Center",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image": "images/models-01-chatgpt-tasks.png"
+        },
+        {
+          "title": "Adobe Firefly 助手进 Premiere 和 Illustrator",
+          "body": "TechCrunch 6 月 18 日报道，Adobe 正把 Firefly AI assistant 扩展到 Premiere、Illustrator、InDesign 和 Frame.io。新能力包括生成 brand kits、product videos、storyboards，在 Premiere 里整理素材、批量重命名、识别采访问题和加 markers，在 Illustrator 里整理图层和检查字体。",
+          "janet_take": "Adobe 没在卖聊天框，它在吃掉设计师最烦的整理动作。内容团队以后拼的不只拼会不会点工具，还拼谁能把素材、品牌元素和复用资产管成系统。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/18/adobe-adds-its-ai-assistant-to-premiere-illustrator-and-indesign/",
+          "image": "images/models-02-adobe-firefly.png"
+        },
+        {
+          "title": "Anthropic 首尔办公室补上韩国 MOU",
+          "body": "Anthropic 6 月 18 日更新首尔办公室与韩国合作公告，补充与韩国政府 MOU 细节。公告称 Samsung SDS 正向 Samsung Electronics 员工部署 Claude，团队使用 Claude Cowork 和 Claude Code 做知识工作、agentic workflows 和软件开发；NAVER、Nexon、LG CNS、Hanwha Solutions 等也在使用 Claude。",
+          "janet_take": "Claude 在韩国抢的是工位和政府背书，不是单次模型热搜。中国 ToB 团队看清楚：真正能留下来的 AI，是能进工程、客服、销售和集团流程的那种。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
+          "image": "images/models-03-anthropic-seoul.png"
+        },
+        {
+          "title": "Meta AI Mode 用公共内容做搜索",
+          "body": "Meta 6 月 15 日发布 Facebook AI Mode，Techmeme 6 月 18 日继续追踪该功能。AI Mode 使用 Meta AI，从 Facebook Groups、Reels 等公开内容里生成答案；Meta 同时推出 AI 创作工具、camera roll sharing suggestions、AI photo presets 等功能，试图把搜索和创作都留在 Facebook 内部。",
+          "janet_take": "Meta 的算盘很直：把社区内容变成搜索燃料。创作者要开始把公开帖当可被 AI 摘要的素材库写，不然你辛苦发的内容只会给别人做答案背景。",
+          "source": "Meta Newsroom / Techmeme",
+          "url": "https://about.fb.com/news/2026/06/new-ai-tools-to-help-you-make-things-happen-on-facebook/",
+          "image": "images/models-04-meta-ai-mode.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Google Docs 用户得学会关 Gemini",
+          "body": "TechCrunch 6 月 17 日发布教程，解释如何关闭 Google Docs 里“write with Gemini”的底部 AI 输入框：点击顶部 Gemini 菜单，再进入 bottom bar preferences 关闭。文章还提醒，若要更彻底关闭 Workspace smart features，需要到 Gmail 设置中切换相关选项。",
+          "janet_take": "当一个工具需要教程教你关掉 AI，产品经理已经越界了。AI 默认开启可以提效率，但不能把用户写作界面变成广告位。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/how-to-turn-off-ai-in-your-google-docs/",
+          "image": "images/insights-01-google-docs.png"
+        },
+        {
+          "title": "Apple 在 iOS 27 测第三方模型接 Siri",
+          "body": "Techmeme 6 月 18 日聚合 Bloomberg 报道称，Siri AI 已足以缓解 Apple 的 AI 危机，iOS 27 首个开发者 beta 内部包含接入 OpenAI 以外第三方 AI 模型的能力。该信号显示 Apple 仍在尝试把 Siri 从封闭助手改造成可替换模型的入口。",
+          "janet_take": "苹果终于像一个现实主义者：自己慢，就先把模型插槽留出来。做 iOS 工具的人要盯 Siri 能不能调用第三方服务，入口一开，独立 app 的存在感会被重新洗牌。",
+          "source": "Bloomberg / Techmeme",
+          "url": "https://www.techmeme.com/index.html",
+          "image": "images/insights-02-siri-ios27.png"
+        },
+        {
+          "title": "PwC 算出 AI 技能岗位快 8 倍",
+          "body": "Techmeme 6 月 18 日聚合 PwC 2026 Global AI Jobs Barometer：PwC 基于 27 个国家超过 10 亿条招聘信息等数据，称 AI 正把劳动力市场拉向两条路。使用 AI 强化人类技能的公司更受益，只把 AI 当裁员工具的公司落后；AI job roles 在 2025 年增长速度约为整体市场 8 倍，相关技能工资更高。",
+          "janet_take": "裁员叙事太粗糙，真正赚钱的是会用 AI 放大人的岗位。老板如果只想着砍人，最后省下的是工资，丢掉的是学习速度。",
+          "source": "PwC / Bloomberg / Techmeme",
+          "url": "https://www.techmeme.com/index.html",
+          "image": "images/insights-03-pwc-jobs.png"
+        },
+        {
+          "title": "Amazon 谈 Trainium 芯片外卖给机房",
+          "body": "Techmeme 6 月 18 日聚合 Bloomberg 报道，Amazon AI chief Peter DeSantis 称公司正在谈判，将自研 Trainium AI chips 销售给第三方数据中心使用。此前 Trainium 主要服务 AWS 和 Bedrock 相关负载，若外卖成真，Amazon 将从云服务商更进一步进入 AI 芯片供应链。",
+          "janet_take": "云厂商卖自研芯片，等于承认算力租赁还不够，要吃硬件利润。AI 创业公司别只问 GPU 租金，未来还要问芯片路线会不会把你锁进某家云。",
+          "source": "Bloomberg / Techmeme",
+          "url": "https://www.techmeme.com/index.html",
+          "image": "images/insights-04-trainium.png"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Goodwater 称 AI 赢家未必卖 AI",
+          "body": "TechCrunch 6 月 17 日采访 Goodwater Capital co-founder Chi-Hua Chien。他认为模型层商品化已经开始，最先进模型与手机端可运行模型之间的差距可能在一年内缩到 3 个月；AI 时代最大赢家未必是直接卖 AI 的公司，而是把 AI 嵌进消费者真实行为和服务里的公司。",
+          "janet_take": "这句话比很多融资稿都值钱：用户买的不是 AI 名字，而是少一步、快一点、便宜一点。创业者别把“我们有 AI”当产品，没人为形容词付费。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/chi-hua-chien-saw-facebook-coming-now-he-says-the-real-ai-winners-wont-be-selling-ai/",
+          "image": "images/invest-01-goodwater.png"
+        },
+        {
+          "title": "Pramaana 融资 2700 万美元做可验证 AI",
+          "body": "The Next Web 6 月 18 日报道，Pramaana Labs 完成 2700 万美元 seed round，由 Khosla Ventures 领投，Accel、BoldCap、Nexus Venture Partners、Premji Invest、Unbound 参投。公司想把 formal verification 用到法律、药物发现、税务等高风险领域，用类似 LEAN 的证明方法拦截 AI 错误。",
+          "janet_take": "AI 的下一笔钱会流向“少犯错”，不是“更会说”。法律、税务、药物这种高风险场景，客户买的不是灵感，是可追责的确定性。",
+          "source": "The Next Web",
+          "url": "https://thenextweb.com/news/pramaana-labs-27m-seed-formal-verification-ai",
+          "image": "images/invest-02-pramaana.png"
+        },
+        {
+          "title": "Buildots 融资 4500 万美元押施工 AI",
+          "body": "Buildots 6 月 18 日宣布完成 4500 万美元 Series D，总融资额达到 1.66 亿美元。本轮由 Qumra Capital 领投，OG Venture Partners、TLV Partners、Poalim Equity、Future Energy Ventures 和 Viola Growth 参投。公司用 AI、自动化和预测分析管理大型建筑项目，特别强调数据中心和半导体工厂等复杂工程需求。",
+          "janet_take": "施工 AI 不性感，但钱味很重。数据中心、芯片厂越多，延期和返工就越贵；能把现场进度变成可预测数字的工具，会比 PPT agent 更容易收钱。",
+          "source": "Buildots",
+          "url": "https://buildots.com/blog/buildots-raises-45m-in-series-d-funding/",
+          "image": "images/invest-03-buildots.png"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Pixi 用 iMessage 发送 AI AR 角色",
+          "body": "TechCrunch 6 月 18 日报道，Pixi 发布 iOS app，允许用户通过 iMessage 发送 AI-powered AR characters。接收者不必安装 app，角色会通过 iPhone 摄像头出现在真实环境中，可响应周围物体、人和语音；Pixi 称视觉和音频处理留在设备端，未来计划开放用户生成角色。",
+          "janet_take": "Pixi 值得试，因为它把 AI 从聊天框拖进社交动作里。做品牌内容的人可以盯这个方向：未来礼物、表情包和 IP 角色，可能都要能看懂现场。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/18/pixis-new-ios-app-turns-text-messages-into-interactive-ar-experiences/",
+          "image": "images/tools-01-pixi.png"
+        }
+      ]
+    }
+  }
+}

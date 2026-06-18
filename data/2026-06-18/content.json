@@ -1,70 +1,65 @@
 {
   "date": "2026-06-18",
   "vol": "261",
-  "intro_text": "昨夜 AI 圈最刺眼的信号不是谁又发了一个炫技模型，而是谁开始有权决定模型能不能用、数据能不能进、agent 能不能动手。G7 把 AI 主权摆上桌，Anthropic 同时被政府卡脖子又在韩国扩张，印度数据中心、机器人训练数据和 Android 的本地工具调用都在补同一块短板：AI 要进生产，就得先被控制。",
+  "intro_text": "昨夜 AI 圈最有味道的是三条线同时收紧：G7 盯上美国模型开关，OpenAI 和 Google 把 AI 推进实验台与诊疗方案，苹果和印度机房把算力成本摊到硬件与土地上。模型不再只是聊天窗口，它正在变成通行证、实验助手、系统入口和账单来源。",
   "cover": {
-    "title": "模型访问权上桌",
-    "subtitle": "G7、Anthropic、Android 和数据中心同时说明：AI 进生产前，先要过权限和算力关。",
+    "title": "模型通行证上桌",
+    "subtitle": "G7 追问访问权，实验室、手机和机房一起收模型账。",
     "image_path": "runs/2026-06-18/cover.png",
-    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI briefing 21:9 magazine cover, project cover image. Primary request: a premium horizontal AI technology magazine cover for the theme 受控 AI 开始上桌. Scene/backdrop: a stark black-and-white global AI control room where frontier model access gates, data-center power rails, coding-agent terminals, sovereign cloud regions, robotaxi routes, and enterprise approval logs converge into one precise operating layer. Subject: abstract AI production infrastructure under control: a central Janet-green authorization core connected to model cards, chip racks, policy gates, agent work queues, and audit trails. Style/medium: editorial technology magazine cover, cinematic but minimal, high-end print design, no literal company logos. Composition/framing: 21:9 ultra-wide, strong negative space in lower-left and center-left for HTML overlay, crisp diagonal infrastructure lines leading toward right-side depth. Lighting/mood: sharp studio contrast, cold, expensive, controlled, analytical. Color palette: black, white, graphite, Janet green #18E299 only. Constraints: no readable text, no dates, no logos, no watermark, no robot crowd, no glowing brain, no cheap neon, no cartoon style, no purple/orange gradient."
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI briefing 21:9 magazine cover, project cover image. Primary request: a premium horizontal AI technology magazine cover for the theme 模型通行证上桌, frontier AI access becomes controlled infrastructure. Scene/backdrop: a stark black-and-white global AI control room where frontier model access gates, data-center power rails, coding-agent terminals, sovereign cloud regions, robotaxi routes, and enterprise approval logs converge into one precise operating layer. Subject: abstract AI production infrastructure under control: a central Janet-green authorization core connected to model cards, chip racks, policy gates, agent work queues, and audit trails. Style/medium: editorial technology magazine cover, cinematic but minimal, high-end print design, no literal company logos. Composition/framing: 21:9 ultra-wide, strong negative space in lower-left and center-left for HTML overlay, crisp diagonal infrastructure lines leading toward right-side depth. Lighting/mood: sharp studio contrast, cold, expensive, controlled, analytical. Color palette: black, white, graphite, Janet green #18E299 only. Constraints: no readable text, no dates, no logos, no watermark, no robot crowd, no glowing brain, no cheap neon, no cartoon style, no purple/orange gradient."
   },
-  "trend": "模型访问权上桌：G7 在法国谈 AI 主权，Anthropic 的 Fable/Mythos 禁令还在发酵，Android 17 开放 AppFunctions，印度数据中心融资和机器人数据公司一起补底座。今天的 AI 新闻不讲炫技，讲谁能发许可、谁有算力、谁掌握工具入口。\n\n对中国创作者和企业来说，最强模型会越来越像供应链，不是随手买一个 API。关键业务要准备多模型切换、数据留存、权限审计和本地部署方案；内容团队也要把素材、提示词、自动化脚本拆开存，别把账号生意押在单一入口上。\n\n接下来 2-4 周盯三件事：美国是否把 frontier model 审批制度化，亚洲企业是否加速购买本地算力，以及 coding agent、机器人、移动 OS 是否把工具调用权限变成新入口。",
+  "trend": "G7 盯上美国模型开关，OpenAI 的 AI chemist 进了实验台，Google AMIE 进了慢病管理，Android 17 和 Google Home 继续把 Gemini 往系统层塞。另一边，XDOF 卖机器人数据、CPP 买印度机房、苹果警告内存涨价，所有新闻都在讲同一件事：AI 从演示走向受控的真实成本。\n\n对中国创作者和企业，含义很简单：模型只是前台，后面还有数据、权限、硬件、渠道和信任。内容团队要做多模型备份；工具创业者要把可调用动作做成产品核心；老板们别只盯订阅费，要把内存、云、数据驻留和人工兜底一起算进去。\n\n接下来 2-4 周盯三处：美国会不会把 frontier model 访问限制写成更稳定的制度，移动 OS 和家用设备会不会继续开放或收紧 agent 工具调用，印度、韩国这类本地市场是否继续用机房和大客户把模型公司锁进地区账本。",
   "sections": {
     "news": {
       "items": [
         {
-          "title": "G7 讨论 AI 主权，模型访问成筹码",
-          "body": "AP 于 2026 年 6 月 17 日报道，OpenAI CEO Sam Altman、Google DeepMind CEO Demis Hassabis、Anthropic CEO Dario Amodei，以及 Cohere、Mistral、Black Forest Labs、Domyn、Sakana AI、Synthesia 等公司负责人在法国 G7 峰会参加 AI 工作午餐。会议背景是欧洲、加拿大等经济体对美国 AI 公司支配力的焦虑，尤其是 Anthropic Fable 5 和 Mythos 5 被美国政府限制后，盟友开始重新讨论“不能被单一国家切断模型访问”的问题。",
-          "janet_take": "AI 主权听起来像外交辞令，落地就是模型访问权有了国界。谁能切断模型、算力和数据，谁就握着下一代产业开关。",
+          "title": "G7 盯上美国模型开关权",
+          "body": "AP 于 2026 年 6 月 17 日报道，OpenAI CEO Sam Altman、Google DeepMind CEO Demis Hassabis、Anthropic CEO Dario Amodei，以及 Cohere、Mistral、Black Forest Labs、Domyn、Sakana AI、Synthesia 等公司负责人，在法国 G7 峰会参加 AI 工作午餐。法国总统 Emmanuel Macron 借 Anthropic Fable 5 和 Mythos 5 访问受限一事提醒盟友：如果关键模型能被单一国家切断，AI 主权就不是口号。",
+          "janet_take": "判断很冷：模型已经变成能断供的基础设施。做跨境 SaaS 或内容账号，今天就该准备第二模型和本地缓存，别等 API 开关替你做灾备演练。",
           "source": "AP News",
           "url": "https://apnews.com/article/g7-france-ai-sovereignty-7d783c6de4356962e338b8b8563d48ea",
-          "image_url": "",
-          "image": "images/news-01-g7-ai.jpg",
+          "image": "images/news-01-g7.jpg",
           "image_source_url": "https://dims.apnews.com/dims4/default/e7f9d5b/2147483647/strip/true/crop/4869x3244+0+159/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Ffd%2F2c%2Fa2f9abe8b9d51cadd06bd406e321%2F96f671aed00e47fdb4c28f39f07e2d1b",
           "image_origin": "source"
         },
         {
-          "title": "Anthropic 模型禁令逼出监管答案",
-          "body": "Axios 于 2026 年 6 月 17 日分析，美国政府要求 Anthropic 下线 Fable 5 和 Mythos 5 后，frontier model 监管从理论争论变成现实冲突。报道称，亚马逊曾向美国官员提出有关 Fable guardrails 可被绕过的网络安全担忧，随后政府以出口控制方式介入，行业人士开始讨论是否需要一个懂技术的 AI 专门监管机构，把公司测试、外部审计和政府权力结合起来。",
-          "janet_take": "Anthropic 这次被按暂停键，行业别再装作“自律就够了”。Frontier model 已经进入监管实战，安全报告写得再漂亮，也挡不住政府直接拔插头。",
-          "source": "Axios",
-          "url": "https://www.axios.com/2026/06/17/anthropic-fable-mythos-ai-model-government-oversight",
-          "image_url": "",
-          "image": "images/news-02-anthropic-oversight.jpg",
-          "image_source_url": "local-generated",
-          "image_origin": "local"
+          "title": "OpenAI 用 AI 化学家改 Chan-Lam 产率",
+          "body": "OpenAI 于 2026 年 6 月 17 日发布实验结果：GPT-5.4 驱动的 AI chemist 与 Molecule.one 研究员 Maria 合作，围绕 Chan-Lam coupling 反应提出假设、设计实验并迭代条件。OpenAI 称，该系统让平均反应产率从 16.6% 提升到 25.2%，产率超过 30% 的反应比例从 15.6% 提升到 37.5%，14 组 bench-scale 对照里有 11 组改善；项目周期约 3 个月，仍需要人类研究员参与。",
+          "janet_take": "靠谱的地方在于它没有吹全自动诺奖，只拿反应产率说话。做科研工具的团队要学这个姿势：先选窄实验台，再拿实验室数据交作业。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/ai-chemist-improves-reaction/",
+          "image": "images/news-02-openai-ai-chan-lam.jpg",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg",
+          "image_origin": "search"
         },
         {
-          "title": "Anthropic 首尔开业，Claude 抢工程入口",
-          "body": "Anthropic 于 2026 年 6 月 17 日宣布首尔办公室正式开业，并披露一批韩国生态合作。NAVER 已在整个工程组织部署 Claude Code，Nexon 用 Claude Code 写、审和发布游戏代码；LG CNS、Hanwha Solutions、Samsung SDS 也在员工和集团级场景中部署 Claude，Channel Corp 则把 Claude 用在 Channel Talk 客服和销售数据分析中。",
-          "janet_take": "Anthropic 在韩国抢企业账户里的工程入口，不是抢曝光。Claude Code 一旦进代码库和客服系统，续费就不靠情怀，靠每天真的有人打开。",
+          "title": "Google AMIE 进 Nature 管慢病",
+          "body": "Google Research 于 2026 年 6 月 17 日介绍 Nature 论文，称 AMIE 从诊断对话扩展到 disease management。研究把 Gemini 长上下文能力用于复杂慢病场景，评估显示 AMIE 在管理推理上达到临床医生水平，并在方案精确度和指南一致性上更高；Google 也强调，下一步仍需要真实世界研究。",
+          "janet_take": "医疗 AI 最怕嘴甜手空，AMIE 这次至少把评价压到管理方案。做健康内容或诊所工具，先做指南对齐和随访清单，别急着装万能医生。",
+          "source": "Google Research",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/",
+          "image": "images/news-03-google-amie-nature.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/AMIE_Mx_Nature_Social_Visual_Variant_2_Stil.max-1440x810.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Anthropic 首尔开业，NAVER 全员用 Claude Code",
+          "body": "Anthropic 于 2026 年 6 月 17 日宣布首尔办公室开业，并披露韩国客户进展。NAVER 已在整个工程组织使用 Claude Code，Nexon 用 Claude Code 写、审和发布游戏代码；LG CNS、Hanwha Solutions、Samsung SDS 和 Channel Corp 也在员工、集团业务、客服或销售分析场景部署 Claude。",
+          "janet_take": "Claude 在韩国抢的是工程师每天打开的终端，不是发布会掌声。国内团队卖 AI 编程工具，要先拿下一两个高频工位，再谈品牌声量。",
           "source": "Anthropic",
           "url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
-          "image_url": "",
-          "image": "images/news-03-anthropic.jpg",
+          "image": "images/news-04-anthropic-naver-claude-code.jpg",
           "image_source_url": "https://www.anthropic.com/api/opengraph-illustration?name=Object%20Globe&backgroundColor=heather",
           "image_origin": "source"
         },
         {
-          "title": "DeepSeek 融资后估值冲 500 亿",
-          "body": "TechXplore 援引 AFP 于 2026 年 6 月 17 日报道，DeepSeek 在首轮融资后估值超过 500 亿美元。本轮融资金额超过 500 亿元人民币，约 74 亿美元，消息源来自 The Wall Street Journal 和 The Information；报道称创始人梁文锋本人投入约 200 亿元人民币，并通过有限合伙结构保持控制权。",
-          "janet_take": "DeepSeek 从低成本神话走进资本账本。便宜模型当然香，但 500 亿美元估值背后，是算力、人才和商业化压力一起上桌。",
-          "source": "TechXplore / AFP",
-          "url": "https://techxplore.com/news/2026-06-deepseek-valued-bn-funding.html",
-          "image_url": "",
-          "image": "images/news-04-deepseek-500.jpg",
-          "image_source_url": "https://imgslim.geekpark.net/uploads/image/file/f9/8a/f98a5e8737c00b7014ec059cf325c933.jpg",
-          "image_origin": "search"
-        },
-        {
-          "title": "CPP 投 7.41 亿美元买印度算力",
-          "body": "TechCrunch 于 2026 年 6 月 17 日报道，加拿大养老金投资机构 CPP Investments 承诺向印度数据中心运营商 CtrlS 投入最多 700 亿卢比，约 7.41 亿美元。其中 400 亿卢比用于收购 CtrlS 8.2% 股权，另有最多 300 亿卢比投入 hyperscale data center 园区合资公司，CPP 将持有合资公司 48% 股权。",
-          "janet_take": "印度数据中心拿到养老金的钱，说明算力主权已经变成硬资产。AI 出海不只拼模型，最后拼的是电、地、网络和数据驻留。",
+          "title": "苹果因 AI 内存荒预警 iPhone 涨价",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，AI 服务器需求正在挤压内存芯片供应，可能迫使 Apple 提高 iPhone、Mac 和 iPad 价格。报道援引 Tim Cook 的警告称，内存芯片价格已经较去年上涨约 4 倍，这种成本压力不可持续。",
+          "janet_take": "AI 账单最后会传到消费者手里，哪怕用户没主动买 AI。硬件创作者和小老板该盯内存、存储、边缘推理成本，别只看模型发布会。",
           "source": "TechCrunch",
-          "url": "https://techcrunch.com/2026/06/17/canadian-pension-giant-joins-race-to-fund-indias-ai-fueled-data-center-boom/",
-          "image_url": "",
-          "image": "images/news-05-cpp-741.jpg",
-          "image_source_url": "https://techcrunch.com/wp-content/uploads/2024/05/GettyImages-1468360413.jpg?resize=1200,857",
+          "url": "https://techcrunch.com/2026/06/17/ai-is-hurting-apple-in-more-ways-than-one-it-may-force-iphone-price-increases/",
+          "image": "images/news-05-ai-iphone.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/04/GettyImages-2234130980.jpg?resize=1200,800",
           "image_origin": "source"
         }
       ]
@@ -72,47 +67,43 @@
     "models": {
       "items": [
         {
-          "title": "Fable 禁令推高 Claude 企业热度",
-          "body": "TechCrunch 于 2026 年 6 月 16 日 3:34 PM PDT 报道，Anthropic 与美国政府围绕 Fable 5、Mythos 5 的冲突未必伤害企业销售。Ramp 基于 7 万多家企业支付数据称，Anthropic 在 5 月企业 AI 订阅支出份额上升 2.5 个百分点至 41%，超过 OpenAI 的 39.5%；企业 API 消费中，Claude Code 和 Opus 系列仍是重要支出来源。",
-          "janet_take": "禁令反而给 Claude 做了最贵的广告。企业客户嘴上谈安全，身体会看账单：谁能写代码、处理知识工作，谁就继续被采购。",
+          "title": "Z.ai 开源 GLM-5.2，100 万上下文",
+          "body": "Z.ai 于 2026 年 6 月 17 日在 Hugging Face 发布 GLM-5.2 说明，主打 100 万 token 上下文、coding 和 long-horizon tasks。官方称 IndexShare 机制可带来 2.9 倍 FLOPs 降低，并以 MIT license 开放权重；模型已在 Hugging Face、ModelScope 上线，并支持 vLLM、SGLang、xLLM 和 ktransformers 等部署路径。",
+          "janet_take": "长上下文是硬菜，但 100 万 token 不会自动变成好代码。做 coding agent 的团队，下一步要比 repo 检索、补丁回滚和失败复盘，别只晒窗口长度。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog/zai-org/glm-52-blog",
+          "image": "images/models-01-zai-glm-52100.png",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/67066ea38a79951d7b8d4195/iaTHtYOBgeY0C3Xx3vymr.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google 推 Android 17，Gemini 进系统工具",
+          "body": "TechCrunch 于 2026 年 6 月 16 日 11:00 AM PDT 报道，Google 发布 Android 17、Wear OS 7 和 Pixel Drop，并继续扩展 Gemini 功能。新版本带来 bubble bar、多任务工具、视频中的 screen reaction、儿童与安全功能、foldable gaming 改进，以及 Lyria 3、Gemini Omni、AudioLM 等 AI 相关更新。",
+          "janet_take": "Google 在手机里铺 Gemini，不是给聊天框加皮肤，而是要吃掉用户的下一次点击。做 app 的人要把核心动作做成可调用接口，否则入口会被系统层拿走。",
           "source": "TechCrunch",
-          "url": "https://techcrunch.com/2026/06/16/anthropics-latest-feud-with-the-trump-admin-may-actually-help-it-sales-data-suggests/",
-          "image_url": "",
-          "image": "images/models-01-fable-claude.jpg",
-          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/03/Dario-Amodei-Anthropic-viva-tech.jpg?w=1024",
+          "url": "https://techcrunch.com/2026/06/16/android-17-launches-with-new-multitasking-tools-as-google-expands-gemini-features/",
+          "image": "images/models-02-google-android-17gemini.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/gemini-app-GettyImages-2276204472.jpg?w=1024",
           "image_origin": "source"
         },
         {
-          "title": "Android 17 给 Gemini 开 app 工具层",
-          "body": "Android Developers Blog 在 2026 年 6 月 16 日发布 Android 17，称 Android 正从操作系统转向 intelligence system。新版本扩展 AppFunctions，让应用把能力暴露成 Android MCP 的本地工具，Gemini 等 AI agents 可以发现并执行这些 AppFunctions；Google 同时提供 AppFunctions agent skill，帮助开发者生成 Kotlin 代码和 KDoc。",
-          "janet_take": "手机 OS 给 agent 发工具证，入口战就换玩法了。未来不是 app 等用户点，而是 Gemini 直接调用你的核心动作。",
-          "source": "Android Developers Blog",
-          "url": "https://android-developers.googleblog.com/2026/06/Android-17.html",
-          "image_url": "",
-          "image": "images/models-02-android-17-gemini-app.png",
-          "image_source_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV7zuuXjulHty999mGDWY1kfL8Q9SXjYYWn-7JTpMfVdNP78eb5fW9shOpvVdEqK0WnNp7AhdO0qc7pXAaqcfTwXgOGsfZyqcQv8wyD-9niWBpZuP6ZAPHBSetWenN2lMlRS5wi2d71-n8RCYqrLsFhUCEvM7KeoGLnNaDbiyOZQ0vvyr0O580nXK4Vas/s2048/Metadata%20-%20Static.png",
+          "title": "Vercel 开源 eve，agent 带生产护栏",
+          "body": "Vercel 于 2026 年 6 月 17 日推出开源 agent framework eve，用于构建、运行和扩展生产级 agents。eve 内置 durable execution、sandboxed compute、human-in-the-loop approvals、subagents 和 evals，并提出 agent directory，让 agents 像可组合服务一样被组织和调用。",
+          "janet_take": "eve 有意思，因为它承认 agent 会出错，所以先给沙箱、审批和评测。做内部自动化别急着全放权，先把可撤销、可暂停、可追责搭好。",
+          "source": "Vercel",
+          "url": "https://vercel.com/blog/introducing-eve",
+          "image": "images/models-03-vercel-eveagent.png",
+          "image_source_url": "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/yrQSmbh5sSvn4egFUkOoe/c4de567a788d6d84cd9be12e2d7cab77/Eve2.png",
           "image_origin": "source"
         },
         {
-          "title": "GLM-5.2 押上 100 万上下文",
-          "body": "OpenLM.ai 的 GLM-5.2 条目显示，Z.ai 在 2026 年 6 月 13 日推出面向 coding 和 long-horizon tasks 的 GLM-5.2，主打 100 万 token 上下文，并以 MIT 开源路线作为差异点。多家技术跟踪站点称该模型面向 repo-scale agentic coding，强调长上下文、商业可用和开放部署。",
-          "janet_take": "100 万上下文是代码库级 agent 的入场券，不是参数炫耀。问题也很现实：塞得下全项目，不等于修得好全项目。",
-          "source": "OpenLM.ai",
-          "url": "https://openlm.ai/glm-5.2/",
-          "image_url": "",
-          "image": "images/models-03-glm-52-100.png",
-          "image_source_url": "https://openlm.ai/assets/openlm-logo.png",
-          "image_origin": "source"
-        },
-        {
-          "title": "Cartesia 推 Sonic-3.5，语音 agent 拼实时",
-          "body": "Cartesia 官网显示，Sonic-3.5 和 Ink-2 被定位为面向 voice agents 的实时语音与转写模型，强调低延迟、多语言、情绪表达和企业语音场景。该公司展示 ServiceNow、Elise AI 等客户案例，主张语音 agent 需要在质量和速度之间不再二选一。",
-          "janet_take": "语音 agent 不再拼“像不像人”，开始拼能不能接业务电话。低延迟只是门票，打断、转人工、录音授权才是真正的坑。",
-          "source": "Cartesia",
-          "url": "https://www.cartesia.ai/",
-          "image_url": "",
-          "image": "images/models-04-cartesia-agent.jpg",
-          "image_source_url": "https://cartesia.ai/site/og-default.jpg",
+          "title": "Google Home Speaker 上 Gemini，售价 99.99 美元",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，Google 推出 99.99 美元的 Google Home Speaker，押注 Gemini 重做智能家居音箱。产品支持更自然的语言控制、用户中途修正指令、10 种声音，并可与每月 10 美元的 Google Home Premium 搭配使用；Google 称设备将在本月晚些时候发货。",
+          "janet_take": "智能音箱终于不再只会装懂天气。家庭、门店和工作室场景可以先试低风险指令：查库存、播流程、控设备，别一上来接支付和门锁。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/google-bets-on-gemini-to-reinvent-the-smart-home-speaker/",
+          "image": "images/models-04-google-home-speaker-gemini-9999.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Google-Home-Speaker-Berry.jpeg?resize=1200,899",
           "image_origin": "source"
         }
       ]
@@ -120,47 +111,43 @@
     "insights": {
       "items": [
         {
-          "title": "XDOF 拿 7000 万美元补机器人数据",
+          "title": "XDOF 融资 7000 万美元卖机器人数据",
           "body": "TechCrunch 于 2026 年 6 月 17 日报道，机器人训练数据公司 XDOF 从 Thrive Capital、Spark Capital、a16z、Lux、WndrCo 等投资方获得 7000 万美元融资，并从 stealth 状态公开。公司称已有约 60 名员工和 20 个客户，包括若干 frontier AI labs；它还与 UC Berkeley AI Research Lab 发布 ABC 数据集，包含 13 万条机器人操作轨迹、300 小时仿真和 100 小时评测。",
-          "janet_take": "机器人行业最脏的活终于变贵了：数据。XDOF 卖的不是科幻感，而是操作轨迹、失败样本和可复现评测。",
+          "janet_take": "机器人最贵的脏活不是机械臂，是一遍遍采失败动作。做具身智能服务，先把数据采集流程卖给工厂和实验室，别急着卖万能机器人。",
           "source": "TechCrunch",
           "url": "https://techcrunch.com/2026/06/17/collecting-robot-training-data-is-dirty-unglamorous-work-some-ai-labs-are-already-paying-xdof-to-do-it/",
-          "image_url": "",
           "image": "images/insights-01-xdof-7000.jpg",
           "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/DSC_2479.jpg?resize=1200,800",
           "image_origin": "source"
         },
         {
-          "title": "Uber 2027 年在休斯顿跑 robotaxi",
-          "body": "TechCrunch 于 2026 年 6 月 17 日报道，Uber 计划在 2027 年把 premium robotaxi 服务带到休斯顿。该服务与 Nuro、Lucid 相关，Uber 已向 Nuro 投资约 5 亿美元，并承诺向 Lucid 投资 5 亿美元，同时购买至少 3.5 万辆 robotaxi-ready Lucid 车辆。",
-          "janet_take": "Robotaxi 的难点从来不只在车会不会开。Uber 这单贵在城市运营、保险、调度和远程接管，算法 demo 只是入场券。",
+          "title": "Pramaana 融资 2700 万美元做 AI 验证",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，Pramaana Labs 获得 Khosla Ventures 领投的 2700 万美元 seed round，目标是把 formal verification 用到 AI。公司关注法律、药物发现、税务等高风险领域，希望用类似 LEAN 的方法，让 AI 输出不只像答案，而是能被形式化检查。",
+          "janet_take": "AI 进法律、药物和税务，靠“我觉得对”会死人也会赔钱。创业者可以从合同核查、公式推导、药物规则这种小闭环切入，卖确定性。",
           "source": "TechCrunch",
-          "url": "https://techcrunch.com/2026/06/17/uber-will-bring-its-premium-robotaxi-service-to-houston-in-2027/",
-          "image_url": "",
-          "image": "images/insights-02-uber-robotaxi.jpg",
-          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/uber-robotaxi-houston.jpg?resize=1200,675",
+          "url": "https://techcrunch.com/2026/06/17/pramaana-labs-raises-27-million-seed-round-from-khosla-ventures-to-bring-formal-verification-to-ai/",
+          "image": "images/insights-02-pramaana-2700-ai.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Screenshot-2026-06-17-at-9.53.46-AM.jpg?resize=1200,560",
           "image_origin": "source"
         },
         {
-          "title": "Vultr 联手 HPE、NVIDIA 建 AI 工厂",
-          "body": "Business Wire 于 2026 年 6 月 17 日在 HPE Discover Las Vegas 2026 期间发布消息，Vultr 选择 HPE 和 NVIDIA 构建下一代 AI 基础设施。公告将该项目定位为 distributed AI 和 AI factory 方向，面向需要企业级 GPU、网络和数据中心部署能力的客户。",
-          "janet_take": "AI factory 这个词很会包装，但客户最后只问三件事：多久交付、哪能用、账单会不会炸。NVIDIA 三个字不能替你省钱。",
-          "source": "Business Wire",
-          "url": "https://markets.ft.com/data/announce/detail?dockey=600-202606171100BIZWIRE_USPRX____20260617_BW909023-1",
-          "image_url": "",
-          "image": "images/insights-03-vultr-ai-factory.jpg",
-          "image_source_url": "local-generated",
-          "image_origin": "local"
+          "title": "Anthropic 加入 Frontier 买碳移除",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，Anthropic 成为首家加入 Frontier carbon removal coalition 的 AI startup。Frontier 新一轮买方资金为 9.15 亿美元，总承诺已达 18 亿美元，已签约超过 7 亿美元、50 多个项目和约 180 万吨碳移除；Anthropic 这是第一笔气候相关交易。",
+          "janet_take": "碳移除不是形象工程，是 AI 公司给电力饥饿交的遮羞费。创作者可以继续用大模型，但企业买算力时要把能耗说明写进采购单。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/anthropic-becomes-first-ai-startup-to-join-the-frontier-carbon-removal-coalition/",
+          "image": "images/insights-03-anthropic-frontier.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/GettyImages-2278736523.jpeg?resize=1200,798",
+          "image_origin": "source"
         },
         {
-          "title": "Google 用 AI 推 Compose 迁移",
-          "body": "Android 17 官方开发者文章宣布 Android development 进入 Compose-first 阶段，新的 Android APIs、libraries、tools 和 developer guidance 都将以 Jetpack Compose 为主，旧 View 组件和 View-based Jetpack libraries 进入维护模式。Google 同时推出 AI-driven XML to Compose Migration Skill，用于分析旧 View layout 并转换成 adaptive Compose 代码。",
-          "janet_take": "Google 推 Compose-first，是平台收口的标准动作。AI 迁移工具看起来体贴，本质上也是在告诉开发者：旧路线该退场了。",
-          "source": "Android Developers Blog",
-          "url": "https://android-developers.googleblog.com/2026/06/Android-17.html",
-          "image_url": "",
-          "image": "images/insights-04-google-compose-ai.png",
-          "image_source_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV7zuuXjulHty999mGDWY1kfL8Q9SXjYYWn-7JTpMfVdNP78eb5fW9shOpvVdEqK0WnNp7AhdO0qc7pXAaqcfTwXgOGsfZyqcQv8wyD-9niWBpZuP6ZAPHBSetWenN2lMlRS5wi2d71-n8RCYqrLsFhUCEvM7KeoGLnNaDbiyOZQ0vvyr0O580nXK4Vas/s2048/Metadata%20-%20Static.png",
+          "title": "Uber 选休斯顿 2027 年跑 robotaxi",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，Uber 计划在 2027 年把 premium robotaxi 服务带到休斯顿。该服务与 Nuro、Lucid 相关，Uber 已向 Nuro 投资约 5 亿美元，并承诺向 Lucid 投资 5 亿美元，同时购买至少 3.5 万辆 robotaxi-ready Lucid 车辆。",
+          "janet_take": "Robotaxi 不是多装一个模型就能跑城。做自动驾驶周边的人，机会在调度、保险、客服和远程接管，别只盯车头上的传感器。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/uber-will-bring-its-premium-robotaxi-service-to-houston-in-2027/",
+          "image": "images/insights-04-uber-2027-robotaxi.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/uber-robotaxi-houston.jpg?resize=1200,675",
           "image_origin": "source"
         }
       ]
@@ -168,50 +155,46 @@
     "insights2": {
       "items": [
         {
-          "title": "SpaceX 估值冲到 2.6 万亿美元",
-          "body": "TechCrunch 于 2026 年 6 月 16 日 1:11 PM PDT 报道，SpaceX 股票在上市后继续大幅波动，估值一度冲到 2.9 万亿美元，随后回落到约 2.6 万亿美元，并短暂超过 Amazon。报道指出，SpaceX 去年营收 187 亿美元、亏损 49 亿美元，但市场仍在为其 AI 业务、Cursor 收购和 compute leasing 故事支付溢价。",
-          "janet_take": "SpaceX 的估值很诚实，也很荒诞。火箭、卫星、算力、Cursor 全焊在一起，故事够大，现金流就必须更硬。",
+          "title": "Odyssey 融资 3.1 亿美元冲 14.5 亿估值",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，world model 公司 Odyssey 完成 3.1 亿美元 Series B，估值达到 14.5 亿美元，投资方包括 Amazon、AMD 和 GV。公司由 Oliver Cameron 与 Jeff Hawke 创立，目标是把 world models 用于视频游戏创作、机器人等场景；AWS 将成为首选云，Odyssey 也计划使用 Trainium。",
+          "janet_take": "世界模型拿到大钱，说明视频生成的下一站是可操作场景。游戏、广告和教育团队可以先囤可复用 3D 和动作资产，别只等一键大片。",
           "source": "TechCrunch",
-          "url": "https://techcrunch.com/2026/06/16/spacex-valuation-balloons-to-2-6t-briefly-passes-amazon/",
-          "image_url": "",
-          "image": "images/insights2-01-spacex-26.jpg",
-          "image_source_url": "https://techcrunch.com/wp-content/uploads/2023/01/GettyImages-1244294229.jpg?resize=1200,675",
+          "url": "https://techcrunch.com/2026/06/17/world-model-maker-odyssey-nabs-1-45b-valuation-backed-by-amazon-and-other-big-names/",
+          "image": "images/insights2-01-odyssey-31-145.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2024/11/ODYSSEY-INTHEWILD-974_Retouched_V1.00.jpg?resize=1200,800",
           "image_origin": "source"
         },
         {
-          "title": "Anthropic 订阅份额反超 OpenAI",
-          "body": "TechCrunch 援引 Ramp 数据称，Anthropic 在 2026 年 5 月首次超过 OpenAI，拿到企业 AI 订阅支出的 41%，OpenAI 为 39.5%。该数据来自 Ramp 平台 7 万多家企业客户，虽然无法完整反映全部市场，但显示企业支出对 Claude Opus、Claude Code 等能力的需求仍在上升。",
-          "janet_take": "企业订阅份额比社媒吵架硬。Anthropic 拿到 41%，说明 Claude Code 已经从尝鲜预算挤进部门账单。",
-          "source": "TechCrunch / Ramp",
-          "url": "https://techcrunch.com/2026/06/16/anthropics-latest-feud-with-the-trump-admin-may-actually-help-it-sales-data-suggests/",
-          "image_url": "",
-          "image": "images/insights2-02-anthropic-openai.jpg",
-          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/03/Dario-Amodei-Anthropic-viva-tech.jpg?w=1024",
+          "title": "CPP 买 CtrlS 8.2% 股权，押印度算力",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，加拿大养老金投资机构 CPP Investments 承诺向印度数据中心运营商 CtrlS 投入最多 700 亿卢比，约 7.41 亿美元。其中 400 亿卢比用于收购 CtrlS 8.2% 股权，另有最多 300 亿卢比投入 hyperscale data center 园区合资公司，CPP 将持有合资公司 48% 股权。",
+          "janet_take": "养老金买印度机房，语气比风投更诚实：算力会成为长期租金资产。做海外业务的中国团队，要提前算清数据驻留和延迟账。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/canadian-pension-giant-joins-race-to-fund-indias-ai-fueled-data-center-boom/",
+          "image": "images/insights2-02-cpp-ctrls-82.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2024/05/GettyImages-1468360413.jpg?resize=1200,857",
           "image_origin": "source"
         },
         {
-          "title": "DeepSeek 融资后，国产模型账单变重",
-          "body": "DeepSeek 融资超过 500 亿元人民币、估值超过 500 亿美元的报道，把中国低成本模型故事推向资本化阶段。报道还提到，美国方面认为 DeepSeek 最新模型距离美国顶尖模型约有 8 个月差距，但其低成本路线仍持续影响全球模型定价和开源预期。",
-          "janet_take": "低价模型融到大钱，就会被账本反向教育。创业者可以继续用便宜 API，但别把别人的补贴写进自己的长期毛利。",
-          "source": "TechXplore / AFP",
-          "url": "https://techxplore.com/news/2026-06-deepseek-valued-bn-funding.html",
-          "image_url": "",
-          "image": "images/insights2-03-deepseek.jpg",
-          "image_source_url": "https://img.caixin.com/2025-02-08/173900951551266_840_560.jpg",
-          "image_origin": "search"
+          "title": "Pew 调查：仅 16% 美国人看好 AI",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，Pew Research Center 新研究显示，只有 16% 的美国人认为 AI 会对社会产生正面影响，40% 认为会产生负面影响；67% 不相信政府能监管好 AI，59% 不信任公司能负责任地开发 AI。与此同时，44% 的美国成年人已经使用过 ChatGPT。",
+          "janet_take": "美国用户对 AI 的耐心正在打折，营销文案再热也挡不住信任赤字。内容产品要把“谁生成、能不能改、错了谁负责”写清楚。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/17/only-16-percent-of-americans-think-ai-will-have-a-positive-impact-on-society-a-new-study-shows/",
+          "image": "images/insights2-03-pew-16-ai.jpg",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/spacexipo-nasdaq.jpg?resize=1200,800",
+          "image_origin": "source"
         }
       ]
     },
     "tools": {
       "items": [
         {
-          "title": "Ask Pinterest 开测 AI 购物",
-          "body": "TechCrunch 2026 年 6 月 17 日的最新列表显示，Pinterest 推出实验性 AI 购物应用 Ask Pinterest。该产品延续 Pinterest 在视觉搜索、购物推荐和个性化发现上的优势，把用户的灵感板、商品意图和对话式推荐放在更接近购买决策的位置。",
-          "janet_take": "AI 购物对创作者的价值不在买衣服，在反推审美和选题。Pinterest 想优化成交，你要拿它拆风格词、找爆款线索。",
+          "title": "Pinterest 开测 Ask Pinterest AI 购物",
+          "body": "TechCrunch 于 2026 年 6 月 17 日报道，Pinterest 推出实验性 AI shopping app Ask Pinterest。产品基于 Pinterest 的 Taste Graph，试图把用户的灵感板、商品意图和对话式推荐放到同一个购物入口；Pinterest 同时在广告侧推出 Ads Manager AI assistant、Performance+ creative 和面向广告主的 MCP。",
+          "janet_take": "Ask Pinterest 对创作者的价值不在替用户买裙子，而在暴露审美意图。小红书、电商和独立站团队可以拿它拆风格词、做选品板、测购买理由。",
           "source": "TechCrunch",
           "url": "https://techcrunch.com/2026/06/17/pinterest-launches-an-experimental-ai-shopping-app-called-ask-pinterest/",
-          "image_url": "",
-          "image": "images/tools-01-ask-pinterest-ai.jpg",
+          "image": "images/tools-01-pinterest-ask-pinterest-ai.jpg",
           "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/ask-pinterest.jpg?resize=1200,922",
           "image_origin": "source"
         }

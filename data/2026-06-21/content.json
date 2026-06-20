@@ -1,0 +1,170 @@
+{
+  "date": "2026-06-21",
+  "vol": "264",
+  "intro_text": "昨夜 AI 圈最刺眼的信号很直接：AI CEO 坐上 G7 牌桌，Anthropic 的安全风波被白宫口径重写，DeepMind 诺奖人才流向 Anthropic，机器人、推理云和主权机房继续吸钱。今天这期只讲一件事：AI 已经不是工具更新，它正在变成谁能控制入口、谁能拿到算力、谁能承受政治风险的硬生意。",
+  "cover": {
+    "title": "算力与安全同桌",
+    "subtitle": "模型公司进外交场，机器人和机房继续找钱。",
+    "image_path": "runs/2026-06-21/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI briefing 21:9 horizontal magazine cover. Theme: 算力与安全同桌. A premium black white and Janet green AI technology magazine cover showing frontier AI labs as geopolitical actors, Anthropic export-control gates, DeepMind talent nodes, physical AI robot telemetry, sovereign compute clusters and AI media conflict converging into one control board. No readable text, no logos, no dates, no watermark, no cartoon, no glowing brain, no cheap neon."
+  },
+  "trend": "AI CEO 被请进 G7，Trump 对 Anthropic 的国家安全口径松动，John Jumper 从 Google DeepMind 转向 Anthropic，Amazon、Baseten、Smartbird 和 Sarvam 继续把钱砸向芯片、推理云、本地模型和主权机房。模型能力还在卷，但今天更刺眼的是控制层：谁能发布，谁能断供，谁能掌握人才、算力和本地入口。\n\n对中国创作者和企业，含义很现实：别再把 AI 当成一个聊天窗口采购。要同时算模型备份、推理成本、数据所在地、工具入口和政治风险；做产品的人要往真实任务、机器人控制、开发者桌面和健康/注意力管理这些高频场景里钻。\n\n接下来 2-4 周盯三件事：Anthropic 的 Fable/Mythos 访问会不会恢复并附带新条件，Google DeepMind 的人才流失会不会继续打击 Gemini 节奏，推理云和主权算力融资会不会从高估值故事变成真实客户账单。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "AI CEO 站上 G7 牌桌",
+          "body": "Axios 6 月 20 日报道，OpenAI、Google DeepMind 和 Anthropic 等 AI 公司 CEO 在法国 Évian-les-Bains 的 G7 峰会中获得接近国家元首的待遇，参与关于 AI 控制、治理和全球安全的闭门讨论。Sam Altman 主张建立国际论坛评估风险和标准，Dario Amodei 强调民主国家协作，Demis Hassabis 则把当前阶段称为通往奇点的山脚。",
+          "janet_take": "国家首脑愿意和 AI CEO 同桌，说明模型公司已经变成准基础设施权力。创作者别只看哪个模型更会写，先看谁能改规则、定价格、断入口。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/06/20/ai-tech-moguls-g7",
+          "image": "images/news-01.png"
+        },
+        {
+          "title": "Trump 松口称 Anthropic 不构成威胁",
+          "body": "Axios 6 月 19 日发布专访称，Donald Trump 表示自己上周曾把 Anthropic 视为国家安全威胁，但在 G7 与 CEO Dario Amodei 接触后，已不再这么判断。此前美国政府限制外国人访问 Anthropic 的 Fable 5 和 Mythos 5，导致公司暂停相关模型访问。",
+          "janet_take": "口径松动没有清掉风险，只说明 frontier model 的发布权已经进入白宫会议室。依赖 Claude 的团队要准备替代模型和合同兜底，别把产品命门交给一句政治表态。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/06/19/trump-anthropic-national-security-the-axios-show",
+          "image": "images/news-02.png"
+        },
+        {
+          "title": "FT 追问 Anthropic 禁令源头",
+          "body": "Financial Times 6 月 20 日分析称，Anthropic 长期比 OpenAI 更高频谈论高级 AI 风险，被批评者认为这可能推高了美国政府对 Fable、Mythos 等模型的出口限制压力。报道也提到 Yann LeCun、David Sacks 等人对 Anthropic 风险叙事的批评。",
+          "janet_take": "安全叙事会保护公司，也会反咬公司。Anthropic 想靠谨慎建立信任，但当监管拿它自己的风险话术开刀，客户先承受断供成本。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/16ace46c-aeac-40c9-8598-3c01fa4481cb",
+          "image": "images/news-03.png"
+        },
+        {
+          "title": "John Jumper 离开 DeepMind 加入 Anthropic",
+          "body": "Techmeme 6 月 20 日聚合 Reuters、Bloomberg 与 The Verge 报道：Google DeepMind 副总裁、AlphaFold 核心人物、2024 年诺奖得主 John Jumper 宣布离开 Google DeepMind，休整后加入 Anthropic。这发生在 Noam Shazeer 转投 OpenAI 后不久。",
+          "janet_take": "顶级人才正在用脚投票，Google 的论文光环挡不住组织失血。AI for science 接下来会被 Anthropic 拿去做 frontier model 的差异化，药物发现只是第一站。",
+          "source": "Reuters / Techmeme",
+          "url": "https://www.techmeme.com/260620/p6",
+          "image": "images/news-04.png"
+        },
+        {
+          "title": "Amazon 放弃发行 Sam Altman 电影",
+          "body": "多家媒体 6 月 20 日报道，Amazon MGM 不再发行 Luca Guadagnino 执导、Andrew Garfield 饰演 Sam Altman 的电影《Artificial》。该片聚焦 2023 年 OpenAI 董事会风波，Amazon 退出发生在其与 OpenAI 达成大型合作之后，影片正在寻找新发行方。",
+          "janet_take": "AI 公司已经能影响文化叙事，也能影响云账单。一个传记电影被平台关系压住，比公关稿更能说明巨头联盟的软权力。",
+          "source": "The Independent / Variety",
+          "url": "https://www.the-independent.com/arts-entertainment/films/news/sam-altman-biopic-amazon-openai-deal-b2999321.html",
+          "image": "images/news-05.png"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Kimi K2.7-Code 发布 30% token 降本",
+          "body": "Moonshot AI 在 Hugging Face 发布 Kimi K2.7-Code，定位为面向长程软件工程任务的 coding-focused agentic model。模型卡称它基于 Kimi K2.6，提升真实长程编码任务表现，并让 coding 任务的 thinking-token 使用量约降低 30%。",
+          "janet_take": "开源 coding model 已经从卷榜单转向卷推理成本。对国内开发者最实在的是：能本地部署、能少烧 token、能跑长任务，才有资格进团队工作流。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+          "image": "images/models-01.png"
+        },
+        {
+          "title": "OpenAI 公告 Codex 登上 Windows 桌面",
+          "body": "OpenAI Developer Community 6 月 20 日显示，Codex 分类下出现 “The Codex app is now on Windows” 公告帖，同时还有 Codex rate limits、Windows elevation、VS Code extension 等大量使用反馈。官方社区信息显示 Codex 正从 macOS/CLI 走向更广泛桌面入口。",
+          "janet_take": "Codex 的战场已经转向开发者每天打开的第一块屏幕。Windows 入口一开，企业里的非 Mac 开发者才算真正被纳入 AI coding 预算。",
+          "source": "OpenAI Developer Community",
+          "url": "https://community.openai.com/",
+          "image": "images/models-02.png"
+        },
+        {
+          "title": "Amazon 计划外卖 Trainium 芯片",
+          "body": "TechCrunch 报道称，AWS 正早期讨论将自研 AI 芯片 Trainium 卖给其他公司的数据中心，而不只在 AWS 内部使用。报道提到 Andy Jassy 曾称这类芯片机会可能达到 500 亿美元，AWS 过去更倾向通过云服务售卖芯片算力。",
+          "janet_take": "Amazon 要卖芯片，等于承认客户想掌控机房，而非长期租云。Nvidia 的护城河仍厚，但 hyperscaler 自研芯片外卖会逼所有 AI 团队重新算部署账。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/18/amazon-hopes-to-challenge-nvidia-more-directly-by-selling-its-ai-chips/",
+          "image": "images/models-03.png"
+        },
+        {
+          "title": "Oura Ring 5 加预测健康 AI",
+          "body": "Oura 5 月底发布 Oura Ring 5，MobiHealthNews 报道其加入预测性心血管和呼吸健康监测、临床医生访问和长期健康追踪。BusinessWire 资料显示 GLP-1 Insights、Brain Health Study、Lab Uploads 等能力在 6 月陆续开放。",
+          "janet_take": "可穿戴 AI 的价值在长期身体数据，而非再给用户一个聊天框。创作者和老板要小心：健康数据一旦进订阅系统，便利和隐私会一起收费。",
+          "source": "MobiHealthNews / BusinessWire",
+          "url": "https://www.mobihealthnews.com/news/oura-unveils-ai-enabled-oura-ring-5-predictive-health-features",
+          "image": "images/models-04.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Kyber 融资 500 万美元做机器人控制",
+          "body": "TechCrunch 6 月 19 日 5:47 PM PDT 报道，VLC lead developer Jean-Baptiste Kempf 创办的巴黎公司 Kyber 完成 500 万美元融资，Lightspeed 领投。Kyber 开发低延迟远程设备控制 SDK，用于同步视频、音频、传感器数据和控制输入，目标覆盖机器人与无人机。",
+          "janet_take": "物理 AI 最缺的是毫秒级控制层，炫酷外壳排第二。Kyber 这种脏基础设施如果跑通，机器人公司会少一点舞台表演，多一点真实可运营。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/19/he-made-your-free-video-player-run-smoothly-now-hes-doing-that-for-robots/",
+          "image": "images/insights-01.png"
+        },
+        {
+          "title": "Go 用 55300 万美元押 robotaxi",
+          "body": "TechCrunch 6 月 19 日报道，日本打车平台 Go 完成今年日本最大 IPO，募资 886 亿日元，约 5.53 亿美元。公司表示将把新股发行所得用于 robotaxi 研发和业务扩张，包括出租车行业内外的战略并购。",
+          "janet_take": "日本 driver shortage 给 robotaxi 找到了现实入口。自动驾驶在这里是劳动力账单；能解决缺司机，资本才愿意忍受回撤。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/19/go-eyes-robotaxis-and-acquisitions-after-japans-biggest-ipo-of-2026-heres-why-it-matters/",
+          "image": "images/insights-02.png"
+        },
+        {
+          "title": "美国盯 ASML EUV 是否流入中国",
+          "body": "TechCrunch 6 月 19 日报道，美国商务部长 Howard Lutnick 近期告诉 ASML 高管，担心一台最先进 EUV 光刻机可能已进入中国。ASML 否认中国存在此类机器，且美国方面尚未公开证据。EUV 是先进 AI 芯片制造的核心设备。",
+          "janet_take": "AI 制裁最硬的地方在机器，不在模型。EUV 疑云哪怕最后没坐实，也会让先进制程供应链继续被政治放大，国产算力团队别幻想设备风险会自动降温。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/19/the-us-says-asmls-top-chip-tool-may-be-in-china-asml-says-it-isnt/",
+          "image": "images/insights-03.png"
+        },
+        {
+          "title": "法国给高一学生排 AI 课",
+          "body": "Reuters Connect 6 月 20 日图片资料显示，法国 Veranne 一所学校场景中，部长 Sebastien Lecornu 宣布 10 年级学生每周接受一小时 AI 教育。素材由 Hans Lucas 提供，主题为 back-to-school and AI。",
+          "janet_take": "AI 素养正在变成基础教育，不再是程序员选修课。内容行业会最先感到压力：下一代用户默认它像计算器一样存在。",
+          "source": "Reuters Connect",
+          "url": "https://www.reutersconnect.com/item/france-back-to-school-and-ai-veranne/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX01UMUhOU0xDUzAwMDg3MldVRA",
+          "image": "images/insights-04.png"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Sarvam 融 2.34 亿美元领跑印度",
+          "body": "Economic Times 6 月 19 日报道，印度创业公司一周融资约 4.026 亿美元，AI 公司 Sarvam 以 2.34 亿美元投资领跑。该轮成为本周资金回升的核心事件，也把印度本土 AI 模型与应用推到更高估值牌桌。",
+          "janet_take": "印度 AI 已经越过民族叙事，钱砸到了本土模型公司。对中国团队的提醒很直接：区域市场会越来越偏爱本地语言、本地数据和本地资本背书。",
+          "source": "Economic Times",
+          "url": "https://economictimes.indiatimes.com/topic/artificial-intelligence",
+          "image": "images/insights2-01.png"
+        },
+        {
+          "title": "Smartbird 拿鞋钱转 AI 机房",
+          "body": "TechCrunch 6 月 19 日报道，Allbirds 出售鞋类业务 4300 万美元、又从市场融资 1 亿美元后转型为 AI infrastructure 公司 Smartbird。新任 CEO Nadia Carlsten 表示，公司将招募全新团队，面向需要数据主权和自控服务器的客户部署计算集群。",
+          "janet_take": "这家公司像段子，但需求不完全是段子。主权算力正在制造一批奇怪转型故事；投资人要分清谁真有客户，谁只是把旧壳涂成 AI。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/19/the-ceo-of-allbirds-new-ai-biz-has-a-plan-but-no-employees/",
+          "image": "images/insights2-02.png"
+        },
+        {
+          "title": "Baseten 估值传冲 130 亿美元",
+          "body": "TechCrunch 6 月 18 日援引 WSJ 报道称，AI inference 公司 Baseten 接近完成 15 亿美元融资，估值约 130 亿美元。该公司五个月前刚完成 3 亿美元 E 轮、估值 50 亿美元，九个月前也曾完成 1.5 亿美元 D 轮。",
+          "janet_take": "推理层正在变成新矿山，估值涨得比客户迁移还快。创业者要看清：模型越来越便宜，但稳定、低延迟、可观测的推理服务反而更贵。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/18/ai-inference-startup-baseten-reportedly-raising-1-5b-months-after-its-last-mega-round/",
+          "image": "images/insights2-03.png"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Mivo 用 AI 管屏幕时间",
+          "body": "TechCrunch 6 月 18 日报道，Mivo 推出一款更 mindful 的 screen time 管理 app，主打帮助用户理解和调整手机使用习惯，而不是只粗暴封锁应用。产品方向体现了 AI 工具从生成内容转向管理日常注意力。",
+          "janet_take": "Mivo 值得试，因为它盯的是创作者最缺的东西：注意力。AI 工具再多，刷屏失控照样产不出内容；先把时间黑洞量出来，才谈自动化。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/18/mivos-new-app-takes-a-mindful-approach-to-managing-screen-time/",
+          "image": "images/tools-01.png"
+        }
+      ]
+    }
+  }
+}

@@ -1,8 +1,42 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-06-20T16:07:48.373Z",
-  "latest_edition_id": "2026-06-21",
+  "generated_at": "2026-06-21T16:10:33.860Z",
+  "latest_edition_id": "2026-06-22",
   "editions": [
+    {
+      "edition_id": "2026-06-22",
+      "date": "2026-06-22",
+      "title": "生产线先查权限",
+      "summary": "AWS、OpenAI、Google、DeepMind 和德国法院今天把同一个问题摊开了：agent 已经能进生产环境，但生产环境不只问模型会不会干活，还问它拿了什么权限、用了哪些上下文、改坏代码谁兜底、搜索答案错了谁负责。 对中国创作者和企业，最实际的信号是别再把 agent 当“更会聊天的外包”。录屏复用、知识图谱、自动测代码、费用按量走，都会改变工作流报价；但每一个省下的人力，都要换成权限设计、日志留痕、人工审批和失败预案。 接下来 2-4 周盯三件事：AWS Continuum/Context 这类生产 ag",
+      "edition_type": "codex_briefing",
+      "signal_count": 17,
+      "edition_items_count": 17,
+      "homepage_items_count": 5,
+      "url": "data/2026-06-22/output.html",
+      "content_url": "data/2026-06-22/content.json",
+      "top_sources": [
+        "The Decoder",
+        "AWS / The Decoder",
+        "OpenAI Developers / The Decoder",
+        "The Atlantic",
+        "LetsDataScience / G7 coverage",
+        "The Decoder / Stanford Online",
+        "The Decoder / Z.ai",
+        "Google DeepMind / The Decoder"
+      ],
+      "top_categories": [
+        "news",
+        "models",
+        "insights",
+        "insights2",
+        "tools"
+      ],
+      "lead_story": {
+        "title": "德国法院追责 Google AI Overview",
+        "source": "The Decoder",
+        "url": "https://the-decoder.com/"
+      }
+    },
     {
       "edition_id": "2026-06-21",
       "date": "2026-06-21",
@@ -1145,6 +1179,21 @@
     }
   ],
   "sources": [
+    "The Decoder",
+    "AWS / The Decoder",
+    "OpenAI Developers / The Decoder",
+    "The Atlantic",
+    "LetsDataScience / G7 coverage",
+    "The Decoder / Stanford Online",
+    "The Decoder / Z.ai",
+    "Google DeepMind / The Decoder",
+    "The Decoder / UC Berkeley",
+    "TechCrunch / The Decoder",
+    "Business Insider / LetsDataScience",
+    "Yahoo Finance / The Information",
+    "Startup Fortune",
+    "AIPressRoom",
+    "Google Play",
     "Axios",
     "Financial Times",
     "Reuters / Techmeme",
@@ -1174,7 +1223,6 @@
     "Business Wire",
     "TechCrunch / Ramp",
     "Artificial Intelligence News",
-    "The Decoder",
     "NVIDIA Developer Blog",
     "The Guardian",
     "SiliconANGLE / WSJ",

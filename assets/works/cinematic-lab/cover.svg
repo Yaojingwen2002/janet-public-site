@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Janet 影像参考实验室封面">
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset=".58" stop-color="#f4ead7"/>
+      <stop offset="1" stop-color="#d9c7aa"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#173525"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <pattern id="grain" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="4" r="1" fill="#173525" opacity=".08"/>
+      <circle cx="16" cy="13" r="1" fill="#c17a2e" opacity=".12"/>
+      <circle cx="9" cy="19" r=".8" fill="#050505" opacity=".06"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#paper)"/>
+  <rect width="1600" height="1000" fill="url(#grain)" opacity=".85"/>
+  <rect x="92" y="88" width="1416" height="824" rx="38" fill="none" stroke="#173525" stroke-width="3" opacity=".24"/>
+  <g transform="translate(154 150)">
+    <rect x="0" y="0" width="620" height="400" rx="26" fill="#fffdf8" stroke="#173525" stroke-width="4"/>
+    <rect x="34" y="34" width="552" height="332" rx="18" fill="#173525"/>
+    <path d="M34 310H586" stroke="#fffdf8" stroke-width="2" opacity=".22"/>
+    <path d="M102 34V366M222 34V366M342 34V366M462 34V366" stroke="#fffdf8" stroke-width="2" opacity=".14"/>
+    <path d="M86 276C180 160 280 316 378 184C430 116 505 134 556 82" fill="none" stroke="#18e299" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="378" cy="184" r="16" fill="#c17a2e"/>
+    <rect x="38" y="418" width="180" height="18" rx="9" fill="#173525" opacity=".82"/>
+    <rect x="236" y="418" width="112" height="18" rx="9" fill="#c17a2e"/>
+    <rect x="366" y="418" width="220" height="18" rx="9" fill="#173525" opacity=".32"/>
+  </g>
+  <g transform="translate(854 144)" stroke="#173525" stroke-width="3">
+    <rect x="0" y="0" width="560" height="124" rx="22" fill="#fffdf8"/>
+    <rect x="0" y="156" width="560" height="124" rx="22" fill="#fffdf8"/>
+    <rect x="0" y="312" width="560" height="124" rx="22" fill="#fffdf8"/>
+    <rect x="28" y="36" width="92" height="52" rx="10" fill="#173525"/>
+    <rect x="28" y="192" width="92" height="52" rx="10" fill="#c17a2e"/>
+    <rect x="28" y="348" width="92" height="52" rx="10" fill="#173525"/>
+    <path d="M154 44H502M154 70H430M154 96H336M154 200H504M154 226H448M154 252H368M154 356H502M154 382H468M154 408H392" opacity=".5"/>
+  </g>
+  <g font-family="Arial, 'Noto Sans SC', sans-serif">
+    <text x="154" y="705" fill="#173525" font-size="34" font-weight="800" letter-spacing="3">JINGCHANG PLAN</text>
+    <text x="154" y="790" fill="#050505" font-size="82" font-weight="900">Janet 影像参考实验室</text>
+    <text x="158" y="852" fill="#173525" font-size="34" font-weight="700">电影视觉分析 · 安全转译 · 结构化提示词</text>
+    <text x="158" y="895" fill="#c17a2e" font-size="26" font-weight="800">EXPERIMENTAL PROJECT / S0</text>
+  </g>
+</svg>

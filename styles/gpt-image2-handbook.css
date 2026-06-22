@@ -57,6 +57,193 @@
   color: var(--green);
 }
 
+.lab-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(26, 58, 42, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.78);
+  color: var(--green);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: var(--body-xs);
+  font-weight: 850;
+}
+
+.lab-badge--accent,
+.lab-status-pill {
+  border-color: rgba(193, 122, 46, 0.34);
+  background: var(--amber-xlight);
+  color: var(--amber-mid);
+}
+
+.lab-zone-nav {
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: rgba(247, 244, 239, 0.82);
+}
+
+.lab-zone-nav__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.lab-zone-card {
+  display: grid;
+  gap: 10px;
+  min-height: 180px;
+  padding: 22px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur) var(--spring-moderate), border-color var(--dur) ease;
+}
+
+.lab-zone-card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+}
+
+.lab-zone-card--featured {
+  border-color: rgba(193, 122, 46, 0.3);
+  background:
+    radial-gradient(circle at 84% 12%, rgba(193, 122, 46, 0.18), transparent 32%),
+    var(--bg-surface);
+}
+
+.lab-zone-card strong {
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.lab-zone-card p {
+  color: var(--text-2);
+  font-size: var(--body-sm);
+  line-height: 1.75;
+}
+
+.cinematic-lab-section {
+  padding: var(--space-lg) 0 var(--space-xl);
+  background:
+    radial-gradient(circle at 86% 12%, rgba(193, 122, 46, 0.08), transparent 32%),
+    radial-gradient(circle at 10% 82%, rgba(26, 58, 42, 0.07), transparent 34%);
+}
+
+.lab-status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: var(--body-xs);
+  font-weight: 850;
+}
+
+.cinematic-lab-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.cinematic-lab-brief,
+.lab-status-grid article,
+.lab-method-grid article {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 253, 248, 0.82);
+  box-shadow: var(--shadow-sm);
+}
+
+.cinematic-lab-brief {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-height: 320px;
+  padding: 26px;
+}
+
+.cinematic-lab-brief h3 {
+  max-width: 720px;
+  color: var(--text);
+  font-size: clamp(30px, 5vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+}
+
+.cinematic-lab-brief p,
+.lab-method-grid p,
+.lab-method-grid li,
+.lab-status-grid p {
+  color: var(--text-2);
+  font-size: var(--body-sm);
+  line-height: 1.78;
+}
+
+.lab-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lab-status-grid article {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+}
+
+.lab-status-grid span {
+  color: var(--amber-mid);
+  font-family: var(--font-mono);
+  font-size: var(--body-xs);
+  font-weight: 850;
+}
+
+.lab-status-grid strong {
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.lab-method-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.lab-method-grid article {
+  padding: 22px;
+}
+
+.lab-method-grid h3 {
+  margin-bottom: 12px;
+  color: var(--text);
+  font-size: 22px;
+  letter-spacing: -0.035em;
+}
+
+.lab-method-grid ol,
+.lab-method-grid ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.lab-risk-card {
+  border-color: rgba(193, 122, 46, 0.28);
+  background: var(--amber-xlight);
+}
+
 .handbook-toolbar {
   position: sticky;
   top: 64px;
@@ -481,7 +668,10 @@ body.handbook-lightbox-open {
 
 @media (max-width: 900px) {
   .handbook-grid,
-  .handbook-notes__grid {
+  .handbook-notes__grid,
+  .lab-zone-nav__grid,
+  .cinematic-lab-layout,
+  .lab-method-grid {
     grid-template-columns: 1fr;
   }
 
@@ -497,6 +687,10 @@ body.handbook-lightbox-open {
   }
 
   .handbook-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-status-grid {
     grid-template-columns: 1fr;
   }
 

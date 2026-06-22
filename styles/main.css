@@ -1288,6 +1288,17 @@ body[data-theme="contact"] .back-to-top {
   color: var(--green);
 }
 
+.work-series-band--cinematic {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(193,122,46,.24), transparent 30%),
+    radial-gradient(circle at 86% 10%, rgba(26,58,42,.18), transparent 34%),
+    #fff7e8;
+}
+
+.work-series-band--cinematic span {
+  color: var(--amber-mid);
+}
+
 .works-project-card,
 .works-overview-card {
   padding: 18px;
@@ -1319,10 +1330,32 @@ body[data-theme="contact"] .back-to-top {
   border-color: rgba(193, 122, 46, .3);
 }
 
-.works-project-card--igpt-image2-handbook .work-series-band--default {
+.works-project-card--igpt-image2-handbook .work-series-band--cinematic,
+.works-overview-card[data-project-id="igpt-image2-handbook"] .work-series-band--cinematic {
   background:
-    radial-gradient(circle at 84% 16%, rgba(193,122,46,.2), transparent 34%),
+    radial-gradient(circle at 16% 18%, rgba(193,122,46,.28), transparent 30%),
+    radial-gradient(circle at 84% 16%, rgba(26,58,42,.18), transparent 34%),
     #fff7e8;
+}
+
+.works-project-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 6px 10px;
+  border: 1px solid rgba(193,122,46,.34);
+  border-radius: var(--r-pill);
+  background: var(--amber-xlight);
+  color: var(--amber-mid);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 .works-project-card__meta,

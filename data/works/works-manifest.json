@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-06-16T02:40:20.000Z",
+  "generated_at": "2026-06-22T08:20:00.000Z",
   "library": {
     "title": "Janet 作品库",
     "subtitle": "AI 影像、剧情短片与创作流程档案",
@@ -65,32 +65,36 @@
     },
     {
       "id": "igpt-image2-handbook",
-      "title": "iGPT-Image2 提示词手册",
-      "type": "图像生成手册",
-      "source_path_label": "freestylefly/awesome-gpt-image-2",
-      "description": "把 GPT-Image2 来源案例与 Janet 安全改写 prompt 整理成可复用的结构化提示词卡片，已完成 100 组的浏览、复制、来源追溯与准入筛选。",
+      "title": "Janet 影像参考实验室",
+      "type": "镜场计划 / 图像生成手册",
+      "source_path_label": "镜场计划 + freestylefly/awesome-gpt-image-2",
+      "description": "镜场计划的公开入口：把电影视觉分析、安全转译、S0 实验记录和原 iGPT-Image2 100 组提示词手册放在同一个影像参考实验室里。",
       "method": [
-        "案例拆解",
-        "安全改写",
-        "结构化字段",
-        "提示词复用",
-        "来源风险筛选"
+        "电影视觉分析",
+        "安全转译",
+        "S0 实验评分",
+        "Prompt Builder",
+        "100 组提示词卡片"
       ],
       "tags": [
-        "Prompt Library",
+        "镜场计划",
+        "实验项目",
+        "影像参考室",
         "GPT-Image2",
-        "Handbook",
-        "Cards"
+        "Prompt Library"
       ],
       "work_count": 100,
-      "document_count": 2,
+      "document_count": 8,
       "project_json": "data/works/projects/igpt-image2-handbook.json",
       "url": "gpt-image2-handbook.html",
-      "thumbnail": "assets/works/igpt-image2-handbook/cover.svg",
-      "cover": "assets/works/igpt-image2-handbook/cover.svg"
+      "thumbnail": "assets/works/cinematic-lab/cover.svg",
+      "cover": "assets/works/cinematic-lab/cover.svg",
+      "display_count_label": "2 zones",
+      "badge": "实验项目"
     }
   ],
   "featured_works": [
+    "jingchang-plan-s0-lab",
     "shuttle-universe-e59388e588a9e6b3",
     "shuttle-universe-e69e97e5858b",
     "shuttle-universe-e9a9ace9878ce5a5",
@@ -100,6 +104,6 @@
   "stats": {
     "project_count": 3,
     "work_count": 104,
-    "document_count": 24
+    "document_count": 30
   }
 }

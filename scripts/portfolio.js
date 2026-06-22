@@ -130,6 +130,9 @@
 
   function getSeriesInfo(value) {
     const text = String(value || '').toLowerCase();
+    if (/jingchang|cinematic|mirror|镜场|影像参考|igpt-image2-handbook/.test(text)) {
+      return { label: '镜场计划', className: 'work-series-band--cinematic' };
+    }
     if (/shuttle|穿梭|宇宙/.test(text)) {
       return { label: '穿梭宇宙', className: 'work-series-band--shuttle' };
     }
@@ -543,16 +546,19 @@
       const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
       const method = (project.method || []).slice(0, 5).map(item => '<span>' + escapeHtml(item) + '</span>').join('');
       const destination = project.url || ('portfolio.html?project=' + encodeURIComponent(project.id || 'all'));
+      const countLabel = project.display_count_label || String(project.work_count || 0) + ' works';
+      const badge = project.badge ? '<span class="works-project-badge">' + escapeHtml(project.badge) + '</span>' : '';
 
       return `
         <a class="works-project-card works-project-card--${escapeHtml(project.id)}"
            href="${escapeHtml(destination)}"
            aria-label="进入${escapeHtml(project.title || '作品项目')}">
           ${renderSeriesBand(project.id || project.title)}
+          ${badge}
           ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-project-media')}
           <div class="works-project-card__meta">
             <span>${escapeHtml(project.type || '')}</span>
-            <span>${escapeHtml(project.work_count || 0)} works</span>
+            <span>${escapeHtml(countLabel)}</span>
           </div>
           <h3>${escapeHtml(project.title)}</h3>
           <p>${escapeHtml(project.description || '')}</p>
@@ -608,6 +614,7 @@
       const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
       const method = (project.method || []).slice(0, 5).map(item => '<span>' + escapeHtml(item) + '</span>').join('');
       const destination = project.url || ('portfolio.html?project=' + encodeURIComponent(project.id || 'all'));
+      const badge = project.badge ? '<span class="works-project-badge works-project-badge--overview">' + escapeHtml(project.badge) + '</span>' : '';
 
       return `
         <a class="works-overview-card"
@@ -615,6 +622,7 @@
            data-project-id="${escapeHtml(project.id)}"
            aria-label="进入${escapeHtml(project.title || '作品项目')}">
           ${renderSeriesBand(project.id || project.title)}
+          ${badge}
           ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-overview-media')}
           <div class="works-overview-meta">
             <span>${escapeHtml(project.type || '')}</span>

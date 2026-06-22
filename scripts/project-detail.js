@@ -52,14 +52,14 @@
   function getProjectLabel(projectId) {
     if (projectId === 'shuttle-universe') return '穿梭宇宙';
     if (projectId === 'misaligned-scenes') return '错位名场面';
-    if (projectId === 'igpt-image2-handbook') return '图像生成手册';
+    if (projectId === 'igpt-image2-handbook') return '影像参考实验室';
     return projectId || '项目';
   }
 
   function getProjectTypeLabel(projectId) {
     if (projectId === 'shuttle-universe') return '世界观型 AI 短视频';
     if (projectId === 'misaligned-scenes') return '剧情型 AI 短片';
-    if (projectId === 'igpt-image2-handbook') return '图像生成手册';
+    if (projectId === 'igpt-image2-handbook') return '镜场计划 / 图像生成手册';
     return 'AI 创作项目';
   }
 
@@ -96,6 +96,12 @@
     }
     if (work.project_id === 'misaligned-scenes') {
       return ['经典困境', '外来能力 / 道具', '语言冲突', '角色一致性', '分镜提示词', '字幕 / 剪辑 / 发布'];
+    }
+    if (work.id === 'jingchang-plan-s0-lab') {
+      return ['来源台账', '七层视觉观察', '安全转译', 'A/B/C 测试', '人工评分', '公开边界'];
+    }
+    if (work.project_id === 'igpt-image2-handbook') {
+      return ['案例拆解', '安全改写', '结构字段', '来源筛选', '复制复用', '公开说明'];
     }
     return ['Concept', 'Materials', 'Production', 'Publish'];
   }

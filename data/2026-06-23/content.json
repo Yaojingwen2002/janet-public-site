@@ -1,0 +1,204 @@
+{
+  "date": "2026-06-23",
+  "vol": "266",
+  "intro_text": "Janet 早。今天的 AI 圈不装了：算力被抢成月租合同，模型被管成出口品，agent 被安全研究员按在工单系统里打。真正要看的不是谁又喊 AGI，而是谁先把成本、权限和风险算进账本。",
+  "cover": {
+    "title": "算力水位见底",
+    "subtitle": "开源模型、机器人安全和监管压力同时逼近生产线。",
+    "image_path": "runs/2026-06-23/cover.png",
+    "image_prompt": "AI technology magazine cover, 21:9 widescreen, black white Janet green palette, data center corridor, liquid-cooled server racks, policy grid silhouette, open model nodes, creator workstation UI layer, premium editorial style, no text, no logos, no cartoon robots, no glowing brain, no cheap neon."
+  },
+  "trend": "NVIDIA 在 ISC 2026 一口气抛出欧洲 35 台 AI 超算、Vera Rubin 科学计算平台和机器人安全栈；另一边，Reflection 用每月 1.5 亿美元向 SpaceXAI 买算力，Z.ai 的 GLM-5.2 用 1M 上下文继续冲击闭源编码模型。算力、开源模型和物理 AI 今天同时从 PPT 走向真实采购单。\n\n对中国创作者和企业来说，窗口正在变窄：好模型不一定能全球可用，开源不等于低门槛，agent 上生产也不等于安全。能赚钱的不是追每个榜单，而是把模型、算力、权限、审计和素材生产流程拆成可替换模块，别把命交给单一 API。\n\n接下来 2-4 周盯三件事：Fable 5 是否恢复国际访问，GLM-5.2 这类开放模型能否进入更多 coding agent 工具链，以及 NVIDIA 的机器人安全/AI 超算订单会不会带动新一轮基础设施融资。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Anthropic 关停 Fable 5 免费窗",
+          "body": "Anthropic 原定让 Claude Pro、Max、Team 和 seat-based Enterprise 用户免费使用 Fable 5 到 6 月 22 日，6 月 23 日后改为 usage credits。Build Fast with AI 的 6 月 22 日追踪称，Fable 5 和 Mythos 5 仍受美国出口管制影响，免费窗口结束时模型访问还没有完全恢复。",
+          "janet_take": "最狠的是用户连试用期都没真正用完，账单日已经到了。订阅制模型一旦撞上出口管制，所谓稳定生产力立刻变成政治权限，重度依赖 Claude 的团队该准备第二供应商了。",
+          "source": "Anthropic / Build Fast with AI",
+          "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "image": "images/news-01-anthropic-fable.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5"
+        },
+        {
+          "title": "Reflection 签 SpaceX 月费 1.5 亿美元算力",
+          "body": "Axios 报道，NVIDIA 支持的开源 AI 公司 Reflection 与 SpaceXAI 达成算力协议，将从 2026 年 7 月 1 日起使用 SpaceX Colossus 2 数据中心的先进芯片和硬件，并按每月 1.5 亿美元支付到 2029 年。",
+          "janet_take": "开源模型的浪漫结束在电费单上。MIT license 能降低法律摩擦，但训练和推理的水位已经高到必须签长期算力租约，小团队别幻想靠情怀硬扛。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/06/22/open-source-ai-gets-more-compute-from-spacex",
+          "image": "images/news-02-reflection-spacex.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.axios.com/2026/06/22/open-source-ai-gets-more-compute-from-spacex"
+        },
+        {
+          "title": "Five Eyes 发 AI 网络战警报",
+          "body": "The Guardian 报道，Five Eyes 情报联盟发布罕见联合声明，警告具备破坏政府和企业系统能力的 frontier AI model 可能只剩数月距离。声明称 AI 会同时强化防御和攻击速度、规模与复杂度。",
+          "janet_take": "安全圈终于承认模型已经进了武器库。企业老板最该花的钱不在聊天窗口，而在身份、日志、工具权限和异常回滚。",
+          "source": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/jun/22/anthropic-claude-fable-ai-model-artificial-intelligence-national-security",
+          "image": "images/news-03-five-eyes.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.theguardian.com/technology/2026/jun/22/anthropic-claude-fable-ai-model-artificial-intelligence-national-security"
+        },
+        {
+          "title": "42 州检察长调查 OpenAI IPO 风险",
+          "body": "Build Fast with AI 汇总称，美国 42 个州检察长已对 OpenAI 展开调查，议题包括广告表述、sycophancy、数据处理、健康数据、未成年人和老年人保护。纽约州检察长已经在 OpenAI 预期 IPO 前发出传票。",
+          "janet_take": "OpenAI 想冲 IPO，监管先来验货。聊天机器人一旦碰到健康、老人和未成年人，产品体验问题会直接变成上市前的法律折价。",
+          "source": "Build Fast with AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026",
+          "image": "images/news-04-openai-ag.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026"
+        },
+        {
+          "title": "中国砸 2950 亿美元建 AI 基建",
+          "body": "Build Fast with AI 6 月 22 日报道，中国公布 2950 亿美元、为期五年的 AI 基础设施计划，折合每年约 590 亿美元的政府导向投入。报道将其放在 Fable 5 出口管制和 G7 AI 讨论之后解读。",
+          "janet_take": "这笔钱是在对冲模型禁令。美国管接口，中国堆基础设施，国内团队接下来会更容易拿到本地算力，但也会更早面对价格战和同质化。",
+          "source": "Build Fast with AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026",
+          "image": "images/news-05-china-ai-infra.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Z.ai GLM-5.2 以 1M 上下文反超 GPT-5.5",
+          "body": "Z.ai 发布 GLM-5.2，定位长程任务旗舰模型，文档称其具备可用的 1M-token context，并面向项目级工程上下文。多家报道引用其在 SWE-bench Pro 等长程编码任务中超过 GPT-5.5 的成绩。",
+          "janet_take": "中国开源模型这次打到 coding agent 的正面战场。1M 上下文不只是参数炫技，它直接决定模型能不能吃下完整仓库和长任务。",
+          "source": "Z.ai / Business Insider",
+          "url": "https://z.ai/blog/glm-5.2",
+          "image": "images/models-01-glm52.png",
+          "image_origin": "archive",
+          "image_source_url": "https://z.ai/blog/glm-5.2"
+        },
+        {
+          "title": "OpenRouter Fusion 用廉价模型拼出 Fable 成绩",
+          "body": "OpenRouter 发布 Fusion，测试 100 个 DRACO deep research 任务时，Fable 5 与 GPT-5.5 组合达到 69.0%，高于 Fable 5 单模型 65.3%。OpenRouter 称 Gemini 3 Flash、Kimi K2.6 和 DeepSeek V4 Pro 的预算组合接近 Fable 5 成绩，成本约为一半。",
+          "janet_take": "单模型崇拜正在掉价。创作者和小团队最该学的是路由、投票和复核；盲目追最贵模型，很多时候只是在替供应商交营销税。",
+          "source": "OpenRouter",
+          "url": "https://openrouter.ai/blog/announcements/fusion-beats-frontier/",
+          "image": "images/models-02-openrouter-fusion.png",
+          "image_origin": "archive",
+          "image_source_url": "https://openrouter.ai/blog/announcements/fusion-beats-frontier/"
+        },
+        {
+          "title": "GPT-5.6 预告月底冲 SWE 榜",
+          "body": "Build Fast with AI 6 月 22 日称，OpenAI Chief Scientist 已预告 GPT-5.6 将是相对 GPT-5.5 的 meaningful improvement，目标时间在 6 月下旬，但还没有正式发布日期。报道将其放在 GLM-5.2 与 Claude Opus 4.8 的 benchmark 压力下解读。",
+          "janet_take": "OpenAI 现在怕的是榜单叙事被别人抢走。月底如果只靠小修小补，开发者会继续用脚投票去便宜模型和混合路由。",
+          "source": "Build Fast with AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026",
+          "image": "images/models-03-gpt56.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026"
+        },
+        {
+          "title": "NVIDIA Vera Rubin 单机架跑 7 exaflops",
+          "body": "NVIDIA 在 ISC High Performance 2026 发布 Vera Rubin 科学计算平台，称单个 Vera Rubin 超算机架可提供超过 7 exaflops 的 AI for science 性能和 5 petaflops 原生 FP64 性能，并支持高达 144 块 GPU 的高密度系统。",
+          "janet_take": "AI for science 被拉进军备竞赛。7 exaflops 听起来离创作者很远，但它会把药物、气候、材料模拟的门槛继续往巨头和国家队那边推。",
+          "source": "NVIDIA Newsroom",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-delivers-world-class-supercomputers-for-science",
+          "image": "images/models-04-vera-rubin.png",
+          "image_origin": "archive",
+          "image_source_url": "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-delivers-world-class-supercomputers-for-science"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "NVIDIA Halos 给人形机器人上安全栈",
+          "body": "NVIDIA 发布 Halos for Robotics，称其是面向 robotics 和 physical AI 的 full-stack safety system，覆盖软件、传感、计算和检验流程。Axios 报道称 NVIDIA 更像是在做人形机器人的基础设施，而不是亲自造机器人硬件。",
+          "janet_take": "人形机器人最难卖的是事故责任。NVIDIA 先卖安全栈，等于先卡住量产前的信任入口，这比又造一台样机聪明。",
+          "source": "NVIDIA Newsroom / Axios",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-announces-halos-for-robotics-the-industrys-first-full-stack-safety-system-for-physical-ai",
+          "image": "images/insights-01-halos.png",
+          "image_origin": "archive",
+          "image_source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-halos-for-robotics-the-industrys-first-full-stack-safety-system-for-physical-ai"
+        },
+        {
+          "title": "NVIDIA 在欧洲建 35 台 AI 超算",
+          "body": "NVIDIA 宣布欧洲正在建设创纪录的 35 台 NVIDIA AI HPC supercomputers，面向开放科学、工业、能源和国家研究基础设施。该消息同样发布于 ISC High Performance 2026。",
+          "janet_take": "欧洲嘴上谈监管，身体在补算力。对创业者来说，政策友好不够，谁能接入本地高性能计算资源，谁才有资格谈行业模型。",
+          "source": "NVIDIA Newsroom",
+          "url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers",
+          "image": "images/insights-02-europe-supercomputers.png",
+          "image_origin": "archive",
+          "image_source_url": "https://nvidianews.nvidia.com/news/europe-unveils-a-record-35-new-nvidia-ai-supercomputers"
+        },
+        {
+          "title": "Agentjacking 借 Sentry 假工单跑恶意命令",
+          "body": "Cloud Security Alliance 与多家安全媒体披露 Agentjacking 攻击：攻击者通过伪造 Sentry error report，把 markdown 指令伪装成修复建议，让 Claude Code、Cursor 或 Codex 等 coding agent 执行恶意命令。AI Weekly 称相关测试影响 2388 个组织，利用率达到 85%。",
+          "janet_take": "开发者把错误日志喂给 agent 的习惯，已经变成攻击面。以后自动化越强，越要先给工单、日志、issue 做降权和隔离。",
+          "source": "Cloud Security Alliance / AI Weekly",
+          "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-agentjacking-sentry-mcp-20260614-csa-style/",
+          "image": "images/insights-03-agentjacking.png",
+          "image_origin": "archive",
+          "image_source_url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-agentjacking-sentry-mcp-20260614-csa-style/"
+        },
+        {
+          "title": "Anthropic 40 万会话改写 coding 分工",
+          "body": "Anthropic 发布 Claude Code 使用研究，基于约 40 万个 interactive sessions 和约 23.5 万名用户，时间跨度从 2025 年 10 月到 2026 年 4 月。研究重点分析 agentic coding 中任务类型、用户角色和成功结果。",
+          "janet_take": "会写代码不再是唯一门票，懂业务边界的人反而变贵。AI 写执行，人类守问题定义，这就是未来小团队的真实分工。",
+          "source": "Anthropic Research",
+          "url": "https://www.anthropic.com/research/claude-code-expertise",
+          "image": "images/insights-04-claude-code-expertise.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.anthropic.com/research/claude-code-expertise"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Micron 签 Anthropic 内存供货合作",
+          "body": "MarketWatch 报道，Micron 股价周一上涨约 5%，此前公司宣布与 Anthropic 建立战略合作，将为 Anthropic 下一代 AI model development 设计和供应 HBM、DRAM 与 SSD 等内存和存储方案。",
+          "janet_take": "AI 基建的钱不只流向 GPU。HBM、DRAM、SSD 重新变成战略资产，投资人追 NVIDIA 之外，也该看谁在卖模型训练的血管。",
+          "source": "MarketWatch",
+          "url": "https://www.marketwatch.com/story/microns-stock-momentum-builds-as-the-company-inks-a-new-anthropic-partnership-484e3845",
+          "image": "images/invest-01-micron-anthropic.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.marketwatch.com/story/microns-stock-momentum-builds-as-the-company-inks-a-new-anthropic-partnership-484e3845"
+        },
+        {
+          "title": "Snap Specs 2195 美元抢 AR 入口",
+          "body": "Snap 发布 Specs AR glasses，官方称产品已开放预订，价格为 2195 美元，200 美元可退押金，预计秋季在美国、英国和法国发货。Build Fast with AI 称设备内置 OpenAI 和 Gemini API。",
+          "janet_take": "AR 这次不再只卖摄像头，它在卖随身 AI 入口。2195 美元注定不是大众货，但给开发者的信号很清楚：下一批工具会长在眼前，不在网页里。",
+          "source": "Snap Newsroom / Build Fast with AI",
+          "url": "https://newsroom.snap.com/introducing-specs-augmented-reality-glasses",
+          "image": "images/invest-02-snap-specs.png",
+          "image_origin": "archive",
+          "image_source_url": "https://newsroom.snap.com/introducing-specs-augmented-reality-glasses"
+        },
+        {
+          "title": "Noam Shazeer 加入 OpenAI 掌模型架构",
+          "body": "Build Fast with AI 追踪称，Transformer 论文共同作者、Character.AI 联合创始人 Noam Shazeer 已离开 Google DeepMind 加入 OpenAI，担任 architecture research lead。报道提到 Google 曾在 2024 年以约 27 亿美元交易将其带回。",
+          "janet_take": "模型战打到最后还是抢人。Shazeer 这种级别的架构人才不会立刻改变产品按钮，但会影响下一代模型路线，Google 的损失要看半年后的 Gemini 节奏。",
+          "source": "Build Fast with AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026",
+          "image": "images/invest-03-shazeer-openai.png",
+          "image_origin": "archive",
+          "image_source_url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-22-2026"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "OpenAI Academy 推三门工位 AI 课",
+          "body": "OpenAI 发布新的 Academy 课程，主题覆盖 AI fundamentals、repeatable workflows 和 applying AI at work，并称课程会提供 completion certificates。OpenAI 提到 BCG、Accenture、BBVA 等合作伙伴参与组织 AI skill building。",
+          "janet_take": "这类课的价值不在证书，而在把 AI 使用从个人技巧变成公司训练。创作者可以直接抄这个方向：把自己的 workflow 做成可复训、可交付、可收费的产品。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/academy-courses-applying-ai-at-work/",
+          "image": "images/tools-01-openai-academy.png",
+          "image_origin": "archive",
+          "image_source_url": "https://openai.com/index/academy-courses-applying-ai-at-work/"
+        }
+      ]
+    }
+  }
+}

@@ -93,6 +93,32 @@ function localImagePath(rootPath, date, image) {
   return null;
 }
 
+function hasImageProvenance(item) {
+  const origin = String(item.image_origin || '').trim().toLowerCase();
+  return isHttpUrl(item.image_source_url) ||
+    isHttpUrl(item.image_url) ||
+    ['source', 'search', 'official', 'archive'].includes(origin);
+}
+
+function imageTypeFromBytes(bytes) {
+  if (!bytes || bytes.byteLength < 12) return '';
+  if (bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) return 'jpg';
+  if (bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47) return 'png';
+  if (bytes[0] === 0x47 && bytes[1] === 0x49 && bytes[2] === 0x46) return 'gif';
+  const ascii = new TextDecoder('ascii', { fatal: false }).decode(bytes.slice(0, Math.min(bytes.byteLength, 32)));
+  if (ascii.startsWith('RIFF') && ascii.slice(8, 12) === 'WEBP') return 'webp';
+  if (ascii.slice(4, 8) === 'ftyp' && /avif|avis/.test(ascii.slice(8, 24))) return 'avif';
+  return '';
+}
+
+function validImageFile(filePath) {
+  try {
+    return Boolean(imageTypeFromBytes(new Uint8Array(readFileSync(filePath)).slice(0, 32)));
+  } catch {
+    return false;
+  }
+}
+
 async function fetchWithTimeout(url, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), options.timeoutMs || 15_000);
@@ -287,6 +313,7 @@ async function downloadImage(imageUrl, targetPath, referer) {
     const bytes = new Uint8Array(await response.arrayBuffer());
     if (bytes.byteLength < MIN_IMAGE_BYTES) throw new Error(`image_too_small:${bytes.byteLength}`);
     if (bytes.byteLength > MAX_IMAGE_BYTES) throw new Error(`image_too_large:${bytes.byteLength}`);
+    if (!imageTypeFromBytes(bytes)) throw new Error(`image_magic_invalid:${type || ext || 'unknown'}`);
     writeFileSync(targetPath, bytes);
     return { bytes: bytes.byteLength, contentType: type };
   } catch (error) {
@@ -318,6 +345,7 @@ function downloadImageWithCurl(imageUrl, targetPath, referer, originalError) {
     const size = statSync(targetPath).size;
     if (size < MIN_IMAGE_BYTES) throw new Error(`image_too_small:${size}`);
     if (size > MAX_IMAGE_BYTES) throw new Error(`image_too_large:${size}`);
+    if (!validImageFile(targetPath)) throw new Error('image_magic_invalid');
     return { bytes: size, contentType: '' };
   } catch (curlError) {
     throw new Error(`${originalError?.message || 'fetch_failed'};curl:${curlError.message}`);
@@ -326,7 +354,7 @@ function downloadImageWithCurl(imageUrl, targetPath, referer, originalError) {
 
 async function ensureItemImage({ rootPath, date, imageDir, section, index, item }) {
   const existing = localImagePath(rootPath, date, item.image);
-  if (existing && existsSync(existing) && statSync(existing).size >= MIN_IMAGE_BYTES) {
+  if (existing && existsSync(existing) && statSync(existing).size >= MIN_IMAGE_BYTES && validImageFile(existing) && hasImageProvenance(item)) {
     item.image = `images/${basename(existing)}`;
     return { status: 'kept', section, index, image: item.image };
   }

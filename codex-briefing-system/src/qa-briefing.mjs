@@ -84,6 +84,25 @@ const PURE_HOOK_TITLES = new Set([
   'AI花钱该刹车'
 ]);
 
+function imageTypeFromBytes(bytes) {
+  if (!bytes || bytes.byteLength < 12) return '';
+  if (bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) return 'jpg';
+  if (bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47) return 'png';
+  if (bytes[0] === 0x47 && bytes[1] === 0x49 && bytes[2] === 0x46) return 'gif';
+  const ascii = new TextDecoder('ascii', { fatal: false }).decode(bytes.slice(0, Math.min(bytes.byteLength, 32)));
+  if (ascii.startsWith('RIFF') && ascii.slice(8, 12) === 'WEBP') return 'webp';
+  if (ascii.slice(4, 8) === 'ftyp' && /avif|avis/.test(ascii.slice(8, 24))) return 'avif';
+  return '';
+}
+
+function validImageFile(filePath) {
+  try {
+    return Boolean(imageTypeFromBytes(new Uint8Array(readFileSync(filePath)).slice(0, 32)));
+  } catch {
+    return false;
+  }
+}
+
 export function validateBriefing(content, { date, rootPath = resolve(new URL('..', import.meta.url).pathname), outputPath } = {}) {
   const issues = [];
   const targetDate = date || content.date;
@@ -293,6 +312,11 @@ function validateItemImage(item, path, issues, { rootPath, targetDate }) {
   }
   const size = statSync(imagePath).size;
   if (size < MIN_ITEM_IMAGE_BYTES) issues.push(`item_image_too_small:${path}:${size}<${MIN_ITEM_IMAGE_BYTES}`);
+  if (!validImageFile(imagePath)) issues.push(`item_image_invalid_file:${path}:${clean}`);
+  const origin = String(item.image_origin || '').trim().toLowerCase();
+  const hasProvenance = /^https?:\/\//i.test(String(item.image_source_url || item.image_url || '')) ||
+    ['source', 'search', 'official', 'archive'].includes(origin);
+  if (!hasProvenance) issues.push(`item_image_missing_provenance:${path}:${clean}`);
 }
 
 function validateItem(item, path, issues, context) {

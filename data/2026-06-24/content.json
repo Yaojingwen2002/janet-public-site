@@ -1,0 +1,221 @@
+{
+  "date": "2026-06-24",
+  "vol": "267",
+  "intro_text": "早。今天 AI 圈没有在比谁会写诗，大家都在交账单：OpenAI 把网络防御模型推上台面，Groq 拿 6.5 亿美元继续堆推理算力，华尔街把 Google 的 AI 人才流失写进股价，开源金融圈也开始给 agent 立规矩。",
+  "cover": {
+    "title": "模型进了安保室",
+    "subtitle": "AI 的下一张账单，写在安全、算力和组织成本里。",
+    "image_path": "runs/2026-06-24/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI technology briefing cover, 21:9 widescreen PNG. Primary request: Create a sharp AI technology magazine cover image for a daily briefing whose theme is that AI is moving from model hype into security, compute contracts, agent governance, and expensive operational infrastructure. Scene/backdrop: abstract editorial composition, dark high-end newsroom/data-center hybrid, layered code audit panels, accelerator racks, secure network lines, and agent workflow traces. Subject: no people, no robot faces; use abstract AI infrastructure, security locks, code diffs, chip racks, and thin network geometry as the visual subject. Style/medium: premium editorial tech magazine cover, cinematic but minimal, high contrast, polished raster illustration/photo-composite feel. Composition/framing: ultra-wide 21:9, strong negative space in the lower-left and center for HTML overlay text, diagonal tension, clean focal structure, no clutter. Lighting/mood: restrained studio lighting, crisp shadows, serious and expensive, not cyberpunk. Color palette: black, white, deep ink green, Janet signal green accents, small amber highlight only if useful. Materials/textures: glass UI panels, brushed metal, matte black server surfaces, fine code-line texture. Text: no text in image. Constraints: 21:9 landscape, no watermark, no logos, no date, no title, no readable UI text, no cartoon, no glowing brain, no cheap neon, no full robot faces."
+  },
+  "trend": "OpenAI 把 Daybreak 级别的网络防御模型推到台前，Five Eyes 同时警告 AI 网络攻击能力可能几个月内追平顶级黑客；Groq 以 69 亿美元估值融资 6.5 亿美元，Google 又被爆用高额股票留人。今天的 AI 新闻只讲一件事：模型能力开始进入高压区，安全、算力和人才都要现金结算。\n\n对中国创作者和中小企业来说，别再只问哪个模型更会写文案。未来几个月更重要的问题是：你的工作流能不能留痕、能不能控权限、能不能在模型降价前撑住成本。谁能把 AI 变成可审计的生产工具，谁才有资格谈规模化。\n\n接下来 2-4 周盯三条线：OpenAI cyber 模型会不会开放更具体的企业能力，Groq 这类推理基础设施融资会不会带动新一轮价格战，以及金融、开源、代码工具社区会不会把 agent 权限规则从倡议变成默认配置。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI 推 Daybreak 网络防御模型",
+          "body": "Axios 报道，OpenAI 正在推出更强的网络安全模型 Daybreak，用于漏洞发现、防御测试和安全团队辅助分析。OpenAI 把重点放在防御侧，但外界最关心的是这种能力一旦扩散，攻防门槛会被压到多低。",
+          "janet_take": "安全团队终于等到 AI 加班，但攻击者也在等同一批能力。破防点已经很清楚：企业以前靠人肉排查的安全债，现在会被机器连续翻出来。",
+          "source": "Axios",
+          "url": "https://tech.yahoo.com/cybersecurity/articles/openai-rolls-more-capable-version-170043308.html",
+          "image_url": "",
+          "image": "images/news-01-openai-daybreak.jpg",
+          "image_source_url": "https://s.yimg.com/lo/mysterio/api/bc93d9c2872c311715202c8659c87badaa7210c06e143242d741bf32779aebeb/lightyear_networkapi/resizefill_w1200;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Faxios_527%2F2967af47fd2eb9b6df4e896c01cf849d",
+          "image_origin": "source"
+        },
+        {
+          "title": "Groq 以 69 亿美元估值融资 6.5 亿",
+          "body": "The Daily Star 报道，AI 推理芯片公司 Groq 已完成 6.5 亿美元融资；报道同时提到，Groq 此前在 2025 年 9 月融资后估值达到 69 亿美元。Groq 用自研 LPU 抢低延迟推理市场，直接对准 AI 应用上线后的高频调用账单。",
+          "janet_take": "算力故事从训练场转向收银台。训练一次很贵，推理每天都贵；能把延迟和成本压下来的人，才会在 agent 大规模运行后收过路费。",
+          "source": "The Daily Star",
+          "url": "https://www.thedailystar.net/news/tech-startup/news/ai-chipmaker-groq-raises-650-mln-after-nvidia-licensed-its-chips-4206196",
+          "image_url": "",
+          "image": "images/news-02-groq-69-65.png",
+          "image_source_url": "https://www.thedailystar.net/sites/default/files/styles/social_share/public/2026-06/Groq.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google 用股票堵 AI 人才缺口",
+          "body": "Yahoo Finance 汇总华尔街观点称，Google 正面临 AI 人才流失压力，Meta 等公司用高薪和大额股票挖人。报道提到，投资者已经开始把核心研究员流动当成 AI 竞争风险，普通 HR 新闻正在变成估值变量。",
+          "janet_take": "大厂最贵的资产是知道权重怎么长出来的人。人才战烧到股票层面，说明 AI 竞争已经从发布会变成组织耐力赛。",
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/news/wall-street-worries-google-losing-142137296.html",
+          "image_url": "",
+          "image": "images/news-03-google-ai.jpg",
+          "image_source_url": "https://rankia.id/_next/image/?url=https:%2F%2Frankia.id%2Fapp%2Fuploads%2F2025%2F06%2Fyahoo-finance-vs-google-finance.jpg&w=1440&q=100",
+          "image_origin": "search"
+        },
+        {
+          "title": "FINOS 给金融 AI 建治理底座",
+          "body": "FINOS AI Readiness SIG 面向金融服务行业推动开源 AI 治理、风险、合规和实施实践，并通过行业协作把 responsible AI adoption 做成可复用框架。它要解决的是金融机构用 AI 时缺少共同技术和流程底座的问题。",
+          "janet_take": "金融业终于承认：agent 买来不能直接上岗，还要接上一整套责任链。谁先把治理规则做成开源公共件，谁就有机会卡住行业默认标准。",
+          "source": "FINOS",
+          "url": "https://www.finos.org/ai-readiness",
+          "image_url": "",
+          "image": "images/news-04-finos-ai.png",
+          "image_source_url": "https://www.finos.org/hubfs/Projects%20+%20SIGs/Artificial%20Intelligence%20(AI)/1.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Five Eyes 发 AI 网络攻击警报",
+          "body": "澳大利亚金融评论报道，Five Eyes 情报圈认为 AI 驱动的网络能力可能在几个月内追平顶尖黑客团队。警告的核心是自动化攻击、漏洞利用和钓鱼内容生成正在合流，防守方不能再把 AI 风险当成远期变量。",
+          "janet_take": "最危险的东西很现实：低成本批量化。以前要高手写的攻击链，未来可能变成脚本菜单；安全预算少的团队会最先裸泳。",
+          "source": "AI News",
+          "url": "https://www.artificialintelligence-news.com/news/five-eyes-warning-ai-cyber-threats/",
+          "image_url": "",
+          "image": "images/news-05-five-eyes-ai.png",
+          "image_source_url": "https://www.artificialintelligence-news.com/wp-content/uploads/2025/08/ai-expo-banner-2025.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "OpenAI 把 cyber 模型推向防御场景",
+          "body": "OpenAI 这轮 cyber 模型升级的关键点，是把大模型能力包装成安全团队可用的防御工具：辅助发现漏洞、分析代码、压缩响应时间。它代表垂直能力从实验室进入高风险工位。",
+          "janet_take": "垂直模型的好日子来了，但门槛也高了。安全场景不能靠漂亮 demo 过关，误报、漏报和责任归属都会变成采购前的硬问题。",
+          "source": "Axios",
+          "url": "https://tech.yahoo.com/cybersecurity/articles/openai-rolls-more-capable-version-170043308.html",
+          "image_url": "",
+          "image": "images/models-01-openai-cyber.jpg",
+          "image_source_url": "https://s.yimg.com/lo/mysterio/api/bc93d9c2872c311715202c8659c87badaa7210c06e143242d741bf32779aebeb/lightyear_networkapi/resizefill_w1200;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Faxios_527%2F2967af47fd2eb9b6df4e896c01cf849d",
+          "image_origin": "source"
+        },
+        {
+          "title": "DeepMind 发布 AlphaGenome 基因组预览",
+          "body": "Google DeepMind 发布 AlphaGenome 预览，把长序列基因组理解和变异影响预测放进统一模型。DeepMind 称它可以帮助研究人员分析 DNA 变化如何影响基因调控，是 AI for science 继续向生物基础设施下沉的一步。",
+          "janet_take": "AI for science 最值钱的地方，是把昂贵实验前的筛选成本打下来。普通创作者用不上它，但医药和生物工具链会继续被模型重写。",
+          "source": "Google DeepMind",
+          "url": "https://deepmind.google/discover/blog/alphagenome-ai-for-better-understanding-the-genome/",
+          "image_url": "",
+          "image": "images/models-02-deepmind-alphagenome.png",
+          "image_source_url": "https://static.digit.in/alphagenome.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "NVIDIA 用 Omniverse 串起机器人训练",
+          "body": "NVIDIA 发布面向机器人学习的 Omniverse Blueprint，把仿真、合成数据和机器人训练流程串成参考架构。它服务的是物理 AI 在上机前需要的虚拟训练和验证流程。",
+          "janet_take": "机器人缺的是能看懂现场的判断层。仿真和合成数据越成熟，具身智能越会从视频 demo 走向工厂测试单。",
+          "source": "NVIDIA Newsroom",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-omniverse-blueprint-robot-learning",
+          "image_url": "",
+          "image": "images/models-03-nvidia-omniverse.jpg",
+          "image_source_url": "https://nvidianews.nvidia.com/media/sites/219/images/social-image.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "GitHub 给 JetBrains 接入 Claude agent",
+          "body": "GitHub Changelog 显示，Copilot 在 JetBrains IDEs 中新增 Claude 作为 agent provider preview，并改进模型选择器、上下文窗口选择和最近使用模型。代码助手的竞争正在从单一模型能力，转向 IDE 入口和模型路由体验。",
+          "janet_take": "程序员缺的不是万能神谕，是在不同任务里少踩坑的路由器。代码工具最后要比谁能把模型切换藏到最顺手。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/",
+          "image_url": "",
+          "image": "images/models-04-github-jetbrains-claude-agent.jpg",
+          "image_source_url": "https://github.blog/wp-content/themes/github-2021-child/dist/img/social-v3-improvements.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "NVIDIA 发布机器人 Omniverse 蓝图",
+          "body": "NVIDIA 宣布面向机器人开发的 Omniverse Blueprint，把仿真、合成数据、世界模型和机器人策略训练串成参考工作流。它给机器人公司提供从虚拟测试到现实部署的工程管线。",
+          "janet_take": "机器人创业最烧钱的环节，是现实世界太慢、太贵、太危险。NVIDIA 的算盘很清楚：卖芯片之前，先把训练和仿真工作流变成自己的高速路。",
+          "source": "NVIDIA",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-omniverse-blueprint-robot-learning",
+          "image_url": "",
+          "image": "images/insights-01-nvidia-omniverse.jpg",
+          "image_source_url": "https://nvidianews.nvidia.com/media/sites/219/images/social-image.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Patch the Planet 用 AI 找软件漏洞",
+          "body": "Patch the Planet 项目在 6 月 23 日发布更新，展示 AI agent 如何参与开源软件漏洞发现和补丁生成。它把大模型放进真实软件维护场景，直接避开只刷 benchmark 的空转。",
+          "janet_take": "开源安全的痛点是没人有空一直修。AI 如果能把低级漏洞批量扫出来，维护者省的是命；如果乱提交补丁，维护者丢的也是命。",
+          "source": "Patch the Planet",
+          "url": "https://patchtheplanet.org/",
+          "image_url": "",
+          "image": "images/insights-02-patch-the-planet-ai.png",
+          "image_source_url": "http://www.patchplanet.de/favImage.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Coalition 算清 AI 网络保险账本",
+          "body": "Coalition 发布 2026 Cyber Threat Index，专门讨论 AI 如何改变钓鱼、漏洞利用和企业防御成本。网络保险公司开始把 AI 风险量化到保费和理赔模型里，这比抽象安全报告更接近企业真实账单。",
+          "janet_take": "保险公司不靠情怀吃饭。AI 风险一旦进入保费模型，老板会比 CTO 更快听懂：上 AI 之后，谁来为事故赔钱。",
+          "source": "Coalition",
+          "url": "https://www.coalitioninc.com/claims-report/2026",
+          "image_url": "",
+          "image": "images/insights-03-coalition-ai.jpg",
+          "image_source_url": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/d9/0e/fb/d90efb37-b1de-b01a-3476-5773f8682c80/mza_707360495719636146.png/1200x1200bf-60.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "IBM 用 watsonx 加码企业 AI 治理",
+          "body": "IBM 发布 watsonx 相关企业 AI 治理更新，继续把模型管理、风险控制和审计能力打包进企业平台。大厂路线越来越明确：卖给企业的是能过安全和合规检查的 AI 管理层。",
+          "janet_take": "企业 AI 的冷水来了：能跑 demo 不等于能进生产。预算最终会流向能解释、能关停、能追责的系统，花哨功能反而会被采购表格拍死。",
+          "source": "IBM",
+          "url": "https://www.ibm.com/new/announcements/ibm-watsonx-ai-governance-updates",
+          "image_url": "",
+          "image": "images/insights-04-ibm-watsonx-ai.png",
+          "image_source_url": "https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/creative-assets/s-migr/ul/g/cd/a9/whats-new-lead-v3-short-5-2-crop.png/_jcr_content/renditions/cq5dam.thumbnail.1280.1280.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Groq 融资说明推理算力仍被高估",
+          "body": "Groq 完成 6.5 亿美元融资，报道提到它此前估值已到 69 亿美元量级，资本押注的是大模型应用规模化后的推理吞吐和低延迟需求。训练芯片已经有 NVIDIA 巨墙，推理芯片公司只能从成本、速度和开发者体验里找缝。",
+          "janet_take": "这笔钱在赌 AI 应用调用量会爆。判断标准很简单：如果 agent 真能常驻工作流，推理基础设施就会变成新水电；如果 agent 继续停在玩具阶段，估值会先疼。",
+          "source": "The Daily Star",
+          "url": "https://www.thedailystar.net/news/tech-startup/news/ai-chipmaker-groq-raises-650-mln-after-nvidia-licensed-its-chips-4206196",
+          "image_url": "",
+          "image": "images/insights2-01-groq.png",
+          "image_source_url": "https://www.thedailystar.net/sites/default/files/styles/social_share/public/2026-06/Groq.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google 用股票稳住 AI 人才战",
+          "body": "Yahoo Finance 报道指出，华尔街担心 Google 在 AI 竞赛中流失关键人才，尤其是面对 Meta 等对手高额薪酬挖角。资本市场正在把人才稳定性视为 Alphabet AI 战略能否兑现的前置信号。",
+          "janet_take": "投资人以前问模型参数，现在问谁还在办公室。AI 公司估值的隐形变量是核心团队流失率，谁的人才库松了，谁的路线图就会先打折。",
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/news/wall-street-worries-google-losing-142137296.html",
+          "image_url": "",
+          "image": "images/insights2-02-google-ai-alphabet.jpg",
+          "image_source_url": "https://rankia.id/_next/image/?url=https:%2F%2Frankia.id%2Fapp%2Fuploads%2F2025%2F06%2Fyahoo-finance-vs-google-finance.jpg&w=1440&q=100",
+          "image_origin": "search"
+        },
+        {
+          "title": "开源金融 AI 抢治理入口",
+          "body": "FINOS AI Readiness SIG 面向金融服务行业组织资源，推动开源 AI 治理与实施规范。对资本来说，这类项目短期不像模型发布那么性感，但它可能决定银行、券商和保险公司采用 AI 的默认技术栈。",
+          "janet_take": "能吃长期钱的，往往是最会变成行业默认规则的底座。金融 AI 的入口，可能先被治理框架拿走。",
+          "source": "FINOS",
+          "url": "https://www.finos.org/ai-readiness",
+          "image_url": "",
+          "image": "images/insights2-03-ai.png",
+          "image_source_url": "https://www.finos.org/hubfs/Projects%20+%20SIGs/Artificial%20Intelligence%20(AI)/1.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Zyte 给 Claude Code 接任意模型",
+          "body": "Zyte 发布工具说明，展示如何在 Claude Code 之外接入任意模型，让开发者在不同供应商之间切换模型能力。它解决的是 coding agent 模型依赖过重的问题，减少被单一入口锁死。",
+          "janet_take": "这类工具很实用，因为它戳中创作者和开发者最痛的地方：模型每天变，工作流不能每天重装。能把模型层抽出来的人，会比只卖 prompt 模板的人活得久。",
+          "source": "Zyte",
+          "url": "https://www.zyte.com/blog/claude-code-any-llm/",
+          "image_url": "",
+          "image": "images/tools-01-zyte-claude-code.jpg",
+          "image_source_url": "https://picx.zhimg.com/v2-6a298b77dd7e4c7b912d8fafc6ab2637_1440w.jpg",
+          "image_origin": "search"
+        }
+      ]
+    }
+  }
+}

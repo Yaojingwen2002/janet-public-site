@@ -1,0 +1,204 @@
+{
+  "date": "2026-06-30",
+  "vol": "273",
+  "intro_text": "政府开始买模型，创业公司开始卖编码工厂，评测公司跑出真收入，数据中心连水和冷却液都成了 AI 生意。今天的 AI 圈没有玄学，只有账单、入口和门禁。",
+  "cover": {
+    "title": "模型门禁上锁",
+    "subtitle": "从州政府采购到编码 Agent，AI 正在变成可收费、可管控、可审计的基础设施。",
+    "image_path": "runs/2026-06-30/cover.png",
+    "image_prompt": "Create a sharp editorial magazine cover image about AI becoming controlled infrastructure: government-gated frontier model access, enterprise coding agents, model evaluation leaderboards as paid business, and data-center coolant/water systems. No readable text, no logos, no dates. 21:9 panoramic, black/off-white with Janet green accents, premium technology magazine aesthetic."
+  },
+  "trend": "Anthropic 给加州政府开了 Claude 采购通道，8090 Labs 和 Arena 用 AI 编码、评测直接跑收入，Omen 连数据中心水和冷却液都拿出来优化；同一天，OpenAI 的 GPT-5.6 访问门槛继续收紧，Google 把图像生成塞进免费 Gemini。AI 的关键词从“更聪明”转向“谁能用、谁来付钱、谁来管”。\n\n对中国创作者和中小企业来说，最大变化不是再追一个模型名字，而是入口正在变少。会写 prompt 已经不够，接下来要会选供应商、控成本、留备份、把 Agent 放进可衡量的工作流里；否则别人买的是生产线，你买的只是聊天窗口。\n\n接下来 2-4 周重点盯三件事：政府采购会不会继续给 Anthropic、OpenAI 这类公司开绿灯；AI 编码公司能不能把 Demo 变成真实交付；数据中心电力、水和冷却成本会不会继续把模型价格往上顶。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Anthropic 给加州政府半价 Claude",
+          "body": "Anthropic 宣布与加州政府合作，为州政府工作人员提供 Claude Enterprise 和 Claude Code，价格约为标准企业价格的一半。加州把这次采购包装成公共部门 AI 试点，目标覆盖行政流程、代码辅助和文档处理。",
+          "janet_take": "破防点：政府采购已经跳过“能不能用 AI”的讨论，直接进入折扣和部署范围。对创业公司最刺耳的信号是，公共部门入口正在被头部模型先占坑，后面的小厂只能拼垂直场景和本地服务。",
+          "source": "Anthropic / Gov. California / TechCrunch",
+          "url": "https://techcrunch.com/2026/06/29/anthropic-offers-california-government-access-to-claude-at-half-price/",
+          "image": "images/news-01-anthropic-claude.webp",
+          "image_source_url": "https://www.presse-citron.net/app/uploads/2025/01/anthropic-claude.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "8090 Labs 融资 1.35 亿美元做 AI 编码工厂",
+          "body": "由 Social Capital 支持的 8090 Labs 完成 1.35 亿美元 Series A，目标是用 AI Agent 重做企业软件开发。公司主打“从需求到代码”的自动化研发流程，投资人押注 AI 编码从个人工具走向团队生产系统。",
+          "janet_take": "资本买的不是代码补全插件，是“少雇一队工程师”的想象力。坑也明显：编码 Agent 最贵的环节在接需求、测边界、背事故；谁能吞下责任，谁才配收大钱。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/29/chamath-palihapitiyas-new-ai-coding-startup-8090-labs-raised-135m-series-a/",
+          "image": "images/news-02-8090-labs-135-ai.jpg",
+          "image_source_url": "https://www.nttdata.com/jp/ja/-/media/nttdatajapan/images/services/generative-ai/generative-ai_kv.jpg?h=1680&iar=0&w=2800&rev=4a8da7f7834640a0a1b71e69e6718b47",
+          "image_origin": "search"
+        },
+        {
+          "title": "Arena AI 年经常性收入冲到 1 亿美元",
+          "body": "AI 评测公司 Arena AI 披露年经常性收入已达 1 亿美元，核心业务是帮助企业评估模型、Agent 和自动化系统在真实任务中的表现。评测从开源榜单变成企业预算项。",
+          "janet_take": "模型越来越多，老板最怕的是花钱后没人敢说好不好用。Arena 的收入说明评测层开始收费，国内团队别再只晒榜单截图，客户要的是能写进采购流程的证据。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/29/arena-ai-100m-arr/",
+          "image": "images/news-03-arena-ai-1.jpg",
+          "image_source_url": "https://koyano-cpa.gr.jp/nobiyo-kaikei/nbywp/wp-content/uploads/2024/08/pixta_86379809_M.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Omen 融资 3100 万美元管数据中心冷却",
+          "body": "Omen 宣布获得 3100 万美元融资，用 AI 优化数据中心的水、电和冷却液使用。公司面向 AI 数据中心运营商，声称能降低冷却成本并减少资源浪费。",
+          "janet_take": "算力故事终于烧到水管了。模型公司嘴上讲 AGI，底层成本却卡在电、冷却液和机房调度；能帮数据中心省 1% 的公司，可能比又一个聊天机器人更容易赚钱。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/29/this-startup-is-helping-ai-companies-optimize-data-centers-water-and-coolant-use/",
+          "image": "images/news-04-omen-3100.png",
+          "image_source_url": "https://cdn.10100.com/content/20250523/5b2a0a90-dc1d-4ca6-afb2-3042cf8b47c0.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Trump 管 92GW 数据中心电力许可",
+          "body": "美国政府表示将为 AI 数据中心相关电力项目削减许可阻力，目标释放约 92GW 新增电力容量。政策重点指向数据中心、电网扩容和能源项目审批速度。",
+          "janet_take": "AI 基建已经从显卡问题变成国家电力问题。美国能为数据中心改许可，说明算力已经变成产业政策；中国企业看热闹没用，未来模型成本会跟电价、机房和政策绑定得更死。",
+          "source": "Wall Street Journal / Data Center Dynamics",
+          "url": "https://www.datacenterdynamics.com/en/news/trump-administration-targets-ai-data-center-permits-to-unlock-92gw-of-power/",
+          "image": "images/news-05-trump-92gw.jpg",
+          "image_source_url": "https://data.wovn.io/ImageValue/production/672498c236f6972a6ed8a626/zh-CHS/f844685470115d85803c8c33077b9a52/高速光通信データセンターの全貌：未来のデジタルインフラを支える技術革新‗TOP画.jpeg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "OpenAI 限量放行 GPT-5.6 三档模型",
+          "body": "OpenAI 的 GPT-5.6 系列在部分受邀和经过审批的客户中开放，外界关注 Sol、Terra、Luna 三档模型的上下文长度、推理时延和企业访问限制。公开可用性仍未全面铺开。",
+          "janet_take": "模型发布越来越像奢侈品内测：付费只是门票，审批才是货架。对开发者最现实的做法是别把产品押在未公开模型上，先留可替代模型和降级路径。",
+          "source": "OpenAI Help Center / Cybersecurity Dive",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image": "images/models-01-openai-gpt-56.webp",
+          "image_source_url": "https://www.financialexpress.com/wp-content/uploads/2025/08/GPT-5-OpenAI-GPT-5.png?w=1024",
+          "image_origin": "search"
+        },
+        {
+          "title": "Google 免费 Gemini 用户拿到个性化图像生成",
+          "body": "Google 将 Gemini 的个性化图像生成能力扩展给美国免费用户，用户可在对话中生成更贴近个人上下文的图片。该能力被视为 Gemini App 继续抢占消费级创作入口的一步。",
+          "janet_take": "Google 最狠的一刀叫免费分发。创作者工具一旦被免费大模型吞掉，中间层 SaaS 只能靠模板、版权、安全和工作流续命，单纯“生成一张图”会越来越不值钱。",
+          "source": "Google Blog / The Decoder",
+          "url": "https://blog.google/products/gemini/",
+          "image": "images/models-02-google-gemini.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_SparkIcon_.max-1440x810.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta 禁员工在内部代码里使用 Claude Code 和 Codex",
+          "body": "据报道，Meta 限制员工在内部代码和敏感项目中使用 Anthropic Claude Code、OpenAI Codex 等外部 AI 编程工具，理由包括代码安全、数据外流和供应商依赖风险。",
+          "janet_take": "大厂自己也怕外部 Agent 看见家底。AI 编程工具的下一道门槛会落在数据边界；国内公司上 Coding Agent 前，先问清楚代码会不会出门、日志留在哪里。",
+          "source": "The Decoder",
+          "url": "https://the-decoder.com/meta-restricts-employees-from-using-external-ai-coding-tools-like-claude-code-and-openai-codex/",
+          "image": "images/models-03-meta-claude-code-codex.png",
+          "image_source_url": "https://the-decoder.com/wp-content/uploads/2022/09/Banner_The-Decoder_SoMe_1920x1080px.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Epoch 推 MirrorCode 专测模型改代码能力",
+          "body": "Epoch AI 发布 MirrorCode 基准，用真实软件修改任务测试模型理解和改写代码库的能力。该基准强调多文件上下文、回归风险和真实工程约束，而不是只看短题刷分。",
+          "janet_take": "刷 LeetCode 的模型可以很漂亮，改老项目才会露馅。MirrorCode 把评测拉回工程现场，对 AI 编程公司是好事也是坏事：好在能证明价值，坏在糊弄 Demo 会更难。",
+          "source": "Epoch AI / The Decoder",
+          "url": "https://epoch.ai/",
+          "image": "images/models-04-epoch-mirrorcode.png",
+          "image_source_url": "https://epoch.ai/assets/images/thumbnails/general.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Deloitte 警告 AI 正在拆掉咨询业按小时收费",
+          "body": "Deloitte 相关报告指出，生成式 AI 正在冲击咨询和专业服务业的 billable hour 模式。AI 可压缩研究、草稿、分析和文档准备时间，客户会更倾向为结果付费。",
+          "janet_take": "咨询业最怕的是客户突然发现“小时数”原来有水分。AI 写 PPT 只是表层，按结果付费才是刀口；对内容创作者也一样，未来能卖的只剩判断、分发和结果。",
+          "source": "Deloitte / Business Insider",
+          "url": "https://www.businessinsider.com/deloitte-ai-billable-hour-consulting-model-2026-6",
+          "image": "images/insights-01-deloitte-ai.jpg",
+          "image_source_url": "https://i.ytimg.com/vi/C17KWJ02Goo/maxresdefault.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "欧洲企业追主权模型，Anthropic 扩大本地合作",
+          "body": "欧洲对主权 AI 和本地数据控制的需求继续升温，Anthropic 等美国模型公司加速与欧洲政府、云厂商和企业客户谈合作。企业客户重点关心数据边界、监管责任和本地部署选项。",
+          "janet_take": "欧洲嘴上讲主权，身体仍在买美国模型，这就是现实。国产模型出海别只喊性能，欧洲客户更在意数据、合同、责任和本地合作伙伴，卖模型不如卖可落地的信任。",
+          "source": "Reuters / Anthropic",
+          "url": "https://www.reuters.com/technology/artificial-intelligence/",
+          "image": "images/insights-02-anthropic.jpg",
+          "image_source_url": "http://img.chinaaet.com/images/2025/11/13/6389862842468420491952579.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "CEO-Bench 测 AI 管公司，多数模型先败给现金流",
+          "body": "研究者推出 CEO-Bench，用创业公司经营模拟测试 AI 模型的管理能力。结果显示，多数模型在市场、融资、招聘和现金流权衡上表现不稳定，说明“AI CEO”离真实经营仍有距离。",
+          "janet_take": "让模型当 CEO，最先暴露的是它不会心疼现金。AI 能写战略很容易，能在预算、库存、销售和人事之间做脏活才难；老板们别急着退位，先拿它做副驾。",
+          "source": "CEO-Bench / The Decoder",
+          "url": "https://the-decoder.com/ceo-bench-tests-whether-ai-models-can-run-a-company/",
+          "image": "images/insights-03-ceo-bench-ai.png",
+          "image_source_url": "https://the-decoder.com/wp-content/uploads/2022/09/Banner_The-Decoder_SoMe_1920x1080px.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "美军 AI 目标系统误标学校照片引争议",
+          "body": "有关美国军方 AI 目标识别系统的报道显示，系统曾将学校相关图像误归入可疑目标流程，引发对自动化目标识别、人工复核和军事 AI 风险的质疑。",
+          "janet_take": "军事 AI 最可怕的是错误被流程包装成“系统建议”。所有高风险场景都一样：AI 可以提速，但不能替人背锅；否则出事时只剩互相甩锅。",
+          "source": "The Decoder / Military AI Reporting",
+          "url": "https://the-decoder.com/",
+          "image": "images/insights-04-ai.png",
+          "image_source_url": "https://the-decoder.com/wp-content/uploads/2022/09/Banner_The-Decoder_SoMe_1920x1080px.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "AI 编码融资继续吸钱，8090 Labs 估值先涨",
+          "body": "8090 Labs 的 1.35 亿美元 A 轮显示资本仍在押注 AI 编码公司，尤其是能面向企业研发流程收钱的团队。投资逻辑从“开发者喜欢”转向“企业能不能少招人”。",
+          "janet_take": "投资人现在买的是工程团队成本下降的期权。机会在垂直研发工具链，风险在交付责任：谁只会生成代码，谁就会被 IDE 巨头吃掉；谁能接住测试和上线，谁才有估值。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/29/chamath-palihapitiyas-new-ai-coding-startup-8090-labs-raised-135m-series-a/",
+          "image": "images/insights2-01-ai-8090-labs.jpg",
+          "image_source_url": "https://n.sinaimg.cn/sinakd20230416s/133/w600h333/20230416/f730-36533e56849a4a719e8bb3ea00f9da3d.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "AI 数据中心省水公司成新投资口",
+          "body": "Omen 的 3100 万美元融资说明 AI 基础设施投资正在外溢到冷却、水、电和运维系统。随着训练和推理负载增加，数据中心边际成本会被拆成更多可投资环节。",
+          "janet_take": "淘金热里卖铲子已经不够，现在连水管都能融资。对投资人来说，AI 基建链条越脏越可能赚钱，因为模型故事会波动，机房成本每天都真实发生。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/29/this-startup-is-helping-ai-companies-optimize-data-centers-water-and-coolant-use/",
+          "image": "images/insights2-02-ai.jpg",
+          "image_source_url": "https://xqimg.imedao.com/1952703894436ca63fe65d37.png!800.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "评测公司 Arena 跑出 1 亿美元 ARR",
+          "body": "Arena AI 披露 1 亿美元 ARR，意味着模型评测、红队测试和真实任务验证已经从研究社区进入企业采购。AI 预算越大，企业越需要第三方证明钱没有白烧。",
+          "janet_take": "最会赚钱的可能是告诉老板“这个模型到底行不行”的人。国内评测团队如果还停在发榜单，商业化会很薄；能接采购、验收和风险报告，才有钱。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/29/arena-ai-100m-arr/",
+          "image": "images/insights2-03-arena-1-arr.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2023/05/disrupt-expo-hall-crop.jpeg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "HumanLayer 给 AI Agent 加人工审批层",
+          "body": "HumanLayer 推出面向 AI Agent 的人工审批和权限控制工具，让 Agent 在发邮件、改数据、合并代码或调用外部系统前先请求人类确认。它主打把高风险自动化变成可控工作流。",
+          "janet_take": "Agent 真要进公司，第一需求是别乱点确认键。HumanLayer 这类工具适合所有怕 AI 误操作的团队：模型负责跑腿，人类卡住关键按钮。",
+          "source": "HumanLayer",
+          "url": "https://www.humanlayer.dev/",
+          "image": "images/tools-01-humanlayer-ai-agent.png",
+          "image_source_url": "https://humanlayer.dev/api/og",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+name: Send Daily Briefing Email
+
+on:
+  workflow_dispatch:
+    inputs:
+      edition_id:
+        description: Optional briefing edition id, for example 2026-07-01. Empty uses latest_edition_id.
+        required: false
+        type: string
+      dry_run:
+        description: Check recipients without sending email.
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+  schedule:
+    - cron: '20 1 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-briefing-email
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install mail dependency
+        run: npm install --no-save nodemailer@^6.9.16
+
+      - name: Send briefing email
+        run: node .github/scripts/send-daily-briefing-email.mjs
+        env:
+          PUBLIC_SITE_URL: https://yaojingwen2002.github.io/janet-public-site/
+          BRIEFING_EDITION_ID: ${{ github.event.inputs.edition_id || '' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_SECURE: ${{ secrets.SMTP_SECURE }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}

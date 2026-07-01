@@ -51,6 +51,8 @@ Auth mode:
 - Supabase anonymous guest sign-in
 - Password reset through `auth/reset-password.html`
 - No magic link as the main login flow
+- Usernames allow 3-20 English letters, numbers, and underscores only. Reserved names such as `janet`, `admin`, `system`, `root`, `official`, `support`, and `moderator` are blocked.
+- Email/password accounts are subscribed to the daily briefing email by default and can opt out from Potato Center.
 
 Supabase setup and SQL are documented in `docs/supabase-setup.md`.
 
@@ -85,6 +87,15 @@ Important status files:
 - `data/release-gate-check.json`
 - `data/news-index.json`
 - `data/MANIFEST.json`
+
+Daily briefing email:
+
+- Workflow: `.github/workflows/send-daily-briefing-email.yml`
+- Sender: `.github/scripts/send-daily-briefing-email.mjs`
+- Schedule: `01:20 UTC / 09:20 Asia/Taipei`, after the morning briefing should exist
+- Recipients: formal email accounts from Supabase Auth and `profiles`; `newsletter_subscribers.subscribed = false` or `user_metadata.newsletter_opt_in = false` is treated as an opt-out block
+- Secrets required: `SUPABASE_SERVICE_ROLE_KEY`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM`; `SUPABASE_URL` is optional because the public project URL is already in `scripts/supabase-config.js`
+- Never commit SMTP passwords or Supabase service-role keys to this repository.
 
 Notes:
 

@@ -46,7 +46,7 @@ create table if not exists public.profiles (
   display_name text,
   email text,
   is_guest boolean default false,
-  newsletter_opt_in boolean default false,
+  newsletter_opt_in boolean default true,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
@@ -70,7 +70,17 @@ create index if not exists reactions_edition_type
 
 create index if not exists newsletter_subscribers_email
   on public.newsletter_subscribers (email);
+
+create unique index if not exists profiles_username_ci_unique
+  on public.profiles (lower(username))
+  where username is not null and is_guest = false;
 ```
+
+Username rules used by Potato Center:
+
+- Allowed: 3-20 English letters, numbers, and underscores, for example `janet_ai`, `creator2026`, `guest_123`.
+- Blocked: Chinese characters, spaces, punctuation, emoji, and system names such as `janet`, `admin`, `administrator`, `system`, `root`, `official`, `support`, `moderator`.
+- The `profiles_username_ci_unique` index keeps formal-account usernames unique case-insensitively. Guests can still reuse local nicknames.
 
 For the Potato Center account layer, also install the profile trigger:
 
@@ -94,7 +104,7 @@ begin
     nullif(trim(new.raw_user_meta_data->>'username'), ''),
     new.email,
     coalesce((new.raw_user_meta_data->>'is_guest')::boolean, false),
-    coalesce((new.raw_user_meta_data->>'newsletter_opt_in')::boolean, false)
+    coalesce((new.raw_user_meta_data->>'newsletter_opt_in')::boolean, true)
   )
   on conflict (id) do nothing;
 
@@ -223,6 +233,18 @@ create policy "Users can update own profile"
 
 Do not add a public `select` policy for `newsletter_subscribers`; the site only writes or updates the visitor's preference and must not expose the full email list.
 
+## 2.1 Daily briefing email subscribers
+
+Email/password signups are subscribed by default through Supabase Auth `user_metadata.newsletter_opt_in = true`, with best-effort sync into `profiles.newsletter_opt_in` and `newsletter_subscribers.subscribed = true`. The sender includes formal Auth users and formal `profiles` rows with an email address, so older registered users are covered. Users can turn this off from Potato Center; `user_metadata.newsletter_opt_in = false` or `newsletter_subscribers.subscribed = false` is treated as the opt-out block.
+
+The public site must never read the full subscriber list. The daily sender runs in GitHub Actions with a Supabase service-role key stored in GitHub Secrets, sends the latest briefing, then updates `newsletter_subscribers.last_sent_at`.
+
+If the Potato Center subscription toggle flashes, reverts, or shows `操作失败，请稍后重试`, run the repair SQL:
+
+```text
+docs/supabase-newsletter-repair.sql
+```
+
 ## 3. Configure the site
 
 Replace the placeholders in `scripts/supabase-config.js`:
@@ -256,3 +278,37 @@ Authentication → URL Configuration:
   - `http://127.0.0.1:8097/**`
 
 If local preview uses another port, add that exact port to the allow list before testing password reset.
+
+## 5. Configure daily briefing email workflow
+
+Workflow file:
+
+```text
+.github/workflows/send-daily-briefing-email.yml
+```
+
+Schedule:
+
+```text
+01:20 UTC / 09:20 Asia/Taipei
+```
+
+GitHub Secrets:
+
+```text
+SUPABASE_SERVICE_ROLE_KEY
+SMTP_HOST
+SMTP_PORT
+SMTP_USER
+SMTP_PASS
+MAIL_FROM
+```
+
+Optional:
+
+```text
+SUPABASE_URL
+SMTP_SECURE
+```
+
+Use the public anon key only in `scripts/supabase-config.js`. Keep the service-role key and SMTP password only in GitHub Secrets.

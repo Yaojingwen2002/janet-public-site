@@ -79,7 +79,7 @@ Janet 的内容始终站在**中国创作者和中国企业**的视角看全球 
 ### 邮件发送
 
 - **收件人**：yaojingwen12345@gmail.com / 2784515051@qq.com
-- **发送方式**：QQ SMTP（smtp.qq.com:587），授权码 `zykpzzoteunqdejj`
+- **发送方式**：QQ SMTP（smtp.qq.com:587），授权码只允许放在 GitHub Secrets / 本地私密配置中，不写入公开仓库
 - 不要用 Gmail SMTP（从本机连不上）
 
 ---

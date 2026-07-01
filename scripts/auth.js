@@ -7,7 +7,10 @@
     skipped: 'janet_visit_skipped'
   };
 
-  const RESERVED_NAMES = ['janet', 'admin', 'administrator', 'system', 'root', '官方', '管理员'];
+  const RESERVED_NAMES = ['janet', 'admin', 'administrator', 'system', 'root', 'official', 'support', 'moderator'];
+  const USERNAME_ALLOWED_CHARS = /^[A-Za-z0-9_]+$/;
+  const USERNAME_PATTERN = /^[A-Za-z0-9_]{3,20}$/;
+  const USERNAME_HELP = '可用 3-20 位英文字母、数字、下划线，例如 janet_ai、creator2026、guest_123。不能使用中文、空格、标点、emoji 或系统保留名。';
   const listeners = new Set();
   let currentSession = null;
   let currentUser = null;
@@ -102,11 +105,51 @@
     return String(value || '').trim();
   }
 
+  function booleanValue(value) {
+    if (value === true || value === false) return value;
+    if (typeof value === 'string') {
+      if (/^true$/i.test(value)) return true;
+      if (/^false$/i.test(value)) return false;
+    }
+    return null;
+  }
+
+  function resolveNewsletterOptIn(profile, user) {
+    if (isGuestUser(user, profile)) return false;
+    const meta = user && user.user_metadata ? user.user_metadata : {};
+    const metaValue = booleanValue(meta.newsletter_opt_in);
+    if (metaValue !== null) return metaValue;
+    if (profile && profile.newsletter_opt_in === true) return true;
+    return Boolean(user && user.email);
+  }
+
+  function normalizeProfileForIdentity(profile, user) {
+    const newsletterOptIn = resolveNewsletterOptIn(profile, user);
+    if (profile) return { ...profile, newsletter_opt_in: newsletterOptIn };
+    if (!isGuestUser(user, profile)) return { newsletter_opt_in: newsletterOptIn };
+    return profile;
+  }
+
+  function isReservedUsername(username) {
+    return RESERVED_NAMES.includes(normalizeUsername(username).toLowerCase());
+  }
+
   function validateUsername(value) {
     const username = normalizeUsername(value);
-    if (!/^[A-Za-z0-9_]{3,20}$/.test(username)) return '只能使用字母、数字、下划线，3-20 位';
-    if (RESERVED_NAMES.includes(username.toLowerCase())) return '这个用户名不能使用';
+    if (!username) return '请填写用户名。' + USERNAME_HELP;
+    if (!USERNAME_ALLOWED_CHARS.test(username)) return '用户名只能使用英文字母、数字、下划线；不能使用中文、空格、标点或 emoji。';
+    if (username.length < 3 || username.length > 20) return '用户名需要 3-20 位。' + USERNAME_HELP;
+    if (!USERNAME_PATTERN.test(username)) return '用户名格式不正确。' + USERNAME_HELP;
+    if (isReservedUsername(username)) return '“' + username + '” 是系统保留名，不能使用。请换成个人昵称，例如 janet_ai、creator2026、guest_123。';
     return '';
+  }
+
+  function getUsernameRules() {
+    return {
+      help: USERNAME_HELP,
+      examples: ['janet_ai', 'creator2026', 'guest_123'],
+      reservedNames: RESERVED_NAMES.slice()
+    };
   }
 
   function profileName(profile, user) {
@@ -125,8 +168,9 @@
     const user = session && session.user ? session.user : null;
     if (!user) return null;
 
-    const guest = isGuestUser(user, profile);
-    const name = profileName(profile, user);
+    const normalizedProfile = normalizeProfileForIdentity(profile, user);
+    const guest = isGuestUser(user, normalizedProfile);
+    const name = profileName(normalizedProfile, user);
     if (guest) {
       return {
         mode: 'guest',
@@ -136,7 +180,7 @@
         email: '',
         displayName: name || randomGuestName(),
         avatar: '游',
-        profile: profile || null
+        profile: normalizedProfile || null
       };
     }
 
@@ -149,7 +193,7 @@
       email: user.email || '',
       displayName,
       avatar: getPotatoLabel(session, profile),
-      profile: profile || null
+      profile: normalizedProfile || null
     };
   }
 
@@ -260,6 +304,10 @@
     if (/invalid login credentials/.test(message)) return '邮箱或密码不正确';
     if (/email not confirmed|not confirmed|confirm.*email|email.*confirm/.test(message)) return '账号已创建，但邮箱还没确认。请先点确认邮件，或在 Supabase 关闭 Confirm email。';
     if (/anonymous.*disabled|anonymous sign-?ins?.*disabled|signup.*anonymous|provider.*anonymous/.test(message)) return '游客登录未启用：请在 Supabase 打开 Anonymous Sign-Ins。';
+    if (/profiles_username|username.*duplicate|duplicate key.*username|violates unique constraint.*username/.test(message)) return '这个用户名已被使用，请换一个。可用 3-20 位英文字母、数字、下划线。';
+    if (/newsletter_opt_in|schema cache|could not find.*column/.test(message)) return 'Supabase 资料表缺少晨报订阅字段，请先执行后台修复 SQL。';
+    if (/row-level security|rls|permission denied|policy/.test(message)) return 'Supabase 资料表权限还没开，请先执行后台修复 SQL。';
+    if (/relation.*does not exist|table.*does not exist/.test(message)) return 'Supabase 订阅资料表还没建好，请先执行后台修复 SQL。';
     if (/already registered|user already registered|already exists|duplicate/.test(message)) return '该邮箱已注册，请直接登录';
     if (/password should be at least 6 characters|password.*6/.test(message)) return '密码至少 6 位';
     if (/network|failed to fetch|load failed/.test(message)) return '网络异常，请稍后再试';
@@ -292,6 +340,14 @@
     return { ok: true };
   }
 
+  async function syncNewsletterPreference(email, displayName, subscribed) {
+    const result = await saveNewsletterPreference(email, displayName, subscribed);
+    if (!result.ok) {
+      console.warn('[auth] newsletter_subscribers sync failed:', result.reason);
+    }
+    return result;
+  }
+
   async function signInWithPassword(email, password) {
     const client = await waitForSupabaseClient();
     const cleanEmail = normalizeEmail(email);
@@ -299,7 +355,13 @@
     if (error) throw new Error(friendlyAuthError(error));
     clearLocalGuest();
     await refreshSession();
-    return getIdentity();
+    const identity = getIdentity();
+    if (identity && identity.mode === 'user' && identity.email && identity.profile && identity.profile.newsletter_opt_in) {
+      saveNewsletterPreference(identity.email, identity.displayName, true).catch((saveError) => {
+        console.warn('[auth] newsletter sync after login failed:', saveError && saveError.message ? saveError.message : saveError);
+      });
+    }
+    return identity;
   }
 
   async function signUp(options) {
@@ -321,7 +383,8 @@
       currentProfile = null;
     }
 
-    const newsletterOptIn = Boolean(options && options.newsletterOptIn);
+    const newsletterOptIn = !(options && options.newsletterOptIn === false);
+    const newsletterUpdatedAt = new Date().toISOString();
     const { data, error } = await client.auth.signUp({
       email: cleanEmail,
       password,
@@ -330,6 +393,7 @@
           username,
           display_name: username,
           newsletter_opt_in: newsletterOptIn,
+          newsletter_opt_in_updated_at: newsletterUpdatedAt,
           is_guest: false
         }
       }
@@ -337,17 +401,18 @@
     if (error) throw new Error(friendlyAuthError(error));
 
     if (data && data.user && data.user.id) {
-      const profileUpdate = await client.from('profiles').update({
+      const profileUpdate = await client.from('profiles').upsert({
+        id: data.user.id,
         username,
         display_name: username,
         email: cleanEmail,
         is_guest: false,
         newsletter_opt_in: newsletterOptIn,
-        updated_at: new Date().toISOString()
-      }).eq('id', data.user.id);
+        updated_at: newsletterUpdatedAt
+      }, { onConflict: 'id' });
       if (profileUpdate.error) console.warn('[auth] profile update after signup failed:', profileUpdate.error.message);
     }
-    await saveNewsletterPreference(cleanEmail, username, newsletterOptIn);
+    await syncNewsletterPreference(cleanEmail, username, newsletterOptIn);
 
     const { data: sessionData } = await client.auth.getSession();
     if (!sessionData || !sessionData.session) {
@@ -470,12 +535,33 @@
     const identity = getIdentity();
     if (!identity || identity.mode !== 'user' || !identity.email) throw new Error('请先登录正式账号');
     const client = await waitForSupabaseClient();
-    await saveNewsletterPreference(identity.email, identity.displayName, subscribed);
+    const newsletterOptIn = Boolean(subscribed);
+    const updatedAt = new Date().toISOString();
+    const metadata = identity.user && identity.user.user_metadata ? identity.user.user_metadata : {};
+    const { data: authData, error: authError } = await client.auth.updateUser({
+      data: {
+        ...metadata,
+        newsletter_opt_in: newsletterOptIn,
+        newsletter_opt_in_updated_at: updatedAt
+      }
+    });
+    if (authError) throw new Error(friendlyAuthError(authError));
+
     const { error } = await client.from('profiles').update({
       newsletter_opt_in: Boolean(subscribed),
-      updated_at: new Date().toISOString()
+      updated_at: updatedAt
     }).eq('id', identity.user.id);
-    if (error) throw new Error(friendlyAuthError(error));
+    if (error) console.warn('[auth] profile newsletter update failed:', error.message);
+    await syncNewsletterPreference(identity.email, identity.displayName, newsletterOptIn);
+
+    if (authData && authData.user) currentUser = authData.user;
+    if (currentProfile) {
+      currentProfile = {
+        ...currentProfile,
+        newsletter_opt_in: newsletterOptIn,
+        updated_at: updatedAt
+      };
+    }
     await refreshSession();
     return getIdentity();
   }
@@ -513,6 +599,7 @@
     getPotatoLabel: () => getPotatoLabel(currentSession, currentProfile),
     randomGuestName,
     validateUsername,
+    getUsernameRules,
     createGuest,
     skipForNow,
     signInWithPassword,

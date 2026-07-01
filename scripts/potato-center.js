@@ -141,6 +141,10 @@
     return '<div class="potato-error" data-potato-error hidden></div>';
   }
 
+  function usernameHintHtml() {
+    return '<small class="potato-hint">3-20 位英文字母、数字、下划线；不能用中文、空格、标点、emoji 或系统保留名。例：janet_ai / creator2026 / guest_123</small>';
+  }
+
   function loginHtml() {
     return [
       '<div class="potato-panel">',
@@ -169,11 +173,11 @@
       messageHtml(),
       guestWarning,
       '<form class="potato-form" data-potato-form="create">',
-      '  <label class="potato-field"><span>用户名</span><input type="text" name="username" autocomplete="nickname" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{3,20}" placeholder="字母数字下划线，3-20 位" required></label>',
+      '  <label class="potato-field"><span>用户名</span><input type="text" name="username" autocomplete="nickname" maxlength="20" autocapitalize="none" spellcheck="false" title="只能使用 3-20 位英文字母、数字、下划线" placeholder="janet_ai">' + usernameHintHtml() + '</label>',
       '  <label class="potato-field"><span>邮箱</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>',
       '  <label class="potato-field"><span>密码</span><input type="password" name="password" autocomplete="new-password" minlength="6" required></label>',
       '  <label class="potato-field"><span>确认密码</span><input type="password" name="confirm" autocomplete="new-password" minlength="6" required></label>',
-      '  <label class="potato-check"><input type="checkbox" name="newsletter"><span>订阅每日晨报</span></label>',
+      '  <label class="potato-check"><input type="checkbox" name="newsletter" checked><span>注册后接收每日晨报，可在账户中心取消</span></label>',
       '  <label class="potato-check"><input type="checkbox" name="terms" required><span>我同意隐私条款</span></label>',
       '  <button class="potato-btn" type="submit">创建账号</button>',
       '  <div class="potato-link-group">',
@@ -190,7 +194,7 @@
       '<div class="potato-panel">',
       messageHtml(),
       '<form class="potato-form" data-potato-form="guest">',
-      '  <label class="potato-field"><span>游客昵称</span><input type="text" name="username" value="' + escapeHtml(defaultGuestName()) + '" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{3,20}" required></label>',
+      '  <label class="potato-field"><span>游客昵称</span><input type="text" name="username" value="' + escapeHtml(defaultGuestName()) + '" maxlength="20" autocapitalize="none" spellcheck="false" title="只能使用 3-20 位英文字母、数字、下划线">' + usernameHintHtml() + '</label>',
       '  <p class="potato-warning">游客身份可评论和点赞。退出登录、清除浏览器数据或更换设备后，游客记录将无法找回，也无法迁移到新账号。如需保留记录，请注册正式账号。</p>',
       '  <button class="potato-btn" type="submit">游客进入</button>',
       '  <div class="potato-link-group">',
@@ -266,7 +270,7 @@
       '<div class="potato-panel">',
       messageHtml(),
       '<form class="potato-form" data-potato-form="username">',
-      '  <label class="potato-field"><span>用户名</span><input type="text" name="username" value="' + escapeHtml(current) + '" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{3,20}" required></label>',
+      '  <label class="potato-field"><span>用户名</span><input type="text" name="username" value="' + escapeHtml(current) + '" maxlength="20" autocapitalize="none" spellcheck="false" title="只能使用 3-20 位英文字母、数字、下划线">' + usernameHintHtml() + '</label>',
       '  <button class="potato-btn" type="submit">保存</button>',
       '  <button class="potato-btn potato-btn--ghost" type="button" data-potato-tab="account">返回</button>',
       '</form>',

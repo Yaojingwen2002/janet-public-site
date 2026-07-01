@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-07-01 · VOL 274</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/potato-center.css?v=potato-roll-20260617">
+  <link rel="stylesheet" href="../../styles/comments.css">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Fraunces (标题) · DM Sans (正文) · Geist Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'Geist Mono', 'SFMono-Regular', 'Fira Code', monospace;
+  --sans:         'DM Sans', 'PingFang SC', system-ui, sans-serif;
+  --display:      'Fraunces', Georgia, 'Noto Serif SC', serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+</head>
+<body>
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="../../index.html">首页</a>
+    <a href="../../news.html">Janet 快车箱</a>
+    <a href="../../portfolio.html">作品库</a>
+    <a href="../../gpt-image2-handbook.html">iGPT-Image2 手册</a>
+    <a href="../../shuttle-universe.html">穿梭宇宙</a>
+    <a href="../../misaligned-scenes.html">错位名场面</a>
+    <a href="../../index.html#about">关于 Janet</a>
+    <a href="../../index.html#contact">联系</a>
+  </div>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-07-01</div>
+          <div class="vol-info">VOL 274</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="工作台被模型接管" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-07-01 // VOL_274</div>
+   <h1>工作台被模型接管</h1>
+   <p>从科研、代码到手机键盘，AI 正在离开演示页，钻进每天真正产生结果的界面。</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">模型公司今天不再只比谁更聪明，而是在抢两个更现实的位置：谁能进工作台，谁能进预算。Sonnet 5 降价跑 Agent，Claude Science 盯上实验室，Google 把图像和视频 API 做成低价流水线，中国开源模型继续压进编码榜单，键盘也开始长出 Agent。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。</div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>📌 今日趋势：Anthropic 一天内把 Sonnet 5 推成默认模型，又端出 Claude Science；Google 把 Nano Banana 2 Lite 和 Gemini Omni Flash 放进开发者流水线；Meituan 用 LongCat-2.0 把 1.6T、1M 上下文和国产芯片训练绑在一起；Acti 则把 Agent 塞到手机键盘里。今天最硬的动作不是发布一个更会聊天的模型，而是把模型塞进科研、编码、媒体生成、移动输入这些真正花钱的工作台。</h2>
+  <p>对中国创作者和企业来说，门槛正在从“会不会用 AI”变成“能不能把 AI 变成固定产能”。视频团队要盯低价高吞吐生成 API，研发团队要盯代码 Agent 的成本和评测证据，垂直行业要盯 Claude Science 这类工作台能不能把专家软件拆掉。单点工具越来越便宜，真正值钱的是把模型接进流程、权限、数据和交付。</p>
+  <p>接下来 2-4 周重点看三件事：Sonnet 5 的低价窗口会不会逼 OpenAI、Google 跟进 Agent 定价；Gemini 新媒体模型能不能把创意工具价格继续打穿；LongCat-2.0 和 ScarfBench 这类开源/评测信号能否证明 Agent 不只会 Demo，而能改老代码、跑迁移、交结果。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-anthropic-sonnet-5-agent.png" alt="Anthropic 用 Sonnet 5 降价跑 Agent" loading="lazy" decoding="async">
+    <figcaption>Anthropic</figcaption>
+  </figure>
+  <h2>Anthropic 用 Sonnet 5 降价跑 Agent</h2>
+  <p class="item-meta">来源: Anthropic · 2026-07-01 · <a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 发布 Claude Sonnet 5，并称它从 6 月 30 日起成为 Free 和 Pro 计划的默认模型，同时向 Max、Team、Enterprise、Claude Code 和 Claude Platform 开放。平台价在 2026 年 8 月 31 日前为每百万输入 token 2 美元、输出 token 10 美元，之后回到 3 美元和 15 美元；官方强调它面向多步软件工程、工具使用和长任务执行。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Anthropic 这刀砍在 Agent 成本上。过去把长任务交给模型像烧钱试运气，现在 Sonnet 5 用中档价格去抢 Opus 才配做的活；开发者该开心，但也该紧张，Agent 一旦便宜，粗糙外包和低端代码服务会先被压价。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-02-claude-science.webp" alt="Claude Science 直接盯上科研工作台" loading="lazy" decoding="async">
+    <figcaption>STAT / TechCrunch / NVIDIA</figcaption>
+  </figure>
+  <h2>Claude Science 直接盯上科研工作台</h2>
+  <p class="item-meta">来源: STAT / TechCrunch / NVIDIA · 2026-07-01 · <a href="https://techcrunch.com/2026/06/30/anthropics-claude-science-bets-on-workflow-not-a-new-model-to-win-over-scientists/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 推出 Claude Science，一个面向科研人员的 AI workbench，主打把数据库、计算管线、模型调用和研究流程放进同一环境。STAT 和 TechCrunch 均在 6 月 30 日报道了这项产品，NVIDIA 也同步介绍 BioNeMo Agent Toolkit 进入 Claude Science，帮助生命科学研究者搭建加速工作流。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>科研 AI 的关键已经从会背论文，转向少开十个工具。Claude Science 抢的是实验室的工作台入口，未来收费点会落在数据、模型、算力和复核串联起来的生产环境；国内科研软件厂商要醒了。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-google-nano-banana-2-lite-gemini-omni-flash.png" alt="Google 推 Nano Banana 2 Lite 和 Gemini Omni Flash" loading="lazy" decoding="async">
+    <figcaption>Google</figcaption>
+  </figure>
+  <h2>Google 推 Nano Banana 2 Lite 和 Gemini Omni Flash</h2>
+  <p class="item-meta">来源: Google · 2026-07-01 · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google DeepMind 在 6 月 30 日发布 Nano Banana 2 Lite 和 Gemini Omni Flash。前者是 Nano Banana 系列中更快、更低成本的图像模型，已进入 Google AI Studio、Gemini API 和 Gemini Enterprise Agent Platform；后者面向高质量视频生成和对话式编辑，Google 还强调两者可以在 Interactions API 里串联使用。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Google 又在用免费和低价打市场。图片先低成本生成，再直接动画化成视频，这对创作者是好消息，对只会套壳卖图的 SaaS 是坏消息；未来收费点会从“生成一张图”移到批量、版权、模板和交付速度。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-meituan-longcat-20-16t.png" alt="Meituan 发布 1.6T 编码模型 LongCat-2.0" loading="lazy" decoding="async">
+    <figcaption>LongCat / WinBuzzer / OpenSourceForU</figcaption>
+  </figure>
+  <h2>Meituan 发布 1.6T 编码模型 LongCat-2.0</h2>
+  <p class="item-meta">来源: LongCat / WinBuzzer / OpenSourceForU · 2026-07-01 · <a href="https://www.longcatai.org/models/longcat-2.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Meituan 在 6 月 30 日公开 LongCat-2.0，外部报道称其为 1.6 万亿参数 MoE 编码模型，主打 1M token 上下文、Agentic coding，并称训练使用 5 万颗国产计算芯片。模型以 MIT License 开源发布，相关页面称它此前与 OpenRouter 上的匿名模型 Owl Alpha 有关联。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>美团这次最狠的是叙事组合拳：国产芯片、超长上下文、编码榜单、MIT License 全塞在一条新闻里。真能不能扛复杂工程还要看实测，但中国模型已经学会用开源和成本去打全球开发者心智。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-etched-50-ai.webp" alt="Etched 拿 50 亿美元估值卖 AI 专用芯片" loading="lazy" decoding="async">
+    <figcaption>TechCrunch</figcaption>
+  </figure>
+  <h2>Etched 拿 50 亿美元估值卖 AI 专用芯片</h2>
+  <p class="item-meta">来源: TechCrunch · 2026-07-01 · <a href="https://techcrunch.com/2026/06/30/nvidia-competitor-etched-hits-5b-valuation-1b-in-sales-for-ai-chip/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>TechCrunch 6 月 30 日报道，AI 芯片创业公司 Etched 已达到 50 亿美元估值，并称其 Sohu AI 芯片相关销售订单达到 10 亿美元。公司定位是 NVIDIA 的竞争者，押注为 transformer 推理打造专用芯片，在高吞吐 AI 推理场景里争夺成本优势。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>芯片创业公司能拿 10 亿美元订单，说明市场已经不只想买 NVIDIA 的货。风险也很直白：专用芯片赌的是模型架构稳定，一旦主流推理路线换挡，今天的捷径明天可能变库存。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-claude-sonnet-5-1m-128k.png" alt="Claude Sonnet 5 支持 1M 上下文和 128K 输出" loading="lazy" decoding="async">
+    <figcaption>Anthropic Platform Docs</figcaption>
+  </figure>
+  <h3>Claude Sonnet 5 支持 1M 上下文和 128K 输出</h3>
+  <p class="item-meta">来源: Anthropic Platform Docs · 2026-07-01 · <a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 平台文档显示，Claude Sonnet 5 的模型名为 claude-sonnet-5，支持 1M token 上下文窗口和 128K max output tokens，并继承 Claude Sonnet 4.6 的主要工具与平台能力，但不支持 Priority Tier。官方把它放在更适合长程 Agent 和代码任务的价格带。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>1M 上下文已经从炫技变成门票，老代码库、长合同、研究资料终于能塞进一次任务。问题是上下文越长，垃圾也越多；会不会筛选材料，比会不会把窗口填满更值钱。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-github-copilot-claude-sonnet-5.webp" alt="GitHub Copilot 首日接入 Claude Sonnet 5" loading="lazy" decoding="async">
+    <figcaption>GitHub Blog</figcaption>
+  </figure>
+  <h3>GitHub Copilot 首日接入 Claude Sonnet 5</h3>
+  <p class="item-meta">来源: GitHub Blog · 2026-07-01 · <a href="https://github.blog/changelog/2026-06-30-claude-sonnet-5-is-generally-available-for-github-copilot/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GitHub 在 6 月 30 日的 changelog 中宣布 Claude Sonnet 5 已在 Copilot 中 generally available，用户可以通过 Copilot model picker 选择该模型。Anthropic 新模型发布当天即进入主流开发者入口，说明模型分发正在跟 IDE 和代码助手深度绑定。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>模型发布当天进 Copilot，比发一堆 benchmark 更有杀伤力。开发者不会每天读论文，但会每天打开 IDE；谁占住 model picker，谁就有机会把 API 费变成习惯税。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-nano-banana-2-lite.png" alt="Nano Banana 2 Lite 主打高吞吐图像生成" loading="lazy" decoding="async">
+    <figcaption>Google DeepMind</figcaption>
+  </figure>
+  <h3>Nano Banana 2 Lite 主打高吞吐图像生成</h3>
+  <p class="item-meta">来源: Google DeepMind · 2026-07-01 · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google 称 Nano Banana 2 Lite 是 Nano Banana 家族中最快、最具成本效率的 Gemini Image 模型，目标是高吞吐、速度和规模化。它已经进入 Google AI Studio、Gemini API、Gemini Enterprise Agent Platform，并逐步进入 AI Mode in Search、Gemini app 等消费端入口。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>图像模型开始拼吞吐，意思就是生成图正在从“惊艳一下”变成“批量出货”。创作者最该盯 API 成本曲线：当一张图便宜到接近素材消耗品，赚钱点只能往策划、选片、版权和分发迁。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-longcat-20-mit-license.jpg" alt="LongCat-2.0 用 MIT License 抢开发者" loading="lazy" decoding="async">
+    <figcaption>LongCat / Cursor Forum</figcaption>
+  </figure>
+  <h3>LongCat-2.0 用 MIT License 抢开发者</h3>
+  <p class="item-meta">来源: LongCat / Cursor Forum · 2026-07-01 · <a href="https://www.longcatai.org/models/longcat-2.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>LongCat-2.0 页面显示，该模型主打 1.6T MoE、1M 上下文和 Agentic coding，并以 MIT License 发布。外部报道同时提到模型权重和直接平台确认仍需要继续观察，开发者社区已经开始讨论 Cursor 等工具是否应接入该模型。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>开源模型打开发者，最有效的武器就是低门槛许可证。LongCat-2.0 如果实测过关，会给国内模型出海一个样板：别只讲中文市场，直接去抢全球 Coding Agent 的工具链入口。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-hugging-face-every-eval-ever.png" alt="Hugging Face 模型页挂上 Every Eval Ever" loading="lazy" decoding="async">
+    <figcaption>Hugging Face</figcaption>
+  </figure>
+  <h3>Hugging Face 模型页挂上 Every Eval Ever</h3>
+  <p class="item-meta">来源: Hugging Face · 2026-07-01 · <a href="https://huggingface.co/blog/eee-community-evals" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Hugging Face 6 月 30 日宣布在模型页面展示 Every Eval Ever 结果。该功能把来自评测社区的多维结果放到模型页旁边，目标是让模型选择不再只依赖单个排行榜或厂商自报成绩。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>榜单终于开始从营销海报变成采购证据。模型太多以后，客户真正缺的是可复查、可对比、能解释的评测；国内模型厂如果还只贴一张总分图，销售会越来越难。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-ibm-scarfbench-java-agent.png" alt="IBM 用 ScarfBench 专测 Java 迁移 Agent" loading="lazy" decoding="async">
+    <figcaption>IBM Research / Hugging Face</figcaption>
+  </figure>
+  <h3>IBM 用 ScarfBench 专测 Java 迁移 Agent</h3>
+  <p class="item-meta">来源: IBM Research / Hugging Face · 2026-07-01 · <a href="https://huggingface.co/blog/ibm-research/scarfbench" target="_blank" rel="noopener">原文链接</a></p>
+  <p>IBM Research 6 月 30 日在 Hugging Face 发布 ScarfBench，用企业 Java framework migration 任务评测 AI Agent。该基准关注真实企业迁移中的代码理解、修改、依赖处理和工程约束，不是简单刷题。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>老系统迁移才是 Agent 的照妖镜。会写新项目不稀奇，能把银行、保险、制造业的 Java 老代码迁干净才值钱；ScarfBench 这种基准会逼 Coding Agent 从 Demo 走向脏活。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-couchbase-ai-data-plane-agent.jpg" alt="Couchbase 推 AI Data Plane 给 Agent 本地记忆" loading="lazy" decoding="async">
+    <figcaption>VentureBeat</figcaption>
+  </figure>
+  <h3>Couchbase 推 AI Data Plane 给 Agent 本地记忆</h3>
+  <p class="item-meta">来源: VentureBeat · 2026-07-01 · <a href="https://venturebeat.com/data/ai-agents-need-context-everywhere-they-run-even-where-the-cloud-cant-follow" target="_blank" rel="noopener">原文链接</a></p>
+  <p>VentureBeat 6 月 30 日报道，Couchbase 推出 AI Data Plane，主打让 Agent memory 和 vector search 在边缘或本地运行，解决云端不可达、数据主权和上下文延迟问题。文章把它放在企业 AI Agent 需要随处获取 context 的背景下讨论。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Agent 失控很多时候源于上下文断电，不一定是模型笨。Couchbase 押的是本地记忆和边缘检索，适合那些不能把数据全丢给云的行业；做企业 AI 的团队，别再把 RAG 当万能胶。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-nvidia-bionemo-claude-science.png" alt="NVIDIA BioNeMo 进入 Claude Science" loading="lazy" decoding="async">
+    <figcaption>NVIDIA</figcaption>
+  </figure>
+  <h3>NVIDIA BioNeMo 进入 Claude Science</h3>
+  <p class="item-meta">来源: NVIDIA · 2026-07-01 · <a href="https://blogs.nvidia.com/blog/claude-science-bionemo-agent-toolkit/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA 6 月 30 日发文称，BioNeMo Agent Toolkit 将进入 Anthropic 的 Claude Science，帮助生命科学研究者用代理工作流调用 NVIDIA BioNeMo 模型、库和加速流程。该合作把基础模型、专业生物模型和加速计算放进同一个科研工作台。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI for Science 不会靠一个聊天框赢，最后拼的是谁能把专业模型、算力和研究流程打包。NVIDIA 很清楚：只卖 GPU 不够，还要把 GPU 绑定到科学家每天打开的软件里。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Prediction</span>
+        <span class="st-zh">投资视角 · 大胆预测</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-acti-530-agent.webp" alt="Acti 融资 530 万美元押 Agent 键盘" loading="lazy" decoding="async">
+    <figcaption>TechCrunch</figcaption>
+  </figure>
+  <h3>Acti 融资 530 万美元押 Agent 键盘</h3>
+  <p class="item-meta inverted">来源: TechCrunch · 2026-07-01 · <a href="https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>TechCrunch 6 月 30 日报道，Acti 获得 530 万美元种子轮融资，由 BITKRAFT Ventures 领投。公司把 AI Agent 放进智能手机键盘，让用户在邮件、聊天、社交和移动工作流中直接调用 Skills，并计划建设可分享的 Skills marketplace。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>键盘是最狠的入口，因为它贴着所有 App。Acti 的风险是用户会不会烦，机会是如果 Agent 能在输入瞬间帮你执行任务，它就不需要说服用户再打开一个 AI 应用。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-etched-10.webp" alt="Etched 10 亿美元订单证明推理芯片还有窗口" loading="lazy" decoding="async">
+    <figcaption>TechCrunch</figcaption>
+  </figure>
+  <h3>Etched 10 亿美元订单证明推理芯片还有窗口</h3>
+  <p class="item-meta inverted">来源: TechCrunch · 2026-07-01 · <a href="https://techcrunch.com/2026/06/30/nvidia-competitor-etched-hits-5b-valuation-1b-in-sales-for-ai-chip/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Etched 称其 AI 专用芯片订单达到 10 亿美元，估值升至 50 亿美元。投资逻辑很明确：当推理负载持续增长，市场会寻找比通用 GPU 更便宜、更高吞吐的专用路径。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>资本现在买的是 NVIDIA 之外的逃生门。只要推理账单继续膨胀，专用芯片就有故事；但这门生意靠交付、软件栈和客户锁定说话，任何一环掉链子，估值都会反噬。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-meituan.jpg" alt="Meituan 开源模型点燃国产芯片叙事" loading="lazy" decoding="async">
+    <figcaption>LongCat / TradingView</figcaption>
+  </figure>
+  <h3>Meituan 开源模型点燃国产芯片叙事</h3>
+  <p class="item-meta inverted">来源: LongCat / TradingView · 2026-07-01 · <a href="https://www.tradingview.com/news/tradingview%3A7e61f0165f4ca%3A0-key-facts-meituan-hk-100m-buyback-of-class-b-open-sources-longcat-2-0/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>LongCat-2.0 把 1.6T 参数、1M 上下文、Agentic coding 和国产芯片训练放在同一套叙事里。对投资人而言，这不只是模型新闻，也是中国 AI 基建、应用场景和开源分发能力的一次集中展示。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>中国 AI 投资最缺的是能被开发者反复验证的产品。LongCat-2.0 如果只是发布会参数，热度很快散；如果真能在编码和 Agent 工具里跑出稳定口碑，美团会打开一个比外卖更性感的资本想象。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-acti-ai-agent.webp" alt="Acti 推手机键盘 AI Agent" loading="lazy" decoding="async">
+    <figcaption>Acti / TechCrunch</figcaption>
+  </figure>
+  <h2>Acti 推手机键盘 AI Agent</h2>
+  <p class="item-meta">来源: Acti / TechCrunch · 2026-07-01 · <a href="https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Acti 是一个智能手机键盘产品，用户可以在任意输入场景中调用 AI Skills，例如读取实时赛事信息、插入 Polymarket 链接或执行跨应用任务。公司计划让 Skills 可以私有使用，也可以进入 marketplace 分享。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>推荐给重度移动办公和社媒运营的人试。它的价值不在“键盘更聪明”，而在少切 App、少复制粘贴、少把任务丢回聊天框；如果执行稳定，移动端 Agent 入口会先从键盘长出来。</span>
+  </div>
+</div>
+</div>
+
+
+    <div class="news-card-actions output-engagement" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-07-01" data-edition-title="Janet 快车箱 2026-07-01" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        评论 <span class="comment-count" data-comment-count data-edition-id="2026-07-01">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-07-01"></section>
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: Anthropic, STAT / TechCrunch / NVIDIA, Google, LongCat / WinBuzzer / OpenSourceForU, TechCrunch, Anthropic Platform Docs, GitHub Blog, Google DeepMind, LongCat / Cursor Forum, Hugging Face, IBM Research / Hugging Face, VentureBeat, NVIDIA, LongCat / TradingView, Acti / TechCrunch<br>
+      本报内容由 AI 辅助采编，经人工校验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
+  <script src="../../scripts/nav.js?v=potato-roll-20260617"></script>
+</body>
+</html>

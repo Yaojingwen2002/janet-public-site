@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-01",
+  "vol": "274",
+  "intro_text": "模型公司今天不再只比谁更聪明，而是在抢两个更现实的位置：谁能进工作台，谁能进预算。Sonnet 5 降价跑 Agent，Claude Science 盯上实验室，Google 把图像和视频 API 做成低价流水线，中国开源模型继续压进编码榜单，键盘也开始长出 Agent。",
+  "cover": {
+    "title": "工作台被模型接管",
+    "subtitle": "从科研、代码到手机键盘，AI 正在离开演示页，钻进每天真正产生结果的界面。",
+    "image_path": "runs/2026-07-01/cover.png",
+    "image_prompt": "Create a sharp editorial AI technology magazine cover image for Janet's July 1, 2026 briefing. Theme: frontier AI is moving from model announcements into controllable workbenches and production surfaces: agentic coding, scientific AI workbenches, cheap media generation APIs, open Chinese models, evaluation ledgers, and AI embedded into everyday keyboards. No readable text, no logos, no dates. 21:9 panoramic, black/off-white with Janet green accents, premium technology magazine aesthetic."
+  },
+  "trend": "Anthropic 一天内把 Sonnet 5 推成默认模型，又端出 Claude Science；Google 把 Nano Banana 2 Lite 和 Gemini Omni Flash 放进开发者流水线；Meituan 用 LongCat-2.0 把 1.6T、1M 上下文和国产芯片训练绑在一起；Acti 则把 Agent 塞到手机键盘里。今天最硬的动作不是发布一个更会聊天的模型，而是把模型塞进科研、编码、媒体生成、移动输入这些真正花钱的工作台。\n\n对中国创作者和企业来说，门槛正在从“会不会用 AI”变成“能不能把 AI 变成固定产能”。视频团队要盯低价高吞吐生成 API，研发团队要盯代码 Agent 的成本和评测证据，垂直行业要盯 Claude Science 这类工作台能不能把专家软件拆掉。单点工具越来越便宜，真正值钱的是把模型接进流程、权限、数据和交付。\n\n接下来 2-4 周重点看三件事：Sonnet 5 的低价窗口会不会逼 OpenAI、Google 跟进 Agent 定价；Gemini 新媒体模型能不能把创意工具价格继续打穿；LongCat-2.0 和 ScarfBench 这类开源/评测信号能否证明 Agent 不只会 Demo，而能改老代码、跑迁移、交结果。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Anthropic 用 Sonnet 5 降价跑 Agent",
+          "body": "Anthropic 发布 Claude Sonnet 5，并称它从 6 月 30 日起成为 Free 和 Pro 计划的默认模型，同时向 Max、Team、Enterprise、Claude Code 和 Claude Platform 开放。平台价在 2026 年 8 月 31 日前为每百万输入 token 2 美元、输出 token 10 美元，之后回到 3 美元和 15 美元；官方强调它面向多步软件工程、工具使用和长任务执行。",
+          "janet_take": "Anthropic 这刀砍在 Agent 成本上。过去把长任务交给模型像烧钱试运气，现在 Sonnet 5 用中档价格去抢 Opus 才配做的活；开发者该开心，但也该紧张，Agent 一旦便宜，粗糙外包和低端代码服务会先被压价。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "image": "images/news-01-anthropic-sonnet-5-agent.png",
+          "image_source_url": "https://cdn.sanity.io/images/4zrzovbb/website/458ea645ef6b729f6847cba16932716e6b547f2f-2880x1620.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Claude Science 直接盯上科研工作台",
+          "body": "Anthropic 推出 Claude Science，一个面向科研人员的 AI workbench，主打把数据库、计算管线、模型调用和研究流程放进同一环境。STAT 和 TechCrunch 均在 6 月 30 日报道了这项产品，NVIDIA 也同步介绍 BioNeMo Agent Toolkit 进入 Claude Science，帮助生命科学研究者搭建加速工作流。",
+          "janet_take": "科研 AI 的关键已经从会背论文，转向少开十个工具。Claude Science 抢的是实验室的工作台入口，未来收费点会落在数据、模型、算力和复核串联起来的生产环境；国内科研软件厂商要醒了。",
+          "source": "STAT / TechCrunch / NVIDIA",
+          "url": "https://techcrunch.com/2026/06/30/anthropics-claude-science-bets-on-workflow-not-a-new-model-to-win-over-scientists/",
+          "image": "images/news-02-claude-science.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/GettyImages-2249359579.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google 推 Nano Banana 2 Lite 和 Gemini Omni Flash",
+          "body": "Google DeepMind 在 6 月 30 日发布 Nano Banana 2 Lite 和 Gemini Omni Flash。前者是 Nano Banana 系列中更快、更低成本的图像模型，已进入 Google AI Studio、Gemini API 和 Gemini Enterprise Agent Platform；后者面向高质量视频生成和对话式编辑，Google 还强调两者可以在 Interactions API 里串联使用。",
+          "janet_take": "Google 又在用免费和低价打市场。图片先低成本生成，再直接动画化成视频，这对创作者是好消息，对只会套壳卖图的 SaaS 是坏消息；未来收费点会从“生成一张图”移到批量、版权、模板和交付速度。",
+          "source": "Google",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/",
+          "image": "images/news-03-google-nano-banana-2-lite-gemini-omni-flash.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-omni__keyword_v6.width-1300.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meituan 发布 1.6T 编码模型 LongCat-2.0",
+          "body": "Meituan 在 6 月 30 日公开 LongCat-2.0，外部报道称其为 1.6 万亿参数 MoE 编码模型，主打 1M token 上下文、Agentic coding，并称训练使用 5 万颗国产计算芯片。模型以 MIT License 开源发布，相关页面称它此前与 OpenRouter 上的匿名模型 Owl Alpha 有关联。",
+          "janet_take": "美团这次最狠的是叙事组合拳：国产芯片、超长上下文、编码榜单、MIT License 全塞在一条新闻里。真能不能扛复杂工程还要看实测，但中国模型已经学会用开源和成本去打全球开发者心智。",
+          "source": "LongCat / WinBuzzer / OpenSourceForU",
+          "url": "https://www.longcatai.org/models/longcat-2.html",
+          "image": "images/news-04-meituan-longcat-20-16t.png",
+          "image_source_url": "https://blog.wentuo.ai/wp-content/uploads/2026/04/meituan-longcat-image-6b-bilingual-ai-image-model-guide-image-2.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Etched 拿 50 亿美元估值卖 AI 专用芯片",
+          "body": "TechCrunch 6 月 30 日报道，AI 芯片创业公司 Etched 已达到 50 亿美元估值，并称其 Sohu AI 芯片相关销售订单达到 10 亿美元。公司定位是 NVIDIA 的竞争者，押注为 transformer 推理打造专用芯片，在高吞吐 AI 推理场景里争夺成本优势。",
+          "janet_take": "芯片创业公司能拿 10 亿美元订单，说明市场已经不只想买 NVIDIA 的货。风险也很直白：专用芯片赌的是模型架构稳定，一旦主流推理路线换挡，今天的捷径明天可能变库存。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/30/nvidia-competitor-etched-hits-5b-valuation-1b-in-sales-for-ai-chip/",
+          "image": "images/news-05-etched-50-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Etched-founder-CEO-Gavin-Uberti.jpg?resize=1200,1029",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Claude Sonnet 5 支持 1M 上下文和 128K 输出",
+          "body": "Anthropic 平台文档显示，Claude Sonnet 5 的模型名为 claude-sonnet-5，支持 1M token 上下文窗口和 128K max output tokens，并继承 Claude Sonnet 4.6 的主要工具与平台能力，但不支持 Priority Tier。官方把它放在更适合长程 Agent 和代码任务的价格带。",
+          "janet_take": "1M 上下文已经从炫技变成门票，老代码库、长合同、研究资料终于能塞进一次任务。问题是上下文越长，垃圾也越多；会不会筛选材料，比会不会把窗口填满更值钱。",
+          "source": "Anthropic Platform Docs",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "image": "images/models-01-claude-sonnet-5-1m-128k.png",
+          "image_source_url": "https://platform.claude.com/docs/og?locale=en&path=release-notes/overview&design-rev=1",
+          "image_origin": "source"
+        },
+        {
+          "title": "GitHub Copilot 首日接入 Claude Sonnet 5",
+          "body": "GitHub 在 6 月 30 日的 changelog 中宣布 Claude Sonnet 5 已在 Copilot 中 generally available，用户可以通过 Copilot model picker 选择该模型。Anthropic 新模型发布当天即进入主流开发者入口，说明模型分发正在跟 IDE 和代码助手深度绑定。",
+          "janet_take": "模型发布当天进 Copilot，比发一堆 benchmark 更有杀伤力。开发者不会每天读论文，但会每天打开 IDE；谁占住 model picker，谁就有机会把 API 费变成习惯税。",
+          "source": "GitHub Blog",
+          "url": "https://github.blog/changelog/2026-06-30-claude-sonnet-5-is-generally-available-for-github-copilot/",
+          "image": "images/models-02-github-copilot-claude-sonnet-5.webp",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/06/614802128-3cdc3c8e-28cf-4a12-bd61-188c6209c7ac.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Nano Banana 2 Lite 主打高吞吐图像生成",
+          "body": "Google 称 Nano Banana 2 Lite 是 Nano Banana 家族中最快、最具成本效率的 Gemini Image 模型，目标是高吞吐、速度和规模化。它已经进入 Google AI Studio、Gemini API、Gemini Enterprise Agent Platform，并逐步进入 AI Mode in Search、Gemini app 等消费端入口。",
+          "janet_take": "图像模型开始拼吞吐，意思就是生成图正在从“惊艳一下”变成“批量出货”。创作者最该盯 API 成本曲线：当一张图便宜到接近素材消耗品，赚钱点只能往策划、选片、版权和分发迁。",
+          "source": "Google DeepMind",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/",
+          "image": "images/models-03-nano-banana-2-lite.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-omni__keyword_v6.width-1300.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "LongCat-2.0 用 MIT License 抢开发者",
+          "body": "LongCat-2.0 页面显示，该模型主打 1.6T MoE、1M 上下文和 Agentic coding，并以 MIT License 发布。外部报道同时提到模型权重和直接平台确认仍需要继续观察，开发者社区已经开始讨论 Cursor 等工具是否应接入该模型。",
+          "janet_take": "开源模型打开发者，最有效的武器就是低门槛许可证。LongCat-2.0 如果实测过关，会给国内模型出海一个样板：别只讲中文市场，直接去抢全球 Coding Agent 的工具链入口。",
+          "source": "LongCat / Cursor Forum",
+          "url": "https://www.longcatai.org/models/longcat-2.html",
+          "image": "images/models-04-longcat-20-mit-license.jpg",
+          "image_source_url": "https://n.sinaimg.cn/spider20260321/593/w1440h753/20260321/6d98-32e2d628bd195893a6dc70275148fbd3.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Hugging Face 模型页挂上 Every Eval Ever",
+          "body": "Hugging Face 6 月 30 日宣布在模型页面展示 Every Eval Ever 结果。该功能把来自评测社区的多维结果放到模型页旁边，目标是让模型选择不再只依赖单个排行榜或厂商自报成绩。",
+          "janet_take": "榜单终于开始从营销海报变成采购证据。模型太多以后，客户真正缺的是可复查、可对比、能解释的评测；国内模型厂如果还只贴一张总分图，销售会越来越难。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog/eee-community-evals",
+          "image": "images/insights-01-hugging-face-every-eval-ever.png",
+          "image_source_url": "https://huggingface.co/blog/assets/eee_commevals/eee_commevals_banner.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "IBM 用 ScarfBench 专测 Java 迁移 Agent",
+          "body": "IBM Research 6 月 30 日在 Hugging Face 发布 ScarfBench，用企业 Java framework migration 任务评测 AI Agent。该基准关注真实企业迁移中的代码理解、修改、依赖处理和工程约束，不是简单刷题。",
+          "janet_take": "老系统迁移才是 Agent 的照妖镜。会写新项目不稀奇，能把银行、保险、制造业的 Java 老代码迁干净才值钱；ScarfBench 这种基准会逼 Coding Agent 从 Demo 走向脏活。",
+          "source": "IBM Research / Hugging Face",
+          "url": "https://huggingface.co/blog/ibm-research/scarfbench",
+          "image": "images/insights-02-ibm-scarfbench-java-agent.png",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/649c1276a83f996b4191a8f1/iYCwB2Hl8qPTA8DCgDilB.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Couchbase 推 AI Data Plane 给 Agent 本地记忆",
+          "body": "VentureBeat 6 月 30 日报道，Couchbase 推出 AI Data Plane，主打让 Agent memory 和 vector search 在边缘或本地运行，解决云端不可达、数据主权和上下文延迟问题。文章把它放在企业 AI Agent 需要随处获取 context 的背景下讨论。",
+          "janet_take": "Agent 失控很多时候源于上下文断电，不一定是模型笨。Couchbase 押的是本地记忆和边缘检索，适合那些不能把数据全丢给云的行业；做企业 AI 的团队，别再把 RAG 当万能胶。",
+          "source": "VentureBeat",
+          "url": "https://venturebeat.com/data/ai-agents-need-context-everywhere-they-run-even-where-the-cloud-cant-follow",
+          "image": "images/insights-03-couchbase-ai-data-plane-agent.jpg",
+          "image_source_url": "https://images.ctfassets.net/jdtwqhzvc2n1/76hubg1hFFLGeInYbGk6iZ/a0e50e1e6ab26b2991d23ab5f70b06ad/couchbase-context-smk1.jpg?w=800&q=75",
+          "image_origin": "source"
+        },
+        {
+          "title": "NVIDIA BioNeMo 进入 Claude Science",
+          "body": "NVIDIA 6 月 30 日发文称，BioNeMo Agent Toolkit 将进入 Anthropic 的 Claude Science，帮助生命科学研究者用代理工作流调用 NVIDIA BioNeMo 模型、库和加速流程。该合作把基础模型、专业生物模型和加速计算放进同一个科研工作台。",
+          "janet_take": "AI for Science 不会靠一个聊天框赢，最后拼的是谁能把专业模型、算力和研究流程打包。NVIDIA 很清楚：只卖 GPU 不够，还要把 GPU 绑定到科学家每天打开的软件里。",
+          "source": "NVIDIA",
+          "url": "https://blogs.nvidia.com/blog/claude-science-bionemo-agent-toolkit/",
+          "image": "images/insights-04-nvidia-bionemo-claude-science.png",
+          "image_source_url": "https://blogs.nvidia.com/wp-content/uploads/2026/06/anthropic-nvidia.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Acti 融资 530 万美元押 Agent 键盘",
+          "body": "TechCrunch 6 月 30 日报道，Acti 获得 530 万美元种子轮融资，由 BITKRAFT Ventures 领投。公司把 AI Agent 放进智能手机键盘，让用户在邮件、聊天、社交和移动工作流中直接调用 Skills，并计划建设可分享的 Skills marketplace。",
+          "janet_take": "键盘是最狠的入口，因为它贴着所有 App。Acti 的风险是用户会不会烦，机会是如果 Agent 能在输入瞬间帮你执行任务，它就不需要说服用户再打开一个 AI 应用。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/",
+          "image": "images/insights2-01-acti-530-agent.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Landscape_Promo.png?resize=1200,586",
+          "image_origin": "source"
+        },
+        {
+          "title": "Etched 10 亿美元订单证明推理芯片还有窗口",
+          "body": "Etched 称其 AI 专用芯片订单达到 10 亿美元，估值升至 50 亿美元。投资逻辑很明确：当推理负载持续增长，市场会寻找比通用 GPU 更便宜、更高吞吐的专用路径。",
+          "janet_take": "资本现在买的是 NVIDIA 之外的逃生门。只要推理账单继续膨胀，专用芯片就有故事；但这门生意靠交付、软件栈和客户锁定说话，任何一环掉链子，估值都会反噬。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/30/nvidia-competitor-etched-hits-5b-valuation-1b-in-sales-for-ai-chip/",
+          "image": "images/insights2-02-etched-10.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Etched-founder-CEO-Gavin-Uberti.jpg?resize=1200,1029",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meituan 开源模型点燃国产芯片叙事",
+          "body": "LongCat-2.0 把 1.6T 参数、1M 上下文、Agentic coding 和国产芯片训练放在同一套叙事里。对投资人而言，这不只是模型新闻，也是中国 AI 基建、应用场景和开源分发能力的一次集中展示。",
+          "janet_take": "中国 AI 投资最缺的是能被开发者反复验证的产品。LongCat-2.0 如果只是发布会参数，热度很快散；如果真能在编码和 Agent 工具里跑出稳定口碑，美团会打开一个比外卖更性感的资本想象。",
+          "source": "LongCat / TradingView",
+          "url": "https://www.tradingview.com/news/tradingview%3A7e61f0165f4ca%3A0-key-facts-meituan-hk-100m-buyback-of-class-b-open-sources-longcat-2-0/",
+          "image": "images/insights2-03-meituan.jpg",
+          "image_source_url": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Acti 推手机键盘 AI Agent",
+          "body": "Acti 是一个智能手机键盘产品，用户可以在任意输入场景中调用 AI Skills，例如读取实时赛事信息、插入 Polymarket 链接或执行跨应用任务。公司计划让 Skills 可以私有使用，也可以进入 marketplace 分享。",
+          "janet_take": "推荐给重度移动办公和社媒运营的人试。它的价值不在“键盘更聪明”，而在少切 App、少复制粘贴、少把任务丢回聊天框；如果执行稳定，移动端 Agent 入口会先从键盘长出来。",
+          "source": "Acti / TechCrunch",
+          "url": "https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/",
+          "image": "images/tools-01-acti-ai-agent.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Landscape_Promo.png?resize=1200,586",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

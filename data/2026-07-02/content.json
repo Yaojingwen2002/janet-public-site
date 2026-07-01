@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-02",
+  "vol": "275",
+  "intro_text": "早上好，Janet。今天 AI 圈没有温柔叙事：Anthropic 的顶级模型刚被放行，Meta 就准备把闲置算力拿出来卖，Google 和 OpenClaw 把 Agent 推到桌面和手机，Venice AI 则用隐私牌跑成独角兽。模型能力还在卷，但真正收钱的地方正在变成入口、算力、权限和信任。",
+  "cover": {
+    "title": "算力账单露出牙",
+    "subtitle": "从模型放行、云算力转租到桌面 Agent，AI 的下一轮竞争先问谁掌握入口和电表。",
+    "image_path": "runs/2026-07-02/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI technology briefing cover, 21:9 widescreen PNG. Primary request: Create a sharp editorial AI technology magazine cover for July 2, 2026. Theme: AI is becoming metered infrastructure: frontier model access gates, cloud compute resale, desktop agents, agent governance, and programmable real-world services. Scene/backdrop: premium abstract newsroom/data-center hybrid with black server racks, white glass control panels, thin Janet green network lines, guarded model gateway, compute meter dials, and small agent workflow traces moving across screens. Subject: no people, no robot faces; use abstract AI infrastructure, security gates, chip racks, cloud capacity meters, and tool-call paths as visual subjects. Style/medium: cinematic editorial raster illustration/photo-composite, high-end technology magazine, minimal, expensive, sharp. Composition/framing: ultra-wide 21:9 landscape, strong negative space in lower-left and center for HTML overlay text, diagonal tension from compute racks to governance panels, clean focal hierarchy, not cluttered. Lighting/mood: restrained studio lighting, crisp shadows, serious, high contrast. Color palette: black, off-white, deep ink green, Janet signal green accents, tiny amber warning highlights only if useful. Text: no readable text in the image, no logos, no date, no title, no watermark. Constraints: no cartoon, no glowing brain, no cheap cyberpunk neon, no full robot faces, no stock-photo people."
+  },
+  "trend": "Anthropic 的 Mythos 和 Fable 恢复出口访问，Meta 准备卖 AI compute，Venice AI 用 6500 万美元 Series A 冲到 10 亿美元估值，Google Spark 和 OpenClaw 同时往桌面、手机入口钻。今天的信号很硬：模型本身还重要，但更值钱的是谁控制访问、算力、电表和执行入口。\n\n对中国创作者和中小企业来说，别再只盯“哪个模型更聪明”。真正影响账单的是 Agent 能不能进你的文件、手机、审批流和本地网关；真正影响利润的是算力是不是被云厂、社交平台和模型公司层层加价。能把模型接入业务的人会涨价，只会复制 prompt 的人会被压价。\n\n接下来 2-4 周要盯三件事：美国对前沿模型访问的安全门槛会不会继续反复；Meta Compute 这类“卖剩余算力”的路子会不会变成大厂回本模板；桌面和移动 Agent 是否从演示走向稳定执行。入口一旦稳定，收费和责任都会跟着落下来。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "美国开放 Anthropic 模型出口访问",
+          "body": "TechCrunch 报道，美国政府已取消 Anthropic 在向海外提供 Mythos 和 Fable 模型前必须取得许可的要求。该限制此前切断了外部用户对 Anthropic 最先进模型的访问，Anthropic 表示会从 7 月 1 日起恢复 Fable 访问。",
+          "janet_take": "这次解封背后，是前沿模型第一次像军火一样被开关控制。开发者今天能用，明天也可能被政策拔线；国内团队别把核心链路绑死在单一美国模型上，备用模型和本地评估已经是生存配置。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropics-mythos-and-fable-models/",
+          "image": "images/news-01-anthropic.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/anthropic-claude-fable.jpg?resize=1200,798",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta 计划出售剩余 AI 算力",
+          "body": "TechCrunch 援引 Bloomberg 报道称，Meta 正在规划云基础设施业务，准备出售 AI compute 和模型访问。报道提到 Meta 已承诺未来投入 1829 亿美元建设 AI 基础设施，并可能用 Meta Compute 模式回收部分投入。",
+          "janet_take": "Meta 这步很露骨：模型没先赚到钱，电表先拿出来卖。AI 战争后半场可能由机房、GPU 和客户信用卡决定；小团队会更依赖二房东算力，毛利先被刮一层。",
+          "source": "TechCrunch / Bloomberg",
+          "url": "https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/",
+          "image": "images/news-02-meta-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/08/GettyImages-2225880947.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "Venice AI 6500 万美元融资成独角兽",
+          "body": "Venice AI 宣布完成 6500 万美元 Series A，估值达到 10 亿美元。公司称其提供 200 多个模型，主打隐私和较少内容限制，已有超过 300 万活跃用户、日均 170 万次 API 调用，并实现超过 7000 万美元年化收入。",
+          "janet_take": "隐私和“少管我”终于被资本明码标价。Venice 的风险也明摆着：越强调中立工具，越容易撞上安全和内容争议；它同时证明，用户要的不止最强模型，还有不被平台盯着看的使用权。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/01/venice-ai-becomes-a-unicorn-with-65m-series-a-as-its-privacy-first-ai-platform-takes-off/",
+          "image": "images/news-03-venice-ai-6500.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/gpt-steady-v3.png?w=768",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google Spark 登上 macOS 桌面",
+          "body": "Google Gemini for macOS 页面显示，Gemini Spark 已进入 Mac 工作流，可在用户授权下整理本地文件、汇总资料并写入 Google Docs 和 Sheets。该功能先面向支持地区的 Google AI Ultra 成年用户推出。",
+          "janet_take": "桌面 Agent 最值钱的能力是碰你的文件。Spark 只要能稳定读、整理、写回文档，就会直接吃掉一批助理和运营杂活；创作者先别迷信全自动，先把素材库、命名规则和权限边界整理干净。",
+          "source": "Google Gemini / TechCrunch",
+          "url": "https://gemini.google/mac/",
+          "image": "images/news-04-google-spark-macos.jpg",
+          "image_source_url": "https://lh3.googleusercontent.com/1E500rkSh8Gqkz2l12tkrKkMgsDmbQot0h3afeiRukXNficphb2zEE8o6J3dSKkiDGOOCcQ8WtRYzEYudgiYK9FkoQeYg_SP92-C=e365-pa-nu-w1200-rj",
+          "image_origin": "source"
+        },
+        {
+          "title": "OpenClaw 推出 iOS 和 Android 应用",
+          "body": "TechCrunch 报道，开源 AI Agent OpenClaw 已推出 iOS 和 Android 应用。新应用连接用户自托管的 OpenClaw Gateway，用于聊天、语音、审批和设备感知自动化。",
+          "janet_take": "OpenClaw 移动端像一个遥控器，重点在审批和远程看管。危险也在这里：一旦网关权限放太大，手机点一下同意，背后可能是脚本、浏览器和文件系统一起动。",
+          "source": "TechCrunch / OpenClaw",
+          "url": "https://techcrunch.com/2026/06/30/openclaw-is-finally-available-on-android-and-ios/",
+          "image": "images/news-05-openclaw-ios-android.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/04/ChatGPT-OpenClaw-Claude.jpg?resize=1200,800",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Anthropic Fable 访问恢复给海外开发者",
+          "body": "Anthropic 在限制解除后表示，会从 7 月 1 日起恢复 Fable 访问。Axios 和 TechCrunch 均提到，此前限制与美国政府对高风险前沿模型的安全担忧有关，后续标准仍不稳定。",
+          "janet_take": "Fable 回来，不代表闸门消失。前沿模型已经进入“能力越强，访问越政治化”的阶段；做跨境 SaaS 的团队要准备模型降级策略，否则一次政策摇摆就能把交付 SLA 打穿。",
+          "source": "TechCrunch / Axios",
+          "url": "https://www.axios.com/2026/06/30/trump-anthropic-ai-model-fable-restrictions",
+          "image": "images/models-01-anthropic-fable.png",
+          "image_source_url": "https://x0.ifengimg.com/ucms/2026_10/BEC78CD8DC3F54DCCDD8125D79AF9C351B03B091_size1647_w1892_h1254.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Mythos 被当成安全红线样本",
+          "body": "TechCrunch 称，Mythos 被视为 Anthropic 最先进的 AI 模型之一，早前限制切断了非美国用户访问。相关报道把它和网络安全、生物安全等风险审查联系在一起。",
+          "janet_take": "Mythos 的麻烦说明高能力模型会先被安全部门看见，再被市场看见。国内模型公司别只宣传 benchmark，最好提前想清楚高风险能力如何分级、记录和限权，迟早会被客户问到。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/30/trump-drops-restrictions-on-anthropics-mythos-and-fable-models/",
+          "image": "images/models-02-mythos.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/anthropic-claude-fable.jpg?resize=1200,798",
+          "image_origin": "source"
+        },
+        {
+          "title": "Muse Spark 或成 Meta Compute 卖点",
+          "body": "TechCrunch 报道称，Meta 可能在新云业务中出售多种 AI 模型访问，其中包括其近期推出的闭源模型 Muse Spark。该计划会把 Meta 从只开放 Llama，推向直接托管和销售模型的云入口。",
+          "janet_take": "Meta 终于承认开源叙事不够回本。Llama 给社区，Muse Spark 给账单，这种双轨会越来越常见；开发者要看清楚，免费权重带来的是流量，真正可控的好模型会被放进收费管道。",
+          "source": "TechCrunch / Bloomberg",
+          "url": "https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/",
+          "image": "images/models-03-muse-spark-meta-compute.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/08/GettyImages-2225880947.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "Hugging Face 测出 Sonnet 5 风险边界",
+          "body": "Hugging Face 博客上发布的社区评估称，Claude Sonnet 5 的自动化 AI R&D 能力没有越过高风险阈值，在化学、生物风险上的提升有限，网络安全防护与 Opus 4.7/4.8 相近。",
+          "janet_take": "评估博客看着小众，但它会影响企业敢不敢上新模型。以后模型发布不只拼分数，还要带风险说明书；RAG、代码、客服团队选型时，别只看效果截图，先问有没有可复查的安全评估。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog/gcjordi/ecp-claudesonnet5",
+          "image": "images/models-04-hugging-face-sonnet-5.jpg",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/6216acd52898f03f29d3cc1e/-R_Rv9VybvMQQ3uYch4px.jpeg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Meta Compute 暴露 AI 基建回本焦虑",
+          "body": "Meta 的 AI 基础设施承诺支出已达 1829 亿美元，TechCrunch 称其正在考虑像 CoreWeave 一样出售 raw compute，并可能托管多种模型。这个动作把 AI 基建从内部成本中心推向外部收入线。",
+          "janet_take": "这就是大厂版“机房不能闲着”。算力一旦被包装成云商品，价格会比模型能力更快决定谁能活；中国创业者最该盯二级算力市场的报价，它会继续压缩小团队预算。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/",
+          "image": "images/insights-01-meta-compute-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/08/GettyImages-2225880947.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google Spark 逼近本地文件权限",
+          "body": "Gemini for macOS 的官方说明显示，Spark 可以在授权后读取本地文件，并把整理结果写入 Google 文档和表格。Google 还提示未来会让用户从手机远程触发 Mac 上的多步任务。",
+          "janet_take": "本地文件权限是桌面 Agent 的分水岭。能读屏只能做助理，能读文件、写表格、远程执行才会变成工作流；但权限越深，越需要审计记录，否则省下的时间迟早会在事故复盘里还回去。",
+          "source": "Google Gemini",
+          "url": "https://gemini.google/mac/",
+          "image": "images/insights-02-google-spark.jpg",
+          "image_source_url": "https://lh3.googleusercontent.com/1E500rkSh8Gqkz2l12tkrKkMgsDmbQot0h3afeiRukXNficphb2zEE8o6J3dSKkiDGOOCcQ8WtRYzEYudgiYK9FkoQeYg_SP92-C=e365-pa-nu-w1200-rj",
+          "image_origin": "source"
+        },
+        {
+          "title": "OpenClaw 手机端改写 Agent 审批链",
+          "body": "OpenClaw 的 iOS 文档说明，手机应用可作为安全节点连接 Gateway，支持推送、分享、实时语音和审批。公开版本不支持随意改自定义 push relay，私有 relay 需要单独构建路径。",
+          "janet_take": "Agent 最缺的是关键动作前有人点头。OpenClaw 把审批放进手机，方向对；但私有部署、relay、网关这些词也说明门槛还高，普通用户离稳定使用还有一段坑路。",
+          "source": "OpenClaw Docs",
+          "url": "https://docs.openclaw.ai/platforms/ios",
+          "image": "images/insights-03-openclaw-agent.png",
+          "image_source_url": "https://docs.openclaw.ai/og/platforms/ios.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Disrupt 把 AI 创业焦虑摆上台",
+          "body": "TechCrunch Disrupt 2026 Builders Stage 公布议程，其中包括“What Happens When OpenAI Ships Your Roadmap”“Hiring When AI Is a Co-Founder”和多模型架构等主题，直接把 AI 创业公司的护城河焦虑摆上台面。",
+          "janet_take": "连创业大会都不装了：AI 创业最大的敌人可能是平台明天发一个内置功能。小团队要么掌握行业数据、分发渠道和真实工作流，要么就等着被大模型公司做成按钮。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/01/builders-stage-agenda-revealed-practical-strategies-for-scaling-startups-at-techcrunch-disrupt-2026/",
+          "image": "images/insights-04-disrupt-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/Builders-Stage_ArticleHeader_tc26_V2.png?resize=1200,675",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Venice AI 证明隐私牌能卖高估值",
+          "body": "Venice AI 称其已实现超过 7000 万美元年化收入，并在首轮外部融资中拿到 6500 万美元，估值 10 亿美元。公司计划用资金购买 GPU、建设自有数据中心，以减少租赁 GPU 对毛利的拖累。",
+          "janet_take": "资本买的核心是高频推理收入和自建算力后的毛利想象。隐私 AI 会有市场，但商业上最后还是落到一个老问题：谁拥有 GPU，谁吃走更厚的一口。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/01/venice-ai-becomes-a-unicorn-with-65m-series-a-as-its-privacy-first-ai-platform-takes-off/",
+          "image": "images/insights2-01-venice-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/gpt-steady-v3.png?w=768",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta 卖算力给 AI 投资人新口径",
+          "body": "Business Insider 报道称，Meta 股价因其计划出售多余 AI compute 的消息上涨。相关报道提到，投资人一直担心巨额 AI 开支回报，云算力转售给了 Meta 一个更直接的收入故事。",
+          "janet_take": "投资人要的核心很朴素：今年能不能开票。Meta Compute 如果跑通，会给所有重资产 AI 公司一条新话术：模型暂时不赚钱没关系，先把 GPU 租出去。",
+          "source": "Business Insider / TechCrunch",
+          "url": "https://www.businessinsider.com/meta-stock-cloud-computing-ai-compute-tech-stocks-data-centers-2026-7",
+          "image": "images/insights2-02-meta-ai.webp",
+          "image_source_url": "https://i.insider.com/6a451344360acd489560e09a?width=1200&format=jpeg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Qualcomm 拉 Hugging Face 抢边缘部署",
+          "body": "Investing.com 报道，Qualcomm 扩大与 Hugging Face 的合作，计划把 Hugging Face 生态中的 AI 模型部署到手机、PC、可穿戴、工业、汽车、边缘设备和数据中心平台上，并用 Agent 处理设置、优化和部署。",
+          "janet_take": "边缘 AI 的钱不在“端侧模型很酷”，在谁能把部署麻烦吃掉。Qualcomm 拉 Hugging Face，是把模型市场和芯片渠道接起来；国内硬件团队也该少讲参数，多讲一键部署和功耗账。",
+          "source": "Investing.com / Hugging Face",
+          "url": "https://ca.investing.com/news/stock-market-news/qualcomm-expands-hugging-face-partnership-for-ai-development-93CH-4706212",
+          "image": "images/insights2-03-qualcomm-hugging-face.png",
+          "image_source_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/qualcomm/ConvNext-Base.png",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Gemini for Mac 接入 Spark Agent",
+          "body": "Gemini for macOS 现在提供桌面快捷入口、屏幕上下文、语音输入，并开始为 AI Ultra 用户提供 Gemini Spark 自动化能力。用户可让 Spark 整理本地文件、汇总资料并生成 Google Docs 或 Sheets。",
+          "janet_take": "今天最值得试的是 Spark 的文件整理。拿一个低风险素材文件夹测试：命名、汇总、写表、回填文档，能稳定跑三次再放进真实工作流；别一上来就给它财务和客户资料。",
+          "source": "Google Gemini",
+          "url": "https://gemini.google/mac/",
+          "image": "images/tools-01-gemini-for-mac-spark-agent.jpg",
+          "image_source_url": "https://lh3.googleusercontent.com/1E500rkSh8Gqkz2l12tkrKkMgsDmbQot0h3afeiRukXNficphb2zEE8o6J3dSKkiDGOOCcQ8WtRYzEYudgiYK9FkoQeYg_SP92-C=e365-pa-nu-w1200-rj",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

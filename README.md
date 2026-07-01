@@ -94,6 +94,8 @@ Daily briefing email:
 - Sender: `.github/scripts/send-daily-briefing-email.mjs`
 - Schedule: `01:20 UTC / 09:20 Asia/Taipei`, after the morning briefing should exist
 - Recipients: formal email accounts from Supabase Auth and `profiles`; `newsletter_subscribers.subscribed = false` or `user_metadata.newsletter_opt_in = false` is treated as an opt-out block
+- Manual sends can set `recipient_email` and `force_send=true` from the workflow dispatch panel.
+- Subscription welcome email: `.github/workflows/send-subscription-welcome-email.yml`, checking new subscribers every 15 minutes and also supporting manual `recipient_email` dispatch.
 - Secrets required: `SUPABASE_SERVICE_ROLE_KEY`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM`; `SUPABASE_URL` is optional because the public project URL is already in `scripts/supabase-config.js`
 - Never commit SMTP passwords or Supabase service-role keys to this repository.
 

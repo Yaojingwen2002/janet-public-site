@@ -239,6 +239,8 @@ Email/password signups are subscribed by default through Supabase Auth `user_met
 
 The public site must never read the full subscriber list. The daily sender runs in GitHub Actions with a Supabase service-role key stored in GitHub Secrets, sends the latest briefing, then updates `newsletter_subscribers.last_sent_at`.
 
+New subscribers also receive a designed subscription success email. The welcome sender checks `newsletter_subscribers.subscribed = true` rows where `welcome_sent_at is null`, sends the welcome email, then writes `welcome_sent_at`.
+
 If the Potato Center subscription toggle flashes, reverts, or shows `操作失败，请稍后重试`, run the repair SQL:
 
 ```text
@@ -285,12 +287,14 @@ Workflow file:
 
 ```text
 .github/workflows/send-daily-briefing-email.yml
+.github/workflows/send-subscription-welcome-email.yml
 ```
 
 Schedule:
 
 ```text
 01:20 UTC / 09:20 Asia/Taipei
+subscription welcome: every 15 minutes
 ```
 
 GitHub Secrets:

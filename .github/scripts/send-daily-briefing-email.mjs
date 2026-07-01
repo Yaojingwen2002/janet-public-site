@@ -228,6 +228,10 @@ async function markSent(supabaseUrl, serviceRoleKey, subscriber, sentAt) {
 
 async function main() {
   const dryRun = boolFromEnv(process.env.DRY_RUN);
+  const forceSend = boolFromEnv(process.env.FORCE_SEND);
+  const requestedEmail = normalizeEmail(process.env.RECIPIENT_EMAIL || '');
+  if (requestedEmail && !validEmail(requestedEmail)) throw new Error(`Invalid RECIPIENT_EMAIL: ${process.env.RECIPIENT_EMAIL}`);
+
   const supabaseUrl = process.env.SUPABASE_URL || await readSupabaseUrlFromConfig();
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const newsIndex = JSON.parse(await fs.readFile(NEWS_INDEX_FILE, 'utf8'));
@@ -245,10 +249,21 @@ async function main() {
     throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY. Put service role key in GitHub Secrets, never in the repo.');
   }
 
-  const subscribers = await getSubscribers(supabaseUrl, serviceRoleKey);
-  const pending = subscribers.filter((subscriber) => !String(subscriber.lastSentAt || '').startsWith(editionId));
+  let subscribers = await getSubscribers(supabaseUrl, serviceRoleKey);
+  if (requestedEmail) {
+    subscribers = subscribers.filter((subscriber) => subscriber.email === requestedEmail);
+    if (subscribers.length === 0) {
+      throw new Error(`Recipient ${maskEmail(requestedEmail)} is not subscribed in Supabase.`);
+    }
+  }
+
+  const pending = forceSend
+    ? subscribers
+    : subscribers.filter((subscriber) => !String(subscriber.lastSentAt || '').startsWith(editionId));
 
   console.log(`edition=${editionId}`);
+  if (requestedEmail) console.log(`recipient=${maskEmail(requestedEmail)}`);
+  if (forceSend) console.log('force_send=true');
   console.log(`subscribers=${subscribers.length}`);
   console.log(`pending=${pending.length}`);
 

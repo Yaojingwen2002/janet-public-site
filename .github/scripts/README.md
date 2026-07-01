@@ -8,6 +8,7 @@
 - `build-news-index.mjs`
 - `qa-daily-news-output.mjs`
 - `send-daily-briefing-email.mjs`
+- `send-subscription-welcome-email.mjs`
 
 ## Manual test
 
@@ -16,9 +17,12 @@ node .github/scripts/daily-news-generator.mjs --date 2026-05-15
 node .github/scripts/build-news-index.mjs
 node .github/scripts/qa-daily-news-output.mjs
 DRY_RUN=true node .github/scripts/send-daily-briefing-email.mjs
+DRY_RUN=true node .github/scripts/send-subscription-welcome-email.mjs
 ```
 
 `send-daily-briefing-email.mjs` reads `data/news-index.json`, loads the latest `output.html`, fetches formal Supabase Auth/profile email users with a service-role key, skips explicit opt-outs, sends the briefing through SMTP, and writes `newsletter_subscribers.last_sent_at`. It must run with secrets from GitHub Actions, not hardcoded credentials.
+
+`send-subscription-welcome-email.mjs` sends the designed subscription success email for new `newsletter_subscribers.subscribed = true` rows, then writes `welcome_sent_at`.
 
 ## Time window
 

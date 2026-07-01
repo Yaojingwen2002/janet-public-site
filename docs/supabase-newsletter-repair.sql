@@ -10,7 +10,8 @@ create table if not exists public.newsletter_subscribers (
   source text not null default 'signup',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  last_sent_at timestamptz
+  last_sent_at timestamptz,
+  welcome_sent_at timestamptz
 );
 
 alter table public.newsletter_subscribers
@@ -18,7 +19,8 @@ alter table public.newsletter_subscribers
   add column if not exists subscribed boolean not null default false,
   add column if not exists source text not null default 'signup',
   add column if not exists updated_at timestamptz not null default now(),
-  add column if not exists last_sent_at timestamptz;
+  add column if not exists last_sent_at timestamptz,
+  add column if not exists welcome_sent_at timestamptz;
 
 create unique index if not exists newsletter_subscribers_email
   on public.newsletter_subscribers (email);

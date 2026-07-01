@@ -2,6 +2,63 @@
 
 所有主站、账号系统、晨报模板、项目文档和镜场计划变更都按日期记录在这里。公开仓库只收录可读文档、站点代码和轻量测试资产；参考帧、5 秒视频切片、生成候选图等重素材保留在本地或私有存储，不直接公开发布。
 
+## 2026-07-01
+
+### 九咪无畏契约风海报
+
+- 类型：新增 / 本地创作记录。
+- 涉及文件：Janet 桌面的九咪海报 HTML 文件；未纳入 `janet-public-site` 仓库。
+- 具体改动：由 Jane 手写 HTML、CSS、SVG，完成一张无畏契约（Valorant）官方海报气质的九咪视觉稿；主视觉使用猫眼护符、对角几何切割、技能槽和 `Nazar Form` 设定。
+- 视觉内容：狸花黑灰底作为主体气质，蒂芙尼绿作为高亮点缀，黄铜金用于护符边缘和细节压光。
+- 原因说明：该稿属于九咪角色视觉探索和桌面本地资产，不适合直接进入公开仓库；在 changelog 中只记录创作方向和资产边界，避免公开本地重素材。
+
+### 邮件系统架构诊断
+
+- 类型：文档 / 架构诊断。
+- 涉及文件：`27b6383` 涉及 `.github/scripts/README.md`、`.github/scripts/send-daily-briefing-email.mjs`、`.github/scripts/send-subscription-welcome-email.mjs`、`.github/workflows/send-daily-briefing-email.yml`、`.github/workflows/send-subscription-welcome-email.yml`、`README.md`、`docs/supabase-newsletter-repair.sql`、`docs/supabase-setup.md`；`51862dc` 涉及 `docs/supabase-newsletter-repair.sql`。
+- 具体改动：分析 `27b6383 Add subscription welcome email workflow` 新增的 GitHub Actions 发信系统，确认其包含订阅欢迎邮件脚本、每日晨报发信脚本、workflow 入口和 Supabase 修复文档。
+- 具体改动：分析 `51862dc Grant service role newsletter access`，确认其补充了 `service_role` 对 `newsletter_subscribers` 的访问授权。
+- 故障结论：run #1 失败原因不是 SMTP，而是 Supabase `service_role` 缺少 `newsletter_subscribers` 的 `SELECT` 权限；run #2 在授权修复后已正常发送成功。
+- 状态确认：每日晨报 workflow 保持 `20 1 * * *`，对应 Asia/Taipei 09:20，定时发信链路正常。
+- 原因说明：这次诊断用于把“权限失败”和“邮件发送失败”拆开，避免误修 SMTP 或 workflow，同时确认晨报 cron 没被欢迎邮件实验影响。
+
+### 移除欢迎邮件，改为网页撒花弹窗
+
+- 类型：重构 / 新增。
+- 涉及文件：`scripts/potato-center.js`、`styles/potato-center.css`、`.github/workflows/send-subscription-welcome-email.yml`。
+- 具体改动：`scripts/potato-center.js` 在注册流程里判断 `newsletter` 勾选状态，订阅晨报时调用新增的 `showSubscriptionSuccess()`，直接在网页内弹出订阅成功反馈。
+- 具体改动：`showSubscriptionSuccess()` 创建 `.potato-celebration` 覆盖层、`.pc-backdrop` 背景、品牌风格卡片和 Canvas 纸屑动画；动画使用 120 片 confetti，配色为墨绿 `#1A3A2A`、蒂芙尼绿 `#0ABAB5`、信号绿 `#18E299`、琥珀金 `#C9A84C` 等。
+- 具体改动：弹窗支持点击空白处、点击关闭按钮或按 `Escape` 关闭，避免用户注册后被迫等待邮件确认反馈。
+- 具体改动：`styles/potato-center.css` 新增 `.potato-celebration`、`.pc-backdrop`、`.pc-card`、`.pc-confetti`、`.pc-btn` 等样式，并加入 `pc-fade-in`、`pc-pop`、`pc-bounce` 动画。
+- 具体改动：`.github/workflows/send-subscription-welcome-email.yml` 注释每 15 分钟一次的 `schedule`，保留 `workflow_dispatch` 手动触发入口。
+- 原因说明：欢迎邮件链路过重且依赖 Supabase 权限和 SMTP；网页即时反馈更轻、更稳定，也符合土豆中心的品牌体验。
+
+### 清理公开仓库中的 SMTP 授权码
+
+- 类型：修复 / 安全。
+- 涉及文件：`docs/editorial/JANET-FULL-PROFILE.md`。
+- 具体改动：删除第 82 行原有的 QQ SMTP 明文授权码，不再把邮箱授权信息写入公开仓库。
+- 具体改动：该行替换为“授权码只允许放在 GitHub Secrets / 本地私密配置中，不写入公开仓库”的提示语。
+- 原因说明：SMTP 授权码属于敏感凭据，公开仓库只能保留配置位置说明，不能保留真实密钥或可复用口令。
+
+### 仓库同步
+
+- 类型：文档 / 同步记录。
+- 涉及文件：`/Volumes/Janet/janet-public-site/`、`/Users/yaojw/.codex/worktrees/ab23/janet-public-site`、`/Users/yaojw/.codex/worktrees/8aa3/janet-public-site`。
+- 具体改动：推送 `bda9acb feat: replace welcome email with on-site celebration popup` 到 `origin/main`，主仓库当前位于 `main` 分支的 `bda9acb`。
+- 具体改动：同步 Codex worktree `ab23` 和 `8aa3` 到 `bda9acb`，两个 worktree 当前为 detached HEAD 状态。
+- 具体改动：同步主仓库 `/Volumes/Janet/janet-public-site/` 到最新提交，保证主站代码、GitHub Actions 配置和土豆中心体验一致。
+- 原因说明：多 worktree 并行修改容易产生旧版本误判；同步后所有活跃工作区都指向同一版，后续排查和发布不会混用旧代码。
+
+### OpenClaw Cron 状态确认
+
+- 类型：文档 / 运维确认。
+- 涉及文件：`data/2026-06-30/content.json`、`data/2026-06-30/output.html`、`data/2026-07-01/content.json`、`data/2026-07-01/output.html`。
+- 具体改动：确认 OpenClaw Cron 调度器在线，晨报 09:00 任务已触发。
+- 具体改动：记录连续 9 次 Discord delivery 错误；该错误发生在投递层，不影响晨报内容生成。
+- 具体改动：确认第 273 期（2026-06-30）和第 274 期（2026-07-01）内容正常，公开站点数据目录已存在对应 `content.json` 和 `output.html`。
+- 原因说明：把 cron、delivery 和内容生成三件事拆开记录，避免把 Discord 投递报错误判为晨报生成失败。
+
 ## 2026-06-17
 
 ### 主站宽屏和按钮视觉强化

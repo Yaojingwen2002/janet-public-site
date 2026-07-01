@@ -365,6 +365,7 @@
         });
         setMessage('账号已创建', false);
         state.tab = 'account';
+        if (Boolean(data.newsletter)) showSubscriptionSuccess(data.username || data.email);
       }
       if (type === 'guest') {
         await auth().signInAnonymously({ username: data.username });
@@ -474,8 +475,89 @@
     });
   }
 
+  function showSubscriptionSuccess(name) {
+    var displayName = name || 'Janet 读者';
+    if (qs('.potato-celebration')) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'potato-celebration';
+    overlay.innerHTML = [
+      '<div class="pc-backdrop"></div>',
+      '<div class="pc-card">',
+      '  <button class="pc-close" data-pc-close aria-label="关闭">✕</button>',
+      '  <div class="pc-icon">🎉</div>',
+      '  <h2 class="pc-title">订阅成功 ✦</h2>',
+      '  <p class="pc-desc">' + escapeHtml(displayName) + '，你已进入 <strong>Janet 快车箱</strong> 邮件通道。</p>',
+      '  <p class="pc-detail">每天 AI 晨报会自动送达你的邮箱。</p>',
+      '  <button class="pc-btn" data-pc-close>知道了</button>',
+      '</div>'
+    ].join('');
+    document.body.appendChild(overlay);
+
+    // Confetti via canvas
+    var canvas = document.createElement('canvas');
+    canvas.className = 'pc-confetti';
+    overlay.prepend(canvas);
+    var ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    var pieces = [];
+    var colors = ['#0ABAB5','#18E299','#C9A84C','#1A3A2A','#C17A2E','#ffffff'];
+    for (var i = 0; i < 120; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        w: 6 + Math.random() * 6,
+        h: 6 + Math.random() * 6,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 4,
+        vy: 2 + Math.random() * 4,
+        rot: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 8,
+        opacity: 0.8 + Math.random() * 0.2
+      });
+    }
+
+    var frame;
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var allDone = true;
+      for (var i = 0; i < pieces.length; i++) {
+        var p = pieces[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.08;
+        p.rot += p.rotSpeed;
+        if (p.y < canvas.height + 50) allDone = false;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      }
+      if (!allDone) frame = requestAnimationFrame(animate);
+    }
+    frame = requestAnimationFrame(animate);
+
+    function close() {
+      if (frame) cancelAnimationFrame(frame);
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    }
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target.closest('[data-pc-close]') || e.target.closest('.pc-backdrop')) close();
+    });
+
+    document.addEventListener('keydown', function handler(e) {
+      if (e.key === 'Escape') { close(); document.removeEventListener('keydown', handler); }
+    });
+  }
+
   window.JanetPotatoCenter = {
-    open: (tab) => openDropdown(qs('[data-potato-center]'), tab || 'login'),
+    open: function(tab) { return openDropdown(qs('[data-potato-center]'), tab || 'login'); },
     close: closeDropdown,
     refresh: updateLabels
   };

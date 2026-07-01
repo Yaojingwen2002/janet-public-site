@@ -91,6 +91,10 @@ create trigger on_auth_user_created
 alter table public.profiles enable row level security;
 alter table public.newsletter_subscribers enable row level security;
 
+grant usage on schema public to service_role;
+grant select, insert, update on public.profiles to service_role;
+grant select, insert, update on public.newsletter_subscribers to service_role;
+
 drop policy if exists "Profiles are viewable by owner" on public.profiles;
 create policy "Profiles are viewable by owner"
   on public.profiles for select

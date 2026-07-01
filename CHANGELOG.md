@@ -4,19 +4,21 @@
 
 ## 2026-07-01
 
-### 邮件系统架构诊断
+### 订阅与晨报邮件链路
 
-- 类型：文档 / 架构诊断。
-- 涉及文件：`27b6383` 涉及 `.github/scripts/README.md`、`.github/scripts/send-daily-briefing-email.mjs`、`.github/scripts/send-subscription-welcome-email.mjs`、`.github/workflows/send-daily-briefing-email.yml`、`.github/workflows/send-subscription-welcome-email.yml`、`README.md`、`docs/supabase-newsletter-repair.sql`、`docs/supabase-setup.md`；`51862dc` 涉及 `docs/supabase-newsletter-repair.sql`。
-- 具体改动：分析 `27b6383 Add subscription welcome email workflow` 新增的 GitHub Actions 发信系统，确认其包含订阅欢迎邮件脚本、每日晨报发信脚本、workflow 入口和 Supabase 修复文档。
-- 具体改动：分析 `51862dc Grant service role newsletter access`，确认其补充了 `service_role` 对 `newsletter_subscribers` 的访问授权。
-- 故障结论：run #1 失败原因不是 SMTP，而是 Supabase `service_role` 缺少 `newsletter_subscribers` 的 `SELECT` 权限；run #2 在授权修复后已正常发送成功。
-- 状态确认：每日晨报 workflow 保持 `20 1 * * *`，对应 Asia/Taipei 09:20，定时发信链路正常。
-- 原因说明：这次诊断用于把“权限失败”和“邮件发送失败”拆开，避免误修 SMTP 或 workflow，同时确认晨报 cron 没被欢迎邮件实验影响。
+- 类型：修复 / 工作流 / 文档。
+- 涉及 commit：`96ee8e9 Fix auth newsletter subscription flow`、`27b6383 Add subscription welcome email workflow`、`51862dc Grant service role newsletter access`。
+- 涉及文件：`.github/scripts/README.md`、`.github/scripts/send-daily-briefing-email.mjs`、`.github/scripts/send-subscription-welcome-email.mjs`、`.github/workflows/send-daily-briefing-email.yml`、`.github/workflows/send-subscription-welcome-email.yml`、`README.md`、`auth/reset-password.html`、`docs/editorial/JANET-FULL-PROFILE.md`、`docs/supabase-newsletter-repair.sql`、`docs/supabase-setup.md`、`scripts/auth.js`、`scripts/potato-center.js`、`styles/potato-center.css`。
+- 具体改动：修复土豆中心注册时的 newsletter 订阅流程，补齐注册、订阅状态、Supabase 修复 SQL 和站点说明文档。
+- 具体改动：新增每日晨报邮件发送脚本和 GitHub Actions workflow，并在脚本文档和 README 中说明触发方式。
+- 具体改动：新增订阅欢迎邮件脚本和 workflow，作为站内订阅链路的邮件反馈实验。
+- 具体改动：`docs/supabase-newsletter-repair.sql` 补充 `service_role` 对 `newsletter_subscribers` 的访问授权，保证服务端发信脚本可以读取订阅名单。
+- 原因说明：把网站注册订阅、晨报邮件发送和 Supabase 权限修复放进同一条链路，避免土豆中心订阅成功但后端发信链路读不到用户。
 
 ### 移除欢迎邮件，改为网页撒花弹窗
 
 - 类型：重构 / 新增。
+- 涉及 commit：`bda9acb feat: replace welcome email with on-site celebration popup`。
 - 涉及文件：`scripts/potato-center.js`、`styles/potato-center.css`、`.github/workflows/send-subscription-welcome-email.yml`。
 - 具体改动：`scripts/potato-center.js` 在注册流程里判断 `newsletter` 勾选状态，订阅晨报时调用新增的 `showSubscriptionSuccess()`，直接在网页内弹出订阅成功反馈。
 - 具体改动：`showSubscriptionSuccess()` 创建 `.potato-celebration` 覆盖层、`.pc-backdrop` 背景、品牌风格卡片和 Canvas 纸屑动画；动画使用 120 片 confetti，配色为墨绿 `#1A3A2A`、蒂芙尼绿 `#0ABAB5`、信号绿 `#18E299`、琥珀金 `#C9A84C` 等。
@@ -28,28 +30,131 @@
 ### 清理公开仓库中的 SMTP 授权码
 
 - 类型：修复 / 安全。
+- 涉及 commit：`96ee8e9 Fix auth newsletter subscription flow`。
 - 涉及文件：`docs/editorial/JANET-FULL-PROFILE.md`。
 - 具体改动：删除第 82 行原有的 QQ SMTP 明文授权码，不再把邮箱授权信息写入公开仓库。
 - 具体改动：该行替换为“授权码只允许放在 GitHub Secrets / 本地私密配置中，不写入公开仓库”的提示语。
 - 原因说明：SMTP 授权码属于敏感凭据，公开仓库只能保留配置位置说明，不能保留真实密钥或可复用口令。
 
-### 仓库同步
+### 晨报发布：2026-07-01
 
-- 类型：文档 / 同步记录。
-- 涉及文件：`/Volumes/Janet/janet-public-site/`、`/Users/yaojw/.codex/worktrees/ab23/janet-public-site`、`/Users/yaojw/.codex/worktrees/8aa3/janet-public-site`。
-- 具体改动：推送 `bda9acb feat: replace welcome email with on-site celebration popup` 到 `origin/main`，主仓库当前位于 `main` 分支的 `bda9acb`。
-- 具体改动：同步 Codex worktree `ab23` 和 `8aa3` 到 `bda9acb`，两个 worktree 当前为 detached HEAD 状态。
-- 具体改动：同步主仓库 `/Volumes/Janet/janet-public-site/` 到最新提交，保证主站代码、GitHub Actions 配置和土豆中心体验一致。
-- 原因说明：多 worktree 并行修改容易产生旧版本误判；同步后所有活跃工作区都指向同一版，后续排查和发布不会混用旧代码。
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`17fdf1b Briefing 2026-07-01`。
+- 涉及文件：`data/2026-07-01/content.json`、`data/2026-07-01/output.html`、`data/2026-07-01/cover.png`、`data/2026-07-01/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-07-01 晨报内容、封面、17 条新闻/模型/技术/投资/工具配图和静态 HTML 输出。
+- 具体改动：更新站点晨报 manifest 与新闻索引，让归档页和首页入口能读取本期内容。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
 
-### OpenClaw Cron 状态确认
+## 2026-06-30
 
-- 类型：文档 / 运维确认。
-- 涉及文件：`data/2026-06-30/content.json`、`data/2026-06-30/output.html`、`data/2026-07-01/content.json`、`data/2026-07-01/output.html`。
-- 具体改动：确认 OpenClaw Cron 调度器在线，晨报 09:00 任务已触发。
-- 具体改动：记录连续 9 次 Discord delivery 错误；该错误发生在投递层，不影响晨报内容生成。
-- 具体改动：确认第 273 期（2026-06-30）和第 274 期（2026-07-01）内容正常，公开站点数据目录已存在对应 `content.json` 和 `output.html`。
-- 原因说明：把 cron、delivery 和内容生成三件事拆开记录，避免把 Discord 投递报错误判为晨报生成失败。
+### 晨报发布：2026-06-30
+
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`a77d90d Briefing 2026-06-30`。
+- 涉及文件：`data/2026-06-30/content.json`、`data/2026-06-30/output.html`、`data/2026-06-30/cover.png`、`data/2026-06-30/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-06-30 晨报内容、封面、配图和静态 HTML 输出。
+- 具体改动：更新站点晨报 manifest 与新闻索引，让本期进入公开归档。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
+
+## 2026-06-24
+
+### 晨报发布：2026-06-24
+
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`326539e Briefing 2026-06-24`。
+- 涉及文件：`data/2026-06-24/content.json`、`data/2026-06-24/output.html`、`data/2026-06-24/cover.png`、`data/2026-06-24/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-06-24 晨报内容、封面、配图和静态 HTML 输出。
+- 具体改动：更新站点晨报 manifest 与新闻索引，让本期进入公开归档。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
+
+## 2026-06-23
+
+### 晨报发布：2026-06-23
+
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`59fbd19 Briefing 2026-06-23`。
+- 涉及文件：`data/2026-06-23/content.json`、`data/2026-06-23/output.html`、`data/2026-06-23/cover.png`、`data/2026-06-23/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-06-23 晨报内容、封面、配图和静态 HTML 输出。
+- 具体改动：更新站点晨报 manifest 与新闻索引，让本期进入公开归档。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
+
+### 清理晨报临时图片源
+
+- 类型：清理 / 内容资产。
+- 涉及 commit：`712eb59 Remove temporary briefing image sources`。
+- 涉及文件：`data/2026-06-23/images/*.ppm`。
+- 具体改动：删除 2026-06-23 晨报配图生成过程中残留的 `.ppm` 临时源文件。
+- 原因说明：公开仓库只保留站点实际使用的图片资产，不保留中间格式。
+
+## 2026-06-22
+
+### 晨报发布：2026-06-22
+
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`206bcca Briefing 2026-06-22`、`ed745a6 Briefing 2026-06-22`。
+- 涉及文件：`data/2026-06-22/content.json`、`data/2026-06-22/output.html`、`data/2026-06-22/cover.png`、`data/2026-06-22/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-06-22 晨报内容、封面、配图和静态 HTML 输出。
+- 具体改动：后续同日提交替换并补齐本期配图命名与新闻索引，让归档展示使用最终素材。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
+
+### 晨报图片校验加固
+
+- 类型：修复 / 质量控制。
+- 涉及 commit：`fbc1e4a Harden briefing item image validation`。
+- 涉及文件：`codex-briefing-system/src/ensure-item-images.mjs`、`codex-briefing-system/src/qa-briefing.mjs`。
+- 具体改动：加固晨报条目图片检查逻辑，减少缺图、错图或未绑定图片进入公开输出的风险。
+- 原因说明：晨报生成系统属于站点发布链路，图片校验直接影响公开页面质量。
+
+### 镜场计划接入视觉参考实验室
+
+- 类型：新增 / 页面内容。
+- 涉及 commit：`3360804 Add Jingchang plan to visual reference lab`。
+- 涉及文件：`404.html`、`assets/works/cinematic-lab/cover.svg`、`data/works/projects/igpt-image2-handbook.json`、`data/works/works-manifest.json`、`data/works/works/igpt-image2-handbook-cases.json`、`data/works/works/jingchang-plan-s0-lab.json`、`gpt-image2-handbook.html`、`index.html`、`misaligned-scenes.html`、`news.html`、`portfolio.html`、`project-detail.html`、`scripts/portfolio.js`、`scripts/potato-center.js`、`scripts/project-detail.js`、`shuttle-universe.html`、`styles/gpt-image2-handbook.css`、`styles/main.css`。
+- 具体改动：新增镜场计划 S0 视觉参考实验室项目数据和封面资产，并把入口接入首页、作品库、项目详情和相关手写页面。
+- 具体改动：更新 portfolio/project detail 脚本和主样式，保证新增项目能被站点项目系统正常读取和展示。
+- 原因说明：这是网站作品系统和项目内容的公开更新，属于站点内容变更。
+
+## 2026-06-21
+
+### 晨报发布：2026-06-21
+
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`80f6262 Briefing 2026-06-21`。
+- 涉及文件：`data/2026-06-21/content.json`、`data/2026-06-21/output.html`、`data/2026-06-21/cover.png`、`data/2026-06-21/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-06-21 晨报内容、封面、配图和静态 HTML 输出。
+- 具体改动：更新站点晨报 manifest 与新闻索引，让本期进入公开归档。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
+
+## 2026-06-19
+
+### 晨报发布：2026-06-19
+
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`b8cb21e Briefing 2026-06-19`。
+- 涉及文件：`data/2026-06-19/content.json`、`data/2026-06-19/output.html`、`data/2026-06-19/cover.png`、`data/2026-06-19/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-06-19 晨报内容、封面、配图和静态 HTML 输出。
+- 具体改动：更新站点晨报 manifest 与新闻索引，让本期进入公开归档。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
+
+## 2026-06-18
+
+### 晨报发布：2026-06-18
+
+- 类型：内容发布 / 数据更新。
+- 涉及 commit：`dc7198b Briefing 2026-06-18`、`f8497d9 Briefing 2026-06-18`、`1e6315d Briefing 2026-06-18`、`96405e5 Briefing 2026-06-18`。
+- 涉及文件：`data/2026-06-18/content.json`、`data/2026-06-18/output.html`、`data/2026-06-18/cover.png`、`data/2026-06-18/images/`、`data/MANIFEST.json`、`data/news-index.json`。
+- 具体改动：新增 2026-06-18 晨报内容、封面、配图和静态 HTML 输出。
+- 具体改动：同日多次提交继续修订本期内容、替换部分配图并更新新闻索引，最终以同日最后一次提交后的内容为准。
+- 原因说明：这是公开站点的数据发布提交，属于网站内容更新。
+
+### 晨报编辑风格与 QA 加固
+
+- 类型：修复 / 模板和发布质量。
+- 涉及 commit：`fcd8f59 Harden briefing editorial QA`、`5bba0a8 Tune briefing style toward editor voice`。
+- 涉及文件：`codex-briefing-system/docs/acceptance-checklist.md`、`codex-briefing-system/prompts/briefing-task.md`、`codex-briefing-system/prompts/editorial-system.md`、`codex-briefing-system/src/check-site-briefing.mjs`、`codex-briefing-system/src/qa-briefing.mjs`、`codex-briefing-system/src/render-output.mjs`。
+- 具体改动：加强晨报验收清单、任务提示词、编辑系统提示词和 QA 脚本，推动输出更贴近 Janet 编辑口吻。
+- 具体改动：补强站点晨报检查与 HTML 渲染输出链路，降低格式、风格和公开页面 QA 漏检概率。
+- 原因说明：晨报模板和 QA 工具属于网站内容生产链路，直接影响公开晨报页面质量。
 
 ## 2026-06-17
 

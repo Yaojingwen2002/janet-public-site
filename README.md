@@ -92,7 +92,7 @@ Daily briefing email:
 
 - Workflow: `.github/workflows/send-daily-briefing-email.yml`
 - Sender: `.github/scripts/send-daily-briefing-email.mjs`
-- Primary trigger: after `Deploy Janet Site to GitHub Pages` completes successfully on `main`, so a freshly published briefing is mailed immediately after it is live
+- Primary trigger: after a `Briefing YYYY-MM-DD` deploy completes successfully on `main`, so a freshly published briefing is mailed immediately after it is live
 - Fallback schedule: `01:20 UTC / 09:20 Asia/Taipei`, in case the publish-triggered email did not run
 - Recipients: formal email accounts from Supabase Auth and `profiles`; `newsletter_subscribers.subscribed = false` or `user_metadata.newsletter_opt_in = false` is treated as an opt-out block
 - Manual sends can set `recipient_email` and `force_send=true` from the workflow dispatch panel.

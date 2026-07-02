@@ -44,7 +44,7 @@ concurrency:
 
 jobs:
   send:
-    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && startsWith(github.event.workflow_run.display_title, 'Briefing '))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout site

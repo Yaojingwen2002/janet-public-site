@@ -1,6 +1,11 @@
 name: Send Daily Briefing Email
 
 on:
+  workflow_run:
+    workflows:
+      - Deploy Janet Site to GitHub Pages
+    types:
+      - completed
   workflow_dispatch:
     inputs:
       edition_id:
@@ -39,6 +44,7 @@ concurrency:
 
 jobs:
   send:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout site

@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-03",
+  "vol": "276",
+  "intro_text": "Janet 早。今天这期不是模型参数秀，是一张 AI 落地账单：政府重新放行 Claude，Z.ai 用 ZCode 追着 Claude Code 打，Together AI 和 Venice AI 继续吸钱，Meta、Microsoft、Cognizant 都在把 Agent 往组织里塞。好消息是工具更多了，坏消息是每个入口都想收你过路费。",
+  "cover": {
+    "title": "入口费涨起来了",
+    "subtitle": "模型、算力、数据和 Agent 平台同时收口，AI 不再只卖能力，开始卖控制权。",
+    "image_path": "runs/2026-07-03/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI tech briefing cover, 21:9 widescreen PNG. Create a sharp AI technology magazine cover background about frontier AI becoming public infrastructure and enterprise deployment machinery. A dark editorial control room where a glowing Janet-green infrastructure grid connects government documents, cloud compute racks, coding terminals, security shields, and inference chips. Abstract but concrete: no robot faces, no cartoon brain. Premium editorial magazine photography mixed with clean 3D product render, black / white / Janet green, restrained amber highlights, high contrast, sophisticated. Ultra-wide 21:9, strong negative space for HTML overlay text. No visible words, logos, watermarks, dates, title, cyberpunk neon clutter, cartoon, glowing brain, or full robot face."
+  },
+  "trend": "Claude 解封、Z.ai 推 ZCode、Together AI 融资 8 亿美元、Venice AI 拿下 10 亿美元估值、Meta 任命首位 Chief Data Officer、Microsoft 继续合并 Copilot 入口。今天的共同动作很清楚：AI 公司不再只比模型聪不聪明，而是在抢谁能管访问、管算力、管数据、管工作流。\n\n对中国创作者和中小企业来说，便宜模型和开源模型的机会还在，但入口正在变贵。你用的 IDE、云算力、聊天助手、隐私代理、企业 Agent 平台，都会慢慢变成收费闸门；真正要省钱，不是追热点换模型，而是把模型、数据、权限和账单拆开管理。\n\n接下来 2-4 周要盯三件事：Claude 解封后安全条款会不会继续收紧，ZCode 这类国产编码工具能不能稳定承接长任务，AI neocloud 和隐私平台的估值泡沫会不会继续传导到创业者的推理成本。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "美国开放 Claude Fable 5 访问",
+          "body": "SecurityWeek 援引 AP 报道，美国政府解除对 Anthropic 最新 Claude 模型的限制。Claude Fable 5 已恢复广泛可用，最强的 Mythos 5 则只面向一批获得美国政府批准的机构恢复访问。",
+          "janet_take": "前沿模型第一次像出口管制品一样被开关控制，这比一次普通产品恢复更值得警惕。开发者今天能用 Fable，明天也可能因为政策、地区或行业标签被拔线；核心生产链路只押一家美国模型，就是把方向盘交给别人的监管按钮。",
+          "source": "SecurityWeek / Associated Press",
+          "url": "https://www.securityweek.com/trump-administration-lifts-restrictions-on-anthropics-claude-models-after-cybersecurity-alarm/",
+          "image_url": "",
+          "image": "images/news-01-claude-fable-5.jpg",
+          "image_source_url": "https://www.securityweek.com/wp-content/uploads/2023/02/White-House-Cybersecurity.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Z.ai 推 ZCode 追打 Claude Code",
+          "body": "SCMP 报道，智谱旗下 Z.ai 推出 ZCode，用 GLM-5.2 作为自主编码助手的 harness，并配合促销吸引开发者。Business Insider 称 ZCode 覆盖规划、编码、审查和部署，Lite 方案促销价为每月 16.20 美元，低于 Cursor 最低个人方案。",
+          "janet_take": "国产模型最狠的一刀已经冲进开发者每天打开的 IDE。ZCode 如果能把长任务、代码审查和远程触发做稳，价格优势会很快变成迁移压力；低价只能拉来尝鲜，稳定交付和权限安全才是能不能替掉 Claude Code 的硬门槛。",
+          "source": "SCMP / Business Insider",
+          "url": "https://www.scmp.com/tech/tech-trends/article/3359170/zhipu-ai-releases-harness-glm-52-model-chinese-firm-takes-aim-anthropic",
+          "image_url": "",
+          "image": "images/news-02-zai-zcode-claude-code.webp",
+          "image_source_url": "https://cdn.i-scmp.com/sites/default/files/styles/og_image_scmp_generic/public/d8/images/canvas/2026/07/02/0d21105a-c7f5-44e0-a853-76502c971de5_390fd77e.jpg?itok=JeeBq6mE&v=1782982001",
+          "image_origin": "source"
+        },
+        {
+          "title": "Microsoft 整合 Copilot 超级入口",
+          "body": "Techmeme 汇总 The Information 报道称，Microsoft 正在把消费者版和企业版 Copilot 聊天机器人合并为一个应用，并加入 coding tools 和名为 AutoPilot 的 AI agents。此前 Fortune 披露，该项目由 Copilot 负责人 Jacob Andreou 推进。",
+          "janet_take": "Microsoft 的焦虑写在产品合并里：Copilot 不能再只是 Office 旁边的聊天框，它必须变成代码、办公、Agent 工作流的总入口。对企业用户来说，便利会来得很快，账单和权限混在一起也会来得很快。",
+          "source": "Techmeme / The Information / Fortune",
+          "url": "https://techmeme.com/river",
+          "image_url": "",
+          "image": "images/news-03-microsoft-copilot.jpg",
+          "image_source_url": "https://cdn.mos.cms.futurecdn.net/bniduuXBVcXLBxUTmPNDB4.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta 用首位 CDO 管 AI 数据",
+          "body": "Reuters 报道，Meta 任命前首席营销官 Alex Schultz 为公司首位 Chief Data Officer，负责更好地管理全球 AI analytics；Denise Moreno 接任 CMO。Schultz 表示新角色会帮助 Meta 改造 AI 时代的学习和决策方式。",
+          "janet_take": "Meta 这次换岗的重点，是把数据层直接抬进 C-suite。广告、推荐、AI 眼镜、内部 Analytics Agent 都靠同一套数据底座吃饭；谁以为 AI 只是模型部门的事，谁就会在组织里输给会管数据的人。",
+          "source": "Reuters / Axios",
+          "url": "https://www.spokesman.com/stories/2026/jul/01/meta-names-alex-schultz-first-chief-data-officer/",
+          "image_url": "",
+          "image": "images/news-04-meta-chief-data-officer.webp",
+          "image_source_url": "https://thumb.spokesman.com/SB4bgJSI0pCoxUGuHEkvwTi4HEA=/1200x630/smart/media.spokesman.com/photos/2026/07/01/6a45558ad63d6.image.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Jersey Mike's 用 IPO 文件蹭 AI",
+          "body": "TechCrunch 报道，三明治连锁 Jersey Mike's 在 IPO 文件里反复提到 AI，包括用 AI 做运营、营销和客户体验。作者认为，当一家以 Danny DeVito 代言闻名的三明治品牌也开始讲 AI，市场叙事已经接近过热。",
+          "janet_take": "AI 泡沫最诚实的指标，是卖三明治的公司也要在招股书里讲算法。投资人可以爱听，创作者别跟着上头；真能降本的 AI 会出现在流程里，写在融资故事里的 AI 多半只是估值香水。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/02/jersey-mikes-ipo-illustrates-how-bad-the-ai-hype-has-become/",
+          "image_url": "",
+          "image": "images/news-05-jersey-mikes-ipo-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/AI-sandwich-hunger.png?resize=1200,960",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Claude Mythos 5 只给白名单",
+          "body": "SecurityWeek 报道，Anthropic 在 Fable 5 恢复广泛访问的同时，只向经美国政府批准的美国机构恢复 Mythos 5。此前限制源于网络安全担忧，导致最新 Claude 模型经历了数周访问受限。",
+          "janet_take": "Fable 放开，Mythos 白名单，这就是前沿模型未来的真实分层：普通用户拿阉割版，关键能力进受控通道。国内团队别只看 benchmark 第一名，要看自己有没有长期可访问权；拿不到稳定权限，再强也只是别人家的军火库。",
+          "source": "SecurityWeek / Associated Press",
+          "url": "https://www.securityweek.com/trump-administration-lifts-restrictions-on-anthropics-claude-models-after-cybersecurity-alarm/",
+          "image_url": "",
+          "image": "images/models-01-claude-mythos-5.jpg",
+          "image_source_url": "https://www.securityweek.com/wp-content/uploads/2023/02/White-House-Cybersecurity.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Make 接入 Claude Sonnet 5",
+          "body": "Make 社区公告称，Claude Sonnet 5 已在 Make native AI apps 中可用。公告称该模型在 agentic work 上接近 Opus 级质量，同时保留 Sonnet 级别的价格和速度定位。",
+          "janet_take": "低一档模型接工作流平台，比旗舰模型刷榜更有商业杀伤力。Make 这种自动化入口不需要每次都用最贵模型，它需要稳定、便宜、可复用；对自动化工作室来说，Sonnet 5 的价值是能不能把每条流程的失败率压下来。",
+          "source": "Make Community",
+          "url": "https://community.make.com/t/app-update-claude-sonnet-5-available-in-make/111616",
+          "image_url": "",
+          "image": "images/models-02-make-claude-sonnet-5.jpg",
+          "image_source_url": "https://europe1.discourse-cdn.com/flex013/uploads/make/optimized/3X/e/8/e88a63bdb57219193a456c03b96f9eceb5c36b05_2_1024x576.jpeg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Ai2 推 FlexOlmo 模块化路线",
+          "body": "Allen Institute for AI 发布 FlexOlmo 文章，介绍如何让不同团队训练独立专家模块，并在不汇集敏感数据的情况下合并为共享语言模型。Ai2 称该路线面向跨机构、跨国家的专长协作。",
+          "janet_take": "这条路线戳中主权模型最痛的地方：大家都想共享能力，但没人愿意交出数据。FlexOlmo 的看点在于把训练协作拆成可控模块；医疗、政务、科研团队会喜欢这种不裸奔的数据合作方式。",
+          "source": "Allen Institute for AI",
+          "url": "https://allenai.org/blog/flexmore",
+          "image_url": "",
+          "image": "images/models-03-ai2-flexolmo.avif",
+          "image_source_url": "https://www.datocms-assets.com/64837/1782941076-flexmoreflexolmo-testimonial-blog-draft-2-google-docs-image-1.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "GLM-5.2 接入 ZCode 抢长任务",
+          "body": "ZCode 官方文档显示，ZCode 3.0 已针对 GLM-5.2 做深度优化，强调 long-horizon tasks、多 Agent 协作、workspace state、tool results 和 Git changes 的持续整合，并提供 WeChat、Feishu、Telegram bot 触发能力。",
+          "janet_take": "GLM-5.2 的下一仗在真实 repo 里连续干活。长任务最怕上下文断片、权限乱跑和改完不验证；如果 ZCode 真能把这些链路封住，国产开源模型才有资格从“可用”走到“可替”。",
+          "source": "Z.ai ZCode Docs",
+          "url": "https://zcode.z.ai/en/docs",
+          "image_url": "",
+          "image": "images/models-04-glm-52-zcode.png",
+          "image_source_url": "https://zcode.z.ai/images/summary_large_image.png?v=20260628",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Microsoft 押注人机混编公司",
+          "body": "AI Business 报道，Microsoft 提出 Frontier Company 概念，强调企业要用人类员工、AI agents 和组织设计共同扩展 AI，而不是只采购模型。文章称模型挑战之后，组织本身成为 AI 落地的下一道难题。",
+          "janet_take": "Microsoft 在提醒客户一件残酷事实：买 Copilot 不等于公司会变聪明。Agent 真正卡住的地方，是谁分配任务、谁验收结果、谁承担错误；老板如果只买软件不改组织，最后得到的只是更贵的待办列表。",
+          "source": "AI Business",
+          "url": "https://aibusiness.com/generative-ai/microsoft-frontier-company-humans-scale-ai",
+          "image_url": "",
+          "image": "images/insights-01-microsoft.jpg",
+          "image_source_url": "https://images.mipai.com.cn/temp_upload/1768925164255.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Google 用 Gemini 筛安全告警",
+          "body": "Google Cloud Blog 发布 SOCRadar 案例，称 SOCRadar 在 AlloyDB 与 Gemini 上运行 AI-native filtering，用于区分真实威胁和误报，并在到达安全分析师之前完成告警分类、过滤和路由。",
+          "janet_take": "安全行业终于开始承认，人类分析师输给的是垃圾告警。Gemini 这种用法不性感，但很值钱：先把噪音清掉，再谈自动化响应。国内安全厂商别只卖大屏，先证明自己能少打扰人。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/databases/socradar-powers-rapid-threat-detection-with-alloydb-and-gemini-enterprise",
+          "image_url": "",
+          "image": "images/insights-02-google-gemini.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/10_-_Databases.max-2600x2600.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Cognizant 与 WRITER 合作做 Agent",
+          "body": "Investing.com 报道，Cognizant 与 WRITER 建立合作，以扩展企业 AI agents。WRITER CEO May Habib 表示，企业正从试验阶段进入大规模执行阶段，需要准确、安全、适配复杂性的系统。",
+          "janet_take": "咨询公司最怕 AI 抢工时，所以它们会先把 AI 包装成自己的交付方法。Cognizant 加 WRITER 的组合很现实：模型厂给能力，咨询厂给组织入口；中小企业要小心，别把一个 Agent 项目买成三个月顾问驻场。",
+          "source": "Investing.com",
+          "url": "https://au.investing.com/news/company-news/cognizant-partners-with-writer-to-scale-enterprise-ai-agents-93CH-3949569",
+          "image_url": "",
+          "image": "images/insights-03-cognizant-writer-agent.png",
+          "image_source_url": "https://yourtechdiet.com/wp-content/uploads/2025/07/YTD-NEWS-15.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "ICRA 用 21 自由度机器手打样",
+          "body": "Let's Data Science 报道，ICRA 2026 现场最抢眼的趋势不是类人机器人，而是机器人手部灵巧度。中国创业公司 TARS 的 DexHand 拥有 21 个自由度，并以线束插入速度获得 Guinness World Record。",
+          "janet_take": "具身智能别再只盯整个人形壳子，真正能进工厂的往往是手。21 自由度、线束插入这种指标很枯燥，但它直接决定能不能替掉一段人工；做机器人内容的创作者，少拍走路，多看手能不能干活。",
+          "source": "Let's Data Science",
+          "url": "https://letsdatascience.com/news/icra-2026-convenes-robotics-community-in-vienna-06244688",
+          "image_url": "",
+          "image": "images/insights-04-icra-21.jpg",
+          "image_source_url": "https://robohub.org/wp-content/uploads/2026/07/IMG_20260602_123734-1024x768.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Together AI 融资 8 亿美元",
+          "body": "TechCrunch 报道，AI neocloud 公司 Together AI 完成 8 亿美元 Series C，投后估值 83 亿美元。公司向客户出租 Nvidia GPU 集群和 AI 基础设施，本轮由 Aramco Ventures 领投，NVIDIA、Salesforce Ventures 等参投。",
+          "janet_take": "这笔钱说明市场还在奖励“卖铲子”，尤其是卖开源模型推理铲子。问题是 neocloud 的护城河很重：供电、芯片、客户合约、利用率，一个都不能虚；创业者别被估值骗了，自己的推理账单不会因为它融资就自动下降。",
+          "source": "TechCrunch / Together AI",
+          "url": "https://techcrunch.com/2026/07/01/neocloud-together-ai-raises-800m-leaps-to-8-3b-valuation/",
+          "image_url": "",
+          "image": "images/insights2-01-together-ai-8.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/Together-AI-founders-Percy-Liang-CEO-Vipul-Ved-Prakash-CTO-Ce-Zhang.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "Venice AI 6500 万美元成独角兽",
+          "body": "TechCrunch 报道，隐私优先 AI 平台 Venice AI 完成 6500 万美元 Series A，估值 10 亿美元，这是其首轮外部融资。该轮由 Dragonfly 领投，Coinbase Ventures、North Island Ventures 等参投。",
+          "janet_take": "隐私牌终于能卖出独角兽价格，说明用户对“不要存我聊天记录”的需求已经变成生意。Venice 的风险也在这里：隐私、开放模型、加密圈投资人、商业化，每一个词都好听，每一个词也都容易被监管盯上。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/01/venice-ai-becomes-a-unicorn-with-65m-series-a-as-its-privacy-first-ai-platform-takes-off/",
+          "image_url": "",
+          "image": "images/insights2-02-venice-ai-6500.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/gpt-steady-v3.png?w=768",
+          "image_origin": "source"
+        },
+        {
+          "title": "Tripo AI 再拿 1.5 亿美元",
+          "body": "GamesBeat 报道，Tripo AI 完成 1.5 亿美元融资，用于游戏领域的生成式 3D 工具；一个月前该公司刚宣布 2 亿美元融资。Techmeme 同步称该公司正在开发用于游戏的 3D foundation models 和 world models。",
+          "janet_take": "3D 生成又开始吸大钱，因为游戏、广告、短剧和机器人仿真都缺便宜资产。Tripo AI 的节奏很猛，但融资密度也很吓人；创作者可以立刻试工具，投资人要问一句：这么快烧钱，是需求爆了，还是成本压不住？",
+          "source": "GamesBeat / Techmeme",
+          "url": "https://gamesbeat.com/tripo-ai-raises-150m-for-genai-tools-for-gaming-a-month-after-its-previous-200m-raise/",
+          "image_url": "",
+          "image": "images/insights2-03-tripo-ai-15.webp",
+          "image_source_url": "https://gamesbeat.com/wp-content/uploads/2026/07/Picture_01_World-Model.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "ZCode 3.0 绑定 GLM-5.2 开测",
+          "body": "ZCode 官网显示，ZCode 3.0 已提供 macOS、Windows 下载，定位为 GLM-5.2 官方 coding harness。它支持长任务、bot 控制、多 Agent 协作，并为 GLM Coding Plan 用户提供限时 quota 优惠和新用户 5 天试用。",
+          "janet_take": "今天最值得试的工具就是它：它把国产模型、桌面 IDE、远程 bot 和价格战绑到一起了。代码团队可以拿非核心 repo 压测一周，看长任务完成率、权限提示和回滚体验，再决定要不要迁移。",
+          "source": "Z.ai ZCode",
+          "url": "https://zcode.z.ai/en",
+          "image_url": "",
+          "image": "images/tools-01-zcode-30-glm-52.png",
+          "image_source_url": "https://zcode.z.ai/images/summary_large_image.png?v=20260628",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

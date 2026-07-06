@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-06",
+  "vol": "279",
+  "intro_text": "Janet 早。今天 AI 圈的热闹点不在参数表，而在账单：可灵拿 30 亿美元继续打视频生成，SKT 画出 15GW 数据中心蓝图，Naver 用轻量模型压 hallucination，KAIST 直接算出 Agent 比普通生成式 AI 更吃电。模型还在卷，但真正开始咬人的，是能耗、基建、搜索入口和机器人落地。",
+  "cover": {
+    "title": "算力账单摊牌",
+    "subtitle": "视频生成、AI 搜索和机器人同时冲向现实成本。",
+    "image_path": "runs/2026-07-06/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI technology briefing cover, 21:9 widescreen PNG. Primary request: Create a sharp AI technology magazine cover background for a daily briefing about AI moving from model hype into infrastructure bills, energy limits, video-generation financing, AI search efficiency, and embodied robotics deployment. Scene/backdrop: abstract premium editorial composition combining a dark data center corridor, thin Janet-green network lines, a simplified robotic hand silhouette, small video-generation frame strips, and a power grid meter motif. Subject: no people, no full robot faces; use infrastructure, server racks, robotic hand outline, energy/data flow geometry, and clean AI interface panels as the visual subject. Style/medium: high-end editorial technology magazine cover, cinematic minimal raster illustration/photo-composite feel, sophisticated and restrained. Composition/framing: ultra-wide 21:9 landscape, strong negative space in the lower-left and center for HTML overlay text, diagonal tension, clean focal hierarchy, uncluttered. Lighting/mood: serious, expensive, crisp shadows, controlled studio lighting, not cyberpunk. Color palette: black, white, deep ink green, Janet signal green accents, small amber highlights only if useful. Materials/textures: matte black server metal, glass UI panels, brushed metal, fine circuit traces, subtle paper-grain texture. Text: no text in image. Constraints: 21:9 widescreen, no readable UI text, no logo, no watermark, no date, no title, no cartoon, no glowing brain, no cheap neon, no full robot face."
+  },
+  "trend": "可灵用 30 亿美元融资把视频生成战场继续烧大，SK Telecom 把韩国 AI 数据中心目标推到 15GW，Naver 则反着来，用面向搜索的轻量模型把幻觉率压低 30 个百分点、成本压到三分之一。同一天，KAIST 给 Agent 算了一笔电费：复杂任务会触发更多 LLM 调用，能耗飙到普通生成式 AI 的 136 倍。\n\n对中国创作者和中小企业来说，今天的信号很冷：AI 工具会越来越多，但便宜、稳定、可控才是真门槛。视频生成要看可商用一致性，AI 搜索要看内容入口还剩多少流量，Agent 工作流要先算 token、电力和失败重跑成本，不要被“全自动”三个字骗去当付费测试员。\n\n接下来 2-4 周盯三条线：可灵和 Seedance 会不会把视频生成价格继续打穿；韩国、国内和中东的 AI 数据中心订单会不会推高算力租金；具身智能融资能不能从“造大脑”走到可交付样机，否则资本热度会很快变成库存压力。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "可灵融资30亿美元硬刚Seedance",
+          "body": "Seoul Economic Daily 报道，快手旗下视频 AI 业务可灵完成 30 亿美元融资，估值约 27 万亿韩元。报道称可灵已有超过 5 万企业客户、1 亿用户，第一季度收入 1465 亿韩元，百度、腾讯、阿里均在支持名单中，竞争对象直指字节 Seedance。",
+          "janet_take": "视频生成赛道进入现金消耗战，谁都不想先眨眼。可灵最硬的牌在企业客户续费，不在一段酷炫样片；创作者要盯的是价格和版权边界，别只看样片滤镜。",
+          "source": "Seoul Economic Daily",
+          "url": "https://en.sedaily.com/international/2026/07/05/chinas-video-ai-leader-kling-raises-3-billion-to-battle",
+          "image_url": "",
+          "image": "images/news-01-30seedance.jpg",
+          "image_source_url": "https://wimg.sedaily.com/news/cms/2026/04/10/rcv.YNA.20260410.PYH2026041008920001300_P1.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "SKT押15GW数据中心做亚洲AI枢纽",
+          "body": "SK Telecom 宣布推进最高 15GW 规模的 AI data center buildout，目标把韩国建成亚洲 AI infrastructure hub。首批 5GW 容量将从 2029 年起分阶段上线，包含蔚山周边超过 2GW 集群，并由 SK 集团半导体、能源和建设能力配合。",
+          "janet_take": "AI 基建已经是国家级工程，早就越过云厂商自租机柜阶段。15GW 这个数字告诉创业者一件事：未来模型价格不只由算法决定，还会被电网、土地、冷却和长期客户合同一起定价。",
+          "source": "SK Telecom / PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/sk-telecom-pursues-15gw-ai-data-center-buildout-aiming-to-become-asias-ai-infrastructure-hub-302817963.html",
+          "image_url": "",
+          "image": "images/news-02-skt15gwai.jpg",
+          "image_source_url": "https://www.sktelecom.com/img_dir/kor/press/20250224/01_news_01_250224.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Naver 用AI搜索压低幻觉30个百分点",
+          "body": "Seoul Economic Daily 报道，Naver 在 conversational AI search 服务 AI Tab 中加载三项面向搜索优化的技术：search-optimized lightweight LLM、harness engineering 和 SLM 分工。Naver 称新方案将幻觉率降低 30 个百分点，成本降至约三分之一，响应速度提升约一倍。",
+          "janet_take": "Naver 没有跟着巨头比通用大模型肌肉，它在把搜索这个老入口重新磨刀。对内容创作者最扎心的是，搜索答案越好，点击越少；别祈祷流量回来，要让自己的内容成为 AI 答案引用源。",
+          "source": "Seoul Economic Daily",
+          "url": "https://en.sedaily.com/news/2026/07/05/naver-ai-search-cuts-hallucinations-30-points-costs-to-one",
+          "image_url": "",
+          "image": "images/news-03-naver-ai30.jpg",
+          "image_source_url": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https://substack-post-media.s3.amazonaws.com/public/images/f5368436-1ca1-4ecd-8f8f-a60c6d8d471f_1792x1024.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "人民网上线AI工程化大会观察",
+          "body": "人民网 7 月 5 日发文称，2026 AI Engineer World's Fair 释放出明确信号：AI 竞争正在从 Model Race 转向 Application & Engineering Race。大会围绕 AI Agents、Context Engineering、Inference、RAG、多模态生成、AI infrastructure 和企业部署设置专题。",
+          "janet_take": "行业终于从“模型会不会聊天”聊到“系统能不能上线”。这对国内团队是好事，吹参数越来越难，工程交付、可观测、可回滚、可计费才会被客户买单。",
+          "source": "人民网",
+          "url": "https://world.people.com.cn/n1/2026/0705/c1002-40753657.html",
+          "image_url": "",
+          "image": "images/news-04-ai.jpg",
+          "image_source_url": "http://cdn2-app.people.cn/rmwapp-prod/dir2/20251220/rmwapp_2_202011e5219fa5-bc7a-4800-9fe6-7edfd701f960.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "科大讯飞开放平台落地中亚",
+          "body": "GlobeNewswire 报道，iFLYTEK 在中亚正式推出开放平台，并把乌兹别克斯坦定位为区域 AI hub。平台整合 Spark Large Language Model、Spark Agent Platform、Spark MaaS、企业 AI 应用和开放开发平台，面向政府、企业、高校与开发者提供统一技术底座。",
+          "janet_take": "国产 AI 出海已经不满足于卖一个聊天框，开始把模型、Agent、MaaS 和行业应用打包成基础设施。中亚市场不会给你硅谷式溢价，能不能本地化语言、政企流程和交付团队，才决定这单是不是样板。",
+          "source": "iFLYTEK / GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2026/07/05/3322052/0/en/iflytek-officially-launches-open-platform-in-central-asia-positioning-uzbekistan-as-a-new-regional-ai-hub.html",
+          "image_url": "",
+          "image": "images/news-05-1a0a1eb52b.jpg",
+          "image_source_url": "https://ml.globenewswire.com/Resource/Download/8af2c31e-9cdc-484a-a45a-9e3ca3313601",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Naver用轻量LLM重做AI Tab",
+          "body": "Naver 的 AI Tab 采用搜索优化 lightweight LLM，没有把所有问题都丢给通用大模型。报道提到，Naver 通过意图理解、上下文掌握和 SLM 分工，把搜索、购物、预约等真实服务场景的响应速度与成本放到同一张表上。",
+          "janet_take": "轻量模型这次是商业版算盘。搜索场景要的是快、准、便宜，旗舰模型每次长篇表演只会抬高成本；做垂直 AI 的团队该学会为任务设计模型，少为发布会设计参数。",
+          "source": "Seoul Economic Daily",
+          "url": "https://en.sedaily.com/news/2026/07/05/naver-ai-search-cuts-hallucinations-30-points-costs-to-one",
+          "image_url": "",
+          "image": "images/models-01-naverllmai-tab.jpg",
+          "image_source_url": "https://wimg.sedaily.com/news/cms/2026/04/09/news-p.v1.20260409.3902a8531bc6495b8c03f6d23d152cfe_P1.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "科大讯飞推Spark Agent出海中亚",
+          "body": "iFLYTEK 中亚开放平台把 Spark Agent Platform 与 Spark MaaS 放进同一套方案，强调政府、企业、高校和开发者可以在统一底座上构建 AI-powered solutions。它的重点在区域市场的开发平台与交付网络，单个模型跑分只是入场券。",
+          "janet_take": "Agent 平台出海拼的是本地工作流，中文发布会带不来长期订单。谁能把政企流程、语言适配和部署服务一起交出去，谁才有机会在新兴市场拿到长期座位。",
+          "source": "iFLYTEK / GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2026/07/05/3322052/0/en/iflytek-officially-launches-open-platform-in-central-asia-positioning-uzbekistan-as-a-new-regional-ai-hub.html",
+          "image_url": "",
+          "image": "images/models-02-spark-agent.jpg",
+          "image_source_url": "https://ml.globenewswire.com/Resource/Download/8af2c31e-9cdc-484a-a45a-9e3ca3313601",
+          "image_origin": "source"
+        },
+        {
+          "title": "ZygAI发布多模态模型周测",
+          "body": "Hugging Face 上的 ZygAI 周报发布 2026 年 7 月第一周多模态模型 benchmark，使用相同真实图片对多款模型做植物识别测试，比较回答质量、推理、实用性和图像理解。测试覆盖 ZygAI GPT-5.4 Mini、Nano、Claude Sonnet、Gemini 3.1、Qwen 3.6 35B A3B 等模型。",
+          "janet_take": "小型 benchmark 不会决定行业排名，但它提示了一个方向：模型评测正在从抽象题库走向真实任务样本。创作者选视觉模型时，别只看榜单总分，拿自己的素材跑一轮才知道谁会胡说。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog/ZygAI/2026-zygai-research-month-week-1",
+          "image_url": "",
+          "image": "images/models-03-zygai.png",
+          "image_source_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/blog/ZygAI/2026-zygai-research-month-week-1.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "AI Tab用SLM分工提速一倍",
+          "body": "Naver 的技术方案把部分意图识别、上下文处理和服务场景任务交给 small language models 分担。报道称这种分工让 AI Tab 响应速度翻倍，并把成本压到原来的三分之一，证明搜索 AI 不一定要堆最大模型。",
+          "janet_take": "SLM 的价值在这里被说清了：它替产品省钱，不替大模型撑面子。国内做搜索、客服、知识库的团队要先拆任务，再配模型；全链路旗舰模型只会把毛利烧穿。",
+          "source": "Seoul Economic Daily",
+          "url": "https://en.sedaily.com/news/2026/07/05/naver-ai-search-cuts-hallucinations-30-points-costs-to-one",
+          "image_url": "",
+          "image": "images/models-04-ai-tabslm.jpg",
+          "image_source_url": "https://wimg.sedaily.com/news/cms/2026/04/09/news-p.v1.20260409.3902a8531bc6495b8c03f6d23d152cfe_P1.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "KAIST算出Agent能耗高136倍",
+          "body": "Seoul Economic Daily 报道，KAIST Professor Yu Min-soo 团队分析显示，AI agents 的能耗是标准 generative AI 的 136 倍。研究指出，Agent 完成任务时 LLM 调用次数约为普通生成式 AI 的 9.2 倍，响应时间则增加 153.7 倍。",
+          "janet_take": "Agent 最贵的地方在反复试错，不在那点表演式聪明。老板听到“自动完成任务”会兴奋，财务看到 136 倍能耗会清醒；上线前先算失败重跑和长链调用，不然省下的人力会被算力吃回去。",
+          "source": "Seoul Economic Daily",
+          "url": "https://en.sedaily.com/technology/2026/07/06/ai-agents-consume-136-times-more-power-than-standard",
+          "image_url": "",
+          "image": "images/insights-01-kaistagent136.jpg",
+          "image_source_url": "https://img.technews.tw/wp-content/uploads/2024/05/22141259/93856.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "AI工程大会推动生产系统落地",
+          "body": "人民网报道指出，今年 AI Engineer World's Fair 的关注点转向可部署、可验证、可扩展，并能稳定运行于真实生产环境的 AI 系统。Context Engineering、Inference、RAG 系统、多模态生成和 AI infrastructure 成为核心议题。",
+          "janet_take": "这轮转向会淘汰一批只会包装 demo 的团队。能接数据、跑任务、出日志、控成本的 AI 产品，才有资格进生产系统；讲不清失败边界的 Agent，就是事故源。",
+          "source": "人民网",
+          "url": "https://world.people.com.cn/n1/2026/0705/c1002-40753657.html",
+          "image_url": "",
+          "image": "images/insights-02-ai.jpg",
+          "image_source_url": "https://www.tuohe.net/uploads/images/167221485351863.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "央广论坛聚焦AI进实体产业",
+          "body": "央广网报道，2026 全球数字经济大会人工智能融合应用发展论坛在北京举办，主题为“智驱实体，数创未来”。论坛围绕人工智能对千行百业的影响与重塑，讨论 AI 从技术突破到真实生产力落地的路径。",
+          "janet_take": "“AI 进实体”最怕变成口号展板。关键要看谁愿意把生产数据、质检流程和售后反馈接进模型；只做会议演讲，不敢进车间，最后还是 PPT 智能化。",
+          "source": "央广网",
+          "url": "https://www.cnr.cn/bj/sijh/20260705/t20260705_527691253.shtml",
+          "image_url": "",
+          "image": "images/insights-03-ai.jpg",
+          "image_source_url": "https://mediabluk.cnr.cn/img/cnr/CNRCDP/2024/1112/2f43228742e2e173141026810132320010.jpg?auth=89bb278e114511f8d65dfef0c3627c55",
+          "image_origin": "search"
+        },
+        {
+          "title": "AI数据中心电力缺口被重新算账",
+          "body": "Seoul Economic Daily 在 AI infrastructure 相关报道中提到，SKT 将 AI data center 视为韩国继高速公路和高速互联网后的第三类创新基础设施。1GW AI 数据中心的典型成本可达约 70 万亿韩元，资金将来自自有投资、战略伙伴、长期客户合同和 project financing。",
+          "janet_take": "算力已经从 GPU 采购题变成融资题。未来谁能拿到长期电力、土地和客户预付款，谁就能压低推理价格；小团队只盯模型 API 单价，会错过更底层的成本拐点。",
+          "source": "SK Telecom / StockTitan",
+          "url": "https://www.stocktitan.net/news/SKT/sk-telecom-pursues-15gw-ai-data-center-buildout-aiming-to-become-z89wvmnlg5kq.html",
+          "image_url": "",
+          "image": "images/insights-04-ai.webp",
+          "image_source_url": "https://www.stocktitan.net/news_covers/SK_Telecom_Pursues_15GW_AI_Data_Center_Buildout_Aiming_to_Become_Asia_s_AI_Infrastructure_Hub_1077892.webp",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "忆生科技数亿元融资造机器人记忆系统",
+          "body": "36氪报道，港大教授成立的忆生科技 TranscEngram 完成数亿元天使轮融资，投资方包括中生制药、浦东创投、张江科投、张江高科等。公司目标是用“感知—预测—交互”闭环构建机器人“大脑+小脑”统一系统，探索可解释自主智能。",
+          "janet_take": "资本开始给机器人“记忆层”单独买单，说明具身智能不只缺硬件。记忆、预测和交互闭环如果做不稳，机器人永远像一次性 demo；但这类公司也要小心，科学叙事再漂亮，最后还得落到可复现任务。",
+          "source": "36氪",
+          "url": "https://m.36kr.com/p/3882365879005186",
+          "image_url": "",
+          "image": "images/insights2-01-20e046cb15.jpg",
+          "image_source_url": "https://img.36krcdn.com/hsossms/20260705/v2_b147f7cb30734694ad1f07fc42995346@000000_oswg38975oswg893oswg380_img_000?x-oss-process=image/resize,m_mfit,w_600,h_400,limit_0/crop,w_600,h_400,g_center",
+          "image_origin": "source"
+        },
+        {
+          "title": "brightplace入选RET AI加速器",
+          "body": "EINPresswire 报道，AI-native apartment rental discovery platform brightplace.ai 入选 RET Ventures 首个 PropTech AI Accelerator。公司基于 IntentOS 结构化租赁房源、社区和财务数据，面向多户住宅租赁与营销场景做 AI-driven search。",
+          "janet_take": "垂直 AI 的钱会流向脏数据行业。租房、保险、医疗、法律这些场景不缺聊天机器人，缺的是把真实业务数据整理成可搜索、可比较、可成交的结构；谁先把底层数据脏活干完，谁就有定价权。",
+          "source": "EINPresswire",
+          "url": "https://world.einnews.com/pr_news/924375416/brightplace-selected-for-ret-ventures-proptech-ai-accelerator-cohort",
+          "image_url": "",
+          "image": "images/insights2-02-brightplaceret-ai.png",
+          "image_source_url": "https://img.einnews.com/ampsize/1145520/brightplace-logo.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "ZoomInfo诉讼逼销售SaaS改计费",
+          "body": "GlobeNewswire 报道，ZoomInfo 投资者诉讼文件称，客户正在转向 consumption-based usage models，并开发内部 AI-driven go-to-market solutions。诉讼指控公司淡化相关趋势对业务的影响，反映 AI 正在冲击传统销售数据软件的座席订阅模式。",
+          "janet_take": "AI 对 SaaS 最狠的地方，是把“按席位卖软件”逼成“按结果和用量收费”。销售数据公司以前卖名单，现在客户想自己造智能销售系统；不能证明增量收入的工具，续费会越来越难看。",
+          "source": "GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2026/07/05/3322068/683/en/GTM-CLASS-ACTION-NOTICE-Faruqi-Faruqi-LLP-Reminds-ZoomInfo-Investors-of-Securities-Class-Action-Lawsuit-Deadline-on-August-24-2026.html",
+          "image_url": "",
+          "image": "images/insights2-03-zoominfosaas.jpg",
+          "image_source_url": "https://ml.globenewswire.com/Resource/Download/7f60c456-51b6-4096-a862-d5d3beda6cc5",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Sigenergy推出家庭能源Agent",
+          "body": "GlobeNewswire 报道，Sigenergy 发布 AI-driven 家庭能源系统 SigenStor Neo，并在 mySigen App 4.0 中集成 SigenAgent。公司称该 Agent 可感知、分析并自主行动，目标是在保留备电能力的同时降低用电成本，把“用户设定目标，AI 负责执行”带进家庭能源管理。",
+          "janet_take": "这类工具有现实价值，因为它管的是账单，远比情绪陪聊硬。家庭能源 Agent 如果真能在电价、储能、备电之间自动调度，会比一堆玩具聊天机器人更接近刚需；但前提是用户能看懂它为什么动了你的电池。",
+          "source": "Sigenergy / GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2026/07/05/3322108/0/fr/sigenergy-lance-sigenstor-neo-une-%C3%A9volution-pilot%C3%A9e-par-l-ia-de-son-syst%C3%A8me-r%C3%A9sidentiel-tout-en-un-de-gestion-de-l-%C3%A9nergie.html",
+          "image_url": "",
+          "image": "images/tools-01-sigenergyagent.webp",
+          "image_source_url": "https://uvpower.com.au/cdn/shop/files/SIgenergy_close_up.png?v=1734440260&width=990",
+          "image_origin": "search"
+        }
+      ]
+    }
+  }
+}

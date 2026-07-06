@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-07-06 · VOL 279</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/potato-center.css?v=potato-roll-20260617">
+  <link rel="stylesheet" href="../../styles/comments.css">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Fraunces (标题) · DM Sans (正文) · Geist Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'Geist Mono', 'SFMono-Regular', 'Fira Code', monospace;
+  --sans:         'DM Sans', 'PingFang SC', system-ui, sans-serif;
+  --display:      'Fraunces', Georgia, 'Noto Serif SC', serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+</head>
+<body>
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="../../index.html">首页</a>
+    <a href="../../news.html">Janet 快车箱</a>
+    <a href="../../portfolio.html">作品库</a>
+    <a href="../../gpt-image2-handbook.html">iGPT-Image2 手册</a>
+    <a href="../../shuttle-universe.html">穿梭宇宙</a>
+    <a href="../../misaligned-scenes.html">错位名场面</a>
+    <a href="../../index.html#about">关于 Janet</a>
+    <a href="../../index.html#contact">联系</a>
+  </div>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-07-06</div>
+          <div class="vol-info">VOL 279</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="算力账单摊牌" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-07-06 // VOL_279</div>
+   <h1>算力账单摊牌</h1>
+   <p>视频生成、AI 搜索和机器人同时冲向现实成本。</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">Janet 早。今天 AI 圈的热闹点不在参数表，而在账单：可灵拿 30 亿美元继续打视频生成，SKT 画出 15GW 数据中心蓝图，Naver 用轻量模型压 hallucination，KAIST 直接算出 Agent 比普通生成式 AI 更吃电。模型还在卷，但真正开始咬人的，是能耗、基建、搜索入口和机器人落地。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。</div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>📌 今日趋势：可灵用 30 亿美元融资把视频生成战场继续烧大，SK Telecom 把韩国 AI 数据中心目标推到 15GW，Naver 则反着来，用面向搜索的轻量模型把幻觉率压低 30 个百分点、成本压到三分之一。同一天，KAIST 给 Agent 算了一笔电费：复杂任务会触发更多 LLM 调用，能耗飙到普通生成式 AI 的 136 倍。</h2>
+  <p>对中国创作者和中小企业来说，今天的信号很冷：AI 工具会越来越多，但便宜、稳定、可控才是真门槛。视频生成要看可商用一致性，AI 搜索要看内容入口还剩多少流量，Agent 工作流要先算 token、电力和失败重跑成本，不要被“全自动”三个字骗去当付费测试员。</p>
+  <p>接下来 2-4 周盯三条线：可灵和 Seedance 会不会把视频生成价格继续打穿；韩国、国内和中东的 AI 数据中心订单会不会推高算力租金；具身智能融资能不能从“造大脑”走到可交付样机，否则资本热度会很快变成库存压力。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-30seedance.jpg" alt="可灵融资30亿美元硬刚Seedance" loading="lazy" decoding="async">
+    <figcaption>Seoul Economic Daily</figcaption>
+  </figure>
+  <h2>可灵融资30亿美元硬刚Seedance</h2>
+  <p class="item-meta">来源: Seoul Economic Daily · 2026-07-06 · <a href="https://en.sedaily.com/international/2026/07/05/chinas-video-ai-leader-kling-raises-3-billion-to-battle" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Seoul Economic Daily 报道，快手旗下视频 AI 业务可灵完成 30 亿美元融资，估值约 27 万亿韩元。报道称可灵已有超过 5 万企业客户、1 亿用户，第一季度收入 1465 亿韩元，百度、腾讯、阿里均在支持名单中，竞争对象直指字节 Seedance。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>视频生成赛道进入现金消耗战，谁都不想先眨眼。可灵最硬的牌在企业客户续费，不在一段酷炫样片；创作者要盯的是价格和版权边界，别只看样片滤镜。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-02-skt15gwai.jpg" alt="SKT押15GW数据中心做亚洲AI枢纽" loading="lazy" decoding="async">
+    <figcaption>SK Telecom / PR Newswire</figcaption>
+  </figure>
+  <h2>SKT押15GW数据中心做亚洲AI枢纽</h2>
+  <p class="item-meta">来源: SK Telecom / PR Newswire · 2026-07-06 · <a href="https://www.prnewswire.com/news-releases/sk-telecom-pursues-15gw-ai-data-center-buildout-aiming-to-become-asias-ai-infrastructure-hub-302817963.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>SK Telecom 宣布推进最高 15GW 规模的 AI data center buildout，目标把韩国建成亚洲 AI infrastructure hub。首批 5GW 容量将从 2029 年起分阶段上线，包含蔚山周边超过 2GW 集群，并由 SK 集团半导体、能源和建设能力配合。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI 基建已经是国家级工程，早就越过云厂商自租机柜阶段。15GW 这个数字告诉创业者一件事：未来模型价格不只由算法决定，还会被电网、土地、冷却和长期客户合同一起定价。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-naver-ai30.jpg" alt="Naver 用AI搜索压低幻觉30个百分点" loading="lazy" decoding="async">
+    <figcaption>Seoul Economic Daily</figcaption>
+  </figure>
+  <h2>Naver 用AI搜索压低幻觉30个百分点</h2>
+  <p class="item-meta">来源: Seoul Economic Daily · 2026-07-06 · <a href="https://en.sedaily.com/news/2026/07/05/naver-ai-search-cuts-hallucinations-30-points-costs-to-one" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Seoul Economic Daily 报道，Naver 在 conversational AI search 服务 AI Tab 中加载三项面向搜索优化的技术：search-optimized lightweight LLM、harness engineering 和 SLM 分工。Naver 称新方案将幻觉率降低 30 个百分点，成本降至约三分之一，响应速度提升约一倍。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Naver 没有跟着巨头比通用大模型肌肉，它在把搜索这个老入口重新磨刀。对内容创作者最扎心的是，搜索答案越好，点击越少；别祈祷流量回来，要让自己的内容成为 AI 答案引用源。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-ai.jpg" alt="人民网上线AI工程化大会观察" loading="lazy" decoding="async">
+    <figcaption>人民网</figcaption>
+  </figure>
+  <h2>人民网上线AI工程化大会观察</h2>
+  <p class="item-meta">来源: 人民网 · 2026-07-06 · <a href="https://world.people.com.cn/n1/2026/0705/c1002-40753657.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>人民网 7 月 5 日发文称，2026 AI Engineer World's Fair 释放出明确信号：AI 竞争正在从 Model Race 转向 Application &amp; Engineering Race。大会围绕 AI Agents、Context Engineering、Inference、RAG、多模态生成、AI infrastructure 和企业部署设置专题。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>行业终于从“模型会不会聊天”聊到“系统能不能上线”。这对国内团队是好事，吹参数越来越难，工程交付、可观测、可回滚、可计费才会被客户买单。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-1a0a1eb52b.jpg" alt="科大讯飞开放平台落地中亚" loading="lazy" decoding="async">
+    <figcaption>iFLYTEK / GlobeNewswire</figcaption>
+  </figure>
+  <h2>科大讯飞开放平台落地中亚</h2>
+  <p class="item-meta">来源: iFLYTEK / GlobeNewswire · 2026-07-06 · <a href="https://www.globenewswire.com/news-release/2026/07/05/3322052/0/en/iflytek-officially-launches-open-platform-in-central-asia-positioning-uzbekistan-as-a-new-regional-ai-hub.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GlobeNewswire 报道，iFLYTEK 在中亚正式推出开放平台，并把乌兹别克斯坦定位为区域 AI hub。平台整合 Spark Large Language Model、Spark Agent Platform、Spark MaaS、企业 AI 应用和开放开发平台，面向政府、企业、高校与开发者提供统一技术底座。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>国产 AI 出海已经不满足于卖一个聊天框，开始把模型、Agent、MaaS 和行业应用打包成基础设施。中亚市场不会给你硅谷式溢价，能不能本地化语言、政企流程和交付团队，才决定这单是不是样板。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-naverllmai-tab.jpg" alt="Naver用轻量LLM重做AI Tab" loading="lazy" decoding="async">
+    <figcaption>Seoul Economic Daily</figcaption>
+  </figure>
+  <h3>Naver用轻量LLM重做AI Tab</h3>
+  <p class="item-meta">来源: Seoul Economic Daily · 2026-07-06 · <a href="https://en.sedaily.com/news/2026/07/05/naver-ai-search-cuts-hallucinations-30-points-costs-to-one" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Naver 的 AI Tab 采用搜索优化 lightweight LLM，没有把所有问题都丢给通用大模型。报道提到，Naver 通过意图理解、上下文掌握和 SLM 分工，把搜索、购物、预约等真实服务场景的响应速度与成本放到同一张表上。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>轻量模型这次是商业版算盘。搜索场景要的是快、准、便宜，旗舰模型每次长篇表演只会抬高成本；做垂直 AI 的团队该学会为任务设计模型，少为发布会设计参数。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-spark-agent.jpg" alt="科大讯飞推Spark Agent出海中亚" loading="lazy" decoding="async">
+    <figcaption>iFLYTEK / GlobeNewswire</figcaption>
+  </figure>
+  <h3>科大讯飞推Spark Agent出海中亚</h3>
+  <p class="item-meta">来源: iFLYTEK / GlobeNewswire · 2026-07-06 · <a href="https://www.globenewswire.com/news-release/2026/07/05/3322052/0/en/iflytek-officially-launches-open-platform-in-central-asia-positioning-uzbekistan-as-a-new-regional-ai-hub.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>iFLYTEK 中亚开放平台把 Spark Agent Platform 与 Spark MaaS 放进同一套方案，强调政府、企业、高校和开发者可以在统一底座上构建 AI-powered solutions。它的重点在区域市场的开发平台与交付网络，单个模型跑分只是入场券。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Agent 平台出海拼的是本地工作流，中文发布会带不来长期订单。谁能把政企流程、语言适配和部署服务一起交出去，谁才有机会在新兴市场拿到长期座位。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-zygai.png" alt="ZygAI发布多模态模型周测" loading="lazy" decoding="async">
+    <figcaption>Hugging Face</figcaption>
+  </figure>
+  <h3>ZygAI发布多模态模型周测</h3>
+  <p class="item-meta">来源: Hugging Face · 2026-07-06 · <a href="https://huggingface.co/blog/ZygAI/2026-zygai-research-month-week-1" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Hugging Face 上的 ZygAI 周报发布 2026 年 7 月第一周多模态模型 benchmark，使用相同真实图片对多款模型做植物识别测试，比较回答质量、推理、实用性和图像理解。测试覆盖 ZygAI GPT-5.4 Mini、Nano、Claude Sonnet、Gemini 3.1、Qwen 3.6 35B A3B 等模型。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>小型 benchmark 不会决定行业排名，但它提示了一个方向：模型评测正在从抽象题库走向真实任务样本。创作者选视觉模型时，别只看榜单总分，拿自己的素材跑一轮才知道谁会胡说。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-ai-tabslm.jpg" alt="AI Tab用SLM分工提速一倍" loading="lazy" decoding="async">
+    <figcaption>Seoul Economic Daily</figcaption>
+  </figure>
+  <h3>AI Tab用SLM分工提速一倍</h3>
+  <p class="item-meta">来源: Seoul Economic Daily · 2026-07-06 · <a href="https://en.sedaily.com/news/2026/07/05/naver-ai-search-cuts-hallucinations-30-points-costs-to-one" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Naver 的技术方案把部分意图识别、上下文处理和服务场景任务交给 small language models 分担。报道称这种分工让 AI Tab 响应速度翻倍，并把成本压到原来的三分之一，证明搜索 AI 不一定要堆最大模型。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>SLM 的价值在这里被说清了：它替产品省钱，不替大模型撑面子。国内做搜索、客服、知识库的团队要先拆任务，再配模型；全链路旗舰模型只会把毛利烧穿。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-kaistagent136.jpg" alt="KAIST算出Agent能耗高136倍" loading="lazy" decoding="async">
+    <figcaption>Seoul Economic Daily</figcaption>
+  </figure>
+  <h3>KAIST算出Agent能耗高136倍</h3>
+  <p class="item-meta">来源: Seoul Economic Daily · 2026-07-06 · <a href="https://en.sedaily.com/technology/2026/07/06/ai-agents-consume-136-times-more-power-than-standard" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Seoul Economic Daily 报道，KAIST Professor Yu Min-soo 团队分析显示，AI agents 的能耗是标准 generative AI 的 136 倍。研究指出，Agent 完成任务时 LLM 调用次数约为普通生成式 AI 的 9.2 倍，响应时间则增加 153.7 倍。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Agent 最贵的地方在反复试错，不在那点表演式聪明。老板听到“自动完成任务”会兴奋，财务看到 136 倍能耗会清醒；上线前先算失败重跑和长链调用，不然省下的人力会被算力吃回去。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-ai.jpg" alt="AI工程大会推动生产系统落地" loading="lazy" decoding="async">
+    <figcaption>人民网</figcaption>
+  </figure>
+  <h3>AI工程大会推动生产系统落地</h3>
+  <p class="item-meta">来源: 人民网 · 2026-07-06 · <a href="https://world.people.com.cn/n1/2026/0705/c1002-40753657.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>人民网报道指出，今年 AI Engineer World's Fair 的关注点转向可部署、可验证、可扩展，并能稳定运行于真实生产环境的 AI 系统。Context Engineering、Inference、RAG 系统、多模态生成和 AI infrastructure 成为核心议题。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这轮转向会淘汰一批只会包装 demo 的团队。能接数据、跑任务、出日志、控成本的 AI 产品，才有资格进生产系统；讲不清失败边界的 Agent，就是事故源。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-ai.jpg" alt="央广论坛聚焦AI进实体产业" loading="lazy" decoding="async">
+    <figcaption>央广网</figcaption>
+  </figure>
+  <h3>央广论坛聚焦AI进实体产业</h3>
+  <p class="item-meta">来源: 央广网 · 2026-07-06 · <a href="https://www.cnr.cn/bj/sijh/20260705/t20260705_527691253.shtml" target="_blank" rel="noopener">原文链接</a></p>
+  <p>央广网报道，2026 全球数字经济大会人工智能融合应用发展论坛在北京举办，主题为“智驱实体，数创未来”。论坛围绕人工智能对千行百业的影响与重塑，讨论 AI 从技术突破到真实生产力落地的路径。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>“AI 进实体”最怕变成口号展板。关键要看谁愿意把生产数据、质检流程和售后反馈接进模型；只做会议演讲，不敢进车间，最后还是 PPT 智能化。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-ai.webp" alt="AI数据中心电力缺口被重新算账" loading="lazy" decoding="async">
+    <figcaption>SK Telecom / StockTitan</figcaption>
+  </figure>
+  <h3>AI数据中心电力缺口被重新算账</h3>
+  <p class="item-meta">来源: SK Telecom / StockTitan · 2026-07-06 · <a href="https://www.stocktitan.net/news/SKT/sk-telecom-pursues-15gw-ai-data-center-buildout-aiming-to-become-z89wvmnlg5kq.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Seoul Economic Daily 在 AI infrastructure 相关报道中提到，SKT 将 AI data center 视为韩国继高速公路和高速互联网后的第三类创新基础设施。1GW AI 数据中心的典型成本可达约 70 万亿韩元，资金将来自自有投资、战略伙伴、长期客户合同和 project financing。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>算力已经从 GPU 采购题变成融资题。未来谁能拿到长期电力、土地和客户预付款，谁就能压低推理价格；小团队只盯模型 API 单价，会错过更底层的成本拐点。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Prediction</span>
+        <span class="st-zh">投资视角 · 大胆预测</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-20e046cb15.jpg" alt="忆生科技数亿元融资造机器人记忆系统" loading="lazy" decoding="async">
+    <figcaption>36氪</figcaption>
+  </figure>
+  <h3>忆生科技数亿元融资造机器人记忆系统</h3>
+  <p class="item-meta inverted">来源: 36氪 · 2026-07-06 · <a href="https://m.36kr.com/p/3882365879005186" target="_blank" rel="noopener">原文链接</a></p>
+  <p>36氪报道，港大教授成立的忆生科技 TranscEngram 完成数亿元天使轮融资，投资方包括中生制药、浦东创投、张江科投、张江高科等。公司目标是用“感知—预测—交互”闭环构建机器人“大脑+小脑”统一系统，探索可解释自主智能。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>资本开始给机器人“记忆层”单独买单，说明具身智能不只缺硬件。记忆、预测和交互闭环如果做不稳，机器人永远像一次性 demo；但这类公司也要小心，科学叙事再漂亮，最后还得落到可复现任务。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-brightplaceret-ai.png" alt="brightplace入选RET AI加速器" loading="lazy" decoding="async">
+    <figcaption>EINPresswire</figcaption>
+  </figure>
+  <h3>brightplace入选RET AI加速器</h3>
+  <p class="item-meta inverted">来源: EINPresswire · 2026-07-06 · <a href="https://world.einnews.com/pr_news/924375416/brightplace-selected-for-ret-ventures-proptech-ai-accelerator-cohort" target="_blank" rel="noopener">原文链接</a></p>
+  <p>EINPresswire 报道，AI-native apartment rental discovery platform brightplace.ai 入选 RET Ventures 首个 PropTech AI Accelerator。公司基于 IntentOS 结构化租赁房源、社区和财务数据，面向多户住宅租赁与营销场景做 AI-driven search。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>垂直 AI 的钱会流向脏数据行业。租房、保险、医疗、法律这些场景不缺聊天机器人，缺的是把真实业务数据整理成可搜索、可比较、可成交的结构；谁先把底层数据脏活干完，谁就有定价权。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-zoominfosaas.jpg" alt="ZoomInfo诉讼逼销售SaaS改计费" loading="lazy" decoding="async">
+    <figcaption>GlobeNewswire</figcaption>
+  </figure>
+  <h3>ZoomInfo诉讼逼销售SaaS改计费</h3>
+  <p class="item-meta inverted">来源: GlobeNewswire · 2026-07-06 · <a href="https://www.globenewswire.com/news-release/2026/07/05/3322068/683/en/GTM-CLASS-ACTION-NOTICE-Faruqi-Faruqi-LLP-Reminds-ZoomInfo-Investors-of-Securities-Class-Action-Lawsuit-Deadline-on-August-24-2026.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GlobeNewswire 报道，ZoomInfo 投资者诉讼文件称，客户正在转向 consumption-based usage models，并开发内部 AI-driven go-to-market solutions。诉讼指控公司淡化相关趋势对业务的影响，反映 AI 正在冲击传统销售数据软件的座席订阅模式。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>AI 对 SaaS 最狠的地方，是把“按席位卖软件”逼成“按结果和用量收费”。销售数据公司以前卖名单，现在客户想自己造智能销售系统；不能证明增量收入的工具，续费会越来越难看。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-sigenergyagent.webp" alt="Sigenergy推出家庭能源Agent" loading="lazy" decoding="async">
+    <figcaption>Sigenergy / GlobeNewswire</figcaption>
+  </figure>
+  <h2>Sigenergy推出家庭能源Agent</h2>
+  <p class="item-meta">来源: Sigenergy / GlobeNewswire · 2026-07-06 · <a href="https://www.globenewswire.com/news-release/2026/07/05/3322108/0/fr/sigenergy-lance-sigenstor-neo-une-%C3%A9volution-pilot%C3%A9e-par-l-ia-de-son-syst%C3%A8me-r%C3%A9sidentiel-tout-en-un-de-gestion-de-l-%C3%A9nergie.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GlobeNewswire 报道，Sigenergy 发布 AI-driven 家庭能源系统 SigenStor Neo，并在 mySigen App 4.0 中集成 SigenAgent。公司称该 Agent 可感知、分析并自主行动，目标是在保留备电能力的同时降低用电成本，把“用户设定目标，AI 负责执行”带进家庭能源管理。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这类工具有现实价值，因为它管的是账单，远比情绪陪聊硬。家庭能源 Agent 如果真能在电价、储能、备电之间自动调度，会比一堆玩具聊天机器人更接近刚需；但前提是用户能看懂它为什么动了你的电池。</span>
+  </div>
+</div>
+</div>
+
+
+    <div class="news-card-actions output-engagement" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-07-06" data-edition-title="Janet 快车箱 2026-07-06" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        评论 <span class="comment-count" data-comment-count data-edition-id="2026-07-06">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-07-06"></section>
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: Seoul Economic Daily, SK Telecom / PR Newswire, 人民网, iFLYTEK / GlobeNewswire, Hugging Face, 央广网, SK Telecom / StockTitan, 36氪, EINPresswire, GlobeNewswire, Sigenergy / GlobeNewswire<br>
+      本报内容由 AI 辅助采编，经人工校验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
+  <script src="../../scripts/nav.js?v=potato-roll-20260617"></script>
+</body>
+</html>

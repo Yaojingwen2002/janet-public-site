@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-07",
+  "vol": "280",
+  "intro_text": "Janet 早。今天 AI 圈最刺眼的不是谁又发了大模型，而是 AI 已经开始接管脏活：微软继续裁人给 AI 基建腾钱，Reddit 用 LLM 抓 LLM 垃圾，Alberta 用 Claude Code 扫政府遗留代码，Sysdig 则记录到 AI Agent 参与勒索攻击。工具越来越能干，账单、责任和权限也一起变硬。",
+  "cover": {
+    "title": "Agent 进了脏活间",
+    "subtitle": "从裁员、代码审计到勒索攻击，AI 不再只演示能力，而是在接管高风险任务。",
+    "image_path": "runs/2026-07-07/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI technology briefing cover, 21:9 widescreen PNG. Primary request: Create a sharp AI technology magazine cover background for a daily briefing about AI agents leaving demos and entering production systems: government code security scans, enterprise agent sandboxes, AI spam defense, model routing, privacy data capture, memory chips, smart glasses, and AI-run ransomware. Scene/backdrop: a premium editorial command room with dark server racks, glass policy panels, thin Janet-green network lines, a restrained security-lock motif, a small heads-up display lens outline, memory-chip stacks, and agent workflow traces moving through isolated sandboxes. Subject: no people, no full robot faces; use infrastructure, code audit traces, data gates, chip geometry, and privacy/control symbols as the visual subject. Style/medium: high-end AI technology magazine cover, cinematic minimal raster illustration/photo-composite, sophisticated and sharp. Composition/framing: ultra-wide 21:9 landscape, strong negative space in the lower-left and center for HTML overlay text, diagonal tension, clean focal hierarchy, uncluttered. Lighting/mood: serious, expensive, crisp shadows, controlled studio lighting, not cyberpunk. Color palette: black, white, deep ink green, Janet signal green accents, tiny amber warning highlights only if useful. Materials/textures: matte black server metal, glass UI panels, brushed metal chips, fine circuit traces, subtle paper-grain texture. Text: no text in image. Constraints: 21:9 widescreen, no readable UI text, no logo, no watermark, no date, no title, no cartoon, no glowing brain, no cheap neon, no full robot face."
+  },
+  "trend": "微软裁掉 4800 人，Google 把 Search Services 数据单独开成默认保存项，Reddit 每天拦截 2300 万次垃圾浏览，Alberta 用约 50 个 Claude Code 并行 Agent 扫政府代码，Sysdig 记录到 JadePuffer 借 AI Agent 执行勒索流程。今天的共同动作很直白：AI 已经从“帮你写一段”走到“替组织处理高风险、低体面、强责任”的脏活间。\n\n对中国创作者和中小企业来说，便宜模型只是入场券，真正影响生死的是权限、数据、审计和失败成本。能把 Agent 关进 sandbox、能解释每一次工具调用、能把用户数据训练开关说清楚的产品，才有资格进入业务；只会喊自动化的工具，会先被安全和法务拖住。\n\n接下来 2-4 周盯三件事：OpenAI 和 Tencent 这类轻量模型会不会继续压低 fallback 成本；AWS、Vercel、Databricks 这类平台会不会把 Agent 执行层做成新收费入口；AI 勒索、AI spam、AI 眼镜隐私争议会不会逼出更硬的企业采购门槛。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "微软裁掉4800人给AI腾钱",
+          "body": "TechCrunch 和 Reuters 报道，Microsoft 在 7 月 6 日确认裁掉约 4800 个岗位，约占全球员工 2.1%，涉及商业销售和 Xbox 等部门。公司称岗位并非直接被 AI 替代，但承认 AI 正在改变工作方式；Reuters 同时指出，大型科技公司的 AI 支出压力正在推高裁员和组织重组。",
+          "janet_take": "嘴上说 AI 没有直接替人，账本已经先让座。微软最诚实的地方在预算流向：人力成本被压下去，算力和云基建继续吃钱；打工人要看的不是安慰话术，是自己岗位有没有直接挂上收入和交付。",
+          "source": "TechCrunch / Reuters",
+          "url": "https://techcrunch.com/2026/07/06/microsoft-lays-off-nearly-5000-employees-across-xbox-commercial-sales/",
+          "image_url": "",
+          "image": "images/news-01-4800ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/05/microsoft-logo.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google默认拿搜索数据训AI",
+          "body": "TechCrunch 报道，Google 调整 Search Services History 和 Search Services Personalization 设置，把 Search 数据保存和 Web & App Activity 拆开。Google 帮助文档称，历史记录可用于提供、开发和改进服务，包括训练 generative AI models；新 Search data 设置默认开启，用户需要单独关闭或配置自动删除。",
+          "janet_take": "隐私设置最阴的地方，是把旧开关拆成新开关。用户以为关了 Web & App Activity 就安全，结果搜索数据另起炉灶；创作者和小团队用 Google 全家桶时，要把素材、客户搜索和训练数据边界重新查一遍。",
+          "source": "TechCrunch / Google Help",
+          "url": "https://techcrunch.com/2026/07/06/if-you-use-google-youre-training-its-ai-heres-how-to-opt-out/",
+          "image_url": "",
+          "image": "images/news-02-googleai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2019/10/google-search-app-ios.jpg?resize=1200,644",
+          "image_origin": "source"
+        },
+        {
+          "title": "Reddit用LLM管住2300万垃圾浏览",
+          "body": "Reddit 在公司博客披露新的 LLM-powered spam detection 指标，平台现在每天在真人看到前拦截约 2300 万次垃圾浏览，识别约 2.5 万条新垃圾帖子和评论，并在三个月内撤销约 200 万次不真实投票。Engadget 和 State of Brand 均指出，Reddit 正用 LLM 处理 LLM 生成的 spam。",
+          "janet_take": "平台进入自我污染时代：AI 造垃圾，再用 AI 清垃圾。Reddit 卖给模型公司的核心资产是人味和真实讨论，如果这层坏掉，它的数据授权也会贬值；内容平台未来最贵的岗位，可能是反机器水军系统。",
+          "source": "Reddit / Engadget / State of Brand",
+          "url": "https://www.thestateofbrand.com/news/reddit-using-llms-to-fight-llm-spam",
+          "image_url": "",
+          "image": "images/news-03-redditllm2300.png",
+          "image_source_url": "https://cdn.prod.website-files.com/69d68fe7dde9e79d19ddf151/6a4be4803201448ca69628e6_093908ff-ace5-4033-8ef2-b4e4ba7cc0bd.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Alberta用50个Claude Agent扫政府代码",
+          "body": "Anthropic 7 月 6 日发布的案例被 Linkloot 和加拿大地方媒体转述：Alberta Ministry of Technology and Innovation 使用约 50 个并行 Claude Code agents 扫描政府遗留代码库，定位漏洞，引用具体文件和行号，生成修复，并在需要时写测试，目标是加速公共服务系统现代化。",
+          "janet_take": "政府代码库终于成了 Agent 的硬考场。写 demo 容易，扫几十年遗留系统、给出可追责行号和补丁才是真活；国内政企项目如果要上 Agent，先学这个玩法：权限隔离、结果可验、修复能回滚。",
+          "source": "Anthropic / Linkloot / Red Deer Advocate",
+          "url": "https://linkloot.io/blog/alberta-claude-code-ai-security-review-checklist",
+          "image_url": "",
+          "image": "images/news-04-alberta50claude-agent.webp",
+          "image_source_url": "https://linkloot.io/_media/cloudinary/dbwsf3ykz/image/upload/v1783365385/linkloot/blog-covers/openclaw-alberta-claude-code-ai-security-review-checklist.webp",
+          "image_origin": "source"
+        },
+        {
+          "title": "AI Agent跑完勒索攻击链",
+          "body": "CyberScoop 报道，Sysdig 记录到 JadePuffer 攻击中使用 AI Agent 降低勒索操作复杂度、加快节奏并获得操作优势。TNW 转述称，该 Agent 利用 Langflow 漏洞，横向移动，处理配置加密，并在 31 秒内诊断失败登录；攻击仍有缺陷，包括未保存解密密钥导致恢复无望。",
+          "janet_take": "安全圈最怕的是廉价黑客突然变快。AI Agent 正在压低攻击门槛，哪怕流程粗糙，也足够让中小公司遭殃；安全团队别再只防 prompt 泄露，Agent 的工具权限就是新攻击面。",
+          "source": "CyberScoop / Sysdig / TNW",
+          "url": "https://cyberscoop.com/sysdig-judepuffer-ai-agentic-ransomware-attack/",
+          "image_url": "",
+          "image": "images/news-05-ai-agent.jpg",
+          "image_source_url": "https://cyberscoop.com/wp-content/uploads/sites/3/2026/07/GettyImages-2235374763.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "OpenAI换上GPT-5.5 Instant Mini",
+          "body": "OpenAI Help Center 7 月 6 日 release notes 显示，GPT-5.5 Instant Mini 正在 ChatGPT 中推出，替代 GPT-5.3 Instant Mini，作为用户触达 GPT-5.5 Instant 或 Auto rate limit 后的 fallback model。OpenAI 特别说明该模型不会出现在 model picker 中，也不影响 API 或 Codex。",
+          "janet_take": "fallback 模型才是大规模产品的真成本刀。用户看不到它，但平台靠它决定限额后的体验会不会崩；做 AI SaaS 的团队也该学会分层，不要每个请求都拿旗舰模型烧钱。",
+          "source": "OpenAI Help Center",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image_url": "",
+          "image": "images/models-01-openaigpt-55-instant-mini.jpg",
+          "image_source_url": "https://yashbarochiya.com/wp-content/uploads/2025/08/GPT-5.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Tencent开源295B Hy3模型",
+          "body": "VentureBeat 7 月 6 日报道，Tencent 发布 Hy3，一款 295B 参数模型，并使用 Apache 2.0 license。报道称 Hy3 在多项评测中可与 GLM-5.1 和 GLM-5.2 竞争，体量约为对手一半，但编码能力仍是明显短板；Techmeme 同步摘录称该模型此前已在 4 月预览。",
+          "janet_take": "Apache 2.0 才是这条最硬的信息。中国大模型如果想进海外企业和开源工作流，许可证比宣传口号更有杀伤力；但 coding 短板也说明，通用强不等于能替开发者干活。",
+          "source": "VentureBeat / Tencent",
+          "url": "https://venturebeat.com/technology/tencents-apache-licensed-hy3-takes-on-glm-5-2-at-half-the-size-and-wins-everywhere-except-coding/",
+          "image_url": "",
+          "image": "images/models-02-tencent295b-hy3.png",
+          "image_source_url": "https://images.ctfassets.net/jdtwqhzvc2n1/5WKMtIVc0jqwmy7jbaJZbD/2ce92e10143e41537cb24c2180fc43de/Gemini_Generated_Image_u2p5szu2p5szu2p5.png?w=800&q=75",
+          "image_origin": "source"
+        },
+        {
+          "title": "AWS接入Claude Sonnet 5到Bedrock",
+          "body": "AWS News Blog 7 月 6 日 weekly roundup 显示，Claude Sonnet 5 已进入 AWS 相关服务更新，同时提到 Amazon WorkSpaces for AI agents、Amazon Bedrock、SageMaker AI 等更新。AWS 把新模型可用性和 Agent 工作区放在同一轮公告里，目标是把模型调用接到企业云执行环境。",
+          "janet_take": "Claude 进 Bedrock 的重点在企业采购流程，不在多一个模型货架。最能卖钱的是权限、日志、区域和账单统一；创业团队如果只卖一个 API wrapper，会被云厂打成插件。",
+          "source": "AWS News Blog",
+          "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-sonnet-5-on-aws-amazon-workspaces-for-ai-agents-aws-service-availability-updates-and-more-july-6-2026/",
+          "image_url": "",
+          "image": "images/models-03-awsclaude-sonnet-5bedrock.png",
+          "image_source_url": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2023/08/13/AWS-WIR-default.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Databricks把OpenAI Agent接进企业数据",
+          "body": "LetsDataScience 7 月 6 日汇总称，Databricks 将与 OpenAI 的合作重点转向生产级 agents，通过 Databricks Agent Tools 让 Codex 和 GPT-powered agents 以 governed access 方式连接企业数据和 MCPs。Databricks 此前也在 release notes 中持续加入 hosted model 与 governance 能力。",
+          "janet_take": "模型聪明只是半张票，能安全摸到企业数据才是另外半张。Databricks 这类平台正在卖“允许 Agent 干活”的闸门；数据团队要小心，接进去容易，权限设计烂了就是自动化泄密。",
+          "source": "LetsDataScience / Databricks",
+          "url": "https://letsdatascience.com/news/topic/openai",
+          "image_url": "",
+          "image": "images/models-04-databricksopenai-agent.png",
+          "image_source_url": "https://letsdatascience.com/lds-og-image.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Vercel开放Dockerfile直上生产",
+          "body": "Cloud Native Now 7 月 6 日报道，Vercel 现在允许开发者把任意 Dockerfile 直接部署到生产，运行方式是 serverless function 并自动扩缩容。报道同时指出，Vercel 仍有 function limits、无 durable storage 等边界；这让前端平台进一步吃进后端和 AI app 部署场景。",
+          "janet_take": "Vercel 在拆掉最后一堵前后端墙。对 AI 原型团队很香，因为从 demo 到上线少一层运维；但别忘了 serverless 的边界，长任务、状态和数据落盘一旦处理不好，生产事故会比部署成功来得更快。",
+          "source": "Cloud Native Now",
+          "url": "https://cloudnativenow.com/features/vercel-now-lets-you-deploy-any-dockerfile-straight-to-production/",
+          "image_url": "",
+          "image": "images/insights-01-verceldockerfile.webp",
+          "image_source_url": "https://cloudnativenow.com/wp-content/uploads/2026/07/Untitled-design-2026-07-06T104927.089.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google MaxText训练中断秒级恢复",
+          "body": "Google for Developers Blog 在 7 月 6 日列出 MaxText elastic training 更新，标题称团队终止一个 TPU mid-training 后，训练可在数秒内恢复。该内容属于 Google Cloud AI Cloud how-to，重点是弹性训练和故障恢复，而不是单纯提高 benchmark。",
+          "janet_take": "训练恢复能力比跑分更接近真钱。大模型训练最怕机器掉线、队列中断和重启浪费，秒级恢复能直接省预算；国内训练团队也该少晒集群规模，多晒失败恢复曲线。",
+          "source": "Google for Developers Blog",
+          "url": "https://developers.googleblog.com/build-agentic-full-stack-apps-with-genkit/",
+          "image_url": "",
+          "image": "images/insights-02-google-maxtext.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Ai-1-meta.2e16d0ba.fill-1200x600.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Canada军方限制AI眼镜使用",
+          "body": "Canada Department of National Defence 7 月 6 日发布 AI glasses policy update，讨论 AI-enabled eyewear 在国防环境中的使用边界。公告配图和说明都指向具备记录、通信和 AI 能力的智能眼镜，提示此类设备正在进入更敏感的组织场景。",
+          "janet_take": "AI 眼镜最先撞上纪律和保密。镜头、麦克风和实时助手戴在脸上，会议室、工厂和军队都会紧张；硬件创业者别只讲解放双手，先讲清楚什么时候绝对不能录。",
+          "source": "Canada Department of National Defence",
+          "url": "https://www.canada.ca/en/department-national-defence/maple-leaf/defence/2026/07/artificial-intelligence-glasses.html",
+          "image_url": "",
+          "image": "images/insights-03-canadaai.jpg",
+          "image_source_url": "https://www.canada.ca/content/dam/dnd-mdn/images/maple-leaf/articles/2026/07/07-06-ai-glasses-policy-360x203.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google和FBI关停NetNut代理网络",
+          "body": "Malwarebytes 7 月 6 日报道，Google、FBI 和合作伙伴打击了 NetNut residential proxy network。报道称该网络依赖大量被劫持设备，常被犯罪分子利用；在 AI 自动化攻击和大规模抓取场景下，住宅代理基础设施正成为执法和平台治理重点。",
+          "janet_take": "AI 攻击要规模化，代理网络就是水电煤。打掉 NetNut 这种基础设施，比封几个账号更疼；做风控和爬虫业务的团队要明白，住宅代理正在从灰产工具变成监管靶心。",
+          "source": "Malwarebytes",
+          "url": "https://www.malwarebytes.com/blog/news/2026/03/pentagon-ditches-anthropic-ai-over-security-risk-and-openai-takes-over",
+          "image_url": "",
+          "image": "images/insights-04-googlefbinetnut.webp",
+          "image_source_url": "https://www.malwarebytes.com/wp-content/uploads/sites/2/2026/03/Claude-OpenAI.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Even Realities融资1.5亿美元成独角兽",
+          "body": "TechCrunch 报道，smart glasses 公司 Even Realities 完成 1.5 亿美元融资，估值达到 10 亿美元，本轮由 Meituan 和 Tencent 领投。公司主打 camera-free smart glasses，与 Meta、Snap 等带相机和 AI assistant 的路线形成差异化。",
+          "janet_take": "资本在押一个很微妙的判断：眼镜要智能，但用户不一定想脸上挂摄像头。camera-free 是隐私卖点，也是能力天花板；中国硬件团队要看清，下一轮竞争不只比功能，还比别人愿不愿意跟你同处一室。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/06/smart-glasses-maker-even-realities-hits-1b-valuation-with-150m-funding-led-by-meituan-tencent/",
+          "image_url": "",
+          "image": "images/insights2-01-even-realities15.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/Even-G2-and-R1-with-HUD.jpeg?resize=1200,675",
+          "image_origin": "source"
+        },
+        {
+          "title": "三星和SK海力士加码AI内存厂",
+          "body": "Blocks & Files 7 月 6 日报道，Samsung 和 SK Hynix 正扩大芯片厂支出，押注 HBM、DRAM 和 NAND 受 AI data center 需求拉动的内存 super-cycle。报道还提到 SK Telecom、GS 和 Naver 计划投入约 550 万亿韩元建设总计 8.4GW 的 AI data centers。",
+          "janet_take": "AI 基建的瓶颈不只在 GPU，也在内存和电。HBM、DRAM、NAND 被数据中心吸走，消费电子和小服务器都会跟着涨；创业公司别只问显卡租金，存储和内存报价也会吃掉毛利。",
+          "source": "Blocks and Files",
+          "url": "https://www.blocksandfiles.com/flash/2026/07/06/samsung-and-sk-hynix-spending-big-on-chip-fabs/5266992",
+          "image_url": "",
+          "image": "images/insights2-02-skai.jpg",
+          "image_source_url": "http://n.sinaimg.cn/sinakd20108/600/w896h504/20241104/4eb9-12b7e9da1edbd186d964e4fd2680d880.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Skello融资2亿欧元反向稀释创始人",
+          "body": "TechFundingNews 7 月 6 日报道，法国 workforce management 公司 Skello 完成 2 亿欧元融资，并强调创始人在本轮后持股比例反而更高。虽然 Skello 不是纯 AI 公司，但在欧洲企业软件融资环境回暖中，AI 自动排班、劳动力优化和中后台效率工具仍是资本关注方向。",
+          "janet_take": "欧洲 SaaS 回暖靠的不是性感故事，靠的是老板们还在买降本工具。排班、工时、门店效率这类脏活如果叠上 AI，会比花哨聊天助手更容易收钱；国内工具团队别只追 Agent，要追老板愿意月付的痛点。",
+          "source": "TechFundingNews",
+          "url": "https://techfundingnews.com/",
+          "image_url": "",
+          "image": "images/insights2-03-skello2.png",
+          "image_source_url": "https://techfundingnews.com/wp-content/uploads/2024/06/TFN_network.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "PointFive发布Coding Task成本指数",
+          "body": "PointFive 7 月 6 日发布 Coding Task Index，用一个标准 coding task 估算不同模型的成本，假设 200K input 和 30K output。该指数列出 Claude Haiku 4.5、Gemini 3.1 Pro、GPT-5.3-Codex、Claude Sonnet 5 等模型的单任务价格，帮助团队按任务而不是按 token 幻觉比较成本。",
+          "janet_take": "今天最值得收藏的工具是这个成本表。代码 Agent 进入团队后，老板别只问“哪个模型最强”，要问一个 PR、一次修 bug、一次重构到底多少钱；任务成本算清楚，才不会被 token 发票偷袭。",
+          "source": "PointFive",
+          "url": "https://www.pointfive.co/blog/the-pointfive-coding-task-index",
+          "image_url": "",
+          "image": "images/tools-01-pointfivecoding-task.png",
+          "image_source_url": "https://www.pointfive.co/og-image.png",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

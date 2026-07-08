@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-08",
+  "vol": "281",
+  "intro_text": "今天的 AI 新闻不再像发布会，而像一张企业采购清单：Claude Cowork 上手机，Meta Muse Image 进社交入口，Hugging Face 模型进云厂托管，Norm 用法律 Agent 拿到独角兽估值，安全机构则给头部 AI 公司打出低分。Agent 终于开始离开演示桌，代价是账单、权限、责任和安全漏洞一起上桌。",
+  "cover": {
+    "title": "任务进了控制室",
+    "subtitle": "从手机、云厂、法律和安全系统看，AI 正在进入有预算、有权限、有责任的真实工作流。",
+    "image_path": "runs/2026-07-08/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: 21:9 cover image for Janet's AI technology briefing. Theme: AI agents leaving the demo desk and entering real business control rooms: mobile task agents, enterprise billing controls, open-weight models on managed cloud, safety dashboards, legal compliance, and AI infrastructure chips. Premium AI technology magazine cover, black/off-white with Janet green accents, no readable text, no logos, no dates, no watermark, no cartoon, no glowing brain, no cheap neon, no full robot face."
+  },
+  "trend": "Claude Cowork 上了手机和 Web，Meta Muse Image 进了 Meta AI、Instagram、WhatsApp 和广告工作流，Hugging Face 模型被搬进 Microsoft Foundry 和 SageMaker，Norm 用法律 Agent 拿到 1.2 亿美元融资，Cycode、Dark Reading 和 Future of Life 又把安全账本摊开。今天的共同动作很直白：Agent 和模型分发不再只拼能力，开始拼谁能进入真实组织的入口、预算、权限和追责链。\n\n对中国创作者和中小企业来说，机会不在“又多一个 AI 工具”，而在把工具接进具体场景：移动办公、素材生成、代码审查、机器人训练、支付调查、法律与风控。能省掉切 App、查资料、审代码、跑部署的产品会收钱；只会讲智能体概念、不给权限边界和成本账单的，会被客户法务和安全团队挡在门外。\n\n接下来 2-4 周要盯三件事：Claude Cowork 的移动端能不能把非代码知识工作做成新入口；Meta Muse Image 会不会把社交图像生成价格继续压扁；开源模型上云和 Agent 安全可视化会不会成为企业采购新门槛。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Claude Cowork 登上手机和 Web",
+          "body": "Anthropic 7 月 7 日宣布 Claude Cowork 开始在 mobile 和 web 推出 beta，先面向 Max plan 用户，后续扩展到更多计划。官方称 Chat 和 Cowork 将共享一个 home tab、侧边栏、搜索以及 Projects 与 Artifacts 入口，让用户在桌面交给 Claude 的任务可以继续在手机或网页端跟进。",
+          "janet_take": "Claude Cowork 这次打的不是程序员，而是所有离开电脑还要追任务的人。Agent 如果只能坐在 IDE 里，就只是代码助手；一旦进手机和浏览器，它抢的是日常办公的默认入口。",
+          "source": "Anthropic / TechCrunch / VentureBeat",
+          "url": "https://claude.com/blog/cowork-web-mobile",
+          "image_url": "",
+          "image": "images/news-01-claude-cowork-web.jpg",
+          "image_source_url": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6a4d224da8363d1eb2751fe3_og_cowork-web-mobile.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Norm 融资1.2亿美元成独角兽",
+          "body": "Norm Ai 7 月 7 日宣布完成 1.2 亿美元 Series C，估值达到 12 亿美元，由 Khosla Ventures 领投，Blackstone、Bain Capital Ventures、Craft Ventures、Coatue、Vanguard 等参投。公司称创立以来融资超过 2.6 亿美元，客户管理资产规模合计超过 30 万亿美元，资金将用于扩招、扩展 practice area，并推进受监管企业里的 supervisory AI agents。",
+          "janet_take": "法律 AI 终于不再只卖“帮你写合同”的玩具。Norm 的估值押的是可监督、可追责、能进受监管流程的 Agent；这条赛道最值钱的不是生成文本，是出错后谁签字、谁复核、谁背锅。",
+          "source": "Norm Ai / PRNewswire / Reuters",
+          "url": "https://www.prnewswire.com/news-releases/norm-ai-raises-120-million-at-a-1-2-billion-valuation-led-by-khosla-ventures-to-deliver-the-full-stack-model-for-legal-ai-302819152.html",
+          "image_url": "",
+          "image": "images/news-02-norm-12.jpg",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS1573254/Norm-logo-Logo-Logo.jpg?id=OA2752266&p=twitter",
+          "image_origin": "source"
+        },
+        {
+          "title": "Figma 收下 Bud 团队抢代码画布",
+          "body": "TechCrunch 7 月 7 日报道，Figma 收购了 vibe-coding 与 AI agent 平台 Bud（原 Orchids）背后的团队。报道指出，Figma 正试图从设计平台扩展到更靠近代码和原型的层，把 AI coding 与 prototyping 层拉近自己的画布。",
+          "janet_take": "Figma 很清楚，设计稿如果不能直接逼近可运行原型，迟早会被代码 Agent 抄后路。Bud 团队不是大并购，但方向很狠：设计工具要把“画出来”和“跑起来”的距离继续砍短。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/07/figma-acquires-team-behind-a-vibe-coding-app/",
+          "image_url": "",
+          "image": "images/news-03-figma-bud.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/FigmaBud.jpeg?resize=1200,675",
+          "image_origin": "source"
+        },
+        {
+          "title": "FLI 给九家 AI 公司安全低分",
+          "body": "Future of Life Institute 发布 Summer 2026 AI Safety Index，评估 Anthropic、OpenAI、Google DeepMind、Meta、xAI、Zhipu AI 等九家前沿 AI 公司。报告称 Anthropic、OpenAI、Google DeepMind 和 Meta 均削弱或撤回了接近红线时单方面暂停的承诺，行业里没有公司拿到 A 级。",
+          "janet_take": "最讽刺的是，越接近强能力，安全承诺越像可改条款。企业采购 AI 时别只看厂商白皮书，先问红线触发后谁有权按暂停键；没有停机权的安全框架，本质上只是公关材料。",
+          "source": "Future of Life Institute / TIME / Axios",
+          "url": "https://futureoflife.org/ai-safety-index-summer-2026/",
+          "image_url": "",
+          "image": "images/news-04-fli-ai.jpg",
+          "image_source_url": "https://futureoflife.org/_astro/s26-opengraph.D-wI__vn.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Savi 上线 AI 诈骗防护 App",
+          "body": "TechCrunch 7 月 7 日报道，Savi 推出面向消费者的 AI 诈骗防护应用，目标是识别越来越逼真的 AI 语音、短信和绑架勒索类骗局。公司由 Patrick Coughlin 和 Ryan Coughlin 创办，前者有国家网络防御、Splunk 和 Cisco 背景，后者曾在 Apple 和 Spotify 做消费产品。",
+          "janet_take": "AI 诈骗已经从“别点链接”进化到“你妈的声音都可能是假的”。Savi 押的是家庭级安全入口，方向对，但教育成本很高；真正难的是让普通人在恐慌电话里还愿意打开一个防护工具。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/07/savis-app-aims-to-protect-consumers-from-realistic-ai-scams-like-kidnappers-demanding-ransom/",
+          "image_url": "",
+          "image": "images/news-05-savi-ai-app.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/Patrick_and_Ryan_Coughlin-1.jpg?resize=847,1200",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Meta Muse Image 进 Meta AI",
+          "body": "Meta 7 月 7 日发布 Muse Image，称其为 Meta Superintelligence Labs 的首个 image generation model，已在 Meta AI 中推出，并可直接分享到 feed、story 或 chat。Meta 称 Muse Image 会与 Muse Spark 配合，先理解和规划 prompt，再结合实时 web context 与多张视觉参考生成图像；相关能力也进入 Instagram Stories、WhatsApp direct chats 和广告工具。",
+          "janet_take": "Meta 的狠处不在图像模型多会画，而在它直接站在分发口。独立生图工具还在抢 prompt，Meta 已经把生成、分享、广告和社交关系绑在一起；创作者会更快出图，也会更快被平台规则拿捏。",
+          "source": "Meta / 9to5Mac / Financial Times",
+          "url": "https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/",
+          "image_url": "",
+          "image": "images/models-01-meta-muse-image-meta-ai.webp",
+          "image_source_url": "https://about.fb.com/wp-content/uploads/2026/07/Muse-Image_Social-Share-1.jpg?w=1200",
+          "image_origin": "source"
+        },
+        {
+          "title": "Hugging Face 模型进 Foundry 托管",
+          "body": "Hugging Face 7 月 7 日发布 enterprise 文章，宣布 Hugging Face Models on Foundry Managed Compute。文章称 Microsoft Build 2026 介绍了 Foundry Managed Compute 与 Foundry Model Catalog 中的 Hugging Face models，当前 preview 已可用，精选模型 collection 每周刷新，open-weight 模型可部署到 Foundry Managed Compute。",
+          "janet_take": "开源模型正在被云厂收编成企业货架。好处是部署、账单、权限和区域管理更顺；代价是“开源自由”会被云平台的托管边界重新定价。国内团队选模型时，要同时算模型许可证和云锁定。",
+          "source": "Hugging Face / Microsoft",
+          "url": "https://huggingface.co/blog/microsoft/foundry-managed-compute",
+          "image_url": "",
+          "image": "images/models-02-hugging-face-foundry.png",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/688797c1629e0ef013c2556c/Dn2wmfWGM83ZhuQ-C5jPo.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "LeRobot 0.6 加入世界模型",
+          "body": "Hugging Face 7 月 7 日发布 LeRobot v0.6.0，主题是 Imagine, Evaluate, Improve。该版本引入 VLA-JEPA、LingBot-VA、FastWAM 等 world model policies，扩展 GR00T N1.7、MolmoAct2、EO-1、Multitask DiT、EVO1 等 VLA 模型，并加入 Robometer、TOPReward 等 reward models、六个 simulation benchmarks、lerobot-rollout CLI、FSDP 训练和 HF Jobs 云训练。",
+          "janet_take": "机器人终于开始学会“先想一下再动手”。LeRobot 0.6 最有价值的是闭环：想象、评估、纠错、再训练；做具身智能的团队别只晒机械臂视频，先把失败数据怎么回流讲清楚。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog/lerobot-release-v060",
+          "image_url": "",
+          "image": "images/models-03-lerobot-06.png",
+          "image_source_url": "https://huggingface.co/blog/assets/lerobot-release-v060/thumbnail.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "HF 一键接入 SageMaker Studio",
+          "body": "Hugging Face 7 月 7 日发布 From Hugging Face to Amazon SageMaker Studio in one click，介绍从 Hub 页面直接进入 Amazon SageMaker Studio 的工作流。该集成面向 AWS 上的模型实验和部署，把模型发现、开发环境和云端训练/推理路径进一步接起来。",
+          "janet_take": "模型分发正在变成云入口争夺战。以前开发者从 Hugging Face 下载权重，现在云厂希望你一键进它的训练和部署环境；便利是真的，迁移成本也会悄悄长出来。",
+          "source": "Hugging Face / Amazon",
+          "url": "https://huggingface.co/blog/amazon/one-click-to-sagemaker-studio",
+          "image_url": "",
+          "image": "images/models-04-hf-sagemaker-studio.webp",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/68abb71b13d7773ad97e9035/f1nX3dXVmvJcQzJfgfpnJ.webp",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Perplexity 采用 NVIDIA Vera CPU",
+          "body": "NVIDIA 7 月 7 日发文介绍 Vera CPU，称其是面向 agent 时代、强调大规模单线程性能的新一类 CPU，并被 Perplexity 等 AI 公司采用。文章还提到 NVIDIA CPU roadmap 将继续推进 Rosa CPU 和 Rigel core。",
+          "janet_take": "Agent 不是只吃 GPU，调度、检索、工具调用和低延迟控制同样吃 CPU。NVIDIA 推 Vera 的算盘很清楚：AI factory 不能只卖显卡，整条计算栈都要收钱。",
+          "source": "NVIDIA / Reuters",
+          "url": "https://blogs.nvidia.com/blog/nvidia-vera-max-single-threaded-cpu-at-scale/",
+          "image_url": "",
+          "image": "images/insights-01-perplexity-nvidia-vera-cpu.png",
+          "image_source_url": "https://blogs.nvidia.com/wp-content/uploads/2026/07/cpu-press-vera-cpu-agentic-tl-1920x1080-5404450.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Cycode 标出 AI Agent 写的漏洞",
+          "body": "Cycode 7 月 7 日发布 AI Agent Commit Visibility，定位为识别 AI coding agents 生成的 commits，并追踪这些提交引入的 code vulnerability。产品面向 GitHub Copilot 等 coding agent 进入开发流水线后的可见性和安全治理问题。",
+          "janet_take": "AI 写代码的红利已经进入审计期。团队不能只统计省了多少工时，还要能回答哪段代码是 Agent 写的、谁批准的、出了漏洞怎么追；没有 commit 级可见性，AI 编程就是一笔糊涂账。",
+          "source": "Cycode",
+          "url": "https://cycode.com/blog/ai-agent-commit-visibility/",
+          "image_url": "",
+          "image": "images/insights-02-cycode-ai-agent.png",
+          "image_source_url": "https://cycode.com/wp-content/uploads/2026/07/Blog20-20Introducing20AI20Agent20Commit20Visibility20Inside-v3.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Dialogflow CX 漏洞让客服 Agent 泄密",
+          "body": "Dark Reading 7 月 7 日报道，Google 修复了 Dialogflow CX 中一个 Rogue Agent 漏洞。报道称攻击者可能利用该漏洞从基于 Google 旗舰 AI 工具构建的 AI agents 和 chatbots 中窃取数据，暴露出 agentic chatbot 与企业数据连接后的新风险面。",
+          "janet_take": "客服 Agent 最危险的地方，是它天然连着用户数据和业务系统。模型幻觉还只是尴尬，Agent 被接管就是事故；所有上客服机器人的公司，都该先做权限分层和数据最小化。",
+          "source": "Dark Reading",
+          "url": "https://www.darkreading.com/application-security/dialogflow-cx-rogue-agent-flaw-enabled-ai-chatbot-data-theft",
+          "image_url": "",
+          "image": "images/insights-03-dialogflow-cx-agent.webp",
+          "image_source_url": "https://www.reversinglabs.com/api/media/file/In-the-News-Dark-Reading-Sasa-1400x732.webp",
+          "image_origin": "search"
+        },
+        {
+          "title": "AP+ 用 ChatGPT 和 Codex 查支付",
+          "body": "OpenAI 7 月 7 日发布 Australian Payments Plus 案例，称 AP+ 团队使用 ChatGPT Enterprise 和 Codex 节省时间、提升工作质量，并更快调查复杂支付问题。OpenAI 页面写明，77% 的受访员工每周使用 ChatGPT 节省 2 小时以上，产品覆盖 ChatGPT 与 Codex。",
+          "janet_take": "金融场景最会暴露 AI 的真假价值：能不能查复杂支付问题，远比会写周报重要。AP+ 案例说明 Codex 不只在软件团队里有用，凡是系统复杂、排查耗时的业务，都可能被 Agent 吃掉一层人肉检索。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/australian-payments-plus/",
+          "image_url": "",
+          "image": "images/insights-04-ap-chatgpt-codex.png",
+          "image_source_url": "https://pic2.zhimg.com/v2-bd94e0aa67655c629d415a038b6ef3cb_1440w.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Crunchbase 称北美 AI 融资破纪录",
+          "body": "Crunchbase News 7 月 7 日报道，北美创业公司在 2026 年上半年融资达到历史高位，主要由 AI 领域的 late-stage megarounds 推动。报道按 seed/angel、early-stage、late-stage 等融资口径拆分，指出 AI 仍是上半年资本流入的核心驱动力。",
+          "janet_take": "AI 融资没有降温，只是更集中。钱正在流向能证明规模、收入和基础设施位置的公司；小团队别再拿“我们也有 Agent”骗自己，资本现在要看分发、数据、客户和毛利。",
+          "source": "Crunchbase News",
+          "url": "https://news.crunchbase.com/venture/na-startup-funding-ma-shattered-records-ai-q2-2026/",
+          "image_url": "",
+          "image": "images/insights2-01-crunchbase-ai.jpg",
+          "image_source_url": "https://news.crunchbase.com/wp-content/uploads/space-quarterly-n-am.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Norm 120M 融资押法律 Agent",
+          "body": "Norm Ai 本轮 1.2 亿美元融资由 Khosla Ventures 领投，多个金融和科技投资方参投。与 Harvey 等法律 AI 公司持续融资相呼应，资本正在押注法律、监管、审查和企业内控这类高客单价流程会被 AI agents 重新打包。",
+          "janet_take": "法律 AI 的资本故事比通用办公更硬，因为客户疼、预算厚、错误代价高。中国创业者要看的是监督链路和交付边界，不是再做一个合同摘要插件；越靠近监管流程，越需要专家背书和可追踪证据。",
+          "source": "Norm Ai / TechCrunch / PYMNTS",
+          "url": "https://techcrunch.com/2026/07/07/ai-law-startup-norm-raises-120m-hits-unicorn-valuation/",
+          "image_url": "",
+          "image": "images/insights2-02-norm-120m-agent.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/05/ai-agents-GettyImages-2229880232.jpg?resize=1200,675",
+          "image_origin": "source"
+        },
+        {
+          "title": "Savi 押注家庭 AI 反诈入口",
+          "body": "Savi 选择从消费者端切入 AI 诈骗防护，瞄准 deepfake voice、短信、勒索电话等新型威胁。相比企业安全工具，家庭反诈 App 的商业化更依赖信任、教育和高频触达，但 AI 诈骗升级正在扩大这个入口的紧迫性。",
+          "janet_take": "反诈会是 AI 安全里最接地气的生意。问题是普通人通常在被骗时才想起防护，太晚；谁能把身份验证、家人暗号、通话风险提示做成默认动作，谁才有机会收费。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/07/savis-app-aims-to-protect-consumers-from-realistic-ai-scams-like-kidnappers-demanding-ransom/",
+          "image_url": "",
+          "image": "images/insights2-03-savi-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/Patrick_and_Ryan_Coughlin-1.jpg?resize=847,1200",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Codex Micro 键盘给 Agent 加快捷键",
+          "body": "TechRadar 7 月 7 日报道，OpenAI 与 Work Louder 合作推出 Codex Micro，一款面向 Codex 使用的可编程 macro pad。报道称它基于 Work Louder Creator Micro 2 的布局，提供 13 个机械按键、joystick、rotary encoder 和 touch controls，用于更快触发 Codex coding-agent 操作；完整发布预计在 7 月 15 日。",
+          "janet_take": "今天最怪但值得试的工具是这块小键盘。它不提升模型智商，却提醒一件事：Agent 进入日常工作后，入口会从聊天框扩散到桌面硬件、快捷键和肌肉记忆。",
+          "source": "TechRadar",
+          "url": "https://www.techradar.com/pro/openai-teams-with-work-louder-to-launch-codex-native-keyboard-weeks-after-ceo-of-apps-told-staff-not-to-be-distracted-by-side-quests",
+          "image_url": "",
+          "image": "images/tools-01-codex-micro-agent.jpg",
+          "image_source_url": "https://cdn.mos.cms.futurecdn.net/wk243cmFFLdfzNJzfZFQdJ-2560-80.jpg",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

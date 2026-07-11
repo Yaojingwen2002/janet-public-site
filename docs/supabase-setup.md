@@ -37,7 +37,8 @@ create table if not exists public.newsletter_subscribers (
   source text not null default 'signup',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  last_sent_at timestamptz
+  last_sent_at timestamptz,
+  welcome_sent_at timestamptz
 );
 
 create table if not exists public.profiles (
@@ -151,7 +152,8 @@ alter table public.newsletter_subscribers
   add column if not exists subscribed boolean not null default false,
   add column if not exists source text not null default 'signup',
   add column if not exists updated_at timestamptz not null default now(),
-  add column if not exists last_sent_at timestamptz;
+  add column if not exists last_sent_at timestamptz,
+  add column if not exists welcome_sent_at timestamptz;
 
 create unique index if not exists newsletter_subscribers_email
   on public.newsletter_subscribers (email);
@@ -210,12 +212,23 @@ create policy "visitors can remove their reactions"
 
 create policy "newsletter signups are allowed"
   on public.newsletter_subscribers for insert
-  with check (email is not null and email <> '');
+  with check (
+    auth.role() = 'authenticated'
+    and email is not null
+    and lower(email) = lower(auth.jwt()->>'email')
+  );
 
 create policy "newsletter preferences can be updated"
   on public.newsletter_subscribers for update
-  using (true)
-  with check (email is not null and email <> '');
+  using (
+    auth.role() = 'authenticated'
+    and lower(email) = lower(auth.jwt()->>'email')
+  )
+  with check (
+    auth.role() = 'authenticated'
+    and email is not null
+    and lower(email) = lower(auth.jwt()->>'email')
+  );
 
 create policy "Profiles are viewable by owner"
   on public.profiles for select

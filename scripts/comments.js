@@ -9,7 +9,11 @@
     comments: []
   };
   const warned = new Set();
+  const badgeCountCache = new Map();
+  const BADGE_CACHE_TTL = 30000;
   let bound = false;
+  let badgeRefreshPromise = null;
+  let badgeRefreshQueued = false;
 
   const qs = (selector, parent = document) => parent.querySelector(selector);
   const qsa = (selector, parent = document) => Array.from(parent.querySelectorAll(selector));
@@ -122,7 +126,10 @@
 
     if (configured()) {
       const { error } = await client().from('comments').insert(payload);
-      if (!error) return;
+      if (!error) {
+        badgeCountCache.delete(editionId);
+        return;
+      }
       warnOnce('Supabase insert', error.message);
     }
 
@@ -134,6 +141,7 @@
       is_deleted: false
     });
     writeLocal(editionId, comments);
+    badgeCountCache.delete(editionId);
   }
 
   async function deleteComment(commentId) {
@@ -143,12 +151,16 @@
 
     if (configured() && !String(commentId).startsWith('local_')) {
       const { error } = await client().from('comments').update({ is_deleted: true }).eq('id', commentId);
-      if (!error) return;
+      if (!error) {
+        badgeCountCache.delete(state.editionId);
+        return;
+      }
       warnOnce('Supabase delete', error.message);
     }
 
     const comments = readLocal(state.editionId).map((item) => String(item.id) === String(commentId) ? { ...item, is_deleted: true } : item);
     writeLocal(state.editionId, comments);
+    badgeCountCache.delete(state.editionId);
   }
 
   function updateCommentBadges(editionId, count) {
@@ -157,15 +169,69 @@
     });
   }
 
-  async function refreshCommentBadges() {
-    const editionIds = new Set();
-    qsa('[data-comment-count]').forEach((el) => {
-      if (el.dataset.editionId) editionIds.add(el.dataset.editionId);
+  async function loadCommentCounts(editionIds) {
+    const ids = [...new Set(editionIds.filter(Boolean))];
+    const now = Date.now();
+    const counts = new Map();
+    const missing = [];
+
+    ids.forEach((editionId) => {
+      const cached = badgeCountCache.get(editionId);
+      if (cached && now - cached.updatedAt < BADGE_CACHE_TTL) {
+        counts.set(editionId, cached.count);
+      } else {
+        counts.set(editionId, visibleLocalComments(editionId).length);
+        missing.push(editionId);
+      }
     });
-    await Promise.all(Array.from(editionIds).map(async (editionId) => {
-      const comments = await loadComments(editionId);
-      updateCommentBadges(editionId, comments.length);
-    }));
+
+    if (configured() && missing.length) {
+      const { data, error } = await client()
+        .from('comments')
+        .select('edition_id')
+        .in('edition_id', missing)
+        .eq('is_deleted', false);
+
+      if (!error) {
+        missing.forEach((editionId) => counts.set(editionId, 0));
+        (data || []).forEach((row) => {
+          if (counts.has(row.edition_id)) counts.set(row.edition_id, counts.get(row.edition_id) + 1);
+        });
+        missing.forEach((editionId) => {
+          badgeCountCache.set(editionId, { count: counts.get(editionId) || 0, updatedAt: now });
+        });
+      } else {
+        warnOnce('Supabase badge load', error.message);
+      }
+    }
+
+    return counts;
+  }
+
+  async function runCommentBadgeRefresh() {
+    const editionIds = [...new Set(qsa('[data-comment-count]').map((el) => el.dataset.editionId).filter(Boolean))];
+    const counts = await loadCommentCounts(editionIds);
+    counts.forEach((count, editionId) => updateCommentBadges(editionId, count));
+  }
+
+  async function refreshCommentBadges() {
+    if (badgeRefreshPromise) {
+      badgeRefreshQueued = true;
+      return badgeRefreshPromise;
+    }
+
+    badgeRefreshPromise = (async () => {
+      do {
+        badgeRefreshQueued = false;
+        await runCommentBadgeRefresh();
+      } while (badgeRefreshQueued);
+    })();
+
+    try {
+      await badgeRefreshPromise;
+    } finally {
+      badgeRefreshPromise = null;
+    }
   }
 
   function timeLabel(value) {

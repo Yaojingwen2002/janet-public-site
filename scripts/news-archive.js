@@ -83,6 +83,13 @@
     `;
   }
 
+  function editionOpenAction(url, className, label) {
+    if (!url || url === '#') {
+      return `<span class="${className} is-disabled" aria-disabled="true">仅保留数据</span>`;
+    }
+    return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="${className}">${escapeHtml(label)}</a>`;
+  }
+
   function editionCard(edition, featured) {
     const sources = (edition.top_sources || []).slice(0, 4).map((source) => `<span>${escapeHtml(source)}</span>`).join('');
     const categories = (edition.top_categories || []).slice(0, 4).map((category) => `<span>${escapeHtml(category)}</span>`).join('');
@@ -111,7 +118,7 @@
               <div class="le-stat"><strong>${escapeHtml(sourceCount)}</strong>个来源</div>
             </div>
             <div class="news-edition-actions">
-              <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">打开本期 ↗</a>
+              ${editionOpenAction(url, 'news-edition-open', '打开本期 ↗')}
             </div>
             ${editionEngagement(edition, false)}
           </div>
@@ -140,7 +147,7 @@
             <div class="ec-stat"><strong>${escapeHtml(signalCount)}</strong> 条信号</div>
             <div class="ec-stat"><strong>${escapeHtml(sourceCount)}</strong> 个来源</div>
           </div>
-          <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ec-open">打开本期 →</a>
+          ${editionOpenAction(url, 'ec-open', '打开本期 →')}
           ${editionEngagement(edition, true)}
         </div>
       </article>
@@ -155,10 +162,9 @@
       <span class="section-kicker">Latest</span>
       ${editionCard(latest, true)}
     `;
-    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
-  function renderList() {
+  function renderList(notify = true) {
     const list = document.getElementById('news-archive-list');
     const count = document.getElementById('news-result-count');
     if (!list || !state.index) return;
@@ -169,7 +175,7 @@
     list.innerHTML = editions.length
       ? editions.map((edition) => editionCard(edition, false)).join('')
       : '<p class="news-empty">没有匹配的晨报。</p>';
-    document.dispatchEvent(new CustomEvent('janet:content-rendered'));
+    if (notify) document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
   function bindFilters() {
@@ -189,7 +195,8 @@
       fillFilters(state.index);
       renderLatest(state.index);
       bindFilters();
-      renderList();
+      renderList(false);
+      document.dispatchEvent(new CustomEvent('janet:content-rendered'));
     } catch (error) {
       const list = document.getElementById('news-archive-list');
       if (list) list.innerHTML = '<p class="news-empty">晨报索引暂时不可用，稍后刷新。</p>';

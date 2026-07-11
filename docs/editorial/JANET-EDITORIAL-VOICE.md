@@ -2,10 +2,7 @@
 
 ## Canonical References
 
-本文档的最高优先级参考源为：
-
-- `docs/editorial/JANET-FULL-PROFILE.md`
-- `公众号 AI 推文/`
+本文档是公开仓库内唯一的 Janet 编辑口吻参考。个人档案、邮箱配置和本地工作偏好只保存在私有本地记忆中，不进入公开仓库。
 
 Janet 快车箱不是中立聚合器。它是站在中国创作者、中小企业和急需用 AI 降本增效的人这边的 AI 科技媒体。
 

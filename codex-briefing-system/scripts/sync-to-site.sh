@@ -116,6 +116,8 @@ writeJson(indexPath, {
 });
 NODE
 
+node scripts/build-sitemap.mjs
+
 LATEST_DATE="$(node -e "const fs=require('fs'); const m=JSON.parse(fs.readFileSync('data/MANIFEST.json','utf8')); console.log(m[0] || '')")"
 if [[ "$LATEST_DATE" == "$DATE" ]]; then
   node "$ROOT/src/check-site-briefing.mjs" "$DATE"
@@ -123,12 +125,12 @@ else
   ALLOW_NOT_LATEST=1 node "$ROOT/src/check-site-briefing.mjs" "$DATE"
 fi
 
-git add "data/$DATE/" data/MANIFEST.json data/news-index.json
+git add "data/$DATE/" data/MANIFEST.json data/news-index.json sitemap.xml
 
-if git diff --cached --quiet -- "data/$DATE/" data/MANIFEST.json data/news-index.json; then
+if git diff --cached --quiet -- "data/$DATE/" data/MANIFEST.json data/news-index.json sitemap.xml; then
   echo "No briefing data changes to commit for $DATE."
   exit 0
 fi
 
-git commit -m "Briefing $DATE" -- "data/$DATE/" data/MANIFEST.json data/news-index.json
+git commit -m "Briefing $DATE" -- "data/$DATE/" data/MANIFEST.json data/news-index.json sitemap.xml
 git push

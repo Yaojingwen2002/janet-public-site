@@ -17,6 +17,16 @@
   let currentProfile = null;
   let authListenerBound = false;
   let ready = false;
+  const siteBaseUrl = (() => {
+    try {
+      const scriptUrl = document.currentScript && document.currentScript.src
+        ? document.currentScript.src
+        : new URL('scripts/auth.js', location.href).href;
+      return new URL('../', scriptUrl).href.replace(/\/$/, '');
+    } catch (_error) {
+      return location.origin;
+    }
+  })();
 
   const supabaseClient = () => window.JanetSupabase && window.JanetSupabase.client;
   const isConfigured = () => Boolean(window.JanetSupabase && window.JanetSupabase.isConfigured && supabaseClient());
@@ -290,8 +300,7 @@
   }
 
   function getBaseUrl() {
-    const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-    return isLocal ? location.origin : 'https://yaojingwen2002.github.io/janet-public-site';
+    return siteBaseUrl;
   }
 
   function getResetPasswordRedirectUrl() {
@@ -608,6 +617,7 @@
     updateUsername,
     updatePassword,
     sendPasswordReset,
+    getResetPasswordRedirectUrl,
     updateNewsletterPreference,
     saveNewsletterPreference,
     friendlyAuthError,

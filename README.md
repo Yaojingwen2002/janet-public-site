@@ -128,7 +128,6 @@ A workflow run can finish successfully without creating a new edition when fresh
 
 Current editorial references:
 
-- `docs/editorial/JANET-FULL-PROFILE.md`
 - `docs/editorial/JANET-EDITORIAL-VOICE.md`
 - `docs/editorial/NEWS-CONTENT-CONTRACT.v5.md`
 - `docs/editorial/OLD-NEWS-STYLE-EXAMPLES.md`

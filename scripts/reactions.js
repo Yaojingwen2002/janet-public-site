@@ -6,6 +6,10 @@
     like: ['👍', '有用']
   };
   const warned = new Set();
+  const stateCache = new Map();
+  const STATE_CACHE_TTL = 30000;
+  let refreshPromise = null;
+  let refreshQueued = false;
 
   const qs = (selector, parent = document) => parent.querySelector(selector);
   const qsa = (selector, parent = document) => Array.from(parent.querySelectorAll(selector));
@@ -91,32 +95,66 @@
     localStorage.setItem(activeKey(editionId, identity), JSON.stringify(active));
   }
 
-  async function loadState(editionId) {
+  function stateFromRows(editionId, rows) {
     const identity = getIdentity();
     const counts = getCountsLocal(editionId);
     let active = getActiveLocal(editionId, identity);
+    if (!rows) return { counts, active };
 
-    if (configured()) {
+    TYPES.forEach((type) => { counts[type] = 0; });
+    active = [];
+    rows.forEach((row) => {
+      const type = row.reaction_type || 'like';
+      if (TYPES.includes(type)) counts[type] += 1;
+      if (identity && ((identity.mode === 'user' && row.user_id === identity.userId) || (identity.mode === 'guest' && row.guest_id === identity.guestId))) {
+        active.push(type);
+      }
+    });
+    setActiveLocal(editionId, identity, active);
+    return { counts, active };
+  }
+
+  async function loadStates(editionIds) {
+    const ids = [...new Set(editionIds.filter(Boolean))];
+    const now = Date.now();
+    const rowsByEdition = new Map();
+    const missing = [];
+
+    ids.forEach((editionId) => {
+      const cached = stateCache.get(editionId);
+      if (cached && now - cached.updatedAt < STATE_CACHE_TTL) {
+        rowsByEdition.set(editionId, cached.rows);
+      } else {
+        rowsByEdition.set(editionId, null);
+        missing.push(editionId);
+      }
+    });
+
+    if (configured() && missing.length) {
       const { data, error } = await client()
         .from('reactions')
-        .select('reaction_type, user_id, guest_id')
-        .eq('edition_id', editionId);
+        .select('edition_id, reaction_type, user_id, guest_id')
+        .in('edition_id', missing);
+
       if (!error) {
-        TYPES.forEach((type) => { counts[type] = 0; });
-        active = [];
+        const fetched = new Map(missing.map((editionId) => [editionId, []]));
         (data || []).forEach((row) => {
-          const type = row.reaction_type || 'like';
-          if (TYPES.includes(type)) counts[type] += 1;
-          if (identity && ((identity.mode === 'user' && row.user_id === identity.userId) || (identity.mode === 'guest' && row.guest_id === identity.guestId))) {
-            active.push(type);
-          }
+          if (fetched.has(row.edition_id)) fetched.get(row.edition_id).push(row);
         });
-        setActiveLocal(editionId, identity, active);
+        fetched.forEach((rows, editionId) => {
+          rowsByEdition.set(editionId, rows);
+          stateCache.set(editionId, { rows, updatedAt: now });
+        });
       } else {
         warnOnce('Supabase load', error.message);
       }
     }
-    return { counts, active };
+
+    return new Map(ids.map((editionId) => [editionId, stateFromRows(editionId, rowsByEdition.get(editionId))]));
+  }
+
+  async function loadState(editionId) {
+    return (await loadStates([editionId])).get(editionId) || { counts: getCountsLocal(editionId), active: [] };
   }
 
   async function toggleReaction(editionId, type) {
@@ -148,6 +186,7 @@
       if (result.error) {
         warnOnce('Supabase toggle', result.error.message);
       } else {
+        stateCache.delete(editionId);
         return;
       }
     }
@@ -160,12 +199,13 @@
       setActiveLocal(editionId, identity, [...active, type]);
     }
     writeLocal(editionId, local);
+    stateCache.delete(editionId);
   }
 
-  async function renderWrap(wrap) {
+  async function renderWrap(wrap, loadedState) {
     const editionId = wrap.dataset.editionId;
     if (!editionId) return;
-    const { counts, active } = await loadState(editionId);
+    const { counts, active } = loadedState || await loadState(editionId);
     TYPES.forEach((type) => {
       const button = qs('[data-reaction-type="' + type + '"]', wrap);
       if (!button) return;
@@ -175,8 +215,30 @@
     });
   }
 
+  async function runRefreshAll() {
+    const wraps = qsa('.news-reactions');
+    const states = await loadStates(wraps.map((wrap) => wrap.dataset.editionId));
+    await Promise.all(wraps.map((wrap) => renderWrap(wrap, states.get(wrap.dataset.editionId))));
+  }
+
   async function refreshAll() {
-    await Promise.all(qsa('.news-reactions').map(renderWrap));
+    if (refreshPromise) {
+      refreshQueued = true;
+      return refreshPromise;
+    }
+
+    refreshPromise = (async () => {
+      do {
+        refreshQueued = false;
+        await runRefreshAll();
+      } while (refreshQueued);
+    })();
+
+    try {
+      await refreshPromise;
+    } finally {
+      refreshPromise = null;
+    }
   }
 
   async function copyText(text) {

@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-11",
+  "vol": "284",
+  "intro_text": "Janet 早。今天 AI 圈最刺眼的不是谁喊了一句更聪明，而是谁开始给能力标价、谁绕过管制拿模型、谁把芯片和开源路线变成真账本。OpenAI 推 GPT-5.6，Meta 第一次把自家 agent 模型接上付费 API，FT 把黑名单中国集团的模型访问漏洞摊开，SK Hynix 用 AI 内存讲出史上最大外国公司美股首秀，Hugging Face 则继续提醒大家：模型越贵，开源越香。",
+  "cover": {
+    "title": "模型开始过收费站",
+    "subtitle": "GPT-5.6、Meta API、出口漏洞和内存 IPO 同时出现，AI 能力正在被重新定价。",
+    "image_path": "runs/2026-07-11/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: 21:9 cover image for Janet's AI technology briefing, saved for a daily AI news site. Primary request: Create a premium AI technology magazine cover background about frontier AI becoming a priced utility and controlled infrastructure: GPT-5.6 tiers, Meta's paid model API, AI export loopholes, open-source model migration, memory-chip Wall Street boom, and hardware-friendly LLM design. Scene/backdrop: a stark editorial command table with layered model-routing panels, token price meters, chip wafer geometry, data-center power traces, policy checkpoint gates, and open-source model blocks moving between cloud racks. Subject: abstract AI infrastructure and market control, no people, no full robot faces. Style/medium: high-end raster editorial photo-composite/illustration, black and off-white with sharp Janet green accents, restrained, expensive, minimal, magazine-grade. Composition/framing: ultra-wide 21:9 landscape, strong negative space in the left-center and lower third for HTML overlay text, diagonal tension from lower right chip geometry to upper left policy gate, uncluttered focal hierarchy. Lighting/mood: crisp studio shadows, serious, analytical, not cyberpunk. Materials/textures: matte black metal, white glass panels, fine circuit traces, subtle paper grain, clean green signal lines. Text: no readable text, no numbers, no logos, no watermark, no date, no title. Constraints: no cartoon, no glowing brain, no cheap neon, no generic robot face, no dense UI text, no brand logos."
+  },
+  "trend": "OpenAI 把 GPT-5.6 做成 Sol、Terra、Luna 三档，Meta 用 Muse Spark 1.1 和 Model API 第一次公开收开发者的钱，FT 报道 OpenAI 和 Google 的模型服务被黑名单中国集团借新加坡子公司访问，SK Hynix 又用 265 亿美元美股首秀证明内存已经变成 AI 基建资产。今天的主线很硬：AI 能力不再只比榜单，而是在定价、访问、芯片和监管漏洞里重新排队。\n\n对中国创作者和创业团队来说，便宜模型和可控部署会比旗舰宣传更重要。能用 GPT-5.6 或 Muse Spark 1.1 做出生产力当然好，但如果预算、数据边界和可访问性不稳，最后还是要回到开源模型、混合路由、本地推理和供应链备选方案。\n\n接下来 2-4 周要盯三件事：GPT-5.6 的 Sol/Terra/Luna 分层会不会逼其他厂商降价；Meta 的低价 API 能不能把 agent coding 市场打出价格战；美国会不会收紧模型访问和数据中心供应链的出口漏洞。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI 推 GPT-5.6 分三档收费",
+          "body": "OpenAI 7 月 9 日宣布 GPT-5.6 开始在 ChatGPT、Codex 和 OpenAI API 推出，分为旗舰 Sol、低成本 Terra 和最快的 Luna 三档。官方称 Codex 与 ChatGPT Work 可使用 max effort，API 提供 Programmatic Tool Calling 和 Multi-agent beta，并公布 Sol 每百万 token 输入 5 美元、输出 30 美元的定价。",
+          "janet_take": "OpenAI 这次最狠的是把能力直接做成价格梯度。旗舰模型负责撑门面，Terra 和 Luna 负责吞流量；做 AI 产品的人别再迷信单模型，一套能按任务自动换档的路由系统才是利润阀门。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/gpt-5-6/",
+          "image_url": "https://openai.com/index/gpt-5-6/",
+          "image": "images/news-01-openai-gpt-56.avif",
+          "image_source_url": "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2024/04/openai-gpt-5-logo-on-smartphone-screen.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta Muse Spark 接入付费 API",
+          "body": "Meta 7 月 9 日发布 Muse Spark 1.1，并通过 Meta Model API 面向美国开发者开放 public preview。Meta 称该模型面向 coding、tool use、computer use 和多模态 agent 任务，能在复杂代码库中诊断和修复 bug，也能根据视频信息操作浏览器完成 Marketplace listing。",
+          "janet_take": "Meta 终于从“免费开源大户”走到“我也要收 API 钱”。低价背后是用广告现金流换开发者入口；如果 Muse Spark 1.1 真能扛代码和电脑操作，OpenAI、Anthropic 的高毛利会被直接按住。",
+          "source": "Meta",
+          "url": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
+          "image_url": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
+          "image": "images/news-02-meta-muse-spark-api.png",
+          "image_source_url": "https://help.apiyi.com/wp-content/uploads/2026/04/muse-spark-meta-ai-model-introduction-beginner-guide-ja-image-0.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Apple 起诉 OpenAI 窃密硬件",
+          "body": "TechCrunch 7 月 10 日报道，Apple 起诉 OpenAI，指控其围绕 Jony Ive 设备公司 io 的交易涉及商业秘密盗用。报道提到 OpenAI 去年以 65 亿美元收购 io，以推进硬件野心；诉讼把 OpenAI 的硬件路线和前 Apple 设计团队再次推到聚光灯下。",
+          "janet_take": "硬件是 OpenAI 最想补的一块短板，也是最容易踩雷的一块地。模型公司一旦要做设备，就会碰到供应链、设计资产和专利地雷；别以为买下明星团队就能绕开大厂旧账。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/",
+          "image_url": "https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/",
+          "image": "images/news-03-apple-openai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/tim-cook-sam-altman-GettyImages-2233062347.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "FT 曝黑名单集团拿到美 AI",
+          "body": "Financial Times 7 月 10 日报道称，OpenAI 和 Google 的先进 AI 服务曾被美国国防部黑名单上的中国科技集团子公司访问，这些集团通过新加坡实体使用模型。报道称，OpenAI 在被联系后暂停了部分 Alibaba 关联用户访问，并提到 Anthropic 对中国公司采取更严格禁用策略。",
+          "janet_take": "出口管制最怕规则只管硬件，却放松服务入口。模型访问如果能通过海外壳公司绕进去，所谓技术封锁就会变成筛子；国内团队也要清醒，合规不稳的能力随时可能被拔线。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/5d6aafa1-5d47-4585-aa95-6ec06a6cd20f",
+          "image_url": "https://www.ft.com/content/5d6aafa1-5d47-4585-aa95-6ec06a6cd20f",
+          "image": "images/news-04-ft-ai.jpg",
+          "image_source_url": "https://pbs.twimg.com/media/HDNzNHFWwAAWx6f.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "SK Hynix 美股首秀募资265亿",
+          "body": "TechCrunch 7 月 10 日报道，SK Hynix 在美国市场首秀中募资 265 亿美元，约合 40 万亿韩元，成为史上最大非美国公司美股上市。公司出售 1.779 亿份 ADR，每份 149 美元，并将在 Nasdaq 以临时代码 SKHYV 交易，常规代码 SKHY 将于 7 月 13 日启用。",
+          "janet_take": "AI 内存已经从供应链新闻变成华尔街主角。HBM、DRAM 和数据中心需求把 SK Hynix 推上牌桌，说明算力热不只肥了 GPU；所有做 AI 应用的团队，未来账单里内存和存储会越来越难假装不存在。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/10/sk-hynix-raises-26-5b-in-the-biggest-foreign-ipo-in-us-history-is-urged-to-build-new-us-fabs/",
+          "image_url": "https://techcrunch.com/2026/07/10/sk-hynix-raises-26-5b-in-the-biggest-foreign-ipo-in-us-history-is-urged-to-build-new-us-fabs/",
+          "image": "images/news-05-sk-hynix-265.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/SK-Hynix.jpg?resize=1200,675",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "GPT-5.6 Sol 增加 ultra 模式",
+          "body": "OpenAI 的 GPT-5.6 发布页显示，Sol 是旗舰档，ChatGPT Work 中 Pro 和 Enterprise 可用 ultra 模式，Codex 中 Plus 及以上计划可用 ultra。OpenAI 称 ultra 会通过 subagents 加速复杂工作，Sol 在 Terminal-Bench 2.1 上达到 88.8%，Sol Ultra 达到 91.9%。",
+          "janet_take": "ultra 模式把多 agent 直接变成产品按钮。问题也很现实：复杂任务更稳，账单也会更胖；团队用之前先定义哪些任务值得开 ultra，别让每次 debug 都变成豪华套餐。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/gpt-5-6/",
+          "image_url": "https://openai.com/index/gpt-5-6/",
+          "image": "images/models-01-gpt-56-sol-ultra.avif",
+          "image_source_url": "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2024/04/openai-gpt-5-logo-on-smartphone-screen.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "GPT-5.6 API 加入程序化工具调用",
+          "body": "OpenAI 称 GPT-5.6 API 在 Responses API 中支持 Programmatic Tool Calling，让模型在内存中编写并运行程序来协调工具和处理中间结果，同时保持 Zero Data Retention 兼容。Multi-agent 功能以 beta 形式推出，可让 GPT-5.6 并发运行 subagents 并汇总结果。",
+          "janet_take": "工具调用正在从“模型喊你执行”升级成“模型自己写胶水代码”。这对复杂业务流很有用，也更危险：一旦程序化工具调用进生产，权限、日志和回滚机制必须先建好。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/gpt-5-6/",
+          "image_url": "https://openai.com/index/gpt-5-6/",
+          "image": "images/models-02-gpt-56-api.avif",
+          "image_source_url": "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2024/04/openai-gpt-5-logo-on-smartphone-screen.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Muse Spark 1.1 支持电脑代操作",
+          "body": "Meta 在 Muse Spark 1.1 发布中称，新模型能判断什么时候写脚本更快、什么时候直接点击界面更简单，并能批量生成动作。Meta 展示了 dinner party 组织、OpenCode 调试、DeepSWE 自评和 Facebook Marketplace listing 等 agentic workflow 示例。",
+          "janet_take": "电脑操作能力会成为下一轮 agent 分水岭。只会聊天的模型像顾问，会点、会写脚本、会截图自查的模型才像员工；创作者工具如果还停留在 prompt 面板，会被工作流型 agent 抢走入口。",
+          "source": "Meta",
+          "url": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
+          "image_url": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
+          "image": "images/models-03-muse-spark-11.webp",
+          "image_source_url": "https://kidsmedia.com.tw/wp-content/uploads/2026/04/MuseSpark.webp",
+          "image_origin": "search"
+        },
+        {
+          "title": "Hugging Face 推 vLLM 后端提速",
+          "body": "Hugging Face 博客 7 月 8 日列出 Native-speed vLLM transformers modeling backend，聚焦让 Transformers 模型在 vLLM 推理路径里获得原生速度。该更新属于开源推理栈继续补性能短板的一部分，目标是降低团队把模型从实验搬到服务端的摩擦。",
+          "janet_take": "开源模型能不能进生产，最后卡在推理速度和运维成本。vLLM 后端这种更新不性感，但很值钱；中国团队做私有化部署，少一层适配就少一笔人肉维护费。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog/vllm-transformers-backend",
+          "image_url": "https://huggingface.co/blog/vllm-transformers-backend",
+          "image": "images/models-04-hugging-face-vllm.png",
+          "image_source_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/closeai1455/vllm.png",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "NVIDIA 教模型按硬件形状设计",
+          "body": "NVIDIA Technical Blog 7 月 10 日发布 AI Model Co-Design: Hardware-Friendly LLM Design，提出模型设计应同时优化准确率、吞吐和交互延迟。文章建议线性层尺寸尽量贴近 GPU tile、使用 NVFP4 量化，并用 expert parallelism 等策略在 Blackwell 系统上扩展 MoE 模型。",
+          "janet_take": "模型设计终于回到硬件账本。一个参数量漂亮但形状别扭的模型，部署时会把钱烧在内存搬运和通信上；创业团队别只追榜单，能跑得便宜才有商业生命。",
+          "source": "NVIDIA Technical Blog",
+          "url": "https://developer.nvidia.com/blog/ai-model-co-design-hardware-friendly-llm-design/",
+          "image_url": "https://developer.nvidia.com/blog/ai-model-co-design-hardware-friendly-llm-design/",
+          "image": "images/insights-01-nvidia.webp",
+          "image_source_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/07/image-3-1.webp",
+          "image_origin": "source"
+        },
+        {
+          "title": "NVIDIA 用 JAX 缓解 HBM 瓶颈",
+          "body": "NVIDIA Technical Blog 7 月 10 日发布 Reducing High-Bandwidth Memory Bottlenecks in JAX-Based LLM Training with Host Offloading，指出 LLM 训练越来越常在算力用满前先撞上 GPU memory limits。文章聚焦用 host offloading 缓解模型权重、梯度和优化器状态带来的 HBM 压力。",
+          "janet_take": "HBM 是训练预算里最不浪漫的天花板。GPU 再强，内存放不下就是干瞪眼；懂 offloading 和内存规划的工程师，会比只会调 prompt 的人更接近真钱。",
+          "source": "NVIDIA Technical Blog",
+          "url": "https://developer.nvidia.com/blog/",
+          "image_url": "https://developer.nvidia.com/blog/",
+          "image": "images/insights-02-nvidia-jax-hbm.jpg",
+          "image_source_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2024/09/techblog-og.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "NVIDIA 金融合成数据跑50万标题",
+          "body": "NVIDIA 7 月 9 日发布 Synthetic Data Generation for Financial AI Research with NVIDIA NeMo，介绍用 NeMo Data Designer、NeMo Curator 和 Nemotron 模型构建金融 NLP 合成数据流水线。示例在单个 8-way NVIDIA B200 节点上迭代 82 轮，生成 502,536 条唯一金融新闻标题。",
+          "janet_take": "金融 AI 缺的不是又一个聊天机器人，缺的是干净、均衡、能训练的任务数据。NVIDIA 这套流程说明合成数据正在变成基础设施；但金融场景别只看数量，去重和类别覆盖才决定模型会不会胡说。",
+          "source": "NVIDIA Technical Blog",
+          "url": "https://developer.nvidia.com/blog/synthetic-data-generation-for-financial-ai-research-with-nvidia-nemo/",
+          "image_url": "https://developer.nvidia.com/blog/synthetic-data-generation-for-financial-ai-research-with-nvidia-nemo/",
+          "image": "images/insights-03-nvidia-50.webp",
+          "image_source_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/07/featured-image-16x9.jpg.webp",
+          "image_origin": "source"
+        },
+        {
+          "title": "BioNeMo Agent Toolkit 加速蛋白共折叠",
+          "body": "NVIDIA Technical Blog 7 月 10 日发布 BioNeMo Agent Toolkit 相关文章，聚焦用 agent toolkit 加速 OpenFold3 等模型的 biomolecular structure prediction 和 co-folding 工作流。文章把蛋白结构预测视为已经进入主流的大规模工作负载，面向药物发现和蛋白设计场景。",
+          "janet_take": "科学 AI 的门槛正在从模型论文转向端到端流水线。会跑一个结构预测 demo 不稀缺，能把数据、推理、调度和结果验证连起来才稀缺；生物创业公司要补工程闭环，少补宣传图。",
+          "source": "NVIDIA Technical Blog",
+          "url": "https://developer.nvidia.com/blog/accelerating-end-to-end-co-folding-performance-with-nvidia-bionemo-agent-toolkit/",
+          "image_url": "https://developer.nvidia.com/blog/accelerating-end-to-end-co-folding-performance-with-nvidia-bionemo-agent-toolkit/",
+          "image": "images/insights-04-bionemo-agent-toolkit.webp",
+          "image_source_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/07/hc-social-openfold-3-blog-1920x1080-5405363-1.webp",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Meta 用 AI 付费 API 拉涨股价",
+          "body": "MarketWatch 7 月 10 日报道称，Meta 本周股价涨幅达到 14.8%，为 2024 年 2 月以来最佳单周表现，核心驱动包括 Muse Spark 1.1、Meta Model API、定制芯片和数据中心扩张预期。报道称分析师开始把 Meta 的 AI 投入视为潜在云收入和高毛利业务。",
+          "janet_take": "资本市场终于看到 Meta 的 AI 可能变成收费入口。问题是低价 API 能不能换来真实开发者黏性；如果只靠广告利润补贴模型，价格战能打很久，小模型创业公司会先疼。",
+          "source": "MarketWatch",
+          "url": "https://www.marketwatch.com/story/metas-stock-roars-back-to-life-as-it-heads-for-its-best-week-in-years-0ff0fa7d",
+          "image_url": "https://www.marketwatch.com/story/metas-stock-roars-back-to-life-as-it-heads-for-its-best-week-in-years-0ff0fa7d",
+          "image": "images/insights2-01-meta-ai-api.avif",
+          "image_source_url": "https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/4c5a33f6-48e0-4058-ad8b-22821935b0d8/1593121221/marketwatch-screenshot.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Anthropic 二级市场估值冲1.2万亿",
+          "body": "Business Insider 7 月 10 日报道称，Anthropic 在二级市场估值一度冲到 1.2 万亿美元，成为风险投资二级市场最抢手的公司之一。报道同时指出，公司官方最近一轮估值为 9650 亿美元，并警告投资者警惕未经授权的交易和高费率 SPV。",
+          "janet_take": "1.2 万亿美元估值听起来像神话，流动性却像地下交易。AI 私募市场最大风险已经变成稀缺名额溢价；普通投资人看到这种热度，先别冲动上头。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/anthropic-soared-1-2-trillion-valuation-on-secondary-markets-2026-7",
+          "image_url": "https://www.businessinsider.com/anthropic-soared-1-2-trillion-valuation-on-secondary-markets-2026-7",
+          "image": "images/insights2-02-anthropic-12.webp",
+          "image_source_url": "https://i.insider.com/6a4e8e12b3a8c16f7e8ec868?width=1200&format=jpeg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Hugging Face 称企业不想继续租 AI",
+          "body": "TechCrunch 7 月 10 日采访 Hugging Face CEO Clem Delangue，报道称 Hugging Face 已被约一半 Fortune 500 使用。Delangue 表示，企业通常先用 frontier API 起步，但当规模扩大后，成本会推动它们转向 open source models。",
+          "janet_take": "开源不是情怀，是大客户算账后的反应。API 起步最快，规模上来最疼；中国团队如果能把开源模型部署、评测、监控和降本打包好，客户愿意付钱换自主权。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/10/hugging-faces-ceo-on-why-companies-are-done-renting-their-ai/",
+          "image_url": "https://techcrunch.com/2026/07/10/hugging-faces-ceo-on-why-companies-are-done-renting-their-ai/",
+          "image": "images/insights2-03-hugging-face-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/Hugging-Face-CEO-Clem-Delangue.png?resize=1200,675",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Claude Reflect 给使用习惯装仪表盘",
+          "body": "Anthropic 7 月 9 日发布 Claude reflect beta，用户可在 Claude web 或桌面端 Settings 查看自己过去 1、3、6 或 12 个月的使用主题、使用模式和常见任务。该功能还会提供反思问题，并允许设置 quiet hours 或使用时长提醒。",
+          "janet_take": "今天最值得试的工具是 AI 使用仪表盘。会用 AI 的人最怕变成无意识依赖；能看到自己把时间花在哪，才知道哪些任务该交给 Claude，哪些能力必须自己保留。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/reflect-with-claude",
+          "image_url": "https://www.anthropic.com/news/reflect-with-claude",
+          "image": "images/tools-01-claude-reflect.png",
+          "image_source_url": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Quill&backgroundColor=cactus",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

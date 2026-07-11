@@ -8,12 +8,11 @@ https://yaojingwen2002.github.io/janet-public-site/
 
 ## Current Release
 
-Latest documented release: `2026-06-17`
+Latest documented release: `2026-07-11`
 
 - Change log: `CHANGELOG.md`
 - Account and navigation system: Potato Center
-- Latest UI polish: wide homepage and portfolio cards with card-level entry
-- Local preview used for the latest check: `http://localhost:8098/`
+- Latest reliability pass: batched Supabase engagement reads, current publish QA, minimal Pages artifact, and automatic sitemap
 - GitHub Pages URL: `https://yaojingwen2002.github.io/janet-public-site/`
 
 ## Core Pages
@@ -48,7 +47,7 @@ Implemented files:
 Auth mode:
 
 - Supabase email/password
-- Supabase anonymous guest sign-in
+- Local guest fallback; Supabase anonymous sign-in is currently disabled
 - Password reset through `auth/reset-password.html`
 - No magic link as the main login flow
 - Usernames allow 3-20 English letters, numbers, and underscores only. Reserved names such as `janet`, `admin`, `system`, `root`, `official`, `support`, and `moderator` are blocked.
@@ -58,33 +57,25 @@ Supabase setup and SQL are documented in `docs/supabase-setup.md`.
 
 ## Daily News Automation
 
-This site uses GitHub Actions to generate Janet daily news.
+The local Codex briefing system is the only daily briefing generator. GitHub Actions deploys the completed site and sends email; it does not write the briefing.
 
-Schedule:
+Schedule, all in `Asia/Taipei`:
 
-- `00:10 UTC`
-- `08:10 Asia/Shanghai / Asia/Taipei`
+- `08:00`: full briefing generation, QA, commit, push, Pages verification, and publish-triggered email
+- `09:00`: read-only site scan; it never repairs or publishes
+- `09:15`: recovery run that publishes only when the current date is genuinely missing
 
-Workflow:
+Generator and publish path:
 
-- `.github/workflows/daily-news-pages.yml`
+- `codex-briefing-system/scripts/run-codex-briefing.sh`
+- `codex-briefing-system/scripts/postprocess-briefing.sh YYYY-MM-DD --publish`
+- `codex-briefing-system/scripts/sync-to-site.sh`
 
-Generator:
-
-- `.github/scripts/daily-news-generator.mjs`
-
-RSS source pool:
-
-- `.github/scripts/rss-source-pool.json`
-
-Release runner:
-
-- `.github/scripts/run-daily-release.mjs`
+The retired `.github/workflows/daily-news-pages.yml` and news-store harvest workflow remain disabled so there is only one writer.
 
 Important status files:
 
-- `data/daily-news-run-status.json`
-- `data/release-gate-check.json`
+- `codex-briefing-system/runs/YYYY-MM-DD/`
 - `data/news-index.json`
 - `data/MANIFEST.json`
 
@@ -100,22 +91,11 @@ Daily briefing email:
 - Secrets required: `SUPABASE_SERVICE_ROLE_KEY`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM`; `SUPABASE_URL` is optional because the public project URL is already in `scripts/supabase-config.js`
 - Never commit SMTP passwords or Supabase service-role keys to this repository.
 
-Notes:
-
-- No paid API is required.
-- No secrets are required.
-- Sample data is not used.
-- If fresh news is below the publish threshold, the workflow may keep the latest published edition and record the reason in `data/daily-news-run-status.json`.
+The local generator uses the active Codex search and image-generation capabilities. SMTP and the Supabase service-role key stay in GitHub Secrets; no private credentials belong in the repository.
 
 ## Current News Behavior
 
-The latest published edition is controlled by `data/MANIFEST.json`.
-
-A workflow run can finish successfully without creating a new edition when fresh source count is below the minimum publish threshold. In that case:
-
-- `created_new_edition = false`
-- `no_new_edition_reason` records the reason
-- `data/daily-news-run-status.json` remains the source of run status truth
+The latest published edition must match in both `data/MANIFEST.json` and `data/news-index.json.latest_edition_id`. A publish is complete only after the dated `content.json`, `output.html`, and `cover.png` exist, Pages succeeds, and all live URLs return 200.
 
 ## News Experience
 
@@ -159,24 +139,19 @@ Latest Mirror Plan status:
 
 ## QA
 
-Key QA files include:
+Current release checks:
 
-- `.github/scripts/qa-daily-news-output.mjs`
-- `scripts/qa-release-gate.mjs`
-- `scripts/qa-public-reader-copy.mjs`
-- `scripts/qa-main-ux.mjs`
-- `scripts/qa-news-visuals.mjs`
-- `scripts/qa-semantic-copy.mjs`
-- `scripts/qa-live-source-stability.mjs`
+```bash
+node scripts/build-sitemap.mjs
+bash .github/scripts/build-pages-artifact.sh /tmp/janet-public-site
+node scripts/qa-current-site.mjs --root /tmp/janet-public-site
+```
+
+The deploy gate checks current pointers, the 5-4-4-3-1 structure, source URLs, images, HTML references, favicon coverage, sitemap coverage, and the public artifact boundary. Older May-era `scripts/qa-*.mjs` reports are retained as historical diagnostics and are not the current deploy gate.
 
 ## Deployment
 
-GitHub Pages deploys from this repository.
-
-Pages deployment may be handled by:
-
-- `Deploy Janet Site to GitHub Pages`
-- `Daily Janet News` workflow after successful generation and QA
+`Deploy Janet Site to GitHub Pages` runs on every `main` push. It builds `_site`, excludes source systems and private/internal documents, runs `qa-current-site.mjs`, uploads the verified artifact, and then deploys Pages. `Daily Janet News` is disabled.
 
 Before publishing account/navigation changes, check:
 

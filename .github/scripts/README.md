@@ -10,12 +10,11 @@
 - `send-daily-briefing-email.mjs`
 - `send-subscription-welcome-email.mjs`
 
-## Manual test
+The legacy daily generator and news-store writer are disabled. The active briefing generator lives in `codex-briefing-system`; this directory still owns the mail sender and historical harvesting utilities.
+
+## Manual mail test
 
 ```bash
-node .github/scripts/daily-news-generator.mjs --date 2026-05-15
-node .github/scripts/build-news-index.mjs
-node .github/scripts/qa-daily-news-output.mjs
 DRY_RUN=true node .github/scripts/send-daily-briefing-email.mjs
 DRY_RUN=true node .github/scripts/send-subscription-welcome-email.mjs
 ```
@@ -26,11 +25,4 @@ The daily briefing email workflow is triggered after a successful `Briefing YYYY
 
 `send-subscription-welcome-email.mjs` sends the designed subscription success email for new `newsletter_subscribers.subscribed = true` rows, then writes `welcome_sent_at`. Its recurring schedule is disabled; use manual dispatch only when needed.
 
-## Time window
-
-Asia/Shanghai
-previous_day 17:00 <= published_at < current_day 09:00
-
-## Editorial quality
-
-`editorial-rules.json` demotes status reports, outage posts, monthly reports, event posts, and generic marketing copy. The generator scores stories before choosing the lead, while the release gate and current QA files decide whether an edition can ship.
+The active briefing window and editorial contract are defined by `codex-briefing-system/prompts/editorial-system.md`. Pages deployment uses `scripts/qa-current-site.mjs`; the old generator QA files here are historical only.

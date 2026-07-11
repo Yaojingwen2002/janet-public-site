@@ -10,6 +10,7 @@
 - 归档页评论和点赞从逐期请求改为 Supabase 批量请求，并加入短时缓存和重复刷新合并；53 期归档初始化只需一次 comments 查询和一次 reactions 查询。
 - 密码重置回跳地址改为根据实际加载的 `scripts/auth.js` 推导站点根路径，兼容本地、GitHub Pages 子路径和后续自定义域名。
 - GitHub Pages 改为构建最小公开产物，不再把 `.github`、`codex-briefing-system`、内部 QA、新闻原始仓库、研究文档和个人档案一起部署。
+- Pages 与邮件 workflows 升级到 GitHub 官方 Node 24 action runtime，移除 Node 20 弃用警告。
 - 新增当前晨报结构的发布 QA，检查最新指针、5-4-4-3-1、来源、配图、HTML 引用、sitemap 和公开产物边界。
 - sitemap 改为按 `data/news-index.json` 自动生成，并在每次晨报同步提交；只有原始数据、没有完整页面的旧档案显示为“仅保留数据”。
 - 从公开仓库当前版本移除 `docs/editorial/JANET-FULL-PROFILE.md`，公开编辑规则继续由 `JANET-EDITORIAL-VOICE.md` 提供，个人资料只留在本地私密记忆。

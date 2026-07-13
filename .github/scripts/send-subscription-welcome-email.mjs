@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { createTransport } from 'nodemailer';
+import { pathToFileURL } from 'node:url';
 
 const SITE_URL = process.env.PUBLIC_SITE_URL || 'https://yaojingwen2002.github.io/janet-public-site/';
 const ROOT = process.cwd();
@@ -66,10 +66,11 @@ async function supabaseFetch(supabaseUrl, serviceRoleKey, restPath, options = {}
   return text ? JSON.parse(text) : null;
 }
 
-function welcomeHtml({ displayName, siteUrl }) {
-  const name = displayName ? escapeHtml(displayName) : 'Janet 读者';
+export function welcomeHtml({ displayName, siteUrl }) {
+  const name = displayName ? escapeHtml(displayName) : '读者';
   const newsUrl = new URL('news.html', siteUrl).toString();
   const homeUrl = new URL('', siteUrl).toString();
+  const logoUrl = new URL('assets/icons/logo-mark.png', siteUrl).toString();
   return `<!doctype html>
 <html lang="zh-CN">
   <head>
@@ -77,36 +78,41 @@ function welcomeHtml({ displayName, siteUrl }) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Janet 快车箱订阅成功</title>
   </head>
-  <body style="margin:0;background:#f7f7f2;color:#151515;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-    <div style="display:none;max-height:0;overflow:hidden;">订阅成功。明早晨报出来后，会自动走邮箱通道送达。</div>
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f7f7f2;padding:28px 16px;">
+  <body style="margin:0;background:#F4F2EC;color:#151515;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">订阅成功。下一期 Janet 快车箱会在发布后送到这个邮箱。</div>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="width:100%;background:#F4F2EC;padding:28px 16px;">
       <tr>
         <td align="center">
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fffef9;border:1px solid #d8dbd2;border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(20,25,20,.08);">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="width:100%;max-width:640px;background:#FFFEF9;border:1px solid #D8DBD2;border-radius:8px;overflow:hidden;">
             <tr>
-              <td style="padding:30px 32px 22px;border-bottom:1px solid #e6e4db;">
-                <div style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#6d746d;font-weight:700;">Janet Public Site</div>
-                <h1 style="margin:12px 0 8px;font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.02;font-weight:500;color:#111;">订阅已接上</h1>
-                <p style="margin:0;color:#76776e;font-size:16px;line-height:1.7;">${name}，你已经进入 Janet 快车箱邮件通道。</p>
+              <td style="padding:24px 28px;background:#0D1712;border-bottom:3px solid #18E299;">
+                <table role="presentation" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td style="width:48px;vertical-align:middle;"><img src="${logoUrl}" width="44" height="44" alt="Janet" style="display:block;width:44px;height:44px;border:0;border-radius:8px;"></td>
+                    <td style="padding-left:12px;vertical-align:middle;color:#FFFEF9;">
+                      <div style="font-size:17px;font-weight:800;line-height:1.2;">Janet 快车箱</div>
+                      <div style="margin-top:4px;color:#9AA89F;font-size:11px;letter-spacing:.08em;line-height:1.2;">SUBSCRIPTION CONNECTED</div>
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
             <tr>
-              <td style="padding:28px 32px 30px;">
-                <div style="border:1px solid #1e3b2b;border-radius:16px;padding:20px 20px 18px;background:#f4fbf6;">
-                  <div style="display:inline-block;margin-bottom:14px;padding:5px 10px;border:1px solid #1e3b2b;border-radius:999px;background:#18e299;color:#092016;font-weight:800;font-size:12px;letter-spacing:.08em;">ACTIVE</div>
-                  <p style="margin:0;font-size:20px;line-height:1.55;color:#111;">每天早上晨报发布后，我会把当天的 AI 信号、Janet 锐评和完整阅读入口直接送到这个邮箱。</p>
-                </div>
-                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:24px;">
+              <td style="padding:32px 28px 30px;">
+                <div style="color:#1A3A2A;font-size:12px;font-weight:800;letter-spacing:.08em;">WELCOME ABOARD</div>
+                <h1 style="margin:10px 0 12px;font-family:Georgia,'Times New Roman',serif;font-size:36px;line-height:1.08;font-weight:500;color:#111;">${name}，晨间信号通道已接上。</h1>
+                <p style="margin:0;color:#555B56;font-size:16px;line-height:1.75;">从下一期开始，晨报发布后会自动送到这个邮箱。邮件会使用你的注册名称，内容包含当天 AI 信号、Janet 锐评和完整阅读入口。</p>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="width:100%;margin-top:26px;border-top:1px solid #DFE1DA;border-bottom:1px solid #DFE1DA;">
                   <tr>
-                    <td style="padding:16px 0;border-top:1px solid #e7e4db;border-bottom:1px solid #e7e4db;">
-                      <div style="font-size:14px;color:#79786f;">下一步</div>
-                      <div style="margin-top:6px;font-size:18px;line-height:1.5;color:#151515;">今天的晨报会单独发出。以后不想收，也可以回网站的 Potato Center 取消订阅。</div>
+                    <td style="padding:18px 0;">
+                      <div style="font-size:13px;color:#7A7A72;">发送规则</div>
+                      <div style="margin-top:6px;font-size:16px;line-height:1.65;color:#151515;">晨报完成发布后发送，不用固定时刻的空邮件占你的收件箱。账户中心可随时取消订阅。</div>
                     </td>
                   </tr>
                 </table>
                 <div style="margin-top:26px;">
-                  <a href="${newsUrl}" style="display:inline-block;padding:13px 18px;border-radius:999px;background:#111;color:#fffef9;text-decoration:none;font-weight:800;">查看晨报归档</a>
-                  <a href="${homeUrl}" style="display:inline-block;margin-left:10px;padding:12px 17px;border:1px solid #111;border-radius:999px;color:#111;text-decoration:none;font-weight:800;">回到主页</a>
+                  <a href="${newsUrl}" style="display:inline-block;padding:12px 17px;border-radius:6px;background:#1A3A2A;color:#FFFEF9;text-decoration:none;font-weight:800;">查看晨报归档</a>
+                  <a href="${homeUrl}" style="display:inline-block;margin-left:8px;padding:11px 16px;border:1px solid #1A3A2A;border-radius:6px;color:#1A3A2A;text-decoration:none;font-weight:800;">回到主页</a>
                 </div>
               </td>
             </tr>
@@ -120,7 +126,7 @@ function welcomeHtml({ displayName, siteUrl }) {
 
 function welcomeText({ displayName, siteUrl }) {
   return [
-    `${displayName || 'Janet 读者'}，订阅成功。`,
+    `${displayName || '读者'}，订阅成功。`,
     '',
     '你已经进入 Janet 快车箱邮件通道。每天早上晨报发布后，会自动发送到这个邮箱。',
     '',
@@ -199,6 +205,7 @@ async function main() {
     throw new Error('Missing SMTP_HOST, SMTP_USER, SMTP_PASS, or MAIL_FROM.');
   }
 
+  const { createTransport } = await import('nodemailer');
   const transport = createTransport({
     host: smtpHost,
     port: smtpPort,
@@ -215,9 +222,9 @@ async function main() {
   for (const subscriber of subscribers) {
     try {
       await transport.sendMail({
-        from: mailFrom,
+        from: /<[^>]+>/.test(mailFrom) ? mailFrom : { name: process.env.MAIL_FROM_NAME || 'Janet 快车箱', address: mailFrom },
         to: subscriber.email,
-        subject: '订阅成功｜Janet 快车箱已接上',
+        subject: '欢迎加入｜Janet 快车箱邮件通道已开启',
         html: welcomeHtml({ displayName: subscriber.displayName, siteUrl: SITE_URL }),
         text: welcomeText({ displayName: subscriber.displayName, siteUrl: SITE_URL })
       });
@@ -234,7 +241,9 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error.message || error);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error.message || error);
+    process.exit(1);
+  });
+}

@@ -166,6 +166,21 @@ header {
   line-height: 1.84;
 }
 
+.reader-greeting-line {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.reader-greeting-line strong {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.intro-copy > :first-child { margin-top: 0; }
+.intro-copy > :last-child { margin-bottom: 0; }
+
 /* ══════════════════════════════════════════════════════
    趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
    ══════════════════════════════════════════════════════ */
@@ -557,7 +572,10 @@ footer a { color: var(--green); }
     <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
 
     <!-- ══ 导语 ══════════════════════════════════════════ -->
-    <div class="intro-box">Janet 早。今天 AI 圈最刺眼的不是谁又喊了新模型，而是控制权同时露出牙齿：Apple 用诉讼卡 OpenAI 硬件，Anthropic 用 Fable 5 额度测试付费边界，Meta 因图像隐私急刹车，开源维护者被 AI 代码淹没，浏览器购物 Agent 又把联盟归因这门灰色生意摊到台面上。<br><br>以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。<br><br>保持好奇，保持吐槽。</div>
+    <div class="intro-box">
+      <p class="reader-greeting-line"><strong data-reader-greeting>读者</strong>，早。</p>
+      <div class="intro-copy">今天 AI 圈最刺眼的不是谁又喊了新模型，而是控制权同时露出牙齿：Apple 用诉讼卡 OpenAI 硬件，Anthropic 用 Fable 5 额度测试付费边界，Meta 因图像隐私急刹车，开源维护者被 AI 代码淹没，浏览器购物 Agent 又把联盟归因这门灰色生意摊到台面上。<br><br>本期包括 5 条全球要闻、4 条模型动态、4 条技术深度，以及投资视角和工具箱推荐。<br><br>保持好奇，保持判断。</div>
+    </div>
 
     <!-- ══ 今日趋势 ════════════════════════════════════════ -->
     <div class="trend-card">
@@ -891,6 +909,7 @@ footer a { color: var(--green); }
   </div>
   <script src="../../scripts/supabase-config.js"></script>
   <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/reader-greeting.js"></script>
   <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
   <script src="../../scripts/comments.js"></script>
   <script src="../../scripts/reactions.js"></script>

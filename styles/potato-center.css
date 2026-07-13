@@ -213,6 +213,29 @@
   accent-color: var(--green, #1A3A2A);
 }
 
+.potato-newsletter-option {
+  border: 1px solid rgba(26, 58, 42, 0.14);
+  border-radius: 8px;
+  background: rgba(26, 58, 42, 0.05);
+  padding: 11px 12px;
+}
+
+.potato-newsletter-option > span {
+  display: grid;
+  gap: 3px;
+}
+
+.potato-newsletter-option strong {
+  color: var(--text-1, #0d0d0d);
+  font-size: 13px;
+}
+
+.potato-newsletter-option small {
+  color: var(--text-3, #7A7A72);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
 .potato-btn,
 .potato-link-btn {
   min-height: 40px;

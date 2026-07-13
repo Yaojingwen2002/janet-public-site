@@ -177,7 +177,7 @@
       '  <label class="potato-field"><span>邮箱</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>',
       '  <label class="potato-field"><span>密码</span><input type="password" name="password" autocomplete="new-password" minlength="6" required></label>',
       '  <label class="potato-field"><span>确认密码</span><input type="password" name="confirm" autocomplete="new-password" minlength="6" required></label>',
-      '  <label class="potato-check"><input type="checkbox" name="newsletter" checked><span>注册后接收每日晨报，可在账户中心取消</span></label>',
+      '  <label class="potato-check potato-newsletter-option"><input type="checkbox" name="newsletter" checked><span><strong>订阅每日晨报</strong><small data-potato-newsletter-name>邮件将称呼你为“注册名称”，可随时取消</small></span></label>',
       '  <label class="potato-check"><input type="checkbox" name="terms" required><span>我同意隐私条款</span></label>',
       '  <button class="potato-btn" type="submit">创建账号</button>',
       '  <div class="potato-link-group">',
@@ -325,9 +325,23 @@
 
     state.tab = tab;
     dropdown.innerHTML = html();
+    updateNewsletterNamePreview(dropdown);
     dropdown.hidden = false;
     const trigger = qs('[data-potato-user-trigger]', state.openCenter);
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
+  }
+
+  function updateNewsletterNamePreview(parent) {
+    const scope = parent || document;
+    const form = scope.matches && scope.matches('[data-potato-form="create"]')
+      ? scope
+      : qs('[data-potato-form="create"]', scope);
+    if (!form) return;
+    const input = qs('input[name="username"]', form);
+    const preview = qs('[data-potato-newsletter-name]', form);
+    if (!preview) return;
+    const username = input && input.value ? input.value.trim() : '';
+    preview.textContent = '邮件将称呼你为“' + (username || '注册名称') + '”，可随时取消';
   }
 
   function formData(form) {
@@ -458,6 +472,11 @@
         toggle.checked = !toggle.checked;
       }
       renderDropdown();
+    });
+
+    document.addEventListener('input', (event) => {
+      if (!event.target.matches('[data-potato-form="create"] input[name="username"]')) return;
+      updateNewsletterNamePreview(event.target.form);
     });
 
     document.addEventListener('janet:auth-changed', () => {

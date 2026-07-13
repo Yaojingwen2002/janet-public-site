@@ -32,6 +32,7 @@
 
 - 输出必须是合法 JSON，不要 Markdown。
 - 顶层字段：date, vol, intro_text, cover, trend, sections。
+- `intro_text` 只写当天新闻导语，不写任何读者姓名或问候语；禁止以 `Janet 早。`、`Jane 早。`、`读者早。`、`你好` 开头。网页和邮件会根据登录身份单独注入称呼。
 - cover 必须包含 title, subtitle, image_path, image_prompt。
 - cover.image_path 必须是 `runs/YYYY-MM-DD/cover.png`。
 - trend 必须是 2-3 段，第一段写当天共同主线，第二段写对创作者/企业的含义，第三段写接下来 2-4 周要盯什么。

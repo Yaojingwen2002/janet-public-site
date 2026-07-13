@@ -166,6 +166,21 @@ header {
   line-height: 1.84;
 }
 
+.reader-greeting-line {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.reader-greeting-line strong {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.intro-copy > :first-child { margin-top: 0; }
+.intro-copy > :last-child { margin-bottom: 0; }
+
 /* ══════════════════════════════════════════════════════
    趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
    ══════════════════════════════════════════════════════ */
@@ -530,7 +545,10 @@ footer a { color: var(--green); }
     <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
 
     <!-- ══ 导语 ══════════════════════════════════════════ -->
-    <div class="intro-box">{{intro_text}}</div>
+    <div class="intro-box">
+      <p class="reader-greeting-line"><strong data-reader-greeting>读者</strong>，早。</p>
+      <div class="intro-copy">{{intro_text}}</div>
+    </div>
 
     <!-- ══ 今日趋势 ════════════════════════════════════════ -->
     {{trend_section}}
@@ -627,6 +645,7 @@ footer a { color: var(--green); }
   </div>
   <script src="../../scripts/supabase-config.js"></script>
   <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/reader-greeting.js"></script>
   <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
   <script src="../../scripts/comments.js"></script>
   <script src="../../scripts/reactions.js"></script>

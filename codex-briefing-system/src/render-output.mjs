@@ -220,7 +220,8 @@ function sourceList(content) {
 export function renderBriefing({ content, templatePath, outputPath, rootPath = resolve(new URL('..', import.meta.url).pathname) }) {
   validateRenderableContent(content);
   const template = readFileSync(templatePath, 'utf8');
-  const intro = `${content.intro_text || ''}\n\n以下是你今天需要知道的 5 条全球要闻、4 条模型动态、4 条技术深度，以及我的投资视角和工具箱推荐。\n\n保持好奇，保持吐槽。`;
+  const introText = String(content.intro_text || '').replace(/^\s*Janet\s*早[。.!！]?\s*/i, '');
+  const intro = `${introText}\n\n本期包括 5 条全球要闻、4 条模型动态、4 条技术深度，以及投资视角和工具箱推荐。\n\n保持好奇，保持判断。`;
   const sections = content.sections || {};
   const coverHtml = generateCover(content, { rootPath, outputPath });
   let html = injectCoverStyles(template);

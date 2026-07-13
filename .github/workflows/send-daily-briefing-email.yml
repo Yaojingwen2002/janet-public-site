@@ -56,6 +56,12 @@ jobs:
           node-version: '24'
           package-manager-cache: false
 
+      - name: Validate email template
+        run: node .github/scripts/qa-email-template.mjs
+        env:
+          PUBLIC_SITE_URL: https://yaojingwen2002.github.io/janet-public-site/
+          BRIEFING_EDITION_ID: ${{ github.event.inputs.edition_id || '' }}
+
       - name: Install mail dependency
         run: npm install --no-save nodemailer@^6.9.16
 
@@ -75,3 +81,4 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_FROM_NAME: Janet 快车箱

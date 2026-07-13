@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { createTransport } from 'nodemailer';
+import { pathToFileURL } from 'node:url';
 
 const SITE_URL = process.env.PUBLIC_SITE_URL || 'https://yaojingwen2002.github.io/janet-public-site/';
 const ROOT = process.cwd();
@@ -38,6 +38,19 @@ function validEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function readerName(value) {
+  return String(value || '').trim() || '读者';
+}
+
 async function readSupabaseUrlFromConfig() {
   const source = await fs.readFile(CONFIG_FILE, 'utf8');
   const match = source.match(/SUPABASE_URL\s*=\s*'([^']+)'/);
@@ -49,27 +62,123 @@ function parseTitle(html) {
   return match ? match[1].replace(/\s+/g, ' ').trim() : '';
 }
 
-function stripUnsafeEmailParts(html) {
+export function stripUnsafeEmailParts(html) {
   return html
     .replace(/<script\b[\s\S]*?<\/script>/gi, '')
-    .replace(/<link\b[^>]*potato-center[^>]*>/gi, '')
-    .replace(/<link\b[^>]*comments[^>]*>/gi, '');
+    .replace(/<link\b[^>]*>/gi, '')
+    .replace(/<div class="potato-center"[\s\S]*?<\/div>\s*<div class="mobile-nav-menu"[\s\S]*?<\/div>/i, '')
+    .replace(/<header>[\s\S]*?<\/header>/i, '')
+    .replace(/<div class="news-card-actions output-engagement"[\s\S]*?<!-- ══ 页脚/i, '<!-- ══ 页脚');
 }
 
-function injectEmailBanner(html, onlineUrl) {
-  const banner = [
-    '<div style="margin:0;padding:14px 18px;background:#1A3A2A;color:#fffdf8;font:14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;">',
-    'Janet 快车箱已送达。若邮件排版异常，',
-    `<a href="${onlineUrl}" style="color:#18E299;text-decoration:underline;">点这里在线阅读</a>。`,
-    '</div>'
-  ].join('');
-
-  if (/<body[^>]*>/i.test(html)) return html.replace(/<body[^>]*>/i, (body) => body + banner);
-  return banner + html;
+function safeAbsoluteUrl(value, baseUrl) {
+  const url = String(value || '').trim();
+  if (!url || /^(?:#|mailto:|tel:|data:|cid:)/i.test(url)) return url;
+  if (/^javascript:/i.test(url)) return '#';
+  try {
+    return new URL(url, baseUrl).toString();
+  } catch {
+    return url;
+  }
 }
 
-function textVersion({ title, summary, onlineUrl }) {
+function imageFallbacks(content) {
+  const fallbacks = new Map();
+  for (const section of Object.values(content?.sections || {})) {
+    for (const item of section?.items || []) {
+      const image = String(item.image || '').replace(/^\.\//, '');
+      if (!/\.avif(?:$|\?)/i.test(image)) continue;
+      const source = String(item.image_source_url || item.image_url || '').trim();
+      if (/^https:\/\//i.test(source)) fallbacks.set(image, source);
+    }
+  }
+  return fallbacks;
+}
+
+export function absolutizeEmailUrls(html, { onlineUrl, content }) {
+  const fallbacks = imageFallbacks(content);
+  let next = html.replace(/\b(src|href)=(['"])([^'"]+)\2/gi, (match, attribute, quote, value) => {
+    const clean = String(value || '').replace(/^\.\//, '');
+    const url = attribute.toLowerCase() === 'src' && fallbacks.has(clean)
+      ? fallbacks.get(clean)
+      : safeAbsoluteUrl(value, onlineUrl);
+    return `${attribute}=${quote}${escapeHtml(url)}${quote}`;
+  });
+
+  next = next
+    .replace(/\sloading=(['"])[^'"]*\1/gi, '')
+    .replace(/\sdecoding=(['"])[^'"]*\1/gi, '')
+    .replace(/<img\b([^>]*)>/gi, (tag, attributes) => {
+      const imageStyle = 'display:block;width:100%;max-width:100%;height:auto;border:0;';
+      if (/\sstyle=(['"])/i.test(attributes)) {
+        return tag.replace(/\sstyle=(['"])([\s\S]*?)\1/i, (styleMatch, quote, style) => ` style=${quote}${imageStyle}${style}${quote}`);
+      }
+      return `<img${attributes} style="${imageStyle}">`;
+    });
+  return next;
+}
+
+export function personalizeBriefingIntro(html, displayName) {
+  const name = escapeHtml(readerName(displayName));
+  const withNamedGreeting = html.replace(
+    /(<strong\b[^>]*data-reader-greeting[^>]*>)[\s\S]*?(<\/strong>)/i,
+    `$1${name}$2`
+  );
+  if (withNamedGreeting !== html) return withNamedGreeting;
+
+  return html.replace(/(<div class="intro-box"[^>]*>)([\s\S]*?)(<\/div>)/i, (_match, open, content, close) => {
+    const clean = content.replace(/^\s*Janet\s*早[。.!！]?\s*/i, '');
+    return `${open}<p style="margin:0 0 10px;color:#0d0d0d;font-size:18px;line-height:1.45;"><strong style="color:#1A3A2A;">${name}</strong>，早。</p>${clean}${close}`;
+  });
+}
+
+export function injectEmailHeader(html, { displayName, editionId, edition, onlineUrl, siteUrl = SITE_URL }) {
+  const name = escapeHtml(readerName(displayName));
+  const editionTitle = escapeHtml(edition.title || '今天的 AI 信号');
+  const signalCount = Number(edition.signal_count || edition.edition_items_count || 17);
+  const logoUrl = new URL('assets/icons/logo-mark.png', siteUrl).toString();
+  const preheader = `${edition.title || '今日 AI 晨报'}：${signalCount} 条信号已经筛完。`;
+  const header = `
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${escapeHtml(preheader)}</div>
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="width:100%;background:#0D1712;border-bottom:3px solid #18E299;">
+  <tr>
+    <td align="center" style="padding:0 18px;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="width:100%;max-width:860px;">
+        <tr>
+          <td style="padding:24px 0 18px;vertical-align:middle;">
+            <table role="presentation" cellspacing="0" cellpadding="0">
+              <tr>
+                <td style="width:44px;vertical-align:middle;"><img src="${logoUrl}" width="40" height="40" alt="Janet" style="display:block;width:40px;height:40px;border:0;border-radius:8px;"></td>
+                <td style="padding-left:12px;vertical-align:middle;color:#FFFEF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+                  <div style="font-size:16px;font-weight:800;line-height:1.2;">Janet 快车箱</div>
+                  <div style="margin-top:4px;color:#9AA89F;font-size:11px;letter-spacing:.08em;line-height:1.2;">AI DAILY BRIEFING</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td align="right" style="padding:24px 0 18px;color:#9AA89F;font:12px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;vertical-align:middle;">${escapeHtml(editionId)}<br>${signalCount} SIGNALS</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.12);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+            <h1 style="margin:0;color:#FFFEF9;font-size:30px;line-height:1.18;font-weight:750;">${name}，今天的信号已筛完。</h1>
+            <p style="margin:10px 0 0;color:#C7D1CB;font-size:16px;line-height:1.65;">本期主线：${editionTitle}</p>
+            <p style="margin:8px 0 20px;color:#9AA89F;font-size:14px;line-height:1.65;">${signalCount} 条全球 AI 动态，按重要性压缩成一份晨间判断。先看事实，再看 Janet 锐评。</p>
+            <a href="${escapeHtml(onlineUrl)}" style="display:inline-block;border-bottom:1px solid #18E299;color:#18E299;font-size:14px;font-weight:800;line-height:1.8;text-decoration:none;">打开网页版 →</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>`;
+
+  if (/<body[^>]*>/i.test(html)) return html.replace(/<body[^>]*>/i, (body) => body + header);
+  return header + html;
+}
+
+function textVersion({ title, summary, onlineUrl, displayName }) {
   return [
+    `${readerName(displayName)}，早。`,
+    '',
     title,
     '',
     summary || '今天的 Janet 快车箱已经发布。',
@@ -239,11 +348,12 @@ async function main() {
   const edition = (newsIndex.editions || []).find((item) => item.edition_id === editionId) || {};
   const outputPath = path.join(ROOT, edition.url || `data/${editionId}/output.html`);
   const rawHtml = await fs.readFile(outputPath, 'utf8');
+  const contentPath = path.join(ROOT, edition.content_url || `data/${editionId}/content.json`);
+  const content = JSON.parse(await fs.readFile(contentPath, 'utf8'));
   const onlineUrl = new URL(edition.url || `data/${editionId}/output.html`, SITE_URL).toString();
   const title = edition.title || parseTitle(rawHtml) || `Janet 快车箱 · ${editionId}`;
   const subject = process.env.MAIL_SUBJECT || `Janet 快车箱 · AI 晨报 · ${editionId} · ${title}`;
-  const html = injectEmailBanner(stripUnsafeEmailParts(rawHtml), onlineUrl);
-  const text = textVersion({ title: subject, summary: edition.summary || '', onlineUrl });
+  const emailBaseHtml = absolutizeEmailUrls(stripUnsafeEmailParts(rawHtml), { onlineUrl, content });
 
   if (!supabaseUrl || !serviceRoleKey) {
     throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY. Put service role key in GitHub Secrets, never in the repo.');
@@ -284,6 +394,7 @@ async function main() {
     throw new Error('Missing SMTP_HOST, SMTP_USER, SMTP_PASS, or MAIL_FROM.');
   }
 
+  const { createTransport } = await import('nodemailer');
   const transport = createTransport({
     host: smtpHost,
     port: smtpPort,
@@ -299,8 +410,18 @@ async function main() {
 
   for (const subscriber of pending) {
     try {
+      const html = injectEmailHeader(
+        personalizeBriefingIntro(emailBaseHtml, subscriber.displayName),
+        { displayName: subscriber.displayName, editionId, edition, onlineUrl }
+      );
+      const text = textVersion({
+        title: subject,
+        summary: edition.summary || '',
+        onlineUrl,
+        displayName: subscriber.displayName
+      });
       await transport.sendMail({
-        from: mailFrom,
+        from: /<[^>]+>/.test(mailFrom) ? mailFrom : { name: process.env.MAIL_FROM_NAME || 'Janet 快车箱', address: mailFrom },
         to: subscriber.email,
         subject,
         html,
@@ -319,7 +440,9 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error.message || error);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error.message || error);
+    process.exit(1);
+  });
+}

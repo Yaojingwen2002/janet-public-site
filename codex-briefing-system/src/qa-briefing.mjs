@@ -112,6 +112,9 @@ export function validateBriefing(content, { date, rootPath = resolve(new URL('..
   const actualVol = String(content.vol || '').replace(/^第|期$/g, '');
   if (actualVol !== expectedVol) issues.push(`vol_mismatch:${actualVol || 'missing'}!=${expectedVol}`);
   if (!content.intro_text) issues.push('missing_intro_text');
+  if (/^\s*(?:Janet|Jane|读者)\s*(?:早|你好)|^\s*你好/i.test(String(content.intro_text || ''))) {
+    issues.push('intro_contains_static_reader_greeting');
+  }
   validateTrend(content.trend, issues);
   validateCover(content, { targetDate, rootPath, outputPath }, issues);
   if (!content.sections || typeof content.sections !== 'object') issues.push('missing_sections');
@@ -171,6 +174,7 @@ function validateOutputHtml(content, { outputPath }, issues) {
   if (!html.includes('Janet 锐评：')) issues.push('output_missing_janet_take_label');
   if (!html.includes('今日趋势')) issues.push('output_missing_trend');
   if (!html.includes('trend-card')) issues.push('output_missing_trend_card');
+  if (!html.includes('scripts/reader-greeting.js')) issues.push('output_missing_reader_greeting');
   if (!/DATA SOURCES:\s*(?!HACKER NEWS, TECHCRUNCH, ARXIV, GITHUB TRENDING)/.test(html)) {
     issues.push('output_static_or_missing_data_sources');
   }

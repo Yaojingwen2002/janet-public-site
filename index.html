@@ -24,6 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/news-editorial.css">
   <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
+  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-1">
   <link rel="stylesheet" href="styles/janet-motion.css">
   <link rel="stylesheet" href="styles/potato-center.css?v=potato-roll-20260617">
   <link rel="stylesheet" href="styles/comments.css">
@@ -105,29 +106,76 @@
   </div>
 
   <!-- Hero -->
-  <section class="hero hero-v2" id="hero" data-theme="hero">
+  <section class="hero hero-v2 signal-hero" id="hero" data-theme="hero">
     <div class="hero-bg"></div>
 
-    <div class="container">
-      <div class="hero-eyebrow">
-        <span class="dot"></span>
-        <span>Janet · AI 信号站</span>
+    <div class="container signal-hero-layout">
+      <div class="signal-hero-copy">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span>Janet · AI 信号站</span>
+        </div>
+
+        <h1 data-reveal="words">
+          过滤噪音，<em>留下信号。</em>
+        </h1>
+
+        <p class="hero-sub hero-sub-wide rv-fade rv-d1" data-reveal="fade">
+          每日筛选全球 AI 变化，把发布、争议和机会压缩成一份可判断的晨间信号。
+        </p>
+
+        <div class="hero-actions rv-fade rv-d2" data-reveal="fade">
+          <a href="#news" class="btn btn-green">读今日快车箱</a>
+          <a href="#works-library" class="btn btn-outline">看作品</a>
+        </div>
+
+        <dl class="signal-hero-stats" aria-label="信号站状态">
+          <div>
+            <dt>标准源</dt>
+            <dd data-signal-total>27</dd>
+          </div>
+          <div>
+            <dt>今日有信号</dt>
+            <dd data-signal-hot>--</dd>
+          </div>
+          <div>
+            <dt>最新晨报</dt>
+            <dd data-signal-edition>同步中</dd>
+          </div>
+        </dl>
       </div>
 
-      <h1 data-reveal="words">
-        过滤噪音，<em>留下信号。</em>
-      </h1>
+      <div class="signal-globe-stage" data-signal-globe>
+        <div class="signal-globe-toolbar">
+          <span class="signal-live"><i></i> LIVE SOURCE FIELD</span>
+          <button class="signal-motion-toggle" type="button" data-signal-motion aria-label="暂停地球自转" title="暂停地球自转">
+            <span data-signal-motion-icon aria-hidden="true">Ⅱ</span>
+          </button>
+        </div>
 
-      <p class="hero-sub hero-sub-wide rv-fade rv-d1" data-reveal="fade">
-        我是 Janet，用每日晨报帮你穿越 AI 泡沫，用影像世界观把想象力变成作品。
-      </p>
+        <canvas id="signal-globe-canvas" aria-label="全球 AI 标准信号源分布"></canvas>
 
-      <div class="hero-actions rv-fade rv-d2" data-reveal="fade">
-        <a href="#news" class="btn btn-green">读今日快车箱</a>
-        <a href="#works-library" class="btn btn-outline">看作品</a>
+        <div class="signal-center-target" aria-hidden="true">
+          <span></span>
+          <i></i>
+        </div>
+
+        <div class="signal-source-readout" data-signal-readout aria-live="polite" hidden>
+          <strong data-signal-source>Source</strong>
+          <span data-signal-location>City · Country</span>
+        </div>
+
+        <a class="signal-news-card" data-signal-card href="#news" aria-live="polite" hidden>
+          <span class="signal-card-meta">
+            <span data-signal-card-source>SOURCE</span>
+            <time data-signal-card-time></time>
+          </span>
+          <strong data-signal-card-title></strong>
+          <span class="signal-card-action">进入原文 <b aria-hidden="true">↗</b></span>
+        </a>
+
+        <p class="signal-globe-fallback" data-signal-fallback hidden>全球信号图暂时不可用，今日晨报仍可正常阅读。</p>
       </div>
-
-
     </div>
   </section>
 
@@ -335,5 +383,6 @@
 <script src="scripts/site-guide.js"></script>
 <script src="scripts/effects.js"></script>
 <script src="scripts/janet-motion.js"></script>
+<script type="module" src="scripts/signal-globe.js?v=experiment-wave-1"></script>
 </body>
 </html>

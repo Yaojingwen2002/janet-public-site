@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-13",
+  "vol": "286",
+  "intro_text": "Janet 早。今天 AI 圈最刺眼的不是谁又喊了新模型，而是控制权同时露出牙齿：Apple 用诉讼卡 OpenAI 硬件，Anthropic 用 Fable 5 额度测试付费边界，Meta 因图像隐私急刹车，开源维护者被 AI 代码淹没，浏览器购物 Agent 又把联盟归因这门灰色生意摊到台面上。",
+  "cover": {
+    "title": "控制权露出牙齿",
+    "subtitle": "硬件、模型额度、图像隐私、开源代码和浏览器 Agent 同时变成责任账本。",
+    "image_path": "runs/2026-07-13/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: 21:9 cover image for Janet's daily AI technology briefing, saved as a premium editorial site cover background. Theme: AI is leaving demo mode and becoming a controlled commercial layer: Apple suing OpenAI over hardware trade secrets, Anthropic extending Fable 5 access under usage limits, Meta retreating from image privacy backlash, frontier model token-price pressure, open-source maintainers drowning in AI-generated contributions, AI misuse by extremists, and shopping/browser agents exposing affiliate attribution fraud. Scene: a stark editorial command table with a sealed hardware evidence folder, abstract model-routing panels, token cost meters, browser-extension traces, safety lock geometry, code-review queues, and data-center power lines converging into a central control plane. Style: premium raster editorial photo-composite, black and off-white with sharp Janet green accents, restrained, expensive, minimal, magazine-grade. Composition: ultra-wide 21:9 landscape, negative space for HTML overlay, no readable text, no numbers, no logos, no watermark, no date, no title."
+  },
+  "trend": "Apple 和 OpenAI 的硬件诉讼、Anthropic 的 Fable 5 额度延长、Meta 图像生成功能的隐私反弹、AI coding 对开源维护者的压力、极端组织使用聊天机器人做攻击规划，几件事拼在一起很清楚：AI 的新战场不再只是模型能力，而是谁能控制设备入口、使用额度、内容授权、代码质量和责任边界。\n\n对中国创作者和创业团队来说，今天最该盯的不是“哪个模型最会说”，而是你的产品会不会踩进同样的坑。做硬件要管住员工流动和设计资产，做图像要处理肖像授权，做 Agent 要证明它没有偷归因、乱改流程，做代码工具要减少维护者的返工负担。\n\n接下来 2-4 周要盯三条线：Apple 诉讼会不会拖慢 OpenAI 的设备路线；Anthropic 会不会把 Fable 5 的临时额度变成稳定套餐；Meta、Phia 和开源社区的反弹会不会逼平台把 AI 生成、浏览器扩展和自动化提交写进更硬的产品规则。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Apple 起诉 OpenAI 硬件窃密",
+          "body": "Bloomberg、WSJ 与 Techmeme 汇总显示，Apple 围绕 OpenAI 硬件项目提起商业秘密诉讼，焦点指向前 Apple 高管 Tang Tan、工程师 Chang Liu 以及 OpenAI 收购的 io Products。报道提到 Apple 要求停止使用相关机密材料，并可能迫使 OpenAI 重新设计部分硬件方案。",
+          "janet_take": "OpenAI 想从聊天框钻进硬件，第一脚就踩到 Apple 的护城河。模型公司可以高薪挖人，但设备产业链吃的是保密、流程和证据；这案子会给所有 AI 硬件创业团队上一堂昂贵的离职合规课。",
+          "source": "Bloomberg / WSJ / Techmeme",
+          "url": "https://www.techmeme.com/",
+          "image_url": "https://www.techmeme.com/",
+          "image": "images/news-01-apple-openai.webp",
+          "image_source_url": "https://gadget.phileweb.com/wp-content/uploads/2024/09/shutterstock_2461696173.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta 停用 Muse Image 争议功能",
+          "body": "Reuters 与 The Verge 当日流报道称，Meta 在用户反弹后调整 Muse Image 相关功能，争议集中在公开视频资料、Instagram 照片与生成式图像训练边界。此前 Meta 将 Muse Image 接入 Meta AI、Instagram、WhatsApp 和广告工作流，用户对照片被用于 AI 的控制权提出质疑。",
+          "janet_take": "Meta 的问题不在图像模型多会画，在于它坐在全世界最大的相册入口上。创作者最怕的不是生成失败，是自己的脸、作品和社交关系被平台顺手拿去训练；这会直接影响 AI 图像工具的默认授权设计。",
+          "source": "Reuters / The Verge / Techmeme",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/2026/7/10/meta-muse-spark-1-1-model-api-preview",
+          "image_url": "https://www.theverge.com/ai-artificial-intelligence/2026/7/10/meta-muse-spark-1-1-model-api-preview",
+          "image": "images/news-02-meta-muse-image.webp",
+          "image_source_url": "https://res.cloudinary.com/dl60stguq/image/upload/v1775739150/meta_muse_spark_ai_model_2026_4227f0dbdd.webp",
+          "image_origin": "search"
+        },
+        {
+          "title": "抗议者盯上三家 AI 实验室",
+          "body": "San Francisco Chronicle 报道，约 200 名抗议者在周六走上旧金山街头，目标包括 OpenAI、Anthropic 和 Google DeepMind，口号是停止 AI 竞赛。组织者 Stop the AI Race 把失业、租金、环境负担和 existential risk 放在同一张抗议清单里。",
+          "janet_take": "AI 公司最不想面对的账单正在从舆论变成线下压力。技术圈可以继续谈 benchmark，城市居民看到的是房租、数据中心和岗位替代；下一轮 AI 公关不只要说服客户，还要说服本地社区。",
+          "source": "San Francisco Chronicle",
+          "url": "https://www.sfchronicle.com/tech/article/san-francisco-ai-protest-22340835.php",
+          "image_url": "https://www.sfchronicle.com/tech/article/san-francisco-ai-protest-22340835.php",
+          "image": "images/news-03-ai.jpg",
+          "image_source_url": "https://s.hdnux.com/photos/01/66/64/02/31146165/5/rawImage.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Boko Haram 用 AI 设计爆炸物",
+          "body": "New York Times 与 Cambridge Programme on AI Science & Policy 报告称，Boko Haram 成员正在使用主流 AI 聊天机器人设计爆炸物、修理武器并构思袭击方案。Techmeme 当日流还列出 The Decoder、Futurism 与 Digital Trends 的跟进报道。",
+          "janet_take": "AI 安全最难看的现实是，坏人不需要最强模型，只需要足够会答的模型。平台如果只靠关键词拦截，碰到越狱教程和多轮拆解很快露馅；企业做安全产品别只盯合规报告，红队能力会变成硬需求。",
+          "source": "New York Times / CASP",
+          "url": "https://www.techmeme.com/",
+          "image_url": "https://www.techmeme.com/",
+          "image": "images/news-04-boko-haram-ai.jpg",
+          "image_source_url": "https://static.dw.com/image/18192628_905.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "EU 年底拟推数字消费新规",
+          "body": "Financial Times 报道，欧盟司法专员 Michael McGrath 表示，欧洲委员会准备在年底前提出新数字规则，用于保护消费者免受 online spending traps、addictive app designs、subscription traps 和误导性设计影响。PYMNTS 跟进称，新规可能扩大布鲁塞尔对 Big Tech 消费保护失败的罚款权力。",
+          "janet_take": "监管终于不只盯隐私条款，也盯产品设计本身。对 AI 应用尤其危险：推荐、订阅、自动续费和 Agent 代操作全都可能被纳入“诱导消费”；做出海工具的团队，别把增长黑招包装成智能体验。",
+          "source": "Financial Times / PYMNTS",
+          "url": "https://www.ft.com/",
+          "image_url": "https://www.ft.com/",
+          "image": "images/news-05-eu.webp",
+          "image_source_url": "https://www.pymnts.com/wp-content/uploads/2022/08/ftx-crypto-earnings-growth.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Claude 给 Fable 5 续一周额度",
+          "body": "Techmeme 当日讨论流显示，Claude 官方账号称 Fable 5 可继续占用用户每周用量上限的一半，之后可使用 usage credits 或切回其他模型。围绕 Fable 5 是否应保留在订阅内，开发者和研究者持续质疑 Anthropic 的容量与定价沟通。",
+          "janet_take": "Anthropic 正在用一周一续的方式测试用户忍耐。Fable 5 如果强到用户离不开，就必须解释容量和价格；含糊地临时延长，只会让团队不敢把它写进生产流程。",
+          "source": "Claude / Techmeme",
+          "url": "https://www.techmeme.com/",
+          "image_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "image": "images/models-01-anthropic-fable-5.webp",
+          "image_source_url": "https://aidive.org/api/media?src=https:%2F%2Ff003.backblazeb2.com%2Ffile%2Faidive-payload-media%2Fmedia%2Fclaude-fable-5-news-20260609.png&w=960&q=78",
+          "image_origin": "search"
+        },
+        {
+          "title": "三家新模型逼 Anthropic 降价",
+          "body": "Bloomberg 在 Techmeme 当日流中报道，OpenAI、Meta 与 SpaceXAI 过去一周的新模型都强调 cost efficiency，企业客户越来越细算 AI spending，可能对 Anthropic 形成价格压力。相关讨论还提到 Palo Alto Networks CEO 认为 AI token 成本需要下降最高 90%。",
+          "janet_take": "模型厂商的下一场硬仗是账单，不是海报。企业已经过了为神秘感买单的阶段，谁能把稳定性和 token 成本讲清楚，谁才可能进预算；高价模型如果不给确定 ROI，很快会被路由成少数任务专用。",
+          "source": "Bloomberg / Implicator.ai",
+          "url": "https://www.techmeme.com/",
+          "image_url": "https://www.techmeme.com/",
+          "image": "images/models-02-anthropic.avif",
+          "image_source_url": "https://images.wsj.net/im-68935853?width=700&height=466",
+          "image_origin": "search"
+        },
+        {
+          "title": "OpenAI GPT-Live 把语音做成入口",
+          "body": "OpenAI 发布 GPT-Live，称这是新一代语音模型，正在为 ChatGPT Voice 提供更自然的实时对话体验。Business Insider 的 72 小时 AI 发布汇总也把 GPT-Live 与 GPT-5.6、ChatGPT Work、Meta Muse Spark 1.1 放在同一轮产品节奏里。",
+          "janet_take": "语音入口的价值不在更像人，而在让 AI 跳过键盘。创作者做陪伴、客服、教育和销售场景时，实时语音会改变使用频率；但延迟、打断和隐私录音处理不好，体验会立刻翻车。",
+          "source": "OpenAI / Business Insider",
+          "url": "https://openai.com/index/introducing-gpt-live/",
+          "image_url": "https://openai.com/index/introducing-gpt-live/",
+          "image": "images/models-03-openai-gpt-live.jpg",
+          "image_source_url": "https://x0.ifengimg.com/res/2024/15587F21063CC6152DF657A6AE6F6F7D9CBCF843_size30_w1080_h608.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Claude Sonnet 5 低价压进全套餐",
+          "body": "Anthropic 的 Claude Sonnet 5 页面显示，该模型面向 Free、Pro、Max、Team、Enterprise 与 Claude Code 开放，并在 8 月 31 日前提供每百万输入 token 2 美元、输出 token 10 美元的 introductory pricing，之后标准价格为 3 美元和 15 美元。",
+          "janet_take": "Sonnet 5 的打法比旗舰故事更实在：把中高端能力压成默认可用。对创业团队来说，这类模型才是日常主力，够强、够便宜、够稳定，比追逐一次性 benchmark 更接近商业现实。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "image_url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "image": "images/models-04-claude-sonnet-5.jpg",
+          "image_source_url": "https://cdn.sanity.io/images/4zrzovbb/website/2039cc549c023bc855671308211d20d3382828a9-2880x1620.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "FT 警告 AI 代码淹没开源维护者",
+          "body": "Financial Times 报道称，AI coding tools 正在让开源项目收到更多低质量贡献，研究者把这种现象称为 AI slop 的 tragedy of the commons：个人提交效率提高，但审核、维护和社区成本被外部化给项目维护者。",
+          "janet_take": "代码 Agent 最大的副作用不是写错一行，而是把审核成本甩给别人。开源社区没有义务替你的自动化实验收尾；真正有价值的 coding 工具，必须减少 reviewer 负担，而不是制造更多待处理垃圾。",
+          "source": "Financial Times / Techmeme",
+          "url": "https://www.ft.com/",
+          "image_url": "https://www.ft.com/",
+          "image": "images/insights-01-ft-ai.jpg",
+          "image_source_url": "https://s.secrss.com/anquanneican/bd7d67ddd2e16e4152ab091ba7e1f5b3.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Business Insider 拆穿 AI 抓取双标",
+          "body": "Business Insider 当日文章讨论 Anthropic、OpenAI 和 Google 等 AI 公司面临的 distillation 与 scraping 争议：AI 公司长期主张抓取互联网内容属于 fair use，但当竞争者利用模型输出训练新模型时，它们又开始强调许可、控制和技术护城河。",
+          "janet_take": "AI 巨头终于尝到自己发明的互联网规则。抓别人内容时叫开放创新，别人抓模型输出时叫偷护城河；版权、蒸馏和数据许可会成为模型竞争的长期暗线。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/ai-giants-learn-hard-truth-modern-internet-anthropic-openai-google-2026-7",
+          "image_url": "https://www.businessinsider.com/ai-giants-learn-hard-truth-modern-internet-anthropic-openai-google-2026-7",
+          "image": "images/insights-02-business-insider-ai.webp",
+          "image_source_url": "https://i.insider.com/6a512adbd9d92978fe6a5ac9?width=1200&format=jpeg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Benedict Evans 判断模型变成商品",
+          "body": "Benedict Evans 在当日讨论中写道，当前 AI 市场处在 token supply crunch，但长期看 frontier models 可能更像 commodity infrastructure，价值会转移到基于模型构建的产品层。Techmeme 汇总了相关 LinkedIn、Bluesky 与 Threads 讨论。",
+          "janet_take": "模型能力会变强，议价权未必一直留在模型层。云、路由、行业数据和产品体验会把利润重新分走；中国团队别把全部筹码押在“我也训练一个大模型”，应用层现金流更诚实。",
+          "source": "Benedict Evans / Techmeme",
+          "url": "https://www.ben-evans.com/",
+          "image_url": "https://www.ben-evans.com/",
+          "image": "images/insights-03-benedict-evans.webp",
+          "image_source_url": "https://image.slidesharecdn.com/benedictevans-software-200208023128/75/Software-at-the-world-Benedict-Evans-1-2048.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "AI 安全指数给巨头打低分",
+          "body": "Axios 报道，Future of Life Institute 的 AI Safety Index 指出大型 AI 公司在能力增长时削弱了部分安全承诺。Anthropic 排名第一但整体只有 C+，OpenAI 和 Google DeepMind 得到 C，existential safety 是全行业最低分项。",
+          "janet_take": "安全承诺最怕遇到商业压力。模型越强、客户越急、算力越贵，暂停承诺就越像装饰品；企业采购 AI 时别只看供应商白皮书，要看事故响应、红队记录和可验证限制。",
+          "source": "Axios / Future of Life Institute",
+          "url": "https://www.axios.com/2026/07/07/report-ai-safety-pledges",
+          "image_url": "https://www.axios.com/2026/07/07/report-ai-safety-pledges",
+          "image": "images/insights-04-ai.jpg",
+          "image_source_url": "https://futureoflife.org/wp-content/uploads/2025/12/OpenGraph-image-More-Warped.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Phia 插件抢走联盟归因",
+          "body": "Bloomberg 与 Techmeme 当日流报道，Phoebe Gates 共同创办的购物应用 Phia 被测试发现会在后台打开标签页、替换其他推荐方的 affiliate codes，并为自己没有实际影响的交易认领销售贡献。多名技术和电商人士指出，这触碰了 affiliate network 的 stand-down 规则。",
+          "janet_take": "浏览器 Agent 一旦碰交易，就会先撞上钱的归属问题。用户以为它在省钱，商家和创作者看到的是归因被抢；未来所有购物 AI 都必须解释它到底帮了谁、拿了谁的钱。",
+          "source": "Bloomberg / Techmeme",
+          "url": "https://www.techmeme.com/",
+          "image_url": "https://www.techmeme.com/",
+          "image": "images/insights2-01-phia.jpg",
+          "image_source_url": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/il9EkxFP6.GU/v1/1200x800.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta AI 收费推高股价",
+          "body": "MarketWatch 报道，Meta 股价因 agentic AI coding、Meta Model API、Muse Spark 1.1 和自研 Iris 芯片进展反弹。报道还提到 Meta 的 Prometheus 数据中心已投入运行，投资人开始把 AI API、芯片和数据中心看成广告之外的新收入线。",
+          "janet_take": "Meta 终于把 AI 从烧钱叙事拽向收费叙事。低价 API 加自研芯片，是对 OpenAI 和 Anthropic 的价格战邀请；资本市场买账，说明大家更想看收入曲线，不想再听愿景演讲。",
+          "source": "MarketWatch",
+          "url": "https://www.marketwatch.com/story/metas-stock-rebounds-as-agentic-ai-coding-and-custom-chips-ease-spending-fears-16d1cb24",
+          "image_url": "https://www.marketwatch.com/story/metas-stock-rebounds-as-agentic-ai-coding-and-custom-chips-ease-spending-fears-16d1cb24",
+          "image": "images/insights2-02-meta-ai.jpg",
+          "image_source_url": "https://toslc.thinkorswim.com/tlcData/videos/TOS-MarketWatch-Tab-Overview/thumbnail.html",
+          "image_origin": "search"
+        },
+        {
+          "title": "OpenAI IPO 传闻盯上 7300 亿美元",
+          "body": "BuildFastWithAI 的 7 月 12 日 AI 新闻汇总称，OpenAI 正准备与 Goldman Sachs 和 Morgan Stanley 推进 confidential IPO filing，最快可能在 9 月亮相，私募估值接近 7300 亿美元；文章同时把 Apple 诉讼和 Anthropic 收入领先列为关键压力。",
+          "janet_take": "OpenAI 如果真按这个估值冲 IPO，投资人买的不是利润，是入口垄断预期。问题是硬件诉讼、模型成本和竞争者降价会一起折现；高估值最怕故事还没讲完，账单先到。",
+          "source": "BuildFastWithAI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-12-2026",
+          "image_url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-12-2026",
+          "image": "images/insights2-03-openai-ipo-7300.png",
+          "image_source_url": "https://oukdqujzonxvqhiefdsv.supabase.co/storage/v1/object/public/blogs/88cba0a9-da4e-4e8b-bb14-d3ae81287222.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "ChatGPT Work 接入长任务工作流",
+          "body": "Business Insider 的 72 小时 AI 发布汇总把 ChatGPT Work 与 GPT-5.6、GPT-Live 和 Meta Muse Spark 1.1 放在同一波更新中，称 OpenAI 正把模型能力接入工作场景与应用集成。OpenAI 的 GPT-5.6 页面也展示了 ChatGPT Work 中的交互式解释、前端生成和复杂工作流能力。",
+          "janet_take": "今天最值得试的工具线索是 ChatGPT Work。它把模型、语音、前端生成和工作任务串到同一个工作台；创作者和小团队该用它测试一件事：能不能把一个完整交付流程从聊天迁到工作台。",
+          "source": "OpenAI / Business Insider",
+          "url": "https://openai.com/index/gpt-5-6/",
+          "image_url": "https://openai.com/index/gpt-5-6/",
+          "image": "images/tools-01-chatgpt-work.jpg",
+          "image_source_url": "https://pic2.zhimg.com/v2-4b459905f39ca4e2388a74a7700d3155_r.jpg",
+          "image_origin": "search"
+        }
+      ]
+    }
+  }
+}

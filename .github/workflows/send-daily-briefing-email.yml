@@ -24,6 +24,10 @@ on:
         description: Optional single recipient email for manual sends.
         required: false
         type: string
+      exclude_recipient_email:
+        description: Optional subscribed email to exclude from a manual bulk resend.
+        required: false
+        type: string
       force_send:
         description: Send even if this edition was already marked as sent.
         required: false
@@ -72,6 +76,7 @@ jobs:
           BRIEFING_EDITION_ID: ${{ github.event.inputs.edition_id || '' }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
           RECIPIENT_EMAIL: ${{ github.event.inputs.recipient_email || '' }}
+          EXCLUDE_RECIPIENT_EMAIL: ${{ github.event.inputs.exclude_recipient_email || '' }}
           FORCE_SEND: ${{ github.event.inputs.force_send || 'false' }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

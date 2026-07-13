@@ -339,7 +339,10 @@ async function main() {
   const dryRun = boolFromEnv(process.env.DRY_RUN);
   const forceSend = boolFromEnv(process.env.FORCE_SEND);
   const requestedEmail = normalizeEmail(process.env.RECIPIENT_EMAIL || '');
+  const excludedEmail = normalizeEmail(process.env.EXCLUDE_RECIPIENT_EMAIL || '');
   if (requestedEmail && !validEmail(requestedEmail)) throw new Error(`Invalid RECIPIENT_EMAIL: ${process.env.RECIPIENT_EMAIL}`);
+  if (excludedEmail && !validEmail(excludedEmail)) throw new Error(`Invalid EXCLUDE_RECIPIENT_EMAIL: ${process.env.EXCLUDE_RECIPIENT_EMAIL}`);
+  if (requestedEmail && excludedEmail) throw new Error('RECIPIENT_EMAIL and EXCLUDE_RECIPIENT_EMAIL cannot be used together.');
 
   const supabaseUrl = process.env.SUPABASE_URL || await readSupabaseUrlFromConfig();
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -366,6 +369,7 @@ async function main() {
       throw new Error(`Recipient ${maskEmail(requestedEmail)} is not subscribed in Supabase.`);
     }
   }
+  if (excludedEmail) subscribers = subscribers.filter((subscriber) => subscriber.email !== excludedEmail);
 
   const pending = forceSend
     ? subscribers
@@ -373,6 +377,7 @@ async function main() {
 
   console.log(`edition=${editionId}`);
   if (requestedEmail) console.log(`recipient=${maskEmail(requestedEmail)}`);
+  if (excludedEmail) console.log(`excluded=${maskEmail(excludedEmail)}`);
   if (forceSend) console.log('force_send=true');
   console.log(`subscribers=${subscribers.length}`);
   console.log(`pending=${pending.length}`);

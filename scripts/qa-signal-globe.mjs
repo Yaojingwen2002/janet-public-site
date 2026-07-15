@@ -16,6 +16,19 @@ const requiredFiles = [
   'styles/signal-cursor.css',
   'styles/signal-globe.css'
 ];
+const experimentPages = [
+  '404.html',
+  'gpt-image2-handbook.html',
+  'index.html',
+  'marvel-ten.html',
+  'misaligned-scenes.html',
+  'news.html',
+  'portfolio.html',
+  'project-detail.html',
+  'shuttle-universe.html',
+  'auth/reset-password.html',
+  'codex-briefing-system/templates/template.html'
+];
 const issues = [];
 
 for (const file of requiredFiles) {
@@ -72,6 +85,16 @@ if (!issues.length) {
   if (!index.includes('scripts/signal-cursor.js')) issues.push('homepage_missing_cursor_script');
   if (!cursor.includes("is-dragging")) issues.push('cursor_drag_state_missing');
   if (!cursor.includes("is-wait")) issues.push('cursor_wait_state_missing');
+  if (!cursor.includes('janet-cursor__grip')) issues.push('cursor_grip_missing');
+  if (cursor.includes("mark.textContent = '<>'")) issues.push('cursor_angle_brackets_still_present');
+  if (!cursor.includes('distance > 80 ? .86 : .72')) issues.push('cursor_dynamic_follow_missing');
+  if (!script.includes('const DRAG_HORIZONTAL = .0058')) issues.push('responsive_globe_drag_missing');
+  for (const page of experimentPages) {
+    const html = read(page);
+    if (!html.includes('data-janet-experiment="signal-wave-15"')) issues.push(`experiment_marker_missing:${page}`);
+    if (!html.includes('signal-cursor.css?v=experiment-wave-15')) issues.push(`experiment_cursor_css_missing:${page}`);
+    if (!html.includes('signal-cursor.js?v=experiment-wave-15')) issues.push(`experiment_cursor_script_missing:${page}`);
+  }
   if (!news.includes("currentReaderLabel() + ' 正在读今日晨报'")) issues.push('real_reader_activity_missing');
   if (news.includes('完整晨报已就绪')) issues.push('fixed_activity_copy_still_present');
   if (!reactions.includes('janet:briefing-shared')) issues.push('share_activity_event_missing');
@@ -114,6 +137,7 @@ console.log(JSON.stringify({
   unclipped_compact_titles: true,
   mobile_overlap_guard: true,
   contextual_cursor_states: true,
+  experimental_html_shells: experimentPages.length,
   real_reader_activity: true,
   cinematic_lab_cover: true
 }, null, 2));

@@ -39,6 +39,7 @@
   transform: translate3d(-50%, -50%, 0);
   transition: opacity 150ms ease;
   will-change: transform;
+  contain: layout style paint;
 }
 
 .janet-cursor.is-visible {
@@ -51,7 +52,8 @@
 
 .janet-cursor__ring,
 .janet-cursor__core,
-.janet-cursor__mark {
+.janet-cursor__mark,
+.janet-cursor__grip {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -65,7 +67,7 @@
   border: 1px solid color-mix(in srgb, var(--cursor-accent) 72%, transparent);
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(5, 18, 14, .12), 0 0 18px rgba(105, 230, 173, .12);
-  transition: width 180ms cubic-bezier(.2, .8, .2, 1), height 180ms cubic-bezier(.2, .8, .2, 1), border-color 160ms ease, border-radius 160ms ease, transform 140ms ease, background 160ms ease;
+  transition: width 140ms cubic-bezier(.2, .8, .2, 1), height 140ms cubic-bezier(.2, .8, .2, 1), border-color 130ms ease, border-radius 130ms ease, transform 110ms ease, background 130ms ease, box-shadow 130ms ease;
 }
 
 .janet-cursor__core {
@@ -87,6 +89,25 @@
   line-height: 1;
   opacity: 0;
   transition: opacity 120ms ease, transform 160ms ease;
+}
+
+.janet-cursor__grip {
+  display: grid;
+  grid-template-columns: repeat(2, 3px);
+  grid-template-rows: repeat(3, 3px);
+  gap: 2px;
+  color: #79cfd4;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.64);
+  transition: opacity 100ms ease, color 120ms ease, gap 120ms ease, transform 140ms cubic-bezier(.2, .9, .2, 1);
+}
+
+.janet-cursor__grip i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 7px color-mix(in srgb, currentColor 48%, transparent);
 }
 
 .janet-cursor.is-link {
@@ -117,28 +138,35 @@
 }
 
 .janet-cursor.is-drag .janet-cursor__ring {
-  width: 38px;
-  height: 24px;
-  border-radius: 7px;
-  background:
-    linear-gradient(var(--cursor-accent), var(--cursor-accent)) left 7px center / 6px 1px no-repeat,
-    linear-gradient(var(--cursor-accent), var(--cursor-accent)) right 7px center / 6px 1px no-repeat;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(5, 18, 14, .66);
+  box-shadow: 0 0 0 4px rgba(121, 207, 212, .06), 0 10px 28px rgba(0, 0, 0, .2);
 }
 
-.janet-cursor.is-drag .janet-cursor__mark {
+.janet-cursor.is-drag .janet-cursor__grip {
   opacity: 1;
   color: var(--cursor-accent);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .janet-cursor.is-dragging .janet-cursor__ring {
-  width: 31px;
-  height: 20px;
+  width: 29px;
+  height: 29px;
   border-color: #69e6ad;
-  background-color: rgba(5, 18, 14, .76);
+  background-color: rgba(5, 24, 17, .84);
+  box-shadow: 0 0 0 5px rgba(105, 230, 173, .08), 0 8px 24px rgba(0, 0, 0, .24);
+}
+
+.janet-cursor.is-dragging .janet-cursor__grip {
+  gap: 1px;
+  color: #69e6ad;
+  transform: translate(-50%, -50%) scale(.84) rotate(-8deg);
 }
 
 .janet-cursor.is-pressed .janet-cursor__ring {
-  transform: translate(-50%, -50%) scale(.74);
+  transform: translate(-50%, -50%) scale(.86);
 }
 
 .janet-cursor.is-wait {
@@ -166,7 +194,8 @@
 @media (prefers-reduced-motion: reduce) {
   .janet-cursor__ring,
   .janet-cursor__core,
-  .janet-cursor__mark {
+  .janet-cursor__mark,
+  .janet-cursor__grip {
     transition: none;
   }
 }

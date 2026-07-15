@@ -2,7 +2,7 @@
   'use strict';
 
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  if (!finePointer.matches) return;
+  if (!finePointer.matches || !document.documentElement.hasAttribute('data-janet-experiment')) return;
 
   function init() {
     if (!document.body || document.querySelector('.janet-cursor')) return;
@@ -10,7 +10,7 @@
     const cursor = document.createElement('div');
     cursor.className = 'janet-cursor';
     cursor.setAttribute('aria-hidden', 'true');
-    cursor.innerHTML = '<span class="janet-cursor__ring"></span><span class="janet-cursor__core"></span><span class="janet-cursor__mark">+</span>';
+    cursor.innerHTML = '<span class="janet-cursor__ring"></span><span class="janet-cursor__core"></span><span class="janet-cursor__mark">+</span><span class="janet-cursor__grip"><i></i><i></i><i></i><i></i><i></i><i></i></span>';
     document.body.appendChild(cursor);
     document.body.classList.add('signal-cursor-enabled');
 
@@ -24,6 +24,7 @@
     let currentY = -80;
     let hasPosition = false;
     let dragging = false;
+    let stateKey = '';
 
     function isBusy(target) {
       return document.body.classList.contains('is-busy') ||
@@ -32,10 +33,14 @@
     }
 
     function setState(target) {
-      const nativeTarget = target && target.closest(nativeSelector);
-      const linkTarget = target && target.closest(linkSelector);
-      const dragTarget = target && target.closest(dragSelector);
-      const waiting = isBusy(target);
+      const element = target instanceof Element ? target : null;
+      const nativeTarget = element && element.closest(nativeSelector);
+      const linkTarget = element && element.closest(linkSelector);
+      const dragTarget = element && element.closest(dragSelector);
+      const waiting = isBusy(element);
+      const nextStateKey = [Boolean(nativeTarget), waiting, Boolean(linkTarget), Boolean(dragTarget), dragging].join(':');
+      if (nextStateKey === stateKey) return;
+      stateKey = nextStateKey;
 
       cursor.classList.toggle('is-native', Boolean(nativeTarget));
       cursor.classList.toggle('is-wait', waiting);
@@ -43,10 +48,7 @@
       cursor.classList.toggle('is-drag', !waiting && !nativeTarget && !linkTarget && Boolean(dragTarget));
       cursor.classList.toggle('is-dragging', dragging);
 
-      if (waiting) mark.textContent = '';
-      else if (dragging || (dragTarget && !linkTarget)) mark.textContent = '<>';
-      else if (linkTarget) mark.textContent = '+';
-      else mark.textContent = '';
+      mark.textContent = !waiting && linkTarget ? '+' : '';
     }
 
     function move(event) {
@@ -63,8 +65,12 @@
     }
 
     function render() {
-      currentX += (targetX - currentX) * .34;
-      currentY += (targetY - currentY) * .34;
+      const dx = targetX - currentX;
+      const dy = targetY - currentY;
+      const distance = Math.hypot(dx, dy);
+      const follow = dragging ? .92 : distance > 80 ? .86 : .72;
+      currentX += dx * follow;
+      currentY += dy * follow;
       cursor.style.transform = 'translate3d(' + currentX + 'px,' + currentY + 'px,0) translate(-50%,-50%)';
       window.requestAnimationFrame(render);
     }
@@ -85,15 +91,24 @@
     document.addEventListener('pointercancel', () => {
       cursor.classList.remove('is-pressed', 'is-dragging');
       dragging = false;
+      stateKey = '';
     }, { passive: true });
     document.documentElement.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
     window.addEventListener('blur', () => cursor.classList.remove('is-visible'));
     window.addEventListener('focus', () => cursor.classList.add('is-visible'));
 
-    new MutationObserver(() => setState(document.elementFromPoint(targetX, targetY))).observe(document.body, {
+    const refreshState = () => {
+      stateKey = '';
+      setState(document.elementFromPoint(targetX, targetY));
+    };
+    new MutationObserver(refreshState).observe(document.body, {
       attributes: true,
       subtree: true,
-      attributeFilter: ['aria-busy', 'disabled', 'data-loading', 'class']
+      attributeFilter: ['aria-busy', 'disabled', 'data-loading']
+    });
+    new MutationObserver(refreshState).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['aria-busy', 'class']
     });
 
     window.requestAnimationFrame(render);

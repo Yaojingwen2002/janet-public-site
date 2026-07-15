@@ -71,6 +71,8 @@ if (stage && canvas) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const ZOOM_MIN = .74;
   const ZOOM_MAX = 1.5;
+  const DRAG_HORIZONTAL = .0058;
+  const DRAG_VERTICAL = .00415;
   const state = {
     sources: [],
     markers: [],
@@ -934,7 +936,7 @@ if (stage && canvas) {
     if (!state.dragging && !paused) {
       globeGroup.rotateY(delta * .000006 + state.velocity.x);
       globeGroup.rotateX(state.velocity.y);
-      const rotationDamping = Math.pow(.962, delta / 16.667);
+      const rotationDamping = Math.pow(.95, delta / 16.667);
       state.velocity.x *= rotationDamping;
       state.velocity.y *= rotationDamping;
     }
@@ -973,12 +975,12 @@ if (stage && canvas) {
       const dy = THREE.MathUtils.clamp(sample.clientY - state.pointer.y, -72, 72);
       state.pointer.x = sample.clientX;
       state.pointer.y = sample.clientY;
-      const horizontal = dx * .0046;
-      const vertical = dy * .00335;
+      const horizontal = dx * DRAG_HORIZONTAL;
+      const vertical = dy * DRAG_VERTICAL;
       globeGroup.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), horizontal);
       globeGroup.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), vertical);
-      state.velocity.x = THREE.MathUtils.lerp(state.velocity.x, horizontal * .105, .34);
-      state.velocity.y = THREE.MathUtils.lerp(state.velocity.y, vertical * .08, .34);
+      state.velocity.x = THREE.MathUtils.lerp(state.velocity.x, horizontal * .14, .58);
+      state.velocity.y = THREE.MathUtils.lerp(state.velocity.y, vertical * .11, .58);
     }
   }
 

@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-14",
+  "vol": "287",
+  "intro_text": "AI 今天没有靠一个大模型刷屏，而是把控制权摊开在价格、分发、路由、法律和线下基础设施里。OpenAI 回到 WhatsApp，Anthropic 给印度改本地价格，Microsoft 公开提醒企业别被闭源模型吃掉数据，robotaxi 和警用摄像头则把 AI 的监管账单摆到街面上。",
+  "cover": {
+    "title": "控制权上桌",
+    "subtitle": "模型不再只拼参数，价格、入口、路由和规则开始决定谁能活。",
+    "image_path": "runs/2026-07-14/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI tech briefing 21:9 magazine cover background. Primary request: Create a sharp AI technology magazine cover background about the July 14, 2026 briefing theme: AI control moves from model demos into distribution channels, pricing, agent infrastructure, safety boundaries, and robotaxi regulation. Scene/backdrop: abstract editorial scene with a black-and-white command console, green routing lines, a data-center grid, a city street map layer, and small interface panels suggesting model cost, access, and permissions. Subject: no people, no robot faces; focus on control panels, network switches, pricing meters, route maps, and infrastructure silhouettes. Style/medium: premium editorial tech magazine, cinematic 21:9 widescreen, minimalist, high contrast. Composition/framing: wide horizontal banner with strong negative space in center-left for HTML overlay title; layered depth but uncluttered. Lighting/mood: cool white light, Janet green accents (#00ff88), precise, cold, investigative. Color palette: black, white, graphite, Janet green only; avoid purple/blue neon dominance. Text: no text in image. Constraints: 21:9 horizontal cover, no logos, no readable words, no watermark, no cartoon, no glowing brain, no cheap cyberpunk, no crowded robot faces."
+  },
+  "trend": "OpenAI、Anthropic、Microsoft、Google 和 Uber 今天都在争同一件事：谁拥有 AI 的入口，谁控制价格，谁拿走用户行为和企业数据。模型能力还在卷，但真正见血的地方变成了 WhatsApp、印度订阅价、model gateway、自动驾驶城市牌照和摄像头数据权限。\n\n对中国创作者和企业来说，别再只问哪个模型最聪明。今天的信号更现实：渠道会决定获客成本，路由层会决定推理账单，合同和隐私条款会决定你的数据会不会被反过来训练成竞争对手。\n\n接下来 2-4 周要盯三件事：OpenAI 和 Apple 的硬件诉讼会不会拖慢新设备，Anthropic 本地化定价能不能带动新兴市场付费，企业 AI 网关和自动化 agent 公司会不会继续拿到高估值。控制层先赚钱，模型层继续烧钱。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Apple 起诉 OpenAI 硬件窃密",
+          "body": "TechCrunch 在 7 月 13 日梳理了 Apple 对 OpenAI 的商业秘密诉讼。Apple 称 41 页诉状里包含前员工访问网络存储、带走机密硬件资料、以及 OpenAI 硬件团队向 Apple 人才索取样品和内部信息等指控。OpenAI 回应称无意获取其他公司的商业秘密。",
+          "janet_take": "普通挖人纠纷没这么狠，OpenAI 设备梦第一次撞上硬件行业的黑箱墙。做硬件不能只靠几个明星设计师，供应链、材料工艺和样机流转全是雷区；Altman 要做 iPhone 之后的新入口，Apple 当然会先把门焊死。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/the-wildest-allegations-in-apples-trade-secrets-lawsuit-against-openai/",
+          "image": "images/news-01-apple-openai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/tim-cook-sam-altman-GettyImages-2233062347.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "Nadella 敲打闭源模型锁客",
+          "body": "TechCrunch 7 月 13 日报道，Microsoft CEO Satya Nadella 公开提醒企业警惕使用闭源 AI 模型时产生的数据和知识归属问题。他主张企业需要能在不同模型之间切换的 orchestration layer，并把“消费 intelligence 时创造出的 intelligence”留在自己手里。",
+          "janet_take": "微软这刀很妙：一边投资 OpenAI 和 Anthropic，一边告诉大客户别把命门交给任何一家模型商。国内公司更该听懂，业务数据、客户知识和自动化流程一旦全塞进单一闭源 API，网关、私有化和可替换模型就会变成议价权。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/satya-nadella-has-issued-a-shocking-warning-to-companies-using-ai/",
+          "image": "images/news-02-nadella.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2023/11/GettyImages-1778706504.jpg?resize=1200,783",
+          "image_origin": "source"
+        },
+        {
+          "title": "Anthropic 给印度改 Claude 价格",
+          "body": "TechCrunch 7 月 13 日报道，Anthropic 开始在印度显示 Claude 卢比定价。Claude Pro 年付折算约每月 2000 卢比，Claude Max 起价 11999 卢比，Team 计划每席起价 2399 卢比；印度是 Claude 除美国外最大的市场，约占全球使用量 5.8%。",
+          "janet_take": "Anthropic 终于承认新兴市场不能永远按美元收智商税。问题是它还没接 UPI，价格也不比美国便宜多少，本地化只走了一半。中国团队看印度很有参考价值：大市场不缺用户，缺的是本地支付、本地价格和能落进工作流的套餐。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/anthropic-starts-localizing-claude-pricing-for-india-its-biggest-market-after-the-us/",
+          "image": "images/news-03-anthropic-claude.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/04/GettyImages-2269811684.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "Uber 游说 DC 卡住 Waymo",
+          "body": "TechCrunch 7 月 13 日报道，Washington, D.C. 的自动驾驶汽车法案成为 Uber 与 Waymo 的正面冲突点。Uber 反对允许纯 driverless 商业运营的方案，主张 robotaxi 应与人类司机共同运行在混合叫车网络里；Waymo 则支持开放自动驾驶部署许可。",
+          "janet_take": "Robotaxi 的下一场仗已经从激光雷达转到牌照和平台抽成。Uber 想把无人车也装进自己的分发系统；Waymo 想绕开中间商直连城市。谁赢，谁决定未来出行的租金怎么收。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/ubers-robotaxi-lobbying-effort-has-put-it-on-a-collision-course-with-waymo/",
+          "image": "images/news-04-uber-dc-waymo.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/03/uber-waymo.jpeg?resize=1200,900",
+          "image_origin": "source"
+        },
+        {
+          "title": "LAPD 停续 Flock 摄像头合同",
+          "body": "TechCrunch 7 月 13 日报道，Los Angeles Police Department 将不再续签 Flock Safety 的车牌识别摄像头合同，理由是民权、隐私、数据收集和共享问题。Flock 在美国拥有至少 8 万台摄像头网络，多个城市此前也因隐私争议退出合作。",
+          "janet_take": "AI 监控终于开始被城市反问：你收集的数据到底给谁用？Flock 的麻烦来自错误识别、联邦调取、合同权限和数据安全缠在一起。任何做视觉识别、城市治理、园区安防的团队，都别把“能识别”当成“能上线”。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/lapd-lets-contract-with-surveillance-giant-flock-expire-citing-serious-concerns-over-civil-liberties-and-privacy/",
+          "image": "images/news-05-lapd-flock.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/flock-camera-2259453709.jpg?resize=1200,800",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "GPT-5.6 Luna 成本曲线压 Terra",
+          "body": "Artificial Analysis 在 7 月 13 日发布 GPT-5.6 Sol、Terra、Luna 的 intelligence vs cost 对比。其结论是 Luna 和 Sol 在各自 reasoning effort 下都优于 Terra：要么同等成本更聪明，要么同等能力更便宜；GPT-5.6 系列整体把 GPT-5.5 推出 Pareto frontier。",
+          "janet_take": "OpenAI 的型号命名越来越像车系，但账单信号很清楚：中低价模型已经在吃主力调用，不再只是凑数 SKU。创作者和 SaaS 团队别迷信旗舰，先把常用任务跑一遍成本-质量曲线，很多场景用 Luna 这类便宜档更像会过日子。",
+          "source": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai/articles/gpt-5-6-intelligence-vs-cost-across-sol-terra-luna",
+          "image": "images/models-01-gpt-56-luna-terra.avif",
+          "image_source_url": "https://cdn.sanity.io/images/6vfeftx9/articles/cfb81542a4d37f8646eb5af6854abf2321c4e34a-1024x1024.avif?w=1200&auto=format",
+          "image_origin": "source"
+        },
+        {
+          "title": "ACRouter 用路由省 2.6 倍成本",
+          "body": "VentureBeat 7 月 13 日报道，ACRouter 会按任务自动选择合适模型，而不是每次都默认使用最强模型。报道给出的测试数字显示，完整任务运行成本为 13.21 美元，低于总是使用 Opus 的 34.02 美元，约节省 2.6 倍。",
+          "janet_take": "模型路由正在变成企业 AI 的省钱阀门。老板不关心你每次是否调用最强模型，只关心交付质量和账单。国内做 agent、客服、代码助手的团队，下一步拼的是任务拆分够不够细、路由够不够狠。",
+          "source": "VentureBeat",
+          "url": "https://venturebeat.com/orchestration/acrouter-picks-the-smartest-ai-model-per-task-beating-opus-only-setups-by-2-6x-on-cost",
+          "image": "images/models-02-acrouter-26.jpg",
+          "image_source_url": "https://images.ctfassets.net/jdtwqhzvc2n1/2mh30Nqtt7uW4PBRmMyA01/117641a26656420dad770ac3b0e0eb14/model_routing.jpg?w=800&q=75",
+          "image_origin": "source"
+        },
+        {
+          "title": "ChatGPT 接入 EEA WhatsApp 入口",
+          "body": "OpenAI Help Center 的 7 月 13 日 release notes 显示，ChatGPT 已重新在欧洲经济区的 WhatsApp 上可用。用户可通过官方 1-800-CHATGPT 联系人使用，不一定需要 ChatGPT 账号，并支持文字、图片、语音笔记、图像生成和多语言对话。",
+          "janet_take": "这条看似小，其实是 OpenAI 在抢消息入口。App 再强，也打不过用户每天打开的聊天框；能回到 WhatsApp，意味着 ChatGPT 继续往低摩擦入口钻。中国创作者该反推自己的分发：AI 产品不要只做网页，先想清楚能不能贴进微信、飞书、企微这类日常入口。",
+          "source": "OpenAI Help Center",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image": "images/models-03-chatgpt-eea-whatsapp.webp",
+          "image_source_url": "https://www.hostingseekers.com/blog/wp-content/uploads/2025/08/undefined-2.webp",
+          "image_origin": "search"
+        },
+        {
+          "title": "Waze 接入 Gemini 语音导航",
+          "body": "TechCrunch 7 月 13 日报道，Google 旗下 Waze 上线一批 AI 功能，包括用 Gemini 支持目的地语音搜索、对道路更新进行对话式上报、基于出行历史和城市交通理解的个性化导航，以及针对摩托车的 AI 路线模式。",
+          "janet_take": "Gemini 进 Waze 的价值不靠“会聊天”，靠的是把意图识别接到真实世界路线。AI 助手如果只停在问答框，商业价值很薄；一旦接入地图、出行、支付和本地服务，它就开始变成操作系统级入口。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/waze-adds-new-ai-powered-features-and-customization-updates/",
+          "image": "images/models-04-waze-gemini.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2022/08/GettyImages-1235613908.jpg?resize=1200,806",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Hotz 用本地 AI 挑起安全争议",
+          "body": "TechCrunch 7 月 13 日评论了 George Hotz 对 AI alignment 的激进观点。Hotz 主张更本地、更贴近用户利益的 AI，而文章指出如果 AI 完全按用户要求行动，可能会越过社会安全边界，例如协助危险或违法行为。",
+          "janet_take": "本地 AI 派有诱惑力：便宜、可控、不被平台审。风险也很直白：当模型不再受平台规则约束，责任就会回到开发者和部署者身上。做私有 agent 的团队别只喊自由，权限、日志、危险动作拦截和责任链才是能不能卖给企业的门票。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/should-ai-help-you-get-away-with-killing-your-spouse/",
+          "image": "images/insights-01-hotz-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2017/07/fullsizerender-2.jpg?resize=1200,900",
+          "image_origin": "source"
+        },
+        {
+          "title": "Altman 看衰太空数据中心账本",
+          "body": "TechCrunch 7 月 13 日报道，Sam Altman 与 Elon Musk 围绕太空数据中心隔空交锋。文章认为 SpaceX 明年发射具备高速数据处理能力的卫星并非不可能，但真正难点是大规模制造和部署，时间表更可能落在 2030 年代。",
+          "janet_take": "太空算力听起来性感，落地账本很冷。AI 行业现在缺的是稳定电力、散热、供应链和可复制的数据中心，PPT 宇宙解决不了推理价格。创作者别被“上天训练模型”带节奏，未来几年真正影响价格的还是地面机房和芯片供给。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/sam-altmans-space-data-center-trash-talk-is-what-most-experts-already-believe/",
+          "image": "images/insights-02-altman.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/08/GettyImages-2223572243.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google 搜索流量顶住 AI 冲击",
+          "body": "Barron's 7 月 13 日报道，BofA Securities 的 6 月数据显示，Google 全球网页访问同比增长 4% 至 28 亿，移动端日活增长 12%。与此同时，Gemini 网页流量增长超过四倍，移动用户增长 295%，并未明显吞噬传统 Google Search。",
+          "janet_take": "搜索没有被 AI 一口吞掉，反而在和 AI 共存。对内容创作者这很关键：别急着宣布 SEO 死亡，入口正在分层。Google Search、Gemini、短视频搜索和站内搜索会同时吃流量，真正危险的是只押一个渠道的人。",
+          "source": "Barron's",
+          "url": "https://www.barrons.com/articles/google-traffic-grows-even-as-ai-rivals-explode-e146d551",
+          "image": "images/insights-03-google-ai.jpg",
+          "image_source_url": "https://ichef.bbci.co.uk/news/1024/branded_news/e2f9/live/14378f40-d76c-11ef-87df-d575b9a434a4.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta 和 Amazon 带头烧万亿 CapEx",
+          "body": "MarketWatch 7 月 13 日报道，Morgan Stanley 分析师 Brian Nowak 预计 Meta、Amazon、Alphabet、Microsoft 和 SpaceX 等巨头的 AI 资本开支将在 2027 年达到 1.2 万亿美元，2028 年达到 1.4 万亿美元。报告还提到 hyperscale compute capacity 到 2028 年可能增至 120GW。",
+          "janet_take": "AI 泡沫如果破，也会先把账单留给电力、内存、施工和折旧。巨头烧 CapEx 带着清楚的算盘：把小公司挤到只能租用它们的基础设施。创业者要么极致轻模型，要么专做省钱层；夹在中间训练大模型，最容易变成融资 PPT 的燃料。",
+          "source": "MarketWatch",
+          "url": "https://www.marketwatch.com/story/meta-and-amazon-are-leading-a-trillion-dollar-big-tech-spending-spree-17a8156d",
+          "image": "images/insights-04-meta-amazon-capex.png",
+          "image_source_url": "https://cdn.robinhood.com/static_content/mwphzyq69oso/en-US/assets/files/9Cezh2F3zKDPD1Y85s0Bz_1_CAPEX-NEW.png",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Nous Research 冲 15 亿美元估值",
+          "body": "TechCrunch 7 月 13 日报道，开源 Hermes agent 背后的 Nous Research 正在敲定新一轮融资，Robot Ventures 领投，USV 等参与，估值约 15 亿美元，融资额至少 7500 万美元。Hermes 在 GitHub 上约有 21.4 万 stars 和近 4 万 forks。",
+          "janet_take": "资本现在买的是可远程运行、能长技能、能变成工作流入口的 agent 壳，而非又一个聊天机器人。开源热度给 Nous 定价，托管订阅给它商业化想象。国内同类项目别只刷 star，必须尽快证明付费和留存。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/13/hermes-agent-maker-nous-research-in-talks-for-new-funding-at-1-5b-valuation/",
+          "image": "images/insights2-01-nous-research-15.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/02/GjsjauvbsAAgUtD.jpeg?w=900",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta 路易斯安那机房涨到 500 亿美元",
+          "body": "Barron's 7 月 13 日报道，Meta 在路易斯安那东北部的数据中心项目成本从原先约 270 亿美元扩至 500 亿美元，目标是把计算容量扩到 5GW。报道称 Meta 还希望到明年把总计算容量翻倍至 14GW。",
+          "janet_take": "Meta 的 AI 战略越来越像地产加电力工程，单纯模型研发已经退到后面。500 亿美元砸下去，未来必须靠广告、API、企业服务或消费者订阅慢慢回收。投资人该盯的不是发布会，是这些机房有没有足够高毛利需求来填满。",
+          "source": "Barron's",
+          "url": "https://www.barrons.com/articles/meta-stock-price-ai-spending-ecf760d4",
+          "image": "images/insights2-02-meta-500.jpg",
+          "image_source_url": "https://x0.ifengimg.com/ucms/2023_45/B39D6F8ED5F617635DD585D8CF6CC5D934D9AA76_size292_w2500_h1429.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Monzo 创始人加入 Anthropic 算力团队",
+          "body": "The Times 7 月 13 日报道，Monzo 创始人 Tom Blomfield 将从 Y Combinator partner 职位休假，加入 Anthropic 支持 compute team。该团队负责模型训练所需的关键硬件和基础设施。",
+          "janet_take": "AI 公司抢人已经从研究员扩展到能搞组织、融资和基础设施的人。Anthropic 看中的不是银行创始人的光环，是把算力团队做成能承接巨额合同的公司机器。投资视角看，compute team 正在变成模型公司的核心资产负债表。",
+          "source": "The Times",
+          "url": "https://www.thetimes.com/business/technology/article/monzo-founder-tom-blomfield-joins-anthropic-qgq2hqj5r",
+          "image": "images/insights2-03-monzo-anthropic.png",
+          "image_source_url": "https://pic1.zhimg.com/v2-17a63aa79883be6d0eba12a9d17dd370_720w.jpg?source=172ae18b",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "ChatGPT 接入 EEA WhatsApp 工具箱",
+          "body": "OpenAI 7 月 13 日更新显示，欧洲经济区用户可重新在 WhatsApp 使用 ChatGPT，通过 verified 1-800-CHATGPT 联系人开始对话。它支持文字、图片上传、语音笔记、图像生成和多语言使用，账号绑定为可选项但能获得更高额度。",
+          "janet_take": "推荐试用给做出海内容和客服的人。WhatsApp 是真实工作入口，用户无需再被教育去下载一个新 App；如果你的用户在欧洲、中东、印度或东南亚，用聊天工具承接 AI 服务，比官网表单更接近成交。",
+          "source": "OpenAI Help Center",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image": "images/tools-01-chatgpt-eea-whatsapp.webp",
+          "image_source_url": "https://www.hostingseekers.com/blog/wp-content/uploads/2025/08/undefined-2.webp",
+          "image_origin": "search"
+        }
+      ]
+    }
+  }
+}

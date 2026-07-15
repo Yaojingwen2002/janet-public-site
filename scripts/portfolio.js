@@ -130,6 +130,9 @@
 
   function getSeriesInfo(value) {
     const text = String(value || '').toLowerCase();
+    if (/marvel-ten|漫威十人|漫威历史/.test(text)) {
+      return { label: '漫威十人', className: 'work-series-band--marvel-ten' };
+    }
     if (/jingchang|cinematic|mirror|镜场|影像参考|igpt-image2-handbook/.test(text)) {
       return { label: '镜场计划', className: 'work-series-band--cinematic' };
     }
@@ -606,7 +609,7 @@
   function getInitialProjectFilter() {
     const params = new URLSearchParams(window.location.search);
     const project = params.get('project');
-    if (project === 'shuttle-universe' || project === 'misaligned-scenes' || project === 'igpt-image2-handbook') return project;
+    if (project === 'marvel-ten' || project === 'shuttle-universe' || project === 'misaligned-scenes' || project === 'igpt-image2-handbook') return project;
     return 'all';
   }
 

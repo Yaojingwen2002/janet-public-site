@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const root = process.cwd();
@@ -9,18 +9,19 @@ const requiredFiles = [
   'data/source-locations.json',
   'assets/works/cinematic-lab/cover-v2.webp',
   'scripts/home-theme.js',
+  'scripts/apply-experiment-shell.mjs',
   'scripts/news.js',
   'scripts/reactions.js',
   'scripts/signal-cursor.js',
   'scripts/signal-globe.js',
   'styles/signal-cursor.css',
-  'styles/signal-globe.css'
+  'styles/signal-globe.css',
+  'styles/experiment-pages.css'
 ];
 const experimentPages = [
   '404.html',
   'gpt-image2-handbook.html',
   'index.html',
-  'marvel-ten.html',
   'misaligned-scenes.html',
   'news.html',
   'portfolio.html',
@@ -43,6 +44,19 @@ function json(file) {
   return JSON.parse(read(file));
 }
 
+function briefingOutputs() {
+  return readdirSync(resolve(root, 'data'))
+    .map((name) => `data/${name}/output.html`)
+    .filter((file) => {
+      try {
+        return statSync(resolve(root, file)).isFile();
+      } catch {
+        return false;
+      }
+    })
+    .sort();
+}
+
 if (!issues.length) {
   const index = read('index.html');
   const script = read('scripts/signal-globe.js');
@@ -50,6 +64,10 @@ if (!issues.length) {
   const reactions = read('scripts/reactions.js');
   const cursor = read('scripts/signal-cursor.js');
   const globeStyles = read('styles/signal-globe.css');
+  const experimentStyles = read('styles/experiment-pages.css');
+  const marvel = read('marvel-ten.html');
+  const template = read('codex-briefing-system/templates/template.html');
+  const outputs = briefingOutputs();
   const works = json('data/works/works-manifest.json');
   const build = read('.github/scripts/build-pages-artifact.sh');
   const sources = json('data/source-locations.json');
@@ -91,9 +109,26 @@ if (!issues.length) {
   if (!script.includes('const DRAG_HORIZONTAL = .0058')) issues.push('responsive_globe_drag_missing');
   for (const page of experimentPages) {
     const html = read(page);
-    if (!html.includes('data-janet-experiment="signal-wave-15"')) issues.push(`experiment_marker_missing:${page}`);
-    if (!html.includes('signal-cursor.css?v=experiment-wave-15')) issues.push(`experiment_cursor_css_missing:${page}`);
-    if (!html.includes('signal-cursor.js?v=experiment-wave-15')) issues.push(`experiment_cursor_script_missing:${page}`);
+    if (!html.includes('data-janet-experiment="signal-wave-16"')) issues.push(`experiment_marker_missing:${page}`);
+    if (!html.includes('signal-cursor.css?v=experiment-wave-16')) issues.push(`experiment_cursor_css_missing:${page}`);
+    if (!html.includes('signal-cursor.js?v=experiment-wave-16')) issues.push(`experiment_cursor_script_missing:${page}`);
+    if (!html.includes('experiment-pages.css?v=experiment-wave-16')) issues.push(`experiment_design_css_missing:${page}`);
+    if (html.includes('<ul class="nav-links">')) issues.push(`duplicate_desktop_nav_present:${page}`);
+  }
+  if (marvel.includes('data-janet-experiment=')) issues.push('marvel_experiment_marker_present');
+  if (marvel.includes('signal-cursor.css') || marvel.includes('signal-cursor.js')) issues.push('marvel_experiment_cursor_present');
+  if (marvel.includes('experiment-pages.css')) issues.push('marvel_experiment_design_present');
+  if (!template.includes('<body class="briefing-output-page">')) issues.push('briefing_template_body_class_missing');
+  if (!experimentStyles.includes('--exp-cream: #f7f4ef')) issues.push('experiment_cream_palette_missing');
+  if (!experimentStyles.includes('--exp-green-deep: #0b3528')) issues.push('experiment_green_palette_missing');
+  if (!experimentStyles.includes('body.home-experiment #works-library')) issues.push('homepage_works_override_missing');
+  if (outputs.length < 50) issues.push(`briefing_output_count_too_small:${outputs.length}`);
+  for (const output of outputs) {
+    const html = read(output);
+    if (!html.includes('data-janet-experiment="signal-wave-16"')) issues.push(`briefing_marker_missing:${output}`);
+    if (!html.includes('class="briefing-output-page"')) issues.push(`briefing_body_class_missing:${output}`);
+    if (!html.includes('experiment-pages.css?v=experiment-wave-16')) issues.push(`briefing_design_css_missing:${output}`);
+    if (!html.includes('signal-cursor.js?v=experiment-wave-16')) issues.push(`briefing_cursor_missing:${output}`);
   }
   if (!news.includes("currentReaderLabel() + ' 正在读今日晨报'")) issues.push('real_reader_activity_missing');
   if (news.includes('完整晨报已就绪')) issues.push('fixed_activity_copy_still_present');
@@ -138,6 +173,8 @@ console.log(JSON.stringify({
   mobile_overlap_guard: true,
   contextual_cursor_states: true,
   experimental_html_shells: experimentPages.length,
+  briefing_outputs: briefingOutputs().length,
+  marvel_independent_design: true,
   real_reader_activity: true,
   cinematic_lab_cover: true
 }, null, 2));

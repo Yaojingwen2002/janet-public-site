@@ -10,15 +10,13 @@ if (stage && canvas) {
     edition: document.querySelector('[data-signal-edition]'),
     motion: stage.querySelector('[data-signal-motion]'),
     motionIcon: stage.querySelector('[data-signal-motion-icon]'),
+    centerTarget: stage.querySelector('[data-signal-center-target]'),
     centerCoordinates: stage.querySelector('[data-signal-center-coordinates]'),
     readout: stage.querySelector('[data-signal-readout]'),
     source: stage.querySelector('[data-signal-source]'),
     location: stage.querySelector('[data-signal-location]'),
     sourceCoordinates: stage.querySelector('[data-signal-source-coordinates]'),
-    card: stage.querySelector('[data-signal-card]'),
-    cardSource: stage.querySelector('[data-signal-card-source]'),
-    cardTime: stage.querySelector('[data-signal-card-time]'),
-    cardTitle: stage.querySelector('[data-signal-card-title]'),
+    storyLayer: stage.querySelector('[data-signal-story-layer]'),
     fallback: stage.querySelector('[data-signal-fallback]')
   };
 
@@ -58,8 +56,8 @@ if (stage && canvas) {
     land: '#1e4639',
     landBright: '#2b5f4d',
     coast: 'rgba(132, 246, 202, .62)',
-    source: '#65d9e7',
-    sourceHalo: 'rgba(101, 217, 231, .22)',
+    quiet: '#8e9994',
+    quietHalo: 'rgba(142, 153, 148, .18)',
     news: '#ff735f',
     newsHalo: 'rgba(255, 115, 95, .25)',
     disabled: '#64716c',
@@ -78,9 +76,12 @@ if (stage && canvas) {
     latestEdition: '',
     dragging: false,
     cardHover: false,
+    hoveredStoryId: '',
     manuallyPaused: reducedMotion.matches,
     activeSourceId: '',
+    storyCards: new Map(),
     centerCoordinateLabel: '',
+    globeTargetNdc: { x: .38, y: .01 },
     zoomCurrent: 1,
     zoomTarget: 1,
     zoomVelocity: 0,
@@ -113,12 +114,17 @@ if (stage && canvas) {
   }
 
   function flattenStories(content) {
-    return Object.values(content?.sections || {}).flatMap((section) => section?.items || []).map((item) => ({
-      title: String(item.title || '').trim(),
-      source: String(item.source || '').trim(),
-      url: String(item.url || '').trim(),
-      publishedAt: item.published_at || item.publishedAt || item.date || content.date || ''
-    })).filter((item) => item.title && /^https?:\/\//i.test(item.url));
+    return Object.entries(content?.sections || {}).flatMap(([sectionId, section]) => (
+      (section?.items || []).map((item) => ({
+        title: String(item.title || '').trim(),
+        body: String(item.body || item.summary || '').trim(),
+        janetTake: String(item.janet_take || item.janetTake || '').trim(),
+        source: String(item.source || '').trim(),
+        url: String(item.url || '').trim(),
+        sectionId,
+        publishedAt: item.published_at || item.publishedAt || item.date || content.date || ''
+      }))
+    )).filter((item) => item.title && /^https?:\/\//i.test(item.url));
   }
 
   function storyMatchesSource(story, source) {
@@ -333,7 +339,7 @@ if (stage && canvas) {
       ? { solid: palette.news, halo: palette.newsHalo }
       : status === 'disabled'
         ? { solid: palette.disabled, halo: palette.disabledHalo }
-        : { solid: palette.source, halo: palette.sourceHalo };
+        : { solid: palette.quiet, halo: palette.quietHalo };
 
     context.fillStyle = colors.halo;
     context.beginPath();
@@ -358,7 +364,7 @@ if (stage && canvas) {
 
   function buildMarkers(radius) {
     const textures = {
-      source: createMarkerTexture('source'),
+      quiet: createMarkerTexture('quiet'),
       news: createMarkerTexture('news'),
       disabled: createMarkerTexture('disabled')
     };
@@ -367,7 +373,7 @@ if (stage && canvas) {
 
     for (const source of state.sources) {
       const news = state.newsBySource.get(source.id) || null;
-      const status = news ? 'news' : source.enabled ? 'source' : 'disabled';
+      const status = news ? 'news' : source.enabled ? 'quiet' : 'disabled';
       const material = new THREE.SpriteMaterial({
         map: textures[status],
         transparent: true,
@@ -378,12 +384,118 @@ if (stage && canvas) {
       const marker = new THREE.Sprite(material);
       const lat = Number.isFinite(source.display_lat) ? source.display_lat : source.lat;
       const lng = Number.isFinite(source.display_lng) ? source.display_lng : source.lng;
-      const baseScale = status === 'news' ? .25 : status === 'disabled' ? .16 : .19;
+      const baseScale = status === 'news' ? .25 : status === 'disabled' ? .14 : .17;
       marker.position.copy(latLngToVector3(lat, lng, radius * 1.045));
       marker.scale.setScalar(baseScale);
       marker.userData = { source, news, status, baseScale };
       markerGroup.add(marker);
       state.markers.push(marker);
+    }
+  }
+
+  function appendTextElement(parent, tagName, className, text) {
+    const element = document.createElement(tagName);
+    if (className) element.className = className;
+    element.textContent = text;
+    parent.appendChild(element);
+    return element;
+  }
+
+  function resetStoryTilt(entry) {
+    if (!entry?.element) return;
+    entry.element.style.setProperty('--story-tilt-x', '0deg');
+    entry.element.style.setProperty('--story-tilt-y', '0deg');
+  }
+
+  function bindStoryCard(entry) {
+    const { element, source } = entry;
+    element.addEventListener('pointerenter', () => {
+      state.cardHover = true;
+      state.hoveredStoryId = source.id;
+      element.classList.add('is-hovered');
+    });
+    element.addEventListener('pointermove', (event) => {
+      const bounds = element.getBoundingClientRect();
+      const x = THREE.MathUtils.clamp((event.clientX - bounds.left) / bounds.width - .5, -.5, .5);
+      const y = THREE.MathUtils.clamp((event.clientY - bounds.top) / bounds.height - .5, -.5, .5);
+      element.style.setProperty('--story-tilt-x', `${(-y * 5).toFixed(2)}deg`);
+      element.style.setProperty('--story-tilt-y', `${(x * 6).toFixed(2)}deg`);
+    });
+    element.addEventListener('pointerleave', () => {
+      state.cardHover = false;
+      state.hoveredStoryId = '';
+      element.classList.remove('is-hovered');
+      resetStoryTilt(entry);
+    });
+  }
+
+  function buildStoryCards() {
+    if (!ui.storyLayer) return;
+    ui.storyLayer.replaceChildren();
+    state.storyCards.clear();
+
+    for (const marker of state.markers) {
+      const { source, news } = marker.userData;
+      if (!news) continue;
+
+      const card = document.createElement('a');
+      card.className = 'signal-story-card';
+      card.href = news.url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.dataset.sourceId = source.id;
+      card.setAttribute('aria-label', `查看新闻：${news.title}`);
+      card.setAttribute('aria-hidden', 'true');
+      card.tabIndex = -1;
+
+      const connector = document.createElement('span');
+      connector.className = 'signal-story-connector';
+      connector.setAttribute('aria-hidden', 'true');
+      card.appendChild(connector);
+
+      const meta = document.createElement('span');
+      meta.className = 'signal-story-meta';
+      appendTextElement(meta, 'span', 'signal-story-source', news.source || source.display_name || source.source);
+      const time = appendTextElement(meta, 'time', '', formattedPublishedTime(news.publishedAt));
+      time.dateTime = String(news.publishedAt || state.latestEdition);
+      card.appendChild(meta);
+
+      appendTextElement(card, 'strong', 'signal-story-title', news.title);
+
+      const detail = document.createElement('span');
+      detail.className = 'signal-story-detail';
+      if (news.body) appendTextElement(detail, 'span', 'signal-story-body', news.body);
+      if (news.janetTake) {
+        const take = document.createElement('span');
+        take.className = 'signal-story-take';
+        appendTextElement(take, 'b', '', 'Janet 锐评');
+        appendTextElement(take, 'span', '', news.janetTake);
+        detail.appendChild(take);
+      }
+      const action = appendTextElement(detail, 'span', 'signal-story-action', '进入原文');
+      action.setAttribute('aria-hidden', 'true');
+      card.appendChild(detail);
+
+      const entry = {
+        element: card,
+        marker,
+        source,
+        story: news,
+        x: 0,
+        y: 0,
+        opacity: 0,
+        scale: .72,
+        targetX: 0,
+        targetY: 0,
+        targetOpacity: 0,
+        targetScale: .72,
+        width: 232,
+        height: 78,
+        initialized: false
+      };
+      bindStoryCard(entry);
+      ui.storyLayer.appendChild(card);
+      state.storyCards.set(source.id, entry);
     }
   }
 
@@ -452,40 +564,29 @@ if (stage && canvas) {
     return text;
   }
 
-  function resetCardTilt() {
-    if (ui.card) ui.card.style.transform = '';
-  }
-
   function setActiveSource(sourceId) {
     if (state.activeSourceId === sourceId) return;
     state.activeSourceId = sourceId;
     stage.dataset.activeSource = sourceId;
     const marker = state.markers.find((item) => item.userData.source.id === sourceId);
+    stage.dataset.activeKind = marker?.userData.news ? 'news' : marker ? 'quiet' : '';
+
+    for (const [storySourceId, entry] of state.storyCards) {
+      const active = storySourceId === sourceId;
+      entry.element.classList.toggle('is-active', active);
+      if (!active && storySourceId !== state.hoveredStoryId) resetStoryTilt(entry);
+    }
 
     if (!marker) {
       if (ui.readout) ui.readout.hidden = true;
-      if (ui.card) ui.card.hidden = true;
-      resetCardTilt();
       return;
     }
 
     const { source, news } = marker.userData;
-    if (ui.readout) ui.readout.hidden = false;
+    if (ui.readout) ui.readout.hidden = Boolean(news);
     if (ui.source) ui.source.textContent = source.display_name || source.source;
     if (ui.location) ui.location.textContent = [source.city, source.country].filter(Boolean).join(' · ');
     if (ui.sourceCoordinates) ui.sourceCoordinates.textContent = formatCoordinates(source.lat, source.lng);
-
-    if (!news || !ui.card) {
-      if (ui.card) ui.card.hidden = true;
-      resetCardTilt();
-      return;
-    }
-
-    ui.card.href = news.url;
-    ui.card.hidden = false;
-    if (ui.cardSource) ui.cardSource.textContent = news.source || source.display_name || source.source;
-    if (ui.cardTime) ui.cardTime.textContent = formattedPublishedTime(news.publishedAt);
-    if (ui.cardTitle) ui.cardTitle.textContent = news.title;
   }
 
   function closestCenteredMarker() {
@@ -499,8 +600,11 @@ if (stage && canvas) {
       const frontFacing = world.z > .22;
       if (!frontFacing) continue;
       const projected = world.clone().project(camera);
-      const distance = Math.hypot(projected.x, projected.y);
-      if (distance < .32) candidates.push({ marker, distance });
+      const distance = Math.hypot(
+        projected.x - state.globeTargetNdc.x,
+        projected.y - state.globeTargetNdc.y
+      );
+      if (distance < .27) candidates.push({ marker, distance });
     }
     const pool = candidates.some((item) => item.marker.userData.news)
       ? candidates.filter((item) => item.marker.userData.news)
@@ -509,7 +613,123 @@ if (stage && canvas) {
     return pool[0]?.marker || null;
   }
 
-  function updateMarkerPresentation(time) {
+  function clamp01(value) {
+    return THREE.MathUtils.clamp(value, 0, 1);
+  }
+
+  function resolveStoryLane(entries, topLimit, bottomLimit, gap = 10) {
+    entries.sort((a, b) => a.targetY - b.targetY);
+    let cursor = topLimit;
+
+    for (const entry of entries) {
+      entry.targetY = Math.max(entry.targetY, cursor);
+      cursor = entry.targetY + entry.height + gap;
+    }
+
+    const overflow = Math.max(0, cursor - 10 - bottomLimit);
+    if (!overflow) return;
+    for (const entry of entries) entry.targetY = Math.max(topLimit, entry.targetY - overflow);
+  }
+
+  function updateStoryCardTargets() {
+    if (!state.storyCards.size) return;
+    scene.updateMatrixWorld(true);
+    camera.updateMatrixWorld(true);
+
+    const width = Math.max(1, stage.clientWidth);
+    const height = Math.max(1, stage.clientHeight);
+    const mobile = width < 620;
+    const tablet = width < 980;
+    const compactWidth = mobile ? 156 : 232;
+    const compactHeight = mobile ? 48 : 78;
+    const expandedWidth = Math.min(mobile ? 332 : 410, width - 24);
+    const expandedHeight = mobile ? 190 : 252;
+    const topLimit = mobile ? Math.max(380, height * .58) : 220;
+    const bottomLimit = height - (mobile ? 88 : 72);
+    const safeLeft = tablet ? 12 : Math.max(12, width * .43);
+    const centerX = (state.globeTargetNdc.x * .5 + .5) * width;
+    const centerY = (-state.globeTargetNdc.y * .5 + .5) * height;
+    const lanes = { left: [], right: [] };
+
+    for (const entry of state.storyCards.values()) {
+      const world = entry.marker.getWorldPosition(new THREE.Vector3());
+      const projected = world.clone().project(camera);
+      const frontFacing = world.z > .16 && projected.z < 1;
+      const inFrame = Math.abs(projected.x) < 1.08 && Math.abs(projected.y) < 1.04;
+      const active = entry.source.id === state.activeSourceId;
+      const edgeFade = Math.min(
+        clamp01((1.08 - Math.abs(projected.x)) / .2),
+        clamp01((1.04 - Math.abs(projected.y)) / .18)
+      );
+
+      entry.width = active ? expandedWidth : compactWidth;
+      entry.height = active ? expandedHeight : compactHeight;
+      entry.targetOpacity = frontFacing && inFrame
+        ? active ? .98 : .28 + edgeFade * .64
+        : 0;
+      entry.targetScale = active ? 1 : frontFacing && inFrame ? .92 + edgeFade * .08 : .72;
+
+      if (!frontFacing || !inFrame) continue;
+
+      const markerX = (projected.x * .5 + .5) * width;
+      const markerY = (-projected.y * .5 + .5) * height;
+
+      if (active) {
+        entry.targetX = THREE.MathUtils.clamp(centerX - entry.width * .5, tablet ? 12 : width * .39, width - entry.width - 12);
+        entry.targetY = THREE.MathUtils.clamp(centerY + 34, topLimit, bottomLimit - entry.height);
+        entry.element.classList.remove('is-left');
+        continue;
+      }
+
+      const lane = mobile
+        ? (lanes.left.length <= lanes.right.length ? 'left' : 'right')
+        : (markerX > centerX + 18 ? 'left' : 'right');
+      let proposedX = mobile
+        ? lane === 'left' ? 12 : width - entry.width - 12
+        : lane === 'left' ? markerX - entry.width - 18 : markerX + 18;
+      if (!mobile) {
+        proposedX = lane === 'left'
+          ? Math.min(proposedX, centerX - entry.width - 76)
+          : Math.max(proposedX, centerX + 76);
+      }
+      entry.targetX = THREE.MathUtils.clamp(proposedX, safeLeft, width - entry.width - 12);
+      entry.targetY = THREE.MathUtils.clamp(markerY - entry.height * .5, topLimit, bottomLimit - entry.height);
+      entry.element.classList.toggle('is-left', lane === 'left');
+      lanes[lane].push(entry);
+    }
+
+    resolveStoryLane(lanes.left, topLimit, bottomLimit, mobile ? 8 : 10);
+    resolveStoryLane(lanes.right, topLimit, bottomLimit, mobile ? 8 : 10);
+  }
+
+  function animateStoryCards(delta) {
+    const frameScale = Math.min(2.4, Math.max(.25, delta / 16.667));
+    const positionEase = reducedMotion.matches ? 1 : 1 - Math.pow(.78, frameScale);
+    const opacityEase = reducedMotion.matches ? 1 : 1 - Math.pow(.7, frameScale);
+
+    for (const entry of state.storyCards.values()) {
+      if (!entry.initialized && entry.targetOpacity > .02) {
+        entry.x = entry.targetX;
+        entry.y = entry.targetY + 14;
+        entry.initialized = true;
+      }
+      entry.x = THREE.MathUtils.lerp(entry.x, entry.targetX, positionEase);
+      entry.y = THREE.MathUtils.lerp(entry.y, entry.targetY, positionEase);
+      entry.opacity = THREE.MathUtils.lerp(entry.opacity, entry.targetOpacity, opacityEase);
+      entry.scale = THREE.MathUtils.lerp(entry.scale, entry.targetScale, positionEase);
+
+      const visible = entry.opacity > .08;
+      entry.element.classList.toggle('is-visible', visible);
+      entry.element.setAttribute('aria-hidden', String(!visible));
+      entry.element.tabIndex = visible ? 0 : -1;
+      entry.element.style.setProperty('--story-x', `${entry.x.toFixed(2)}px`);
+      entry.element.style.setProperty('--story-y', `${entry.y.toFixed(2)}px`);
+      entry.element.style.setProperty('--story-opacity', entry.opacity.toFixed(3));
+      entry.element.style.setProperty('--story-scale', entry.scale.toFixed(3));
+    }
+  }
+
+  function updateMarkerPresentation(time, delta) {
     const centered = closestCenteredMarker();
     if (!state.cardHover) setActiveSource(centered?.userData.source.id || '');
 
@@ -521,8 +741,17 @@ if (stage && canvas) {
       const targetScale = marker.userData.baseScale * pulse * (active ? 1.55 : 1);
       const nextScale = THREE.MathUtils.lerp(marker.scale.x, targetScale, active ? .16 : .1);
       marker.scale.setScalar(nextScale);
-      marker.material.opacity = active ? 1 : marker.userData.status === 'disabled' ? .52 : .9;
+      marker.material.opacity = active
+        ? 1
+        : marker.userData.status === 'news'
+          ? .94
+          : marker.userData.status === 'disabled'
+            ? .38
+            : .64;
     }
+
+    updateStoryCardTargets();
+    animateStoryCards(delta);
   }
 
   function focusInitialNewsSource() {
@@ -536,6 +765,21 @@ if (stage && canvas) {
     return source;
   }
 
+  function updateGlobePlacement() {
+    if (!camera || !globeGroup) return;
+    const verticalHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov * .5)) * camera.position.z;
+    const horizontalHalf = verticalHalf * camera.aspect;
+    globeGroup.position.x = state.globeTargetNdc.x * horizontalHalf;
+    globeGroup.position.y = state.globeTargetNdc.y * verticalHalf;
+    globeGroup.position.z = 0;
+
+    const center = globeGroup.getWorldPosition(new THREE.Vector3()).project(camera);
+    const centerX = (center.x * .5 + .5) * stage.clientWidth;
+    const centerY = (-center.y * .5 + .5) * stage.clientHeight;
+    stage.style.setProperty('--signal-center-x', `${centerX.toFixed(2)}px`);
+    stage.style.setProperty('--signal-center-y', `${centerY.toFixed(2)}px`);
+  }
+
   function resize() {
     if (!renderer || !camera) return;
     const bounds = stage.getBoundingClientRect();
@@ -543,10 +787,22 @@ if (stage && canvas) {
     const height = Math.max(1, Math.round(bounds.height));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
-    cameraBaseZ = 8.45 * Math.max(1, 1 / camera.aspect);
-    if (width < 540) cameraBaseZ += .12;
+    if (width < 560) {
+      cameraBaseZ = 13.2;
+      state.globeTargetNdc.x = 0;
+      state.globeTargetNdc.y = -.16;
+    } else if (width < 860) {
+      cameraBaseZ = 10.6;
+      state.globeTargetNdc.x = .08;
+      state.globeTargetNdc.y = -.2;
+    } else {
+      cameraBaseZ = 8.9;
+      state.globeTargetNdc.x = camera.aspect < 1.55 ? .31 : .39;
+      state.globeTargetNdc.y = .01;
+    }
     camera.position.z = cameraBaseZ / state.zoomCurrent;
     camera.updateProjectionMatrix();
+    updateGlobePlacement();
   }
 
   function updateZoom(delta) {
@@ -568,6 +824,7 @@ if (stage && canvas) {
     }
 
     camera.position.z = cameraBaseZ / state.zoomCurrent;
+    updateGlobePlacement();
     const zoomLabel = state.zoomCurrent.toFixed(2);
     if (zoomLabel !== state.zoomLabel) {
       state.zoomLabel = zoomLabel;
@@ -582,7 +839,7 @@ if (stage && canvas) {
     const paused = state.manuallyPaused || state.cardHover || reducedMotion.matches;
 
     if (!state.dragging && !paused) {
-      globeGroup.rotateY(delta * .000018 + state.velocity.x);
+      globeGroup.rotateY(delta * .000006 + state.velocity.x);
       globeGroup.rotateX(state.velocity.y);
       const rotationDamping = Math.pow(.952, delta / 16.667);
       state.velocity.x *= rotationDamping;
@@ -591,7 +848,7 @@ if (stage && canvas) {
 
     updateZoom(delta);
     updateCenterCoordinates();
-    updateMarkerPresentation(time);
+    updateMarkerPresentation(time, delta);
     renderer.render(scene, camera);
     window.requestAnimationFrame(frame);
   }
@@ -670,23 +927,9 @@ if (stage && canvas) {
       updateMotionButton();
     });
 
-    ui.card?.addEventListener('pointerenter', () => {
-      state.cardHover = true;
-    });
-    ui.card?.addEventListener('pointermove', (event) => {
-      const bounds = ui.card.getBoundingClientRect();
-      const x = (event.clientX - bounds.left) / bounds.width - .5;
-      const y = (event.clientY - bounds.top) / bounds.height - .5;
-      ui.card.style.transform = `perspective(760px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) scale(1.025)`;
-    });
-    ui.card?.addEventListener('pointerleave', () => {
-      state.cardHover = false;
-      resetCardTilt();
-    });
-
     window.addEventListener('keydown', (event) => {
       if (!globeGroup || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
-      if (!stage.matches(':hover') && document.activeElement !== ui.motion && document.activeElement !== ui.card) return;
+      if (!stage.matches(':hover') && document.activeElement !== ui.motion) return;
       event.preventDefault();
       const amount = event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -.08 : .08;
       const axis = event.key === 'ArrowLeft' || event.key === 'ArrowRight'
@@ -706,6 +949,7 @@ if (stage && canvas) {
       state.newsBySource = data.newsBySource;
       state.latestEdition = data.editionId;
       buildScene(data.land);
+      buildStoryCards();
       const initialSource = focusInitialNewsSource();
       updateStats();
       updateMotionButton();

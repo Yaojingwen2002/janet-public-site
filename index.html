@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="styles/news-editorial.css">
   <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
   <link rel="stylesheet" href="styles/janet-motion.css">
-  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-3">
+  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-4">
   <link rel="stylesheet" href="styles/potato-center.css?v=potato-roll-20260617">
   <link rel="stylesheet" href="styles/comments.css">
 
@@ -109,15 +109,44 @@
   <section class="hero hero-v2 signal-hero" id="hero" data-theme="hero">
     <div class="hero-bg"></div>
 
+    <div class="signal-globe-stage" data-signal-globe>
+      <canvas id="signal-globe-canvas" aria-label="全球 AI 标准信号源分布，可拖动旋转并使用滚轮缩放"></canvas>
+
+      <div class="signal-globe-toolbar">
+        <div class="signal-field-status">
+          <span class="signal-live"><i></i> LIVE SOURCE FIELD</span>
+          <output class="signal-center-coordinate" data-signal-center-coordinates aria-label="地球中心经纬度">00.000° N / 000.000° E</output>
+        </div>
+        <button class="signal-motion-toggle" type="button" data-signal-motion aria-label="暂停地球自转" title="暂停地球自转">
+          <span data-signal-motion-icon aria-hidden="true">Ⅱ</span>
+        </button>
+      </div>
+
+      <div class="signal-center-target" data-signal-center-target aria-hidden="true">
+        <span></span>
+        <i></i>
+      </div>
+
+      <div class="signal-source-readout" data-signal-readout aria-live="polite" hidden>
+        <span class="signal-source-state">今日无更新</span>
+        <strong data-signal-source>Source</strong>
+        <span data-signal-location>City · Country</span>
+        <span class="signal-source-coordinate" data-signal-source-coordinates>00.000° N / 000.000° E</span>
+      </div>
+
+      <div class="signal-story-layer" data-signal-story-layer aria-live="polite"></div>
+      <p class="signal-globe-fallback" data-signal-fallback hidden>全球信号图暂时不可用，今日晨报仍可正常阅读。</p>
+    </div>
+
     <div class="container signal-hero-layout">
       <div class="signal-hero-copy">
         <div class="hero-eyebrow">
           <span class="dot"></span>
-          <span>Janet · AI 信号站</span>
+          <span>Janet / AI Signal Desk</span>
         </div>
 
         <h1 data-reveal="words">
-          过滤噪音，<em>留下信号。</em>
+          <span>过滤噪音，</span><em>留下信号。</em>
         </h1>
 
         <p class="hero-sub hero-sub-wide rv-fade rv-d1" data-reveal="fade">
@@ -128,63 +157,35 @@
           <a href="#news" class="btn btn-green">读今日快车箱</a>
           <a href="#works-library" class="btn btn-outline">看作品</a>
         </div>
-
-        <dl class="signal-hero-stats" aria-label="信号站状态">
-          <div>
-            <dt>标准源</dt>
-            <dd data-signal-total>27</dd>
-          </div>
-          <div>
-            <dt>今日有信号</dt>
-            <dd data-signal-hot>--</dd>
-          </div>
-          <div>
-            <dt>最新晨报</dt>
-            <dd data-signal-edition>同步中</dd>
-          </div>
-        </dl>
       </div>
 
-      <div class="signal-globe-stage" data-signal-globe>
-        <div class="signal-globe-toolbar">
-          <div class="signal-field-status">
-            <span class="signal-live"><i></i> LIVE SOURCE FIELD</span>
-            <output class="signal-center-coordinate" data-signal-center-coordinates aria-label="地球中心经纬度">00.000° N / 000.000° E</output>
-          </div>
-          <button class="signal-motion-toggle" type="button" data-signal-motion aria-label="暂停地球自转" title="暂停地球自转">
-            <span data-signal-motion-icon aria-hidden="true">Ⅱ</span>
-          </button>
-        </div>
-
-        <canvas id="signal-globe-canvas" aria-label="全球 AI 标准信号源分布，可拖动旋转并使用滚轮缩放"></canvas>
-
-        <div class="signal-center-target" aria-hidden="true">
-          <span></span>
-          <i></i>
-        </div>
-
-        <div class="signal-source-readout" data-signal-readout aria-live="polite" hidden>
-          <strong data-signal-source>Source</strong>
-          <span data-signal-location>City · Country</span>
-          <span class="signal-source-coordinate" data-signal-source-coordinates>00.000° N / 000.000° E</span>
-        </div>
-
-        <a class="signal-news-card" data-signal-card href="#news" aria-live="polite" hidden>
-          <span class="signal-card-meta">
-            <span data-signal-card-source>SOURCE</span>
-            <time data-signal-card-time></time>
-          </span>
-          <strong data-signal-card-title></strong>
-          <span class="signal-card-action">进入原文 <b aria-hidden="true">↗</b></span>
-        </a>
-
-        <p class="signal-globe-fallback" data-signal-fallback hidden>全球信号图暂时不可用，今日晨报仍可正常阅读。</p>
+      <div class="signal-hero-field-note" aria-hidden="true">
+        <span>FIELD / 001</span>
+        <b>GLOBAL AI SIGNALS</b>
       </div>
+    </div>
+
+    <div class="container signal-hero-ledger">
+      <dl class="signal-hero-stats" aria-label="信号站状态">
+        <div>
+          <dt>标准源</dt>
+          <dd data-signal-total>27</dd>
+        </div>
+        <div>
+          <dt>今日有信号</dt>
+          <dd data-signal-hot>--</dd>
+        </div>
+        <div>
+          <dt>最新晨报</dt>
+          <dd data-signal-edition>同步中</dd>
+        </div>
+      </dl>
+      <span class="signal-scroll-index" aria-hidden="true">01 / DAILY INTELLIGENCE</span>
     </div>
   </section>
 
   <!-- ═══════════ 新闻模块 — Janet 快车箱 ═══════════ -->
-  <section id="news" class="section" data-theme="briefing">
+  <section id="news" class="section" data-theme="briefing" data-section-index="01">
     <div class="container">
       <div class="chapter-mark">Daily Briefing</div>
       <div class="section-header">
@@ -222,7 +223,7 @@
   <div class="divider"></div>
 
   <!-- Janet 作品库 -->
-  <section id="works-library" class="section works-library-section" data-theme="archive">
+  <section id="works-library" class="section works-library-section" data-theme="archive" data-section-index="02">
     <div class="wm wm-right" aria-hidden="true">WORKS</div>
     <div class="container">
       <div class="chapter-mark">Works Library</div>
@@ -251,7 +252,7 @@
   <div class="divider"></div>
 
   <!-- 关于 -->
-  <section id="about" class="section" data-theme="about">
+  <section id="about" class="section" data-theme="about" data-section-index="03">
     <div class="container">
       <div class="chapter-mark">About</div>
       <div class="section-header">
@@ -296,7 +297,7 @@
   </section>
 
   <!-- 联系 -->
-  <section id="contact" class="section" data-theme="contact">
+  <section id="contact" class="section" data-theme="contact" data-section-index="04">
     <div class="container">
       <div class="chapter-mark">Contact</div>
       <div class="section-header">
@@ -388,6 +389,6 @@
 <script src="scripts/effects.js"></script>
 <script src="scripts/home-theme.js?v=experiment-wave-2"></script>
 <script src="scripts/janet-motion.js"></script>
-<script type="module" src="scripts/signal-globe.js?v=experiment-wave-3"></script>
+<script type="module" src="scripts/signal-globe.js?v=experiment-wave-4"></script>
 </body>
 </html>

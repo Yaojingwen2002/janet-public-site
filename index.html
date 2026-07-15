@@ -25,7 +25,8 @@
   <link rel="stylesheet" href="styles/news-editorial.css">
   <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
   <link rel="stylesheet" href="styles/janet-motion.css">
-  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-4">
+  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-14">
+  <link rel="stylesheet" href="styles/signal-cursor.css?v=experiment-wave-14">
   <link rel="stylesheet" href="styles/potato-center.css?v=potato-roll-20260617">
   <link rel="stylesheet" href="styles/comments.css">
 
@@ -77,12 +78,6 @@
         <img src="assets/icons/logo-mark.svg" alt="" class="nav-logo-mark">
         <span>Janet</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#news">快车箱</a></li>
-        <li><a href="#works-library">作品库</a></li>
-        <li><a href="#about">关于</a></li>
-        <li><a href="#contact">联系</a></li>
-      </ul>
     </div>
   </nav>
   <!-- 土豆中心 -->
@@ -98,9 +93,6 @@
     <a href="index.html">首页</a>
     <a href="news.html">Janet 快车箱</a>
     <a href="portfolio.html">作品库</a>
-    <a href="gpt-image2-handbook.html">影像参考实验室</a>
-    <a href="shuttle-universe.html">穿梭宇宙</a>
-    <a href="misaligned-scenes.html">错位名场面</a>
     <a href="#about">关于 Janet</a>
     <a href="#contact">联系</a>
   </div>
@@ -134,6 +126,7 @@
         <span class="signal-source-coordinate" data-signal-source-coordinates>00.000° N / 000.000° E</span>
       </div>
 
+      <svg class="signal-connector-layer" data-signal-connectors aria-hidden="true"></svg>
       <div class="signal-story-layer" data-signal-story-layer aria-live="polite"></div>
       <p class="signal-globe-fallback" data-signal-fallback hidden>全球信号图暂时不可用，今日晨报仍可正常阅读。</p>
     </div>
@@ -264,30 +257,30 @@
         <div class="about-top">
           <div class="about-info">
             <h3>Janet Yao</h3>
-            <span class="role">AI Content Product Builder</span>
+            <span class="role">AI 科技媒体主笔 / 冷面审片官</span>
           </div>
         </div>
 
         <p class="about-text about-lead">
-          我用中国创作者视角观察全球 AI：哪些是真进展，哪些只是公关话术；哪些能落地，哪些只是泡沫。
+          我站在中国创作者和中国企业一侧追踪全球 AI：不复读参数，只看推理成本、国内可用性，以及它能否真正替掉一段工作。
         </p>
 
         <p class="about-text">
-          Janet 快车箱负责过滤信息，穿梭宇宙负责释放想象力。一个偏判断，一个偏表达，共同构成我的 AI 内容产品系统。
+          Janet 快车箱负责刺破公关话术，作品库负责把判断变成视觉表达。潮星技术的原则只有一句：Let intelligence be within reach.
         </p>
 
         <div class="about-proof-grid" aria-label="Janet 的核心能力">
           <article>
-            <strong>内容判断</strong>
-            <span>过滤 AI 噪音，保留真正有价值的信息</span>
+            <strong>信号判断</strong>
+            <span>从全球来源里筛出能行动、能验证的信息</span>
+          </article>
+          <article>
+            <strong>创作者代言</strong>
+            <span>把模型变化翻译成成本、工具和真实机会</span>
           </article>
           <article>
             <strong>视觉叙事</strong>
-            <span>用镜头和运动控制构建 AI 视频表达</span>
-          </article>
-          <article>
-            <strong>产品沉淀</strong>
-            <span>把晨报、视频和案例库变成长期资产</span>
+            <span>用 AI 影像、运镜和项目档案沉淀表达</span>
           </article>
         </div>
 
@@ -306,8 +299,8 @@
       </div>
 
       <div class="cta-card reveal">
-        <h2>一起聊聊</h2>
-        <p>如果你想交流 AI 趋势、内容产品、视频创作，或者有合作想法，可以通过下面的方式联系我。</p>
+        <h2>让判断落地</h2>
+        <p>AI 科技内容、内容产品、品牌影像与创作系统合作。说清目标、时间和交付，我会直接判断是否适合。</p>
 
         <div class="contact-grid">
           <!-- Email -->
@@ -316,7 +309,7 @@
             <div class="contact-details">
               <h4>邮箱</h4>
               <a href="#contact" data-email-user="yaojingwen12345" data-email-domain="gmail.com">发送邮件</a>
-              <p>项目合作 / 内容合作</p>
+              <p>内容产品 / 品牌影像 / 项目合作</p>
             </div>
           </div>
 
@@ -336,7 +329,7 @@
             <div class="contact-details">
               <h4>X</h4>
               <a href="https://twitter.com/yojngwn210305" target="_blank">@yojngwn210305</a>
-              <p>AI 观察与技术想法</p>
+              <p>AI 判断、创作者视角与即时观察</p>
             </div>
           </div>
 
@@ -346,13 +339,13 @@
             <div class="contact-details">
               <h4>GitHub</h4>
               <a href="https://github.com/yaojingwen2002" target="_blank">yaojingwen2002</a>
-              <p>设计系统与 AI 工具</p>
+              <p>网站系统、AI 工具与公开项目</p>
             </div>
           </div>
         </div>
 
         <p class="contact-note">
-          Based in China · UTC+8
+          Asia/Taipei · UTC+8 · ChaoXing Tech
         </p>
       </div>
     </div>
@@ -361,7 +354,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>Janet · 用 AI 过滤世界</p>
+      <p>潮星技术 · Let intelligence be within reach.</p>
       <p>
         © 2026 Janet Yao · 保留所有权利。
       </p>
@@ -377,18 +370,19 @@
   </button>
 
 </div>
-<script src="scripts/news.js"></script>
+<script src="scripts/news.js?v=experiment-wave-14"></script>
 <script src="scripts/portfolio.js"></script>
 <script src="scripts/supabase-config.js"></script>
 <script src="scripts/auth.js"></script>
 <script src="scripts/potato-center.js?v=potato-roll-20260617"></script>
 <script src="scripts/comments.js"></script>
-<script src="scripts/reactions.js"></script>
+<script src="scripts/reactions.js?v=experiment-wave-14"></script>
 <script src="scripts/nav.js?v=potato-roll-20260617"></script>
 <script src="scripts/site-guide.js"></script>
 <script src="scripts/effects.js"></script>
 <script src="scripts/home-theme.js?v=experiment-wave-2"></script>
 <script src="scripts/janet-motion.js"></script>
-<script type="module" src="scripts/signal-globe.js?v=experiment-wave-4"></script>
+<script src="scripts/signal-cursor.js?v=experiment-wave-14"></script>
+<script type="module" src="scripts/signal-globe.js?v=experiment-wave-14"></script>
 </body>
 </html>

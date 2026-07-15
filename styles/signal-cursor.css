@@ -1,0 +1,172 @@
+/* Janet signal cursor: desktop-only interaction affordance. */
+@media (hover: hover) and (pointer: fine) {
+  body.signal-cursor-enabled,
+  body.signal-cursor-enabled a,
+  body.signal-cursor-enabled button,
+  body.signal-cursor-enabled [role='button'],
+  body.signal-cursor-enabled summary,
+  body.signal-cursor-enabled label,
+  body.signal-cursor-enabled .signal-globe-stage,
+  body.signal-cursor-enabled #signal-globe-canvas {
+    cursor: none !important;
+  }
+
+  body.signal-cursor-enabled input,
+  body.signal-cursor-enabled textarea,
+  body.signal-cursor-enabled select,
+  body.signal-cursor-enabled [contenteditable='true'] {
+    cursor: text !important;
+  }
+
+  body.signal-cursor-enabled select,
+  body.signal-cursor-enabled input[type='checkbox'],
+  body.signal-cursor-enabled input[type='radio'],
+  body.signal-cursor-enabled input[type='range'] {
+    cursor: pointer !important;
+  }
+}
+
+.janet-cursor {
+  --cursor-accent: #9ddac9;
+  position: fixed;
+  z-index: 2147483646;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, -50%, 0);
+  transition: opacity 150ms ease;
+  will-change: transform;
+}
+
+.janet-cursor.is-visible {
+  opacity: 1;
+}
+
+.janet-cursor.is-native {
+  opacity: 0;
+}
+
+.janet-cursor__ring,
+.janet-cursor__core,
+.janet-cursor__mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  transform: translate(-50%, -50%);
+}
+
+.janet-cursor__ring {
+  width: 27px;
+  height: 27px;
+  border: 1px solid color-mix(in srgb, var(--cursor-accent) 72%, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(5, 18, 14, .12), 0 0 18px rgba(105, 230, 173, .12);
+  transition: width 180ms cubic-bezier(.2, .8, .2, 1), height 180ms cubic-bezier(.2, .8, .2, 1), border-color 160ms ease, border-radius 160ms ease, transform 140ms ease, background 160ms ease;
+}
+
+.janet-cursor__core {
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--cursor-accent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--cursor-accent) 55%, transparent);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: width 160ms ease, height 160ms ease, opacity 120ms ease, transform 140ms ease;
+}
+
+.janet-cursor__mark {
+  color: #dff3e9;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 120ms ease, transform 160ms ease;
+}
+
+.janet-cursor.is-link {
+  --cursor-accent: #f07865;
+}
+
+.janet-cursor.is-link .janet-cursor__ring {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(5, 18, 14, .72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.janet-cursor.is-link .janet-cursor__core,
+.janet-cursor.is-drag .janet-cursor__core,
+.janet-cursor.is-wait .janet-cursor__core {
+  opacity: 0;
+}
+
+.janet-cursor.is-link .janet-cursor__mark {
+  opacity: 1;
+}
+
+.janet-cursor.is-drag {
+  --cursor-accent: #79cfd4;
+}
+
+.janet-cursor.is-drag .janet-cursor__ring {
+  width: 38px;
+  height: 24px;
+  border-radius: 7px;
+  background:
+    linear-gradient(var(--cursor-accent), var(--cursor-accent)) left 7px center / 6px 1px no-repeat,
+    linear-gradient(var(--cursor-accent), var(--cursor-accent)) right 7px center / 6px 1px no-repeat;
+}
+
+.janet-cursor.is-drag .janet-cursor__mark {
+  opacity: 1;
+  color: var(--cursor-accent);
+}
+
+.janet-cursor.is-dragging .janet-cursor__ring {
+  width: 31px;
+  height: 20px;
+  border-color: #69e6ad;
+  background-color: rgba(5, 18, 14, .76);
+}
+
+.janet-cursor.is-pressed .janet-cursor__ring {
+  transform: translate(-50%, -50%) scale(.74);
+}
+
+.janet-cursor.is-wait {
+  --cursor-accent: #f0b768;
+}
+
+.janet-cursor.is-wait .janet-cursor__ring {
+  width: 29px;
+  height: 29px;
+  border-color: transparent;
+  background: conic-gradient(from 20deg, transparent 0 24%, var(--cursor-accent) 25% 62%, transparent 63% 100%);
+  -webkit-mask: radial-gradient(circle, transparent 0 10px, #000 11px);
+  mask: radial-gradient(circle, transparent 0 10px, #000 11px);
+  animation: janet-cursor-wait .72s linear infinite;
+}
+
+.janet-cursor.is-wait .janet-cursor__mark {
+  opacity: 0;
+}
+
+@keyframes janet-cursor-wait {
+  to { transform: translate(-50%, -50%) rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .janet-cursor__ring,
+  .janet-cursor__core,
+  .janet-cursor__mark {
+    transition: none;
+  }
+}

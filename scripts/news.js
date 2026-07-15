@@ -114,11 +114,14 @@
 
   function shareMenuMarkup() {
     return '<div class="share-wrap">' +
-      '<button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">转发</button>' +
+      '<button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false">' +
+        '<span class="engagement-symbol" aria-hidden="true">↗</span><span>转发</span>' +
+      '</button>' +
       '<div class="share-menu" role="menu" hidden>' +
         '<button class="share-item" type="button" data-share-action="copy">复制链接</button>' +
         '<button class="share-item" type="button" data-share-action="x">转发到 X</button>' +
         '<button class="share-item" type="button" data-share-action="weibo">转发到微博</button>' +
+        '<button class="share-item" type="button" data-share-action="native">系统分享</button>' +
       '</div>' +
     '</div>';
   }
@@ -131,23 +134,19 @@
 
     return '<div class="home-engagement rv-fade" aria-label="今日快车箱互动">' +
       '<div class="news-reactions news-reactions--home" data-edition-id="' + safeEditionId + '" data-edition-title="' + safeTitle + '" data-edition-url="' + safeUrl + '">' +
-        '<button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">' +
-          '<span aria-hidden="true">👍</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>' +
+        '<button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用" aria-pressed="false">' +
+          '<span class="engagement-symbol" aria-hidden="true">+</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>' +
         '</button>' +
       '</div>' +
       '<a class="comment-toggle-btn" href="' + commentUrl + '">' +
-        '评论 <span class="comment-count" data-comment-count data-edition-id="' + safeEditionId + '">0</span>' +
+        '<span class="engagement-symbol" aria-hidden="true">··</span><span>评论</span><span class="comment-count" data-comment-count data-edition-id="' + safeEditionId + '">0</span>' +
       '</a>' +
       shareMenuMarkup() +
     '</div>';
   }
 
   function renderActivityRibbon(editionId, outputUrl) {
-    return '<div class="briefing-activity-ribbon rv-fade" data-briefing-activity data-edition-id="' + escapeHtml(editionId) + '" data-edition-url="' + escapeHtml(outputUrl) + '" aria-label="快车箱互动">' +
-      '<a class="briefing-activity-pill is-green" href="' + escapeHtml(addCommentsHash(outputUrl)) + '">有读者正在看今日信号</a>' +
-      '<a class="briefing-activity-pill is-signal" href="' + escapeHtml(addCommentsHash(outputUrl)) + '">本期评论正在打开</a>' +
-      '<a class="briefing-activity-pill is-gold" href="' + escapeHtml(outputUrl) + '">完整晨报已就绪</a>' +
-    '</div>';
+    return '<div class="briefing-activity-ribbon rv-fade" data-briefing-activity data-edition-id="' + escapeHtml(editionId) + '" data-edition-url="' + escapeHtml(outputUrl) + '" aria-label="此刻的真实读者动态"></div>';
   }
 
   function readerLabel(name, guestId) {
@@ -158,11 +157,30 @@
     return '有读者';
   }
 
+  function currentReaderLabel() {
+    const identity = window.JanetAuth && window.JanetAuth.getIdentity && window.JanetAuth.getIdentity();
+    if (identity && identity.displayName) return readerLabel(identity.displayName, identity.guestId);
+    try {
+      let visitorCode = sessionStorage.getItem('janet_activity_visitor');
+      if (!visitorCode) {
+        visitorCode = Math.random().toString(36).slice(2, 6).toUpperCase();
+        sessionStorage.setItem('janet_activity_visitor', visitorCode);
+      }
+      return 'Janet 游客 ' + visitorCode;
+    } catch (error) {
+      return '当前访客';
+    }
+  }
+
+  function truncateActivity(value, maxLength) {
+    const clean = String(value || '').replace(/\s+/g, ' ').trim();
+    if (clean.length <= maxLength) return clean;
+    return clean.slice(0, Math.max(1, maxLength - 1)) + '…';
+  }
+
   function fallbackActivity(outputUrl) {
     return [
-      { tone: 'is-green', text: '有读者正在看今日信号', url: addCommentsHash(outputUrl) },
-      { tone: 'is-signal', text: '评论区已为本期打开', url: addCommentsHash(outputUrl) },
-      { tone: 'is-gold', text: '完整晨报已就绪', url: outputUrl }
+      { tone: 'is-reader', text: currentReaderLabel() + ' 正在读今日晨报', url: outputUrl }
     ];
   }
 
@@ -180,7 +198,7 @@
         .limit(3),
       client
         .from('reactions')
-        .select('guest_id, created_at')
+        .select('user_id, guest_id, created_at')
         .eq('edition_id', editionId)
         .eq('reaction_type', 'like')
         .order('created_at', { ascending: false })
@@ -190,9 +208,11 @@
     const items = [];
     if (!comments.error) {
       (comments.data || []).forEach((row) => {
+        const comment = truncateActivity(row.content, 34);
+        if (!comment) return;
         items.push({
-          tone: 'is-green',
-          text: readerLabel(row.display_name, row.guest_id) + ' 留下评论',
+          tone: 'is-comment',
+          text: readerLabel(row.display_name, row.guest_id) + '：' + comment,
           url: addCommentsHash(outputUrl),
           createdAt: row.created_at
         });
@@ -201,8 +221,8 @@
     if (!reactions.error) {
       (reactions.data || []).forEach((row) => {
         items.push({
-          tone: 'is-signal',
-          text: readerLabel('', row.guest_id) + ' 觉得有用',
+          tone: 'is-useful',
+          text: (row.guest_id ? readerLabel('', row.guest_id) : '注册读者') + ' 觉得今天的晨报有用',
           url: outputUrl,
           createdAt: row.created_at
         });
@@ -211,22 +231,39 @@
 
     return items
       .sort((a, b) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')))
-      .slice(0, 4)
+      .slice(0, 2)
       .concat(fallbackActivity(outputUrl))
-      .slice(0, 4);
+      .slice(0, 3);
   }
 
   function setActivityPills(ribbon, items) {
-    ribbon.innerHTML = items.map((item, index) => {
-      return '<a class="briefing-activity-pill ' + escapeHtml(item.tone || 'is-green') + '" href="' + escapeHtml(item.url || '#') + '" style="--pill-index:' + index + '">' + escapeHtml(item.text || '有读者正在互动') + '</a>';
+    const routes = [
+      { x: 4, y: 12, dx: 34, dy: -16, duration: 9.8, delay: 1.1, rotate: -1.1 },
+      { x: 17, y: 54, dx: -24, dy: 18, duration: 11.6, delay: 3.2, rotate: .8 },
+      { x: 6, y: 76, dx: 41, dy: -12, duration: 10.7, delay: 5.4, rotate: -.5 }
+    ];
+    ribbon.innerHTML = items.slice(0, 3).map((item, index) => {
+      const base = routes[index % routes.length];
+      const jitter = Math.round((Math.random() - .5) * 8);
+      const style = '--pill-x:' + Math.max(2, base.x + jitter) + '%;' +
+        '--pill-y:' + Math.max(4, base.y - jitter) + '%;' +
+        '--pill-dx:' + (base.dx + jitter) + 'px;' +
+        '--pill-dy:' + (base.dy - jitter) + 'px;' +
+        '--pill-duration:' + base.duration + 's;' +
+        '--pill-delay:-' + base.delay + 's;' +
+        '--pill-rotate:' + base.rotate + 'deg;';
+      return '<a class="briefing-activity-pill ' + escapeHtml(item.tone || 'is-reader') + '" href="' + escapeHtml(item.url || '#') + '" style="' + style + '" aria-label="打开当天完整晨报：' + escapeHtml(item.text || '读者动态') + '">' + escapeHtml(item.text || '有读者正在互动') + '</a>';
     }).join('');
   }
 
   function initBriefingActivityRibbon(root, editionId, outputUrl) {
     const ribbon = root.querySelector('[data-briefing-activity]');
     if (!ribbon) return;
+    const carouselStage = root.querySelector('.codex-carousel-stage');
+    if (carouselStage) carouselStage.appendChild(ribbon);
     let newsVisible = true;
     let worksVisible = false;
+    let liveItems = [];
 
     function updateVisibility() {
       ribbon.classList.toggle('is-paused', !newsVisible || worksVisible);
@@ -234,8 +271,19 @@
 
     function refreshActivity() {
       loadSupabaseActivity(editionId, outputUrl)
-        .then((items) => setActivityPills(ribbon, items))
-        .catch(() => setActivityPills(ribbon, fallbackActivity(outputUrl)));
+        .then((items) => setActivityPills(ribbon, liveItems.concat(items).slice(0, 3)))
+        .catch(() => setActivityPills(ribbon, liveItems.concat(fallbackActivity(outputUrl)).slice(0, 3)));
+    }
+
+    function showShareActivity(event) {
+      const detail = event.detail || {};
+      if (detail.editionId && detail.editionId !== editionId) return;
+      if (detail.url && String(detail.url).split('#')[0] !== String(outputUrl).split('#')[0]) return;
+      let text = currentReaderLabel() + ' 转发了今日晨报';
+      if (detail.action === 'copy') text = currentReaderLabel() + ' 复制了今日晨报链接';
+      else if (detail.platform) text = currentReaderLabel() + ' 正在转发到 ' + detail.platform;
+      liveItems = [{ tone: 'is-share', text, url: outputUrl }];
+      refreshActivity();
     }
 
     if ('IntersectionObserver' in window) {
@@ -258,6 +306,7 @@
     refreshActivity();
     document.addEventListener('janet:supabase-ready', refreshActivity);
     document.addEventListener('janet:auth-changed', refreshActivity);
+    document.addEventListener('janet:briefing-shared', showShareActivity);
     updateVisibility();
   }
 

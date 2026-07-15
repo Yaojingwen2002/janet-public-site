@@ -16,6 +16,7 @@ if (stage && canvas) {
     source: stage.querySelector('[data-signal-source]'),
     location: stage.querySelector('[data-signal-location]'),
     sourceCoordinates: stage.querySelector('[data-signal-source-coordinates]'),
+    connectorLayer: stage.querySelector('[data-signal-connectors]'),
     storyLayer: stage.querySelector('[data-signal-story-layer]'),
     fallback: stage.querySelector('[data-signal-fallback]')
   };
@@ -51,11 +52,12 @@ if (stage && canvas) {
   };
 
   const palette = {
-    ocean: '#0b1412',
-    oceanGrid: 'rgba(101, 217, 231, .1)',
-    land: '#1e4639',
-    landBright: '#2b5f4d',
-    coast: 'rgba(132, 246, 202, .62)',
+    ocean: '#07110f',
+    oceanDeep: '#030907',
+    oceanLight: '#102b25',
+    land: '#1b3a32',
+    landBright: '#31574c',
+    coast: 'rgba(143, 222, 194, .5)',
     quiet: '#8e9994',
     quietHalo: 'rgba(142, 153, 148, .18)',
     news: '#ff735f',
@@ -214,13 +216,16 @@ if (stage && canvas) {
     textureCanvas.height = height;
     const context = textureCanvas.getContext('2d');
 
-    context.fillStyle = palette.ocean;
+    const ocean = context.createLinearGradient(0, 0, width, height);
+    ocean.addColorStop(0, palette.oceanLight);
+    ocean.addColorStop(.42, palette.ocean);
+    ocean.addColorStop(1, palette.oceanDeep);
+    context.fillStyle = ocean;
     context.fillRect(0, 0, width, height);
 
-    context.fillStyle = palette.oceanGrid;
-    for (let y = 16; y < height; y += 24) {
-      for (let x = 16; x < width; x += 24) context.fillRect(x, y, 1.2, 1.2);
-    }
+    const land = context.createLinearGradient(0, 0, 0, height);
+    land.addColorStop(0, palette.landBright);
+    land.addColorStop(1, palette.land);
 
     context.lineJoin = 'round';
     context.lineCap = 'round';
@@ -244,27 +249,25 @@ if (stage && canvas) {
           context.closePath();
 
           if (ringIndex === 0) {
-            context.fillStyle = palette.land;
+            context.fillStyle = land;
             context.strokeStyle = palette.coast;
-            context.lineWidth = 1.15;
+            context.lineWidth = .9;
             context.fill();
             context.stroke();
           } else {
-            context.save();
-            context.globalCompositeOperation = 'destination-out';
+            context.fillStyle = ocean;
             context.fill();
-            context.restore();
           }
         }
       }
     }
 
-    context.globalAlpha = .2;
-    context.fillStyle = palette.landBright;
-    for (let y = 10; y < height; y += 18) {
-      for (let x = 10; x < width; x += 18) context.fillRect(x, y, 1, 1);
-    }
-    context.globalAlpha = 1;
+    const vignette = context.createRadialGradient(width * .34, height * .32, 20, width * .5, height * .5, width * .74);
+    vignette.addColorStop(0, 'rgba(255,255,255,.08)');
+    vignette.addColorStop(.58, 'rgba(255,255,255,0)');
+    vignette.addColorStop(1, 'rgba(0,0,0,.22)');
+    context.fillStyle = vignette;
+    context.fillRect(0, 0, width, height);
 
     const texture = new THREE.CanvasTexture(textureCanvas);
     texture.colorSpace = THREE.SRGBColorSpace;
@@ -276,9 +279,9 @@ if (stage && canvas) {
   function buildGlobeGrid(radius) {
     const group = new THREE.Group();
     const material = new THREE.LineBasicMaterial({
-      color: 0x65d9e7,
+      color: 0x9ddac9,
       transparent: true,
-      opacity: .1,
+      opacity: .026,
       depthWrite: false
     });
 
@@ -289,10 +292,10 @@ if (stage && canvas) {
       return new THREE.Line(geometry, material);
     }
 
-    for (let lat = -60; lat <= 60; lat += 30) {
+    for (let lat = -60; lat <= 60; lat += 60) {
       group.add(lineFromCoordinates(Array.from({ length: 181 }, (_, index) => [lat, -180 + index * 2])));
     }
-    for (let lng = -180; lng < 180; lng += 30) {
+    for (let lng = -180; lng < 180; lng += 60) {
       group.add(lineFromCoordinates(Array.from({ length: 91 }, (_, index) => [-90 + index * 2, lng])));
     }
     return group;
@@ -300,14 +303,14 @@ if (stage && canvas) {
 
   function createAtmosphere(radius) {
     return new THREE.Mesh(
-      new THREE.SphereGeometry(radius * 1.07, 96, 64),
+      new THREE.SphereGeometry(radius * 1.018, 96, 64),
       new THREE.ShaderMaterial({
         transparent: true,
         depthWrite: false,
         side: THREE.BackSide,
         blending: THREE.AdditiveBlending,
         uniforms: {
-          glowColor: { value: new THREE.Color(0x57f2b0) }
+          glowColor: { value: new THREE.Color(0x9ddac9) }
         },
         vertexShader: `
           varying vec3 vNormal;
@@ -320,8 +323,9 @@ if (stage && canvas) {
           uniform vec3 glowColor;
           varying vec3 vNormal;
           void main() {
-            float intensity = pow(0.72 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.2);
-            gl_FragColor = vec4(glowColor, intensity * 0.34);
+            float fresnel = clamp(0.5 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 0.0, 1.0);
+            float intensity = pow(fresnel, 3.8);
+            gl_FragColor = vec4(glowColor, intensity * 0.13);
           }
         `
       })
@@ -413,6 +417,7 @@ if (stage && canvas) {
       state.cardHover = true;
       state.hoveredStoryId = source.id;
       element.classList.add('is-hovered');
+      entry.connector?.classList.add('is-hovered');
     });
     element.addEventListener('pointermove', (event) => {
       const bounds = element.getBoundingClientRect();
@@ -425,6 +430,7 @@ if (stage && canvas) {
       state.cardHover = false;
       state.hoveredStoryId = '';
       element.classList.remove('is-hovered');
+      entry.connector?.classList.remove('is-hovered');
       resetStoryTilt(entry);
     });
   }
@@ -432,6 +438,7 @@ if (stage && canvas) {
   function buildStoryCards() {
     if (!ui.storyLayer) return;
     ui.storyLayer.replaceChildren();
+    ui.connectorLayer?.replaceChildren();
     state.storyCards.clear();
 
     for (const marker of state.markers) {
@@ -448,10 +455,10 @@ if (stage && canvas) {
       card.setAttribute('aria-hidden', 'true');
       card.tabIndex = -1;
 
-      const connector = document.createElement('span');
-      connector.className = 'signal-story-connector';
-      connector.setAttribute('aria-hidden', 'true');
-      card.appendChild(connector);
+      const connector = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      connector.classList.add('signal-story-leader');
+      connector.dataset.sourceId = source.id;
+      ui.connectorLayer?.appendChild(connector);
 
       const meta = document.createElement('span');
       meta.className = 'signal-story-meta';
@@ -460,7 +467,11 @@ if (stage && canvas) {
       time.dateTime = String(news.publishedAt || state.latestEdition);
       card.appendChild(meta);
 
-      appendTextElement(card, 'strong', 'signal-story-title', news.title);
+      const titleElement = appendTextElement(card, 'strong', 'signal-story-title', news.title);
+      const titleLength = Array.from(String(news.title || '')).length;
+      if (titleLength > 56) card.classList.add('is-title-xlong');
+      else if (titleLength > 34) card.classList.add('is-title-long');
+      titleElement.title = news.title;
 
       const detail = document.createElement('span');
       detail.className = 'signal-story-detail';
@@ -481,16 +492,19 @@ if (stage && canvas) {
         marker,
         source,
         story: news,
+        connector,
         x: 0,
         y: 0,
+        markerX: 0,
+        markerY: 0,
         opacity: 0,
         scale: .72,
         targetX: 0,
         targetY: 0,
         targetOpacity: 0,
         targetScale: .72,
-        width: 232,
-        height: 78,
+        width: 250,
+        height: 104,
         initialized: false
       };
       bindStoryCard(entry);
@@ -511,11 +525,12 @@ if (stage && canvas) {
     camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
     camera.position.set(0, 0, cameraBaseZ);
 
-    scene.add(new THREE.HemisphereLight(0xb5fff0, 0x06100c, 1.65));
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
-    keyLight.position.set(-3.5, 4.5, 5.5);
+    scene.add(new THREE.AmbientLight(0x87b7a5, .72));
+    scene.add(new THREE.HemisphereLight(0xc9eee3, 0x020605, 1.28));
+    const keyLight = new THREE.DirectionalLight(0xeaf8f3, 1.82);
+    keyLight.position.set(-4.2, 5.2, 6.5);
     scene.add(keyLight);
-    const edgeLight = new THREE.PointLight(0xff735f, 12, 12, 2);
+    const edgeLight = new THREE.PointLight(0xf07865, 6.4, 12, 2);
     edgeLight.position.set(3.8, -2.4, 3.2);
     scene.add(edgeLight);
 
@@ -525,11 +540,13 @@ if (stage && canvas) {
 
     const globe = new THREE.Mesh(
       new THREE.SphereGeometry(radius, 128, 96),
-      new THREE.MeshStandardMaterial({
+      new THREE.MeshPhysicalMaterial({
         map: drawMapTexture(geojson),
         color: 0xffffff,
-        roughness: .86,
-        metalness: .12
+        roughness: .7,
+        metalness: .025,
+        clearcoat: .34,
+        clearcoatRoughness: .72
       })
     );
     globeGroup.add(globe);
@@ -574,6 +591,7 @@ if (stage && canvas) {
     for (const [storySourceId, entry] of state.storyCards) {
       const active = storySourceId === sourceId;
       entry.element.classList.toggle('is-active', active);
+      entry.connector?.classList.toggle('is-active', active);
       if (!active && storySourceId !== state.hoveredStoryId) resetStoryTilt(entry);
     }
 
@@ -631,6 +649,23 @@ if (stage && canvas) {
     for (const entry of entries) entry.targetY = Math.max(topLimit, entry.targetY - overflow);
   }
 
+  function updateStoryConnector(entry, visible) {
+    if (!entry.connector) return;
+    const active = entry.source.id === state.activeSourceId;
+    const anchorX = active
+      ? entry.x + entry.width * .5
+      : entry.side === 'left' ? entry.x + entry.width : entry.x;
+    const anchorY = active ? entry.y : entry.y + entry.height * .5;
+    const dx = anchorX - entry.markerX;
+    const direction = Math.sign(dx) || 1;
+    const path = active
+      ? `M ${entry.markerX.toFixed(2)} ${entry.markerY.toFixed(2)} C ${entry.markerX.toFixed(2)} ${(entry.markerY + 30).toFixed(2)}, ${anchorX.toFixed(2)} ${(anchorY - 38).toFixed(2)}, ${anchorX.toFixed(2)} ${anchorY.toFixed(2)}`
+      : `M ${entry.markerX.toFixed(2)} ${entry.markerY.toFixed(2)} C ${(entry.markerX + dx * .38).toFixed(2)} ${entry.markerY.toFixed(2)}, ${(anchorX - direction * 34).toFixed(2)} ${anchorY.toFixed(2)}, ${anchorX.toFixed(2)} ${anchorY.toFixed(2)}`;
+    entry.connector.setAttribute('d', path);
+    entry.connector.classList.toggle('is-visible', visible);
+    entry.connector.style.setProperty('--leader-opacity', (entry.opacity * (active ? .92 : .66)).toFixed(3));
+  }
+
   function updateStoryCardTargets() {
     if (!state.storyCards.size) return;
     scene.updateMatrixWorld(true);
@@ -639,17 +674,29 @@ if (stage && canvas) {
     const width = Math.max(1, stage.clientWidth);
     const height = Math.max(1, stage.clientHeight);
     const mobile = width < 620;
-    const tablet = width < 980;
-    const compactWidth = mobile ? 156 : 232;
-    const compactHeight = mobile ? 48 : 78;
-    const expandedWidth = Math.min(mobile ? 332 : 410, width - 24);
-    const expandedHeight = mobile ? 190 : 252;
-    const topLimit = mobile ? Math.max(380, height * .58) : 220;
-    const bottomLimit = height - (mobile ? 88 : 72);
-    const safeLeft = tablet ? 12 : Math.max(12, width * .43);
+    const narrowTablet = width < 861;
+    const compactViewport = width < 1081;
+    const compactWidth = mobile ? 170 : narrowTablet ? 220 : compactViewport ? 190 : 250;
+    const compactHeight = mobile ? 76 : narrowTablet ? 84 : compactViewport ? 78 : 104;
+    const expandedWidth = Math.min(mobile ? 332 : narrowTablet ? 380 : compactViewport ? 360 : 410, width - 24);
+    const expandedHeight = mobile ? 190 : narrowTablet ? 220 : compactViewport ? 210 : 252;
+    const stageBounds = stage.getBoundingClientRect();
+    const toolbarBounds = stage.querySelector('.signal-globe-toolbar')?.getBoundingClientRect();
+    const statsBounds = document.querySelector('.signal-hero-stats')?.getBoundingClientRect();
+    const copyBounds = document.querySelector('.signal-hero-copy')?.getBoundingClientRect();
+    let topLimit = mobile ? Math.max(380, height * .58) : 220;
+    let bottomLimit = height - (mobile ? 88 : 72);
+    if (statsBounds) bottomLimit = Math.min(bottomLimit, statsBounds.top - stageBounds.top - 8);
+    if (compactViewport) {
+      if (toolbarBounds) topLimit = Math.max(topLimit, toolbarBounds.bottom - stageBounds.top + 8);
+      if (statsBounds) bottomLimit = Math.min(bottomLimit, statsBounds.top - stageBounds.top - (mobile ? 4 : 8));
+    }
+    const copySafeLeft = copyBounds ? copyBounds.right - stageBounds.left + 24 : 0;
+    const safeLeft = narrowTablet ? 12 : Math.max(12, width * .43, copySafeLeft);
     const centerX = (state.globeTargetNdc.x * .5 + .5) * width;
     const centerY = (-state.globeTargetNdc.y * .5 + .5) * height;
     const lanes = { left: [], right: [] };
+    let activeEntry = null;
 
     for (const entry of state.storyCards.values()) {
       const world = entry.marker.getWorldPosition(new THREE.Vector3());
@@ -657,6 +704,10 @@ if (stage && canvas) {
       const frontFacing = world.z > .16 && projected.z < 1;
       const inFrame = Math.abs(projected.x) < 1.08 && Math.abs(projected.y) < 1.04;
       const active = entry.source.id === state.activeSourceId;
+      const markerX = (projected.x * .5 + .5) * width;
+      const markerY = (-projected.y * .5 + .5) * height;
+      entry.markerX = markerX;
+      entry.markerY = markerY;
       const edgeFade = Math.min(
         clamp01((1.08 - Math.abs(projected.x)) / .2),
         clamp01((1.04 - Math.abs(projected.y)) / .18)
@@ -665,25 +716,30 @@ if (stage && canvas) {
       entry.width = active ? expandedWidth : compactWidth;
       entry.height = active ? expandedHeight : compactHeight;
       entry.targetOpacity = frontFacing && inFrame
-        ? active ? .98 : .28 + edgeFade * .64
+        ? active ? .98 : .62 + edgeFade * .34
         : 0;
       entry.targetScale = active ? 1 : frontFacing && inFrame ? .92 + edgeFade * .08 : .72;
 
       if (!frontFacing || !inFrame) continue;
 
-      const markerX = (projected.x * .5 + .5) * width;
-      const markerY = (-projected.y * .5 + .5) * height;
-
       if (active) {
-        entry.targetX = THREE.MathUtils.clamp(centerX - entry.width * .5, tablet ? 12 : width * .39, width - entry.width - 12);
+        activeEntry = entry;
+        const activeMinX = narrowTablet ? 12 : Math.min(safeLeft, width - entry.width - 12);
+        entry.targetX = THREE.MathUtils.clamp(centerX - entry.width * .5, activeMinX, width - entry.width - 12);
         entry.targetY = THREE.MathUtils.clamp(centerY + 34, topLimit, bottomLimit - entry.height);
+        entry.side = 'active';
         entry.element.classList.remove('is-left');
         continue;
       }
 
-      const lane = mobile
-        ? (lanes.left.length <= lanes.right.length ? 'left' : 'right')
-        : (markerX > centerX + 18 ? 'left' : 'right');
+      let lane;
+      if (compactViewport) {
+        lane = lanes.left.length <= lanes.right.length ? 'left' : 'right';
+      } else {
+        const preferredLane = markerX > centerX + 18 ? 'left' : 'right';
+        const alternateLane = preferredLane === 'left' ? 'right' : 'left';
+        lane = lanes[preferredLane].length > lanes[alternateLane].length + 1 ? alternateLane : preferredLane;
+      }
       let proposedX = mobile
         ? lane === 'left' ? 12 : width - entry.width - 12
         : lane === 'left' ? markerX - entry.width - 18 : markerX + 18;
@@ -694,12 +750,44 @@ if (stage && canvas) {
       }
       entry.targetX = THREE.MathUtils.clamp(proposedX, safeLeft, width - entry.width - 12);
       entry.targetY = THREE.MathUtils.clamp(markerY - entry.height * .5, topLimit, bottomLimit - entry.height);
+      entry.side = lane;
       entry.element.classList.toggle('is-left', lane === 'left');
       lanes[lane].push(entry);
     }
 
-    resolveStoryLane(lanes.left, topLimit, bottomLimit, mobile ? 8 : 10);
-    resolveStoryLane(lanes.right, topLimit, bottomLimit, mobile ? 8 : 10);
+    if (compactViewport) {
+      const focusedStory = state.storyCards.has(state.activeSourceId);
+      for (const lane of [lanes.left, lanes.right]) {
+        lane.sort((a, b) => Math.abs(a.markerY - centerY) - Math.abs(b.markerY - centerY));
+        const visibleLimit = focusedStory ? 0 : 2;
+        lane.slice(visibleLimit).forEach((entry) => { entry.targetOpacity = 0; });
+        lane.splice(visibleLimit);
+      }
+    }
+
+    if (!compactViewport && activeEntry) {
+      const gap = 10;
+      const maxLaneLength = Math.max(lanes.left.length, lanes.right.length);
+      const requiredActiveTop = topLimit + maxLaneLength * (compactHeight + gap);
+      activeEntry.targetY = THREE.MathUtils.clamp(
+        Math.max(activeEntry.targetY, requiredActiveTop),
+        topLimit,
+        bottomLimit - activeEntry.height
+      );
+
+      const laneBottom = activeEntry.targetY - gap;
+      const laneCapacity = Math.max(0, Math.floor((laneBottom - topLimit + gap) / (compactHeight + gap)));
+      for (const lane of [lanes.left, lanes.right]) {
+        lane.sort((a, b) => Math.abs(a.markerY - centerY) - Math.abs(b.markerY - centerY));
+        lane.slice(laneCapacity).forEach((entry) => { entry.targetOpacity = 0; });
+        lane.splice(laneCapacity);
+      }
+      resolveStoryLane(lanes.left, topLimit, laneBottom, gap);
+      resolveStoryLane(lanes.right, topLimit, laneBottom, gap);
+    } else {
+      resolveStoryLane(lanes.left, topLimit, bottomLimit, compactViewport ? 8 : 10);
+      resolveStoryLane(lanes.right, topLimit, bottomLimit, compactViewport ? 8 : 10);
+    }
   }
 
   function animateStoryCards(delta) {
@@ -726,6 +814,7 @@ if (stage && canvas) {
       entry.element.style.setProperty('--story-y', `${entry.y.toFixed(2)}px`);
       entry.element.style.setProperty('--story-opacity', entry.opacity.toFixed(3));
       entry.element.style.setProperty('--story-scale', entry.scale.toFixed(3));
+      updateStoryConnector(entry, visible);
     }
   }
 
@@ -786,6 +875,10 @@ if (stage && canvas) {
     const width = Math.max(1, Math.round(bounds.width));
     const height = Math.max(1, Math.round(bounds.height));
     renderer.setSize(width, height, false);
+    if (ui.connectorLayer) {
+      ui.connectorLayer.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      ui.connectorLayer.setAttribute('preserveAspectRatio', 'none');
+    }
     camera.aspect = width / height;
     if (width < 560) {
       cameraBaseZ = 13.2;
@@ -841,7 +934,7 @@ if (stage && canvas) {
     if (!state.dragging && !paused) {
       globeGroup.rotateY(delta * .000006 + state.velocity.x);
       globeGroup.rotateX(state.velocity.y);
-      const rotationDamping = Math.pow(.952, delta / 16.667);
+      const rotationDamping = Math.pow(.962, delta / 16.667);
       state.velocity.x *= rotationDamping;
       state.velocity.y *= rotationDamping;
     }
@@ -874,16 +967,19 @@ if (stage && canvas) {
 
   function onPointerMove(event) {
     if (!state.dragging || !globeGroup) return;
-    const dx = event.clientX - state.pointer.x;
-    const dy = event.clientY - state.pointer.y;
-    state.pointer.x = event.clientX;
-    state.pointer.y = event.clientY;
-    const horizontal = dx * .0052;
-    const vertical = dy * .0038;
-    globeGroup.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), horizontal);
-    globeGroup.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), vertical);
-    state.velocity.x = horizontal * .08;
-    state.velocity.y = vertical * .06;
+    const samples = event.getCoalescedEvents ? event.getCoalescedEvents() : [event];
+    for (const sample of samples) {
+      const dx = THREE.MathUtils.clamp(sample.clientX - state.pointer.x, -72, 72);
+      const dy = THREE.MathUtils.clamp(sample.clientY - state.pointer.y, -72, 72);
+      state.pointer.x = sample.clientX;
+      state.pointer.y = sample.clientY;
+      const horizontal = dx * .0046;
+      const vertical = dy * .00335;
+      globeGroup.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), horizontal);
+      globeGroup.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), vertical);
+      state.velocity.x = THREE.MathUtils.lerp(state.velocity.x, horizontal * .105, .34);
+      state.velocity.y = THREE.MathUtils.lerp(state.velocity.y, vertical * .08, .34);
+    }
   }
 
   function onPointerUp(event) {

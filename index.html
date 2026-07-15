@@ -24,13 +24,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/news-editorial.css">
   <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
-  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-1">
   <link rel="stylesheet" href="styles/janet-motion.css">
+  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-2">
   <link rel="stylesheet" href="styles/potato-center.css?v=potato-roll-20260617">
   <link rel="stylesheet" href="styles/comments.css">
 
 </head>
-<body>
+<body class="home-experiment">
 
 <!-- 背景氛围 -->
 <div class="bg-ambient"></div>
@@ -147,7 +147,10 @@
 
       <div class="signal-globe-stage" data-signal-globe>
         <div class="signal-globe-toolbar">
-          <span class="signal-live"><i></i> LIVE SOURCE FIELD</span>
+          <div class="signal-field-status">
+            <span class="signal-live"><i></i> LIVE SOURCE FIELD</span>
+            <output class="signal-center-coordinate" data-signal-center-coordinates aria-label="地球中心经纬度">00.000° N / 000.000° E</output>
+          </div>
           <button class="signal-motion-toggle" type="button" data-signal-motion aria-label="暂停地球自转" title="暂停地球自转">
             <span data-signal-motion-icon aria-hidden="true">Ⅱ</span>
           </button>
@@ -163,6 +166,7 @@
         <div class="signal-source-readout" data-signal-readout aria-live="polite" hidden>
           <strong data-signal-source>Source</strong>
           <span data-signal-location>City · Country</span>
+          <span class="signal-source-coordinate" data-signal-source-coordinates>00.000° N / 000.000° E</span>
         </div>
 
         <a class="signal-news-card" data-signal-card href="#news" aria-live="polite" hidden>
@@ -307,7 +311,7 @@
         <div class="contact-grid">
           <!-- Email -->
           <div class="contact-item">
-            <div class="contact-icon">✉️</div>
+            <div class="contact-icon" aria-hidden="true">@</div>
             <div class="contact-details">
               <h4>邮箱</h4>
               <a href="#contact" data-email-user="yaojingwen12345" data-email-domain="gmail.com">发送邮件</a>
@@ -317,7 +321,7 @@
 
           <!-- WeChat -->
           <div class="contact-item">
-            <div class="contact-icon">💬</div>
+            <div class="contact-icon" aria-hidden="true">公</div>
             <div class="contact-details">
               <h4>微信公众号</h4>
               <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=gh_0257a1896cdd" target="_blank">Janet的快车箱</a>
@@ -327,7 +331,7 @@
 
           <!-- Twitter -->
           <div class="contact-item">
-            <div class="contact-icon">𝕏</div>
+            <div class="contact-icon" aria-hidden="true">X</div>
             <div class="contact-details">
               <h4>X</h4>
               <a href="https://twitter.com/yojngwn210305" target="_blank">@yojngwn210305</a>
@@ -337,7 +341,7 @@
 
           <!-- GitHub -->
           <div class="contact-item">
-            <div class="contact-icon">⚡</div>
+            <div class="contact-icon" aria-hidden="true">GH</div>
             <div class="contact-details">
               <h4>GitHub</h4>
               <a href="https://github.com/yaojingwen2002" target="_blank">yaojingwen2002</a>
@@ -347,7 +351,7 @@
         </div>
 
         <p class="contact-note">
-          📍 Based in China · UTC+8
+          Based in China · UTC+8
         </p>
       </div>
     </div>
@@ -382,7 +386,8 @@
 <script src="scripts/nav.js?v=potato-roll-20260617"></script>
 <script src="scripts/site-guide.js"></script>
 <script src="scripts/effects.js"></script>
+<script src="scripts/home-theme.js?v=experiment-wave-2"></script>
 <script src="scripts/janet-motion.js"></script>
-<script type="module" src="scripts/signal-globe.js?v=experiment-wave-1"></script>
+<script type="module" src="scripts/signal-globe.js?v=experiment-wave-2"></script>
 </body>
 </html>

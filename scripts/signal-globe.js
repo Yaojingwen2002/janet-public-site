@@ -10,9 +10,11 @@ if (stage && canvas) {
     edition: document.querySelector('[data-signal-edition]'),
     motion: stage.querySelector('[data-signal-motion]'),
     motionIcon: stage.querySelector('[data-signal-motion-icon]'),
+    centerCoordinates: stage.querySelector('[data-signal-center-coordinates]'),
     readout: stage.querySelector('[data-signal-readout]'),
     source: stage.querySelector('[data-signal-source]'),
     location: stage.querySelector('[data-signal-location]'),
+    sourceCoordinates: stage.querySelector('[data-signal-source-coordinates]'),
     card: stage.querySelector('[data-signal-card]'),
     cardSource: stage.querySelector('[data-signal-card-source]'),
     cardTime: stage.querySelector('[data-signal-card-time]'),
@@ -76,6 +78,7 @@ if (stage && canvas) {
     cardHover: false,
     manuallyPaused: reducedMotion.matches,
     activeSourceId: '',
+    centerCoordinateLabel: '',
     pointer: { x: 0, y: 0 },
     velocity: { x: 0, y: 0 },
     lastFrame: performance.now(),
@@ -158,6 +161,35 @@ if (stage && canvas) {
       distance * Math.cos(phi),
       distance * Math.sin(theta) * Math.sin(phi)
     );
+  }
+
+  function vector3ToLatLng(vector) {
+    const direction = vector.clone().normalize();
+    const lat = THREE.MathUtils.radToDeg(Math.asin(THREE.MathUtils.clamp(direction.y, -1, 1)));
+    let lng = THREE.MathUtils.radToDeg(Math.atan2(-direction.z, direction.x));
+    if (lng > 180) lng -= 360;
+    if (lng < -180) lng += 360;
+    return { lat, lng };
+  }
+
+  function formatCoordinates(lat, lng) {
+    const latitude = Number(lat);
+    const longitude = Number(lng);
+    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return '--';
+    const latHemisphere = latitude >= 0 ? 'N' : 'S';
+    const lngHemisphere = longitude >= 0 ? 'E' : 'W';
+    return `${Math.abs(latitude).toFixed(3)}° ${latHemisphere} / ${Math.abs(longitude).toFixed(3)}° ${lngHemisphere}`;
+  }
+
+  function updateCenterCoordinates() {
+    if (!globeGroup || !ui.centerCoordinates) return;
+    const inverseRotation = globeGroup.quaternion.clone().invert();
+    const centerDirection = new THREE.Vector3(0, 0, 1).applyQuaternion(inverseRotation);
+    const coordinates = vector3ToLatLng(centerDirection);
+    const label = formatCoordinates(coordinates.lat, coordinates.lng);
+    if (label === state.centerCoordinateLabel) return;
+    state.centerCoordinateLabel = label;
+    ui.centerCoordinates.textContent = label;
   }
 
   function drawMapTexture(geojson) {
@@ -356,8 +388,8 @@ if (stage && canvas) {
     renderer.toneMappingExposure = 1.08;
 
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
-    camera.position.set(0, 0, 6.65);
+    camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
+    camera.position.set(0, 0, 6.25);
 
     scene.add(new THREE.HemisphereLight(0xb5fff0, 0x06100c, 1.65));
     const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
@@ -367,7 +399,7 @@ if (stage && canvas) {
     edgeLight.position.set(3.8, -2.4, 3.2);
     scene.add(edgeLight);
 
-    const radius = 1.82;
+    const radius = 2.2;
     globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
@@ -433,6 +465,7 @@ if (stage && canvas) {
     if (ui.readout) ui.readout.hidden = false;
     if (ui.source) ui.source.textContent = source.display_name || source.source;
     if (ui.location) ui.location.textContent = [source.city, source.country].filter(Boolean).join(' · ');
+    if (ui.sourceCoordinates) ui.sourceCoordinates.textContent = formatCoordinates(source.lat, source.lng);
 
     if (!news || !ui.card) {
       if (ui.card) ui.card.hidden = true;
@@ -502,7 +535,7 @@ if (stage && canvas) {
     const height = Math.max(1, Math.round(bounds.height));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
-    camera.position.z = width < 540 ? 7.05 : width < 760 ? 6.85 : 6.55;
+    camera.position.z = width < 540 ? 6.85 : width < 760 ? 6.55 : 6.15;
     camera.updateProjectionMatrix();
   }
 
@@ -519,6 +552,7 @@ if (stage && canvas) {
       state.velocity.y *= .93;
     }
 
+    updateCenterCoordinates();
     updateMarkerPresentation(time);
     renderer.render(scene, camera);
     window.requestAnimationFrame(frame);

@@ -69,6 +69,8 @@ if (stage && canvas) {
   };
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ZOOM_MIN = .74;
+  const ZOOM_MAX = 1.5;
   const state = {
     sources: [],
     markers: [],
@@ -79,6 +81,10 @@ if (stage && canvas) {
     manuallyPaused: reducedMotion.matches,
     activeSourceId: '',
     centerCoordinateLabel: '',
+    zoomCurrent: 1,
+    zoomTarget: 1,
+    zoomVelocity: 0,
+    zoomLabel: '1.00',
     pointer: { x: 0, y: 0 },
     velocity: { x: 0, y: 0 },
     lastFrame: performance.now(),
@@ -91,6 +97,8 @@ if (stage && canvas) {
   let globeGroup;
   let markerGroup;
   let resizeObserver;
+  let cameraBaseZ = 8.45;
+  let zoomIdleTimer;
 
   function setFallback(message) {
     if (ui.fallback) {
@@ -389,7 +397,7 @@ if (stage && canvas) {
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
-    camera.position.set(0, 0, 6.25);
+    camera.position.set(0, 0, cameraBaseZ);
 
     scene.add(new THREE.HemisphereLight(0xb5fff0, 0x06100c, 1.65));
     const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
@@ -491,7 +499,7 @@ if (stage && canvas) {
       const frontFacing = world.z > .22;
       if (!frontFacing) continue;
       const projected = world.clone().project(camera);
-      const distance = Math.hypot(projected.x, projected.y - .04);
+      const distance = Math.hypot(projected.x, projected.y);
       if (distance < .32) candidates.push({ marker, distance });
     }
     const pool = candidates.some((item) => item.marker.userData.news)
@@ -535,8 +543,36 @@ if (stage && canvas) {
     const height = Math.max(1, Math.round(bounds.height));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
-    camera.position.z = width < 540 ? 6.85 : width < 760 ? 6.55 : 6.15;
+    cameraBaseZ = 8.45 * Math.max(1, 1 / camera.aspect);
+    if (width < 540) cameraBaseZ += .12;
+    camera.position.z = cameraBaseZ / state.zoomCurrent;
     camera.updateProjectionMatrix();
+  }
+
+  function updateZoom(delta) {
+    const frameScale = Math.min(2.4, Math.max(.25, delta / 16.667));
+
+    if (reducedMotion.matches) {
+      state.zoomCurrent = state.zoomTarget;
+      state.zoomVelocity = 0;
+    } else {
+      state.zoomVelocity += (state.zoomTarget - state.zoomCurrent) * .12 * frameScale;
+      state.zoomVelocity *= Math.pow(.74, frameScale);
+      state.zoomVelocity = THREE.MathUtils.clamp(state.zoomVelocity, -.075, .075);
+      state.zoomCurrent += state.zoomVelocity * frameScale;
+
+      if (Math.abs(state.zoomTarget - state.zoomCurrent) < .0004 && Math.abs(state.zoomVelocity) < .0004) {
+        state.zoomCurrent = state.zoomTarget;
+        state.zoomVelocity = 0;
+      }
+    }
+
+    camera.position.z = cameraBaseZ / state.zoomCurrent;
+    const zoomLabel = state.zoomCurrent.toFixed(2);
+    if (zoomLabel !== state.zoomLabel) {
+      state.zoomLabel = zoomLabel;
+      stage.dataset.zoom = zoomLabel;
+    }
   }
 
   function frame(time) {
@@ -548,10 +584,12 @@ if (stage && canvas) {
     if (!state.dragging && !paused) {
       globeGroup.rotateY(delta * .000018 + state.velocity.x);
       globeGroup.rotateX(state.velocity.y);
-      state.velocity.x *= .93;
-      state.velocity.y *= .93;
+      const rotationDamping = Math.pow(.952, delta / 16.667);
+      state.velocity.x *= rotationDamping;
+      state.velocity.y *= rotationDamping;
     }
 
+    updateZoom(delta);
     updateCenterCoordinates();
     updateMarkerPresentation(time);
     renderer.render(scene, camera);
@@ -597,11 +635,35 @@ if (stage && canvas) {
     if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
   }
 
+  function onWheel(event) {
+    if (!state.ready || event.target.closest('a, button')) return;
+    const modeScale = event.deltaMode === WheelEvent.DOM_DELTA_LINE
+      ? 16
+      : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+        ? stage.clientHeight
+        : 1;
+    const delta = THREE.MathUtils.clamp(event.deltaY * modeScale, -180, 180);
+    const nextTarget = THREE.MathUtils.clamp(
+      state.zoomTarget * Math.exp(-delta * .0012),
+      ZOOM_MIN,
+      ZOOM_MAX
+    );
+
+    if (Math.abs(nextTarget - state.zoomTarget) < .0001) return;
+    event.preventDefault();
+    state.zoomTarget = nextTarget;
+    state.zoomVelocity += (state.zoomTarget - state.zoomCurrent) * .025;
+    stage.classList.add('is-zooming');
+    window.clearTimeout(zoomIdleTimer);
+    zoomIdleTimer = window.setTimeout(() => stage.classList.remove('is-zooming'), 220);
+  }
+
   function bindEvents() {
     canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerup', onPointerUp);
     canvas.addEventListener('pointercancel', onPointerUp);
+    stage.addEventListener('wheel', onWheel, { passive: false });
 
     ui.motion?.addEventListener('click', () => {
       state.manuallyPaused = !state.manuallyPaused;
@@ -647,6 +709,7 @@ if (stage && canvas) {
       const initialSource = focusInitialNewsSource();
       updateStats();
       updateMotionButton();
+      stage.dataset.zoom = state.zoomLabel;
       bindEvents();
       resize();
       state.ready = true;

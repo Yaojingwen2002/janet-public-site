@@ -49,6 +49,8 @@ if (!issues.length) {
   if (!script.includes('rotateOnWorldAxis')) issues.push('drag_rotation_missing');
   if (!script.includes('vector3ToLatLng')) issues.push('center_coordinate_math_missing');
   if (!script.includes('formatCoordinates(source.lat, source.lng)')) issues.push('source_coordinate_readout_missing');
+  if (!script.includes("stage.addEventListener('wheel', onWheel")) issues.push('wheel_zoom_missing');
+  if (!script.includes('zoomVelocity')) issues.push('inertial_zoom_missing');
   if (!build.includes('source-locations.json')) issues.push('pages_build_missing_source_locations');
   if (sources.length !== pool.length) issues.push(`source_count_mismatch:${sources.length}!=${pool.length}`);
   if (new Set(sourceIds).size !== sourceIds.length) issues.push('duplicate_source_ids');
@@ -77,5 +79,7 @@ console.log(JSON.stringify({
   engine: 'three.js',
   latest_news_mapping: true,
   coordinate_readout: true,
-  scroll_theme_linkage: true
+  scroll_theme_linkage: true,
+  wheel_zoom: true,
+  inertial_motion: true
 }, null, 2));

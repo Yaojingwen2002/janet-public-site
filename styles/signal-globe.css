@@ -424,6 +424,7 @@ body.home-experiment .signal-hero .btn-outline:hover {
   z-index: 3;
   min-width: 0;
   min-height: 760px;
+  margin-left: -180px;
   overflow: hidden;
   cursor: grab;
   touch-action: pan-y;
@@ -433,17 +434,17 @@ body.home-experiment .signal-hero .btn-outline:hover {
   cursor: grabbing;
 }
 
+.signal-globe-stage.is-zooming {
+  cursor: ns-resize;
+}
+
 .signal-globe-stage::before {
   content: '';
   position: absolute;
-  inset: 72px 2px 86px;
-  z-index: 0;
-  border: 1px solid rgba(126, 203, 208, .1);
-  border-radius: 8px;
+  inset: 0;
+  z-index: 4;
   pointer-events: none;
-  background: rgba(126, 203, 208, .018);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  background: linear-gradient(90deg, var(--signal-bg) 0%, rgba(8, 17, 14, .9) 9%, rgba(8, 17, 14, .38) 22%, rgba(8, 17, 14, 0) 38%);
 }
 
 .signal-globe-stage::after {
@@ -453,16 +454,16 @@ body.home-experiment .signal-hero .btn-outline:hover {
   bottom: 0;
   left: 0;
   z-index: 4;
-  height: 58%;
+  height: 28%;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(8, 17, 14, 0), rgba(8, 17, 14, .22) 26%, rgba(8, 17, 14, .82) 62%, var(--signal-bg) 84%);
+  background: linear-gradient(to bottom, rgba(8, 17, 14, 0), rgba(8, 17, 14, .08) 38%, rgba(8, 17, 14, .5) 78%, var(--signal-bg) 100%);
 }
 
 .signal-globe-toolbar {
   position: absolute;
   top: 18px;
   right: 0;
-  left: 0;
+  left: 190px;
   z-index: 8;
   display: flex;
   align-items: flex-start;
@@ -548,12 +549,13 @@ body.home-experiment .signal-hero .btn-outline:hover {
   display: block;
   width: 100%;
   height: 100%;
+  opacity: .99;
   outline: none;
 }
 
 .signal-center-target {
   position: absolute;
-  top: 46%;
+  top: 50%;
   left: 50%;
   z-index: 6;
   width: 150px;
@@ -606,7 +608,7 @@ body.home-experiment .signal-hero .btn-outline:hover {
 
 .signal-source-readout {
   position: absolute;
-  top: calc(46% + 92px);
+  top: calc(50% + 92px);
   left: 50%;
   z-index: 7;
   display: grid;
@@ -1577,6 +1579,11 @@ body.home-experiment .site-guide-route {
 
   .signal-globe-stage {
     min-height: 590px;
+    margin-left: 0;
+  }
+
+  .signal-globe-toolbar {
+    left: 0;
   }
 
   .signal-news-card {
@@ -1791,11 +1798,11 @@ body.home-experiment .site-guide-route {
   }
 
   .signal-globe-stage::before {
-    inset: 70px 14px 62px;
+    display: none;
   }
 
   .signal-globe-stage::after {
-    height: 60%;
+    height: 22%;
   }
 
   .signal-globe-toolbar {
@@ -1819,13 +1826,13 @@ body.home-experiment .site-guide-route {
   }
 
   .signal-center-target {
-    top: 45%;
+    top: 50%;
     width: 106px;
     height: 106px;
   }
 
   .signal-source-readout {
-    top: calc(45% + 67px);
+    top: calc(50% + 67px);
     width: 62%;
   }
 

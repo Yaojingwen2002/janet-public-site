@@ -5,10 +5,11 @@ import { join, relative, resolve } from 'node:path';
 
 const root = resolve(process.cwd());
 const dataDir = join(root, 'data');
-const marker = 'signal-wave-16';
-const cursorCss = '<link rel="stylesheet" href="../../styles/signal-cursor.css?v=experiment-wave-16">';
-const experimentCss = '<link rel="stylesheet" href="../../styles/experiment-pages.css?v=experiment-wave-16">';
-const cursorScript = '<script src="../../scripts/signal-cursor.js?v=experiment-wave-16"></script>';
+const marker = 'signal-wave-17';
+const cursorCss = '<link rel="stylesheet" href="../../styles/signal-cursor.css?v=experiment-wave-17">';
+const experimentCss = '<link rel="stylesheet" href="../../styles/experiment-editorial.css?v=experiment-wave-17">';
+const motionScript = '<script src="../../scripts/editorial-motion.js?v=experiment-wave-17"></script>';
+const cursorScript = '<script src="../../scripts/signal-cursor.js?v=experiment-wave-17"></script>';
 
 function briefingOutputs() {
   return readdirSync(dataDir)
@@ -48,6 +49,8 @@ function migrate(html) {
   next = next
     .replace(/\s*<link[^>]+styles\/signal-cursor\.css[^>]*>/gi, '')
     .replace(/\s*<link[^>]+styles\/experiment-pages\.css[^>]*>/gi, '')
+    .replace(/\s*<link[^>]+styles\/experiment-editorial\.css[^>]*>/gi, '')
+    .replace(/\s*<script[^>]+scripts\/editorial-motion\.js[^>]*><\/script>/gi, '')
     .replace(/\s*<script[^>]+scripts\/signal-cursor\.js[^>]*><\/script>/gi, '');
 
   next = next.replace(
@@ -62,7 +65,7 @@ function migrate(html) {
     .replace(/^\s*<a href="\.\.\/\.\.\/shuttle-universe\.html">.*?<\/a>\s*$/gim, '')
     .replace(/^\s*<a href="\.\.\/\.\.\/misaligned-scenes\.html">.*?<\/a>\s*$/gim, '');
 
-  next = next.replace(/\s*<\/body>/i, `\n  ${cursorScript}\n</body>`);
+  next = next.replace(/\s*<\/body>/i, `\n  ${motionScript}\n  ${cursorScript}\n</body>`);
   return next;
 }
 
@@ -86,9 +89,10 @@ for (const file of files) {
 
   if (!after.includes(`data-janet-experiment="${marker}"`)) issues.push(`${label}:marker`);
   if (!after.includes('class="briefing-output-page"')) issues.push(`${label}:body_class`);
-  if (count(after, 'styles/experiment-pages.css?v=experiment-wave-16') !== 1) issues.push(`${label}:experiment_css`);
-  if (count(after, 'styles/signal-cursor.css?v=experiment-wave-16') !== 1) issues.push(`${label}:cursor_css`);
-  if (count(after, 'scripts/signal-cursor.js?v=experiment-wave-16') !== 1) issues.push(`${label}:cursor_script`);
+  if (count(after, 'styles/experiment-editorial.css?v=experiment-wave-17') !== 1) issues.push(`${label}:experiment_css`);
+  if (count(after, 'styles/signal-cursor.css?v=experiment-wave-17') !== 1) issues.push(`${label}:cursor_css`);
+  if (count(after, 'scripts/editorial-motion.js?v=experiment-wave-17') !== 1) issues.push(`${label}:motion_script`);
+  if (count(after, 'scripts/signal-cursor.js?v=experiment-wave-17') !== 1) issues.push(`${label}:cursor_script`);
 }
 
 if (issues.length) {

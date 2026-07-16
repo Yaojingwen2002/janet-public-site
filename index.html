@@ -81,6 +81,12 @@
       </a>
     </div>
   </nav>
+  <div class="background-audio" data-background-audio>
+    <audio id="background-audio-track" src="assets/audio/digital-clouds.mp3" loop preload="none"></audio>
+    <button class="background-audio-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false" title="播放背景音乐" data-background-audio-toggle>
+      <span class="background-audio-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+  </div>
   <!-- 土豆中心 -->
   <div class="potato-center" data-potato-center>
     <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
@@ -385,6 +391,7 @@
 <script src="scripts/janet-motion.js"></script>
 <script src="scripts/editorial-motion.js?v=experiment-wave-17"></script>
 <script src="scripts/signal-cursor.js?v=experiment-wave-17"></script>
+<script src="scripts/background-audio.js?v=experiment-wave-18"></script>
 <script type="module" src="scripts/signal-globe.js?v=experiment-wave-15"></script>
 </body>
 </html>

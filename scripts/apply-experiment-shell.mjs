@@ -65,6 +65,12 @@ function migrate(html) {
     .replace(/^\s*<a href="\.\.\/\.\.\/shuttle-universe\.html">.*?<\/a>\s*$/gim, '')
     .replace(/^\s*<a href="\.\.\/\.\.\/misaligned-scenes\.html">.*?<\/a>\s*$/gim, '');
 
+  next = next
+    .replace(/class="news-card-actions output-engagement(?! engagement-triplet)"/g, 'class="news-card-actions output-engagement engagement-triplet"')
+    .replace(/<span aria-hidden="true">👍<\/span><span>有用<\/span>/g, '<span class="engagement-symbol" aria-hidden="true">+</span><span>有用</span>')
+    .replace(/(<a class="comment-toggle-btn"[^>]*>)\s*评论\s*(<span class="comment-count")/g, '$1\n        <span class="engagement-symbol" aria-hidden="true">··</span><span>评论</span>$2')
+    .replace(/(<button class="share-btn"[^>]*>)转发<\/button>/g, '$1<span class="engagement-symbol" aria-hidden="true">↗</span><span>转发</span></button>');
+
   next = next.replace(/\s*<\/body>/i, `\n  ${motionScript}\n  ${cursorScript}\n</body>`);
   return next;
 }

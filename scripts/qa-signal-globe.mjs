@@ -8,6 +8,10 @@ const requiredFiles = [
   'assets/globe/natural-earth-110m-land.geojson',
   'data/source-locations.json',
   'assets/works/cinematic-lab/cover-v2.webp',
+  'assets/audio/digital-clouds.mp3',
+  'assets/audio/README.md',
+  'scripts/background-audio.js',
+  'scripts/gpt-image2-handbook.js',
   'scripts/home-theme.js',
   'scripts/apply-experiment-shell.mjs',
   'scripts/editorial-motion.js',
@@ -67,6 +71,9 @@ if (!issues.length) {
   const globeStyles = read('styles/signal-globe.css');
   const experimentStyles = read('styles/experiment-editorial.css');
   const editorialMotion = read('scripts/editorial-motion.js');
+  const handbookScript = read('scripts/gpt-image2-handbook.js');
+  const handbookPage = read('gpt-image2-handbook.html');
+  const handbookCases = json('data/gpt-image2-handbook/handbook-cases.json');
   const marvel = read('marvel-ten.html');
   const template = read('codex-briefing-system/templates/template.html');
   const outputs = briefingOutputs();
@@ -87,6 +94,8 @@ if (!issues.length) {
   if (!index.includes('data-signal-center-coordinates')) issues.push('homepage_missing_center_coordinates');
   if (!index.includes('data-signal-source-coordinates')) issues.push('homepage_missing_source_coordinates');
   if (!index.includes('scripts/home-theme.js')) issues.push('homepage_missing_theme_linkage');
+  if (!index.includes('assets/audio/digital-clouds.mp3')) issues.push('homepage_background_audio_missing');
+  if (!index.includes('scripts/background-audio.js')) issues.push('homepage_background_audio_control_missing');
   if (!script.includes("from '../assets/vendor/three.module.js'")) issues.push('three_not_local');
   if (!script.includes("fetch('data/news-index.json')")) issues.push('latest_news_mapping_missing');
   if (!script.includes('cardHover')) issues.push('card_pause_state_missing');
@@ -102,6 +111,8 @@ if (!issues.length) {
   if (!script.includes("stage.addEventListener('wheel', onWheel")) issues.push('wheel_zoom_missing');
   if (!script.includes('zoomVelocity')) issues.push('inertial_zoom_missing');
   if (!script.includes('const visibleLimit = focusedStory ? 0 : 2')) issues.push('mobile_overlap_guard_missing');
+  if (!script.includes('occupiedHeight + requiredHeight <= availableHeight')) issues.push('story_lane_capacity_guard_missing');
+  if (!script.includes('for (let index = entries.length - 1; index >= 0; index -= 1)')) issues.push('story_lane_backward_pass_missing');
   if (!index.includes('scripts/signal-cursor.js')) issues.push('homepage_missing_cursor_script');
   if (!cursor.includes("is-dragging")) issues.push('cursor_drag_state_missing');
   if (!cursor.includes("is-wait")) issues.push('cursor_wait_state_missing');
@@ -122,10 +133,19 @@ if (!issues.length) {
   if (marvel.includes('signal-cursor.css') || marvel.includes('signal-cursor.js')) issues.push('marvel_experiment_cursor_present');
   if (marvel.includes('experiment-pages.css') || marvel.includes('experiment-editorial.css')) issues.push('marvel_experiment_design_present');
   if (!template.includes('<body class="briefing-output-page">')) issues.push('briefing_template_body_class_missing');
+  if (!template.includes('output-engagement engagement-triplet')) issues.push('briefing_triplet_template_missing');
   if (!experimentStyles.includes('--ed-cream: #f4f0e8')) issues.push('experiment_cream_palette_missing');
   if (!experimentStyles.includes('--ed-green-deep: #082d22')) issues.push('experiment_green_palette_missing');
   if (!experimentStyles.includes('body.home-experiment #works-library')) issues.push('homepage_works_override_missing');
   if (!experimentStyles.includes('body.briefing-output-page > .container')) issues.push('briefing_full_width_missing');
+  if (!experimentStyles.includes('.background-audio-toggle')) issues.push('background_audio_style_missing');
+  if (!experimentStyles.includes('.engagement-triplet')) issues.push('engagement_triplet_style_missing');
+  if (!experimentStyles.includes('.handbook-pagination')) issues.push('handbook_pagination_style_missing');
+  if (!experimentStyles.includes('.comments-section')) issues.push('comments_editorial_style_missing');
+  if (!handbookPage.includes('id="handbook-pagination"')) issues.push('handbook_pagination_mount_missing');
+  if (!handbookScript.includes('const PAGE_SIZE = 10')) issues.push('handbook_page_size_missing');
+  if (!handbookScript.includes('filtered.slice(pageStart, pageStart + PAGE_SIZE)')) issues.push('handbook_page_slice_missing');
+  if (handbookCases.length !== 100) issues.push(`handbook_case_count:${handbookCases.length}`);
   if (!editorialMotion.includes("'.works-overview-card'")) issues.push('editorial_tilt_target_missing');
   if (!editorialMotion.includes('requestAnimationFrame(render)')) issues.push('editorial_tilt_spring_missing');
   if (outputs.length < 50) issues.push(`briefing_output_count_too_small:${outputs.length}`);
@@ -136,6 +156,7 @@ if (!issues.length) {
     if (!html.includes('experiment-editorial.css?v=experiment-wave-17')) issues.push(`briefing_design_css_missing:${output}`);
     if (!html.includes('editorial-motion.js?v=experiment-wave-17')) issues.push(`briefing_motion_missing:${output}`);
     if (!html.includes('signal-cursor.js?v=experiment-wave-17')) issues.push(`briefing_cursor_missing:${output}`);
+    if (html.includes('output-engagement') && !html.includes('output-engagement engagement-triplet')) issues.push(`briefing_triplet_missing:${output}`);
   }
   if (!news.includes("currentReaderLabel() + ' 正在读今日晨报'")) issues.push('real_reader_activity_missing');
   if (news.includes('完整晨报已就绪')) issues.push('fixed_activity_copy_still_present');
@@ -178,6 +199,10 @@ console.log(JSON.stringify({
   marker_card_leaders: true,
   unclipped_compact_titles: true,
   mobile_overlap_guard: true,
+  lane_capacity_guard: true,
+  background_audio: true,
+  engagement_triplet: true,
+  handbook_pagination: '10_per_page',
   contextual_cursor_states: true,
   spring_editorial_cards: true,
   experimental_html_shells: experimentPages.length,

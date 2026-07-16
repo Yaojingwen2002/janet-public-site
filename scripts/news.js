@@ -132,7 +132,7 @@
     const safeUrl = escapeHtml(outputUrl);
     const commentUrl = escapeHtml(addCommentsHash(outputUrl));
 
-    return '<div class="home-engagement rv-fade" aria-label="今日快车箱互动">' +
+    return '<div class="home-engagement engagement-triplet rv-fade" aria-label="今日快车箱互动">' +
       '<div class="news-reactions news-reactions--home" data-edition-id="' + safeEditionId + '" data-edition-title="' + safeTitle + '" data-edition-url="' + safeUrl + '">' +
         '<button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用" aria-pressed="false">' +
           '<span class="engagement-symbol" aria-hidden="true">+</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>' +

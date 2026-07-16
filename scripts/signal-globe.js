@@ -637,7 +637,23 @@ if (stage && canvas) {
     return THREE.MathUtils.clamp(value, 0, 1);
   }
 
-  function resolveStoryLane(entries, topLimit, bottomLimit, gap = 10) {
+  function resolveStoryLane(entries, topLimit, bottomLimit, gap = 14, centerY = 0) {
+    const availableHeight = Math.max(0, bottomLimit - topLimit);
+    entries.sort((a, b) => Math.abs(a.markerY - centerY) - Math.abs(b.markerY - centerY));
+
+    let occupiedHeight = 0;
+    const visibleEntries = [];
+    for (const entry of entries) {
+      const requiredHeight = entry.height + (visibleEntries.length ? gap : 0);
+      if (occupiedHeight + requiredHeight <= availableHeight) {
+        visibleEntries.push(entry);
+        occupiedHeight += requiredHeight;
+      } else {
+        entry.targetOpacity = 0;
+      }
+    }
+
+    entries.splice(0, entries.length, ...visibleEntries);
     entries.sort((a, b) => a.targetY - b.targetY);
     let cursor = topLimit;
 
@@ -646,9 +662,18 @@ if (stage && canvas) {
       cursor = entry.targetY + entry.height + gap;
     }
 
-    const overflow = Math.max(0, cursor - 10 - bottomLimit);
-    if (!overflow) return;
-    for (const entry of entries) entry.targetY = Math.max(topLimit, entry.targetY - overflow);
+    cursor = bottomLimit;
+    for (let index = entries.length - 1; index >= 0; index -= 1) {
+      const entry = entries[index];
+      entry.targetY = Math.min(entry.targetY, cursor - entry.height);
+      cursor = entry.targetY - gap;
+    }
+
+    cursor = topLimit;
+    for (const entry of entries) {
+      entry.targetY = Math.max(entry.targetY, cursor);
+      cursor = entry.targetY + entry.height + gap;
+    }
   }
 
   function updateStoryConnector(entry, visible) {
@@ -784,11 +809,11 @@ if (stage && canvas) {
         lane.slice(laneCapacity).forEach((entry) => { entry.targetOpacity = 0; });
         lane.splice(laneCapacity);
       }
-      resolveStoryLane(lanes.left, topLimit, laneBottom, gap);
-      resolveStoryLane(lanes.right, topLimit, laneBottom, gap);
+      resolveStoryLane(lanes.left, topLimit, laneBottom, gap, centerY);
+      resolveStoryLane(lanes.right, topLimit, laneBottom, gap, centerY);
     } else {
-      resolveStoryLane(lanes.left, topLimit, bottomLimit, compactViewport ? 8 : 10);
-      resolveStoryLane(lanes.right, topLimit, bottomLimit, compactViewport ? 8 : 10);
+      resolveStoryLane(lanes.left, topLimit, bottomLimit, compactViewport ? 12 : 16, centerY);
+      resolveStoryLane(lanes.right, topLimit, bottomLimit, compactViewport ? 12 : 16, centerY);
     }
   }
 

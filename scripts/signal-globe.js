@@ -51,6 +51,36 @@ if (stage && canvas) {
     'llamaindex-blog': ['llamaindex', 'llamaindex.ai/blog']
   };
 
+  const SOURCE_LOGOS = {
+    'openai-news': 'openai',
+    'anthropic-news': 'anthropic',
+    'google-ai-blog': 'google',
+    'google-research-blog': 'google',
+    'google-deepmind-blog': 'googledeepmind',
+    'microsoft-ai-blog': 'microsoft',
+    'microsoft-research-ai': 'microsoft',
+    'github-blog': 'github',
+    'huggingface-blog': 'huggingface',
+    'arxiv-cs-ai': 'arxiv',
+    'arxiv-cs-cl': 'arxiv',
+    'arxiv-cs-lg': 'arxiv',
+    'arxiv-stat-ml': 'arxiv',
+    'techcrunch-ai': 'techcrunch',
+    'venturebeat-ai': 'venturebeat',
+    'the-verge-ai': 'theverge',
+    'mit-tech-review-ai': 'mit',
+    'meta-ai-blog': 'meta',
+    'mistral-news': 'mistralai',
+    'nvidia-ai-blog': 'nvidia',
+    'aws-machine-learning': 'amazonwebservices',
+    'stanford-hai': 'stanforduniversity',
+    'berkeley-bair': 'universityofcaliforniaberkeley',
+    'papers-with-code-blog': 'paperswithcode',
+    'replicate-blog': 'replicate',
+    'langchain-blog': 'langchain',
+    'llamaindex-blog': 'llamaindex'
+  };
+
   const palette = {
     ocean: '#07110f',
     oceanDeep: '#030907',
@@ -85,7 +115,7 @@ if (stage && canvas) {
     activeSourceId: '',
     storyCards: new Map(),
     centerCoordinateLabel: '',
-    globeTargetNdc: { x: .38, y: .01 },
+    globeTargetNdc: { x: .36, y: -.13 },
     zoomCurrent: 1,
     zoomTarget: 1,
     zoomVelocity: 0,
@@ -457,6 +487,24 @@ if (stage && canvas) {
       card.setAttribute('aria-hidden', 'true');
       card.tabIndex = -1;
 
+      const logo = document.createElement('span');
+      logo.className = 'signal-story-logo';
+      logo.setAttribute('aria-hidden', 'true');
+      const logoFallback = document.createElement('span');
+      logoFallback.className = 'signal-story-logo-fallback';
+      logoFallback.textContent = source.display_name || source.source;
+      logo.appendChild(logoFallback);
+      const logoSlug = SOURCE_LOGOS[source.id];
+      if (logoSlug) {
+        const logoImage = document.createElement('img');
+        logoImage.src = `https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${logoSlug}.svg`;
+        logoImage.alt = '';
+        logoImage.decoding = 'async';
+        logoImage.addEventListener('load', () => logo.classList.add('has-image'), { once: true });
+        logo.prepend(logoImage);
+      }
+      card.appendChild(logo);
+
       const connector = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       connector.classList.add('signal-story-leader');
       connector.dataset.sourceId = source.id;
@@ -706,12 +754,12 @@ if (stage && canvas) {
     const compactWidth = mobile ? 170 : narrowTablet ? 220 : compactViewport ? 190 : 250;
     const compactHeight = mobile ? 76 : narrowTablet ? 84 : compactViewport ? 78 : 104;
     const expandedWidth = Math.min(mobile ? 332 : narrowTablet ? 380 : compactViewport ? 360 : 410, width - 24);
-    const expandedHeight = mobile ? 190 : narrowTablet ? 220 : compactViewport ? 210 : 252;
+    const expandedHeight = mobile ? 150 : narrowTablet ? 220 : compactViewport ? 210 : 252;
     const stageBounds = stage.getBoundingClientRect();
     const toolbarBounds = stage.querySelector('.signal-globe-toolbar')?.getBoundingClientRect();
     const statsBounds = document.querySelector('.signal-hero-stats')?.getBoundingClientRect();
     const copyBounds = document.querySelector('.signal-hero-copy')?.getBoundingClientRect();
-    let topLimit = mobile ? Math.max(380, height * .58) : 220;
+    let topLimit = mobile ? Math.max(380, height * .58) : 150;
     let bottomLimit = height - (mobile ? 88 : 72);
     if (statsBounds) bottomLimit = Math.min(bottomLimit, statsBounds.top - stageBounds.top - 8);
     if (compactViewport) {
@@ -722,8 +770,10 @@ if (stage && canvas) {
     const safeLeft = narrowTablet ? 12 : Math.max(12, width * .43, copySafeLeft);
     const centerX = (state.globeTargetNdc.x * .5 + .5) * width;
     const centerY = (-state.globeTargetNdc.y * .5 + .5) * height;
+    const centerSafeX = mobile ? 74 : compactViewport ? 92 : 118;
     const lanes = { left: [], right: [] };
     let activeEntry = null;
+    const focusedStory = state.storyCards.has(state.activeSourceId);
 
     for (const entry of state.storyCards.values()) {
       const world = entry.marker.getWorldPosition(new THREE.Vector3());
@@ -743,7 +793,7 @@ if (stage && canvas) {
       entry.width = active ? expandedWidth : compactWidth;
       entry.height = active ? expandedHeight : compactHeight;
       entry.targetOpacity = frontFacing && inFrame
-        ? active ? .98 : .62 + edgeFade * .34
+        ? active ? .98 : focusedStory ? 0 : .62 + edgeFade * .34
         : 0;
       entry.targetScale = active ? 1 : frontFacing && inFrame ? .92 + edgeFade * .08 : .72;
 
@@ -753,27 +803,35 @@ if (stage && canvas) {
         activeEntry = entry;
         const activeMinX = narrowTablet ? 12 : Math.min(safeLeft, width - entry.width - 12);
         entry.targetX = THREE.MathUtils.clamp(centerX - entry.width * .5, activeMinX, width - entry.width - 12);
-        entry.targetY = THREE.MathUtils.clamp(centerY + 34, topLimit, bottomLimit - entry.height);
+        const activeY = mobile ? centerY + 52 : centerY - entry.height - 68;
+        entry.targetY = THREE.MathUtils.clamp(activeY, topLimit, bottomLimit - entry.height);
         entry.side = 'active';
         entry.element.classList.remove('is-left');
         continue;
       }
 
+      const leftMaxX = centerX - centerSafeX - entry.width;
+      const rightMinX = centerX + centerSafeX;
+      const canUseLeft = leftMaxX >= safeLeft;
+      const canUseRight = rightMinX + entry.width <= width - 12;
       let lane;
       if (compactViewport) {
-        lane = lanes.left.length <= lanes.right.length ? 'left' : 'right';
+        lane = canUseRight ? 'right' : 'left';
       } else {
-        const preferredLane = markerX > centerX + 18 ? 'left' : 'right';
+        const preferredLane = markerX < centerX ? 'left' : 'right';
         const alternateLane = preferredLane === 'left' ? 'right' : 'left';
-        lane = lanes[preferredLane].length > lanes[alternateLane].length + 1 ? alternateLane : preferredLane;
+        const preferredAvailable = preferredLane === 'left' ? canUseLeft : canUseRight;
+        const alternateAvailable = alternateLane === 'left' ? canUseLeft : canUseRight;
+        lane = preferredAvailable ? preferredLane : alternateAvailable ? alternateLane : preferredLane;
+        if (lanes[lane].length > lanes[alternateLane].length + 1 && alternateAvailable) lane = alternateLane;
       }
       let proposedX = mobile
         ? lane === 'left' ? 12 : width - entry.width - 12
         : lane === 'left' ? markerX - entry.width - 18 : markerX + 18;
       if (!mobile) {
         proposedX = lane === 'left'
-          ? Math.min(proposedX, centerX - entry.width - 76)
-          : Math.max(proposedX, centerX + 76);
+          ? Math.min(proposedX, leftMaxX)
+          : Math.max(proposedX, rightMinX);
       }
       entry.targetX = THREE.MathUtils.clamp(proposedX, safeLeft, width - entry.width - 12);
       entry.targetY = THREE.MathUtils.clamp(markerY - entry.height * .5, topLimit, bottomLimit - entry.height);
@@ -783,7 +841,6 @@ if (stage && canvas) {
     }
 
     if (compactViewport) {
-      const focusedStory = state.storyCards.has(state.activeSourceId);
       for (const lane of [lanes.left, lanes.right]) {
         lane.sort((a, b) => Math.abs(a.markerY - centerY) - Math.abs(b.markerY - centerY));
         const visibleLimit = focusedStory ? 0 : 2;
@@ -792,25 +849,11 @@ if (stage && canvas) {
       }
     }
 
-    if (!compactViewport && activeEntry) {
-      const gap = 10;
-      const maxLaneLength = Math.max(lanes.left.length, lanes.right.length);
-      const requiredActiveTop = topLimit + maxLaneLength * (compactHeight + gap);
-      activeEntry.targetY = THREE.MathUtils.clamp(
-        Math.max(activeEntry.targetY, requiredActiveTop),
-        topLimit,
-        bottomLimit - activeEntry.height
-      );
-
-      const laneBottom = activeEntry.targetY - gap;
-      const laneCapacity = Math.max(0, Math.floor((laneBottom - topLimit + gap) / (compactHeight + gap)));
+    if (activeEntry) {
       for (const lane of [lanes.left, lanes.right]) {
-        lane.sort((a, b) => Math.abs(a.markerY - centerY) - Math.abs(b.markerY - centerY));
-        lane.slice(laneCapacity).forEach((entry) => { entry.targetOpacity = 0; });
-        lane.splice(laneCapacity);
+        lane.forEach((entry) => { entry.targetOpacity = 0; });
+        lane.splice(0);
       }
-      resolveStoryLane(lanes.left, topLimit, laneBottom, gap, centerY);
-      resolveStoryLane(lanes.right, topLimit, laneBottom, gap, centerY);
     } else {
       resolveStoryLane(lanes.left, topLimit, bottomLimit, compactViewport ? 12 : 16, centerY);
       resolveStoryLane(lanes.right, topLimit, bottomLimit, compactViewport ? 12 : 16, centerY);
@@ -909,16 +952,16 @@ if (stage && canvas) {
     camera.aspect = width / height;
     if (width < 560) {
       cameraBaseZ = 13.2;
-      state.globeTargetNdc.x = 0;
-      state.globeTargetNdc.y = -.16;
+      state.globeTargetNdc.x = .08;
+      state.globeTargetNdc.y = -.24;
     } else if (width < 860) {
       cameraBaseZ = 10.6;
-      state.globeTargetNdc.x = .08;
-      state.globeTargetNdc.y = -.2;
+      state.globeTargetNdc.x = .18;
+      state.globeTargetNdc.y = -.22;
     } else {
       cameraBaseZ = 8.9;
-      state.globeTargetNdc.x = camera.aspect < 1.55 ? .31 : .39;
-      state.globeTargetNdc.y = .01;
+      state.globeTargetNdc.x = camera.aspect < 1.35 ? .26 : camera.aspect < 1.7 ? .36 : .44;
+      state.globeTargetNdc.y = -.13;
     }
     camera.position.z = cameraBaseZ / state.zoomCurrent;
     camera.updateProjectionMatrix();

@@ -124,6 +124,7 @@ body[data-theme="contact"] {
 
 .ticker-wrap {
   width: 100%;
+  min-height: 45px;
   overflow: hidden;
   border-block: 1px solid rgba(255,255,255,.14);
   background: var(--green, #123f2a);
@@ -133,11 +134,18 @@ body[data-theme="contact"] {
 .ticker-track {
   display: flex;
   width: max-content;
-  min-width: 200%;
-  gap: 34px;
-  padding: 13px 0;
+  min-width: 0;
+  gap: 0;
+  padding: 0;
   animation: janet-ticker 28s linear infinite;
   will-change: transform;
+}
+
+.ticker-set {
+  display: flex;
+  flex: none;
+  gap: 34px;
+  padding: 13px 34px 13px 0;
 }
 
 .ticker-item {
@@ -159,8 +167,8 @@ body[data-theme="contact"] {
 }
 
 @keyframes janet-ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 .wm {

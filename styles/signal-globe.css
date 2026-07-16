@@ -3116,8 +3116,9 @@ body.home-experiment #contact .contact-note {
 
   .signal-story-card.is-active {
     width: min(332px, calc(100vw - 24px));
-    height: 190px;
-    padding: 15px 16px;
+    height: 150px;
+    gap: 5px;
+    padding: 10px 13px 11px;
   }
 
   .signal-story-card:not(.is-active) .signal-story-meta {
@@ -3137,15 +3138,25 @@ body.home-experiment #contact .contact-note {
   }
 
   .signal-story-card.is-active .signal-story-title {
-    font-size: 20px;
+    font-size: 17px;
+    line-height: 1.14;
   }
 
   .signal-story-body {
+    font-size: 10px;
+    line-height: 1.45;
     -webkit-line-clamp: 2;
   }
 
   .signal-story-take {
+    font-size: 8px;
+    line-height: 1.35;
     -webkit-line-clamp: 1;
+  }
+
+  .signal-story-action {
+    padding-top: 4px;
+    font-size: 8px;
   }
 
   .signal-hero-ledger {
@@ -3390,9 +3401,70 @@ body.home-experiment .nav-links {
   height: 104px;
   gap: 7px;
   padding: 12px 14px 13px;
-  background: rgba(5, 18, 14, .88);
+  background: linear-gradient(132deg, rgba(95, 41, 26, .34), rgba(5, 18, 14, .9) 54%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+.signal-story-card > :not(.signal-story-logo) {
+  position: relative;
+  z-index: 1;
+}
+
+.signal-story-logo {
+  position: absolute;
+  right: -10px;
+  bottom: -18px;
+  z-index: 0;
+  display: grid;
+  width: 98px;
+  height: 98px;
+  place-items: center;
+  overflow: hidden;
+  color: #f07865;
+  opacity: .13;
+  pointer-events: none;
+  transform: rotate(-5deg);
+  transition: opacity .32s ease, transform .52s cubic-bezier(.2, .86, .18, 1);
+}
+
+.signal-story-logo img {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  filter: invert(56%) sepia(60%) saturate(1750%) hue-rotate(323deg) brightness(104%) contrast(88%);
+}
+
+.signal-story-logo-fallback {
+  position: absolute;
+  max-width: 94px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: .9;
+  text-align: center;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.signal-story-logo.has-image .signal-story-logo-fallback {
+  opacity: 0;
+}
+
+.signal-story-card:hover .signal-story-logo,
+.signal-story-card.is-hovered .signal-story-logo {
+  opacity: .2;
+  transform: rotate(0deg) scale(1.08);
+}
+
+.signal-story-card.is-active .signal-story-logo {
+  right: -4px;
+  bottom: -10px;
+  width: 150px;
+  height: 150px;
+  opacity: .045;
+  transform: rotate(0deg) scale(1.1);
 }
 
 .signal-story-card:not(.is-active) .signal-story-detail {

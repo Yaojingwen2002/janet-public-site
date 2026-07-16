@@ -76,7 +76,7 @@ html[data-janet-experiment="signal-wave-17"] .bg-ambient {
 html[data-janet-experiment="signal-wave-17"] body:not(.home-experiment) .nav {
   height: 64px;
   border-bottom: 1px solid rgba(22, 63, 48, .15);
-  background: rgba(244, 240, 232, .76);
+  background: rgba(248, 245, 237, .96);
   box-shadow: none;
   backdrop-filter: blur(22px) saturate(130%);
   -webkit-backdrop-filter: blur(22px) saturate(130%);
@@ -93,7 +93,7 @@ html[data-janet-experiment="signal-wave-17"] body:not(.home-experiment) .nav-act
 html[data-janet-experiment="signal-wave-17"] .potato-center {
   border: 1px solid rgba(22, 63, 48, .18);
   border-radius: 0;
-  background: rgba(244, 240, 232, .78);
+  background: rgba(248, 245, 237, .96);
   color: var(--ed-green);
   box-shadow: 0 14px 42px rgba(23, 25, 22, .08);
   backdrop-filter: blur(22px) saturate(130%);
@@ -188,8 +188,8 @@ html[data-janet-experiment="signal-wave-17"] body.home-experiment #contact {
 }
 
 html[data-janet-experiment="signal-wave-17"] body.home-experiment:not(.is-past-globe) .nav {
-  border-bottom-color: rgba(244, 240, 232, .13);
-  background: rgba(8, 45, 34, .78);
+  border-bottom-color: rgba(22, 63, 48, .15);
+  background: rgba(248, 245, 237, .96);
   backdrop-filter: blur(24px) saturate(132%);
   -webkit-backdrop-filter: blur(24px) saturate(132%);
 }
@@ -197,7 +197,7 @@ html[data-janet-experiment="signal-wave-17"] body.home-experiment:not(.is-past-g
 html[data-janet-experiment="signal-wave-17"] .background-audio {
   position: fixed;
   top: 11px;
-  right: 122px;
+  right: calc(var(--container-pad, 24px) + 112px);
   z-index: 1002;
 }
 
@@ -271,11 +271,17 @@ html[data-janet-experiment="signal-wave-17"] body.home-experiment.is-past-globe 
 }
 
 html[data-janet-experiment="signal-wave-17"] body.home-experiment .signal-hero h1 {
-  max-width: 10.8ch;
+  max-width: none;
   color: #fbf8f1;
-  font-size: clamp(68px, 8.8vw, 148px);
-  line-height: .86;
+  font-size: clamp(62px, 7.4vw, 124px);
+  line-height: .9;
   text-shadow: 0 3px 28px rgba(0, 0, 0, .32);
+}
+
+html[data-janet-experiment="signal-wave-17"] body.home-experiment .signal-hero h1 span,
+html[data-janet-experiment="signal-wave-17"] body.home-experiment .signal-hero h1 em {
+  display: block;
+  white-space: nowrap;
 }
 
 html[data-janet-experiment="signal-wave-17"] body.home-experiment .signal-hero h1 span {
@@ -451,10 +457,24 @@ html[data-janet-experiment="signal-wave-17"] body.home-experiment #news .codex-c
   background: var(--ed-coral);
 }
 
+html[data-janet-experiment="signal-wave-17"] .ticker-wrap,
 html[data-janet-experiment="signal-wave-17"] body.home-experiment .ticker-wrap {
-  border: 0;
-  background: var(--ed-coral);
-  color: var(--ed-ink);
+  min-height: 47px;
+  border-top: 1px solid rgba(84, 206, 153, .2);
+  border-bottom: 1px solid rgba(84, 206, 153, .2);
+  background: #10392b;
+  color: #f8f5ed;
+}
+
+html[data-janet-experiment="signal-wave-17"] .ticker-item,
+html[data-janet-experiment="signal-wave-17"] body.home-experiment .ticker-item {
+  color: #f8f5ed;
+  font-weight: 600;
+}
+
+html[data-janet-experiment="signal-wave-17"] .ticker-item .dot,
+html[data-janet-experiment="signal-wave-17"] body.home-experiment .ticker-item .dot {
+  color: var(--ed-coral);
 }
 
 /* Homepage works: open case-study strips on cream paper. */
@@ -1685,7 +1705,7 @@ html[data-janet-experiment="signal-wave-17"] :is(.not-found-panel, .auth-card, .
   }
 
   html[data-janet-experiment="signal-wave-17"] .background-audio {
-    right: 102px;
+    right: 126px;
   }
 
   html[data-janet-experiment="signal-wave-17"] .background-audio-toggle {
@@ -1694,9 +1714,9 @@ html[data-janet-experiment="signal-wave-17"] :is(.not-found-panel, .auth-card, .
   }
 
   html[data-janet-experiment="signal-wave-17"] body.home-experiment .signal-hero h1 {
-    max-width: 9.8ch;
-    font-size: clamp(50px, 15vw, 66px);
-    line-height: .9;
+    max-width: none;
+    font-size: clamp(46px, 13vw, 58px);
+    line-height: .92;
   }
 
   html[data-janet-experiment="signal-wave-17"] body.home-experiment .signal-hero h1 em {

@@ -64,11 +64,13 @@ function briefingOutputs() {
 
 if (!issues.length) {
   const index = read('index.html');
+  const archivePage = read('news.html');
   const script = read('scripts/signal-globe.js');
   const news = read('scripts/news.js');
   const reactions = read('scripts/reactions.js');
   const cursor = read('scripts/signal-cursor.js');
   const globeStyles = read('styles/signal-globe.css');
+  const motionStyles = read('styles/janet-motion.css');
   const experimentStyles = read('styles/experiment-editorial.css');
   const editorialMotion = read('scripts/editorial-motion.js');
   const handbookScript = read('scripts/gpt-image2-handbook.js');
@@ -96,6 +98,10 @@ if (!issues.length) {
   if (!index.includes('scripts/home-theme.js')) issues.push('homepage_missing_theme_linkage');
   if (!index.includes('assets/audio/digital-clouds.mp3')) issues.push('homepage_background_audio_missing');
   if (!index.includes('scripts/background-audio.js')) issues.push('homepage_background_audio_control_missing');
+  if (!index.includes('<span>过滤噪音</span><em>留下信号</em>')) issues.push('homepage_two_line_title_missing');
+  if ((index.match(/class="ticker-set"/g) || []).length !== 2) issues.push('homepage_seamless_ticker_sets_missing');
+  if ((archivePage.match(/class="ticker-set"/g) || []).length !== 2) issues.push('archive_seamless_ticker_sets_missing');
+  if (!motionStyles.includes('translate3d(-50%, 0, 0)')) issues.push('seamless_ticker_motion_missing');
   if (!script.includes("from '../assets/vendor/three.module.js'")) issues.push('three_not_local');
   if (!script.includes("fetch('data/news-index.json')")) issues.push('latest_news_mapping_missing');
   if (!script.includes('cardHover')) issues.push('card_pause_state_missing');
@@ -111,6 +117,8 @@ if (!issues.length) {
   if (!script.includes("stage.addEventListener('wheel', onWheel")) issues.push('wheel_zoom_missing');
   if (!script.includes('zoomVelocity')) issues.push('inertial_zoom_missing');
   if (!script.includes('const visibleLimit = focusedStory ? 0 : 2')) issues.push('mobile_overlap_guard_missing');
+  if (!script.includes('const centerSafeX = mobile ? 74')) issues.push('story_center_safe_zone_missing');
+  if (!script.includes('mobile ? centerY + 52')) issues.push('mobile_active_card_safe_position_missing');
   if (!script.includes('occupiedHeight + requiredHeight <= availableHeight')) issues.push('story_lane_capacity_guard_missing');
   if (!script.includes('for (let index = entries.length - 1; index >= 0; index -= 1)')) issues.push('story_lane_backward_pass_missing');
   if (!index.includes('scripts/signal-cursor.js')) issues.push('homepage_missing_cursor_script');
@@ -120,6 +128,8 @@ if (!issues.length) {
   if (cursor.includes("mark.textContent = '<>'")) issues.push('cursor_angle_brackets_still_present');
   if (!cursor.includes('distance > 80 ? .86 : .72')) issues.push('cursor_dynamic_follow_missing');
   if (!script.includes('const DRAG_HORIZONTAL = .0058')) issues.push('responsive_globe_drag_missing');
+  if (!script.includes('const SOURCE_LOGOS = {')) issues.push('source_logo_mapping_missing');
+  if (!globeStyles.includes('.signal-story-logo')) issues.push('source_logo_watermark_style_missing');
   for (const page of experimentPages) {
     const html = read(page);
     if (!html.includes('data-janet-experiment="signal-wave-17"')) issues.push(`experiment_marker_missing:${page}`);
@@ -139,6 +149,7 @@ if (!issues.length) {
   if (!experimentStyles.includes('body.home-experiment #works-library')) issues.push('homepage_works_override_missing');
   if (!experimentStyles.includes('body.briefing-output-page > .container')) issues.push('briefing_full_width_missing');
   if (!experimentStyles.includes('.background-audio-toggle')) issues.push('background_audio_style_missing');
+  if (!experimentStyles.includes('right: calc(var(--container-pad, 24px) + 112px)')) issues.push('background_audio_gap_missing');
   if (!experimentStyles.includes('.engagement-triplet')) issues.push('engagement_triplet_style_missing');
   if (!experimentStyles.includes('.handbook-pagination')) issues.push('handbook_pagination_style_missing');
   if (!experimentStyles.includes('.comments-section')) issues.push('comments_editorial_style_missing');
@@ -201,6 +212,11 @@ console.log(JSON.stringify({
   mobile_overlap_guard: true,
   lane_capacity_guard: true,
   background_audio: true,
+  background_audio_gap: true,
+  seamless_ticker: true,
+  two_line_hero_title: true,
+  source_logo_watermarks: true,
+  center_safe_cards: true,
   engagement_triplet: true,
   handbook_pagination: '10_per_page',
   contextual_cursor_states: true,

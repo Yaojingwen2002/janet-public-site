@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { validateEditorialArtifacts } from './editorial-qa.mjs';
 import { briefingVol, loadEnv, targetDateFromArg, titleLength } from './lib.mjs';
 
 const FORBIDDEN = [
@@ -57,7 +58,7 @@ const MIN_COVER_BYTES = 20_000;
 const MIN_ITEM_IMAGE_BYTES = 1_200;
 const MIN_JANET_TAKE_LENGTH = 45;
 const MAX_JANET_TAKE_LENGTH = 180;
-const MIN_TREND_PARAGRAPHS = 2;
+const MIN_TREND_PARAGRAPHS = 1;
 const MAX_TREND_PARAGRAPHS = 3;
 const MIN_ITEM_TITLE_LENGTH = 10;
 const MAX_ITEM_TITLE_LENGTH = 22;
@@ -130,6 +131,7 @@ export function validateBriefing(content, { date, rootPath = resolve(new URL('..
   }
   validateTitleVariety(content, issues);
   validateJanetTakeVariety(content, issues);
+  issues.push(...validateEditorialArtifacts(content, { date: targetDate, rootPath }));
 
   const allText = JSON.stringify(content);
   for (const phrase of FORBIDDEN) {

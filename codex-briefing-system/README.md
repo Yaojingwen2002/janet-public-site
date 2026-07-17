@@ -49,6 +49,7 @@ Codex App 负责：
 - 原文阅读
 - 来源核验
 - 同事件合并
+- 写入生成前编辑决策 `runs/YYYY-MM-DD/editorial-plan.json`
 - 内容写作
 - 生成 `runs/YYYY-MM-DD/content.json`
 
@@ -63,7 +64,7 @@ bash scripts/postprocess-briefing.sh YYYY-MM-DD --publish
 这一步会：
 
 - 渲染 `runs/YYYY-MM-DD/output.html`
-- QA 检查
+- QA 检查编辑决策、跨期重复、锐评节奏、事实和图片完整性
 - 复制 `runs/YYYY-MM-DD/content.json` 到 `../janet-public-site/data/YYYY-MM-DD/content.json`
 - 复制 `runs/YYYY-MM-DD/output.html` 到 `../janet-public-site/data/YYYY-MM-DD/output.html`
 - 复制 `runs/YYYY-MM-DD/cover.png` 到 `../janet-public-site/data/YYYY-MM-DD/cover.png`

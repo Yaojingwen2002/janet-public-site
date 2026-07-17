@@ -17,6 +17,7 @@ DATE="${1:-$(TZ=Asia/Taipei date +%F)}"
 MODE="${2:-app}"
 RUN_DIR="$ROOT/runs/$DATE"
 RUN_CONTENT_PATH="$RUN_DIR/content.json"
+RUN_EDITORIAL_PATH="$RUN_DIR/editorial-plan.json"
 TASK_PATH="$RUN_DIR/briefing-task.md"
 
 mkdir -p "$RUN_DIR"
@@ -36,6 +37,7 @@ sed \
   -e "s|{{VOL}}|$VOL|g" \
   -e "s|{{WINDOW_START}}|$WINDOW_START|g" \
   -e "s|{{WINDOW_END}}|$WINDOW_END|g" \
+  -e "s|{{RUN_EDITORIAL_PATH}}|$RUN_EDITORIAL_PATH|g" \
   -e "s|{{RUN_CONTENT_PATH}}|$RUN_CONTENT_PATH|g" \
   "$ROOT/prompts/briefing-task.md" > "$TASK_PATH"
 
@@ -69,6 +71,7 @@ Codex App-native briefing task prepared.
    $TASK_PATH
 
 3. Codex App 必须把结果写入：
+   $RUN_EDITORIAL_PATH
    $RUN_CONTENT_PATH
 
 4. 写稿完成后运行：

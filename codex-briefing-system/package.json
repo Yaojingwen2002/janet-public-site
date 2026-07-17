@@ -8,6 +8,7 @@
     "postprocess": "bash scripts/postprocess-briefing.sh",
     "images": "node src/ensure-item-images.mjs",
     "publish": "node src/publish-to-site.mjs",
-    "qa": "node src/qa-briefing.mjs"
+    "qa": "node src/qa-briefing.mjs",
+    "test": "node --test src/editorial-qa.test.mjs"
   }
 }

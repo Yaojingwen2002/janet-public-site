@@ -23,6 +23,7 @@ const entries = [
   { path: '' },
   { path: 'news.html' },
   { path: 'portfolio.html' },
+  { path: 'mirror-plan.html' },
   { path: 'gpt-image2-handbook.html' },
   { path: 'shuttle-universe.html' },
   { path: 'misaligned-scenes.html' }

@@ -41,6 +41,8 @@ find "$OUTPUT" -name '._*' -delete
 find "$OUTPUT" -name '.DS_Store' -delete
 touch "$OUTPUT/.nojekyll"
 node "$ROOT/scripts/prepare-pages-artifact.mjs" "$OUTPUT"
+find "$OUTPUT" -name '._*' -delete
+find "$OUTPUT" -name '.DS_Store' -delete
 
 file_count="$(find "$OUTPUT" -type f | wc -l | tr -d ' ')"
 size_kb="$(du -sk "$OUTPUT" | awk '{print $1}')"

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-07-13T00:00:00.000Z",
+  "generated_at": "2026-07-17T00:00:00.000Z",
   "library": {
     "title": "Janet 作品库",
     "subtitle": "AI 影像、剧情短片与创作流程档案",
@@ -34,6 +34,35 @@
       "url": "marvel-ten.html",
       "display_count_label": "1 film",
       "badge": "新作品"
+    },
+    {
+      "id": "mirror-plan",
+      "title": "镜场计划",
+      "type": "AI 导演视觉研发实验",
+      "source_path_label": "镜场计划 / S0 实验文档库",
+      "description": "用编号文档持续归档 AI 导演视觉研发实验。当前 01 已冻结、02 为冻结候选，03 第一轮已评并继续校准。",
+      "method": [
+        "原片视觉分析",
+        "原创安全转译",
+        "A/B/C 单变量测试",
+        "Janet 肉眼评价",
+        "冻结与证据归档"
+      ],
+      "tags": [
+        "镜场计划",
+        "AI 导演",
+        "实验文档",
+        "视觉校准",
+        "安全转译"
+      ],
+      "work_count": 2,
+      "document_count": 3,
+      "project_json": "data/works/projects/mirror-plan.json",
+      "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
+      "cover": "assets/works/mirror-plan/s0-02-b.jpg",
+      "url": "mirror-plan.html",
+      "display_count_label": "3 experiment docs",
+      "badge": "视觉研发"
     },
     {
       "id": "shuttle-universe",
@@ -93,26 +122,25 @@
     },
     {
       "id": "igpt-image2-handbook",
-      "title": "Janet 影像参考实验室",
-      "type": "镜场计划 / 图像生成手册",
-      "source_path_label": "镜场计划 + freestylefly/awesome-gpt-image-2",
-      "description": "镜场计划的公开入口：把电影视觉分析、安全转译、S0 实验记录和原 iGPT-Image2 100 组提示词手册放在同一个影像参考实验室里。",
+      "title": "iGPT-Image2 提示词手册",
+      "type": "结构化图像生成 Prompt Library",
+      "source_path_label": "freestylefly/awesome-gpt-image-2 + Janet 安全改写",
+      "description": "100 组可复制、可筛选、可追溯来源的结构化图像生成提示词卡片。镜场计划现已升级为独立视觉研发项目。",
       "method": [
-        "电影视觉分析",
-        "安全转译",
-        "S0 实验评分",
         "Prompt Builder",
-        "100 组提示词卡片"
+        "描述性安全改写",
+        "100 组提示词卡片",
+        "来源筛选",
+        "复制复用"
       ],
       "tags": [
-        "镜场计划",
-        "实验项目",
-        "影像参考室",
         "GPT-Image2",
-        "Prompt Library"
+        "Prompt Library",
+        "结构化提示词",
+        "安全改写"
       ],
       "work_count": 100,
-      "document_count": 8,
+      "document_count": 2,
       "project_json": "data/works/projects/igpt-image2-handbook.json",
       "url": "gpt-image2-handbook.html",
       "thumbnail": "assets/works/cinematic-lab/cover-v2.webp",
@@ -131,8 +159,8 @@
     "igpt-image2-handbook-cases"
   ],
   "stats": {
-    "project_count": 4,
-    "work_count": 105,
-    "document_count": 31
+    "project_count": 5,
+    "work_count": 107,
+    "document_count": 28
   }
 }

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, relative, resolve } from 'node:path';
 
@@ -17,6 +18,10 @@ function readJson(path) {
 
 function requireFile(path) {
   if (!existsSync(resolve(root, path))) issues.push(`missing_file:${path}`);
+}
+
+function sha256(path) {
+  return createHash('sha256').update(readFileSync(path)).digest('hex');
 }
 
 function localPathFromUrl(path) {
@@ -53,6 +58,7 @@ for (const file of [
   'index.html',
   'news.html',
   'portfolio.html',
+  'mirror-plan.html',
   'marvel-ten.html',
   'gpt-image2-handbook.html',
   'shuttle-universe.html',
@@ -63,6 +69,16 @@ for (const file of [
   'data/news-index.json',
   'sitemap.xml',
   'robots.txt'
+]) requireFile(file);
+
+for (const file of [
+  'styles/update-notice.css',
+  'scripts/update-notice.js',
+  'styles/mirror-plan.css',
+  'scripts/mirror-plan.js',
+  'data/works/works-manifest.json',
+  'data/works/projects/mirror-plan.json',
+  'data/works/documents/mirror-plan/index.json'
 ]) requireFile(file);
 
 const manifest = readJson('data/MANIFEST.json') || [];
@@ -137,6 +153,7 @@ const shellPages = [
   'index.html',
   'news.html',
   'portfolio.html',
+  'mirror-plan.html',
   'marvel-ten.html',
   'project-detail.html',
   'gpt-image2-handbook.html',
@@ -147,6 +164,111 @@ const shellPages = [
 ];
 shellPages.forEach(validateHtmlReferences);
 if (latestOutputPath) validateHtmlReferences(latestOutputPath);
+
+const mirrorDocumentIndexPath = 'data/works/documents/mirror-plan/index.json';
+const mirrorDocumentIndex = readJson(mirrorDocumentIndexPath) || {};
+const mirrorDocuments = Array.isArray(mirrorDocumentIndex.documents) ? mirrorDocumentIndex.documents : [];
+const mirrorDocumentIds = mirrorDocuments.map((item) => String(item.id || ''));
+const mirrorStatusCodes = new Set(['frozen', 'candidate', 'active', 'preparing']);
+const hasMirrorLocalArchive = existsSync(resolve(root, '镜场计划/tests'));
+if (!mirrorDocuments.length) issues.push('mirror_document_index_empty');
+if (new Set(mirrorDocumentIds).size !== mirrorDocumentIds.length) issues.push('mirror_document_index_duplicates');
+
+for (const item of mirrorDocuments) {
+  const id = String(item.id || '');
+  const dataPath = localPathFromUrl(item.data_url || '');
+  if (!/^\d{2,}$/.test(id)) issues.push(`mirror_document_id_invalid:${id}`);
+  if (!mirrorStatusCodes.has(String(item.status_code || ''))) issues.push(`mirror_document_status_invalid:${id}`);
+  if (!dataPath.startsWith('data/works/documents/mirror-plan/') || !dataPath.endsWith('.json')) {
+    issues.push(`mirror_document_path_invalid:${id}:${dataPath}`);
+    continue;
+  }
+  requireFile(dataPath);
+  const documentData = readJson(dataPath);
+  if (!documentData) continue;
+  if (String(documentData.id || '') !== id) issues.push(`mirror_document_id_mismatch:${id}:${documentData.id || ''}`);
+  if (!Array.isArray(documentData.sections)) issues.push(`mirror_document_sections_missing:${id}`);
+  const publicText = JSON.stringify(documentData);
+  if (/让子弹飞|姜文|周润发|葛优|\/Volumes\/|frames\/|04_master_testset|00_source_videos|prompt_A_internal/i.test(publicText)) {
+    issues.push(`mirror_document_private_reference:${id}`);
+  }
+  const primary = documentData.primary_document;
+  const requiresPrimaryDocument = ['frozen', 'candidate'].includes(String(item.status_code || ''));
+  if (requiresPrimaryDocument && documentData.default_view !== 'document') {
+    issues.push(`mirror_primary_document_not_default:${id}`);
+  }
+  if ((requiresPrimaryDocument || documentData.default_view === 'document') && !primary) {
+    issues.push(`mirror_primary_document_missing:${id}`);
+  }
+  if (primary) {
+    if (primary.scope !== 'local-only' || primary.source_mode !== 'direct-local-reference') {
+      issues.push(`mirror_primary_document_scope_invalid:${id}`);
+    }
+    for (const [format, urlKey, sizeKey, hashKey, magic] of [
+      ['pdf', 'pdf_url', 'pdf_bytes', 'pdf_sha256', '%PDF'],
+      ['docx', 'docx_url', 'docx_bytes', 'docx_sha256', 'PK\u0003\u0004']
+    ]) {
+      const assetPath = localPathFromUrl(primary[urlKey] || '');
+      const validPath = new RegExp(`^镜场计划/tests/JW-LTBF-${id}/[^/]+\\.${format}$`, 'i');
+      if (!validPath.test(assetPath)) {
+        issues.push(`mirror_primary_document_path_invalid:${id}:${format}:${assetPath}`);
+        continue;
+      }
+      const absolute = resolve(root, assetPath);
+      if (!hasMirrorLocalArchive) continue;
+      requireFile(assetPath);
+      if (!existsSync(absolute)) continue;
+      const bytes = statSync(absolute).size;
+      if (!bytes) issues.push(`mirror_primary_document_empty:${id}:${format}`);
+      if (Number(primary[sizeKey]) !== bytes) {
+        issues.push(`mirror_primary_document_size_mismatch:${id}:${format}:${primary[sizeKey] || 0}:${bytes}`);
+      }
+      const header = readFileSync(absolute).subarray(0, 4).toString('latin1');
+      if (header !== magic) issues.push(`mirror_primary_document_magic_invalid:${id}:${format}`);
+      const expectedHash = String(primary[hashKey] || '');
+      if (!/^[a-f0-9]{64}$/i.test(expectedHash)) {
+        issues.push(`mirror_primary_document_hash_invalid:${id}:${format}`);
+      } else {
+        const actualHash = sha256(absolute);
+        if (actualHash !== expectedHash.toLowerCase()) {
+          issues.push(`mirror_primary_document_hash_mismatch:${id}:${format}`);
+        }
+      }
+    }
+  }
+  for (const section of documentData.sections || []) {
+    for (const image of section.gallery || []) {
+      const imagePath = localPathFromUrl(image.src || '');
+      if (!imagePath.startsWith('assets/works/mirror-plan/')) issues.push(`mirror_document_image_path_invalid:${id}:${imagePath}`);
+      requireFile(imagePath);
+    }
+  }
+}
+
+if (existsSync(resolve(root, 'assets/works/mirror-plan/documents'))) {
+  issues.push('mirror_public_document_copies_present');
+}
+
+const homepage = existsSync(resolve(root, 'index.html')) ? readFileSync(resolve(root, 'index.html'), 'utf8') : '';
+const updateNoticeScript = existsSync(resolve(root, 'scripts/update-notice.js'))
+  ? readFileSync(resolve(root, 'scripts/update-notice.js'), 'utf8')
+  : '';
+const visualLab = existsSync(resolve(root, 'gpt-image2-handbook.html'))
+  ? readFileSync(resolve(root, 'gpt-image2-handbook.html'), 'utf8')
+  : '';
+const mirrorPage = existsSync(resolve(root, 'mirror-plan.html'))
+  ? readFileSync(resolve(root, 'mirror-plan.html'), 'utf8')
+  : '';
+
+if (!homepage.includes('styles/update-notice.css?v=third-layout-20260717')) issues.push('update_notice_css_missing');
+if (!homepage.includes('scripts/update-notice.js?v=third-layout-20260717')) issues.push('update_notice_script_missing');
+if (!updateNoticeScript.includes("Date.parse('2026-07-17T00:00:00+08:00')")) issues.push('update_notice_start_invalid');
+if (!updateNoticeScript.includes("Date.parse('2026-07-27T00:00:00+08:00')")) issues.push('update_notice_end_invalid');
+if (!updateNoticeScript.includes('第三次版式革新')) issues.push('update_notice_release_copy_missing');
+if (!visualLab.includes('href="mirror-plan.html"')) issues.push('visual_lab_mirror_entry_missing');
+if (!mirrorPage.includes('href="gpt-image2-handbook.html"')) issues.push('mirror_visual_lab_return_missing');
+if (!mirrorPage.includes('data-janet-experiment="signal-wave-17"')) issues.push('mirror_experiment_shell_missing');
+if (!mirrorPage.includes('<meta name="janet-public-artifact" content="true">')) issues.push('mirror_public_artifact_marker_missing');
 
 const sitemap = existsSync(resolve(root, 'sitemap.xml')) ? readFileSync(resolve(root, 'sitemap.xml'), 'utf8') : '';
 if (latestOutputPath && !sitemap.includes(latestOutputPath)) issues.push('sitemap_latest_missing');

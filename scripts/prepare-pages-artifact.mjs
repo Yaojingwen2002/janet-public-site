@@ -6,6 +6,7 @@ const root = resolve(process.argv[2] || process.cwd());
 const dataRoot = resolve(root, 'data');
 let updated = 0;
 let greetingScriptsAdded = 0;
+let publicArtifactMarkersAdded = 0;
 
 if (!existsSync(dataRoot)) throw new Error(`artifact_data_missing:${dataRoot}`);
 
@@ -39,4 +40,18 @@ for (const entry of readdirSync(dataRoot)) {
   if (next !== html) writeFileSync(outputPath, next, 'utf8');
 }
 
-console.log(`pages_artifact_html_ready favicons_added=${updated} greeting_scripts_added=${greetingScriptsAdded}`);
+const mirrorPagePath = resolve(root, 'mirror-plan.html');
+if (existsSync(mirrorPagePath)) {
+  const html = readFileSync(mirrorPagePath, 'utf8');
+  if (!html.includes('name="janet-public-artifact"')) {
+    const next = html.replace(
+      /<\/head>/i,
+      '  <meta name="janet-public-artifact" content="true">\n</head>'
+    );
+    if (next === html) throw new Error('artifact_mirror_head_missing');
+    writeFileSync(mirrorPagePath, next, 'utf8');
+    publicArtifactMarkersAdded += 1;
+  }
+}
+
+console.log(`pages_artifact_html_ready favicons_added=${updated} greeting_scripts_added=${greetingScriptsAdded} public_artifact_markers_added=${publicArtifactMarkersAdded}`);

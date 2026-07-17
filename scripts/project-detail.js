@@ -50,6 +50,7 @@
   }
 
   function getProjectLabel(projectId) {
+    if (projectId === 'mirror-plan') return '镜场计划';
     if (projectId === 'shuttle-universe') return '穿梭宇宙';
     if (projectId === 'misaligned-scenes') return '错位名场面';
     if (projectId === 'igpt-image2-handbook') return '影像参考实验室';
@@ -57,6 +58,7 @@
   }
 
   function getProjectTypeLabel(projectId) {
+    if (projectId === 'mirror-plan') return 'AI 导演视觉研发实验';
     if (projectId === 'shuttle-universe') return '世界观型 AI 短视频';
     if (projectId === 'misaligned-scenes') return '剧情型 AI 短片';
     if (projectId === 'igpt-image2-handbook') return '镜场计划 / 图像生成手册';
@@ -91,6 +93,9 @@
   }
 
   function getProcessSteps(work) {
+    if (work.project_id === 'mirror-plan') {
+      return ['原片分析', '原创安全转译', 'A/B/C 同轮生成', 'Janet 肉眼评价', '单变量修改', '冻结归档'];
+    }
     if (work.project_id === 'shuttle-universe') {
       return ['角色气质', '骑乘方式', '场景设计', '首帧 / 尾帧', '视频提示词', '成片 / 发布'];
     }

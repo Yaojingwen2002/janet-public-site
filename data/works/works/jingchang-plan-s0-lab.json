@@ -1,66 +1,97 @@
 {
   "id": "jingchang-plan-s0-lab",
-  "project_id": "igpt-image2-handbook",
-  "title": "镜场计划 S0 影像参考实验",
+  "project_id": "mirror-plan",
+  "title": "镜场计划 S0 视觉研发实验",
   "type": "cinematic-lab",
-  "status": "S0 内部测试归档 + 独立项目迁移规划",
-  "summary": "把电影视觉拆成可分析、可转译、可生成、可审核的创作系统。公开页只展示方法链、评分标准和安全边界，不公开原片参考帧、视频切片、未审核候选图或可识别剧照复刻素材。",
+  "status": "S0-01 已冻结 / S0-02 冻结候选 / S0-03 第一轮未通过",
+  "summary": "镜场计划以编号档案持续记录实验：01、02 已完成归档；03 第一轮已评且未通过，下一轮只校正冷青绿环境、土红棕妆面、顶光与面部柔化。",
   "tags": [
     "镜场计划",
-    "实验项目",
-    "安全转译",
-    "Prompt Builder",
-    "影像参考室"
+    "AI 导演",
+    "原创安全转译",
+    "色彩分区",
+    "语义景深",
+    "背景叙事"
   ],
-  "url": "gpt-image2-handbook.html#jingchang-plan",
-  "source_path_label": "镜场计划 / S0 内部测试摘要",
+  "url": "mirror-plan.html",
+  "source_path_label": "镜场计划 / S0 实验文档库",
   "stats": {
-    "document_count": 6,
-    "prompt_count": 0,
+    "document_count": 3,
+    "prompt_count": 50,
     "subtitle_count": 0,
-    "image_count": 0,
+    "image_count": 49,
     "video_count": 0,
-    "reference_count": 1
+    "experiment_count": 3,
+    "preparing_experiment_count": 0,
+    "active_experiment_count": 1,
+    "round_count": 19
   },
-  "thumbnail": "assets/works/cinematic-lab/cover.svg",
-  "videoThumb": "assets/works/cinematic-lab/cover.svg",
-  "cover": "assets/works/cinematic-lab/cover.svg",
+  "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
+  "videoThumb": "assets/works/mirror-plan/s0-02-b.jpg",
+  "cover": "assets/works/mirror-plan/s0-02-b.jpg",
+  "images": [
+    "assets/works/mirror-plan/s0-02-a.jpg",
+    "assets/works/mirror-plan/s0-02-b.jpg",
+    "assets/works/mirror-plan/s0-02-c.jpg"
+  ],
+  "gallery": [
+    {
+      "src": "assets/works/mirror-plan/s0-02-a.jpg",
+      "title": "Round 10 A · 强浅景深压力",
+      "category": "S0-02"
+    },
+    {
+      "src": "assets/works/mirror-plan/s0-02-b.jpg",
+      "title": "Round 10 B · 目标平衡",
+      "category": "S0-02"
+    },
+    {
+      "src": "assets/works/mirror-plan/s0-02-c.jpg",
+      "title": "Round 10 C · 背景叙事保留",
+      "category": "S0-02"
+    }
+  ],
   "method": [
-    "来源台账",
-    "七层视觉分析",
-    "描述性安全转译",
-    "A/B/C 生成记录",
-    "人工评分与发布边界"
+    "原片视觉分析",
+    "原创人物 / 场景 / 叙事转译",
+    "A/B/C 同轮生成",
+    "Janet 肉眼评价",
+    "只修改问题变量",
+    "冻结与证据归档"
   ],
   "public_boundary": [
-    "不公开原片参考帧和 5 秒视频切片",
-    "不发布未审核生成候选图",
-    "不展示含导演名、片名、演员名、角色名的生产 prompt",
-    "公开内容只保留方法论、状态摘要和安全转译规则"
+    "不公开原片母图、候选帧或 5 秒视频切片",
+    "不公开含片名、导演名、演员名或角色名的内部 Prompt",
+    "不使用原片 edit、recolor、face transfer 或 identity transfer 结果",
+    "公开内容只保留方法结论与审核通过的原创生成图"
   ],
   "detail_json": "data/works/works/jingchang-plan-s0-lab.json",
-  "date": "2026-06-15",
-  "category": "电影视觉方法实验",
+  "date": "2026-07-17",
+  "category": "AI 导演视觉研发",
   "sections": [
     {
-      "title": "项目判断",
-      "body": "镜场计划不是单纯的提示词合集，而是把电影视觉拆成来源、观察、转译、生成、评分、审核和发布边界的完整方法项目。主站只保留公开入口与精选摘要，完整生成、私有素材和审核后台留给未来独立项目。"
+      "title": "项目入口",
+      "body": "实验按 01、02、03 编号归档；本地阅读器直接读取可变实验原档，公开构建仅保留审核后的摘要。"
     },
     {
       "title": "S0 当前状态",
-      "body": "当前处于 S0 内部测试归档阶段，样本用于校准肤色、青绿偏移、中间调密度、空间层次和明星脸风险。页面只公开描述性结论，不公开原始参考帧和未审核候选图。"
+      "body": "S0-01 已冻结。S0-02 完成十轮测试并进入冻结候选。S0-03 第一轮三份 Prompt 与三张独立测试图已完成评价，但色彩与面部光线关系未通过，当前进入问题变量收窄。"
+    },
+    {
+      "title": "扩展方式",
+      "body": "实验目录使用轻量 index，点击后才加载单份结构化 JSON。未来增加数百次实验只新增一个目录项和一份文档，不增加页面长度。"
     },
     {
       "title": "公开安全边界",
-      "body": "公开 prompt 不出现导演名、电影名、演员名、角色名、品牌、logo、水印或已知剧照构图；所有示例都用原创人物、原创场景和描述性视觉特征表达。"
+      "body": "母图、5 秒片段、内部原片研究 Prompt、完整会话和被否定的 edit 链不进入公开站点；网页只加载经审核的公开安全版实验文档。"
     }
   ],
   "process": [
-    "选题与来源台账",
-    "七层视觉观察",
-    "保持项 / 变化项 / 禁止项",
-    "描述性安全 prompt",
-    "A/B/C 生成与评分",
-    "人工审核后公开"
+    "原片分析",
+    "A/B/C Prompt",
+    "三图同轮生成",
+    "Janet 肉眼评价",
+    "只改问题变量",
+    "阶段冻结"
   ]
 }

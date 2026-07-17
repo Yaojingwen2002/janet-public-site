@@ -1,0 +1,105 @@
+{
+  "id": "mirror-plan",
+  "title": "镜场计划",
+  "type": "AI Director Visual R&D",
+  "source_path_label": "镜场计划 / S0 实验文档库",
+  "description": "以编号文档持续归档 AI 导演视觉研发实验。当前两组实验完成归档，第三组第一轮已评且未通过，正在收窄色彩、顶光与面部柔化变量。",
+  "method": [
+    "原片视觉分析",
+    "原创安全转译",
+    "A/B/C 单变量测试",
+    "Janet 肉眼评价",
+    "冻结与证据归档"
+  ],
+  "tags": [
+    "镜场计划",
+    "AI 导演",
+    "实验文档",
+    "视觉校准",
+    "安全转译"
+  ],
+  "work_count": 2,
+  "completed_experiment_count": 2,
+  "preparing_experiment_count": 0,
+  "active_experiment_count": 1,
+  "document_count": 3,
+  "document_index": "data/works/documents/mirror-plan/index.json",
+  "url": "mirror-plan.html",
+  "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
+  "cover": "assets/works/mirror-plan/s0-02-b.jpg",
+  "works": [
+    {
+      "id": "jw-ltbf-01-s0-01",
+      "sequence": 1,
+      "display_number": "01",
+      "project_id": "mirror-plan",
+      "title": "S0-01 户外双人日景校准",
+      "type": "visual-calibration",
+      "status": "已冻结",
+      "status_code": "frozen",
+      "summary": "八轮归档建立中间调、肤色、暗部分区与人物权力关系的基础校准方法。",
+      "tags": ["双人构图", "中间调", "肤色", "人物权力关系"],
+      "url": "mirror-plan.html?doc=01",
+      "reader_json": "data/works/documents/mirror-plan/jw-ltbf-01.json",
+      "stats": {
+        "round_count": 8,
+        "prompt_count": 17,
+        "image_count": 16,
+        "document_count": 1
+      }
+    },
+    {
+      "id": "jw-ltbf-02-s0-02",
+      "sequence": 2,
+      "display_number": "02",
+      "project_id": "mirror-plan",
+      "title": "S0-02 白衣人物室内近景校准",
+      "type": "visual-calibration",
+      "status": "冻结候选",
+      "status_code": "candidate",
+      "summary": "十轮测试建立原创断链、区域色彩、AI 脏点诊断、背景叙事与可见景深验收方法。",
+      "tags": ["白衣", "室内光", "色彩分区", "语义景深", "背景叙事"],
+      "url": "mirror-plan.html?doc=02",
+      "reader_json": "data/works/documents/mirror-plan/jw-ltbf-02.json",
+      "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
+      "cover": "assets/works/mirror-plan/s0-02-b.jpg",
+      "images": [
+        "assets/works/mirror-plan/s0-02-a.jpg",
+        "assets/works/mirror-plan/s0-02-b.jpg",
+        "assets/works/mirror-plan/s0-02-c.jpg"
+      ],
+      "stats": {
+        "round_count": 10,
+        "prompt_count": 30,
+        "image_count": 30,
+        "document_count": 1
+      }
+    },
+    {
+      "id": "jw-ltbf-03-s0-03",
+      "sequence": 3,
+      "display_number": "03",
+      "project_id": "mirror-plan",
+      "title": "S0-03 红绿室内单人近景校准",
+      "type": "visual-calibration",
+      "status": "第一轮未通过",
+      "status_code": "active",
+      "summary": "第三组第一轮 A/B/C 已完成评价；冷青绿环境、土红棕妆面、暖顶光、脸内反差与面部柔化不足，待下一轮只改这些变量。",
+      "tags": ["单人近景", "红绿分区", "背景叙事", "可见景深", "原创断链"],
+      "url": "mirror-plan.html?doc=03",
+      "reader_json": "data/works/documents/mirror-plan/jw-ltbf-03.json",
+      "stats": {
+        "round_count": 1,
+        "prompt_count": 3,
+        "image_count": 3,
+        "document_count": 1
+      }
+    }
+  ],
+  "public_boundary": [
+    "不公开原片母图、候选帧或 5 秒片段",
+    "不公开内部原片研究 Prompt 与完整会话档案",
+    "不使用原片 edit、recolor、face transfer 或 identity transfer 结果",
+    "网站只加载经审核的公开安全版实验文档"
+  ]
+}

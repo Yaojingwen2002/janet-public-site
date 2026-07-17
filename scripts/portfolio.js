@@ -133,7 +133,7 @@
     if (/marvel-ten|漫威十人|漫威历史/.test(text)) {
       return { label: '漫威十人', className: 'work-series-band--marvel-ten' };
     }
-    if (/jingchang|cinematic|mirror|镜场|影像参考|igpt-image2-handbook/.test(text)) {
+    if (/jingchang|cinematic|mirror|镜场|影像参考/.test(text)) {
       return { label: '镜场计划', className: 'work-series-band--cinematic' };
     }
     if (/shuttle|穿梭|宇宙/.test(text)) {
@@ -469,6 +469,13 @@
   function computeProjectWorkCount(project, projectData) {
     const works = getProjectWorks(projectData);
 
+    if (project.id === 'mirror-plan') {
+      const completedExperiments = works.filter(work => {
+        return work?.status_code !== 'preparing' && work?.status !== '准备中';
+      });
+      if (completedExperiments.length > 0) return completedExperiments.length;
+    }
+
     if (project.id === 'igpt-image2-handbook') {
       const promptCount = sumWorkStat(works, 'prompt_count');
       if (promptCount > 0) return promptCount;
@@ -609,7 +616,7 @@
   function getInitialProjectFilter() {
     const params = new URLSearchParams(window.location.search);
     const project = params.get('project');
-    if (project === 'marvel-ten' || project === 'shuttle-universe' || project === 'misaligned-scenes' || project === 'igpt-image2-handbook') return project;
+    if (project === 'marvel-ten' || project === 'mirror-plan' || project === 'shuttle-universe' || project === 'misaligned-scenes' || project === 'igpt-image2-handbook') return project;
     return 'all';
   }
 

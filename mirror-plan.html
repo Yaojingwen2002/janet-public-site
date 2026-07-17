@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-janet-experiment="signal-wave-17">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>镜场计划 · 实验文档库</title>
+  <meta name="description" content="镜场计划实验文档库：按实验编号阅读 Janet 的 AI 导演视觉研发记录。">
+  <meta name="author" content="Janet Yao">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yaojingwen2002.github.io/janet-public-site/mirror-plan.html">
+  <meta property="og:title" content="镜场计划 · 实验文档库">
+  <meta property="og:description" content="一个可以持续容纳数百次视觉实验的紧凑文档阅读器。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yaojingwen2002.github.io/janet-public-site/mirror-plan.html">
+  <meta property="og:image" content="https://yaojingwen2002.github.io/janet-public-site/assets/works/mirror-plan/s0-02-b.jpg">
+  <meta property="og:site_name" content="Janet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="镜场计划 · 实验文档库">
+  <meta name="twitter:description" content="按编号阅读 AI 导演视觉研发实验。">
+  <meta name="twitter:image" content="https://yaojingwen2002.github.io/janet-public-site/assets/works/mirror-plan/s0-02-b.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
+  <link rel="stylesheet" href="styles/mirror-plan.css?v=local-archive-20260717">
+  <link rel="stylesheet" href="styles/janet-motion.css">
+  <link rel="stylesheet" href="styles/potato-center.css?v=potato-roll-20260617">
+  <link rel="stylesheet" href="styles/signal-cursor.css?v=experiment-wave-17">
+  <link rel="stylesheet" href="styles/experiment-editorial.css?v=experiment-wave-17">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
+</head>
+<body class="mirror-page">
+<div class="bg-ambient"></div>
+<div class="page">
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand nav-brand-logo" aria-label="Janet Home">
+        <img src="assets/icons/logo-mark.svg" alt="" class="nav-logo-mark">
+        <span>Janet</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="index.html">首页</a>
+    <a href="news.html">Janet 快车箱</a>
+    <a href="portfolio.html">作品库</a>
+    <a href="index.html#about">关于 Janet</a>
+    <a href="index.html#contact">联系</a>
+  </div>
+
+  <main class="mirror-main">
+    <header class="mirror-intro">
+      <div class="container mirror-intro__grid">
+        <div class="mirror-intro__title">
+          <span class="mirror-kicker">JINGCHANG PLAN / EXPERIMENT ARCHIVE</span>
+          <h1>镜场计划</h1>
+          <a class="mirror-return-link" href="gpt-image2-handbook.html">返回 Janet 影像参考实验室 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="mirror-intro__count" aria-label="当前已完成两组实验，第三组进行中">
+          <strong>002</strong>
+          <span>COMPLETED</span>
+          <em>+ 01 ACTIVE</em>
+        </div>
+      </div>
+    </header>
+
+    <section class="mirror-library-section" aria-labelledby="mirror-library-title">
+      <div class="container">
+        <div class="mirror-section-line">
+          <div>
+            <span>DOCUMENT INDEX</span>
+            <h2 id="mirror-library-title">实验文档目录</h2>
+          </div>
+        </div>
+
+        <div class="mirror-library" id="mirror-library" data-mirror-library>
+          <aside class="mirror-library__rail" aria-label="实验文档选择">
+            <div class="mirror-library__rail-head">
+              <span>ARCHIVE / S0</span>
+              <strong>实验编号</strong>
+            </div>
+            <nav class="mirror-doc-list" id="mirror-doc-list" aria-label="实验文档目录">
+              <span class="mirror-doc-list__loading">正在读取目录…</span>
+            </nav>
+            <div class="mirror-library__rail-foot">
+              <span id="mirror-doc-total">— DOCUMENTS</span>
+            </div>
+          </aside>
+
+          <section class="mirror-reader" aria-label="实验文档展示框">
+            <div class="mirror-reader__toolbar">
+              <div class="mirror-reader__current">
+                <span id="mirror-reader-code">SELECT DOCUMENT</span>
+                <strong id="mirror-reader-title">实验文档</strong>
+              </div>
+              <div class="mirror-reader__actions">
+                <button id="mirror-reader-minimize" type="button" aria-expanded="true" aria-label="缩小文档框" title="缩小文档框">
+                  <span aria-hidden="true">—</span><em>缩小</em>
+                </button>
+                <button id="mirror-reader-fullscreen" type="button" aria-pressed="false" aria-label="全屏阅读" title="全屏阅读">
+                  <span aria-hidden="true">□</span><em>全屏</em>
+                </button>
+              </div>
+            </div>
+            <div class="mirror-reader__filebar" id="mirror-reader-filebar" hidden>
+              <div class="mirror-reader__tabs" role="group" aria-label="文档视图">
+                <button id="mirror-reader-document-view" type="button" aria-pressed="true">完整文档</button>
+                <button id="mirror-reader-summary-view" type="button" aria-pressed="false">网页摘要</button>
+              </div>
+              <div class="mirror-reader__file-links">
+                <a id="mirror-reader-open" href="#" target="_blank" rel="noopener">打开本地 PDF <span aria-hidden="true">↗</span></a>
+                <a id="mirror-reader-download" href="#" download>打开 DOCX 原件 <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+            <div class="mirror-reader__body" id="mirror-reader-body" tabindex="0" role="region" aria-label="实验文档内容" aria-live="polite" aria-busy="true">
+              <div class="mirror-reader__state">
+                <span>LOADING</span>
+                <p>正在读取实验文档。</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Janet · 用 AI 过滤世界</p>
+      <p>© 2026 Janet Yao · 保留所有权利。</p>
+      <p>镜场计划 · 实验文档库</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">↑</button>
+</div>
+
+<script src="scripts/mirror-plan.js?v=local-archive-20260717"></script>
+<script src="scripts/supabase-config.js"></script>
+<script src="scripts/auth.js"></script>
+<script src="scripts/potato-center.js?v=potato-roll-20260617"></script>
+<script src="scripts/nav.js?v=potato-roll-20260617"></script>
+<script src="scripts/effects.js"></script>
+<script src="scripts/janet-motion.js"></script>
+<script src="scripts/editorial-motion.js?v=experiment-wave-17"></script>
+<script src="scripts/signal-cursor.js?v=experiment-wave-17"></script>
+</body>
+</html>

@@ -19,6 +19,7 @@
     ['关于 Janet', 'index.html#about'],
     ['联系', 'index.html#contact']
   ];
+  const previewEntry = ['抢先预览', '镜场计划', 'mirror-plan.html'];
 
   function auth() {
     return window.JanetAuth;
@@ -47,12 +48,24 @@
   }
 
   function ensureMenu() {
-    if (qs('#mobile-nav-menu')) return;
-    const menu = document.createElement('div');
-    menu.className = 'mobile-nav-menu';
-    menu.id = 'mobile-nav-menu';
-    menu.innerHTML = menuLinks.map(([label, href]) => '<a href="' + escapeHtml(linkHref(href)) + '">' + escapeHtml(label) + '</a>').join('');
-    document.body.appendChild(menu);
+    let menu = qs('#mobile-nav-menu');
+    if (!menu) {
+      menu = document.createElement('div');
+      menu.className = 'mobile-nav-menu';
+      menu.id = 'mobile-nav-menu';
+      menu.innerHTML = menuLinks.map(([label, href]) => '<a href="' + escapeHtml(linkHref(href)) + '">' + escapeHtml(label) + '</a>').join('');
+      document.body.appendChild(menu);
+    }
+
+    if (qs('[data-preview-entry]', menu)) return;
+    const [label, detail, href] = previewEntry;
+    const link = document.createElement('a');
+    link.href = linkHref(href);
+    link.dataset.previewEntry = '';
+    link.innerHTML = '<span>' + escapeHtml(label) + '</span><small>' + escapeHtml(detail) + '</small>';
+    const portfolioLink = qsa('a', menu).find((item) => /portfolio\.html(?:$|[?#])/.test(item.getAttribute('href') || ''));
+    if (portfolioLink) portfolioLink.after(link);
+    else menu.appendChild(link);
   }
 
   function getIdentity() {

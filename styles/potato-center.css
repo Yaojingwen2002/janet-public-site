@@ -506,6 +506,34 @@
   transform: translateX(2px);
 }
 
+.mobile-nav-menu a[data-preview-entry] {
+  position: relative;
+  min-height: 54px;
+  margin: 8px 0 6px;
+  border-top: 1px solid rgba(26, 58, 42, 0.12);
+  border-bottom: 1px solid rgba(26, 58, 42, 0.12);
+  border-radius: 0;
+  color: #9b4635;
+}
+
+.mobile-nav-menu a[data-preview-entry]::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #ef7966;
+  box-shadow: 0 0 0 5px rgba(239, 121, 102, 0.1);
+}
+
+.mobile-nav-menu a[data-preview-entry] small {
+  margin-left: auto;
+  color: rgba(26, 58, 42, 0.56);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  font-weight: 650;
+}
+
 @keyframes potato-card-unroll {
   from {
     opacity: 0;

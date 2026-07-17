@@ -99,6 +99,7 @@ if (stage && canvas) {
   };
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const ZOOM_MIN = .74;
   const ZOOM_MAX = 1.5;
   const DRAG_HORIZONTAL = .0058;
@@ -111,7 +112,7 @@ if (stage && canvas) {
     dragging: false,
     cardHover: false,
     hoveredStoryId: '',
-    manuallyPaused: reducedMotion.matches,
+    manuallyPaused: false,
     activeSourceId: '',
     storyCards: new Map(),
     centerCoordinateLabel: '',
@@ -445,6 +446,7 @@ if (stage && canvas) {
 
   function bindStoryCard(entry) {
     const { element, source } = entry;
+    if (!finePointer.matches) return;
     element.addEventListener('pointerenter', () => {
       state.cardHover = true;
       state.hoveredStoryId = source.id;
@@ -751,10 +753,10 @@ if (stage && canvas) {
     const mobile = width < 620;
     const narrowTablet = width < 861;
     const compactViewport = width < 1081;
-    const compactWidth = mobile ? 170 : narrowTablet ? 220 : compactViewport ? 190 : 250;
-    const compactHeight = mobile ? 76 : narrowTablet ? 84 : compactViewport ? 78 : 104;
-    const expandedWidth = Math.min(mobile ? 332 : narrowTablet ? 380 : compactViewport ? 360 : 410, width - 24);
-    const expandedHeight = mobile ? 150 : narrowTablet ? 220 : compactViewport ? 210 : 252;
+    const compactWidth = mobile ? 0 : narrowTablet ? 220 : compactViewport ? 190 : 250;
+    const compactHeight = mobile ? 0 : narrowTablet ? 84 : compactViewport ? 78 : 104;
+    const expandedWidth = Math.min(mobile ? 296 : narrowTablet ? 380 : compactViewport ? 360 : 410, width - (mobile ? 52 : 24));
+    const expandedHeight = mobile ? 82 : narrowTablet ? 220 : compactViewport ? 210 : 252;
     const stageBounds = stage.getBoundingClientRect();
     const toolbarBounds = stage.querySelector('.signal-globe-toolbar')?.getBoundingClientRect();
     const statsBounds = document.querySelector('.signal-hero-stats')?.getBoundingClientRect();
@@ -793,7 +795,7 @@ if (stage && canvas) {
       entry.width = active ? expandedWidth : compactWidth;
       entry.height = active ? expandedHeight : compactHeight;
       entry.targetOpacity = frontFacing && inFrame
-        ? active ? .98 : focusedStory ? 0 : .62 + edgeFade * .34
+        ? active ? .98 : mobile || focusedStory ? 0 : .62 + edgeFade * .34
         : 0;
       entry.targetScale = active ? 1 : frontFacing && inFrame ? .92 + edgeFade * .08 : .72;
 
@@ -802,13 +804,17 @@ if (stage && canvas) {
       if (active) {
         activeEntry = entry;
         const activeMinX = narrowTablet ? 12 : Math.min(safeLeft, width - entry.width - 12);
-        entry.targetX = THREE.MathUtils.clamp(centerX - entry.width * .5, activeMinX, width - entry.width - 12);
-        const activeY = mobile ? centerY + 52 : centerY - entry.height - 68;
+        entry.targetX = mobile
+          ? (width - entry.width) * .5
+          : THREE.MathUtils.clamp(centerX - entry.width * .5, activeMinX, width - entry.width - 12);
+        const activeY = mobile ? centerY + 72 : centerY - entry.height - 68;
         entry.targetY = THREE.MathUtils.clamp(activeY, topLimit, bottomLimit - entry.height);
         entry.side = 'active';
         entry.element.classList.remove('is-left');
         continue;
       }
+
+      if (mobile) continue;
 
       const leftMaxX = centerX - centerSafeX - entry.width;
       const rightMinX = centerX + centerSafeX;
@@ -840,7 +846,7 @@ if (stage && canvas) {
       lanes[lane].push(entry);
     }
 
-    if (compactViewport) {
+    if (compactViewport && !mobile) {
       for (const lane of [lanes.left, lanes.right]) {
         lane.sort((a, b) => Math.abs(a.markerY - centerY) - Math.abs(b.markerY - centerY));
         const visibleLimit = focusedStory ? 0 : 2;
@@ -999,10 +1005,12 @@ if (stage && canvas) {
     if (!state.ready) return;
     const delta = Math.min(42, time - state.lastFrame || 16);
     state.lastFrame = time;
-    const paused = state.manuallyPaused || state.cardHover || reducedMotion.matches;
+    const paused = state.manuallyPaused || (finePointer.matches && state.cardHover);
 
     if (!state.dragging && !paused) {
-      globeGroup.rotateY(delta * .000006 + state.velocity.x);
+      const autoRotateRate = stage.clientWidth < 620 ? .000014 : .000008;
+      const motionPreferenceScale = reducedMotion.matches ? .45 : 1;
+      globeGroup.rotateY(delta * autoRotateRate * motionPreferenceScale + state.velocity.x);
       globeGroup.rotateX(state.velocity.y);
       const rotationDamping = Math.pow(.95, delta / 16.667);
       state.velocity.x *= rotationDamping;

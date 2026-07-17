@@ -116,9 +116,14 @@ if (!issues.length) {
   if (!script.includes('formatCoordinates(source.lat, source.lng)')) issues.push('source_coordinate_readout_missing');
   if (!script.includes("stage.addEventListener('wheel', onWheel")) issues.push('wheel_zoom_missing');
   if (!script.includes('zoomVelocity')) issues.push('inertial_zoom_missing');
-  if (!script.includes('const visibleLimit = focusedStory ? 0 : 2')) issues.push('mobile_overlap_guard_missing');
+  if (!script.includes('if (mobile) continue')) issues.push('mobile_persistent_cards_not_suppressed');
   if (!script.includes('const centerSafeX = mobile ? 74')) issues.push('story_center_safe_zone_missing');
-  if (!script.includes('mobile ? centerY + 52')) issues.push('mobile_active_card_safe_position_missing');
+  if (!script.includes('mobile ? centerY + 72')) issues.push('mobile_active_card_safe_position_missing');
+  if (!script.includes('manuallyPaused: false')) issues.push('mobile_autorotation_default_missing');
+  if (!script.includes('motionPreferenceScale = reducedMotion.matches ? .45 : 1')) issues.push('reduced_motion_slow_spin_missing');
+  if (!globeStyles.includes('Wave 19: mobile signal hierarchy')) issues.push('mobile_signal_hierarchy_missing');
+  if (!globeStyles.includes('.signal-story-card.is-active .signal-story-detail')) issues.push('mobile_story_detail_suppression_missing');
+  if (!read('scripts/potato-center.js').includes("const previewEntry = ['抢先预览', '镜场计划', 'mirror-plan.html']")) issues.push('preview_sidebar_entry_missing');
   if (!script.includes('occupiedHeight + requiredHeight <= availableHeight')) issues.push('story_lane_capacity_guard_missing');
   if (!script.includes('for (let index = entries.length - 1; index >= 0; index -= 1)')) issues.push('story_lane_backward_pass_missing');
   if (!index.includes('scripts/signal-cursor.js')) issues.push('homepage_missing_cursor_script');
@@ -210,6 +215,8 @@ console.log(JSON.stringify({
   marker_card_leaders: true,
   unclipped_compact_titles: true,
   mobile_overlap_guard: true,
+  mobile_low_motion_autorotation: true,
+  mobile_compact_story_mode: true,
   lane_capacity_guard: true,
   background_audio: true,
   background_audio_gap: true,

@@ -3264,6 +3264,201 @@ body.home-experiment #contact .contact-note {
   }
 }
 
+/* Wave 19: mobile signal hierarchy and visible low-motion auto-rotation. */
+@media (max-width: 620px) {
+  .signal-globe-toolbar {
+    top: 55%;
+    right: var(--container-pad, 20px);
+    left: var(--container-pad, 20px);
+    width: auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .signal-field-status {
+    display: flex;
+    width: auto;
+    min-width: 0;
+    max-width: 208px;
+    min-height: 34px;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 10px;
+    border-color: rgba(224, 242, 232, .12);
+    border-radius: 3px;
+    background: rgba(7, 23, 17, .56);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .signal-live {
+    flex: 0 0 auto;
+    gap: 6px;
+    font-size: 0;
+  }
+
+  .signal-live::after {
+    content: 'LIVE';
+    font-size: 7px;
+    letter-spacing: 0;
+  }
+
+  .signal-live i {
+    width: 5px;
+    height: 5px;
+    box-shadow: 0 0 0 3px rgba(238, 121, 104, .1);
+  }
+
+  .signal-center-coordinate {
+    min-width: 0;
+    font-size: 9px;
+  }
+
+  .signal-motion-toggle {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    font-size: 10px;
+    background: rgba(7, 23, 17, .56);
+  }
+
+  .signal-center-target,
+  .signal-globe-stage:not([data-active-source='']) .signal-center-target {
+    width: 54px;
+    height: 54px;
+  }
+
+  .signal-globe-stage:not([data-active-source='']) .signal-center-target {
+    width: 62px;
+    height: 62px;
+  }
+
+  .signal-source-readout {
+    top: calc(var(--signal-center-y, 64%) + 42px);
+    width: min(172px, 52vw);
+    gap: 1px;
+    padding: 6px 10px 8px;
+  }
+
+  .signal-source-readout .signal-source-state,
+  .signal-source-readout > span:not(.signal-source-coordinate) {
+    display: none;
+  }
+
+  .signal-source-readout strong {
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .signal-source-readout .signal-source-coordinate {
+    font-size: 7px;
+  }
+
+  .signal-story-card:not(.is-active) {
+    visibility: hidden;
+  }
+
+  .signal-story-card.is-active {
+    width: min(296px, calc(100vw - 52px));
+    height: 82px;
+    grid-template-rows: auto 1fr;
+    gap: 5px;
+    padding: 10px 38px 11px 12px;
+    border-color: rgba(105, 230, 173, .34);
+    border-radius: 4px;
+    background: linear-gradient(110deg, rgba(7, 26, 19, .78), rgba(7, 18, 14, .62));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .signal-story-card.is-active::after {
+    content: '↗';
+    position: absolute;
+    right: 13px;
+    bottom: 12px;
+    z-index: 2;
+    color: rgba(105, 230, 173, .78);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  .signal-story-card.is-active .signal-story-meta {
+    justify-content: flex-start;
+    font-size: 7px;
+  }
+
+  .signal-story-card.is-active .signal-story-meta time {
+    display: none;
+  }
+
+  .signal-story-card.is-active .signal-story-title {
+    display: -webkit-box;
+    overflow: hidden;
+    align-self: center;
+    font-size: 15px;
+    line-height: 1.22;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .signal-story-card.is-active .signal-story-detail {
+    display: none;
+  }
+
+  .signal-story-card.is-active .signal-story-logo {
+    right: 4px;
+    bottom: -7px;
+    width: 62px;
+    height: 62px;
+    opacity: .05;
+  }
+
+  .signal-story-card.is-active .signal-story-logo img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .signal-story-leader.is-active {
+    opacity: calc(var(--leader-opacity, .54) * .48);
+    stroke-width: 1.1;
+  }
+
+  .signal-hero-ledger {
+    bottom: 10px;
+  }
+
+  .signal-hero-stats {
+    border-top-color: rgba(221, 238, 228, .14);
+    border-bottom-color: rgba(221, 238, 228, .14);
+    background: rgba(4, 14, 10, .1);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .signal-hero-stats > div {
+    min-height: 48px;
+    padding: 7px 8px 8px;
+  }
+
+  .signal-hero-stats dt {
+    font-size: 7px;
+  }
+
+  .signal-hero-stats dd {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .signal-hero-stats > div:last-child dd {
+    font-size: 9px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .signal-story-card,
   .signal-story-detail,
@@ -3948,5 +4143,48 @@ body.home-experiment #news .briefing-activity-ribbon:hover .briefing-activity-pi
 
   body.home-experiment #news .briefing-activity-pill:nth-child(3) {
     --pill-y: 39% !important;
+  }
+}
+
+/* Wave 19 cascade locks: keep the compact mobile layer above earlier wave overrides. */
+@media (max-width: 620px) {
+  .signal-globe-toolbar {
+    top: 55%;
+  }
+
+  .signal-center-target,
+  .signal-globe-stage:not([data-active-source='']) .signal-center-target {
+    width: 54px;
+    height: 54px;
+  }
+
+  .signal-globe-stage:not([data-active-source='']) .signal-center-target {
+    width: 62px;
+    height: 62px;
+  }
+
+  .signal-source-readout {
+    top: calc(var(--signal-center-y, 64%) + 42px);
+  }
+
+  .signal-story-card.is-active .signal-story-title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.22;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .signal-story-card.is-active .signal-story-detail {
+    display: none;
+  }
+
+  .signal-story-card.is-active .signal-story-logo {
+    right: 4px;
+    bottom: -7px;
+    width: 62px;
+    height: 62px;
+    opacity: .05;
   }
 }

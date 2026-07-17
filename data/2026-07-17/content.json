@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-17",
+  "vol": "290",
+  "intro_text": "AI 今天从炫技台走进了责任区：Google 把搜索、笔记和视频工具继续接进 Gemini，Anthropic 开始教用户把 Fable 5 当异步同事用，OpenAI 和 Meta 同时给青少年 AI 体验加护栏，算力账单则在电网、社区和监管层面继续炸响。模型还在变强，但真正决定谁能活下来的，已经是入口、权限、能源和风控。",
+  "cover": {
+    "title": "护栏长进产品里",
+    "subtitle": "AI 正从聊天框搬进应用、家庭、公司和电网，账单也一起进场。",
+    "image_path": "runs/2026-07-17/cover.png",
+    "image_prompt": "21:9 widescreen AI technology magazine cover, black white and Janet green palette (#18E299), premium editorial look, sharp minimal composition. Theme: AI products move from chat demos into governed work systems: connected apps, teen safety guardrails, frontier model regulation, data center power pressure, and creator video avatars. Abstract data center grid lines, secure app windows, subtle regulatory stamp shapes, no readable text, no cartoon robots, no neon cyberpunk, no glowing brain, sophisticated negative space, crisp lighting, high resolution."
+  },
+  "trend": "Google、Anthropic、OpenAI 和 Meta 同一天都在做同一件事：把 AI 从单次问答改造成可持续运行的系统。AI Mode 开始连接应用，Gemini Notebook 拿到云端执行环境，Claude Fable 5 被包装成能跑长任务的同事，青少年 AI 则被迫加上家长通知、学习模式和危机识别。\n\n对中国创作者和企业来说，今天的信号很实用：下一个红利不在“又多聪明一点”，而在谁能把权限、成本、审核、素材、执行环境和结果验收做进工作流。只会调 prompt 的团队会被工具平台吃掉，能把 AI 变成稳定生产线的人才开始值钱。\n\n接下来 2-4 周盯三件事：Kimi K3 这类超大模型的真实价格和吞吐，Google/Anthropic 的应用入口会不会变成默认工作台，以及数据中心反弹会不会把 AI capex 的故事从资本市场拖回电费账单。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI 给青少年 ChatGPT 加护栏",
+          "body": "OpenAI 7 月 16 日发布青少年 AI 安全说明，称近 9 成青少年 ChatGPT 用户每周会把它用于学习、信息、技能或生产力任务。OpenAI 还强调 Study Mode、年龄预测、家长控制、休息提醒、图像生成管理，以及在高风险场景下通知家长等机制。",
+          "janet_take": "OpenAI 很清楚，青少年已经是下一代入口。护栏也不是慈善，而是商业续命：教育场景想吃下去，就必须先回答家长、学校和监管最怕的那几个问题。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/why-teens-deserve-access-safe-ai/",
+          "image_url": "https://openai.com/index/why-teens-deserve-access-safe-ai/",
+          "image": "images/news-01-openai-chatgpt.webp",
+          "image_source_url": "https://img.biggo.com/rqqe-BJeRYzJh-aUJHRGPT6sEAFhw2YZamHjrgqAin8/fit/1720/0/sm/1/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTAxLzIwMjYwMTIxMTcyMV9DaGF0R1BULUFJLUFnZS1QcmVkaWN0aW9uLVRlZW4tU2FmZXR5XzIwMjYwMTIyXzAxMzA0Ni5qcGc.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta 给青少年 AI 加自伤通知",
+          "body": "TechCrunch 7 月 16 日报道，Meta 将在青少年与 Meta AI 聊到自杀或自伤时通知家长，并称正在研究在迫近风险场景联系紧急服务。Meta 表示已建立专门 AI 系统识别明确自伤表达，发送提醒前会人工复核；该功能先在美国、英国、澳大利亚和加拿大上线，年底前全球扩展。",
+          "janet_take": "Meta 这一步更像责任转移。AI 聊天机器人一旦进入未成年人危机场景，平台就不能再装成“只是工具”；提醒父母也许粗糙，但比出了事再发声明强。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/16/meta-now-alerts-parents-if-their-teen-discussed-suicide-or-self-harm-with-its-ai-chatbot/",
+          "image_url": "https://techcrunch.com/2026/07/16/meta-now-alerts-parents-if-their-teen-discussed-suicide-or-self-harm-with-its-ai-chatbot/",
+          "image": "images/news-02-meta-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/05/meta-apps-GettyImages-2164040793.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "三大模型老板同意监管前置",
+          "body": "Axios 7 月 16 日报道，Google DeepMind 的 Demis Hassabis、OpenAI 的 Sam Altman 和 Anthropic 的 Dario Amodei 都在近期书面支持对 frontier AI 做更紧急的监管。他们都主张独立测试、统一治理系统、美国主导和面向高风险前沿模型的准入规则，但对政府是否应当做最终裁判仍有分歧。",
+          "janet_take": "最会烧钱的人突然支持监管，别只看安全叙事。大公司有律师、算力、安全团队和政府关系，小公司和开源项目没有；规则一旦变成入场券，护城河就从模型参数搬到合规成本。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/07/16/ai-regulations-openai-anthropic-google",
+          "image_url": "https://www.axios.com/2026/07/16/ai-regulations-openai-anthropic-google",
+          "image": "images/news-03-a975e8e297.gif",
+          "image_source_url": "https://dl-harmonyos.51cto.com/images/202502/9763d8079d23aff2a6d7499e8fa7dbf543bd31.gif",
+          "image_origin": "search"
+        },
+        {
+          "title": "PJM 电网把 AI 电费推到上限",
+          "body": "Axios 7 月 16 日报道，AI 数据中心需求继续推高美国最大电网 PJM 的备用电力成本，峰值容量价格达到每兆瓦日 325 美元的上限。PJM 服务约 6700 万人，拍卖成本总额达到 164 亿美元；独立市场监督机构估计其中约 63 亿美元与数据中心有关。",
+          "janet_take": "AI 的账单正在从云厂商发票转移到居民电费。资本市场喜欢讲 capex 乘数，社区只看到噪音、水、电和涨价；谁忽视能源政治，谁的算力故事就会被地方听证会打断。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/07/16/ai-data-center-power-grid-rates",
+          "image_url": "https://www.axios.com/2026/07/16/ai-data-center-power-grid-rates",
+          "image": "images/news-04-pjm-ai.jpg",
+          "image_source_url": "https://img03.71360.com/w3/g6km58/20251204/7ac26f5391b1d7eb4595eaf0adcbe695.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Palm Beach 否决 360 万平方英尺 AI 数据中心",
+          "body": "Business Insider 7 月 16 日报道，佛罗里达 Palm Beach County 委员会以 5 比 1 否决了 Mar-a-Lago 附近的 AI 数据中心扩建方案 Project Tango。开发商 PBA Holdings 计划把项目扩到约 360 万平方英尺，其中超过 100 万平方英尺为数据中心空间，并称项目完成后每年可带来 5.61 亿美元地产税收入，但居民担心水、电、噪音和学校周边安全。",
+          "janet_take": "地方政治正在给 AI 基建上现实课。再大的税收承诺，也压不住居民对电、水、噪音和学校距离的恐惧；数据中心以后不是买地就能盖，是先过社区心理账。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/palm-beach-florida-ai-data-center-trump-mar-a-lago-2026-7",
+          "image_url": "https://www.businessinsider.com/palm-beach-florida-ai-data-center-trump-mar-a-lago-2026-7",
+          "image": "images/news-05-palm-beach-360-ai.webp",
+          "image_source_url": "https://i.insider.com/6a58ea67548c9c486b30cafb?width=1200&format=jpeg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Kimi K3 以 2.8 万亿参数冲进前列",
+          "body": "Artificial Analysis 页面显示，Moonshot AI 的 Kimi K3 于 7 月 16 日发布，拥有 2.8 万亿参数、100 万 token 上下文，支持文本和图像输入，在 Intelligence Index 得分 57，输出速度为 62 token/s。其 API 价格为每 100 万输入 token 3 美元、输出 token 15 美元，缓存命中价格为 0.30 美元。",
+          "janet_take": "Kimi K3 的狠点在于把超大参数、长上下文和高价格一起摆上桌。国内团队别只盯分数，先算吞吐和账单；模型越大，越考验你有没有真正值得它处理的任务。",
+          "source": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai/models/kimi-k3",
+          "image_url": "https://artificialanalysis.ai/models/kimi-k3",
+          "image": "images/models-01-kimi-k3-28.png",
+          "image_source_url": "https://artificialanalysis.ai/models/kimi-k3/opengraph-image-oimwka?f89c1d53703bc167",
+          "image_origin": "source"
+        },
+        {
+          "title": "Anthropic 为 Claude Cowork 选配 Fable 5",
+          "body": "Anthropic 7 月 16 日发布 Claude Fable 5 在 Claude Cowork 中的使用指南，称 Fable 5 适合长时间、复杂、异步任务，例如深度研究后写备忘录、尽调后生成董事会材料，或批量红线审阅合同。Anthropic 也提醒 Fable 5 不是 Cowork 默认模型，默认仍是 Claude Sonnet 5；Fable 5 更适合重要、多工具、多判断的复杂任务。",
+          "janet_take": "Anthropic 卖的是“少盯几步”的管理体验。能独立计划、检查和用技能的模型，才有资格从聊天框升级成同事；但它也更贵，老板要先学会给 AI 分派值得花钱的活。",
+          "source": "Anthropic",
+          "url": "https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork",
+          "image_url": "https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork",
+          "image": "images/models-02-anthropic-claude-cowork-fable-5.jpg",
+          "image_source_url": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6a58ea387b9d28d695935e82_og_working-with-claude-fable-5-in-claude-cowork.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google 推 Gemini Notebook 接管笔记",
+          "body": "Google 7 月 16 日宣布 NotebookLM 更名为 Gemini Notebook，仍保持独立产品定位，但会更深入接入 Gemini app 和 Google Search。Google 称该产品已有超过 3000 万用户和 60 万组织使用，并开始为 notebook 配置 secure cloud computer，让它能在资料基础上写代码和执行代码；该功能先面向 Google AI Ultra 和 Workspace business 客户。",
+          "janet_take": "改名不重要，云端执行环境才重要。笔记工具一旦能跑代码，就从“帮你读资料”变成“帮你验证资料”；做知识库、研究助理和轻量 BI 的产品，压力会立刻变大。",
+          "source": "Google",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/",
+          "image_url": "https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/",
+          "image": "images/models-03-google-gemini-notebook.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-notebook__cover.width-1300.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google Vids 接入 Gemini Omni 和个人头像",
+          "body": "Google 7 月 16 日宣布 Google Vids 增加 Gemini Omni 和 personal avatars。用户可以用文本提示和参考图生成或编辑视频，逐步修改背景、光线和特效，也可以上传自拍和录音创建自己的数字头像。Google 称 AI 生成视频会带有 SynthID 水印，个人头像限定部分地区、18 岁以上用户使用。",
+          "janet_take": "Google Vids 的方向很明确：把视频生成变成 Workspace 里的日常工位能力。创作者工具公司最怕的对手，是老板在文档、会议和培训里顺手就能生成视频。",
+          "source": "Google",
+          "url": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-personal-avatars/",
+          "image_url": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-personal-avatars/",
+          "image": "images/models-04-google-vids-gemini-omni.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/omni-blog-header_OarEe2t.width-1300.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Google AI Mode 接上第三方应用",
+          "body": "TechCrunch 7 月 16 日报道，Google AI Mode 现在允许用户连接并与部分应用交互，使其从回答问题扩展到跨应用完成任务。报道指出，这会让 Google 更直接对标支持应用集成的 ChatGPT 和 Claude，并可能把计划、购物等任务导入 Search 入口。",
+          "janet_take": "搜索框终于不满足于给答案了，它想直接接管动作。对创作者来说，这意味着流量入口会更黑箱：用户不点网页，AI Mode 直接在应用里办事，内容和服务都要重新学会被代理调用。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/16/googles-ai-mode-now-lets-you-link-and-interact-with-select-apps/",
+          "image_url": "https://techcrunch.com/2026/07/16/googles-ai-mode-now-lets-you-link-and-interact-with-select-apps/",
+          "image": "images/insights-01-google-ai-mode.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/01/ai-mode-google.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "Anthropic 用 Claude Code 跑代码迁移",
+          "body": "Anthropic 7 月 16 日发布 Claude Code 大规模代码迁移文章，描述用 rulebook、dependency map、gap inventory 和 skeptic reviewers 来组织迁移。文章称一个 Bun 迁移案例已经进生产，工具可检测的内存泄漏被修复，2000 次重复构建的内存占用从 6745 MB 降到 609 MB，Linux 和 Windows 二进制体积缩小 19%，HTTP serving、next build 和 tsc 等场景快 2%-5%。",
+          "janet_take": "代码迁移终于从“勇士项目”变成可拆解流程。Claude Code 的价值不在替你敲几行 Rust，而在把规则、依赖、缺口和复核变成流水线；老系统改造团队可以重新算一次拖延成本。",
+          "source": "Anthropic",
+          "url": "https://claude.com/blog/ai-code-migration",
+          "image_url": "https://claude.com/blog/ai-code-migration",
+          "image": "images/insights-02-anthropic-claude-code.jpg",
+          "image_source_url": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/6a5909b6d772e7da001ff28f_og_ai-code-migration.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google 推迟 Gemini 3.5 Pro 压低股价",
+          "body": "Investor's Business Daily 7 月 16 日报道，Alphabet 股价周四下跌 4.4% 至 354.46 美元，市场担心 Gemini 3.5 Pro 发布进度落后。报道提到该模型原本在 Google I/O 上承诺 7 月发布，但因提升编码能力等原因延期；Google 预计 7 月 22 日发布 Q2 财报。",
+          "janet_take": "模型延期现在会直接打到市值，说明投资人已经不再只听“我们很快”。Google 的尴尬在于它拥有分发、云、数据和研究，但市场盯的是：最强模型到底能不能按时交。",
+          "source": "Investor's Business Daily",
+          "url": "https://www.investors.com/news/technology/google-stock-falls-delay-gemini-ai-model-nasdaq-retreat/",
+          "image_url": "https://www.investors.com/news/technology/google-stock-falls-delay-gemini-ai-model-nasdaq-retreat/",
+          "image": "images/insights-03-google-gemini-35-pro.jpg",
+          "image_source_url": "https://production-static.mobilesyrup.com/uploads/2026/05/gemini-3-5-flash-1-scaled.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Microsoft 训练销售挖走 OpenAI 客户",
+          "body": "Times of India 7 月 16 日报道，Microsoft 在内部销售会议中要求团队强调 OpenAI 和 Anthropic 等竞争对手方案的限制，并把 Microsoft AI 平台包装成端到端、完整集成的选择。报道称执行副总裁 Jay Parikh 鼓励销售人员用这一叙事推动客户从点状工具转向 Microsoft 的一体化 AI 平台。",
+          "janet_take": "Microsoft 的打法很老派，也很有效：别跟你比单点模型，直接卖整套系统。创业公司如果只靠一个好模型或一个漂亮 demo 去打企业客户，很快会撞上采购部那句“我们已经有 Microsoft 了”。",
+          "source": "Times of India",
+          "url": "https://timesofindia.indiatimes.com/technology/tech-news/microsoft-to-sales-team-on-how-to-make-customers-dump-openai-and-anthropic-tell-them-everyone-else-is-selling-/articleshow/132433162.cms",
+          "image_url": "https://timesofindia.indiatimes.com/technology/tech-news/microsoft-to-sales-team-on-how-to-make-customers-dump-openai-and-anthropic-tell-them-everyone-else-is-selling-/articleshow/132433162.cms",
+          "image": "images/insights-04-microsoft-openai.avif",
+          "image_source_url": "https://static.toiimg.com/thumb/msid-132433157,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "AMI Labs 拿 10.3 亿美元仍没产品",
+          "body": "TechCrunch 7 月 16 日报道，Yann LeCun 离开 Meta 后联合创立的 AMI Labs 已在 3 月融资 10.3 亿美元，pre-money 估值 35 亿美元，但 Alexandre LeBrun 表示公司尚无产品，也不愿给出发布时间表，并避免使用 AGI 或 superintelligence 叙事。",
+          "janet_take": "资本还在给“明星科学家 + 世界模型”开高价支票。问题是，没产品、没时间表的估值，本质上是在买人和想象力；普通创业者别学这个叙事，学不来，只会先把现金流烧穿。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/16/why-ami-labs-alexandre-lebrun-wont-call-his-ai-agi-or-superintelligence/",
+          "image_url": "https://techcrunch.com/2026/07/16/why-ami-labs-alexandre-lebrun-wont-call-his-ai-agi-or-superintelligence/",
+          "image": "images/insights2-01-ami-labs-103.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/OFF08112.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "AI 数据中心反弹按住 capex 故事",
+          "body": "Business Insider 7 月 16 日援引 Data Center Watch 数据称，2026 年第一季度至少 75 个、总值约 1300 亿美元的数据中心提案因地方反对而延迟或受阻。Palm Beach 的 Project Tango 被否，只是 AI 基建扩张遭遇地方阻力的最新案例。",
+          "janet_take": "投资人喜欢把数据中心当确定性资产，居民把它当噪音、水耗和涨价机器。AI capex 未来最大的变量可能不是 GPU 供给，而是地方政府愿不愿意继续替硅谷承受外部成本。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/palm-beach-florida-ai-data-center-trump-mar-a-lago-2026-7",
+          "image_url": "https://www.businessinsider.com/palm-beach-florida-ai-data-center-trump-mar-a-lago-2026-7",
+          "image": "images/insights2-02-ai-capex.webp",
+          "image_source_url": "https://i.insider.com/6a58ea67548c9c486b30cafb?width=1200&format=jpeg",
+          "image_origin": "source"
+        },
+        {
+          "title": "OpenAI 篮球 70 美元，品牌周边上架",
+          "body": "TechCrunch 7 月 16 日报道，OpenAI 正销售一款 ChatGPT 篮球，售价 70 美元，约等于 5600 万个 GPT-5 输入 token。该篮球为 100% 橡胶材质，面向户外使用；报道也把它放在生成式 AI 能源和碳排争议背景下观察。",
+          "janet_take": "这颗球看起来像玩笑，其实是品牌野心测试。OpenAI 不只想做 API 供应商，它想成为大众文化符号；但当 AI 公司开始卖生活方式，电力和碳排争议也会跟着走出开发者圈。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/16/why-is-openai-selling-a-chatgpt-basketball/",
+          "image_url": "https://techcrunch.com/2026/07/16/why-is-openai-selling-a-chatgpt-basketball/",
+          "image": "images/insights2-03-openai-70.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/chatgpt-basketball.jpg?resize=1200,675",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Beehiiv Copilot 给创作者找增长机会",
+          "body": "TechCrunch 7 月 16 日报道，Newsletter 平台 Beehiiv 推出 Community，让订阅者彼此聊天，同时发布 AI Copilot，帮助创作者理解内容、受众、订阅者和表现数据。Copilot 能分析 newsletter 和 podcast 表现、起草外联活动，并寻找新的变现机会；Beehiiv 还称其广告网络中的发布者每月收入超过 100 万美元。",
+          "janet_take": "推荐给靠内容吃饭的人试。真正有用的 AI 工具不该只帮你写一篇更像 AI 的 newsletter，它要把受众、增长、广告和复购放在同一张表里，直接告诉你哪里能多赚一点。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/16/newsletter-platform-beehiiv-now-lets-subscribers-chat-with-each-other-adds-ai/",
+          "image_url": "https://techcrunch.com/2026/07/16/newsletter-platform-beehiiv-now-lets-subscribers-chat-with-each-other-adds-ai/",
+          "image": "images/tools-01-beehiiv-copilot.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/STILL_2_A.jpeg?resize=1200,675",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

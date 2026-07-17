@@ -210,6 +210,7 @@
       const button = qs('[data-reaction-type="' + type + '"]', wrap);
       if (!button) return;
       button.classList.toggle('is-active', active.includes(type));
+      button.setAttribute('aria-pressed', String(active.includes(type)));
       const count = qs('[data-reaction-count]', button);
       if (count) count.textContent = String(counts[type] || 0);
     });
@@ -257,32 +258,62 @@
     input.remove();
   }
 
+  function dispatchShareActivity(button, action, platform) {
+    const wrap = reactionWrapFor(button);
+    document.dispatchEvent(new CustomEvent('janet:briefing-shared', {
+      detail: {
+        action,
+        platform: platform || '',
+        editionId: wrap && wrap.dataset.editionId ? wrap.dataset.editionId : '',
+        url: getEditionUrl(button)
+      }
+    }));
+  }
+
+  function closeShareMenu(wrap) {
+    if (!wrap) return;
+    const menu = qs('.share-menu', wrap);
+    const toggle = qs('[data-share-toggle]', wrap);
+    if (menu) menu.hidden = true;
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+
   async function openShare(button, explicitAction) {
     const wrap = button.closest('.share-wrap');
     const menu = wrap ? qs('.share-menu', wrap) : null;
     const url = getEditionUrl(button);
     const title = getEditionTitle(button);
+    if (explicitAction) closeShareMenu(wrap);
     if (explicitAction === 'copy') {
       await copyText(url);
       button.textContent = '已复制';
       window.setTimeout(() => { button.textContent = '复制链接'; }, 1200);
+      dispatchShareActivity(button, 'copy', '');
       return;
     }
     if (explicitAction === 'x') {
       window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title), '_blank', 'noopener,noreferrer');
+      dispatchShareActivity(button, 'intent', 'X');
       return;
     }
     if (explicitAction === 'weibo') {
       window.open('https://service.weibo.com/share/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title), '_blank', 'noopener,noreferrer');
+      dispatchShareActivity(button, 'intent', '微博');
       return;
     }
-    if (navigator.share) {
+    if (explicitAction === 'native' && navigator.share) {
       try {
         await navigator.share({ title, url });
+        dispatchShareActivity(button, 'share', '系统分享');
         return;
       } catch (error) {
         if (error && error.name === 'AbortError') return;
       }
+    }
+    if (explicitAction === 'native') {
+      await copyText(url);
+      dispatchShareActivity(button, 'copy', '');
+      return;
     }
     if (menu) {
       menu.hidden = !menu.hidden;
@@ -293,6 +324,7 @@
 
   function bind() {
     document.addEventListener('click', async (event) => {
+      if (!event.target.closest('.share-wrap')) qsa('.share-wrap').forEach(closeShareMenu);
       const reactionBtn = event.target.closest('[data-reaction-type]');
       if (reactionBtn) {
         const wrap = reactionBtn.closest('.news-reactions');
@@ -313,6 +345,11 @@
         event.preventDefault();
         await openShare(shareAction, shareAction.dataset.shareAction);
       }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      qsa('.share-wrap').forEach(closeShareMenu);
     });
 
     document.addEventListener('janet:content-rendered', refreshAll);

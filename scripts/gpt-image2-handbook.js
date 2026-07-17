@@ -3,6 +3,7 @@
   'use strict';
 
   const DATA_URL = 'data/gpt-image2-handbook/handbook-cases.json';
+  const PAGE_SIZE = 10;
   const CATEGORY_ORDER = [
     '全部',
     'UI & 界面',
@@ -18,6 +19,7 @@
 
   let cases = [];
   let activeFilter = 'all';
+  let activePage = 1;
   let currentItems = [];
   let activePreviewIndex = -1;
 
@@ -62,6 +64,7 @@
     container.querySelectorAll('[data-filter]').forEach((button) => {
       button.addEventListener('click', () => {
         activeFilter = button.dataset.filter || 'all';
+        activePage = 1;
         renderFilters();
         renderCards();
       });
@@ -219,6 +222,54 @@
     renderLightbox();
   }
 
+  function pageNumbers(totalPages) {
+    if (totalPages <= 7) return Array.from({ length: totalPages }, (_, index) => index + 1);
+    const candidates = new Set([1, totalPages, activePage - 1, activePage, activePage + 1]);
+    const pages = Array.from(candidates).filter(page => page >= 1 && page <= totalPages).sort((a, b) => a - b);
+    const sequence = [];
+    pages.forEach((page, index) => {
+      if (index && page - pages[index - 1] > 1) sequence.push('ellipsis-' + page);
+      sequence.push(page);
+    });
+    return sequence;
+  }
+
+  function renderPagination(totalItems) {
+    const pagination = document.getElementById('handbook-pagination');
+    if (!pagination) return;
+    const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+    activePage = Math.min(activePage, totalPages);
+
+    if (totalPages <= 1) {
+      pagination.innerHTML = '';
+      pagination.hidden = true;
+      return;
+    }
+
+    pagination.hidden = false;
+    const pages = pageNumbers(totalPages).map((page) => {
+      if (typeof page === 'string') return '<span class="handbook-pagination__ellipsis" aria-hidden="true">...</span>';
+      return `<button class="handbook-pagination__page ${page === activePage ? 'is-active' : ''}" type="button" data-handbook-page="${page}" ${page === activePage ? 'aria-current="page"' : ''}>${page}</button>`;
+    }).join('');
+
+    pagination.innerHTML = `
+      <button class="handbook-pagination__step" type="button" data-handbook-page="${activePage - 1}" aria-label="上一页" ${activePage === 1 ? 'disabled' : ''}>←</button>
+      <div class="handbook-pagination__pages">${pages}</div>
+      <span class="handbook-pagination__status">${activePage} / ${totalPages}</span>
+      <button class="handbook-pagination__step" type="button" data-handbook-page="${activePage + 1}" aria-label="下一页" ${activePage === totalPages ? 'disabled' : ''}>→</button>
+    `;
+
+    pagination.querySelectorAll('[data-handbook-page]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const requestedPage = Number(button.dataset.handbookPage);
+        if (!Number.isInteger(requestedPage) || requestedPage < 1 || requestedPage > totalPages || requestedPage === activePage) return;
+        activePage = requestedPage;
+        renderCards();
+        document.querySelector('.handbook-body')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
   function renderCards() {
     const grid = document.getElementById('handbook-grid');
     const count = document.getElementById('handbook-count');
@@ -227,18 +278,23 @@
     const filtered = activeFilter === 'all'
       ? cases
       : cases.filter(item => item.category === activeFilter);
-    currentItems = filtered;
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    activePage = Math.min(activePage, totalPages);
+    const pageStart = (activePage - 1) * PAGE_SIZE;
+    currentItems = filtered.slice(pageStart, pageStart + PAGE_SIZE);
 
     if (count) {
-      count.textContent = `${filtered.length} cases`;
+      count.textContent = `${filtered.length} cases · 第 ${activePage} / ${totalPages} 页`;
     }
+
+    renderPagination(filtered.length);
 
     if (!filtered.length) {
       grid.innerHTML = '<p class="handbook-empty">当前筛选下暂无案例。</p>';
       return;
     }
 
-    grid.innerHTML = filtered.map(renderCard).join('');
+    grid.innerHTML = currentItems.map(renderCard).join('');
     document.dispatchEvent(new CustomEvent('janet:content-rendered'));
 
     grid.querySelectorAll('[data-preview-case]').forEach((button) => {

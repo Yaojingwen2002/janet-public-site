@@ -545,29 +545,43 @@
       return;
     }
 
-    grid.innerHTML = projects.map((project) => {
+    grid.innerHTML = projects.map((project, index) => {
       const tags = (project.tags || []).slice(0, 5).map(tag => '<span>' + escapeHtml(tag) + '</span>').join('');
-      const method = (project.method || []).slice(0, 5).map(item => '<span>' + escapeHtml(item) + '</span>').join('');
       const destination = project.url || ('portfolio.html?project=' + encodeURIComponent(project.id || 'all'));
       const countLabel = project.display_count_label || String(project.work_count || 0) + ' works';
       const badge = project.badge ? '<span class="works-project-badge">' + escapeHtml(project.badge) + '</span>' : '';
+      const indexLabel = String(index + 1).padStart(2, '0');
+      const methodCount = Array.isArray(project.method) ? project.method.length : 0;
 
       return `
         <a class="works-project-card works-project-card--${escapeHtml(project.id)}"
+           data-works-card
            href="${escapeHtml(destination)}"
            aria-label="进入${escapeHtml(project.title || '作品项目')}">
-          ${renderSeriesBand(project.id || project.title)}
-          ${badge}
-          ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-project-media')}
-          <div class="works-project-card__meta">
-            <span>${escapeHtml(project.type || '')}</span>
-            <span>${escapeHtml(countLabel)}</span>
+          <div class="works-project-card__visual">
+            ${renderMediaFrame(project.thumbnail || project.cover || '', project.title || '作品项目封面', 'works-project-media')}
+            ${renderSeriesBand(project.id || project.title)}
+            ${badge}
           </div>
-          <h3>${escapeHtml(project.title)}</h3>
-          <p>${escapeHtml(project.description || '')}</p>
-          <div class="works-project-card__tags">${tags}</div>
-          <div class="works-project-card__method">${method}</div>
-          <span class="works-card-cue" aria-hidden="true">↗</span>
+          <div class="works-project-card__copy">
+            <div class="works-project-card__index">
+              <span>${indexLabel}</span>
+              <span>Project Archive</span>
+            </div>
+            <div class="works-project-card__meta">
+              <span>${escapeHtml(project.type || '')}</span>
+              <span>${escapeHtml(countLabel)}</span>
+            </div>
+            <h3>${escapeHtml(project.title)}</h3>
+            <p>${escapeHtml(project.description || '')}</p>
+            <dl class="works-project-card__stats" aria-label="项目档案统计">
+              <div><dt>作品</dt><dd>${escapeHtml(String(project.work_count || 0))}</dd></div>
+              <div><dt>文档</dt><dd>${escapeHtml(String(project.document_count || 0))}</dd></div>
+              <div><dt>流程</dt><dd>${escapeHtml(String(methodCount))}</dd></div>
+            </dl>
+            <div class="works-project-card__tags">${tags}</div>
+            <span class="works-card-cue"><span>打开项目</span><b aria-hidden="true">↗</b></span>
+          </div>
         </a>
       `;
     }).join('');

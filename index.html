@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-janet-experiment="signal-wave-17">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,11 +25,14 @@
   <link rel="stylesheet" href="styles/news-editorial.css">
   <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
   <link rel="stylesheet" href="styles/janet-motion.css">
+  <link rel="stylesheet" href="styles/signal-globe.css?v=experiment-wave-16">
+  <link rel="stylesheet" href="styles/signal-cursor.css?v=experiment-wave-17">
   <link rel="stylesheet" href="styles/potato-center.css?v=potato-roll-20260617">
   <link rel="stylesheet" href="styles/comments.css">
+  <link rel="stylesheet" href="styles/experiment-editorial.css?v=experiment-wave-17">
 
 </head>
-<body>
+<body class="home-experiment">
 
 <!-- 背景氛围 -->
 <div class="bg-ambient"></div>
@@ -76,14 +79,14 @@
         <img src="assets/icons/logo-mark.svg" alt="" class="nav-logo-mark">
         <span>Janet</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#news">快车箱</a></li>
-        <li><a href="#works-library">作品库</a></li>
-        <li><a href="#about">关于</a></li>
-        <li><a href="#contact">联系</a></li>
-      </ul>
     </div>
   </nav>
+  <div class="background-audio" data-background-audio>
+    <audio id="background-audio-track" src="assets/audio/digital-clouds.mp3" loop preload="none"></audio>
+    <button class="background-audio-toggle" type="button" aria-label="播放背景音乐" aria-pressed="false" title="播放背景音乐" data-background-audio-toggle>
+      <span class="background-audio-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+  </div>
   <!-- 土豆中心 -->
   <div class="potato-center" data-potato-center>
     <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
@@ -97,42 +100,92 @@
     <a href="index.html">首页</a>
     <a href="news.html">Janet 快车箱</a>
     <a href="portfolio.html">作品库</a>
-    <a href="gpt-image2-handbook.html">影像参考实验室</a>
-    <a href="shuttle-universe.html">穿梭宇宙</a>
-    <a href="misaligned-scenes.html">错位名场面</a>
     <a href="#about">关于 Janet</a>
     <a href="#contact">联系</a>
   </div>
 
   <!-- Hero -->
-  <section class="hero hero-v2" id="hero" data-theme="hero">
+  <section class="hero hero-v2 signal-hero" id="hero" data-theme="hero">
     <div class="hero-bg"></div>
 
-    <div class="container">
-      <div class="hero-eyebrow">
-        <span class="dot"></span>
-        <span>Janet · AI 信号站</span>
+    <div class="signal-globe-stage" data-signal-globe>
+      <canvas id="signal-globe-canvas" aria-label="全球 AI 标准信号源分布，可拖动旋转并使用滚轮缩放"></canvas>
+
+      <div class="signal-globe-toolbar">
+        <div class="signal-field-status">
+          <span class="signal-live"><i></i> LIVE SOURCE FIELD</span>
+          <output class="signal-center-coordinate" data-signal-center-coordinates aria-label="地球中心经纬度">00.000° N / 000.000° E</output>
+        </div>
+        <button class="signal-motion-toggle" type="button" data-signal-motion aria-label="暂停地球自转" title="暂停地球自转">
+          <span data-signal-motion-icon aria-hidden="true">Ⅱ</span>
+        </button>
       </div>
 
-      <h1 data-reveal="words">
-        过滤噪音，<em>留下信号。</em>
-      </h1>
-
-      <p class="hero-sub hero-sub-wide rv-fade rv-d1" data-reveal="fade">
-        我是 Janet，用每日晨报帮你穿越 AI 泡沫，用影像世界观把想象力变成作品。
-      </p>
-
-      <div class="hero-actions rv-fade rv-d2" data-reveal="fade">
-        <a href="#news" class="btn btn-green">读今日快车箱</a>
-        <a href="#works-library" class="btn btn-outline">看作品</a>
+      <div class="signal-center-target" data-signal-center-target aria-hidden="true">
+        <span></span>
+        <i></i>
       </div>
 
+      <div class="signal-source-readout" data-signal-readout aria-live="polite" hidden>
+        <span class="signal-source-state">今日无更新</span>
+        <strong data-signal-source>Source</strong>
+        <span data-signal-location>City · Country</span>
+        <span class="signal-source-coordinate" data-signal-source-coordinates>00.000° N / 000.000° E</span>
+      </div>
 
+      <svg class="signal-connector-layer" data-signal-connectors aria-hidden="true"></svg>
+      <div class="signal-story-layer" data-signal-story-layer aria-live="polite"></div>
+      <p class="signal-globe-fallback" data-signal-fallback hidden>全球信号图暂时不可用，今日晨报仍可正常阅读。</p>
+    </div>
+
+    <div class="container signal-hero-layout">
+      <div class="signal-hero-copy">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span>Janet / AI Signal Desk</span>
+        </div>
+
+        <h1 data-reveal="words">
+          <span>过滤噪音</span><em>留下信号</em>
+        </h1>
+
+        <p class="hero-sub hero-sub-wide rv-fade rv-d1" data-reveal="fade">
+          每日筛选全球 AI 变化，把发布、争议和机会压缩成一份可判断的晨间信号。
+        </p>
+
+        <div class="hero-actions rv-fade rv-d2" data-reveal="fade">
+          <a href="#news" class="btn btn-green">读今日快车箱</a>
+          <a href="#works-library" class="btn btn-outline">看作品</a>
+        </div>
+      </div>
+
+      <div class="signal-hero-field-note" aria-hidden="true">
+        <span>FIELD / 001</span>
+        <b>GLOBAL AI SIGNALS</b>
+      </div>
+    </div>
+
+    <div class="container signal-hero-ledger">
+      <dl class="signal-hero-stats" aria-label="信号站状态">
+        <div>
+          <dt>标准源</dt>
+          <dd data-signal-total>27</dd>
+        </div>
+        <div>
+          <dt>今日有信号</dt>
+          <dd data-signal-hot>--</dd>
+        </div>
+        <div>
+          <dt>最新晨报</dt>
+          <dd data-signal-edition>同步中</dd>
+        </div>
+      </dl>
+      <span class="signal-scroll-index" aria-hidden="true">01 / DAILY INTELLIGENCE</span>
     </div>
   </section>
 
   <!-- ═══════════ 新闻模块 — Janet 快车箱 ═══════════ -->
-  <section id="news" class="section" data-theme="briefing">
+  <section id="news" class="section" data-theme="briefing" data-section-index="01">
     <div class="container">
       <div class="chapter-mark">Daily Briefing</div>
       <div class="section-header">
@@ -152,25 +205,29 @@
 
   <div class="ticker-wrap" aria-hidden="true">
     <div class="ticker-track">
-      <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
-      <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
-      <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
-      <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
-      <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
-      <span class="ticker-item"><span class="dot">·</span>过滤噪音，留下信号</span>
-      <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
-      <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
-      <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
-      <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
-      <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
-      <span class="ticker-item"><span class="dot">·</span>过滤噪音，留下信号</span>
+      <div class="ticker-set">
+        <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
+        <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
+        <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
+        <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
+        <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
+        <span class="ticker-item"><span class="dot">·</span>过滤噪音 留下信号</span>
+      </div>
+      <div class="ticker-set">
+        <span class="ticker-item"><span class="dot">·</span>JANET 快车箱</span>
+        <span class="ticker-item"><span class="dot">·</span>今日 AI 信号</span>
+        <span class="ticker-item"><span class="dot">·</span>AI 晨报筛选</span>
+        <span class="ticker-item"><span class="dot">·</span>作品库 Archive</span>
+        <span class="ticker-item"><span class="dot">·</span>创作项目记录</span>
+        <span class="ticker-item"><span class="dot">·</span>过滤噪音 留下信号</span>
+      </div>
     </div>
   </div>
 
   <div class="divider"></div>
 
   <!-- Janet 作品库 -->
-  <section id="works-library" class="section works-library-section" data-theme="archive">
+  <section id="works-library" class="section works-library-section" data-theme="archive" data-section-index="02">
     <div class="wm wm-right" aria-hidden="true">WORKS</div>
     <div class="container">
       <div class="chapter-mark">Works Library</div>
@@ -199,7 +256,7 @@
   <div class="divider"></div>
 
   <!-- 关于 -->
-  <section id="about" class="section" data-theme="about">
+  <section id="about" class="section" data-theme="about" data-section-index="03">
     <div class="container">
       <div class="chapter-mark">About</div>
       <div class="section-header">
@@ -211,30 +268,30 @@
         <div class="about-top">
           <div class="about-info">
             <h3>Janet Yao</h3>
-            <span class="role">AI Content Product Builder</span>
+            <span class="role">AI 科技媒体主笔 / 冷面审片官</span>
           </div>
         </div>
 
         <p class="about-text about-lead">
-          我用中国创作者视角观察全球 AI：哪些是真进展，哪些只是公关话术；哪些能落地，哪些只是泡沫。
+          我站在中国创作者和中国企业一侧追踪全球 AI：不复读参数，只看推理成本、国内可用性，以及它能否真正替掉一段工作。
         </p>
 
         <p class="about-text">
-          Janet 快车箱负责过滤信息，穿梭宇宙负责释放想象力。一个偏判断，一个偏表达，共同构成我的 AI 内容产品系统。
+          Janet 快车箱负责刺破公关话术，作品库负责把判断变成视觉表达。这里记录我如何筛选信号，也记录判断如何变成画面。
         </p>
 
         <div class="about-proof-grid" aria-label="Janet 的核心能力">
           <article>
-            <strong>内容判断</strong>
-            <span>过滤 AI 噪音，保留真正有价值的信息</span>
+            <strong>信号判断</strong>
+            <span>从全球来源里筛出能行动、能验证的信息</span>
+          </article>
+          <article>
+            <strong>创作者代言</strong>
+            <span>把模型变化翻译成成本、工具和真实机会</span>
           </article>
           <article>
             <strong>视觉叙事</strong>
-            <span>用镜头和运动控制构建 AI 视频表达</span>
-          </article>
-          <article>
-            <strong>产品沉淀</strong>
-            <span>把晨报、视频和案例库变成长期资产</span>
+            <span>用 AI 影像、运镜和项目档案沉淀表达</span>
           </article>
         </div>
 
@@ -244,7 +301,7 @@
   </section>
 
   <!-- 联系 -->
-  <section id="contact" class="section" data-theme="contact">
+  <section id="contact" class="section" data-theme="contact" data-section-index="04">
     <div class="container">
       <div class="chapter-mark">Contact</div>
       <div class="section-header">
@@ -253,23 +310,23 @@
       </div>
 
       <div class="cta-card reveal">
-        <h2>一起聊聊</h2>
-        <p>如果你想交流 AI 趋势、内容产品、视频创作，或者有合作想法，可以通过下面的方式联系我。</p>
+        <h2>让判断落地</h2>
+        <p>AI 科技内容、内容产品、品牌影像与创作系统合作。说清目标、时间和交付，我会直接判断是否适合。</p>
 
         <div class="contact-grid">
           <!-- Email -->
           <div class="contact-item">
-            <div class="contact-icon">✉️</div>
+            <div class="contact-icon" aria-hidden="true">@</div>
             <div class="contact-details">
               <h4>邮箱</h4>
               <a href="#contact" data-email-user="yaojingwen12345" data-email-domain="gmail.com">发送邮件</a>
-              <p>项目合作 / 内容合作</p>
+              <p>内容产品 / 品牌影像 / 项目合作</p>
             </div>
           </div>
 
           <!-- WeChat -->
           <div class="contact-item">
-            <div class="contact-icon">💬</div>
+            <div class="contact-icon" aria-hidden="true">公</div>
             <div class="contact-details">
               <h4>微信公众号</h4>
               <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=gh_0257a1896cdd" target="_blank">Janet的快车箱</a>
@@ -279,27 +336,27 @@
 
           <!-- Twitter -->
           <div class="contact-item">
-            <div class="contact-icon">𝕏</div>
+            <div class="contact-icon" aria-hidden="true">X</div>
             <div class="contact-details">
               <h4>X</h4>
               <a href="https://twitter.com/yojngwn210305" target="_blank">@yojngwn210305</a>
-              <p>AI 观察与技术想法</p>
+              <p>AI 判断、创作者视角与即时观察</p>
             </div>
           </div>
 
           <!-- GitHub -->
           <div class="contact-item">
-            <div class="contact-icon">⚡</div>
+            <div class="contact-icon" aria-hidden="true">GH</div>
             <div class="contact-details">
               <h4>GitHub</h4>
               <a href="https://github.com/yaojingwen2002" target="_blank">yaojingwen2002</a>
-              <p>设计系统与 AI 工具</p>
+              <p>网站系统、AI 工具与公开项目</p>
             </div>
           </div>
         </div>
 
         <p class="contact-note">
-          📍 Based in China · UTC+8
+          Janet Yao · Independent AI Editor &amp; Visual Storyteller · Asia/Taipei
         </p>
       </div>
     </div>
@@ -308,7 +365,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>Janet · 用 AI 过滤世界</p>
+      <p>Janet Yao · Independent AI editorial &amp; visual work.</p>
       <p>
         © 2026 Janet Yao · 保留所有权利。
       </p>
@@ -324,16 +381,21 @@
   </button>
 
 </div>
-<script src="scripts/news.js"></script>
+<script src="scripts/news.js?v=experiment-wave-14"></script>
 <script src="scripts/portfolio.js"></script>
 <script src="scripts/supabase-config.js"></script>
 <script src="scripts/auth.js"></script>
 <script src="scripts/potato-center.js?v=potato-roll-20260617"></script>
 <script src="scripts/comments.js"></script>
-<script src="scripts/reactions.js"></script>
+<script src="scripts/reactions.js?v=experiment-wave-14"></script>
 <script src="scripts/nav.js?v=potato-roll-20260617"></script>
 <script src="scripts/site-guide.js"></script>
 <script src="scripts/effects.js"></script>
+<script src="scripts/home-theme.js?v=experiment-wave-2"></script>
 <script src="scripts/janet-motion.js"></script>
+<script src="scripts/editorial-motion.js?v=experiment-wave-17"></script>
+<script src="scripts/signal-cursor.js?v=experiment-wave-17"></script>
+<script src="scripts/background-audio.js?v=experiment-wave-18"></script>
+<script type="module" src="scripts/signal-globe.js?v=experiment-wave-15"></script>
 </body>
 </html>

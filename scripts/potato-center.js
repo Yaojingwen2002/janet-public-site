@@ -16,9 +16,6 @@
     ['首页', 'index.html'],
     ['Janet 快车箱', 'news.html'],
     ['作品库', 'portfolio.html'],
-    ['影像参考实验室', 'gpt-image2-handbook.html'],
-    ['穿梭宇宙', 'shuttle-universe.html'],
-    ['错位名场面', 'misaligned-scenes.html'],
     ['关于 Janet', 'index.html#about'],
     ['联系', 'index.html#contact']
   ];

@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-18",
+  "vol": "291",
+  "intro_text": "模型价格战、算力租赁、AI 硬件诉讼和企业 ROI 同时挤到桌面上。今天最该看的不是谁又喊了一个更大的愿景，而是谁开始被迫交出账本：模型分数能不能换成真实工作，数据中心能不能回本，创作者到底该押开放能力还是闭源服务。",
+  "cover": {
+    "title": "AI账本摊开",
+    "subtitle": "开源模型追近前沿，算力和法律成本开始反噬叙事",
+    "image_path": "runs/2026-07-18/cover.png",
+    "image_prompt": "21:9 horizontal editorial magazine cover art for an AI technology morning briefing. Black, white and Janet green, minimal high-end tech magazine style, abstract open-weight model race, compute grids, contract papers, data-center power lines and enterprise scorecard panels, no readable text, no date, no volume number, no logos, no robot faces."
+  },
+  "trend": "今天的 AI 新闻像一张被摊开的账本：Moonshot 用 Kimi K3 把开源模型推到接近闭源前沿的位置，Meta 被曝想把 AI 算力租给 Anthropic，OpenAI 则公开把企业 AI 价值从 token 单价改成“成功任务成本”。同一天里，模型、GPU、电力、法律和销售话术都被拉回同一个问题：这东西到底能不能变成可结算的工作。\n\n对中国创作者和中小团队，今天的信号很实际。便宜模型更多，不等于所有人都该上超大模型；算力越来越贵，也不等于只剩巨头能玩。真正的分界线会变成：你有没有足够清楚的任务、数据和验收标准，让模型分数变成内容、代码、客服、设计或销售里的可复用产能。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Kimi K3开源逼近前沿",
+          "body": "Moonshot AI 在 7 月 17 日推出 Kimi K3。WSJ 报道称，这个 2.8 万亿参数模型计划在本月底完全开源，Moonshot 称其在部分编码和 agent benchmark 上超过若干美国前沿系统；AP 也将它描述为让美国科技行业意外的中国开放模型进展。",
+          "janet_take": "Kimi K3 的重点不该被喊成“国产又赢了”，开放权重压低闭源溢价才是刀口。创作者该开心，但别上头：2.8 万亿参数听起来爽，真要落地还得看推理成本、可部署性和中文业务数据。能把任务拆小的人，会先吃到这波红利。",
+          "source": "WSJ / AP",
+          "url": "https://www.wsj.com/tech/ai/chinas-moonshot-ai-releases-model-to-challenge-top-u-s-systems-d84fe6e9",
+          "image_url": "https://www.wsj.com/tech/ai/chinas-moonshot-ai-releases-model-to-challenge-top-u-s-systems-d84fe6e9",
+          "image": "images/news-01-kimi-k3.png",
+          "image_origin": "search",
+          "image_source_url": "https://pic3.zhimg.com/v2-1a5185e4694d93f31482e9175b14e48e_1440w.jpg"
+        },
+        {
+          "title": "Meta拟向Anthropic出租AI算力",
+          "body": "FT 报道称，Meta 和 Anthropic 正在初步讨论一笔最高 100 亿美元、为期两年的数据中心算力交易。报道提到 Anthropic 寻求更多计算资源，Meta 则在巨额 AI 基础设施投入之后，探索把部分计算能力商业化。",
+          "janet_take": "普通云合同只卖资源，这笔潜在交易卖的是巨头 AI 资本开支的出口。Meta 以前用开源模型换市场，现在可能用数据中心换现金流。国内团队要看清楚：未来模型 API 的价格，不只由算法决定，还由谁手里有电、有 GPU、有机房决定。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/0ae58f76-3386-464a-9248-090cc68e9864",
+          "image_url": "https://www.ft.com/content/0ae58f76-3386-464a-9248-090cc68e9864",
+          "image": "images/news-02-metaanthropic.jpg",
+          "image_origin": "search",
+          "image_source_url": "https://cdn.ustv.com.tw/new_newsimg/20260227/A007/20260227A007_172146.jpg"
+        },
+        {
+          "title": "Apple向OpenAI硬件人发信",
+          "body": "FT 报道称，Apple 已向大约 40 名从 Apple 转去 OpenAI 的前员工发出个人法律信，要求保全文档并与 Apple 法务会面。该行动与 Apple 指控 OpenAI 涉嫌挪用硬件设计商业秘密的诉讼相关，背景是 OpenAI 正推进无屏 AI 设备。",
+          "janet_take": "AI 硬件还没大规模开卖，人才流动先变成法务战。OpenAI 想从软件入口冲进设备入口，Apple 不可能只站在旁边看。对创业公司最现实的提醒是：当你开始做硬件，保密、图纸、供应链记录和员工离职流程，都会从行政细节变成融资风险。",
+          "source": "Financial Times / The Verge",
+          "url": "https://www.ft.com/content/1b8c9d52-88a9-426b-ba47-f1811f859166",
+          "image_url": "https://www.ft.com/content/1b8c9d52-88a9-426b-ba47-f1811f859166",
+          "image": "images/news-03-appleopenai.png",
+          "image_origin": "search",
+          "image_source_url": "https://itnaudio.s3.us-east-2.amazonaws.com/split_audio/666769879c0e1_image.png"
+        },
+        {
+          "title": "OpenAI改用结果算AI账",
+          "body": "OpenAI 7 月 17 日发布《A scorecard for the AI age》，提出企业衡量 AI 价值时不能只看 token 单价，而要看有多少有用工作完成、一次成功任务的总成本、结果是否可靠，以及 AI 支出随规模扩大是否买到更多产出。文中还提到 GPT-5.6 的 Sol、Terra、Luna 三档定位。",
+          "janet_take": "OpenAI 这篇其实是在给企业 CFO 换算盘。便宜 token 不一定便宜，贵模型也不一定贵，关键是一次通过率和返工成本。创作者也该这样算：别问哪个模型最强，问它能不能稳定帮你少改一版脚本、少返一次图、少浪费一个下午。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/a-scorecard-for-the-ai-age/",
+          "image_url": "https://openai.com/index/a-scorecard-for-the-ai-age/",
+          "image": "images/news-04-openaiai.png",
+          "image_origin": "search",
+          "image_source_url": "https://help.apiyi.com/wp-content/uploads/2025/05/openai-api-429-errors-solution-guide-image-0-1536x1114.png"
+        },
+        {
+          "title": "Databricks估值一夜冲1880亿",
+          "body": "WSJ 报道称，Databricks 将在 Coatue 领投的新投资中达到 1880 亿美元估值，融资规模约 30 亿美元。报道提到其 AI 产品收入 run rate 已达 17 亿美元，并推出 Unity AI Gateway、Genie One 等面向企业 AI 管理和助手的产品。",
+          "janet_take": "Databricks 的估值靠 AI 收入说话，核心是站在企业数据和模型调用中间收路费。大模型公司抢注意力，数据平台抢预算入口。国内 B2B 创业者别只模仿聊天框，谁能管数据、管权限、管花费，谁更像客户愿意续费的系统。",
+          "source": "WSJ / TechCrunch",
+          "url": "https://www.wsj.com/tech/ai/databricks-set-to-hit-188-billion-valuation-with-new-investment-from-coatue-9eda18d6",
+          "image_url": "https://finance.yahoo.com/technology/ai/articles/databricks-hits-188b-valuation-extending-221256246.html",
+          "image": "images/news-05-databricks1880.jpg",
+          "image_origin": "search",
+          "image_source_url": "https://0xzx.com/wp-content/uploads/2025/06/databricks-dataai2025-hall-scaled.jpg"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Kimi K3拿下AA第三",
+          "body": "Artificial Analysis 7 月 17 日发布评测，称 Kimi K3 在 Intelligence Index 得分 57，达到第三名，表现接近 Anthropic Opus 4.8 和 OpenAI GPT-5.5，但仍落后 Claude Fable 5 与 GPT-5.6 Sol。文章同时强调 Moonshot 计划释放 2.8 万亿参数模型权重。",
+          "janet_take": "第三名比第一名更有信息量：它说明开放模型还没完全越过闭源天花板，但已经足够让客户拿它压价。对中国开发者，Kimi K3 最值钱的部分不是榜单截图，之后权重开放后的垂直改造空间才是主菜。",
+          "source": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai/articles/kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5",
+          "image_url": "https://artificialanalysis.ai/articles/kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5",
+          "image": "images/models-01-kimi-k3aa.avif",
+          "image_origin": "source",
+          "image_source_url": "https://cdn.sanity.io/images/6vfeftx9/articles/bda57050cbd813a667f735cfee6164aa46950d1b-1024x1024.webp?w=1200&auto=format"
+        },
+        {
+          "title": "六家前沿模型冲过50分",
+          "body": "Artificial Analysis 7 月 17 日统计称，过去 8 天内出现 4 个前沿模型发布，已有 6 家实验室的模型在其 Intelligence Index 上超过 50 分：Anthropic、OpenAI、Moonshot AI、SpaceXAI、Z AI 和 Meta 都进入这一档位。",
+          "janet_take": "前沿模型从双巨头变成六方混战，最直接的结果是客户议价权上升。分数越来越密，品牌溢价就没以前那么稳。创作者不用每次追最贵模型，反而该建立自己的小评测：同一条脚本、同一组素材、同一个交付标准，谁稳定谁留下。",
+          "source": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai/articles/four-frontier-launches-in-eight-days-six-labs-now-field-a-model-above-50-on-the-artificial-analysis-intelligence-index",
+          "image_url": "https://artificialanalysis.ai/articles/four-frontier-launches-in-eight-days-six-labs-now-field-a-model-above-50-on-the-artificial-analysis-intelligence-index",
+          "image": "images/models-02-50.avif",
+          "image_origin": "source",
+          "image_source_url": "https://cdn.sanity.io/images/6vfeftx9/articles/283cbb80e8532a231710555198d54cd603da7f64-1254x1254.png?w=1200&auto=format"
+        },
+        {
+          "title": "GPT-5.6按成功任务重算成本",
+          "body": "OpenAI 在 7 月 17 日文章中把 GPT-5.6 分为 Sol、Terra、Luna 三档，并称 GPT-5.6 Sol 在 Artificial Analysis Coding Agent Index 的 max reasoning 设置下达到新高，同时比另一个领先模型少用 54% 输出 token。OpenAI 借此强调成本应按成功任务而非 token 单价衡量。",
+          "janet_take": "销售味很重，方法倒是能用。模型账单最怕只看输入输出价格，忽略重试、人审和失败机会成本。小团队可以直接抄这个方法：给每个模型记一次交付成功的总成本。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/a-scorecard-for-the-ai-age/",
+          "image_url": "https://openai.com/index/a-scorecard-for-the-ai-age/",
+          "image": "images/models-03-gpt-56.webp",
+          "image_origin": "search",
+          "image_source_url": "https://img.biggo.com/3lTKZzNKXtRgIlkFh1DrdZMJjDCaSxRSB-EYXMZf5tA/fit/1720/0/sm/1/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTAzL2UwN1NCWjBCRFBiYi1JdFRRY1VLXzE3NzM5MTk0MDdfZGVmYXVsdC5qcGc.jpg"
+        },
+        {
+          "title": "Gemini延迟继续拖累Alphabet",
+          "body": "Investopedia 7 月 17 日盘前报道提到，Alphabet 股价承压，市场继续消化 Gemini 3.5 Pro 推迟发布的消息。报道将它与 AI 相关科技股波动放在一起，说明投资者正在重新衡量大厂 AI 投入的回报速度。",
+          "janet_take": "Google 的尴尬不是慢一次，是坐拥搜索、云、TPU 和数据，却仍会被一个模型发布时间拖住叙事。大公司堆资源不等于交付快。对普通团队，这是反向安慰：流程短、反馈快，有时比家底厚更接近产品优势。",
+          "source": "Investopedia",
+          "url": "https://www.investopedia.com/5-things-to-know-before-the-stock-market-opens-on-friday-july-17-2026-12021320",
+          "image_url": "https://www.investopedia.com/5-things-to-know-before-the-stock-market-opens-on-friday-july-17-2026-12021320",
+          "image": "images/models-04-geminialphabet.png",
+          "image_origin": "search",
+          "image_source_url": "https://cdn.unwire.hk/wp-content/uploads/2025/12/fb_googleassistantge.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Agility在Fremont训练Digit机器人",
+          "body": "Agility Robotics 7 月 17 日宣布在加州 Fremont 开设新设施，用于推进 Digit 人形机器人的 physical AI 开发。公司称该场地将支持工程团队训练、测试并推进机器人学习新技能，面向商业部署扩展能力。",
+          "janet_take": "人形机器人最贵的部分往往藏在场地里。Agility 把设施开在 Tesla 旁边，话术很会，但更关键的是物理 AI 终于绕不过脏活：数据采集、任务边界、故障恢复和现场维护。",
+          "source": "Agility Robotics / TechCrunch",
+          "url": "https://www.agilityrobotics.com/content/agility-opens-new-fremont-facility-to-accelerate-physical-ai-development",
+          "image_url": "https://www.agilityrobotics.com/content/agility-opens-new-fremont-facility-to-accelerate-physical-ai-development",
+          "image": "images/insights-01-agility.png",
+          "image_origin": "source",
+          "image_source_url": "https://cdn.prod.website-files.com/6980c63561bbbeb67b4b7ab5/6a5840936818de363cb3827e_Press-Release_160726.png"
+        },
+        {
+          "title": "Valar核能融资押AI电费",
+          "body": "TechCrunch 7 月 17 日报道，三年历史的 Valar Atomics 正洽谈新融资，目标估值约 60 亿美元，Sequoia 预计领投。该公司开发小型模块化核反应堆，面向更快、更低成本部署的电力基础设施。",
+          "janet_take": "AI 基建的下一张账单写着电费。核能创业公司估值被推高，说明资本已经把数据中心耗电当成长期瓶颈下注。创作者不用研究反应堆，但要知道一个事实：当底层电力变贵，所有“免费试用”和低价 API 都只是阶段性补贴。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/17/nuclear-startup-valar-atomics-in-talks-to-raise-new-funding-at-6b-valuation/",
+          "image_url": "https://techcrunch.com/2026/07/17/nuclear-startup-valar-atomics-in-talks-to-raise-new-funding-at-6b-valuation/",
+          "image": "images/insights-02-valarai.webp",
+          "image_origin": "source",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/02/Mockup-of-Valar-Atomics-site.jpg?resize=1200,514"
+        },
+        {
+          "title": "安全派砸300万美元参政",
+          "body": "SFGate 7 月 17 日报道，Anthropic、Google DeepMind 和 OpenAI 等公司员工向支持 AI 安全监管的 Public First 政治组织捐款超过 300 万美元。其中 Anthropic CEO Dario Amodei 单人捐出 100 万美元，另有多名 Anthropic 员工合计捐出超过 200 万美元。",
+          "janet_take": "AI 安全已经不是论文圈争论，而是直接进选举账本。最讽刺的是，模型公司一边卖更强系统，一边内部有人花钱要求政府踩刹车。中国公司看这条别只看热闹，未来出海卖 AI，监管立场、游说能力和事故责任都会变成产品成本。",
+          "source": "SFGate",
+          "url": "https://www.sfgate.com/tech/article/dario-amodei-donation-22348647.php",
+          "image_url": "https://www.sfgate.com/tech/article/dario-amodei-donation-22348647.php",
+          "image": "images/insights-03-300.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://s.hdnux.com/photos/01/66/66/65/31157624/3/rawImage.jpg"
+        },
+        {
+          "title": "欧盟拿成瘾设计追Meta",
+          "body": "欧盟委员会公告称，已初步认定 Instagram 和 Facebook 的 addictive design 可能违反 DSA，调查聚焦无限滚动、自动播放、推送通知和高度个性化推荐系统，并指出 Meta 对未成年人和脆弱成年人风险评估不足。该公告在 7 月 17 日继续被多家科技媒体纳入 AI 与平台治理讨论。",
+          "janet_take": "推荐系统的麻烦来了。AI 越会留住人，平台越要证明自己没有在榨注意力。内容创作者也别装无辜：增长工具如果只服务停留时长，迟早会被平台规则、广告主和监管一起反噬。",
+          "source": "European Commission",
+          "url": "https://digital-strategy.ec.europa.eu/en/news/commission-preliminarily-finds-addictive-design-instagram-and-facebook-breach-digital-services-act",
+          "image_url": "https://digital-strategy.ec.europa.eu/en/news/commission-preliminarily-finds-addictive-design-instagram-and-facebook-breach-digital-services-act",
+          "image": "images/insights-04-meta.jpg",
+          "image_origin": "search",
+          "image_source_url": "https://cyprus.representation.ec.europa.eu/sites/default/files/styles/oe_theme_medium_no_crop/avportal/P-067138/00-13.jpg?itok=7-QWtwB2"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Databricks融资推高1880亿估值",
+          "body": "Databricks 新一轮融资将估值推至 1880 亿美元。WSJ 报道称，公司 AI 产品收入 run rate 到 6 月已达 17 亿美元，总公司收入 run rate 在 2 月达到 54 亿美元；Unity AI Gateway 和 Genie One 被视为其继续吃企业 AI 预算的关键产品。",
+          "janet_take": "估值泡沫里也有硬收入。1880 亿美元意味着资本在赌企业 AI 的控制层会非常肥。只做模型 wrapper 会越来越薄，能掌握数据、路由、成本和权限的层，才可能吃到大钱。",
+          "source": "WSJ",
+          "url": "https://www.wsj.com/tech/ai/databricks-set-to-hit-188-billion-valuation-with-new-investment-from-coatue-9eda18d6",
+          "image_url": "https://finance.yahoo.com/technology/ai/articles/databricks-hits-188b-valuation-extending-221256246.html",
+          "image": "images/insights2-01-databricks.jpg",
+          "image_origin": "search",
+          "image_source_url": "https://xqimg.imedao.com/193d7516575b9e423fed1ed2.png!800.jpg"
+        },
+        {
+          "title": "Pre-seed因AI融资抬高门槛",
+          "body": "TechCrunch 7 月 17 日在 Disrupt 2026 预告中提到，AI startup 正吸走大量 seed funding，也让 pre-seed 创始人被投资人用 seed 阶段的标准审视。文章介绍 Axiom Partners 这个 5200 万美元早期基金，以及围绕无产品阶段融资叙事的讨论。",
+          "janet_take": "AI 创业把融资门槛搞得很拧巴：钱更多，但容错更少。以前 pre-seed 可以卖愿景，现在投资人会问你凭什么不是下一个一周复制品。普通创始人别迷信“AI 方向”四个字，先讲清楚数据从哪来、客户为什么现在付钱。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/17/no-product-no-problem-this-disrupt-2026-session-shows-how-to-get-pre-seed-funding-with-conviction-storytelling/",
+          "image_url": "https://techcrunch.com/2026/07/17/no-product-no-problem-this-disrupt-2026-session-shows-how-to-get-pre-seed-funding-with-conviction-storytelling/",
+          "image": "images/insights2-02-pre-seedai.webp",
+          "image_origin": "source",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/12/NIna-Peter-Jerry.jpg?resize=1200,800"
+        },
+        {
+          "title": "Kimi冲击令芯片股抛压加重",
+          "body": "MarketWatch 7 月 17 日报道称，Moonshot Kimi K3 发布引发市场担忧出现第二次 DeepSeek 冲击，半导体与 AI 相关股票承压，部分中国 AI 公司、SoftBank 和日本芯片公司也出现明显下跌。Investopedia 同日也提到 AI 科技股拖累美股期货。",
+          "janet_take": "市场每次被中国模型吓到，表面是模型分数，底层是资本担心算力垄断被改写。如果更便宜的开放模型能接住足够多任务，昂贵 GPU 叙事就要被重新估值。创作者不用关心股价日波动，但要关心模型成本下行会不会改变你的工具栈。",
+          "source": "MarketWatch / Investopedia",
+          "url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-nasdaq-strikes-iran-sixth-night-tech-sell-off/card/another-deepseek-moment-threatens-with-launch-of-new-chinese-ai-model-RgdQUgpEcUYP08Iqu26Y",
+          "image_url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-nasdaq-strikes-iran-sixth-night-tech-sell-off/card/another-deepseek-moment-threatens-with-launch-of-new-chinese-ai-model-RgdQUgpEcUYP08Iqu26Y",
+          "image": "images/insights2-03-kimi.jpg",
+          "image_origin": "search",
+          "image_source_url": "https://img.technews.tw/wp-content/uploads/2022/11/10101542/shutterstock_2171952485.jpg"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "GPT-Live把语音入口推到前台",
+          "body": "OpenAI 的 GPT-Live 已开始向 ChatGPT 用户推出，主打 full-duplex 语音交互，可边听边说，并在需要搜索、深度推理或复杂任务时调用后台前沿模型。虽然原始发布在 7 月 8 日，OpenAI 7 月 17 日的企业 ROI 文章让它更像一个前台入口：语音负责交互，后台模型负责完成复杂工作。",
+          "janet_take": "GPT-Live 的价值不在“嗯哼”，在入口。先试两个场景：口述改稿，边看素材边下指令。能不能少切一次工具，比能不能替掉键盘更重要。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/introducing-gpt-live/",
+          "image_url": "https://openai.com/index/introducing-gpt-live/",
+          "image": "images/tools-01-gpt-live.jpg",
+          "image_origin": "search",
+          "image_source_url": "https://ai-bio.cn/wp-content/uploads/2026/05/GPT-Realtime-Whisper.jpg"
+        }
+      ]
+    }
+  }
+}

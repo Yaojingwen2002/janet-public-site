@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+        
+    <!-- adverts:header start -->
+    <link rel="preconnect" href="https://securepubads.g.doubleclick.net" crossorigin>
+    <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin>
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+    window.googletag = window.googletag || {cmd: []};
+    window.__debugAds = window.location && window.location.search && window.location.search.includes('googfc');
+    window.isElemVisible = (div) => {
+        // https://stackoverflow.com/a/33456469/50475
+        return div && (!!(div.offsetWidth || div.offsetHeight || div.getClientRects().length));
+    }
+
+    // Relocate Ads
+    window.addEventListener('DOMContentLoaded',function () {
+        document.querySelectorAll('[data-selector]').forEach(ad => {
+            if (target = document.querySelector(ad.getAttribute('data-selector'))) {
+                if (ad.closest('.ad-sticky-slide')) {
+                    ad = ad.closest('.ad-sticky-slide');
+                }
+                target.insertAdjacentElement('afterend', ad);
+            }
+        });
+    });
+
+    // Relocate Ad if viewport width is less than 720px
+    window.addEventListener('DOMContentLoaded',function () {
+        if (window.matchMedia('(max-width: 720px)').matches) {
+            document.querySelectorAll('[data-selector-mobile]').forEach(ad => {
+                if (target = document.querySelector(ad.getAttribute('data-selector-mobile'))) {
+                    target.insertAdjacentElement('afterend', ad);
+                }
+            });
+        }
+    });
+
+    googletag.cmd.push(function() {
+                
+        googletag.defineSlot('/1029551/Dawn-Responsive-Middle-Leaderboard', [[300,250],[728,90],[320,50],[320,100],[300,50],[970,250],[970,90],[300,600],[1,1]], 'div-gpt-ad-1693559881661-0')
+            .defineSizeMapping([[[728,0],[[728,90],[300,600],[320,480],[320,50],[320,100],[300,50],[1,1]]],[[0,0],[[300,600],[320,480],[300,250],[320,50],[320,100],[300,50],[1,1]]]])
+            .addService(googletag.pubads());        
+        googletag.defineSlot('/1029551/Dawn-Responsive-1-Article', [[300,250]], 'div-gpt-ad-1783585102389-0')
+            .defineSizeMapping([])
+            .addService(googletag.pubads());        
+        googletag.defineSlot('/1029551/Dawn-Responsive-BTF-MREC', [[300,250]], 'div-gpt-ad-1683363763562-0')
+            .defineSizeMapping([[[0,0],[[300,250]]]])
+            .addService(googletag.pubads());        
+        googletag.defineSlot('/1029551/Dawn-Responsive-SKY-MREC', [[300,250],[160,600],[300,600]], 'div-gpt-ad-1683363860950-0')
+            .defineSizeMapping([[[0,0],[[300,250],[160,600],[300,600]]]])
+            .addService(googletag.pubads());        
+        googletag.defineSlot('/1029551/Dawn-Responsive-ATF-MREC', [[300,250]], 'div-gpt-ad-1683363673257-0')
+            .defineSizeMapping([[[0,0],[[300,250]]]])
+            .addService(googletag.pubads());        
+        googletag.defineSlot('/1029551/Dawn-Responsive-2-Article', [[300,250]], 'div-gpt-ad-1783585137296-0')
+            .defineSizeMapping([])
+            .addService(googletag.pubads());        
+        googletag.defineSlot('/1029551/Dawn-Responsive-Footer-Stickable-Leaderboard', [[300,250],[728,90],[320,50],[320,100],[300,50],[970,250],[970,90],[1,1]], 'div-gpt-ad-1693559286339-0')
+            .defineSizeMapping([[[970,0],[[728,90],[320,50],[320,100],[300,50],[970,250],[970,90],[1,1]]],[[728,0],[[728,90],[320,50],[320,100],[300,50],[1,1]]],[[0,0],[[300,250],[320,50],[320,100],[300,50],[1,1]]]])
+            .addService(googletag.pubads());        
+        googletag.defineSlot('/1029551/Dawn-Responsive-Header-Leaderboard', [[300,250],[728,90],[320,50],[320,100],[300,50],[970,250],[970,90]], 'div-gpt-ad-1683363187247-0')
+            .defineSizeMapping([[[970,0],[[970,250],[970,90],[728,90],[320,50],[320,100],[300,50]]],[[728,0],[[728,90],[320,50],[320,100],[300,50]]],[[0,0],[[320,50],[320,100],[300,50]]]])
+            .addService(googletag.pubads());
+        
+                    
+        googletag.setConfig({
+            lazyLoad: {
+                fetchMarginPercent: 200,
+                renderMarginPercent: 50,
+                mobileScaling: 1.0,
+            },
+            
+            singleRequest: true,
+            targeting: {
+                'site': ["www.dawn.com"],
+				'category': ["Tech","Single Story"],
+				'tag': ["Artificial Intelligence"]
+            }
+        });
+
+        googletag.enableServices();
+
+        // Eager load anchor slot right away
+        if (typeof anchorSlot !== 'undefined' && anchorSlot) {
+            googletag.pubads().refresh(anchorSlot);
+        }
+
+        // Eager-load handler — deferred to DOMContentLoaded since ad divs
+        // are in <body> but this script runs in <head>
+        function handleEagerSlots() {
+            var prebidEnabled = false;
+            document.querySelectorAll('[data-eager="true"]').forEach(function(eagerSlot) {
+                var slotId = eagerSlot.id;
+                if (slotId) {
+                    
+
+                    // When Prebid is disabled, GPT's native lazy-loader will automatically
+                    // identify ATF slots as in-viewport and fetch them — no manual refresh needed.
+                    // Manual refresh() is only needed when disableInitialLoad() is active (Prebid).
+                    if (!prebidEnabled) {
+                        if (window.__debugAds) { console.log('EagerLoad: skipping refresh() — GPT lazy-loader handles ATF: ' + slotId); }
+                        return;
+                    }
+
+                    // Find the slot by element ID directly
+                    var slot = googletag.pubads().getSlots().find(function(s) { return s.getSlotElementId() === slotId; });
+                    if (slot) {
+                        if (window.__debugAds) { console.log('Slot to EagerLoad: ' + slot.getAdUnitPath() + ' ' + slotId); }
+                        googletag.pubads().refresh([slot]);
+                    }
+                }
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', handleEagerSlots);
+        } else {
+            handleEagerSlots();
+        }
+        
+        
+        window.refreshAd = ((id, smart = true) => {
+            const INVIEW_THRESHOLD = 30;
+            const WAIT_TIMEOUT = 3000;
+            const delayedIds = new Set();
+
+            const log = (label, extra = '') =>
+                window.__debugAds && console.log(new Date().toISOString().substr(11, 8) + ' ' + label + '(' + extra + ')');
+
+            const getMatchingSlots = id =>
+                googletag.pubads().getSlots().filter(
+                    slot => slot.getAdUnitPath() === id || slot.getSlotElementId() === id
+                );
+            
+            // no smart refresh, just refresh the ad after x seconds
+            if (smart === false) {
+                log('dumb refreshAd', id + '!!');
+                googletag.pubads().refresh(getMatchingSlots(id));
+                return;
+            }
+
+            function attemptRefresh(id, doRefresh, remainingTimeout = 3000) {
+                log('delayedRefresh', id + ', ' + doRefresh + ', ' + remainingTimeout);
+
+                if (doRefresh && !delayedIds.has(id)) {
+                    if (remainingTimeout === 0) {
+                        log('refreshAd', id + '!!');
+                        googletag.pubads().refresh(getMatchingSlots(id));
+                        return;
+                    }
+                    
+                    delayedIds.add(id);
+                    
+                    setTimeout(() => {
+                        if (!delayedIds.has(id)) return;
+
+                        delayedIds.delete(id);
+                        const percent = percentageInView(id);
+                        attemptRefresh(id, percent >= INVIEW_THRESHOLD, remainingTimeout - 1000);
+                    }, WAIT_TIMEOUT);
+                }
+                
+                if (!doRefresh) {
+                    delayedIds.delete(id);
+                    setTimeout(() => refreshAd(id, true), 1000);
+                }
+            }
+            
+            log('refreshAd', id);
+
+            const slots = getMatchingSlots(id);
+            for (const slot of slots) {
+                const percent = percentageInView(id);
+                log('inViewPercent', percent);
+                // smart refresh recurrsive function to handle ad refreshing
+                // when in view and x seconds have passed
+                attemptRefresh(id, percent >= INVIEW_THRESHOLD);
+            }
+        }); 
+        
+        window.percentageInView = ((id) => {
+            const element = document.getElementById(id);
+            if (!element) {
+                return 0;
+            }
+            
+            let adRect = element.getBoundingClientRect();
+            
+            let needsHiding = false;
+            if (adRect.x == 0) {
+                adRect = element.getBoundingClientRect();
+                element.style.display = 'block';
+                needsHiding = true;
+                
+            }
+            
+            // Calculate visible vertical height
+            const visibleHeight = Math.min(adRect.bottom, window.innerHeight) - Math.max(adRect.top, 0);
+
+            // Ensure visibility is non-negative
+            const clampedVisibleHeight = Math.max(0, visibleHeight);
+            const totalHeight = adRect.height;
+
+            // Calculate vertical percentage in view
+            const percentageInView = totalHeight > 0 ? (clampedVisibleHeight / totalHeight) * 100 : 0;
+
+            if (needsHiding) element.style.display = 'none';
+            
+            return percentageInView;
+        });
+        
+        // <div data-refresh="30" id='div-gpt-ad-1234567890123-0' ...
+        // https://developers.google.com/publisher-tag/reference#googletag.events.SlotRenderEndedEvent
+        googletag.pubads().addEventListener("slotRenderEnded", (e) => {
+            const id = e.slot.getSlotElementId();
+            const element = document.getElementById(id);
+            if (!e.isEmpty && element) {
+                if (e.size && (e.size[0] > 1 || e.size[1] > 1)) {
+                    element.classList.add('ad-rendered');
+                    var renderedClasses = (el.getAttribute('data-rendered-classes') || '').trim();
+                    if (renderedClasses) el.classList.add(...renderedClasses.split(/\s+/));
+
+                    const adUnitPath = e.slot.getAdUnitPath();
+                    console.log(new Date().toISOString().substr(11, 8) + ' %cADVERT%c: '   + e.size[0] + ',' + e.size[1] + ' | Id: ' + id + ' | Path: ' + e.slot.getAdUnitPath() + ' | Advertiser: ' + e.advertiserId + ' | LineItem: ' + (e.lineItemId || 'Adx') + ' | Creative: ' + e.creativeId, 'color: orange;', 'color: initial;');
+                } else {
+                    const adUnitPath = e.slot.getAdUnitPath();
+                    console.log(new Date().toISOString().substr(11, 8) + ' %cADVERT%c: '   + e.size[0] + ',' + e.size[1] + ' | Id: ' + id + ' | Path: ' + e.slot.getAdUnitPath() + ' | Advertiser: ' + e.advertiserId + ' | LineItem: ' + e.lineItemId + ' | Creative: ' + e.creativeId, 'color: orange;', 'color: initial;');
+                }
+            }
+
+            // data-refresh
+            const smartRefreshSeconds = element.getAttribute('data-smart-refresh') ?? null;
+            const seconds = element.getAttribute('data-refresh') ?? smartRefreshSeconds;
+            if (seconds) {
+                const isSmart = smartRefreshSeconds ?? false;
+                const adUnitPath = e.slot.getAdUnitPath();
+                console.log(new Date().toISOString().substr(11, 8) + ' %crefreshAd%c(' + id + ', ' + isSmart  + ') in ' + seconds + 's' + ' ' + adUnitPath, 'color: orange;', 'color: initial;');
+                // We clear the timeouts in case refresh was initiated via data-refresh
+                // but then also called manually refreshAd(id, boolean) which will create two timers.
+                // Or if the user called refreshAd multiple times we just bullet proof the code
+                // since its adverts and want to avoid violations and be extra careful.
+                window.__refreshAdTimeouts = window.__refreshAdTimeouts || [];
+                clearTimeout(window.__refreshAdTimeouts[id]);
+                window.__refreshAdTimeouts[id] = setTimeout(() => refreshAd(id, isSmart), seconds * 1000);
+            };
+        });
+        
+        // create an array of rendered slots
+        // this event is fired only for ads with content, no empty slots (SlotRenderEndedEvent)
+        // https://developers.google.com/publisher-tag/reference#googletag.events.SlotOnloadEvent
+        googletag.pubads().addEventListener('slotOnload', function(e) {
+            const id = e.slot.getSlotElementId(); 
+            const slot = document.getElementById(id);
+            
+            const parent = slot.closest('.ad-sticky-slide');
+            if (parent) {
+                const height = slot.getBoundingClientRect().height * 1.5;
+                parent.style.width = '100%';
+                parent.style.height = height + 'px';
+                parent.style.backgroundColor = '#fafafa';
+                parent.style.marginBottom = '16px';
+            }
+        });
+
+        googletag.pubads().getSlots().forEach(slot => {
+            const divId = slot.getSlotElementId();
+            const div = document.getElementById(divId);
+            // Prevent collapsing on data-collapse="false"
+            if (div && div.dataset.collapse === 'false') {
+                slot.setCollapseEmptyDiv(false);
+            }
+        });
+        
+        if (__debugAds) {
+            function logEventDetails(name, e) {
+                const id = e.slot.getSlotElementId(); 
+                const slot = document.getElementById(id);
+                const isEagerLoaded = slot.dataset.eager === "true";
+
+                console.log('');
+                console.log('=============== Event Details ' + name + ' ====================');
+                console.log('[AdUnitPath]', e.slot.getAdUnitPath());
+                console.log('[Id]', id);
+                console.log('[EagerLoaded]', isEagerLoaded);
+                console.log('[event]', e);
+            }
+            googletag.pubads().addEventListener('slotRequested', e => {
+                logEventDetails('slotRequested', e);
+            });
+            googletag.pubads().addEventListener('slotRenderEnded', e => {
+                logEventDetails('slotRenderEnded', e);
+            });
+            
+            // debugging is enabled, add bgcolor and padding on all ad divs
+            document.querySelectorAll('[id^="div-gpt-ad-"]').forEach(el => {
+                var hasError = el.classList.contains('advert-error');
+                el.style.backgroundColor = hasError ? '#ecc' : '#ccc';
+                el.title = el.dataset.name || '';
+                el.innerHTML = hasError ? el.dataset.name : '';
+                if (hasError) {
+                    el.style.padding = '10px';
+                }
+                el.style.height = el.dataset.height || '';
+                el.style.width = el.dataset.width || '';
+
+                var renderedClasses = (el.getAttribute('data-rendered-classes') || '').trim();
+                if (renderedClasses) el.classList.add(...renderedClasses.split(/\s+/));
+            });
+        } else {
+            googletag.pubads().collapseEmptyDivs();
+        }
+        
+    });
+    </script>
+            
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <![endif]-->
+    <title>Anthropic to add Claude&#039;s Fable 5 model to Max, Team Premium plans at 50pc of usage limits - Tech - DAWN.COM</title> 
+     <meta name='subject' content='Your window to latest news, analysis and features from Pakistan, South Asia and the world.' /> 
+     <meta name='description' content='Pro and Team Standard users will have access via usage credits, unlike earlier this month when they could utilise their usage limits.' /> 
+     <meta property='fb:app_id' content='1383068068604634' />  
+     <meta property='og:locale' content='en_US' /> 
+     <link rel='canonical' href='https://www.dawn.com/news/2016483' />  
+     <link rel='amphtml' href='https://www.dawn.com/news/amp/2016483' />     
+    <meta name='twitter:card' content='summary_large_image' /> 
+    <meta name='twitter:site' content='@dawn_com' /> 
+    <meta name='twitter:url' content='https://www.dawn.com/news/2016483' />  
+    <meta name='twitter:title' content='Anthropic to add Claude&#039;s Fable 5 model to Max, Team Premium plans at 50pc of usage limits' /> 
+    <meta name='twitter:description' content='Pro and Team Standard users will have access via usage credits, unlike earlier this month when they could utilise their usage limits.' />
+    
+    <meta property='og:site_name' content='Dawn' /> 
+    <meta property='og:url' content='https://www.dawn.com/news/2016483' /> 
+    <meta property='og:type' content='article' /> 
+    <meta property='og:title' content='Anthropic to add Claude&#039;s Fable 5 model to Max, Team Premium plans at 50pc of usage limits' /> 
+    <meta property='og:description' content='Pro and Team Standard users will have access via usage credits, unlike earlier this month when they could utilise their usage limits.' />
+    
+    
+    <meta itemprop='title' content='Anthropic to add Claude&#039;s Fable 5 model to Max, Team Premium plans at 50pc of usage limits' /> 
+    <meta itemprop='description' content='Pro and Team Standard users will have access via usage credits, unlike earlier this month when they could utilise their usage limits.' />
+    
+    <meta name='description' content='Pro and Team Standard users will have access via usage credits, unlike earlier this month when they could utilise their usage limits.' />
+    
+     <meta property='twitter:image' content='https://i.dawn.com/large/2026/07/1817255559775a0.webp' />
+     <meta property='og:image' content='https://i.dawn.com/large/2026/07/1817255559775a0.webp' />
+     <meta itemprop='image' content='https://i.dawn.com/large/2026/07/1817255559775a0.webp' />
+    
+    <meta property='article:section' itemprop='articleSection' content='tech' /> 
+    <meta property='article:publisher' content='https://www.dawn.com' /> 
+    <meta property='article:published_time' content='2026-07-18 17:50:08+05:00' /> 
+    <meta property='article:modified_time' content='2026-07-18 17:50:08+05:00' /> 
+    <meta property='article:tag' content='Artificial Intelligence' />
+    
+    <meta name='keywords' content='Artificial Intelligence' />
+    <meta name='news_keywords' content='Artificial Intelligence' />
+    
+    <meta property='article:author' content='https://www.dawn.com/authors/6005/news-desk' /> 
+    <meta name='author' content='News Desk' /> 
+    
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C521GRS8DF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.googletag = window.googletag || {cmd: []};
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C521GRS8DF', {
+           send_page_view: false
+       });
+    </script>
+    <script data-infinite='true'>
+        // 'Subcategory' is actually Primary Subcategory
+        gtag('event', 'page_view', {
+            "Category": "Tech","Categories": "Tech,Home","content_group": "tech","Author": "News Desk-6005","Authors": ["News Desk-6005"],"Tag": ["Artificial Intelligence"],"Id": "news/2016483","PublishedDate": 1784379008,"UpdatedDate": 1784379008,"ArticleAge": 40840,"ArticleAgeRanges": "24 hours","ArticleType": "Default","ArticleWordCount": 378,"ArticleWordCountRanges": "400 words",
+            "non_interaction": true
+        });
+    </script>
+    
+    <!-- - - - - start:ga-click-events - - - - -->
+    <script type="text/javascript">
+    function sendInteractiveEvent(category, label) {
+        gtag("event", "custom_click", {                
+            'event_category': category,
+            'event_action': "click",
+            'event_label': label
+        });
+    }
+
+    var eventItems = [{"selector":".story__byline a","parent":"author"},{"selector":".story__content a","parent":"links"},{"selector":".js-social-whatsapp","parent":"whatsapp"},{"selector":".js-social-twitter","parent":"twitter"},{"selector":".js-social-fb","parent":"facebook"},{"selector":".js-social-comment","parent":"comment"},{"selector":".js-social-print","parent":"print"},{"selector":".js-social-email","parent":"email"},{"selector":"tts","parent":"audio"},{"selector":".navstory--prev a","parent":"prev"},{"selector":".navstory--next a","parent":"next"},{"selector":".google-preferred a","parent":"google-preferred"}] || [];
+    document.querySelector("html").addEventListener("click", function(e) {
+        if (window.Element && Element.prototype.closest) {
+            var target = e.target;
+            var eventLabel =
+                typeof target.href !== "undefined" &&
+                !target.href.startsWith("javascript:")
+                    ? target.href
+                    : document.location.href;
+
+            for (i = 0; i < eventItems.length; i++) {
+                if (target.matches(eventItems[i].selector + ', ' + eventItems[i].selector + ' *')) {
+                    sendInteractiveEvent(eventItems[i].parent, eventLabel);
+                    break;
+                }
+            }
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        for (i = 0; i < eventItems.length; i++) {
+            if (eventItems[i].parent == 'audio') {
+                const audioPlayer = document.getElementById(eventItems[i].selector);
+                if (audioPlayer) {
+                    audioPlayer.addEventListener("play", (e) => sendInteractiveEvent('audio', e.type), false);
+                    audioPlayer.addEventListener("pause", (e) => {
+                        // Only send if it wasn't the 'ended' event that caused the pause
+                        if (!audioPlayer.ended) {
+                            sendInteractiveEvent('audio', 'pause');
+                        }
+                    });
+                    audioPlayer.addEventListener("ended", (e) => sendInteractiveEvent('audio', e.type), false);
+                }
+            }
+        }
+    });
+    </script>
+    <!-- - - - - end:ga-click-events - - - - -->
+<script type="application/ld+json">
+    {"@context":"http://schema.org","@graph":[{"@type":"Organization","@id":"https://www.dawn.com/#organization","logo":"https://www.dawn.com/_img/logo-icon-xxlarge-trans.png","description":"Pro and Team Standard users will have access via usage credits, unlike earlier this month when they could utilise their usage limits.","name":"Dawn","url":"https://www.dawn.com","sameAs":["https://www.facebook.com/dawndotcom/","https://twitter.com/dawn_com","https://www.instagram.com/dawn.today/"],"potentialAction":{"@type":"SearchAction","target":"https://www.dawn.com/search?cx=016184311056644083324:a1i8yd7zymy&ie=UTF-8&q={search_term_string}","query-input":"required name=search_term_string"},"address":{"@type":"PostalAddress","addressLocality":"Karachi","addressRegion":"Sindh","addressCountry":"PK"}}]}
+</script>
+<script type="application/ld+json">
+    {"@context": "http://schema.org", "@type": "BreadcrumbList","itemListElement": [{"@type":"ListItem","position":1,"item":{"@id":"https://www.dawn.com/tech","name":"Tech"}}]}
+</script>    <script type="application/ld+json">
+        {"@context":"http://schema.org","@type":"NewsArticle","url":"https://www.dawn.com","publisher":{"@context":"http://schema.org","@type":"Organization","name":"Dawn","url":"https://www.dawn.com","sameAs":["https://www.facebook.com/dawndotcom/","https://twitter.com/dawn_com","https://www.instagram.com/dawn.today/"],"logo":{"@context":"http://schema.org","@type":"ImageObject","url":"https://www.dawn.com/_img/logo-icon-xxlarge-trans.png"}},"copyrightYear":"2026","image":[{"@context":"http://schema.org","@type":"ImageObject","url":"https://i.dawn.com/large/2026/07/1817255559775a0.webp","width":"1800","height":"1080","caption":"Claude logo in this illustration created on June 5, 2026. — Reuters/File"}],"mainEntityOfPage":"https://www.dawn.com/news/2016483","headline":"Anthropic to add Claude&#039;s Fable 5 model to Max, Team Premium plans at 50pc of usage limits","description":"Pro and Team Standard users will have access via usage credits, unlike earlier this month when they could utilise their usage limits.","datePublished":"2026-07-18T17:50:08+05:00","dateModified":"2026-07-18T17:50:08+05:00","author":[{"@context":"http://schema.org","@type":"Person","name":"News Desk","url":"https://www.dawn.com/authors/6005/news-desk"}]}
+    </script>        <!-- - - - - start:counters - - - - -->
+            <script type='text/javascript' data-infinite='true'>
+                function runMyCounter() {
+                    Counter.count([{"news":2016483},{"parent":"Tech"},{"parent":"Home"},{"tag":"artificial-intelligence"},{"author":6005},{"editor":9996}]);
+                }
+
+                // Check the document's state
+                if (document.readyState === "interactive" || document.readyState === "complete") {
+                    // If already loaded, run it now
+                    runMyCounter();
+                } else {
+                    // Otherwise, wait for the event
+                    document.addEventListener("DOMContentLoaded", runMyCounter);
+                }
+            </script>
+        <!-- - - - - end:counters - - - - -->    
+    <style type='text/css'>
+    /* CRITICALCSS */
+    @charset "UTF-8";@font-face{font-family:NafeesNaksh;font-style:normal;font-weight:400;unicode-range:U+06??,U+0750-077f,U+fb50-fdff,U+fe70-feff;src:url(https://cdn.jsdelivr.net/npm/urdu-web-fonts@1.0.3/Nafees-Web-Naskh/fonts/Nafees-Web-Naskh.woff) format("woff")}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTXtHA_A.ttf) format('truetype')}@font-face{font-family:'Playfair Display';font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_k-UXtHA_A.ttf) format('truetype')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtY.ttf) format('truetype')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiunDXbtY.ttf) format('truetype')}@font-face{font-family:'Playfair Display';font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfsunDXbtY.ttf) format('truetype')}@media (min-width:767px){&.media--right{padding-left:0;margin-left:.5rem}&.media--left{padding-right:0;margin-right:.5rem}}.left-0{left:0}.-ml-56{margin-left:-14rem}.-mr-56{margin-right:-14rem}.h-auto{height:auto}.w-52{width:13rem}.rounded-l-md{border-bottom-left-radius:.375rem}.rounded-l-md{border-top-left-radius:.375rem}.rounded-t-md{border-top-left-radius:.375rem;border-top-right-radius:.375rem}.rounded-bl-md{border-bottom-left-radius:.375rem}.rounded-br-md{border-bottom-right-radius:.375rem}.rounded-tl-md{border-top-left-radius:.375rem}.rounded-tr-md{border-top-right-radius:.375rem}.bg-gray-200{background-color:rgba(var(--gray-200-rgb,229 231 235)/var(--tw-bg-opacity,1))}.bg-gray-400{background-color:rgba(var(--gray-400-rgb,159 166 178)/var(--tw-bg-opacity,1))}.p-2\.5{padding:.625rem}.px-1\.25{padding-left:.3125rem;padding-right:.3125rem}.pt-0{padding-top:0}.opacity-0{opacity:0}.opacity-50{opacity:.5}.story__content p{line-height:1.7}.story__content p a{text-decoration:underline;color:#901f1f}.single-story .story__content>p:first-of-type{font-weight:700}.single-story .story__content p{margin:0 auto 1rem}.single-story .story__content a:not(.story__link):not(.story__byline__link):not(.content-item){text-decoration:underline;color:#901f1f}.navstory__arrow{z-index:-1}audio,img,svg{display:block;vertical-align:middle}.order-1{order:1}.float-right{float:right}.mx-3{margin-left:.75rem;margin-right:.75rem}.me-2{margin-inline-end:.5rem}.ml-2{margin-left:.5rem}.mr-3{margin-right:.75rem}.h-5{height:1.25rem}.w-60{width:15rem}.gap-4{gap:1rem}.self-center{align-self:center}.rounded-none{border-radius:0}.border-red-500{border-color:rgba(var(--red-500-rgb,154 19 19)/var(--tw-bg-opacity,1))}.fill-current{fill:currentColor}.p-2{padding:.5rem}.pr-2{padding-right:.5rem}.text-red-400{color:rgba(var(--red-400-rgb,172 40 37)/var(--tw-bg-opacity,1))}@media (min-width:720px){.sm\:float-right{float:right}.sm\:float-left{float:left}.sm\:float-none{float:none}.sm\:my-8{margin-top:2rem;margin-bottom:2rem}.sm\:ml-0{margin-left:0}.sm\:ml-3{margin-left:.75rem}.sm\:ml-4{margin-left:1rem}.sm\:mt-3{margin-top:.75rem}.sm\:mt-4{margin-top:1rem}.sm\:block{display:block}.sm\:inline-block{display:inline-block}.sm\:inline{display:inline}.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:w-1\/2{width:50%}.sm\:w-1\/4{width:25%}.sm\:w-2\/3{width:66.666667%}.sm\:w-80{width:20rem}.sm\:w-auto{width:auto}.sm\:w-full{width:100%}.sm\:max-w-lg{max-width:32rem}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:items-start{align-items:flex-start}.sm\:p-0{padding:0}.sm\:p-6{padding:1.5rem}.sm\:px-0{padding-left:0;padding-right:0}.sm\:px-1{padding-left:.25rem;padding-right:.25rem}.sm\:px-6\.5{padding-left:1.625rem;padding-right:1.625rem}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.sm\:align-middle{vertical-align:middle}.sm\:text-3{font-size:.75rem}.sm\:text-sm{font-size:var(--font-sm,.875rem);line-height:var(--font-sm-lineheight,1.25rem)}}.article .media__caption{background:rgba(0,0,0,0);color:inherit}.template--default .media__caption{font-family:arial;color:#9fa6b2;font-size:14px;line-height:16px}@media (max-width:720px){.fallbacktrans{display:none}}@media (min-width:720px){.sm\:ml-3{margin-left:.75rem}.sm\:ml-4{margin-left:1rem}.sm\:mt-3{margin-top:.75rem}.sm\:mt-4{margin-top:1rem}.sm\:block{display:block}.sm\:inline-block{display:inline-block}.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:w-1\/2{width:50%}.sm\:w-auto{width:auto}.sm\:w-full{width:100%}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:items-start{align-items:flex-start}.sm\:px-0{padding-left:0;padding-right:0}.sm\:px-1{padding-left:.25rem;padding-right:.25rem}.sm\:px-6\.5{padding-left:1.625rem;padding-right:1.625rem}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.sm\:text-3{font-size:.75rem}}@media (min-width:960px){.md\:w-full{width:100%}.md\:ad-250{min-height:270px}}.slideshow{position:relative;overflow:hidden;white-space:nowrap}.slideshow__slide--horizontal{position:relative;display:inline-flex;justify-content:center;align-items:center;white-space:normal;vertical-align:top}.slideshow__slide--horizontal article{width:100%}.-mt-2{margin-top:-.5rem}.mt-10{margin-top:2.5rem}.pb-1{padding-bottom:.25rem}.pb-2{padding-bottom:.5rem}.text-3\.25{font-size:.8125rem}.leading-normal{line-height:1.5}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:.025em}.text-gray-700{color:rgba(var(--gray-700-rgb,55 65 81)/var(--tw-bg-opacity,1))}.adsonly aside section:last-child{margin-bottom:0}@media (max-width:720px){.box .media--left{float:none;margin-right:0}.media--expand-25{margin-left:0;height:100%;width:100%}}@media (min-width:720px){.sm\:float-right{float:right}.sm\:float-left{float:left}.sm\:my-8{margin-top:2rem;margin-bottom:2rem}.sm\:ml-0{margin-left:0}.sm\:ml-3{margin-left:.75rem}.sm\:ml-4{margin-left:1rem}.sm\:mt-3{margin-top:.75rem}.sm\:mt-4{margin-top:1rem}.sm\:block{display:block}.sm\:inline-block{display:inline-block}.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:w-1\/2{width:50%}.sm\:w-1\/4{width:25%}.sm\:w-auto{width:auto}.sm\:w-full{width:100%}.sm\:max-w-lg{max-width:32rem}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:items-start{align-items:flex-start}.sm\:p-0{padding:0}.sm\:p-6{padding:1.5rem}.sm\:px-0{padding-left:0;padding-right:0}.sm\:px-1{padding-left:.25rem;padding-right:.25rem}.sm\:px-6\.5{padding-left:1.625rem;padding-right:1.625rem}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.sm\:align-middle{vertical-align:middle}.sm\:text-3{font-size:.75rem}.sm\:text-sm{font-size:var(--font-sm,.875rem);line-height:var(--font-sm-lineheight,1.25rem)}.media--left{padding-right:.5rem}.media--right{padding-left:.5rem}}@media (min-width:960px){.md\:w-full{width:100%}}.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow)}@media (min-width:720px){.sm\:ml-3{margin-left:.75rem}.sm\:ml-4{margin-left:1rem}.sm\:mt-3{margin-top:.75rem}.sm\:mt-4{margin-top:1rem}.sm\:block{display:block}.sm\:inline-block{display:inline-block}.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:w-1\/2{width:50%}.sm\:w-auto{width:auto}.sm\:w-full{width:100%}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:items-start{align-items:flex-start}.sm\:px-0{padding-left:0;padding-right:0}.sm\:px-1{padding-left:.25rem;padding-right:.25rem}.sm\:px-6\.5{padding-left:1.625rem;padding-right:1.625rem}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.container{max-width:720px}}*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(147,197,253,0.5);--tw-ring-offset-shadow:0 0 transparent;--tw-ring-shadow:0 0 transparent;--tw-shadow:0 0 transparent;--tw-shadow-colored:0 0 transparent;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(147,197,253,0.5);--tw-ring-offset-shadow:0 0 transparent;--tw-ring-shadow:0 0 transparent;--tw-shadow:0 0 transparent;--tw-shadow-colored:0 0 transparent;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }*,:after,:before{box-sizing:border-box;border:0 solid rgba(var(--gray-200-rgb,229 231 235)/var(--tw-bg-opacity,1))}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:NafeesNaksh,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal}body{margin:0;line-height:inherit}h2,h3{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}button,input{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button{text-transform:none}button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}figure,h2,h3,p,pre{margin:0}input::-moz-placeholder{opacity:1;color:rgba(var(--gray-400-rgb,159 166 178)/var(--tw-bg-opacity,1))}input:-ms-input-placeholder{opacity:1;color:rgba(var(--gray-400-rgb,159 166 178)/var(--tw-bg-opacity,1))}img,svg{display:block;vertical-align:middle}img{max-width:100%;height:auto}[type=text]{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#fff;border-color:rgba(var(--gray-500-rgb,107 114 128)/var(--tw-bg-opacity,1));border-width:1px;border-radius:0;padding:.5rem .75rem;font-size:1rem;line-height:1.5rem;--tw-shadow:0 0 transparent}input::-moz-placeholder{color:rgba(var(--gray-500-rgb,107 114 128)/var(--tw-bg-opacity,1));opacity:1}input:-ms-input-placeholder{color:rgba(var(--gray-500-rgb,107 114 128)/var(--tw-bg-opacity,1));opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-top:0;padding-bottom:0}.container{width:100%}@media (min-width:960px){.container{max-width:960px}}@media (min-width:1280px){.container{max-width:1280px}}.container{margin-left:auto;margin-right:auto;padding-left:.5rem;padding-right:.5rem}@media (min-width:960px){.container{margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}}.btn{display:inline-flex;align-items:center;border-color:transparent;padding:.125rem .5rem;font-family:NafeesNaksh,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-size:var(--font-xs,.75rem);line-height:var(--font-xs-lineheight,1rem);font-weight:500;text-transform:uppercase;line-height:1rem}figure.media{position:relative;clear:both;max-width:100%;overflow:hidden}.media__item{position:relative;display:block;text-align:center;padding:0 0 60%}.media__item iframe,.media__item img{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;max-height:100%;max-width:100%}.media__item iframe{border-style:none}.media__item__overlay{position:absolute;background-color:transparent;top:10%;left:5%;z-index:9999999;width:90%;height:70%}@media (max-width:720px){.media__item__overlay{display:hidden}}.media__item--relative iframe{position:relative;max-height:none}.media__item--twitter iframe{max-height:none}.media__item--twitter .twitter-tweet-rendered{margin-left:auto;margin-right:auto}.media__item--vimeo{padding-bottom:56.5%}.media__item--soundcloud{padding-bottom:24%}.media__item--youtube{padding-bottom:56.25%}.media__item--issuu iframe{height:625px}.media__item--scribe iframe{width:1px;min-width:100%}.media__item--vignette>:after{position:absolute;top:0;left:0;height:100%;width:100%;background-color:var(--black,#000)}.media__item--vignette>:after{opacity:.35;content:""}.media__item--vignette-light>:after{position:absolute;top:0;left:0;height:100%;width:100%;background-color:var(--black,#000)}.media__item--vignette-light>:after{opacity:.1;content:""}.media__item--transparent{background-color:transparent}.media__item--40{padding-bottom:40%}.media__item--50{padding-bottom:50%}.media__item--60{padding-bottom:60%}.media__item--80{padding-bottom:80%}.media__item--100{padding-bottom:100%}.media__item--120{padding-bottom:120%}.media__item--140{padding-bottom:140%}.media__title{display:block;font-weight:700;text-align:initial}.media__caption{margin-bottom:0;overflow:hidden;vertical-align:top;line-height:1.5rem;padding:.45em}.media__caption em,.media__caption strong{display:contents}.media__caption--black{background-color:var(--black,#000);color:var(--white,#fff);opacity:.85}.media__caption--white{background-color:var(--white,#fff);color:var(--black,#000)}.media__caption--overlay{position:absolute;bottom:0;left:0;width:100%;overflow-y:auto;overflow-x:hidden}.media__caption--overlay{max-height:35%;opacity:.85}.media__caption--reveal{opacity:0;backface-visibility:hidden}.media__icon-video:after{position:absolute;top:50%;left:50%;margin-top:-20px;margin-left:-20px;content:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAD3klEQVRYw72YS0hbURCGlQiiiZWAuPAt2gR8oMEn7SIbg62rVpSWPrJQcKGgS21FF9kIrptFNoW61j52fbiRNrR1Iy221pXGm5vEpGKMfRhtTWdkLpyGaO45uTcHfgg358x8zLl3zpzJaWtryxGUGXQFNAF6DHoN8pLe0DP87yrNFfLDuyAX1At6AoqAEir1ndb0kg1dAG+DPjNOf4HCoEAahWmusg5t3NES8DLoLeMgBJJVgCVLprWKnXcgS6aAdxmDuyC/AFiy/Emg90QBH5CBI5CkAViyJLKdIF9cgNO0MKoTHAsZJV/TagGHaMGBznAs5AH5HEoHaKOJ8SzBsZBx8m27CPADTUoL19HREWhqapIbGxtl/K0RJPp+fx7gBE1QZdBmswXsdnuorq7OX15eLnV3dwc1imaCWP4DxOy+QX+qSiUINTY2tre2thbHSJpMJh9Gsr29PdMUlCCWXBbwPk/0UGVlZdLg4GA4ASMej5/29/eH8/LytgE20NnZqUUUnSzgU3qo+oTACA4MDJwBKmNubi6an5/vq6qqkrq6ukS3XCaWZwpgLeWiGI+hVIA4lpeXf1dWVkrFxcU7GEnBLY8RUy0CXmOOsowBcYRCoT89PT0h3PLW1taAwFe+S0zXEdDFu73pAJUxMzOzj5D4pcOWi2yzCwGXeD8QtYA4FhcXf5aWlkolJSW87yUyLbHJWRdAHJubmyf4LhYWFvKkorOkjYCfQCd6AirD5XJFa2pq/JjkVfg4Bn3JKqDb7Y5VVFRI+OGo8IFn81cEXAWd6gkYiUT+9vX17RqNRh+u5djiVQR8ruc76PV6j+rr6/1FRUU7nEchMr1AwHm90ozH4znEMxrncn7BSpqZR8AbzGVIE0A8m51OZ8RgMGw3NDTInDkwwNxZbiKgla6F+1oArq+vH+NHUFBQ4MPtFDzq9onJqhQLL7UoFhYWFn6YzeYdTMwYNUE4ZXtfsdXMCE8tqAAq5RaO8fHxPTzWLBaLyJamqglHWEAjaIvSjay2HhwdHd0LBoNnhQGWWZiAMyz/ZWLYBpmSS/5Znii2tLQEHA5HqLm5WYZzNpPSKlX0Zs+7NG2ovTQhEF6YrFarrEEFzV6avl10q3PQpJhGbQ6eyMXId2+6i7vS8ohkCdLPtPIeqm19uLMEycK5eZtHbp1bIGzL45Fo+22SaZPJgn3BVKlEZuxOZtrAtFOOVFpxoqDKOqXltkW2NWkBG0BT1M5NUDLFa2EwDaxMc6K0JkE2psim5k30S6Bh0ApV4Wqb6Ce0Zphs6NblZ1UNugXyULGBAB9JK/TMQ3OqRf38A4x7LEl+q7UJAAAAAElFTkSuQmCC")}.media--left{float:left;clear:left;margin-right:0}.media--right{float:right;clear:right;margin-left:0}@media (min-width:720px){.media--left{padding-right:.5rem}.media--right{padding-left:.5rem}}.media--left .media__item--scribe{margin-right:.25rem}.media--right .media__item--scribe{margin-left:.25rem}.media--center{clear:both;margin-right:auto;margin-left:auto}.media__caption--overlay:hover{opacity:.5}.media--focus{height:auto;overflow:hidden}.media--focus .media__item{direction:ltr}.media--focus img{max-width:none;max-height:none;margin:auto;left:50%;width:auto;height:100%;transform:translateX(-50%)}.media--uneven .media__item:not(.media__item--youtube):not(.media__item--vimeo):not(.media__item--soundcloud):not(.media__item--scribe){padding:0}.media--uneven img{position:relative;width:auto;max-width:100%}.media--stretch img{width:100%}.media--fill img{height:100%;width:100%}.media--expand-25{width:125%;height:125%;margin-left:-12.5%}.media--expand-25 img{width:100%}.media--lastrow,.media--lastrow img{margin-bottom:0}.media:hover .media__caption--reveal{opacity:1}.media__item--zoomable:before{position:absolute;z-index:10;display:block;background-color:var(--white,#fff);opacity:.7;bottom:5px;left:10px;padding:3px;content:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTg3MDQ1REM1QkEyMTFFNUI4MzBBNTU2NkZBMjVEQTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTg3MDQ1REQ1QkEyMTFFNUI4MzBBNTU2NkZBMjVEQTkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1ODcwNDVEQTVCQTIxMUU1QjgzMEE1NTY2RkEyNURBOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1ODcwNDVEQjVCQTIxMUU1QjgzMEE1NTY2RkEyNURBOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmINqTQAAAGWSURBVHjaYvz//z8DNQELiGBkZMSriBGiwBZouQWQ/g3k7geyL6CrAzuOCBfKAw1YBMRfgfg/FD8B4j6gHDepBoYgGfIXiHeBXIck9hWoRo9YA3VgGoHseLQg4ATiaiR5foIGAhXegSp2RxLLBmJ/JGVlUENXEDLQGKrwKJJhDFCx78iRCGS/glocAjKLCUkxMvaEql+C5LKtsJQBZK8BYj8ofwNUjQ082WABbFD6C9Q1eUDb1WAGAtnBQPoHEG8C4s/ISZAJ5nc0fA+qyBTKVweyJaBiIC+LA8VioHwzKP0MEdWYgAOo6RMovNAi6hEQ70ASkoCG63MgW5lQLC+EKt6HHs5QvhAQP4BGiB/eWAYqygHiX0gJ+C0Q1wCxARCbg3IJktxUvAkbqCAPSTEIn0bjI+NS9KzHCCYQ3ogDUguR1OwEynsAxaWAbFAkKIMKByC+BVIHlPuIMy8DNUUi287ExLQDySJsYciAr7RJRTNsKVowkGygKVDBZahhC4CYgVIDQcAEqKgBaBgPJQYyUrsKAAgwANTH44Zbo+IGAAAAAElFTkSuQmCC");border-radius:5px}@media (max-width:720px){.media--expand-25{margin-left:0;height:100%;width:100%}}img:-moz-loading{visibility:hidden}.media--punchout{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin-bottom:20px;max-width:100vw;padding:0;float:none}.media--punchout img{width:100%;height:auto;display:block;-o-object-fit:cover;object-fit:cover;max-width:100%}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.bottom-0{bottom:0}.right-0{right:0}.top-9{top:2.25rem}.z-10{z-index:10}.z-50{z-index:50}.float-left{float:left}.float-none{float:none}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:.5rem;margin-bottom:.5rem}.my-3{margin-top:.75rem;margin-bottom:.75rem}.my-4{margin-top:1rem;margin-bottom:1rem}.mb-0{margin-bottom:0}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:.25rem}.ml-10{margin-left:2.5rem}.ml-4{margin-left:1rem}.mr-0\.5{margin-right:.125rem}.mr-1{margin-right:.25rem}.mr-2{margin-right:.5rem}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.flow-root{display:flow-root}.hidden{display:none}.h-16{height:4rem}.h-4{height:1rem}.h-6{height:1.5rem}.h-full{height:100%}.w-1\/4{width:25%}.w-16{width:4rem}.w-20{width:5rem}.w-30{width:7.5rem}.w-4{width:1rem}.w-40{width:10rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-80{width:20rem}.w-full{width:100%}.max-w-screen-md{max-width:960px}.flex-shrink-0{flex-shrink:0}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-row{flex-direction:row}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-start{justify-content:flex-start}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-evenly{justify-content:space-evenly}.overflow-hidden{overflow:hidden}.overflow-visible{overflow:visible}.overflow-y-auto{overflow-y:auto}.overflow-x-scroll{overflow-x:scroll}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-0{border-width:0}.border-b{border-bottom-width:1px}.border-solid{border-style:solid}.border-black{border-color:var(--black,#000)}.border-gray-200{border-color:rgba(var(--gray-200-rgb,229 231 235)/var(--tw-bg-opacity,1))}.border-gray-300{border-color:rgba(var(--gray-300-rgb,210 214 220)/var(--tw-bg-opacity,1))}.border-transparent{border-color:transparent}.bg-black{background-color:var(--black,#000)}.bg-gray-50{background-color:rgba(var(--gray-50-rgb,249 250 251)/var(--tw-bg-opacity,1))}.bg-gray-500{background-color:rgba(var(--gray-500-rgb,107 114 128)/var(--tw-bg-opacity,1))}.bg-gray-600{background-color:rgba(var(--gray-600-rgb,75 85 99)/var(--tw-bg-opacity,1))}.bg-white{background-color:var(--white,#fff)}.bg-opacity-75{--tw-bg-opacity:0.75}.p-0{padding:0}.px-0{padding-left:0;padding-right:0}.px-1{padding-left:.25rem;padding-right:.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.25{padding-top:.3125rem;padding-bottom:.3125rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.pb-20{padding-bottom:5rem}.pb-3{padding-bottom:.75rem}.pb-4{padding-bottom:1rem}.pl-1{padding-left:.25rem}.pl-4{padding-left:1rem}.pt-1{padding-top:.25rem}.pt-4{padding-top:1rem}.pt-5{padding-top:1.25rem}.text-left{text-align:left}.text-center{text-align:center}.align-top{vertical-align:top}.align-middle{vertical-align:middle}.align-bottom{vertical-align:bottom}.font-arial{font-family:Arial}.font-georgia{font-family:Georgia,ui-serif,Cambria,Times New Roman,Times,serif}.font-playfair-display{font-family:Playfair Display,ui-serif,Georgia,Cambria,Times New Roman,Times,serif}.font-sans{font-family:NafeesNaksh,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.text-2\.5{font-size:.625rem}.text-2\.75{font-size:.6875rem}.text-3{font-size:.75rem}.text-3\.5{font-size:.875rem}.text-4{font-size:1rem}.text-5{font-size:1.25rem}.text-7\.5{font-size:1.875rem}.text-base{line-height:var(--font-base-lineheight,1.5rem)}.text-base{font-size:var(--font-base,1rem)}.text-lg{line-height:var(--font-lg-lineheight,1.75rem)}.text-lg{font-size:var(--font-lg,1.125rem)}.text-sm{line-height:var(--font-sm-lineheight,1.25rem)}.text-sm{font-size:var(--font-sm,.875rem)}.font-bold{font-weight:700}.font-extralight{font-weight:200}.font-medium{font-weight:500}.font-normal{font-weight:400}.uppercase{text-transform:uppercase}.leading-4{line-height:1rem}.leading-5{line-height:1.25rem}.leading-6{line-height:1.5rem}.leading-none{line-height:1}.text-black{color:var(--black,#000)}.text-gray-400{color:rgba(var(--gray-400-rgb,159 166 178)/var(--tw-bg-opacity,1))}.text-gray-500{color:rgba(var(--gray-500-rgb,107 114 128)/var(--tw-bg-opacity,1))}.text-gray-900{color:rgba(var(--gray-900-rgb,22 30 46)/var(--tw-bg-opacity,1))}.text-navy-800{color:rgba(var(--navy-800-rgb,26 39 68)/var(--tw-bg-opacity,1))}.text-red-300{color:rgba(var(--red-300-rgb,213 53 45)/var(--tw-bg-opacity,1))}.text-white{color:var(--white,#fff)}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.placeholder-gray-400::-moz-placeholder{color:rgba(var(--gray-400-rgb,159 166 178)/var(--tw-bg-opacity,1))}.placeholder-gray-400:-ms-input-placeholder{color:rgba(var(--gray-400-rgb,159 166 178)/var(--tw-bg-opacity,1))}.shadow-2xl{box-shadow:var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-sm,.shadow-xl{box-shadow:var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,0.1),0 8px 10px -6px rgba(0,0,0,0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color)}.outline-none{outline:transparent solid 2px;outline-offset:2px}@media (min-width:720px){.sm\:float-right{float:right}.sm\:float-left{float:left}.sm\:my-8{margin-top:2rem;margin-bottom:2rem}.sm\:ml-0{margin-left:0}.sm\:ml-3{margin-left:.75rem}.sm\:ml-4{margin-left:1rem}.sm\:mt-3{margin-top:.75rem}.sm\:mt-4{margin-top:1rem}.sm\:block{display:block}.sm\:inline-block{display:inline-block}.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:w-1\/2{width:50%}.sm\:w-auto{width:auto}.sm\:w-full{width:100%}.sm\:max-w-lg{max-width:32rem}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:items-start{align-items:flex-start}.sm\:p-0{padding:0}.sm\:p-6{padding:1.5rem}.sm\:px-0{padding-left:0;padding-right:0}.sm\:px-1{padding-left:.25rem;padding-right:.25rem}.sm\:px-6\.5{padding-left:1.625rem;padding-right:1.625rem}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.sm\:align-middle{vertical-align:middle}.sm\:text-sm{font-size:var(--font-sm,.875rem);line-height:var(--font-sm-lineheight,1.25rem)}}@media (min-width:1280px){.xl\:block{display:block}.xl\:pr-4{padding-right:1rem}}nav a[href*=breathepakistan]{color:#789b58}.ad-100{min-height:120px}.ad-250{min-height:270px}@media (min-width:960px){.md\:ad-250{min-height:270px}}.ad-rendered{padding-top:15px}.ad-rendered:not(.sticky){position:relative}.ad-rendered:not(.pixelad):before{content:"Advertisement";display:block;position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:10px;font-family:Arial;color:#888}.border-t-3{border-top-width:3px}.social img{max-width:initial;height:initial}.template--default .template__header .story__time{color:#000}.divider::after{content:" |"}.divider:after{margin:0 5px;font-family:inherit}.adsonly aside section{margin-bottom:550px}.js-nav-items ::-webkit-scrollbar{display:none}body.native .native-hidden{display:none!important}
+    </style>
+    <link as='style' rel='preload'  href='https://www.dawn.com/_css/newskit.20260704180404.css' media='all' onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel='stylesheet'  href='https://www.dawn.com/_css/newskit.20260704180404.css' media='all'></noscript>
+
+    <link as='style' rel='preload'  href='https://www.dawn.com/_css/shame.20260712131807.css' media='all' onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel='stylesheet'  href='https://www.dawn.com/_css/shame.20260712131807.css' media='all'></noscript>
+
+    <link as='style' rel='preload'  href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900&amp;display=swap' media='all' onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel='stylesheet'  href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900&amp;display=swap' media='all'></noscript>
+
+    <link as='style' rel='preload'  href='https://www.dawn.com/_css/print.20260525122704.css' media='print' onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel='stylesheet'  href='https://www.dawn.com/_css/print.20260525122704.css' media='print'></noscript>
+
+    <link as='style' rel='preload'  href='https://www.dawn.com/_css/merriweather.20260430125814.css' media='all' onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel='stylesheet'  href='https://www.dawn.com/_css/merriweather.20260430125814.css' media='all'></noscript>
+
+    <script  src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' defer='true'></script>
+    <script  src='https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js' defer='true'></script>
+    <script  src='https://www.dawn.com/_js/ad-sticky-close.20260629142748.js' defer='true'></script>
+    <script  src='https://challenges.cloudflare.com/turnstile/v0/api.js' defer='true'></script>
+    <script  src='https://www.dawn.com/_js/stories.20260629142748.js' defer='true'></script>
+    <script  src='https://www.dawn.com/_js/all.20260629142748.js' defer='true'></script>
+    
+    <link rel='dns-prefetch  preconnect' href='//i.dawn.com'>
+    <link rel='dns-prefetch  preconnect' href='//fonts.gstatic.com' crossorigin>
+    <link rel='dns-prefetch  preconnect' href='//fonts.googleapis.com'>
+    <link rel='dns-prefetch  preconnect' href='//cdnjs.cloudflare.com'>
+    <link rel='dns-prefetch  preconnect' href='//cdnjs.cloudflare.com'>
+    <link rel='dns-prefetch  preconnect' href='//challenges.cloudflare.com'></head>
+
+<body class="single-story  article  template--default  tech    tech-  sr-8  adsonly antialiased">
+
+    <header class="native-hidden ">
+        
+<div class="w-full bg-black nav--network">
+    <div class="px-2  hidden  sm:block">
+        <nav class="text-white flex flex-row flex-wrap text-2.5 justify-center text-center">
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 "   href="https://epaper.dawn.com">EPAPER</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 "   href="https://www.dawnnews.tv/watch-live">LIVE TV</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 "   href="https://www.dawnnews.tv">DAWNNEWS URDU</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 "   href="https://images.dawn.com">Images</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 "   href="https://herald.dawn.com">Herald</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 "   href="https://aurora.dawn.com">Aurora</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 " rel="noreferrer" target="blank" href="https://cityfm89.com">CityFM89</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 " rel="noreferrer" target="blank" href="https://www.dawn.com/advertise">Advertise</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 " rel="noreferrer" target="blank" href="https://www.dawn.com/events">Events</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 "   href="https://www.dawn.com/events/supplements">Supplements</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 " rel="noreferrer" target="blank" href="https://www.dawn.com/jobs">Careers</a>
+                            <a class="text-gray-400 uppercase py-1.25 px-2.5 " rel="noreferrer" target="blank" href="https://obituary.dawn.com">Obituaries</a>
+                    </nav>
+    </div>
+</div>
+<div class="">
+  <div class="container px-2 sm:px-6">
+
+    <div class='flex flex-col sm:flex-row'>
+      <div class='w-1/4'>
+      </div>
+
+      <div class='sm:w-1/2 w-full'>
+        <div class="flex flex-col items-center mt-4 mb-3">
+                      <a href='https://www.dawn.com/' title="Dawn" class='logo mb-2'>
+                <img class="" src="https://www.dawn.com/_img/logo.png" alt="Dawn Logo" style='width: 176px; height: 42px;' width="176" height="42" fetchpriority="high">
+                <span class="hidden">Dawn</span>
+            </a>          
+    <h2  id='span-class-font-bold-text-black-e-paper-span-july-19-2026'  dir='auto'  class='badge inline-flex    text-2.5 font-arial uppercase text-gray-500    align-middle'><a title="<span class='font-bold text-black'>E-Paper</span> | July 19, 2026" href='https://epaper.dawn.com' class='  '><span class='font-bold text-black'>E-Paper</span> | July 19, 2026</a></h2>
+        </div>
+      </div>
+
+      <div class='w-1/4'>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container px-2 sm:px-0" id="mainHeader">
+  <div class="flow-root container mx-auto mx-auto px-0 sm:px-6.5 relative">
+    <!-- nav container -->
+<nav class="native-hidden js-nav relative font-sans container p-0 border-t-3 border-black">
+    <div class="js-nav-container border-b border-gray-200">
+        <div class="nav-alignment flex justify-between items-center">
+
+            <!-- nav items -->
+            <div class="js-nav-items flex overflow-hidden px-0 w-full mr-1">
+                <div class="flex flex-row overflow-x-scroll w-full justify-start">
+                      <a title='Home' href='//www.dawn.com' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Home
+  </a>  <a title='Latest' href='/latest-news' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Latest
+  </a>  <a title='FIFA World Cup '26' href='https://www.dawn.com/sport/fifa-world-cup' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    text-red-300'>
+     FIFA World Cup '26
+  </a>  <a title='Violations Tracker' href='https://www.dawn.com/news/1984584/tracking-ihl-violations-in-the-us-israel-war-on-iran' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    text-red-300'>
+     Violations Tracker
+  </a>  <a title='Pakistan' href='/pakistan' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Pakistan
+  </a>  <a title='Opinion' href='/opinion' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Opinion
+  </a>  <a title='Business' href='/business' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Business
+  </a>  <a title='Images' href='https://images.dawn.com' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Images
+  </a>  <a title='Prism' href='/prism' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Prism
+  </a>  <a title='World' href='/world' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     World
+  </a>  <a title='Sport' href='/sport' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Sport
+  </a>  <a title='Breathe' href='/breathepakistan' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Breathe
+  </a>  <a title='Magazines' href='/magazines' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Magazines
+  </a>  <a title='Tech' href='/tech' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Tech
+  </a>  <a title='Videos' href='/videos' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Videos
+  </a>  <a title='Popular' href='/popular' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Popular
+  </a>  <a title='Archive' href='/newspaper' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Archive
+  </a>  <a title='Flood Donations' href='https://www.dawnrelief.com/' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Flood Donations
+  </a>                </div>
+            </div>
+
+            <!-- nav sandwich -->
+            <div class="flex items-center relative hidden">
+                <div class="js-nav-sandwich pt-1 mr-2">
+                    <button class="text-gray-400 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 inline-flex items-center justify-center rounded-md focus:outline-none transition duration-150 ease-in-out">
+                        <!-- ☰ -->
+                        <svg id="navopen" class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <!-- X -->
+                        <svg id="navclose" class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- nav dropdown -->
+                <div class="js-nav-dropdown hidden z-50 absolute top-9 right-0 border border-gray-300 bg-white shadow-2xl text-3 w-40" id="nav-dropdown">
+                      <a title='Home' href='//www.dawn.com' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Home
+  </a>  <a title='Latest' href='/latest-news' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Latest
+  </a>  <a title='FIFA World Cup '26' href='https://www.dawn.com/sport/fifa-world-cup' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    text-red-300'>
+     FIFA World Cup '26
+  </a>  <a title='Violations Tracker' href='https://www.dawn.com/news/1984584/tracking-ihl-violations-in-the-us-israel-war-on-iran' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    text-red-300'>
+     Violations Tracker
+  </a>  <a title='Pakistan' href='/pakistan' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Pakistan
+  </a>  <a title='Opinion' href='/opinion' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Opinion
+  </a>  <a title='Business' href='/business' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Business
+  </a>  <a title='Images' href='https://images.dawn.com' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Images
+  </a>  <a title='Prism' href='/prism' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Prism
+  </a>  <a title='World' href='/world' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     World
+  </a>  <a title='Sport' href='/sport' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Sport
+  </a>  <a title='Breathe' href='/breathepakistan' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Breathe
+  </a>  <a title='Magazines' href='/magazines' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Magazines
+  </a>  <a title='Tech' href='/tech' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Tech
+  </a>  <a title='Videos' href='/videos' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Videos
+  </a>  <a title='Popular' href='/popular' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Popular
+  </a>  <a title='Archive' href='/newspaper' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Archive
+  </a>  <a title='Flood Donations' href='https://www.dawnrelief.com/' target='_self' class='px-2 py-2 block whitespace-nowrap hover:bg-gray-200 uppercase leading-4 text-2.75    '>
+     Flood Donations
+  </a>                </div>
+            </div>
+
+            <!-- desktop nav search -->
+            <div class="js-nav-search justify-end items-center pl-1">
+                <label for="search" title="Search" class="sr-only">Search</label>
+                <div class="relative">
+                    <form accept-charset="utf-8" class="flex items-center" method="GET" action="https://www.dawn.com/search">
+                        <div class="cursor-pointer sm:pointer-events-none" onclick="document.querySelector('#js-mob-search').classList.toggle('hidden');">
+                            <svg class="h-4 w-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <input type="hidden" name="cx" value="016184311056644083324:a1i8yd7zymy">
+                        <input type="hidden" name="cof" value="FORID:10">
+                        <input type="hidden" name="ie" value="UTF-8">
+                        <input class="nav-search-input border-0 w-30 text-3 font-extralight ml-1 px-2 leading-5 placeholder-gray-400 focus:outline-none search-query hidden sm:block" data-remember="false" placeholder="SEARCH" value="" required="" id="q" type="text" name="q" onfocus="javascript:this.classList.add('w-44');this.classList.add('md:w-64')" onblur="javascript:this.classList.remove('w-44');this.classList.remove('md:w-64')">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!-- mobile nav search -->
+        <div class="js-nav-search flex justify-center items-center sm:hidden mt-1">
+            <label for="search" title="Search" class="sr-only">Search</label>
+            <div class="relative">
+                <form accept-charset="utf-8" class="flex items-center" method="GET" action="https://www.dawn.com/search">
+                    <input type="hidden" name="cx" value="016184311056644083324:a1i8yd7zymy">
+                    <input type="hidden" name="cof" value="FORID:10">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <input id="js-mob-search" class="hidden text-3 w-64 font-extralight px-2 py-1 leading-none border rounded border-gray-300 mb-1 placeholder-gray-400 focus:outline-none search-query" data-remember="false" placeholder="SEARCH" value="" required="" id="q" type="text" name="q">
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>  </div>
+</div>    </header>
+
+    
+
+    <div class="native-hidden aux-content flex justify-center px-1" style="overflow: hidden">
+            
+    
+    <!-- advert:start div-gpt-ad-1683363187247-0 -->
+    <div id='div-gpt-ad-1683363187247-0' class='ad__wrapper__slot ad-100 bg-gray-50 md:ad-250  py-2 mb-4' data-rendered-classes="" data-name="Dawn-Responsive-Header-Leaderboard" data-height="250px" data-width="970px"    data-smart-refresh='60' data-collapse='false' data-eager='true' >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1683363187247-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+        </div>
+
+            <div id='consent-dialog' class="hidden">
+            <div class="fixed z-50 w-full bottom-0 overflow-hidden px-2 py-2 sm:py-4 bg-gray-500" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+    <div class="sm:flex sm:items-start justify-evenly">
+        <div class="hidden sm:flex flex-shrink-0 items-center justify-center h-16 w-16 rounded-full mt-4">
+            <img src="/_img/logo-white.png" class="w-20">
+        </div>
+        <div class="mt-1 sm:mt-3 text-center sm:ml-4">
+            <h3 class="text-lg leading-6 font-medium text-white">
+                Subscribe to notifications
+            </h3>
+            <p class="text-sm leading-5 text-white mt-2">
+                Get the latest news and updates from Dawn
+            </p>
+        </div>
+        <div class="mt-2 sm:mt-4 sm:flex sm:flex-row-reverse">
+            <span class="flex w-full rounded-md sm:mt-4 sm:ml-3 sm:w-auto">
+                <button type="button" class="inline-flex justify-center w-full rounded-md px-4 py-2 text-4 leading-4 font-normal text-white focus:outline-none">
+                    Not Now
+                </button>
+            </span>
+            <span class="mt-1 sm:mt-3 flex w-full rounded-md shadow-sm sm:w-auto">
+                <button data-topic="all" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-white text-navy-800 text-3.5 leading-4 font-normal shadow-sm focus:outline-none focus:ring">
+                    Allow Notifications
+                </button>
+            </span>
+        </div>
+    </div>
+</div>        </div>
+    
+<div class="container mx-auto px-2 sm:px-6">
+    
+<div class="flex">
+    <div class="w-full max-w-screen-md xl:pr-4 ">
+        <article class='story relative overflow-hidden single    bg-white font-georgia overflow-visible' data-id='2016483' id='2016483' data-layout='default' data-tags=''>            <div class="flex items-baseline">
+                                    </div>
+        <div class="template__header  flow-root px-1  border-b  mb-4">
+            
+    <!-- box/title title-text:7.5-border-bottom-mt:1-pb:3-playfairdisplay-bold -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2016483'  class='story__title      text-7.5  font-bold  font-playfair-display   overflow-visible    mt-1  pb-3  border-b  border-gray-300  border-solid'><a  href='https://www.dawn.com/news/2016483/anthropic-to-add-claudes-fable-5-model-to-max-team-premium-plans-at-50pc-of-usage-limits'  class='story__link  '>Anthropic to add Claude's Fable 5 model to Max, Team Premium plans at 50pc of usage limits</a></h2>
+<!-- box/byline --><div dir='auto' class='     my-3  sm:ml-0  ml-1  block  sm:inline-block  float-none  sm:float-left'><span dir='auto' class='story__byline    text-3 text-gray-500   font-arial  divider overflow-visible  '><a class='story__byline__link' href='https://www.dawn.com/authors/6005/news-desk'>News Desk</a></span> <!-- box/date --><span class='story__time    text-3 text-gray-500   font-arial    '>    <span class='timestamp--published'>
+        <span class='timestamp--label'>Published</span>
+        <time class='timestamp--date' datetime='2026-07-18T17:50:08+05:00'>July 18, 2026</time>
+    </span>     <span class='timestamp--updated'>
+        <span class='timestamp--label'>Updated</span>
+            <time class='timestamp--time timeago' datetime='2026-07-18T17:50:08+05:00' title='2026-07-18T17:50:08+05:00'>
+        <span class='timestamp__calendar'>July 18, 2026</span>
+        <span class='timestamp__time'>05:50pm</span>
+    </time>
+    </span></span> </div>
+    <!-- box/social -->
+<div class='block  sm:inline-block  flow-root  float-none  sm:float-right'>    <div class="social js-social-fb   social--icon  social--black  social--flat  social--facebook  native-hidden  float-left    mr-2  my-2  ">
+        <a class=" h-full w-full outline-none inline-block " onclick="return !window.open(this.href, 'Share on Facebook', 'width=640, height=536')" rel='noreferrer' href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483&display=popup&ref=plugin" target="_blank"><img width="20" height="20" src="/_img/social/icon-fb-black.png" /></a>
+    </div>    <div class="social js-social-twitter   social--icon  social--black  social--flat  social--twitter  native-hidden  float-left    mr-2  my-2  ">
+        <a class=' h-full w-full outline-none inline-block ' onclick="return !window.open(this.href, 'Tweet', 'width=640, height=300')" rel='noreferrer' href="https://twitter.com/share?text=Anthropic%20to%20add%20Claude%27s%20Fable%205%20model%20to%20Max%2C%20Team%20Premium%20plans%20at%2050pc%20of%20usage%20limits&url=https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483&counturl=https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483" target="_blank"><img width="20" height="20" src="/_img/social/icon-twitter-black.png" /></a>
+    </div>    <div class="social js-social-whatsapp social--whatsapp    native-hidden  float-left    mr-2  my-2      social--icon  social--black  social--flat">
+        <a class="inline-block uppercase align-middle text-gray-400" target="_blank" href="WhatsApp://send?text=Anthropic%20to%20add%20Claude%27s%20Fable%205%20model%20to%20Max%2C%20Team%20Premium%20plans%20at%2050pc%20of%20usage%20limits%20%0A%20https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483%3Futm_source%3Dwhatsapp">
+        <img class="inline-block float-left mr-0.5 mb-2" width="" height="" src="/_img/social/icon-whatsapp-black.png" />
+        <span class=""></span>
+        </a>
+    </div>    <div class="social js-social-print hidden  sm:block    social--print    social--icon  social--black  social--flat   social--icon  social--black  social--flat   native-hidden  float-left    mr-2  my-2">
+        <a class="inline-block uppercase align-middle text-gray-400" href="https://www.dawn.com/news/print/2016483"><img width="20" height="20" src="/_img/social/icon-print-black.png" />&nbsp;&nbsp;&nbsp;</a>
+    </div>    <div class="social js-social-email    social--email    social--icon  social--black  social--flat    native-hidden  float-left    mr-2  my-2">
+        <a class=" h-full w-full outline-none inline-block  inline-block uppercase text-gray-400" onclick="$('#js-mailer [name^=id]').val(2016483);$('#js-mailer').removeClass('hidden');$('body').css('overflow', 'hidden');" href="javascript:void(0)"><img width="24" height="18" src="/_img/social/icon-email-black.png" /></a>
+    </div>    <div class="social js-social-comment   social--comment    social--icon  social--black  social--flat  social--count  font-normal  native-hidden  float-left    mr-2  my-2">
+        
+    <a class="font-normal inline-block uppercase align-middle text-gray-400 text-center" data-comments-status="open" href="#comments"><img class="inline-block float-left mr-0.5" width="22" height="19" src="/_img/social/icon-comment-black.png" /><span class='mt-0.5 text-black text-3 font-arial inline-block align-top'>0</span></a>
+    </div></div>
+
+<div class='w-full slideshow--single-item  story__cover w-full    slideshow--main'>
+
+
+    <!-- box/image -->
+    <figure class='media      media--uneven    media--fill  sm:w-full  w-full            mb-0  ' data-focus-x='63.33%' data-focus-y='55.91%'>
+        <div class='media__item              '><picture><img  width="1800" height="1080"  src="https://i.dawn.com/primary/2026/07/1817255559775a0.webp"  alt="Claude logo in this illustration created on June 5, 2026. &mdash; Reuters/File" title="Claude logo in this illustration created on June 5, 2026. &mdash; Reuters/File"  fetchpriority="high"  /></picture></div>        <figcaption class='media__caption '>Claude logo in this illustration created on June 5, 2026. — Reuters/File</figcaption>
+    </figure>
+
+</div>
+        </div>
+        <div class="template__main  flow-root  px-1 w-full sm:w-2/3 mx-auto md:min-w-183">
+                <figure class="flex items-center tts">
+        <figcaption class="text-3 font-sans uppercase mr-3 whitespace-no-wrap"><span class="hidden md:inline">Listen&nbsp;to&nbsp;article</span></figcaption>
+        <audio class="h-5 w-60 sm:w-80 rounded-none" preload="metadata" controlslist="noplaybackrate nodownload" id="tts" controls src="https://i.dawn.com/tts/2016483_1784379669.mp3"></audio>
+        <button class="mx-3 text-3 font-sans" onclick="document.getElementById('tts').playbackRate = 1.0">1x</button>
+        <button class="mr-3 text-3 font-sans" onclick="document.getElementById('tts').playbackRate = 1.2">1.2x</button>
+        <button class="mr-3 text-3 font-sans" onclick="document.getElementById('tts').playbackRate = 1.5">1.5x</button>
+    </figure>            <div class="flex flex-wrap flex-row gap-2 story__actions">
+                <div class="flex items-center mt-4 overflow-hidden bg-gray-50">
+    <a href="#comments" class="p-2 text-4 text-black border border-red-500 inline-flex items-center font-arial whitespace-nowrap hover:bg-gray-200" dir="auto">
+        <div class=" flex flex-row pl-1 text-3 whitespace-no-wrap text-red-400">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50" class="float-left flex me-2 fill-current">
+                <path d="M 25 4 C 12.316406 4 2 12.972656 2 24 C 2 30.1875 5.335938 36.066406 10.949219 39.839844 C 10.816406 40.890625 10.285156 43.441406 8.183594 46.425781 L 7.078125 47.992188 L 9.054688 48 C 14.484375 48 18.15625 44.671875 19.363281 43.394531 C 21.195313 43.796875 23.089844 44 25 44 C 37.683594 44 48 35.027344 48 24 C 48 12.972656 37.683594 4 25 4 Z"></path>
+            </svg>
+            <div class="font-bold text-red-400 uppercase self-center">comments</div>
+        </div>
+    </a>
+</div>                    <div class="whatsapp-channel flex items-center mt-4 overflow-hidden bg-gray-50">
+        <a href="https://whatsapp.com/channel/0029VaMc238IiRov8okfYy3n" class="p-2 text-4 text-black border border-gray-300 inline-flex items-center font-arial whitespace-nowrap hover:bg-gray-200" dir="auto">
+            <div class=" flex flex-row pl-1 text-3 whitespace-no-wrap">
+                <img class="inline-block mr-0.5 pr-2" src="/_img/social/icon-whatsapp-black.png" style="filter: brightness(0.9) invert(.6) sepia(.5) hue-rotate(51deg) saturate(300%)">
+                <div class="uppercase self-center"><span class="hidden sm:inline">Join our </span> Whatsapp Channel</div>
+            </div>
+        </a>
+    </div>                <div class="google-preferred flex items-center mt-4 overflow-hidden">
+    <a href="https://www.google.com/preferences/source?q=dawn.com" target="_blank"
+        class="text-4 text-black inline-flex items-center font-arial whitespace-nowrap hover:bg-blue-300 bg-blue-500 pl-2" dir="auto">
+        <div class="flex flex-row pl-1 text-3 whitespace-no-wrap items-center">
+            <div class="uppercase self-center pr-2 font-normal text-white">
+                <span>Add <span class="text-white font-bold">Dawn</span> as a trusted source</span>
+            </div>
+            <img class="inline-block w-auto h-9" src="https://i.dawn.com/large/2026/05/03205649172e670.webp" alt="Google Preferred Source">
+        </div>
+    </a>
+</div>            </div>
+            
+
+    <!-- box/content -->
+    <div dir='auto' class='story__content  flow-root    text-4  sm:text-4.5     overflow-visible    pt-1  mt-1'><p>Anthropic said on Saturday that it will reintroduce its most advanced AI model, Fable 5, in the paid Max and Team Premium plans from July 20.</p>
+<p>After its <a rel="nofollow noopener noreferrer" target="_blank" class="link--external" href="https://www.anthropic.com/news/redeploying-fable-5">redeployment</a>, Fable 5 had been included in the Pro, Max, Team and select Enterprise plans from July 1 to 7 for up to 50pc of weekly usage limits, after which it was available via <a rel="noopener noreferrer" target="_blank" class="link--external" href="https://support.claude.com/en/articles/12005970-manage-usage-credits-for-team-and-seat-based-enterprise-plans">usage credits</a>.</p>
+<p>In a post on Saturday, Claude said, “Beginning July 20, Claude Fable 5 will be included in all Max and Team Premium plans, at 50 per cent of limits.”</p>
+<p>However, Pro and Team Standard users “will continue to have access to Fable via usage credits” — rather than as part of weekly usage limits — though they will receive a one-time $100 credit.</p>
+<p>Usage credits allow individuals subscribed to paid Claude plans (Pro, Max 5x, and Max 20x) to continue using Claude after reaching their included usage limits.</p>
+<p>“Demand for Fable has been challenging to predict, which is why we rolled it out to subscription plans in stages, extending access several times as we secured additional capacity,” Claude said.</p>
+<p>It acknowledged: “We know this has been frustrating, and we want to give you more certainty about what your plan includes.”</p>
+<p>The AI tool explained it was “making access standard at 50pc usage for the plans that use Fable most intensively”.</p>
+<p>“Thank you for your patience over the past several weeks. We’re continuing to invest in new capacity and will keep everyone updated as we do,” the post concluded.</p>
+    <figure class='media  w-full  w-full  media--  media--embed  media--uneven media--tweet' data-original-src='https://x.com/claudeai/status/2078302417100394737'>
+        <div class='media__item  media__item--twitter  '><span>
+    <blockquote class="twitter-tweet" lang="en">
+        <a href="https://twitter.com/claudeai/status/2078302417100394737"></a>
+    </blockquote>
+</span></div>
+        
+    </figure>
+<p>Fable 5, a public version of the Mythos AI model, was <a href="https://www.dawn.com/news/2006596">rolled out</a> in early June, with Anthropic describing it as its most powerful model ever made for wider use.</p>
+<p>“It is state-of-the-art on nearly all tested benchmarks of AI capability, showing exceptional performance in software engineering, knowledge work, vision, scientific research, and many other areas. The longer and more complex the task, the larger Fable 5’s lead over our other models,” Anthropic had said.</p>
+<p>Anthropic <a href="https://www.dawn.com/news/2006596">Mythos 5</a> and Fable 5 models had been <a href="https://www.dawn.com/news/2012133">redeployed</a> on July 1, within three weeks of being <a href="https://www.dawn.com/news/2007564">disabled</a> for all users after the United States government ordered restrictions on access to foreign nationals, citing national security concerns.</p>
+<p>Anthropic offers the following <a rel="nofollow noopener noreferrer" target="_blank" class="link--external" href="https://support.claude.com/en/articles/11049762-choose-a-claude-plan">user plans</a>: Free, Pro, Max 5x, Max 20x, Team Standard, Team Premium, Self-serve Enterprise, and Sales-assisted Enterprise.</p>
+
+    </div>
+                    </div>
+        </article>        <div class="template__footer  flow-root  px-1">
+            
+            <div class="w-full sm:w-2/3 mx-auto md:min-w-183 border-t border-gray-200 my-4 pt-2">
+                    
+    
+    <!-- advert:start div-gpt-ad-1693559881661-0 -->
+    <div id='div-gpt-ad-1693559881661-0' class='ad__wrapper__slot my-4 clear-both flex justify-center' data-rendered-classes="border-t border-b py-4 my-4 bg-gray-100" data-name="Dawn-Responsive-Middle-Leaderboard" data-height="90px" data-width="728px" data-selector='.story__content p:nth-of-type(4)'     data-eager='true' >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1693559881661-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+                        
+    
+    <!-- advert:start div-gpt-ad-1783585102389-0 -->
+    <div id='div-gpt-ad-1783585102389-0' class='ad__wrapper__slot my-4 clear-both flex justify-center' data-rendered-classes="border-t border-b py-4 my-4 bg-gray-100" data-name="Dawn-Responsive-1-Article" data-height="250px" data-width="300px" data-selector='.story__content p:nth-of-type(9)'      >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1783585102389-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+                    <div class="flex flex-col">
+                                    </div>
+
+                <div class="mt-2 mb-5 hidden">
+                                        <span class="button cursor-pointer inline-flex items-center text-gray-700 px-4 py-2 border border-red-50 rounded-lg transition-all group votejs__cast" data-vote-key="2016483/like">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400 transition-all duration-300 group-hover:text-red-400 group-hover:fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </span>
+                        <span class="button__count votejs__count ml-3 pl-1 text-4 font-bold group-hover:text-red-500" data-vote-key="2016483/like">0</span>
+                    </span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row">
+                    <div class="w-full  sm:w-1/2">
+                        <div class="mb-0 sm:mb-4">
+                            <div class='tags  flex flex-wrap gap-x-2 gap-y-2 uppercase text-2.5 font-arial'>
+    <span  id='artificial-intelligence'  dir='auto'  class='badge inline-flex     tag--artificial-intelligence    align-middle'><a title="Artificial Intelligence" href='/trends/artificial-intelligence' class='  text-red-400'>Artificial Intelligence</a></span>
+</div>                            <div class="w-full flex">
+    <!-- box/label -->
+
+    <span  id='tech'  dir='auto'  class='badge inline-flex    text-2.5  uppercase  font-arial          align-middle'><a title="Tech" href='/tech' class='  text-2.5  uppercase  font-arial  '><span>Tech</span></a></span>
+</div>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-1/2">
+                        <div class="mt-2 sm:mt-0 flow-root float-left sm:float-right">
+                            
+    <!-- box/social -->
+    <div class="social js-social-fb   social--icon  social--black  social--flat  social--facebook  float-left native-hidden    mr-2  ">
+        <a class=" h-full w-full outline-none inline-block " onclick="return !window.open(this.href, 'Share on Facebook', 'width=640, height=536')" rel='noreferrer' href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483&display=popup&ref=plugin" target="_blank"><img width="20" height="20" src="/_img/social/icon-fb-black.png" /></a>
+    </div>    <div class="social js-social-twitter   social--icon  social--black  social--flat  social--twitter  float-left native-hidden    mr-2  ">
+        <a class=' h-full w-full outline-none inline-block ' onclick="return !window.open(this.href, 'Tweet', 'width=640, height=300')" rel='noreferrer' href="https://twitter.com/share?text=Anthropic%20to%20add%20Claude%27s%20Fable%205%20model%20to%20Max%2C%20Team%20Premium%20plans%20at%2050pc%20of%20usage%20limits&url=https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483&counturl=https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483" target="_blank"><img width="20" height="20" src="/_img/social/icon-twitter-black.png" /></a>
+    </div>    <div class="social js-social-whatsapp social--whatsapp    float-left native-hidden    mr-2      social--icon  social--black  social--flat">
+        <a class="inline-block uppercase align-middle text-gray-400" target="_blank" href="WhatsApp://send?text=Anthropic%20to%20add%20Claude%27s%20Fable%205%20model%20to%20Max%2C%20Team%20Premium%20plans%20at%2050pc%20of%20usage%20limits%20%0A%20https%3A%2F%2Fwww.dawn.com%2Fnews%2F2016483%3Futm_source%3Dwhatsapp">
+        <img class="inline-block float-left mr-0.5 mb-2" width="" height="" src="/_img/social/icon-whatsapp-black.png" />
+        <span class=""></span>
+        </a>
+    </div>    <div class="social js-social-print hidden  sm:block    social--print    social--icon  social--black  social--flat   social--icon  social--black  social--flat   float-left native-hidden    mr-2">
+        <a class="inline-block uppercase align-middle text-gray-400" href="https://www.dawn.com/news/print/2016483"><img width="20" height="20" src="/_img/social/icon-print-black.png" />&nbsp;&nbsp;&nbsp;</a>
+    </div>    <div class="social js-social-email    social--email    social--icon  social--black  social--flat    float-left native-hidden    mr-2">
+        <a class=" h-full w-full outline-none inline-block  inline-block uppercase text-gray-400" onclick="$('#js-mailer [name^=id]').val(2016483);$('#js-mailer').removeClass('hidden');$('body').css('overflow', 'hidden');" href="javascript:void(0)"><img width="24" height="18" src="/_img/social/icon-email-black.png" /></a>
+    </div>    <div id="js-mailer" dir='ltr' class="hidden font-arial fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" style="z-index:201">
+        <div class="flex items-end justify-center pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left flow-root shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                <div class="text-center">
+                    <h3 class="mb-4 text-lg leading-6 font-medium text-gray-900" id="modal-title">Email</h3>
+                </div>
+                <div id="js-form-container">
+                    <form accept-charset="utf-8" class="form-vertical emailer" id="email-story" onsubmit="javascript:$.post(this.action, $(this).serialize(), function(data,status,xhr) { $('#js-mailer-success-icon').removeClass('hidden');$('#js-form-container').addClass('hidden');$('#js-form-container').after(data.message);});return false;" method="POST" action="https://www.dawn.com/news/email/2016483"><input type="hidden" name="jscheck" value=""><div class="form-group required"><label class="text-3 control-label" for="sender">Your Name<sup>*</sup></label><input class="py-0.5 px-1 border ml-10 rounded mb-4 form-control" required id="sender" type="text" name="sender"></div><div class="form-group required"><label class="text-3 control-label" for="to">Recipient Email<sup>*</sup></label><input class="py-0.5 px-1 border ml-4 rounded mb-4 form-control" required id="to" type="text" name="to"></div><input type="hidden" name="id" value=""><input class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-600 text-base font-medium text-white hover:bg-gray-700 focus:outline-none sm:w-auto sm:text-sm cursor-pointer btn" type="submit" value="Email"><button class="ml-4 inline-flex justify-center w-full rounded-md border shadow-sm px-4 py-2 text-base font-medium hover:bg-gray-200 focus:outline-none sm:w-auto sm:text-sm cursor-pointer btn" id="js-mailer-close" href="javascript:void(0)" onClick="$('body').css('overflow', 'initial');$('#js-mailer').addClass('hidden');" type="button">Cancel</button><div class='cf-turnstile my-4' data-sitekey='0x4AAAAAAAlbmMXMNKGtgh-C' data-size='flexible'></div><input type="hidden" name="_token" value=""></form>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="social js-social-comment   social--comment    social--icon  social--black  social--flat  social--count  font-normal  float-left native-hidden    mr-2">
+        
+    <a class="font-normal inline-block uppercase align-middle text-gray-400 text-center" data-comments-status="open" href="#comments"><img class="inline-block float-left mr-0.5" width="22" height="19" src="/_img/social/icon-comment-black.png" /><span class='mt-0.5 text-black text-3 font-arial inline-block align-top'>0</span></a>
+    </div>                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                                            <div class="px-2  sm:px-6">
+                            <hr />                        </div>
+                                    </div>
+            </div>
+
+            <div class="border-t-3 border-black">
+                <h3 class="my-2 font-playfair-display font-bold text-6 leading-tight">
+                    Read more                </h3>
+                <div class="flex flex-col sm:flex-row mb-4">
+                    <!-- SECTION/READ MORE STORIES -->
+                    <div class="md:w-2/3 w-full">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-4">
+                                
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 mb-2 sm:border-r sm:border-gray-200 border-b border-solid sm:border-b-0' data-id='2013866' id='2013866' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 sm:mr-0 mr-2 sm:float-none float-left h-auto border border-gray-200      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="China warns of &#039;security backdoor&#039; in Anthropic AI coding tool" href="https://www.dawn.com/news/2013866/china-warns-of-security-backdoor-in-anthropic-ai-coding-tool" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/081544146d44d6b.webp"  alt="China warns of &#039;security backdoor&#039; in Anthropic AI coding tool" title="China warns of &#039;security backdoor&#039; in Anthropic AI coding tool"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title text:4-py:sm:2-py:0-playfairdisplay -->
+    <h2 dir='auto' data-comments-pending='1' data-layout='story' data-id='2013866'  class='story__title      text-4  font-playfair-display  font-bold pt-1 pb-2 text-4 leading-tight    sm:py-2  py-0  '><a  href='https://www.dawn.com/news/2013866/china-warns-of-security-backdoor-in-anthropic-ai-coding-tool'  class='story__link  '>China warns of 'security backdoor' in Anthropic AI coding tool</a></h2>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 mb-2 sm:border-r sm:border-gray-200 border-b border-solid sm:border-b-0' data-id='2006596' id='2006596' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 sm:mr-0 mr-2 sm:float-none float-left h-auto border border-gray-200      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Anthropic rolls out public version of Mythos without cybersecurity capability" href="https://www.dawn.com/news/2006596/anthropic-rolls-out-public-version-of-mythos-without-cybersecurity-capability" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/06/101216403b13bf0.webp"  alt="Anthropic rolls out public version of Mythos without cybersecurity capability" title="Anthropic rolls out public version of Mythos without cybersecurity capability"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title text:4-py:sm:2-py:0-playfairdisplay -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2006596'  class='story__title      text-4  font-playfair-display  font-bold pt-1 pb-2 text-4 leading-tight    sm:py-2  py-0  '><a  href='https://www.dawn.com/news/2006596/anthropic-rolls-out-public-version-of-mythos-without-cybersecurity-capability'  class='story__link  '>Anthropic rolls out public version of Mythos without cybersecurity capability</a></h2>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 mb-2 sm:border-r sm:border-gray-200 border-b border-solid sm:border-b-0' data-id='1987456' id='1987456' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 sm:mr-0 mr-2 sm:float-none float-left h-auto border border-gray-200      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Anthropic releases part of AI tool source code in &lsquo;error&rsquo;" href="https://www.dawn.com/news/1987456/anthropic-releases-part-of-ai-tool-source-code-in-error" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/04/011106076d44d6b.webp"  alt="Anthropic releases part of AI tool source code in &lsquo;error&rsquo;" title="Anthropic releases part of AI tool source code in &lsquo;error&rsquo;"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title text:4-py:sm:2-py:0-playfairdisplay -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='1987456'  class='story__title      text-4  font-playfair-display  font-bold pt-1 pb-2 text-4 leading-tight    sm:py-2  py-0  '><a  href='https://www.dawn.com/news/1987456/anthropic-releases-part-of-ai-tool-source-code-in-error'  class='story__link  '>Anthropic releases part of AI tool source code in ‘error’</a></h2>
+</article>
+    <!-- - - - /article - - - -->                        </div>
+                    </div>
+                    <div class="md:w-1/3 w-full bg-gray-100">
+                        <div class='flex justify-center'>
+                                
+    
+    <!-- advert:start div-gpt-ad-1683363763562-0 -->
+    <div id='div-gpt-ad-1683363763562-0' class='ad__wrapper__slot py-4' data-rendered-classes="" data-name="Dawn-Responsive-BTF-MREC" data-height="250px" data-width="300px"       >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1683363763562-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+                            </div>
+                    </div>
+                </div>
+
+                <div class="border-t-3 border-black pt-3">
+                    
+<div class="font-playfair-display text-5 font-bold inline-block">
+  Comments </div>
+
+
+<form accept-charset="utf-8" class="form-vertical comments-form  jsform  mb-4" id="comments-form" method="POST" action="https://www.dawn.com/comments">  <input class="jscheck" type="hidden" name="jscheck" value="">  <input type="hidden" name="story_id" value="2016483">
+  <div class="info"></div>
+  <div class="flex">
+      <div class="pr-2  w-1/2">
+    <div class="pt-2">
+      <input class="form-input block w-full transition duration-150 ease-in-out text-3.5 py-2 px-3 text-gray-500 rounded-none font-arial form-control" placeholder="Name" dir="" required id="name" type="text" name="name">
+    </div>
+  </div>
+  <div class="pl-2  w-1/2">
+    <div class="pt-2">
+      <input class="form-input block w-full transition duration-150 ease-in-out text-3.5 py-2 px-3 text-gray-500 rounded-none font-arial form-control" placeholder="Email" dir="" required id="email" type="text" name="email">
+    </div>
+  </div>  </div>
+  <div class="flex">
+    <div class="w-full">
+      <div class="my-2">
+        <div class="form-group"><textarea class="form-textarea block w-full transition duration-150 ease-in-out text-3.5 py-2 px-3 text-gray-500 rounded-none font-arial comments__content form-control" placeholder="Your Comment" dir="auto" rows="6" required id="content" name="content"></textarea></div>        <div class="flex">
+          <div class="w-2/3">
+            <div class="comments__limit  pr-1 border-r border-gray-200 text-2.5 font-arial inline-block text-gray-400 uppercase" data-max='500'>500 characters</div>
+            <div class="comments__policy  text-2.5 font-arial inline-block text-gray-400 uppercase"><a href="/comments-policy" class='text-2.5 font-arial text-gray-400'>COMMENT MOD POLICY</a></div>
+          </div>
+          <div class="w-1/3">
+            <input class="button  comments__button  text-3 border-none p-2 text-white uppercase mt-1 bg-black float-right uppercase btn" type="submit" value="Submit">          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="cf-turnstile my-4" data-sitekey="0x4AAAAAAAlbmMXMNKGtgh-C" data-size="flexible"></div>
+  
+<input type="hidden" name="_token" value=""></form><section id="comments" data-comments='' class="comments overflow-x-hidden overflow-y-auto mb-8 mx-auto md:w-3/4" style="max-height: 525px;">
+  </section>                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="w-80 flex-shrink-0 hidden xl:block pl-4">
+    <section class=''>
+            
+    
+    <!-- advert:start div-gpt-ad-1683363860950-0 -->
+    <div id='div-gpt-ad-1683363860950-0' class='ad__wrapper__slot ' data-rendered-classes="" data-name="Dawn-Responsive-SKY-MREC" data-height="250px" data-width="300px"       >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1683363860950-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+        </section>
+    
+    
+<div class="my-10">
+    <div class='text-red-custom font-arial align-middle text-2.75 uppercase inline-block'>Video</div>    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    ' data-id='2016440' id='2016440' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  rounded-md mb-1   media--embed      ' >
+        <div class='media__item  media__item--youtube-shorts media__item--100 media__item--177  media__item--yt         media__item--youtube    '><iframe src='https://www.youtube.com/embed/Zp-g9YhKclA?enablejsapi=1&controls=1&modestbranding=1&rel=0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen=''  frameborder='0' scrolling='no' width='100%' height='100%'></iframe></div>        
+    </figure>
+</article>
+    <!-- - - - /article - - - --></div>
+
+            <section class='flex mt-10'>
+            <div class='w-full'>
+                <div class="pb-2">
+                    
+    <div dir='auto' class=' justify-start text-left  justify-start text-left  -mt-2   pb-1'><h2  id='branded-content'  class='badge  inline-flex    text-2.5 text-gray-400   font-normal  uppercase  font-arial    align-middle'><a title="Branded Content" href='https://www.dawn.com/branded-content' class='  text-2.5 text-gray-400   font-normal  uppercase  font-arial  '>Branded Content</a></h2></div>
+
+
+<div class='slideshow      slideshow--main  ' data-slick='{"dots":false,"arrows":false,"dotsClass":"slideshow__pager  ","asNavFor":null,"cssEase":"ease","speed":250,"autoplaySpeed":4000,"slidesToScroll":1,"slidesToShow":1,"fade":false,"autoplay":true,"infinite":true,"responsive": [{"breakpoint": 767,"settings": {"slidesToShow": 1,"slidesToScroll": 1}},{"breakpoint": 575,"settings": {"slidesToShow": 1,"slidesToScroll": 1}}]}'>
+<div class='slideshow__slide  slideshow__slide--first    slideshow__slide--horizontal  lg:w-full  md:w-full  w-full' style=''>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    ' data-id='2016197' id='2016197' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full        mb-0  ' >
+        <div class='media__item          '><a title="SkyPorter launches in Pakistan: A traveller-powered way to send items anywhere" href="https://www.dawn.com/news/2016197/skyporter-launches-in-pakistan-a-traveller-powered-way-to-send-items-anywhere" target="_self"><picture><img  width="1800" height="1080"  src="https://i.dawn.com/medium/2026/07/17151509f11fba7.webp"  alt="SkyPorter launches in Pakistan: A traveller-powered way to send items anywhere" title="SkyPorter launches in Pakistan: A traveller-powered way to send items anywhere"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-playfairdisplay-text:3.5-sm:text:3 -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2016197'  class='story__title      text-3.5  sm:text-3  font-bold  font-playfair-display  leading-tight    '><a  href='https://www.dawn.com/news/2016197/skyporter-launches-in-pakistan-a-traveller-powered-way-to-send-items-anywhere'  class='story__link  '>SkyPorter launches in Pakistan: A traveller-powered way to send items anywhere</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.25  sm:text-3 text-gray-700   font-georgia  tracking-wide leading-normal    mt-1'>SkyPorter is the travel-powered delivery platform that connects people who need to send items across borders with travellers who have spare luggage space.
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-full  md:w-full  w-full' style=''>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    ' data-id='2015411' id='2015411' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left        sm:w-1/4  w-full        mb-0  ' >
+        <div class='media__item          '><a title="Moving businesses forward: How Yango is redefining corporate mobility in Pakistan" href="https://www.dawn.com/news/2015411/moving-businesses-forward-how-yango-is-redefining-corporate-mobility-in-pakistan" target="_self"><picture><img  width="2560" height="1706"  src="https://i.dawn.com/medium/2026/07/141744035a4c103.webp"  alt="Moving businesses forward: How Yango is redefining corporate mobility in Pakistan" title="Moving businesses forward: How Yango is redefining corporate mobility in Pakistan"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-playfairdisplay-text:3.5-sm:text:3 -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2015411'  class='story__title      text-3.5  sm:text-3  font-bold  font-playfair-display  leading-tight    '><a  href='https://www.dawn.com/news/2015411/moving-businesses-forward-how-yango-is-redefining-corporate-mobility-in-pakistan'  class='story__link  '>Moving businesses forward: How Yango is redefining corporate mobility in Pakistan</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.25  sm:text-3 text-gray-700   font-georgia  tracking-wide leading-normal    mt-1'>Yango Pakistan Country Head Miral Sharif and Yango Ride Head of B2B Ivan Kaplunovich discuss the evolving landscape of corporate mobility in Pakistan.
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-full  md:w-full  w-full' style=''>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    ' data-id='2015636' id='2015636' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full        mb-0  ' >
+        <div class='media__item          '><a title="Resecurity partners with Sapphire Consulting to accelerate secure code engineering and cybersecurity practices" href="https://www.dawn.com/news/2015636/resecurity-partners-with-sapphire-consulting-to-accelerate-secure-code-engineering-and-cybersecurity-practices" target="_self"><picture><img  width="1280" height="720"  src="https://i.dawn.com/medium/2026/07/15133230e65568a.webp"  alt="Resecurity partners with Sapphire Consulting to accelerate secure code engineering and cybersecurity practices" title="Resecurity partners with Sapphire Consulting to accelerate secure code engineering and cybersecurity practices"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-playfairdisplay-text:3.5-sm:text:3 -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2015636'  class='story__title      text-3.5  sm:text-3  font-bold  font-playfair-display  leading-tight    '><a  href='https://www.dawn.com/news/2015636/resecurity-partners-with-sapphire-consulting-to-accelerate-secure-code-engineering-and-cybersecurity-practices'  class='story__link  '>Resecurity partners with Sapphire Consulting to accelerate secure code engineering and cybersecurity practices</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.25  sm:text-3 text-gray-700   font-georgia  tracking-wide leading-normal    mt-1'>As organisations modernise digital platforms and accelerate software development, cybersecurity must be integrated earlier into the technology lifecycle.
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+</div>
+                </div>
+            </div>
+        </section>
+    
+    <section class=''>
+            
+    
+    <!-- advert:start div-gpt-ad-1683363673257-0 -->
+    <div id='div-gpt-ad-1683363673257-0' class='ad__wrapper__slot ' data-rendered-classes="" data-name="Dawn-Responsive-ATF-MREC" data-height="250px" data-width="300px"       >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1683363673257-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+        </section>
+</aside></div>
+
+<div class="flex bottom-aux">
+    <div class="w-full">
+
+        <!-- POPULAR -->
+        <div class="border-t-3 border-black sm:mx-2 mx-0 py-3">
+            <h3 class="mb-3"><a class="font-playfair-display font-bold text-6 leading-tight" href='/popular'>Most Popular</a></h3>
+            <div class="flex flex-col sm:flex-row">
+                <div class="grid grid-1 sm:grid-cols-3 mb-4">
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">01</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2016140' id='2016140' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes" href="https://www.dawn.com/news/2016140/iran-launches-fresh-attacks-on-american-facilities-in-gulf-after-sixth-consecutive-day-of-us-strikes" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/170900160e8db70.webp"  alt="Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes" title="Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='10' data-layout='story' data-id='2016140'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2016140/iran-launches-fresh-attacks-on-american-facilities-in-gulf-after-sixth-consecutive-day-of-us-strikes'  class='story__link  '>Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">02</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2016247' id='2016247' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="Govt increases petrol price by Rs5.44, diesel by Rs31.05 per litre for next 3 days" href="https://www.dawn.com/news/2016247/govt-increases-petrol-price-by-rs544-diesel-by-rs3105-per-litre-for-next-3-days" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/1807204918ea4e1.webp"  alt="Govt increases petrol price by Rs5.44, diesel by Rs31.05 per litre for next 3 days" title="Govt increases petrol price by Rs5.44, diesel by Rs31.05 per litre for next 3 days"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='1' data-layout='story' data-id='2016247'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2016247/govt-increases-petrol-price-by-rs544-diesel-by-rs3105-per-litre-for-next-3-days'  class='story__link  '>Govt increases petrol price by Rs5.44, diesel by Rs31.05 per litre for next 3 days</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">03</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2016026' id='2016026' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="Gulf war triggers investment outflow from Pakistan" href="https://www.dawn.com/news/2016026/gulf-war-triggers-investment-outflow-from-pakistan" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/170713401528354.webp"  alt="Gulf war triggers investment outflow from Pakistan" title="Gulf war triggers investment outflow from Pakistan"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='3' data-layout='story' data-id='2016026'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2016026/gulf-war-triggers-investment-outflow-from-pakistan'  class='story__link  '>Gulf war triggers investment outflow from Pakistan</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">04</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2016176' id='2016176' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="PMD forecasts widespread rain, thunderstorms across country until July 25" href="https://www.dawn.com/news/2016176/pmd-forecasts-widespread-rain-thunderstorms-across-country-until-july-25" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/17132124cba8bb1.webp"  alt="PMD forecasts widespread rain, thunderstorms across country until July 25" title="PMD forecasts widespread rain, thunderstorms across country until July 25"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='1' data-layout='story' data-id='2016176'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2016176/pmd-forecasts-widespread-rain-thunderstorms-across-country-until-july-25'  class='story__link  '>PMD forecasts widespread rain, thunderstorms across country until July 25</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">05</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2016227' id='2016227' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="Govt to fix fuel prices daily due to renewed hostilities in Persian Gulf: petroleum minister" href="https://www.dawn.com/news/2016227/govt-to-fix-fuel-prices-daily-due-to-renewed-hostilities-in-persian-gulf-petroleum-minister" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/17191841472422d.webp"  alt="Govt to fix fuel prices daily due to renewed hostilities in Persian Gulf: petroleum minister" title="Govt to fix fuel prices daily due to renewed hostilities in Persian Gulf: petroleum minister"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='14' data-layout='story' data-id='2016227'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2016227/govt-to-fix-fuel-prices-daily-due-to-renewed-hostilities-in-persian-gulf-petroleum-minister'  class='story__link  '>Govt to fix fuel prices daily due to renewed hostilities in Persian Gulf: petroleum minister</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">06</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2016159' id='2016159' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="China and Pakistan call on US, Iran to resume talks, cease hostilities" href="https://www.dawn.com/news/2016159/china-and-pakistan-call-on-us-iran-to-resume-talks-cease-hostilities" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/17112211f32efe3.webp"  alt="China and Pakistan call on US, Iran to resume talks, cease hostilities" title="China and Pakistan call on US, Iran to resume talks, cease hostilities"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='7' data-layout='story' data-id='2016159'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2016159/china-and-pakistan-call-on-us-iran-to-resume-talks-cease-hostilities'  class='story__link  '>China and Pakistan call on US, Iran to resume talks, cease hostilities</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">07</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2015869' id='2015869' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="US strikes Iran&#039;s coastal defences in fresh salvo; Tehran again targets American assets in Gulf states" href="https://www.dawn.com/news/2015869/us-strikes-irans-coastal-defences-in-fresh-salvo-tehran-again-targets-american-assets-in-gulf-states" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/16104718e28b295.webp"  alt="US strikes Iran&#039;s coastal defences in fresh salvo; Tehran again targets American assets in Gulf states" title="US strikes Iran&#039;s coastal defences in fresh salvo; Tehran again targets American assets in Gulf states"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='2' data-layout='story' data-id='2015869'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2015869/us-strikes-irans-coastal-defences-in-fresh-salvo-tehran-again-targets-american-assets-in-gulf-states'  class='story__link  '>US strikes Iran's coastal defences in fresh salvo; Tehran again targets American assets in Gulf states</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">08</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2015936' id='2015936' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="Court dismisses post-arrest bail petition of podcast host Rehan Tariq in blasphemy case" href="https://www.dawn.com/news/2015936/court-dismisses-post-arrest-bail-petition-of-podcast-host-rehan-tariq-in-blasphemy-case" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/16180332f999bc7.webp"  alt="Court dismisses post-arrest bail petition of podcast host Rehan Tariq in blasphemy case" title="Court dismisses post-arrest bail petition of podcast host Rehan Tariq in blasphemy case"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='3' data-layout='story' data-id='2015936'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2015936/court-dismisses-post-arrest-bail-petition-of-podcast-host-rehan-tariq-in-blasphemy-case'  class='story__link  '>Court dismisses post-arrest bail petition of podcast host Rehan Tariq in blasphemy case</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                            <!-- POUPLAR ARTICLE -->
+                        <div class="p-1 border-b border-r-0 sm:border-r border-gray-200 w-full">
+                            <div class="flex flex-row">
+                                <div class="pr-4 pl-0.5 font-arial text-6 text-gray-500 font-bold">09</div>
+                                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    w-full' data-id='2016094' id='2016094' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media    media--left      media--fill  sm:w-1/4  w-full  hidden sm:block      mb-0  ' >
+        <div class='media__item          '><a title="Barren reforms" href="https://www.dawn.com/news/2016094/barren-reforms" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/thumbnail/2026/07/17072847e4b36a4.webp"  alt="Barren reforms" title="Barren reforms"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-bold-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='6' data-layout='story' data-id='2016094'  class='story__title      text-3.5  font-bold  font-playfair-display      '><a  href='https://www.dawn.com/news/2016094/barren-reforms'  class='story__link  '>Barren reforms
+</a></h2>
+</article>
+    <!-- - - - /article - - - -->                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <!-- LATEST STORIES -->
+        <div class="border-t-3 border-black sm:mx-2 mx-0 py-3">
+            <h3 class="mb-3"><a class="font-playfair-display font-bold text-6 leading-tight" href='/latest-news'>Latest Stories</a></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-2 mb-4">
+                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016570' id='2016570' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus    sm:w-full  w-full  h-auto hidden sm:block      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="England edge France 6-4 in chaotic World Cup bronze match" href="https://www.dawn.com/news/2016570/england-edge-france-6-4-in-chaotic-world-cup-bronze-match" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/1904052593c7f8b.webp"  alt="England edge France 6-4 in chaotic World Cup bronze match" title="England edge France 6-4 in chaotic World Cup bronze match"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2016570'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016570/england-edge-france-6-4-in-chaotic-world-cup-bronze-match'  class='story__link  '>England edge France 6-4 in chaotic World Cup bronze match</a></h2>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016518' id='2016518' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus    sm:w-full  w-full  h-auto hidden sm:block      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Trump administration finalises overhaul of foreign journalists&#039; visas, ends &#039;duration of status&#039; system" href="https://www.dawn.com/news/2016518/trump-administration-finalises-overhaul-of-foreign-journalists-visas-ends-duration-of-status-system" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/182250359fa0829.webp"  alt="Trump administration finalises overhaul of foreign journalists&#039; visas, ends &#039;duration of status&#039; system" title="Trump administration finalises overhaul of foreign journalists&#039; visas, ends &#039;duration of status&#039; system"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='1' data-layout='story' data-id='2016518'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016518/trump-administration-finalises-overhaul-of-foreign-journalists-visas-ends-duration-of-status-system'  class='story__link  '>Trump administration finalises overhaul of foreign journalists' visas, ends 'duration of status' system</a></h2>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016519' id='2016519' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus    sm:w-full  w-full  h-auto hidden sm:block      mb-0  ' data-focus-x='50.74%' data-focus-y='41.71%'>
+        <div class='media__item    media__item--100          '><a title="Palestinian teen footballer dies after being shot during settler attack in occupied West Bank" href="https://www.dawn.com/news/2016519/palestinian-teen-footballer-dies-after-being-shot-during-settler-attack-in-occupied-west-bank" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/18224922cd859be.webp"  alt="Palestinian teen footballer dies after being shot during settler attack in occupied West Bank" title="Palestinian teen footballer dies after being shot during settler attack in occupied West Bank"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='2' data-layout='story' data-id='2016519'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016519/palestinian-teen-footballer-dies-after-being-shot-during-settler-attack-in-occupied-west-bank'  class='story__link  '>Palestinian teen footballer dies after being shot during settler attack in occupied West Bank</a></h2>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016513' id='2016513' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus    sm:w-full  w-full  h-auto hidden sm:block      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Wildfire haze hangs over eastern US, World Cup final venue" href="https://www.dawn.com/news/2016513/wildfire-haze-hangs-over-eastern-us-world-cup-final-venue" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/18212451f0cccbe.webp"  alt="Wildfire haze hangs over eastern US, World Cup final venue" title="Wildfire haze hangs over eastern US, World Cup final venue"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2016513'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016513/wildfire-haze-hangs-over-eastern-us-world-cup-final-venue'  class='story__link  '>Wildfire haze hangs over eastern US, World Cup final venue</a></h2>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016505' id='2016505' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus    sm:w-full  w-full  h-auto hidden sm:block      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="&#039;Netanyahu belongs in The Hague&#039;: NYC mayor Mamdani mulls whether he can order Israeli PM&#039;s arrest" href="https://www.dawn.com/news/2016505/netanyahu-belongs-in-the-hague-nyc-mayor-mamdani-mulls-whether-he-can-order-israeli-pms-arrest" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/18205943e3062a3.webp"  alt="&#039;Netanyahu belongs in The Hague&#039;: NYC mayor Mamdani mulls whether he can order Israeli PM&#039;s arrest" title="&#039;Netanyahu belongs in The Hague&#039;: NYC mayor Mamdani mulls whether he can order Israeli PM&#039;s arrest"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='5' data-layout='story' data-id='2016505'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016505/netanyahu-belongs-in-the-hague-nyc-mayor-mamdani-mulls-whether-he-can-order-israeli-pms-arrest'  class='story__link  '>'Netanyahu belongs in The Hague': NYC mayor Mamdani mulls whether he can order Israeli PM's arrest</a></h2>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-0 sm:pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016504' id='2016504' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus    sm:w-full  w-full  h-auto hidden sm:block      mb-0  ' data-focus-x='49.63%' data-focus-y='48.35%'>
+        <div class='media__item    media__item--100          '><a title="Daily fuel price adjustments to curb market abuse, ensure fair prices: petroleum minister" href="https://www.dawn.com/news/2016504/daily-fuel-price-adjustments-to-curb-market-abuse-ensure-fair-prices-petroleum-minister" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/182016254a5e605.webp"  alt="Daily fuel price adjustments to curb market abuse, ensure fair prices: petroleum minister" title="Daily fuel price adjustments to curb market abuse, ensure fair prices: petroleum minister"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='2' data-layout='story' data-id='2016504'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016504/daily-fuel-price-adjustments-to-curb-market-abuse-ensure-fair-prices-petroleum-minister'  class='story__link  '>Daily fuel price adjustments to curb market abuse, ensure fair prices: petroleum minister</a></h2>
+</article>
+    <!-- - - - /article - - - -->            </div>
+        </div>
+
+        <!-- OPINION -->
+        <div class="border-t-3 border-black sm:mx-2 mx-0 py-3">
+            <h3 class="mb-3"><a class="font-playfair-display font-bold text-6 leading-tight" href='/opinion'>Opinion</a></h3>
+            <div class="flex flex-col sm:flex-row">
+                <div class="w-full sm:w-1/4">
+                        
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    mb-2 md:mb-0 pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016395' id='2016395' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media          media--fill    sm:w-full w-1/4 float-left sm:float-none mr-2 sm:mr-0 h-auto      mb-0  ' >
+        <div class='media__item          '><a title="Eternal quest for privileges" href="https://www.dawn.com/news/2016395/eternal-quest-for-privileges" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/18062913501d8fb.webp"  alt="Eternal quest for privileges" title="Eternal quest for privileges"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title playfairdisplay -->
+    <h2 dir='auto' data-comments-pending='2' data-layout='story' data-id='2016395'  class='story__title      font-playfair-display  font-bold pb-2 text-4 leading-tight    '><a  href='https://www.dawn.com/news/2016395/eternal-quest-for-privileges'  class='story__link  '>Eternal quest for privileges
+</a></h2>
+<!-- box/byline --><div dir='auto' class='     mt-1    '><span dir='auto' class='story__byline    text-3  text-black    '><a class='story__byline__link' href='https://www.dawn.com/authors/18/ahmed-bilal-mehboob'>Ahmed Bilal Mehboob</a></span> </div>
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.5  text-black  font-georgia    '>Enhanced privileges for lawmakers are problematic and raise serious questions.
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->                </div>
+                <div class="w-full sm:w-3/4">
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 mb-4 sm:ml-2">
+                            
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016394' id='2016394' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 float-left sm:float-none mr-2 sm:mr-0 h-auto      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Afghanistan&rsquo;s lost peace" href="https://www.dawn.com/news/2016394/afghanistans-lost-peace" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/18062747e6b80c9.webp"  alt="Afghanistan&rsquo;s lost peace" title="Afghanistan&rsquo;s lost peace"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '>Updated 18 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='3' data-layout='story' data-id='2016394'  class='story__title      text-3.5  font-playfair-display  font-bold pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016394/afghanistans-lost-peace'  class='story__link  '>Afghanistan’s lost peace
+</a></h2>
+<!-- box/byline --><div dir='auto' class='     mt-1    '><span dir='auto' class='story__byline    text-3  text-black    '><a class='story__byline__link' href='https://www.dawn.com/authors/11513/asif-durrani'>Asif Durrani</a></span> </div></article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016393' id='2016393' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 float-left sm:float-none mr-2 sm:mr-0 h-auto      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Geographic shield" href="https://www.dawn.com/news/2016393/geographic-shield" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/180626082beedb6.webp"  alt="Geographic shield" title="Geographic shield"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '> 18 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='2' data-layout='story' data-id='2016393'  class='story__title      text-3.5  font-playfair-display  font-bold pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016393/geographic-shield'  class='story__link  '>Geographic shield
+</a></h2>
+<!-- box/byline --><div dir='auto' class='     mt-1    '><span dir='auto' class='story__byline    text-3  text-black    '><a class='story__byline__link' href='https://www.dawn.com/authors/379/naseer-memon'>Naseer Memon</a></span> </div></article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016392' id='2016392' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 float-left sm:float-none mr-2 sm:mr-0 h-auto      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Exporting doctors" href="https://www.dawn.com/news/2016392/exporting-doctors" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/18062551d1d5fed.webp"  alt="Exporting doctors" title="Exporting doctors"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '> 18 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='1' data-layout='story' data-id='2016392'  class='story__title      text-3.5  font-playfair-display  font-bold pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016392/exporting-doctors'  class='story__link  '>Exporting doctors
+</a></h2>
+<!-- box/byline --><div dir='auto' class='     mt-1    '><span dir='auto' class='story__byline    text-3  text-black    '><a class='story__byline__link' href='https://www.dawn.com/authors/410/rafia-zakaria'>Rafia Zakaria</a></span> </div></article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200' data-id='2016098' id='2016098' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 float-left sm:float-none mr-2 sm:mr-0 h-auto      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Making one&rsquo;s way" href="https://www.dawn.com/news/2016098/making-ones-way" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/170719050c0170a.webp"  alt="Making one&rsquo;s way" title="Making one&rsquo;s way"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '>Updated 17 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2016098'  class='story__title      text-3.5  font-playfair-display  font-bold pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016098/making-ones-way'  class='story__link  '>Making one’s way
+</a></h2>
+<!-- box/byline --><div dir='auto' class='     mt-1    '><span dir='auto' class='story__byline    text-3  text-black    '><a class='story__byline__link' href='https://www.dawn.com/authors/568/faisal-bari'>Faisal Bari</a></span> </div></article>
+    <!-- - - - /article - - - -->                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDITORIAL -->
+        <div class="border-t-3 border-black sm:mx-2 mx-0 py-3">
+            <h3 class="mb-3"><a class="font-playfair-display font-bold text-6 leading-tight" href='/opinion'>Editorial</a></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-2 mb-4">
+                    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200 sm:grid' data-id='2016398' id='2016398' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 sm:ml-0 ml-2 sm:float-none float-right order-1      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="GSP-Plus renewal" href="https://www.dawn.com/news/2016398/gsp-plus-renewal" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/1808143813a1f39.webp"  alt="GSP-Plus renewal" title="GSP-Plus renewal"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '>Updated 18 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='2' data-layout='story' data-id='2016398'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016398/gsp-plus-renewal'  class='story__link  '>GSP-Plus renewal
+</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.5  text-black  font-georgia    '>THERE is no glossing over the fact that the country’s leadership faces tough choices in the months ahead. Brussels...
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200 sm:grid' data-id='2016397' id='2016397' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      fallbacktrans sm:w-full w-1/4 sm:ml-0 ml-2 sm:float-none float-right order-1       mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="AJK engagement" href="https://www.dawn.com/news/2016397/ajk-engagement" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="AJK engagement" title="AJK engagement"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '> 18 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='1' data-layout='story' data-id='2016397'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016397/ajk-engagement'  class='story__link  '>AJK engagement
+</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.5  text-black  font-georgia    '>A WELCOME lowering of political temperatures appears to be underway in Azad Kashmir, as the region’s...
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200 sm:grid' data-id='2016396' id='2016396' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      fallbacktrans sm:w-full w-1/4 sm:ml-0 ml-2 sm:float-none float-right order-1       mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Delayed relief" href="https://www.dawn.com/news/2016396/delayed-relief" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="Delayed relief" title="Delayed relief"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '> 18 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2016396'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016396/delayed-relief'  class='story__link  '>Delayed relief
+</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.5  text-black  font-georgia    '>THE decision to defer the Fund for Responding to Loss and Damage’s first funding approvals is a setback for...
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200 sm:grid' data-id='2016094' id='2016094' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      sm:w-full w-1/4 sm:ml-0 ml-2 sm:float-none float-right order-1      mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Barren reforms" href="https://www.dawn.com/news/2016094/barren-reforms" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.dawn.com/medium/2026/07/17072847e4b36a4.webp"  alt="Barren reforms" title="Barren reforms"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '> 17 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='6' data-layout='story' data-id='2016094'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016094/barren-reforms'  class='story__link  '>Barren reforms
+</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.5  text-black  font-georgia    '>PRIME Minister Shehbaz Sharif’s assertion that agriculture and livestock hold the key to Pakistan’s quick...
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200 sm:grid' data-id='2016093' id='2016093' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      fallbacktrans sm:w-full w-1/4 sm:ml-0 ml-2 sm:float-none float-right order-1       mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Dumbing down?" href="https://www.dawn.com/news/2016093/dumbing-down" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="Dumbing down?" title="Dumbing down?"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '> 17 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='2' data-layout='story' data-id='2016093'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016093/dumbing-down'  class='story__link  '>Dumbing down?
+</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.5  text-black  font-georgia    '>THE awesome power of generative AI has raised concerns in academic and scientific circles about the impact the...
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    pr-2 pb-2 md:pb-0 border-b md:border-b-0 border-r-0 sm:border-r border-gray-200 sm:grid' data-id='2016092' id='2016092' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media        media--focus      fallbacktrans sm:w-full w-1/4 sm:ml-0 ml-2 sm:float-none float-right order-1       mb-0  ' >
+        <div class='media__item    media__item--100          '><a title="Eyeing the Margallas" href="https://www.dawn.com/news/2016092/eyeing-the-margallas" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="Eyeing the Margallas" title="Eyeing the Margallas"  /></picture></a></div>        
+    </figure>
+<!-- box/date --><span class='story__time    text-2.5 text-gray-500  text-gray-500   font-arial    '> 17 Jul, 2026</span> 
+    <!-- box/title playfairdisplay-text:3.5 -->
+    <h2 dir='auto' data-comments-pending='4' data-layout='story' data-id='2016092'  class='story__title      text-3.5  font-playfair-display  font-bold pt-1 pb-2 text-3.5 leading-tight    '><a  href='https://www.dawn.com/news/2016092/eyeing-the-margallas'  class='story__link  '>Eyeing the Margallas
+</a></h2>
+
+
+    <!-- box/excerpt -->
+    <div dir='auto' class='story__excerpt      text-3.5  text-black  font-georgia    '>AS Pakistan battles a variety of climate crises, state institutions must do all possible to defend critical...
+ 
+    </div>
+</article>
+    <!-- - - - /article - - - -->            </div>
+        </div>
+
+            
+    
+    <!-- advert:start div-gpt-ad-1783585137296-0 -->
+    <div id='div-gpt-ad-1783585137296-0' class='ad__wrapper__slot my-4 clear-both flex justify-center' data-rendered-classes="border-t border-b py-4 my-4 bg-gray-100" data-name="Dawn-Responsive-2-Article" data-height="250px" data-width="300px" data-selector='.story__content p:nth-of-type(15)'      >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1783585137296-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+    
+        <div class="border-t-3 border-black dawnnews-english w-full py-3">
+            
+<div class="flex flex-row justify-between items-center">
+  <a target="_blank" href='https://www.youtube.com/c/DawnNewsEnglish' class='text-red-custom font-arial align-middle text-3 mb-3 inline-block uppercase whitespace-nowrap'>
+    Dawn News English Podcasts
+    <span class="border-l-4 border-t-4 border-b-4 border-red-custom border-t-transparent border-b-transparent inline-flex ml-0.5"></span>
+  </a>
+  <div class="flex items-center space-x-4">
+    <a href="https://www.youtube.com/channel/UC_xWTNsx7zA2uI0ydQikViA?sub_confirmation=1"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-3 py-0.5 font-semibold text-3 text-white transition-colors duration-200 ease-in-out bg-red-400 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+      </svg>
+      <span>Subscribe</span>
+    </a>
+  </div>
+
+</div>
+<div class="w-full flex">
+  
+
+<div class='slideshow      slideshow--main  ' data-slick='{"dots":false,"arrows":false,"dotsClass":"slideshow__pager  ","asNavFor":null,"cssEase":"ease","speed":250,"autoplaySpeed":4000,"slidesToScroll":1,"slidesToShow":5,"fade":false,"autoplay":true,"infinite":true,"responsive": [{"breakpoint": 767,"settings": {"slidesToShow": 3,"slidesToScroll": 1}},{"breakpoint": 575,"settings": {"slidesToShow": 1,"slidesToScroll": 1}}]}'>
+<div class='slideshow__slide  slideshow__slide--first    slideshow__slide--horizontal  lg:w-1/5  md:w-1/3  w-full' style='margin:0 1px;'>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    font-serif' data-id='2016479' id='2016479' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  media--stretch      mb-0  ' >
+        <div class='media__item          '><a title="Spain v Argentina World Cup Final Set! England Collapse, Messi Through" href="https://www.youtube.com/watch?v=DCEuCWLBKsU" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.ytimg.com/vi/DCEuCWLBKsU/mqdefault.jpg"  alt="Spain v Argentina World Cup Final Set! England Collapse, Messi Through" title="Spain v Argentina World Cup Final Set! England Collapse, Messi Through"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-center-targetblank -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2016479'  class='story__title      text-center  font-bold      '><a target='_blank' href='https://www.youtube.com/watch?v=DCEuCWLBKsU'  class='story__link  '>Spain v Argentina World Cup Final Set! England Collapse, Messi Through </a></h2>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-1/5  md:w-1/3  w-full' style='margin:0 1px;'>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    font-serif' data-id='2015957' id='2015957' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  media--stretch      mb-0  ' >
+        <div class='media__item          '><a title="Why Karachi&#039;s Coast Is in Danger&mdash;and How It Can Be Fixed" href="https://www.youtube.com/watch?v=hIJ9aq6yAbM" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.ytimg.com/vi/hIJ9aq6yAbM/mqdefault.jpg"  alt="Why Karachi&#039;s Coast Is in Danger&mdash;and How It Can Be Fixed" title="Why Karachi&#039;s Coast Is in Danger&mdash;and How It Can Be Fixed"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-center-targetblank -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2015957'  class='story__title      text-center  font-bold      '><a target='_blank' href='https://www.youtube.com/watch?v=hIJ9aq6yAbM'  class='story__link  '>Why Karachi's Coast Is in Danger—and How It Can Be Fixed </a></h2>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-1/5  md:w-1/3  w-full' style='margin:0 1px;'>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    font-serif' data-id='2015949' id='2015949' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  media--stretch      mb-0  ' >
+        <div class='media__item          '><a title="Pakistan, Afghanistan And The TTP Problem No One Can Ignore" href="https://www.youtube.com/watch?v=OWwl_KX-8KI" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.ytimg.com/vi/OWwl_KX-8KI/mqdefault.jpg"  alt="Pakistan, Afghanistan And The TTP Problem No One Can Ignore" title="Pakistan, Afghanistan And The TTP Problem No One Can Ignore"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-center-targetblank -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2015949'  class='story__title      text-center  font-bold      '><a target='_blank' href='https://www.youtube.com/watch?v=OWwl_KX-8KI'  class='story__link  '>Pakistan, Afghanistan And The TTP Problem No One Can Ignore </a></h2>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-1/5  md:w-1/3  w-full' style='margin:0 1px;'>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    font-serif' data-id='2015426' id='2015426' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  media--stretch      mb-0  ' >
+        <div class='media__item          '><a title="2026 FIFA World Cup Semi-Finals Preview" href="https://www.youtube.com/watch?v=WAzXGXAClk0" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.ytimg.com/vi/WAzXGXAClk0/mqdefault.jpg"  alt="2026 FIFA World Cup Semi-Finals Preview" title="2026 FIFA World Cup Semi-Finals Preview"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-center-targetblank -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2015426'  class='story__title      text-center  font-bold      '><a target='_blank' href='https://www.youtube.com/watch?v=WAzXGXAClk0'  class='story__link  '>2026 FIFA World Cup Semi-Finals Preview </a></h2>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-1/5  md:w-1/3  w-full' style='margin:0 1px;'>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    font-serif' data-id='2015423' id='2015423' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  media--stretch      mb-0  ' >
+        <div class='media__item          '><a title="Family Businesses, Taxes &amp; IMF: What&#039;s Really Holding Pakistan Back?" href="https://www.youtube.com/watch?v=p5OKtiQpETc" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.ytimg.com/vi/p5OKtiQpETc/mqdefault.jpg"  alt="Family Businesses, Taxes &amp; IMF: What&#039;s Really Holding Pakistan Back?" title="Family Businesses, Taxes &amp; IMF: What&#039;s Really Holding Pakistan Back?"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-center-targetblank -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2015423'  class='story__title      text-center  font-bold      '><a target='_blank' href='https://www.youtube.com/watch?v=p5OKtiQpETc'  class='story__link  '>Family Businesses, Taxes &amp; IMF: What's Really Holding Pakistan Back? </a></h2>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-1/5  md:w-1/3  w-full' style='margin:0 1px;'>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    font-serif' data-id='2015152' id='2015152' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  media--stretch      mb-0  ' >
+        <div class='media__item          '><a title="Pakistan&#039;s Population Crisis: Why Family Planning Policies Keep Failing" href="https://www.youtube.com/watch?v=jRGO3lAhpUY" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.ytimg.com/vi/jRGO3lAhpUY/mqdefault.jpg"  alt="Pakistan&#039;s Population Crisis: Why Family Planning Policies Keep Failing" title="Pakistan&#039;s Population Crisis: Why Family Planning Policies Keep Failing"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-center-targetblank -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2015152'  class='story__title      text-center  font-bold      '><a target='_blank' href='https://www.youtube.com/watch?v=jRGO3lAhpUY'  class='story__link  '>Pakistan's Population Crisis: Why Family Planning Policies Keep Failing </a></h2>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+<div class='slideshow__slide      slideshow__slide--horizontal  lg:w-1/5  md:w-1/3  w-full' style='margin:0 1px;'>
+    
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    font-serif' data-id='2014618' id='2014618' data-layout='story' data-tags=''>
+
+    <!-- box/image -->
+    <figure class='media  media__icon-video          sm:w-full  w-full  media--stretch      mb-0  ' >
+        <div class='media__item          '><a title="France Cruise Past Morocco" href="https://www.youtube.com/watch?v=HPhQXDEasew" target="_self"><picture><img class='lazyload' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8Vw8AAmEBb87E6jIAAAAASUVORK5CYII=' data-src="https://i.ytimg.com/vi/HPhQXDEasew/mqdefault.jpg"  alt="France Cruise Past Morocco" title="France Cruise Past Morocco"  /></picture></a></div>        
+    </figure>
+
+    <!-- box/title bold-center-targetblank -->
+    <h2 dir='auto' data-comments-pending='0' data-layout='story' data-id='2014618'  class='story__title      text-center  font-bold      '><a target='_blank' href='https://www.youtube.com/watch?v=HPhQXDEasew'  class='story__link  '>France Cruise Past Morocco </a></h2>
+</article>
+    <!-- - - - /article - - - -->
+</div>
+</div>
+</div>        </div>
+    </div>
+    </div>
+
+<div class="absolute left-0 hidden sm:block">
+      <div class='navstory fixed z-50 top-2/5  navstory--prev' title="You can also use your keyboard &#8592; (left arrow) or &#8594; (right arrow) to navigate stories">
+    <a class="navstory__arrow opacity-50 bg-gray-400 text-13 absolute pt-0 pb-2 px-1.25 font-georgia text-white rounded-tr-md rounded-br-md navstory__arrow--prev" href="https://www.dawn.com/news/2015795/ajk-violence">&lsaquo;</a>
+    <div class='navstory__article p-2.5 opacity-0 w-52 -ml-56 bg-gray-200 navstory__article--prev'>
+          
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    ' data-id='2015795' id='2015795' data-layout='story' data-tags=''>
+    <!-- box/title  -->
+    <h2 dir='auto' data-comments-pending='8' data-layout='story' data-id='2015795'  class='story__title          '><a  href='https://www.dawn.com/news/2015795/ajk-violence'  class='story__link  '>AJK violence
+</a></h2>
+
+
+    <!-- box/image -->
+    <figure class='media          media--fill  sm:w-full  w-full        mb-0  ' >
+        <div class='media__item          '><a title="AJK violence" href="https://www.dawn.com/news/2015795/ajk-violence" target="_self"><picture><img  width="2000" height="1199"  src="https://i.dawn.com/thumbnail/2026/07/16083215241da8b.webp"  alt="AJK violence" title="AJK violence"  /></picture></a></div>        
+    </figure>
+</article>
+    <!-- - - - /article - - - -->    </div>
+  </div>
+    <div class='navstory fixed z-50 top-2/5 right-0 rounded-t-md rounded-l-md navstory--next' title="You can also use your keyboard &#8592; (left arrow) or &#8594; (right arrow) to navigate stories">
+    <a class="navstory__arrow opacity-50 bg-gray-400 text-13 absolute right-0 pt-0 pb-2 px-1.25 font-georgia text-white rounded-tl-md rounded-bl-md navstory__arrow--next" href="https://www.dawn.com/news/2016140/iran-launches-fresh-attacks-on-american-facilities-in-gulf-after-sixth-consecutive-day-of-us-strikes">&rsaquo;</a>
+    <div class='navstory__article p-2.5 opacity-0 w-52 -mr-56 bg-gray-200  navstory__article--next'>
+          
+<!-- - - - article - - - -->
+    <article class='story relative overflow-hidden box    ' data-id='2016140' id='2016140' data-layout='story' data-tags=''>
+    <!-- box/title  -->
+    <h2 dir='auto' data-comments-pending='10' data-layout='story' data-id='2016140'  class='story__title          '><a  href='https://www.dawn.com/news/2016140/iran-launches-fresh-attacks-on-american-facilities-in-gulf-after-sixth-consecutive-day-of-us-strikes'  class='story__link  '>Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes</a></h2>
+
+
+    <!-- box/image -->
+    <figure class='media          media--fill  sm:w-full  w-full        mb-0  ' >
+        <div class='media__item          '><a title="Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes" href="https://www.dawn.com/news/2016140/iran-launches-fresh-attacks-on-american-facilities-in-gulf-after-sixth-consecutive-day-of-us-strikes" target="_self"><picture><img  width="4800" height="2880"  src="https://i.dawn.com/thumbnail/2026/07/170900160e8db70.webp"  alt="Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes" title="Iran launches fresh attacks on American facilities in Gulf after sixth consecutive day of US strikes"  /></picture></a></div>        
+    </figure>
+</article>
+    <!-- - - - /article - - - -->    </div>
+  </div>
+  </div></div>
+<footer class="native-hidden">
+    <div class='flex justify-center p-2'>
+            
+    
+    <!-- advert:start div-gpt-ad-1693559286339-0 -->
+    <div id='div-gpt-ad-1693559286339-0' class='ad__wrapper__slot ' data-rendered-classes="" data-name="Dawn-Responsive-Footer-Stickable-Leaderboard" data-height="90px" data-width="728px"   data-refresh='180'    >
+        <script>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1693559286339-0'); });</script>
+        
+    </div>
+    <!-- advert:end -->
+    
+        </div>
+
+    <div class="w-full bg-black">
+  <div class='py-4'>
+    <div class="container px-2">
+      <div class="flex flex-row border-b-2 border-white mb-2 pb-2 justify-between items-center">
+        <nav class="order-first">
+                      <a href='https://www.dawn.com/' title="Dawn" class='logo '>
+                <img class="w-20" src="https://www.dawn.com/_img/logo-white.png" alt="Dawn Logo"  width="" height="" fetchpriority="high">
+                <span class="hidden">Dawn</span>
+            </a>          <p class="hidden"> Compunode.com Pvt. Ltd. (<a class="px-0  sm:px-1  font-normal" href="https://www.compunode.com/">www.compunode.com</a>).Designed for <a class="px-0  sm:px-1  font-normal" href="https://www.dawn.com">Dawn</a>.</p>
+        </nav>
+        <nav class="nav flex mt-2 sm:mt-0 items-end order-last">
+          <a class='outline-none' href='https://whatsapp.com/channel/0029VaMc238IiRov8okfYy3n'><img alt="Whatsapp" height="20" class='align-baseline  mt-1  mr-2' src="https://i.dawn.com/thumbnail/2024/02/080925032506f93.png"></a>
+          <a class='outline-none' href='https://twitter.com/dawn_com'><img alt="Twitter" style="height:17px" class='align-baseline  mt-1  mr-2' src="https://i.dawn.com/large/2024/02/16125537351049d.png"></a>
+          <a class='outline-none' href='https://www.facebook.com/dawndotcom'><img alt="Facebook" width="20" height="20" class='align-baseline  mt-1  mr-2' src="https://i.dawn.com/thumbnail/2019/02/5c611c42cf5e8.png"></a>
+          <a class='outline-none' href='https://www.instagram.com/dawn.today/'><img alt="Instagram" width="20" height="20" class='align-baseline  mt-1  mr-2' src="https://i.dawn.com/thumbnail/2019/02/5c611c430f9b2.png"></a>
+          <a class='outline-none' href='https://itunes.apple.com/pk/app/dawn-official-mobile-app/id935631940'><img alt="Apple" width="20" height="34" class='align-baseline  mt-1  mr-2' src="https://i.dawn.com/thumbnail/2019/02/5c611c42d5669.png"></a>
+          <a class='outline-none' href='https://play.google.com/store/apps/details?id=com.mictronicx.dawn'><img alt="Android" width="20" height="34" class='align-baseline  mt-1 mr-2' src="https://i.dawn.com/thumbnail/2019/02/5c611c42ce48d.png"></a>
+          <a class='outline-none' href='https://appgallery.huawei.com/#/app/C104007373'><img alt="Huwaei App Gallery" width="100" height="30" class='align-baseline  mt-1' src="https://i.dawn.com/thumbnail/2021/05/60a360ab86d68.png"></a>
+        </nav>
+      </div>
+
+      <div class="grid grid-cols-2 sm:flex sm:flex-row">
+        <div class="md:w-1/6 w-full mb-4 sm:mb-0">
+          <nav class="text-2.5 text-white">
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/contact">Contact</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/contribution-guidelines">Contribution Guidelines</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/code-of-ethics">Code of Ethics</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/ai-policy">AI Policy</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/terms">Terms of Use</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/privacy">Privacy</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/comments-policy">Comment Moderation</a>
+          </nav>
+        </div>
+
+        <div class="md:w-1/6 w-full mb-4 sm:mb-0">
+          <nav class="text-2.5 text-white">
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/subscription">Subscribe to Newspaper</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/reproduction-copyrights">Reproduction Copyrights</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/marketing">Advertise on Dawn.com</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/branded-content">Branded Content</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/jobs">Careers</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://obituary.dawn.com">Obituaries</a>
+          </nav>
+        </div>
+
+        <div class="md:w-1/6 w-full mb-4 sm:mb-0">
+          <nav class="text-2.5 text-white">
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/prayers-timings">Prayer Timings</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/stocks">Stock/Forex/Gold</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/weather">Weather</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="javascript:(function(){const w=1280,s=innerWidth/w,i=document.createElement('iframe');i.src=location.href;i.style.cssText='position:fixed;top:0;left:0;width:'+w+'px;height:'+innerHeight/s+'px;border:0;background:#fff;transform:scale('+s+');transform-origin:0 0;z-index:9999999';document.body.appendChild(i);})();">Desktop</a>
+          </nav>
+        </div>
+
+        <div class="md:w-1/6 w-full mb-4 sm:mb-0">
+          <nav class="text-2.5 text-white">
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/">Dawn</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/prism">Prism</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://images.dawn.com">Images</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/special-reports">Special Reports</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://aurora.dawn.com">Aurora</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawnnews.tv/">Dawn News</a>
+          </nav>
+        </div>
+
+        <div class="md:w-1/6 w-full mb-4 sm:mb-0">
+          <nav class="text-2.5 text-white">
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.dawn.com/magazines">Eos/Icon/Young World</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://cityfm89.com">Cityfm89</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://herald.dawn.com">Herald</a>
+            <a class="font-normal w-full inline-block uppercase mb-2 font-arial text-white outline-none" href="https://www.youtube.com/channel/UCkMdI0K-74jAjOmh5J5H97Q">Teeli</a>
+          </nav>
+        </div>
+
+        <div class="md:w-1/6 w-full mb-4 sm:mb-0">
+          <nav class="text-2.5 text-white">
+            <p class="font-normal text-white text-left md:text-right mb-2">Copyright &copy;
+              2026,
+              Dawn</a>
+            </p>
+            <p class="font-normal text-white text-left md:text-right">
+              <a target="_blank" href="https://www.newskit.com">NewsKit Publishing Platform</a>
+            </p>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <style type="text/css">body.native .native-hidden { display: none !important; }</style>
+
+
+
+    <script>window.addEventListener('load', function() { dailymotionSyndicationId(202395) }); </script></footer>
+</body>
+
+</html>

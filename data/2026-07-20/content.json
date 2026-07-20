@@ -1,0 +1,221 @@
+{
+  "date": "2026-07-20",
+  "vol": "293",
+  "intro_text": "今天的 AI 新闻不再只是模型谁强一点。Kimi K3 刚把开放模型的需求推到 GPU 容量边界，欧洲监管开始撬 Android 入口，白宫把前沿模型准入握得更紧，企业侧则把安全、结构化数据和数据中心支出摊到明账上。能力继续增长，但真正决定谁能用、怎么用、花多少钱的，是入口、容量和规则。",
+  "cover": {
+    "title": "入口开始收紧",
+    "subtitle": "开放模型挤爆 GPU，平台和政府同时接管分发账本。",
+    "image_path": "runs/2026-07-20/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI tech briefing 21:9 magazine cover background. Primary request: Create a premium editorial AI technology magazine cover background for the July 20, 2026 briefing theme: open-weight AI models strain GPU capacity while governments and platforms seize control of distribution, security, and compute economics. Scene/backdrop: stark black-white operations map with Janet green signal accents (#18E299), abstract GPU racks under capacity pressure, a mobile operating-system permission grid opening to rival AI agents, policy checkpoint gates, enterprise security scanning lines, and tabular data ledgers. Subject: no people, no robot faces; focus on infrastructure, access gates, model weights, permission maps, and cost ledgers. Style/medium: high-end raster editorial photo-composite, minimalist investigative tech magazine, crisp studio shadows, sophisticated negative space. Composition/framing: ultra-wide horizontal 21:9 banner, strong negative space center-left for HTML overlay title, asymmetric diagonal tension, layered depth but uncluttered. Text: no readable text, no dates, no volume number, no logos, no watermark. Constraints: no cartoon, no glowing brain, no cheap cyberpunk neon, no crowded UI text, no humanoid robots."
+  },
+  "trend": "Kimi K3 暂停新订阅、Android 被要求开放给 rival AI assistants、白宫插手前沿模型客户名单、Microsoft 把 AI 安全做成多模型路由，放在一起看，今天的问题已经从模型榜单转向入口、容量和使用许可。模型参数可以上榜，真正影响用户的却是你能不能注册、能不能被批准、能不能在手机和企业系统里拿到权限。\n\n这对中国创作者和中小团队很现实：开放模型会继续压低高频任务的心理价位，但它处理不了 GPU、稳定性和运维；闭源模型会继续守住困难推理，同时也会被政府、平台和预算系统层层过滤。接下来该盯的，是每个平台把“可用”改写成什么条件。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Kimi K3暂停新订阅保GPU",
+          "body": "AI Weekly 7 月 19 日追踪到，Moonshot 在 X 上称 Kimi K3 收到的需求远超预期，过去 48 小时的使用把 GPU 推近容量上限，因此暂时暂停新订阅，优先保护现有订阅用户并补充 GPU 容量。这件事发生在 Kimi K3 发布后不久，也给“开放权重免费冲击闭源 API”的叙事补了一张资源账单。",
+          "janet_take": "Kimi K3 刺痛行业的地方，在于它把“开放”两个字拉回机房。用户当然喜欢便宜、可控、能本地跑，但只要需求上来，GPU、排队、限额和服务稳定性会立刻变成产品体验。创作者可以兴奋，企业评估时还得看吞吐和容灾，不然模型卡再漂亮，最后也会卡在队列里。",
+          "source": "AI Weekly / Moonshot AI",
+          "url": "https://aiweekly.co/ai-news-today",
+          "image_url": "https://aiweekly.co/ai-news-today",
+          "image": "images/news-01-kimi-k3.png",
+          "image_origin": "source",
+          "image_source_url": "https://dxj7eshgz03ln.cloudfront.net/production/publication/logo/1475/8f402391-cd29-43a4-9695-35d930a59660.png"
+        },
+        {
+          "title": "欧盟要求Android开放AI入口",
+          "body": "Computerworld 报道，欧洲委员会依据 Digital Markets Act 对 Google 作出两项约束性决定：Android 需要向 Gemini 之外的 AI assistants 开放系统和应用服务能力，Google 也需要向竞争对手共享部分搜索数据。Google 反击称这些要求可能削弱隐私和安全护栏；安全从业者则提醒，多 AI assistant 拿到系统级权限后，企业移动设备管理要重新定义风险。",
+          "janet_take": "反垄断在这里碰到的是系统权限，不是搜索框排名。对创作者，入口开放可能带来新分发机会；对企业 IT，这等于多了几套会读屏、跨 app 行动、后台执行的代理。监管想拆平台墙，安全团队却得补权限洞，中间那笔治理成本会落到移动设备管理上。",
+          "source": "Computerworld",
+          "url": "https://www.computerworld.com/article/4198420/google-must-open-android-to-rival-ai-agents-eu-orders.html",
+          "image_url": "https://www.computerworld.com/article/4198420/google-must-open-android-to-rival-ai-agents-eu-orders.html",
+          "image": "images/news-02-android.webp",
+          "image_origin": "source",
+          "image_source_url": "https://www.computerworld.com/wp-content/uploads/2026/07/4198420-0-34303800-1784299031-shutterstock_2548864541.jpg?quality=50&strip=all&w=1024"
+        },
+        {
+          "title": "白宫改写前沿模型准入",
+          "body": "AI Weekly 引述 CNBC 7 月 19 日报道，特朗普政府正在决定哪些伙伴可以访问 OpenAI 和 Anthropic 的前沿模型，把监管触角从网络安全清算机制扩展到实验室原本自行管理的客户分发。报道提到 Anthropic 的 Glasswing、OpenAI 的 Daybreak 伙伴名单都需要明确政府批准；白宫称参与是自愿的，但此前 Fable 5、Mythos 5 和 GPT-5.6 Sol 都已经经历过准入限制。",
+          "janet_take": "前沿模型开始像半导体一样被名单管理，这是行业心理线被改写的一刻。实验室还能写发布博客，但谁能用、在哪用、用到什么能力，正在被国家安全语言接管。国内团队别只看美国模型有没有新 benchmark，真正要看的是可获得性会不会突然断电；被批准也是能力，没被批准就是空气。",
+          "source": "AI Weekly / CNBC",
+          "url": "https://aiweekly.co/ai-news-today",
+          "image_url": "https://aiweekly.co/ai-news-today",
+          "image": "images/news-03-a8cba021cf.png",
+          "image_origin": "source",
+          "image_source_url": "https://dxj7eshgz03ln.cloudfront.net/production/publication/logo/1475/8f402391-cd29-43a4-9695-35d930a59660.png"
+        },
+        {
+          "title": "五角大楼公开怼OpenAI高管",
+          "body": "Axios 7 月 19 日报道，美国国防部副部长 Emil Michael 在 X 上公开攻击 OpenAI 战略未来负责人 Dean Ball，争论焦点是美国政府如何处理中国 AI 模型带来的竞争和安全问题。Ball 曾参与特朗普政府 AI Action Plan 架构，如今进入 OpenAI；Axios 指出，这场公开冲突可能让 OpenAI 与美国政府关系变得更复杂。",
+          "janet_take": "骂战只是表面，真正要看的是权力关系。OpenAI 已经站到政府、国防、出口管制和产业政策的交叉口，一个政策人的 X 争吵都可能影响公司关系。AI 大厂进入了“说错一句话也会牵动准入”的阶段；围观骂战没意义，模型分发会不会变才是关键。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/07/19/pentagon-openai-dean-ball-trump-ai",
+          "image_url": "https://www.axios.com/2026/07/19/pentagon-openai-dean-ball-trump-ai",
+          "image": "images/news-04-openai.jpg",
+          "image_origin": "search",
+          "image_source_url": "https://n.sinaimg.cn/sinakd20260302s/150/w1019h731/20260302/7a8a-3e90081ba214cf7a7afa5b095044012a.jpg"
+        },
+        {
+          "title": "Nubia用Doubao重做手机入口",
+          "body": "AI Weekly 汇总 Bloomberg 7 月 19 日报道，ZTE 旗下 Nubia 在 WAIC 2026 展示 NaviX Ultra，外界称其为围绕 ByteDance Doubao voice agent 设计的 agentic AI smartphone。报道称这台手机取消传统 home screen 和 app grid，改用专用侧边按键唤起 Doubao，并准备进入量产，但完整规格和价格仍未公布。",
+          "janet_take": "手机厂商终于承认，agent 真能办事时，桌面图标会显得很土。可入口革命常死在权限、支付、隐私和失败兜底上；Nubia 摆出姿势，Doubao 还得接住日常。",
+          "source": "AI Weekly / Bloomberg",
+          "url": "https://aiweekly.co/ai-news-today",
+          "image_url": "https://aiweekly.co/ai-news-today",
+          "image": "images/news-05-nubiaagent.png",
+          "image_origin": "source",
+          "image_source_url": "https://dxj7eshgz03ln.cloudfront.net/production/publication/logo/1475/8f402391-cd29-43a4-9695-35d930a59660.png"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Kimi K3权重将在月底开放",
+          "body": "Build Fast with AI 7 月 20 日梳理称，Kimi K3 的开放权重承诺日期是 7 月 27 日，距离 API 发布约 11 天；同一周 DeepSeek V4 stable 预计在 7 月 24 日到来。报道把这称为本月最集中的 open-weight release window，并提醒企业用真实工作负载比较 K3、DeepSeek V4 和闭源模型，别只看榜单。",
+          "janet_take": "开放权重倒计时的商业含义很清楚：高频、可验收、成本敏感的任务会先被重新报价。闭源模型仍然会守住困难推理，但它们会被迫解释为什么贵。国内团队这周最该做的动作很朴素，拿自己的代码、客服、素材处理任务跑一轮账，看看省下来的钱会不会被运维吃回去。",
+          "source": "Build Fast with AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image_url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image": "images/models-01-kimi-k3.png",
+          "image_origin": "source",
+          "image_source_url": "https://oukdqujzonxvqhiefdsv.supabase.co/storage/v1/object/public/blogs/78f20866-9092-47d5-9f44-6dcfbad8180e.png"
+        },
+        {
+          "title": "Fable 5免费窗逼用户表态",
+          "body": "Build Fast with AI 7 月 20 日关注到，Claude Fable 5 的免费访问窗口将在美国太平洋时间 7 月 19 日 23:59 结束，Anthropic 接下来可能延长、转向 credits，或用新模型重置叙事。这个节点刚好撞上 Kimi K3 和 DeepSeek 的开放模型攻势，让付费旗舰模型的价格理由被重新审视。",
+          "janet_take": "免费试用结束本来正常，尴尬的是旁边站着一个要开放权重的 Kimi。用户会问得很粗暴：我为什么继续为闭源旗舰付这么多？Anthropic 得用质量、稳定性和企业支持回答。",
+          "source": "Build Fast with AI / Anthropic",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image_url": "https://www.anthropic.com/news/redeploying-fable-5",
+          "image": "images/models-02-fable-5.png",
+          "image_origin": "source",
+          "image_source_url": "https://oukdqujzonxvqhiefdsv.supabase.co/storage/v1/object/public/blogs/78f20866-9092-47d5-9f44-6dcfbad8180e.png"
+        },
+        {
+          "title": "GPT-5.6接管工具执行链路",
+          "body": "OpenAI 的 GPT-5.6 页面显示，新一代模型覆盖 Sol、Terra、Luna 三个层级，并已在 ChatGPT、Codex 和 API 中逐步开放。OpenAI 强调其在 agentic browsing、computer use、cybersecurity 和 knowledge work 上的进展，并给出 Sol 每百万输入 token 5 美元、输出 token 30 美元等 API 定价。",
+          "janet_take": "OpenAI 这次卖的是更像技术操作员的工作流能力。问题也在这里：能力越像员工，账单就越像工资外包。创作者用 Terra、Luna 做日常产能可能很香，企业用 Sol 做关键流程则要把失败、复核和缓存策略算进去。模型强，项目还得自己会算账。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/gpt-5-6/",
+          "image_url": "https://openai.com/index/gpt-5-6/",
+          "image": "images/models-03-gpt-56.webp",
+          "image_origin": "search",
+          "image_source_url": "https://ai-tab.cn/wp-content/uploads/2025/08/1755483737-GPT-5编程提示.webp"
+        },
+        {
+          "title": "Gemini 3.5继续拖住Google",
+          "body": "Build Fast with AI 7 月 20 日汇总称，Gemini 3.5 Pro 据报第三次错过内部目标，问题集中在 coding 和 complex reasoning；Google 同期又遇到 EU Android 与搜索数据开放要求，Alphabet 股价承压。报道同时提醒，Google 本周仍有 Gemini Notebook 云端执行环境和 AI Mode app integrations 等实际产品进展。",
+          "janet_take": "Google 的麻烦在于旗舰模型叙事卡住了。Notebook、Search、Android 都是巨大入口，可企业买单时还是会问：最难的任务谁来扛？如果 Gemini Pro 继续延迟，Google 的分发优势会被监管拆一点，被竞品吃一点。入口再大，也得有一个能镇场的模型。",
+          "source": "Build Fast with AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image_url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image": "images/models-04-gemini-35.png",
+          "image_origin": "source",
+          "image_source_url": "https://oukdqujzonxvqhiefdsv.supabase.co/storage/v1/object/public/blogs/78f20866-9092-47d5-9f44-6dcfbad8180e.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Microsoft用路由降安全账单",
+          "body": "TechRepublic 7 月 17 日报道，Microsoft 据称正在准备 Project Perception，用 Anthropic、OpenAI 和 Microsoft 多个模型扫描、识别并修复企业漏洞，定位为比 Anthropic Mythos 更低成本的 AI security tool。关键设计是按任务路由模型：普通 inventory、log parsing 和初筛交给便宜模型，复杂 exploit chain 和修复计划才调用前沿模型。",
+          "janet_take": "这可能是本周最实用的 AI 架构信号：所有任务都扔给最贵模型，安全扫描很快就会撞预算。Microsoft 如果真把模型路由做进安全产品，卖点会变成“我知道什么时候不用旗舰”。中国团队做 agent 系统也该学这个账本，少炫耀全程旗舰模型。",
+          "source": "TechRepublic",
+          "url": "https://www.techrepublic.com/article/news-microsoft-project-perception-ai-security-tool/",
+          "image_url": "https://www.techrepublic.com/article/news-microsoft-project-perception-ai-security-tool/",
+          "image": "images/insights-01-microsoft.png",
+          "image_origin": "search",
+          "image_source_url": "https://learn.microsoft.com/zh-tw/MicrosoftTeams/media/direct-routing-media-bypass-6.png"
+        },
+        {
+          "title": "AI检测器怕风格模仿",
+          "body": "The Decoder 7 月 20 日报道，Epoch AI 测试 Pangram、GPTZero 和 Originality.ai 等 AI text detectors 后发现，在普通条件下检测器表现接近完美，但当模型被要求模仿特定作者风格时，平均约 13% 的 AI 生成段落会漏检；Epoch 自身数据还指出，科学写作场景的漏检比例更高。",
+          "janet_take": "AI 检测器的问题在证据等级。风格模仿只要一个 prompt，检测却要在统计雾里抓影子。把检测分数当判决书，最后会惩罚会写作的人，也放过会伪装的机器。",
+          "source": "The Decoder / Epoch AI",
+          "url": "https://the-decoder.com/ai-text-detectors-struggle-when-language-models-mimic-an-authors-style/",
+          "image_url": "https://the-decoder.com/ai-text-detectors-struggle-when-language-models-mimic-an-authors-style/",
+          "image": "images/insights-02-ai.png",
+          "image_origin": "source",
+          "image_source_url": "https://the-decoder.com/wp-content/uploads/2026/07/ai_tet_detector-1200x670.png"
+        },
+        {
+          "title": "RadLE 2.0要求模型标出不确定",
+          "body": "CRASH Lab 发布 Radiology's Last Exam 2.0 technical report，称新版 benchmark 从单纯准确率转向 uncertainty-aware autonomous diagnosis。团队回顾 RadLE 1.0 时指出，专家放射科医生约 83%，最佳 frontier AI 约 30%；随后模型进步很快，但 2.0 更关心模型是否会在错误诊断上保持过度自信。",
+          "janet_take": "医疗 AI 最怕的是答错还特别笃定。一个会说“我不知道”的系统，至少给医生留下复核入口；一个满脸自信的错误，会把人类审查变成走流程。创作者做健康内容和医疗工具尤其要清醒：benchmark 是责任边界，不是营销海报。不能校准不确定性，就别装成结论机器。",
+          "source": "CRASH Lab",
+          "url": "https://crashlab.in/radle-technicalreport",
+          "image_url": "https://crashlab.in/radle-technicalreport",
+          "image": "images/insights-03-radle-20.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://crashlab.in/radle-banner.jpeg"
+        },
+        {
+          "title": "SAP押注表格基础模型",
+          "body": "SAP 7 月 17 日宣布完成收购 Prior Labs，这家公司专注 Tabular Foundation Models。SAP 称 Prior Labs 将继续独立运营，SAP 承诺未来四年投入超过 10 亿欧元，把它扩展为面向企业结构化数据的 frontier AI lab。这个方向避开了 chatbot 叙事，直接瞄准表格、账本、库存和交易记录。",
+          "janet_take": "这笔收购有意思，因为它不追聊天机器人热闹。企业真正值钱的数据，大量都长在表格里：销售、供应链、财务、传感器、客户库。LLM 能写邮件，不代表它天然懂一百万行交易记录。SAP 押 Prior Labs，其实是在说企业 AI 的下一块钱可能不在会聊天，而在会预测、会找异常、会看账。",
+          "source": "SAP News Center",
+          "url": "https://news.sap.com/2026/07/sap-completes-prior-labs-acquisition/",
+          "image_url": "https://news.sap.com/2026/07/sap-completes-prior-labs-acquisition/",
+          "image": "images/insights-04-sap.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://news.sap.com/wp-content/blogs.dir/1/files/2026/07/13/291699_GettyImages-869849288_medium_uncropped_.jpg"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Oracle裁员给AI机房筹钱",
+          "body": "Build Fast with AI 7 月 20 日梳理称，Oracle 为 AI data center buildout 削减至多 3 万个岗位，预计释放 80 亿至 100 亿美元年度现金流；其 AI 基建押注与 OpenAI、SoftBank 的 Stargate 计划和一份 3000 亿美元、五年期 OpenAI 云合同绑定。报道提醒，这让 AI 基建的资本来源变得异常可见。",
+          "janet_take": "AI 基建从现有业务、岗位和现金流里长出来。Oracle 这条新闻刺耳，是因为它把账单写得太明白：有人拿到 GPU，有人收到裁员邮件。投资人可以讲转型，员工只看得见交换。创作者看这类新闻要记住，算力便宜背后总有人先垫钱，甚至先离场。",
+          "source": "Build Fast with AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image_url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image": "images/insights2-01-oracle.png",
+          "image_origin": "source",
+          "image_source_url": "https://oukdqujzonxvqhiefdsv.supabase.co/storage/v1/object/public/blogs/78f20866-9092-47d5-9f44-6dcfbad8180e.png"
+        },
+        {
+          "title": "Moonshot借Kimi热度冲香港IPO",
+          "body": "AI Weekly 引述 Bloomberg 7 月 19 日报道，Moonshot AI 告诉投资人，公司最快六个月内准备香港 IPO，6 月 annualized recurring revenue 已达 3 亿美元，高于 4 月的 2 亿美元。报道还称公司正拆除 VIE 架构，以适应新的上市路径；消息紧跟 Kimi K3 发布后出现。",
+          "janet_take": "Kimi K3 同时也是资本牌。ARR 从 2 亿美元到 3 亿美元的速度，会让投资人相信开放模型可以转成订阅和 API 生意。风险也同样清楚：如果增长靠一轮发布热度和补贴价格撑起来，IPO 前的漂亮曲线可能会被 GPU 账单和留存数据反向审问。",
+          "source": "AI Weekly / Bloomberg",
+          "url": "https://aiweekly.co/ai-news-today",
+          "image_url": "https://aiweekly.co/ai-news-today",
+          "image": "images/insights2-02-moonshotipo.png",
+          "image_origin": "source",
+          "image_source_url": "https://dxj7eshgz03ln.cloudfront.net/production/publication/logo/1475/8f402391-cd29-43a4-9695-35d930a59660.png"
+        },
+        {
+          "title": "AI员工开始买政治影响力",
+          "body": "AI Weekly 引述 SF Standard 7 月 19 日分析称，Anthropic 员工本轮联邦竞选周期已捐出 383 万美元，OpenAI 员工捐出 87.6 万美元，均已超过一些成熟科技公司在相同阶段的员工政治捐款强度。报道还提到，Anthropic 每千名员工约 59 人捐款，比例接近 Airbnb 上市后对应阶段的三倍。",
+          "janet_take": "AI 公司还没完全变成传统巨头，员工已经开始学习巨头的政治肌肉。钱流向哪里，说明从业者觉得规则会在哪里被写出来。对普通创作者，这不是华盛顿八卦，它提醒你：模型价格、版权、安全、出口和平台责任，最后都会进政策桌。只懂产品，不懂规则，会被规则反手教育。",
+          "source": "AI Weekly / SF Standard",
+          "url": "https://aiweekly.co/ai-news-today",
+          "image_url": "https://aiweekly.co/ai-news-today",
+          "image": "images/insights2-03-ai.png",
+          "image_origin": "source",
+          "image_source_url": "https://dxj7eshgz03ln.cloudfront.net/production/publication/logo/1475/8f402391-cd29-43a4-9695-35d930a59660.png"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Kimi Code给开发者低价试压",
+          "body": "Moonshot 的 Kimi K3 相关报道显示，新模型已面向 Kimi.com、Kimi Work、Kimi Code 和 Kimi API 开放，开放权重承诺在 7 月 27 日到来。对开发者来说，Kimi Code 最值得拿来做一轮低价试压：用真实代码任务测试 completion、frontend generation、bug fix 和长上下文处理，再和当前闭源模型做质量与总成本对比。",
+          "janet_take": "推荐理由很简单：开源模型别当信仰，拿工作流验它。有固定代码仓库、固定测试集、固定验收标准，Kimi Code 就值得跑；没有这些，只会得到一堆漂亮截图。工具箱今天推一个动作：把本周高频开发任务拿出来，测一次质量、延迟、失败率和人类返工时间。",
+          "source": "Build Fast with AI / Moonshot AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image_url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories",
+          "image": "images/tools-01-kimi-code.png",
+          "image_origin": "source",
+          "image_source_url": "https://oukdqujzonxvqhiefdsv.supabase.co/storage/v1/object/public/blogs/78f20866-9092-47d5-9f44-6dcfbad8180e.png"
+        }
+      ]
+    }
+  }
+}

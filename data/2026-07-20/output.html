@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-janet-experiment="signal-wave-17">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-07-20 · VOL 293</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/potato-center.css?v=potato-roll-20260617">
+  <link rel="stylesheet" href="../../styles/comments.css">
+  <link rel="stylesheet" href="../../styles/signal-cursor.css?v=experiment-wave-17">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Fraunces (标题) · DM Sans (正文) · Geist Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'Geist Mono', 'SFMono-Regular', 'Fira Code', monospace;
+  --sans:         'DM Sans', 'PingFang SC', system-ui, sans-serif;
+  --display:      'Fraunces', Georgia, 'Noto Serif SC', serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+.reader-greeting-line {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.reader-greeting-line strong {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.intro-copy > :first-child { margin-top: 0; }
+.intro-copy > :last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+  <link rel="stylesheet" href="../../styles/experiment-editorial.css?v=experiment-wave-17">
+</head>
+<body class="briefing-output-page">
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="../../index.html">首页</a>
+    <a href="../../news.html">Janet 快车箱</a>
+    <a href="../../portfolio.html">作品库</a>
+    <a href="../../index.html#about">关于 Janet</a>
+    <a href="../../index.html#contact">联系</a>
+  </div>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-07-20</div>
+          <div class="vol-info">VOL 293</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="入口开始收紧" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-07-20 // VOL_293</div>
+   <h1>入口开始收紧</h1>
+   <p>开放模型挤爆 GPU，平台和政府同时接管分发账本。</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">
+      <p class="reader-greeting-line"><strong data-reader-greeting>读者</strong>，早。</p>
+      <div class="intro-copy">今天的 AI 新闻不再只是模型谁强一点。Kimi K3 刚把开放模型的需求推到 GPU 容量边界，欧洲监管开始撬 Android 入口，白宫把前沿模型准入握得更紧，企业侧则把安全、结构化数据和数据中心支出摊到明账上。能力继续增长，但真正决定谁能用、怎么用、花多少钱的，是入口、容量和规则。<br><br>本期包括 5 条全球要闻、4 条模型动态、4 条技术深度，以及投资视角和工具箱推荐。<br><br>保持好奇，保持判断。</div>
+    </div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>📌 今日趋势：Kimi K3 暂停新订阅、Android 被要求开放给 rival AI assistants、白宫插手前沿模型客户名单、Microsoft 把 AI 安全做成多模型路由，放在一起看，今天的问题已经从模型榜单转向入口、容量和使用许可。模型参数可以上榜，真正影响用户的却是你能不能注册、能不能被批准、能不能在手机和企业系统里拿到权限。</h2>
+  <p>这对中国创作者和中小团队很现实：开放模型会继续压低高频任务的心理价位，但它处理不了 GPU、稳定性和运维；闭源模型会继续守住困难推理，同时也会被政府、平台和预算系统层层过滤。接下来该盯的，是每个平台把“可用”改写成什么条件。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-kimi-k3.png" alt="Kimi K3暂停新订阅保GPU" loading="lazy" decoding="async">
+    <figcaption>AI Weekly / Moonshot AI</figcaption>
+  </figure>
+  <h2>Kimi K3暂停新订阅保GPU</h2>
+  <p class="item-meta">来源: AI Weekly / Moonshot AI · 2026-07-20 · <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AI Weekly 7 月 19 日追踪到，Moonshot 在 X 上称 Kimi K3 收到的需求远超预期，过去 48 小时的使用把 GPU 推近容量上限，因此暂时暂停新订阅，优先保护现有订阅用户并补充 GPU 容量。这件事发生在 Kimi K3 发布后不久，也给“开放权重免费冲击闭源 API”的叙事补了一张资源账单。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Kimi K3 刺痛行业的地方，在于它把“开放”两个字拉回机房。用户当然喜欢便宜、可控、能本地跑，但只要需求上来，GPU、排队、限额和服务稳定性会立刻变成产品体验。创作者可以兴奋，企业评估时还得看吞吐和容灾，不然模型卡再漂亮，最后也会卡在队列里。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-02-android.webp" alt="欧盟要求Android开放AI入口" loading="lazy" decoding="async">
+    <figcaption>Computerworld</figcaption>
+  </figure>
+  <h2>欧盟要求Android开放AI入口</h2>
+  <p class="item-meta">来源: Computerworld · 2026-07-20 · <a href="https://www.computerworld.com/article/4198420/google-must-open-android-to-rival-ai-agents-eu-orders.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Computerworld 报道，欧洲委员会依据 Digital Markets Act 对 Google 作出两项约束性决定：Android 需要向 Gemini 之外的 AI assistants 开放系统和应用服务能力，Google 也需要向竞争对手共享部分搜索数据。Google 反击称这些要求可能削弱隐私和安全护栏；安全从业者则提醒，多 AI assistant 拿到系统级权限后，企业移动设备管理要重新定义风险。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>反垄断在这里碰到的是系统权限，不是搜索框排名。对创作者，入口开放可能带来新分发机会；对企业 IT，这等于多了几套会读屏、跨 app 行动、后台执行的代理。监管想拆平台墙，安全团队却得补权限洞，中间那笔治理成本会落到移动设备管理上。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-a8cba021cf.png" alt="白宫改写前沿模型准入" loading="lazy" decoding="async">
+    <figcaption>AI Weekly / CNBC</figcaption>
+  </figure>
+  <h2>白宫改写前沿模型准入</h2>
+  <p class="item-meta">来源: AI Weekly / CNBC · 2026-07-20 · <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AI Weekly 引述 CNBC 7 月 19 日报道，特朗普政府正在决定哪些伙伴可以访问 OpenAI 和 Anthropic 的前沿模型，把监管触角从网络安全清算机制扩展到实验室原本自行管理的客户分发。报道提到 Anthropic 的 Glasswing、OpenAI 的 Daybreak 伙伴名单都需要明确政府批准；白宫称参与是自愿的，但此前 Fable 5、Mythos 5 和 GPT-5.6 Sol 都已经经历过准入限制。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>前沿模型开始像半导体一样被名单管理，这是行业心理线被改写的一刻。实验室还能写发布博客，但谁能用、在哪用、用到什么能力，正在被国家安全语言接管。国内团队别只看美国模型有没有新 benchmark，真正要看的是可获得性会不会突然断电；被批准也是能力，没被批准就是空气。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-openai.jpg" alt="五角大楼公开怼OpenAI高管" loading="lazy" decoding="async">
+    <figcaption>Axios</figcaption>
+  </figure>
+  <h2>五角大楼公开怼OpenAI高管</h2>
+  <p class="item-meta">来源: Axios · 2026-07-20 · <a href="https://www.axios.com/2026/07/19/pentagon-openai-dean-ball-trump-ai" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Axios 7 月 19 日报道，美国国防部副部长 Emil Michael 在 X 上公开攻击 OpenAI 战略未来负责人 Dean Ball，争论焦点是美国政府如何处理中国 AI 模型带来的竞争和安全问题。Ball 曾参与特朗普政府 AI Action Plan 架构，如今进入 OpenAI；Axios 指出，这场公开冲突可能让 OpenAI 与美国政府关系变得更复杂。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>骂战只是表面，真正要看的是权力关系。OpenAI 已经站到政府、国防、出口管制和产业政策的交叉口，一个政策人的 X 争吵都可能影响公司关系。AI 大厂进入了“说错一句话也会牵动准入”的阶段；围观骂战没意义，模型分发会不会变才是关键。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-nubiaagent.png" alt="Nubia用Doubao重做手机入口" loading="lazy" decoding="async">
+    <figcaption>AI Weekly / Bloomberg</figcaption>
+  </figure>
+  <h2>Nubia用Doubao重做手机入口</h2>
+  <p class="item-meta">来源: AI Weekly / Bloomberg · 2026-07-20 · <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AI Weekly 汇总 Bloomberg 7 月 19 日报道，ZTE 旗下 Nubia 在 WAIC 2026 展示 NaviX Ultra，外界称其为围绕 ByteDance Doubao voice agent 设计的 agentic AI smartphone。报道称这台手机取消传统 home screen 和 app grid，改用专用侧边按键唤起 Doubao，并准备进入量产，但完整规格和价格仍未公布。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>手机厂商终于承认，agent 真能办事时，桌面图标会显得很土。可入口革命常死在权限、支付、隐私和失败兜底上；Nubia 摆出姿势，Doubao 还得接住日常。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-kimi-k3.png" alt="Kimi K3权重将在月底开放" loading="lazy" decoding="async">
+    <figcaption>Build Fast with AI</figcaption>
+  </figure>
+  <h3>Kimi K3权重将在月底开放</h3>
+  <p class="item-meta">来源: Build Fast with AI · 2026-07-20 · <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Build Fast with AI 7 月 20 日梳理称，Kimi K3 的开放权重承诺日期是 7 月 27 日，距离 API 发布约 11 天；同一周 DeepSeek V4 stable 预计在 7 月 24 日到来。报道把这称为本月最集中的 open-weight release window，并提醒企业用真实工作负载比较 K3、DeepSeek V4 和闭源模型，别只看榜单。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>开放权重倒计时的商业含义很清楚：高频、可验收、成本敏感的任务会先被重新报价。闭源模型仍然会守住困难推理，但它们会被迫解释为什么贵。国内团队这周最该做的动作很朴素，拿自己的代码、客服、素材处理任务跑一轮账，看看省下来的钱会不会被运维吃回去。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-fable-5.png" alt="Fable 5免费窗逼用户表态" loading="lazy" decoding="async">
+    <figcaption>Build Fast with AI / Anthropic</figcaption>
+  </figure>
+  <h3>Fable 5免费窗逼用户表态</h3>
+  <p class="item-meta">来源: Build Fast with AI / Anthropic · 2026-07-20 · <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Build Fast with AI 7 月 20 日关注到，Claude Fable 5 的免费访问窗口将在美国太平洋时间 7 月 19 日 23:59 结束，Anthropic 接下来可能延长、转向 credits，或用新模型重置叙事。这个节点刚好撞上 Kimi K3 和 DeepSeek 的开放模型攻势，让付费旗舰模型的价格理由被重新审视。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>免费试用结束本来正常，尴尬的是旁边站着一个要开放权重的 Kimi。用户会问得很粗暴：我为什么继续为闭源旗舰付这么多？Anthropic 得用质量、稳定性和企业支持回答。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-gpt-56.webp" alt="GPT-5.6接管工具执行链路" loading="lazy" decoding="async">
+    <figcaption>OpenAI</figcaption>
+  </figure>
+  <h3>GPT-5.6接管工具执行链路</h3>
+  <p class="item-meta">来源: OpenAI · 2026-07-20 · <a href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI 的 GPT-5.6 页面显示，新一代模型覆盖 Sol、Terra、Luna 三个层级，并已在 ChatGPT、Codex 和 API 中逐步开放。OpenAI 强调其在 agentic browsing、computer use、cybersecurity 和 knowledge work 上的进展，并给出 Sol 每百万输入 token 5 美元、输出 token 30 美元等 API 定价。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>OpenAI 这次卖的是更像技术操作员的工作流能力。问题也在这里：能力越像员工，账单就越像工资外包。创作者用 Terra、Luna 做日常产能可能很香，企业用 Sol 做关键流程则要把失败、复核和缓存策略算进去。模型强，项目还得自己会算账。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-gemini-35.png" alt="Gemini 3.5继续拖住Google" loading="lazy" decoding="async">
+    <figcaption>Build Fast with AI</figcaption>
+  </figure>
+  <h3>Gemini 3.5继续拖住Google</h3>
+  <p class="item-meta">来源: Build Fast with AI · 2026-07-20 · <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Build Fast with AI 7 月 20 日汇总称，Gemini 3.5 Pro 据报第三次错过内部目标，问题集中在 coding 和 complex reasoning；Google 同期又遇到 EU Android 与搜索数据开放要求，Alphabet 股价承压。报道同时提醒，Google 本周仍有 Gemini Notebook 云端执行环境和 AI Mode app integrations 等实际产品进展。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Google 的麻烦在于旗舰模型叙事卡住了。Notebook、Search、Android 都是巨大入口，可企业买单时还是会问：最难的任务谁来扛？如果 Gemini Pro 继续延迟，Google 的分发优势会被监管拆一点，被竞品吃一点。入口再大，也得有一个能镇场的模型。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-microsoft.png" alt="Microsoft用路由降安全账单" loading="lazy" decoding="async">
+    <figcaption>TechRepublic</figcaption>
+  </figure>
+  <h3>Microsoft用路由降安全账单</h3>
+  <p class="item-meta">来源: TechRepublic · 2026-07-20 · <a href="https://www.techrepublic.com/article/news-microsoft-project-perception-ai-security-tool/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>TechRepublic 7 月 17 日报道，Microsoft 据称正在准备 Project Perception，用 Anthropic、OpenAI 和 Microsoft 多个模型扫描、识别并修复企业漏洞，定位为比 Anthropic Mythos 更低成本的 AI security tool。关键设计是按任务路由模型：普通 inventory、log parsing 和初筛交给便宜模型，复杂 exploit chain 和修复计划才调用前沿模型。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这可能是本周最实用的 AI 架构信号：所有任务都扔给最贵模型，安全扫描很快就会撞预算。Microsoft 如果真把模型路由做进安全产品，卖点会变成“我知道什么时候不用旗舰”。中国团队做 agent 系统也该学这个账本，少炫耀全程旗舰模型。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-ai.png" alt="AI检测器怕风格模仿" loading="lazy" decoding="async">
+    <figcaption>The Decoder / Epoch AI</figcaption>
+  </figure>
+  <h3>AI检测器怕风格模仿</h3>
+  <p class="item-meta">来源: The Decoder / Epoch AI · 2026-07-20 · <a href="https://the-decoder.com/ai-text-detectors-struggle-when-language-models-mimic-an-authors-style/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>The Decoder 7 月 20 日报道，Epoch AI 测试 Pangram、GPTZero 和 Originality.ai 等 AI text detectors 后发现，在普通条件下检测器表现接近完美，但当模型被要求模仿特定作者风格时，平均约 13% 的 AI 生成段落会漏检；Epoch 自身数据还指出，科学写作场景的漏检比例更高。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI 检测器的问题在证据等级。风格模仿只要一个 prompt，检测却要在统计雾里抓影子。把检测分数当判决书，最后会惩罚会写作的人，也放过会伪装的机器。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-radle-20.jpg" alt="RadLE 2.0要求模型标出不确定" loading="lazy" decoding="async">
+    <figcaption>CRASH Lab</figcaption>
+  </figure>
+  <h3>RadLE 2.0要求模型标出不确定</h3>
+  <p class="item-meta">来源: CRASH Lab · 2026-07-20 · <a href="https://crashlab.in/radle-technicalreport" target="_blank" rel="noopener">原文链接</a></p>
+  <p>CRASH Lab 发布 Radiology's Last Exam 2.0 technical report，称新版 benchmark 从单纯准确率转向 uncertainty-aware autonomous diagnosis。团队回顾 RadLE 1.0 时指出，专家放射科医生约 83%，最佳 frontier AI 约 30%；随后模型进步很快，但 2.0 更关心模型是否会在错误诊断上保持过度自信。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>医疗 AI 最怕的是答错还特别笃定。一个会说“我不知道”的系统，至少给医生留下复核入口；一个满脸自信的错误，会把人类审查变成走流程。创作者做健康内容和医疗工具尤其要清醒：benchmark 是责任边界，不是营销海报。不能校准不确定性，就别装成结论机器。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-sap.jpg" alt="SAP押注表格基础模型" loading="lazy" decoding="async">
+    <figcaption>SAP News Center</figcaption>
+  </figure>
+  <h3>SAP押注表格基础模型</h3>
+  <p class="item-meta">来源: SAP News Center · 2026-07-20 · <a href="https://news.sap.com/2026/07/sap-completes-prior-labs-acquisition/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>SAP 7 月 17 日宣布完成收购 Prior Labs，这家公司专注 Tabular Foundation Models。SAP 称 Prior Labs 将继续独立运营，SAP 承诺未来四年投入超过 10 亿欧元，把它扩展为面向企业结构化数据的 frontier AI lab。这个方向避开了 chatbot 叙事，直接瞄准表格、账本、库存和交易记录。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这笔收购有意思，因为它不追聊天机器人热闹。企业真正值钱的数据，大量都长在表格里：销售、供应链、财务、传感器、客户库。LLM 能写邮件，不代表它天然懂一百万行交易记录。SAP 押 Prior Labs，其实是在说企业 AI 的下一块钱可能不在会聊天，而在会预测、会找异常、会看账。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Prediction</span>
+        <span class="st-zh">投资视角 · 大胆预测</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-oracle.png" alt="Oracle裁员给AI机房筹钱" loading="lazy" decoding="async">
+    <figcaption>Build Fast with AI</figcaption>
+  </figure>
+  <h3>Oracle裁员给AI机房筹钱</h3>
+  <p class="item-meta inverted">来源: Build Fast with AI · 2026-07-20 · <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Build Fast with AI 7 月 20 日梳理称，Oracle 为 AI data center buildout 削减至多 3 万个岗位，预计释放 80 亿至 100 亿美元年度现金流；其 AI 基建押注与 OpenAI、SoftBank 的 Stargate 计划和一份 3000 亿美元、五年期 OpenAI 云合同绑定。报道提醒，这让 AI 基建的资本来源变得异常可见。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>AI 基建从现有业务、岗位和现金流里长出来。Oracle 这条新闻刺耳，是因为它把账单写得太明白：有人拿到 GPU，有人收到裁员邮件。投资人可以讲转型，员工只看得见交换。创作者看这类新闻要记住，算力便宜背后总有人先垫钱，甚至先离场。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-moonshotipo.png" alt="Moonshot借Kimi热度冲香港IPO" loading="lazy" decoding="async">
+    <figcaption>AI Weekly / Bloomberg</figcaption>
+  </figure>
+  <h3>Moonshot借Kimi热度冲香港IPO</h3>
+  <p class="item-meta inverted">来源: AI Weekly / Bloomberg · 2026-07-20 · <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AI Weekly 引述 Bloomberg 7 月 19 日报道，Moonshot AI 告诉投资人，公司最快六个月内准备香港 IPO，6 月 annualized recurring revenue 已达 3 亿美元，高于 4 月的 2 亿美元。报道还称公司正拆除 VIE 架构，以适应新的上市路径；消息紧跟 Kimi K3 发布后出现。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>Kimi K3 同时也是资本牌。ARR 从 2 亿美元到 3 亿美元的速度，会让投资人相信开放模型可以转成订阅和 API 生意。风险也同样清楚：如果增长靠一轮发布热度和补贴价格撑起来，IPO 前的漂亮曲线可能会被 GPU 账单和留存数据反向审问。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-ai.png" alt="AI员工开始买政治影响力" loading="lazy" decoding="async">
+    <figcaption>AI Weekly / SF Standard</figcaption>
+  </figure>
+  <h3>AI员工开始买政治影响力</h3>
+  <p class="item-meta inverted">来源: AI Weekly / SF Standard · 2026-07-20 · <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AI Weekly 引述 SF Standard 7 月 19 日分析称，Anthropic 员工本轮联邦竞选周期已捐出 383 万美元，OpenAI 员工捐出 87.6 万美元，均已超过一些成熟科技公司在相同阶段的员工政治捐款强度。报道还提到，Anthropic 每千名员工约 59 人捐款，比例接近 Airbnb 上市后对应阶段的三倍。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>AI 公司还没完全变成传统巨头，员工已经开始学习巨头的政治肌肉。钱流向哪里，说明从业者觉得规则会在哪里被写出来。对普通创作者，这不是华盛顿八卦，它提醒你：模型价格、版权、安全、出口和平台责任，最后都会进政策桌。只懂产品，不懂规则，会被规则反手教育。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-kimi-code.png" alt="Kimi Code给开发者低价试压" loading="lazy" decoding="async">
+    <figcaption>Build Fast with AI / Moonshot AI</figcaption>
+  </figure>
+  <h2>Kimi Code给开发者低价试压</h2>
+  <p class="item-meta">来源: Build Fast with AI / Moonshot AI · 2026-07-20 · <a href="https://www.buildfastwithai.com/blogs/ai-news-today-july-20-2026-16-biggest-stories" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Moonshot 的 Kimi K3 相关报道显示，新模型已面向 Kimi.com、Kimi Work、Kimi Code 和 Kimi API 开放，开放权重承诺在 7 月 27 日到来。对开发者来说，Kimi Code 最值得拿来做一轮低价试压：用真实代码任务测试 completion、frontend generation、bug fix 和长上下文处理，再和当前闭源模型做质量与总成本对比。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>推荐理由很简单：开源模型别当信仰，拿工作流验它。有固定代码仓库、固定测试集、固定验收标准，Kimi Code 就值得跑；没有这些，只会得到一堆漂亮截图。工具箱今天推一个动作：把本周高频开发任务拿出来，测一次质量、延迟、失败率和人类返工时间。</span>
+  </div>
+</div>
+</div>
+
+
+    <div class="news-card-actions output-engagement engagement-triplet" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-07-20" data-edition-title="Janet 快车箱 2026-07-20" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span class="engagement-symbol" aria-hidden="true">+</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        <span class="engagement-symbol" aria-hidden="true">··</span><span>评论</span><span class="comment-count" data-comment-count data-edition-id="2026-07-20">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false"><span class="engagement-symbol" aria-hidden="true">↗</span><span>转发</span></button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-07-20"></section>
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: AI Weekly / Moonshot AI, Computerworld, AI Weekly / CNBC, Axios, AI Weekly / Bloomberg, Build Fast with AI, Build Fast with AI / Anthropic, OpenAI, TechRepublic, The Decoder / Epoch AI, CRASH Lab, SAP News Center, AI Weekly / SF Standard, Build Fast with AI / Moonshot AI<br>
+      本报内容由 AI 辅助采编，经人工校验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/reader-greeting.js"></script>
+  <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
+  <script src="../../scripts/nav.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/editorial-motion.js?v=experiment-wave-17"></script>
+  <script src="../../scripts/signal-cursor.js?v=experiment-wave-17"></script>
+</body>
+</html>

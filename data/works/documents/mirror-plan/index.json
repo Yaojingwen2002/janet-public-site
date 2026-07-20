@@ -1,33 +1,30 @@
 {
-  "schema_version": "1.0.0",
-  "updated_at": "2026-07-17",
+  "schema_version": "2.0.0",
+  "updated_at": "2026-07-20",
   "documents": [
     {
       "id": "01",
       "number": "01",
       "code": "JW-LTBF-01 / S0-01",
       "title": "户外双人日景校准",
-      "status_code": "frozen",
-      "status_label": "已冻结",
-      "data_url": "data/works/documents/mirror-plan/jw-ltbf-01.json"
+      "objective": "校准户外双人日景中的身份层级、共同画外视线、前后体量差、自然光与老城空间关系。",
+      "data_url": "data/works/documents/mirror-plan/jw-ltbf-01.json",
+      "default": true
     },
     {
       "id": "02",
       "number": "02",
       "code": "JW-LTBF-02 / S0-02",
       "title": "白衣人物室内近景校准",
-      "status_code": "candidate",
-      "status_label": "冻结候选",
-      "data_url": "data/works/documents/mirror-plan/jw-ltbf-02.json",
-      "default": true
+      "objective": "校准白衣前景主体与失焦后景人物的权力层级、亮窗逆光、区域色彩、背景叙事与可见景深。",
+      "data_url": "data/works/documents/mirror-plan/jw-ltbf-02.json"
     },
     {
       "id": "03",
       "number": "03",
       "code": "JW-LTBF-03 / S0-03",
       "title": "红绿室内单人近景校准",
-      "status_code": "active",
-      "status_label": "第一轮未通过",
+      "objective": "校准冷青绿室内环境、土红棕人物肤色、强人工顶光、单人画外谈判关系与层级景深。",
       "data_url": "data/works/documents/mirror-plan/jw-ltbf-03.json"
     }
   ]

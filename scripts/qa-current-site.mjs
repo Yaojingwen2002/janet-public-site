@@ -169,16 +169,23 @@ const mirrorDocumentIndexPath = 'data/works/documents/mirror-plan/index.json';
 const mirrorDocumentIndex = readJson(mirrorDocumentIndexPath) || {};
 const mirrorDocuments = Array.isArray(mirrorDocumentIndex.documents) ? mirrorDocumentIndex.documents : [];
 const mirrorDocumentIds = mirrorDocuments.map((item) => String(item.id || ''));
-const mirrorStatusCodes = new Set(['frozen', 'candidate', 'active', 'preparing']);
 const hasMirrorLocalArchive = existsSync(resolve(root, '镜场计划/tests'));
 if (!mirrorDocuments.length) issues.push('mirror_document_index_empty');
 if (new Set(mirrorDocumentIds).size !== mirrorDocumentIds.length) issues.push('mirror_document_index_duplicates');
+if (mirrorDocumentIds.join(',') !== '01,02,03') {
+  issues.push(`mirror_document_index_expected_01_03:${mirrorDocumentIds.join(',')}`);
+}
+if (mirrorDocuments.filter((item) => item.default).length !== 1 || !mirrorDocuments.find((item) => item.id === '01')?.default) {
+  issues.push('mirror_document_default_must_be_01');
+}
 
 for (const item of mirrorDocuments) {
   const id = String(item.id || '');
   const dataPath = localPathFromUrl(item.data_url || '');
   if (!/^\d{2,}$/.test(id)) issues.push(`mirror_document_id_invalid:${id}`);
-  if (!mirrorStatusCodes.has(String(item.status_code || ''))) issues.push(`mirror_document_status_invalid:${id}`);
+  if (!String(item.title || '').trim()) issues.push(`mirror_document_title_missing:${id}`);
+  if (!String(item.objective || '').trim()) issues.push(`mirror_document_objective_missing:${id}`);
+  if ('status_code' in item || 'status_label' in item) issues.push(`mirror_document_status_field_present:${id}`);
   if (!dataPath.startsWith('data/works/documents/mirror-plan/') || !dataPath.endsWith('.json')) {
     issues.push(`mirror_document_path_invalid:${id}:${dataPath}`);
     continue;
@@ -187,67 +194,67 @@ for (const item of mirrorDocuments) {
   const documentData = readJson(dataPath);
   if (!documentData) continue;
   if (String(documentData.id || '') !== id) issues.push(`mirror_document_id_mismatch:${id}:${documentData.id || ''}`);
-  if (!Array.isArray(documentData.sections)) issues.push(`mirror_document_sections_missing:${id}`);
-  const publicText = JSON.stringify(documentData);
-  if (/让子弹飞|姜文|周润发|葛优|\/Volumes\/|frames\/|04_master_testset|00_source_videos|prompt_A_internal/i.test(publicText)) {
-    issues.push(`mirror_document_private_reference:${id}`);
+  if (String(documentData.objective || '') !== String(item.objective || '')) issues.push(`mirror_document_objective_mismatch:${id}`);
+  if ('status_code' in documentData || 'status_label' in documentData || 'sections' in documentData || 'facts' in documentData) {
+    issues.push(`mirror_document_summary_payload_present:${id}`);
   }
   const primary = documentData.primary_document;
-  const requiresPrimaryDocument = ['frozen', 'candidate'].includes(String(item.status_code || ''));
-  if (requiresPrimaryDocument && documentData.default_view !== 'document') {
-    issues.push(`mirror_primary_document_not_default:${id}`);
-  }
-  if ((requiresPrimaryDocument || documentData.default_view === 'document') && !primary) {
-    issues.push(`mirror_primary_document_missing:${id}`);
-  }
+  if (!primary) issues.push(`mirror_primary_document_missing:${id}`);
   if (primary) {
-    if (primary.scope !== 'local-only' || primary.source_mode !== 'direct-local-reference') {
+    if (primary.scope !== 'public' || primary.source_mode !== 'pdf-tracked-docx-release') {
       issues.push(`mirror_primary_document_scope_invalid:${id}`);
     }
-    for (const [format, urlKey, sizeKey, hashKey, magic] of [
-      ['pdf', 'pdf_url', 'pdf_bytes', 'pdf_sha256', '%PDF'],
-      ['docx', 'docx_url', 'docx_bytes', 'docx_sha256', 'PK\u0003\u0004']
-    ]) {
-      const assetPath = localPathFromUrl(primary[urlKey] || '');
-      const validPath = new RegExp(`^镜场计划/tests/JW-LTBF-${id}/[^/]+\\.${format}$`, 'i');
-      if (!validPath.test(assetPath)) {
-        issues.push(`mirror_primary_document_path_invalid:${id}:${format}:${assetPath}`);
-        continue;
-      }
-      const absolute = resolve(root, assetPath);
-      if (!hasMirrorLocalArchive) continue;
-      requireFile(assetPath);
-      if (!existsSync(absolute)) continue;
-      const bytes = statSync(absolute).size;
-      if (!bytes) issues.push(`mirror_primary_document_empty:${id}:${format}`);
-      if (Number(primary[sizeKey]) !== bytes) {
-        issues.push(`mirror_primary_document_size_mismatch:${id}:${format}:${primary[sizeKey] || 0}:${bytes}`);
-      }
-      const header = readFileSync(absolute).subarray(0, 4).toString('latin1');
-      if (header !== magic) issues.push(`mirror_primary_document_magic_invalid:${id}:${format}`);
-      const expectedHash = String(primary[hashKey] || '');
-      if (!/^[a-f0-9]{64}$/i.test(expectedHash)) {
-        issues.push(`mirror_primary_document_hash_invalid:${id}:${format}`);
-      } else {
-        const actualHash = sha256(absolute);
-        if (actualHash !== expectedHash.toLowerCase()) {
-          issues.push(`mirror_primary_document_hash_mismatch:${id}:${format}`);
-        }
+    const pdfPath = localPathFromUrl(primary.pdf_url || '');
+    const pdfPattern = new RegExp(`^assets/works/mirror-plan/documents/${id}/JW-LTBF-${id}-experiment-archive-([a-f0-9]{8})\\.pdf$`, 'i');
+    const pdfMatch = pdfPath.match(pdfPattern);
+    if (!pdfMatch) {
+      issues.push(`mirror_primary_document_path_invalid:${id}:pdf:${pdfPath}`);
+    } else {
+      requireFile(pdfPath);
+      const absolutePdf = resolve(root, pdfPath);
+      if (existsSync(absolutePdf)) {
+        const bytes = statSync(absolutePdf).size;
+        if (Number(primary.pdf_bytes) !== bytes) issues.push(`mirror_primary_document_size_mismatch:${id}:pdf:${primary.pdf_bytes || 0}:${bytes}`);
+        if (readFileSync(absolutePdf).subarray(0, 4).toString('latin1') !== '%PDF') issues.push(`mirror_primary_document_magic_invalid:${id}:pdf`);
+        const actualHash = sha256(absolutePdf);
+        if (actualHash !== String(primary.pdf_sha256 || '').toLowerCase()) issues.push(`mirror_primary_document_hash_mismatch:${id}:pdf`);
+        if (pdfMatch[1].toLowerCase() !== actualHash.slice(0, 8)) issues.push(`mirror_primary_document_version_mismatch:${id}:pdf`);
       }
     }
-  }
-  for (const section of documentData.sections || []) {
-    for (const image of section.gallery || []) {
-      const imagePath = localPathFromUrl(image.src || '');
-      if (!imagePath.startsWith('assets/works/mirror-plan/')) issues.push(`mirror_document_image_path_invalid:${id}:${imagePath}`);
-      requireFile(imagePath);
+
+    const docxUrl = String(primary.docx_url || '');
+    const docxPattern = new RegExp(`^https://github\\.com/Yaojingwen2002/janet-public-site/releases/download/mirror-plan-documents-v1/JW-LTBF-${id}-experiment-source-([a-f0-9]{8})\\.docx$`, 'i');
+    const docxMatch = docxUrl.match(docxPattern);
+    if (!docxMatch) issues.push(`mirror_primary_document_url_invalid:${id}:docx:${docxUrl}`);
+    const expectedDocxHash = String(primary.docx_sha256 || '').toLowerCase();
+    if (!/^[a-f0-9]{64}$/.test(expectedDocxHash)) issues.push(`mirror_primary_document_hash_invalid:${id}:docx`);
+    if (docxMatch && docxMatch[1].toLowerCase() !== expectedDocxHash.slice(0, 8)) issues.push(`mirror_primary_document_version_mismatch:${id}:docx`);
+
+    if (hasMirrorLocalArchive) {
+      const localDocxPath = `镜场计划/tests/JW-LTBF-${id}/${String(primary.download_name || '')}`;
+      requireFile(localDocxPath);
+      const absoluteDocx = resolve(root, localDocxPath);
+      if (existsSync(absoluteDocx)) {
+        const bytes = statSync(absoluteDocx).size;
+        if (Number(primary.docx_bytes) !== bytes) issues.push(`mirror_primary_document_size_mismatch:${id}:docx:${primary.docx_bytes || 0}:${bytes}`);
+        if (readFileSync(absoluteDocx).subarray(0, 4).toString('latin1') !== 'PK\u0003\u0004') issues.push(`mirror_primary_document_magic_invalid:${id}:docx`);
+        if (sha256(absoluteDocx) !== expectedDocxHash) issues.push(`mirror_primary_document_hash_mismatch:${id}:docx`);
+      }
     }
   }
 }
 
-if (existsSync(resolve(root, 'assets/works/mirror-plan/documents'))) {
-  issues.push('mirror_public_document_copies_present');
+const mirrorPublicDocumentRoot = 'assets/works/mirror-plan/documents';
+const mirrorPublicDocumentFiles = walk(mirrorPublicDocumentRoot).sort();
+const expectedMirrorPublicDocumentFiles = [
+  'assets/works/mirror-plan/documents/01/JW-LTBF-01-experiment-archive-a5fa47bb.pdf',
+  'assets/works/mirror-plan/documents/02/JW-LTBF-02-experiment-archive-45c7f9a8.pdf',
+  'assets/works/mirror-plan/documents/03/JW-LTBF-03-experiment-archive-ff12e78b.pdf'
+].sort();
+if (mirrorPublicDocumentFiles.join('\n') !== expectedMirrorPublicDocumentFiles.join('\n')) {
+  issues.push(`mirror_public_document_set_invalid:${mirrorPublicDocumentFiles.join(',')}`);
 }
+if (mirrorPublicDocumentFiles.some((path) => /\.docx$/i.test(path))) issues.push('mirror_docx_must_not_enter_pages_artifact');
 
 const homepage = existsSync(resolve(root, 'index.html')) ? readFileSync(resolve(root, 'index.html'), 'utf8') : '';
 const updateNoticeScript = existsSync(resolve(root, 'scripts/update-notice.js'))
@@ -269,6 +276,9 @@ if (!visualLab.includes('href="mirror-plan.html"')) issues.push('visual_lab_mirr
 if (!mirrorPage.includes('href="gpt-image2-handbook.html"')) issues.push('mirror_visual_lab_return_missing');
 if (!mirrorPage.includes('data-janet-experiment="signal-wave-17"')) issues.push('mirror_experiment_shell_missing');
 if (!mirrorPage.includes('<meta name="janet-public-artifact" content="true">')) issues.push('mirror_public_artifact_marker_missing');
+if (!mirrorPage.includes('完整实验文档')) issues.push('mirror_complete_document_heading_missing');
+if (!mirrorPage.includes('下载 DOCX 源文件')) issues.push('mirror_docx_source_link_missing');
+if (/网页摘要|冻结候选|已冻结|准备中/.test(mirrorPage)) issues.push('mirror_management_copy_present');
 
 const sitemap = existsSync(resolve(root, 'sitemap.xml')) ? readFileSync(resolve(root, 'sitemap.xml'), 'utf8') : '';
 if (latestOutputPath && !sitemap.includes(latestOutputPath)) issues.push('sitemap_latest_missing');

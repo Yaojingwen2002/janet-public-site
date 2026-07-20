@@ -1,113 +1,22 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "02",
   "number": "02",
   "code": "JW-LTBF-02 / S0-02",
-  "eyebrow": "EXPERIMENT DOCUMENT 02",
   "title": "白衣人物室内近景校准",
-  "status_label": "冻结候选",
-  "updated_at": "2026-07-17",
-  "default_view": "document",
+  "objective": "校准白衣前景主体与失焦后景人物的权力层级、亮窗逆光、区域色彩、背景叙事与可见景深。",
+  "updated_at": "2026-07-20",
   "primary_document": {
     "title": "镜场计划_JW-LTBF-02_完整测试对话与图片",
-    "scope": "local-only",
-    "source_mode": "direct-local-reference",
-    "pdf_url": "镜场计划/tests/JW-LTBF-02/镜场计划_JW-LTBF-02_完整测试对话与图片.pdf",
-    "docx_url": "镜场计划/tests/JW-LTBF-02/镜场计划_JW-LTBF-02_完整测试对话与图片.docx",
+    "scope": "public",
+    "source_mode": "pdf-tracked-docx-release",
+    "pdf_url": "assets/works/mirror-plan/documents/02/JW-LTBF-02-experiment-archive-45c7f9a8.pdf",
+    "docx_url": "https://github.com/Yaojingwen2002/janet-public-site/releases/download/mirror-plan-documents-v1/JW-LTBF-02-experiment-source-80b6331f.docx",
     "download_name": "镜场计划_JW-LTBF-02_完整测试对话与图片.docx",
     "pdf_pages": 166,
     "docx_bytes": 63267081,
     "pdf_bytes": 9975165,
     "docx_sha256": "80b6331f6fa76debcb0335070113faaa1ffebabb81e13aaf886271c6c816f985",
     "pdf_sha256": "45c7f9a8ee735f905fece944ebfe38e35b3fab102ca6bcf0cd186046cee7d6cd"
-  },
-  "summary": "第二组测试把原创断链、区域色彩、AI 脏点、背景叙事与可见景深验收放进同一个闭环。Round 10 A/B/C 获 Janet“完美 / 比较完美”评价，尚未写成正式冻结。",
-  "facts": [
-    { "label": "状态", "value": "冻结候选" },
-    { "label": "归档轮次", "value": "10" },
-    { "label": "Prompt 记录", "value": "30" },
-    { "label": "Canonical 图片", "value": "30" }
-  ],
-  "sections": [
-    {
-      "title": "Round 10 冻结候选",
-      "paragraphs": [
-        "三版锁定原创人物、原创无线电维修间、人物关系、机位与室内光，只保留不同的景深压力与区域色彩强度。它们是三次独立 text-to-image，不是原片改色或 image-to-image。"
-      ],
-      "gallery": [
-        {
-          "src": "assets/works/mirror-plan/s0-02-a.jpg",
-          "alt": "A 版原创室内维修场景，前景清楚、后景明显退出焦点",
-          "label": "A",
-          "caption": "强浅景深",
-          "width": 1600,
-          "height": 684
-        },
-        {
-          "src": "assets/works/mirror-plan/s0-02-b.jpg",
-          "alt": "B 版原创室内维修场景，前景主体与后景动作保持目标平衡",
-          "label": "B",
-          "caption": "目标平衡",
-          "width": 1600,
-          "height": 688
-        },
-        {
-          "src": "assets/works/mirror-plan/s0-02-c.jpg",
-          "alt": "C 版原创室内维修场景，背景叙事更可读但仍低于前景焦点",
-          "label": "C",
-          "caption": "背景保留",
-          "width": 1600,
-          "height": 687
-        }
-      ]
-    },
-    {
-      "title": "第二组新增研究",
-      "bullets": [
-        "原创断链成为硬规则：零图像输入，禁止 edit、recolor、face transfer 与 identity transfer。",
-        "色彩从全局冷暖升级为区域分区：cyan 只进最深闭塞暗部，magenta-red 只进皮肤与少量木质中间调。",
-        "双角度参考只用于离线人工判断色彩稳定性，不作为生成器图像输入。",
-        "AI 脏感从 Prompt 源头诊断：重复小物、高频边缘、粗糙、氧化、灰尘、颗粒和晕光会叠加成脏。",
-        "干净不等于空：删除无意义杂物，保留能够说明地点、工作状态、人物关系与行动因果的背景。",
-        "景深必须写成可见结果：前景清楚什么，后景五官、手指、小控件和微纹理何时消失。",
-        "镜头数字只是语义倾向；没有 camera report，就不能把焦段、光圈和距离写成原片事实。",
-        "严格同场景 bracket：锁定人物、空间、blocking、机位、光线与色彩，一次只改变景深或区域色彩。"
-      ]
-    },
-    {
-      "title": "十轮测试索引",
-      "table": {
-        "headers": ["轮次", "只改什么", "Janet 判断 / 阶段结论"],
-        "rows": [
-          ["01", "建立 A/B/C 基线", "颜色太清，人物需要微红微暖，背景基本成立"],
-          ["02", "人物皮肤中间调", "仍偏青，面部红色权重不足"],
-          ["03", "提高面部红色", "发现一版沿用原图 edit，整条方法判定无效"],
-          ["04", "零图像输入原创重置", "原创断链成功，cyan-olive 进入皮肤过多"],
-          ["05", "双角度离线色彩判断", "青绿退出肤色，建立红棕感知梯度"],
-          ["06", "按明度与区域分配暖红", "A/B 色彩成立，B/C 背景仍脏"],
-          ["07", "降低脏感触发词", "画面变干净，但背景被过度删空"],
-          ["08", "恢复背景叙事", "空间信息回来，景深仍接近 deep focus"],
-          ["09", "同场景景深 bracket", "景深成为可观察变量，色彩仍缺少红色权重"],
-          ["10", "暗部 cyan × 中调 magenta-red", "Janet 判定完美 / ABC 比较完美" ]
-        ]
-      }
-    },
-    {
-      "title": "最终控制结构",
-      "paragraphs": [
-        "LOCK：原创人物、人物关系、blocking、机位、主光、白衣、高光、空间用途与背景大形。",
-        "VARIABLE：一次只改变可见景深衰减，或 cyan shadow / magenta-red midtone 的区域强度。",
-        "VISIBLE CHECK：检查后景五官是否合并、手指和小控件是否消失、白衣是否干净、皮肤是否有克制血色。",
-        "BAN：原图改色、全局青橙、粉紫高光、重复道具、随机污渍和无意义高频纹理。"
-      ],
-      "note": "T2.0 / T2.8 / T4.0 只代表 Prompt 中的景深语义倾向，不是模型执行的真实光学参数。调色结论一律为根据画面结果推测。"
-    },
-    {
-      "title": "文档展示范围",
-      "paragraphs": [
-        "02 的主入口按 Janet 指定载入完整测试档案，包含母图证据、可见会话、Round 01–10、三十份 canonical Prompt、三十张 canonical 图片、拒绝分支与研究全文。网页摘要保留为快速索引。"
-      ]
-    }
-  ],
-  "public_note": "LOCAL ARCHIVE · 阅读器只在本机或 localhost 直接引用 tests 原档；公开构建不携带 DOCX、PDF 或内部实验文件。"
+  }
 }

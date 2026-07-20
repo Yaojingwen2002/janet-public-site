@@ -1,74 +1,22 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "01",
   "number": "01",
   "code": "JW-LTBF-01 / S0-01",
-  "eyebrow": "EXPERIMENT DOCUMENT 01",
   "title": "户外双人日景校准",
-  "status_label": "已冻结",
-  "updated_at": "2026-07-17",
-  "default_view": "document",
+  "objective": "校准户外双人日景中的身份层级、共同画外视线、前后体量差、自然光与老城空间关系。",
+  "updated_at": "2026-07-20",
   "primary_document": {
     "title": "镜场计划_测试图片窗口_完整对话与图片",
-    "scope": "local-only",
-    "source_mode": "direct-local-reference",
-    "pdf_url": "镜场计划/tests/JW-LTBF-01/镜场计划_测试图片窗口_完整对话与图片.pdf",
-    "docx_url": "镜场计划/tests/JW-LTBF-01/镜场计划_测试图片窗口_完整对话与图片.docx",
+    "scope": "public",
+    "source_mode": "pdf-tracked-docx-release",
+    "pdf_url": "assets/works/mirror-plan/documents/01/JW-LTBF-01-experiment-archive-a5fa47bb.pdf",
+    "docx_url": "https://github.com/Yaojingwen2002/janet-public-site/releases/download/mirror-plan-documents-v1/JW-LTBF-01-experiment-source-7d094b87.docx",
     "download_name": "镜场计划_测试图片窗口_完整对话与图片.docx",
     "pdf_pages": 39,
     "docx_bytes": 33939201,
     "pdf_bytes": 4855453,
     "docx_sha256": "7d094b876988ea788a286e189cbc0b041a98bd174fe956267e60279edc881a77",
     "pdf_sha256": "a5fa47bb33fd3753fedee726652eb5a9ad32a7e1c48658526021c88fdf2226c9"
-  },
-  "summary": "第一组测试用于建立镜场计划最基础的闭环：同一视觉目标分轮比较，Janet 肉眼评价后只修改问题变量，并把失败与拒绝一并归档。",
-  "facts": [
-    { "label": "状态", "value": "正式冻结" },
-    { "label": "归档轮次", "value": "08" },
-    { "label": "Prompt 记录", "value": "17" },
-    { "label": "Canonical 图片", "value": "16" }
-  ],
-  "sections": [
-    {
-      "title": "实验任务",
-      "paragraphs": [
-        "以户外双人日景为校准对象，观察两名人物的身份层级、共同画外视线、前后体量差、自然光、墙体与植被层次，以及中间调密度如何共同形成镜头叙事。",
-        "这一组没有追求一次得到最终答案，而是先暴露人物、空间、灰雾、脏感和权力关系问题，再逐步收窄变量。"
-      ]
-    },
-    {
-      "title": "八轮归档索引",
-      "table": {
-        "headers": ["轮次", "测试变量", "阶段判断"],
-        "rows": [
-          ["00", "预校准 A/B/C", "人物身份与服装方向不稳定，不纳入正式第一轮"],
-          ["01", "正式 A/B/C", "空间方向成立，但整体质感偏薄"],
-          ["02", "厚重度", "密度增加，同时带来墙面、衣服与皮肤脏感"],
-          ["03", "去脏安全转译", "画面更干净，灰雾仍未解决"],
-          ["04", "拒绝记录与原创转译", "保留拒绝证据，安全转译路径成立"],
-          ["05", "暖肤与原创脸", "肤色改善，相似脸与青绿灰罩仍需控制"],
-          ["06", "同 Prompt 双样本", "验证随机稳定性，不伪装成 Prompt 差异"],
-          ["07", "最终四变量 bracket", "基线、中间调、暗部分区、人物权力关系完成冻结" ]
-        ]
-      }
-    },
-    {
-      "title": "冻结结论",
-      "bullets": [
-        "人物关系不只来自表情，也来自画面占位、尺度、距离和身体方向。",
-        "中间调要有密度，但不能依靠随机污渍、粗糙墙面和脏衣服制造电影感。",
-        "肤色需要克制血色；cyan-green 只能留在中性暗部，不能侵入整张脸。",
-        "A/B/C 必须能解释每版在测试什么；同 Prompt 双样本必须标明随机性。",
-        "拒绝、失败与缺失数据都属于实验记录，不能在收尾时补造成成功链。"
-      ]
-    },
-    {
-      "title": "文档展示范围",
-      "paragraphs": [
-        "01 的主入口按 Janet 指定载入完整测试档案，包含可见会话、十七段 Prompt、十六张图片、拒绝记录与最终收尾内容。网页摘要保留为快速索引。"
-      ],
-      "note": "调色与摄影判断只代表根据画面结果推测，不是 Resolve 节点、camera report 或被证实的原片参数。"
-    }
-  ],
-  "public_note": "LOCAL ARCHIVE · 阅读器只在本机或 localhost 直接引用 tests 原档；公开构建不携带 DOCX、PDF 或内部实验文件。"
+  }
 }

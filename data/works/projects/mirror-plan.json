@@ -3,13 +3,13 @@
   "title": "镜场计划",
   "type": "AI Director Visual R&D",
   "source_path_label": "镜场计划 / S0 实验文档库",
-  "description": "以编号文档持续归档 AI 导演视觉研发实验。当前两组实验完成归档，第三组第一轮已评且未通过，正在收窄色彩、顶光与面部柔化变量。",
+  "description": "以编号文档公开呈现 AI 导演视觉研发实验全过程。01–03 使用同一阅读器和同一测试闭环，各自校准不同的镜头问题。",
   "method": [
     "原片视觉分析",
     "原创安全转译",
     "A/B/C 单变量测试",
     "Janet 肉眼评价",
-    "冻结与证据归档"
+    "完整过程与证据归档"
   ],
   "tags": [
     "镜场计划",
@@ -18,10 +18,10 @@
     "视觉校准",
     "安全转译"
   ],
-  "work_count": 2,
-  "completed_experiment_count": 2,
+  "work_count": 3,
+  "completed_experiment_count": 3,
   "preparing_experiment_count": 0,
-  "active_experiment_count": 1,
+  "active_experiment_count": 0,
   "document_count": 3,
   "document_index": "data/works/documents/mirror-plan/index.json",
   "url": "mirror-plan.html",
@@ -35,9 +35,9 @@
       "project_id": "mirror-plan",
       "title": "S0-01 户外双人日景校准",
       "type": "visual-calibration",
-      "status": "已冻结",
-      "status_code": "frozen",
-      "summary": "八轮归档建立中间调、肤色、暗部分区与人物权力关系的基础校准方法。",
+      "status": "完整实验文档",
+      "status_code": "published",
+      "summary": "八轮探索记录双人日景中的人物权力关系、共同画外视线、明亮日景厚度与变量 bracket。",
       "tags": ["双人构图", "中间调", "肤色", "人物权力关系"],
       "url": "mirror-plan.html?doc=01",
       "reader_json": "data/works/documents/mirror-plan/jw-ltbf-01.json",
@@ -55,8 +55,8 @@
       "project_id": "mirror-plan",
       "title": "S0-02 白衣人物室内近景校准",
       "type": "visual-calibration",
-      "status": "冻结候选",
-      "status_code": "candidate",
+      "status": "完整实验文档",
+      "status_code": "published",
       "summary": "十轮测试建立原创断链、区域色彩、AI 脏点诊断、背景叙事与可见景深验收方法。",
       "tags": ["白衣", "室内光", "色彩分区", "语义景深", "背景叙事"],
       "url": "mirror-plan.html?doc=02",
@@ -82,24 +82,24 @@
       "project_id": "mirror-plan",
       "title": "S0-03 红绿室内单人近景校准",
       "type": "visual-calibration",
-      "status": "第一轮未通过",
-      "status_code": "active",
-      "summary": "第三组第一轮 A/B/C 已完成评价；冷青绿环境、土红棕妆面、暖顶光、脸内反差与面部柔化不足，待下一轮只改这些变量。",
+      "status": "完整实验文档",
+      "status_code": "published",
+      "summary": "三轮测试校准冷青绿环境、土红棕人物、强人工顶光和 Prompt 视觉重复性，并完整保留失败回归。",
       "tags": ["单人近景", "红绿分区", "背景叙事", "可见景深", "原创断链"],
       "url": "mirror-plan.html?doc=03",
       "reader_json": "data/works/documents/mirror-plan/jw-ltbf-03.json",
       "stats": {
-        "round_count": 1,
-        "prompt_count": 3,
-        "image_count": 3,
+        "round_count": 3,
+        "prompt_count": 9,
+        "image_count": 9,
         "document_count": 1
       }
     }
   ],
   "public_boundary": [
-    "不公开原片母图、候选帧或 5 秒片段",
-    "不公开内部原片研究 Prompt 与完整会话档案",
+    "公开 01–03 完整 PDF 阅读版与 DOCX 文档源文件",
+    "原始视频、独立母图文件和完整测试目录不单独发布",
     "不使用原片 edit、recolor、face transfer 或 identity transfer 结果",
-    "网站只加载经审核的公开安全版实验文档"
+    "后续实验只有形成完整实验文档后才进入阅读器"
   ]
 }

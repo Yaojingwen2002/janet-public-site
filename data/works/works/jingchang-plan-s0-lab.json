@@ -3,8 +3,8 @@
   "project_id": "mirror-plan",
   "title": "镜场计划 S0 视觉研发实验",
   "type": "cinematic-lab",
-  "status": "S0-01 已冻结 / S0-02 冻结候选 / S0-03 第一轮未通过",
-  "summary": "镜场计划以编号档案持续记录实验：01、02 已完成归档；03 第一轮已评且未通过，下一轮只校正冷青绿环境、土红棕妆面、顶光与面部柔化。",
+  "status": "01–03 完整实验文档已公开",
+  "summary": "镜场计划以同一测试闭环记录不同镜头问题；01–03 的完整 PDF、Prompt、测试图、反馈与会话均进入独立阅读器。",
   "tags": [
     "镜场计划",
     "AI 导演",
@@ -17,14 +17,14 @@
   "source_path_label": "镜场计划 / S0 实验文档库",
   "stats": {
     "document_count": 3,
-    "prompt_count": 50,
+    "prompt_count": 56,
     "subtitle_count": 0,
-    "image_count": 49,
+    "image_count": 55,
     "video_count": 0,
     "experiment_count": 3,
     "preparing_experiment_count": 0,
-    "active_experiment_count": 1,
-    "round_count": 19
+    "active_experiment_count": 0,
+    "round_count": 21
   },
   "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
   "videoThumb": "assets/works/mirror-plan/s0-02-b.jpg",
@@ -57,33 +57,33 @@
     "A/B/C 同轮生成",
     "Janet 肉眼评价",
     "只修改问题变量",
-    "冻结与证据归档"
+    "完整过程与证据归档"
   ],
   "public_boundary": [
-    "不公开原片母图、候选帧或 5 秒视频切片",
-    "不公开含片名、导演名、演员名或角色名的内部 Prompt",
+    "公开 01–03 完整 PDF 阅读版与 DOCX 文档源文件",
+    "原始视频、独立母图文件和完整测试目录不单独发布",
     "不使用原片 edit、recolor、face transfer 或 identity transfer 结果",
-    "公开内容只保留方法结论与审核通过的原创生成图"
+    "文档保留真实 Prompt、测试图、Janet 反馈与失败记录"
   ],
   "detail_json": "data/works/works/jingchang-plan-s0-lab.json",
-  "date": "2026-07-17",
+  "date": "2026-07-20",
   "category": "AI 导演视觉研发",
   "sections": [
     {
       "title": "项目入口",
-      "body": "实验按 01、02、03 编号归档；本地阅读器直接读取可变实验原档，公开构建仅保留审核后的摘要。"
+      "body": "公开目录只收录已经形成完整文档的实验。当前 01、02、03 均可直接在线阅读 PDF，并下载对应 DOCX 源文件。"
     },
     {
-      "title": "S0 当前状态",
-      "body": "S0-01 已冻结。S0-02 完成十轮测试并进入冻结候选。S0-03 第一轮三份 Prompt 与三张独立测试图已完成评价，但色彩与面部光线关系未通过，当前进入问题变量收窄。"
+      "title": "三个实验目的",
+      "body": "01 校准户外双人日景与权力关系；02 校准白衣室内、背景叙事、脏点与可见景深；03 校准冷青绿环境、土红棕人物与强人工顶光。目的不同，测试闭环相同。"
     },
     {
       "title": "扩展方式",
-      "body": "实验目录使用轻量 index，点击后才加载单份结构化 JSON。未来增加数百次实验只新增一个目录项和一份文档，不增加页面长度。"
+      "body": "未来每完成一次实验，只增加一份版本化 PDF 和一份可下载 DOCX；阅读器保持固定，正文只呈现实验原档。"
     },
     {
-      "title": "公开安全边界",
-      "body": "母图、5 秒片段、内部原片研究 Prompt、完整会话和被否定的 edit 链不进入公开站点；网页只加载经审核的公开安全版实验文档。"
+      "title": "公开文档边界",
+      "body": "完整实验文档公开；原始长片、5 秒视频、独立母图文件与整个本地测试目录不单独上传。"
     }
   ],
   "process": [
@@ -92,6 +92,6 @@
     "三图同轮生成",
     "Janet 肉眼评价",
     "只改问题变量",
-    "阶段冻结"
+    "完整文档归档"
   ]
 }

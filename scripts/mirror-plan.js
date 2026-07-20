@@ -2,17 +2,15 @@
   'use strict';
 
   const INDEX_URL = 'data/works/documents/mirror-plan/index.json';
-  const DOC_BASE_URL = 'data/works/documents/mirror-plan/';
-  const IMAGE_BASE_URL = 'assets/works/mirror-plan/';
-  const LOCAL_DOCUMENT_BASE_URL = '镜场计划/tests/';
+  const DATA_BASE_URL = 'data/works/documents/mirror-plan/';
+  const DOCUMENT_BASE_URL = 'assets/works/mirror-plan/documents/';
+  const DOCX_RELEASE_BASE_URL = 'https://github.com/Yaojingwen2002/janet-public-site/releases/download/mirror-plan-documents-v1/';
 
   const state = {
     catalog: [],
     activeId: '',
     cache: new Map(),
-    fallbackFullscreen: false,
-    currentView: 'summary',
-    hasPrimaryDocument: false
+    fallbackFullscreen: false
   };
 
   function create(tag, className, text) {
@@ -25,42 +23,38 @@
   function safeDataUrl(value) {
     try {
       const target = new URL(String(value || ''), window.location.href);
-      const base = new URL(DOC_BASE_URL, window.location.href);
-      return target.origin === base.origin && target.pathname.startsWith(base.pathname) && target.pathname.endsWith('.json');
-    } catch (_) {
-      return false;
-    }
-  }
-
-  function safeImageUrl(value) {
-    try {
-      const target = new URL(String(value || ''), window.location.href);
-      const base = new URL(IMAGE_BASE_URL, window.location.href);
-      return target.origin === base.origin && target.pathname.startsWith(base.pathname);
-    } catch (_) {
-      return false;
-    }
-  }
-
-  function isLocalWorkspace() {
-    if (document.querySelector('meta[name="janet-public-artifact"][content="true"]')) return false;
-    try {
-      const current = new URL(window.location.href);
-      return current.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]'].includes(current.hostname);
-    } catch (_) {
-      return false;
-    }
-  }
-
-  function safeLocalDocumentUrl(value, extension, id) {
-    if (!isLocalWorkspace() || !/^\d{2,}$/.test(String(id || ''))) return false;
-    try {
-      const target = new URL(String(value || ''), window.location.href);
-      const base = new URL(LOCAL_DOCUMENT_BASE_URL + 'JW-LTBF-' + id + '/', window.location.href);
+      const base = new URL(DATA_BASE_URL, window.location.href);
       return target.protocol === base.protocol
         && target.host === base.host
         && target.pathname.startsWith(base.pathname)
-        && target.pathname.toLowerCase().endsWith('.' + extension);
+        && target.pathname.endsWith('.json');
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function safePublicPdfUrl(value, id) {
+    if (!/^\d{2,}$/.test(String(id || ''))) return false;
+    try {
+      const target = new URL(String(value || ''), window.location.href);
+      const base = new URL(DOCUMENT_BASE_URL + id + '/', window.location.href);
+      return target.protocol === base.protocol
+        && target.host === base.host
+        && target.pathname.startsWith(base.pathname)
+        && target.pathname.toLowerCase().endsWith('.pdf');
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function safeReleaseDocxUrl(value) {
+    try {
+      const target = new URL(String(value || ''));
+      const base = new URL(DOCX_RELEASE_BASE_URL);
+      return target.protocol === 'https:'
+        && target.origin === base.origin
+        && target.pathname.startsWith(base.pathname)
+        && target.pathname.toLowerCase().endsWith('.docx');
     } catch (_) {
       return false;
     }
@@ -83,8 +77,6 @@
       minimize: document.getElementById('mirror-reader-minimize'),
       fullscreen: document.getElementById('mirror-reader-fullscreen'),
       filebar: document.getElementById('mirror-reader-filebar'),
-      documentView: document.getElementById('mirror-reader-document-view'),
-      summaryView: document.getElementById('mirror-reader-summary-view'),
       openDocument: document.getElementById('mirror-reader-open'),
       downloadDocument: document.getElementById('mirror-reader-download')
     };
@@ -101,8 +93,6 @@
     if (filebar) filebar.hidden = true;
     if (openDocument) openDocument.removeAttribute('href');
     if (downloadDocument) downloadDocument.removeAttribute('href');
-    state.currentView = 'summary';
-    state.hasPrimaryDocument = false;
   }
 
   function renderCatalog() {
@@ -114,17 +104,16 @@
       const button = create('button', 'mirror-doc-button');
       button.type = 'button';
       button.dataset.docId = item.id;
-      button.dataset.status = item.status_code || '';
       button.setAttribute('aria-current', item.id === state.activeId ? 'page' : 'false');
+      button.setAttribute('aria-label', (item.code || item.id) + '，' + (item.objective || item.title || '实验文档'));
       if (item.id === state.activeId) button.classList.add('is-active');
 
       const number = create('span', 'mirror-doc-button__no', item.number || item.id);
       number.setAttribute('aria-hidden', 'true');
       const copy = create('span', 'mirror-doc-button__copy');
       copy.append(
-        create('strong', '', item.title || '未命名实验'),
-        create('span', '', item.code || ''),
-        create('em', '', item.status_label || '未标记')
+        create('span', 'mirror-doc-button__code', item.code || ''),
+        create('strong', 'mirror-doc-button__objective', item.objective || item.title || '未命名实验')
       );
       button.append(number, copy);
       button.addEventListener('click', () => selectDocument(item.id, true));
@@ -145,120 +134,6 @@
     list.scrollTo({ left: Math.max(left, 0), behavior: 'smooth' });
   }
 
-  function renderFacts(facts) {
-    if (!Array.isArray(facts) || !facts.length) return null;
-    const grid = create('div', 'mirror-doc-facts');
-    facts.forEach((fact) => {
-      const item = create('div', 'mirror-doc-fact');
-      item.append(create('span', '', fact.label || ''), create('strong', '', fact.value || '—'));
-      grid.append(item);
-    });
-    return grid;
-  }
-
-  function renderTable(table) {
-    if (!table || !Array.isArray(table.headers) || !Array.isArray(table.rows)) return null;
-    const wrap = create('div', 'mirror-doc-table-wrap');
-    const node = create('table', 'mirror-doc-table');
-    const head = document.createElement('thead');
-    const headRow = document.createElement('tr');
-    table.headers.forEach((header) => headRow.append(create('th', '', String(header))));
-    head.append(headRow);
-    const body = document.createElement('tbody');
-    table.rows.forEach((row) => {
-      const tr = document.createElement('tr');
-      (Array.isArray(row) ? row : []).forEach((cell) => tr.append(create('td', '', String(cell))));
-      body.append(tr);
-    });
-    node.append(head, body);
-    wrap.append(node);
-    return wrap;
-  }
-
-  function renderGallery(gallery) {
-    if (!Array.isArray(gallery) || !gallery.length) return null;
-    const grid = create('div', 'mirror-doc-gallery');
-    gallery.forEach((item) => {
-      if (!safeImageUrl(item.src)) return;
-      const figure = document.createElement('figure');
-      const image = document.createElement('img');
-      image.src = item.src;
-      image.alt = item.alt || item.label || '实验结果图';
-      image.loading = 'lazy';
-      image.decoding = 'async';
-      if (Number(item.width) > 0) image.width = Number(item.width);
-      if (Number(item.height) > 0) image.height = Number(item.height);
-      const caption = document.createElement('figcaption');
-      caption.append(create('strong', '', item.label || ''), create('span', '', item.caption || ''));
-      figure.append(image, caption);
-      grid.append(figure);
-    });
-    return grid.childElementCount ? grid : null;
-  }
-
-  function renderSection(section, index) {
-    const root = create('section', 'mirror-doc-section');
-    const number = create('span', 'mirror-doc-section__no', String(index + 1).padStart(2, '0'));
-    const content = create('div', 'mirror-doc-section__content');
-    content.append(create('h3', '', section.title || '未命名章节'));
-
-    (Array.isArray(section.paragraphs) ? section.paragraphs : []).forEach((paragraph) => {
-      content.append(create('p', '', String(paragraph)));
-    });
-
-    if (Array.isArray(section.bullets) && section.bullets.length) {
-      const list = document.createElement('ul');
-      section.bullets.forEach((item) => list.append(create('li', '', String(item))));
-      content.append(list);
-    }
-
-    const table = renderTable(section.table);
-    if (table) content.append(table);
-    const gallery = renderGallery(section.gallery);
-    if (gallery) content.append(gallery);
-    if (section.note) content.append(create('div', 'mirror-doc-note', String(section.note)));
-
-    root.append(number, content);
-    return root;
-  }
-
-  function buildSummary(doc) {
-    const article = create('div', 'mirror-doc');
-    const cover = create('header', 'mirror-doc-cover');
-    cover.dataset.number = doc.number || '';
-    cover.append(
-      create('span', 'mirror-doc-cover__eyebrow', doc.eyebrow || doc.code || 'EXPERIMENT DOCUMENT'),
-      create('h2', '', doc.title || '未命名实验'),
-      create('p', '', doc.summary || '')
-    );
-
-    const meta = create('div', 'mirror-doc-cover__meta');
-    [doc.status_label, doc.code, doc.updated_at].filter(Boolean).forEach((item) => meta.append(create('span', '', String(item))));
-    cover.append(meta);
-    article.append(cover);
-
-    const facts = renderFacts(doc.facts);
-    if (facts) article.append(facts);
-    (Array.isArray(doc.sections) ? doc.sections : []).forEach((section, index) => article.append(renderSection(section, index)));
-    if (doc.public_note) article.append(create('div', 'mirror-doc-note', String(doc.public_note)));
-
-    return article;
-  }
-
-  function updateReaderView(requestedView) {
-    const { reader, documentView, summaryView } = getElements();
-    if (!reader) return;
-    const view = requestedView === 'document' && state.hasPrimaryDocument ? 'document' : 'summary';
-    const documentPanel = reader.querySelector('[data-reader-view="document"]');
-    const summaryPanel = reader.querySelector('[data-reader-view="summary"]');
-    if (documentPanel) documentPanel.hidden = view !== 'document';
-    if (summaryPanel) summaryPanel.hidden = view !== 'summary';
-    reader.classList.toggle('is-document-view', view === 'document');
-    documentView?.setAttribute('aria-pressed', String(view === 'document'));
-    summaryView?.setAttribute('aria-pressed', String(view === 'summary'));
-    state.currentView = view;
-  }
-
   function renderDocument(doc) {
     const {
       reader,
@@ -270,48 +145,45 @@
     } = getElements();
     if (!reader) return;
 
-    const summaryPanel = create('div', 'mirror-reader__view mirror-reader__view--summary');
-    summaryPanel.dataset.readerView = 'summary';
-    summaryPanel.append(buildSummary(doc));
-
-    const primary = doc.primary_document || {};
-    const hasPdf = primary.scope === 'local-only' && safeLocalDocumentUrl(primary.pdf_url, 'pdf', doc.id);
-    const hasDocx = primary.scope === 'local-only' && safeLocalDocumentUrl(primary.docx_url, 'docx', doc.id);
-    const views = create('div', 'mirror-reader__views');
-
-    state.hasPrimaryDocument = hasPdf;
-    if (hasPdf) {
-      const documentPanel = create('div', 'mirror-reader__view mirror-reader__view--document');
-      documentPanel.dataset.readerView = 'document';
-      const frame = document.createElement('iframe');
-      frame.src = primary.pdf_url + '#view=FitH&toolbar=1&navpanes=0';
-      frame.title = (primary.title || doc.title || '实验文档') + ' PDF 阅读版';
-      frame.loading = 'eager';
-      documentPanel.append(frame);
-      views.append(documentPanel);
-    }
-    views.append(summaryPanel);
-
-    reader.replaceChildren(views);
-    reader.setAttribute('aria-busy', 'false');
-    reader.scrollTop = 0;
     if (code) code.textContent = doc.code || 'EXPERIMENT DOCUMENT';
     if (title) title.textContent = doc.title || '实验文档';
 
-    if (filebar) filebar.hidden = !hasPdf;
+    const primary = doc.primary_document || {};
+    const isPublicSource = primary.scope === 'public' && primary.source_mode === 'pdf-tracked-docx-release';
+    const hasPdf = isPublicSource && safePublicPdfUrl(primary.pdf_url, doc.id);
+    const hasDocx = isPublicSource && safeReleaseDocxUrl(primary.docx_url);
+
+    if (!hasPdf) {
+      setReaderState('DOCUMENT UNAVAILABLE', '完整 PDF 暂时无法读取。', false);
+      return;
+    }
+
+    const documentPanel = create('div', 'mirror-reader__view mirror-reader__view--document');
+    const frame = document.createElement('iframe');
+    frame.src = primary.pdf_url + '#view=FitH&toolbar=1&navpanes=0';
+    frame.title = (primary.title || doc.title || '实验文档') + ' PDF 阅读版';
+    frame.loading = 'eager';
+    documentPanel.append(frame);
+
+    reader.replaceChildren(documentPanel);
+    reader.setAttribute('aria-busy', 'false');
+    reader.classList.add('is-document-view');
+    reader.scrollTop = 0;
+
+    if (filebar) filebar.hidden = false;
     if (openDocument) {
-      openDocument.hidden = !hasPdf;
-      if (hasPdf) openDocument.href = primary.pdf_url;
+      openDocument.hidden = false;
+      openDocument.href = primary.pdf_url;
     }
     if (downloadDocument) {
       downloadDocument.hidden = !hasDocx;
       if (hasDocx) {
         downloadDocument.href = primary.docx_url;
         downloadDocument.download = primary.download_name || '';
+      } else {
+        downloadDocument.removeAttribute('href');
       }
     }
-
-    updateReaderView(hasPdf && doc.default_view !== 'summary' ? 'document' : 'summary');
   }
 
   function updateUrl(id) {
@@ -339,7 +211,7 @@
       if (state.activeId === id) renderDocument(state.cache.get(id));
     } catch (error) {
       state.cache.delete(id);
-      setReaderState('LOAD FAILED', '文档暂时无法读取，请刷新后重试。', false);
+      setReaderState('LOAD FAILED', '完整实验文档暂时无法读取，请刷新后重试。', false);
       console.warn('[mirror-plan] document load failed:', error);
     }
   }
@@ -388,7 +260,7 @@
         updateFullscreenButton();
         return;
       } catch (_) {
-        // Safari/iOS or permission failure: use a same-layout CSS fallback.
+        // Safari/iOS or permission failure: use the same layout as a CSS fallback.
       }
     }
 
@@ -416,11 +288,9 @@
   }
 
   function bindControls() {
-    const { minimize, fullscreen, documentView, summaryView } = getElements();
+    const { minimize, fullscreen } = getElements();
     minimize?.addEventListener('click', () => toggleMinimize());
     fullscreen?.addEventListener('click', toggleFullscreen);
-    documentView?.addEventListener('click', () => updateReaderView('document'));
-    summaryView?.addEventListener('click', () => updateReaderView('summary'));
     document.addEventListener('fullscreenchange', updateFullscreenButton);
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && state.fallbackFullscreen) exitFullscreen();

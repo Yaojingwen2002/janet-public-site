@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:wght@400;500;600&amp;family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
-  <link rel="stylesheet" href="styles/mirror-plan.css?v=local-archive-20260717">
+  <link rel="stylesheet" href="styles/mirror-plan.css?v=public-documents-20260720">
   <link rel="stylesheet" href="styles/janet-motion.css">
   <link rel="stylesheet" href="styles/potato-center.css?v=potato-roll-20260617">
   <link rel="stylesheet" href="styles/signal-cursor.css?v=experiment-wave-17">
@@ -65,10 +65,9 @@
           <h1>镜场计划</h1>
           <a class="mirror-return-link" href="gpt-image2-handbook.html">返回 Janet 影像参考实验室 <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="mirror-intro__count" aria-label="当前已完成两组实验，第三组进行中">
-          <strong>002</strong>
-          <span>COMPLETED</span>
-          <em>+ 01 ACTIVE</em>
+        <div class="mirror-intro__count" aria-label="当前收录三份完整实验文档">
+          <strong>003</strong>
+          <span>DOCUMENTS</span>
         </div>
       </div>
     </header>
@@ -77,16 +76,16 @@
       <div class="container">
         <div class="mirror-section-line">
           <div>
-            <span>DOCUMENT INDEX</span>
-            <h2 id="mirror-library-title">实验文档目录</h2>
+            <span>DOCUMENT READER</span>
+            <h2 id="mirror-library-title">完整实验文档</h2>
           </div>
         </div>
 
         <div class="mirror-library" id="mirror-library" data-mirror-library>
           <aside class="mirror-library__rail" aria-label="实验文档选择">
             <div class="mirror-library__rail-head">
-              <span>ARCHIVE / S0</span>
-              <strong>实验编号</strong>
+              <span>EXPERIMENTS / S0</span>
+              <strong>选择实验</strong>
             </div>
             <nav class="mirror-doc-list" id="mirror-doc-list" aria-label="实验文档目录">
               <span class="mirror-doc-list__loading">正在读取目录…</span>
@@ -112,13 +111,9 @@
               </div>
             </div>
             <div class="mirror-reader__filebar" id="mirror-reader-filebar" hidden>
-              <div class="mirror-reader__tabs" role="group" aria-label="文档视图">
-                <button id="mirror-reader-document-view" type="button" aria-pressed="true">完整文档</button>
-                <button id="mirror-reader-summary-view" type="button" aria-pressed="false">网页摘要</button>
-              </div>
               <div class="mirror-reader__file-links">
-                <a id="mirror-reader-open" href="#" target="_blank" rel="noopener">打开本地 PDF <span aria-hidden="true">↗</span></a>
-                <a id="mirror-reader-download" href="#" download>打开 DOCX 原件 <span aria-hidden="true">↓</span></a>
+                <a id="mirror-reader-open" href="#" target="_blank" rel="noopener">打开 PDF <span aria-hidden="true">↗</span></a>
+                <a id="mirror-reader-download" href="#" download>下载 DOCX 源文件 <span aria-hidden="true">↓</span></a>
               </div>
             </div>
             <div class="mirror-reader__body" id="mirror-reader-body" tabindex="0" role="region" aria-label="实验文档内容" aria-live="polite" aria-busy="true">
@@ -145,7 +140,7 @@
   <button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">↑</button>
 </div>
 
-<script src="scripts/mirror-plan.js?v=local-archive-20260717"></script>
+<script src="scripts/mirror-plan.js?v=public-documents-20260720"></script>
 <script src="scripts/supabase-config.js"></script>
 <script src="scripts/auth.js"></script>
 <script src="scripts/potato-center.js?v=potato-roll-20260617"></script>

@@ -68,7 +68,8 @@ export function stripUnsafeEmailParts(html) {
     .replace(/<link\b[^>]*>/gi, '')
     .replace(/<div class="potato-center"[\s\S]*?<\/div>\s*<div class="mobile-nav-menu"[\s\S]*?<\/div>/i, '')
     .replace(/<header>[\s\S]*?<\/header>/i, '')
-    .replace(/<div class="news-card-actions output-engagement"[\s\S]*?<!-- ══ 页脚/i, '<!-- ══ 页脚');
+    // Match the class token, not the entire class value, so visual modifiers stay web-only.
+    .replace(/<div\b[^>]*class=(["'])[^"']*\boutput-engagement\b[^"']*\1[^>]*>[\s\S]*?<!-- ══ 页脚/i, '<!-- ══ 页脚');
 }
 
 function safeAbsoluteUrl(value, baseUrl) {

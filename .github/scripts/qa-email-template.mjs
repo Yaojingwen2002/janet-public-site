@@ -37,6 +37,21 @@ function validateDailyEmail(html) {
   return issues;
 }
 
+function validateWebControlStripper() {
+  const variants = [
+    'news-card-actions output-engagement',
+    'news-card-actions output-engagement engagement-triplet',
+    'engagement-triplet output-engagement news-card-actions'
+  ];
+  return variants.every((className) => {
+    const sample = `<main>briefing</main><div class="${className}"><button>web only</button></div><section class="comments-section"></section><!-- ══ 页脚<footer>footer</footer>`;
+    const stripped = stripUnsafeEmailParts(sample);
+    return stripped.includes('<main>briefing</main>') &&
+      stripped.includes('<!-- ══ 页脚') &&
+      !/output-engagement|comments-section|<button\b/i.test(stripped);
+  });
+}
+
 async function main() {
   const index = JSON.parse(await fs.readFile(path.join(ROOT, 'data/news-index.json'), 'utf8'));
   const editionId = process.env.BRIEFING_EDITION_ID || index.latest_edition_id;
@@ -58,6 +73,7 @@ async function main() {
   );
   const welcome = welcomeHtml({ displayName: PREVIEW_NAME, siteUrl: SITE_URL });
   const issues = validateDailyEmail(html);
+  if (!validateWebControlStripper()) issues.push('email_web_control_strip_regression');
   if (!welcome.includes(PREVIEW_NAME) || !welcome.includes('/assets/icons/logo-mark.png')) {
     issues.push('welcome_email_brand_or_name_missing');
   }

@@ -3,7 +3,7 @@
   "title": "镜场计划",
   "type": "AI Director Visual R&D",
   "source_path_label": "镜场计划 / S0 实验文档库",
-  "description": "以编号文档公开呈现 AI 导演视觉研发实验全过程。01–03 使用同一阅读器和同一测试闭环，各自校准不同的镜头问题。",
+  "description": "以编号文档公开呈现 AI 导演视觉研发实验全过程。01–04 使用同一阅读器和同一测试闭环，各自校准不同的镜头问题。",
   "method": [
     "原片视觉分析",
     "原创安全转译",
@@ -18,11 +18,11 @@
     "视觉校准",
     "安全转译"
   ],
-  "work_count": 3,
-  "completed_experiment_count": 3,
+  "work_count": 4,
+  "completed_experiment_count": 4,
   "preparing_experiment_count": 0,
   "active_experiment_count": 0,
-  "document_count": 3,
+  "document_count": 4,
   "document_index": "data/works/documents/mirror-plan/index.json",
   "url": "mirror-plan.html",
   "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
@@ -94,10 +94,30 @@
         "image_count": 9,
         "document_count": 1
       }
+    },
+    {
+      "id": "jw-ltbf-04-s0-04",
+      "sequence": 4,
+      "display_number": "04",
+      "project_id": "mirror-plan",
+      "title": "S0-04 室内逆光冲突群像与运动关系校准",
+      "type": "visual-calibration",
+      "status": "完整实验文档",
+      "status_code": "published",
+      "summary": "八轮测试建立暖冷双光、厚重红棕肤色、混合空气、背景强失焦与三种柔化的摄影基线，并完整保留固定角色参考覆盖风格的失败证据。",
+      "tags": ["冲突群像", "暖冷双光", "红棕肤色", "运动柔化", "背景叙事", "身份参考"],
+      "url": "mirror-plan.html?doc=04",
+      "reader_json": "data/works/documents/mirror-plan/jw-ltbf-04.json",
+      "stats": {
+        "round_count": 8,
+        "prompt_count": 30,
+        "image_count": 27,
+        "document_count": 1
+      }
     }
   ],
   "public_boundary": [
-    "公开 01–03 完整 PDF 阅读版与 DOCX 文档源文件",
+    "公开 01–04 完整 PDF 阅读版与 DOCX 文档源文件",
     "原始视频、独立母图文件和完整测试目录不单独发布",
     "不使用原片 edit、recolor、face transfer 或 identity transfer 结果",
     "后续实验只有形成完整实验文档后才进入阅读器"

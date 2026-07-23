@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-23",
+  "vol": "296",
+  "intro_text": "Agent 的热闹今天不在演示视频里，而在权限表、账单、电力合同和事故报告里。OpenAI 开始卖生产级部署，Google 继续压低每次任务成本，Microsoft 与 GitHub 把企业使用量放进控制台，安全公司则把 Agent 风险拆成新预算。模型还在变强，但真正决定可用性的东西，已经从参数表移到控制面。",
+  "cover": {
+    "title": "控制面开闸",
+    "subtitle": "Agent 进生产，账单、权限和责任同时露出真身。",
+    "image_path": "runs/2026-07-23/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: Janet AI morning briefing cover image, 21:9 landscape magazine hero. A sharp minimalist AI technology magazine cover background about enterprise AI agents moving from demos into controlled production systems, with visible governance panels, workflow rails, compute infrastructure, and security checkpoints. Black, white and Janet green accents, no people, no robots, no faces, no readable text, no watermark."
+  },
+  "trend": "OpenAI Presence、Microsoft Agent 365、GitHub Copilot dashboard 和 Google Flash 新型号放在一起看，今天的问题很具体：Agent 不再只是回答问题，它开始接公司系统、走审批、消耗预算、改检测规则、影响客户服务。生产级 AI 的胜负手，正在从“模型会不会”转向“公司敢不敢放权”。\n\n这对中国创作者和中小团队更残酷也更清楚。便宜模型会继续出现，真正卡脖子的会是流程权限、数据边界、事故追责和算力账单。能把这些东西提前做成小控制台的人，比只会追新模型名的人更接近现金流。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI把生产Agent卖进企业",
+          "body": "OpenAI 在 7 月 22 日推出 Presence，定位不是新的聊天入口，而是把 AI Agent 部署进客户支持、销售、理赔和内部 IT 等工作流。它支持语音和聊天，客户可以定义知识范围、系统权限、审批条件、升级规则和人工接管。OpenAI 称自己的英文电话支持已用 Presence 处理开放式请求，75% 入站问题无需人工解决，并通过 Codex 驱动的改进流程在 10 天内把人工转接减少 15 个百分点。该产品目前面向合格企业客户 limited general availability，不是自助购买。",
+          "janet_take": "OpenAI 又卖企业软件，背后是一个冷判断：单卖模型已经不够。企业最怕 Agent 在系统里动了钱、改了单、越了权，还没人能复盘。Presence 卖的是可控性：权限、评测、审批、接管、持续修订。对小团队的启发很直接，别再包装万能助手，先包装一个能被老板签字的岗位。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/introducing-openai-presence/",
+          "image": "images/news-01-openaiagent.png",
+          "image_source_url": "http://n.sinaimg.cn/spider20250313/560/w1080h1080/20250313/8cf8-c3380998f8ecea0c7b6148c271be0757.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "OpenAI砸7500亿建设AI机房",
+          "body": "TechCrunch 7 月 22 日援引《华尔街日报》报道称，OpenAI 计划到 2030 年在基础设施上投入 7500 亿美元，较今年早些时候的估算高约 25%。首个项目是佐治亚州 Project Camellia，规划占地 1400 英亩，位于 Savannah 西北，将从 Georgia Power 获取至少 3.2GW 电力，预计 2028 到 2032 年逐步到位。OpenAI 表示会承担相关基础设施和供电服务成本。",
+          "janet_take": "模型公司讲得再轻，账单最后都重得像水泥。7500 亿美元不是营销数字，它把 Agent 规模化的物理底座摊到桌面上：地、电、冷却、建设周期、公共电网。创作者不用参与这场军备赛，但要看懂它会怎样反向定价 API。所谓智能触手可及，前提是有人先把电费吞下去。",
+          "source": "TechCrunch / WSJ",
+          "url": "https://techcrunch.com/2026/07/22/openais-ai-spending-spree-has-ballooned-to-750b/",
+          "image": "images/news-02-openai7500ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/GettyImages-2236544023.jpeg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "美国拿蒸馏指控警告Moonshot",
+          "body": "TechCrunch 7 月 22 日报道称，美国财政部长 Scott Bessent 在 X 上表示，对中国 AI 公司采取制裁仍在选项中，背景是白宫官员指称 Moonshot 不当蒸馏 Anthropic 的 Fable 模型。报道同时解释，model distillation 本身是常见训练技术，可能侵犯知识产权，也可能是合法优化方式；Moonshot 相关争议目前仍是政治与商业指控交织，尚未等于司法定论。",
+          "janet_take": "单纯的模型口水仗已经结束，开源、蒸馏和国家产业政策现在撞在一起。美国把“你学了谁”变成制裁话术，中国模型公司会发现，性能追近以后，下一关是证据链和供应链。国内创业者真正危险的地方，在于交付时说不清训练、授权和数据来源。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/22/treasury-threatens-sanctions-after-white-house-claims-moonshot-distilled-anthropics-fable/",
+          "image": "images/news-03-moonshot.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/01/GettyImages-2254580342.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "Manulife接入Agent 365治理",
+          "body": "Microsoft Canada 7 月 22 日宣布，与 Manulife 扩大五年合作。Manulife 将采用 Microsoft Frontier Suite，并部署 Microsoft Agent 365 来治理、监控和保护企业级 AI Agent，同时把 Microsoft 365 Copilot 扩展到 3 万多名员工。官方通稿把重点放在规模化创新、AI governance 与 security，而不是单个聊天功能。",
+          "janet_take": "保险和金融公司不是最爱冒险的客户，它们愿意把 Agent 365 放进治理层，说明企业采购的关键词变了。过去卖 Copilot 是卖效率，现在卖的是“我敢让它进组织”。中小团队看这里就够了：客户真正会付钱的，往往不是炫技 Agent，而是能留下权限、日志和责任边界的 Agent。",
+          "source": "Microsoft",
+          "url": "https://news.microsoft.com/source/canada/2026/07/22/manulife-expands-partnership-with-microsoft-to-accelerate-enterprise-ai-governance-and-innovation/",
+          "image": "images/news-04-manulifeagent-365.jpg",
+          "image_source_url": "https://sourcecanada.thesourcemediaassets.com/2026/07/manulife-toronto-exterior-en-1024x576.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "OpenAI拉新闻机构做AI样板",
+          "body": "OpenAI 新闻页显示，7 月 22 日发布了“新闻机构如何用 AI 推进核心使命”的公司文章，集中展示媒体组织使用 AI 的案例。它和同日 Presence 的叙事方向一致：OpenAI 不只展示模型能力，而是把 AI 放进具体行业工作流里讲采用、责任和组织价值。",
+          "janet_take": "公关味很重，但信号有效。OpenAI 知道新闻业最怕 AI 稀释作者责任，所以反手拿新闻机构当采用样板。创作者要看的案例漂亮只算开场，评价标准已经变了：AI 有没有提升质量，责任有没有标清。只喊省人力，会越来越像低配外包广告。",
+          "source": "OpenAI",
+          "url": "https://openai.com/news/",
+          "image": "images/news-05-openaiai.jpg",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Google推3.6 Flash压低Agent账单",
+          "body": "Google 7 月 21 日发布 Gemini 3.6 Flash、3.5 Flash-Lite 和 3.5 Flash Cyber。官方称 3.6 Flash 面向生产级 Agent，在 Artificial Analysis Index 上相比 3.5 Flash 减少 17% 输出 token，价格为每百万 input tokens 1.50 美元、output tokens 7.50 美元；3.5 Flash-Lite 主打高吞吐，输出速度达 350 tokens/s，价格为每百万 input tokens 0.30 美元、output tokens 2.50 美元。3.5 Flash Cyber 将与 CodeMender 结合，先给政府和 trusted partners 做 limited-access pilot。",
+          "janet_take": "Google 这次没有只喊更聪明，而是直接打单位任务成本。Agent 一旦多步调用，输出 token、工具调用和延迟都会叠成账单；17% 少输出，看着不性感，跑到企业流量里就是预算差。Flash Cyber 限给可信客户，也说明安全模型越强，越不可能完全按消费级方式开放。",
+          "source": "Google Blog",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+          "image": "images/models-01-google36-flashagent.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-5_3-6_3-5-Cyber__key-art__statement_.width-1300.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "TinyFish发布Mako操作真实网页",
+          "body": "TinyFish 7 月 22 日通过 GlobeNewswire 宣布 Mako，称其为 web-native AI model，训练目标是操作 live web。通稿称 Mako 来自企业生产环境中的认证多步骤网页任务数据，面向需要在真实网页应用里执行流程的 Agent 场景，而不是只在静态浏览器 benchmark 里做点击演示。",
+          "janet_take": "网页操作模型终于开始面对脏活。真实网页不是干净表单，是登录态、权限、弹窗、超时、异常分支和人类写烂的后台系统。Mako 如果能处理这些，价值会很具体；如果只是“会点按钮”的新名字，企业现场会很快把它打回原形。",
+          "source": "GlobeNewswire / TinyFish",
+          "url": "https://markets.businessinsider.com/news/stocks/tinyfish-launches-mako-a-web-native-ai-model-built-to-operate-the-live-web-1036353166",
+          "image": "images/models-02-tinyfishmako.png",
+          "image_source_url": "https://ml.globenewswire.com/Resource/Download/a1b949c1-f830-4d6d-bebd-63d72dd069ec/dither-studio-image-2-.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "NVIDIA Rubin押注Agent吞吐",
+          "body": "NVIDIA Developer Blog 7 月 21 日详解 Rubin GPU 架构，称 Rubin 是 Vera Rubin 平台核心，面向长上下文、多步推理和 Agent 工作负载。官方摘要给出的关键指标包括 3360 亿晶体管、224 个 SM、896 个 Tensor Cores、288GB HBM4 与 22TB/s 带宽，并称相对 Blackwell 可提供最高 10 倍 agentic throughput per unit energy。Vera Rubin NVL72 还结合液冷、功率平滑和 cable-free MGX 架构。",
+          "janet_take": "NVIDIA 讲 Rubin，其实是在说 Agent 会把数据中心从训练机器改成持续推理工厂。以前大家盯单卡峰值，现在要盯 tokens per watt、KV cache、长上下文和机房功率曲线。创作者不用懂每个硬件名，但要懂趋势：Agent 越像工人，背后越像工厂，成本也越不像订阅玩具。",
+          "source": "NVIDIA Developer Blog",
+          "url": "https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/",
+          "image": "images/models-03-nvidia-rubinagent.webp",
+          "image_source_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/07/nvidia-rubin-gpu.webp",
+          "image_origin": "source"
+        },
+        {
+          "title": "GitHub用仪表盘量化Copilot深度",
+          "body": "GitHub Changelog 7 月 22 日发布 Copilot metrics impact dashboard，面向企业管理员和组织 owner。新面板按 AI adoption phase 把用户分为 Code-first、Agent-first、Multi-agent 或 Copilot app，以及 licensed but not engaged 的 Passive 组，并展示每用户每月合并 PR、PR merge velocity、用户占比、每日平均代码行数和六个月趋势，还提供推动用户进入更深采用阶段的建议。",
+          "janet_take": "AI 编程工具开始比“用深没”。GitHub 把 Agent-first、多 Agent 和吞吐做成管理语言。买 Copilot 只是开账单，组织能力还要另算。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-07-22-new-copilot-usage-metrics-impact-dashboard/",
+          "image": "images/models-04-githubcopilot.webp",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/07/Copilot_ImpactChangelog.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "WitnessAI用报告算Agent事故账",
+          "body": "WitnessAI 7 月 22 日发布企业 AI 采用风险报告。通稿称，在受访的企业 VP 到 C-level 决策者中，91% 担心 AI Agent 增加财务风险暴露，但 64% 仍认为 agentic AI 的价值超过风险；86% 在过去 12 个月调查过一个或多个 AI 相关安全或运营事件；21% 表示单次最严重 AI 相关事件成本达到 100 万美元或以上，43% 表示全年 AI 相关事件成本达到 200 万美元或以上。",
+          "janet_take": "这组数字比任何 demo 都诚实。企业明知 Agent 有风险，甚至已经在付事故账单，仍然继续推，因为效率压力已经大过恐惧。问题在于很多公司把治理当发布后的补丁。等到 200 万美元损失出现，所谓试点早就不是试点了，是没买保险的生产系统。",
+          "source": "PR Newswire / WitnessAI",
+          "url": "https://www.prnewswire.com/news-releases/new-witnessai-report-reveals-the-financial-cost-and-risk-factors-of-enterprise-ai-adoption-302831518.html",
+          "image": "images/insights-01-witnessaiagent.jpg",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS694309/WitnessAI-Transparent-Logo-Logo.jpg?id=OA2778696&p=twitter",
+          "image_origin": "source"
+        },
+        {
+          "title": "Fig给安全运营上CI/CD",
+          "body": "SiliconANGLE 7 月 21 日报道，Fig 推出 Figaro AI Agent，把安全运营改动带进类似软件开发的 CI/CD 流程。工程师用自然语言描述检测变更，Agent 读取 live environment，基于 security data lineage 提出改动，再模拟和测试影响，最后一键部署并可回滚。Fig 称 AppLovin 等早期用户把检测改动从数周压到数分钟。",
+          "janet_take": "安全运营最怕的慢还可救，真正麻烦是不知道自己哪里坏了。Fig 把检测规则当代码管，方向是对的：Agent 不能只会生成规则，还要证明上线后不会打穿别的告警链。国内做安全自动化的团队可以抄这个问题意识，先卖可测试、可回滚、可追责。",
+          "source": "SiliconANGLE",
+          "url": "https://siliconangle.com/2026/07/21/exclusive-fig-launches-figaro-ai-agent-brings-ci-cd-security-operations/",
+          "image": "images/insights-02-figcicd.png",
+          "image_source_url": "https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2026/07/IMG_1067.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "ExtraHop组联盟验证Agentic SOC",
+          "body": "ExtraHop 7 月 22 日宣布 Agentic SOC Alliance，目标是验证面向 machine-speed defense 的新安全运营模型。联盟强调 Context、Harness 和 Model 三层，并要求每个 Agent 都能查询和推理语义丰富的上下文。创始成员包括 AuthMind、Armadin、Command Zero、CrowdStrike、Dropzone AI、Exaforce、ExtraHop、Fig、Intezer、Kindo、LangChain、Prophet Security、ReversingLabs、TENEX.AI 和 Torq。",
+          "janet_take": "安全行业终于把 Agent 讲成操作系统问题。没有共享上下文，Agent 只是在各自工位上瞎忙；没有 harness，速度越快越容易放大错误。这个联盟未必马上改写市场，但它点出了一个硬事实：机器速度防御，先要机器可读的组织记忆。",
+          "source": "ExtraHop / TENEX.AI",
+          "url": "https://tenex.ai/news/extrahop-launches-the-agentic-soc-alliance-to-validate-ashared-operating-model-for-machine-speed-defense/",
+          "image": "images/insights-03-extrahopagentic-soc.jpg",
+          "image_source_url": "https://tenex.ai/wp-content/uploads/2026/07/0726_social_agenticSOCallianc-tenex.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Substack上线AI写作识别",
+          "body": "TechCrunch 7 月 22 日报道，Substack 集成 AI 写作检测软件 Pangram，允许用户在 Substack app 内扫描 posts、comments 和 replies，估计内容中人类写作与 AI 写作的比例。报道指出，这可能短期伤害平台业务，因为它会暴露部分 newsletter 并非完全由人写成，但也回应了读者对作者身份和内容透明度的焦虑。",
+          "janet_take": "创作者平台终于面对作者身份问题。AI 可以帮你写，读者也有权知道你交出了什么。检测器会有误差，不能变成猎巫工具；透明度这件事躲不掉。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/22/substacks-new-tool-tells-you-whos-been-writing-their-newsletters-with-ai/",
+          "image": "images/insights-04-substackai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/substack-GettyImages-2261803485.jpg?w=1024",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Glow融资180M成独角兽",
+          "body": "TechCrunch 7 月 22 日报道，Palo Alto 网络安全创业公司 Glow 从 stealth 状态亮相，完成 1.8 亿美元全股权 Series A，估值 12 亿美元。投资方包括 Sequoia Capital、Cyberstarts、Greenoaks、Redpoint Ventures、Index Ventures、Swish Ventures、Lux Capital、Operator Collective 和 Holly Ventures。Glow 由前 Meta 与 Snowflake 高管创立，使用 Anthropic 和 Google Gemini 模型经 Amazon Bedrock 支撑平台，面向 AI 时代的 endpoint security。",
+          "janet_take": "安全创业公司还没公开收入就估到 12 亿美元，资本已经把 Agent 风险当成新矿脉。Glow 的叙事很聪明：卖点跳过模型，直指企业终端上“什么在运行、风险在哪里、谁能控制”。泡沫肯定有，但预算也是真的。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/22/glow-emerges-from-stealth-at-1-2b-valuation-to-challenge-endpoint-security-in-the-ai-era/",
+          "image": "images/insights2-01-glow180m.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/glow-founders.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "ServiceNow靠AI订单冲破十亿",
+          "body": "SiliconANGLE 7 月 22 日报道，ServiceNow 第二季度业绩超过预期并上调展望。公司称 AI portfolio 的 annual contract value 已超过 10 亿美元，CEO Bill McDermott 表示 agentic deployments 在过去九个月增长 9 倍。公司季度内完成 123 笔 net new ACV 超 100 万美元的交易，同比增长近 40%，并拥有 658 个年付费超过 500 万美元的客户。",
+          "janet_take": "ServiceNow 的优势很硬：工单、审批和权限本来就在它里面。企业 AI 钱先落到既有系统厂商手里，新玩家要更贴近真实流程。",
+          "source": "SiliconANGLE",
+          "url": "https://siliconangle.com/2026/07/22/servicenow-beats-estimates-raises-outlook-ai-passes-1b-bookings/",
+          "image": "images/insights2-02-servicenowai.png",
+          "image_source_url": "https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2026/07/servicenow.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Synthesia转向训练结果评估",
+          "body": "TechCrunch 7 月 22 日报道，Synthesia 推出 Roleplay Sessions，让员工与 AI avatar 练习销售、绩效反馈、客户投诉等高压对话，AI 会反向提问、施压，并按 rubric 评分。该产品是 Synthesia 新产品线的首个发布，意味着公司从“快速生成企业培训视频”扩展到“证明培训是否有效”。",
+          "janet_take": "生成视频已经不够贵了，证明员工有没有学会才值钱。Synthesia 转向评分和反馈，说明工具要从产出素材走向证明结果。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/22/synthesias-ai-training-platform-is-moving-beyond-videos-into-live-coaching/",
+          "image": "images/insights2-03-synthesia.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/07/Roleplay-Sessions_Press-Kit_Product_01.png?resize=1200,675",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Guideline推出广告数据MCP接口",
+          "body": "Guideline 7 月 22 日宣布推出 Ad Intelligence MCP Server，让客户用 MCP-compatible AI applications 访问其广告支出、定价和市场情报数据。通稿称支持的配置包括 ChatGPT、Claude、Gemini、Microsoft Copilot 和客户自有 Agent，目标是让广告数据通过标准化接口进入媒体计划和市场分析流程。",
+          "janet_take": "MCP 正在从开发者玩具变成行业数据插座。广告人可以让 Agent 直接接专有数据源。谁有可信数据，谁的 Agent 才不只是空嘴顾问。",
+          "source": "PR Newswire / Guideline",
+          "url": "https://www.prnewswire.com/news-releases/guideline-launches-its-ad-intelligence-mcp-server-to-power-ai-agents-with-its-leading-global-advertising-data-302832328.html",
+          "image": "images/tools-01-guidelinemcp.jpg",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS1549091/Guideline-logo-Logo.jpg?id=OA2777935&p=twitter",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

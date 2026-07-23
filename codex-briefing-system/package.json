@@ -9,6 +9,6 @@
     "images": "node src/ensure-item-images.mjs",
     "publish": "node src/publish-to-site.mjs",
     "qa": "node src/qa-briefing.mjs",
-    "test": "node --test src/editorial-qa.test.mjs"
+    "test": "node --test src/*.test.mjs"
   }
 }

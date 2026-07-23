@@ -172,8 +172,8 @@ const mirrorDocumentIds = mirrorDocuments.map((item) => String(item.id || ''));
 const hasMirrorLocalArchive = existsSync(resolve(root, '镜场计划/tests'));
 if (!mirrorDocuments.length) issues.push('mirror_document_index_empty');
 if (new Set(mirrorDocumentIds).size !== mirrorDocumentIds.length) issues.push('mirror_document_index_duplicates');
-if (mirrorDocumentIds.join(',') !== '01,02,03') {
-  issues.push(`mirror_document_index_expected_01_03:${mirrorDocumentIds.join(',')}`);
+if (mirrorDocumentIds.join(',') !== '01,02,03,04') {
+  issues.push(`mirror_document_index_expected_01_04:${mirrorDocumentIds.join(',')}`);
 }
 if (mirrorDocuments.filter((item) => item.default).length !== 1 || !mirrorDocuments.find((item) => item.id === '01')?.default) {
   issues.push('mirror_document_default_must_be_01');
@@ -249,7 +249,8 @@ const mirrorPublicDocumentFiles = walk(mirrorPublicDocumentRoot).sort();
 const expectedMirrorPublicDocumentFiles = [
   'assets/works/mirror-plan/documents/01/JW-LTBF-01-experiment-archive-a5fa47bb.pdf',
   'assets/works/mirror-plan/documents/02/JW-LTBF-02-experiment-archive-45c7f9a8.pdf',
-  'assets/works/mirror-plan/documents/03/JW-LTBF-03-experiment-archive-ff12e78b.pdf'
+  'assets/works/mirror-plan/documents/03/JW-LTBF-03-experiment-archive-ff12e78b.pdf',
+  'assets/works/mirror-plan/documents/04/JW-LTBF-04-experiment-archive-bb576e80.pdf'
 ].sort();
 if (mirrorPublicDocumentFiles.join('\n') !== expectedMirrorPublicDocumentFiles.join('\n')) {
   issues.push(`mirror_public_document_set_invalid:${mirrorPublicDocumentFiles.join(',')}`);

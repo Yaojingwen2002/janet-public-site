@@ -19,7 +19,7 @@ body.home-experiment {
   --home-field-progress: 0;
   background: var(--signal-field-deep);
   color: var(--signal-text);
-  font-family: 'DM Sans', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-family: var(--font-body);
 }
 
 body.home-experiment * {
@@ -31,7 +31,7 @@ body.home-experiment h2,
 body.home-experiment h3,
 body.home-experiment .nav-brand,
 body.home-experiment .nav-brand-logo {
-  font-family: 'Fraunces', 'Songti SC', 'STSong', Georgia, serif;
+  font-family: var(--font-display);
   font-optical-sizing: auto;
 }
 
@@ -707,7 +707,7 @@ body.home-experiment .signal-hero .btn-outline:hover {
   display: -webkit-box;
   overflow: hidden;
   color: var(--signal-ink);
-  font-family: 'Fraunces', 'Songti SC', 'STSong', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 24px;
   font-weight: 400;
   line-height: 1.28;
@@ -1316,7 +1316,7 @@ body.home-experiment #about .about-text {
 
 body.home-experiment #about .about-lead {
   color: #1b2d25;
-  font-family: 'Fraunces', 'Songti SC', 'STSong', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 25px;
   line-height: 1.6;
 }
@@ -2258,7 +2258,7 @@ body.home-experiment {
 }
 
 .signal-source-readout strong {
-  font-family: 'Fraunces', 'Songti SC', 'STSong', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 400;
 }
@@ -2404,7 +2404,7 @@ body.home-experiment {
   display: -webkit-box;
   overflow: hidden;
   color: #f0f4f0;
-  font-family: 'Fraunces', 'Songti SC', 'STSong', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.28;
@@ -2482,7 +2482,7 @@ body.home-experiment section[data-section-index]::after {
   top: 80px;
   right: max(var(--container-pad), calc((100vw - var(--container)) / 2));
   color: rgba(35, 80, 60, .07);
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 132px;
   font-weight: 300;
   line-height: 1;
@@ -2584,7 +2584,7 @@ body.home-experiment #news .codex-trend-card {
 
 body.home-experiment #news .codex-trend-card h3 {
   color: #153a2b;
-  font-family: 'Fraunces', 'Songti SC', serif;
+  font-family: var(--font-display);
   font-size: 26px;
   font-weight: 400;
   line-height: 1.28;
@@ -2782,7 +2782,7 @@ body.home-experiment .works-card-cue b {
 }
 
 body.home-experiment .works-project-card__index span:first-child {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 34px;
   font-weight: 300;
 }
@@ -3786,7 +3786,7 @@ body.home-experiment #news .home-engagement .share-btn {
   background: transparent;
   color: #1b392d;
   padding: 0 clamp(16px, 2.4vw, 34px);
-  font-family: 'Noto Sans SC', system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 720;
   letter-spacing: 0;
@@ -3891,7 +3891,7 @@ body.home-experiment #news .briefing-activity-pill {
   background: rgba(6, 25, 18, .79);
   color: #e2eee7;
   padding: 0 13px 0 29px;
-  font-family: 'Noto Sans SC', system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   font-weight: 650;
   line-height: 1.35;

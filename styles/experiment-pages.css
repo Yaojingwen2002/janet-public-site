@@ -32,7 +32,7 @@ html[data-janet-experiment="signal-wave-16"] *::after {
 html[data-janet-experiment="signal-wave-16"] body:not(.home-experiment) {
   background: var(--exp-cream);
   color: var(--exp-text);
-  font-family: 'DM Sans', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-family: var(--font-body);
 }
 
 html[data-janet-experiment="signal-wave-16"] body:not(.home-experiment) .page,
@@ -57,7 +57,7 @@ html[data-janet-experiment="signal-wave-16"] h3,
 html[data-janet-experiment="signal-wave-16"] .nav-brand,
 html[data-janet-experiment="signal-wave-16"] .logo,
 html[data-janet-experiment="signal-wave-16"] .footer-brand {
-  font-family: 'Fraunces', 'Songti SC', 'STSong', Georgia, serif;
+  font-family: var(--font-display);
   font-optical-sizing: auto;
 }
 

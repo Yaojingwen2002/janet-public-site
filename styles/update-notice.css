@@ -57,7 +57,7 @@
 }
 
 .release-notice__handle-label {
-  font: 600 0.68rem/1 "DM Sans", sans-serif;
+  font: 600 0.68rem/1 var(--font-body);
   letter-spacing: 0;
   writing-mode: vertical-rl;
 }
@@ -87,14 +87,14 @@
 .release-notice__date {
   display: block;
   color: #a54c37;
-  font: 600 0.68rem/1.4 "DM Sans", sans-serif;
+  font: 600 0.68rem/1.4 var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0;
 }
 
 .release-notice__head h2 {
   margin: 8px 0 0;
-  font: 400 clamp(1.55rem, 3vw, 2.05rem)/1.05 "Fraunces", serif;
+  font: 600 clamp(1.55rem, 3vw, 2.05rem)/1.05 var(--font-display);
   letter-spacing: 0;
 }
 
@@ -142,7 +142,7 @@
 
 .release-notice__intro {
   color: rgba(17, 47, 39, 0.74);
-  font: 400 0.92rem/1.65 "DM Sans", sans-serif;
+  font: 400 0.92rem/1.65 var(--font-body);
 }
 
 .release-notice__item {
@@ -153,19 +153,19 @@
 
 .release-notice__item > span {
   color: #a54c37;
-  font: 600 0.68rem/1.5 "DM Sans", sans-serif;
+  font: 600 0.68rem/1.5 var(--font-body);
 }
 
 .release-notice__item h3 {
   margin: 0 0 5px;
-  font: 600 0.92rem/1.35 "DM Sans", sans-serif;
+  font: 600 0.92rem/1.35 var(--font-body);
   letter-spacing: 0;
 }
 
 .release-notice__item p {
   margin: 0;
   color: rgba(17, 47, 39, 0.68);
-  font: 400 0.82rem/1.55 "DM Sans", sans-serif;
+  font: 400 0.82rem/1.55 var(--font-body);
 }
 
 .release-notice__foot {
@@ -178,7 +178,7 @@
 
 .release-notice__foot a {
   color: var(--notice-ink);
-  font: 600 0.78rem/1.3 "DM Sans", sans-serif;
+  font: 600 0.78rem/1.3 var(--font-body);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
 }

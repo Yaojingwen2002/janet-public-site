@@ -15,7 +15,7 @@
   -webkit-backdrop-filter: blur(14px);
   overflow: visible;
   color: var(--green, #1A3A2A);
-  font-family: var(--font-body, var(--sans, 'DM Sans', 'PingFang SC', system-ui, sans-serif));
+  font-family: var(--font-body, var(--sans, -apple-system, BlinkMacSystemFont, 'PingFang SC', system-ui, sans-serif));
   isolation: isolate;
 }
 
@@ -488,7 +488,7 @@
   padding: 0 14px;
   border-radius: 10px;
   color: var(--green, #1A3A2A);
-  font-family: var(--font-body, var(--sans, 'DM Sans', 'PingFang SC', system-ui, sans-serif));
+  font-family: var(--font-body, var(--sans, -apple-system, BlinkMacSystemFont, 'PingFang SC', system-ui, sans-serif));
   font-size: 14px;
   font-weight: 850;
   letter-spacing: 0;

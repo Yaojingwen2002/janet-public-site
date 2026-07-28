@@ -68,17 +68,29 @@ for (const file of [
   'data/MANIFEST.json',
   'data/news-index.json',
   'sitemap.xml',
-  'robots.txt'
+  'robots.txt',
+  'favicon.ico'
 ]) requireFile(file);
 
 for (const file of [
   'styles/update-notice.css',
+  'styles/brand-system.css',
   'scripts/update-notice.js',
   'styles/mirror-plan.css',
   'scripts/mirror-plan.js',
   'data/works/works-manifest.json',
   'data/works/projects/mirror-plan.json',
-  'data/works/documents/mirror-plan/index.json'
+  'data/works/documents/mirror-plan/index.json',
+  'assets/icons/logo-mark.svg',
+  'assets/icons/logo-mark.png',
+  'assets/icons/logo-lockup-horizontal.svg',
+  'assets/icons/logo-lockup-horizontal-light.png',
+  'assets/icons/apple-touch-icon.png',
+  'assets/icons/favicon-32.png',
+  'assets/icons/favicon-16.png',
+  'assets/og/janet-og.png',
+  'assets/og/news-og.png',
+  'assets/og/works-og.png'
 ]) requireFile(file);
 
 const manifest = readJson('data/MANIFEST.json') || [];
@@ -164,6 +176,18 @@ const shellPages = [
 ];
 shellPages.forEach(validateHtmlReferences);
 if (latestOutputPath) validateHtmlReferences(latestOutputPath);
+
+for (const file of shellPages.filter((path) => path !== 'marvel-ten.html')) {
+  const absolute = resolve(root, file);
+  if (!existsSync(absolute)) continue;
+  const html = readFileSync(absolute, 'utf8');
+  if (!/styles\/brand-system\.css/i.test(html)) issues.push(`brand_stylesheet_missing:${file}`);
+  if (!/apple-touch-icon/i.test(html)) issues.push(`brand_touch_icon_missing:${file}`);
+  if (/fonts\.googleapis\.com/i.test(html)) issues.push(`legacy_google_font_present:${file}`);
+  if (/nav-brand-logo/i.test(html) && !/logo-lockup-horizontal\.svg/i.test(html)) {
+    issues.push(`brand_nav_lockup_missing:${file}`);
+  }
+}
 
 const mirrorDocumentIndexPath = 'data/works/documents/mirror-plan/index.json';
 const mirrorDocumentIndex = readJson(mirrorDocumentIndexPath) || {};

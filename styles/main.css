@@ -1,7 +1,7 @@
 /* ============================================================
    Janet 个人网站 · 全站样式
    主题：奶油白 + 深墨绿 + 琥珀金
-   字体：Fraunces（标题）+ DM Sans（正文）
+   字体：Avenir / SF Pro（标题）+ SF Pro Text（正文）
    版本：v2.0 · 2026-06-02
    ============================================================ */
 
@@ -40,9 +40,9 @@
   --success:      #2D5A40;
 
   /* 字体 */
-  --font-display: 'Fraunces', Georgia, 'Noto Serif SC', serif;
-  --font-body:    'DM Sans', 'PingFang SC', system-ui, sans-serif;
-  --font-mono:    'SF Mono', 'Fira Code', monospace;
+  --font-display: 'Avenir Next', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  --font-body:    'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono:    'SF Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
 
   /* 字号 */
   --text-hero:    clamp(40px, 7vw, 72px);
@@ -194,7 +194,7 @@ h1, h2, h3, h4 { line-height: 1.15; font-weight: 500; }
   font-family: var(--font-display);
   font-size: 20px; font-weight: 600;
   color: var(--green);
-  letter-spacing: -0.4px;
+  letter-spacing: 0;
   text-decoration: none;
   transition: opacity .2s;
 }

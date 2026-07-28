@@ -6,9 +6,9 @@
   --mirror-muted: #6f6c65;
   --mirror-red: #a63c2f;
   --mirror-cyan: #3a7478;
-  --mirror-display: "Fraunces", "Noto Serif SC", serif;
-  --mirror-sans: "DM Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --mirror-mono: "DM Mono", "SFMono-Regular", monospace;
+  --mirror-display: var(--font-display);
+  --mirror-sans: var(--font-body);
+  --mirror-mono: var(--font-mono);
 }
 
 .mirror-page {

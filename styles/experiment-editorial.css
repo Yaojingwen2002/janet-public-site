@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap');
-
 /* Janet experimental page system, Wave 17: open American editorial. */
 html[data-janet-experiment="signal-wave-17"] {
   --ed-cream: #f4f0e8;
@@ -16,9 +14,9 @@ html[data-janet-experiment="signal-wave-17"] {
   --ed-line: rgba(23, 25, 22, .18);
   --ed-line-soft: rgba(23, 25, 22, .1);
   --ed-gutter: clamp(20px, 4.4vw, 76px);
-  --ed-serif: 'Newsreader', 'Songti SC', 'STSong', Georgia, serif;
-  --ed-sans: 'DM Sans', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
-  --ed-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --ed-serif: var(--font-display);
+  --ed-sans: var(--font-body);
+  --ed-condensed: var(--font-brand, var(--font-body));
   background: var(--ed-cream);
 }
 

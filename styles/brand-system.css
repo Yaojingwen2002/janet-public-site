@@ -1,0 +1,144 @@
+/* Janet brand system, 2026-07-28.
+   The supplied JANET lettering remains an image lockup; interface type uses
+   a matching geometric system stack so Chinese and Latin stay consistent. */
+
+:root {
+  --font-brand: "Avenir Next", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-display: "Avenir Next", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-body: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-sans: var(--font-body);
+  --font-mono: "SF Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+  --brand-ink: #0a0a0a;
+  --brand-paper: #f7f5f0;
+  --brand-focus: #2d6a4f;
+}
+
+html {
+  font-family: var(--font-body);
+  font-kerning: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+.logo,
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+html[data-janet-experiment="signal-wave-17"] {
+  --ed-serif: var(--font-display);
+  --ed-sans: var(--font-body);
+  --ed-condensed: var(--font-brand);
+}
+
+.mirror-page {
+  --mirror-display: var(--font-display);
+  --mirror-sans: var(--font-body);
+  --mirror-mono: var(--font-mono);
+}
+
+body.home-experiment {
+  font-family: var(--font-body);
+}
+
+body.home-experiment h1,
+body.home-experiment h2,
+body.home-experiment h3,
+body.home-experiment .nav-brand,
+body.home-experiment .nav-brand-logo {
+  font-family: var(--font-display);
+}
+
+.nav-brand-logo {
+  min-width: 0;
+  gap: 0;
+  color: var(--brand-ink);
+  font-family: var(--font-brand);
+  letter-spacing: 0;
+}
+
+.nav-logo-lockup {
+  display: block;
+  width: 128px;
+  height: auto;
+  max-height: 38px;
+  object-fit: contain;
+  object-position: left center;
+  transition: filter .5s ease, opacity .25s ease, transform .25s ease;
+}
+
+.nav-brand-logo:hover .nav-logo-lockup {
+  opacity: .72;
+  transform: translateY(-1px);
+}
+
+.briefing-brand {
+  display: inline-flex;
+  margin: 0 0 18px;
+}
+
+.briefing-brand img {
+  display: block;
+  width: 138px;
+  height: auto;
+}
+
+body:not(.home-experiment) .nav {
+  background: rgba(247, 245, 240, .82);
+  border-bottom-color: rgba(10, 10, 10, .1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .62);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+
+body.home-experiment .nav-logo-lockup {
+  filter: none;
+  opacity: .94;
+}
+
+body.home-experiment.is-past-globe:not(.is-contact-field) .nav-logo-lockup {
+  filter: none;
+}
+
+body.home-experiment.is-contact-field .nav-logo-lockup {
+  filter: invert(1);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-focus);
+  outline-offset: 4px;
+}
+
+@media (max-width: 520px) {
+  .nav-logo-lockup {
+    width: 108px;
+    max-height: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo-lockup {
+    transition: none;
+  }
+}

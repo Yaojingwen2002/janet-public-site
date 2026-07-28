@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Janet 快车箱 · AI 晨报 · {{date}} · VOL {{vol}}</title>
   <link rel="icon" type="image/svg+xml" href="../../assets/icons/logo-mark.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="../../styles/potato-center.css?v=potato-roll-20260617">
   <link rel="stylesheet" href="../../styles/comments.css">
   <link rel="stylesheet" href="../../styles/signal-cursor.css?v=experiment-wave-17">
@@ -16,7 +16,7 @@
    Janet 快车箱 · 晨报模板
    项目内模板 · codex-briefing-system/templates/template.html
    色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
-   字体: Fraunces (标题) · DM Sans (正文) · Geist Mono (元数据)
+   字体: Avenir / SF Pro (标题) · SF Pro Text (正文) · SF Mono (元数据)
    ═══════════════════════════════════════════════════ */
 
 /* ── Variables ──────────────────────────────────────── */
@@ -43,9 +43,9 @@
   --border:       rgba(0, 0, 0, .08);
   --border-mid:   rgba(0, 0, 0, .13);
   /* 字体 */
-  --mono:         'Geist Mono', 'SFMono-Regular', 'Fira Code', monospace;
-  --sans:         'DM Sans', 'PingFang SC', system-ui, sans-serif;
-  --display:      'Fraunces', Georgia, 'Noto Serif SC', serif;
+  --mono:         'SF Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+  --sans:         'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  --display:      'Avenir Next', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
   /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
   --brand:        var(--signal);
   --brand-sub:    var(--signal-dim);
@@ -117,6 +117,17 @@ header {
   color: var(--ink);
   line-height: 0.93;
   margin-bottom: 9px;
+}
+
+.briefing-brand {
+  display: inline-flex;
+  margin: 0 0 18px;
+}
+
+.briefing-brand img {
+  display: block;
+  width: 138px;
+  height: auto;
 }
 
 .logo-sub {
@@ -504,6 +515,7 @@ footer a { color: var(--green); }
   * { transition: none !important; animation: none !important; }
 }
   </style>
+  <link rel="stylesheet" href="../../styles/brand-system.css?v=brand-20260728-2">
   <link rel="stylesheet" href="../../styles/experiment-editorial.css?v=experiment-wave-17">
 </head>
 <body class="briefing-output-page">
@@ -530,6 +542,9 @@ footer a { color: var(--green); }
       <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
       <div class="main-header">
         <div>
+          <a class="briefing-brand" href="../../index.html" aria-label="返回 Janet 首页">
+            <img src="../../assets/icons/logo-lockup-horizontal.svg" alt="Janet">
+          </a>
           <span class="logo">Janet 快车箱</span>
           <span class="logo-sub">AI Daily Briefing</span>
         </div>

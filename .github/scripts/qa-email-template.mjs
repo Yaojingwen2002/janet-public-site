@@ -26,7 +26,7 @@ function validateDailyEmail(html) {
   if (!html.includes(`${PREVIEW_NAME}，今天的信号已筛完。`)) issues.push('email_missing_personalized_header');
   if (!html.includes(`${PREVIEW_NAME}</strong>，早。`)) issues.push('email_missing_personalized_intro');
   if (/Janet\s*早[。.!！]?/i.test(html)) issues.push('email_contains_static_janet_greeting');
-  if (!html.includes('/assets/icons/logo-mark.png')) issues.push('email_missing_brand_logo');
+  if (!html.includes('/assets/icons/logo-lockup-horizontal-light.png')) issues.push('email_missing_brand_logo');
 
   for (const src of attributeValues(html, 'src')) {
     if (!/^https:\/\//i.test(src) && !/^(?:cid:|data:)/i.test(src)) issues.push(`email_image_not_absolute:${src}`);
@@ -74,7 +74,7 @@ async function main() {
   const welcome = welcomeHtml({ displayName: PREVIEW_NAME, siteUrl: SITE_URL });
   const issues = validateDailyEmail(html);
   if (!validateWebControlStripper()) issues.push('email_web_control_strip_regression');
-  if (!welcome.includes(PREVIEW_NAME) || !welcome.includes('/assets/icons/logo-mark.png')) {
+  if (!welcome.includes(PREVIEW_NAME) || !welcome.includes('/assets/icons/logo-lockup-horizontal-light.png')) {
     issues.push('welcome_email_brand_or_name_missing');
   }
 

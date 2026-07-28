@@ -70,7 +70,7 @@ export function welcomeHtml({ displayName, siteUrl }) {
   const name = displayName ? escapeHtml(displayName) : '读者';
   const newsUrl = new URL('news.html', siteUrl).toString();
   const homeUrl = new URL('', siteUrl).toString();
-  const logoUrl = new URL('assets/icons/logo-mark.png', siteUrl).toString();
+  const logoUrl = new URL('assets/icons/logo-lockup-horizontal-light.png', siteUrl).toString();
   return `<!doctype html>
 <html lang="zh-CN">
   <head>
@@ -88,10 +88,10 @@ export function welcomeHtml({ displayName, siteUrl }) {
               <td style="padding:24px 28px;background:#0D1712;border-bottom:3px solid #18E299;">
                 <table role="presentation" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td style="width:48px;vertical-align:middle;"><img src="${logoUrl}" width="44" height="44" alt="Janet" style="display:block;width:44px;height:44px;border:0;border-radius:8px;"></td>
-                    <td style="padding-left:12px;vertical-align:middle;color:#FFFEF9;">
-                      <div style="font-size:17px;font-weight:800;line-height:1.2;">Janet 快车箱</div>
-                      <div style="margin-top:4px;color:#9AA89F;font-size:11px;letter-spacing:.08em;line-height:1.2;">SUBSCRIPTION CONNECTED</div>
+                    <td style="width:152px;vertical-align:middle;"><img src="${logoUrl}" width="148" alt="Janet" style="display:block;width:148px;height:auto;border:0;"></td>
+                    <td style="padding-left:14px;vertical-align:middle;color:#FFFEF9;">
+                      <div style="font-size:15px;font-weight:700;line-height:1.2;">快车箱</div>
+                      <div style="margin-top:4px;color:#9AA89F;font-size:11px;letter-spacing:0;line-height:1.2;">SUBSCRIPTION CONNECTED</div>
                     </td>
                   </tr>
                 </table>
@@ -99,8 +99,8 @@ export function welcomeHtml({ displayName, siteUrl }) {
             </tr>
             <tr>
               <td style="padding:32px 28px 30px;">
-                <div style="color:#1A3A2A;font-size:12px;font-weight:800;letter-spacing:.08em;">WELCOME ABOARD</div>
-                <h1 style="margin:10px 0 12px;font-family:Georgia,'Times New Roman',serif;font-size:36px;line-height:1.08;font-weight:500;color:#111;">${name}，晨间信号通道已接上。</h1>
+                <div style="color:#1A3A2A;font-size:12px;font-weight:800;letter-spacing:0;">WELCOME ABOARD</div>
+                <h1 style="margin:10px 0 12px;font-family:'Avenir Next','SF Pro Display',-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC',sans-serif;font-size:36px;line-height:1.08;font-weight:600;color:#111;">${name}，晨间信号通道已接上。</h1>
                 <p style="margin:0;color:#555B56;font-size:16px;line-height:1.75;">从下一期开始，晨报发布后会自动送到这个邮箱。邮件会使用你的注册名称，内容包含当天 AI 信号、Janet 锐评和完整阅读入口。</p>
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="width:100%;margin-top:26px;border-top:1px solid #DFE1DA;border-bottom:1px solid #DFE1DA;">
                   <tr>

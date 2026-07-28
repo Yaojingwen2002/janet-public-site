@@ -137,7 +137,7 @@ export function injectEmailHeader(html, { displayName, editionId, edition, onlin
   const name = escapeHtml(readerName(displayName));
   const editionTitle = escapeHtml(edition.title || '今天的 AI 信号');
   const signalCount = Number(edition.signal_count || edition.edition_items_count || 17);
-  const logoUrl = new URL('assets/icons/logo-mark.png', siteUrl).toString();
+  const logoUrl = new URL('assets/icons/logo-lockup-horizontal-light.png', siteUrl).toString();
   const preheader = `${edition.title || '今日 AI 晨报'}：${signalCount} 条信号已经筛完。`;
   const header = `
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${escapeHtml(preheader)}</div>
@@ -149,10 +149,10 @@ export function injectEmailHeader(html, { displayName, editionId, edition, onlin
           <td style="padding:24px 0 18px;vertical-align:middle;">
             <table role="presentation" cellspacing="0" cellpadding="0">
               <tr>
-                <td style="width:44px;vertical-align:middle;"><img src="${logoUrl}" width="40" height="40" alt="Janet" style="display:block;width:40px;height:40px;border:0;border-radius:8px;"></td>
-                <td style="padding-left:12px;vertical-align:middle;color:#FFFEF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-                  <div style="font-size:16px;font-weight:800;line-height:1.2;">Janet 快车箱</div>
-                  <div style="margin-top:4px;color:#9AA89F;font-size:11px;letter-spacing:.08em;line-height:1.2;">AI DAILY BRIEFING</div>
+                <td style="width:152px;vertical-align:middle;"><img src="${logoUrl}" width="148" alt="Janet" style="display:block;width:148px;height:auto;border:0;"></td>
+                <td style="padding-left:14px;vertical-align:middle;color:#FFFEF9;font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC',sans-serif;">
+                  <div style="font-size:15px;font-weight:700;line-height:1.2;">快车箱</div>
+                  <div style="margin-top:4px;color:#9AA89F;font-size:11px;letter-spacing:0;line-height:1.2;">AI DAILY BRIEFING</div>
                 </td>
               </tr>
             </table>

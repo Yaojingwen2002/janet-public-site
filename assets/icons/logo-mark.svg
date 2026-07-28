@@ -1,52 +1,5 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
- <title id="title">Janet Mark</title>
- <desc id="desc">Janet J monogram with signal dot and orbit line.</desc>
-
- <defs>
- <linearGradient id="janetGreen" x1="96" y1="88" x2="416" y2="424" gradientUnits="userSpaceOnUse">
- <stop offset="0" stop-color="#53F5BD"/>
- <stop offset="1" stop-color="#18E299"/>
- </linearGradient>
-
- <radialGradient id="bgGlow" cx="50%" cy="36%" r="70%">
- <stop offset="0" stop-color="#0B2A1D"/>
- <stop offset="0.46" stop-color="#050908"/>
- <stop offset="1" stop-color="#000000"/>
- </radialGradient>
-
- <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
- <feGaussianBlur stdDeviation="12" result="blur"/>
- <feColorMatrix in="blur" type="matrix"
- values="0 0 0 0 0.094
- 0 0 0 0 0.886
- 0 0 0 0 0.600
- 0 0 0 0.65 0" result="glow"/>
- <feMerge>
- <feMergeNode in="glow"/>
- <feMergeNode in="SourceGraphic"/>
- </feMerge>
- </filter>
- </defs>
-
- <rect width="512" height="512" rx="144" fill="url(#bgGlow)"/>
- <rect x="18" y="18" width="476" height="476" rx="132" stroke="#18E299" stroke-opacity="0.18" stroke-width="3"/>
-
- <!-- Orbit -->
- <path d="M113 316C177 182 340 112 438 182"
- stroke="url(#janetGreen)"
- stroke-width="18"
- stroke-linecap="round"
- opacity="0.72"/>
-
- <!-- J -->
- <path d="M318 121V304C318 361 281 397 226 397C192 397 163 384 145 359"
- stroke="url(#janetGreen)"
- stroke-width="48"
- stroke-linecap="round"
- stroke-linejoin="round"
- filter="url(#softGlow)"/>
-
- <!-- Signal dot -->
- <circle cx="384" cy="135" r="30" fill="#18E299" filter="url(#softGlow)"/>
- <circle cx="384" cy="135" r="56" stroke="#18E299" stroke-opacity="0.15" stroke-width="5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Janet</title>
+  <desc id="desc">Janet musical J monogram.</desc>
+  <path d="M 530 784 L 528 785 L 525 785 L 524 786 L 521 786 L 517 788 L 514 788 L 510 790 L 504 791 L 478 803 L 461 815 L 443 834 L 439 840 L 438 843 L 436 845 L 431 855 L 431 857 L 427 867 L 426 876 L 425 877 L 425 893 L 426 894 L 426 898 L 428 901 L 429 905 L 435 911 L 440 913 L 444 913 L 445 914 L 447 913 L 453 913 L 454 912 L 459 911 L 473 904 L 476 901 L 485 895 L 497 883 L 497 882 L 504 874 L 513 859 L 513 857 L 518 848 L 518 846 L 519 845 L 519 843 L 524 830 L 524 827 L 526 822 L 527 812 L 528 811 L 528 805 L 529 804 Z M 659 253 L 657 253 L 657 760 L 656 761 L 656 768 L 655 769 L 654 779 L 653 780 L 652 787 L 650 791 L 650 794 L 649 795 L 646 806 L 644 809 L 642 816 L 639 821 L 639 823 L 636 829 L 634 831 L 631 838 L 618 857 L 600 876 L 599 876 L 594 881 L 593 881 L 580 891 L 557 903 L 555 903 L 547 907 L 545 907 L 538 910 L 535 910 L 531 912 L 528 912 L 527 913 L 524 913 L 523 914 L 520 914 L 515 916 L 506 917 L 506 918 L 508 919 L 519 920 L 520 921 L 528 921 L 529 922 L 560 923 L 561 922 L 573 922 L 574 921 L 587 920 L 588 919 L 592 919 L 593 918 L 604 916 L 605 915 L 616 912 L 639 901 L 658 888 L 675 872 L 675 871 L 680 866 L 680 865 L 686 858 L 690 852 L 691 849 L 693 847 L 699 835 L 699 833 L 702 828 L 702 826 L 704 823 L 704 821 L 706 817 L 706 814 L 707 813 L 707 810 L 708 809 L 708 806 L 710 801 L 710 797 L 711 796 L 712 781 L 713 780 L 713 546 L 714 545 L 715 537 L 720 530 L 725 528 L 731 528 L 732 529 L 740 530 L 741 531 L 755 535 L 765 540 L 767 540 L 787 550 L 789 552 L 799 557 L 804 561 L 807 562 L 825 574 L 828 577 L 837 583 L 847 592 L 848 592 L 855 599 L 856 599 L 863 606 L 864 606 L 864 591 L 863 590 L 863 571 L 862 570 L 862 560 L 861 559 L 861 552 L 860 551 L 860 545 L 859 544 L 858 532 L 857 531 L 857 527 L 856 526 L 856 522 L 854 517 L 854 513 L 853 512 L 851 501 L 848 494 L 848 491 L 846 487 L 846 484 L 845 483 L 842 472 L 840 469 L 840 467 L 839 466 L 838 461 L 836 458 L 836 456 L 834 453 L 834 451 L 831 446 L 829 439 L 809 400 L 807 398 L 803 390 L 787 366 L 777 354 L 774 349 L 769 344 L 769 343 L 764 338 L 764 337 L 756 329 L 756 328 L 737 309 L 736 309 L 720 294 L 719 294 L 715 290 L 710 287 L 698 277 L 680 265 L 677 264 L 670 259 L 661 255 Z" transform="translate(106.492 28.000) scale(0.679583) translate(-425 -253)" fill="#0A0A0A" fill-rule="evenodd"/>
 </svg>

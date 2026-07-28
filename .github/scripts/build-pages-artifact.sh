@@ -13,7 +13,7 @@ rm -rf "$OUTPUT"
 mkdir -p "$OUTPUT/data"
 
 find "$ROOT" -maxdepth 1 -type f -name '*.html' -exec cp {} "$OUTPUT/" \;
-for file in robots.txt sitemap.xml .nojekyll; do
+for file in robots.txt sitemap.xml favicon.ico .nojekyll; do
   [[ -f "$ROOT/$file" ]] && cp "$ROOT/$file" "$OUTPUT/$file"
 done
 

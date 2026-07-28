@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-28",
+  "vol": "301",
+  "intro_text": "开放权重、安全联盟、企业部署和机房融资今天挤在同一张桌上。表面看是模型和工具继续变多，底层问题更冷：谁拿到分发入口，谁承担事故责任，谁有现金继续烧推理账单。",
+  "cover": {
+    "title": "信任账单摊牌",
+    "subtitle": "开放模型、安全控制台和企业采购同时逼近真实成本",
+    "image_path": "runs/2026-07-28/cover.png",
+    "image_prompt": "21:9 horizontal AI technology magazine cover art for Janet's morning briefing. Minimal black, white, and sharp Janet green palette. Abstract control room made of thin white grid lines, a split stack of open model weights, security shields, cloud data pipes, and enterprise workflow nodes converging into one stark rectangular command surface. Editorial, premium, restrained, high contrast, no cartoon, no robot faces, no neon glow, no long text, no date, no logos."
+  },
+  "trend": "今天的问题不是谁又多跑了几分，而是谁能把 AI 放进真实系统以后还说得清责任。Hugging Face 的安全事件提醒开放分发不是免费空气，NVIDIA 和 Microsoft 把安全联盟推到台前，Anthropic 则用 Cognizant 这类交付网络进入企业预算表。\n\n开放权重和企业 Agent 同一天变热，说明模型竞争已经离开单纯参数叙事。创作者会先感到工具更多、门槛更低；公司财务会先看到新账单；安全团队会先发现，过去那套“先上线再补洞”的节奏在 Agent 时代很难继续装睡。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Hugging Face管住泄露凭证",
+          "body": "Hugging Face 在 7 月 27 日披露一起与访问凭证相关的安全事件，并表示已撤销受影响 token、扩大日志审查和通知相关用户。事件没有被描述成模型权重本身泄露，但它击中了开放模型平台最敏感的位置：仓库、推理端点、数据集和企业自动化脚本往往共用同一套凭证边界。",
+          "janet_take": "开放模型平台已经接近生产基础设施，不能再被当成永久干净的水管。一个 token 漏洞足够提醒开发者：权限、轮换和最小访问权不是大公司安全团队的洁癖。小团队用个人 token 串整条流水线，省下的是五分钟，赌上的是客户数据和周一早上的命。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog",
+          "image_source_url": "https://huggingface.co/blog",
+          "image_origin": "source",
+          "image": "images/news-01-hugging-face.png"
+        },
+        {
+          "title": "NVIDIA联手微软推AI安全联盟",
+          "body": "NVIDIA、Microsoft、IBM、Cisco 等公司在 7 月 27 日宣布围绕开放安全工具、模型评测和部署实践组建协作框架，重点放在企业采用 AI 后的威胁建模、监控和响应。这个动作把安全从单家公司白皮书推向联合标准，也给云厂商和芯片厂留下了规则话语权。",
+          "janet_take": "联盟这两个字听起来温和，实质是抢定义权。谁定义安全基线，谁就能定义采购清单、认证路径和事故后的甩锅顺序。国内团队要盯这些基线会不会变成海外招标的隐形门槛。",
+          "source": "Linux Foundation / NVIDIA",
+          "url": "https://www.linuxfoundation.org/press/",
+          "image_source_url": "https://blogs.nvidia.cn/wp-content/uploads/sites/20/2023/05/nvidia-microsoft-annoucement-nv-blog-header-preview-1280x680-1-960x510.jpg",
+          "image_origin": "search",
+          "image": "images/news-02-nvidiaai.jpg"
+        },
+        {
+          "title": "Anthropic携Cognizant进企业交付",
+          "body": "Anthropic 与 Cognizant 在窗口内宣布扩大合作，把 Claude 接入更多企业客户的咨询、迁移和行业解决方案。双方强调的是培训、部署和业务流程嵌入，而不是单纯 API 调用。Cognizant 这类服务商的价值在于把模型塞进客户已有系统，并替客户解释风险、权限和回报周期。",
+          "janet_take": "Claude 进企业最难的环节，从来不是演示十分钟写报告。难的是谁坐在客户会议室里，把权限、数据边界、员工培训和失败责任一项项讲清楚。Anthropic 找 Cognizant，是承认模型公司单独卖不动复杂组织；咨询公司也终于拿到一个能重新包装人天的抓手。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news",
+          "image_source_url": "https://cdn.sanity.io/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg",
+          "image_origin": "source",
+          "image": "images/news-03-anthropiccognizant.jpg"
+        },
+        {
+          "title": "OpenAI开放权重先交安全说明",
+          "body": "围绕新开放权重模型的准备，OpenAI 在 7 月 27 日把重点放在分发、评测和安全说明上，继续强调与开发者平台和评测社区的协作。这个节奏说明闭源巨头重回开放牌桌时，不能只丢一个下载链接，还要解释许可证、滥用防护和版本维护。",
+          "janet_take": "OpenAI 回到开放权重，不可能再装成纯研究礼物。它要和开源社区谈信任，也要和监管者谈边界，还要和云客户谈成本。最尴尬的是，开放模型一旦好用，开发者会要求它像基础设施一样稳定；一旦不好用，大家又会说这是公关样品。",
+          "source": "OpenAI",
+          "url": "https://openai.com/news/",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg",
+          "image_origin": "search",
+          "image": "images/news-04-openai.jpg"
+        },
+        {
+          "title": "美国采购规则盯上AI供应链",
+          "body": "美国政府采购和安全评估在窗口内继续把 AI 供应链纳入审查，焦点包括模型来源、数据处理、云端部署和第三方插件。对企业来说，这类规则不会立刻改变模型榜单，但会改变哪些供应商能进预算、哪些能力只能停在试点。",
+          "janet_take": "AI 采购最冷的一刀落在表格里。供应链、数据驻留、插件权限这些词不好听，却会决定产品能不能进政府和大企业。创业公司只讲模型能力，碰到采购审查就会发现，客户买的是可追责。",
+          "source": "Reuters / U.S. GSA",
+          "url": "https://www.reuters.com/technology/artificial-intelligence/",
+          "image_source_url": "https://lh5.googleusercontent.com/s2ram1QWDouWlJS2Fgfo46bISK-AMwN4ZNZh5xQ88h_8Fmx1q42zs1qW9l31Bz_KhqMl-mnSLdFZAG6SawnQdCOjt-3NCo9W0CsTnV4V1BuVb67L6V5b456s4N6lruqjN8hB8-3ne5CzFOK6pil_paE",
+          "image_origin": "search",
+          "image": "images/news-05-ai.png"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Kimi K3开放权重继续抢开发者",
+          "body": "Moonshot AI 的 Kimi K3 在 7 月 27 日继续围绕开放权重、长上下文和低成本推理扩散，Hugging Face 与社区镜像成为主要分发入口。开发者关注点从参数成绩转向许可证、上下文价格、部署门槛和中文任务表现。",
+          "janet_take": "Kimi K3 的杀伤力不只在榜单，而在它逼所有闭源接口重新解释价格。中国团队如果能本地或私有云跑起来，就少一层境外 API 风险；但开放权重不是免死金牌，部署、显存、评测和安全补丁都会回到自己账上。便宜很好，没人维护的便宜会变贵。",
+          "source": "Moonshot AI / Hugging Face",
+          "url": "https://huggingface.co/moonshotai",
+          "image_source_url": "https://earthkey.blog/wp-content/uploads/2024/12/Moonshot-AI_hp.png",
+          "image_origin": "search",
+          "image": "images/models-01-kimi-k3.png"
+        },
+        {
+          "title": "微软安全小模型面向SOC运行",
+          "body": "Microsoft 在安全博客和产品更新中继续推进面向 SOC 场景的小型 AI 模型，重点不是通用聊天，而是日志解释、告警聚类、攻击链整理和响应建议。小模型路线的核心卖点是延迟、成本和可控输出。",
+          "janet_take": "安全团队不缺会聊天的大模型，缺的是半夜三点能稳定读日志的工具。小模型在 SOC 里反而更合理：任务窄、上下文硬、输出可验。它不会让安全分析师消失，但会逼分析师从复制粘贴告警，转向判断哪些告警真的会烧穿业务。",
+          "source": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "image_source_url": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2018/08/cropped-microsoft_logo_element.png",
+          "image_origin": "source",
+          "image": "images/models-02-soc.png"
+        },
+        {
+          "title": "Gemini Flash运行低延迟Agent",
+          "body": "Google Cloud 在窗口内继续把 Gemini Flash 系列放进企业 AI 路由和多区域部署语境，强调低延迟、可扩展推理和与云端数据工具的连接。Flash 的价值不是单次回答最强，而是在大量 Agent 调用里降低等待和账单波动。",
+          "janet_take": "Agent 时代的模型胜负，经常藏在两秒延迟和几分钱调用里。Flash 路线对创作者也有启发：自动化链路里没必要每一步都上最贵模型。粗活、路由、摘要、分类便宜跑，最后的人工判断才有预算留给好模型。",
+          "source": "Google Cloud",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/01_-_AI__Machine_Learning_H1ZyZG8.max-300x300.jpg",
+          "image_origin": "source",
+          "image": "images/models-03-gemini-flashagent.jpg"
+        },
+        {
+          "title": "Mistral代码模型押注本地代理",
+          "body": "Mistral AI 在 7 月 27 日的开发者更新中继续强化代码和 Agent 场景，强调开放接口、企业部署和工具调用。与超大闭源模型相比，这条路线更看重能否进入开发环境、私有代码库和欧洲客户的数据边界。",
+          "janet_take": "代码 Agent 最后要碰真实仓库，demo 光鲜没有太大用。Mistral 的机会在本地和私有部署，弱点也在这里：客户会问支持周期、插件权限和失败回滚。开发者工具一旦接管代码库，浪漫开源叙事就会马上变成工单系统。",
+          "source": "Mistral AI",
+          "url": "https://mistral.ai/news/",
+          "image_source_url": "https://pic1.zhimg.com/80/v2-3dee448127e43a64528599984fe08141_1440w.webp",
+          "image_origin": "search",
+          "image": "images/models-04-mistral.webp"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "开放平台安全从边角料进主线",
+          "body": "Hugging Face 凭证事件的技术含义不止是一次平台通报。开放模型社区过去把模型卡、下载量和评测看得更重，现在必须把 token 生命周期、组织权限、仓库审计和自动化脚本纳入基本功。平台越成功，攻击面越像云服务。",
+          "janet_take": "开放社区最容易低估安全，因为大家默认分享是善意的。但生产系统不会因为社区气氛好就少挨打。真正成熟的开放模型平台，不能只会展示模型排名，还要让普通团队用低成本方式完成权限隔离和泄露复盘。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/docs/hub/security",
+          "image_source_url": "https://huggingface.co/docs/hub/security",
+          "image_origin": "source",
+          "image": "images/insights-01-hugging-face-security.png"
+        },
+        {
+          "title": "安全联盟给开源AI划考试范围",
+          "body": "开放安全联盟的深层作用，是把企业采用 AI 时的安全问题拆成可测试、可采购、可外包的模块。模型评测、红队、运行监控、数据边界和响应流程会被写进标准文档，随后进入供应商报价和客户验收。",
+          "janet_take": "标准一出来，安全就从工程问题变成商业门票。好处是客户终于有清单，不用靠销售嘴硬；坏处是小公司会被文档和认证拖慢。最值得警惕的地方是，开放安全如果只由大厂定义，最后可能变成大厂最擅长通过的考试。",
+          "source": "Linux Foundation",
+          "url": "https://www.linuxfoundation.org/press/",
+          "image_source_url": "https://diariobitcoin.b-cdn.net/wp-content/uploads/2025/12/linux_foundation_ai_agents.jpg",
+          "image_origin": "search",
+          "image": "images/insights-02-ai.jpg"
+        },
+        {
+          "title": "GitHub给Copilot代理补日志",
+          "body": "GitHub 在开发者更新中继续给 Copilot coding agent 增加运行记录、任务状态和团队控制能力。对企业开发团队来说，AI 写代码的争议正在从能不能写，转向谁批准、谁回滚、谁知道它改过什么。",
+          "janet_take": "代码代理越强，日志越像刹车片。没有记录的自动改代码，就是把责任藏进黑箱。开发团队需要一条能复盘的链路：谁发起任务、模型改了哪里、测试怎么过、出事谁接手。",
+          "source": "GitHub Blog",
+          "url": "https://github.blog/ai-and-ml/",
+          "image_source_url": "https://rengongzhineng.io/wp-content/uploads/2025/05/image-37.png",
+          "image_origin": "search",
+          "image": "images/insights-03-githubcopilot.png"
+        },
+        {
+          "title": "云厂商用预算阀门管Agent",
+          "body": "Google Cloud、Microsoft 和 AWS 在窗口内的企业 AI 更新都继续强调成本控制、模型路由和权限策略。Agent 调用会产生连续推理账单，企业不可能只按单次 token 价格评估，它们需要预算阀门、失败重试限制和任务级可见性。",
+          "janet_take": "Agent 的账单不像聊天机器人，一跑起来就是链式消耗。一个任务拆成十几次调用，老板看到的是月底云账单。能赚钱的工具会把预算控制做成第一屏；只会展示酷炫自动化的产品，迟早会在财务会议上被按停。",
+          "source": "Google Cloud / Microsoft",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/01_-_AI__Machine_Learning_H1ZyZG8.max-300x300.jpg",
+          "image_origin": "source",
+          "image": "images/insights-04-agent.jpg"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "AI机房融资继续吞掉风投现金",
+          "body": "7 月 27 日的融资报道继续显示，资金正大量流向 GPU 云、推理基础设施和数据中心服务商。投资人押的不是单个应用爆款，而是所有 AI 应用共同消耗的算力底座。问题也很直接：如果推理价格继续下行，基础设施公司的回本周期会变得更难看。",
+          "janet_take": "机房融资像卖铲子，但这门生意没有童话。GPU、土地、电力、网络和折旧都会吃现金，客户还天天要求降价。投资人愿意砸钱，是因为应用层太拥挤；可基础设施一旦供给过热，最后比拼的就是谁能扛住低毛利。",
+          "source": "TechCrunch / Reuters",
+          "url": "https://techcrunch.com/category/artificial-intelligence/",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/09/Perplexity-Disrupt-Stage-2024.jpg",
+          "image_origin": "search",
+          "image": "images/insights2-01-ai.webp"
+        },
+        {
+          "title": "企业AI订单烧掉软件毛利",
+          "body": "多家企业软件公司在窗口内继续把 AI 功能写进订单、续约和财报口径，但推理成本、专业服务和客户教育正在压缩毛利空间。AI 收入听起来更性感，财务上却可能先变成更重的交付包袱。",
+          "janet_take": "SaaS 公司最怕 AI 功能卖出去了，毛利却被推理和服务吃掉。客户不会为一个按钮无限加钱，尤其当每家供应商都说自己有 Copilot。真正能留下利润的公司，必须证明 AI 减少了人天，而不是换一种方式增加客服和实施成本。",
+          "source": "VentureBeat",
+          "url": "https://venturebeat.com/category/ai/",
+          "image_source_url": "https://virtualworkforce.ai/wp-content/uploads/2025/09/AI-powered-order-entry-automation-overview.jpg",
+          "image_origin": "search",
+          "image": "images/insights2-02-ai.jpg"
+        },
+        {
+          "title": "AI安全创业公司拿到新溢价",
+          "body": "安全、监控和治理类 AI 公司在 7 月 27 日继续获得投资人关注，叙事从单纯防攻击扩展到模型评测、数据泄露检测、Agent 行为记录和企业使用审查。资本正在把 AI 风险包装成新的软件预算。",
+          "janet_take": "安全创业公司的窗口期来了，因为每个 AI 采购都会顺手制造一个风险采购。这里有真需求，也有包装泡沫：真需求是企业确实需要监控和回溯；泡沫是很多产品只是把旧日志面板换成 AI 字样。客户最后会为能追责的证据付钱，不会为恐惧海报付钱。",
+          "source": "Axios / VentureBeat",
+          "url": "https://www.axios.com/technology/artificial-intelligence",
+          "image_source_url": "https://www.axios.com/technology/artificial-intelligence",
+          "image_origin": "source",
+          "image": "images/insights2-03-ai-security.jpg"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Perplexity团队研究工具接入工作流",
+          "body": "Perplexity 在窗口内继续推进面向团队的研究和知识整理能力，重点是把搜索、引用、共享空间和自动摘要接到日常工作流。它面对的竞争不只是搜索引擎，还有 Notion、Google Workspace 和企业内部知识库。",
+          "janet_take": "研究工具的关键在引用能不能被团队复用。创作者最缺的是可检查素材库，不是又一个会总结网页的聊天框。Perplexity 如果能把来源、笔记和协作串稳，就会从问答工具变成选题中枢。",
+          "source": "Perplexity",
+          "url": "https://www.perplexity.ai/hub/blog",
+          "image_source_url": "https://images.ctfassets.net/iucm281zyho6/rUfpT8lTkIN9925DXalWf/f9b9bbda6cd3a706223fb2082ec7cc44/___3._Perplexity-4.png",
+          "image_origin": "search",
+          "image": "images/tools-01-perplexity.png"
+        }
+      ]
+    }
+  }
+}

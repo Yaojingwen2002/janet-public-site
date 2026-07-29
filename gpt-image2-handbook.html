@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-janet-experiment="signal-wave-17">
+<html lang="zh-CN" data-janet-experiment="signal-wave-17" data-janet-design="poster-v4">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yaojingwen2002.github.io/janet-public-site/gpt-image2-handbook.html">
   <meta property="og:title" content="Janet 影像参考实验室">
-  <meta property="og:description" content="镜场计划的电影视觉分析、安全转译和 S0 实验入口；下方保留原 iGPT-Image2 100 组提示词手册。">
+  <meta property="og:description" content="镜场计划的电影视觉分析、安全转译与共享实验状态；下方保留原 iGPT-Image2 100 组提示词手册。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yaojingwen2002.github.io/janet-public-site/gpt-image2-handbook.html">
   <meta property="og:image" content="https://yaojingwen2002.github.io/janet-public-site/assets/works/cinematic-lab/cover.svg">
@@ -25,12 +25,16 @@
   <link rel="stylesheet" href="styles/signal-cursor.css?v=experiment-wave-17">
   <link rel="stylesheet" href="styles/experiment-editorial.css?v=experiment-wave-17">
   <link rel="stylesheet" href="styles/brand-system.css?v=brand-20260728-2">
+  <link rel="stylesheet" href="styles/material-system-v4.css?v=poster-v4-20260729">
+  <link rel="stylesheet" href="styles/mirror-observatory-v4.css?v=poster-v4-20260729">
+  <link rel="stylesheet" href="styles/site-audio-v4.css?v=poster-v4-20260729">
+  <link rel="stylesheet" href="styles/potato-center-v4.css?v=poster-v4-20260729">
   <link rel="icon" type="image/svg+xml" href="assets/icons/logo-mark.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
 </head>
-<body>
+<body data-audio-policy="ambient">
 <div class="bg-ambient"></div>
 
 <div class="page handbook-page">
@@ -58,7 +62,7 @@
     <a href="index.html#contact">联系</a>
   </div>
 
-  <main>
+  <main data-mirror-status-root data-status="loading">
     <section class="handbook-hero" data-theme="hero">
       <div class="container handbook-hero__inner">
         <span class="section-kicker">Jingchang Plan · GPT-Image2</span>
@@ -68,99 +72,76 @@
         </p>
         <div class="handbook-source-badges" aria-label="来源与许可">
           <span class="lab-badge lab-badge--accent">镜场计划 · 实验项目</span>
-          <span>01–03 完整实验文档公开阅读</span>
+          <span>完整实验文档公开阅读</span>
           <span>安全转译优先</span>
           <span>保留 100 structured prompts</span>
         </div>
       </div>
     </section>
 
-    <section class="lab-zone-nav" aria-label="实验室分区" data-theme="briefing">
-      <div class="container lab-zone-nav__grid">
-        <a href="mirror-plan.html" class="lab-zone-card lab-zone-card--featured">
-          <span class="lab-badge lab-badge--accent">实验项目</span>
-          <strong>镜场计划实验文档库</strong>
-          <p>按实验编号进入独立阅读器，直接查看 01–03 完整 PDF，并下载 DOCX 源文件。</p>
-        </a>
-        <a href="#igpt-image2-handbook" class="lab-zone-card">
-          <span class="lab-badge">保留资产</span>
-          <strong>iGPT-Image2 提示词手册分区</strong>
-          <p>原 100 组结构化 prompt 全量保留，可筛选、复制、追溯来源。</p>
-        </a>
+    <section id="jingchang-plan" class="mirror-featured-research">
+      <div class="container mirror-featured-research__inner">
+        <div class="mirror-featured-copy">
+          <div class="mirror-status-line">
+            <span>Featured Research</span>
+            <strong><span data-mirror-phase>—</span> / <span data-mirror-phase-label>读取中</span></strong>
+          </div>
+          <h2>镜场计划</h2>
+          <p>
+            研究生成式图像模型如何理解、复刻并安全转译电影视觉语言。
+            每次实验都保留假设、变量、生成结果、失败证据和 Janet 的最终判断。
+          </p>
+          <div class="mirror-status-grid" aria-label="镜场计划共享状态">
+            <div>
+              <span>Documented</span>
+              <strong><span data-mirror-completed>—</span> 项实验</strong>
+            </div>
+            <div>
+              <span>Public Evidence</span>
+              <strong><span data-mirror-public-frames>—</span> 张图</strong>
+            </div>
+            <div>
+              <span>Records</span>
+              <strong><span data-mirror-documents>—</span> 份</strong>
+            </div>
+            <div>
+              <span>Updated</span>
+              <strong data-mirror-updated>—</strong>
+            </div>
+          </div>
+          <div class="mirror-hero-actions">
+            <a href="mirror-plan.html">进入实验观测站</a>
+            <a href="mirror-plan.html#mirror-atlas">浏览实验图谱</a>
+            <a href="mirror-plan.html#mirror-record-reader">查看实验日志</a>
+            <a href="#igpt-image2-handbook">浏览提示词手册</a>
+          </div>
+          <p data-mirror-status-error hidden>共享实验状态暂时无法读取，观测站与文档入口仍可使用。</p>
+        </div>
+        <div>
+          <div class="mirror-preview-stage">
+            <img data-mirror-preview-main src="assets/works/mirror-plan/s0-02-b.jpg" alt="镜场计划 S0-02 B 版视觉校准结果">
+          </div>
+          <div class="mirror-preview-controls" data-mirror-preview-controls aria-label="切换镜场计划 A、B、C 公开结果">
+            <button class="mirror-preview-tab" type="button">正在读取</button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="jingchang-plan" class="cinematic-lab-section" data-theme="archive">
-      <div class="container">
-        <div class="handbook-section-head">
+    <section class="mirror-findings-section mirror-featured-records">
+      <div class="container mirror-section-shell">
+        <div class="mirror-section-heading">
           <div>
-            <span class="section-kicker">Mirror Field / Cinematic Lab</span>
-            <h2>镜场计划入口</h2>
+            <span class="section-kicker">Research Records</span>
+            <h2>从实验编号进入完整记录</h2>
           </div>
-          <span class="lab-status-pill">S0 · Experimental</span>
+          <p>
+            当前最新完整记录为 <strong data-mirror-current>—</strong>。
+            下一步：<span data-mirror-next>正在读取。</span>
+          </p>
         </div>
-
-        <div class="cinematic-lab-layout">
-          <article class="cinematic-lab-brief">
-            <span class="lab-badge lab-badge--accent">重点标注：实验项目</span>
-            <h3>实验已接入独立文档库</h3>
-            <p>
-              镜场计划把影视画面拆成空间、人物关系、光线色彩、材质和景深，再通过原创转译、
-              A/B/C 同轮生成与 Janet 肉眼评价建立可继承的方法。独立页面直接加载 01、02、03 完整实验文档。
-            </p>
-            <a class="btn btn-green" href="mirror-plan.html">打开镜场计划文档库</a>
-          </article>
-
-          <div class="lab-status-grid" aria-label="镜场计划实验文档">
-            <article>
-              <span>阅读方式</span>
-              <strong>完整文档直接进入阅读器</strong>
-              <p>PDF 在线阅读，DOCX 源文件下载，Prompt、测试图、反馈与失败记录均保留在原档中。</p>
-            </article>
-            <article>
-              <span>第一组</span>
-              <strong>S0-01 · 户外双人日景</strong>
-              <p>校准人物权力关系、共同画外视线、日景厚度和早期变量 bracket。</p>
-            </article>
-            <article>
-              <span>第二组</span>
-              <strong>S0-02 · 白衣人物室内近景</strong>
-              <p>校准原创断链、区域色彩、背景叙事、AI 脏点与可见景深。</p>
-            </article>
-            <article>
-              <span>第三组</span>
-              <strong>S0-03 · 红绿室内单人近景</strong>
-              <p>校准冷青绿环境、土红棕人物、强人工顶光与 Prompt 视觉重复性。</p>
-            </article>
-          </div>
-        </div>
-
-        <div class="lab-method-grid">
-          <article>
-            <h3>方法链</h3>
-            <ol>
-              <li>来源台账：记录来源、时间码、权利备注和分析日期。</li>
-              <li>七层观察：色彩、光线、构图、镜头、美术、人物、质感。</li>
-              <li>安全转译：把具体作品元素改写成原创场景和描述性视觉特征。</li>
-              <li>生成评审：A/B/C 变体只改一个变量，按评分表决定保留或驳回。</li>
-            </ol>
-          </article>
-          <article class="lab-risk-card">
-            <h3>公开边界</h3>
-            <ul>
-              <li>不公开原片参考帧和 5 秒视频切片。</li>
-              <li>不发布未审核生成候选图。</li>
-              <li>不展示含导演名、片名、演员名、角色名的生产 prompt。</li>
-              <li>不复刻已知剧照、海报、明星脸、品牌 logo 或水印。</li>
-            </ul>
-          </article>
-          <article>
-            <h3>评分关注</h3>
-            <p>
-              角色原创性、人物关系、肤色、中间调、暗部、高光、墙面、衣料和空间层次。
-              只要出现明星脸、剧照感或明显素材复刻，直接驳回。
-            </p>
-          </article>
+        <div class="mirror-records" data-mirror-records aria-live="polite">
+          <p>正在读取研究记录。</p>
         </div>
       </div>
     </section>
@@ -253,11 +234,13 @@
   </div>
 </div>
 
+<script src="scripts/mirror-research.js?v=poster-v4-20260729"></script>
 <script src="scripts/gpt-image2-handbook.js"></script>
 <script src="scripts/supabase-config.js"></script>
 <script src="scripts/auth.js"></script>
 <script src="scripts/potato-center.js?v=potato-roll-20260617"></script>
 <script src="scripts/nav.js?v=potato-roll-20260617"></script>
+<script src="scripts/site-audio.js?v=poster-v4-20260729"></script>
 <script src="scripts/effects.js"></script>
 <script src="scripts/janet-motion.js"></script>
 <script src="scripts/editorial-motion.js?v=experiment-wave-17"></script>

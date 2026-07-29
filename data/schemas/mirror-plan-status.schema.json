@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yaojingwen2002.github.io/janet-public-site/data/schemas/mirror-plan-status.schema.json",
+  "title": "Janet Mirror Plan Status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "phase_id",
+    "phase_label",
+    "project_status",
+    "current_experiment",
+    "completed_experiments",
+    "documented_experiments",
+    "planned_atlas_frames",
+    "public_atlas_frames",
+    "generated_images",
+    "documents",
+    "last_research_update",
+    "status_updated_at",
+    "next_step",
+    "public_boundary",
+    "preview_images"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "phase_id": {
+      "type": "string",
+      "pattern": "^S[0-9]+$"
+    },
+    "phase_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_status": {
+      "enum": [
+        "active",
+        "published_archive",
+        "paused"
+      ]
+    },
+    "current_experiment": {
+      "type": "string",
+      "pattern": "^JW-LTBF-[0-9]{2}$"
+    },
+    "current_experiment_label": {
+      "type": "string"
+    },
+    "completed_experiments": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "documented_experiments": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "planned_atlas_frames": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "public_atlas_frames": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "generated_images": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "documents": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_research_update": {
+      "type": "string",
+      "format": "date"
+    },
+    "status_updated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_step": {
+      "type": "string",
+      "minLength": 1
+    },
+    "public_boundary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preview_images": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "src",
+          "alt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "src": {
+            "type": "string",
+            "pattern": "^assets/works/mirror-plan/.+\\.(jpg|jpeg|png|webp|avif)$"
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

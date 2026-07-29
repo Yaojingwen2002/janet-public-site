@@ -23,9 +23,12 @@ done
 mkdir -p "$OUTPUT/scripts"
 find "$ROOT/scripts" -maxdepth 1 -type f -name '*.js' -exec cp {} "$OUTPUT/scripts/" \;
 
-for file in MANIFEST.json news-index.json source-locations.json; do
+for file in MANIFEST.json news-index.json source-locations.json mirror-plan-status.json; do
   cp "$ROOT/data/$file" "$OUTPUT/data/$file"
 done
+
+mkdir -p "$OUTPUT/data/schemas"
+cp "$ROOT/data/schemas/mirror-plan-status.schema.json" "$OUTPUT/data/schemas/mirror-plan-status.schema.json"
 
 while IFS= read -r name; do
   [[ "$name" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}(-v[0-9]+)?$ ]] || continue

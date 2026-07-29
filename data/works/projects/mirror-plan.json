@@ -2,8 +2,8 @@
   "id": "mirror-plan",
   "title": "镜场计划",
   "type": "AI Director Visual R&D",
-  "source_path_label": "镜场计划 / S0 实验文档库",
-  "description": "以编号文档公开呈现 AI 导演视觉研发实验全过程。01–04 使用同一阅读器和同一测试闭环，各自校准不同的镜头问题。",
+  "source_path_label": "镜场计划 / S0 实验观测站",
+  "description": "以 14 张母图构成实验图谱，公开低分辨率研究衍生图，并用编号记录追踪 A/B/C 变量、失败证据与阶段判断。",
   "method": [
     "原片视觉分析",
     "原创安全转译",
@@ -14,33 +14,49 @@
   "tags": [
     "镜场计划",
     "AI 导演",
-    "实验文档",
+    "实验图谱",
     "视觉校准",
     "安全转译"
   ],
-  "work_count": 4,
+  "work_count": 14,
   "completed_experiment_count": 4,
-  "preparing_experiment_count": 0,
-  "active_experiment_count": 0,
+  "preparing_experiment_count": 9,
+  "active_experiment_count": 1,
+  "documented_experiment_count": 4,
   "document_count": 4,
+  "experiment_index": "data/mirror-plan/experiments/index.json",
   "document_index": "data/works/documents/mirror-plan/index.json",
   "url": "mirror-plan.html",
-  "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
-  "cover": "assets/works/mirror-plan/s0-02-b.jpg",
+  "thumbnail": "assets/works/mirror-plan/research/atlas/05.jpg",
+  "cover": "assets/works/mirror-plan/research/atlas/05.jpg",
   "works": [
     {
-      "id": "jw-ltbf-01-s0-01",
+      "id": "jw-ltbf-01",
       "sequence": 1,
       "display_number": "01",
       "project_id": "mirror-plan",
       "title": "S0-01 户外双人日景校准",
       "type": "visual-calibration",
-      "status": "完整实验文档",
-      "status_code": "published",
-      "summary": "八轮探索记录双人日景中的人物权力关系、共同画外视线、明亮日景厚度与变量 bracket。",
-      "tags": ["双人构图", "中间调", "肤色", "人物权力关系"],
-      "url": "mirror-plan.html?doc=01",
+      "status": "已冻结",
+      "status_code": "frozen",
+      "summary": "八轮探索形成双人权力关系、共同画外视线、受控旧化与明亮日景厚度的冻结方法。",
+      "tags": [
+        "户外日景",
+        "双人近景",
+        "人物权力关系",
+        "中间调",
+        "肤色"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-01",
       "reader_json": "data/works/documents/mirror-plan/jw-ltbf-01.json",
+      "thumbnail": "assets/works/mirror-plan/research/atlas/01.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/01.jpg",
+      "images": [
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-01/A.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-01/B.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-01/C.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-01/D.jpg"
+      ],
       "stats": {
         "round_count": 8,
         "prompt_count": 17,
@@ -49,24 +65,31 @@
       }
     },
     {
-      "id": "jw-ltbf-02-s0-02",
+      "id": "jw-ltbf-02",
       "sequence": 2,
       "display_number": "02",
       "project_id": "mirror-plan",
       "title": "S0-02 白衣人物室内近景校准",
       "type": "visual-calibration",
-      "status": "完整实验文档",
-      "status_code": "published",
-      "summary": "十轮测试建立原创断链、区域色彩、AI 脏点诊断、背景叙事与可见景深验收方法。",
-      "tags": ["白衣", "室内光", "色彩分区", "语义景深", "背景叙事"],
-      "url": "mirror-plan.html?doc=02",
+      "status": "冻结候选",
+      "status_code": "freeze_candidate",
+      "summary": "十轮测试建立原创断链、区域色彩、背景叙事与可见景深方法，Round 10 获得 Janet 肉眼肯定。",
+      "tags": [
+        "室内逆光",
+        "双人近景",
+        "白衣",
+        "区域色彩",
+        "背景叙事",
+        "可见景深"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-02",
       "reader_json": "data/works/documents/mirror-plan/jw-ltbf-02.json",
-      "thumbnail": "assets/works/mirror-plan/s0-02-b.jpg",
-      "cover": "assets/works/mirror-plan/s0-02-b.jpg",
+      "thumbnail": "assets/works/mirror-plan/research/atlas/02.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/02.jpg",
       "images": [
-        "assets/works/mirror-plan/s0-02-a.jpg",
-        "assets/works/mirror-plan/s0-02-b.jpg",
-        "assets/works/mirror-plan/s0-02-c.jpg"
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-02/A.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-02/B.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-02/C.jpg"
       ],
       "stats": {
         "round_count": 10,
@@ -76,18 +99,31 @@
       }
     },
     {
-      "id": "jw-ltbf-03-s0-03",
+      "id": "jw-ltbf-03",
       "sequence": 3,
       "display_number": "03",
       "project_id": "mirror-plan",
       "title": "S0-03 红绿室内单人近景校准",
       "type": "visual-calibration",
-      "status": "完整实验文档",
-      "status_code": "published",
-      "summary": "三轮测试校准冷青绿环境、土红棕人物、强人工顶光和 Prompt 视觉重复性，并完整保留失败回归。",
-      "tags": ["单人近景", "红绿分区", "背景叙事", "可见景深", "原创断链"],
-      "url": "mirror-plan.html?doc=03",
+      "status": "阶段收尾 · 未通过",
+      "status_code": "stage_closed",
+      "summary": "三轮结果全部未通过，但完整证明 Prompt 核一致不等于视觉结果稳定。",
+      "tags": [
+        "室内人工光",
+        "单人近景",
+        "红绿分区",
+        "强顶光",
+        "视觉重复性"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-03",
       "reader_json": "data/works/documents/mirror-plan/jw-ltbf-03.json",
+      "thumbnail": "assets/works/mirror-plan/research/atlas/03.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/03.jpg",
+      "images": [
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-03/A.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-03/B.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-03/C.jpg"
+      ],
       "stats": {
         "round_count": 3,
         "prompt_count": 9,
@@ -96,30 +132,336 @@
       }
     },
     {
-      "id": "jw-ltbf-04-s0-04",
+      "id": "jw-ltbf-04",
       "sequence": 4,
       "display_number": "04",
       "project_id": "mirror-plan",
       "title": "S0-04 室内逆光冲突群像与运动关系校准",
       "type": "visual-calibration",
-      "status": "完整实验文档",
-      "status_code": "published",
-      "summary": "八轮测试建立暖冷双光、厚重红棕肤色、混合空气、背景强失焦与三种柔化的摄影基线，并完整保留固定角色参考覆盖风格的失败证据。",
-      "tags": ["冲突群像", "暖冷双光", "红棕肤色", "运动柔化", "背景叙事", "身份参考"],
-      "url": "mirror-plan.html?doc=04",
+      "status": "阶段收尾",
+      "status_code": "stage_closed",
+      "summary": "八轮测试建立暖冷双光、厚重肤色、混合空气、背景强失焦与方向性运动柔化的阶段基线。",
+      "tags": [
+        "室内冲突群像",
+        "多人中近景",
+        "暖冷双光",
+        "运动柔化",
+        "背景叙事"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-04",
       "reader_json": "data/works/documents/mirror-plan/jw-ltbf-04.json",
+      "thumbnail": "assets/works/mirror-plan/research/atlas/04.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/04.jpg",
+      "images": [
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-04/A.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-04/B.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-04/C.jpg"
+      ],
       "stats": {
         "round_count": 8,
         "prompt_count": 30,
         "image_count": 27,
         "document_count": 1
       }
+    },
+    {
+      "id": "jw-ltbf-05",
+      "sequence": 5,
+      "display_number": "05",
+      "project_id": "mirror-plan",
+      "title": "S0-05 门楼院落权力空间校准",
+      "type": "visual-calibration",
+      "status": "Round 06 进行中",
+      "status_code": "active",
+      "summary": "Round 06 已形成三张最新观察样本，建筑、队列、马匹与红青实体分区仍在联合校准。",
+      "tags": [
+        "院落到达",
+        "多人全景",
+        "权力空间",
+        "马匹队列",
+        "红青分区"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-05",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/05.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/05.jpg",
+      "images": [
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-05/A.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg",
+        "assets/works/mirror-plan/research/experiments/JW-LTBF-05/C.jpg"
+      ],
+      "stats": {
+        "round_count": 6,
+        "prompt_count": 18,
+        "image_count": 17,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-06",
+      "sequence": 6,
+      "display_number": "06",
+      "project_id": "mirror-plan",
+      "title": "S0-06 道具与人物关系近景",
+      "type": "visual-calibration",
+      "status": "待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；当前只完成母图入图谱和来源边界记录。",
+      "tags": [
+        "室内争执",
+        "道具近景",
+        "道具叙事",
+        "人物关系"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-06",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/06.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/06.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-07",
+      "sequence": 7,
+      "display_number": "07",
+      "project_id": "mirror-plan",
+      "title": "S0-07 长桌群像与权力秩序",
+      "type": "visual-calibration",
+      "status": "待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；当前只完成母图入图谱和来源边界记录。",
+      "tags": [
+        "室内群像",
+        "多人全景",
+        "长桌",
+        "群像",
+        "权力秩序"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-07",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/07.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/07.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-08",
+      "sequence": 8,
+      "display_number": "08",
+      "project_id": "mirror-plan",
+      "title": "S0-08 高位压迫近景",
+      "type": "visual-calibration",
+      "status": "待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；当前只完成母图入图谱和来源边界记录。",
+      "tags": [
+        "宴席室内",
+        "俯视近景",
+        "俯视",
+        "压迫",
+        "近景"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-08",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/08.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/08.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-09",
+      "sequence": 9,
+      "display_number": "09",
+      "project_id": "mirror-plan",
+      "title": "S0-09 火车与山地到达画面",
+      "type": "visual-calibration",
+      "status": "待补证 · 待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+      "tags": [
+        "山地外景",
+        "交通工具全景",
+        "火车",
+        "山地",
+        "到达"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-09",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/09.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/09.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-10",
+      "sequence": 10,
+      "display_number": "10",
+      "project_id": "mirror-plan",
+      "title": "S0-10 火车车厢宴席画面",
+      "type": "visual-calibration",
+      "status": "待补证 · 待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+      "tags": [
+        "车厢室内",
+        "群像全景",
+        "车厢",
+        "宴席",
+        "封闭空间"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-10",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/10.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/10.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-11",
+      "sequence": 11,
+      "display_number": "11",
+      "project_id": "mirror-plan",
+      "title": "S0-11 火车尾部山地动作画面",
+      "type": "visual-calibration",
+      "status": "待补证 · 待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+      "tags": [
+        "山地动作",
+        "动作全景",
+        "火车尾部",
+        "动作",
+        "山地"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-11",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/11.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/11.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-12",
+      "sequence": 12,
+      "display_number": "12",
+      "project_id": "mirror-plan",
+      "title": "S0-12 目标人物面部近景",
+      "type": "visual-calibration",
+      "status": "待补证 · 待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+      "tags": [
+        "人物反应",
+        "面部特写",
+        "面部",
+        "反应",
+        "视线"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-12",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/12.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/12.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-13",
+      "sequence": 13,
+      "display_number": "13",
+      "project_id": "mirror-plan",
+      "title": "S0-13 车厢碰撞人物面部",
+      "type": "visual-calibration",
+      "status": "待补证 · 待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+      "tags": [
+        "车厢动作",
+        "动态近景",
+        "碰撞",
+        "面部",
+        "运动"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-13",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/13.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/13.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
+    },
+    {
+      "id": "jw-ltbf-14",
+      "sequence": 14,
+      "display_number": "14",
+      "project_id": "mirror-plan",
+      "title": "S0-14 马匹进入院落到达画面",
+      "type": "visual-calibration",
+      "status": "待补证 · 待排期",
+      "status_code": "scheduled",
+      "summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+      "tags": [
+        "院落到达",
+        "多人全景",
+        "马匹",
+        "院落",
+        "到达"
+      ],
+      "url": "mirror-plan.html?experiment=JW-LTBF-14",
+      "reader_json": null,
+      "thumbnail": "assets/works/mirror-plan/research/atlas/14.jpg",
+      "cover": "assets/works/mirror-plan/research/atlas/14.jpg",
+      "images": [],
+      "stats": {
+        "round_count": 0,
+        "prompt_count": 0,
+        "image_count": 0,
+        "document_count": 0
+      }
     }
   ],
   "public_boundary": [
-    "公开 01–04 完整 PDF 阅读版与 DOCX 文档源文件",
-    "原始视频、独立母图文件和完整测试目录不单独发布",
-    "不使用原片 edit、recolor、face transfer 或 identity transfer 结果",
-    "后续实验只有形成完整实验文档后才进入阅读器"
+    "公开 14 张母图的低分辨率研究衍生图，以及 01–05 的选定 A/B/C 结果",
+    "原始视频、全分辨率母图、内部 Prompt 和完整测试工作目录不进入公开产物",
+    "01–04 保留完整 PDF 阅读版与 DOCX 下载；05 在形成完整归档前只显示实验状态",
+    "待排期项目明确标记为未测试，不用占位结论冒充成果"
   ]
 }

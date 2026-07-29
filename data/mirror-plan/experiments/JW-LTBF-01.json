@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-01",
+  "sequence": 1,
+  "title": "户外双人日景校准",
+  "status": "frozen",
+  "status_label": "已冻结",
+  "scene": "户外日景",
+  "shot_scale": "双人近景",
+  "tags": [
+    "人物权力关系",
+    "中间调",
+    "肤色"
+  ],
+  "source": {
+    "frame_id": "LTBF-01",
+    "file_label": "01_dual_outdoor_closeup.jpg",
+    "source_type": "第一轮筛选",
+    "timecode": "00:11:30（文件名定位）",
+    "evidence_status": "母图与候选帧哈希一致；精确帧位待核",
+    "summary": "户外双人近景，前后体量与共同画外视线构成人物权力关系。"
+  },
+  "hypothesis": "在不复制演员身份的前提下，右大左小、共同视线和明亮但有厚度的日景中间调可以保留原镜头的权力关系。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Baseline",
+      "intent": "锁定构图、日景曝光与共同画外视线。"
+    },
+    {
+      "id": "B",
+      "label": "Midtone",
+      "intent": "增加中间调与肤色密度，避免广告式发白。"
+    },
+    {
+      "id": "C",
+      "label": "Shadow",
+      "intent": "把冷青绿限制在非皮肤暗部，保留暖肤色。"
+    }
+  ],
+  "result_summary": "八轮探索形成双人权力关系、共同画外视线、受控旧化与明亮日景厚度的冻结方法。",
+  "conclusion": "方法已冻结；冻结只代表这张母图的校准收尾，不代表整个镜场计划完成。",
+  "next_step": "保持冻结，后续实验只复用方法，不再回改本组结果。",
+  "prompt_changes": [
+    "移除粗重脏污词",
+    "收束冷色到非皮肤暗部",
+    "用体量和视线表达人物权力差"
+  ],
+  "findings": [
+    "右大左小比身份标签更稳定",
+    "明亮日景仍需要中间调厚度",
+    "旧化必须受控"
+  ],
+  "failures": [
+    "早期眼罩和粗衣标签导致身份方向失准",
+    "过量 dusty 与 cracked 让画面变脏"
+  ],
+  "document_id": "01",
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/01.jpg",
+    "variants": [
+      {
+        "id": "A",
+        "label": "基线",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-01/A.jpg",
+        "outcome": "保留构图和日景基线。"
+      },
+      {
+        "id": "B",
+        "label": "中间调",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-01/B.jpg",
+        "outcome": "加强肤色和中间调厚度。"
+      },
+      {
+        "id": "C",
+        "label": "暗部分区",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-01/C.jpg",
+        "outcome": "校准冷青绿暗部边界。"
+      },
+      {
+        "id": "D",
+        "label": "权力差",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-01/D.jpg",
+        "outcome": "强化前后体量与人物控制感。"
+      }
+    ]
+  },
+  "stats": {
+    "round_count": 8,
+    "prompt_count": 17,
+    "image_count": 16,
+    "document_count": 1
+  },
+  "updated_at": "2026-07-17"
+}

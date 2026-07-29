@@ -1,38 +1,68 @@
 {
   "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
   "phase_id": "S0",
-  "phase_label": "Foundation Calibration",
-  "project_status": "published_archive",
-  "current_experiment": "JW-LTBF-04",
-  "current_experiment_label": "最新完整记录",
+  "phase_label": "Director Visual Calibration",
+  "project_status": "active",
+  "current_experiment": "JW-LTBF-05",
+  "current_experiment_label": "Round 06 进行中",
   "completed_experiments": 4,
   "documented_experiments": 4,
+  "active_experiments": 1,
+  "scheduled_experiments": 9,
   "planned_atlas_frames": 14,
-  "public_atlas_frames": 3,
-  "generated_images": 82,
+  "public_atlas_frames": 14,
+  "generated_images": 99,
   "documents": 4,
-  "last_research_update": "2026-07-23",
+  "last_research_update": "2026-07-28",
   "status_updated_at": "2026-07-29",
-  "next_step": "完成 14 张母图的公开权限与衍生图清点，再开放完整 Contact Sheet。",
-  "public_boundary": "当前网页公开四份完整实验记录，以及 S0-02 的三张 A/B/C 对比图；其余母图和内部工作图尚未公开。",
+  "next_step": "等待 Janet 对 Round 06 A/B/C 的肉眼评价，再只修改被确认的问题变量。",
+  "public_boundary": "公开 14 张低分辨率母图衍生图、01–05 的选定实验结果和 01–04 完整记录；原视频、全分辨率母图、内部 Prompt 与完整工作目录不进入公开产物。",
+  "atlas_index": "data/mirror-plan/experiments/index.json",
   "preview_images": [
     {
       "id": "A",
-      "label": "A / 基线",
-      "src": "assets/works/mirror-plan/s0-02-a.jpg",
-      "alt": "镜场计划 S0-02 A 版视觉校准结果"
+      "label": "A / 建筑",
+      "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-05/A.jpg",
+      "alt": "门楼院落权力空间校准 A 版实验结果"
     },
     {
       "id": "B",
-      "label": "B / 当前选择",
-      "src": "assets/works/mirror-plan/s0-02-b.jpg",
-      "alt": "镜场计划 S0-02 B 版视觉校准结果"
+      "label": "B / 队列",
+      "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg",
+      "alt": "门楼院落权力空间校准 B 版实验结果"
     },
     {
       "id": "C",
-      "label": "C / 变量对照",
-      "src": "assets/works/mirror-plan/s0-02-c.jpg",
-      "alt": "镜场计划 S0-02 C 版视觉校准结果"
+      "label": "C / 色彩场",
+      "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-05/C.jpg",
+      "alt": "门楼院落权力空间校准 C 版实验结果"
+    }
+  ],
+  "featured_previews": [
+    {
+      "id": "JW-LTBF-01",
+      "label": "S0-01",
+      "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-01/B.jpg",
+      "alt": "户外双人日景校准 B 版结果"
+    },
+    {
+      "id": "JW-LTBF-02",
+      "label": "S0-02",
+      "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-02/B.jpg",
+      "alt": "白衣人物室内近景校准 B 版结果"
+    },
+    {
+      "id": "JW-LTBF-03",
+      "label": "S0-03",
+      "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-03/B.jpg",
+      "alt": "红绿室内单人近景校准 B 版结果"
+    },
+    {
+      "id": "JW-LTBF-04",
+      "label": "S0-04",
+      "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-04/B.jpg",
+      "alt": "室内逆光冲突群像与运动关系校准 B 版结果"
     }
   ]
 }

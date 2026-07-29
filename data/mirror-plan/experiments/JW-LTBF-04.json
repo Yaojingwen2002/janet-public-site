@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-04",
+  "sequence": 4,
+  "title": "室内逆光冲突群像与运动关系校准",
+  "status": "stage_closed",
+  "status_label": "阶段收尾",
+  "scene": "室内冲突群像",
+  "shot_scale": "多人中近景",
+  "tags": [
+    "暖冷双光",
+    "运动柔化",
+    "背景叙事"
+  ],
+  "source": {
+    "frame_id": "LTBF-04",
+    "file_label": "04_interior_conflict_group.jpg",
+    "source_type": "第一轮筛选",
+    "timecode": "00:26:30.000",
+    "evidence_status": "已核为国语版原片时间码",
+    "summary": "前景双人动作、群体压力、逆光与混合空气构成冲突群像。"
+  },
+  "hypothesis": "暖冷双光、厚重红棕肤色和方向性运动柔化可以同时成立，并避免角色身份参考覆盖摄影风格。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Light",
+      "intent": "锁定暖冷双光与混合空气。"
+    },
+    {
+      "id": "B",
+      "label": "Motion",
+      "intent": "测试前景动作和三种方向性柔化。"
+    },
+    {
+      "id": "C",
+      "label": "Identity Guard",
+      "intent": "降低身份参考对场面和摄影风格的覆盖。"
+    }
+  ],
+  "result_summary": "八轮测试建立暖冷双光、厚重肤色、混合空气、背景强失焦与方向性运动柔化的阶段基线。",
+  "conclusion": "阶段收尾；固定角色参考覆盖风格的失败证据保留，不把身份一致误当成镜头成立。",
+  "next_step": "在新母图上复用摄影基线，角色身份仅作为弱约束，不再覆盖场面调度。",
+  "prompt_changes": [
+    "将运动柔化分成主体、边缘和背景三层",
+    "先锁定光线再放入身份约束",
+    "把背景人群写成压力结构而非装饰"
+  ],
+  "findings": [
+    "身份一致不能替代摄影成立",
+    "混合空气需要光源和空间共同支持",
+    "运动柔化必须有方向"
+  ],
+  "failures": [
+    "固定角色参考覆盖了场景风格",
+    "局部锐化破坏群像压力",
+    "全局柔化导致 AI 涂抹感"
+  ],
+  "document_id": "04",
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/04.jpg",
+    "variants": [
+      {
+        "id": "A",
+        "label": "光线",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-04/A.jpg",
+        "outcome": "校准暖冷双光和空气层。"
+      },
+      {
+        "id": "B",
+        "label": "运动",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-04/B.jpg",
+        "outcome": "强化前景方向性运动关系。"
+      },
+      {
+        "id": "C",
+        "label": "身份边界",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-04/C.jpg",
+        "outcome": "保留身份参考覆盖风格的失败证据。"
+      }
+    ]
+  },
+  "stats": {
+    "round_count": 8,
+    "prompt_count": 30,
+    "image_count": 27,
+    "document_count": 1
+  },
+  "updated_at": "2026-07-23"
+}

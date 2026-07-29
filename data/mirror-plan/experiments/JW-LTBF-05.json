@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-05",
+  "sequence": 5,
+  "title": "门楼院落权力空间校准",
+  "status": "active",
+  "status_label": "Round 06 进行中",
+  "scene": "院落到达",
+  "shot_scale": "多人全景",
+  "tags": [
+    "权力空间",
+    "马匹队列",
+    "红青分区"
+  ],
+  "source": {
+    "frame_id": "LTBF-05",
+    "file_label": "05_tower_gate_power_space.jpg",
+    "source_type": "第一轮筛选",
+    "timecode": "00:34:00.000",
+    "evidence_status": "连续三帧与语言音轨来源已核",
+    "summary": "门楼、队列、马匹和人物进入关系共同建立院落权力空间。"
+  },
+  "hypothesis": "建筑轴线、队列体量和红青实体分区能否比人物脸部更先建立到达场面的权力秩序。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Architecture",
+      "intent": "优先校准建筑轴线、门楼和空间层级。"
+    },
+    {
+      "id": "B",
+      "label": "Procession",
+      "intent": "优先校准队列、骑手与马匹解剖。"
+    },
+    {
+      "id": "C",
+      "label": "Color Field",
+      "intent": "优先校准靛蓝灰建筑、冷玫瑰墙体和偏洋红红旗。"
+    }
+  ],
+  "result_summary": "Round 06 已形成三张最新观察样本，建筑、队列、马匹与红青实体分区仍在联合校准。",
+  "conclusion": "实验进行中，尚无冻结结论；当前结果只能用于比较，不能写成完成。",
+  "next_step": "等待 Janet 对 Round 06 A/B/C 的肉眼评价，再只修改被确认的问题变量。",
+  "prompt_changes": [
+    "把建筑权力空间放到人物之前",
+    "将黑衣改写为靛蓝染色布料",
+    "用实体材质分配红青颜色而非全局滤镜"
+  ],
+  "findings": [
+    "空间轴线比单个人物更能建立权力",
+    "红旗和墙体需要不同红色归属",
+    "马匹解剖是独立硬门槛"
+  ],
+  "failures": [
+    "早期建筑和土地偏黄棕",
+    "骑手衣服退回中性橄榄黑",
+    "红旗过暗并丢失偏洋红色相"
+  ],
+  "document_id": null,
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/05.jpg",
+    "variants": [
+      {
+        "id": "A",
+        "label": "建筑",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-05/A.jpg",
+        "outcome": "Round 06 观察样本，等待评价。"
+      },
+      {
+        "id": "B",
+        "label": "队列",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg",
+        "outcome": "Round 06 观察样本，等待评价。"
+      },
+      {
+        "id": "C",
+        "label": "色彩场",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-05/C.jpg",
+        "outcome": "Round 06 观察样本，等待评价。"
+      }
+    ]
+  },
+  "stats": {
+    "round_count": 6,
+    "prompt_count": 18,
+    "image_count": 17,
+    "document_count": 0
+  },
+  "updated_at": "2026-07-28"
+}

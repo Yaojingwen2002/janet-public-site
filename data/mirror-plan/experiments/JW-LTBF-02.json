@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-02",
+  "sequence": 2,
+  "title": "白衣人物室内近景校准",
+  "status": "freeze_candidate",
+  "status_label": "冻结候选",
+  "scene": "室内逆光",
+  "shot_scale": "双人近景",
+  "tags": [
+    "白衣",
+    "区域色彩",
+    "背景叙事",
+    "可见景深"
+  ],
+  "source": {
+    "frame_id": "LTBF-02",
+    "file_label": "02_huang_white_interior_closeup.jpg",
+    "source_type": "第一轮筛选",
+    "timecode": "00:20:00.000",
+    "evidence_status": "已完成逐帧与国语版来源核验",
+    "summary": "白衣前景主体与失焦后景人物构成室内权力层级。"
+  },
+  "hypothesis": "区域色彩、可见景深和背景动作轮廓可以在画面保持干净时继续承担叙事，而不需要用高频道具堆满背景。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Cool Shadow",
+      "intent": "降低暗部 cyan，锁定亮窗与白衣。"
+    },
+    {
+      "id": "B",
+      "label": "Balanced",
+      "intent": "在中间调建立克制红棕，作为综合色彩中心。"
+    },
+    {
+      "id": "C",
+      "label": "Warm Midtone",
+      "intent": "提高 magenta-red，但不让皮肤变橙或背景变脏。"
+    }
+  ],
+  "result_summary": "十轮测试建立原创断链、区域色彩、背景叙事与可见景深方法，Round 10 获得 Janet 肉眼肯定。",
+  "conclusion": "视觉闭环基本成立，当前是冻结候选；未收到正式冻结指令前不写成已冻结。",
+  "next_step": "保持冻结候选，等待 Janet 明确正式冻结或指定新的单变量复核。",
+  "prompt_changes": [
+    "从颜色滤镜改为区域色彩",
+    "从背景删空改为轮廓叙事",
+    "锁定景深后只调整暗部 cyan 与中间调红色"
+  ],
+  "findings": [
+    "画面干净不等于背景为空",
+    "景深需要可见层级而不是参数堆砌",
+    "白衣和窗光应是稳定暖锚点"
+  ],
+  "failures": [
+    "高频收音机与木纹造成 AI 脏感",
+    "早期把 cyan 当作皮肤变量",
+    "参考参数没有自动转成可见景深"
+  ],
+  "document_id": "02",
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/02.jpg",
+    "variants": [
+      {
+        "id": "A",
+        "label": "冷暗部",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-02/A.jpg",
+        "outcome": "保持白衣和亮窗，降低暗部青色。"
+      },
+      {
+        "id": "B",
+        "label": "平衡值",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-02/B.jpg",
+        "outcome": "综合色彩与背景叙事最平衡。"
+      },
+      {
+        "id": "C",
+        "label": "暖中调",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-02/C.jpg",
+        "outcome": "提高红棕中间调，作为变量上限。"
+      }
+    ]
+  },
+  "stats": {
+    "round_count": 10,
+    "prompt_count": 30,
+    "image_count": 30,
+    "document_count": 1
+  },
+  "updated_at": "2026-07-17"
+}

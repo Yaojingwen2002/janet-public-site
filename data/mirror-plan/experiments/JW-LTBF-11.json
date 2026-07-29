@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-11",
+  "sequence": 11,
+  "title": "火车尾部山地动作画面",
+  "status": "scheduled",
+  "status_label": "待补证 · 待排期",
+  "scene": "山地动作",
+  "shot_scale": "动作全景",
+  "tags": [
+    "火车尾部",
+    "动作",
+    "山地"
+  ],
+  "source": {
+    "frame_id": "LTBF-11",
+    "file_label": "11_train_rear_mountain_action_screenshot.png",
+    "source_type": "人工补图",
+    "timecode": "待补",
+    "evidence_status": "带播放器界面；片段与精确时间码待补",
+    "summary": "火车尾部、山地和人物动作形成速度关系。"
+  },
+  "hypothesis": "主体动作、火车方向和山地背景能否形成可读速度，而不是依靠全局模糊。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Direction",
+      "intent": "计划测试动作方向。"
+    },
+    {
+      "id": "B",
+      "label": "Motion Layers",
+      "intent": "计划测试分层运动柔化。"
+    },
+    {
+      "id": "C",
+      "label": "Landscape",
+      "intent": "计划测试山地背景稳定度。"
+    }
+  ],
+  "result_summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+  "conclusion": "没有实验结论。",
+  "next_step": "重截母图，补齐片段与动作连续性证据。",
+  "prompt_changes": [],
+  "findings": [],
+  "failures": [],
+  "document_id": null,
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/11.jpg",
+    "variants": []
+  },
+  "stats": {
+    "round_count": 0,
+    "prompt_count": 0,
+    "image_count": 0,
+    "document_count": 0
+  },
+  "updated_at": "2026-07-28"
+}

@@ -12,12 +12,12 @@
   <meta property="og:description" content="先看视觉实验与证据，再进入完整研究记录。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yaojingwen2002.github.io/janet-public-site/mirror-plan.html">
-  <meta property="og:image" content="https://yaojingwen2002.github.io/janet-public-site/assets/works/mirror-plan/s0-02-b.jpg">
+  <meta property="og:image" content="https://yaojingwen2002.github.io/janet-public-site/assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg">
   <meta property="og:site_name" content="Janet">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="镜场计划 · 实验文档库">
   <meta name="twitter:description" content="按编号阅读 AI 导演视觉研发实验。">
-  <meta name="twitter:image" content="https://yaojingwen2002.github.io/janet-public-site/assets/works/mirror-plan/s0-02-b.jpg">
+  <meta name="twitter:image" content="https://yaojingwen2002.github.io/janet-public-site/assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg">
   <link rel="stylesheet" href="styles/main.css?v=button-aura-20260617">
   <link rel="stylesheet" href="styles/mirror-plan.css?v=public-documents-20260720">
   <link rel="stylesheet" href="styles/janet-motion.css">
@@ -81,18 +81,18 @@
           </div>
           <p data-mirror-status-error hidden>共享实验状态暂时无法读取，页面仍保留本地实验记录入口。</p>
         </div>
-        <div class="mirror-triptych" data-mirror-triptych aria-label="S0-02 A、B、C 三组公开视觉校准结果">
+        <div class="mirror-triptych" data-mirror-triptych aria-label="当前实验 A、B、C 三组视觉校准结果">
           <figure>
-            <img src="assets/works/mirror-plan/s0-02-a.jpg" alt="镜场计划 S0-02 A 版视觉校准结果">
-            <figcaption>A / 基线</figcaption>
+            <img src="assets/works/mirror-plan/research/experiments/JW-LTBF-05/A.jpg" alt="镜场计划当前实验 A 版结果">
+            <figcaption>A / 建筑</figcaption>
           </figure>
           <figure>
-            <img src="assets/works/mirror-plan/s0-02-b.jpg" alt="镜场计划 S0-02 B 版视觉校准结果">
-            <figcaption>B / 当前选择</figcaption>
+            <img src="assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg" alt="镜场计划当前实验 B 版结果">
+            <figcaption>B / 队列</figcaption>
           </figure>
           <figure>
-            <img src="assets/works/mirror-plan/s0-02-c.jpg" alt="镜场计划 S0-02 C 版视觉校准结果">
-            <figcaption>C / 变量对照</figcaption>
+            <img src="assets/works/mirror-plan/research/experiments/JW-LTBF-05/C.jpg" alt="镜场计划当前实验 C 版结果">
+            <figcaption>C / 色彩场</figcaption>
           </figure>
         </div>
       </div>
@@ -101,12 +101,16 @@
     <section class="mirror-status-band" aria-label="镜场计划当前状态">
       <div class="container mirror-status-grid">
         <div>
-          <span>Documented</span>
-          <strong><span data-mirror-completed>—</span> 项实验</strong>
+          <span>Archived</span>
+          <strong><span data-mirror-completed>—</span> 项收尾</strong>
         </div>
         <div>
-          <span>Public Evidence</span>
-          <strong><span data-mirror-public-frames>—</span> 张对比图</strong>
+          <span>In Progress</span>
+          <strong><span data-mirror-active>—</span> 项进行中</strong>
+        </div>
+        <div>
+          <span>Experiment Atlas</span>
+          <strong><span data-mirror-public-frames>—</span> / <span data-mirror-planned>—</span> 张母图</strong>
         </div>
         <div>
           <span>Generated</span>
@@ -127,13 +131,31 @@
       <div class="container mirror-section-shell">
         <div class="mirror-section-heading">
           <div>
-            <span class="section-kicker">Experiment Atlas / Documented</span>
-            <h2>四项实验，不拿一张图冒充全部证据</h2>
+            <span class="section-kicker">Experiment Atlas / 14 Frames</span>
+            <h2>先看完整母图，再判断实验做到哪一步</h2>
           </div>
-          <p>
-            当前已形成四份完整实验记录。只有 S0-02 的三张 A/B/C 衍生图进入公开网页；
-            其余项目在完成素材授权与公开衍生导出前，以编号和研究摘要呈现。
-          </p>
+          <p data-mirror-boundary>正在读取公开边界。</p>
+        </div>
+        <div class="mirror-atlas-toolbar" aria-label="筛选实验图谱">
+          <label>
+            <span>场景</span>
+            <select data-mirror-filter="scene">
+              <option value="">全部场景</option>
+            </select>
+          </label>
+          <label>
+            <span>景别</span>
+            <select data-mirror-filter="shot_scale">
+              <option value="">全部景别</option>
+            </select>
+          </label>
+          <label>
+            <span>状态</span>
+            <select data-mirror-filter="status">
+              <option value="">全部状态</option>
+            </select>
+          </label>
+          <output data-mirror-filter-count aria-live="polite">14 / 14</output>
         </div>
         <div class="mirror-atlas" data-mirror-atlas aria-live="polite">
           <p>正在读取实验图谱。</p>
@@ -141,36 +163,63 @@
       </div>
     </section>
 
-    <section class="mirror-evidence-section" aria-labelledby="mirror-evidence-title">
+    <section id="mirror-experiment" class="mirror-evidence-section" aria-labelledby="mirror-evidence-title" data-mirror-detail>
       <div class="container mirror-section-shell">
         <div class="mirror-section-heading">
           <div>
-            <span class="section-kicker">Public Comparison / S0-02</span>
-            <h2 id="mirror-evidence-title">让变量变化本身成为证据</h2>
+            <span class="section-kicker" data-mirror-detail-code>Current Experiment</span>
+            <h2 id="mirror-evidence-title" data-mirror-detail-title>正在读取当前实验</h2>
           </div>
-          <p data-mirror-boundary>正在读取公开边界。</p>
+          <p><strong data-mirror-detail-status>读取中</strong><br><span data-mirror-detail-result>正在读取实验判断。</span></p>
         </div>
         <div class="mirror-evidence-layout">
           <div>
-            <div class="mirror-preview-stage">
-              <img data-mirror-preview-main src="assets/works/mirror-plan/s0-02-b.jpg" alt="镜场计划 S0-02 B 版视觉校准结果">
+            <div class="mirror-preview-stage" data-mirror-evolution-stage>
+              <img data-mirror-preview-main src="assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg" alt="当前镜场实验结果">
             </div>
-            <div class="mirror-preview-controls" data-mirror-preview-controls aria-label="切换 A、B、C 视觉结果">
+            <div class="mirror-preview-controls" data-mirror-preview-controls aria-label="切换母图与实验结果">
               <button class="mirror-preview-tab" type="button">正在读取</button>
             </div>
+            <p class="mirror-prompt-change" data-mirror-prompt-change>正在读取本轮变量。</p>
           </div>
           <div class="mirror-evidence-copy">
-            <h3>白衣人物室内近景校准</h3>
-            <p>
-              同一个视觉问题，用 A、B、C 三组结果比较人物权力层级、区域色彩、
-              亮窗逆光、背景叙事和可见景深。选择不是审美投票，而是变量是否真的按预期发生。
-            </p>
+            <h3>实验假设</h3>
+            <p data-mirror-detail-hypothesis>正在读取。</p>
             <div class="mirror-compare" data-mirror-compare>
-              <img data-mirror-compare-before src="assets/works/mirror-plan/s0-02-a.jpg" alt="S0-02 A 版">
-              <img data-mirror-compare-after src="assets/works/mirror-plan/s0-02-b.jpg" alt="S0-02 B 版">
-              <input data-mirror-compare-range type="range" min="0" max="100" value="50" aria-label="拖动比较 A 版与 B 版">
+              <img data-mirror-compare-before src="assets/works/mirror-plan/research/atlas/05.jpg" alt="当前实验母图衍生图">
+              <img data-mirror-compare-after src="assets/works/mirror-plan/research/experiments/JW-LTBF-05/B.jpg" alt="当前实验 B 版结果">
+              <input data-mirror-compare-range type="range" min="0" max="100" value="50" aria-label="拖动比较母图与实验结果">
             </div>
           </div>
+        </div>
+        <div class="mirror-sync-toolbar" data-mirror-sync-toolbar>
+          <label>
+            <span>同步缩放</span>
+            <input type="range" min="100" max="220" value="100" step="5" data-mirror-sync-zoom>
+          </label>
+          <button type="button" data-mirror-sync-reset>重置视图</button>
+          <span>拖动画面可同步检查脸部、服装、背景与光线。</span>
+        </div>
+        <div class="mirror-method-grid" data-mirror-method-grid aria-live="polite">
+          <p>正在读取 A/B/C 对比。</p>
+        </div>
+        <div class="mirror-decision-grid">
+          <article>
+            <span>Prompt Changes</span>
+            <ul data-mirror-prompt-changes><li>正在读取。</li></ul>
+          </article>
+          <article>
+            <span>Findings</span>
+            <ul data-mirror-findings><li>正在读取。</li></ul>
+          </article>
+          <article class="is-failure">
+            <span>Failure Archive</span>
+            <ul data-mirror-failures><li>正在读取。</li></ul>
+          </article>
+        </div>
+        <div class="mirror-detail-footer">
+          <p><strong>下一步</strong><span data-mirror-detail-next>正在读取。</span></p>
+          <a href="#mirror-record-reader" data-mirror-detail-record hidden>打开对应完整记录</a>
         </div>
       </div>
     </section>
@@ -196,9 +245,9 @@
             <p>人物关系、空间层级、肤色、中间调和背景叙事共同决定可信度，单独追求颗粒或色调不会成立。</p>
           </article>
           <article class="mirror-finding">
-            <span>03 / 尚未公开</span>
-            <h3><span data-mirror-planned>—</span> 张母图图谱</h3>
-            <p>完整 Contact Sheet 仍受素材清点和公开边界约束。本版明确标记缺口，不把内部工作图提前发布。</p>
+            <span>03 / 仍在进行</span>
+            <h3><span data-mirror-scheduled>—</span> 张母图待排期</h3>
+            <p>完整图谱不等于全部完成。未测试项目只展示母图、来源边界和下一步，不补造实验结果。</p>
           </article>
         </div>
       </div>
@@ -276,6 +325,24 @@
     </section>
   </main>
 
+  <dialog class="mirror-experiment-drawer" data-mirror-drawer aria-labelledby="mirror-drawer-title">
+    <div class="mirror-experiment-drawer__head">
+      <span data-mirror-drawer-code>JW-LTBF</span>
+      <button type="button" data-mirror-drawer-close aria-label="关闭实验摘要">×</button>
+    </div>
+    <img data-mirror-drawer-image src="assets/works/mirror-plan/research/atlas/05.jpg" alt="">
+    <div class="mirror-experiment-drawer__copy">
+      <span data-mirror-drawer-status>读取中</span>
+      <h2 id="mirror-drawer-title" data-mirror-drawer-title>实验摘要</h2>
+      <p data-mirror-drawer-hypothesis>正在读取。</p>
+      <dl>
+        <div><dt>结果</dt><dd data-mirror-drawer-result>正在读取。</dd></div>
+        <div><dt>下一步</dt><dd data-mirror-drawer-next>正在读取。</dd></div>
+      </dl>
+      <a href="#mirror-experiment" data-mirror-drawer-open>查看完整对比</a>
+    </div>
+  </dialog>
+
   <footer class="footer">
     <div class="container">
       <p>Janet · 用 AI 过滤世界</p>
@@ -287,7 +354,7 @@
   <button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">↑</button>
 </div>
 
-<script src="scripts/mirror-research.js?v=poster-v4-20260729"></script>
+<script src="scripts/mirror-research.js?v=poster-v4-production-20260729"></script>
 <script src="scripts/mirror-plan.js?v=public-documents-20260720"></script>
 <script src="scripts/supabase-config.js"></script>
 <script src="scripts/auth.js"></script>

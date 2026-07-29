@@ -9,6 +9,9 @@ if [[ "$OUTPUT" == "$ROOT" ]]; then
   exit 1
 fi
 
+node "$ROOT/scripts/generate-mirror-plan-data.mjs" --check
+node "$ROOT/scripts/validate-mirror-plan-data.mjs"
+
 rm -rf "$OUTPUT"
 mkdir -p "$OUTPUT/data"
 
@@ -29,6 +32,7 @@ done
 
 mkdir -p "$OUTPUT/data/schemas"
 cp "$ROOT/data/schemas/mirror-plan-status.schema.json" "$OUTPUT/data/schemas/mirror-plan-status.schema.json"
+cp "$ROOT/data/schemas/mirror-plan-experiment.schema.json" "$OUTPUT/data/schemas/mirror-plan-experiment.schema.json"
 
 while IFS= read -r name; do
   [[ "$name" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}(-v[0-9]+)?$ ]] || continue
@@ -36,7 +40,7 @@ while IFS= read -r name; do
   cp -R "$ROOT/data/$name" "$OUTPUT/data/$name"
 done < <(node -e 'const fs=require("fs"); JSON.parse(fs.readFileSync(process.argv[1], "utf8")).forEach((id)=>console.log(id))' "$ROOT/data/MANIFEST.json")
 
-for name in works gpt-image2-handbook; do
+for name in works gpt-image2-handbook mirror-plan; do
   cp -R "$ROOT/data/$name" "$OUTPUT/data/$name"
 done
 

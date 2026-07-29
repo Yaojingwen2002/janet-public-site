@@ -6,12 +6,15 @@
   "additionalProperties": false,
   "required": [
     "schema_version",
+    "catalog_hash",
     "phase_id",
     "phase_label",
     "project_status",
     "current_experiment",
     "completed_experiments",
     "documented_experiments",
+    "active_experiments",
+    "scheduled_experiments",
     "planned_atlas_frames",
     "public_atlas_frames",
     "generated_images",
@@ -20,11 +23,17 @@
     "status_updated_at",
     "next_step",
     "public_boundary",
-    "preview_images"
+    "atlas_index",
+    "preview_images",
+    "featured_previews"
   ],
   "properties": {
     "schema_version": {
       "const": 1
+    },
+    "catalog_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
     },
     "phase_id": {
       "type": "string",
@@ -53,6 +62,14 @@
       "minimum": 0
     },
     "documented_experiments": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "active_experiments": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scheduled_experiments": {
       "type": "integer",
       "minimum": 0
     },
@@ -88,6 +105,10 @@
       "type": "string",
       "minLength": 1
     },
+    "atlas_index": {
+      "type": "string",
+      "const": "data/mirror-plan/experiments/index.json"
+    },
     "preview_images": {
       "type": "array",
       "minItems": 1,
@@ -104,6 +125,34 @@
           "id": {
             "type": "string",
             "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "src": {
+            "type": "string",
+            "pattern": "^assets/works/mirror-plan/.+\\.(jpg|jpeg|png|webp|avif)$"
+          },
+          "alt": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "featured_previews": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "src", "alt"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^JW-LTBF-[0-9]{2}$"
           },
           "label": {
             "type": "string",

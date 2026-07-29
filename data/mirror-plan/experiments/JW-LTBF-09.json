@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-09",
+  "sequence": 9,
+  "title": "火车与山地到达画面",
+  "status": "scheduled",
+  "status_label": "待补证 · 待排期",
+  "scene": "山地外景",
+  "shot_scale": "交通工具全景",
+  "tags": [
+    "火车",
+    "山地",
+    "到达"
+  ],
+  "source": {
+    "frame_id": "LTBF-09",
+    "file_label": "09_train_mountain_arrival_screenshot.png",
+    "source_type": "人工补图",
+    "timecode": "待补",
+    "evidence_status": "带播放器界面；片段与精确时间码待补",
+    "summary": "火车与山地共同建立到达画面。"
+  },
+  "hypothesis": "火车体量、山地透视和运动方向能否在宽画面中形成明确到达叙事。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Scale",
+      "intent": "计划测试交通工具与山地体量。"
+    },
+    {
+      "id": "B",
+      "label": "Motion",
+      "intent": "计划测试运动方向。"
+    },
+    {
+      "id": "C",
+      "label": "Atmosphere",
+      "intent": "计划测试空气透视。"
+    }
+  ],
+  "result_summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+  "conclusion": "没有实验结论。",
+  "next_step": "重截干净母图并补齐对应片段、时间码和来源证据。",
+  "prompt_changes": [],
+  "findings": [],
+  "failures": [],
+  "document_id": null,
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/09.jpg",
+    "variants": []
+  },
+  "stats": {
+    "round_count": 0,
+    "prompt_count": 0,
+    "image_count": 0,
+    "document_count": 0
+  },
+  "updated_at": "2026-07-28"
+}

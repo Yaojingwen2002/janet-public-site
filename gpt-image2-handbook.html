@@ -93,20 +93,20 @@
           </p>
           <div class="mirror-status-grid" aria-label="镜场计划共享状态">
             <div>
-              <span>Documented</span>
-              <strong><span data-mirror-completed>—</span> 项实验</strong>
+              <span>Archived</span>
+              <strong><span data-mirror-completed>—</span> 项收尾</strong>
             </div>
             <div>
-              <span>Public Evidence</span>
-              <strong><span data-mirror-public-frames>—</span> 张图</strong>
+              <span>In Progress</span>
+              <strong><span data-mirror-active>—</span> 项</strong>
+            </div>
+            <div>
+              <span>Experiment Atlas</span>
+              <strong><span data-mirror-public-frames>—</span> 张母图</strong>
             </div>
             <div>
               <span>Records</span>
               <strong><span data-mirror-documents>—</span> 份</strong>
-            </div>
-            <div>
-              <span>Updated</span>
-              <strong data-mirror-updated>—</strong>
             </div>
           </div>
           <div class="mirror-hero-actions">
@@ -118,11 +118,23 @@
           <p data-mirror-status-error hidden>共享实验状态暂时无法读取，观测站与文档入口仍可使用。</p>
         </div>
         <div>
-          <div class="mirror-preview-stage">
-            <img data-mirror-preview-main src="assets/works/mirror-plan/s0-02-b.jpg" alt="镜场计划 S0-02 B 版视觉校准结果">
-          </div>
-          <div class="mirror-preview-controls" data-mirror-preview-controls aria-label="切换镜场计划 A、B、C 公开结果">
-            <button class="mirror-preview-tab" type="button">正在读取</button>
+          <div class="mirror-featured-previews" data-mirror-featured-previews aria-label="四项已归档实验动态预览">
+            <a class="mirror-featured-preview" href="mirror-plan.html?experiment=JW-LTBF-01">
+              <img src="assets/works/mirror-plan/research/experiments/JW-LTBF-01/B.jpg" alt="S0-01 实验预览">
+              <span>S0-01</span>
+            </a>
+            <a class="mirror-featured-preview" href="mirror-plan.html?experiment=JW-LTBF-02">
+              <img src="assets/works/mirror-plan/research/experiments/JW-LTBF-02/B.jpg" alt="S0-02 实验预览">
+              <span>S0-02</span>
+            </a>
+            <a class="mirror-featured-preview" href="mirror-plan.html?experiment=JW-LTBF-03">
+              <img src="assets/works/mirror-plan/research/experiments/JW-LTBF-03/B.jpg" alt="S0-03 实验预览">
+              <span>S0-03</span>
+            </a>
+            <a class="mirror-featured-preview" href="mirror-plan.html?experiment=JW-LTBF-04">
+              <img src="assets/works/mirror-plan/research/experiments/JW-LTBF-04/B.jpg" alt="S0-04 实验预览">
+              <span>S0-04</span>
+            </a>
           </div>
         </div>
       </div>
@@ -136,7 +148,7 @@
             <h2>从实验编号进入完整记录</h2>
           </div>
           <p>
-            当前最新完整记录为 <strong data-mirror-current>—</strong>。
+            当前实验为 <strong data-mirror-current>—</strong>，最近研究更新 <strong data-mirror-updated>—</strong>。
             下一步：<span data-mirror-next>正在读取。</span>
           </p>
         </div>

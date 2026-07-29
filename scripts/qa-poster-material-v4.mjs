@@ -41,6 +41,8 @@ const project = await readJson('data/works/projects/mirror-plan.json');
 const index = await readJson('data/works/documents/mirror-plan/index.json');
 const handbook = await readJson('data/gpt-image2-handbook/handbook-cases.json');
 const schema = await readJson('data/schemas/mirror-plan-status.schema.json');
+const experimentSchema = await readJson('data/schemas/mirror-plan-experiment.schema.json');
+const atlasIndex = await readJson('data/mirror-plan/experiments/index.json');
 
 assert(status.schema_version === 1, 'mirror status schema version is 1');
 assert(schema.properties?.schema_version?.const === 1, 'mirror status schema declares version 1');
@@ -51,7 +53,22 @@ assert(status.documented_experiments === index.documents.length, 'documented exp
 assert(status.completed_experiments === project.completed_experiment_count, 'completed experiment count matches project data');
 assert(status.documents === project.document_count, 'document count matches project data');
 assert(status.documents === index.documents.length, 'status document count matches document index');
-assert(status.public_atlas_frames === status.preview_images.length, 'public frame count matches preview image list');
+assert(
+  status.public_atlas_frames === atlasIndex.experiments.length,
+  'public frame count matches atlas index'
+);
+assert(
+  atlasIndex.experiment_count === atlasIndex.experiments.length,
+  'atlas index count matches experiment entries'
+);
+assert(
+  atlasIndex.experiments.length === project.work_count,
+  'atlas index count matches project work count'
+);
+assert(
+  experimentSchema.properties?.schema_version?.const === 1,
+  'mirror experiment schema declares version 1'
+);
 
 const generatedImageCount = project.works.reduce(
   (total, work) => total + Number(work.stats?.image_count || 0),
@@ -59,10 +76,10 @@ const generatedImageCount = project.works.reduce(
 );
 assert(status.generated_images === generatedImageCount, 'generated image count matches experiment statistics');
 
-const latestWork = [...project.works].sort((a, b) => Number(b.sequence) - Number(a.sequence))[0];
+const activeWork = project.works.find((work) => work.status_code === 'active');
 assert(
-  latestWork?.id?.toUpperCase().startsWith(status.current_experiment),
-  'current experiment matches latest documented work'
+  activeWork?.id?.toUpperCase() === status.current_experiment,
+  'current experiment matches active project work'
 );
 
 for (const preview of status.preview_images) {
@@ -70,6 +87,11 @@ for (const preview of status.preview_images) {
     preview.src.startsWith('assets/works/mirror-plan/') && await exists(preview.src),
     `public preview exists: ${preview.id}`
   );
+}
+
+for (const experiment of atlasIndex.experiments) {
+  assert(await exists(experiment.source_image), `atlas source exists: ${experiment.id}`);
+  assert(await exists(experiment.data_url), `experiment data exists: ${experiment.id}`);
 }
 
 assert(Array.isArray(handbook) && handbook.length === 100, 'GPT Image 2 handbook keeps 100 records');

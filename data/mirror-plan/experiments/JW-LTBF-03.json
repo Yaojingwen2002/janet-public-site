@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-03",
+  "sequence": 3,
+  "title": "红绿室内单人近景校准",
+  "status": "stage_closed",
+  "status_label": "阶段收尾 · 未通过",
+  "scene": "室内人工光",
+  "shot_scale": "单人近景",
+  "tags": [
+    "红绿分区",
+    "强顶光",
+    "视觉重复性"
+  ],
+  "source": {
+    "frame_id": "LTBF-03",
+    "file_label": "03_huang_red_green_closeup.jpg",
+    "source_type": "第一轮筛选",
+    "timecode": "00:45:30.000",
+    "evidence_status": "连续三帧来源链已核；语言音轨与角色实名待核",
+    "summary": "冷青绿环境、土红棕人物与强人工顶光构成单人谈判近景。"
+  },
+  "hypothesis": "同一 Visual Core 能否稳定复现冷青绿环境、土红棕人物和高位强灯，而不是退回柔和自然侧光。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Environment",
+      "intent": "优先锁定冷青绿环境与人工灯位。"
+    },
+    {
+      "id": "B",
+      "label": "Character",
+      "intent": "优先锁定人物土红棕权重和脸内反差。"
+    },
+    {
+      "id": "C",
+      "label": "Repeatability",
+      "intent": "复用同核测试视觉重复性。"
+    }
+  ],
+  "result_summary": "三轮结果全部未通过，但完整证明 Prompt 核一致不等于视觉结果稳定。",
+  "conclusion": "阶段收尾并保留失败证据；不把未通过改写成完成，也不继续无边界追图。",
+  "next_step": "未来重启时只校正人物红色权重、强顶灯、脸内反差和柔化，不推翻全部 Visual Core。",
+  "prompt_changes": [
+    "提高高位人工灯的动作描述",
+    "分离环境青绿与人物红棕",
+    "将视觉重复性列为独立验收层"
+  ],
+  "findings": [
+    "Prompt 调用一致不等于结果一致",
+    "强顶光不能用自然侧光替代",
+    "红绿分区需要实体归属"
+  ],
+  "failures": [
+    "三版都丢失人物红色权重",
+    "A 与 C 误执行成自然侧光",
+    "Round 03 仍未稳定复现 Round 02-B"
+  ],
+  "document_id": "03",
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/03.jpg",
+    "variants": [
+      {
+        "id": "A",
+        "label": "环境优先",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-03/A.jpg",
+        "outcome": "未通过，灯光偏自然侧光。"
+      },
+      {
+        "id": "B",
+        "label": "人物优先",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-03/B.jpg",
+        "outcome": "未通过，人物红色权重仍不足。"
+      },
+      {
+        "id": "C",
+        "label": "重复性",
+        "src": "assets/works/mirror-plan/research/experiments/JW-LTBF-03/C.jpg",
+        "outcome": "未通过，未稳定复现已知方向。"
+      }
+    ]
+  },
+  "stats": {
+    "round_count": 3,
+    "prompt_count": 9,
+    "image_count": 9,
+    "document_count": 1
+  },
+  "updated_at": "2026-07-21"
+}

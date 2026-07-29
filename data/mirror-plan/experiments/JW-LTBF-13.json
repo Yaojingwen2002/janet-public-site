@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "catalog_hash": "2b976456d5149217a7b3513f036650e3caed35e3d7067781e3b65132b6d5f4e1",
+  "id": "JW-LTBF-13",
+  "sequence": 13,
+  "title": "车厢碰撞人物面部",
+  "status": "scheduled",
+  "status_label": "待补证 · 待排期",
+  "scene": "车厢动作",
+  "shot_scale": "动态近景",
+  "tags": [
+    "碰撞",
+    "面部",
+    "运动"
+  ],
+  "source": {
+    "frame_id": "LTBF-13",
+    "file_label": "13_carriage_crash_face_screenshot.png",
+    "source_type": "人工补图",
+    "timecode": "待补",
+    "evidence_status": "带播放器界面；片段与精确时间码待补",
+    "summary": "车厢碰撞中的人物面部与运动关系。"
+  },
+  "hypothesis": "方向性运动柔化、表情和车厢环境能否同时可读，而不把脸和背景一起涂抹。",
+  "methods": [
+    {
+      "id": "A",
+      "label": "Face",
+      "intent": "计划测试面部可读性。"
+    },
+    {
+      "id": "B",
+      "label": "Impact",
+      "intent": "计划测试碰撞方向。"
+    },
+    {
+      "id": "C",
+      "label": "Environment",
+      "intent": "计划测试车厢背景稳定度。"
+    }
+  ],
+  "result_summary": "尚未测试；母图带播放器界面，来源证据还不完整。",
+  "conclusion": "没有实验结论。",
+  "next_step": "补齐连续动作和干净母图，再定义运动柔化验收项。",
+  "prompt_changes": [],
+  "findings": [],
+  "failures": [],
+  "document_id": null,
+  "images": {
+    "source": "assets/works/mirror-plan/research/atlas/13.jpg",
+    "variants": []
+  },
+  "stats": {
+    "round_count": 0,
+    "prompt_count": 0,
+    "image_count": 0,
+    "document_count": 0
+  },
+  "updated_at": "2026-07-28"
+}

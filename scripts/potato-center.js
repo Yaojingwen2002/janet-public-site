@@ -6,20 +6,22 @@
 
   const state = {
     openCenter: null,
+    panel: 'closed',
     tab: 'login',
     busy: false,
     message: '',
-    error: ''
+    error: '',
+    lastTrigger: null
   };
 
   const menuLinks = [
     ['首页', 'index.html'],
-    ['Janet 快车箱', 'news.html'],
+    ['AI 信号站', 'index.html#hero'],
+    ['每日晨报', 'news.html'],
     ['作品库', 'portfolio.html'],
-    ['关于 Janet', 'index.html#about'],
-    ['联系', 'index.html#contact']
+    ['镜场计划', 'mirror-plan.html'],
+    ['关于 Janet', 'index.html#about']
   ];
-  const previewEntry = ['抢先预览', '镜场计划', 'mirror-plan.html'];
 
   function auth() {
     return window.JanetAuth;
@@ -47,25 +49,37 @@
     return rootPrefix() + href;
   }
 
-  function ensureMenu() {
+  function currentPageMatches(href, label) {
+    const target = new URL(linkHref(href), location.href);
+    const currentPath = location.pathname.replace(/\/+$/, '/');
+    const targetPath = target.pathname.replace(/\/+$/, '/');
+    if (currentPath !== targetPath) return false;
+    if (label === 'AI 信号站') return location.hash === '#hero';
+    if (label === '关于 Janet') return location.hash === '#about';
+    if (label === '首页') return !['#hero', '#about'].includes(location.hash);
+    return true;
+  }
+
+  function ensureMenu(center) {
     let menu = qs('#mobile-nav-menu');
     if (!menu) {
       menu = document.createElement('div');
       menu.className = 'mobile-nav-menu';
       menu.id = 'mobile-nav-menu';
-      menu.innerHTML = menuLinks.map(([label, href]) => '<a href="' + escapeHtml(linkHref(href)) + '">' + escapeHtml(label) + '</a>').join('');
-      document.body.appendChild(menu);
     }
 
-    if (qs('[data-preview-entry]', menu)) return;
-    const [label, detail, href] = previewEntry;
-    const link = document.createElement('a');
-    link.href = linkHref(href);
-    link.dataset.previewEntry = '';
-    link.innerHTML = '<span>' + escapeHtml(label) + '</span><small>' + escapeHtml(detail) + '</small>';
-    const portfolioLink = qsa('a', menu).find((item) => /portfolio\.html(?:$|[?#])/.test(item.getAttribute('href') || ''));
-    if (portfolioLink) portfolioLink.after(link);
-    else menu.appendChild(link);
+    menu.setAttribute('role', 'menu');
+    menu.setAttribute('aria-label', 'Janet 站点导航');
+    menu.setAttribute('aria-hidden', 'true');
+    menu.innerHTML = menuLinks.map(([label, href], index) => {
+      const current = currentPageMatches(href, label) ? ' aria-current="page"' : '';
+      return '<a role="menuitem" data-nav-index="' + String(index + 1).padStart(2, '0') + '" href="' +
+        escapeHtml(linkHref(href)) + '"' + current + '>' + escapeHtml(label) + '</a>';
+    }).join('');
+
+    const targetCenter = center || qs('[data-potato-center]');
+    if (targetCenter && menu.parentElement !== targetCenter) targetCenter.appendChild(menu);
+    return menu;
   }
 
   function getIdentity() {
@@ -93,56 +107,130 @@
   function updateLabels() {
     qsa('[data-potato-center]').forEach((center) => {
       const label = qs('[data-potato-user-label]', center);
-      const trigger = qs('[data-potato-user-trigger]', center);
+      const userTrigger = qs('[data-potato-user-trigger]', center);
+      const menuTrigger = qs('[data-potato-menu-trigger]', center);
       if (!label) return;
       const loading = !isReady();
       label.textContent = auth() && auth().getPotatoLabel ? auth().getPotatoLabel() : '登';
       label.dataset.loading = loading ? 'true' : 'false';
-      if (trigger) {
-        trigger.disabled = loading;
-        trigger.setAttribute('aria-expanded', String(center === state.openCenter));
+      if (userTrigger) {
+        userTrigger.disabled = loading;
+        userTrigger.setAttribute('aria-expanded', String(center === state.openCenter && state.panel === 'account'));
+        const identity = getIdentity();
+        userTrigger.setAttribute('aria-label', identity ? '打开账户中心' : '打开登录');
+      }
+      if (menuTrigger) {
+        menuTrigger.setAttribute('aria-expanded', String(center === state.openCenter && state.panel === 'navigation'));
+        menuTrigger.setAttribute('aria-label', state.panel === 'navigation' ? '关闭站点导航' : '打开站点导航');
       }
     });
   }
 
-  function closeDropdown() {
-    if (!state.openCenter) return;
-    const closingCenter = state.openCenter;
-    const dropdown = qs('.potato-dropdown', closingCenter);
-    if (dropdown) {
-      dropdown.classList.add('is-closing');
-      window.setTimeout(() => {
-        if (!dropdown.isConnected) return;
-        dropdown.classList.remove('is-closing');
-        if (state.openCenter !== closingCenter) dropdown.hidden = true;
-      }, 190);
+  function setPanelState(center, panel) {
+    if (!center) return;
+    if (panel === 'closed') center.removeAttribute('data-panel');
+    else center.dataset.panel = panel;
+  }
+
+  function dispatchNavigationState(open) {
+    document.dispatchEvent(new CustomEvent('janet:site-menu-changed', {
+      detail: { open: Boolean(open), source: 'potato-center' }
+    }));
+  }
+
+  function hideNavigation(center) {
+    const menu = center && qs('#mobile-nav-menu', center);
+    if (!menu) return;
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+  }
+
+  function hideAccount(center, animate) {
+    const dropdown = center && qs('.potato-dropdown', center);
+    if (!dropdown) return;
+    if (!animate) {
+      dropdown.classList.remove('is-closing');
+      dropdown.hidden = true;
+      return;
     }
-    const trigger = qs('[data-potato-user-trigger]', closingCenter);
-    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    dropdown.classList.add('is-closing');
+    window.setTimeout(() => {
+      if (!dropdown.isConnected) return;
+      dropdown.classList.remove('is-closing');
+      if (state.openCenter !== center || state.panel !== 'account') dropdown.hidden = true;
+    }, 190);
+  }
+
+  function closeDropdown(options) {
+    if (!state.openCenter) return;
+    const settings = Object.assign({ restoreFocus: true, animate: true }, options || {});
+    const closingCenter = state.openCenter;
+    const closingTrigger = state.lastTrigger;
+    hideAccount(closingCenter, settings.animate);
+    hideNavigation(closingCenter);
+    setPanelState(closingCenter, 'closed');
     state.openCenter = null;
+    state.panel = 'closed';
     state.busy = false;
     clearMessage();
+    dispatchNavigationState(false);
     updateLabels();
+    if (settings.restoreFocus && closingTrigger && closingTrigger.isConnected) {
+      window.requestAnimationFrame(() => closingTrigger.focus({ preventScroll: true }));
+    }
+    state.lastTrigger = null;
   }
 
-  function openDropdown(center, tab) {
+  function openDropdown(center, tab, trigger) {
     if (!center || !isReady()) return;
-    ensureMenu();
-    document.dispatchEvent(new CustomEvent('janet:close-site-menu'));
+    ensureMenu(center);
+    if (state.openCenter && state.openCenter !== center) closeDropdown({ restoreFocus: false, animate: false });
+    hideNavigation(center);
     state.openCenter = center;
+    state.panel = 'account';
+    state.lastTrigger = trigger || qs('[data-potato-user-trigger]', center);
     state.tab = tab || state.tab || 'login';
     clearMessage();
+    setPanelState(center, 'account');
+    dispatchNavigationState(false);
     renderDropdown();
     updateLabels();
+    const dropdown = qs('.potato-dropdown', center);
+    if (dropdown) window.requestAnimationFrame(() => dropdown.focus({ preventScroll: true }));
   }
 
-  function toggleDropdown(center) {
-    if (state.openCenter === center) {
+  function toggleDropdown(center, trigger) {
+    if (state.openCenter === center && state.panel === 'account') {
       closeDropdown();
       return;
     }
     const identity = getIdentity();
-    openDropdown(center, identity ? 'account' : 'login');
+    openDropdown(center, identity ? 'account' : 'login', trigger);
+  }
+
+  function openNavigation(center, trigger) {
+    if (!center) return;
+    const menu = ensureMenu(center);
+    if (state.openCenter && state.openCenter !== center) closeDropdown({ restoreFocus: false, animate: false });
+    hideAccount(center, false);
+    state.openCenter = center;
+    state.panel = 'navigation';
+    state.lastTrigger = trigger || qs('[data-potato-menu-trigger]', center);
+    setPanelState(center, 'navigation');
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    dispatchNavigationState(true);
+    updateLabels();
+    const firstLink = qs('a', menu);
+    if (firstLink) window.requestAnimationFrame(() => firstLink.focus({ preventScroll: true }));
+  }
+
+  function toggleNavigation(center, trigger) {
+    if (state.openCenter === center && state.panel === 'navigation') {
+      closeDropdown();
+      return;
+    }
+    openNavigation(center, trigger);
   }
 
   function messageHtml() {
@@ -315,6 +403,8 @@
       dropdown.className = 'potato-dropdown';
       dropdown.setAttribute('role', 'dialog');
       dropdown.setAttribute('aria-label', '土豆中心');
+      dropdown.setAttribute('aria-modal', 'false');
+      dropdown.setAttribute('tabindex', '-1');
       state.openCenter.appendChild(dropdown);
     }
     dropdown.classList.remove('is-closing');
@@ -337,6 +427,7 @@
     dropdown.innerHTML = html();
     updateNewsletterNamePreview(dropdown);
     dropdown.hidden = false;
+    setPanelState(state.openCenter, 'account');
     const trigger = qs('[data-potato-user-trigger]', state.openCenter);
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
   }
@@ -431,15 +522,51 @@
     }
   }
 
+  function panelFocusables(panel) {
+    if (!panel) return [];
+    return qsa('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])', panel)
+      .filter((element) => !element.hidden && element.getAttribute('aria-hidden') !== 'true');
+  }
+
+  function trapPanelFocus(event) {
+    if (event.key !== 'Tab' || !state.openCenter || state.panel === 'closed') return;
+    const panel = state.panel === 'navigation'
+      ? qs('#mobile-nav-menu', state.openCenter)
+      : qs('.potato-dropdown', state.openCenter);
+    const focusable = panelFocusables(panel);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+    if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function bind() {
-    ensureMenu();
+    qsa('[data-potato-center]').forEach((center) => {
+      ensureMenu(center);
+      setPanelState(center, 'closed');
+    });
     updateLabels();
 
     document.addEventListener('click', async (event) => {
       const userTrigger = event.target.closest('[data-potato-user-trigger]');
       if (userTrigger) {
         event.preventDefault();
-        toggleDropdown(userTrigger.closest('[data-potato-center]'));
+        toggleDropdown(userTrigger.closest('[data-potato-center]'), userTrigger);
+        return;
+      }
+
+      const menuTrigger = event.target.closest('[data-potato-menu-trigger]');
+      if (menuTrigger) {
+        event.preventDefault();
+        toggleNavigation(menuTrigger.closest('[data-potato-center]'), menuTrigger);
         return;
       }
 
@@ -456,6 +583,12 @@
       if (action && state.openCenter && state.openCenter.contains(action)) {
         event.preventDefault();
         await handleAction(action.dataset.potatoAction);
+        return;
+      }
+
+      const navigationLink = event.target.closest('#mobile-nav-menu a');
+      if (navigationLink && state.openCenter && state.openCenter.contains(navigationLink)) {
+        closeDropdown({ restoreFocus: false, animate: false });
         return;
       }
 
@@ -499,8 +632,17 @@
       openDropdown(center, event.detail && event.detail.tab ? event.detail.tab : 'login');
     });
 
-    document.addEventListener('janet:site-menu-changed', (event) => {
-      if (event.detail && event.detail.open) closeDropdown();
+    document.addEventListener('janet:close-site-menu', () => {
+      if (state.panel === 'navigation') closeDropdown({ restoreFocus: false });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && state.openCenter) {
+        event.preventDefault();
+        closeDropdown();
+        return;
+      }
+      trapPanelFocus(event);
     });
   }
 
@@ -586,9 +728,13 @@
   }
 
   window.JanetPotatoCenter = {
+    ownsNavigation: true,
     open: function(tab) { return openDropdown(qs('[data-potato-center]'), tab || 'login'); },
+    openNavigation: function() { return openNavigation(qs('[data-potato-center]')); },
+    toggleNavigation: function() { return toggleNavigation(qs('[data-potato-center]')); },
     close: closeDropdown,
-    refresh: updateLabels
+    refresh: updateLabels,
+    getState: function() { return state.panel; }
   };
 
   document.addEventListener('DOMContentLoaded', bind);

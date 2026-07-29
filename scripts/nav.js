@@ -5,6 +5,7 @@
   const mobileToggle = document.querySelector('[data-potato-menu-trigger]') || document.getElementById('mobile-nav-toggle');
   const mobileMenu = document.getElementById('mobile-nav-menu');
   const navLinks = document.querySelector('.nav-links');
+  const potatoOwnsMobileMenu = Boolean(mobileToggle && mobileToggle.closest('[data-potato-center]'));
   let lastScrollY = 0;
   let ticking = false;
   let mobileOpen = false;
@@ -12,7 +13,7 @@
   const revealDelta = 6;
 
   // ── 移动端菜单 ───────────────────────────────────────────
-  if (mobileToggle) {
+  if (mobileToggle && !potatoOwnsMobileMenu) {
     if (mobileMenu && mobileMenu.id) {
       mobileToggle.setAttribute('aria-controls', mobileMenu.id);
     }
@@ -81,6 +82,23 @@
       openSiteMenu: () => setMobileMenuOpen(true),
       closeSiteMenu: () => setMobileMenuOpen(false),
       toggleSiteMenu: () => setMobileMenuOpen(!mobileOpen)
+    };
+  }
+
+  if (potatoOwnsMobileMenu) {
+    document.addEventListener('janet:site-menu-changed', (event) => {
+      if (!event.detail || event.detail.source !== 'potato-center') return;
+      mobileOpen = Boolean(event.detail.open);
+      if (mobileOpen && nav) {
+        nav.classList.remove('hidden');
+        nav.classList.add('visible', 'scrolled');
+      }
+    });
+
+    window.JanetNav = {
+      openSiteMenu: () => window.JanetPotatoCenter && window.JanetPotatoCenter.openNavigation(),
+      closeSiteMenu: () => window.JanetPotatoCenter && window.JanetPotatoCenter.close(),
+      toggleSiteMenu: () => window.JanetPotatoCenter && window.JanetPotatoCenter.toggleNavigation()
     };
   }
 

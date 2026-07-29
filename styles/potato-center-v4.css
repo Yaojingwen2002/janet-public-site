@@ -1,0 +1,451 @@
+/* Potato Center V4.
+   The generated potato texture is decorative; the two real buttons preserve
+   account and navigation semantics independently. */
+
+html[data-janet-design="poster-v4"] .potato-center {
+  --potato-width: 76px;
+  --potato-height: 40px;
+  --potato-half-width: 38px;
+  --potato-hit-size: 44px;
+  --potato-hit-gutter: 6px;
+  --potato-shift: 7px;
+  position: fixed;
+  top: calc((var(--v4-nav-height, 64px) - var(--potato-hit-size)) / 2);
+  right: calc(max(var(--container-pad, 24px), env(safe-area-inset-right)) - var(--potato-hit-gutter));
+  z-index: 1200;
+  display: grid;
+  grid-template-columns: repeat(2, var(--potato-hit-size));
+  width: calc(var(--potato-hit-size) * 2);
+  height: var(--potato-hit-size);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  isolation: isolate;
+  color: #243017;
+  filter:
+    drop-shadow(0 8px 10px rgba(26, 15, 4, .22))
+    drop-shadow(0 1px 1px rgba(255, 250, 228, .38));
+}
+
+html[data-janet-design="poster-v4"] .potato-center::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  left: 50%;
+  z-index: 4;
+  width: 2px;
+  border-radius: 48% 62% 44% 58%;
+  background: rgba(77, 118, 55, .16);
+  box-shadow: 0 0 0 rgba(99, 216, 165, 0);
+  transform: translateX(-50%) rotate(1.2deg);
+  pointer-events: none;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+}
+
+html[data-janet-design="poster-v4"] .potato-center::after {
+  content: none;
+}
+
+html[data-janet-design="poster-v4"] .potato-half {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: var(--potato-hit-size);
+  height: var(--potato-hit-size);
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #243017;
+  cursor: pointer;
+  overflow: visible;
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 220ms cubic-bezier(.2, .75, .22, 1),
+    filter 180ms ease,
+    opacity 180ms ease;
+}
+
+html[data-janet-design="poster-v4"] .potato-half::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: transparent;
+}
+
+html[data-janet-design="poster-v4"] .potato-half::before {
+  content: "";
+  position: absolute;
+  top: calc((var(--potato-hit-size) - var(--potato-height)) / 2);
+  z-index: -1;
+  width: var(--potato-half-width);
+  height: var(--potato-height);
+  background-image: url("../assets/ui/potato-center/potato-body-v4.webp");
+  background-repeat: no-repeat;
+  background-size: calc(var(--potato-width) + 2px) var(--potato-height);
+  filter: saturate(.78) sepia(.08) contrast(.96);
+  pointer-events: none;
+}
+
+html[data-janet-design="poster-v4"] .potato-user-trigger::before {
+  left: 0;
+  background-position: left center;
+}
+
+html[data-janet-design="poster-v4"] .potato-menu-trigger::before {
+  right: 0;
+  background-position: right center;
+}
+
+html[data-janet-design="poster-v4"] .potato-user-trigger,
+html[data-janet-design="poster-v4"] .potato-menu-trigger {
+  border: 0;
+}
+
+html[data-janet-design="poster-v4"] .potato-user-label,
+html[data-janet-design="poster-v4"] .potato-menu-icon {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  color: currentColor;
+  font-size: 0;
+  opacity: .62;
+  transition:
+    opacity 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+html[data-janet-design="poster-v4"] .potato-user-label::before,
+html[data-janet-design="poster-v4"] .potato-menu-icon::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+/* Lucide user-round and menu silhouettes. */
+html[data-janet-design="poster-v4"] .potato-user-label::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='8' r='5' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='8' r='5' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+html[data-janet-design="poster-v4"] .potato-menu-icon::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+html[data-janet-design="poster-v4"] .potato-user-label[data-loading="true"] {
+  opacity: .32;
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="account"]::before,
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"]::before,
+html[data-janet-design="poster-v4"] .potato-center:has(.potato-half:hover)::before,
+html[data-janet-design="poster-v4"] .potato-center:has(.potato-half:focus-visible)::before {
+  background: rgba(99, 216, 165, .72);
+  box-shadow:
+    0 0 6px rgba(99, 216, 165, .58),
+    0 0 14px rgba(99, 216, 165, .24);
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="account"] .potato-user-trigger {
+  transform: translate3d(calc(var(--potato-shift) * -1), 0, 0);
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="account"] .potato-menu-trigger {
+  opacity: .72;
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-menu-trigger {
+  transform: translate3d(var(--potato-shift), 0, 0);
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-user-trigger {
+  opacity: .72;
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="account"] .potato-user-label,
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-menu-icon {
+  color: #2a6e45;
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(99, 216, 165, .45));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-janet-design="poster-v4"] .potato-user-trigger:hover {
+    transform: translate3d(-2px, -1px, 0);
+  }
+
+  html[data-janet-design="poster-v4"] .potato-menu-trigger:hover {
+    transform: translate3d(2px, -1px, 0);
+  }
+
+  html[data-janet-design="poster-v4"] .potato-half:hover .potato-user-label,
+  html[data-janet-design="poster-v4"] .potato-half:hover .potato-menu-icon {
+    color: #2a6e45;
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+
+html[data-janet-design="poster-v4"] .potato-half:focus-visible {
+  outline: 2px solid var(--v4-mint);
+  outline-offset: 3px;
+}
+
+html[data-janet-design="poster-v4"] .potato-dropdown,
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  z-index: 8;
+  max-height: calc(100dvh - var(--v4-nav-height, 64px) - 24px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(255, 245, 220, .2);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 244, 218, .08), transparent 34%),
+    rgba(8, 29, 21, .88);
+  color: var(--v4-text-light, #f6f1e5);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .08),
+    0 26px 66px rgba(0, 10, 7, .34);
+  backdrop-filter: blur(26px) saturate(132%);
+  -webkit-backdrop-filter: blur(26px) saturate(132%);
+  transform-origin: top right;
+}
+
+html[data-janet-design="poster-v4"] .potato-dropdown {
+  right: var(--potato-hit-gutter);
+  width: min(352px, calc(100vw - 24px));
+}
+
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu {
+  right: var(--potato-hit-gutter);
+  display: none;
+  width: min(286px, calc(100vw - 24px));
+  padding: 10px;
+}
+
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu.open {
+  display: grid;
+  gap: 2px;
+  animation: potato-v4-panel-in 260ms cubic-bezier(.2, .78, .22, 1) both;
+}
+
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu a {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: center;
+  min-height: 48px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--v4-text-light, #f6f1e5);
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu a::before {
+  content: attr(data-nav-index);
+  color: var(--v4-mint, #63d8a5);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu a[aria-current="page"],
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu a:hover {
+  background: rgba(99, 216, 165, .11);
+  color: #fffaf0;
+}
+
+html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu a[aria-current="page"]::before {
+  content: "NOW";
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-head {
+  border-bottom-color: rgba(255, 245, 220, .13);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-kicker,
+html[data-janet-design="poster-v4"] .potato-center .potato-sub,
+html[data-janet-design="poster-v4"] .potato-center .potato-hint,
+html[data-janet-design="poster-v4"] .potato-center .potato-note {
+  color: var(--v4-text-muted-light, #aebbb2);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-title,
+html[data-janet-design="poster-v4"] .potato-center .potato-field,
+html[data-janet-design="poster-v4"] .potato-center .potato-check,
+html[data-janet-design="poster-v4"] .potato-center .potato-newsletter-option strong {
+  color: var(--v4-text-light, #f6f1e5);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-field input,
+html[data-janet-design="poster-v4"] .potato-center .potato-btn--ghost,
+html[data-janet-design="poster-v4"] .potato-center .potato-action {
+  border-color: rgba(255, 245, 220, .16);
+  background: rgba(249, 239, 216, .08);
+  color: var(--v4-text-light, #f6f1e5);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-field input::placeholder {
+  color: rgba(222, 226, 211, .5);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-field input:focus {
+  border-color: rgba(99, 216, 165, .72);
+  box-shadow: 0 0 0 3px rgba(99, 216, 165, .12);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-btn {
+  border-color: var(--v4-mint-deep, #2a8b67);
+  background: linear-gradient(135deg, var(--v4-mint, #63d8a5), #4bb88a);
+  color: #071710;
+  box-shadow: 0 10px 26px rgba(20, 114, 80, .2);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-btn::after,
+html[data-janet-design="poster-v4"] .potato-center .potato-action::after {
+  content: none;
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-link-btn {
+  color: var(--v4-mint, #63d8a5);
+  text-decoration-thickness: 1px;
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-newsletter-option {
+  border-color: rgba(99, 216, 165, .18);
+  background: rgba(99, 216, 165, .07);
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-warning {
+  border-color: rgba(227, 185, 104, .24);
+  background: rgba(227, 185, 104, .1);
+  color: #f0d7a8;
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-error {
+  border-color: rgba(255, 112, 93, .28);
+  background: rgba(255, 112, 93, .1);
+  color: #ffab9f;
+}
+
+html[data-janet-design="poster-v4"] .potato-center .potato-status {
+  border-color: rgba(99, 216, 165, .22);
+  background: rgba(99, 216, 165, .08);
+  color: #a9f1d2;
+}
+
+@keyframes potato-v4-panel-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  html[data-janet-design="poster-v4"] .potato-center {
+    --potato-width: 68px;
+    --potato-height: 36px;
+    --potato-half-width: 34px;
+    --potato-hit-gutter: 10px;
+    --potato-shift: 5px;
+  }
+
+  html[data-janet-design="poster-v4"] .potato-dropdown {
+    right: var(--potato-hit-gutter);
+    width: min(352px, calc(100vw - 20px));
+  }
+
+  html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu {
+    right: var(--potato-hit-gutter);
+    width: min(286px, calc(100vw - 20px));
+  }
+
+  html[data-janet-design="poster-v4"] .potato-dropdown,
+  html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu {
+    background:
+      linear-gradient(135deg, rgba(255, 244, 218, .08), transparent 34%),
+      rgba(7, 27, 19, .93);
+  }
+}
+
+@media (pointer: coarse) {
+  html[data-janet-design="poster-v4"] .potato-user-trigger:hover,
+  html[data-janet-design="poster-v4"] .potato-menu-trigger:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-janet-design="poster-v4"] .potato-half,
+  html[data-janet-design="poster-v4"] .potato-user-label,
+  html[data-janet-design="poster-v4"] .potato-menu-icon,
+  html[data-janet-design="poster-v4"] .potato-center::before {
+    transition-duration: 1ms;
+  }
+
+  html[data-janet-design="poster-v4"] .potato-center[data-panel="account"] .potato-user-trigger {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-menu-trigger {
+    transform: translate3d(1px, 0, 0);
+  }
+
+  html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu.open {
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  html[data-janet-design="poster-v4"] .potato-user-label,
+  html[data-janet-design="poster-v4"] .potato-menu-icon {
+    opacity: 1;
+  }
+
+  html[data-janet-design="poster-v4"] .potato-dropdown,
+  html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu {
+    border-color: rgba(255, 245, 220, .52);
+    background: rgba(7, 23, 16, .97);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html[data-janet-design="poster-v4"] .potato-dropdown,
+  html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu {
+    background: rgba(7, 23, 16, .98);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

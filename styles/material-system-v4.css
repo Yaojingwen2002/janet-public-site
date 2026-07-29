@@ -1,0 +1,185 @@
+/* Janet poster material system V4.
+   The file is guarded by data-janet-design so the whole layer can be removed
+   without rewriting the previous site styles. */
+
+html[data-janet-design="poster-v4"] {
+  --v4-signal-ink: #06130e;
+  --v4-editorial-ink: #0b261c;
+  --v4-editorial-mid: #123b2c;
+  --v4-paper: #f3e9d5;
+  --v4-paper-light: #faf5e9;
+  --v4-paper-deep: #e5d4b5;
+  --v4-mint: #63d8a5;
+  --v4-mint-deep: #2a8b67;
+  --v4-coral: #ff705d;
+  --v4-text-dark: #112019;
+  --v4-text-light: #f6f1e5;
+  --v4-text-muted-dark: #5d685f;
+  --v4-text-muted-light: #aebbb2;
+  --v4-line-dark: rgba(7, 37, 27, .22);
+  --v4-line-light: rgba(236, 247, 239, .22);
+  --v4-shadow-warm: 0 18px 52px rgba(58, 42, 22, .14);
+  --v4-shadow-dark: 0 22px 62px rgba(0, 10, 7, .28);
+  --v4-glass-dark: rgba(10, 31, 23, .72);
+  --v4-glass-light: rgba(247, 238, 219, .76);
+  --v4-nav-height: 64px;
+  --v4-control-gap: 12px;
+  --v4-radius-control: 8px;
+  color-scheme: light dark;
+}
+
+html[data-janet-design="poster-v4"],
+html[data-janet-design="poster-v4"] body {
+  background: var(--v4-paper);
+  color: var(--v4-text-dark);
+}
+
+html[data-janet-design="poster-v4"] body {
+  position: relative;
+  font-family: var(--font-body);
+  font-kerning: normal;
+  letter-spacing: 0;
+}
+
+html[data-janet-design="poster-v4"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  pointer-events: none;
+  opacity: .12;
+  background-image:
+    repeating-radial-gradient(circle at 0 0, rgba(28, 38, 30, .22) 0 .45px, transparent .55px 3px);
+  background-size: 5px 5px;
+  mix-blend-mode: soft-light;
+}
+
+html[data-janet-design="poster-v4"] h1,
+html[data-janet-design="poster-v4"] h2,
+html[data-janet-design="poster-v4"] h3,
+html[data-janet-design="poster-v4"] h4,
+html[data-janet-design="poster-v4"] p,
+html[data-janet-design="poster-v4"] a,
+html[data-janet-design="poster-v4"] button,
+html[data-janet-design="poster-v4"] input,
+html[data-janet-design="poster-v4"] label {
+  letter-spacing: 0;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment {
+  --v4-current-surface: var(--v4-signal-ink);
+  --v4-current-text: var(--v4-text-light);
+  background-color: var(--v4-signal-ink);
+  background-image:
+    linear-gradient(118deg, rgba(99, 216, 165, .08), transparent 36%),
+    linear-gradient(180deg, #071710 0%, #06130e 68%, #0a2d21 100%);
+}
+
+html[data-janet-design="poster-v4"] body:not(.home-experiment) {
+  background-color: var(--v4-paper);
+  background-image:
+    linear-gradient(128deg, rgba(255, 255, 255, .56), transparent 34%),
+    linear-gradient(180deg, var(--v4-paper-light), var(--v4-paper));
+}
+
+html[data-janet-design="poster-v4"] .nav {
+  min-height: var(--v4-nav-height);
+  border-bottom: 1px solid var(--v4-line-dark);
+  background: var(--v4-glass-light);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .58),
+    0 10px 34px rgba(48, 36, 18, .07);
+  backdrop-filter: blur(24px) saturate(132%);
+  -webkit-backdrop-filter: blur(24px) saturate(132%);
+}
+
+html[data-janet-design="poster-v4"] .nav-brand-logo {
+  min-height: 44px;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment:not(.is-past-globe) .nav,
+html[data-janet-design="poster-v4"] body.home-experiment.is-contact-field .nav {
+  border-bottom-color: var(--v4-line-light);
+  background: rgba(7, 23, 16, .72);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .08),
+    0 12px 42px rgba(0, 8, 5, .2);
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment:not(.is-past-globe) .nav-logo-lockup,
+html[data-janet-design="poster-v4"] body.home-experiment.is-contact-field .nav-logo-lockup {
+  filter: invert(1);
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment.is-past-globe:not(.is-contact-field) .nav-logo-lockup {
+  filter: none;
+}
+
+html[data-janet-design="poster-v4"] .btn,
+html[data-janet-design="poster-v4"] button,
+html[data-janet-design="poster-v4"] input,
+html[data-janet-design="poster-v4"] select,
+html[data-janet-design="poster-v4"] textarea {
+  border-radius: var(--v4-radius-control);
+}
+
+html[data-janet-design="poster-v4"] .btn {
+  transition:
+    transform 180ms cubic-bezier(.2, .72, .25, 1),
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-janet-design="poster-v4"] .btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+html[data-janet-design="poster-v4"] :focus-visible {
+  outline: 2px solid var(--v4-mint);
+  outline-offset: 4px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-janet-design="poster-v4"] .nav {
+    background: rgba(250, 245, 233, .96);
+  }
+
+  html[data-janet-design="poster-v4"] body.home-experiment:not(.is-past-globe) .nav,
+  html[data-janet-design="poster-v4"] body.home-experiment.is-contact-field .nav {
+    background: rgba(7, 23, 16, .96);
+  }
+}
+
+@media (max-width: 520px) {
+  html[data-janet-design="poster-v4"] {
+    --v4-nav-height: 58px;
+    --v4-control-gap: 10px;
+  }
+
+  html[data-janet-design="poster-v4"] .nav-logo-lockup {
+    width: 102px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-janet-design="poster-v4"] .btn {
+    transition: none;
+  }
+
+  html[data-janet-design="poster-v4"] body::after {
+    opacity: .08;
+  }
+}
+
+@media (prefers-contrast: more) {
+  html[data-janet-design="poster-v4"] {
+    --v4-line-dark: rgba(7, 37, 27, .48);
+    --v4-line-light: rgba(236, 247, 239, .5);
+    --v4-glass-dark: rgba(7, 23, 16, .94);
+    --v4-glass-light: rgba(250, 245, 233, .96);
+  }
+}

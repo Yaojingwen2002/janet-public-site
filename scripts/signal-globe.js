@@ -100,10 +100,14 @@ if (stage && canvas) {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  const ZOOM_MIN = .74;
-  const ZOOM_MAX = 1.5;
+  const GLOBE_RADIUS = 2.2;
   const DRAG_HORIZONTAL = .0058;
   const DRAG_VERTICAL = .00415;
+  const focusRaycaster = new THREE.Raycaster();
+  const focusSphere = new THREE.Sphere();
+  const focusCenter = new THREE.Vector3();
+  const focusHit = new THREE.Vector3();
+  const focusNdc = new THREE.Vector2();
   const state = {
     sources: [],
     markers: [],
@@ -116,7 +120,9 @@ if (stage && canvas) {
     activeSourceId: '',
     storyCards: new Map(),
     centerCoordinateLabel: '',
-    globeTargetNdc: { x: .36, y: -.13 },
+    globeAnchorNdc: { x: 1, y: -1 },
+    focusTargetNdc: { x: .72, y: -.64 },
+    viewportProfile: null,
     zoomCurrent: 1,
     zoomTarget: 1,
     zoomVelocity: 0,
@@ -124,6 +130,8 @@ if (stage && canvas) {
     pointer: { x: 0, y: 0 },
     velocity: { x: 0, y: 0 },
     lastFrame: performance.now(),
+    pageVisible: !document.hidden,
+    inViewport: true,
     ready: false
   };
 
@@ -133,6 +141,7 @@ if (stage && canvas) {
   let globeGroup;
   let markerGroup;
   let resizeObserver;
+  let visibilityObserver;
   let cameraBaseZ = 8.45;
   let zoomIdleTimer;
 
@@ -141,6 +150,7 @@ if (stage && canvas) {
       ui.fallback.textContent = message;
       ui.fallback.hidden = false;
     }
+    stage.classList.add('has-webgl-fallback');
     canvas.hidden = true;
   }
 
@@ -230,11 +240,24 @@ if (stage && canvas) {
     return `${Math.abs(latitude).toFixed(3)}° ${latHemisphere} / ${Math.abs(longitude).toFixed(3)}° ${lngHemisphere}`;
   }
 
+  function focusSurfacePoint() {
+    if (!camera || !globeGroup) return null;
+    camera.updateMatrixWorld(true);
+    globeGroup.updateMatrixWorld(true);
+    focusNdc.set(state.focusTargetNdc.x, state.focusTargetNdc.y);
+    focusRaycaster.setFromCamera(focusNdc, camera);
+    globeGroup.getWorldPosition(focusCenter);
+    focusSphere.center.copy(focusCenter);
+    focusSphere.radius = GLOBE_RADIUS;
+    return focusRaycaster.ray.intersectSphere(focusSphere, focusHit);
+  }
+
   function updateCenterCoordinates() {
     if (!globeGroup || !ui.centerCoordinates) return;
-    const inverseRotation = globeGroup.quaternion.clone().invert();
-    const centerDirection = new THREE.Vector3(0, 0, 1).applyQuaternion(inverseRotation);
-    const coordinates = vector3ToLatLng(centerDirection);
+    const worldPoint = focusSurfacePoint();
+    if (!worldPoint) return;
+    const localPoint = globeGroup.worldToLocal(worldPoint.clone());
+    const coordinates = vector3ToLatLng(localPoint);
     const label = formatCoordinates(coordinates.lat, coordinates.lng);
     if (label === state.centerCoordinateLabel) return;
     state.centerCoordinateLabel = label;
@@ -363,6 +386,68 @@ if (stage && canvas) {
         `
       })
     );
+  }
+
+  function createSignalDust(radius) {
+    const count = finePointer.matches ? 620 : 360;
+    const positions = new Float32Array(count * 3);
+    for (let index = 0; index < count; index += 1) {
+      const seedA = Math.sin((index + 1) * 12.9898) * 43758.5453;
+      const seedB = Math.sin((index + 1) * 78.233) * 12345.6789;
+      const u = seedA - Math.floor(seedA);
+      const v = seedB - Math.floor(seedB);
+      const latitude = THREE.MathUtils.radToDeg(Math.asin(2 * u - 1));
+      const longitude = v * 360 - 180;
+      const point = latLngToVector3(latitude, longitude, radius * (1.008 + (index % 5) * .0015));
+      positions[index * 3] = point.x;
+      positions[index * 3 + 1] = point.y;
+      positions[index * 3 + 2] = point.z;
+    }
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    return new THREE.Points(
+      geometry,
+      new THREE.PointsMaterial({
+        color: 0xccebdc,
+        size: finePointer.matches ? .012 : .016,
+        transparent: true,
+        opacity: .22,
+        depthWrite: false,
+        sizeAttenuation: true
+      })
+    );
+  }
+
+  function createSignalNetwork(radius) {
+    const group = new THREE.Group();
+    const sources = state.sources.filter((source) => source.enabled).slice(0, 18);
+    const material = new THREE.LineBasicMaterial({
+      color: 0x63d8a5,
+      transparent: true,
+      opacity: .11,
+      depthWrite: false
+    });
+    const connectionCount = Math.min(10, Math.max(0, sources.length - 1));
+
+    for (let index = 0; index < connectionCount; index += 1) {
+      const sourceA = sources[index];
+      const sourceB = sources[(index * 5 + 7) % sources.length];
+      if (!sourceA || !sourceB || sourceA.id === sourceB.id) continue;
+      const a = latLngToVector3(
+        Number.isFinite(sourceA.display_lat) ? sourceA.display_lat : sourceA.lat,
+        Number.isFinite(sourceA.display_lng) ? sourceA.display_lng : sourceA.lng,
+        radius * 1.015
+      );
+      const b = latLngToVector3(
+        Number.isFinite(sourceB.display_lat) ? sourceB.display_lat : sourceB.lat,
+        Number.isFinite(sourceB.display_lng) ? sourceB.display_lng : sourceB.lng,
+        radius * 1.015
+      );
+      const midpoint = a.clone().add(b).normalize().multiplyScalar(radius * 1.12);
+      const points = new THREE.QuadraticBezierCurve3(a, midpoint, b).getPoints(28);
+      group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material));
+    }
+    return group;
   }
 
   function createMarkerTexture(status) {
@@ -568,7 +653,7 @@ if (stage && canvas) {
   function buildScene(geojson) {
     renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setClearColor(0x0a100e, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, finePointer.matches ? 2 : 1.5));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.08;
@@ -586,7 +671,7 @@ if (stage && canvas) {
     edgeLight.position.set(3.8, -2.4, 3.2);
     scene.add(edgeLight);
 
-    const radius = 2.2;
+    const radius = GLOBE_RADIUS;
     globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
@@ -603,6 +688,8 @@ if (stage && canvas) {
     );
     globeGroup.add(globe);
     globeGroup.add(buildGlobeGrid(radius));
+    globeGroup.add(createSignalDust(radius));
+    globeGroup.add(createSignalNetwork(radius));
     globeGroup.add(createAtmosphere(radius));
 
     markerGroup = new THREE.Group();
@@ -671,8 +758,8 @@ if (stage && canvas) {
       if (!frontFacing) continue;
       const projected = world.clone().project(camera);
       const distance = Math.hypot(
-        projected.x - state.globeTargetNdc.x,
-        projected.y - state.globeTargetNdc.y
+        projected.x - state.focusTargetNdc.x,
+        projected.y - state.focusTargetNdc.y
       );
       if (distance < .27) candidates.push({ marker, distance });
     }
@@ -765,13 +852,15 @@ if (stage && canvas) {
     let bottomLimit = height - (mobile ? 88 : 72);
     if (statsBounds) bottomLimit = Math.min(bottomLimit, statsBounds.top - stageBounds.top - 8);
     if (compactViewport) {
-      if (toolbarBounds) topLimit = Math.max(topLimit, toolbarBounds.bottom - stageBounds.top + 8);
+      if (toolbarBounds && (mobile || !narrowTablet)) {
+        topLimit = Math.max(topLimit, toolbarBounds.bottom - stageBounds.top + 8);
+      }
       if (statsBounds) bottomLimit = Math.min(bottomLimit, statsBounds.top - stageBounds.top - (mobile ? 4 : 8));
     }
     const copySafeLeft = copyBounds ? copyBounds.right - stageBounds.left + 24 : 0;
     const safeLeft = narrowTablet ? 12 : Math.max(12, width * .43, copySafeLeft);
-    const centerX = (state.globeTargetNdc.x * .5 + .5) * width;
-    const centerY = (-state.globeTargetNdc.y * .5 + .5) * height;
+    const centerX = (state.focusTargetNdc.x * .5 + .5) * width;
+    const centerY = (-state.focusTargetNdc.y * .5 + .5) * height;
     const centerSafeX = mobile ? 74 : compactViewport ? 92 : 118;
     const lanes = { left: [], right: [] };
     let activeEntry = null;
@@ -807,7 +896,7 @@ if (stage && canvas) {
         entry.targetX = mobile
           ? (width - entry.width) * .5
           : THREE.MathUtils.clamp(centerX - entry.width * .5, activeMinX, width - entry.width - 12);
-        const activeY = mobile ? centerY + 72 : centerY - entry.height - 68;
+        const activeY = mobile ? centerY - entry.height - 58 : centerY - entry.height - 68;
         entry.targetY = THREE.MathUtils.clamp(activeY, topLimit, bottomLimit - entry.height);
         entry.side = 'active';
         entry.element.classList.remove('is-left');
@@ -925,24 +1014,80 @@ if (stage && canvas) {
     const lat = Number.isFinite(source.display_lat) ? source.display_lat : source.lat;
     const lng = Number.isFinite(source.display_lng) ? source.display_lng : source.lng;
     const localDirection = latLngToVector3(lat, lng, 1).normalize();
-    globeGroup.quaternion.setFromUnitVectors(localDirection, new THREE.Vector3(0, 0, 1));
+    const worldPoint = focusSurfacePoint();
+    const globeCenter = globeGroup.getWorldPosition(new THREE.Vector3());
+    const focusDirection = worldPoint
+      ? worldPoint.clone().sub(globeCenter).normalize()
+      : new THREE.Vector3(0, 0, 1);
+    globeGroup.quaternion.setFromUnitVectors(localDirection, focusDirection);
     globeGroup.updateMatrixWorld(true);
     return source;
+  }
+
+  const VIEWPORT_PROFILES = {
+    phone: { cameraDistance: 11.5, zoomMin: .78, zoomMax: 1.35, focus: { x: .72, y: -.64 } },
+    tabletPortrait: { cameraDistance: 9.2, zoomMin: .76, zoomMax: 1.42, focus: { x: .68, y: -.6 } },
+    tabletLandscape: { cameraDistance: 8, zoomMin: .76, zoomMax: 1.45, focus: { x: .68, y: -.6 } },
+    square: { cameraDistance: 7.6, zoomMin: .74, zoomMax: 1.48, focus: { x: .68, y: -.6 } },
+    desktop: { cameraDistance: 7.1, zoomMin: .74, zoomMax: 1.5, focus: { x: .72, y: -.64 } },
+    wide: { cameraDistance: 6.6, zoomMin: .74, zoomMax: 1.5, focus: { x: .72, y: -.64 } }
+  };
+
+  function viewportProfile(width, height) {
+    const aspect = width / Math.max(1, height);
+    if (width < 620) return { id: 'phone', ...VIEWPORT_PROFILES.phone };
+    if (width < 900 && aspect < 1) return { id: 'tablet-portrait', ...VIEWPORT_PROFILES.tabletPortrait };
+    if (width < 1200 && aspect >= 1.25) return { id: 'tablet-landscape', ...VIEWPORT_PROFILES.tabletLandscape };
+    if (aspect < 1.25) return { id: 'square', ...VIEWPORT_PROFILES.square };
+    if (aspect > 1.9) return { id: 'wide', ...VIEWPORT_PROFILES.wide };
+    return { id: 'desktop', ...VIEWPORT_PROFILES.desktop };
+  }
+
+  function estimateVisibleRatio(centerX, centerY, radius, width, height) {
+    let inside = 0;
+    let visible = 0;
+    const samples = 34;
+    for (let row = 0; row < samples; row += 1) {
+      const y = centerY - radius + (row + .5) * radius * 2 / samples;
+      for (let column = 0; column < samples; column += 1) {
+        const x = centerX - radius + (column + .5) * radius * 2 / samples;
+        if ((x - centerX) ** 2 + (y - centerY) ** 2 > radius ** 2) continue;
+        inside += 1;
+        if (x >= 0 && x <= width && y >= 0 && y <= height) visible += 1;
+      }
+    }
+    return inside ? visible / inside : 0;
+  }
+
+  function updateGlobeMetrics() {
+    if (!camera || !stage) return null;
+    const width = Math.max(1, stage.clientWidth);
+    const height = Math.max(1, stage.clientHeight);
+    const verticalHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov * .5)) * camera.position.z;
+    const radius = GLOBE_RADIUS / verticalHalf * height * .5;
+    const centerX = (state.globeAnchorNdc.x * .5 + .5) * width;
+    const centerY = (-state.globeAnchorNdc.y * .5 + .5) * height;
+    const visibleRatio = estimateVisibleRatio(centerX, centerY, radius, width, height);
+    stage.dataset.globeVisibleRatio = visibleRatio.toFixed(3);
+    stage.dataset.globeRadius = radius.toFixed(1);
+    stage.style.setProperty('--signal-globe-radius', `${radius.toFixed(2)}px`);
+    return { width, height, centerX, centerY, radius, visibleRatio };
   }
 
   function updateGlobePlacement() {
     if (!camera || !globeGroup) return;
     const verticalHalf = Math.tan(THREE.MathUtils.degToRad(camera.fov * .5)) * camera.position.z;
     const horizontalHalf = verticalHalf * camera.aspect;
-    globeGroup.position.x = state.globeTargetNdc.x * horizontalHalf;
-    globeGroup.position.y = state.globeTargetNdc.y * verticalHalf;
+    globeGroup.position.x = state.globeAnchorNdc.x * horizontalHalf;
+    globeGroup.position.y = state.globeAnchorNdc.y * verticalHalf;
     globeGroup.position.z = 0;
+    globeGroup.updateMatrixWorld(true);
 
-    const center = globeGroup.getWorldPosition(new THREE.Vector3()).project(camera);
-    const centerX = (center.x * .5 + .5) * stage.clientWidth;
-    const centerY = (-center.y * .5 + .5) * stage.clientHeight;
+    const centerX = (state.focusTargetNdc.x * .5 + .5) * stage.clientWidth;
+    const centerY = (-state.focusTargetNdc.y * .5 + .5) * stage.clientHeight;
     stage.style.setProperty('--signal-center-x', `${centerX.toFixed(2)}px`);
     stage.style.setProperty('--signal-center-y', `${centerY.toFixed(2)}px`);
+    updateGlobeMetrics();
   }
 
   function resize() {
@@ -956,19 +1101,25 @@ if (stage && canvas) {
       ui.connectorLayer.setAttribute('preserveAspectRatio', 'none');
     }
     camera.aspect = width / height;
-    if (width < 560) {
-      cameraBaseZ = 13.2;
-      state.globeTargetNdc.x = .08;
-      state.globeTargetNdc.y = -.24;
-    } else if (width < 860) {
-      cameraBaseZ = 10.6;
-      state.globeTargetNdc.x = .18;
-      state.globeTargetNdc.y = -.22;
-    } else {
-      cameraBaseZ = 8.9;
-      state.globeTargetNdc.x = camera.aspect < 1.35 ? .26 : camera.aspect < 1.7 ? .36 : .44;
-      state.globeTargetNdc.y = -.13;
-    }
+    state.viewportProfile = viewportProfile(width, height);
+    cameraBaseZ = state.viewportProfile.cameraDistance;
+    state.globeAnchorNdc.x = 1;
+    state.globeAnchorNdc.y = -1;
+    state.focusTargetNdc.x = state.viewportProfile.focus.x;
+    state.focusTargetNdc.y = state.viewportProfile.focus.y;
+    state.zoomTarget = THREE.MathUtils.clamp(
+      state.zoomTarget,
+      state.viewportProfile.zoomMin,
+      state.viewportProfile.zoomMax
+    );
+    state.zoomCurrent = THREE.MathUtils.clamp(
+      state.zoomCurrent,
+      state.viewportProfile.zoomMin,
+      state.viewportProfile.zoomMax
+    );
+    stage.dataset.globeProfile = state.viewportProfile.id;
+    stage.dataset.globeAnchor = '1.000,-1.000';
+    stage.dataset.globeFocus = `${state.focusTargetNdc.x.toFixed(3)},${state.focusTargetNdc.y.toFixed(3)}`;
     camera.position.z = cameraBaseZ / state.zoomCurrent;
     camera.updateProjectionMatrix();
     updateGlobePlacement();
@@ -1003,6 +1154,11 @@ if (stage && canvas) {
 
   function frame(time) {
     if (!state.ready) return;
+    if (!state.pageVisible || !state.inViewport) {
+      state.lastFrame = time;
+      window.requestAnimationFrame(frame);
+      return;
+    }
     const delta = Math.min(42, time - state.lastFrame || 16);
     state.lastFrame = time;
     const paused = state.manuallyPaused || (finePointer.matches && state.cardHover);
@@ -1074,10 +1230,12 @@ if (stage && canvas) {
         ? stage.clientHeight
         : 1;
     const delta = THREE.MathUtils.clamp(event.deltaY * modeScale, -180, 180);
+    const zoomMin = state.viewportProfile?.zoomMin ?? .74;
+    const zoomMax = state.viewportProfile?.zoomMax ?? 1.5;
     const nextTarget = THREE.MathUtils.clamp(
       state.zoomTarget * Math.exp(-delta * .0012),
-      ZOOM_MIN,
-      ZOOM_MAX
+      zoomMin,
+      zoomMax
     );
 
     if (Math.abs(nextTarget - state.zoomTarget) < .0001) return;
@@ -1095,6 +1253,11 @@ if (stage && canvas) {
     canvas.addEventListener('pointerup', onPointerUp);
     canvas.addEventListener('pointercancel', onPointerUp);
     stage.addEventListener('wheel', onWheel, { passive: false });
+    canvas.addEventListener('webglcontextlost', (event) => {
+      event.preventDefault();
+      state.ready = false;
+      setFallback('地球图形暂时停用，今日信号与晨报入口仍可正常使用。');
+    });
 
     ui.motion?.addEventListener('click', () => {
       state.manuallyPaused = !state.manuallyPaused;
@@ -1114,6 +1277,15 @@ if (stage && canvas) {
 
     resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(stage);
+    document.addEventListener('visibilitychange', () => {
+      state.pageVisible = !document.hidden;
+      state.lastFrame = performance.now();
+    });
+    visibilityObserver = new IntersectionObserver((entries) => {
+      state.inViewport = entries.some((entry) => entry.isIntersecting);
+      state.lastFrame = performance.now();
+    }, { threshold: .01 });
+    visibilityObserver.observe(stage);
   }
 
   async function init() {
@@ -1124,14 +1296,29 @@ if (stage && canvas) {
       state.latestEdition = data.editionId;
       buildScene(data.land);
       buildStoryCards();
+      resize();
       const initialSource = focusInitialNewsSource();
       updateStats();
       updateMotionButton();
       stage.dataset.zoom = state.zoomLabel;
       bindEvents();
-      resize();
       state.ready = true;
       setActiveSource(initialSource?.id || '');
+      window.JanetSignalGlobeDebug = {
+        getGeometry: () => ({
+          profile: state.viewportProfile?.id || '',
+          anchor: { ...state.globeAnchorNdc },
+          focus: { ...state.focusTargetNdc },
+          zoom: state.zoomCurrent,
+          ...updateGlobeMetrics()
+        }),
+        getState: () => ({
+          ready: state.ready,
+          dragging: state.dragging,
+          manuallyPaused: state.manuallyPaused,
+          activeSourceId: state.activeSourceId
+        })
+      };
       state.lastFrame = performance.now();
       window.requestAnimationFrame(frame);
     } catch (error) {

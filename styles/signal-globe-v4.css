@@ -1,0 +1,246 @@
+/* Poster Material V4 homepage proof.
+   The WebGL center is fixed to the lower-right viewport corner. Rotation only
+   changes the globe quaternion; zoom preserves that projected anchor. */
+
+html[data-janet-design="poster-v4"] body.home-experiment .signal-hero {
+  height: min(860px, calc(100svh - var(--v4-nav-height, 64px) - 22px));
+  min-height: 680px;
+  background:
+    radial-gradient(circle at 88% 92%, rgba(54, 129, 93, .18), transparent 34%),
+    linear-gradient(118deg, rgba(99, 216, 165, .055), transparent 36%),
+    var(--v4-signal-ink, #06130e);
+  isolation: isolate;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .signal-hero::before {
+  opacity: .34;
+  background-image:
+    linear-gradient(rgba(99, 216, 165, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 216, 165, .045) 1px, transparent 1px);
+  background-size: 112px 112px;
+  -webkit-mask-image: linear-gradient(110deg, transparent 0%, #000 44%, #000 100%);
+  mask-image: linear-gradient(110deg, transparent 0%, #000 44%, #000 100%);
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .signal-hero::after {
+  height: 190px;
+  background:
+    linear-gradient(to bottom, transparent 0%, rgba(6, 19, 14, .32) 32%, rgba(10, 45, 33, .92) 78%, var(--v4-paper, #f3e9d5) 100%);
+}
+
+html[data-janet-design="poster-v4"] #signal-globe-canvas {
+  filter: saturate(.92) contrast(1.07) brightness(1.035);
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+html[data-janet-design="poster-v4"] .signal-hero-copy::before {
+  inset: -120px -180px -130px -140px;
+  background:
+    radial-gradient(ellipse at 34% 48%, rgba(6, 19, 14, 1) 0%, rgba(6, 19, 14, .94) 42%, rgba(6, 19, 14, .5) 65%, transparent 84%);
+}
+
+html[data-janet-design="poster-v4"] .signal-hero h1 {
+  color: var(--v4-text-light, #f6f1e5);
+  text-wrap: balance;
+}
+
+html[data-janet-design="poster-v4"] .signal-hero h1 em {
+  color: var(--v4-mint, #63d8a5);
+}
+
+html[data-janet-design="poster-v4"] .signal-field-status,
+html[data-janet-design="poster-v4"] .signal-motion-toggle {
+  border: 1px solid rgba(255, 245, 220, .17);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 244, 218, .07), transparent 42%),
+    rgba(7, 27, 19, .82);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .07),
+    0 18px 42px rgba(0, 10, 7, .2);
+  backdrop-filter: blur(22px) saturate(125%);
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+}
+
+html[data-janet-design="poster-v4"] .signal-center-target,
+html[data-janet-design="poster-v4"] .signal-globe-stage:not([data-active-source=""]) .signal-center-target {
+  border-radius: 0;
+  filter: drop-shadow(0 0 12px rgba(99, 216, 165, .22));
+}
+
+html[data-janet-design="poster-v4"] .signal-source-readout {
+  border-top-color: rgba(255, 245, 220, .18);
+  background:
+    linear-gradient(90deg, transparent, rgba(7, 27, 19, .92) 18%, rgba(7, 27, 19, .94) 82%, transparent);
+}
+
+html[data-janet-design="poster-v4"] .signal-story-card {
+  border-color: rgba(255, 112, 93, .34);
+  border-radius: 8px;
+  background:
+    linear-gradient(138deg, rgba(255, 112, 93, .1), transparent 36%),
+    rgba(6, 28, 20, .79);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .055),
+    0 20px 48px rgba(0, 10, 7, .24);
+  backdrop-filter: blur(20px) saturate(124%);
+  -webkit-backdrop-filter: blur(20px) saturate(124%);
+}
+
+html[data-janet-design="poster-v4"] .signal-story-card.is-active,
+html[data-janet-design="poster-v4"] .signal-story-card.is-hovered {
+  border-color: rgba(99, 216, 165, .68);
+  background:
+    linear-gradient(138deg, rgba(99, 216, 165, .11), transparent 38%),
+    rgba(6, 31, 22, .9);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .075),
+    0 24px 58px rgba(0, 12, 8, .31);
+}
+
+html[data-janet-design="poster-v4"] .signal-story-logo {
+  opacity: .1;
+  mix-blend-mode: screen;
+}
+
+html[data-janet-design="poster-v4"] .signal-story-leader {
+  stroke: rgba(255, 112, 93, .52);
+}
+
+html[data-janet-design="poster-v4"] .signal-story-leader.is-active,
+html[data-janet-design="poster-v4"] .signal-story-leader.is-hovered {
+  stroke: rgba(99, 216, 165, .86);
+}
+
+html[data-janet-design="poster-v4"] .signal-hero-stats {
+  border-color: rgba(255, 245, 220, .16);
+  background: rgba(5, 22, 16, .46);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+html[data-janet-design="poster-v4"] .signal-globe-stage.has-webgl-fallback::before {
+  display: block;
+  position: absolute;
+  right: calc(var(--signal-globe-radius, 320px) * -.05);
+  bottom: calc(var(--signal-globe-radius, 320px) * -.08);
+  width: calc(var(--signal-globe-radius, 320px) * 1.08);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 30%, rgba(99, 216, 165, .2), transparent 23%),
+    radial-gradient(circle at 62% 58%, #2b5a48 0 4%, transparent 5%),
+    radial-gradient(circle at 50% 50%, #173d30, #071710 72%);
+  box-shadow:
+    inset 20px 8px 48px rgba(178, 232, 205, .08),
+    0 0 50px rgba(99, 216, 165, .1);
+  opacity: .72;
+}
+
+html[data-janet-design="poster-v4"] .signal-globe-stage.has-webgl-fallback .signal-globe-fallback {
+  right: var(--container-pad, 24px);
+  bottom: 110px;
+  left: auto;
+  z-index: 20;
+  width: min(320px, calc(100% - 40px));
+  border: 1px solid rgba(255, 245, 220, .16);
+  border-radius: 8px;
+  background: rgba(7, 27, 19, .9);
+  color: var(--v4-text-light, #f6f1e5);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+@media (max-width: 860px) {
+  html[data-janet-design="poster-v4"] body.home-experiment .signal-hero {
+    height: calc(100svh - var(--v4-nav-height, 58px) - 16px);
+    min-height: 650px;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero-copy {
+    padding-top: 76px;
+  }
+}
+
+@media (max-width: 620px) {
+  html[data-janet-design="poster-v4"] body.home-experiment .signal-hero {
+    min-height: 580px;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero-copy {
+    padding-top: 80px;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero-copy::before {
+    inset: -74px -44px -76px;
+    background:
+      radial-gradient(ellipse at 28% 34%, rgba(6, 19, 14, 1) 0%, rgba(6, 19, 14, .95) 42%, rgba(6, 19, 14, .46) 70%, transparent 91%);
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero h1 {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-globe-toolbar {
+    top: 53%;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-source-readout {
+    top: calc(var(--signal-center-y, 82%) - 102px);
+  }
+
+  html[data-janet-design="poster-v4"] .signal-story-card.is-active {
+    width: min(296px, calc(100vw - 40px));
+    height: 82px;
+    padding: 10px 12px;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-story-card.is-active .signal-story-title {
+    font-size: 14px;
+    line-height: 1.22;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero-stats {
+    width: 100%;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 620px) {
+  html[data-janet-design="poster-v4"] .signal-hero-copy {
+    padding-top: 56px;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero .hero-eyebrow {
+    margin-bottom: 14px;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero h1 {
+    margin-bottom: 16px;
+    font-size: 43px;
+  }
+
+  html[data-janet-design="poster-v4"] .signal-hero .hero-sub,
+  html[data-janet-design="poster-v4"] .signal-hero .hero-sub-wide {
+    margin-bottom: 18px;
+    line-height: 1.62;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-janet-design="poster-v4"] .signal-story-card {
+    transition-duration: 1ms;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html[data-janet-design="poster-v4"] .signal-field-status,
+  html[data-janet-design="poster-v4"] .signal-motion-toggle,
+  html[data-janet-design="poster-v4"] .signal-story-card,
+  html[data-janet-design="poster-v4"] .signal-hero-stats {
+    background: rgba(6, 25, 18, .97);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

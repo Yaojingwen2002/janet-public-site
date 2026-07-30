@@ -29,22 +29,39 @@ html[data-janet-design="poster-v4"] .potato-center {
     drop-shadow(0 1px 1px rgba(255, 250, 228, .38));
 }
 
+html[data-janet-design="poster-v4"] body.home-experiment .potato-center,
+html[data-janet-design="poster-v4"] body.home-experiment.is-past-globe:not(.is-contact-field) .potato-center,
+html[data-janet-design="poster-v4"] body.home-experiment.is-contact-field .potato-center {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .potato-menu-trigger,
+html[data-janet-design="poster-v4"] body.home-experiment.is-past-globe:not(.is-contact-field) .potato-menu-trigger,
+html[data-janet-design="poster-v4"] body.home-experiment.is-contact-field .potato-menu-trigger {
+  border-left: 0;
+}
+
 html[data-janet-design="poster-v4"] .potato-center::before {
   content: "";
   position: absolute;
-  top: 8%;
-  bottom: 8%;
+  top: 2px;
+  bottom: 2px;
   left: 50%;
   z-index: 4;
-  width: 2px;
-  border-radius: 48% 62% 44% 58%;
-  background: rgba(77, 118, 55, .16);
-  box-shadow: 0 0 0 rgba(99, 216, 165, 0);
-  transform: translateX(-50%) rotate(1.2deg);
+  width: 10px;
+  background: rgba(57, 94, 43, .24);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 40'%3E%3Cpath d='M5.7 1C3.1 8.2 3.4 14.1 5 19.4C6.4 24.4 6.8 30.5 4.5 39' fill='none' stroke='black' stroke-width='1.55' stroke-linecap='round'/%3E%3C/svg%3E") center / 10px 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 40'%3E%3Cpath d='M5.7 1C3.1 8.2 3.4 14.1 5 19.4C6.4 24.4 6.8 30.5 4.5 39' fill='none' stroke='black' stroke-width='1.55' stroke-linecap='round'/%3E%3C/svg%3E") center / 10px 100% no-repeat;
+  filter: none;
+  transform: translateX(-50%);
   pointer-events: none;
   transition:
     background-color 180ms ease,
-    box-shadow 180ms ease,
+    filter 180ms ease,
     opacity 180ms ease;
 }
 
@@ -90,21 +107,39 @@ html[data-janet-design="poster-v4"] .potato-half::before {
   z-index: -1;
   width: var(--potato-half-width);
   height: var(--potato-height);
-  background-image: url("../assets/ui/potato-center/potato-body-v4.webp");
+  background-color: transparent;
+  background-image: url("../assets/ui/potato-center/potato-body-v4-1x.webp");
+  background-image: image-set(
+    url("../assets/ui/potato-center/potato-body-v4-1x.webp") 1x,
+    url("../assets/ui/potato-center/potato-body-v4-2x.webp") 2x
+  );
   background-repeat: no-repeat;
-  background-size: calc(var(--potato-width) + 2px) var(--potato-height);
+  background-size: var(--potato-width) var(--potato-height);
+  box-shadow: none;
   filter: saturate(.78) sepia(.08) contrast(.96);
   pointer-events: none;
 }
 
 html[data-janet-design="poster-v4"] .potato-user-trigger::before {
-  left: 0;
+  right: 0;
+  border-radius: 0;
   background-position: left center;
 }
 
 html[data-janet-design="poster-v4"] .potato-menu-trigger::before {
-  right: 0;
+  left: 0;
+  border-radius: 0;
   background-position: right center;
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="account"] .potato-user-trigger::before,
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-user-trigger::before {
+  clip-path: polygon(0 0, 96% 0, 91% 18%, 97% 43%, 92% 67%, 96% 100%, 0 100%);
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="account"] .potato-menu-trigger::before,
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-menu-trigger::before {
+  clip-path: polygon(4% 0, 100% 0, 100% 100%, 4% 100%, 9% 67%, 3% 43%, 9% 18%);
 }
 
 html[data-janet-design="poster-v4"] .potato-user-trigger,
@@ -130,8 +165,11 @@ html[data-janet-design="poster-v4"] .potato-menu-icon {
     filter 180ms ease;
 }
 
-html[data-janet-design="poster-v4"] .potato-user-label::before,
-html[data-janet-design="poster-v4"] .potato-menu-icon::before {
+html[data-janet-design="poster-v4"] .potato-menu-icon {
+  background: none !important;
+}
+
+html[data-janet-design="poster-v4"] .potato-user-label::before {
   content: "";
   width: 18px;
   height: 18px;
@@ -144,15 +182,49 @@ html[data-janet-design="poster-v4"] .potato-menu-icon::before {
   -webkit-mask-size: contain;
 }
 
-/* Lucide user-round and menu silhouettes. */
+/* Lucide user-round silhouette. */
 html[data-janet-design="poster-v4"] .potato-user-label::before {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='8' r='5' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='8' r='5' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
+html[data-janet-design="poster-v4"] .potato-menu-icon::before,
+html[data-janet-design="poster-v4"] .potato-menu-icon::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: center;
+  transition:
+    top 220ms cubic-bezier(.2, .75, .22, 1),
+    transform 220ms cubic-bezier(.2, .75, .22, 1),
+    opacity 140ms ease,
+    box-shadow 140ms ease;
+}
+
 html[data-janet-design="poster-v4"] .potato-menu-icon::before {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 7h16M4 12h16M4 17h16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  box-shadow: 0 5px 0 currentColor, 0 10px 0 currentColor !important;
+}
+
+html[data-janet-design="poster-v4"] .potato-menu-icon::after {
+  top: 9px;
+  opacity: 0;
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-menu-icon::before {
+  top: 8px;
+  box-shadow: none !important;
+  transform: rotate(45deg);
+}
+
+html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"] .potato-menu-icon::after {
+  top: 8px;
+  opacity: 1;
+  transform: rotate(-45deg);
 }
 
 html[data-janet-design="poster-v4"] .potato-user-label[data-loading="true"] {
@@ -164,9 +236,9 @@ html[data-janet-design="poster-v4"] .potato-center[data-panel="navigation"]::bef
 html[data-janet-design="poster-v4"] .potato-center:has(.potato-half:hover)::before,
 html[data-janet-design="poster-v4"] .potato-center:has(.potato-half:focus-visible)::before {
   background: rgba(99, 216, 165, .72);
-  box-shadow:
-    0 0 6px rgba(99, 216, 165, .58),
-    0 0 14px rgba(99, 216, 165, .24);
+  filter:
+    drop-shadow(0 0 3px rgba(99, 216, 165, .68))
+    drop-shadow(0 0 7px rgba(99, 216, 165, .28));
 }
 
 html[data-janet-design="poster-v4"] .potato-center[data-panel="account"] .potato-user-trigger {
@@ -447,5 +519,23 @@ html[data-janet-design="poster-v4"] .potato-center .potato-status {
     background: rgba(7, 23, 16, .98);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+}
+
+@media (forced-colors: active) {
+  html[data-janet-design="poster-v4"] .potato-half::before,
+  html[data-janet-design="poster-v4"] .potato-dropdown,
+  html[data-janet-design="poster-v4"] .potato-center > .mobile-nav-menu {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+    filter: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  html[data-janet-design="poster-v4"] .potato-center::before {
+    background: Highlight;
   }
 }

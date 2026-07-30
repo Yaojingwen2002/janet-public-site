@@ -23,9 +23,73 @@ html[data-janet-design="poster-v4"] body.home-experiment .signal-hero::before {
 }
 
 html[data-janet-design="poster-v4"] body.home-experiment .signal-hero::after {
-  height: 190px;
+  height: 176px;
   background:
-    linear-gradient(to bottom, transparent 0%, rgba(6, 19, 14, .32) 32%, rgba(10, 45, 33, .92) 78%, var(--v4-paper, #f3e9d5) 100%);
+    linear-gradient(to bottom, transparent 0%, rgba(6, 19, 14, .28) 34%, rgba(10, 45, 33, .92) 78%, #0a2d21 100%);
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment #news {
+  margin-top: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      #0a2d21 0,
+      #153e2f 26px,
+      rgba(243, 233, 213, .4) 92px,
+      var(--v4-paper, #f3e9d5) 172px
+    );
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .ticker-wrap {
+  position: relative;
+  min-height: 50px;
+  overflow: hidden;
+  border-block: 1px solid rgba(99, 216, 165, .2);
+  background:
+    linear-gradient(90deg, rgba(255, 112, 93, .06), transparent 28%, transparent 72%, rgba(99, 216, 165, .07)),
+    #0b3023;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 1.25%, #000 98.75%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 1.25%, #000 98.75%, transparent);
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .ticker-track {
+  width: max-content;
+  min-width: 200vw;
+  padding: 0;
+  animation: janet-ticker-v4 46s linear infinite;
+  will-change: transform;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .ticker-set {
+  box-sizing: border-box;
+  flex: none;
+  justify-content: space-around;
+  min-width: 100vw;
+  gap: clamp(28px, 4vw, 68px);
+  padding: 15px clamp(28px, 4vw, 68px);
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .ticker-item {
+  gap: 9px;
+  color: #e3eee7;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment .ticker-item .dot {
+  color: var(--v4-coral, #ff705d);
+}
+
+@keyframes janet-ticker-v4 {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 html[data-janet-design="poster-v4"] #signal-globe-canvas {
@@ -61,6 +125,39 @@ html[data-janet-design="poster-v4"] .signal-motion-toggle {
     0 18px 42px rgba(0, 10, 7, .2);
   backdrop-filter: blur(22px) saturate(125%);
   -webkit-backdrop-filter: blur(22px) saturate(125%);
+}
+
+html[data-janet-design="poster-v4"] .signal-motion-toggle {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment #news .codex-carousel-progress-row {
+  align-items: center;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment #news .codex-carousel-progress {
+  position: relative;
+  height: 44px;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment #news .codex-carousel-progress::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 3px;
+  background: rgba(24, 69, 49, .14);
+  transform: translateY(-50%);
+}
+
+html[data-janet-design="poster-v4"] body.home-experiment #news .codex-carousel-progress span {
+  inset: 50% auto auto 0;
+  height: 3px;
+  transform: translateY(-50%);
 }
 
 html[data-janet-design="poster-v4"] .signal-center-target,

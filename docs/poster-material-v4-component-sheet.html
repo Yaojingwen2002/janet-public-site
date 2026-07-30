@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN" data-janet-design="poster-v4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Janet V4 Material Component Sheet</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/brand-system.css">
+  <link rel="stylesheet" href="../styles/material-system-v4.css">
+  <style>
+    body { min-height: 100vh; padding: 48px; }
+    main { width: min(1120px, 100%); margin: 0 auto; }
+    header { margin-bottom: 48px; }
+    h1 { font-size: var(--v4-type-page); }
+    h2 { margin: 36px 0 16px; font-size: var(--v4-type-section); }
+    .sheet-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .sheet-panel { min-height: 210px; padding: 24px; border: 1px solid var(--v4-line-dark); }
+    .sheet-panel.signal { color: var(--v4-text-light); background: var(--v4-signal-ink) url("../assets/ui/material-v4/signal-grain.png"); background-blend-mode: soft-light; }
+    .sheet-panel.editorial { color: var(--v4-text-light); background: linear-gradient(135deg, rgba(255,255,255,.08), transparent), var(--v4-editorial-ink); }
+    .sheet-panel.archive { background: var(--v4-paper-light) url("../assets/ui/material-v4/paper-grain.png"); background-blend-mode: soft-light; }
+    .glass { margin-top: 18px; padding: 16px; border: 1px solid rgba(255,255,255,.18); background: var(--v4-glass-dark); color: var(--v4-text-light); backdrop-filter: blur(18px); }
+    .sheet-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    @media (max-width: 760px) {
+      body { padding: 24px; }
+      .sheet-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p>JANET / POSTER MATERIAL V4</p>
+      <h1>材质、字体与控制组件样板</h1>
+      <p>此页只用于本地视觉验收，不进入 GitHub Pages 发布产物。</p>
+    </header>
+
+    <section>
+      <h2>三种场景</h2>
+      <div class="sheet-grid">
+        <article class="sheet-panel signal">
+          <strong>Signal Field</strong>
+          <p>暗绿信号场、颗粒、薄荷绿与珊瑚定位。</p>
+        </article>
+        <article class="sheet-panel editorial">
+          <strong>Editorial Desk</strong>
+          <p>深绿编辑台、暖调光线和短控制层。</p>
+          <div class="glass">Regular glass / 导航与临时控制</div>
+        </article>
+        <article class="sheet-panel archive">
+          <strong>Archive Light Table</strong>
+          <p>奶白纸面、纤维纹理、柔和投影与内容留白。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>操作状态</h2>
+      <div class="sheet-actions">
+        <button class="btn btn-green" type="button">主要操作</button>
+        <button class="btn btn-outline" type="button">次要操作</button>
+        <button class="btn btn-outline" type="button" disabled>不可用</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

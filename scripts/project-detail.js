@@ -34,7 +34,6 @@
         project.works.forEach(work => ids.add(typeof work === 'string' ? work : work.id));
       }
     }
-    ids.add(workId);
     if (!ids.has(workId)) return null;
     return loadJson('data/works/works/' + encodeURIComponent(workId) + '.json');
   }
@@ -276,43 +275,14 @@
     document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
-  function titleToSlug(title) {
-    return String(title || '').toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/g, '-').replace(/^-+|-+$/g, '').substring(0, 32);
-  }
-
-  function resolveId(item, index) {
-    if (item.id && typeof item.id === 'string' && item.id.trim() !== '') return item.id;
-    if (item.title) return titleToSlug(item.title);
-    return 'item-' + index;
-  }
-
-  function initLegacyFallback() {
-    const id = getQueryParam('id');
-    if (!id) { showError(); return; }
-    loadJson('data/portfolio.json')
-      .then(data => {
-        const item = Array.isArray(data) ? data.find((entry, index) => resolveId(entry, index) === decodeURIComponent(id)) : null;
-        if (!item) { showError(); return; }
-        renderWorkDetail({
-          id,
-          project_id: 'legacy-portfolio',
-          title: item.title || '未命名项目',
-          summary: item.summary || item.subtitle || '',
-          status: '旧作品档案',
-          tags: item.tags || [],
-          stats: { document_count: 0, prompt_count: item.promptStructure ? 1 : 0, subtitle_count: 0, image_count: item.thumbnail || item.videoThumb ? 1 : 0, video_count: item.videoUrl ? 1 : 0 },
-          document_groups: item.promptStructure ? { prompts: [{ title: 'Prompt Structure', file_name: 'legacy-prompt', path_label: 'data/portfolio.json', extension: '.json' }] } : {}
-        });
-      })
-      .catch(() => showError());
-  }
-
   async function initWorkProcessDetailViewer() {
     if (!document.getElementById('work-detail-root')) return;
     showLoading();
-    const workId = getQueryParam('work');
+    // `id` was used by an older public URL shape. Resolve it against the
+    // current manifest so existing bookmarks do not request retired data.
+    const workId = getQueryParam('work') || getQueryParam('id');
     if (!workId) {
-      initLegacyFallback();
+      showError();
       return;
     }
     try {

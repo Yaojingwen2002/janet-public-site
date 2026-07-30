@@ -65,7 +65,7 @@ document.querySelectorAll(".research-card").forEach((card) => {
 const closeLightbox = () => {
   if (!lightbox || !lightboxImage) return;
   lightbox.hidden = true;
-  lightboxImage.src = "";
+  lightboxImage.removeAttribute("src");
 };
 
 lightboxClose?.addEventListener("click", closeLightbox);

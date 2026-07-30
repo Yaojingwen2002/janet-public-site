@@ -136,13 +136,41 @@ const v4Pages = [
   'auth/reset-password.html'
 ];
 
+const materialScenes = {
+  'index.html': 'signal',
+  'news.html': 'editorial',
+  'portfolio.html': 'archive',
+  'project-detail.html': 'archive',
+  'gpt-image2-handbook.html': 'archive',
+  'mirror-plan.html': 'archive',
+  'shuttle-universe.html': 'media',
+  'misaligned-scenes.html': 'media',
+  '404.html': 'system',
+  'auth/reset-password.html': 'system'
+};
+
 for (const page of v4Pages) {
   const html = await read(page);
   assert(html.includes('data-janet-design="poster-v4"'), `${page} opts into poster V4`);
   assert(html.includes('material-system-v4.css'), `${page} loads material system V4`);
   assert(html.includes('potato-center-v4.css'), `${page} loads potato center V4`);
   assert(html.includes('potato-center.js'), `${page} loads potato center controller`);
+  assert(
+    html.includes(`data-material-scene="${materialScenes[page]}"`),
+    `${page} declares its material scene`
+  );
+  assert(html.includes('media-fallback-v4.js'), `${page} loads shared media fallback`);
 }
+
+const briefingTemplate = await read('codex-briefing-system/templates/template.html');
+assert(
+  briefingTemplate.includes('data-material-scene="editorial"'),
+  'briefing template declares editorial material scene'
+);
+assert(
+  briefingTemplate.includes('media-fallback-v4.js'),
+  'briefing template loads shared media fallback'
+);
 
 const marvel = await read('marvel-ten.html');
 assert(!marvel.includes('data-janet-design="poster-v4"'), 'Marvel page keeps its independent visual identity');
@@ -170,10 +198,116 @@ assert(
 
 const potatoScript = await read('scripts/potato-center.js');
 assert(!potatoScript.includes('GitHub 登录'), 'V4 potato center has no GitHub login UI');
+assert(
+  potatoScript.includes('name="remember"') && potatoScript.includes('remember: Boolean(data.remember)'),
+  'potato center exposes a functional remember-me control'
+);
 
-const potatoAsset = 'assets/ui/potato-center/potato-body-v4.webp';
-const potatoBytes = (await stat(path.join(root, potatoAsset))).size;
-assert(potatoBytes <= 120 * 1024, `potato asset stays under 120KB (${potatoBytes} bytes)`);
+const supabaseScript = await read('scripts/supabase-config.js');
+const authScript = await read('scripts/auth.js');
+assert(
+  supabaseScript.includes("const AUTH_PERSISTENCE_KEY = 'janet_auth_persistence'"),
+  'auth persistence uses one declared mode key'
+);
+assert(
+  supabaseScript.includes("mode === 'session' ? 'session' : 'local'"),
+  'auth persistence supports session and local modes'
+);
+assert(
+  supabaseScript.includes('storageRemove(fallback, key)'),
+  'auth tokens are removed from the non-selected storage'
+);
+assert(
+  !/(?:localStorage|sessionStorage)\.setItem\([^)]*password/i.test(supabaseScript + authScript + potatoScript),
+  'passwords are never written to Web Storage'
+);
+
+const resetPage = await read('auth/reset-password.html');
+assert(resetPage.includes("event === 'PASSWORD_RECOVERY'"), 'reset page handles Supabase recovery events');
+assert(resetPage.includes('history.replaceState'), 'reset page removes recovery tokens from the URL');
+assert(resetPage.includes('重置链接已失效'), 'reset page has an explicit expired-link state');
+
+const potatoAssets = [
+  'assets/ui/potato-center/potato-body-v4.webp',
+  'assets/ui/potato-center/potato-body-v4-1x.webp',
+  'assets/ui/potato-center/potato-body-v4-2x.webp'
+];
+let potatoBytes = 0;
+for (const asset of potatoAssets) {
+  assert(await exists(asset), `potato asset exists: ${asset}`);
+  if (await exists(asset)) potatoBytes += (await stat(path.join(root, asset))).size;
+}
+assert(potatoBytes <= 120 * 1024, `potato asset family stays under 120KB (${potatoBytes} bytes)`);
+
+const materialAssets = [
+  'assets/ui/material-v4/paper-grain.png',
+  'assets/ui/material-v4/signal-grain.png',
+  'assets/ui/material-v4/glass-grain.png'
+];
+let materialBytes = 0;
+for (const asset of materialAssets) {
+  assert(await exists(asset), `material texture exists: ${asset}`);
+  if (await exists(asset)) materialBytes += (await stat(path.join(root, asset))).size;
+}
+assert(materialBytes <= 400 * 1024, `material textures stay under 400KB (${materialBytes} bytes)`);
+
+assert(await exists('docs/POSTER_MATERIAL_V4_FONT_AUDIT.md'), 'font audit is documented');
+assert(await exists('docs/poster-material-v4-component-sheet.html'), 'component sheet exists');
+
+const materialCss = await read('styles/material-system-v4.css');
+const potatoCss = await read('styles/potato-center-v4.css');
+const globeCss = [
+  await read('styles/signal-globe.css'),
+  await read('styles/signal-globe-wave4.css'),
+  await read('styles/signal-globe-wave5.css')
+].join('\n');
+assert(!/letter-spacing\s*:\s*-\S+/i.test(materialCss), 'material system has no negative letter spacing');
+assert(!/font-size\s*:[^;{}]*vw/i.test(materialCss), 'material system has no viewport-scaled font size');
+assert(potatoCss.includes('image-set('), 'potato center serves 1x and 2x responsive assets');
+
+const indexHtml = await read('index.html');
+for (const stylesheet of ['signal-globe.css', 'signal-globe-wave4.css', 'signal-globe-wave5.css']) {
+  assert(indexHtml.includes(stylesheet), `homepage loads split globe stylesheet: ${stylesheet}`);
+}
+
+const globeScript = await read('scripts/signal-globe.js');
+const globeV4Css = await read('styles/signal-globe-v4.css');
+const threeMinPath = 'assets/vendor/three.module.min.js';
+assert(await exists(threeMinPath), 'homepage bundles the minified Three.js module');
+if (await exists(threeMinPath)) {
+  const threeMinBytes = (await stat(path.join(root, threeMinPath))).size;
+  assert(threeMinBytes <= 700 * 1024, `minified Three.js stays under 700KB (${threeMinBytes} bytes)`);
+}
+assert(globeScript.includes("three.module.min.js"), 'globe imports the minified Three.js module');
+assert(globeScript.includes('activePointers: new Map()'), 'globe tracks independent touch pointers');
+assert(globeScript.includes('state.pinching = true'), 'globe supports two-finger pinch zoom');
+assert(globeScript.includes("stage.dataset.globeConstraint = 'rebounding'"), 'globe has visible-area rebound');
+assert(globeScript.includes('data-signal-connectors'), 'globe binds the source-to-card connector layer');
+assert(globeScript.includes('visibleMin: .22') && globeScript.includes('visibleMax: .3'), 'globe enforces the quarter-visible target');
+assert(
+  /signal-motion-toggle\s*\{[\s\S]*?width:\s*44px;[\s\S]*?height:\s*44px;/m.test(globeV4Css),
+  'globe motion control keeps a 44px target'
+);
+assert(
+  /codex-carousel-progress\s*\{[\s\S]*?height:\s*44px;/m.test(globeV4Css),
+  'news carousel controls keep a 44px target'
+);
+assert(globeCss.includes('.signal-story-logo'), 'globe cards include a source-logo layer');
+assert(!/cdn\.simpleicons\.org/i.test(globeScript + globeCss + indexHtml), 'globe does not depend on remote source-logo CDNs');
+
+const sourceLogoBlock = globeScript.match(/const SOURCE_LOGOS = \{([\s\S]*?)\n  \};/)?.[1] || '';
+const sourceLogoSlugs = [...new Set(
+  [...sourceLogoBlock.matchAll(/:\s*'([a-z0-9-]+)'/gi)].map((match) => match[1])
+)];
+assert(sourceLogoSlugs.length >= 12, 'globe declares a meaningful local source-logo set');
+for (const slug of sourceLogoSlugs) {
+  assert(await exists(`assets/icons/sources/${slug}.svg`), `local source logo exists: ${slug}`);
+}
+
+const worksManifest = await read('data/works/works-manifest.json');
+const mirrorWork = await read('data/works/works/jingchang-plan-s0-lab.json');
+assert(!worksManifest.includes('01–03'), 'works manifest has no stale three-experiment copy');
+assert(!mirrorWork.includes('"document_count": 3'), 'mirror work exposes all four research records');
 
 const publicFiles = [
   'index.html',
@@ -189,9 +323,12 @@ const publicFiles = [
   'scripts/signal-globe.js',
   'scripts/site-audio.js',
   'scripts/mirror-research.js',
+  'scripts/media-fallback-v4.js',
   'styles/material-system-v4.css',
   'styles/potato-center-v4.css',
-  'styles/signal-globe-v4.css',
+  'styles/signal-globe.css',
+  'styles/signal-globe-wave4.css',
+  'styles/signal-globe-wave5.css',
   'styles/site-audio-v4.css',
   'styles/mirror-observatory-v4.css',
   'data/mirror-plan-status.json'

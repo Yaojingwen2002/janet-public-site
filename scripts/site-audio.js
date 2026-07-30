@@ -27,6 +27,8 @@
   let heartbeatTimer = 0;
   let persistTimer = 0;
   let resumeTimer = 0;
+  let gestureResumeArmed = false;
+  let gestureResumeHandler = null;
 
   function safeJsonParse(value, fallback) {
     try {
@@ -135,7 +137,6 @@
     audio = root.querySelector('audio');
     toggle = root.querySelector('[data-background-audio-toggle]');
     if (!audio || !toggle) return false;
-    if (!audio.getAttribute('src')) audio.src = scriptAssetUrl();
     audio.volume = Math.min(1, Math.max(0, Number(state.volume) || defaultState.volume));
     audio.muted = Boolean(state.muted);
     return true;
@@ -150,9 +151,19 @@
       ? '暂停背景音乐'
       : status === 'blocked'
         ? '恢复背景音乐'
+        : status === 'error'
+          ? '背景音乐暂不可用'
         : '播放背景音乐';
     toggle.setAttribute('aria-label', label);
     toggle.title = label;
+  }
+
+  function markAudioUnavailable() {
+    state.shouldPlay = false;
+    state.blocked = false;
+    setUi('error');
+    release();
+    writeSession();
   }
 
   function syncCurrentTime() {
@@ -180,6 +191,32 @@
     return !ownerIsLive(owner) || owner.id === tabId;
   }
 
+  function disarmGestureResume() {
+    if (!gestureResumeArmed || !gestureResumeHandler) return;
+    window.removeEventListener('pointerdown', gestureResumeHandler, true);
+    window.removeEventListener('keydown', gestureResumeHandler, true);
+    gestureResumeArmed = false;
+    gestureResumeHandler = null;
+  }
+
+  function armGestureResume() {
+    if (
+      gestureResumeArmed ||
+      policy !== 'ambient' ||
+      !state.shouldPlay ||
+      !state.consent
+    ) return;
+    gestureResumeArmed = true;
+    gestureResumeHandler = (event) => {
+      if (event.target?.closest?.('[data-background-audio-toggle]')) return;
+      disarmGestureResume();
+      state.blocked = false;
+      play();
+    };
+    window.addEventListener('pointerdown', gestureResumeHandler, true);
+    window.addEventListener('keydown', gestureResumeHandler, true);
+  }
+
   async function play(options) {
     if (!audio || policy !== 'ambient') return false;
     const settings = { userInitiated: false, ...options };
@@ -202,13 +239,23 @@
       await audio.play();
       state.shouldPlay = true;
       state.blocked = false;
+      disarmGestureResume();
       setUi('playing');
       persist();
       return true;
     } catch (_error) {
       release();
-      state.blocked = true;
+      if (audio.error || audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+        markAudioUnavailable();
+        return false;
+      }
+      // A full-page navigation can revoke autoplay even after the visitor
+      // previously pressed play. Keep the saved intent and resume from the
+      // same timestamp on the next ordinary gesture instead of treating it
+      // as a broken audio asset.
+      state.blocked = Boolean(settings.userInitiated);
       setUi('blocked');
+      if (!settings.userInitiated) armGestureResume();
       writeSession();
       return false;
     }
@@ -223,6 +270,7 @@
       state.shouldPlay = false;
       state.blocked = false;
     }
+    disarmGestureResume();
     release();
     setUi('paused');
     writeSession();
@@ -282,13 +330,10 @@
     audio.addEventListener('play', () => setUi('playing'));
     audio.addEventListener('pause', () => {
       if (root?.dataset.state === 'external') return;
-      if (root?.dataset.state !== 'blocked') setUi('paused');
+      if (root?.dataset.state !== 'blocked' && root?.dataset.state !== 'error') setUi('paused');
     });
     audio.addEventListener('error', () => {
-      state.blocked = true;
-      setUi('error');
-      release();
-      writeSession();
+      markAudioUnavailable();
     });
     audio.addEventListener('timeupdate', () => {
       const now = Date.now();
@@ -301,8 +346,13 @@
       else pause({ userInitiated: true });
     });
 
+    if (!audio.getAttribute('src')) audio.src = scriptAssetUrl();
+    if (audio.error) markAudioUnavailable();
+
     if (state.shouldPlay && state.consent && !state.blocked) {
       window.setTimeout(() => play(), 80);
+    } else if (state.shouldPlay && state.consent) {
+      armGestureResume();
     }
   }
 

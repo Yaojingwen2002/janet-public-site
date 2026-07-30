@@ -357,9 +357,20 @@
     return result;
   }
 
-  async function signInWithPassword(email, password) {
+  function setPersistence(remember) {
+    if (!window.JanetSupabase || typeof window.JanetSupabase.setPersistence !== 'function') return;
+    window.JanetSupabase.setPersistence(remember === false ? 'session' : 'local');
+  }
+
+  function getPersistence() {
+    if (!window.JanetSupabase || typeof window.JanetSupabase.getPersistence !== 'function') return 'local';
+    return window.JanetSupabase.getPersistence();
+  }
+
+  async function signInWithPassword(email, password, options) {
     const client = await waitForSupabaseClient();
     const cleanEmail = normalizeEmail(email);
+    setPersistence(!(options && options.remember === false));
     const { error } = await client.auth.signInWithPassword({ email: cleanEmail, password });
     if (error) throw new Error(friendlyAuthError(error));
     clearLocalGuest();
@@ -612,6 +623,8 @@
     createGuest,
     skipForNow,
     signInWithPassword,
+    setPersistence,
+    getPersistence,
     signUp,
     signInAnonymously,
     updateUsername,

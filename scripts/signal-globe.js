@@ -1,4 +1,4 @@
-import * as THREE from '../assets/vendor/three.module.js';
+import * as THREE from '../assets/vendor/three.module.min.js';
 
 const stage = document.querySelector('[data-signal-globe]');
 const canvas = document.getElementById('signal-globe-canvas');
@@ -56,7 +56,7 @@ if (stage && canvas) {
     'anthropic-news': 'anthropic',
     'google-ai-blog': 'google',
     'google-research-blog': 'google',
-    'google-deepmind-blog': 'googledeepmind',
+    'google-deepmind-blog': 'deepmind',
     'microsoft-ai-blog': 'microsoft',
     'microsoft-research-ai': 'microsoft',
     'github-blog': 'github',
@@ -66,19 +66,13 @@ if (stage && canvas) {
     'arxiv-cs-lg': 'arxiv',
     'arxiv-stat-ml': 'arxiv',
     'techcrunch-ai': 'techcrunch',
-    'venturebeat-ai': 'venturebeat',
-    'the-verge-ai': 'theverge',
-    'mit-tech-review-ai': 'mit',
     'meta-ai-blog': 'meta',
     'mistral-news': 'mistralai',
     'nvidia-ai-blog': 'nvidia',
     'aws-machine-learning': 'amazonwebservices',
-    'stanford-hai': 'stanforduniversity',
-    'berkeley-bair': 'universityofcaliforniaberkeley',
     'papers-with-code-blog': 'paperswithcode',
     'replicate-blog': 'replicate',
-    'langchain-blog': 'langchain',
-    'llamaindex-blog': 'llamaindex'
+    'langchain-blog': 'langchain'
   };
 
   const palette = {
@@ -126,8 +120,13 @@ if (stage && canvas) {
     zoomCurrent: 1,
     zoomTarget: 1,
     zoomVelocity: 0,
+    lastLegalZoom: 1,
     zoomLabel: '1.00',
     pointer: { x: 0, y: 0 },
+    activePointers: new Map(),
+    pinching: false,
+    pinchDistance: 0,
+    pinchZoomStart: 1,
     velocity: { x: 0, y: 0 },
     lastFrame: performance.now(),
     pageVisible: !document.hidden,
@@ -265,8 +264,8 @@ if (stage && canvas) {
   }
 
   function drawMapTexture(geojson) {
-    const width = 2048;
-    const height = 1024;
+    const width = finePointer.matches ? 1536 : 1024;
+    const height = width / 2;
     const textureCanvas = document.createElement('canvas');
     textureCanvas.width = width;
     textureCanvas.height = height;
@@ -327,7 +326,7 @@ if (stage && canvas) {
 
     const texture = new THREE.CanvasTexture(textureCanvas);
     texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
     texture.needsUpdate = true;
     return texture;
   }
@@ -358,8 +357,10 @@ if (stage && canvas) {
   }
 
   function createAtmosphere(radius) {
+    const widthSegments = finePointer.matches ? 72 : 48;
+    const heightSegments = finePointer.matches ? 48 : 32;
     return new THREE.Mesh(
-      new THREE.SphereGeometry(radius * 1.018, 96, 64),
+      new THREE.SphereGeometry(radius * 1.018, widthSegments, heightSegments),
       new THREE.ShaderMaterial({
         transparent: true,
         depthWrite: false,
@@ -389,7 +390,7 @@ if (stage && canvas) {
   }
 
   function createSignalDust(radius) {
-    const count = finePointer.matches ? 620 : 360;
+    const count = finePointer.matches ? 480 : 280;
     const positions = new Float32Array(count * 3);
     for (let index = 0; index < count; index += 1) {
       const seedA = Math.sin((index + 1) * 12.9898) * 43758.5453;
@@ -584,7 +585,7 @@ if (stage && canvas) {
       const logoSlug = SOURCE_LOGOS[source.id];
       if (logoSlug) {
         const logoImage = document.createElement('img');
-        logoImage.src = `https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/${logoSlug}.svg`;
+        logoImage.src = `assets/icons/sources/${logoSlug}.svg`;
         logoImage.alt = '';
         logoImage.decoding = 'async';
         logoImage.addEventListener('load', () => logo.classList.add('has-image'), { once: true });
@@ -653,7 +654,7 @@ if (stage && canvas) {
   function buildScene(geojson) {
     renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setClearColor(0x0a100e, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, finePointer.matches ? 2 : 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, finePointer.matches ? 1.75 : 1.35));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.08;
@@ -672,11 +673,13 @@ if (stage && canvas) {
     scene.add(edgeLight);
 
     const radius = GLOBE_RADIUS;
+    const globeWidthSegments = finePointer.matches ? 96 : 72;
+    const globeHeightSegments = finePointer.matches ? 72 : 48;
     globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
     const globe = new THREE.Mesh(
-      new THREE.SphereGeometry(radius, 128, 96),
+      new THREE.SphereGeometry(radius, globeWidthSegments, globeHeightSegments),
       new THREE.MeshPhysicalMaterial({
         map: drawMapTexture(geojson),
         color: 0xffffff,
@@ -1025,12 +1028,12 @@ if (stage && canvas) {
   }
 
   const VIEWPORT_PROFILES = {
-    phone: { cameraDistance: 11.5, zoomMin: .78, zoomMax: 1.35, focus: { x: .72, y: -.64 } },
-    tabletPortrait: { cameraDistance: 9.2, zoomMin: .76, zoomMax: 1.42, focus: { x: .68, y: -.6 } },
-    tabletLandscape: { cameraDistance: 8, zoomMin: .76, zoomMax: 1.45, focus: { x: .68, y: -.6 } },
-    square: { cameraDistance: 7.6, zoomMin: .74, zoomMax: 1.48, focus: { x: .68, y: -.6 } },
-    desktop: { cameraDistance: 7.1, zoomMin: .74, zoomMax: 1.5, focus: { x: .72, y: -.64 } },
-    wide: { cameraDistance: 6.6, zoomMin: .74, zoomMax: 1.5, focus: { x: .72, y: -.64 } }
+    phone: { cameraDistance: 11.5, zoomMin: .78, zoomMax: 1.35, visibleMin: .22, visibleMax: .3, focus: { x: .72, y: -.64 } },
+    tabletPortrait: { cameraDistance: 9.2, zoomMin: .76, zoomMax: 1.42, visibleMin: .22, visibleMax: .3, focus: { x: .68, y: -.6 } },
+    tabletLandscape: { cameraDistance: 8, zoomMin: .76, zoomMax: 1.45, visibleMin: .22, visibleMax: .3, focus: { x: .68, y: -.6 } },
+    square: { cameraDistance: 7.6, zoomMin: .74, zoomMax: 1.48, visibleMin: .22, visibleMax: .3, focus: { x: .68, y: -.6 } },
+    desktop: { cameraDistance: 7.1, zoomMin: .74, zoomMax: 1.5, visibleMin: .22, visibleMax: .3, focus: { x: .72, y: -.64 } },
+    wide: { cameraDistance: 6.6, zoomMin: .74, zoomMax: 1.5, visibleMin: .22, visibleMax: .3, focus: { x: .72, y: -.64 } }
   };
 
   function viewportProfile(width, height) {
@@ -1087,7 +1090,7 @@ if (stage && canvas) {
     const centerY = (-state.focusTargetNdc.y * .5 + .5) * stage.clientHeight;
     stage.style.setProperty('--signal-center-x', `${centerX.toFixed(2)}px`);
     stage.style.setProperty('--signal-center-y', `${centerY.toFixed(2)}px`);
-    updateGlobeMetrics();
+    return updateGlobeMetrics();
   }
 
   function resize() {
@@ -1117,6 +1120,7 @@ if (stage && canvas) {
       state.viewportProfile.zoomMin,
       state.viewportProfile.zoomMax
     );
+    state.lastLegalZoom = state.zoomCurrent;
     stage.dataset.globeProfile = state.viewportProfile.id;
     stage.dataset.globeAnchor = '1.000,-1.000';
     stage.dataset.globeFocus = `${state.focusTargetNdc.x.toFixed(3)},${state.focusTargetNdc.y.toFixed(3)}`;
@@ -1144,7 +1148,24 @@ if (stage && canvas) {
     }
 
     camera.position.z = cameraBaseZ / state.zoomCurrent;
-    updateGlobePlacement();
+    const metrics = updateGlobePlacement();
+    const visibleMin = state.viewportProfile?.visibleMin ?? .22;
+    const visibleMax = state.viewportProfile?.visibleMax ?? .3;
+    const legal = metrics &&
+      metrics.visibleRatio >= visibleMin - .01 &&
+      metrics.visibleRatio <= visibleMax + .01;
+    if (legal) {
+      state.lastLegalZoom = state.zoomCurrent;
+      stage.dataset.globeConstraint = 'legal';
+    } else if (metrics) {
+      state.zoomTarget = THREE.MathUtils.clamp(
+        state.lastLegalZoom,
+        state.viewportProfile.zoomMin,
+        state.viewportProfile.zoomMax
+      );
+      state.zoomVelocity += (state.zoomTarget - state.zoomCurrent) * .08;
+      stage.dataset.globeConstraint = 'rebounding';
+    }
     const zoomLabel = state.zoomCurrent.toFixed(2);
     if (zoomLabel !== state.zoomLabel) {
       state.zoomLabel = zoomLabel;
@@ -1190,17 +1211,62 @@ if (stage && canvas) {
 
   function onPointerDown(event) {
     if (event.button !== 0) return;
+    state.activePointers.set(event.pointerId, {
+      x: event.clientX,
+      y: event.clientY,
+      type: event.pointerType
+    });
+    canvas.setPointerCapture(event.pointerId);
+
+    if (state.activePointers.size >= 2) {
+      const points = [...state.activePointers.values()].slice(0, 2);
+      state.pinching = true;
+      state.dragging = false;
+      state.pinchDistance = Math.max(1, Math.hypot(
+        points[1].x - points[0].x,
+        points[1].y - points[0].y
+      ));
+      state.pinchZoomStart = state.zoomTarget;
+      stage.classList.remove('is-dragging');
+      stage.classList.add('is-pinching');
+      return;
+    }
+
     state.dragging = true;
     state.pointer.x = event.clientX;
     state.pointer.y = event.clientY;
     state.velocity.x = 0;
     state.velocity.y = 0;
     stage.classList.add('is-dragging');
-    canvas.setPointerCapture(event.pointerId);
   }
 
   function onPointerMove(event) {
-    if (!state.dragging || !globeGroup) return;
+    if (!state.activePointers.has(event.pointerId) || !globeGroup) return;
+    state.activePointers.set(event.pointerId, {
+      x: event.clientX,
+      y: event.clientY,
+      type: event.pointerType
+    });
+
+    if (state.pinching && state.activePointers.size >= 2) {
+      const points = [...state.activePointers.values()].slice(0, 2);
+      const distance = Math.max(1, Math.hypot(
+        points[1].x - points[0].x,
+        points[1].y - points[0].y
+      ));
+      const zoomMin = state.viewportProfile?.zoomMin ?? .74;
+      const zoomMax = state.viewportProfile?.zoomMax ?? 1.5;
+      state.zoomTarget = THREE.MathUtils.clamp(
+        state.pinchZoomStart * distance / state.pinchDistance,
+        zoomMin,
+        zoomMax
+      );
+      state.zoomVelocity += (state.zoomTarget - state.zoomCurrent) * .035;
+      event.preventDefault();
+      return;
+    }
+
+    if (!state.dragging) return;
     const samples = event.getCoalescedEvents ? event.getCoalescedEvents() : [event];
     for (const sample of samples) {
       const dx = THREE.MathUtils.clamp(sample.clientX - state.pointer.x, -72, 72);
@@ -1217,9 +1283,20 @@ if (stage && canvas) {
   }
 
   function onPointerUp(event) {
+    state.activePointers.delete(event.pointerId);
+    if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+    if (state.pinching) {
+      state.dragging = false;
+      stage.classList.remove('is-dragging');
+      if (state.activePointers.size === 0) {
+        state.pinching = false;
+        state.pinchDistance = 0;
+        stage.classList.remove('is-pinching');
+      }
+      return;
+    }
     state.dragging = false;
     stage.classList.remove('is-dragging');
-    if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
   }
 
   function onWheel(event) {
@@ -1315,8 +1392,11 @@ if (stage && canvas) {
         getState: () => ({
           ready: state.ready,
           dragging: state.dragging,
+          pinching: state.pinching,
           manuallyPaused: state.manuallyPaused,
-          activeSourceId: state.activeSourceId
+          activeSourceId: state.activeSourceId,
+          activePointers: state.activePointers.size,
+          constraint: stage.dataset.globeConstraint || ''
         })
       };
       state.lastFrame = performance.now();

@@ -250,6 +250,7 @@
       '<form class="potato-form" data-potato-form="login">',
       '  <label class="potato-field"><span>邮箱</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>',
       '  <label class="potato-field"><span>密码</span><input type="password" name="password" autocomplete="current-password" minlength="6" required></label>',
+      '  <label class="potato-check"><input type="checkbox" name="remember" checked><span><strong>记住我</strong><small>取消后仅在当前浏览标签保留登录状态</small></span></label>',
       '  <button class="potato-btn" type="submit">登录</button>',
       '  <div class="potato-link-group">',
       '    <button class="potato-link-btn" type="button" data-potato-tab="reset">忘记密码？</button>',
@@ -465,7 +466,9 @@
 
     try {
       if (type === 'login') {
-        await auth().signInWithPassword(data.email, data.password);
+        await auth().signInWithPassword(data.email, data.password, {
+          remember: Boolean(data.remember)
+        });
         setMessage('登录成功', false);
         state.tab = 'account';
       }

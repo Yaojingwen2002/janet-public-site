@@ -390,10 +390,11 @@
   function renderComparison(experiment) {
     const before = document.querySelector('[data-mirror-compare-before]');
     const after = document.querySelector('[data-mirror-compare-after]');
+    if (!before && !after) return;
     const preferred = experiment.images.variants.find((variant) => variant.id === 'B') ||
       experiment.images.variants[0];
     setImage(before, experiment.images.source, `${experiment.title}母图研究衍生图`, 'eager');
-    if (preferred) {
+    if (preferred && after) {
       setImage(after, preferred.src, `${experiment.title} ${preferred.id} 版结果`, 'eager');
       after.hidden = false;
     } else if (after) {

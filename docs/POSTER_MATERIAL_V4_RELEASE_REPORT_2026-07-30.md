@@ -1,7 +1,7 @@
 # Janet 全站海报材质化 V4 发布报告
 
 > 日期：2026-07-30
-> 状态：本地发布候选通过，正式发布待执行
+> 状态：正式发布成功
 > 实验分支：`experiment/poster-material-system-v4`
 > V4 前正式基线：`991cd785d55a0fe9d46b70c5fdee9a8b96aa58e9`
 > 回滚引用：`rollback/pre-poster-material-v4-20260729`
@@ -89,8 +89,10 @@
 |---|---|
 | 发布候选提交 | `fc43306`（V4 功能候选） |
 | 与 `origin/main` 同步 | 已重放到 `f9fcb5b`（2026-07-30 晨报）之上 |
-| 远程回滚引用 | 待推送 |
-| GitHub Actions | 待执行 |
-| GitHub Pages | 待执行 |
+| 远程回滚引用 | `rollback/pre-poster-material-v4-20260729` → `991cd78` |
+| GitHub Actions | `30513220499`，success，1m11s |
+| GitHub Pages | `built`，功能发布提交 `59b6103` |
 | artifact 六入口检查 | 首页、归档、作品库、GPT 手册、镜场、2026-07-30 晨报均为 200 |
-| 线上五入口检查 | 待执行 |
+| 线上六入口检查 | 六项均为 HTTP 200；四个关键资源均为 HTTP 200 |
+| 发布后运行检查 | 桌面/手机无溢出；地球 canvas 非空；镜场与手册 `ready`；双标签音乐不同时播放 |
+| 邮件工作流 | `30513282886`，skipped，未重复发送当天晨报 |

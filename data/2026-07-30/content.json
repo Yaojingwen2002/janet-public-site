@@ -1,0 +1,204 @@
+{
+  "date": "2026-07-30",
+  "vol": "303",
+  "intro_text": "今天的 AI 新闻不再只争“谁更聪明”。OpenAI 讲推理效率，Google 讲 Agent 身份和数据底座，Microsoft 和 Meta 把 AI 写进财报，Brookfield 与 NextEra 则把战场拖到电力现场。能力当然还重要，但生产级 AI 最贵的部分，越来越像一套能被审计、被限额、被供电、被付费的系统。",
+  "cover": {
+    "title": "生产系统接管",
+    "subtitle": "模型、数据、身份、成本和电力开始同台算账",
+    "image_path": "runs/2026-07-30/cover.png",
+    "image_prompt": "21:9 horizontal AI technology magazine cover art. Minimal black, white, and sharp Janet green palette. A production AI control room where model cores, data pipelines, identity keys, token meters, audit traces, and power-grid lines converge into one disciplined operating system. Editorial, premium, restrained, high contrast, clean geometric composition, no cartoon, no robot faces, no glowing brain, no cheap cyberpunk neon, no readable text, no date, no logos."
+  },
+  "trend": "今天更像生产系统的一次集中亮相。OpenAI 在 GPT-5.6 上谈每个 token 能干多少活，Google Cloud 把 Agent 的身份、网关、注册表、观测和数据语义层摆到前台，AWS 继续给 AgentCore 补身份和 MCP 实战，Microsoft 与 Meta 则用财报告诉市场：AI 不再是 demo，而是收入、成本、capex 和裁员费用一起进表。\n\n这对创作者和中小团队的提醒很冷：追新模型名的收益正在变薄，真正能省钱和赚钱的是把模型接进稳定流程。谁能知道 Agent 拿了什么数据、用什么身份、花了多少 token、出了事谁能停，谁就更接近可交付产品。否则，只是把一个会说话的昂贵变量塞进业务。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI用GPT-5.6重算推理成本",
+          "body": "OpenAI 7 月 29 日发布 GPT-5.6 工程文章，把重点放在“frontier intelligence”与“frontier efficiency”的结合上。文章称 GPT-5.6 Sol 在 Artificial Analysis Coding Agent Index 上以不到 Claude Fable 5 一半的成本取得更高表现；Terra 在智能基准上接近 GPT-5.5、价格减半，Luna 则比 Sol 便宜 80%。OpenAI 还把优化拆到推理路由、调度、kernel、缓存、模型实现和 agentic harness，并称 GPT-5.6 Sol in Codex 参与了负载均衡和前向计算优化。",
+          "janet_take": "这篇不是普通模型营销稿，它把大模型竞争从“我更聪明”推到“我每烧一块钱能多干多少活”。创作者看这个转向就够了：未来 API 账单不会因为模型强就自动合理，产品差距会藏在缓存、上下文压缩、路由和重复工作消除里。换句话说，会用模型的人会像抠供应链一样抠 token。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency/",
+          "image_source_url": "https://pic1.zhimg.com/v2-d8aa3588433c1337b86b1b1e54f28a04_r.jpg",
+          "image_origin": "search",
+          "image": "images/news-01-openaigpt-56.jpg"
+        },
+        {
+          "title": "1273名AI员工签署减速声明",
+          "body": "Pacing the Frontier 在 7 月发布声明，页面显示已有 1,273 名前沿 AI 公司员工签署，要求美国政府支持国际努力，开发能“deliberately pace the frontier of automated AI development”的技术和治理工具。签署者名单包括 OpenAI、Anthropic、Google DeepMind、Meta AI 等机构的研究和安全负责人。声明的核心担忧不是今天的聊天模型，而是 AI 公司可能接近自动化 AI 研究，能力进展会快到现有监督机制跟不上。",
+          "janet_take": "刺耳的是，“减速”这次来自实验室里面的人。它可能被大厂拿来筑墙，也可能真是在给危险系统争取缓冲区；两件事可以同时成立。对国内团队来说，这不是美国政策八卦。自动化研发一旦纳入国际协调，模型、算力和评测入口都会更像许可证生意。",
+          "source": "Pacing the Frontier",
+          "url": "https://www.pacingthefrontier.com/",
+          "image_source_url": "https://www.pacingthefrontier.com//pacing-the-frontier-preview.jpeg?v=4",
+          "image_origin": "source",
+          "image": "images/news-02-1273ai.jpg"
+        },
+        {
+          "title": "微软财报写入3000万Copilot席位",
+          "body": "Microsoft 7 月 29 日发布 FY26 Q4 财报，季度营收 900 亿美元，同比增长 18%；Microsoft Cloud 营收 593 亿美元，同比增长 27%；Azure and other cloud services 增长 43%。Satya Nadella 称 Azure 年收入首次超过 1000 亿美元，Microsoft 365 Copilot 已超过 3000 万付费席位。财报还披露 FY26 全年营收 3318 亿美元，全年净利润 1337 亿美元。",
+          "janet_take": "3000 万付费席位很硬，说明企业 AI 已经进了采购和续费表。席位数漂亮，不等于每个员工真省出时间；中小团队能抄的是收费逻辑，让 AI 变成岗位里的固定工作位。",
+          "source": "Microsoft Investor Relations",
+          "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/press-release-webcast",
+          "image_source_url": "https://simg.baai.ac.cn/hub-detail/de3c370c9853d90bf2412c5dbf67b43a1695459602298.webp",
+          "image_origin": "search",
+          "image": "images/news-03-3000copilot.webp"
+        },
+        {
+          "title": "Meta给AI机房加1300亿支出",
+          "body": "Meta 7 月 29 日发布 2026 年第二季度财报，季度营收 608.01 亿美元，同比增长 28%；成本和费用 420.26 亿美元，同比增长 55%；净利润 158.48 亿美元，同比下降 14%。公司把 2026 年 capex 指引收窄为 1300 亿到 1450 亿美元，此前低端为 1250 亿美元，并称成本中包含 24 亿美元法律相关费用和 11.8 亿美元与 2026 年 5 月裁员相关的 severance expenses。",
+          "janet_take": "Meta 的 AI 故事很扎眼：广告机器还在赚钱，AI 机房也在疯狂吃钱，裁员费用和法律账单一起出现在同一页。Zuckerberg 可以说 AI 正在加速核心业务，但财报更诚实，告诉你这不是轻资产魔法。普通创业者听见“开源模型很便宜”时，最好顺手问一句：GPU、法务和组织成本谁扛？",
+          "source": "Meta Investor Relations",
+          "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+          "image_source_url": "https://www.investopedia.com/thmb/HvvqhZfzf2f2E1VpQkxWmBVqjEg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-2154451034-a9ba38b87170476a8e8027b9d52fb531.jpg",
+          "image_origin": "search",
+          "image": "images/news-04-metaai1300.jpg"
+        },
+        {
+          "title": "Brookfield选铀厂旧址建AI园区",
+          "body": "Data Center Knowledge 7 月 29 日报道，Brookfield 与 NextEra 计划在肯塔基州前 Paducah Gaseous Diffusion Plant 建设约 1000 亿美元 AI data-center campus。项目目标到 2032 年提供超过 1.2GW compute capacity，并可扩至 1.8GW utility-delivered capacity；NextEra 计划配套最多 2GW 天然气发电和 2.6GW 电池储能。报道同时指出，该项目尚未披露 anchor AI customer 或开工日期，相关电力服务协议还需肯塔基监管批准。",
+          "janet_take": "比又一个模型发布更现实的是，AI 扩张最后会落到土地、电力、审批和本地账单。所谓“自带电力”很好听，但专家提醒电池的 1GW 并不等于连续可用的 1GW，这才是冷水。内容创作者不用觉得它遥远，未来的便宜推理、视频生成和 Agent 执行，背后都有人在替你跟电网抢座。",
+          "source": "Data Center Knowledge",
+          "url": "https://www.datacenterknowledge.com/data-center-construction/brookfield-nextera-launch-100b-ai-campus-at-doe-s-paducah-site",
+          "image_source_url": "https://eu-images.contentstack.com/v3/assets/blt8eb3cdfc1fce5194/blt116f3217812ee920/6a6a0a8db8ab355e0bdea0e7/download.png?disable=upscale&width=1200&height=630&fit=crop",
+          "image_origin": "source",
+          "image": "images/news-05-brookfieldai.png"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "OpenAI用两项设置拉高ARC分数",
+          "body": "OpenAI 7 月 29 日发布 ARC-AGI-3 复盘，称 GPT-5.6 Sol 在官方 harness 上 ARC-AGI-3 public set 得分 13.3%，启用 retained reasoning 和 compaction 后升至 38.3%，同时 output tokens 减少 6 倍。文章解释，官方 harness 会丢弃私有 reasoning，并用 rolling truncation 丢掉旧动作；OpenAI 用 Responses API 保留推理、压缩上下文，更接近 ChatGPT 和 Codex 的生产设置。",
+          "janet_take": "评测迷信该降温了。模型分数不是从天上掉下来的，它还吃 harness、上下文策略和 API 设置。OpenAI 有自证立场，当然要打个折；但它指出的坑是真坑。创作者做 Agent demo 时，模型名只是一半，另一半是它能不能记住自己刚干了什么。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg",
+          "image_origin": "search",
+          "image": "images/models-01-openaiarc.jpg"
+        },
+        {
+          "title": "Google给Agent补身份和网关",
+          "body": "Google Cloud 7 月 29 日宣布 Gemini Enterprise Agent Platform 多项能力开放给更多用户，包括 Agent Memory Bank、最长可运行 7 天的 Agent Runtime、Agent Identity、Agent Gateway、Agent Registry、Agent Evaluation 和 Agent Observability。Google 把 Agent Identity 定义为一种基于开放标准的新 native IAM type，可把访问权限绑定到 agent runtime，并为 agent 行为提供不可抵赖审计。",
+          "janet_take": "Google 这次没在炫模型，而是在回答企业最烦的问题：这个 Agent 到底是谁、能拿什么、做错了算谁的。Agent Identity 听起来无聊，却可能比漂亮 demo 更接近预算。国内团队做 B 端 AI，“接入企业微信/飞书”只是入口，权限、审计、注册表和停机开关才是交付现场。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise-agent-platform",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/gemini_agent_platform.max-2500x2500.jpg",
+          "image_origin": "source",
+          "image": "images/models-02-googleagent.jpg"
+        },
+        {
+          "title": "AWS用私钥JWT替Agent密钥",
+          "body": "AWS 7 月 29 日宣布 Amazon Bedrock AgentCore Identity 支持 Private Key JWT client authentication。Agent 可以用签名 JWT client assertion 向下游 identity provider 的 token endpoint 认证，而不是使用共享 OAuth 2.0 client secret；公钥注册在身份提供方，私钥保存在 AWS KMS。AWS 将其定位为减少长期共享密钥暴露风险的 Agent 身份能力。",
+          "janet_take": "Agent 进生产以后，最不性感的一层往往最要命。很多 demo 失败不是因为模型笨，而是 secret 放得像便利贴。Private Key JWT 不会让 Agent 更会说话，却能少一点共享密钥裸奔。工具链的现实很朴素：安全能力正在变成产品功能，不是发布前补一页免责声明。",
+          "source": "AWS Machine Learning Blog",
+          "url": "https://aws.amazon.com/blogs/machine-learning/authenticate-with-private-key-jwt-using-amazon-bedrock-agentcore-identity/",
+          "image_source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/07/29/ml-21480.png",
+          "image_origin": "source",
+          "image": "images/models-03-awsjwtagent.png"
+        },
+        {
+          "title": "AWS用MCP生成工厂周报",
+          "body": "AWS Machine Learning Blog 7 月 29 日发布教程，用 AI Agent 和 MCP servers 生成 Autonomous Business Insights。示例场景是制造负责人管理 12 条产线和 2,000 台机器，需要在生产会议前判断本周哪些产线需要关注。文章展示 Agent 如何发现并调用 MCP 工具，把数据查询、异常分析和业务洞察串成流程。",
+          "janet_take": "MCP 的价值不在“又一个协议”，而在 Agent 终于知道该找哪个工具干活。AWS 这个制造场景很朴素，也因此靠谱：12 条线、2,000 台机器、一个会议前的问题。垂直 Agent 的现金味通常就藏在这里，高频、重复、带数据源、答案能立刻改变下一步动作。",
+          "source": "AWS Machine Learning Blog",
+          "url": "https://aws.amazon.com/blogs/machine-learning/generate-autonomous-business-insights-with-ai-agent-and-mcp-servers/",
+          "image_source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/07/29/ml-19801.png",
+          "image_origin": "source",
+          "image": "images/models-04-awsmcp.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Google用Lakehouse接通跨云数据",
+          "body": "Google Cloud 7 月 29 日在 Next Tokyo 期间宣布 borderless Lakehouse 增强，目标是让 Gemini Enterprise 和 conversational agents 在不搬移数据的情况下访问 on-prem、cross-cloud operational systems 和 SaaS application clouds。新能力基于 open Apache Iceberg，支持 AWS Glue、Databricks Unity Catalog、Snowflake Horizon 的 catalog federation preview，并通过 Knowledge Catalog 提供业务语义、lineage 和权限上下文。文章还称 BigQuery AI 有 token 控制，客户在内置 AI functions 上看到 230x token consumption reduction。",
+          "janet_take": "Agent 进企业最卡的地方，不在聊天能力，而在它凭什么相信这张表、这列数、这个字段名。Google 的 borderless Lakehouse 其实是在卖“少搬数据、多给语义、少烧 token”。中小团队可以学这层逻辑：行业大模型先放一边，客户数据目录、指标定义和权限边界整理清楚，脏数据接上再强模型，也只会更快地产生脏结论。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/data-analytics/introducing-the-borderless-lakehouse",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/09_-_Data_Analytics_tFH57V6.max-2600x2600.jpg",
+          "image_origin": "source",
+          "image": "images/insights-01-googlelakehouse.jpg"
+        },
+        {
+          "title": "Looker用Agent追查指标波动",
+          "body": "Google Cloud 7 月 29 日宣布 Looker Agentic Workflows 进入 preview。用户可在 Conversational Analytics 界面用自然语言创建监控，例如监控退货率或平均订单价值；当指标触发阈值时，后台 Agent 会运行 Key Driver Analysis，隔离可能驱动变化的产品类别或客户 cohort，并把诊断摘要发送到 Slack 或 email。管理员仍可在中央界面审查、修改或停用 workflows。",
+          "janet_take": "BI 的老问题是：报警很勤快，解释很偷懒。Looker 这次把“为什么变了”前移到通知里，方向是对的；但 root-cause analysis 只有在指标口径干净、维度不乱时才有意义。公司如果连退货率怎么算都吵不清，Agent 自动追因只会提前制造一份更精致的争吵材料。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/business-intelligence/looker-adds-agentic-workflows-for-data-monitoring-and-insights/",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_ub1S7e1.max-2000x2000.png",
+          "image_origin": "source",
+          "image": "images/insights-02-lookeragent.png"
+        },
+        {
+          "title": "Cloudflare支持源站后量子认证",
+          "body": "Cloudflare 7 月 29 日宣布 Authenticated Origin Pulls 和 Custom Origin Trust Store 支持 post-quantum authentication。Cloudflare 称过去几年重点是 post-quantum encryption，用来应对 harvest-now/decrypt-later 风险；近期量子计算和密码分析进展让认证迁移时间线提前，因此开始部署面向 origin server 的后量子互认证连接，防止未来量子能力破坏传统凭证并造成 impersonation attacks。",
+          "janet_take": "它跟大模型不直接相关，却跟 AI 时代的基础设施很相关。越多 Agent 进入业务系统，凭证、来源和连接认证就越不能靠旧习惯硬撑。后量子认证现在看像超前焦虑，等到迁移窗口被压缩时就会变成停机事故。安全基础设施的价值通常不在热搜里，而在你没出事的那天。",
+          "source": "Cloudflare Blog",
+          "url": "https://blog.cloudflare.com/post-quantum-authentication-to-origins/",
+          "image_source_url": "https://blog.cloudflare.com/_emdash/api/media/file/01KYN5V56B8HHHZ71NTH17JJVV.png",
+          "image_origin": "source",
+          "image": "images/insights-03-cloudflare.png"
+        },
+        {
+          "title": "GitHub用CodeQL减少Rust误报",
+          "body": "GitHub Changelog 7 月 29 日发布 CodeQL 2.26.1，称新版提升了 Go、Java/Kotlin、JavaScript/TypeScript 的 framework coverage，并减少 Rust analysis 的 false positives。CodeQL 是 GitHub code scanning 背后的静态分析引擎，用于发现和修复代码安全问题。",
+          "janet_take": "自动修漏洞越热，静态分析越不能掉线。模型能写补丁，但扫描器得先分清真问题和误报；误报少一点，自动化才少一点瞎忙。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-07-29-codeql-2-26-1-improves-analysis-accuracy-and-framework-coverage/",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/07/622760051-ef0722bb-3a8c-475a-a82c-98a4a60231c8.jpeg",
+          "image_origin": "source",
+          "image": "images/insights-04-githubcodeqlrust.webp"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Azure用43%增长支撑AI估值",
+          "body": "Microsoft FY26 Q4 财报显示，Intelligent Cloud 季度营收 393.06 亿美元，同比增长 32%；Azure and other cloud services 增长 43%。公司还披露 FY26 全年 Microsoft Cloud revenue 和 Azure 年收入首次跨过关键规模线，Nadella 在财报中把 token 转成 business results 作为叙事核心。",
+          "janet_take": "投资人现在看的不只是 demo，更是 AI 需求能不能接进云收入。Microsoft 的优势是它既卖模型入口，也卖企业身份、办公套件和云算力，账单天然能串起来。缺点也明显：一旦企业发现 Copilot 席位省不出真工时，增长故事就会在续费会议上被拷问。",
+          "source": "Microsoft Investor Relations",
+          "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2026-Q4/press-release-webcast",
+          "image_source_url": "https://g.foolcdn.com/image/?url=https:%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F794007%2Fmicrosoft-azure-revenue-growth-and-azure-ai-contribution.jpg&op=resize&w=700",
+          "image_origin": "search",
+          "image": "images/insights2-01-azure43ai.avif"
+        },
+        {
+          "title": "Meta让机房吃掉自由现金流",
+          "body": "Meta Q2 财报显示，季度经营现金流为 318.6 亿美元，但 free cash flow 只有 7.84 亿美元；同季 capex 达 310.8 亿美元。公司将全年 capex 指引收窄至 1300 亿到 1450 亿美元，并继续把 AI datacenter buildout 作为主要支出方向。",
+          "janet_take": "Meta 这张表专给“AI 会自动提高利润率”的故事降温。营收很猛，广告也强，但自由现金流被机房吃到只剩一小截。AI 投资不是买几张卡，它会改写现金流节奏。中小公司复制不了这套打法，除非手里也有一台能不断吐现金的广告机器。",
+          "source": "Meta Investor Relations",
+          "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+          "image_source_url": "https://www.199it.com/wp-content/uploads/2025/11/1763884562-6523-1e07ly1i7jhpkrfndj20u01gudiw.jpg",
+          "image_origin": "search",
+          "image": "images/insights2-02-meta.jpg"
+        },
+        {
+          "title": "Paducah用电力政治定价AI园区",
+          "body": "Brookfield 与 NextEra 的 Paducah AI campus 计划强调“bring your own power”，并把成本承担与 White House Ratepayer Protection Pledge 放在叙事中心。Data Center Knowledge 报道称，项目预计带来约 8,000 个 construction jobs 和 600 个 permanent operations jobs，但也指出名称plate power 与 firm capacity 不能简单等同，监管审批和 anchor tenant 仍未确定。",
+          "janet_take": "AI 基建投资正在从“谁有 GPU”变成“谁能不惹怒电网和居民”。这会改变估值逻辑：机房项目不只是技术资产，也是地方政治、公共事业和能源金融的混合体。创作者听见的是远方雷声，投资人看到的则是下一轮 AI 泡沫最容易露馅的地方。",
+          "source": "Data Center Knowledge / AI Weekly",
+          "url": "https://www.datacenterknowledge.com/data-center-construction/brookfield-nextera-launch-100b-ai-campus-at-doe-s-paducah-site",
+          "image_source_url": "https://eu-images.contentstack.com/v3/assets/blt8eb3cdfc1fce5194/blt116f3217812ee920/6a6a0a8db8ab355e0bdea0e7/download.png?disable=upscale&width=1200&height=630&fit=crop",
+          "image_origin": "source",
+          "image": "images/insights2-03-paducahai.png"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Google用LiteRT.js跑浏览器AI",
+          "body": "Google Developers Blog 7 月 29 日介绍 LiteRT.js，这是 LiteRT 的 JavaScript binding，可让开发者在浏览器内直接运行 .tflite 模型。Google 称，相比依赖 JavaScript kernels 的旧 Web AI 方案，LiteRT.js 通过 WebAssembly 把原生跨平台 runtime 带到 Web，并可利用 XNNPACK for CPU、ML Drift for GPU，以及未来 WebNN for NPUs，实现更好的本地推理性能、隐私、零服务器成本和低延迟。",
+          "janet_take": "推荐理由很直接：不是所有 AI 功能都适合上云。轻量分类、实时交互、隐私敏感小模型能在浏览器里跑，就少一层服务器账单和数据风险。",
+          "source": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/litertjs-googles-high-performance-web-ai-inference/",
+          "image_source_url": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Gemini_Generated_Image_9xjum29xju.2e16d0ba.fill-1200x600.jpg",
+          "image_origin": "source",
+          "image": "images/tools-01-googlelitertjsai.jpg"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-02",
+  "vol": "306",
+  "intro_text": "今天的 AI 新闻像几张摊开的账单：DeepSeek 继续压低模型价格，OpenAI 把数学结果和算力经济摆到台面，EU 和美国州法开始追问透明责任，云厂商则用更重的资本绑定模型公司。热闹不在谁喊得最大，而在谁把成本、责任和分发入口拿到手。",
+  "cover": {
+    "title": "便宜智能上桌",
+    "subtitle": "模型降价、科研突破、监管执行和云资本同一天逼近生产现场",
+    "image_path": "runs/2026-08-02/cover.png",
+    "image_prompt": "21:9 horizontal AI technology magazine cover art for Janet's morning briefing. Minimal black, white, and sharp Janet green palette. Abstract editorial scene about intelligence becoming cheaper while control points multiply: thin white compute grids, open model shards, mathematical proof traces, regulatory checkpoints, cloud invoices, and small agent workflow rails converging into a stark asymmetrical operations map. Premium investigative tech magazine style, high contrast, restrained, no cartoon, no robot faces, no glowing brain, no cheap cyberpunk neon, no readable text, no logos, no date, no volume number."
+  },
+  "trend": "DeepSeek 把 V4-Flash 正式版推出来，OpenAI 同时讲数学突破和 token 经济，EU 透明义务进入执行前夜，Amazon 又把钱砸进 OpenAI。今天最该分开看的不是“谁领先”，而是四张表：模型价格表、科研署名表、监管责任表、云算力资本表。\n\n对创作者和中小团队来说，便宜模型会继续变多，但便宜不等于自由。你能不能接入、能不能解释生成内容、能不能承担医疗或教育场景里的风险、能不能在云账单之外留一条备选路线，会比追下一个模型名更影响现金流。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "DeepSeek正式发布V4-Flash降价",
+          "body": "财新报道称，DeepSeek 在 7 月 31 日发布 DeepSeek-V4-Flash 正式版，文章于 8 月 1 日凌晨刊出。该版本强调更强的 autonomous agent 能力，并继续降低 API 成本；财新摘要还称官方版架构与 4 月预览版一致，性能提升主要来自 post-training，V4-Pro 并未同步出现。",
+          "janet_take": "DeepSeek 这次更像把智能按批发价摆上货架。代码、批处理和轻 Agent 的试错成本继续往下掉，团队会自然往低价模型迁移。随之而来的，是数据边界、稳定性和供应商锁定三笔隐形账，单次调用便宜不代表整条业务链便宜。",
+          "source": "Caixin Global",
+          "url": "https://www.caixinglobal.com/2026-08-01/deepseek-releases-official-v4-flash-model-as-chinas-ai-race-intensifies-102470292.html",
+          "image_source_url": "https://img.caixin.com/2026-07-31/178550234901875_560_373.jpg",
+          "image_origin": "source",
+          "image": "images/news-01-deepseekv4-flash.jpg"
+        },
+        {
+          "title": "中国开源模型逼美国分裂",
+          "body": "The Guardian 在 8 月 1 日报道，中国 AI、芯片和机器人进展正在搅动硅谷与白宫。报道把 Moonshot AI 的 Kimi K3、开源模型限制争论、FCC 对中国人形机器人采取行动，以及芯片市场波动放在同一张图里：美国科技公司并不一致，一边担心安全，一边又需要低成本开放模型。",
+          "janet_take": "美国现在最尴尬的点，是安全话术和商业现实撞车。OpenAI、Anthropic 害怕开源模型削弱收费能力，Nvidia、Meta、Microsoft 又希望开放模型继续带动硬件和平台需求。这更像全球 AI 分发权重新议价：谁能便宜可用，谁就会进入更多工作流。",
+          "source": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/aug/01/china-silicon-valley-white-house",
+          "image_source_url": "https://i.guim.co.uk/img/media/81fcb075f5eb538d8327f56e2ea009632c7e7e2d/516_0_5160_4128/master/5160.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=a228984d6b2a6203723837a3f32a0bb4",
+          "image_origin": "source",
+          "image": "images/news-02-0239db5982.webp"
+        },
+        {
+          "title": "OpenAI发布十项数学证明",
+          "body": "OpenAI 在 8 月 1 日发布十项数学和理论计算机科学结果，覆盖高维球堆积、编码理论、非 sofic 群、Connes 刚性猜想、算术电路复杂度、量子并行重复、格密码相关问题和 Ramsey 数等方向。OpenAI 称这些结果由内部版本 Astra 生成，人类协助整理手稿并用 Lean 形式化验证。",
+          "janet_take": "科研圈该停一下看这条。模型已经开始碰十年没进展的问题，还把署名、验证和责任一起扔回学术共同体。Lean 证书和同行审查都还要走；同时，科研助理的价值正在从会聊天，变成能不能产出可验证的中间结果。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/ten-advances-in-mathematics/",
+          "image_source_url": "https://pica.zhimg.com/v2-b2f62c5597066ad0db7891bdbe8897c4_r.jpg",
+          "image_origin": "search",
+          "image": "images/news-03-openai.jpg"
+        },
+        {
+          "title": "EU透明规则进入倒计时",
+          "body": "围绕 EU AI Act 的新透明要求，多个合规解读在 8 月 1 日前后集中提醒企业：8 月 2 日起，聊天机器人披露、AI 生成内容标记、deepfake 标签和部分高风险系统规则进入关键执行阶段。对面向欧盟用户的生成式 AI 服务，这不再只是法务备忘录。",
+          "janet_take": "透明规则最先打到营销、客服、教育和内容团队。过去大家喜欢把 AI 辅助藏在流程里，觉得用户不知道就等于没风险。欧盟这次逼平台说清楚：你在和机器互动，内容经过生成或改造。海外业务的小团队，披露文案、日志和供应商说明会成为基本件。",
+          "source": "Orrick AI Resource Center",
+          "url": "https://ai-law-center.orrick.com/eu-ai-act/general-purpose-ai/",
+          "image_source_url": "https://ai-law-center.orrick.com/wp-content/uploads/2024/09/EU-AI-Act-Series-PAGE-OG-740x360-1.jpg",
+          "image_origin": "source",
+          "image": "images/news-04-eu.webp"
+        },
+        {
+          "title": "Georgia Tech测青少年危机AI",
+          "body": "WRDW/WAGT 在 8 月 1 日报道，Georgia Tech 与 Children's Healthcare of Atlanta 正在开发一个基于社交媒体数据的 AI 工具，用来识别青少年可能出现严重心理健康事件的风险。报道称该工具仍在开发中，基础来自多年研究，包括线上用词、互动内容和信息暴露信号。",
+          "janet_take": "医疗 AI 最容易把善意包装成监控。提前发现危机当然重要，青少年的社交数据、误报和介入边界也同样沉重。核心不在模型能不能打分，而在同意、复核和退出路径有没有先摆出来。",
+          "source": "WRDW / Atlanta News First",
+          "url": "https://www.wrdw.com/2026/08/01/ai-tool-aims-catch-teen-mental-health-crises-using-social-media-data/",
+          "image_source_url": "https://gray-wrdw-prod.gtv-cdn.com/resizer/v2/WW7KG3B4AZE6TEI5F5PROPWESM.png?auth=2382091fc82e282936770242cfc3ec35c5d9559610a2d3c7fa1b3a3ad2b972c3&width=1200&height=600&smart=true",
+          "image_origin": "source",
+          "image": "images/news-05-georgia-techai.avif"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "OpenAI推出降价算力账单",
+          "body": "OpenAI 在《Building abundant intelligence》中披露，GPT-5.6 Luna 输入价格降到每百万 token 0.20 美元、输出 1.20 美元，Terra 为 2 美元和 12 美元；文章还称 GPT-5.6 Sol 帮助优化服务软件，使端到端 serving 成本下降 20%，并改进 speculative decoding，让 token 生成效率提高超过 15%。",
+          "janet_take": "OpenAI 这篇其实是在给巨额算力账单写商业辩护。它强调路由、上下文管理和产品设计能从同一块 GPU 里榨出更多结果。企业客户最后买的不是 token，而是一次成功任务少烧多少重试、人工复核和等待时间。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/building-abundant-intelligence/",
+          "image_source_url": "http://www.ai-aide.cn/uploads/allimg/20251104/1-2511041Q450W6.png",
+          "image_origin": "search",
+          "image": "images/models-01-openai.png"
+        },
+        {
+          "title": "T-Systems推出三款生产模型",
+          "body": "T-Systems 的 AI Foundation Services 文档在模型退休页面提示，GLM-5.2、Nemotron 3 和 Qwen 3.6 已进入 production，同时提醒用户在 2026-09-01 前迁移部分 deprecated models。这个更新不是大发布会，却直接影响企业调用栈里的可用模型清单。",
+          "janet_take": "企业 AI 的真实生活常常是模型列表突然变动。今天可用，明天退休倒计时；供应商新增 Qwen 或 Nemotron，也会改变路由和成本选择。交付计划里如果没有迁移窗口、回归测试和 fallback，多模型支持就是一句空话。",
+          "source": "T-Systems AI Foundation Services",
+          "url": "https://docs.llmhub.t-systems.net/models/scheduled-for-retirement/",
+          "image_source_url": "https://media.licdn.com/dms/image/v2/D4E10AQFykrIkTISz6g/image-shrink_800/image-shrink_800/0/1716819724819?e=2147483647&v=beta&t=fYIz-AWc4_hb6MO0OtU37V6MSYrg32ErLnfbQ6vdGtE",
+          "image_origin": "search",
+          "image": "images/models-02-t-systems.jpg"
+        },
+        {
+          "title": "Qwen-UI-Agent接入移动端自动任务",
+          "body": "OrangeBot 的 8 月 1 日模型榜单把 Qwen-UI-Agent 列为本周模型，描述其统一 action space 可交错 GUI 操作和 CLI 执行，并能在单轮生成批量动作。榜单还提到它使用真实设备移动运行时、AutoResearch 式数据飞轮和超过 100 轮轨迹的 online RL。",
+          "janet_take": "UI Agent 的方向很现实：让模型真的去点、去跑命令、去收拾失败轨迹。机会在移动端自动化和测试，不在炫技视频。App 增长、客服和质检会先受益。",
+          "source": "OrangeBot.AI",
+          "url": "https://orangebot.ai/top-ai-models-this-week",
+          "image_source_url": "https://orangebot.ai/FILE_B1.png",
+          "image_origin": "source",
+          "image": "images/models-03-qwen-ui-agent.png"
+        },
+        {
+          "title": "DeepSeek推出代码模型低价",
+          "body": "Axios 在 8 月 1 日把 DeepSeek 新模型称为 AI 价格战继续加速的信号，强调中国实验室正在用极低价格提供强代码能力。与财新的产品信息合并看，V4-Flash 的重点不只是能力表，而是把大规模代码生成和 Agent 任务的边际成本继续压低。",
+          "janet_take": "代码模型降价最先伤到“靠调用贵模型包装成 SaaS”的中间层。用户会越来越快问：你凭什么比底层 API 贵十倍？能活下来的工具，得有私有数据、流程入口、记录或行业模板。只靠 prompt 套壳收费，账单会越来越难看。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/01/deepseek-model-cheap-ai-price-war",
+          "image_source_url": "https://pica.zhimg.com/v2-fa50fdbd06a74a91191d8031e3fe0c98_r.jpg",
+          "image_origin": "search",
+          "image": "images/models-04-deepseek.jpg"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "AI数学署名问题摆上桌",
+          "body": "OpenAI 在数学结果说明中明确讨论 attribution：如果证明完全由 AI 生成，却声称人类作者完成，会误导外界对系统贡献和人类智力劳动的理解。OpenAI 表示人类帮助准备手稿并形式化证明，同时对正确性负责，但数学论证由模型生成。",
+          "janet_take": "科研圈绕不开一个冷问题：AI 产出的证明算谁的劳动？公司说自己负责正确性，模型没有作者身份，数学共同体还要判断结果是否有价值。创作者也一样，AI 不是橡皮擦，不能擦掉生产过程。高价值内容尤其要讲清谁提出、谁验证、谁承担错误。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/ten-advances-in-mathematics/",
+          "image_source_url": "https://help.apiyi.com/wp-content/uploads/2025/05/openai-api-429-errors-solution-guide-image-0-1536x1114.png",
+          "image_origin": "search",
+          "image": "images/insights-01-ai.png"
+        },
+        {
+          "title": "美国州法管住医疗AI",
+          "body": "Transparency Coalition 汇总称，2026 年已有 27 个州通过 84 项 AI 新法，其中医疗授权和心理健康聊天机器人是高频领域。文章列出 7 个州限制保险公司用 AI 做医疗授权决策，5 个州限制 AI therapy chatbot；Iowa 还要求医疗录音和转写前取得患者同意，该条款 8 月 1 日生效。",
+          "janet_take": "医疗场景终于把“人还在不在环里”写成硬问题。保险、转写、心理咨询不是普通客服，AI 做错一次可能让病人延误或贴错标签。健康类工具只讲准确率很薄，人工复核、同意、解释和申诉流程才是产品底座。",
+          "source": "Transparency Coalition",
+          "url": "https://www.transparencycoalition.ai/news/state-lawmakers-have-passed-15-new-laws-regulating-the-use-of-ai-in-health-care",
+          "image_source_url": "http://static1.squarespace.com/static/6578d6032532c06f62ef47ce/t/6a6637c4cc64063e79a01173/1785083844681/Doctor+and+patient+.jpeg?format=1500w",
+          "image_origin": "source",
+          "image": "images/insights-02-ai.webp"
+        },
+        {
+          "title": "开放权重游说进入明牌局",
+          "body": "The Guardian 报道称，Microsoft、Nvidia、Palantir、Meta 等公司近日公开呼吁美国不要限制 open models，Nvidia CEO Jensen Huang 也赴国会游说支持开放模型。与此同时，OpenAI 和 Anthropic 更强调中国模型可能带来的安全风险，产业内部裂痕公开化。",
+          "janet_take": "开放权重之争已经是商业分赃。硬件厂商希望模型越多越好，闭源实验室希望高端入口继续收费，企业用户只想便宜稳定。中国开发者会获得窗口期；一旦牵涉数据、政府采购和安全审查，门也可能突然关上。",
+          "source": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/aug/01/china-silicon-valley-white-house",
+          "image_source_url": "https://i.guim.co.uk/img/media/81fcb075f5eb538d8327f56e2ea009632c7e7e2d/516_0_5160_4128/master/5160.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=a228984d6b2a6203723837a3f32a0bb4",
+          "image_origin": "source",
+          "image": "images/insights-03-677e068045.webp"
+        },
+        {
+          "title": "Cursor用户追问降价传导",
+          "body": "Cursor 社区 8 月 1 日出现用户反馈，质疑 OpenAI 和 Anthropic 降价后，工具层为什么没有把收益传导给用户。这个帖子本身不是大新闻，却反映出开发者工具进入新阶段：底层模型价格透明后，壳层产品的毛利会被用户拿来逐项比较。",
+          "janet_take": "模型降价一旦公开，工具层就很难继续拿黑盒账单当护城河。Cursor 这类产品卖的是编辑器体验、上下文工程、团队管理和稳定性，不是转接 Claude。价格差会被扒出来，商业模式建立在用户看不懂账单上，迟早露馅。",
+          "source": "Cursor Community Forum",
+          "url": "https://forum.cursor.com/tag/anthropic/340",
+          "image_source_url": "https://us1.discourse-cdn.com/cursor1/original/3X/3/7/3718fc94d3c996fb60ac40aa8a689003c970b23b.png",
+          "image_origin": "source",
+          "image": "images/insights-04-cursor.png"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Amazon砸500亿入股OpenAI",
+          "body": "Financial Times 报道称，Amazon 已完成对 OpenAI 的 500 亿美元投资，约取得 5% 股份，并把这笔交易与 AWS、芯片、计算基础设施和云服务合作绑定。报道还提到 Amazon 对 Anthropic 也有大额承诺，目标之一是推广 Trainium 芯片并争取前沿模型供给。",
+          "janet_take": "云厂商已经不满足卖铲子，开始直接买矿山的一部分。Amazon 同时押 OpenAI 和 Anthropic，表面是投资，底层是算力订单、芯片验证和云客户锁定。中小公司看供应商时，成本、延迟和谈判筹码会被这些云合同一起改写。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/8ae9e6e4-a53c-44da-8e7d-c9d81f0df4b9",
+          "image_source_url": "https://www.domain-b.com/Uploads/Images/Amazon-discussing-$10-billion-OpenAI-stake-as-AI-valuation-targets-$500-billion.webp",
+          "image_origin": "search",
+          "image": "images/insights2-01-amazonopenai500.webp"
+        },
+        {
+          "title": "AI基金杠杆烧出风险",
+          "body": "Financial Times 8 月 1 日报道，Leopold Aschenbrenner 的 Situational Awareness fund 因 AI 相关股票下跌和债权人要求还款，被迫将多数公开持仓卖给 Citadel。报道称该基金年内仍有 80% 收益，但杠杆和流动性压力让它在波动中失去主动权。",
+          "janet_take": "AI 投资最会讲未来，杠杆最会提醒你现在。账面赚 80% 也挡不住债权人敲门，这比任何宏大预测都诚实。数据中心、芯片和模型公司都在讲十年愿景，现金流、期限错配和融资成本却每天结算。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/20af5836-51b0-4a37-a820-9de1583a18b4",
+          "image_source_url": "https://image.cmoney.tw/servicetest/swagger/1778342400/1e9ee6e4-a1ef-4fe6-8f4b-8f16a19141b7.jpg",
+          "image_origin": "search",
+          "image": "images/insights2-02-ai.jpg"
+        },
+        {
+          "title": "Blackbaud推出公益Agent产品",
+          "body": "Futurum Research 8 月 1 日的市场报道提到，Blackbaud 的 Agents for Good 面向 nonprofit 和 social-good 场景，把 agentic AI 放进云原生平台。报道背景还提到企业软件正在接受 agentic AI，决策者对这类技术的优先级继续上升。",
+          "janet_take": "公益软件做 Agent 听起来温柔，实际很商业：筹款、志愿者管理、捐赠人沟通和项目报告都能自动化。小组织会省人力，关系也可能被模板化。垂直 AI 可以学这个切口，但公益场景最怕效率压过尊严。",
+          "source": "Futurum Research",
+          "url": "https://futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/",
+          "image_source_url": "https://futurumgroup.com/wp-content/uploads/2026/02/AI-Capex-2026-The-690B-Infrastructure-Sprint.jpg",
+          "image_origin": "source",
+          "image": "images/insights2-03-blackbaudagent.jpg"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Together端点自动伸缩适合试用",
+          "body": "The GPU Daily 8 月 1 日在当日简报中提到 Together AI released autoscaling endpoints for LLM workloads。对开发者来说，这类能力的价值不是新模型，而是把流量尖峰、冷启动和闲置成本交给托管层处理，适合做原型、活动页、内部工具和周期性批处理。",
+          "janet_take": "适合试用，别迷信。Autoscaling endpoint 能省运维时间，prompt 质量、数据权限和预算上限仍归产品团队。没有硬限额和日志，账单会比用户增长更快。",
+          "source": "The GPU Daily",
+          "url": "https://thegpu.ai/p/gpu-daily-2026-08-01",
+          "image_source_url": "https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/a9173e43-4fcf-40cd-af0e-6af50a0db25d/19.png?t=1785571912",
+          "image_origin": "source",
+          "image": "images/tools-01-together.png"
+        }
+      ]
+    }
+  }
+}

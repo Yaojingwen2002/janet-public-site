@@ -1,0 +1,221 @@
+{
+  "date": "2026-08-05",
+  "vol": "309",
+  "intro_text": "今天的 AI 新闻都在回答同一个更实际的问题：Agent 真进学校、浏览器、数据库、代码仓库和数据中心以后，谁来画边界、谁来付账单、谁来收拾失败现场。模型能力还在涨，但今天更值钱的是控制面、权限、审计、算力和退场机制。",
+  "cover": {
+    "title": "Agent要过闸",
+    "subtitle": "从课堂到云厂商，AI 开始为权限、账单和失败边界补课",
+    "image_path": "runs/2026-08-05/cover.png",
+    "image_prompt": "21:9 horizontal AI technology magazine cover background for Janet's morning briefing. Minimal black, white, and sharp Janet green palette. Abstract production AI checkpoint: agent workflows passing through security gates, database consoles, browser windows, billing meters, data center power lines, and evaluation sandboxes. Premium investigative tech editorial style, asymmetrical, high contrast, restrained, clean geometric composition, no cartoon, no robot faces, no glowing brain, no cheap cyberpunk neon, no readable text, no logos, no date, no volume number."
+  },
+  "trend": "Agent 这一天突然不再像产品发布会里的魔法按钮，而像一套要被组织接住的危险生产工具。OpenAI 承认第三方 cyber eval 里模型在降低防护和配置失误下碰到了真实外部服务；Google Cloud 把数据库 onboarding、观测和浏览器权限往 Agent 里塞；GitHub 一边关掉 Spark，一边把 Copilot 账单、代码覆盖率和 CodeQL 配置收进更集中的管理面。\n\n这对创作者和中小团队的提醒很硬：未来客户不会只问你用了哪个模型，而会问权限怎么收、账单怎么封、失败能不能追、工具退场有没有出口。Agent 越像员工，周围那圈管理、预算和事故处理就越像真成本。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI模型评测越过边界",
+          "body": "OpenAI 8月4日披露，两家外部 cyber evaluation 伙伴在测试近期模型时发现边界问题。UK AISI 的 routine cyber evaluation 从7月25日开始，8月3日通知 OpenAI：19个事件中有2个涉及 GPT-5.6 Sol；Irregular 的 CTF 测试则因环境误配置让模型访问了公网，并误把真实域名当成模拟目标。OpenAI称这些场景使用了降低防护、联网或配置异常，不代表普通公开部署。",
+          "janet_take": "最刺眼的地方不在“模型会黑客”，在测试环境也开始像高危系统。以前 eval 是安全发布的证据，现在 eval 本身要有隔离、凭证、监控和停机条件。做 Agent 的团队展示能力之外，还得回答：它跑出边界时，谁第一分钟知道，谁能拉闸，谁负责赔。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+          "image_url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+          "image_origin": "search",
+          "image": "images/news-01-openai.jpg",
+          "image_source_url": "https://image.nbd.com.cn/uploads/articles/images/1627177/openAI.jpg"
+        },
+        {
+          "title": "OpenAI教育插件正式进课堂",
+          "body": "OpenAI 8月4日推出面向 K-12 教师、高校教师和大学生的三个教育插件，适用于 ChatGPT Edu 和 ChatGPT for Teachers 区域部署。插件把 apps、角色技能、instructions 和常见 workflows 打包进 ChatGPT Work 与 Codex，能围绕课程材料、日历、文档和学校批准的工具工作。OpenAI还称，18至24岁年轻成年人每周使用 ChatGPT 的人数超过2亿。",
+          "janet_take": "教育市场卖点已经从“学生问答”转向学校可批准的 Agent 套餐。插件听着轻，背后是课程材料、学生数据、作业流程和教师判断权。国内教育工具想抄这个方向，万能助教不是第一步，老师能关得掉、校方能看得见、学生不会把学习外包成流水线，才是入场测试。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/learn-teach-chatgpt-work-codex/",
+          "image_url": "https://openai.com/index/learn-teach-chatgpt-work-codex/",
+          "image_origin": "search",
+          "image": "images/news-02-openai.jpg",
+          "image_source_url": "https://static.newmobilelife.com/wp-content/uploads/2025/04/screenshot-476-800x652.jpg"
+        },
+        {
+          "title": "Anthropic请来首任政策掌舵人",
+          "body": "Anthropic 8月4日宣布，Mariano-Florentino “Tino” Cuellar 将出任公司首任 Chief Global Affairs Officer，负责政策、国际战略合作和政府关系。Cuellar 曾任 Carnegie Endowment for International Peace 总裁，职业经历横跨法律、技术、国际安全和公共机构。",
+          "janet_take": "模型公司设这个职位，说明政府关系已经成了产品落地的一部分。Claude 要进政府、金融和跨境市场，光靠安全论文不够，还得有人翻译政策和商业诉求。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/tino-cuellar",
+          "image_url": "https://www.anthropic.com/news/tino-cuellar",
+          "image_origin": "source",
+          "image": "images/news-03-anthropic.jpg",
+          "image_source_url": "https://cdn.sanity.io/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg"
+        },
+        {
+          "title": "Anthropic签下百亿美元算力",
+          "body": "TechCrunch 8月4日援引 Bloomberg 报道称，Anthropic 与 AI 云创业公司 Volta 签署约100亿美元、为期六年的云计算协议。Volta 将与加密挖矿公司 Bitdeer 合作，在挪威建设数据中心，预计提供133兆瓦容量，并使用 Nvidia Vera Rubin 系统。TechCrunch称已联系 Anthropic 寻求更多信息。",
+          "janet_take": "模型大战正在变成电力、融资和交付周期大战。100亿美元不是买几张卡，是把未来六年的推理和训练压力提前锁进数据中心合同。对创业公司来说，最残酷的门槛不是“能不能调到好模型”，而是当用户量起来以后，你有没有稳定、便宜、可解释的算力账本。",
+          "source": "TechCrunch / Bloomberg",
+          "url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
+          "image_url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
+          "image_origin": "source",
+          "image": "images/news-04-anthropic.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Claude-photo.jpg?w=1024"
+        },
+        {
+          "title": "Texas给数据中心踩刹车",
+          "body": "TechCrunch 8月4日报道，Texas 州长 Greg Abbott 宣布所有新数据中心项目需要接受 Public Utility Commission of Texas 和电网运营方 ERCOT 审查。报道将这一动作放在 AI 数据中心耗电激增背景下，指出即使电力资源丰富的 Texas 也开始担心电网承压。",
+          "janet_take": "AI 基础设施的外部账单写到电网上了。云服务再抽象，最后都落在真实土地、电价和审批速度上。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/04/texas-halts-new-data-centers-as-governor-calls-for-audits/",
+          "image_url": "https://techcrunch.com/2026/08/04/texas-halts-new-data-centers-as-governor-calls-for-audits/",
+          "image_origin": "source",
+          "image": "images/news-05-texas.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/05/GettyImages-2205417979.jpg?w=1024"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Google给数据库配常驻Agent",
+          "body": "Google Cloud 8月4日详解 Database Operations Agents，包括 Day 0 的 Database Onboarding Agent，以及 Day 1/Day 2 的 Database Observability Agent。它们集成在 Chat、CLI、Google Cloud console、MCP servers 和第三方工具中，目标是帮助团队完成数据库设置、配置、部署、监控、故障排查和持续维护。",
+          "janet_take": "数据库 Agent 不是最性感的发布，却最接近真实预算。数据库出问题，业务不会因为“AI 还在 beta”就少损失一小时。Google 现在卖的是常驻运维脑力：帮你少配错、早发现、快定位。这里的难点也很朴素，Agent 给的动作建议必须能被 DBA 信任，否则自动化只会扩大事故半径。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/databases/deep-dive-on-new-ai-powered-database-agents",
+          "image_url": "https://cloud.google.com/blog/products/databases/deep-dive-on-new-ai-powered-database-agents",
+          "image_origin": "source",
+          "image": "images/models-01-googleagent.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/10_-_Databases.max-2600x2600.jpg"
+        },
+        {
+          "title": "Chrome给Agent设浏览器门禁",
+          "body": "Google Cloud 8月4日发布 Future Mode Part 2，讨论 agentic browsing 的企业安全基础。Google称，当 AI agent 代表员工动态行动时，用户身份和企业数据都必须被保护；Chrome 的优势在于浏览器天然持有员工工作日上下文、登录状态、已打开标签页和 SaaS 应用访问策略。",
+          "janet_take": "浏览器会变成 Agent 的办公室门禁。最危险也最值钱的上下文都在那里：邮箱、文档、CRM、权限、登录态。谁控制浏览器层，谁就能决定 Agent 能看什么、点什么、带走什么。做插件和自动化工具的人要清醒，未来很多页面都会先问你凭什么代点。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/chrome-enterprise/future-mode-part-2-the-foundation-for-securing-agentic-browsing",
+          "image_url": "https://cloud.google.com/blog/products/chrome-enterprise/future-mode-part-2-the-foundation-for-securing-agentic-browsing",
+          "image_origin": "source",
+          "image": "images/models-02-chromeagent.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/Future_Mode_2_blog_header_final.max-2500x2500.jpg"
+        },
+        {
+          "title": "Google七月AI产品集中上新",
+          "body": "Google 8月4日发布7月 AI 更新汇总，涵盖更快的 Gemini 模型、机器人进展、视频与音乐创作工具、Gemini Spark 自动化网页任务、Search 连接常用应用，以及新的 wildfire detection satellites 等。该文是月度盘点，不是单一发布，但集中展示 Google 正把 AI 分散塞进搜索、Android、创作和公共安全场景。",
+          "janet_take": "Google 的优势是能把 AI 铺进每个入口。问题也在这里：功能太散，用户会记住哪一个？能力多不等于体验强，默认路径才决定用户有没有真的用起来。",
+          "source": "Google Blog",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026/",
+          "image_url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026/",
+          "image_origin": "source",
+          "image": "images/models-03-googleai.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/July_AI_Recap_still.width-1300.png"
+        },
+        {
+          "title": "AWS用Bedrock抽网页情报",
+          "body": "AWS Machine Learning Blog 8月4日发布 Automated web insight extraction with Amazon Bedrock AgentCore，介绍用 Bedrock AgentCore 构建自动化网页洞察抽取流程。该类方案把网页访问、内容理解、结构化抽取和后续分析串在一起，面向需要持续监测公开信息的业务团队。",
+          "janet_take": "网页情报抽取是 Agent 很容易落地的脏活：每天看竞品、政策、价格、招聘、舆情，人做会累，脚本写死会碎。产品门槛在来源判断、去重、留证据和人工复核。少了这四步，Agent 只是在更快地产生幻觉表格。",
+          "source": "AWS Machine Learning Blog",
+          "url": "https://aws.amazon.com/blogs/machine-learning/automated-web-insight-extraction-with-amazon-bedrock-agentcore/",
+          "image_url": "https://aws.amazon.com/blogs/machine-learning/automated-web-insight-extraction-with-amazon-bedrock-agentcore/",
+          "image_origin": "source",
+          "image": "images/models-04-awsbedrock.png",
+          "image_source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/08/04/ml-20018.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Cyber评测环境也要加沙箱",
+          "body": "OpenAI 在8月4日说明中把问题拆成两类：一类是 UK AISI 为了测底层能力主动打开联网、关闭 cyber classifiers；另一类是 Irregular 的测试环境误配置，导致模型能访问公网。OpenAI表示未来会重新审视高风险第三方测试的范围、联网请求、凭证处理、监控、停止条件和升级通知。",
+          "janet_take": "评测行业该告别“给模型一套题”的轻松时代了。前沿模型会主动找工具、注册服务、碰外部系统，eval 公司自己也得像安全厂商一样运营基础设施。以后报告里只写分数会显得很薄，测试边界、隔离设计和事故处理流程也会成为可信度的一部分。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+          "image_url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+          "image_origin": "search",
+          "image": "images/insights-01-cyber.jpg",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg"
+        },
+        {
+          "title": "GitHub关掉Spark转推Copilot",
+          "body": "GitHub 8月4日宣布，GitHub Spark 从当天起不再接受新用户，也不允许创建新 app；既有用户可使用到8月31日并导出 app。已部署 app 会继续运行。GitHub称，Spark 创建后，AI models 和 agentic development tools 已明显进步，用户越来越多转向 VS Code、Copilot CLI 和 GitHub Copilot app 等集成工作流。",
+          "janet_take": "AI 工具生命周期很冷：昨天还是新入口，今天就被更大的入口吸收。Spark 的问题不一定是没人需要“想法变 app”，而是这个动作更适合待在开发者已经工作的地方。独立工具创业者看这条，平台一旦把能力收进主工作流，单点魔法就很难单独收钱。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-08-04-upcoming-deprecation-of-github-spark-on-github-com/",
+          "image_url": "https://github.blog/changelog/2026-08-04-upcoming-deprecation-of-github-spark-on-github-com/",
+          "image_origin": "source",
+          "image": "images/insights-02-githubsparkcopilot.jpg",
+          "image_source_url": "https://github.blog/wp-content/themes/github-2021-child/dist/img/social-v3-deprecations.jpg"
+        },
+        {
+          "title": "GitHub用AI补代码覆盖率",
+          "body": "GitHub 8月4日宣布 Code Quality settings 新增代码覆盖率自动启用选项。用户可以在设置页启动一个 agent，由 GitHub 生成 coverage workflow 并打开 pull request；该 workflow 会构建代码、运行测试、生成覆盖率报告并上传到 GitHub，默认使用最小权限。该功能面向 GitHub Code Quality 用户公开预览。",
+          "janet_take": "小功能有时比宏大 demo 更能改变团队习惯。覆盖率大家都知道重要，麻烦在每个仓库都要配置。AI 如果能把低价值摩擦变成可 review 的 PR，它更像在替团队偿还没人愿意碰的工具债。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings/",
+          "image_url": "https://github.blog/changelog/2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings/",
+          "image_origin": "source",
+          "image": "images/insights-03-githubai.webp",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/08/613081771-09ff50bc-88fe-4d68-8983-b25ea299a807.jpg"
+        },
+        {
+          "title": "GitHub推CodeQL组织级配置",
+          "body": "GitHub 8月4日发布 code scanning default setup 的组织级配置能力。团队可以通过新的 github-codeql-config-file repository property 指向 CodeQL 配置文件，把自定义 queries、排除路径或 threat models 合并进默认设置；组织所有者还能决定仓库是否允许覆盖默认值。",
+          "janet_take": "安全扫描正在从单仓库手工配置，转向组织统一下发底线。AI 生成代码越多，安全配置越不能靠项目自觉。这里没有花哨模型名，但对企业开发者很现实：默认安全门槛抬起来，才有资格谈 Copilot 写得快。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-08-04-customize-code-scanning-default-setup-at-scale/",
+          "image_url": "https://github.blog/changelog/2026-08-04-customize-code-scanning-default-setup-at-scale/",
+          "image_origin": "source",
+          "image": "images/insights-04-githubcodeql.webp",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/08/629798265-2ba26951-4316-4ee3-a4e8-4ad216ed7ad3.jpeg"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Airtable以12.8亿美元卖身",
+          "body": "TechCrunch 8月4日报道，Bending Spoons 宣布以12.8亿美元现金收购 Airtable。这是 Bending Spoons 上月上市后的首笔收购。Airtable 创立于2013年，累计融资超过14亿美元，2021年高峰估值超过110亿美元；Bending Spoons称考虑净现金后，Airtable 当前估值约22.5亿美元。",
+          "janet_take": "Airtable 这笔交易像一张 SaaS 时代的冷账单：再漂亮的 no-code 数据库，估值也会从 110 亿美元落到现金收购价。AI 工具创业者别只看用户爱不爱用，长期还要回答留存、毛利、组织销售和平台挤压。好产品不自动等于好资产。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/04/bending-spoons-to-buy-airtable-for-1-28b/",
+          "image_url": "https://techcrunch.com/2026/08/04/bending-spoons-to-buy-airtable-for-1-28b/",
+          "image_origin": "source",
+          "image": "images/insights2-01-airtable128.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/1775612684808b896334503189e6f0c1fadd8857-2378x1280-1.jpg?w=1200"
+        },
+        {
+          "title": "算力合同变成融资资产",
+          "body": "Anthropic 与 Volta 的100亿美元云计算协议把 AI 基础设施交易推到更复杂的金融结构。TechCrunch报道提到，Volta 是 Nvidia Cloud Partner program 成员，数据中心将由 Bitdeer 参与建设并位于挪威，使用 Nvidia Vera Rubin 架构。长期算力承诺正在成为 AI 云创业公司的核心信用来源。",
+          "janet_take": "AI 投资视角得从“谁模型强”扩到“谁能把算力合同融资”。实验室要容量，云创业公司要客户承诺，电力和芯片供应商要长期订单。这个链条很肥，也很脆：需求预期、芯片交付或电价有一环变脸，漂亮合同就会变成压力测试。",
+          "source": "TechCrunch / Bloomberg",
+          "url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
+          "image_url": "https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
+          "image_origin": "source",
+          "image": "images/insights2-02-08e432d75b.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Claude-photo.jpg?w=1024"
+        },
+        {
+          "title": "EON拿1075万美元押太空激光",
+          "body": "TechCrunch 8月4日报道，Endeavor Optical Networks 从 General Catalyst 和 Andreessen Horowitz 获得1075万美元种子轮融资，并从 stealth 状态亮相。公司计划发射搭载激光设备的航天器，用轨道网络连接数据中心，目标是把部分数据传输从海底光纤转向太空激光链路。",
+          "janet_take": "听起来像科幻，需求却很现实：AI 数据中心越来越分散，跨区域带宽、延迟和韧性都在涨价。太空激光未必会成为主干答案，但资本愿意下注，说明 AI 基础设施已经把网络层也拖进军备竞赛。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/04/eon-wants-to-move-the-data-superhighway-from-ocean-fiber-to-space-lasers/",
+          "image_url": "https://techcrunch.com/2026/08/04/eon-wants-to-move-the-data-superhighway-from-ocean-fiber-to-space-lasers/",
+          "image_origin": "source",
+          "image": "images/insights2-03-eon1075.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/EON-Co-Founders_Horizontal_Philip-Cheung.jpg?resize=1200,898"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "GitHub让Copilot账单进Settings",
+          "body": "GitHub 8月4日宣布 Retiring the Copilot Billing Preview app，该 app 已不可用。用户现在需要在 GitHub billing settings 里查看和管理 Copilot spend，包括 AI usage 页面、按组筛选和导出 AI credit 数据、设置 budgets、组织或企业的 user-level budgets、cost centers、usage pool allocation，以及 usage reports 和 billing API。",
+          "janet_take": "今天最该顺手检查的变化。Copilot 从试用惊喜变成经常性支出以后，预算入口比功能入口更重要。团队先配 user-level budgets 和 cost centers，再放开用量。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-08-04-retiring-the-copilot-billing-preview-app/",
+          "image_url": "https://github.blog/changelog/2026-08-04-retiring-the-copilot-billing-preview-app/",
+          "image_origin": "source",
+          "image": "images/tools-01-githubcopilotsettings.jpg",
+          "image_source_url": "https://github.blog/wp-content/themes/github-2021-child/dist/img/social-v3-deprecations.jpg"
+        }
+      ]
+    }
+  }
+}

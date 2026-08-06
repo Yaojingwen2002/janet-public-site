@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-janet-experiment="signal-wave-17" data-janet-design="poster-v4">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-08-06 · VOL 310</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/logo-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../styles/potato-center.css?v=potato-roll-20260617">
+  <link rel="stylesheet" href="../../styles/comments.css">
+  <link rel="stylesheet" href="../../styles/signal-cursor.css?v=experiment-wave-17">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Avenir / SF Pro (标题) · SF Pro Text (正文) · SF Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'SF Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+  --sans:         'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  --display:      'Avenir Next', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.briefing-brand {
+  display: inline-flex;
+  margin: 0 0 18px;
+}
+
+.briefing-brand img {
+  display: block;
+  width: 138px;
+  height: auto;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+.reader-greeting-line {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.reader-greeting-line strong {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.intro-copy > :first-child { margin-top: 0; }
+.intro-copy > :last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+  <link rel="stylesheet" href="../../styles/brand-system.css?v=brand-20260728-2">
+  <link rel="stylesheet" href="../../styles/experiment-editorial.css?v=experiment-wave-17">
+  <link rel="stylesheet" href="../../styles/material-system-v4.css?v=poster-v4-20260730g">
+  <link rel="stylesheet" href="../../styles/site-audio-v4.css?v=poster-v4-20260730g">
+  <link rel="stylesheet" href="../../styles/potato-center-v4.css?v=poster-v4-20260730g">
+</head>
+<body class="briefing-output-page" data-audio-policy="ambient" data-material-scene="editorial">
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="../../index.html">首页</a>
+    <a href="../../news.html">Janet 快车箱</a>
+    <a href="../../portfolio.html">作品库</a>
+    <a href="../../index.html#about">关于 Janet</a>
+    <a href="../../index.html#contact">联系</a>
+  </div>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <a class="briefing-brand" href="../../index.html" aria-label="返回 Janet 首页">
+            <img src="../../assets/icons/logo-lockup-horizontal.svg" alt="Janet">
+          </a>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-08-06</div>
+          <div class="vol-info">VOL 310</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="控制面摊牌" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-08-06 // VOL_310</div>
+   <h1>控制面摊牌</h1>
+   <p>从 Android 权限到算力合同，AI 生产化开始交出硬账本</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">
+      <p class="reader-greeting-line"><strong data-reader-greeting>读者</strong>，早。</p>
+      <div class="intro-copy">今天的新闻都在往一个地方收：Agent 不能只多接几个按钮，还要进手机系统、云网关、企业数据、算力合同和客户审查表。模型能力还在冲，但真正决定能不能落地的，是谁握着权限、路由、账单和证据。<br><br>本期包括 5 条全球要闻、4 条模型动态、4 条技术深度，以及投资视角和工具箱推荐。<br><br>保持好奇，保持判断。</div>
+    </div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>📌 今日趋势：Agent 今天不像一个单点产品，更像一张被摊开的控制面。Google 反对欧盟要求 Android 向第三方 AI Agent 开更深系统权限；同时又在云端推 MCP stateless、模型路由、Cortex v7 和 Filestore on Colossus。一个方向锁住手机里的危险能力，另一个方向管住企业 Agent 的流量、数据和存储。</h2>
+  <p>算力和信任也在同一张桌上。Anthropic 被曝签下 100 亿美元 Volta 算力合同，Lovable 找 Cerebras 缩短生成等待，又给每个商业应用上信任页。Meta 进 coding agent 战场，Jina 做更小的 reranker，Zendesk 把对象建模交给 Admin Copilot。今天的提醒很直接：AI 落地看谁能把权限、成本、速度和可核验证据压进一套日常操作。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-googleai.png" alt="Google拒绝欧盟AI深权限" loading="lazy" decoding="async">
+    <figcaption>Google Security Blog</figcaption>
+  </figure>
+  <h2>Google拒绝欧盟AI深权限</h2>
+  <p class="item-meta">来源: Google Security Blog · 2026-08-06 · <a href="https://blog.google/security/android-ai-security-eu-dma/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google 在 8 月 5 日发表 Android 安全博客，回应欧盟依据 DMA 推进的 AI 服务互操作措施。Google 称，欧盟希望 Android 向用户下载的 AI Agent 开放深层系统级能力，但这会改写 Android 的沙箱和权限模型；公司主张实施阶段必须让安全专家参与，先定义基线防护，再谈互操作。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这场争议表面是互操作，底层是手机操作系统在给 Agent 时代划红线。第三方 Agent 一旦能碰短信、相册、位置、支付和后台能力，创新会快，事故也会快。欧盟想拆平台门禁，Google 想保住守门权，用户夹在中间。做移动 AI 的团队最后要回答的很朴素：拿权限时说不说得清，撤不撤得回来，出事追不追得到。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-02-googledeepmind.jpg" alt="Koray正式接管DeepMind模型线" loading="lazy" decoding="async">
+    <figcaption>Google Blog</figcaption>
+  </figure>
+  <h2>Koray正式接管DeepMind模型线</h2>
+  <p class="item-meta">来源: Google Blog · 2026-08-06 · <a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Sundar Pichai 在 8 月 5 日宣布 Google AI 组织调整：Demis Hassabis 转任 Google DeepMind Chair 和 Alphabet Chief Scientist，继续领导 Isomorphic Labs；Koray Kavukcuoglu 将作为 Google DeepMind SVP 接手 Gemini 模型、前沿研究、Gemini app 和开发者团队。Pichai 同时披露 Gemma 模型下载量超过 9 亿，Gemini app 月活超过 9.5 亿。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Google 这次换挡很有意思：Demis 去盯 AGI 和科学，Koray 接住模型工厂。研究传奇和产品机器分开跑，说明 Gemini 已经进入规模化考核。9.5 亿月活听着吓人，但越大的入口越怕组织迟钝。Google 现在最缺的是把 Gemini 从 everywhere 变成 somebody actually depends on it。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-metamuse-code.jpg" alt="Meta推出Muse Code抢开发者" loading="lazy" decoding="async">
+    <figcaption>Reuters via WTVB</figcaption>
+  </figure>
+  <h2>Meta推出Muse Code抢开发者</h2>
+  <p class="item-meta">来源: Reuters via WTVB · 2026-08-06 · <a href="https://wtvbam.com/2026/08/05/meta-launches-new-ai-coding-tool-powered-by-muse-spark-1-2/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Reuters 8 月 5 日报道称，Meta 发布首个 AI coding agent Muse Code beta，由最新 Muse Spark 1.2 模型驱动，面向 macOS 和 Linux 终端。Meta 称它可写代码、验证结果、处理长复杂项目，并可同时运行多个 sub-agent；标准价格为每百万 input tokens 1.25 美元、output tokens 4.25 美元。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Meta 终于把开源模型的声量推进开发者终端，这把刀同时砍产品和价格。Coding agent 正从月费订阅变成 token 账单，低价会吸引独立开发者，数据交换式折扣又会吓退写私有代码的公司。接下来要看 Muse Code 能不能在复杂仓库里稳住上下文和验证，发布会上说会写代码已经不稀奇。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-anthropic.avif" alt="Anthropic签下百亿美元算力" loading="lazy" decoding="async">
+    <figcaption>Reuters via ETCIO</figcaption>
+  </figure>
+  <h2>Anthropic签下百亿美元算力</h2>
+  <p class="item-meta">来源: Reuters via ETCIO · 2026-08-06 · <a href="https://cio.economictimes.indiatimes.com/amp/news/cloud-computing/anthropic-inks-10-billion-computing-deal-with-new-cloud-startup-volta-infra/132901289" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Reuters 8 月 5 日援引知情人士报道，Anthropic 已与 Nvidia 支持的云基础设施创业公司 Volta Infra 签署 100 亿美元算力容量合同。Volta 此前称自己获得了一份未具名 AI 实验室的 100 亿美元订单，由 Bitdeer 在挪威数据中心交付，为期六年；Anthropic 和 Bitdeer 未予置评。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>模型公司嘴上卖智能，脚下买的是六年电力、机房和芯片交付。100 亿美元合同说明 Claude 的瓶颈不在 PPT 里的用户需求，而在未来几年有没有稳定推理容量。这里也有风险：客户还没完全证明愿意长期买单，基础设施债务已经先签了。AI 投资现在越来越像能源项目。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-nsf1ai.webp" alt="NSF投1亿美元建AI算力枢纽" loading="lazy" decoding="async">
+    <figcaption>NSF via BigDATAwire</figcaption>
+  </figure>
+  <h2>NSF投1亿美元建AI算力枢纽</h2>
+  <p class="item-meta">来源: NSF via BigDATAwire · 2026-08-06 · <a href="https://www.hpcwire.com/bigdatawire/this-just-in/nsf-unveils-100m-ai-infrastructure-hubs-to-expand-compute-for-science/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>美国国家科学基金会宣布 State and Regional AI Infrastructure Hubs 计划，拟投入 1 亿美元，支持最多 10 个州级或区域 AI 基础设施枢纽。项目重点是让研究者、学生和教育者获得 AI 科研所需的算力、数据和软件资源，并引入地方政府、大学、产业和慈善资金共同建设。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>美国开始承认一个现实：AI 科研不能只靠几家巨头的云额度。区域枢纽解决的是访问权不平等。大学和中小研究团队缺的不是“AI 热情”，是能长期排队、能共享、能教学的算力。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-anthropicopus-41.png" alt="Anthropic关停Opus 4.1模型" loading="lazy" decoding="async">
+    <figcaption>Anthropic Docs</figcaption>
+  </figure>
+  <h3>Anthropic关停Opus 4.1模型</h3>
+  <p class="item-meta">来源: Anthropic Docs · 2026-08-06 · <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic 文档显示，`claude-opus-4-1-20250805` 已在 8 月 5 日从 Claude API 退休。该模型 6 月 5 日被标记 deprecated，推荐迁移目标为 `claude-opus-4-8`；文档还提示 Claude Opus 4.7 及后续模型对非默认 `temperature`、`top_p`、`top_k` 会返回 400。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>模型退役很像悄悄拔电源。团队只盯新榜单，不审 model ID、参数和 fallback，到点就会被硬错误叫醒。海外 API 要当供应链管，不要当常量用。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-jina06b.png" alt="Jina用0.6B重做排序模型" loading="lazy" decoding="async">
+    <figcaption>Hugging Face / Jina AI</figcaption>
+  </figure>
+  <h3>Jina用0.6B重做排序模型</h3>
+  <p class="item-meta">来源: Hugging Face / Jina AI · 2026-08-06 · <a href="https://huggingface.co/blog/jinaai/jina-reranker-v3-5-faster-listwise-reranking" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Jina AI 在 Hugging Face 发布 `jina-reranker-v3.5`，这是一个 0.6B 参数 listwise reranker。作者称它在 BEIR 上达到 63.20 nDCG@10，超过 4B 的 Qwen3-Reranker-4B；在长文档场景比 v3 最高快 1.56 倍，并在半结构化检索 Struct-IR 上比 v3 提升 9.6 分。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这条比大模型发布更接地气。企业检索很多时候缺的不是聊天能力，而是便宜、快、能排准候选文档的中间层。0.6B 如果真能吃下法律、医疗、金融和结构化字段，价值很明确：少烧推理钱，多留证据链。RAG 团队别只卷生成端，排序层才常常决定答案有没有底。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-googleapi.jpg" alt="Google开放模型路由API预览" loading="lazy" decoding="async">
+    <figcaption>Google Developers Blog</figcaption>
+  </figure>
+  <h3>Google开放模型路由API预览</h3>
+  <p class="item-meta">来源: Google Developers Blog · 2026-08-06 · <a href="https://developers.googleblog.com/a-unified-api-for-ai-model-routing/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google Developers Blog 介绍 API Gateway 的 AI model routing public preview。开发者可在 OpenAPI 3.x 规格里用 `x-google-api-management` 将虚拟模型名映射到后端模型，把限流、token 跟踪、动态路由和 Agent Gateway 的安全出口治理放在同一条路径上。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>模型路由像多模型时代的水电工，却会决定成本和事故半径。今天手写 proxy，明天客户追问某个请求为什么走贵模型、数据为什么出境、日志在哪里。模型选择已经进入基础设施层。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-mcp.png" alt="MCP支持无状态云端扩展" loading="lazy" decoding="async">
+    <figcaption>Google Developers Blog</figcaption>
+  </figure>
+  <h3>MCP支持无状态云端扩展</h3>
+  <p class="item-meta">来源: Google Developers Blog · 2026-08-06 · <a href="https://developers.googleblog.com/scaling-ai-agent-infrastructure-with-the-mcp-stateless-updates/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google 8 月 5 日解释 MCP stateless updates：早期 MCP 适合本地单客户端与单 server 的会话式工具调用，但持久状态、握手和 session pinning 会卡住云原生扩展。Google 称其参与 MCP Transports Working Group，推动协议从 stateful transport 约束中解耦，以支持大规模并发 Agent 查询。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>MCP 火起来以后，很多 demo 像把 USB 线插进云。Google 讲的问题很现实：本地好用，不等于百万并发好用。Agent 真进企业以后，协议要能负载均衡、能缓存、能断线恢复、能横向扩容。工具生态要长大，先得承认 demo 时代的会话模型撑不起生产流量。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-uipathagentai-hypercomputer.jpg" alt="UiPath把Agent搬上AI Hypercomputer" loading="lazy" decoding="async">
+    <figcaption>Google Cloud Blog</figcaption>
+  </figure>
+  <h3>UiPath把Agent搬上AI Hypercomputer</h3>
+  <p class="item-meta">来源: Google Cloud Blog · 2026-08-06 · <a href="https://cloud.google.com/blog/topics/customers/how-uipath-built-its-high-performance-gpu-platform" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google Cloud 发布 UiPath 案例，称这家企业自动化公司正在用 Google Cloud AI Hypercomputer 构建高性能 GPU 平台，支撑从任务自动化转向可推理、决策并执行复杂业务流程的 agentic AI。Google 文章强调，大企业级 autonomous agents 需要可靠且可扩展的基础设施。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>UiPath 这种公司很适合观察 Agent 落地，因为它面对旧系统、权限、失败重试和客户 SLA。Agentic automation 一旦真要替业务跑，GPU 平台就不只是算得快，还得稳。自动化厂商的护城河会从脚本库转向“我能安全跑你的复杂流程”。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-googlefilestorecolossus.jpg" alt="Google让Filestore接入Colossus底座" loading="lazy" decoding="async">
+    <figcaption>Google Cloud Blog</figcaption>
+  </figure>
+  <h3>Google让Filestore接入Colossus底座</h3>
+  <p class="item-meta">来源: Google Cloud Blog · 2026-08-06 · <a href="https://cloud.google.com/blog/products/storage-data-transfer/filestore-file-service-runs-on-colossus" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google Cloud 宣布 Filestore 采用 Colossus 作为云原生后端存储层。Google 称，Filestore 是其第一方安全可扩展 NFS 文件服务，可服务企业用例以及前沿 AI 和 Agent 工作负载；接入 Colossus 后将获得更好的弹性、可扩展性和运营效率。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI 基建不止 GPU。Agent 跑起来以后，文件系统、共享存储、权限和吞吐都会变成账单里的刺。Google 把 Filestore 接到 Colossus，是在补企业工作负载的底盘：模型可以换，数据路径和存储稳定性换起来没那么轻松。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-cortex-v7sapagent.jpg" alt="Cortex v7给SAP数据做Agent底座" loading="lazy" decoding="async">
+    <figcaption>Google Cloud Blog</figcaption>
+  </figure>
+  <h3>Cortex v7给SAP数据做Agent底座</h3>
+  <p class="item-meta">来源: Google Cloud Blog · 2026-08-06 · <a href="https://cloud.google.com/blog/products/sap-google-cloud/cortex-framework-v7-power-ai-agents-with-sap-data-faster" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google Cloud 宣布 Cortex Framework v7 GA，重点是为 SAP 数据提供 agent-ready data products。新版本将数据产品部署在 BigQuery 和 Knowledge Catalog 中，向 Gemini Enterprise Agent Platform 提供业务上下文，并用 Dataform 简化编排、版本控制和工作流管理。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Agent 想碰 ERP，最怕拿到一堆没人敢解释的字段名。Cortex v7 的价值不在“又接了 SAP”，而在把交易记录翻成 Agent 能理解、企业能复核的业务语义。很多公司 AI 项目失败，问题在数据从一开始就没人敢签字。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-lovable.jpg" alt="Lovable给每个应用上安全证据页" loading="lazy" decoding="async">
+    <figcaption>Lovable Blog</figcaption>
+  </figure>
+  <h3>Lovable给每个应用上安全证据页</h3>
+  <p class="item-meta">来源: Lovable Blog · 2026-08-06 · <a href="https://lovable.dev/blog/trust-centers-for-business" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Lovable 8 月 5 日宣布，为每个发布在 Lovable 上的商业应用提供 trust center：一个位于应用地址下的安全页面，显示哪些安全控制已启用。Lovable 称这些信息直接从应用读取，不需要开发者手工填写，并强调这类页面不是认证，只是向客户、投资人和 IT 团队展示可检查状态。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>AI 生成应用终于走到最尴尬的一步：客户不只问你能不能做，还问敢不敢给数据。信任页不华丽，却很会收拾烂摊子。以前 no-code 卖速度，现在要补安全证明。能展示控制状态，比一句“放心，很安全”值钱得多。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Prediction</span>
+        <span class="st-zh">投资视角 · 大胆预测</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-lovablecerebras.png" alt="Lovable联手Cerebras加速生成" loading="lazy" decoding="async">
+    <figcaption>Lovable Blog</figcaption>
+  </figure>
+  <h3>Lovable联手Cerebras加速生成</h3>
+  <p class="item-meta inverted">来源: Lovable Blog · 2026-08-06 · <a href="https://lovable.dev/blog/cerebras-partnership" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Lovable 宣布与 Cerebras 合作，目标是在 2027 年显著降低响应时间。Lovable 称，自 2024 年 11 月以来用户已创建超过 5000 万个项目；Cerebras 的 Wafer-Scale Engine 可把模型记忆放在单片晶圆上，减少多芯片通信成本，适合软件创建中的高频来回迭代。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>软件生成工具的留存，很大一部分死在等待。Lovable 找 Cerebras，本质上是在买“别让用户的念头冷掉”。等待从几十秒压到几秒，普通人才更容易反复试、反复改、反复付费。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-empire-ai-beta.jpg" alt="纽约Empire AI Beta正式上线" loading="lazy" decoding="async">
+    <figcaption>SUNY</figcaption>
+  </figure>
+  <h3>纽约Empire AI Beta正式上线</h3>
+  <p class="item-meta inverted">来源: SUNY · 2026-08-06 · <a href="https://www.suny.edu/suny-news/press-releases/8-26/8-5-26-2/empire-ai.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>SUNY 新闻稿称，Empire AI Beta 已 fully online，部署在纽约州立大学布法罗分校。这套 4000 万美元、NVIDIA 驱动的学术超算相较 2024 年 Alpha 系统，AI 训练容量提升 11 倍，推理提升 40 倍，存储提升 8 倍；Empire AI 总体由超过 5 亿美元公私资金支持。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>纽约这套东西像 NSF AI hub 的地方样板。11 倍训练、40 倍推理这些数字很漂亮，但更关键的是成员机构能不能真用起来。公共 AI 基础设施考的是排队、公平、运维和成果回流。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-linuxtokenomics.png" alt="Linux基金会组Tokenomics标准组织" loading="lazy" decoding="async">
+    <figcaption>AIwire</figcaption>
+  </figure>
+  <h3>Linux基金会组Tokenomics标准组织</h3>
+  <p class="item-meta inverted">来源: AIwire · 2026-08-06 · <a href="https://www.hpcwire.com/aiwire/2026/08/05/oreilly-to-host-4th-ai-codecon-on-building-with-open-source-ai/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AIwire 8 月 5 日的 Off the Wire 列表显示，Linux Foundation 宣布成立 Tokenomics Foundation，聚焦 AI 成本与价值标准。同日 AIwire 还列出 O'Reilly 开源 AI 会议、Cerebras 与 Lovable 合作、Texas A&amp;M 2490 万美元自驱动金属实验室等基础设施和开源相关事件。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>Tokenomics 听上去像新词包装，背后问题很老：AI 成本到底怎么算，价值到底归谁。企业现在常见的烂账是 token、缓存、路由、人工复核、失败重跑全混在一起。Linux Foundation 介入标准化，说明 AI 已经从“能不能跑”进入“钱和价值怎么对账”。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-zendesk-admin-copilot.png" alt="Zendesk Admin Copilot生成对象模型" loading="lazy" decoding="async">
+    <figcaption>Zendesk Help Center</figcaption>
+  </figure>
+  <h2>Zendesk Admin Copilot生成对象模型</h2>
+  <p class="item-meta">来源: Zendesk Help Center · 2026-08-06 · <a href="https://support.zendesk.com/hc/en-us/articles/11076581575450-Announcing-general-availability-of-the-AI-powered-object-builder-in-Admin-Copilot" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Zendesk 宣布 AI-powered custom object builder 在 Admin Copilot 中 GA，8 月 5 日当天发布并完成 rollout。管理员可以用自然语言描述需求，系统根据账户已有对象和字段生成 custom objects、fields 和 relationships；管理员可在 object builder 中编辑后一次性部署完整模型。功能面向 Zendesk Suite Professional 及以上计划。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>今天最实用的小工具是这个。客服系统里的对象和字段不酷，却决定 AI 能不能理解业务。Zendesk 降低配置门槛，责任门槛还在。上线前那一眼人工复核仍然值钱，因为错的字段关系会让后面的自动化一路错下去。</span>
+  </div>
+</div>
+</div>
+
+
+    <div class="news-card-actions output-engagement engagement-triplet" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-08-06" data-edition-title="Janet 快车箱 2026-08-06" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span class="engagement-symbol" aria-hidden="true">+</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        <span class="engagement-symbol" aria-hidden="true">··</span><span>评论</span><span class="comment-count" data-comment-count data-edition-id="2026-08-06">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false"><span class="engagement-symbol" aria-hidden="true">↗</span><span>转发</span></button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-08-06"></section>
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: Google Security Blog, Google Blog, Reuters via WTVB, Reuters via ETCIO, NSF via BigDATAwire, Anthropic Docs, Hugging Face / Jina AI, Google Developers Blog, Google Cloud Blog, Lovable Blog, SUNY, AIwire, Zendesk Help Center<br>
+      本报内容由 AI 辅助采编，经人工校验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/reader-greeting.js"></script>
+  <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
+  <script src="../../scripts/nav.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/site-audio.js?v=poster-v4-20260730g"></script>
+  <script src="../../scripts/media-fallback-v4.js?v=poster-v4-20260730g"></script>
+  <script src="../../scripts/editorial-motion.js?v=experiment-wave-17"></script>
+  <script src="../../scripts/signal-cursor.js?v=experiment-wave-17"></script>
+</body>
+</html>

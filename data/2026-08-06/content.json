@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-06",
+  "vol": "310",
+  "intro_text": "今天的新闻都在往一个地方收：Agent 不能只多接几个按钮，还要进手机系统、云网关、企业数据、算力合同和客户审查表。模型能力还在冲，但真正决定能不能落地的，是谁握着权限、路由、账单和证据。",
+  "cover": {
+    "title": "控制面摊牌",
+    "subtitle": "从 Android 权限到算力合同，AI 生产化开始交出硬账本",
+    "image_path": "runs/2026-08-06/cover.png",
+    "image_prompt": "21:9 horizontal AI technology magazine cover background for Janet's morning briefing. Minimal black, white, and sharp Janet green palette. Abstract production AI control plane: smartphone permission gates, cloud routing lines, data center contracts, security evidence panels, and agent workflow traces converging into a precise command surface. Premium investigative tech editorial style, asymmetrical, high contrast, restrained geometric composition, real magazine texture, no cartoon, no robot faces, no glowing brain, no cheap cyberpunk neon, no readable text, no logos, no date, no volume number."
+  },
+  "trend": "Agent 今天不像一个单点产品，更像一张被摊开的控制面。Google 反对欧盟要求 Android 向第三方 AI Agent 开更深系统权限；同时又在云端推 MCP stateless、模型路由、Cortex v7 和 Filestore on Colossus。一个方向锁住手机里的危险能力，另一个方向管住企业 Agent 的流量、数据和存储。\n\n算力和信任也在同一张桌上。Anthropic 被曝签下 100 亿美元 Volta 算力合同，Lovable 找 Cerebras 缩短生成等待，又给每个商业应用上信任页。Meta 进 coding agent 战场，Jina 做更小的 reranker，Zendesk 把对象建模交给 Admin Copilot。今天的提醒很直接：AI 落地看谁能把权限、成本、速度和可核验证据压进一套日常操作。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Google拒绝欧盟AI深权限",
+          "body": "Google 在 8 月 5 日发表 Android 安全博客，回应欧盟依据 DMA 推进的 AI 服务互操作措施。Google 称，欧盟希望 Android 向用户下载的 AI Agent 开放深层系统级能力，但这会改写 Android 的沙箱和权限模型；公司主张实施阶段必须让安全专家参与，先定义基线防护，再谈互操作。",
+          "janet_take": "这场争议表面是互操作，底层是手机操作系统在给 Agent 时代划红线。第三方 Agent 一旦能碰短信、相册、位置、支付和后台能力，创新会快，事故也会快。欧盟想拆平台门禁，Google 想保住守门权，用户夹在中间。做移动 AI 的团队最后要回答的很朴素：拿权限时说不说得清，撤不撤得回来，出事追不追得到。",
+          "source": "Google Security Blog",
+          "url": "https://blog.google/security/android-ai-security-eu-dma/",
+          "image": "images/news-01-googleai.png",
+          "image_source_url": "https://blog.google/static/blogv2/images/google-1000x1000.png?version=pr20260729-1718",
+          "image_origin": "source"
+        },
+        {
+          "title": "Koray正式接管DeepMind模型线",
+          "body": "Sundar Pichai 在 8 月 5 日宣布 Google AI 组织调整：Demis Hassabis 转任 Google DeepMind Chair 和 Alphabet Chief Scientist，继续领导 Isomorphic Labs；Koray Kavukcuoglu 将作为 Google DeepMind SVP 接手 Gemini 模型、前沿研究、Gemini app 和开发者团队。Pichai 同时披露 Gemma 模型下载量超过 9 亿，Gemini app 月活超过 9.5 亿。",
+          "janet_take": "Google 这次换挡很有意思：Demis 去盯 AGI 和科学，Koray 接住模型工厂。研究传奇和产品机器分开跑，说明 Gemini 已经进入规模化考核。9.5 亿月活听着吓人，但越大的入口越怕组织迟钝。Google 现在最缺的是把 Gemini 从 everywhere 变成 somebody actually depends on it。",
+          "source": "Google Blog",
+          "url": "https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/",
+          "image": "images/news-02-googledeepmind.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/super-g_1.width-1300.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta推出Muse Code抢开发者",
+          "body": "Reuters 8 月 5 日报道称，Meta 发布首个 AI coding agent Muse Code beta，由最新 Muse Spark 1.2 模型驱动，面向 macOS 和 Linux 终端。Meta 称它可写代码、验证结果、处理长复杂项目，并可同时运行多个 sub-agent；标准价格为每百万 input tokens 1.25 美元、output tokens 4.25 美元。",
+          "janet_take": "Meta 终于把开源模型的声量推进开发者终端，这把刀同时砍产品和价格。Coding agent 正从月费订阅变成 token 账单，低价会吸引独立开发者，数据交换式折扣又会吓退写私有代码的公司。接下来要看 Muse Code 能不能在复杂仓库里稳住上下文和验证，发布会上说会写代码已经不稀奇。",
+          "source": "Reuters via WTVB",
+          "url": "https://wtvbam.com/2026/08/05/meta-launches-new-ai-coding-tool-powered-by-muse-spark-1-2/",
+          "image": "images/news-03-metamuse-code.jpg",
+          "image_source_url": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-08/05/2026-08-05T212944Z_1_LYNXMPEM741W0_RTROPTP_3_USA-TECH-AI.JPG",
+          "image_origin": "source"
+        },
+        {
+          "title": "Anthropic签下百亿美元算力",
+          "body": "Reuters 8 月 5 日援引知情人士报道，Anthropic 已与 Nvidia 支持的云基础设施创业公司 Volta Infra 签署 100 亿美元算力容量合同。Volta 此前称自己获得了一份未具名 AI 实验室的 100 亿美元订单，由 Bitdeer 在挪威数据中心交付，为期六年；Anthropic 和 Bitdeer 未予置评。",
+          "janet_take": "模型公司嘴上卖智能，脚下买的是六年电力、机房和芯片交付。100 亿美元合同说明 Claude 的瓶颈不在 PPT 里的用户需求，而在未来几年有没有稳定推理容量。这里也有风险：客户还没完全证明愿意长期买单，基础设施债务已经先签了。AI 投资现在越来越像能源项目。",
+          "source": "Reuters via ETCIO",
+          "url": "https://cio.economictimes.indiatimes.com/amp/news/cloud-computing/anthropic-inks-10-billion-computing-deal-with-new-cloud-startup-volta-infra/132901289",
+          "image": "images/news-04-anthropic.avif",
+          "image_source_url": "https://etimg.etb2bimg.com/thumb/msid-132901289,imgsize-20016,width-1200,height=627,overlay-etcio,resizemode-75/cloud-computing/anthropic-inks-10-billion-computing-deal-with-new-cloud-startup-volta-infra.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "NSF投1亿美元建AI算力枢纽",
+          "body": "美国国家科学基金会宣布 State and Regional AI Infrastructure Hubs 计划，拟投入 1 亿美元，支持最多 10 个州级或区域 AI 基础设施枢纽。项目重点是让研究者、学生和教育者获得 AI 科研所需的算力、数据和软件资源，并引入地方政府、大学、产业和慈善资金共同建设。",
+          "janet_take": "美国开始承认一个现实：AI 科研不能只靠几家巨头的云额度。区域枢纽解决的是访问权不平等。大学和中小研究团队缺的不是“AI 热情”，是能长期排队、能共享、能教学的算力。",
+          "source": "NSF via BigDATAwire",
+          "url": "https://www.hpcwire.com/bigdatawire/this-just-in/nsf-unveils-100m-ai-infrastructure-hubs-to-expand-compute-for-science/",
+          "image": "images/news-05-nsf1ai.webp",
+          "image_source_url": "https://www.hpcwire.com/bigdatawire/wp-content/uploads/sites/2/2026/07/shutterstock_nsf.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Anthropic关停Opus 4.1模型",
+          "body": "Anthropic 文档显示，`claude-opus-4-1-20250805` 已在 8 月 5 日从 Claude API 退休。该模型 6 月 5 日被标记 deprecated，推荐迁移目标为 `claude-opus-4-8`；文档还提示 Claude Opus 4.7 及后续模型对非默认 `temperature`、`top_p`、`top_k` 会返回 400。",
+          "janet_take": "模型退役很像悄悄拔电源。团队只盯新榜单，不审 model ID、参数和 fallback，到点就会被硬错误叫醒。海外 API 要当供应链管，不要当常量用。",
+          "source": "Anthropic Docs",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "image": "images/models-01-anthropicopus-41.png",
+          "image_source_url": "https://platform.claude.com/docs/og?locale=en&path=about-claude/model-deprecations&design-rev=1",
+          "image_origin": "source"
+        },
+        {
+          "title": "Jina用0.6B重做排序模型",
+          "body": "Jina AI 在 Hugging Face 发布 `jina-reranker-v3.5`，这是一个 0.6B 参数 listwise reranker。作者称它在 BEIR 上达到 63.20 nDCG@10，超过 4B 的 Qwen3-Reranker-4B；在长文档场景比 v3 最高快 1.56 倍，并在半结构化检索 Struct-IR 上比 v3 提升 9.6 分。",
+          "janet_take": "这条比大模型发布更接地气。企业检索很多时候缺的不是聊天能力，而是便宜、快、能排准候选文档的中间层。0.6B 如果真能吃下法律、医疗、金融和结构化字段，价值很明确：少烧推理钱，多留证据链。RAG 团队别只卷生成端，排序层才常常决定答案有没有底。",
+          "source": "Hugging Face / Jina AI",
+          "url": "https://huggingface.co/blog/jinaai/jina-reranker-v3-5-faster-listwise-reranking",
+          "image": "images/models-02-jina06b.png",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/642bfcfaeffb25812edf2864/BVebsaREJxM68yxdMFv3G.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google开放模型路由API预览",
+          "body": "Google Developers Blog 介绍 API Gateway 的 AI model routing public preview。开发者可在 OpenAPI 3.x 规格里用 `x-google-api-management` 将虚拟模型名映射到后端模型，把限流、token 跟踪、动态路由和 Agent Gateway 的安全出口治理放在同一条路径上。",
+          "janet_take": "模型路由像多模型时代的水电工，却会决定成本和事故半径。今天手写 proxy，明天客户追问某个请求为什么走贵模型、数据为什么出境、日志在哪里。模型选择已经进入基础设施层。",
+          "source": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/a-unified-api-for-ai-model-routing/",
+          "image": "images/models-03-googleapi.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Model_Routing_via_API_Gateway___M.2e16d0ba.fill-1200x600.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "MCP支持无状态云端扩展",
+          "body": "Google 8 月 5 日解释 MCP stateless updates：早期 MCP 适合本地单客户端与单 server 的会话式工具调用，但持久状态、握手和 session pinning 会卡住云原生扩展。Google 称其参与 MCP Transports Working Group，推动协议从 stateful transport 约束中解耦，以支持大规模并发 Agent 查询。",
+          "janet_take": "MCP 火起来以后，很多 demo 像把 USB 线插进云。Google 讲的问题很现实：本地好用，不等于百万并发好用。Agent 真进企业以后，协议要能负载均衡、能缓存、能断线恢复、能横向扩容。工具生态要长大，先得承认 demo 时代的会话模型撑不起生产流量。",
+          "source": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/scaling-ai-agent-infrastructure-with-the-mcp-stateless-updates/",
+          "image": "images/models-04-mcp.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/meta-1234x802.2e16d0ba.fill-1200x600.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "UiPath把Agent搬上AI Hypercomputer",
+          "body": "Google Cloud 发布 UiPath 案例，称这家企业自动化公司正在用 Google Cloud AI Hypercomputer 构建高性能 GPU 平台，支撑从任务自动化转向可推理、决策并执行复杂业务流程的 agentic AI。Google 文章强调，大企业级 autonomous agents 需要可靠且可扩展的基础设施。",
+          "janet_take": "UiPath 这种公司很适合观察 Agent 落地，因为它面对旧系统、权限、失败重试和客户 SLA。Agentic automation 一旦真要替业务跑，GPU 平台就不只是算得快，还得稳。自动化厂商的护城河会从脚本库转向“我能安全跑你的复杂流程”。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/topics/customers/how-uipath-built-its-high-performance-gpu-platform",
+          "image": "images/insights-01-uipathagentai-hypercomputer.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/49_-_Customers_YsP9mBg.max-2600x2600.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google让Filestore接入Colossus底座",
+          "body": "Google Cloud 宣布 Filestore 采用 Colossus 作为云原生后端存储层。Google 称，Filestore 是其第一方安全可扩展 NFS 文件服务，可服务企业用例以及前沿 AI 和 Agent 工作负载；接入 Colossus 后将获得更好的弹性、可扩展性和运营效率。",
+          "janet_take": "AI 基建不止 GPU。Agent 跑起来以后，文件系统、共享存储、权限和吞吐都会变成账单里的刺。Google 把 Filestore 接到 Colossus，是在补企业工作负载的底盘：模型可以换，数据路径和存储稳定性换起来没那么轻松。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/storage-data-transfer/filestore-file-service-runs-on-colossus",
+          "image": "images/insights-02-googlefilestorecolossus.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/33_-_Storage__Data_Transfer_QsgjqZW.max-2600x2600.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Cortex v7给SAP数据做Agent底座",
+          "body": "Google Cloud 宣布 Cortex Framework v7 GA，重点是为 SAP 数据提供 agent-ready data products。新版本将数据产品部署在 BigQuery 和 Knowledge Catalog 中，向 Gemini Enterprise Agent Platform 提供业务上下文，并用 Dataform 简化编排、版本控制和工作流管理。",
+          "janet_take": "Agent 想碰 ERP，最怕拿到一堆没人敢解释的字段名。Cortex v7 的价值不在“又接了 SAP”，而在把交易记录翻成 Agent 能理解、企业能复核的业务语义。很多公司 AI 项目失败，问题在数据从一开始就没人敢签字。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/sap-google-cloud/cortex-framework-v7-power-ai-agents-with-sap-data-faster",
+          "image": "images/insights-03-cortex-v7sapagent.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/cortex_framework_v7.max-2500x2500.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Lovable给每个应用上安全证据页",
+          "body": "Lovable 8 月 5 日宣布，为每个发布在 Lovable 上的商业应用提供 trust center：一个位于应用地址下的安全页面，显示哪些安全控制已启用。Lovable 称这些信息直接从应用读取，不需要开发者手工填写，并强调这类页面不是认证，只是向客户、投资人和 IT 团队展示可检查状态。",
+          "janet_take": "AI 生成应用终于走到最尴尬的一步：客户不只问你能不能做，还问敢不敢给数据。信任页不华丽，却很会收拾烂摊子。以前 no-code 卖速度，现在要补安全证明。能展示控制状态，比一句“放心，很安全”值钱得多。",
+          "source": "Lovable Blog",
+          "url": "https://lovable.dev/blog/trust-centers-for-business",
+          "image": "images/insights-04-lovable.jpg",
+          "image_source_url": "https://assets.lovable.dev/content/news/covers/trust-centers-for-business.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Lovable联手Cerebras加速生成",
+          "body": "Lovable 宣布与 Cerebras 合作，目标是在 2027 年显著降低响应时间。Lovable 称，自 2024 年 11 月以来用户已创建超过 5000 万个项目；Cerebras 的 Wafer-Scale Engine 可把模型记忆放在单片晶圆上，减少多芯片通信成本，适合软件创建中的高频来回迭代。",
+          "janet_take": "软件生成工具的留存，很大一部分死在等待。Lovable 找 Cerebras，本质上是在买“别让用户的念头冷掉”。等待从几十秒压到几秒，普通人才更容易反复试、反复改、反复付费。",
+          "source": "Lovable Blog",
+          "url": "https://lovable.dev/blog/cerebras-partnership",
+          "image": "images/insights2-01-lovablecerebras.png",
+          "image_source_url": "https://assets.lovable.dev/content/news/covers/cerebras-partnership.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "纽约Empire AI Beta正式上线",
+          "body": "SUNY 新闻稿称，Empire AI Beta 已 fully online，部署在纽约州立大学布法罗分校。这套 4000 万美元、NVIDIA 驱动的学术超算相较 2024 年 Alpha 系统，AI 训练容量提升 11 倍，推理提升 40 倍，存储提升 8 倍；Empire AI 总体由超过 5 亿美元公私资金支持。",
+          "janet_take": "纽约这套东西像 NSF AI hub 的地方样板。11 倍训练、40 倍推理这些数字很漂亮，但更关键的是成员机构能不能真用起来。公共 AI 基础设施考的是排队、公平、运维和成果回流。",
+          "source": "SUNY",
+          "url": "https://www.suny.edu/suny-news/press-releases/8-26/8-5-26-2/empire-ai.html",
+          "image": "images/insights2-02-empire-ai-beta.jpg",
+          "image_source_url": "https://media.licdn.com/dms/image/v2/D4E10AQE-pbW67qsZ4A/image-shrink_1280/image-shrink_1280/0/1731441915912?e=2147483647&v=beta&t=OjDF86Be6ub8AD0wrevIvs6YaagdYG3MaoR_5_uhkxw",
+          "image_origin": "search"
+        },
+        {
+          "title": "Linux基金会组Tokenomics标准组织",
+          "body": "AIwire 8 月 5 日的 Off the Wire 列表显示，Linux Foundation 宣布成立 Tokenomics Foundation，聚焦 AI 成本与价值标准。同日 AIwire 还列出 O'Reilly 开源 AI 会议、Cerebras 与 Lovable 合作、Texas A&M 2490 万美元自驱动金属实验室等基础设施和开源相关事件。",
+          "janet_take": "Tokenomics 听上去像新词包装，背后问题很老：AI 成本到底怎么算，价值到底归谁。企业现在常见的烂账是 token、缓存、路由、人工复核、失败重跑全混在一起。Linux Foundation 介入标准化，说明 AI 已经从“能不能跑”进入“钱和价值怎么对账”。",
+          "source": "AIwire",
+          "url": "https://www.hpcwire.com/aiwire/2026/08/05/oreilly-to-host-4th-ai-codecon-on-building-with-open-source-ai/",
+          "image": "images/insights2-03-linuxtokenomics.png",
+          "image_source_url": "https://www.linuxmi.com/wp-content/uploads/2024/01/linux-foundations-2023-report2.png",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Zendesk Admin Copilot生成对象模型",
+          "body": "Zendesk 宣布 AI-powered custom object builder 在 Admin Copilot 中 GA，8 月 5 日当天发布并完成 rollout。管理员可以用自然语言描述需求，系统根据账户已有对象和字段生成 custom objects、fields 和 relationships；管理员可在 object builder 中编辑后一次性部署完整模型。功能面向 Zendesk Suite Professional 及以上计划。",
+          "janet_take": "今天最实用的小工具是这个。客服系统里的对象和字段不酷，却决定 AI 能不能理解业务。Zendesk 降低配置门槛，责任门槛还在。上线前那一眼人工复核仍然值钱，因为错的字段关系会让后面的自动化一路错下去。",
+          "source": "Zendesk Help Center",
+          "url": "https://support.zendesk.com/hc/en-us/articles/11076581575450-Announcing-general-availability-of-the-AI-powered-object-builder-in-Admin-Copilot",
+          "image": "images/tools-01-zendesk-admin-copilot.png",
+          "image_source_url": "https://1186788.apps.zdusercontent.com/1186788/assets/1763365763-eb02f342654afecbe98e85c9b89b5509/screenshot-0.png",
+          "image_origin": "search"
+        }
+      ]
+    }
+  }
+}

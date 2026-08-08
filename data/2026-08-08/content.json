@@ -1,0 +1,221 @@
+{
+  "date": "2026-08-08",
+  "vol": "312",
+  "intro_text": "今天最刺眼的不是某个模型又刷了榜，而是前沿 AI 已经撞上三堵墙：能不能安全测试，能不能公开追责，能不能算清真实成本。Astra 的 cyber 阈值、白宫不公开的审查框架、Fable 5 的生物防护、免费模型入口和自治公司 API 放在同一天看，答案很冷：能力继续外溢，控制权正在变贵。",
+  "cover": {
+    "title": "能力闯线",
+    "subtitle": "前沿模型逼近真实系统，安全阈值、审查流程和运营账单同时上桌。",
+    "image_path": "runs/2026-08-08/cover.png",
+    "image_prompt": "Create a sharp 21:9 AI technology magazine cover background in black, white, and Janet green. Scene: a minimal command center wall where cyber traces, locked model sandboxes, safety threshold meters, government review folders, biology safeguard diagrams, and cloud cost counters converge into one tense control surface. Editorial, high contrast, clean lines, premium tech magazine style. No readable text, no logos, no robot faces, no glowing brain, no neon cyberpunk clutter, no watermark."
+  },
+  "trend": "今天的 AI 新闻像一次压力测试：OpenAI 说 Astra 可能已经接近 critical cyber capability，白宫却把新模型审查框架留在闭门会议里，Anthropic 又在同一天调细 Fable 5 的生物安全边界。能力不是抽象增长，它开始碰到真实系统、真实患者、真实公司和真实责任。\n\n对创作者和中小团队，便宜入口当然是好事，OpenAI 给免费用户更强 Luna，桌面 Agent 和公司后台 API 也会继续冒出来。但这期真正该记住的是另一句：当 AI 从工具变成执行者，最贵的部分会从“模型调用”转向隔离、权限、日志、保险和事故后的谁负责。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI暂停Astra内部活动",
+          "body": "OpenAI 8 月 7 日发文称，最近几天对 upcoming model Astra 的内部评估显示，它在 agentic coding 和 cybersecurity 上有显著进展；结合专家评估，公司认为目前不能排除 Astra 已触及 Preparedness Framework 下的 critical cybersecurity capability。OpenAI 因此加强隔离测试环境、网络和工具访问限制、模型权重保护、监控和检测，并暂停不符合强化安全控制要求的 Astra 内部活动。OpenAI 同时强调，Astra 未参与 Hugging Face 事件。",
+          "janet_take": "最重的信号不是“OpenAI 又有强模型”，而是它第一次把暂停开发动作写进公开叙事。Astra 如果真的接近 critical cyber 阈值，模型公司卖的就不只是智能，而是一套会影响第三方系统的攻击面。创作者暂时不用恐慌，但企业采购 Agent 时再只问准确率，就有点像买车只问极速、不问刹车。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
+          "image_url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
+          "image_origin": "search",
+          "image": "images/news-01-openaiastra.jpg",
+          "image_source_url": "http://image.nbd.com.cn/uploads/articles/images/1496535/____-___________-OpenAI________________ChatGPT-VCG111419382557.jpg"
+        },
+        {
+          "title": "白宫AI审查选择保密",
+          "body": "The Guardian 8 月 7 日报道，特朗普政府已完成一套用于测试新 AI 模型安全和 cybersecurity 风险的框架，但目前不打算公开政策细节，只会向少数科技公司分享测试标准。报道提到，OpenAI、Anthropic、Meta、Google、Nvidia、Microsoft 等公司人员本周参加了与白宫官员的闭门会议；6 月行政令曾要求 AI 公司在发布前最多 30 天自愿提交模型接受政府审查，但 open source models 将被排除在框架外。",
+          "janet_take": "公共风险被私有流程包起来，这是今天最别扭的一条。政府说要看住危险模型，却不让研究者、客户和外国政府知道尺子长什么样；大公司反而成了少数能读规则的人。对普通企业来说，这会制造新不确定性：你用的模型到底过了什么测试，没人能独立复核。",
+          "source": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/aug/07/white-house-ai",
+          "image_url": "https://www.theguardian.com/technology/2026/aug/07/white-house-ai",
+          "image_origin": "source",
+          "image": "images/news-02-ai.webp",
+          "image_source_url": "https://i.guim.co.uk/img/media/f276d32beb56627ed775be15d1716250d9d0635b/346_0_5808_4648/master/5808.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=0ff2639d2ba5631463bdb960984883f2"
+        },
+        {
+          "title": "Anthropic管住生物误拦截边界",
+          "body": "Anthropic 8 月 7 日宣布更新 Claude Fable 5 的 biology safeguards，目标是在保持双用途风险防护的同时大幅减少 benign biology queries 被切到较弱模型的 fallback。公司称测试中 biology-related fallbacks 跨产品面减少约 85%；脚注还预计总 fallback 数会在 Claude.ai 减少约 67%、Cowork 减少 55%、Claude Code 减少 17%、Claude Platform 减少 7%。Anthropic 仍会拦截 virology、toxicology、molecular design 等双用途专业生物和药物研发请求。",
+          "janet_take": "安全边界不是越粗越好。Fable 5 如果一问化验单、症状、教学问题就退回弱模型，用户会绕路，专业人士也不会信它；但放开到药物设计和毒理操作，又是在给高风险能力开门。Anthropic 这次做的是一件脏活：把防护口号磨成分类器边界。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+          "image_url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+          "image_origin": "source",
+          "image": "images/news-03-anthropic.png",
+          "image_source_url": "https://www.anthropic.com/api/opengraph-illustration?name=Node%20Bird&backgroundColor=heather"
+        },
+        {
+          "title": "GPT-5.6 Luna进免费默认位",
+          "body": "OpenAI 8 月 6 日宣布 ChatGPT 更新：Plus 和 Pro 用户的 GPT-5.6 Sol 会获得更聚焦、更可靠的回答，并新增可选择思考力度的 slider；Free 和 Go 用户本周默认模型将切到 GPT-5.6 Luna，下周开始获得 unlimited text chats，并可用 Think button 处理更难问题。OpenAI 称内部评估中，GPT-5.6 Luna 和 Sol 在金融、医疗、法律细节问题上的事实错误分别比 GPT-5.5 Instant 少约 62% 和 68%。",
+          "janet_take": "免费默认位是最贵的广告位。OpenAI 用 Luna 扩大日常入口，用 Sol 留住付费可靠性，再用 Think button 把“更难的问题”变成一条升级路径。创作者会直接受益，基础文本成本继续塌；但服务商也会被迫回答一个难题：客户已经免费拿到不错答案时，你到底多卖了什么。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
+          "image_url": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
+          "image_origin": "search",
+          "image": "images/news-04-gpt-56-luna.jpg",
+          "image_source_url": "https://memeburn.com/wp-content/uploads/2026/06/OpenAI-Launches-GPT-5.6-With-Sol-Terra-and-Luna-Models.jpg"
+        },
+        {
+          "title": "OpenAI找APA管青少年AI",
+          "body": "OpenAI 8 月 6 日宣布与 American Psychological Association 合作，把心理学研究引入青少年 AI 使用和产品安全设计。双方计划围绕家庭资源、临床和学校心理从业者指导、青少年真实使用场景展开工作。OpenAI 还称已经与 260 多名心理健康专家合作，改进 ChatGPT 对痛苦信号的识别和回应，并加入本地化危机资源、休息提醒、家长控制、年龄预测等机制。",
+          "janet_take": "青少年 AI 安全不是 PR 小作文能解决的。孩子把 AI 当学习、陪伴和求助入口时，产品默认设置会比宣传稿更诚实。OpenAI 找 APA 是补专业性，后面就看默认设计会不会少一点黏性诱导。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai/",
+          "image_url": "https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai/",
+          "image_origin": "search",
+          "image": "images/news-05-openaiapaai.png",
+          "image_source_url": "https://img.xdyanbao.com/data/file/2025/12/15/4996_ria1_4213.png"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "ChatGPT Voice支持文件项目",
+          "body": "OpenAI Help Center 的 ChatGPT release notes 在 8 月 7 日更新称，GPT-Live in ChatGPT Voice 现在支持 file uploads 和 Projects。用户可以在语音对话里上传文件、分析内容或提问，也可以在 Projects 中使用 voice，引用最近的 project chats、sources 和 project instructions。这个更新把语音从闲聊入口推进到项目资料和文件处理场景。",
+          "janet_take": "语音一旦能读文件和项目，就不只是陪聊。它会变成低门槛工作入口：开口问表格、合同、资料库，少一层打字摩擦。麻烦也会跟着来，会议室和公共空间里的语音文件流动，权限感会比键盘弱得多。",
+          "source": "OpenAI Help Center",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image_origin": "search",
+          "image": "images/models-01-chatgpt-voice.png",
+          "image_source_url": "https://digialps.com/wp-content/uploads/2024/09/OpenAI-Introduces-Advanced-Voice-Mode-for-ChatGPT-With-5-Unique-Voices.png"
+        },
+        {
+          "title": "Astra触发cyber阈值警报",
+          "body": "OpenAI 在 Astra 公告中解释，Preparedness Framework 的 critical cybersecurity threshold 指模型可以在无人干预下识别并开发多种严重程度的 zero-day exploits，或仅凭高层目标设计并执行针对 hardened targets 的端到端新型攻击策略。OpenAI 称 Astra 的初步评估表现足够强，目前不能排除 critical capability level。",
+          "janet_take": "这里的关键词是“不能排除”，不是已经定罪。严谨说，OpenAI 还在评估；但商业上，这四个字已经足以改写发布节奏。模型越像安全研究员，越可能也像攻击自动化器，差别只剩目标、权限和隔离。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
+          "image_url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
+          "image_origin": "search",
+          "image": "images/models-02-astracyber.png",
+          "image_source_url": "https://help.apiyi.com/wp-content/uploads/2025/05/openai-api-429-errors-solution-guide-image-0-1536x1114.png"
+        },
+        {
+          "title": "Fable 5继续限制药研请求",
+          "body": "Anthropic 在 Fable 5 biology safeguards 更新中明确，虽然会减少日常健康、教育、生物学习请求的 fallback，但 Fable 仍会对公司认为具有 dual-use 风险的 virology、toxicology、molecular design 等专业生物和药物研发请求触发拦截，并转向更弱模型。公司称正在开发 trusted access pathways，让研究人员未来可安全使用更强能力。",
+          "janet_take": "分层开放比一刀切更诚实：普通用户少被误伤，专业高风险能力继续进闸门。真正的考验会在 trusted access，谁算可信研究者、记录保存多久、出了事谁担责，这些比模型名更要命。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+          "image_url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards",
+          "image_origin": "source",
+          "image": "images/models-03-fable-5.png",
+          "image_source_url": "https://www.anthropic.com/api/opengraph-illustration?name=Node%20Bird&backgroundColor=heather"
+        },
+        {
+          "title": "Hassabis接管Alphabet科学长线",
+          "body": "Business Insider 8 月 7 日报道，Google DeepMind 联合创始人 Demis Hassabis 在 Alphabet 内部调整中成为 chief scientist。报道称，这发生在 Google AI 领导层重组和研究人才流动背景下，Hassabis 将把更多精力放在 AGI、AI-driven scientific discovery 和长期研究方向；Jeff Dean 等 Google AI 高层变动也被放进同一轮调整中讨论。",
+          "janet_take": "Google 这步更像把科学叙事重新扶正。市场盯 Gemini 追没追上，Hassabis 的价值却在 AlphaFold 那类长线成果。Alphabet 给他的耐心比头衔更关键。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/google-demis-hassabis-new-job-ai-research-singularity-deepmind-2026-8",
+          "image_url": "https://www.businessinsider.com/google-demis-hassabis-new-job-ai-research-singularity-deepmind-2026-8",
+          "image_origin": "source",
+          "image": "images/models-04-hassabisalphabet.webp",
+          "image_source_url": "https://i.insider.com/6a74e7760c6c5a263f3a731b?width=1200&format=jpeg"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "TRAJDEBUG测Agent长程失败链路",
+          "body": "arXiv 8 月 7 日收录论文 TRAJDEBUG: Tracing Error Lifecycle to Identify Critical Failures in Long-Horizon Agent Trajectories。论文关注 long-horizon agent trajectories 中错误如何发生、传播并演变为关键失败，试图从轨迹层面定位 Agent 在多步任务里的失败生命周期，而不只看最终是否完成。",
+          "janet_take": "Agent 常常不是一步错，而是小偏差滚成后面的灾难。TRAJDEBUG 有用，因为业务会追问哪一步开始跑偏。没有轨迹诊断，Agent 交付就是盲修。",
+          "source": "arXiv",
+          "url": "https://arxiv.org/abs/2608.06346",
+          "image_url": "https://arxiv.org/abs/2608.06346",
+          "image_origin": "source",
+          "image": "images/insights-01-trajdebugagent.png",
+          "image_source_url": "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png"
+        },
+        {
+          "title": "视频模型输给低频记账",
+          "body": "arXiv 8 月 7 日的 cs.AI recent 列表收录 The Low Frequency Trap: Video Language Models Fail at Simple Event Bookkeeping。论文题目指向一个很具体的问题：视频语言模型在简单事件 bookkeeping 上失败，尤其是低频事件更容易被忽略或误记。这类结果提醒，多模态模型的“看懂视频”不等于可靠记录事件。",
+          "janet_take": "视频模型会讲画面，不代表会记账。漂亮 demo 最容易骗人，低频事件才是业务里最贵的部分：一次漏检、一次错判，可能抵掉一百次顺滑总结。",
+          "source": "arXiv",
+          "url": "https://arxiv.org/list/cs.AI/recent",
+          "image_url": "https://arxiv.org/list/cs.AI/recent",
+          "image_origin": "search",
+          "image": "images/insights-02-b2cc87ad66.png",
+          "image_source_url": "https://pic3.zhimg.com/v2-349c023392ad5ab86e2da69e42e12b72_1440w.jpg"
+        },
+        {
+          "title": "检索研究替换Top-K黑箱",
+          "body": "arXiv 8 月 7 日收录 Beyond Top-K: Replacing Black-Box Retrieval with Interpretable Agentic Operations。论文从题目上挑战传统 Top-K retrieval，把检索从黑箱排序推进到更可解释的 agentic operations。对 RAG 和企业知识库来说，这类方向关注的不只是召回多少文档，而是检索动作本身能否被理解和控制。",
+          "janet_take": "RAG 的老问题是找到了几段，新问题是为什么这么找。Top-K 像把资料拍到模型脸上，解释性弱，调试也痛苦。企业知识库进入 Agent 时代后，检索不透明会变成责任黑洞：答错时没人知道是文档错、排序错，还是模型乱编。",
+          "source": "arXiv",
+          "url": "https://arxiv.org/abs/2608.06305",
+          "image_url": "https://arxiv.org/abs/2608.06305",
+          "image_origin": "source",
+          "image": "images/insights-03-top-k.png",
+          "image_source_url": "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png"
+        },
+        {
+          "title": "AI安全榜单测试护栏下限",
+          "body": "arXiv cs.CL new 8 月 7 日列表出现 The AI Security Leaderboard，摘要称该 independent benchmark 会按照 FAR.AI Minimal Standard for Safeguards 排名前沿模型的安全防护，从 least secure 到 most secure。它强调达到最低标准不等于安全，但未达到则说明没有达到 state-of-the-art safeguards 的下限。",
+          "janet_take": "安全榜单的价值不在制造又一个排名，而在设下限。模型公司喜欢秀能力上限，客户更需要知道护栏下限在哪里。只要 Agent 能动真实工具，最低防护标准就不该藏在供应商 PDF 里。",
+          "source": "arXiv",
+          "url": "https://arxiv.org/list/cs.CL/new",
+          "image_url": "https://arxiv.org/list/cs.CL/new",
+          "image_origin": "search",
+          "image": "images/insights-04-ai.jpg",
+          "image_source_url": "https://pic1.zhimg.com/v2-f066946d2be258b9d3730cc25e155c62_1440w.jpg"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Naive拿到2850万美元做自治公司",
+          "body": "TechCrunch 8 月 6 日报道，Naive 完成 2,850 万美元 Series A，由 Nexus Venture Partners 领投。公司试图用单一 API 自动化公司设立和运营中的繁琐环节，包括 payments、email accounts、phone numbers、cloud infrastructure、storage 和 incorporation。CEO Sean Dorje 称，客户已用 Naive 支撑 AI automation agencies、无脸内容频道甚至租车业务等 autonomous businesses。",
+          "janet_take": "自治公司听着像段子，融资是真钱。Naive 押的是 Agent 不只写代码，还会开账号、接支付、调云资源、跑业务。机会很大，坑也很硬：主体、税务、支付风控和云账单一旦被 Agent 搞乱，修起来比改 prompt 贵多了。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/",
+          "image_url": "https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/",
+          "image_origin": "source",
+          "image": "images/insights2-01-naive2850.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/GettyImages-2082335389.jpg?resize=1200,857"
+        },
+        {
+          "title": "Inevitable AI Group募资600万美元",
+          "body": "FinSMEs 8 月 7 日报道，Inevitable AI Group 完成 600 万美元 pre-seed funding，由 Aleph 领投。公司定位为 AI-native venture studio，目标是识别成熟 SaaS 类别，再用 AI-native software products 更快、更低成本地重做一遍。TNW 同日转载的稿件称，这家公司自 1 月以来已推出五个独立 venture，并计划继续扩张。",
+          "janet_take": "vibe coding 资本化之后，不是做一个工具，而是批量重做旧 SaaS。它会打到一批臃肿软件的价格和交付周期，但也别神化零员工公司。SaaS 难的常常是销售、支持、迁移和脏数据，不是第一版能不能写出来。",
+          "source": "FinSMEs / TNW",
+          "url": "https://www.finsmes.com/2026/08/inevitable-ai-group-raises-6m-in-pre-seed-funding.html",
+          "image_url": "https://www.finsmes.com/2026/08/inevitable-ai-group-raises-6m-in-pre-seed-funding.html",
+          "image_origin": "source",
+          "image": "images/insights2-02-inevitable-ai-group600.jpg",
+          "image_source_url": "https://www.finsmes.com/wp-content/uploads/2026/08/Inevitable-AI-Group.jpeg"
+        },
+        {
+          "title": "AMD收购Taalas补推理芯片",
+          "body": "Barron's 8 月 7 日报道，AMD 宣布收购 AI inference chip startup Taalas，以补强自己的 AI hardware platform，并与 Nvidia 的全栈路线竞争。报道指出，Taalas 走 model-specific inference chip 思路，仍处早期；AMD 股价当日承压，但分析师把它视为提高 AI 推理控制力和灵活性的长期动作。",
+          "janet_take": "推理芯片正在从“买 GPU”变成“按模型定制”。AMD 收 Taalas，不一定马上改变 Nvidia 的盘子，但方向很清楚：谁能把常用模型跑得更便宜、更稳，谁就能从云账单里抠出利润。模型越免费，算力利润越要往硬件和调度里藏。",
+          "source": "Barron's",
+          "url": "https://www.barrons.com/articles/nvidia-stock-price-amd-aba755e9",
+          "image_url": "https://www.barrons.com/articles/nvidia-stock-price-amd-aba755e9",
+          "image_origin": "search",
+          "image": "images/insights2-03-amdtaalas.jpg",
+          "image_source_url": "https://fsv.cmoney.tw/cmstatic/notes/content/7655865/20250205173716387.JPG"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Energy押注桌面Agent入口",
+          "body": "RuntimeWire 8 月 6 日报道，前 OpenAI Sora 研究员 Gabriel Petersson 发布 Energy，一款面向 desktop computer work 的 AI app。报道称，Energy 试图把 coding-agent 式工作流带到更广泛的知识工作场景，用户可通过桌面界面让 Agent 处理跨应用任务；Superhuman AI 8 月 7 日也提到，它可导航互联网、搜索本地文件、处理多步项目，并允许用户接入不同 LLM。",
+          "janet_take": "桌面 Agent 值得试，但先别交出全盘文件权限。拿一个低风险流程测它到底省了几分钟，再决定要不要把浏览器、本地资料和账号入口交给它。",
+          "source": "RuntimeWire / Superhuman AI",
+          "url": "https://runtimewire.com/article/gabriel-petersson-launches-energy-ai-work-app",
+          "image_url": "https://runtimewire.com/article/gabriel-petersson-launches-energy-ai-work-app",
+          "image_origin": "source",
+          "image": "images/tools-01-energyagent.jpg",
+          "image_source_url": "https://runtimewire.com/og/gabriel-petersson-launches-energy-ai-work-app.jpg"
+        }
+      ]
+    }
+  }
+}

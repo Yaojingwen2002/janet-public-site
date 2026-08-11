@@ -1,0 +1,221 @@
+{
+  "date": "2026-08-11",
+  "vol": "315",
+  "intro_text": "过去 24 小时，AI 的关键词不是又大了一圈，而是被分成了几种入口：可信安全团队拿到更危险的 cyber 模型，个人开发者拿到本地 open-weight，华尔街替算力工厂铺钱，企业把 agent 接进 Java、财务和预订流程。能力在扩散，但扩散方式越来越讲门槛。",
+  "cover": {
+    "title": "权限开始分层",
+    "subtitle": "模型能力、算力资本和工具入口同时被重新分配。",
+    "image_path": "runs/2026-08-11/cover.png",
+    "image_prompt": "Black / white / Janet green 21:9 editorial AI magazine cover: permission gates, trusted cyber access tiers, local open-weight model panels, infrastructure finance lines, no readable text, no logos, no robot faces."
+  },
+  "trend": "OpenAI 今天把 cyber 能力拆成 Daybreak Blue 和 Red，Meta 同一天把 Muse Glimmer 推向本地 open-weight，NVIDIA 又把超过 5000 亿美元的算力融资平台摆上台面。一个方向是更窄的可信访问，一个方向是更宽的本地扩散，背后都在回答同一个问题：高能力模型不能只靠“发布”两个字交给世界。\n\n对创作者和中小团队来说，真正值得盯的不是某个榜单分数，而是入口成本和责任边界。能不能在本地跑、能不能在现有系统里接、出了事谁留日志、谁承担账单，这些问题会比“模型聪不聪明”更早决定产品能不能用。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI分层开放Cyber模型",
+          "body": "OpenAI 在 8 月 10 日扩展 Daybreak，推出 Daybreak Blue 与 Daybreak Red 两个访问层，并把 GPT-5.6-Cyber 放入 Red。官方称该模型面向经过批准的防守方，覆盖漏洞发现、漏洞链验证、红队测试和安全修复等授权场景；在内部 Advanced Cybersecurity Completion Rate 上，GPT-5.6-Cyber 对高风险 cyber 请求的完成率为 95.0%，而普通 GPT-5.6 Sol 只有 1.5%。OpenAI 也强调，该模型在 Preparedness Framework 下仍是 High cyber capability，没有跨过 Critical 阈值。",
+          "janet_take": "95% 这个数字很刺激，但更关键的是它被锁在名单、身份验证、硬件安全钥匙和监控里。安全行业过去缺的是能力，现在缺的是可控地使用能力；防守方当然想要更少拒答，但每一次“减少拒答”都在把责任从模型转到使用者和管理链上。国内团队看这条，别只羡慕工具，要看门槛：高能力安全模型以后大概率不是买会员，而是买资质。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+          "image_url": "https://images.openai.com/blob/7b16cfd7-1df0-4eba-95aa-fcc21d93d5aa/daybreak.jpg",
+          "image_source_url": "https://img.odcdn.com.br/wp-content/uploads/2026/05/openai-1536x1022.jpg",
+          "image_origin": "search",
+          "image": "images/news-01-openaicyber.jpg"
+        },
+        {
+          "title": "Meta推Muse Glimmer本地模型",
+          "body": "Meta 在 Zuckerberg 的 6500 字 AI 宣言发布当天推出 Muse Glimmer。公开报道和 NVIDIA 开发者文章显示，Glimmer 是面向本地 agentic 工作流的 open-weight 模型，可在个人电脑或工作站上运行；NVIDIA 称其为 30B dense model，支持超过 120K context window，并围绕本地开发、编码和管理任务给出运行方案。Meta 同时预告更强的 Muse Spark 权重将开放。",
+          "janet_take": "Meta 这次不只是在喊“我也有大模型”，它是在反击少数云厂商控制高能力入口。这当然有公关味，尤其 Meta 自己也靠超大数据中心和平台规则赚钱；但本地 open-weight 的现实意义很硬：创作者和小团队可以少一点 API 焦虑，多一点可控部署。Glimmer 最后能不能站住，要看许可证、工具链和推理成本能否撑住日常工作。",
+          "source": "AP / NVIDIA Developer",
+          "url": "https://apnews.com/article/df8a4e7d7825470d09e8090367457c2c",
+          "image_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/08/meta-muse-glimmer-nvidia.jpg",
+          "image_source_url": "https://dims.apnews.com/dims4/default/ee5bcbf/2147483647/strip/true/crop/5439x3624+0+1/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F15%2Fb5%2F34b0fea8788d0f182b25f3168c7f%2F7fb43d8bbbe04d39a358998d80eecae2",
+          "image_origin": "source",
+          "image": "images/news-02-metamuse-glimmer.jpg"
+        },
+        {
+          "title": "NVIDIA融资5000亿建AI工厂",
+          "body": "NVIDIA 宣布与 Apollo、BlackRock、Blackstone、Brookfield、Goldman Sachs 和 KKR 建立 AI compute infrastructure financing platforms，目标是动员超过 5000 亿美元第三方资本，支持 AI factories、芯片、数据中心、电力和完整栈基础设施。NVIDIA 把这类融资描述为把 compute 和 full-stack AI infrastructure 变成可投资资产类别，为客户提供长期、使用挂钩的资本。",
+          "janet_take": "算力现在已经变成金融工程，远不止买服务器。NVIDIA 一边卖铲子，一边帮客户借钱买更多铲子，听起来像繁荣，也像循环依赖的雏形。对小公司最现实的提醒是：基础设施红利不会平均落下，巨头拿低成本资金扩产时，普通团队拿到的是更复杂的云账单和更强的锁定。",
+          "source": "NVIDIA Newsroom / Financial Times",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-partners-with-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr-to-establish-ai-compute-infrastructure-financing-platforms-to-mobilize-over-500-billion-of-third-party-capital",
+          "image_url": "https://nvidianews.nvidia.com/_gallery/get_file/?file_id=66a2b1957e6b6d6d8a1b1234",
+          "image_source_url": "https://iprsoftwaremedia.com/219/files/20224/6296531eb3aed3741918b6b5_DH1L4415-HDR-20220527-r5/DH1L4415-HDR-20220527-r5_dba29dde-5a9b-4ac8-bf58-a0b78da89547-prv.jpg?v=dba29dde-5a9b-4ac8-bf58-a0b78da89547",
+          "image_origin": "source",
+          "image": "images/news-03-nvidia5000.jpg"
+        },
+        {
+          "title": "Sanders要求三巨头暂停AI",
+          "body": "The Guardian 报道，美国参议员 Bernie Sanders 在 8 月 10 日致信 OpenAI、Meta 和 Anthropic CEO，要求三家公司“为了人类利益”暂停 AI 开发。他把矛头指向高能力模型的失控、网络攻击、生物风险和数据中心扩张，并警告如果企业不自我约束，立法压力会继续上升。",
+          "janet_take": "政治施压未必立刻踩住刹车，却会改变实验室解释风险的方式。过去外界问的是工作会不会被替代，现在问的是谁有权继续加速、谁承担城市用电和公共安全压力。创作者不用站队喊口号，盯住监管先落在哪些闸口就够了：数据中心、模型评估、高风险访问，都会直接改写工具价格和可用地区。",
+          "source": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/aug/10/bernie-sanders-ai-development-pause-letter",
+          "image_url": "https://i.guim.co.uk/img/media/0d21b0873a91a6b36342712b9c29cf6ebac4bbba/0_0_4000_2400/master/4000.jpg",
+          "image_source_url": "https://i.guim.co.uk/img/media/a0a85c92c66d043112ebdf2fc0fb7dde3a5b1fe7/754_377_3212_2569/master/3212.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=84bef520cefdd68eed2b711be7c80559",
+          "image_origin": "source",
+          "image": "images/news-04-sandersai.webp"
+        },
+        {
+          "title": "OpenAI向Texas递交基建承诺",
+          "body": "OpenAI 在 8 月 10 日公开给 Texas 州长 Greg Abbott 的信，称会与州和地方领导、公共事业部门及社区合作，确保 AI infrastructure 给 Texas 带来可衡量收益。页面没有展开完整项目金额，但把讨论放在 responsible AI infrastructure development 语境里，延续了 AI 数据中心围绕电力、地方许可和社区收益的拉扯。",
+          "janet_take": "州长办公室正在变成 AI 产品路线图的一部分。数据中心需要电、水、土地和输电排队，光说技术先进已经不够了，公司必须解释本地社区能拿到什么。中小团队看似离 Texas 很远，可云价、可用区和模型延迟都会被这些地方谈判影响。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/responsible-ai-infrastructure-texas/",
+          "image_url": "https://images.openai.com/blob/6f174a0e-2bd8-4f58-b78c-f6e7797ecb83/openai-infrastructure.jpg",
+          "image_source_url": "https://allaboutenglishmastery.com/wp-content/uploads/2026/03/Oracle-OpenAI-data-center.png",
+          "image_origin": "search",
+          "image": "images/news-05-openaitexas.png"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "OpenAI Cyber模型进入Red安全层",
+          "body": "GPT-5.6-Cyber 基于 GPT-5.6 Sol 训练，目标是改善 exploit development、advanced security research、zero-day discovery 和 vulnerability report writing 等任务。OpenAI 称模型找到了 Chrome V8 的 CVE-2026-15903 以及第二个逃逸链相关漏洞，并已通过 coordinated vulnerability disclosure 报告给 Google。官方同时承认，某些报告写作任务上 GPT-5.6-Cyber 可能比 Sol 更短、更不详细。",
+          "janet_take": "拒答率从 1.5% 变成 95.0%，本质是从模型拒绝转向制度管人。专业安全团队需要少一点误拦截，因为修洞速度会救命；同时，高能力模型也越来越像危险设备，离不开隔离环境、授权边界和可追责流程。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+          "image_url": "https://images.openai.com/blob/7b16cfd7-1df0-4eba-95aa-fcc21d93d5aa/daybreak.jpg",
+          "image_source_url": "https://aigptjournal.com/wp-content/uploads/2026/07/GPT-5.5-vs.-GPT-5.6-The-Next-Step-for-the-AI-Workforce.webp",
+          "image_origin": "search",
+          "image": "images/models-01-gpt-56-cyber.webp"
+        },
+        {
+          "title": "Anthropic给Sonnet 5锁定低价",
+          "body": "Anthropic 在 Claude Sonnet 5 发布页的 changelog 中更新：8 月 10 日起，Sonnet 5 的 introductory pricing 变为永久价格，输入 2 美元/百万 tokens、输出 10 美元/百万 tokens；原本 9 月 1 日生效的 3 美元输入、15 美元输出标准价不再适用。",
+          "janet_take": "降价不吵，却很狠。Anthropic 承认企业采用速度和开发者留存比单次毛利更要紧。临时价转永久，比模型宣传片更能逼同行解释定价。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "image_url": "https://www.anthropic.com/images/claude-sonnet-5-og.jpg",
+          "image_source_url": "https://cdn.sanity.io/images/4zrzovbb/website/2039cc549c023bc855671308211d20d3382828a9-2880x1620.jpg",
+          "image_origin": "source",
+          "image": "images/models-02-claude-sonnet-5.jpg"
+        },
+        {
+          "title": "Muse Glimmer跑上NVIDIA本地栈",
+          "body": "NVIDIA 开发者博客在 8 月 10 日发布 Muse Glimmer 本地 agentic workflow 指南，称该模型是 30B open-weight dense model，context window 超过 120K，可在 NVIDIA 硬件上运行本地 coding、planning 和 multimodal 工作流。文章把重点放在个人设备和工作站上的可控推理，而不是只依赖云端 API。",
+          "janet_take": "本地模型最值钱的地方，在于把数据、延迟和边际成本拿回一部分。30B 不会替代最强闭源模型，但它足够让很多创作、代码和内部知识任务少出门。真正门槛转向显卡、内存和部署手艺，懂技术的小团队反而有空隙。",
+          "source": "NVIDIA Developer",
+          "url": "https://developer.nvidia.com/blog/run-local-agentic-ai-workflows-with-metas-muse-glimmer-on-nvidia/",
+          "image_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/08/open-model-launch-image.jpg",
+          "image_source_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/08/Open-Model.webp",
+          "image_origin": "source",
+          "image": "images/models-03-muse-glimmernvidia.webp"
+        },
+        {
+          "title": "Magpie TTS 8做低延迟语音",
+          "body": "Hugging Face 8 月 10 日收录的团队文章介绍 Build Low-Latency Multilingual Voice Agents，主题是用 NVIDIA Magpie TTS 8 做开权重、可自部署的多语言语音代理。文章把控制点放在延迟、全部署控制和语音 agent 的生产可用性上，而不是只展示一个 demo。",
+          "janet_take": "语音 agent 拼的是延迟、口音、断句和私有部署，样音好听只算入门。开权重 TTS 如果能稳定低延迟，会直接影响客服、陪练、教育和直播工具。内容团队试它时，重点测长对话和中文混英文。",
+          "source": "Hugging Face",
+          "url": "https://huggingface.co/blog",
+          "image_url": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+          "image_source_url": "https://huggingface.co/front/thumbnails/blog.png",
+          "image_origin": "source",
+          "image": "images/models-04-magpie-tts-8.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Copilot SDK接入Java服务端",
+          "body": "GitHub 在 8 月 10 日发布 Copilot SDK for Java 文章，称 Java 开发者可以用框架无关方式在服务端创建 Copilot agent sessions、注册 tools、发送 prompts 并接收结构化响应。文章强调它支持 BYOK，可接 OpenAI、Azure、Anthropic 或 OpenAI-compatible endpoints，不要求 Copilot subscription。",
+          "janet_take": "GitHub 这步把 Copilot 从 IDE 插件推向企业后端。Java 仍然占着银行、保险、供应链和政府系统的大量业务逻辑，SDK 一旦进这些地方，AI 权限就会碰到真实审批、日志和异常处理。创作者可以轻看 Java，企业不能；钱往往藏在无聊系统里。",
+          "source": "GitHub Blog",
+          "url": "https://github.blog/engineering/using-the-github-copilot-sdk-for-java/",
+          "image_url": "https://github.blog/wp-content/uploads/2026/08/copilot-sdk-java.jpg",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/01/generic-copilot-flying-invertocat-logo-github.png?fit=1920%2C1080",
+          "image_origin": "source",
+          "image": "images/insights-01-copilot-sdkjava.webp"
+        },
+        {
+          "title": "Daybreak伙伴接入安全服务",
+          "body": "OpenAI 同日扩展 Daybreak Cyber Partner Program，列出 Accenture、IBM、Capgemini、Cognizant、EY、KPMG、PwC、NCC Group、SpecterOps，以及 Palo Alto Networks、CrowdStrike、Cisco、Sophos、Akamai、Fortinet、Cloudflare 等服务和技术伙伴。OpenAI 强调客户不直接拿到底层模型访问，伙伴在受控 engagement 中把模型带入安全产品、managed services 和客户现场。",
+          "janet_take": "OpenAI 很清楚，高风险模型不能像 SaaS 登录页一样乱发。咨询、安全厂商和托管服务商成了缓冲层，既扩大市场，也分摊治理责任。企业买家接下来问的不会只是模型能力，而是谁签字、谁复核、谁背锅。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands/",
+          "image_url": "https://images.openai.com/blob/7b16cfd7-1df0-4eba-95aa-fcc21d93d5aa/daybreak.jpg",
+          "image_source_url": "https://q1.itc.cn/q_70/images03/20260512/b76f0a9af40c4b008357d86ffbbcc5ca.jpeg",
+          "image_origin": "search",
+          "image": "images/insights-02-openaidaybreak.webp"
+        },
+        {
+          "title": "AWS Bedrock打包Agent控制件",
+          "body": "AWS 8 月 10 日 weekly roundup 把 Web Search on Amazon Bedrock、Dogwood、Kiro Crew 等更新放在同一组，并继续强调 Bedrock 是构建 generative AI applications and agents 的端到端平台。近期 Bedrock AgentCore 还围绕 temporal policies、rate limits、gateway 控制和成本约束发布多篇技术说明。",
+          "janet_take": "AWS 的节奏很典型：不抢一个惊艳模型名，而是补搜索、策略、网关、限流和团队协作。企业最后买的不是“聪明”，而是能被财务和安全部门接受的运行面。创作者可能嫌它重，中大型客户却会为 boring controls 付长合同。",
+          "source": "AWS News Blog",
+          "url": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-aws-heroes-summit-web-search-on-amazon-bedrock-dogwood-kiro-crew-and-more-august-10-2026/",
+          "image_url": "https://d2908q01vomqb2.cloudfront.net/7719a1c782a1ba91c031a682a0a2f8658209adbf/2026/08/10/aws-weekly-roundup.jpg",
+          "image_source_url": "https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/08/10/1785879027542-1.jpg",
+          "image_origin": "source",
+          "image": "images/insights-03-awsbedrock.jpg"
+        },
+        {
+          "title": "Google拿下Forrester AI平台Leader",
+          "body": "Google Cloud 8 月 10 日宣布，在 Forrester Wave: AI Platforms, Q3 2026 中被评为 Leader。Google 把 Vertex AI、Gemini、Agent Builder、数据和安全能力放在同一平台叙事里，强调企业构建和管理 AI 应用需要从模型、数据、工具到治理的一体化能力。",
+          "janet_take": "榜单本身要打折看，厂商都会挑有利框架讲。但 Google 这条有信号：AI 平台竞争已经越过单模型 API，开始把数据、agent、评估、治理和云资源一起打包。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-named-a-leader-in-the-forrester-wave-ai-platforms",
+          "image_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/Forrester_AI_Platforms.max-2500x2500.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/01_-_AI__Machine_Learning_H1ZyZG8.max-2600x2600.jpg",
+          "image_origin": "source",
+          "image": "images/insights-04-googleforrester-aileader.jpg"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "BlackRock签工会抢数据中心劳力",
+          "body": "WSJ 8 月 10 日报道称，BlackRock 与 North America's Building Trades Unions 签署合作，后者代表美国和加拿大超过 300 万名熟练建筑工人。协议将让 BlackRock 及其 AI infrastructure fund 相关伙伴提前向工会提供数据中心建设计划，帮助预判电工等岗位需求，并扩大 apprenticeship、培训和招聘。",
+          "janet_take": "AI 基建最朴素的瓶颈在施工现场：电工、工期、许可、培训。资本可以一夜宣布 5000 亿，熟练工人不能一夜从 PPT 里长出来。忽视施工周期的估值故事，都要先打折。",
+          "source": "Wall Street Journal",
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-08-10-2026/card/blackrock-inks-union-pact-to-support-data-center-boom-cLxuNUAhWTqWsD6BOVSJ",
+          "image_url": "https://images.wsj.net/im-000000/social",
+          "image_source_url": "https://newsweekjapan.ismcdn.jp/mwimgs/e/7/1200x/img_e7c0f9202a5b2018a70bfa96cf41b02324169.jpg",
+          "image_origin": "search",
+          "image": "images/insights2-01-blackrock.jpg"
+        },
+        {
+          "title": "OpenAI财务函数跑进后台",
+          "body": "OpenAI 8 月 10 日发布 What building an AI-native finance function taught me，提出 AI-native finance function 应该带来 faster cycles、stronger controls、better decisions 和 more time for judgment。文章强调从有意义的 workflow 开始，用证据扩展，给人工具，重建工作方式，同时保持 accountability 和 outcome measurement。",
+          "janet_take": "财务是最不适合空喊 AI 革命的部门，因为错一笔账就是事故。OpenAI 这篇有意思的地方，是把速度和控制放在同一行，没有把 AI 写成裁员按钮。先挑高频、可核验、责任清楚的流程试，远比喊“AI CFO”靠谱。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/building-an-ai-native-finance-function/",
+          "image_url": "https://images.openai.com/blob/0f28b7b1-f4cc-4d21-b407-1d4c1c17f2bc/finance-function.jpg",
+          "image_source_url": "https://i.guancha.cn/news/external/2024/10/10/20241010132656226.png",
+          "image_origin": "search",
+          "image": "images/insights2-02-openaiai.png"
+        },
+        {
+          "title": "Applied Compute估值冲30亿",
+          "body": "The Information 8 月 10 日报道称，Applied Compute 正在讨论新一轮融资，估值约 30 亿美元，较四个月前宣布的估值翻倍。该公司成立约一年，业务是帮助企业用自有数据运行和定制 open-source models；报道把增长归因于近几个月收入提升和企业对开源模型部署需求上升。",
+          "janet_take": "如果这轮能成，市场押的是“把开源模型变成企业可用资产”的中间层。企业想控制数据，又不想自己养完整 ML 平台，夹层服务就有收费空间。帮客户把便宜模型跑稳、调好、接进业务，比复读大厂发布会更像生意。",
+          "source": "The Information",
+          "url": "https://www.theinformation.com/",
+          "image_url": "https://www.theinformation.com/images/share-logo.png",
+          "image_source_url": "https://img.36krcdn.com/hsossms/20241011/v2_eb44e6275612489c9c019533eab536ee@5091053_oswg68900oswg680oswg429_img_000?x-oss-process=image/format,jpg/interlace,1/format,jpg/interlace,1",
+          "image_origin": "search",
+          "image": "images/insights2-03-applied-compute30.jpg"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "ChatGPT接入餐厅预订服务",
+          "body": "OpenAI Help Center 的 ChatGPT release notes 在 8 月 10 日更新：ChatGPT 现在可以通过 OpenTable、Resy 和 Yelp 帮用户查找餐厅可订时段。用户可以在对话中给出地点、时间、人数、菜系、预算、饮食限制和氛围偏好，ChatGPT 会显示可选时段，并支持继续追问缩小范围或选择特定餐厅后完成预订。",
+          "janet_take": "订餐功能不炫，却很接近普通人日常。它有明确库存、偏好、交易和确认动作，比“帮我规划人生”靠谱得多。容易落地的 AI agent，通常是低风险、高频、数据结构清楚的流程。",
+          "source": "OpenAI Help Center",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "image_url": "https://images.openai.com/blob/9f2f1d2e-8f8b-40ac-bdc3-73e475f0d8c6/chatgpt-release-notes.jpg",
+          "image_source_url": "https://www.thewindowsclub.com/wp-content/uploads/2023/06/OpenAi-help-center-contact-support.png",
+          "image_origin": "search",
+          "image": "images/tools-01-chatgpt.png"
+        }
+      ]
+    }
+  }
+}

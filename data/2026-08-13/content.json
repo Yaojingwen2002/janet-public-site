@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-13",
+  "vol": "317",
+  "intro_text": "AI 今天没有靠一个炸裂模型抢镜，而是从四个方向压进现实：十亿级入口、融资化算力、工具生产线和可追踪内容。热闹的地方不只在模型榜单，更在账单、权限、默认入口和谁能解释成本。",
+  "cover": {
+    "title": "账单先落地",
+    "subtitle": "AI 的胜负开始写进用户规模、融资结构、开发工具和内容痕迹。",
+    "image_path": "runs/2026-08-13/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: 21:9 editorial magazine cover background for Janet AI morning briefing. Primary request: black, white, and Janet green AI technology cover about AI becoming a billable operating system: valuation tickers, token meters, watermark traces, developer factories, and infrastructure financing lines converging into a restrained production control surface. No readable text, no date, no VOL, no logos."
+  },
+  "trend": "十亿用户、5000 亿美元融资管道、AI SDK 工厂和 Claude 水印放在同一天看，问题很具体：AI 已经不只是模型能不能打，而是谁能把它变成可收费、可分发、可追责的默认系统。\n\n这对创作者和中小团队的提醒很冷：入口越大，分发越便宜；账单越细，试错越透明；痕迹越多，偷懒越容易被看见。接下来真正拉开差距的，不是喊自己用了 AI，而是谁能把模型、工具、成本和责任边界放进日常工作。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Gemini App用户冲破十亿门槛",
+          "body": "Google CEO Sundar Pichai 在 8 月 11 日宣布，Gemini app 最近突破 10 亿月活，成为 Google 第 14 个达到十亿规模的产品。TechCrunch 报道称，这个数字只计算 Gemini app，不包含 Search、Workspace、Android 等其他入口；Google 还披露，63% 的 Gemini 用户会直接使用语音功能，Gemini 每天生成超过 1.5 亿张图片，iOS 端也已有超过 1 亿活跃用户。",
+          "janet_take": "十亿用户像一张默认入口的通行证。Google 最可怕的地方不在某个 demo 多聪明，而在它能把 Gemini 塞进搜索、手机、办公和语音习惯里。创作者会先感到两件事：图片、语音、问答的基础能力继续免费下沉；同时，被平台分发入口改写的流量账会越来越难靠个人技巧绕开。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/11/googles-gemini-app-surges-to-one-billion-users/",
+          "image": "images/news-01-gemini.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/gemini-app-GettyImages-2276204472-1.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "Nvidia融资五千亿供GPU",
+          "body": "WSJ 与 Axios 8 月 12 日报道，Nvidia 正与 BlackRock、Goldman Sachs、KKR、Apollo 等华尔街机构推进一套面向 AI 数据中心的融资结构，目标是形成超过 5000 亿美元的资本池。思路是用 AI 芯片和数据中心资产支持贷款，帮助云厂商和较小 AI 公司购买昂贵 GPU；报道也提到，风险在于芯片残值、技术迭代和 AI 需求回落时的连锁压力。",
+          "janet_take": "GPU 正在被华尔街当成新抵押品。算力稀缺时，机柜、芯片、合同都能包装成资产；需求不稳时，折旧和空置也会传回来。国内创业者看这类新闻，重点放在使用率、现金流和模型毛利能不能撑住财务表。",
+          "source": "WSJ / Axios",
+          "url": "https://www.axios.com/2026/08/12/nvidia-ai-financing-blackrock-goldman",
+          "image": "images/news-02-nvidia.webp",
+          "image_source_url": "https://static.cnbetacdn.com/article/2024/0321/ad4b8a556a716f3.webp",
+          "image_origin": "search"
+        },
+        {
+          "title": "Thrive融资二十亿改服务业",
+          "body": "TechCrunch 8 月 12 日报道，OpenAI 参股的 Thrive Holdings 完成 20 亿美元新融资，估值达到 120 亿美元，投资方包括 SoftBank、D1 Capital Partners 和 Altimeter Capital。Thrive 的模式接近 AI 版私募运营平台：收购会计、IT 等传统服务公司，再派工程团队把 AI 放进工作流。公司称 Current 会计平台覆盖 50 多家公司和 2000 多名专业人员，TaxAI 已处理 7000 多份税表，准确率 98%，参与公司的税务准备时间下降超过 30%。",
+          "janet_take": "资本现在买的是能被 AI 重写的无聊行业。会计、IT、许可、检查文档，这些听起来不酷，却有稳定需求、明确账单和大量重复劳动。创作者要警惕一个现实：最赚钱的 AI 未必长得像聊天机器人，可能长得像一支会进驻客户现场、改流程、背 KPI 的工程队。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/",
+          "image": "images/news-03-thrive.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/holdings_all_team.jpg?resize=1200,407",
+          "image_origin": "source"
+        },
+        {
+          "title": "Claude给文本加隐形水印",
+          "body": "TechCrunch 8 月 12 日报道，Anthropic 已开始在 Claude 输出中加入机器可识别的隐形水印，用来标记 AI 生成或编辑过的文本。报道称，这项调整是为了满足欧盟 AI Act 透明度代码要求；反弹主要来自担心在学校、工作和写作场景中暴露 AI 使用痕迹的用户。文章也指出，真正有问题的是把 Claude 输出原样当成人工成果提交。",
+          "janet_take": "水印戳中的是很多人对“借力”和“冒充”的混淆。用 AI 整理材料不丢人，复制一段机器文案冒充自己才危险。以后内容生产会越来越像财务报销：工具可以用，但痕迹、责任和署名要对得上。创作者最该保住的是判断、取舍和最后那层人味。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+          "image": "images/news-04-claude.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Claude-photo.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "开源派为开放模型辩护",
+          "body": "TechCrunch 8 月 12 日报道，在拉斯维加斯 Ai4 会议上，Geoffrey Hinton、Fei-Fei Li 和 Andrew Ng 围绕开放模型表达了不同立场。Ng 担心少数大公司成为 AI gatekeepers，主张通过多供应商和开放模型保持竞争；Hinton 区分开源代码与开放权重，认为开放权重更容易被低成本改造成有害用途；Fei-Fei Li 则反对把开放和封闭做成二选一，主张不同层级采用不同开放程度。",
+          "janet_take": "这轮讨论比“开源万岁”或“闭源安全”成熟一点。核心是开放哪一层、给谁开放、出了事谁承担代价。国内团队把开放模型当便宜底座可以，但安全、版权、数据和部署责任会落到自己身上。便宜不是没有成本，只是成本换了位置。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/as-ai-safety-concerns-mount-three-pioneers-make-the-case-for-staying-open/",
+          "image": "images/news-05-cd2fb8cdbb.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/HALL1410.jpg?resize=1200,800",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Google用框架追模型忘事实",
+          "body": "Google Research 8 月 12 日发布研究文章，提出 knowledge profiling 框架来拆解 LLM 事实错误来源。研究结论是，前沿模型往往已经编码了大量事实，问题更多出在回忆失败，而不是从未学过；换句话说，模型像仓库里有货却找不到货架。文章把这称为 parametric factuality 的 recall bottleneck。",
+          "janet_take": "内容团队可以记住这个判断：幻觉不总是“没学过”，也可能是“想不起来”。所以更大模型不等于事实更稳，检索、引用、校验和提示结构仍然有价值。模型像记性很差的学霸，工作流就要给目录、证据和核对步骤。",
+          "source": "Google Research",
+          "url": "https://research.google/blog/empty-shelves-or-lost-keys-recall-is-the-bottleneck-for-parametric-factuality/",
+          "image": "images/models-01-google.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-research2023-media/images/HO_previewImage1.width-800.format-jpeg.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "OpenAI收入反超Fable高端盘",
+          "body": "Business Insider 8 月 12 日引用 Ramp AI Index 称，Anthropic 仍在美国中小企业采用率上领先，7 月有 43.5% 的企业使用 Anthropic 产品，OpenAI 为 39.7%；但在高端模型支出上，Anthropic Fable 5 的收入只达到 OpenAI GPT-5.6 Sol 的 75%。报道还提到，前 1% AI 支出者 7 月每名员工中位支出达到 7400 美元，coding agents 是支出上升的重要驱动。",
+          "janet_take": "企业买模型算的是能力、价格、故障和采购摩擦，不是给品牌投票。Anthropic 用户多，OpenAI 高端收入更强，市场还没定型。小团队把同一任务放到不同模型上跑成本和失败率，结果通常比品牌叙事更诚实。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/anthropic-fable-5-openai-gpt-5-6-sol-ramp-2026-8",
+          "image": "images/models-02-openaifable.webp",
+          "image_source_url": "https://i.insider.com/6a7bb1f0e3df4d0cbe684e7e?width=1200&format=jpeg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Vercel给AI SDK建工厂",
+          "body": "Vercel 8 月 12 日发文介绍 AI SDK 的“software factory”维护方式。文章称 AI SDK 每周 npm 下载量超过 2000 万，GitHub stars 超过 2.6 万；维护团队要同时追踪模型供应商、React/Next.js/Svelte/Vue 等 UI 绑定、agent 运行沙箱，以及 Codex、Claude Code、Pi 等 harness 适配。Vercel 的核心判断是，AI SDK 的维护已经变成一条持续生产线。",
+          "janet_take": "开发者工具的竞争正在从“支持几个模型”变成“谁能持续消化模型混乱”。供应商天天改能力、改价格、改 bug，框架和沙箱也在变，靠手工适配会被拖死。AI SDK 这种中间层看起来不性感，却可能拿到最稳定的位置：替开发者吸收上游噪音。",
+          "source": "Vercel",
+          "url": "https://vercel.com/blog/building-a-software-factory-for-ai-sdk",
+          "image": "images/models-03-vercelai-sdk.png",
+          "image_source_url": "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/6XWdGbz8lDKq97Puxfb4eE/6b1ca1d9d4b719739736079275a68365/AI-SDK-factory-OG-v2.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Copilot给新手写提示扶手",
+          "body": "GitHub Blog 8 月 12 日发布 Copilot app 入门文章，重点不是新模型，而是引导用户选择上下文、模型和第一个任务。文章面向刚打开 AI 工具却不知道怎么开口的人，强调把目标、文件上下文和期望输出说清楚，再让 Copilot 开始处理任务。",
+          "janet_take": "AI 产品走向普通办公桌时，第一道门槛就是怎么开口。很多失败来自模糊愿望，而不是模型太笨。入口产品降低提问门槛，就会吃掉一批提示词课程的生意。",
+          "source": "GitHub Blog",
+          "url": "https://github.blog/ai-and-ml/github-copilot/write-your-first-prompt-with-the-github-copilot-app/",
+          "image": "images/models-04-copilot.webp",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-11-at-6.38.49-PM.png?fit=1095%2C626",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Cognition估值继续冲向四百亿",
+          "body": "TechCrunch 8 月 12 日报道称，AI coding agent Devin 背后的 Cognition 已经在与投资人讨论新一轮融资，潜在估值至少 400 亿美元。公司 5 月刚以 260 亿美元估值融资 10 亿美元；TechCrunch 引述过往信息称，Cognition 当时年化收入运行率为 4.92 亿美元，企业客户使用 Devin 的月度增长连续六个月达到 50%。",
+          "janet_take": "400 亿美元估值背后，真正值钱的是企业愿意为脏活付费。Devin 不一定替掉明星工程师，但迁移旧系统、补长尾任务、处理没人爱做的维护活，很容易变成预算项。程序员焦虑可以理解，但更现实的问题是：你的工作里有多少部分只是企业愿意外包给 agent 的耐心活？",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/ai-coding-startup-cognition-reportedly-already-in-talks-to-raise-at-40b-valuation/",
+          "image": "images/insights-01-cognition.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/05/Scott-wu-headshot-e1780070238342.png?resize=1200,1004",
+          "image_origin": "source"
+        },
+        {
+          "title": "Lovable融资四亿美元冲百亿",
+          "body": "TechCrunch 首页 8 月 12 日显示，AI 应用构建平台 Lovable 确认 133 亿美元新估值，并再次融资 4 亿美元。该事件与 Cognition 同日出现在 AI 创业融资列表里，说明 coding agent 与 app-building agent 仍是资本最愿意追逐的应用层赛道之一。",
+          "janet_take": "应用生成平台拿高估值，说明“不会写代码的人也想直接交付软件”仍在吸钱。问题是，生成 demo 和经营可维护产品之间隔着权限、数据、支付、异常和用户支持。小团队能用它提速，但原型速度不等于商业护城河。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/",
+          "image": "images/insights-02-lovable.webp",
+          "image_source_url": "https://www.winzheng.com/og-image.php?slug=lovable-100m-revenue-146-employees",
+          "image_origin": "search"
+        },
+        {
+          "title": "水印把使用灰区推上台",
+          "body": "Claude 水印引发用户反弹，TechCrunch 文章观察到 Reddit 上有人担心学生、记者、写作者会被识别出使用 AI。报道同时指出，若记者只是用 AI 总结长访谈并自己写作，水印并不是问题；真正危险的是把 AI 整段输出直接复制进作品、论文或工作成果。",
+          "janet_take": "很多人真正害怕的是被看见。AI 使用会分层：辅助研究可以被接受，冒充原创会被讨厌。内容行业靠“看不出来”吃饭，会越来越危险。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+          "image": "images/insights-03-b8050d2182.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/Claude-photo.jpg?w=1024",
+          "image_origin": "source"
+        },
+        {
+          "title": "AI戒指开始抢语音入口",
+          "body": "TechCrunch Equity 8 月 12 日采访 Sandbar 联合创始人 Mina Fahmi，讨论其 Stream 私密语音戒指。报道提到，AI 会议记录硬件已经从卡片、吊坠、别针扩展到耳机和戒指；Sandbar 已累计融资 3600 万美元，其中包括 Adjacent 与 Kindred Ventures 领投的 2300 万美元 Series A。Fahmi 的核心判断是，语音硬件必须让人保持控制感，才可能突破上一代 AI wearable 的尴尬。",
+          "janet_take": "AI 硬件不是少一个屏幕就高级。戒指、吊坠、耳机都在争同一个瞬间：人脑刚冒出想法、还没打开手机的时候。这里的代价也很私密，录音、环境声、会议边界都比文本敏感。谁能让用户确信“我在控制它”，谁才有机会留下来。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/video/why-stream-ring-maker-sandbar-says-the-future-of-ai-wearables-is-voice/",
+          "image": "images/insights-04-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/03/IMG_0402.CR3_.jpg?resize=1200,800",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "AI服务公司拿到现金流",
+          "body": "Thrive Holdings 的融资把 AI 应用层的一个方向讲得很清楚：不只卖 SaaS，而是买下传统服务业务，再用 AI 改写人工密集流程。TechCrunch 报道中，Thrive 已有会计和 IT 两个平台，并准备进入建筑环境相关的监管服务，处理许可、认证、检查记录和持续运营材料。",
+          "janet_take": "从投资角度看，这类公司不像轻 SaaS，更像用 AI 改造服务业资产。好处是收入真实、客户痛点明确；坏处是慢、重、需要懂行业的人。AI 进传统生意，利润不从 prompt 里长出来，而是从交付现场一刀一刀抠出来。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/",
+          "image": "images/insights2-01-ai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/holdings_all_team.jpg?resize=1200,407",
+          "image_origin": "source"
+        },
+        {
+          "title": "Coding Agent继续拿估值热钱",
+          "body": "Cognition 传出至少 400 亿美元估值谈判时，TechCrunch 同文提到其客户包括 Mercedes-Benz、NASA 和 Goldman Sachs，并强调 Devin 常被用于旧软件更新、平台迁移等长尾任务。这个定位比“替代工程师”更接近企业自动化预算。",
+          "janet_take": "估值很热，买单逻辑朴素：谁能减少企业没人愿意碰的维护债，谁就有机会拿钱。若 agent 省下初级人力，却增加资深审核负担，收入曲线会被重新定价。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/ai-coding-startup-cognition-reportedly-already-in-talks-to-raise-at-40b-valuation/",
+          "image": "images/insights2-02-coding-agent.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/05/Scott-wu-headshot-e1780070238342.png?resize=1200,1004",
+          "image_origin": "source"
+        },
+        {
+          "title": "GPU贷款加大泡沫风险",
+          "body": "Nvidia 与华尔街机构讨论的 AI 数据中心融资结构，被 Axios 形容为给 AI boom 加燃料也加风险。超大云厂商本来就计划在 2026 年投入巨额 AI 基建，而这类资本池若成形，会让较小玩家也更容易拿到昂贵 GPU；但如果需求或价格预期下滑，资产支持贷款会放大调整。",
+          "janet_take": "投资人盯的不该只是 AI 热度，而是资产久期和模型迭代速度是否匹配。芯片不像房子，折旧和替代更快。GPU 抵押故事最后要靠出租率、续约和残值兑现。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/12/nvidia-ai-financing-blackrock-goldman",
+          "image": "images/insights2-03-gpu.jpg",
+          "image_source_url": "https://s.yimg.com/os/ko/sunmedia_664/4191a027b8e6079d97a248faebc02cd1",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "GitHub给提示词新手扶手",
+          "body": "GitHub 8 月 12 日发布 Copilot app 第一条 prompt 教程，面向刚开始使用 Copilot app 的用户，示范如何把目标、上下文、模型选择和期望结果讲清楚。它不是炫技功能，而是把“会不会问”变成产品内引导，降低第一次使用 AI coding agent 的心理门槛。",
+          "janet_take": "这个教程不炫，但很有用。扩大 AI 使用面的，常常是让普通人少卡在第一步。提示词课程能卖钱，恰好说明产品入口还没做顺。",
+          "source": "GitHub Blog",
+          "url": "https://github.blog/ai-and-ml/github-copilot/write-your-first-prompt-with-the-github-copilot-app/",
+          "image": "images/tools-01-github.webp",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/08/Screenshot-2026-08-11-at-6.38.49-PM.png?fit=1095%2C626",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

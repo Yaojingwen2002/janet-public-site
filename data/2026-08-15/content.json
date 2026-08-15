@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-15",
+  "vol": "319",
+  "intro_text": "今天的 AI 新闻没有在炫参数，反而都在谈闸门：文本能不能追踪，权重能不能放出，模型能不能降价，数据中心的钱谁兜底。能力继续往外冲，控制层终于被迫站到台前。",
+  "cover": {
+    "title": "闸门成硬资产",
+    "subtitle": "水印、开源、价格和电力合同同日收紧",
+    "image_path": "runs/2026-08-15/cover.png",
+    "image_prompt": "21:9 black, white and Janet green AI technology magazine cover; abstract production control room, layered gates, cost and power infrastructure signals; no readable text, no dates, no robot faces, no glowing brain."
+  },
+  "trend": "Anthropic 给 Claude 文本加不可见水印，Z.ai 因 GLM-5.3 的网络安全能力延后开放权重，OpenAI 和 Anthropic 又在中国模型压力下砍中档模型价格。今天的问题不是谁又多聪明一点，而是高能力 AI 进入公共市场前，闸门究竟放在哪里。\n\n这对创作者和中小团队很现实：模型会更快、更便宜，也会更像水电煤一样按任务计价；但文本出处、工具权限、开源权重和算力合同都可能成为新的成本项。能跑通工作流只是入场券，能解释风险、账单和责任，才是下一轮筛选。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Claude文本水印进入台前",
+          "body": "Anthropic 8 月 14 日解释 Claude 文本水印机制：水印不会改变可读内容，不加入隐藏字符，不增加 token 成本，也不携带可追到具体个人、组织或聊天的信息。官方说读者肉眼无法区分有无水印，检测需要对应方法；这是一种输出层的来源信号，而不是把用户身份塞进文本。",
+          "janet_take": "比“AI 生成内容请标注”更狠的是，它不靠创作者自觉。平台开始把出处问题埋进文本统计特征里，未来争议会从“是不是 AI 写的”变成“谁有权检测、检测结果能不能上桌”。对内容团队，这是防冒名的工具，也是平台手里的一把新尺子。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/claude-text-watermark",
+          "image_origin": "source",
+          "image_source_url": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Quill&backgroundColor=heather",
+          "image": "images/news-01-claude.png"
+        },
+        {
+          "title": "GLM5.3因安全延后开放权重",
+          "body": "Z.ai 8 月 14 日发布 GLM-5.3 技术说明，称模型在 CyberGym 漏洞发现基准上达到 84.5%，高于 GLM-5.2 的 77.2%，并在 ExploitBench 上从 24.4% 提到 54.4%。由于白盒代码审查、漏洞发现和验证能力超预期，Z.ai 将公开权重延后两周，用来补安全措施。",
+          "janet_take": "开源模型最尴尬的一刻来了：它越有用，越不能像普通工具一样扔出去。Z.ai 这次没有假装“开放天然无害”，而是承认权重一旦外放，使用方式就很难管。国内团队看这里要清醒，低成本前沿能力会降低研发门槛，也会把安全责任直接推到产品方门口。",
+          "source": "Z.ai",
+          "url": "https://z.ai/blog/glm-5.3",
+          "image_origin": "search",
+          "image_source_url": "https://aitop100app-1251510006.cos.ap-shanghai.myqcloud.com/article/undefined/a7792831-d381-4aec-9361-45eb38398afb.png?imageMogr2/format/webp",
+          "image": "images/news-02-glm53.webp"
+        },
+        {
+          "title": "中美模型价格战逼出降价",
+          "body": "Financial Times 8 月 14 日报道，OpenAI 和 Anthropic 正削减中档模型价格，以回应 Moonshot、DeepSeek 等中国模型带来的成本压力。报道提到 OpenAI 的 GPT-5.6 Luna 降价最高达 80%，Anthropic 的 Opus 5 也有约 50% 下调，企业客户开始用中国替代模型压低支出。",
+          "janet_take": "价格战不是福利，是模型公司被客户拿账单投票。以前大厂可以用“更强”撑住溢价，现在 DoorDash、Airbnb 这类客户会直接问：同一个任务为什么贵五倍？创作者也一样，别再只看榜单第一，真正该算的是一条视频脚本、一轮客服、一批素材审核到底烧多少钱。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/32a70a3c-7d28-40b4-808e-36edb58c7d01",
+          "image_origin": "search",
+          "image_source_url": "http://n.sinaimg.cn/sinakd20250414s/781/w511h270/20250414/83c6-1ce3b8516d3647867bf1ac41b6c03513.jpg",
+          "image": "images/news-03-267eae951d.jpg"
+        },
+        {
+          "title": "Nvidia给OpenAI千亿担保缩水",
+          "body": "Wall Street Journal 8 月 14 日称，Nvidia 和 OpenAI 接近敲定俄亥俄数据中心融资安排，但 Nvidia 已把原先约 2500 亿美元担保计划缩到不足 1200 亿美元，先覆盖约 5GW 的第一阶段。OpenAI 仍在谈判租用 10GW 算力，项目由软银旗下 SB Energy 开发。",
+          "janet_take": "算力泡沫最真实的声音，不是发布会掌声，是担保条款往回缩。Nvidia 既卖铲子，又像银行一样给矿山增信，这当然能推高需求，也会把风险压到同一张桌子上。AI 公司说自己缺 GPU，金融市场听到的是：谁来替这 10GW 的电力和债务兜底？",
+          "source": "Wall Street Journal",
+          "url": "https://www.wsj.com/tech/nvidia-downsizes-plans-for-250-billion-guarantee-of-openai-data-center-b56c38d3",
+          "image_origin": "search",
+          "image_source_url": "https://zinggadget.com/wp-content/uploads/2025/09/coepew-860x478.jpg",
+          "image": "images/news-04-nvidiaopenai.jpg"
+        },
+        {
+          "title": "开源AI采购规则被收紧",
+          "body": "Axios 8 月 14 日报道，美国政府对开放模型的审查正在加码。现有高风险框架主要盯闭源前沿系统，但随着开放权重能力逼近专有模型，白宫 6 月备忘录可能推动 10 月前后出现更清晰的政府采购、评估和国家安全使用标准。",
+          "janet_take": "开源过去像技术人的自由通行证，现在开始变成采购部门的风险表。监管不一定会直接封权重，但会先卡政府和敏感行业怎么用、谁评测、谁背书。对国内公司，这条线很关键：开源模型能省钱，可一旦客户是金融、政务、能源，便宜不等于能进门。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/14/open-source-ai-government-scrutiny",
+          "image_origin": "search",
+          "image_source_url": "https://www.winzheng.com/og-image.php?slug=us-ai-procurement-order-market-impact",
+          "image": "images/news-05-ai.jpg"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Google让Flash抢工作马位置",
+          "body": "Google 8 月 13 日发布 Gemini 3.7 Flash，定位为面向 coding 和 agents 的 workhorse model。官方强调它在智能、速度和成本之间重新平衡，用来支撑代理开发、代码任务和日常生产调用，而不是只追求最顶尖的展示型能力。",
+          "janet_take": "Flash 系列的野心很朴素：不争舞台中央，争每天被调用十万次的位置。Google 这条线如果打稳，会直接咬住中档模型的利润池。",
+          "source": "Google Blog",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3-7-flash.width-1300.png",
+          "image": "images/models-01-googleflash.png"
+        },
+        {
+          "title": "DeepSeekV4Pro正式接入Codex工作流",
+          "body": "DeepSeek 8 月 13 日宣布 V4-Pro GA，上线 App、网页端和 API，并继续使用现有 API 模型名。官方称正式版增强 Agent 能力，支持 low、high、max 三档 reasoning effort，还提供 OpenAI Responses API 兼容能力，方便 Codex 等工作流接入。",
+          "janet_take": "DeepSeek 这次最聪明的是拆接入摩擦。Responses API 兼容能让海外工具链少改代码，三档思考强度则让用户自己管成本。国产模型要抢企业调用量，光便宜不够，迁移也得像换插头一样简单。",
+          "source": "DeepSeek API Docs",
+          "url": "https://api-docs.deepseek.com/news/news260813",
+          "image_origin": "source",
+          "image_source_url": "https://api-docs.deepseek.com/img/deepseek-social-card.jpeg",
+          "image": "images/models-02-deepseekv4procodex.jpg"
+        },
+        {
+          "title": "OpenAI给Sol开出14倍高速档",
+          "body": "OpenAI 8 月 13 日预览 Ultrafast 服务层，让 GPT-5.6 Sol 在 API 中以最高 14 倍于 Standard processing 的速度运行。该层由 Cerebras 支持，最高可达每秒 750 个输出 token，先向少数客户开放，目标场景包括事故响应、金融研究、客服、语音和电商。",
+          "janet_take": "速度被单独卖出来，说明模型能力开始拆成更细的商品。不是所有任务都值得交“速度税”，但实时语音、风控、事故响应这些场景，慢十秒就可能少一单或多一次事故。创作者工具也会跟进，直播脚本和互动助手会先感到这种变化。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/previewing-ultrafast/",
+          "image_origin": "search",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg",
+          "image": "images/models-03-openaisol14.jpg"
+        },
+        {
+          "title": "Grok4.6用低价冲回前沿桌",
+          "body": "Barron's 8 月 13 日报道，SpaceXAI 推出 Grok 4.6 后，Musk 称其必须在 AI 中取胜。报道援引 Artificial Analysis 评价称 Grok 4.6 回到前沿附近，输入价格约每百万 token 2 美元、输出 6 美元，主打比 OpenAI 与 Anthropic 更低的成本。",
+          "janet_take": "Musk 的 AI 叙事终于从嘴硬回到价格表。Grok 4.6 如果真能用便宜价位贴近前沿，对市场的伤害不在排行榜，而在采购谈判桌：客户会拿它逼所有供应商解释溢价。问题也没消失，Grok 过去的事实稳定性欠账，会继续被放大检验。",
+          "source": "Barron's",
+          "url": "https://www.barrons.com/articles/spacex-stock-grok-ai-anthropic-openai-musk-11939184",
+          "image_origin": "search",
+          "image_source_url": "https://img14.360buyimg.com/n1/s720x720_jfs/t1/392995/5/6026/170865/697c6ab0Fc00c693c/0083320320bbfbeb.jpg",
+          "image": "images/models-04-grok46.jpg"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Anthropic因风险暂扣Model2发布",
+          "body": "Axios 8 月 14 日报道，Anthropic 因风险评估上升而暂不发布更强的内部模型 Model 2。报道称公司认为严重危害概率仍低，但已从此前的 very low 上升，原因包括近期网络安全事件；OpenAI 也因 Astra 的潜在 cyber 能力推迟发布。",
+          "janet_take": "暂不发布比发布更有信息量。前沿实验室开始承认自己也没完全看清模型能力边界，尤其是网络安全这种能直接碰现实系统的能力。难题不在保守或激进的口号，在于当模型已经超过评测理解速度，谁敢按下公开发布键。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/14/anthropic-model-2-ai-risk",
+          "image_origin": "search",
+          "image_source_url": "https://x0.ifengimg.com/ucms/2026_10/BEC78CD8DC3F54DCCDD8125D79AF9C351B03B091_size1647_w1892_h1254.png",
+          "image": "images/insights-01-anthropicmodel2.png"
+        },
+        {
+          "title": "Daybreak给防御者拆双层权限",
+          "body": "OpenAI 8 月中旬扩展 Daybreak，围绕网络防御窗口变窄设置 Daybreak Blue 和 Red 两类访问层。Blue 面向获批防守方使用通用前沿模型，Red 则为授权漏洞研究、exploit 验证和安全测试提供更专门能力，并强调资质和护栏。",
+          "janet_take": "安全模型不能按普通 SaaS 卖。Blue 和 Red 拆开后，企业真正要买的是授权边界、留痕和事故后的解释链。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+          "image_origin": "search",
+          "image_source_url": "https://sakutto.ai/og/en/articles/openai-daybreak.png",
+          "image": "images/insights-02-daybreak.png"
+        },
+        {
+          "title": "Zapier给模型跑自动化考试",
+          "body": "Zapier 8 月 13 日更新模型自动化指南，称其用 AutomationBench 测试 GPT-5.6 Sol、Gemini 3.7 Flash、Opus 5 等模型执行多步骤工作流的能力，而不是只看静态提示。该基准关注模型在真实业务自动化里的任务完成情况。",
+          "janet_take": "这就是模型评测该回到地面的样子。会聊天不等于会跑报销、拉表、发邮件、建工单；多步骤自动化最怕的是中间一步错了还继续装镇定。Zapier 的榜单不一定中立完美，但它抓住了一个真问题：模型要按工作结果交卷。",
+          "source": "Zapier",
+          "url": "https://zapier.com/blog/ai-models-on-zapier/",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/lzny33ho1g45/6y1J7rrUFny1up43nepLz5/c9c01d430961f85fe9ea6eda1e278b1d/Hero__zapier-logo-purple-new.jpg",
+          "image": "images/insights-03-zapier.jpg"
+        },
+        {
+          "title": "Vercel Agent接管线上故障证据",
+          "body": "Vercel Agent 文档显示，这个代码库 Agent 面向线上工程工作：可调查 alert、日志、指标、部署和 build output，定位故障根因，在 sandbox 中验证修复，再准备 PR 或重新部署。它运行在 Vercel AI Cloud，强调与平台证据链结合。",
+          "janet_take": "生产 Agent 要先接住事故证据。日志、部署、指标、构建输出散在不同地方，能串起来才有价值；没有清楚日志和测试，它只是在黑箱里猜。",
+          "source": "Vercel Docs",
+          "url": "https://vercel.com/docs/agent",
+          "image_origin": "source",
+          "image_source_url": "https://vercel.com/api/docs-og?title=Vercel%20Agent&format=docs&sig=7469f0089f9b80f6d7bf68e7642bea4f815d589a4e545965af762cf3ca3671a8&category=Ship%20and%20scale",
+          "image": "images/insights-04-vercel-agent.png"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Anthropic二级估值冲向1.5万亿",
+          "body": "Business Insider 8 月 14 日报道，Anthropic 在二级市场估值升至约 1.5 万亿美元，较前一个月上涨 25%，但可交易股份稀缺。报道称公司 5 月融资估值约 9650 亿美元，6 月已提交 IPO 文件，买方更偏好直接持股，警惕复杂 SPV。",
+          "janet_take": "二级市场最会讲神话，也最怕没有流动性。卖家少会把价格顶得很漂亮，但这不等于真实退出容易。Anthropic 的安全叙事、企业收入和 IPO 预期都在被提前定价，风险是所有人都在等同一个出口，一旦窗口变窄，估值会先露出牙齿。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/anthropic-1-5-trillion-valuation-on-secondary-markets-2026-8",
+          "image_origin": "source",
+          "image_source_url": "https://i.insider.com/6a7cd287bd87410e364d1c71?width=1200&format=jpeg",
+          "image": "images/insights2-01-anthropic15.webp"
+        },
+        {
+          "title": "Anthropic以60亿谈买Decart",
+          "body": "多家媒体 8 月 13 日至 14 日报道，Anthropic 正洽谈以约 60 亿美元收购以色列 AI 初创 Decart。Dealroom 汇总称这会是 Anthropic 史上最大并购、也是其在以色列的首笔收购；Decart 由 Dean Leitersdorf 和 Moshe Shalev 在 2023 年底创立，谈判尚未最终敲定。",
+          "janet_take": "IPO 前买基础技术，是给投资人看的肌肉，也是给算力焦虑买保险。Anthropic 如果要把 Claude 的成本、延迟和多模态能力讲成长期故事，只靠租 GPU 不够。60 亿美元买一家年轻公司听起来贵，但在万亿估值叙事里，它更像一张“我们会自建关键能力”的收据。",
+          "source": "Dealroom / Times of Israel",
+          "url": "https://dealroom.co/news/144857-anthropic-in-talks-to-buy-israels-decart-for-6b-its-largest-deal-yet/",
+          "image_origin": "source",
+          "image_source_url": "https://sg-imgs.dealroom.co/90b7ddf249d7945618659fa7a6110767.jpeg?ar=3:1&fit=crop&crop=faces,center&auto=compress&cs=origin",
+          "image": "images/insights2-02-anthropic60decart.jpg"
+        },
+        {
+          "title": "AI财富给EA续命并上桌",
+          "body": "Financial Times 8 月 14 日报道，AI 财富正在让 effective altruism 运动从 Sam Bankman-Fried 风波后恢复。报道提到 60 多名 Anthropic 现任和前员工通过 Giving What We Can 承诺捐出部分收入或财富，EA 相关捐赠在 2025 年约达 20 亿美元，高于 2024 年的 12 亿美元。",
+          "janet_take": "AI 圈赚出来的钱，又回头塑造 AI 圈的道德叙事，这件事本身就要被看见。捐赠当然能做事，但当财富、风险话语和政策游说来自同一批公司和员工，社会真正要问的是这套影响力有没有外部制衡。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/938b4b82-06d2-4b92-a807-38d935d7d5c5",
+          "image_origin": "search",
+          "image_source_url": "https://gbres.dfcfw.com/Files/iimage/20230808/11545A5BC66C2C67D18271058C2CF742_w626h320.jpg",
+          "image": "images/insights2-03-aiea.jpg"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Zapier用模型弹性表防锁定",
+          "body": "Zapier 8 月 14 日发布 model flexibility 说明，强调自动化平台应允许团队在工作流中更换不同 AI assistant，而不是被单一供应商锁死。它与前一天的 AutomationBench 文章配合，把模型选择从品牌偏好拉回任务适配、连接凭据和自动化结果。",
+          "janet_take": "工具推荐就一句：如果工作流已经接了 Zapier，先看模型弹性和 AutomationBench，再决定用哪家模型。省钱不等于永远选最便宜，关键是按风险换模型，并保留日志。",
+          "source": "Zapier",
+          "url": "https://zapier.com/blog/ai-model-flexibility/",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/lzny33ho1g45/4MKnx4LoG58h4uHNs52Pyy/2598085e258ebd06a6ab3368fdf49d9e/zapier-app-logo.jpeg",
+          "image": "images/tools-01-zapier.jpg"
+        }
+      ]
+    }
+  }
+}

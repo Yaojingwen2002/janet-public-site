@@ -1,0 +1,480 @@
+<!-- single page response EDGAR full text search application using jQuery mobile and an API Gateway / ElasticSearch backend -->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>SEC.gov | EDGAR Full Text Search</title>
+
+    <!--CSS files-->
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" />
+    <link  rel="stylesheet" href="global/js/jquery-ui/jquery-ui.css" type="text/css" />
+    <link  rel="stylesheet" href="global/css/bootstrap/bootstrap.min.css" type="text/css" />
+    <link  rel="stylesheet" href="css/edgar_full_text_search.css?version=2.0" />
+    <link  rel="stylesheet" href="css/efts_media_queries.css" />
+    <link  rel="stylesheet" href="css/efts_filters.css"  type="text/css" />
+    <!-- open source javascript libraries -->
+    <script type="text/javascript" src="global/js/jquery/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="global/js/jquery-ui/jquery-ui.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <script src="global/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="global/js/signals/signals.js"></script>
+    <script type="text/javascript" src="global/js/hasher/hasher.min.js"></script>
+    <script src="/Archives/edgar/lookup-data.js?version=2.0"></script>
+    <script src="js/edgar_full_text_search.js"></script>
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TD3BKV"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script type="text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TD3BKV');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+<div class="justify-content-center align-items-center searching-overlay" style="display:none;">
+    <div class="spinner-border text-warning"></div>
+</div>
+<div  id="search_form" class="efstsearch-form">
+    <nav id="main-navbar" class="navbar navbar-expand">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav__sec_link" href="https://www.sec.gov">
+		            <img src="images/edgar-logo-2x.png" alt="" style="height:6.25rem"/>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav__sec_link" href="https://www.sec.gov">
+		            <span class="link-text d-inline">SEC.gov</span>
+              </a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav__link" href="#" id="edgar-short-form"><span class="link-text">EDGAR</span></a>
+            </li>
+        </ul>
+               
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="./efts-faq.html" class="nav__link" target="_blank" rel="noopener noreferrer">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://www.sec.gov/edgar/search-and-access" class="nav__link">Other search tools</a>
+            </li>
+        </ul>
+    </nav>
+    <h2 class="hide-on-full-form container intro">The new EDGAR advanced search gives you access to the full text of electronic filings since 2001.</h2>
+
+
+    <div id="form-container" class="container rounded-lg mb-4 pt-4">
+
+        <form autocomplete="off">
+            <div class="form-group row mb-0">
+                <div class="col-sm-8">
+                    <label for="keywords" class="d-none hide-on-short-form">Document word or phrase</label><button type="button" id="help-tips-search_text" class="btn btn-primary btn-circle btn-sm d-none hide-on-short-form" data-bs-toggle="tooltip" title="Search filings for a word or a list of words. A filing must contain all the words to return.  To search for an exact phrase, use double quote, like &quot;fiduciary product&quot;.">?</button>
+                    <input id="keywords" type="text" class="company form-control border-onfocus d-none hide-on-short-form text-black" placeholder="Keywords to search for in filing documents" autocomplete="off">
+                    <div class="show-on-validation-error">
+                      <span>&nbsp;</span>
+					</div>
+                    <label id="entity" class="d-none hide-on-short-form">Company name, ticker, CIK number or individual's name</label>
+                    <input type="text" id="entity-full-form" class="entity form-control border-onfocus text-black d-none hide-on-short-form" placeholder="Company name, ticker, CIK number or individual's name" autocomplete="off">
+                    <input type="text" id="entity-short-form" class="entity form-control border-onfocus text-black hide-on-full-form" placeholder="Search by keyword, ticker, company name, CIK number or individual's name" autocomplete="off">
+                    <span class="hide-on-full-form float-right pt-1 pb-0 mb-0"><a href="#" id="show-full-search-form" class="text-white">+ more search options</a></span>
+                    <div class="rel-none container">
+                        <div class="entity-hints border border-dark border-top-0 rounded-bottom">
+                            <table id="asdf" class="table table-hover entity-hints"></table>
+                        </div>
+                    </div>
+                   <div class="form-category-group hide-on-short-form d-none">
+                        <label for="category-select">Filing category</label>
+                        <span id="show-filing-types" class="browse" tabindex="0" role="link">Browse filing types</span>
+                        <div class="btn-group form-dropdown-group" id="category-type-grp">
+    						<button type="button" class="btn border-onfocus" id="category-select" data-bs-toggle="dropdown" data="all" aria-expanded="false">
+                           		 <span value="all">View all</span>
+                                 <i class="fas fa-caret-down"></i>
+                            </button>                        
+                        	<ul class="dropdown-menu"></ul>
+                        </div>
+                    </div>
+                    
+                     <div class="forms-input-group hide-on-short-form">
+                        <label for="filing-types">Filing types</label><span id="browse-filing-types" class="forms-input-group browse" tabindex="0" role="link">Browse filing types</span>
+                        <div class="input-group mb-3">
+                            <input  id="filing-types" type="text" class="form-control border-onfocus text-black" placeholder="">
+                            <div class="input-group-append">
+                                <button id="custom-forms-cancel" class="btn btn-primary" type="button">cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label for="date-range-select" class="d-none hide-on-short-form">Filed date range</label>
+                    <select name="date-range-select" id="date-range-select" class="custom-select border-onfocus d-none hide-on-short-form text-black form-select" autocomplete="off">
+                        <option value="all">All (since 2001)</option>
+                        <option value="10y">Last 10 years</option>
+                        <option value="5y" selected>Last 5 years</option>
+                        <option value="1y">Last year</option>
+                        <option value="30d">Last 30 days</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                    
+                    <div class="mt-2 d-none hide-on-short-form">
+                      <div id="date-validation-error" class="alert alert-danger d-none" role="alert"><span><i class="fa fa-exclamation-triangle mr-1"></i>Invalid Date</span></div>
+					</div>
+					
+					<div class="row d-none hide-on-short-form filed-date-group">
+					   <div class="col-6">
+					       <label for="date-from" class="hide-on-short-form">Filed from</label>
+					       <input type="text" id="date-from" class="form-control border-onfocus hide-on-short-form text-black" autocomplete="off">
+					   </div>
+					   <div class="col-6">
+					       <label for="date-to" class="hide-on-short-form">Filed to</label>
+					       <input type="text" id="date-to" class="form-control border-onfocus hide-on-short-form text-black" autocomplete="off">
+					   </div>					  
+					</div>					  
+					
+                    <div class="btn-group d-none hide-on-short-form">
+                        <button type="button" class="btn dropdown-toggle" id="location-type" data-bs-toggle="dropdown" data="located">
+                            Principal executive offices in
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item location-type-option" href="#" id="located">Principal executive offices in</a>
+                            <a class="dropdown-item location-type-option" href="#" id="incorporated">Incorporated in</a>
+                        </div>
+                    </div>
+                    <button type="button" id="help-tips-state" class="btn btn-primary btn-circle btn-sm d-none hide-on-short-form" data-bs-toggle="tooltip" title="Search for the primary location associated with a filing.  The location could be a US state or territory, a Canadian province, or a country.">?</button>
+                    <div class="form-dropdown-group btn-group hide-on-short-form d-none mb-3" id="location-grp">
+  						<button type="button" class="btn border-onfocus" data-bs-toggle="dropdown" data="all" aria-expanded="false" aria-label="Location dropdown">
+                         	<span id="location-selected" value="all">View all</span>
+                            <i class="fas fa-caret-down"></i>
+                        </button>                        
+                      	<ul class="dropdown-menu" role="listbox"></ul>
+                    </div>
+                    
+                    <div class="text-right">
+	                    <div class="hide-on-short-form d-none mt-2 mb-3 mr-2"><a href="#" id="show-short-search-form" class="text-white">- less search options</a></div>
+	                    <div class="d-inline-block">
+		                    <button type="submit" id="search" class="btn border-onfocus">SEARCH</button>
+	    	                <button type="reset" id="clear" class="btn btn-light">Clear all</button>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <p class="hide-on-full-form container intro">&nbsp;</p>
+</div>
+<div id="results" class="container mw-100 pt-3 pb-3 p-lg-4 visually-hidden">
+    <div id="no-results-grid" class="row mt-3 mb-4 visually-hidden">
+        <div class="col-sm-12" role="alert">
+	    	<h4 class="text-center"></h4>
+	    </div>
+	</div>
+    <div id="results-grid" class="row visually-hidden">
+        <div id="facets" class="col-md-4 col-lg-3">
+           <div class="filters">
+				<div class="filter-group">
+					<div id="entity_facet_filter" class="entity-filter-group d-inline-block">
+					</div>
+					<div id="location_facet_filter" class="location-filter-group d-inline-block">
+					</div>
+					<div id="formtype_facet_filter" class="formtype-filter-group d-inline-block">
+					</div>
+				</div>
+			</div>
+            <h4  class="facets-header">Refine search results by:</h4>
+            <!--Accordion wrapper-->
+            <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                <!-- Accordion card -->
+                <div id="entity_filter" class="card facet">
+                    <!-- Card header -->
+                    <div class="card-header" role="tab">
+                        <a class="collapsed" data-bs-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                           aria-controls="collapseOne1">
+                            <h5 class="mb-0">
+                                Entity <i class="fas fa-angle-up rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <!-- Card body -->
+                    <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                        <div class="card-body facets"></div>
+                    </div>
+                </div>
+
+                <!-- Accordion card -->
+                <div id="form_filter" class="card facet">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingTwo2">
+                        <a class="collapsed" data-bs-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                           aria-expanded="false" aria-controls="collapseTwo2">
+                            <h5 class="mb-0">
+                                Form <i class="fas fa-angle-up rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <!-- Card body -->
+                    <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
+                        <div class="card-body facets"></div>
+                    </div>
+
+                </div>
+
+                <!-- Accordion card -->
+                <div id="inc_states_filter" class="card facet" data-location-type="incorporated">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingThree3">
+                        <a class="collapsed" data-bs-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
+                            <h5 class="mb-0">
+                                Incorporated in <i class="fas fa-angle-up rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <!-- Card body -->
+                    <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+                         data-parent="#accordionEx">
+                        <div class="card-body facets"></div>
+                    </div>
+
+                </div>
+                <!-- Accordion card -->
+
+
+                <!-- Accordion card -->
+                <div id="biz_states_filter" class="card facet" data-location-type="located">
+
+                    <!-- Card header -->
+                    <div class="card-header" role="tab" id="headingFour4">
+                        <a class="collapsed" data-bs-toggle="collapse" data-parent="#accordionEx" href="#collapseFour4" aria-expanded="false" aria-controls="collapseFour4">
+                            <h5 class="mb-0">
+                                Principal executive offices located in <i class="fas fa-angle-up rotate-icon"></i>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <!-- Card body -->
+                    <div id="collapseFour4" class="collapse" role="tabpanel" aria-labelledby="headingFour4"
+                         data-parent="#accordionEx">
+                        <div class="card-body facets"></div>
+                    </div>
+
+                </div>
+                <!-- Accordion card -->
+
+            </div>
+            <!-- Accordion wrapper -->
+            <div class="m-3">
+                <i>Click headings to show top filters.<br>
+                    Document counts shown in <span class="badge badge-secondary">#</span></i>
+            </div>
+        </div>
+        <div id="hits" class="col-md-8 col-lg-9">
+            <div id="show-result-count" role="alert" class="mb-4">
+            	<h5 style="font-weight:500"></h5>
+            </div>
+            <div id="select-result-columns" class="mb-3">
+                <fieldset>
+                    <legend><h6 style="font-weight:bold">Show Columns</h6></legend>
+	                <div class="form-check form-check-inline show-columns-checkbox">
+					  <input class="form-check-input" type="checkbox" id="col-filed" value="filed">
+					  <label class="form-check-label mt-0" for="col-filed">Filed</label>
+				    </div>
+					<div class="form-check form-check-inline show-columns-checkbox">
+					  <input class="form-check-input" type="checkbox" id="col-enddate" value="enddate">
+					  <label class="form-check-label mt-0" for="col-enddate">Reporting for</label>
+					</div>
+					<div class="form-check form-check-inline show-columns-checkbox">
+					  <input class="form-check-input" type="checkbox" id="col-cik" value="cik">
+					  <label class="form-check-label mt-0" for="col-cik">CIK</label>
+					</div>
+					<div class="form-check form-check-inline show-columns-checkbox">
+					  <input class="form-check-input" type="checkbox" id="col-located" value="located">
+					  <label class="form-check-label mt-0" for="col-located">Located</label>
+					</div>
+					<div class="form-check form-check-inline show-columns-checkbox">
+					  <input class="form-check-input" type="checkbox" id="col-incorporated" value="incorporated">
+					  <label class="form-check-label mt-0" for="col-incorporated">Incorporated</label>
+					</div>
+					<div class="form-check form-check-inline show-columns-checkbox">
+					  <input class="form-check-input" type="checkbox" id="col-file-num" value="file-num">
+					  <label class="form-check-label mt-0" for="col-file-num">File number</label>
+					</div>
+					<div class="form-check form-check-inline show-columns-checkbox">
+					  <input class="form-check-input" type="checkbox" id="col-film-num" value="film-num">
+					  <label class="form-check-label mt-0" for="col-film-num">Film number</label>
+					</div>
+				</fieldset>
+            </div>
+            <table class="table">
+                <thead>
+                 <tr>
+                    <th id="filetype" class="filetype">Form &amp; File</th>
+                    <th class="filed">Filed</th>
+                    <th class="enddate">Reporting for</th>
+                    <th class="entity-name">Filing entity/person</th>
+                    <th class="cik">CIK</th>
+                    <th class="located">Located</th>
+                    <th class="incorporated">Incorporated</th>
+                    <th class="file-num">File number</th>
+                    <th class="film-num">Film number</th>
+                 </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <nav id="results-pagination" aria-label="Search Results Pagination" class="mt-5 mb-1">
+       	       <ul class="pagination justify-content-center">
+       	          <li class="page-item disabled"><a class="page-link" data-value="previousPage" href="#">Previous page</a></li>
+       	          <li class="page-item active"><a class="page-link" data-value="1" href="#" aria-label="Page 1 results">1</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="2" href="#" aria-label="Page 2 results">2</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="3" href="#" aria-label="Page 3 results">3</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="4" href="#" aria-label="Page 4 results">4</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="5" href="#" aria-label="Page 5 results">5</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="6" href="#" aria-label="Page 6 results">6</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="7" href="#" aria-label="Page 7 results">7</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="8" href="#" aria-label="Page 8 results">8</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="9" href="#" aria-label="Page 9 results">9</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="10" href="#" aria-label="Page 10 results">10</a></li>
+       	          <li class="page-item"><a class="page-link" data-value="nextPage" href="#">Next page</a></li>
+       	       </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<footer class="py-4 w-100 navbar navbar-expand-sm float-bottom">
+    <div class="container-md">
+        <nav role="navigation" aria-labelledby="block-secgov-footer-menu" id="block-secgov-footer">
+            <ul id="section-menu" class="menu mx-auto">
+                <li class="menu__item is-active is-leaf leaf item-accessibility">
+                    <a href="https://www.sec.gov/disability/sec_access.htm" class="menu__link" data-drupal-link-system-path="node/111766">Accessibility</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-budget-&amp;-performance">
+                    <a href="https://www.sec.gov/about/offices/ofm/ofm-documents.htm" class="menu__link" data-drupal-link-system-path="node/111606">Budget &amp; Performance</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-careers">
+                    <a href="https://www.sec.gov/careers" class="menu__link" data-drupal-link-system-path="node/41311">Careers</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-contact">
+                    <a href="https://www.sec.gov/contact-information/sec-directory" class="menu__link" data-drupal-link-system-path="node/102846">Contact</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-contracts">
+                    <a href="https://www.sec.gov/page/oacqsectionlanding" class="menu__link" data-drupal-link-system-path="node/3841">Contracts</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-data">
+                    <a href="https://www.sec.gov/sec-data-resources" class="menu__link" data-drupal-link-system-path="node/191566">Data</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-foia">
+                    <a href="https://www.sec.gov/page/office-foia-services" class="menu__link" data-drupal-link-system-path="node/41166">FOIA</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-inspector-general">
+                    <a href="https://www.sec.gov/oig" class="menu__link" data-drupal-link-system-path="node/41456">Inspector General</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-investor.gov">
+                    <a href="https://www.investor.gov/" class="menu__link">Investor.gov</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-no-fear-act-&amp;-eeo-data">
+                    <a href="https://www.sec.gov/page/eeosectionlanding" class="menu__link" data-drupal-link-system-path="node/3781">No FEAR Act &amp; EEO Data</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-ombudsman">
+                    <a href="https://www.sec.gov/ombudsman" class="menu__link">Ombudsman</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-plain-writing">
+                    <a href="https://www.sec.gov/plainwriting.shtml" class="menu__link" data-drupal-link-system-path="node/111701">Plain Writing</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-privacy">
+                    <a href="https://www.sec.gov/privacy.htm" class="menu__link" data-drupal-link-system-path="node/111706">Privacy</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-related-sites">
+                     <a href="https://www.sec.gov/links" class="menu__link" data-drupal-link-system-path="node/100276">Related Sites</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-site-map">
+                    <a href="https://www.sec.gov/sitemap.shtml" class="menu__link" data-drupal-link-system-path="node/111831">Site Map</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-usa.gov">
+                    <a href="https://www.usa.gov/" class="menu__link">USA.gov</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-votes">
+                    <a href="https://www.sec.gov/about/commission-votes.shtml" class="menu__link" data-drupal-link-system-path="node/111231">Votes</a>
+                </li>               
+                <li class="menu__item is-active is-leaf leaf item-vulnerability-disclosure-policy">
+                    <a href="https://www.sec.gov/vulnerability-disclosure-policy" title="Vulnerability Disclosure Policy" class="menu__link">Vulnerability Disclosure Policy</a>
+                </li>
+                <li class="menu__item is-active is-leaf leaf item-whistleblower-protection">
+                    <a href="https://www.sec.gov/whistleblower" class="menu__link" data-drupal-link-system-path="node/99851">Whistleblower Protection</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+<div class="modal" id="previewer" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content mx-auto">
+
+            <!-- Modal Header -->
+            <div class="modal-header border border-0">
+                <h4 class="modal-title mx-auto">
+                    Finding <strong>users keywords</strong> in <span class="modal-file-name">filename.html</span>
+                    <span id="find-counter-wrapper"><button type="button" id="highlight-previous" class="btn btn-primary btn-sm m-sm-1">&#8249; Previous</button> <span class="find-counter">1 of 1x2</span> <button type="button" id="highlight-next" class="btn btn-primary btn-sm m-sm-2">Next &#8250;</button></span>
+                </h4><button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+               <div id="preview-status" role="alert"></div>               
+               <div id="document" style="width:100%;height:50vh"></div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer border border-0">
+                <a id="open-file" target="_blank"><button type="button" class="btn btn-warning">Open document</button></a>
+                <a id="open-submission" target="_blank"><button type="button" class="btn btn-warning">Open filing</button></a>
+                <button type="button" id="close-modal" class="btn btn-light btn-outline-dark" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="forms-browser" role="dialog">
+    <div class="modal-dialog  h-100 w-100">
+        <div class="modal-content h-75 w-75 mx-auto">
+
+            <!-- Modal Header -->
+            <div class="modal-header border border-0">
+                 <div>Check forms that you want to search. Use the category select to narrow the choices. </div>
+                 <div class="btn-group pl-2" id="category-filter-grp" style="display:block">
+						<button type="button" class="btn border-onfocus" id="category-filter-btn" data-bs-toggle="dropdown" data="all" aria-expanded="false">
+                       		 <span id="category-filter" value="all" class="pr-5">View all</span>
+                             <i class="fas fa-caret-down"></i>
+                        </button>                        
+                    	<ul class="dropdown-menu"></ul>
+                 </div>                   
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body"></div>
+
+            <!-- Modal footer -->
+			<div class="modal-footer border border-0">
+                <div class="form-check pr-3 pb-1">
+                    <input type="checkbox" class="form-check-input" id="check_all_forms">
+                    <label class="form-check-label" for="check_all_forms">check/uncheck all forms</label>
+                </div>
+                <button id="custom_forms_set" type="button" class="btn btn-warning" data-bs-dismiss="modal">Filter</button>
+                <button type="button" class="btn btn-light btn-outline-primary cancel" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

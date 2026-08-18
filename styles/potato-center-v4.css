@@ -22,11 +22,11 @@ html[data-janet-design="poster-v4"] .potato-center {
   background: transparent;
   box-shadow: none;
   overflow: visible;
-  isolation: isolate;
+  isolation: auto;
   color: #243017;
-  filter:
-    drop-shadow(0 8px 10px rgba(26, 15, 4, .22))
-    drop-shadow(0 1px 1px rgba(255, 250, 228, .38));
+  filter: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 html[data-janet-design="poster-v4"] body.home-experiment .potato-center,
@@ -71,7 +71,7 @@ html[data-janet-design="poster-v4"] .potato-center::after {
 
 html[data-janet-design="poster-v4"] .potato-half {
   position: relative;
-  isolation: isolate;
+  isolation: auto;
   display: grid;
   place-items: center;
   width: var(--potato-hit-size);
@@ -85,7 +85,7 @@ html[data-janet-design="poster-v4"] .potato-half {
   color: #243017;
   cursor: pointer;
   overflow: visible;
-  transform: translate3d(0, 0, 0);
+  transform: none;
   transition:
     transform 220ms cubic-bezier(.2, .75, .22, 1),
     filter 180ms ease,
@@ -116,7 +116,7 @@ html[data-janet-design="poster-v4"] .potato-half::before {
   background-repeat: no-repeat;
   background-size: var(--potato-width) var(--potato-height);
   box-shadow: none;
-  filter: saturate(.78) sepia(.08) contrast(.96);
+  filter: none;
   pointer-events: none;
 }
 

@@ -24,14 +24,14 @@ html[data-janet-design="poster-v4"] body[data-audio-policy="ambient"] .backgroun
   place-items: center;
   border: 1px solid rgba(7, 37, 27, .2);
   border-radius: 0;
-  background: rgba(247, 238, 219, .78);
+  background: #f7f1e3;
   color: var(--v4-editorial-ink, #0b261c);
   box-shadow:
     inset 0 1px rgba(255, 255, 255, .48),
     0 10px 26px rgba(46, 34, 17, .09);
   cursor: pointer;
-  backdrop-filter: blur(18px) saturate(126%);
-  -webkit-backdrop-filter: blur(18px) saturate(126%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
@@ -42,11 +42,17 @@ html[data-janet-design="poster-v4"] body[data-audio-policy="ambient"] .backgroun
 html[data-janet-design="poster-v4"] body.home-experiment:not(.is-past-globe) .background-audio-toggle,
 html[data-janet-design="poster-v4"] body.home-experiment.is-contact-field .background-audio-toggle {
   border-color: rgba(255, 245, 220, .16);
-  background: rgba(7, 27, 19, .76);
+  background: #071b13;
   color: var(--v4-text-light, #f6f1e5);
   box-shadow:
     inset 0 1px rgba(255, 255, 255, .06),
     0 14px 34px rgba(0, 10, 7, .2);
+}
+
+html[data-janet-design="poster-v4"][data-janet-experiment="signal-wave-17"] body.home-experiment.is-past-globe:not(.is-contact-field) .background-audio-toggle {
+  background: #f4f0e8;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 html[data-janet-design="poster-v4"] body[data-audio-policy="ambient"] .background-audio-toggle:hover {

@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-18",
+  "vol": "322",
+  "intro_text": "一个模型路由入口卖到八十亿美元，一家前沿实验室的年化收入冲过六百五十亿，另一边，算力账单已经沿着数据中心烧到天然气电厂。今天不硬凑单一主线：钱、内容、能源和人的注意力，正在四个现场分别改价。",
+  "cover": {
+    "title": "入口之后，电厂之前",
+    "subtitle": "八十亿收购、六百五十亿年化收入，以及算力账单的实体终点",
+    "image_path": "runs/2026-08-18/cover.png",
+    "image_prompt": "21:9 black, white and Janet green editorial technology magazine cover; a stark model-routing gate connecting server racks to power-grid and cooling infrastructure; minimal Swiss editorial collage, tactile grain, no text, no date, no logos, no people, no robot faces, no glowing brain."
+  },
+  "trend": "Stripe 伸手买的是模型切换入口，Anthropic 拉高的是前沿实验室的收入预期，Nvidia 锁住的则是从 GPU、信用支持到电厂的整条供给链。三笔大数没有同一条因果，却共同说明：AI 的竞争越来越像基础设施生意，入口费、资本成本和能源成本会一起进入产品报价。\n\n创作者这边也在改尺子。YouTube 把“播放”直接算作观看，Spotify 给推荐补回署名理由，Reddit 把文字翻成音视频。数字会更漂亮，内容也更易消费，但谁真正停留、谁承担劳动、谁保留解释权，不能只看首页那一个计数。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Stripe豪掷八十亿收购OpenRouter",
+          "body": "Axios 8 月 17 日报道，Stripe 已同意以超过 80 亿美元的现金加股票收购模型市场 OpenRouter。OpenRouter 累计融资 1.64 亿美元，5 月估值为 13 亿美元；官方公告预计本周发布，双方尚未公开评论。OpenRouter 为开发者提供跨模型选择和切换入口，而 Stripe 已经为多家前沿实验室处理支付。",
+          "janet_take": "八十亿买的不是一排 API 按钮，是开发者在不同模型之间搬家时必经的收费口。Stripe 已经知道谁在为什么模型付钱，再拿到路由层，就能同时看见选择、用量和结算。多模型原本用来避免被一家锁死，如今中间那座桥先被支付巨头买走了——选择还在，过桥费和规则可能换主人。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/17/stripe-openrouter-paypal",
+          "image_origin": "search",
+          "image": "images/news-01-stripeopenrouter.jpg",
+          "image_source_url": "https://imgs.ebrun.com/resources/2025_09/2025_09_30/2025093058117592250554544.jpeg"
+        },
+        {
+          "title": "Anthropic年化收入冲破六百五十亿",
+          "body": "TechCrunch 8 月 17 日转述 Bloomberg 与 Financial Times 报道，Anthropic 7 月底年化收入 run rate 超过 650 亿美元，5 月为 470 亿美元，2025 年末为 90 亿美元。投资者预计年底可能达到 1000 亿至 1200 亿美元。这里的数字是按近期收入推算全年，并非已经实现的全年收入；公司未回应报道。",
+          "janet_take": "半年多从九十亿跑到六百五十亿，速度足以让所有投资故事发热。可年化收入只是把最近一段冲刺延长成全年，账户里还没有躺着同额现金。投资者继续往一千二百亿推，既是在下注，也是在给 Anthropic 设下一条更陡的跑步机：增速一旦松动，今天的赞美会立刻变成估值审判。",
+          "source": "TechCrunch / Bloomberg / Financial Times",
+          "url": "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/",
+          "image_origin": "source",
+          "image": "images/news-02-anthropic.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/06/GettyImages-2278736523.jpeg?resize=1200,798"
+        },
+        {
+          "title": "Nvidia投资十五亿锁定OpenAI数据中心",
+          "body": "Nvidia 8 月 17 日宣布向 SB Energy 投资 15 亿美元，成为俄亥俄 Ports-Pike 数据中心的唯一算力基础设施供应商，并提供最高 1050 亿美元信用支持。设施初期规模为 4.25GW，可扩至 8GW；同址还规划一座 9.2GW 天然气电厂，预计耗资 330 亿美元。报道援引 BloombergNEF 称，天然气电厂建造成本两年上涨 66%。",
+          "janet_take": "卖 GPU 的公司同时投开发商、给信用支持、锁独家供应，这已经很像给自己的需求修高速公路。更刺眼的是那座九点二吉瓦天然气电厂：模型回答得再轻盈，背后也有管道、排放、土地和债务。产品经理看见的是延迟，附近居民和能源市场接到的却是另一张账单。",
+          "source": "TechCrunch / Nvidia",
+          "url": "https://techcrunch.com/2026/08/17/nvidia-investing-1-5b-in-softbank-data-center-developer-behind-openai-project/",
+          "image_origin": "source",
+          "image": "images/news-03-nvidiaopenai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/07/GettyImages-2219673294.jpg?resize=1200,750"
+        },
+        {
+          "title": "Amazon切开稀有书喂训练数据",
+          "body": "404 Media 将追踪器放进一本稀有书，最终定位到 Amazon 位于拉斯维加斯的 VGT3 设施。报道据此称，Amazon 正通过商业渠道大量购买稀有书，切掉书脊后扫描，作为训练资料。Amazon 回应称购买书籍是为了改进客户使用的产品和服务，但没有进一步说明用途；现有报道并未证明这一做法违法。",
+          "janet_take": "一家从卖书起家的公司，如今为了训练模型拆书，这个画面锋利得不需要再加比喻。商业购买解决了所有权，却没有回答稀有版本被不可逆破坏是否合理，也没说明作者、馆藏和读者失去了什么。数据饥饿走到纸张尽头时，最先消失的可能不是版权，而是那本书本身。",
+          "source": "TechCrunch / 404 Media",
+          "url": "https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models/",
+          "image_origin": "source",
+          "image": "images/news-04-amazon.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/GettyImages-601797365.jpg?resize=1200,800"
+        },
+        {
+          "title": "YouTube播放即计数，观看量将重算",
+          "body": "YouTube 8 月 17 日宣布，从 8 月 24 日起，普通视频一开始播放或用户进入直播，就计入一次 view。平台会在创作者 Analytics 中保留原有口径并改称 Engaged views，用来显示有多少人继续观看。YouTube 表示，新口径不影响创作者收入，也不改变加入 YouTube Partner Program 的资格。",
+          "janet_take": "首页数字会膨胀，留存不会凭空增加。公开 view 更像“碰到过”，Engaged views 才接近“愿意留下”。只截前一个，已经说不清人是否留下。",
+          "source": "TechCrunch / YouTube",
+          "url": "https://techcrunch.com/2026/08/17/youtube-will-now-count-a-view-as-soon-as-a-video-starts-playing/",
+          "image_origin": "source",
+          "image": "images/news-05-youtube.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2020/06/GettyImages-1149449078-e1610399732853.jpg?resize=1200,631"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Wispr用Canto将听写误差压到一成",
+          "body": "Wispr 8 月 17 日发布新的语音理解模型 Canto，称可将错误率从 30% 降到低于 10%。此前数周有用户反映 Wispr Flow 的听写质量下降。公司同时上线会议记录工具，可生成摘要和行动项，并计划进一步接入文档、邮件等工作环节。",
+          "janet_take": "从三成错误压到一成以下，是一次必须兑现的修复承诺，不只是发布会参数。偶尔听错尚能忍，最怕用户发现还得逐句校对，索性回去打字。Wispr 同时闯进会议记录，说明听写只是入口；真正想抢的是声音进入电脑后，后续那串文档与行动。",
+          "source": "TechCrunch / Wispr",
+          "url": "https://techcrunch.com/2026/08/17/wispr-raises-280m-at-2b-valuation-as-it-looks-beyond-dictation/",
+          "image_origin": "source",
+          "image": "images/models-01-wisprcanto.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/02/Wispr-Flow-Android-hero.jpg?resize=1200,718"
+        },
+        {
+          "title": "Relay关停，团队转入Chrome做Agent",
+          "body": "AI 自动化工具 Relay 宣布关闭，付费客户可使用到 9 月 14 日，免费客户已在 8 月 15 日失去访问。创始人 Jacob Bank 与部分员工加入 Google Chrome 团队，Bank 将担任产品副总裁。他称 Chrome 是人与 agents 协作的理想位置，但双方尚未公布具体整合方案。",
+          "janet_take": "Relay 没活下来，做 Relay 的人却被浏览器收走。对用户，这是又一次自动化服务关停和迁移；对 Google，这是用一支现成团队缩短 Chrome 的 Agent 学习期。创业公司的产品可以消失，积累下来的操作逻辑却会进入更大的入口。",
+          "source": "TechCrunch / Relay",
+          "url": "https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team/",
+          "image_origin": "source",
+          "image": "images/models-02-relaychromeagent.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2022/10/JacobBank_founder_headshot-e1665566816221.jpg?resize=1200,674"
+        },
+        {
+          "title": "Reddit开测帖子音视频播放层",
+          "body": "Reddit 8 月 17 日开始在部分英文社区测试帖子的音频和视频版本，iOS 与 Android 用户可在“阅读”和“播放”之间选择。原始文字与评论都会保留。公司此前注意到，TikTok、Reels 等平台已有大量创作者用 TTS 朗读 Reddit 故事，因此希望测试这种消费方式在站内是否成立。",
+          "janet_take": "别人搬运 Reddit 故事做成视频赚走播放，Reddit 终于决定自己下场。保留文字和评论是底线；真正要盯的是原作者有没有选择权，以及平台会不会把最容易朗读的故事推成新的模板工厂。",
+          "source": "TechCrunch / Reddit",
+          "url": "https://techcrunch.com/2026/08/17/reddit-begins-testing-a-new-audio-and-video-experience-similar-to-popular-tiktok-videos/",
+          "image_origin": "source",
+          "image": "images/models-03-reddit.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2024/02/GettyImages-1048288996.jpg?resize=1200,675"
+        },
+        {
+          "title": "Spotify给歌单补上选曲理由",
+          "body": "Spotify 上线 Playlist Notes，用户可在自己创建或协作的歌单里，为歌曲、播客和有声书添加备注；平台编辑也可解释选曲，并通过 Editor Profiles 展示参与制作的歌单。用户备注向 100 多个市场的 iOS 与 Android 用户推出，编辑备注先覆盖美国、加拿大、英国等六国的 16 岁以上用户。",
+          "janet_take": "推荐系统擅长算你可能喜欢什么，却不擅长说清一个人为什么把这首歌放在这里。Notes 给歌单补回了上下文，也让编辑重新露出名字。小功能，但它承认策展不是纯算法。",
+          "source": "TechCrunch / Spotify",
+          "url": "https://techcrunch.com/2026/08/17/spotifys-new-playlist-notes-let-users-and-editors-explain-their-song-picks/",
+          "image_origin": "source",
+          "image": "images/models-04-spotify.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/Spotify-PlaylistNotes.png?w=1200"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Feedly转做AI却让RSS堵了一周",
+          "body": "Feedly 网页端连续一周多严重变慢，部分付费用户称已难以使用。CEO Edwin Khodabakchian 表示，问题可能与文件夹较多的账户使用 Mark as Read 有关，团队已发布修复并继续核实。Feedly Classic 两周前无通知退役；公司强调，转向 cyber threat intelligence 并不代表放弃 RSS。",
+          "janet_take": "转去卖更贵的 AI 情报服务没有错，前提是别把一千五百万用户依赖的阅读器养成旧系统。更伤信任的是 Classic 无通知退役：技术故障可以修，沉默会让用户怀疑自己是不是早被排到产品路线图外。",
+          "source": "TechCrunch / Feedly",
+          "url": "https://techcrunch.com/2026/08/17/feedly-attributes-weeklong-slowdown-to-bug-not-its-ai-pivot/",
+          "image_origin": "source",
+          "image": "images/insights-01-feedlyairss.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/feedly-news-hero.png?resize=1200,620"
+        },
+        {
+          "title": "Uber联手Zipline冲刺百万无人机单",
+          "body": "Uber 宣布投资并合作无人机配送公司 Zipline，目标是在 2029 年底前使用其无人机每天完成 100 万单。首批 Uber Eats 配送计划今年底在 Zipline 现有市场上线，之后扩展到数十个美国城市。双方未披露投资金额；Uber 称相关配送有望在 5 至 10 分钟内完成。",
+          "janet_take": "百万单是三年后的目标，五到十分钟才是今天拿来改变消费习惯的诱饵。Uber 不再自己造所有交通工具，而是把平台入口租给不同运力。无人机若真进街区，噪音、坠落、空域和最后几米的责任，也会跟着订单一起落地。",
+          "source": "TechCrunch / Uber",
+          "url": "https://techcrunch.com/2026/08/17/uber-adds-zipline-drones-to-its-eats-delivery-network/",
+          "image_origin": "source",
+          "image": "images/insights-02-uberzipline.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/zipline-uber.jpg?resize=1200,800"
+        },
+        {
+          "title": "Apple向一百一十国发间谍软件警报",
+          "body": "Apple 新一轮 mercenary spyware 威胁通知覆盖 110 个国家。Access Now 表示，本批通知后的求助量比通常高 30% 至 40%；Citizen Lab 研究员称，公开报告的规模和地理分布前所未见。Apple 今年把通知扩展到锁屏、设置、邮件和网页账户。收到通知意味着设备曾被针对，不等于已经确认攻破。",
+          "janet_take": "通知变得更显眼，可能解释一部分求助暴增，却解释不了为什么一百一十国同时出现这么多目标。对记者、研究者、军人和异议人士，这不是普通安全提醒，而是现实身份已经进入攻击名单。收到后最危险的动作，是因为“我没那么重要”而把它划掉。",
+          "source": "TechCrunch / Apple / Access Now",
+          "url": "https://techcrunch.com/2026/08/17/unprecedented-number-of-apple-users-received-recent-spyware-alert-say-investigators/",
+          "image_origin": "source",
+          "image": "images/insights-03-apple.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/iphone-spyware-alert-2024.jpg?resize=1200,800"
+        },
+        {
+          "title": "Sonic用二十赫兹声波压住火焰",
+          "body": "Sonic Fire Tech 获得 1500 万美元融资，正在测试一种声学灭火系统：传感器发现火情后，设备通过天花板 PVC 管释放约 20Hz 的次声波，试图在数秒内压制火焰，并避免水与化学剂造成的清理损害。产品仍需 NFPA 相关审批和更多测试；目前面对锂电池火只能限制蔓延，不能将其扑灭。",
+          "janet_take": "它最诚实的地方，是明确说锂电池火只能控蔓延、灭不了根。声波灭火听起来像科幻，审批和重复测试才决定它能不能进厨房。先看证据，再看保费会不会因此下降。",
+          "source": "TechCrunch / Sonic Fire Tech",
+          "url": "https://techcrunch.com/2026/08/17/sound-powered-fire-protection-startup-gets-15m-to-snuff-out-fires-before-they-turn-catastrophic/",
+          "image_origin": "source",
+          "image": "images/insights-04-sonic.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/GettyImages-2208003026.jpg?resize=1200,800"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Higgsfield四亿融资推高估值四倍",
+          "body": "AI 视频公司 Higgsfield 完成 4 亿美元 B 轮融资，估值达到 54 亿美元；八个月前估值为 13 亿美元。公司称其年化收入为 7 亿美元，拥有 3000 万用户，覆盖 200 个国家，并服务 390 家财富 500 强企业。创始人称，生成一分钟视频所需的计算量类似处理 6 万个词。",
+          "janet_take": "八个月估值翻四倍，说明资本相信视频生成已经从试玩走向营销预算。可一分钟等于六万词的计算量也把软肋写在脸上：收入增长越快，算力采购越凶。七亿美元年化收入很漂亮，毛利和留存才决定这是不是一台烧钱更快的摄影机。",
+          "source": "TechCrunch / Higgsfield",
+          "url": "https://techcrunch.com/2026/08/17/higgsfield-raises-400m-series-b-quadrupling-its-valuation-in-8-months-to-5-4b/",
+          "image_origin": "source",
+          "image": "images/insights2-01-higgsfield.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/GettyImages-2259021916.jpg?w=1024"
+        },
+        {
+          "title": "Groq融资三点五亿转做算力云",
+          "body": "Groq 融资 3.5 亿美元，估值为 35 亿美元，低于去年 69 亿美元。此前 Nvidia 通过一笔 200 亿美元许可交易吸收了 Groq 创始人 Jonathan Ross 与部分核心人才。Groq 已从自研 LPU 芯片转向运营 Nvidia 系统的 neocloud，计划 2027 年将规模从 54MW 扩到 200MW 以上；目前运营 13 个数据中心，称服务超过 600 万开发者和企业。",
+          "janet_take": "估值腰斩后还能融资，不代表故事没变，恰恰说明投资人给新公司重新标了价。Groq 曾想用 LPU 挑战 Nvidia，如今却运营 Nvidia 的系统；它从造铲子的人变成租铲子的人。规模可以继续长，差异化却得重新找。",
+          "source": "TechCrunch / Groq",
+          "url": "https://techcrunch.com/2026/08/17/groq-raises-350m-to-fuel-its-pivot-from-ai-chips-to-neocloud/",
+          "image_origin": "source",
+          "image": "images/insights2-02-groq.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/10/GettyImages-529313685.jpg?resize=1200,1200"
+        },
+        {
+          "title": "Terra融资一千八百万扩军工产线",
+          "body": "非洲防务科技公司 Terra Industries 宣布新增 1800 万美元融资，使其种子轮总额达到 5200 万美元，投资方包括 8VC、Silent Ventures 和 Nova Global。公司计划生产无人机、扫雷战车等自主系统，并称在手合同有望达到 1 亿美元。新资金将用于扩充全球南方的制造能力、开设伦敦办公室并加快产品部署。",
+          "janet_take": "“全球南方自己的防务基础设施”很容易获得自主叙事，也很容易跳过武器最终被谁使用的问题。Terra 拿到的不只是资本，还有进入政府合同与跨国制造的速度。安全依赖可以减少，问责不能跟着供应链一起变模糊。",
+          "source": "TechCrunch / Terra Industries",
+          "url": "https://techcrunch.com/2026/08/17/terra-industries-closes-52m-seed-round-to-build-defense-infrastructure-for-the-global-south/",
+          "image_origin": "source",
+          "image": "images/insights2-03-terra.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/02/Terra-Industries-drone.jpg?resize=1200,903"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "WordPress教育版给学生免费建站",
+          "body": "Automattic 上线 WordPress.com Education，教师可让学生第一年免费使用且无需信用卡。每位学生可获得站点、.blog 或 .art 域名、6GB 空间、备份、staging、插件、SFTP/SSH、phpMyAdmin 与 Studio Sync。一年后可按每月 2 美元继续，或降级到免费站点且内容保留。该计划已在 27 国、5000 名学生中试点。",
+          "janet_take": "今天的工具位给想做作品集、课程项目或个人实验站的人。第一年免费而且不是阉割版，能碰插件、SSH 和 staging，比只交一个社交主页更像真正学会拥有网站。第二年再决定付两美元还是降级，退出成本也写得清楚。",
+          "source": "TechCrunch / WordPress.com",
+          "url": "https://techcrunch.com/2026/08/17/wordpress-com-targets-the-next-generation-of-web-creators-with-a-free-student-plan/",
+          "image_origin": "source",
+          "image": "images/tools-01-wordpress.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/wp-education_program-announcement_evergreen_blog.png?w=1176"
+        }
+      ]
+    }
+  }
+}

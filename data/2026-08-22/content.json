@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-22",
+  "vol": "326",
+  "intro_text": "模型价格继续往下压，团队入口继续往里塞，创作者那边开始为 AI 赞助翻脸，数据中心账单还在往上滚。今天不适合问谁又赢了，适合问：这轮 AI 成本到底被谁接走。",
+  "cover": {
+    "title": "入口和账单同时改价",
+    "subtitle": "模型降价、协作入口、创作者信誉和算力资本开支一起上桌",
+    "image_path": "runs/2026-08-22/cover.png",
+    "image_prompt": "Use case: ads-marketing. Asset type: 21:9 editorial magazine cover background for Janet AI morning briefing. Primary request: black, white, and Janet green AI technology magazine cover about agent systems moving from model scores into real organizational control: pricing cuts, shared Copilot work, autonomous harnesses, creator sponsorship backlash, cloud/data-center financing, and accountability rails. Scene/backdrop: abstract editorial control room, thin permission rails, model-routing lanes, compute meters, collaborative code-channel geometry, orbital/data-center silhouettes, restrained financial ledger lines. Style/medium: high-end minimal Swiss editorial technology cover, tactile grain, sharp print-magazine composition. Composition/framing: cinematic 21:9 wide, strong negative space in the center-left for HTML title overlay, asymmetric but balanced. Lighting/mood: clean black-white contrast with Janet green accents, sober and precise, not neon. Color palette: black, white, charcoal, Janet green accents only. Constraints: no readable text, no date, no VOL, no logos, no robot faces, no glowing brain, no cheap cyberpunk neon, no UI screenshots, no watermark."
+  },
+  "trend": "今天的 17 条不靠同一条主线硬串。OpenAI 把 GPT-5.6 Sol 的价格打下来，GitHub 把 Copilot 放进 Teams 和 Slack，Google 给搜索用户一个 Preferred Sources 入口，NVIDIA 的 ARC-AGI-3 演示则提醒大家：模型之外的 harness、工具和环境设计，已经开始决定真实表现。\n\n另一边，钱和信任没有跟着变轻。Apple 继续调整 AI 团队，创作者因为接 AI 赞助被观众反噬，Starcloud、Twin1 和数据中心报道都在说同一件俗事：AI 的能力可以包装成魔法，但最后要结算成工资、广告信誉、GPU 租约、电力容量和资本成本。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI给开发者打GPT-5.6低价牌",
+          "body": "OpenAI 8 月 21 日上线 GPT-5.6 Sol，并把价格压到每百万输入 tokens 0.05 美元、输出 tokens 0.5 美元，同时保留 128K context window 和结构化输出、工具调用等 API 能力。OpenAI 把它定位成高性价比生产模型，不是旗舰秀肌肉；这等于把一部分常规 agent、客服、摘要和批处理任务从“能不能跑”推向“敢不敢大规模跑”。",
+          "janet_take": "狠处落在价格锚上。0.05 美元输入价会把很多“我们先用小模型凑合”的预算表重新打开。便宜不代表轻松，重试、工具调用、长上下文、人工复核和失败补救会继续吞钱。模型账单降了，系统账单可能刚抬头；真正省钱的团队，会把评估、缓存和失败兜底一起做成产品纪律。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/gpt-5-6-sol/",
+          "image_origin": "search",
+          "image_source_url": "https://www.reuters.com/resizer/v2/3RHSA267HNKITDF7TA73UMRN3I.jpg?auth=d081efc2e048f0bc4cf89a158f70edef0de8dde7d24503a3bf68ab7eb6cb0248&width=3309&quality=80",
+          "image": "images/news-01-openaigpt-56.avif"
+        },
+        {
+          "title": "Copilot接进Teams团队工单",
+          "body": "GitHub 8 月 21 日宣布，GitHub Copilot 的 shared agentic work 进入 Microsoft Teams。团队可以在 Teams 里把 issue、pull request、计划和讨论交给 Copilot 处理，并把进展带回协作流。GitHub 的重点不是再做一个聊天框，而是让 agent 出现在团队已经开会、分工和追进度的地方。",
+          "janet_take": "Agent 最硬的入口不是漂亮按钮，危险在它混进团队默认工作台之后，大家忘了它正在改东西。Teams 里的 Copilot 会提高推进速度，也会放大责任含糊：一句“让它试试”之后，谁验收、谁回滚、谁对客户解释？",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-08-21-shared-agentic-work-with-github-copilot-in-microsoft-teams/",
+          "image_origin": "source",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/08/638616066-d05fdb5e-e92b-4d42-b72a-52f6292b536a.jpg",
+          "image": "images/news-02-copilotteams.webp"
+        },
+        {
+          "title": "Apple裁撤AI相关岗位",
+          "body": "CNBC 8 月 21 日报道，Apple 在 Siri、Vision Pro 和 AI 相关团队裁撤约 200 个岗位。报道把这次调整放在 Apple Intelligence 推进不顺、Siri 重构延迟和硬件团队资源重排的背景下看。Apple 没有把它包装成技术胜利，信号更像内部优先级重新排队。",
+          "janet_take": "Apple 的问题从来不是会不会做 demo，而是能不能把 AI 做进高要求的消费级体验。裁 200 人不等于放弃 AI，但说明“慢慢打磨”这套苹果老方法，在生成式 AI 周期里会被资本市场、开发者和用户同时催账。",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2026/08/21/apple-cuts-jobs-in-siri-vision-pro-ai-teams.html",
+          "image_origin": "search",
+          "image_source_url": "https://www.ped30.com/wp-content/uploads/2025/11/chyron.png",
+          "image": "images/news-03-appleai.png"
+        },
+        {
+          "title": "AI赞助逼创作者翻车",
+          "body": "The Verge 8 月 21 日追踪 YouTube 创作者与 AI 产品赞助的冲突：一批创作者接 AI 写作、剪辑或自动化工具广告后，被观众质疑“卖掉创作伦理”。平台和广告主看中的是转化率，创作者承担的却是信任折损，尤其当产品宣传和真实能力之间存在落差时，评论区会直接把账算到人身上。",
+          "janet_take": "创作者经济里最便宜也最贵的东西叫信誉。AI 工具想买创作者背书，买下的远超口播 60 秒，还包括观众多年积累的信任。对小创作者尤其残酷，广告费可能只够一个月现金流，翻车却会永久污染频道气味。",
+          "source": "The Verge",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/2026/8/21/23839800/youtube-creators-ai-sponsorship-backlash",
+          "image_origin": "search",
+          "image_source_url": "https://picx.zhimg.com/v2-61afc09f02325d53f0d125622a406653_r.jpg",
+          "image": "images/news-04-ai.jpg"
+        },
+        {
+          "title": "Google给搜索来源排前座",
+          "body": "Google 8 月 21 日向更多用户开放 Preferred Sources。用户可以在 Search 里指定自己更想看到的媒体或网站，Google 会在 Top Stories 等区域优先展示这些来源。这个功能出现在 AI Overviews 挤压发行方流量的大背景下，Google 的解释是让用户控制来源偏好，但它同时也把媒体分发权更深地锁进 Google 界面。",
+          "janet_take": "给出版商递糖的同时，Google 也在重画门牌。用户偏好能改善信息入口，却补不回所有被 AI 摘要吃掉的点击。媒体接下来看的应是两本账：按钮曝光有没有增加，读者关系有没有回流到自己手里。",
+          "source": "Google / Search Engine Land",
+          "url": "https://blog.google/products/search/preferred-sources/",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Source_SS.width-1300.jpg",
+          "image": "images/news-05-google.jpg"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "NVIDIA用AVO冲高ARC-AGI成绩",
+          "body": "NVIDIA 8 月 21 日展示 automatic variation operators，简称 AVO，用外部 harness 自动生成任务变体、筛选策略并驱动模型在 ARC-AGI-3 类任务上提升表现。TechCrunch 的解读也指出，亮点不只是模型本体，而是围绕模型的搜索、变体、评估和执行系统正在变成能力来源。",
+          "janet_take": "冷水可以直接泼：模型聪明只是答案的一部分。AVO 说明很多能力藏在模型外面，像教练、考官和操作台。创作者做 agent 产品也一样，拼到最后看谁能把任务拆对、反馈收干净、失败样本喂回去。",
+          "source": "NVIDIA Developer / TechCrunch",
+          "url": "https://developer.nvidia.com/blog/automatic-variation-operators-for-building-ai-agents/",
+          "image_origin": "search",
+          "image_source_url": "https://developer.download.nvidia.com/assets/WMFG/images/developer-dev-wall-phase-660x300.jpg",
+          "image": "images/models-01-nvidiaavoarc.jpg"
+        },
+        {
+          "title": "Gemma下载量冲破10亿次",
+          "body": "Google 8 月 21 日称，开源权重模型家族 Gemma 的下载量已经超过 10 亿。Gemma 从小尺寸本地部署、教育实验、研究复现到企业微调都有使用场景，Google 同时把它和 Gemini 的闭源能力区分开：一个负责广泛分发，一个负责旗舰产品。",
+          "janet_take": "10 亿下载听着很大，先把它理解成默认零件的普及。国内团队没必要动辄训练巨兽，很多垂直场景用小模型、蒸馏、RAG 和本地隐私先跑起来，现金流更像人话。",
+          "source": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/en/gemma-1-billion-downloads/",
+          "image_origin": "search",
+          "image_source_url": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/gemma-3-google-ai-edge-1.2e16d0ba.fill-800x400.png",
+          "image": "images/models-02-gemma10.png"
+        },
+        {
+          "title": "Copilot进Slack接开发线程",
+          "body": "GitHub 同日还宣布新的 GitHub Copilot Slack experience。开发者可以在 Slack 里查看、触发和协作处理 Copilot 相关工作，把代码上下文和团队讨论放到同一个沟通场景里。和 Teams 版本相比，Slack 版本更像面向开发团队日常沟通的轻入口。",
+          "janet_take": "GitHub 今天的打法很清楚：agent 要住进聊天流。Slack 线程本来就容易丢上下文，Copilot 进来后，如果权限边界和结果摘要没跟上，速度会变快，误会也会变快。",
+          "source": "GitHub Changelog",
+          "url": "https://github.blog/changelog/2026-08-21-the-new-github-copilot-experience-in-slack/",
+          "image_origin": "source",
+          "image_source_url": "https://github.blog/wp-content/uploads/2026/08/638619758-51d49ffc-a1e4-4877-9252-919323743162.jpg",
+          "image": "images/models-03-copilotslack.webp"
+        },
+        {
+          "title": "OpenAI把AI Futures摆上台",
+          "body": "OpenAI 8 月 21 日上线 AI Futures 研究与讨论入口，集中呈现对长期 AI 影响、治理、劳动力和社会适应的材料。它不是一个新模型，而是把公司对未来风险和制度安排的论述放到更前台的位置，和近期企业安全、隐私处理、模型发布节奏一起看，OpenAI 正在补叙事层的信用。",
+          "janet_take": "OpenAI 当然需要谈未来，问题在于未来叙事能不能落回当下责任。读这类页面时看两件事：承认了哪些风险，以及这些风险有没有产品开关、外部问责和独立证据。",
+          "source": "OpenAI",
+          "url": "https://openai.com/ai-futures/",
+          "image_origin": "search",
+          "image_source_url": "https://static.independent.co.uk/2024/12/10/16/Open_AI_98772.jpg",
+          "image": "images/models-04-openaiai-futures.avif"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Harness撑起模型外部成绩",
+          "body": "TechCrunch 8 月 21 日把 NVIDIA 的 AVO 演示概括成一个更大的变化：AI 成绩越来越依赖模型周围的 harness。也就是任务生成、搜索策略、验证器、工具调用和反馈循环。模型参数仍然重要，但真实系统里，谁能把外部流程组织好，谁就能把同一模型榨出完全不同的表现。",
+          "janet_take": "应用团队只等新旗舰，会错过更近的改进空间。AVO 这类 harness 说明，同一模型外面怎么拆任务、怎么验结果、怎么回收失败，差距会非常大。烂 agent 很多时候智商不低，操作台做得粗。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/",
+          "image_origin": "source",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/Nvidia-VP-of-product-Adel-El-Hallak.jpg?resize=1200,898",
+          "image": "images/insights-01-harness.webp"
+        },
+        {
+          "title": "创作者开始给AI退钱",
+          "body": "The Verge 的创作者报道里，最刺眼的不是观众骂声，而是赞助链条的重新定价。AI 公司需要可信的人解释产品，观众又担心创作者把自己曾经反对的自动化工具卖给粉丝。广告、创作和身份表达在同一个频道里相撞，传统口播合同没有准备好处理这种冲突。",
+          "janet_take": "创作者不是广告牌，是一个长期人格账户。AI 赞助尤其会碰到观众对原创、劳动和替代的焦虑。钱可以接，边界要讲清楚；不讲，评论区会替你写审计报告。",
+          "source": "The Verge",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/2026/8/21/23839800/youtube-creators-ai-sponsorship-backlash",
+          "image_origin": "search",
+          "image_source_url": "https://q5.itc.cn/q_70/images03/20260629/758c88496222492bb7792dcfca40bba5.jpeg",
+          "image": "images/insights-02-ai.webp"
+        },
+        {
+          "title": "Google用全栈AI锁云预算",
+          "body": "Google Cloud 8 月 21 日发布全栈 AI 说明，强调从基础设施、模型、数据平台到应用层的整合。文章本身是产品叙事，但它反映了云厂商争夺企业 AI 预算的核心方式：不只卖模型，也卖训练、推理、数据治理、观测和部署路径。",
+          "janet_take": "全栈 AI 的本质是卖省心，也卖锁定。企业买云上方案时，模型和 demo 只是第一层，数据迁移、评估复现、成本拆分和退出路径才决定后路。省心很快可能变成搬不走。",
+          "source": "Google Cloud Blog",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/a-full-stack-approach-to-ai",
+          "image_origin": "search",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/google_ai_this_month.max-2500x2500.jpg",
+          "image": "images/insights-03-googleai.jpg"
+        },
+        {
+          "title": "GitHub扩容仍被流量追着跑",
+          "body": "GitHub 8 月 21 日发布事故复盘，解释近期服务异常与容量、依赖和流量模式有关。放在 Copilot 进入 Teams、Slack 的同一天看，这不是小插曲：当代码托管、协作消息和 agentic work 都压到 GitHub 生态里，基础服务的稳定性就不再只是开发者体验，而是企业自动化链条的单点风险。",
+          "janet_take": "平台可靠性正在从体验问题变成生产问题。代码、CI、PR、聊天入口和 AI 任务都压到同一个平台时，宕机就不只是晚点提交，而是整条自动化链条一起停。",
+          "source": "GitHub Blog",
+          "url": "https://github.blog/engineering/infrastructure/2026-08-21-availability-report/",
+          "image_origin": "search",
+          "image_source_url": "https://assets.st-note.com/production/uploads/images/252398033/rectangle_large_type_2_6bc02c013d975f0fd37b842f0e6d2e4d.png?fit=bounds&quality=85&width=1280",
+          "image": "images/insights-04-github.webp"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Starcloud融资押注太空算力",
+          "body": "Reuters 8 月 21 日报道，AI 数据中心初创公司 Starcloud 完成 5000 万美元融资，用于推进把数据中心能力送入太空的计划。它押注太阳能和轨道散热可以缓解地面电力、土地和冷却压力，但商业化还要面对发射成本、维护、网络延迟和监管审批。",
+          "janet_take": "太空数据中心听上去像科幻，背后是地面电力和土地账越来越难算。先别急着笑，关键看单位算力成本、发射失败率和客户敢不敢把敏感计算放到轨道上。",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/technology/space/starcloud-raises-50-million-space-based-ai-data-centers-2026-08-21/",
+          "image_origin": "official",
+          "image_source_url": "https://www.ycombinator.com/companies/starcloud",
+          "image": "images/insights2-01-starcloud.png"
+        },
+        {
+          "title": "Twin1融资押生物数字孪生",
+          "body": "TechStartups 8 月 21 日报道，Twin1 完成 2000 万美元融资，主打用 AI 建立生物变化相关数字孪生。公司想把复杂生命科学实验变成可模拟、可预测、可迭代的系统，但这类产品的门槛不在演示，而在数据质量、验证周期和监管接受度。",
+          "janet_take": "数字孪生最容易被讲成万能镜子，实际先是一台昂贵假设机器。生命科学里，漂亮模拟如果不能被实验复核，就是高级 PPT。投资人买想象，客户要看误差和失败案例。",
+          "source": "TechStartups",
+          "url": "https://techstartups.com/2026/08/21/ai-startup-twin1-raises-20-million-to-build-digital-twins-of-biological-change/",
+          "image_origin": "search",
+          "image_source_url": "http://static-img-job.rpa-cn.com/lowcode/2023/02/20230214200426302.jpeg",
+          "image": "images/insights2-02-twin1.jpg"
+        },
+        {
+          "title": "数据中心热钱撞上社区账单",
+          "body": "Axios 8 月 21 日报道，AI 数据中心投资热度和部分地方社区的真实感受正在脱节。企业宣布巨额资本开支、就业和基础设施承诺，地方则担心电价、水资源、土地使用和长期税收回报。AI 基建从技术新闻变成城市治理议题，冲突会越来越具体。",
+          "janet_take": "AI 基建最不性感的部分，往往最决定成败。发布会讲算力，地方居民看电费和水。企业只用“就业”和“创新”两张牌压过去，社区迟早会问成本归谁。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/21/ai-data-center-investment-local-communities",
+          "image_origin": "search",
+          "image_source_url": "https://cloud.google.com/blog/products/ai-machine-learning/a-full-stack-approach-to-ai",
+          "image": "images/insights2-03-data-center.jpg"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Google Preferred Sources接回来源权",
+          "body": "Google Search 的 Preferred Sources 可以让用户在新闻相关搜索里选择偏好的媒体来源，之后 Top Stories 等区域会更常展示这些站点。对重度信息工作者来说，它不是万能反算法按钮，但可以把固定可信源放回更靠前的位置，尤其适合跟踪 AI 公司公告、监管机构、研究机构和少数长期可靠媒体。\n\n使用建议：把官方博客、一手研究机构、可靠行业媒体分开建清单；遇到 AI Overviews 给出的答案，先看 Preferred Sources 里有没有原文，再决定是否引用。\n\nJanet 锐评：这个工具不酷，胜在能用。信息流现在最大的问题是答案太顺滑，顺滑到你忘了问来源。Preferred Sources 至少能拿回一点主动权，虽然钥匙仍挂在 Google 门上。",
+          "janet_take": "工具不酷，胜在能用。信息流现在最大的问题是答案太顺滑，顺滑到你忘了问来源。Preferred Sources 至少能拿回一点主动权，虽然钥匙仍挂在 Google 门上。",
+          "source": "Google Search",
+          "url": "https://blog.google/products/search/preferred-sources/",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Source_SS.width-1300.jpg",
+          "image": "images/tools-01-google-preferred-sources.jpg"
+        }
+      ]
+    }
+  }
+}

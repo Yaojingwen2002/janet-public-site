@@ -1,0 +1,204 @@
+{
+  "date": "2026-08-26",
+  "vol": "330",
+  "intro_text": "今天的 AI 新闻没有一个统一口号。OpenAI 把推理芯片、全栈成本和 workspace 管理同时摊开；Anthropic 把 Claude 记忆打通，又拿钱做 wellbeing 评测；Google、Gamma、Instagram、Stability 和机器人公司则在各自入口上抢时间、抢预算、抢责任边界。",
+  "cover": {
+    "title": "成本长出入口",
+    "subtitle": "推理芯片、长期记忆、企业权限和创作者工具同时开账",
+    "image_path": "runs/2026-08-26/cover.png",
+    "image_prompt": "Create a real 21:9 wide editorial magazine cover background for Janet AI morning briefing. Black, white, and restrained Janet green only. Theme: AI infrastructure becomes an operating ledger: custom inference chips, admin permissions, agent memory, legal workflows, creator editing tools, robotics funding, and data-center accountability. Scene: a sharp minimal high-end technology control room with abstract chip wafers, permission switches, legal document rails, creator timeline strips, and capital ledger grids converging into one asymmetric system map. Premium Swiss editorial style, tactile paper grain, crisp contrast, cinematic lighting, lots of clean negative space center-left for HTML headline overlay. No readable text, no date, no volume, no logos, no robot faces, no glowing brain, no neon cyberpunk, no watermark."
+  },
+  "trend": "今天先看两张账。第一张是推理账：OpenAI 公布 Jalapeño 实测，强调 1.5 到 1.9 倍每瓦 AI work、1.7 到 3.6 倍更低端到端延迟；NVIDIA 在 Hot Chips 继续讲 Vera、Rubin、BlueField-4、Spectrum-X 和 LPU。模型公司不再只比聪明，开始比每一次回答、每一步 agent 操作到底烧多少钱。\n\n第二张是权限账。Claude 把 chat 和 Cowork 的记忆合并，OpenAI 推 Admin plugin 管 workspace，Google 把 Gemini Enterprise 塞进法律行业，Instagram 把剪辑第一稿放进 Reels。AI 正在离开单点工具，变成入口、记忆和管理层。体验会顺，代价也更隐蔽：谁能看见它记了什么，谁能撤权，谁对误操作负责。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "OpenAI发布Jalapeño省推理账",
+          "body": "OpenAI 8 月 25 日公布 Jalapeño 首批实测结果，称这颗自研 inference chip 在 InferenceX 上针对 GPT-OSS 120B、DeepSeek R1 和 Kimi K2.5 1T 的测试中，实现 1.5 到 1.9 倍更高的每瓦 AI work，以及 1.7 到 3.6 倍更低端到端延迟。OpenAI 还说 Jalapeño 会在年底前开始部署到自家 compute infrastructure，并继续使用 NVIDIA 等伙伴的训练和推理加速器。",
+          "janet_take": "别急着解读成 OpenAI 要甩开 NVIDIA。更准确的看法是：成本战争已经打到硅片层。agent 越像员工，每个任务就越像一串长长的推理账单：读文件、调用工具、修错、再验证。Jalapeño 的信号很硬，模型公司如果不控制 latency 和 watts，越成功越容易被算力成本反噬。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/jalapeno-first-results/",
+          "image": "images/news-01-openai.png",
+          "image_source_url": "https://www.qbitai.com/wp-content/uploads/replace/cf95441e8ce222efb288caf43360ab63.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Claude记忆接入Cowork工作流",
+          "body": "TechCrunch 8 月 25 日报道，Anthropic 正把 Claude chat 和 Claude Cowork 的记忆系统合并，让用户在聊天里形成的项目背景、偏好和资料能被 Cowork 继续使用。报道称，Claude 会让用户查看、编辑或删除已保存的 topic；默认不保存健康、种族、宗教、政治、性别身份等敏感信息，用户也可以选择开启敏感 topic 记忆。",
+          "janet_take": "agent 体验最烦人的事，是每次都要重新交代上下文；记忆跨产品流动后，它从体验优化变成长期关系。Anthropic 至少把“看、改、删”摆出来，这比偷偷记住强。默认边界才是焦点：什么时候开始记，谁触发保存，企业管理员能不能看见。",
+          "source": "TechCrunch / Anthropic",
+          "url": "https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/",
+          "image": "images/news-02-claudecowork.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/Claude-AI-app.jpg?resize=1200,842",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google进法律AI主战场",
+          "body": "Business Insider 8 月 25 日报道，Google 推出 Gemini Enterprise for Legal，面向律所和法律团队提供可定制 Gemini agents，覆盖合同审查、监管跟踪、文档分析等任务。报道提到 Google 与 Cleary Gottlieb、Freshfields 等律所合作打磨产品，并接入 Everlaw、Relativity、iManage、NetDocuments、DocuSign 等生态伙伴，同时承诺客户数据不会用于训练模型。",
+          "janet_take": "法律 AI 不缺 demo，缺的是谁敢把它放进真实案卷和客户材料。Google 这步的重点不是“Gemini 会读合同”，而是它把律所、文档系统和数据不训练承诺一起打包。法律行业保守不是毛病，是风险定价；能进这个门，才算企业 AI 真开始吃硬饭。",
+          "source": "Business Insider",
+          "url": "https://www.businessinsider.com/google-unveils-gemini-enterprise-for-legal-law-tech-push-2026-8",
+          "image": "images/news-03-googleai.png",
+          "image_source_url": "https://i.insider.com/google-gemini-enterprise-legal.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "OpenAI重组数据中心班底",
+          "body": "WSJ 8 月 25 日报道，负责 OpenAI data center initiatives 的 Chris Malone 已离职。报道称，Malone 2025 年 3 月加入，曾参与 Stargate 相关扩容工作；在项目遇到困难后，OpenAI 转向租用整座设施，并由 Sachin Katti、Adrian Caulfield、Uday Ruddarraju 等人重组基础设施领导线。WSJ 还称 OpenAI 到 2030 年的 compute capacity 投资预期已升至 7500 亿美元。",
+          "janet_take": "基础设施负责人离职听起来像人事新闻，其实是算力公司化的压力测试。模型发布可以靠舞台，数据中心靠电力、租约、施工、折旧和组织协调。OpenAI 想做全栈，最难的部分可能不是 chip design，而是把一堆重资产承诺管到不失控。",
+          "source": "Wall Street Journal",
+          "url": "https://www.wsj.com/tech/ai/openais-head-of-data-centers-has-left-company-6d24fd83",
+          "image": "images/news-04-openai.png",
+          "image_source_url": "https://4399pay.com/blog/wp-content/uploads/2025/03/图片11-12-980x1024.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Meta儿童安全案开庭追责",
+          "body": "The Guardian 8 月 25 日报道，Meta 正在 Oakland 面对 California 和另外 28 个美国州提起的诉讼，原告指控 Facebook、Instagram 产品设计让儿童上瘾，并隐瞒潜在伤害。Meta 否认指控。报道同时提到，科技行业对数据中心扩张和 AI 基建的公共反弹也在升温，法院正在成为美国科技治理的重要战场。",
+          "janet_take": "模型之外，产品设计也在被追责。平台若被法院认定长期操控未成年人，所有“更懂你、更会推荐、更会陪伴”的 AI 产品都会被同一束光照到。便利和留存不能永远装成中性指标，尤其当对象是孩子。",
+          "source": "The Guardian",
+          "url": "https://www.theguardian.com/global/2026/aug/25/meta-trial-silicon-valley",
+          "image": "images/news-05-meta.webp",
+          "image_source_url": "https://i.guim.co.uk/img/media/5fe3c6e2663c1940dc067dd6bc16c1117ac663b4/848_0_4016_3213/master/4016.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=1bf0b7c40d1dd5a0166856f86b879959",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "OpenAI用全栈算推理经济账",
+          "body": "OpenAI COO Sarah Friar 8 月 25 日发文称，OpenAI 的 compute strategy 是一个从 data centers、chips、frontier models、developer platform、consumer and enterprise products 到 AI-native devices 的 integrated system。文章同时提到，GPT-5.6 Sol 在 Artificial Analysis Coding Agent Index 上用 max reasoning 取得新高，并比另一 leading model 少用 54% output tokens。",
+          "janet_take": "OpenAI 这篇更像给投资人和客户看的算力说明书：它要把芯片、软件、模型、产品和数据中心串成成本优势。听起来宏大，落点很具体：output tokens 少 54% 还能完成任务，企业才会多用；做不到，全栈只是更贵的故事。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/the-full-stack-behind-abundant-intelligence/",
+          "image": "images/models-01-openai.jpg",
+          "image_source_url": "https://www.vrarworld.cn/uploads/20250411/380f47f77e0684ded8740563958b55fe.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Anthropic拿500万测AI福祉",
+          "body": "Anthropic 8 月 25 日宣布推出 500 万美元 grant program，资助独立研究 AI 如何影响用户 wellbeing。项目将给 grantees 提供资金、模型访问和技术支持，要求产出 open-source evaluations，帮助行业衡量模型对用户的影响。Anthropic 称研究者独立工作，并公开发布项目。",
+          "janet_take": "这笔钱不大，但方向值得记。AI 公司最爱衡量 benchmark、留存和付费，最少认真量化用户被依赖、焦虑、误导或过度陪伴后的代价。开放评测如果真独立，能把“对用户好”从公关词变成可争论的指标；如果不独立，就是安全叙事外包。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/wellbeing-research-grants",
+          "image": "images/models-02-anthropic500.png",
+          "image_source_url": "https://www.anthropic.com/api/opengraph-illustration?name=Hand%20HeadFlower&backgroundColor=heather",
+          "image_origin": "source"
+        },
+        {
+          "title": "NVIDIA在Hot Chips推AI工厂",
+          "body": "NVIDIA 在 Hot Chips 2026 页面披露，8 月 25 日议程包括 BlueField-4 Processor Powers the AI Factory Operating System、Spectrum-X Multiplane Network Architecture 和 LPU Accelerator for Heterogeneous Compute。页面还介绍 Vera CPU、Rubin GPU、NVLink Switch、Spectrum-X Ethernet 与 BlueField-4 DPU 的组合，用于应对现代 AI factories。",
+          "janet_take": "NVIDIA 现在卖的是一整套 AI factory。单卡算力还重要，但瓶颈已经扩散到 CPU、GPU、DPU、网络和运维。",
+          "source": "NVIDIA",
+          "url": "https://www.nvidia.com/en-us/events/hot-chips-conference/",
+          "image": "images/models-03-nvidiaai.jpg",
+          "image_source_url": "https://www.nvidia.com/content/dam/graphics/key-visual/2026/light/nvidia-kv-2026-og.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Apple新芯片押本地AI",
+          "body": "TechCrunch 8 月 25 日报道，Apple 发布 M5 Ultra 和 M6。M5 Ultra 由两个 dual-die M5 Max 融合成 Apple 首个 quad-die chip，最高 36-core CPU、80-core GPU、1.2 TB/s unified memory bandwidth；M6 使用 2 nm process、12-core CPU complex、Dual 16-core Neural Engine。Apple 称新框架和芯片可让开发者在 Mac 本地运行和 fine-tune large AI models。",
+          "janet_take": "Apple 的 AI 慢半拍，但本地算力这张牌仍然硬。云端 agent 讲全能，本地 AI 讲控制感：数据少出门、响应更稳定、开发者能在桌面上试模型。问题是生态能不能跟上，不然再强的芯片也只是专业用户的安慰奖。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/25/apple-debuts-its-most-powerful-chip-ever-in-m5-ultra-and-m6/",
+          "image": "images/models-04-appleai.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/Apple-M6-and-M5-Ultra-hero-260825_big.jpg.medium_2x.jpg?resize=1200,675",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "OpenAI推出Admin插件管权限",
+          "body": "OpenAI 8 月 25 日发布 Admin plugin for ChatGPT Work and Codex，定位是让管理员在一个 conversation 里理解 workspace activity、管理 access and usage，并执行受支持的 admin actions。OpenAI 称，管理员可以提问、查看细节、做授权变更并确认结果，不必在 analytics、settings 和 reports 之间来回切换。",
+          "janet_take": "企业 agent 最难卖的环节常常是“谁能管”。Admin plugin 把使用量、权限和操作放进对话，看起来省事，背后是管理入口的争夺。以后 AI workspace 的管理员，可能不再点菜单，而是给 agent 下变更指令；这时候操作日志比炫酷 UI 更值钱。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/introducing-admin-plugin/",
+          "image": "images/insights-01-openaiagent.png",
+          "image_source_url": "https://www.cursor-ide.com/blog/agent-builder-openai/cover.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Gamma收购Lica补设计研究",
+          "body": "TechCrunch 8 月 25 日独家报道，AI presentation startup Gamma 收购 Accel 支持的 design startup Lica，后者创始人将领导 Gamma 的 design research lab。Lica 起初可把 screenshots 和 recordings 转成 presentations 和 videos，2024 年融资 400 万美元，后续聚焦电商营销视频。Gamma 称未来会探索更多 visual communication formats。",
+          "janet_take": "AI PPT 赛道开始整合，不奇怪。靠模板和一句话生成很快会卷成基础功能，真正值钱的是表达结构、品牌语气和跨格式沟通。Gamma 买 Lica，其实是在补“怎么把内容变成更合适的表达”，不是只多一个生成按钮。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/25/gamma-acquires-accel-backed-design-startup-lica/",
+          "image": "images/insights-02-gammalica.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/08/R6II0507.jpg?resize=1200,960",
+          "image_origin": "source"
+        },
+        {
+          "title": "WhatsApp加长密码和多Passkey",
+          "body": "TechCrunch 8 月 25 日报道，WhatsApp 推出账号安全更新，包括更强 two-step verification、允许为账号添加多个 passkeys，以及 Android 用户接听陌生号码时看到更多上下文。WhatsApp 过去的两步验证依赖 6 位 PIN，现在用户可选择更长的 alphanumeric password；多 passkey 对同时使用 iOS 和 Android 的用户更方便。",
+          "janet_take": "AI phishing 越像真人，账号安全越不能停在验证码。Passkey 和来电上下文不性感，却能挡住一批自动化诈骗。",
+          "source": "TechCrunch / WhatsApp",
+          "url": "https://techcrunch.com/2026/08/25/whatsapp-tightens-account-security-with-stronger-two-step-verification-and-more/",
+          "image": "images/insights-03-whatsapp.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/02/whatsapp-iphone-icon.jpg?resize=1200,800",
+          "image_origin": "source"
+        },
+        {
+          "title": "Instagram推出十秒Reels初剪",
+          "body": "TechCrunch 8 月 25 日报道，Instagram 推出 Reels 的 First Draft 功能，可自动修剪用户选择的视频片段、移除停顿，并在 10 秒内生成 initial cut。该功能先在 iPhone 上推出，可从 Instagram camera 或 Reels gallery 使用。报道指出，类似自动剪辑工具已存在于 Adobe Firefly Quick Cuts、CapCut Auto Cut 等产品中，但 Instagram 把它直接嵌入创作入口。",
+          "janet_take": "短视频工具最狠的优势，往往是离发布按钮近。First Draft 未必比 CapCut 更聪明，但它少了一次导入、导出和犹豫。创作者省下的不是十秒，是开始动手的阻力；平台拿回的，是剪辑链路里的又一段时间。",
+          "source": "TechCrunch / Instagram",
+          "url": "https://techcrunch.com/2026/08/25/instagrams-first-draft-feature-aims-to-make-editing-reels-less-tedious/",
+          "image": "images/insights-04-instagram.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/10/instagram-app-icon-GettyImages-1046023150.jpg?resize=1200,801",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Stability融资7600万续创作AI",
+          "body": "TechCrunch 8 月 25 日报道，Stable Diffusion 背后的 Stability AI 完成 7600 万美元 Series B，总融资达到 2.32 亿美元。新资金来自 Universal Music Group、Sony Music Group、Warner Music Group、EA，以及 AMD Ventures、Pacific Alliance Ventures。公司表示将继续建设 creative production 产品套件，并扩展 professional services。",
+          "janet_take": "Stability 最有意思的地方在资金来源：娱乐公司亲自下场。过去生成式 AI 和版权方打得像仇人，现在音乐、游戏和影视巨头开始押注共建工具。创作者会得到更合法的生产链，也可能面对更集中的素材、分发和规则。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/",
+          "image": "images/insights2-01-stability7600.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2024/10/unnamed-2.png?w=1152",
+          "image_origin": "source"
+        },
+        {
+          "title": "Generalist再融2亿做机器人脑",
+          "body": "Axios 8 月 24 日报道，AI robotics startup Generalist 获得 2 亿美元新融资，距此前 4 亿美元融资仅约两个月。新一轮由 8VC 领投，并有多位既有投资人参与。Generalist 由 Google DeepMind、Boston Dynamics 等机构校友创办，重点不是制造机器人硬件，而是开发 robot brains。",
+          "janet_take": "机器人创业最烧钱，也最容易讲成科幻。Generalist 选择做 brains，不碰硬件制造，听起来轻一点，但真实世界不会因为软件优雅就少摔一次。资本继续加码，说明大家仍相信蓝领现场会被 AI 改写；只是账单会先落在传感器、可靠性和安全责任上。",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/24/robotics-ai-generalist-200m",
+          "image": "images/insights2-02-generalist2.png",
+          "image_source_url": "https://cdn-cn.yumiok.com/wp-content/uploads/sites/2/2025/06/generalist.png",
+          "image_origin": "search"
+        },
+        {
+          "title": "Oura拟IPO募资30亿",
+          "body": "Axios Pro Rata 8 月 25 日提到，智能戒指公司 Oura 正考虑 IPO，目标募资约 30 亿美元，估值可能超过 160 亿美元。Oura 属于 wearable health tech，若上市窗口打开，将测试公开市场是否愿意继续给可穿戴设备的健康数据、订阅服务和 AI 分析能力高估值。",
+          "janet_take": "Oura 的问题很适合拿来验 AI 健康叙事：用户愿意每天戴设备，不代表华尔街愿意为每一条睡眠建议买单。可穿戴公司要从硬件毛利走到健康 AI 平台，中间隔着准确性、临床信任和监管边界。IPO 会把这些漂亮故事拆成季度数字。",
+          "source": "Axios Pro Rata",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-60ba74b4-004e-4f57-b2e5-496aa335b1f7",
+          "image": "images/insights2-03-ouraipo30.webp",
+          "image_source_url": "https://images.axios.com/bXRYYVgsqZFhpxXWEvU2e8xDDUo=/2026/06/12/1781286344860.jpeg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Instagram推出First Draft初剪",
+          "body": "Instagram 8 月 25 日推出 Reels 的 First Draft，用户选择多个视频片段后，系统会自动剪掉停顿、挑出片段并生成初剪版本，官方口径是 first pass 可在 10 秒内完成。它先在 iPhone 上推出，入口在 Instagram camera 和 Reels gallery。",
+          "janet_take": "今天工具位给创作者。它不一定是最强剪辑 AI，但足够靠近发布入口；适合用来快速搭第一版，再交给 CapCut、Premiere 或人工精修。",
+          "source": "TechCrunch / Instagram",
+          "url": "https://techcrunch.com/2026/08/25/instagrams-first-draft-feature-aims-to-make-editing-reels-less-tedious/",
+          "image": "images/tools-01-instagram-first-draft.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2025/10/instagram-app-icon-GettyImages-1046023150.jpg?resize=1200,801",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

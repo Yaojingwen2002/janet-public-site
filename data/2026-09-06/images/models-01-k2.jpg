@@ -1,0 +1,2208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    
+    
+    <title>K2 Horizon: Open-Source AI Models for Every Scale | IFM</title>
+    <meta name="description" content="Explore K2 Horizon: six fully open-source AI models with weights, training code, data, benchmarks, and deployment options spanning edge to enterprise.">
+    <meta name="author" content="Institute of Foundation Models">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ifm.ai/k2/">
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Institute of Foundation Models">
+    <meta property="og:title" content="K2 Horizon: Open-Source AI Models for Every Scale | IFM">
+    <meta property="og:description" content="Explore K2 Horizon: six fully open-source AI models with weights, training code, data, benchmarks, and deployment options spanning edge to enterprise.">
+    <meta property="og:url" content="https://ifm.ai/k2/">
+    <meta property="og:image" content="https://ifm.ai/k2/assets/images/social/k2-horizon-3c3eb77bd6ac.webp">
+    <meta property="og:image:secure_url" content="https://ifm.ai/k2/assets/images/social/k2-horizon-3c3eb77bd6ac.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1500">
+    <meta property="og:image:height" content="844">
+    <meta property="og:image:alt" content="K2 mountain at sunrise, representing the K2 Horizon open-source AI model fleet">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@IFM_AI">
+    <meta name="twitter:title" content="K2 Horizon: Open-Source AI Models for Every Scale | IFM">
+    <meta name="twitter:description" content="Explore K2 Horizon: six fully open-source AI models with weights, training code, data, benchmarks, and deployment options spanning edge to enterprise.">
+    <meta name="twitter:image" content="https://ifm.ai/k2/assets/images/social/k2-horizon-3c3eb77bd6ac.webp">
+    <meta name="twitter:image:alt" content="K2 mountain at sunrise, representing the K2 Horizon open-source AI model fleet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ifm.ai/#organization","name":"Institute of Foundation Models","url":"https://ifm.ai/","sameAs":["https://x.com/IFM_AI","https://www.linkedin.com/showcase/institute-of-foundation-models/"]},{"@type":"WebSite","@id":"https://ifm.ai/#website","url":"https://ifm.ai/","name":"Institute of Foundation Models","inLanguage":"en","publisher":{"@id":"https://ifm.ai/#organization"}},{"@type":"ImageObject","@id":"https://ifm.ai/k2/#primaryimage","url":"https://ifm.ai/k2/assets/images/social/k2-horizon-3c3eb77bd6ac.webp","contentUrl":"https://ifm.ai/k2/assets/images/social/k2-horizon-3c3eb77bd6ac.webp","caption":"K2 mountain at sunrise, representing the K2 Horizon open-source AI model fleet","width":1500,"height":844},{"@type":"WebPage","@id":"https://ifm.ai/k2/#webpage","url":"https://ifm.ai/k2/","name":"K2 Horizon: Open-Source AI Models for Every Scale | IFM","description":"Explore K2 Horizon: six fully open-source AI models with weights, training code, data, benchmarks, and deployment options spanning edge to enterprise.","inLanguage":"en","isPartOf":{"@id":"https://ifm.ai/#website"},"primaryImageOfPage":{"@id":"https://ifm.ai/k2/#primaryimage"},"image":{"@id":"https://ifm.ai/k2/#primaryimage"},"about":{"@type":"Thing","@id":"https://ifm.ai/k2/#k2-horizon","name":"K2 Horizon","sameAs":["https://huggingface.co/collections/IFM/k2-horizon","https://github.com/LLM360/xllm"]},"publisher":{"@id":"https://ifm.ai/#organization"},"breadcrumb":{"@id":"https://ifm.ai/k2/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://ifm.ai/k2/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Institute of Foundation Models","item":"https://ifm.ai/"},{"@type":"ListItem","position":2,"name":"K2 Horizon","item":"https://ifm.ai/k2/"}]}]}</script>
+
+    
+    <link rel="preload" href="/k2/assets/fonts/Lateral-StandardMedium-BEwD-0VI00on.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.k2Analytics = window.k2Analytics || {
+        consentKey: 'cookie_consent',
+        consentDateKey: 'cookie_consent_date',
+        expiryMonths: 26,
+        measurementId: 'G-RSN3PPM5N0',
+        scriptUrl: 'https://www.googletagmanager.com/gtag/js?id=G-RSN3PPM5N0',
+        consentStatus: 'denied',
+        initialized: false,
+        getDeploymentEnvironment(hostname) {
+          const productionHostname = 'ifm.ai';
+
+          if (hostname === productionHostname) {
+            return 'production';
+          }
+
+          if (hostname === `staging.${productionHostname}`) {
+            return 'staging';
+          }
+
+          return 'other';
+        },
+        init() {
+          if (this.initialized) {
+            return;
+          }
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = this.scriptUrl;
+          document.head.appendChild(script);
+
+          gtag('js', new Date());
+          const deploymentEnvironment = this.getDeploymentEnvironment(
+            window.location.hostname,
+          );
+          gtag('config', this.measurementId, {
+            deployment_environment: deploymentEnvironment,
+          });
+          gtag('set', 'url_passthrough', true);
+          this.initialized = true;
+        },
+        clearAnalyticsCookies() {
+          const cookieNames = document.cookie
+            .split(';')
+            .map((cookie) => cookie.split('=')[0].trim())
+            .filter((name) => name === '_ga' || name.startsWith('_ga_'));
+          const domains = [null];
+
+          if (
+            window.location.hostname === 'ifm.ai'
+            || window.location.hostname.endsWith('.ifm.ai')
+          ) {
+            domains.push('.ifm.ai');
+          }
+
+          for (const name of cookieNames) {
+            for (const domain of domains) {
+              const domainAttribute = domain ? `; Domain=${domain}` : '';
+              document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax${domainAttribute}`;
+            }
+          }
+        },
+        updateConsent(status) {
+          const isAccepted = status === 'accepted';
+          this.consentStatus = status;
+          window[`ga-disable-${this.measurementId}`] = !isAccepted;
+          gtag('consent', 'update', {
+            ad_storage: 'denied',
+            analytics_storage: isAccepted ? 'granted' : 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+          });
+
+          if (isAccepted) {
+            this.init();
+          } else {
+            this.clearAnalyticsCookies();
+          }
+        }
+      };
+
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+
+      try {
+        const storedConsent = localStorage.getItem(window.k2Analytics.consentKey);
+        const consentDate = localStorage.getItem(window.k2Analytics.consentDateKey);
+        const expiryDate = new Date();
+        expiryDate.setMonth(expiryDate.getMonth() - window.k2Analytics.expiryMonths);
+        const hasValidConsent = storedConsent && consentDate && new Date(consentDate) >= expiryDate;
+
+        if (hasValidConsent) {
+          window.k2Analytics.updateConsent(storedConsent);
+        } else if (storedConsent || consentDate) {
+          localStorage.removeItem(window.k2Analytics.consentKey);
+          localStorage.removeItem(window.k2Analytics.consentDateKey);
+        }
+      } catch (error) {
+        // Ignore storage access issues and leave analytics denied by default.
+      }
+    </script>
+    <link rel="stylesheet" href="/k2/assets/css/site-DzpFPISr8U07.css">
+    
+  </head>
+  <body class="f-body text-primary bg-primary">
+    <div class="bg-accent-light-green">
+  <div class="px-20 py-12">
+    <a href="https://ifm.ai/">
+      <svg class="block h-30 w-230" fill="none" aria-hidden="true">
+        <use xlink:href="#ifm-logo"></use>
+      </svg>
+      <span class="sr-only">The Institute of Foundation Models at MBZUAI</span>
+    </a>
+  </div>
+</div>
+
+    <main id="content" class="container flex-1">
+      
+
+  
+    <header data-component="header" class="py-set-11">
+  <div class="grid offset-grid">
+    <h1 class="relative f-h1 font-hero whitespace-pre-line pt-60"><span class="absolute start-0 top-0"><img class="block w-155 h-24" src="/k2/assets/images/k2-horizon-black-c58e3e4383ff.svg" width="155" height="24" alt="" aria-hidden="true"><span class="sr-only">K2 Horizon</span></span>Frontier performance.
+Radical openness.</h1>
+    <div>
+      
+        <p class="f-body pt-20 md:pt-40 lg:pt-60">Meet K2 Horizon: The largest fully open-source model launch in AI history, spanning six models that give you greater choice in capabilities, scale and deployment options, along with open access to training code and data.</p>
+      
+      
+    </div>
+  </div>
+</header>
+
+  
+
+  
+    
+
+
+
+
+<section data-component="feature-panel" data-behavior="featurePanel" class="breakout lg:px-20">
+  <div class="feature-panel relative text-inverse overflow-hidden bg-[#50707F]" data-featurepanel-panel>
+    <ul class="feature-panel__variants absolute z-20 inset-x-0 top-28 px-20 md:px-28 lg:px-40 flex flex-row justify-stretch md:justify-between" aria-label="Model variants">
+      
+        <li class="flex-[1_0_auto] md:flex-none">
+          <button
+            type="button"
+            class="flex items-center justify-center w-full md:w-auto py-28 md:p-20 cursor-pointer relative md:after:content-[''] md:after:absolute md:after:w-[25vw] md:after:-inset-y-28 md:after:-start-28 lg:after:-start-40"
+            data-featurepanel-trigger
+            data-index="0"
+            data-active="true"
+            aria-pressed="true"
+          >
+            <img
+              class="w-auto h-13 md:h-20 lg:h-26"
+              src="/k2/assets/images/375B-2fbb48fd468e.svg"
+              width="98"
+              height="21"
+              alt=""
+              aria-hidden="true"
+            >
+            <span class="sr-only">375B</span>
+          </button>
+        </li>
+      
+        <li class="flex-[1_0_auto] md:flex-none">
+          <button
+            type="button"
+            class="flex items-center justify-center w-full md:w-auto py-28 md:p-20 cursor-pointer relative md:after:content-[''] md:after:absolute md:after:w-[25vw] md:after:-inset-y-28 md:after:-start-28 lg:after:-start-40"
+            data-featurepanel-trigger
+            data-index="1"
+            data-active="false"
+            aria-pressed="false"
+          >
+            <img
+              class="w-auto h-13 md:h-20 lg:h-26"
+              src="/k2/assets/images/36B-9db2e29b6867.svg"
+              width="65"
+              height="21"
+              alt=""
+              aria-hidden="true"
+            >
+            <span class="sr-only">36B</span>
+          </button>
+        </li>
+      
+        <li class="flex-[1_0_auto] md:flex-none">
+          <button
+            type="button"
+            class="flex items-center justify-center w-full md:w-auto py-28 md:p-20 cursor-pointer relative md:after:content-[''] md:after:absolute md:after:w-[25vw] md:after:-inset-y-28 md:after:-start-28 lg:after:-start-40"
+            data-featurepanel-trigger
+            data-index="2"
+            data-active="false"
+            aria-pressed="false"
+          >
+            <img
+              class="w-auto h-13 md:h-20 lg:h-26"
+              src="/k2/assets/images/32B-48aa5ac02102.svg"
+              width="57"
+              height="21"
+              alt=""
+              aria-hidden="true"
+            >
+            <span class="sr-only">32B</span>
+          </button>
+        </li>
+      
+        <li class="flex-[1_0_auto] md:flex-none">
+          <button
+            type="button"
+            class="flex items-center justify-center w-full md:w-auto py-28 md:p-20 cursor-pointer relative md:after:content-[''] md:after:absolute md:after:w-[25vw] md:after:-inset-y-28 md:after:-start-28 lg:after:-start-40"
+            data-featurepanel-trigger
+            data-index="3"
+            data-active="false"
+            aria-pressed="false"
+          >
+            <img
+              class="w-auto h-13 md:h-20 lg:h-26"
+              src="/k2/assets/images/7.0B-c5a35124dcd5.svg"
+              width="48"
+              height="21"
+              alt=""
+              aria-hidden="true"
+            >
+            <span class="sr-only">7.0B</span>
+          </button>
+        </li>
+      
+        <li class="flex-[1_0_auto] md:flex-none">
+          <button
+            type="button"
+            class="flex items-center justify-center w-full md:w-auto py-28 md:p-20 cursor-pointer relative md:after:content-[''] md:after:absolute md:after:w-[25vw] md:after:-inset-y-28 md:after:-start-28 lg:after:-start-40"
+            data-featurepanel-trigger
+            data-index="4"
+            data-active="false"
+            aria-pressed="false"
+          >
+            <img
+              class="w-auto h-13 md:h-20 lg:h-26"
+              src="/k2/assets/images/3.7B-ffc034c5a94f.svg"
+              width="41"
+              height="21"
+              alt=""
+              aria-hidden="true"
+            >
+            <span class="sr-only">3.7B</span>
+          </button>
+        </li>
+      
+        <li class="flex-[1_0_auto] md:flex-none">
+          <button
+            type="button"
+            class="flex items-center justify-center w-full md:w-auto py-28 md:p-20 cursor-pointer relative md:after:content-[''] md:after:absolute md:after:w-[25vw] md:after:-inset-y-28 md:after:-start-28 lg:after:-start-40"
+            data-featurepanel-trigger
+            data-index="5"
+            data-active="false"
+            aria-pressed="false"
+          >
+            <img
+              class="w-auto h-13 md:h-20 lg:h-26"
+              src="/k2/assets/images/0.9B-c733128aee1e.svg"
+              width="35"
+              height="21"
+              alt=""
+              aria-hidden="true"
+            >
+            <span class="sr-only">0.9B</span>
+          </button>
+        </li>
+      
+    </ul>
+
+    <span
+      class="feature-panel__indicator absolute z-20 pointer-events-none border-2 border-inverse rounded-md transition-all duration-200 ease-in-out"
+      style="left: 20px; top: 20px; width: 120px; height: 60px;"
+      data-featurepanel-indicator></span>
+
+    <div class="hidden md:block md:aspect-16/9 min-h-[50vh] max-h-[95vh]">
+      
+    </div>
+
+    <div class="relative md:absolute inset-0 z-10 flex flex-col md:justify-end min-h-[75vh] md:min-h-auto max-h-[95vh]">
+      <div class="feature-panel__info relative z-1 flex flex-col md:flex-row gap-y-40 gap-x-gutter justify-between px-28 pb-40 pt-128 flex-1 md:flex-0">
+        <div class="relative z-1 feature-panel__copy flex flex-col md:w-1/2 lg:max-w-cols-5" data-featurepanel-copy>
+          <p class="feature-panel__text" data-featurepanel-text>Our enterprise-ready flagship model, built to compete with leading open-weight models on coding and agentic work.</p>
+          <p
+            class="f-btn text-accent-green -order-1 mb-12 antialiased"
+            data-featurepanel-eyebrow
+            hidden
+          >
+            
+          </p>
+          <p
+            class="mt-12 md:mt-20 lg:mt-28"
+            data-featurepanel-action-wrap
+            
+          >
+            <a
+              href="#get-started"
+              class="btn-inverse"
+              data-featurepanel-action
+              data-analytics-id="feature_try_now"
+              data-analytics-label="Try now"
+              data-analytics-section="feature_panel"
+              data-analytics-position="1"
+            >
+              <span class="f-btn" data-featurepanel-action-label>Try Now</span>
+            </a>
+          </p>
+        </div>
+
+        
+      </div>
+
+      <div class="absolute inset-0 z-0">
+        <div class="feature-panel__media-layer absolute inset-0" data-featurepanel-media-layer data-state="current">
+          <picture class="block size-full" data-featurepanel-picture>
+            
+              <source
+                data-featurepanel-avif-source
+                type="image/avif"
+                srcset="/k2/assets/images/375b/250-de51f1ab4048.avif 250w, /k2/assets/images/375b/500-c0d3cf479b30.avif 500w, /k2/assets/images/375b/750-02d9022699b5.avif 750w, /k2/assets/images/375b/1000-047456d2afc8.avif 1000w, /k2/assets/images/375b/1250-2bf52f4a5923.avif 1250w, /k2/assets/images/375b/1500-a667a8cc729f.avif 1500w, /k2/assets/images/375b/1920-2f6dfc7e52cb.avif 1920w"
+                sizes="104vw"
+              >
+            
+            <img
+              class="feature-panel__image absolute block object-cover"
+              data-featurepanel-image
+              style="--feature-panel-image-scale: 1;"
+              src="/k2/assets/images/375b/250-c7330b723a91.webp"
+              srcset="/k2/assets/images/375b/250-c7330b723a91.webp 250w, /k2/assets/images/375b/500-1e0998af5dd6.webp 500w, /k2/assets/images/375b/750-220ae3d74068.webp 750w, /k2/assets/images/375b/1000-88a72265c83c.webp 1000w, /k2/assets/images/375b/1250-fd0542c6c353.webp 1250w, /k2/assets/images/375b/1500-4f5598276f63.webp 1500w, /k2/assets/images/375b/1920-902fa8101332.webp 1920w"
+              sizes="104vw"
+              width="1920"
+              height="1080"
+              alt=""
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              aria-hidden="true"
+            >
+          </picture>
+        </div>
+        <div class="feature-panel__media-layer absolute inset-0" data-featurepanel-media-layer data-state="hidden" aria-hidden="true">
+          <picture class="block size-full" data-featurepanel-picture>
+            <source data-featurepanel-avif-source type="image/avif">
+            <img
+              class="feature-panel__image absolute block object-cover"
+              data-featurepanel-image
+              width="1920"
+              height="1080"
+              alt=""
+              loading="eager"
+              decoding="async"
+            >
+          </picture>
+        </div>
+        <span class="absolute inset-0 opacity-5 bg-secondary pointer-events-none"></span>
+        <span class="absolute inset-x-0 bottom-0 h-1/2 opacity-50 eased-gradient-to-top pointer-events-none hidden md:block"></span>
+        <span class="absolute inset-x-0 top-0 h-1/2 md:h-100 opacity-30 eased-gradient-to-bottom  pointer-events-none"></span>
+      </div>
+    </div>
+
+    <div class="hidden" aria-hidden="true">
+      
+        
+        <div data-featurepanel-source data-index="0">
+          <p data-featurepanel-source-image>/k2/assets/images/375b/250-c7330b723a91.webp</p>
+          <p data-featurepanel-source-image-srcset>/k2/assets/images/375b/250-c7330b723a91.webp 250w, /k2/assets/images/375b/500-1e0998af5dd6.webp 500w, /k2/assets/images/375b/750-220ae3d74068.webp 750w, /k2/assets/images/375b/1000-88a72265c83c.webp 1000w, /k2/assets/images/375b/1250-fd0542c6c353.webp 1250w, /k2/assets/images/375b/1500-4f5598276f63.webp 1500w, /k2/assets/images/375b/1920-902fa8101332.webp 1920w</p>
+          <p data-featurepanel-source-image-avif-srcset>/k2/assets/images/375b/250-de51f1ab4048.avif 250w, /k2/assets/images/375b/500-c0d3cf479b30.avif 500w, /k2/assets/images/375b/750-02d9022699b5.avif 750w, /k2/assets/images/375b/1000-047456d2afc8.avif 1000w, /k2/assets/images/375b/1250-2bf52f4a5923.avif 1250w, /k2/assets/images/375b/1500-a667a8cc729f.avif 1500w, /k2/assets/images/375b/1920-2f6dfc7e52cb.avif 1920w</p>
+          <p data-featurepanel-source-image-width>1920</p>
+          <p data-featurepanel-source-image-height>1080</p>
+          <p data-featurepanel-source-image-scale>1</p>
+          <p data-featurepanel-source-eyebrow></p>
+          <p data-featurepanel-source-text>Our enterprise-ready flagship model, built to compete with leading open-weight models on coding and agentic work.</p>
+          <p data-featurepanel-source-action-label>Try Now</p>
+          <p data-featurepanel-source-action-href>#get-started</p>
+
+          <ul data-featurepanel-source-comparison>
+            
+          </ul>
+        </div>
+      
+        
+        <div data-featurepanel-source data-index="1">
+          <p data-featurepanel-source-image>/k2/assets/images/36b/250-07f5b095577a.webp</p>
+          <p data-featurepanel-source-image-srcset>/k2/assets/images/36b/250-07f5b095577a.webp 250w, /k2/assets/images/36b/500-04547ae0321e.webp 500w, /k2/assets/images/36b/750-7b0e9fe19679.webp 750w, /k2/assets/images/36b/1000-d9b0b0f0db9e.webp 1000w, /k2/assets/images/36b/1250-3b55a225bd75.webp 1250w, /k2/assets/images/36b/1500-e5a27aa51ecc.webp 1500w, /k2/assets/images/36b/1920-6c9f812b9cc0.webp 1920w</p>
+          <p data-featurepanel-source-image-avif-srcset>/k2/assets/images/36b/250-7a0adb5ef5c2.avif 250w, /k2/assets/images/36b/500-2b434a88eb8a.avif 500w, /k2/assets/images/36b/750-ac2bb1b3901e.avif 750w, /k2/assets/images/36b/1000-96f0bb1dfcf5.avif 1000w, /k2/assets/images/36b/1250-9ebbc4608357.avif 1250w, /k2/assets/images/36b/1500-500ef804a623.avif 1500w, /k2/assets/images/36b/1920-32f12765675c.avif 1920w</p>
+          <p data-featurepanel-source-image-width>1920</p>
+          <p data-featurepanel-source-image-height>1080</p>
+          <p data-featurepanel-source-image-scale>1</p>
+          <p data-featurepanel-source-eyebrow></p>
+          <p data-featurepanel-source-text>The sparse 36B-A4B model delivers exceptional agentic capability per active parameter for cost-effective local hosting.</p>
+          <p data-featurepanel-source-action-label>Try Now</p>
+          <p data-featurepanel-source-action-href>#get-started</p>
+
+          <ul data-featurepanel-source-comparison>
+            
+          </ul>
+        </div>
+      
+        
+        <div data-featurepanel-source data-index="2">
+          <p data-featurepanel-source-image>/k2/assets/images/32b/250-15203e501869.webp</p>
+          <p data-featurepanel-source-image-srcset>/k2/assets/images/32b/250-15203e501869.webp 250w, /k2/assets/images/32b/500-c20c32f4ebc4.webp 500w, /k2/assets/images/32b/750-4579f139c56b.webp 750w, /k2/assets/images/32b/1000-92907feb1d93.webp 1000w, /k2/assets/images/32b/1250-46eaaa4185c0.webp 1250w, /k2/assets/images/32b/1500-bb725482a6fb.webp 1500w, /k2/assets/images/32b/1920-a6fe3f6784a9.webp 1920w</p>
+          <p data-featurepanel-source-image-avif-srcset>/k2/assets/images/32b/250-51258a8d7976.avif 250w, /k2/assets/images/32b/500-0aa76c01b330.avif 500w, /k2/assets/images/32b/750-6466d36e31c3.avif 750w, /k2/assets/images/32b/1000-8b89a0899bf7.avif 1000w, /k2/assets/images/32b/1250-490e991280da.avif 1250w, /k2/assets/images/32b/1500-00b8c551f01e.avif 1500w, /k2/assets/images/32b/1920-c416ba9b89f9.avif 1920w</p>
+          <p data-featurepanel-source-image-width>1920</p>
+          <p data-featurepanel-source-image-height>1080</p>
+          <p data-featurepanel-source-image-scale>1</p>
+          <p data-featurepanel-source-eyebrow></p>
+          <p data-featurepanel-source-text>Ranking among the top models in its class, 32B is our most powerful dense model, balancing capability, adaptability, and local deployability.</p>
+          <p data-featurepanel-source-action-label>Try Now</p>
+          <p data-featurepanel-source-action-href>#get-started</p>
+
+          <ul data-featurepanel-source-comparison>
+            
+          </ul>
+        </div>
+      
+        
+        <div data-featurepanel-source data-index="3">
+          <p data-featurepanel-source-image>/k2/assets/images/7.0b/250-0c58ce240445.webp</p>
+          <p data-featurepanel-source-image-srcset>/k2/assets/images/7.0b/250-0c58ce240445.webp 250w, /k2/assets/images/7.0b/500-eaf8fc877793.webp 500w, /k2/assets/images/7.0b/750-e68b6de71a66.webp 750w, /k2/assets/images/7.0b/1000-c54ccf68c5a0.webp 1000w, /k2/assets/images/7.0b/1250-5fb3515c45c8.webp 1250w, /k2/assets/images/7.0b/1500-6182b529a031.webp 1500w, /k2/assets/images/7.0b/1920-2c00236b15b9.webp 1920w</p>
+          <p data-featurepanel-source-image-avif-srcset>/k2/assets/images/7.0b/250-f157252be7e6.avif 250w, /k2/assets/images/7.0b/500-368ccef005bc.avif 500w, /k2/assets/images/7.0b/750-889f092e70ab.avif 750w, /k2/assets/images/7.0b/1000-87930a3953ce.avif 1000w, /k2/assets/images/7.0b/1250-4a96a904e5e3.avif 1250w, /k2/assets/images/7.0b/1500-f7da34319fda.avif 1500w, /k2/assets/images/7.0b/1920-ed474d590595.avif 1920w</p>
+          <p data-featurepanel-source-image-width>1920</p>
+          <p data-featurepanel-source-image-height>1080</p>
+          <p data-featurepanel-source-image-scale>1</p>
+          <p data-featurepanel-source-eyebrow></p>
+          <p data-featurepanel-source-text>The industry’s best-performing model under 10B combines strong software engineering and expert knowledge in a package small enough to run on a phone.</p>
+          <p data-featurepanel-source-action-label>Try Now</p>
+          <p data-featurepanel-source-action-href>#get-started</p>
+
+          <ul data-featurepanel-source-comparison>
+            
+          </ul>
+        </div>
+      
+        
+        <div data-featurepanel-source data-index="4">
+          <p data-featurepanel-source-image>/k2/assets/images/3.7b/250-382a562d15a0.webp</p>
+          <p data-featurepanel-source-image-srcset>/k2/assets/images/3.7b/250-382a562d15a0.webp 250w, /k2/assets/images/3.7b/500-0b416bba0ee7.webp 500w, /k2/assets/images/3.7b/750-ca7cacddbb79.webp 750w, /k2/assets/images/3.7b/1000-337e90057eb7.webp 1000w, /k2/assets/images/3.7b/1250-48a742c322eb.webp 1250w, /k2/assets/images/3.7b/1500-4bbe30d0c214.webp 1500w, /k2/assets/images/3.7b/1920-22eac146314b.webp 1920w</p>
+          <p data-featurepanel-source-image-avif-srcset>/k2/assets/images/3.7b/250-8440827fd37d.avif 250w, /k2/assets/images/3.7b/500-7ccb779363b8.avif 500w, /k2/assets/images/3.7b/750-7d7a358a17aa.avif 750w, /k2/assets/images/3.7b/1000-b2d0aea60bb7.avif 1000w, /k2/assets/images/3.7b/1250-3203c4e807a7.avif 1250w, /k2/assets/images/3.7b/1500-67d66cda3475.avif 1500w, /k2/assets/images/3.7b/1920-f3380ae917e2.avif 1920w</p>
+          <p data-featurepanel-source-image-width>1920</p>
+          <p data-featurepanel-source-image-height>1080</p>
+          <p data-featurepanel-source-image-scale>1</p>
+          <p data-featurepanel-source-eyebrow></p>
+          <p data-featurepanel-source-text>The 3.7B model delivers competitive scientific coding and mathematical reasoning performance at a size well suited to fine-tuning.</p>
+          <p data-featurepanel-source-action-label>Try Now</p>
+          <p data-featurepanel-source-action-href>#get-started</p>
+
+          <ul data-featurepanel-source-comparison>
+            
+          </ul>
+        </div>
+      
+        
+        <div data-featurepanel-source data-index="5">
+          <p data-featurepanel-source-image>/k2/assets/images/0.9b/250-04f9f5016188.webp</p>
+          <p data-featurepanel-source-image-srcset>/k2/assets/images/0.9b/250-04f9f5016188.webp 250w, /k2/assets/images/0.9b/500-72829c5e185a.webp 500w, /k2/assets/images/0.9b/750-8cd7bc56b4ae.webp 750w, /k2/assets/images/0.9b/1000-5551eb5ea569.webp 1000w, /k2/assets/images/0.9b/1250-ec6e4d5c6b9a.webp 1250w, /k2/assets/images/0.9b/1500-40e2d2ad054a.webp 1500w, /k2/assets/images/0.9b/1920-d1bb72565102.webp 1920w</p>
+          <p data-featurepanel-source-image-avif-srcset>/k2/assets/images/0.9b/250-dd1b00968d70.avif 250w, /k2/assets/images/0.9b/500-83d818bb8699.avif 500w, /k2/assets/images/0.9b/750-458a14121d89.avif 750w, /k2/assets/images/0.9b/1000-0aae5c4d0e92.avif 1000w, /k2/assets/images/0.9b/1250-fd974cbbc929.avif 1250w, /k2/assets/images/0.9b/1500-8184212b8975.avif 1500w, /k2/assets/images/0.9b/1920-e53a75d3c632.avif 1920w</p>
+          <p data-featurepanel-source-image-width>1920</p>
+          <p data-featurepanel-source-image-height>1080</p>
+          <p data-featurepanel-source-image-scale>1</p>
+          <p data-featurepanel-source-eyebrow></p>
+          <p data-featurepanel-source-text>Designed for highly constrained environments like watches and glasses, 0.9B is suited for focused interactions and lightweight tool use.</p>
+          <p data-featurepanel-source-action-label>Try Now</p>
+          <p data-featurepanel-source-action-href>#get-started</p>
+
+          <ul data-featurepanel-source-comparison>
+            
+          </ul>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  
+    <section data-component="statement" data-behavior="statement" class="py-set-11" data-reveal="true">
+  
+    <p class="f-body-lg max-w-[90%] lg:max-w-[75%] text-balance">With complete visibility into model training and evaluations, advanced agentic capabilities, and an efficient cost per task, our newest K2 generation gives researchers and builders the right-size foundation for dependable, long-context, agentic applications at every scale.</p>
+  
+  
+    <ul class="flex flex-col md:flex-row gap-x-40 gap-y-12 mt-20">
+      
+      <li>
+        <button
+          type="button"
+          class="flex flex-row items-center gap-8 group cursor-pointer"
+          data-statement-trigger
+          data-analytics-id="statement_launch_video"
+          data-analytics-label="Launch video"
+          data-analytics-section="statement"
+          data-analytics-position="1"
+          data-analytics-url="https://static.ifm.ai/k2/media/k2-horizon-launch-v1.mp4"
+          aria-haspopup="dialog"
+        >
+          <span class="border border-grey-opacity-20 rounded-full text-accent-orange flex items-center justify-center size-40 group-hover:bg-white group-hover:border-inverse group-focus:bg-white group-focus:border-inverse">
+            <svg class="block size-20" fill="none" aria-hidden="true">
+               <use xlink:href="#play"></use>
+            </svg>
+          </span>
+          <span class="f-ui">Launch video</span>
+        </button>
+      </li>
+      
+      
+    </ul>
+  
+
+  
+    
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-20 mt-set-11">
+      
+        
+        
+        
+
+        <li class="border-t border-t-grey-opacity-10 pt-12 md:border-t-0 md:pt-0" data-reveal="true">
+          <a
+            href="/blog/k2"
+            class="relative flex flex-row-reverse md:flex-col-reverse gap-x-gutter gap-y-12 justify-end items-start group"
+            
+              data-analytics-id="statement_technical_paper"
+              data-analytics-label="Technical blog"
+              data-analytics-section="statement"
+              data-analytics-position="3"
+            
+          >
+            <strong class="f-body flex items-center gap-8">
+              Technical blog
+              
+                <svg class="block size-12 text-accent-orange transition duration-300 group-hover:translate-x-4 group-focus-within:translate-x-4" aria-hidden="true">
+                  <use xlink:href="#arrow-right-21"></use>
+                </svg>
+              
+            </strong>
+
+            
+              <span class="block [aspect-ratio:3/2] w-cols-2 flex-none md:w-full overflow-hidden">
+                <picture class="block size-full" data-statement-artwork>
+                  
+                    <source
+                      type="image/avif"
+                      srcset="/k2/assets/images/technical-blog/250-9fcf2f38f102.avif 250w, /k2/assets/images/technical-blog/500-f4c9a8df2aff.avif 500w, /k2/assets/images/technical-blog/750-8b3ab67983e2.avif 750w, /k2/assets/images/technical-blog/940-170b1d287bd9.avif 940w"
+                      sizes="(min-width: 768px) 50vw, 30vw"
+                    >
+                  
+                  <img
+                    class="block size-full object-cover transition ease-in-out group-hover:scale-110 group-focus:scale-110"
+                    src="/k2/assets/images/technical-blog/250-e9a0f25ce663.webp"
+                    srcset="/k2/assets/images/technical-blog/250-e9a0f25ce663.webp 250w, /k2/assets/images/technical-blog/500-cb9e6ae4dd19.webp 500w, /k2/assets/images/technical-blog/750-12271b820f6f.webp 750w, /k2/assets/images/technical-blog/940-aa14ae9d023e.webp 940w"
+                    sizes="(min-width: 768px) 50vw, 30vw"
+                    width="940"
+                    height="627"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                  >
+                </picture>
+              </span>
+            
+          </a>
+        </li>
+      
+        
+        
+        
+
+        <li class="border-t border-t-grey-opacity-10 pt-12 md:border-t-0 md:pt-0" data-reveal="true">
+          <a
+            href="/k2/press-release/"
+            class="relative flex flex-row-reverse md:flex-col-reverse gap-x-gutter gap-y-12 justify-end items-start group"
+            
+              data-analytics-id="statement_press_release"
+              data-analytics-label="Press release"
+              data-analytics-section="statement"
+              data-analytics-position="4"
+            
+          >
+            <strong class="f-body flex items-center gap-8">
+              Press release
+              
+                <svg class="block size-12 text-accent-orange transition duration-300 group-hover:translate-x-4 group-focus-within:translate-x-4" aria-hidden="true">
+                  <use xlink:href="#arrow-right-21"></use>
+                </svg>
+              
+            </strong>
+
+            
+              <span class="block [aspect-ratio:3/2] w-cols-2 flex-none md:w-full overflow-hidden">
+                <picture class="block size-full" data-statement-artwork>
+                  
+                    <source
+                      type="image/avif"
+                      srcset="/k2/assets/images/press-release/250-40ec370b6bf5.avif 250w, /k2/assets/images/press-release/500-998cfc849037.avif 500w, /k2/assets/images/press-release/750-9a66c03cebe9.avif 750w, /k2/assets/images/press-release/940-351b75665890.avif 940w"
+                      sizes="(min-width: 768px) 50vw, 30vw"
+                    >
+                  
+                  <img
+                    class="block size-full object-cover transition ease-in-out group-hover:scale-110 group-focus:scale-110"
+                    src="/k2/assets/images/press-release/250-14aef82a692a.webp"
+                    srcset="/k2/assets/images/press-release/250-14aef82a692a.webp 250w, /k2/assets/images/press-release/500-47d818c81863.webp 500w, /k2/assets/images/press-release/750-4b50478e19a8.webp 750w, /k2/assets/images/press-release/940-c0df77e1d3cf.webp 940w"
+                    sizes="(min-width: 768px) 50vw, 30vw"
+                    width="940"
+                    height="628"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                  >
+                </picture>
+              </span>
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <dialog class="statement-dialog m-auto p-0 border-0 bg-transparent text-primary" data-statement-dialog>
+      <form class="flex flex-row justify-end w-full" method="dialog">
+        <button
+          type="submit"
+          class="flex flex-row justify-end size-44"
+          data-statement-close
+          aria-label="Close video dialog"
+        >
+          <span aria-hidden="true" class="text-[28px] leading-none text-inverse">&times;</span>
+        </button>
+      </form>
+      <div class="statement-dialog__panel relative w-[min(92vw,960px)] bg-secondary">
+        <div class="statement-dialog__video aspect-16/9 bg-black">
+          <video
+            class="block size-full"
+            data-statement-video
+            controls
+            playsinline
+            preload="metadata"
+            aria-label="K2 Horizon launch video"
+          >
+            <source src="https://static.ifm.ai/k2/media/k2-horizon-launch-v1.mp4" type="video/mp4">
+            
+              <track
+                kind="captions"
+                src="/k2/assets/captions/k2-horizon-launch-en-cfbd39153e3d.vtt"
+                srclang="en"
+                label="English"
+                default
+              >
+            
+          </video>
+        </div>
+      </div>
+    </dialog>
+  
+</section>
+
+  
+
+  
+    <section data-component="capabilty-grid" class="py-set-11">
+  
+  <div class="offset-grid">
+    <h2 class="f-h1" data-reveal="true">Well-rounded capabilities</h2>
+  </div>
+  
+  
+    <ul class="flex flex-col gap-y-48 mt-set-9">
+      
+        <li class="group offset-grid border-t border-t-grey-opacity-20 pt-12 transition-colors duration-200 ease-out hover:text-accent-orange" data-reveal="true">
+          <h3 class="f-body-lg transition-transform duration-200 ease-out group-hover:translate-x-4 motion-reduce:translate-x-0!">Agentic tasks and complex problem-solving</h3>
+          <p class="f-body mt-12 lg:mt-0 transition-transform duration-200 ease-out group-hover:translate-x-4 motion-reduce:translate-x-0!">Across coding and agentic tasks, K2 Horizon delivers top-tier performance in every size class.</p>
+        </li>
+      
+        <li class="group offset-grid border-t border-t-grey-opacity-20 pt-12 transition-colors duration-200 ease-out hover:text-accent-orange" data-reveal="true">
+          <h3 class="f-body-lg transition-transform duration-200 ease-out group-hover:translate-x-4 motion-reduce:translate-x-0!">Fully open for customization</h3>
+          <p class="f-body mt-12 lg:mt-0 transition-transform duration-200 ease-out group-hover:translate-x-4 motion-reduce:translate-x-0!">For every model, we release final weights, training code, checkpoints, and data-construction recipes or training data, so you can inspect, reproduce, fine-tune, and extend it.</p>
+        </li>
+      
+        <li class="group offset-grid border-t border-t-grey-opacity-20 pt-12 transition-colors duration-200 ease-out hover:text-accent-orange" data-reveal="true">
+          <h3 class="f-body-lg transition-transform duration-200 ease-out group-hover:translate-x-4 motion-reduce:translate-x-0!">One connected fleet</h3>
+          <p class="f-body mt-12 lg:mt-0 transition-transform duration-200 ease-out group-hover:translate-x-4 motion-reduce:translate-x-0!">The models share core architectural decisions, training methodology, and deployment tooling. This consistency makes it easier to move between sizes, route workloads across the fleet, and study capability and efficiency across scales.</p>
+        </li>
+      
+    </ul>
+  
+</section>
+
+  
+
+  
+    
+
+<section data-component="benchmark-chart" class="py-set-11">
+  <h2 class="f-body text-pretty">K2 Horizon Performance Evaluation</h2>
+  
+    <div class="mt-20 md:mt-16 bg-white">
+      <img
+        class="block w-full"
+        src="/k2/assets/images/horizon-performance-evaluation/250-bce65c375eb4.webp"
+        srcset="/k2/assets/images/horizon-performance-evaluation/250-bce65c375eb4.webp 250w, /k2/assets/images/horizon-performance-evaluation/500-e4c506b95481.webp 500w, /k2/assets/images/horizon-performance-evaluation/750-f2272f488729.webp 750w, /k2/assets/images/horizon-performance-evaluation/1000-6274f8d2564d.webp 1000w, /k2/assets/images/horizon-performance-evaluation/1250-e6e87e9cccab.webp 1250w, /k2/assets/images/horizon-performance-evaluation/1500-85772897e208.webp 1500w, /k2/assets/images/horizon-performance-evaluation/2000-8cf6f77faf3a.webp 2000w, /k2/assets/images/horizon-performance-evaluation/2500-473f3ddc1f19.webp 2500w"
+        sizes="auto, 100vw"
+        width="2500"
+        height="2086"
+        alt="K2 Horizon benchmark results across twelve evaluations, comparing Horizon models with leading open and proprietary models."
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+  
+</section>
+
+  
+
+  
+    
+
+
+
+<section data-component="transparency" data-behavior="transparency" class="pt-set-11 background-fill background-fill-accent-light-green">
+  <div class="offset-grid">
+    
+      <h2 class="f-h1 whitespace-pre-line" data-reveal="true">A glass box, 
+not a black box</h2>
+    
+    
+      <p class="f-body mt-20 lg:mt-0" data-reveal="true">Verifiable AI requires going beyond open weights. We offer granular transparency into our training code, training data composition, and evaluations. Inspect how K2 Horizon was built, reproduce it, then modify it.</p>
+    
+  </div>
+
+  
+    <div class="breakout relative overflow-hidden mt-40 md:mt-set-9 pb-set-11" data-transparency-stage data-reveal="true">
+
+      <ul class="container relative z-10 flex flex-col md:flex-row gap-gutter">
+        
+          
+          
+          
+          
+          
+          
+          <li class="md:w-cols-6 md:pt-[20%]">
+            <a
+              href="https://huggingface.co/datasets/IFM/TxT360-v2"
+              class="group block relative md:aspect-4/5 lg:aspect-1/1 overflow-hidden border border-primary text-primary hover:text-inverse focus-within:text-inverse transition hover:antialiased focus-within:antialiased"
+              data-transparency-card
+              data-variant="ascii"
+              
+                data-analytics-id="transparency_training_data"
+                data-analytics-label="Training data"
+                data-analytics-section="transparency"
+                data-analytics-position="1"
+              
+            >
+              <div class="relative z-10 flex flex-col p-20 lg:p-24">
+                <strong class="f-h2 flex items-center gap-8">
+                  <span class="group-hover:text-shadow-xs group-focus-within:text-shadow-xs">Training data</span>
+                  
+                    <svg class="block size-20 text-accent-orange transition duration-300 group-hover:translate-x-4 group-focus-within:translate-x-4" aria-hidden="true">
+                      <use xlink:href="#arrow-right-21"></use>
+                    </svg>
+                  
+                </strong>
+                <span class="f-body mt-20 max-w-[66%] lg:max-w-[80%] lg:max-w-[75%] text-balance group-hover:text-shadow-xs group-focus-within:text-shadow-xs">We provide the full pre-training corpus.</span>
+
+                
+                  <span class="mt-20 inline-flex">
+                    <span class="flex items-center justify-center rounded-sm border border-grey-opacity-10 group-hover:border-white-opacity-30 group-focus-within:border-white-opacity-10 size-48 overflow-clip">
+                      <img
+                        class="size-24 "
+                        src="/k2/assets/images/huggingfaces-24-6e324bdd8353.svg"
+                        width="24"
+                        height="23"
+                        alt=""
+                        aria-hidden="true"
+                      >
+                    </span>
+                  </span>
+                
+              </div>
+              <div class="absolute z-0 inset-0 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 bg-secondary transition" aria-hidden="true">
+                <img
+                  class="hidden md:block absolute max-w-none object-cover object-top-right w-(--transparency-stage-width) h-(--transparency-stage-height) top-[calc(var(--transparency-offset-y,0px)*-1)] left-[calc(var(--transparency-offset-x,0px)*-1)]"
+                  data-transparency-image
+                  src="/k2/assets/images/transparency-ascii/250-c200048463d4.webp"
+                  srcset="/k2/assets/images/transparency-ascii/250-c200048463d4.webp 250w, /k2/assets/images/transparency-ascii/500-2a5dcd1d2932.webp 500w, /k2/assets/images/transparency-ascii/750-1ce8d4d1c4b4.webp 750w, /k2/assets/images/transparency-ascii/1000-c825124974c6.webp 1000w, /k2/assets/images/transparency-ascii/1250-7972732e96f5.webp 1250w, /k2/assets/images/transparency-ascii/1500-b218783c8a72.webp 1500w, /k2/assets/images/transparency-ascii/2000-82034d647fbf.webp 2000w, /k2/assets/images/transparency-ascii/2500-df0903256d6e.webp 2500w"
+                  sizes="auto, 100vw"
+                  width="2500"
+                  height="1775"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                >
+                <span class="absolute inset-0 eased-gradient-to-bottom-right lg:hidden"></span>
+              </div>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="md:w-cols-6 ">
+            <div
+              
+              class="group block relative md:aspect-4/5 lg:aspect-1/1 overflow-hidden border border-primary text-primary hover:text-inverse focus-within:text-inverse transition hover:antialiased focus-within:antialiased"
+              data-transparency-card
+              data-variant="xray"
+              
+            >
+              <div class="relative z-10 flex flex-col p-20 lg:p-24">
+                <strong class="f-h2 flex items-center gap-8">
+                  <span class="group-hover:text-shadow-xs group-focus-within:text-shadow-xs">Training code</span>
+                  
+                </strong>
+                <span class="f-body mt-20 max-w-[66%] lg:max-w-[80%] lg:max-w-[75%] text-balance group-hover:text-shadow-xs group-focus-within:text-shadow-xs">We make both our pre-training and post-training code available so you can rerun or modify the training pipeline.</span>
+
+                
+                  <div class="mt-20 flex items-center gap-12" data-transparency-resources>
+                    <span class="flex shrink-0 items-center justify-center rounded-sm border border-grey-opacity-10 group-hover:border-white-opacity-30 group-focus-within:border-white-opacity-10 size-48 overflow-clip">
+                      <img
+                        class="size-24 group-hover:invert group-focus-within:invert"
+                        src="/k2/assets/images/github-20-2ceb1d6b3007.svg"
+                        width="20"
+                        height="19"
+                        alt=""
+                        aria-hidden="true"
+                      >
+                    </span>
+                    <div class="flex flex-col items-start gap-4">
+                      
+                        <a
+                          href="https://github.com/ifm-ai/xllm"
+                          class="f-body inline-flex items-center gap-8"
+                          data-analytics-id="transparency_pretraining_code"
+                          data-analytics-label="Pre-training"
+                          data-analytics-section="transparency"
+                          data-analytics-position="1"
+                        >
+                          <span class="group-hover:text-shadow-xs group-focus-within:text-shadow-xs">Pre-training</span>
+                          <svg class="block size-20 text-accent-orange transition duration-300 group-hover:translate-x-4 group-focus-within:translate-x-4" aria-hidden="true">
+                            <use xlink:href="#arrow-right-21"></use>
+                          </svg>
+                        </a>
+                      
+                        <a
+                          href="https://github.com/ifm-ai/horizon-post-train"
+                          class="f-body inline-flex items-center gap-8"
+                          data-analytics-id="transparency_posttraining_code"
+                          data-analytics-label="Post-training"
+                          data-analytics-section="transparency"
+                          data-analytics-position="2"
+                        >
+                          <span class="group-hover:text-shadow-xs group-focus-within:text-shadow-xs">Post-training</span>
+                          <svg class="block size-20 text-accent-orange transition duration-300 group-hover:translate-x-4 group-focus-within:translate-x-4" aria-hidden="true">
+                            <use xlink:href="#arrow-right-21"></use>
+                          </svg>
+                        </a>
+                      
+                    </div>
+                  </div>
+                
+              </div>
+              <div class="absolute z-0 inset-0 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 bg-secondary transition" aria-hidden="true">
+                <img
+                  class="hidden md:block absolute max-w-none object-cover object-top-right w-(--transparency-stage-width) h-(--transparency-stage-height) top-[calc(var(--transparency-offset-y,0px)*-1)] left-[calc(var(--transparency-offset-x,0px)*-1)]"
+                  data-transparency-image
+                  src="/k2/assets/images/transparency-xray/250-18f97b87aa8c.webp"
+                  srcset="/k2/assets/images/transparency-xray/250-18f97b87aa8c.webp 250w, /k2/assets/images/transparency-xray/500-aa86b1a99213.webp 500w, /k2/assets/images/transparency-xray/750-7445fd204e92.webp 750w, /k2/assets/images/transparency-xray/1000-ef0935d1e064.webp 1000w, /k2/assets/images/transparency-xray/1250-b911b1572306.webp 1250w"
+                  sizes="auto, 100vw"
+                  width="1250"
+                  height="888"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                >
+                <span class="absolute inset-0 eased-gradient-to-bottom-right lg:hidden"></span>
+              </div>
+            </div>
+          </li>
+        
+      </ul>
+
+      <img
+        class="hidden md:block absolute inset-x-0 top-0 z-0 size-full max-w-none object-cover object-top-right"
+        src="/k2/assets/images/transparency/250-a52a44bd94f9.webp"
+        srcset="/k2/assets/images/transparency/250-a52a44bd94f9.webp 250w, /k2/assets/images/transparency/500-23663524681a.webp 500w, /k2/assets/images/transparency/750-3125ff123bd8.webp 750w, /k2/assets/images/transparency/1000-3994217aedff.webp 1000w, /k2/assets/images/transparency/1250-e13823dd62a1.webp 1250w"
+        sizes="auto, 100vw"
+        width="1250"
+        height="888"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+      >
+    </div>
+  
+</section>
+
+  
+
+  
+    <section id="get-started" data-component="get-started" class="py-set-11 bg-accent-deep-blue background-fill">
+  
+    <div class="offset-grid">
+      <h2 class="f-h1 text-pretty text-inverse antialiased" data-reveal="true">
+        Get started
+      </h2>
+    </div>
+  
+  <div class="flex flex-col gap-40 lg:gap-80 mt-40 lg:mt-80">
+    
+      <div>
+        
+          <h3 class="f-body-lg text-inverse antialiased" data-reveal="true">Build</h3>
+        
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-gutter mt-20">
+          
+            <li data-reveal="true">
+              <a
+                href="https://platform.ifm.ai/"
+                data-build-card
+                class="relative w-full min-h-240 overflow-hidden p-16 md:min-h-260 lg:min-h-220 lg:aspect-5/2 lg:p-20 flex flex-col justify-between bg-white hover:bg-white-opacity-85 group touch-manipulation"
+                data-analytics-id="build_get_api_access"
+                data-analytics-label="Get API access"
+                data-analytics-section="build"
+                data-analytics-position="1"
+              >
+                <h4 class="f-h2 flex flex-row items-center gap-8 pe-80 text-balance">
+                  <span>Get API access</span>
+                  <svg class="block size-16 shrink-0 text-accent-orange transition-transform group-hover:translate-x-4" aria-hidden="true">
+                      <use xlink:href="#arrow-right-21"></use>
+                  </svg>
+                </h4>
+
+                
+                  <div data-inference-partners-container class="mt-28 pe-4">
+                    <p class="f-caption text-secondary">Inference partners</p>
+                    <ul data-inference-partners class="mt-12 grid items-center gap-y-12">
+                      
+                        <li data-inference-partner class="h-40 min-w-0 flex items-center justify-center">
+                          <img
+                            data-partner-logo
+                            class="block h-auto max-h-full w-auto object-contain"
+                            src="/k2/assets/images/partner-compass-de43706e0b59.webp"
+                            width="240"
+                            height="38"
+                            alt="Compass"
+                            loading="lazy"
+                            decoding="async"
+                            translate="no"
+                          >
+                        </li>
+                      
+                        <li data-inference-partner class="h-40 min-w-0 flex items-center justify-center">
+                          <img
+                            data-partner-logo
+                            class="block h-auto max-h-full w-auto object-contain"
+                            src="/k2/assets/images/cerebras-b7aa2b975205.svg"
+                            width="67"
+                            height="30"
+                            alt="Cerebras"
+                            loading="lazy"
+                            decoding="async"
+                            translate="no"
+                          >
+                        </li>
+                      
+                        <li data-inference-partner class="h-40 min-w-0 flex items-center justify-center">
+                          <img
+                            data-partner-logo
+                            class="block h-auto max-h-full w-auto object-contain"
+                            src="/k2/assets/images/partner-aws-b86386aba16a.webp"
+                            width="180"
+                            height="129"
+                            alt="Powered by AWS"
+                            loading="lazy"
+                            decoding="async"
+                            translate="no"
+                          >
+                        </li>
+                      
+                        <li data-inference-partner class="h-40 min-w-0 flex items-center justify-center">
+                          <img
+                            data-partner-logo
+                            class="block h-auto max-h-full w-auto object-contain"
+                            src="/k2/assets/images/partner-nebius-6e243ea19197.webp"
+                            width="400"
+                            height="226"
+                            alt="Nebius Token Factory"
+                            loading="lazy"
+                            decoding="async"
+                            translate="no"
+                          >
+                        </li>
+                      
+                    </ul>
+                  </div>
+                
+
+                <svg data-build-card-icon class="absolute top-16 end-16 lg:top-20 lg:end-20 text-accent-orange" aria-hidden="true">
+                    <use xlink:href="#box"></use>
+                </svg>
+              </a>
+            </li>
+          
+            <li data-reveal="true">
+              <a
+                href="https://docs.ifm.ai"
+                data-build-card
+                class="relative w-full min-h-240 overflow-hidden p-16 md:min-h-260 lg:min-h-220 lg:aspect-5/2 lg:p-20 flex flex-col justify-between bg-white hover:bg-white-opacity-85 group touch-manipulation"
+                data-analytics-id="build_documentation"
+                data-analytics-label="Documentation"
+                data-analytics-section="build"
+                data-analytics-position="2"
+              >
+                <h4 class="f-h2 flex flex-row items-center gap-8 pe-80 text-balance">
+                  <span>Documentation</span>
+                  <svg class="block size-16 shrink-0 text-accent-orange transition-transform group-hover:translate-x-4" aria-hidden="true">
+                      <use xlink:href="#arrow-right-21"></use>
+                  </svg>
+                </h4>
+
+                
+
+                <svg data-build-card-icon class="absolute top-16 end-16 lg:top-20 lg:end-20 text-accent-orange" aria-hidden="true">
+                    <use xlink:href="#book"></use>
+                </svg>
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div>
+        
+          <h3 class="f-body-lg text-inverse antialiased" data-reveal="true">Deploy</h3>
+        
+        <ul class="grid grid-cols-1 md:grid-cols-2 min-[1320px]:grid-cols-4 gap-20 mt-set-4">
+          
+            
+            
+            <li data-reveal="true">
+              <a
+                href="https://huggingface.co/collections/IFM/k2-horizon"
+                data-deployment-partner="Hugging Face"
+                class="f-body h-88 flex flex-row gap-x-gutter items-center justify-between text-primary bg-white-opacity-15 p-20 hover:bg-white group touch-manipulation"
+                
+                  data-analytics-id="deploy_hugging_face"
+                  data-analytics-label="Hugging Face"
+                  data-analytics-section="deploy"
+                  data-analytics-position="1"
+                
+              >
+                <strong class="min-w-0 flex flex-row items-center gap-8 text-inverse group-hover:text-primary">
+                  <span class="whitespace-nowrap" translate="no">Hugging Face</span>
+                  
+                    <svg class="block size-16 shrink-0 text-accent-orange transition-transform group-hover:translate-x-4" aria-hidden="true">
+                      <use xlink:href="#arrow-right-21"></use>
+                    </svg>
+                  
+                </strong>
+                <span class="flex shrink-0 items-center justify-center size-48 rounded-[10px] overflow-clip  ">
+                  <img
+                    data-partner-logo
+                    class="block size-full rounded-sm object-contain"
+                    src="/k2/assets/images/huggingfaces-48-6121f0468a72.svg"
+                    width="48"
+                    height="48"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </span>
+              </a>
+            </li>
+          
+            
+            
+            <li data-reveal="true">
+              <a
+                href="https://recipes.vllm.ai/IFM"
+                data-deployment-partner="vLLM"
+                class="f-body h-88 flex flex-row gap-x-gutter items-center justify-between text-primary bg-white-opacity-15 p-20 hover:bg-white group touch-manipulation"
+                
+                  data-analytics-id="deploy_vllm"
+                  data-analytics-label="vLLM"
+                  data-analytics-section="deploy"
+                  data-analytics-position="2"
+                
+              >
+                <strong class="min-w-0 flex flex-row items-center gap-8 text-inverse group-hover:text-primary">
+                  <span class="whitespace-nowrap" translate="no">vLLM</span>
+                  
+                    <svg class="block size-16 shrink-0 text-accent-orange transition-transform group-hover:translate-x-4" aria-hidden="true">
+                      <use xlink:href="#arrow-right-21"></use>
+                    </svg>
+                  
+                </strong>
+                <span class="flex shrink-0 items-center justify-center size-48 rounded-[10px] overflow-clip bg-white p-6 ">
+                  <img
+                    data-partner-logo
+                    class="block size-full rounded-sm object-contain"
+                    src="/k2/assets/images/partner-vllm-0ab8713dc53b.webp"
+                    width="96"
+                    height="96"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </span>
+              </a>
+            </li>
+          
+            
+            
+            <li data-reveal="true">
+              <a
+                href="https://docs.sglang.io/cookbook/autoregressive/IFM/K2-Horizon"
+                data-deployment-partner="SGLang"
+                class="f-body h-88 flex flex-row gap-x-gutter items-center justify-between text-primary bg-white-opacity-15 p-20 hover:bg-white group touch-manipulation"
+                
+                  data-analytics-id="deploy_sglang"
+                  data-analytics-label="SGLang"
+                  data-analytics-section="deploy"
+                  data-analytics-position="3"
+                
+              >
+                <strong class="min-w-0 flex flex-row items-center gap-8 text-inverse group-hover:text-primary">
+                  <span class="whitespace-nowrap" translate="no">SGLang</span>
+                  
+                    <svg class="block size-16 shrink-0 text-accent-orange transition-transform group-hover:translate-x-4" aria-hidden="true">
+                      <use xlink:href="#arrow-right-21"></use>
+                    </svg>
+                  
+                </strong>
+                <span class="flex shrink-0 items-center justify-center size-48 rounded-[10px] overflow-clip  bg-accent-off-white p-6">
+                  <img
+                    data-partner-logo
+                    class="block size-full rounded-sm object-contain"
+                    src="/k2/assets/images/partner-sglang-1545331fa949.webp"
+                    width="192"
+                    height="59"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </span>
+              </a>
+            </li>
+          
+            
+            
+            <li data-reveal="true">
+              <div
+                
+                data-deployment-partner="Ollama"
+                class="f-body h-88 flex flex-row gap-x-gutter items-center justify-between text-primary bg-white-opacity-15 p-20 "
+                
+              >
+                <strong class="min-w-0 flex flex-row items-center gap-8 text-inverse ">
+                  <span class="whitespace-nowrap" translate="no">Ollama</span>
+                  
+                </strong>
+                <span class="flex shrink-0 items-center justify-center size-48 rounded-[10px] overflow-clip  ">
+                  <img
+                    data-partner-logo
+                    class="block size-full rounded-sm object-contain"
+                    src="/k2/assets/images/ollama-48-2e60fca9ef68.svg"
+                    width="48"
+                    height="48"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </span>
+              </div>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+  </div>
+</section>
+
+  
+
+  
+    <section data-component="demos" class="relative breakout bg-grey-opacity-5 py-set-11">
+  <div class="container relative z-1">
+    <div class="offset-grid">
+      <div>
+        
+          <h2 class="f-h1 whitespace-pre-line text-pretty" data-reveal="true">Flexing across everyday use-cases</h2>
+        
+        
+      </div>
+    </div>
+    <div class="mt-80 breakout">
+      <div class="fullbleedscroller">
+        <ul class="flex gap-gutter min-w-max pb-8">
+          
+            
+            
+            
+
+            <li class="flex flex-col w-cols-vw-4 md:w-cols-vw-5 lg:w-cols-vw-4" data-reveal="true">
+              <div
+                
+                class="flex flex-1 flex-col-reverse bg-white overflow-hidden "
+                
+              >
+                <span class="block flex flex-1 flex-col gap-40 justify-between p-12 md:py-16 md:px-20">
+                  <strong class="f-card line-clamp-4">RFP Review without the grind</strong>
+                  
+                    <span>
+                      <span class="f-btn inline-block bg-tag text-accent-orange p-8 rounded-sm">Procurement</span>
+                    </span>
+                  
+                </span>
+                
+                  <span class="block aspect-1/1 bg-accent-brick flex items-center justify-center overflow-hidden">
+                    <img
+                      class="block aspect-1/1 w-full transition group-hover:scale-110 group-focus:scale-110"
+                      src="/k2/assets/images/demo-1/250-f8cdcd801c71.webp"
+                      srcset="/k2/assets/images/demo-1/250-f8cdcd801c71.webp 250w, /k2/assets/images/demo-1/500-d0bc30e9c3a7.webp 500w, /k2/assets/images/demo-1/750-7d5d7ad2298c.webp 750w"
+                      sizes="auto, 100vw"
+                      width="750"
+                      height="750"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    >
+                  </span>
+                
+              </div>
+            </li>
+          
+            
+            
+            
+
+            <li class="flex flex-col w-cols-vw-4 md:w-cols-vw-5 lg:w-cols-vw-4" data-reveal="true">
+              <div
+                
+                class="flex flex-1 flex-col-reverse bg-white overflow-hidden "
+                
+              >
+                <span class="block flex flex-1 flex-col gap-40 justify-between p-12 md:py-16 md:px-20">
+                  <strong class="f-card line-clamp-4">Your Handbook, Answered Instantly</strong>
+                  
+                    <span>
+                      <span class="f-btn inline-block bg-tag text-accent-orange p-8 rounded-sm">People &amp; HR</span>
+                    </span>
+                  
+                </span>
+                
+                  <span class="block aspect-1/1 bg-accent-brick flex items-center justify-center overflow-hidden">
+                    <img
+                      class="block aspect-1/1 w-full transition group-hover:scale-110 group-focus:scale-110"
+                      src="/k2/assets/images/demo-2/250-8c757336584e.webp"
+                      srcset="/k2/assets/images/demo-2/250-8c757336584e.webp 250w, /k2/assets/images/demo-2/500-967f29cb97fe.webp 500w"
+                      sizes="auto, 100vw"
+                      width="500"
+                      height="500"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    >
+                  </span>
+                
+              </div>
+            </li>
+          
+            
+            
+            
+
+            <li class="flex flex-col w-cols-vw-4 md:w-cols-vw-5 lg:w-cols-vw-4" data-reveal="true">
+              <div
+                
+                class="flex flex-1 flex-col-reverse bg-white overflow-hidden "
+                
+              >
+                <span class="block flex flex-1 flex-col gap-40 justify-between p-12 md:py-16 md:px-20">
+                  <strong class="f-card line-clamp-4">Your Data, Dashboard-Ready</strong>
+                  
+                    <span>
+                      <span class="f-btn inline-block bg-tag text-accent-orange p-8 rounded-sm">Data</span>
+                    </span>
+                  
+                </span>
+                
+                  <span class="block aspect-1/1 bg-accent-brick flex items-center justify-center overflow-hidden">
+                    <img
+                      class="block aspect-1/1 w-full transition group-hover:scale-110 group-focus:scale-110"
+                      src="/k2/assets/images/demo-1/250-f8cdcd801c71.webp"
+                      srcset="/k2/assets/images/demo-1/250-f8cdcd801c71.webp 250w, /k2/assets/images/demo-1/500-d0bc30e9c3a7.webp 500w, /k2/assets/images/demo-1/750-7d5d7ad2298c.webp 750w"
+                      sizes="auto, 100vw"
+                      width="750"
+                      height="750"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    >
+                  </span>
+                
+              </div>
+            </li>
+          
+            
+            
+            
+
+            <li class="flex flex-col w-cols-vw-4 md:w-cols-vw-5 lg:w-cols-vw-4" data-reveal="true">
+              <div
+                
+                class="flex flex-1 flex-col-reverse bg-white overflow-hidden "
+                
+              >
+                <span class="block flex flex-1 flex-col gap-40 justify-between p-12 md:py-16 md:px-20">
+                  <strong class="f-card line-clamp-4">RFP Review without the grind</strong>
+                  
+                    <span>
+                      <span class="f-btn inline-block bg-tag text-accent-orange p-8 rounded-sm">Procurement</span>
+                    </span>
+                  
+                </span>
+                
+                  <span class="block aspect-1/1 bg-accent-brick flex items-center justify-center overflow-hidden">
+                    <img
+                      class="block aspect-1/1 w-full transition group-hover:scale-110 group-focus:scale-110"
+                      src="/k2/assets/images/demo-4/250-538e473ad874.webp"
+                      srcset="/k2/assets/images/demo-4/250-538e473ad874.webp 250w, /k2/assets/images/demo-4/500-725971b0e4ff.webp 500w, /k2/assets/images/demo-4/750-7fcbae55b26e.webp 750w"
+                      sizes="auto, 100vw"
+                      width="750"
+                      height="750"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    >
+                  </span>
+                
+              </div>
+            </li>
+          
+            
+            
+            
+
+            <li class="flex flex-col w-cols-vw-4 md:w-cols-vw-5 lg:w-cols-vw-4" data-reveal="true">
+              <div
+                
+                class="flex flex-1 flex-col-reverse bg-white overflow-hidden "
+                
+              >
+                <span class="block flex flex-1 flex-col gap-40 justify-between p-12 md:py-16 md:px-20">
+                  <strong class="f-card line-clamp-4">Spot Billing errors every invoice line</strong>
+                  
+                    <span>
+                      <span class="f-btn inline-block bg-tag text-accent-orange p-8 rounded-sm">Finance</span>
+                    </span>
+                  
+                </span>
+                
+                  <span class="block aspect-1/1 bg-accent-brick flex items-center justify-center overflow-hidden">
+                    <img
+                      class="block aspect-1/1 w-full transition group-hover:scale-110 group-focus:scale-110"
+                      src="/k2/assets/images/demo-3/250-8b4618710e43.webp"
+                      srcset="/k2/assets/images/demo-3/250-8b4618710e43.webp 250w, /k2/assets/images/demo-3/500-defe737a7100.webp 500w, /k2/assets/images/demo-3/750-cef00b1c9c74.webp 750w"
+                      sizes="auto, 100vw"
+                      width="750"
+                      height="750"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    >
+                  </span>
+                
+              </div>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+
+  
+    
+
+
+
+  <section
+    data-component="breakthroughs"
+    data-behavior="breakthroughs"
+    class="py-set-11 breakout overflow-hidden bg-accent-deep-beige"
+  >
+    <div class="container relative z-10 flex flex-col gap-y-20 md:gap-y-80 md:pb-200">
+
+      
+        <div class="offset-grid relative z-10">
+          <h2 class="f-h1 whitespace-pre-line text-pretty" data-reveal="true">
+            Unlocking future
+breakthroughs
+across industries
+          </h2>
+        </div>
+      
+
+      <div data-breakthroughs-carousel class="relative flex flex-col gap-y-20 md:block" aria-roledescription="carousel">
+        
+          <ul class="flex flex-row-reverse gap-8 order-2 justify-end">
+            <li class="md:absolute md:z-10 md:-10 md:top-1/2 md:end-0 md:-mt-24">
+              <button
+                type="button"
+                class="border-1 border-inverse rounded-full text-accent-orange flex items-center justify-center size-40 md:size-48 hover:bg-white-opacity-85 hover:border-inverse focus:bg-white-opacity-85 focus:border-inverse cursor-pointer bg-white"
+                data-breakthroughs-next
+                aria-label="Show next video"
+              >
+                <svg class="block size-16" aria-hidden="true">
+                  <use xlink:href="#arrow-right-21"></use>
+                </svg>
+              </button>
+            </li>
+            <li class="md:absolute md:z-10 md:top-1/2 md:start-0 md:-mt-24">
+              <button
+                type="button"
+                class="border-1 border-inverse rounded-full text-accent-orange flex items-center justify-center size-40 md:size-48 hover:bg-white-opacity-85 hover:border-inverse focus:bg-white-opacity-85 focus:border-inverse cursor-pointer bg-white"
+                data-breakthroughs-prev
+                aria-label="Show previous video"
+              >
+                <svg class="block size-16 rotate-180" aria-hidden="true">
+                  <use xlink:href="#arrow-right-21"></use>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        
+
+        <ul class="relative z-1 grid" data-breakthroughs-list>
+          
+            
+
+            <li
+              class="breakthrough__item relative aspect-16/9 md:w-cols-10 md:mx-auto row-start-1 col-start-1"
+              data-breakthroughs-item
+              data-index="0"
+              
+            >
+              <button
+                type="button"
+                class="absolute z-0 inset-0 cursor-pointer bg-secondary group overflow-hidden"
+                data-breakthroughs-poster
+                aria-label="Play Simulating human behavior through AI agents"
+              >
+                
+                  <img
+                    class="absolute inset-0 z-0 size-full object-cover transition ease-in-out group-hover:scale-110 group-focus:scale-110"
+                    src="/k2/assets/images/375b/250-c7330b723a91.webp"
+                    srcset="/k2/assets/images/375b/250-c7330b723a91.webp 250w, /k2/assets/images/375b/500-1e0998af5dd6.webp 500w, /k2/assets/images/375b/750-220ae3d74068.webp 750w, /k2/assets/images/375b/1000-88a72265c83c.webp 1000w, /k2/assets/images/375b/1250-fd0542c6c353.webp 1250w, /k2/assets/images/375b/1500-4f5598276f63.webp 1500w, /k2/assets/images/375b/1920-902fa8101332.webp 1920w"
+                    sizes="auto, 100vw"
+                    width="1920"
+                    height="1080"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  >
+
+                  <span class="absolute md:hidden inset-0 opacity-10 bg-secondary pointer-events-none"></span>
+                  <span class="hidden md:block absolute inset-x-0 top-0 md:h-100 opacity-30 eased-gradient-to-bottom  pointer-events-none"></span>
+                
+
+                <span class="breakthrough__text absolute inset-20 lg:inset-28 flex flex-col gap-20 justify-center items-center md:justify-between md:items-start">
+                  <span class="f-h2 text-inverse">Simulating human behavior through AI agents</span>
+                  <span class="border-1 border-inverse rounded-full text-accent-orange flex items-center justify-center size-40 md:size-48 hover:bg-white-opacity-85 hover:border-inverse focus:bg-white-opacity-85 focus:border-inverse cursor-pointer">
+                    <svg class="block size-20" fill="none" aria-hidden="true">
+                       <use xlink:href="#play"></use>
+                    </svg>
+                    <span class="sr-only">Play video</span>
+                  </span>
+                </span>
+              </button>
+
+              <iframe
+                class="absolute z-1 inset-0 size-full"
+                data-breakthroughs-iframe
+                title="Simulating human behavior through AI agents"
+                src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                data-video="ez6WQ7IX72U"
+                allowfullscreen
+                hidden
+              ></iframe>
+            </li>
+
+          
+            
+
+            <li
+              class="breakthrough__item relative aspect-16/9 md:w-cols-10 md:mx-auto row-start-1 col-start-1"
+              data-breakthroughs-item
+              data-index="1"
+              hidden
+            >
+              <button
+                type="button"
+                class="absolute z-0 inset-0 cursor-pointer bg-secondary group overflow-hidden"
+                data-breakthroughs-poster
+                aria-label="Show Precision crop planning with open frontier models"
+              >
+                
+                  <img
+                    class="absolute inset-0 z-0 size-full object-cover transition ease-in-out group-hover:scale-110 group-focus:scale-110"
+                    src="/k2/assets/images/36b/250-07f5b095577a.webp"
+                    srcset="/k2/assets/images/36b/250-07f5b095577a.webp 250w, /k2/assets/images/36b/500-04547ae0321e.webp 500w, /k2/assets/images/36b/750-7b0e9fe19679.webp 750w, /k2/assets/images/36b/1000-d9b0b0f0db9e.webp 1000w, /k2/assets/images/36b/1250-3b55a225bd75.webp 1250w, /k2/assets/images/36b/1500-e5a27aa51ecc.webp 1500w, /k2/assets/images/36b/1920-6c9f812b9cc0.webp 1920w"
+                    sizes="auto, 100vw"
+                    width="1920"
+                    height="1080"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  >
+
+                  <span class="absolute md:hidden inset-0 opacity-10 bg-secondary pointer-events-none"></span>
+                  <span class="hidden md:block absolute inset-x-0 top-0 md:h-100 opacity-30 eased-gradient-to-bottom  pointer-events-none"></span>
+                
+
+                <span class="breakthrough__text absolute inset-20 lg:inset-28 flex flex-col gap-20 justify-center items-center md:justify-between md:items-start">
+                  <span class="f-h2 text-inverse">Precision crop planning with open frontier models</span>
+                  <span class="border-1 border-inverse rounded-full text-accent-orange flex items-center justify-center size-40 md:size-48 hover:bg-white-opacity-85 hover:border-inverse focus:bg-white-opacity-85 focus:border-inverse cursor-pointer">
+                    <svg class="block size-20" fill="none" aria-hidden="true">
+                       <use xlink:href="#play"></use>
+                    </svg>
+                    <span class="sr-only">Play video</span>
+                  </span>
+                </span>
+              </button>
+
+              <iframe
+                class="absolute z-1 inset-0 size-full"
+                data-breakthroughs-iframe
+                title="Precision crop planning with open frontier models"
+                src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                data-video="ez6WQ7IX72U"
+                allowfullscreen
+                hidden
+              ></iframe>
+            </li>
+
+          
+            
+
+            <li
+              class="breakthrough__item relative aspect-16/9 md:w-cols-10 md:mx-auto row-start-1 col-start-1"
+              data-breakthroughs-item
+              data-index="2"
+              hidden
+            >
+              <button
+                type="button"
+                class="absolute z-0 inset-0 cursor-pointer bg-secondary group overflow-hidden"
+                data-breakthroughs-poster
+                aria-label="Show Training adaptive assistants for complex workflows"
+              >
+                
+                  <img
+                    class="absolute inset-0 z-0 size-full object-cover transition ease-in-out group-hover:scale-110 group-focus:scale-110"
+                    src="/k2/assets/images/7.0b/250-0c58ce240445.webp"
+                    srcset="/k2/assets/images/7.0b/250-0c58ce240445.webp 250w, /k2/assets/images/7.0b/500-eaf8fc877793.webp 500w, /k2/assets/images/7.0b/750-e68b6de71a66.webp 750w, /k2/assets/images/7.0b/1000-c54ccf68c5a0.webp 1000w, /k2/assets/images/7.0b/1250-5fb3515c45c8.webp 1250w, /k2/assets/images/7.0b/1500-6182b529a031.webp 1500w, /k2/assets/images/7.0b/1920-2c00236b15b9.webp 1920w"
+                    sizes="auto, 100vw"
+                    width="1920"
+                    height="1080"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  >
+
+                  <span class="absolute md:hidden inset-0 opacity-10 bg-secondary pointer-events-none"></span>
+                  <span class="hidden md:block absolute inset-x-0 top-0 md:h-100 opacity-30 eased-gradient-to-bottom  pointer-events-none"></span>
+                
+
+                <span class="breakthrough__text absolute inset-20 lg:inset-28 flex flex-col gap-20 justify-center items-center md:justify-between md:items-start">
+                  <span class="f-h2 text-inverse">Training adaptive assistants for complex workflows</span>
+                  <span class="border-1 border-inverse rounded-full text-accent-orange flex items-center justify-center size-40 md:size-48 hover:bg-white-opacity-85 hover:border-inverse focus:bg-white-opacity-85 focus:border-inverse cursor-pointer">
+                    <svg class="block size-20" fill="none" aria-hidden="true">
+                       <use xlink:href="#play"></use>
+                    </svg>
+                    <span class="sr-only">Play video</span>
+                  </span>
+                </span>
+              </button>
+
+              <iframe
+                class="absolute z-1 inset-0 size-full"
+                data-breakthroughs-iframe
+                title="Training adaptive assistants for complex workflows"
+                src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                data-video="ez6WQ7IX72U"
+                allowfullscreen
+                hidden
+              ></iframe>
+            </li>
+
+          
+            
+
+            <li
+              class="breakthrough__item relative aspect-16/9 md:w-cols-10 md:mx-auto row-start-1 col-start-1"
+              data-breakthroughs-item
+              data-index="3"
+              hidden
+            >
+              <button
+                type="button"
+                class="absolute z-0 inset-0 cursor-pointer bg-secondary group overflow-hidden"
+                data-breakthroughs-poster
+                aria-label="Show Reasoning over environmental data in real time"
+              >
+                
+                  <img
+                    class="absolute inset-0 z-0 size-full object-cover transition ease-in-out group-hover:scale-110 group-focus:scale-110"
+                    src="/k2/assets/images/3.7b/250-382a562d15a0.webp"
+                    srcset="/k2/assets/images/3.7b/250-382a562d15a0.webp 250w, /k2/assets/images/3.7b/500-0b416bba0ee7.webp 500w, /k2/assets/images/3.7b/750-ca7cacddbb79.webp 750w, /k2/assets/images/3.7b/1000-337e90057eb7.webp 1000w, /k2/assets/images/3.7b/1250-48a742c322eb.webp 1250w, /k2/assets/images/3.7b/1500-4bbe30d0c214.webp 1500w, /k2/assets/images/3.7b/1920-22eac146314b.webp 1920w"
+                    sizes="auto, 100vw"
+                    width="1920"
+                    height="1080"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  >
+
+                  <span class="absolute md:hidden inset-0 opacity-10 bg-secondary pointer-events-none"></span>
+                  <span class="hidden md:block absolute inset-x-0 top-0 md:h-100 opacity-30 eased-gradient-to-bottom  pointer-events-none"></span>
+                
+
+                <span class="breakthrough__text absolute inset-20 lg:inset-28 flex flex-col gap-20 justify-center items-center md:justify-between md:items-start">
+                  <span class="f-h2 text-inverse">Reasoning over environmental data in real time</span>
+                  <span class="border-1 border-inverse rounded-full text-accent-orange flex items-center justify-center size-40 md:size-48 hover:bg-white-opacity-85 hover:border-inverse focus:bg-white-opacity-85 focus:border-inverse cursor-pointer">
+                    <svg class="block size-20" fill="none" aria-hidden="true">
+                       <use xlink:href="#play"></use>
+                    </svg>
+                    <span class="sr-only">Play video</span>
+                  </span>
+                </span>
+              </button>
+
+              <iframe
+                class="absolute z-1 inset-0 size-full"
+                data-breakthroughs-iframe
+                title="Reasoning over environmental data in real time"
+                src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                data-video="ez6WQ7IX72U"
+                allowfullscreen
+                hidden
+              ></iframe>
+            </li>
+
+          
+        </ul>
+      </div>
+
+    </div>
+
+    <div
+      class="breakthroughs__parallax absolute inset-x-0 lg:inset-x-20 top-0 pointer-events-none"
+      data-breakthroughs-parallax
+      aria-hidden="true"
+    >
+      <img
+        class="block aspect-1146/1173 w-full"
+        src="/k2/assets/images/breakthrough-words-9a65fe97f562.svg"
+        width="1146"
+        height="1173"
+        alt=""
+      >
+      <img
+        class="block aspect-1146/1173 w-full"
+        src="/k2/assets/images/breakthrough-words-9a65fe97f562.svg"
+        width="1146"
+        height="1173"
+        alt=""
+      >
+    </div>
+  </section>
+
+
+  
+
+  
+    <section data-component="summit-mission" data-behavior="summitMission" class="py-set-11 bg-accent-beige breakout overflow-x-hidden">
+  <div class="container">
+    <h2 class="f-h1 lg:w-cols-8 whitespace-pre-line text-balance" data-reveal="true">K2 isn&#39;t the easy summit.
+It&#39;s the one that proves 
+what&#39;s possible.</h2>
+  </div>
+  <div class="mt-20 md:mt-80">
+    <div class="relative lg:aspect-128/57 overflow-visible flex flex-col justify-end gap-20 md:gap-40">
+
+      <div class="relative lg:absolute lg:inset-0 overflow-x-auto pt-120 pb-20 md:overflow-visible md:pt-0 md:pb-0" data-summitmission-scrollarea>
+        <div class="aspect-128/57 overflow-visible relative min-w-[50rem] md:static md:min-w-0">
+          <svg data-summitmission-svg class="absolute inset-0 size-full pointer-events-none" viewBox="0 0 1280 570" fill="none" xmlns="http://www.w3.org/2000/svg"><path data-summitmission-path class="stroke-4 md:stroke-1" d="M0 566C32.4317 570.283 46.7341 565.995 71.9817 564.431C111.786 561.966 124.645 568.375 144.823 569.208C162.126 569.921 186.996 560.926 224.416 559.732C247.307 559.001 261.597 552.548 277.065 550.799C291.805 549.132 304.32 551.717 312.833 549.264C327.483 545.043 348.159 530.603 371.804 514.785C396.361 498.357 419.616 492.928 435.063 486.934C454.248 479.488 471.718 452.193 487.597 442.311C503.015 432.716 510.787 423.245 515.211 421.111C528.05 414.918 543.244 417.463 556.512 412.987C580.611 404.857 602.827 381.596 611 369.288C621.068 354.125 625.662 342.256 630.028 338.913C637.199 333.422 665.995 324.859 701.518 313.135C719.57 307.177 728.663 301.17 741.461 294.82C757.05 287.085 771.252 285.323 780.684 280.323C799.234 270.491 821.514 256.301 844.423 242.756C866.684 229.594 881.953 219.192 892.533 215.405C915.604 207.149 947.227 207.747 951.021 205.711C952.816 204.748 953.763 203.417 960.639 191.344C967.516 179.271 980.145 156.367 987.493 143.689C1000.53 121.195 1024.12 111.486 1039.41 107.141C1063.29 100.359 1093.89 96.4029 1108.14 91.7447C1119.25 88.1119 1121.76 74.4625 1126.37 65.9892C1135.36 49.458 1170.54 36.3261 1177.74 28.0095C1188.4 15.7032 1195.47 6.24526 1198.49 4.17362C1202.37 1.51796 1207.26 0.362559 1211.98 0.512955C1233.68 1.20564 1262.19 22.5317 1280 28.0095" stroke="black" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+          <ul class="timeline_list absolute inset-0">
+            
+              
+              <style>
+              .summit-item-1-img {
+                  width: min(10vw,128px);
+              }
+              </style>
+              <li class="timeline_item absolute hover:z-1" data-delay="0.18" data-summitmission-item style="left: 11%; bottom: 34.5%;">
+                <div class="flex flex-col-reverse gap-12 group">
+                  <span class="flex flex-col-reverse gap-8 absolute -top-12 left-0 z-1 p-12 w-[max-content]">
+                    <strong class="f-body">Amber</strong>
+                    <br class="hidden">
+                    <span class="f-btn text-accent-orange">Dec 2023</span>
+                  </span>
+                  
+                    <span class="timeline_img aspect-1/1 w-full overflow-hidden absolute left-0 top-0 -translate-y-1/2 -translate-x-1/2 summit-item-1-img" style="--timeline-image-opacity: 0.25;">
+                      <img
+                        class="block size-full object-cover"
+                        src="/k2/assets/images/timeline-amber/250-84c8324ec3bb.webp"
+                        srcset="/k2/assets/images/timeline-amber/250-84c8324ec3bb.webp 250w, /k2/assets/images/timeline-amber/490-aac7f272787f.webp 490w"
+                        sizes="auto, 100vw"
+                        width="490"
+                        height="490"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                      >
+                    </span>
+                  
+                </div>
+
+                <span class="absolute start-0 top-0 w-2 md:w-1 h-120 bg-secondary pointer-events-none" aria-hidden="true"></span>
+              </li>
+            
+              
+              <style>
+              .summit-item-2-img {
+                  width: min(15vw,192px);
+              }
+              </style>
+              <li class="timeline_item absolute hover:z-1" data-delay="0.43" data-summitmission-item style="left: 35.5%; bottom: 50%;">
+                <div class="flex flex-col-reverse gap-12 group">
+                  <span class="flex flex-col-reverse gap-8 absolute -top-12 left-0 z-1 p-12 w-[max-content]">
+                    <strong class="f-body">K2 V2</strong>
+                    <br class="hidden">
+                    <span class="f-btn text-accent-orange">Dec 2025</span>
+                  </span>
+                  
+                    <span class="timeline_img aspect-1/1 w-full overflow-hidden absolute left-0 top-0 -translate-y-1/2 -translate-x-1/2 summit-item-2-img" style="--timeline-image-opacity: 0.25;">
+                      <img
+                        class="block size-full object-cover"
+                        src="/k2/assets/images/timeline-k2-v2/250-f0503114ad0b.webp"
+                        srcset="/k2/assets/images/timeline-k2-v2/250-f0503114ad0b.webp 250w, /k2/assets/images/timeline-k2-v2/490-45615e291160.webp 490w"
+                        sizes="auto, 100vw"
+                        width="490"
+                        height="490"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                      >
+                    </span>
+                  
+                </div>
+
+                <span class="absolute start-0 top-0 w-2 md:w-1 h-120 bg-secondary pointer-events-none" aria-hidden="true"></span>
+              </li>
+            
+              
+              <style>
+              .summit-item-3-img {
+                  width: min(20vw,256px);
+              }
+              </style>
+              <li class="timeline_item absolute hover:z-1" data-delay="0.56" data-summitmission-item style="left: 48%; bottom: 70%;">
+                <div class="flex flex-col-reverse gap-12 group">
+                  <span class="flex flex-col-reverse gap-8 absolute -top-12 left-0 z-1 p-12 w-[max-content]">
+                    <strong class="f-body">K2 Think</strong>
+                    <br class="hidden">
+                    <span class="f-btn text-accent-orange">Jan 2026</span>
+                  </span>
+                  
+                    <span class="timeline_img aspect-1/1 w-full overflow-hidden absolute left-0 top-0 -translate-y-1/2 -translate-x-1/2 summit-item-3-img" style="--timeline-image-opacity: 0.25;">
+                      <img
+                        class="block size-full object-cover"
+                        src="/k2/assets/images/timeline-k2-think/250-5d77e334cc6f.webp"
+                        srcset="/k2/assets/images/timeline-k2-think/250-5d77e334cc6f.webp 250w, /k2/assets/images/timeline-k2-think/490-11d073d622b3.webp 490w"
+                        sizes="auto, 100vw"
+                        width="490"
+                        height="490"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                      >
+                    </span>
+                  
+                </div>
+
+                <span class="absolute start-0 top-0 w-2 md:w-1 h-120 bg-secondary pointer-events-none" aria-hidden="true"></span>
+              </li>
+            
+              
+              <style>
+              .summit-item-4-img {
+                  width: min(30vw,384px);
+              }
+              </style>
+              <li class="timeline_item absolute hover:z-1" data-delay="0.85" data-summitmission-item data-default-image="true" style="left: 82%; bottom: 115%;">
+                <div class="flex flex-col-reverse gap-12 group">
+                  <span class="flex flex-col-reverse gap-8 absolute -top-12 left-0 z-1 p-12 w-[max-content]">
+                    <strong class="f-body">K2 Horizon</strong>
+                    <br class="hidden">
+                    <span class="f-btn text-accent-orange">SEP 2026</span>
+                  </span>
+                  
+                    <span class="timeline_img aspect-1/1 w-full overflow-hidden absolute left-0 top-0 -translate-y-1/2 -translate-x-1/2 summit-item-4-img" style="--timeline-image-opacity: 0.4;">
+                      <img
+                        class="block size-full object-cover"
+                        src="/k2/assets/images/timeline-k2-horizon/250-58dcebcd71fd.webp"
+                        srcset="/k2/assets/images/timeline-k2-horizon/250-58dcebcd71fd.webp 250w, /k2/assets/images/timeline-k2-horizon/490-15e46ee36b75.webp 490w"
+                        sizes="auto, 100vw"
+                        width="490"
+                        height="490"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                      >
+                    </span>
+                  
+                </div>
+
+                <span class="absolute start-0 top-0 w-2 md:w-1 h-120 bg-secondary pointer-events-none" aria-hidden="true"></span>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+
+      <div class="container relative z-10 md:flex md:justify-end pointer-events-none">
+        <p class="f-body md:w-cols-8 lg:w-cols-4 max-w-[90%] md:max-w-full pointer-events-auto" data-reveal="true">K2 is a critical part of IFM’s mission to make foundational AI a shared resource. We release some of the most transparent models in the world so that researchers and builders can advance on top of them.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  
+
+  
+    <div data-component="models" class="pt-set-11 pb-set-8 text-inverse background-fill background-fill-footer">
+  
+    <div class="offset-grid">
+      <h2 class="f-body-lg text-pretty text-inverse antialiased" data-reveal="true">
+        IFM is developing AI as a shared resource for everyone.
+      </h2>
+    </div>
+  
+  
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-x-gutter gap-y-28 mt-set-6">
+      
+        
+        
+        
+
+        <li data-reveal="true">
+          <div  class="relative flex flex-col-reverse gap-12 text-inverse antialiased ">
+            <span class="block pe-[15%] md:pe-0 lg:pe-[10%]">
+              <span class="sr-only">K2 Horizon</span>
+              <span class="f-body">A family of radically open frontier foundation models</span>
+            </span>
+
+            
+              <span class="relative aspect-1/1 overflow-hidden flex items-center justify-center">
+                <img
+                  class="absolute inset-0 aspect-1/1 size-full object-cover transition ease-in-out group-hover:scale-105 ease-in-out"
+                  src="/k2/assets/images/card_k2horizon/250-f9ced8b51e92.webp"
+                  srcset="/k2/assets/images/card_k2horizon/250-f9ced8b51e92.webp 250w, /k2/assets/images/card_k2horizon/500-bf9582345529.webp 500w, /k2/assets/images/card_k2horizon/750-87974d467d8e.webp 750w, /k2/assets/images/card_k2horizon/1000-542b94f95a2c.webp 1000w, /k2/assets/images/card_k2horizon/1080-cf420d46496f.webp 1080w"
+                  sizes="auto, 100vw"
+                  width="1080"
+                  height="1080"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden="true"
+                >
+                
+              </span>
+            
+          </div>
+        </li>
+      
+        
+        
+        
+
+        <li data-reveal="true">
+          <a href="https://huggingface.co/collections/inception42/jais-family" class="relative flex flex-col-reverse gap-12 text-inverse antialiased group">
+            <span class="block pe-[15%] md:pe-0 lg:pe-[10%]">
+              <span class="sr-only">Jais Gen 2</span>
+              <span class="f-body">State-of-the-art open-source Arabic LLM for 400 million speakers worldwide.</span>
+            </span>
+
+            
+              <span class="relative aspect-1/1 overflow-hidden flex items-center justify-center">
+                <img
+                  class="absolute inset-0 aspect-1/1 size-full object-cover transition ease-in-out group-hover:scale-105 ease-in-out"
+                  src="/k2/assets/images/card_jais/250-bf771cc61398.webp"
+                  srcset="/k2/assets/images/card_jais/250-bf771cc61398.webp 250w, /k2/assets/images/card_jais/500-dca391a96ea1.webp 500w, /k2/assets/images/card_jais/750-5baff51aee2c.webp 750w, /k2/assets/images/card_jais/1000-1775ee05b0b1.webp 1000w, /k2/assets/images/card_jais/1080-6f248ab34f5e.webp 1080w"
+                  sizes="auto, 100vw"
+                  width="1080"
+                  height="1080"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden="true"
+                >
+                
+              </span>
+            
+          </a>
+        </li>
+      
+        
+        
+        
+
+        <li data-reveal="true">
+          <a href="https://ifm.ai/pan/" class="relative flex flex-col-reverse gap-12 text-inverse antialiased group">
+            <span class="block pe-[15%] md:pe-0 lg:pe-[10%]">
+              <span class="sr-only">PAN</span>
+              <span class="f-body">Next-gen foundation model for embodied reasoning and physical-world simulation</span>
+            </span>
+
+            
+              <span class="relative aspect-1/1 overflow-hidden flex items-center justify-center">
+                <img
+                  class="absolute inset-0 aspect-1/1 size-full object-cover transition ease-in-out group-hover:scale-105 ease-in-out"
+                  src="/k2/assets/images/card_pan/250-4cb2fa537264.webp"
+                  srcset="/k2/assets/images/card_pan/250-4cb2fa537264.webp 250w, /k2/assets/images/card_pan/500-89d8646da8c9.webp 500w, /k2/assets/images/card_pan/750-6c70618eb36d.webp 750w, /k2/assets/images/card_pan/1000-a42d6d5a9b58.webp 1000w, /k2/assets/images/card_pan/1080-18b928ab68bf.webp 1080w"
+                  sizes="auto, 100vw"
+                  width="1080"
+                  height="1080"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden="true"
+                >
+                
+              </span>
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+  
+    <p class="f-body text-inverse mt-set-9">
+      Get in touch with the Institute of Foundation Models
+      
+        <a href="mailto:contact@ifm.ai" class="inline-flex items-center gap-4 text-accent-orange group ml-4">
+          Contact us
+          <svg class="block size-14 text-accent-orange transition duration-300 group-hover:translate-x-4 group-focus-within:translate-x-4" aria-hidden="true">
+            <use xlink:href="#arrow-right-21"></use>
+          </svg>
+        </a>
+      
+    </p>
+  
+</div>
+
+  
+
+
+
+    </main>
+    <footer class="relative text-inverse bg-footer py-set-7 antialiased after:content-[''] after:absolute after:top-0 after:inset-x-0 after:h-1 after:bg-white-opacity-15">
+  <div class="container flex flex-col flex-wrap md:flex-row md:justify-between gap-gutter">
+    <p class="md:flex-none w-full">
+      <a href="https://ifm.ai/">
+        <svg class="block h-41 w-306 max-w-full" aria-hidden="true">
+          <use xlink:href="#ifm-logo"></use>
+        </svg>
+        <span class="sr-only">The Institute of Foundation Models at MBZUAI</span>
+      </a>
+    </p>
+    <ul class="flex flex-row gap-8 md:order-10" aria-label="MBZUAI on social media">
+      
+        <li>
+            <a href="https://www.facebook.com/MBZUAI" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center rounded-sm border border-white-opacity-10 hover:border-inverse focus:border-inverse size-40">
+                <svg class="size-16" aria-hidden="true">
+                  <use xlink:href="#facebook-24"></use>
+                </svg>
+              <span class="sr-only">Facebook</span>
+            </a>
+        </li>
+      
+        <li>
+            <a href="https://www.instagram.com/mbzuai/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center rounded-sm border border-white-opacity-10 hover:border-inverse focus:border-inverse size-40">
+                <svg class="size-16" aria-hidden="true">
+                  <use xlink:href="#instagram-24"></use>
+                </svg>
+              <span class="sr-only">Instagram</span>
+            </a>
+        </li>
+      
+        <li>
+            <a href="https://x.com/IFM_AI" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center rounded-sm border border-white-opacity-10 hover:border-inverse focus:border-inverse size-40">
+                <svg class="size-16" aria-hidden="true">
+                  <use xlink:href="#x-24"></use>
+                </svg>
+              <span class="sr-only">X</span>
+            </a>
+        </li>
+      
+        <li>
+            <a href="https://www.linkedin.com/showcase/institute-of-foundation-models/posts/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center rounded-sm border border-white-opacity-10 hover:border-inverse focus:border-inverse size-40">
+                <svg class="size-16" aria-hidden="true">
+                  <use xlink:href="#linkedin-24"></use>
+                </svg>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+        </li>
+      
+        <li>
+            <a href="https://ifm.ai/discord" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center rounded-sm border border-white-opacity-10 hover:border-inverse focus:border-inverse size-40">
+                <svg class="size-16" aria-hidden="true">
+                  <use xlink:href="#discord-24"></use>
+                </svg>
+              <span class="sr-only">Discord</span>
+            </a>
+        </li>
+      
+    </ul>
+    <div class="block md:place-self-end">
+      <small class="f-caption block opacity-50">&copy; 2026 K2. Mohamed bin Zayed University of Artificial Intelligence</small>
+      <button class="f-caption block opacity-50 hover:opacity-100 focus:opacity-100 cursor-pointer" data-cookieconsent-trigger>Cookie Consent</button>
+    </div>
+  </div>
+</footer>
+
+
+    
+
+    
+      <div data-component="includes:cookieConsent" data-behavior="cookieConsent" id="cookieConsent" class="fixed inset-0 z-100" hidden inert role="dialog" aria-modal="true" aria-labelledby="cookieConsent_title">
+  <h2 class="sr-only" id="cookieConsent_title" data-cookieconsent-title tabindex="0">
+    Cookie consent
+  </h2>
+  <div class="fixed inset-0" data-cookieconsent-nodecision></div>
+  <div
+    class="fixed end-outer-gutter bottom-outer-gutter p-20 bg-default start-outer-gutter text-inverse bg-secondary border-1 border-grey-opacity-5 md:start-auto md:max-w-[50vw]">
+    <p class="f-body text-center">We use optional analytics cookies to understand site traffic. You can accept or decline them.</p>
+    <ul class="grid grid-cols-2 gap-gutter mt-20">
+      <li>
+        <button
+          class="btn-inverse w-full"
+          data-cookieconsent-accept type="button"
+          aria-label="Accept cookies">
+          <span aria-hidden="true">Accept</span>
+        </button>
+      </li>
+      <li>
+        <button
+          class="btn-inverse-secondary w-full"
+          data-cookieconsent-deny type="button"
+          aria-label="Deny cookies">
+          <span aria-hidden="true">Deny</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" hidden>
+  <symbol id="arrow-right-21" viewBox="0 0 21 21" fill="none">
+    <path d="M0 10.0243H19.2M9.6 19.6243L19.2 10.0243L9.6 0.424316" stroke="currentColor" stroke-width="1.2"/>
+  </symbol>
+  <symbol viewBox="0 0 20 20" fill="none" id="play">
+    <path d="M17.9476 9.47063C18.3138 9.68121 18.3138 10.2077 17.9476 10.4183L6.82397 16.8148C6.45776 17.0254 6 16.7621 6 16.341L6 3.54793C6 3.12676 6.45776 2.86353 6.82397 3.07412L17.9476 9.47063Z" fill="currentColor"/>
+  </symbol>
+  <symbol viewBox="0 0 12 16" fill="none" id="docs">
+    <path d="M11.8198 4.17158L7.61987 0.171629C7.56707 0.115791 7.50217 0.0715412 7.42966 0.0419424C7.35714 0.0123436 7.27874 -0.00189797 7.19987 0.000202799H1.19998C0.882012 0.00109221 0.577335 0.121784 0.352497 0.335916C0.12766 0.550048 0.000933876 0.840218 0 1.14305V14.8572C0.000933876 15.16 0.12766 15.4502 0.352497 15.6643C0.577335 15.8784 0.882012 15.9991 1.19998 16H10.7998C11.1178 15.9991 11.4225 15.8784 11.6473 15.6643C11.8721 15.4502 11.9989 15.16 11.9998 14.8572V4.57157C12.002 4.49646 11.987 4.42179 11.956 4.35273C11.9249 4.28367 11.8784 4.22186 11.8198 4.17158ZM7.19987 1.37161L10.5598 4.57157H7.19987V1.37161ZM10.7998 14.8572H1.19998V1.14305H5.99989V4.57157C6.00083 4.8744 6.12755 5.16457 6.35239 5.3787C6.57723 5.59283 6.88191 5.71353 7.19987 5.71442H10.7998V14.8572Z" fill="currentColor"/>
+  </symbol>
+  <symbol id="ifm-logo" viewBox="0 0 230 30" fill="none">
+    <path fill="currentColor" d="M24.616 19.429a2.4 2.4 0 0 0-3.089-.234l-1.38-1.356c.323-.42.518-.937.518-1.504 0-1.386-1.142-2.511-2.55-2.511s-2.55 1.125-2.55 2.511 1.142 2.512 2.55 2.512c.576 0 1.1-.195 1.526-.51l1.377 1.356a2.31 2.31 0 0 0-.027 2.724l-1.374 1.288a2.58 2.58 0 0 0-1.502-.477c-1.313 0-2.376.927-2.376 2.07s1.063 2.074 2.376 2.074 2.376-.928 2.376-2.074c0-.402-.137-.777-.365-1.095l1.364-1.278c.939.717 2.282.666 3.139-.177.926-.916.923-2.4-.013-3.322z"/><path fill="currentColor" d="m15.282 10.301 1.459-1.29a2.6 2.6 0 0 0 1.37.384c.513 0 .985-.144 1.375-.384l1.465 1.293c-.585.891-.469 2.107.338 2.902a2.39 2.39 0 0 0 2.934.339l1.286 1.428c-.247.384-.4.852-.4 1.362 0 1.293.942 2.34 2.106 2.34s2.102-1.047 2.102-2.34-.941-2.34-2.102-2.34c-.46 0-.883.168-1.23.447l-1.235-1.368a2.29 2.29 0 0 0-.17-3.109c-.871-.855-2.23-.912-3.147-.177l-1.408-1.242c.287-.342.463-.762.463-1.219 0-1.143-1.063-2.07-2.376-2.07s-2.376.927-2.376 2.07c0 .457.173.877.463 1.219L14.79 9.788a2.415 2.415 0 0 0-2.885-.132l-.908-.93c.518-.67.616-1.516.28-2.173l1.2-1.002c.726.555 1.847.495 2.654-.195.908-.774 1.076-2.043.381-2.832-.353-.4-.859-.6-1.392-.6s-1.063.191-1.511.573c-.795.678-1.02 1.737-.597 2.517l-1.185.99c-.774-.618-1.978-.5-2.773.306-.838.85-.896 2.125-.134 2.857.67.639 1.749.642 2.571.057l.902.924a2.323 2.323 0 0 0 .22 3.094c.938.924 2.452.933 3.381.02.814-.798.905-2.04.29-2.958zM8.97 13.995c-1.162 0-2.103 1.047-2.103 2.34 0 .528.161 1.008.426 1.398l-.962 1.117a1.8 1.8 0 0 0-1.21-.372 1.77 1.77 0 0 0-.898.339L3.03 17.419a2.495 2.495 0 0 0-.01-2.194l1.14-1.374c.257.18.552.3.878.324 1.057.078 1.99-.813 2.078-1.993.091-1.179-.695-2.196-1.755-2.274a1.73 1.73 0 0 0-.905.186l-.67-1.128c.058-.072.119-.147.17-.225.552-.84.537-1.759-.036-2.05a.9.9 0 0 0-.393-.09c-.54 0-1.2.417-1.64 1.084-.55.843-.535 1.758.034 2.049.366.189.872.069 1.335-.261l.624 1.05a2.27 2.27 0 0 0-.6 1.377c-.04.54.11 1.042.378 1.44l-1.079 1.3c-.268-.237-.59-.381-.94-.381-.906 0-1.64.927-1.64 2.073s.734 2.074 1.64 2.074c.359 0 .688-.15.959-.4l1.127 1.327a2.28 2.28 0 0 0-.363 1.42c.092 1.175 1.021 2.067 2.081 1.988 1.06-.078 1.843-1.095 1.755-2.274a2.3 2.3 0 0 0-.378-1.098l.957-1.11c.338.26.75.414 1.191.414 1.16 0 2.102-1.047 2.102-2.34 0-1.294-.941-2.341-2.102-2.341zM34.649 14.262c-.36 0-.689.162-.954.426l-1.182-1.368c.253-.39.393-.88.354-1.405-.04-.51-.241-.957-.537-1.302l.56-.85c.485.391 1.034.526 1.42.286.555-.345.558-1.326.004-2.19-.42-.66-1.045-1.063-1.563-1.063a.85.85 0 0 0-.445.12c-.558.345-.558 1.327-.006 2.19.027.043.058.079.088.12l-.612.931a1.77 1.77 0 0 0-.993-.231c-1.06.078-1.844 1.095-1.755 2.274.091 1.177 1.02 2.07 2.08 1.993.342-.027.646-.156.912-.348l1.26 1.458c-.133.306-.219.654-.219 1.035 0 1.146.71 2.074 1.585 2.074.874 0 1.584-.927 1.584-2.074s-.71-2.073-1.584-2.073zM7.23 5.101c.536-.483.813-1.095.782-1.587l1.356-.96c.375.138.905.102 1.447-.145.902-.408 1.49-1.227 1.313-1.827-.11-.378-.493-.582-.984-.582a2.4 2.4 0 0 0-.965.225C9.283.63 8.698 1.44 8.862 2.043l-1.17.832c-.484-.37-1.373-.192-2.083.447-.765.69-1.024 1.647-.576 2.14.448.491 1.429.33 2.193-.361zM33.985 22.874c-.348-.16-.808-.048-1.234.249l-.476-.9c.372-.36.625-.874.668-1.459.091-1.18-.698-2.196-1.755-2.274-.043 0-.085-.006-.128-.006-1.005 0-1.865.867-1.95 1.998-.037.483.08.933.296 1.308l-1.402 1.453c-.77-.462-1.858-.297-2.59.447-.834.849-.895 2.127-.134 2.853.631.6 1.618.63 2.416.15l1.036 1.288c-.588.66-.804 1.428-.472 1.806.125.144.314.213.536.213h.015c.433-.003.994-.258 1.484-.714.753-.7 1.063-1.612.692-2.035-.323-.366-1.048-.246-1.728.25l-1.014-1.26c.676-.75.78-1.792.277-2.512l1.34-1.386c.284.233.625.387 1.003.414.286.02.56-.034.813-.142l.534 1.012q-.119.144-.223.312c-.524.855-.481 1.764.098 2.031.578.267 1.468-.21 1.992-1.065s.481-1.764-.094-2.031M41.33 4.954h.96l1.535 4.084 1.566-4.084h.932v5.002h-.731V6.178l-1.471 3.778h-.619l-1.45-3.769v3.769h-.72V4.954zM47.207 8.147c0-.396.076-.742.225-1.03q.224-.433.634-.672.41-.238.963-.237.846 0 1.322.516.475.514.475 1.399c0 .588-.161 1.077-.487 1.425q-.489.522-1.335.522c-.563 0-1.011-.171-1.325-.51q-.474-.512-.472-1.407zm.777-.012q0 .594.24.963.242.369.79.369.549 0 .791-.372.247-.37.247-.966c0-.396-.082-.706-.247-.949q-.248-.369-.792-.369c-.362 0-.621.123-.786.37q-.246.367-.246.957zM51.63 4.954h.74v1.878a1.7 1.7 0 0 1 .592-.48q.311-.144.655-.144.618 0 .926.34.305.338.304.984v2.424h-.74V7.673q-.001-.456-.17-.649-.17-.193-.518-.192-.193 0-.381.07t-.344.21a1 1 0 0 0-.238.293.9.9 0 0 0-.082.406v2.145h-.74V4.954zM55.515 8.954q0-.363.155-.6.157-.234.424-.37.265-.134.6-.191.334-.058.691-.075l.613-.021v-.141q0-.429-.186-.613-.184-.185-.597-.186c-.275 0-.463.045-.591.132a.6.6 0 0 0-.25.372l-.677-.069q.1-.511.488-.75.387-.238 1.057-.237.804 0 1.143.37.338.366.338 1.04v2.341h-.71v-.468a1.8 1.8 0 0 1-.506.393 1.5 1.5 0 0 1-.734.162q-.563 0-.911-.273-.347-.274-.347-.813zm.74-.027q0 .253.155.402.158.15.506.15.483 0 .783-.237.298-.24.299-.693v-.363l-.57.02q-.456.014-.71.103-.255.085-.36.243a.65.65 0 0 0-.103.378zM59.628 6.32h.734v.53q.241-.322.533-.483.292-.162.597-.162.399 0 .655.171.255.171.378.486.499-.657 1.23-.657.549 0 .845.3t.295.94v2.508h-.74V7.598q0-.449-.15-.61-.15-.162-.441-.162-.156 0-.32.054a.93.93 0 0 0-.527.45.74.74 0 0 0-.08.349v2.277h-.746V7.601q-.001-.428-.152-.6-.15-.172-.439-.172-.334 0-.624.273-.115.098-.21.255a.8.8 0 0 0-.095.424v2.172h-.74V6.316zM65.532 8.168q0-.631.225-1.069a1.6 1.6 0 0 1 .622-.666q.4-.229.917-.228.57 0 .935.228.367.23.546.63.177.406.176.928v.32h-2.675c.018.376.113.664.28.874q.253.311.738.312.42 0 .621-.16a.8.8 0 0 0 .275-.431h.703q-.092.54-.487.849-.394.31-1.112.309-.847 0-1.304-.504-.459-.504-.46-1.395zm.89-.895q-.106.24-.135.547h1.935q-.028-.519-.225-.793t-.707-.273q-.343 0-.552.141a.86.86 0 0 0-.317.378M69.623 8.162q0-.905.433-1.429.435-.524 1.188-.525.292 0 .579.117.288.116.53.417V4.957h.747v5.002h-.725v-.498a1.7 1.7 0 0 1-.515.453q-.287.158-.686.159c-.35 0-.643-.084-.871-.249a1.46 1.46 0 0 1-.512-.681 2.7 2.7 0 0 1-.168-.978zm.905.765q.137.287.357.41a.9.9 0 0 0 .45.124q.47.001.756-.31.284-.307.284-.89v-.225q0-.638-.275-.934-.273-.293-.722-.294a.92.92 0 0 0-.704.306q-.282.306-.283 1.027 0 .5.14.783M76.893 9.956h-.726V4.954h.74v1.842q.221-.278.516-.435a1.46 1.46 0 0 1 .679-.153q.52.002.865.237.344.24.515.666.17.426.17.997 0 .91-.432 1.437-.434.526-1.188.525c-.21 0-.411-.042-.612-.129a1.3 1.3 0 0 1-.528-.438v.456zm.015-1.947v.225q-.001.653.277.942a.94.94 0 0 0 .71.29.9.9 0 0 0 .704-.308q.277-.31.277-1.03-.001-.496-.134-.786a.9.9 0 0 0-.348-.41.9.9 0 0 0-.453-.124.98.98 0 0 0-.74.306q-.293.306-.293.895M80.448 4.945h.762v.75h-.762zm.015 1.374h.747v3.637h-.747zM82.142 6.32h.734v.524q.279-.344.594-.489.316-.148.658-.147.618 0 .926.34.305.338.305.984v2.424h-.74V7.673q0-.456-.171-.649-.17-.193-.518-.192-.193 0-.38.07-.189.07-.345.21a1 1 0 0 0-.238.293.9.9 0 0 0-.082.406v2.145h-.74V6.319zM88.019 9.368l2.809-3.748h-2.76v-.666h3.686v.594L88.95 9.284h2.903l-.106.672h-3.73zM92.266 8.954q0-.363.155-.6c.103-.156.247-.28.423-.37q.266-.134.6-.191.335-.058.692-.075l.613-.021v-.141q0-.429-.186-.613-.184-.185-.597-.186c-.275 0-.463.045-.591.132a.6.6 0 0 0-.25.372l-.677-.069q.1-.511.488-.75.388-.238 1.057-.237.804 0 1.142.37.339.366.339 1.04v2.341h-.71v-.468a1.8 1.8 0 0 1-.506.393 1.5 1.5 0 0 1-.734.162q-.564 0-.911-.273-.347-.274-.347-.813zm.74-.027q0 .253.155.402.157.15.506.15.483 0 .783-.237.298-.24.299-.693v-.363l-.57.02q-.456.014-.71.103-.255.085-.36.243a.65.65 0 0 0-.103.378zM96.385 10.712q.214.071.405.07.221 0 .34-.13.12-.129.257-.474l.134-.351-1.557-3.51h.841l1.081 2.703.99-2.704h.799l-1.587 3.925q-.151.377-.302.633-.151.257-.36.384a.97.97 0 0 1-.527.13q-.178-.001-.326-.025a2 2 0 0 1-.32-.08l.135-.574zM99.928 8.168q0-.631.225-1.069a1.6 1.6 0 0 1 .622-.666q.399-.229.917-.228.57 0 .935.228a1.4 1.4 0 0 1 .545.63q.178.406.177.928v.32h-2.675c.018.376.113.664.28.874q.253.311.738.312.42 0 .621-.16a.8.8 0 0 0 .274-.431h.704q-.093.54-.487.849-.394.31-1.112.309-.847 0-1.304-.504-.459-.504-.46-1.395zm.886-.895a1.7 1.7 0 0 0-.134.547h1.935q-.028-.519-.226-.793-.195-.274-.706-.273-.343 0-.552.141a.86.86 0 0 0-.317.378M104.016 8.162q-.001-.905.433-1.429.433-.524 1.188-.525.292 0 .579.117.287.116.53.417V4.957h.746v5.002h-.725v-.498a1.7 1.7 0 0 1-.515.453q-.288.158-.685.159c-.35 0-.643-.084-.871-.249a1.46 1.46 0 0 1-.512-.681 2.7 2.7 0 0 1-.168-.978zm.768-.021q0 .5.14.783.136.287.357.41a.9.9 0 0 0 .45.124q.47.001.756-.31.283-.307.283-.89v-.225q0-.638-.274-.934-.274-.293-.722-.294a.92.92 0 0 0-.704.306q-.283.306-.283 1.027zM41.342 15.438v-2.977h.783v3.013q0 .722.28 1.083.28.36.908.36c.418 0 .728-.12.905-.36q.264-.36.262-1.083v-3.013h.79v3.007q-.002 1.106-.519 1.614-.519.509-1.45.508c-.622 0-1.115-.171-1.45-.51q-.506-.514-.506-1.639zM46.223 13.827h.734v.525q.279-.343.594-.49.316-.147.658-.146.618 0 .926.339.305.339.305.984v2.425h-.74V15.18q0-.455-.171-.648-.17-.194-.518-.192-.193 0-.38.069-.19.071-.345.21a1 1 0 0 0-.238.294.9.9 0 0 0-.082.405v2.146h-.74v-3.637zM50.326 12.453h.762v.75h-.762zm.016 1.374h.746v3.637h-.746zM53.464 16.692l1.033-2.865h.804l-1.45 3.637h-.798l-1.444-3.637h.84l1.018 2.865zM55.576 15.675q0-.63.225-1.068a1.6 1.6 0 0 1 .622-.666q.399-.229.917-.228.57 0 .935.228a1.4 1.4 0 0 1 .545.63q.178.405.177.927v.321h-2.675c.018.375.113.663.28.873q.253.311.738.312.42 0 .621-.159a.8.8 0 0 0 .274-.432h.704c-.06.36-.225.642-.487.85q-.394.309-1.112.308-.847 0-1.304-.504-.459-.503-.46-1.395zm.89-.894q-.107.24-.135.546h1.935q-.028-.518-.226-.792-.195-.274-.706-.273-.343.001-.552.14a.86.86 0 0 0-.317.379M59.79 13.827h.733v.54q.206-.288.476-.444.27-.159.59-.16.102 0 .183.013.083.01.153.024l-.092.657a2 2 0 0 0-.313-.036 1.04 1.04 0 0 0-.668.24q-.148.134-.234.3a.84.84 0 0 0-.086.393v2.11h-.74v-3.637zM64.718 16.488a.52.52 0 0 0-.112-.342q-.115-.14-.49-.195l-.455-.069q-.639-.104-.972-.339-.33-.234-.332-.738a.9.9 0 0 1 .195-.585q.196-.242.534-.372.336-.13.77-.13.534.001.847.133.312.135.472.36c.107.15.183.327.226.522l-.676.09a.9.9 0 0 0-.262-.414q-.17-.14-.591-.141-.457 0-.631.15a.44.44 0 0 0-.174.339.43.43 0 0 0 .128.33q.13.12.518.183l.512.084q.669.112.954.372.282.26.283.762 0 .479-.378.78c-.253.201-.63.306-1.14.306q-.46 0-.831-.117a1.26 1.26 0 0 1-.594-.378q-.225-.263-.253-.696h.71q.056.342.295.486.237.144.652.144.435 0 .613-.144a.46.46 0 0 0 .176-.38zM66.211 12.453h.762v.75h-.762zm.016 1.374h.746v3.637h-.746zM68.14 16.251V14.41h-.576v-.582h.576v-.981h.74v.98h.948v.583h-.948v1.968q0 .26.119.411.118.15.36.15.142 0 .258-.02c.076-.016.15-.03.21-.049l.122.553q-.155.048-.335.084a2 2 0 0 1-.411.035q-.426 0-.655-.159a.83.83 0 0 1-.317-.447 2.4 2.4 0 0 1-.088-.684zM70.601 18.22q.215.07.406.069.221.001.34-.13.12-.128.257-.473l.134-.352-1.557-3.51h.84l1.082 2.703.99-2.703h.799l-1.588 3.925a5 5 0 0 1-.301.633c-.1.17-.223.3-.36.384a.97.97 0 0 1-.527.129q-.179-.002-.326-.024a2 2 0 0 1-.32-.081l.134-.573zM75.857 15.654q0-.595.225-1.03.224-.431.634-.671.41-.239.963-.237.845-.001 1.322.516.475.515.475 1.398c0 .588-.161 1.077-.487 1.425q-.489.523-1.335.523c-.563 0-1.011-.171-1.325-.51q-.474-.513-.472-1.408zm.777-.012q0 .594.24.963.242.37.79.37.549 0 .791-.373.247-.37.247-.966c0-.396-.082-.705-.247-.948q-.248-.37-.792-.37c-.362 0-.621.124-.786.37q-.246.368-.246.957zM80.518 14.436h-.576v-.582h.576v-.273q0-.604.341-.891.343-.288.841-.288a2.6 2.6 0 0 1 .676.09l-.112.552a1 1 0 0 0-.214-.045 2 2 0 0 0-.198-.012.68.68 0 0 0-.417.126q-.169.127-.168.447v.288h.911v.582h-.91v3.028h-.747V14.43zM44.58 23.66h-2.099l-.49 1.311h-.81l1.934-5.002h.868l1.929 5.002h-.841zm-1.054-2.902L42.701 23h1.651zM46.46 21.334h.734v.54q.206-.287.476-.444.271-.158.59-.159.102 0 .184.012a2 2 0 0 1 .152.024l-.091.657a2 2 0 0 0-.15-.024 1.044 1.044 0 0 0-.832.228q-.148.135-.234.3a.84.84 0 0 0-.085.394v2.109h-.74v-3.637zM49.52 23.759v-1.843h-.577v-.582h.576v-.98h.74v.98h.948v.582h-.948v1.969q0 .26.12.41.117.15.359.15.142.001.259-.02c.076-.015.149-.03.21-.048l.122.552q-.157.049-.335.084a2 2 0 0 1-.412.036q-.425 0-.655-.159a.83.83 0 0 1-.317-.447 2.4 2.4 0 0 1-.088-.684zM51.859 19.96h.761v.75h-.761zm.012 1.374h.746v3.637h-.746zM53.787 21.943h-.575v-.582h.575v-.273q0-.603.342-.891t.84-.288a2.6 2.6 0 0 1 .677.09l-.113.552a1 1 0 0 0-.213-.045q-.101-.01-.198-.012a.68.68 0 0 0-.418.126q-.168.127-.167.447v.288h.91v.582h-.91v3.028h-.747v-3.028zm2.246-1.983h.761v.75h-.761zm.015 1.374h.746v3.637h-.746zM57.614 23.17q0-.589.213-1.026a1.6 1.6 0 0 1 .616-.68q.403-.244.956-.244.675 0 1.057.33.38.33.472.903l-.734.12a1.2 1.2 0 0 0-.237-.54q-.175-.21-.573-.21-.357 0-.576.174a1 1 0 0 0-.32.474q-.1.297-.1.676-.001.38.094.678.096.3.314.477.218.175.579.174.411 0 .612-.207.201-.208.256-.564h.731q-.087.637-.487 1.005-.401.369-1.128.369-.854 0-1.3-.516-.448-.514-.448-1.398zM61.724 19.96h.761v.75h-.761zm.015 1.374h.746v3.637h-.746zM63.189 23.969q0-.363.155-.6.157-.235.424-.37.266-.134.6-.191.335-.059.692-.075l.612-.021v-.142q.001-.428-.186-.612-.184-.185-.597-.186c-.274 0-.463.045-.591.132a.6.6 0 0 0-.25.372l-.676-.069q.1-.511.487-.75.388-.238 1.057-.237.806 0 1.143.37.338.366.338 1.04v2.341h-.71v-.468a1.8 1.8 0 0 1-.505.393 1.53 1.53 0 0 1-.735.162c-.374 0-.68-.09-.91-.273q-.348-.274-.348-.813zm.74-.027q0 .253.156.402t.506.15q.482 0 .782-.237.298-.24.299-.693V23.2l-.57.02q-.455.014-.71.103-.254.085-.36.243a.65.65 0 0 0-.103.378zM67.308 19.969h.746v5.002h-.746zM70.638 19.969h.789v5.002h-.79zM72.43 21.334h.733v.525q.279-.343.595-.489.315-.148.658-.147.618 0 .926.34.305.337.305.984v2.424h-.74v-2.283q-.002-.455-.171-.649-.17-.193-.518-.192-.193 0-.381.07t-.344.21a1 1 0 0 0-.238.294.9.9 0 0 0-.082.405v2.145h-.74v-3.637zM76.777 23.759v-1.843H76.2v-.582h.576v-.98h.74v.98h.948v.582h-.948v1.969q0 .26.119.41.118.15.36.15.142.001.258-.02c.076-.015.15-.03.21-.048l.122.552q-.155.049-.335.084a2 2 0 0 1-.411.036q-.426 0-.655-.159a.82.82 0 0 1-.317-.447 2.4 2.4 0 0 1-.088-.684zM79.004 23.183q0-.63.225-1.069a1.6 1.6 0 0 1 .622-.666q.4-.229.917-.228.57 0 .935.228a1.4 1.4 0 0 1 .545.63q.178.405.177.928v.32H79.75c.019.376.113.664.28.874q.253.311.738.312.42 0 .621-.16a.8.8 0 0 0 .275-.431h.703q-.092.54-.487.849-.394.31-1.112.309-.847 0-1.304-.504-.459-.504-.46-1.395zm.89-.895q-.106.24-.135.547h1.935q-.028-.519-.225-.793-.196-.274-.707-.273-.343 0-.552.141a.86.86 0 0 0-.317.378M83.223 19.969h.747v5.002h-.747zM84.908 19.969h.746v5.002h-.746zM86.58 19.96h.762v.75h-.761zm.013 1.374h.746v3.637h-.746zM90.882 24.662v-.372a1.5 1.5 0 0 1-.502.438 1.44 1.44 0 0 1-.686.159c-.35 0-.643-.081-.871-.243a1.43 1.43 0 0 1-.512-.654 2.4 2.4 0 0 1-.168-.924q0-.553.195-.967.197-.412.561-.645.367-.232.865-.23.306-.002.598.12.29.12.533.44v-.447h.73v3.076q0 .616-.142 1.065a1.25 1.25 0 0 1-.51.69q-.364.243-1.041.243-.74 0-1.16-.27-.422-.27-.491-.864h.73q.066.3.275.435.209.134.643.132.542 0 .743-.297.203-.297.204-.88zm-.225-2.512q-.242-.326-.746-.327a.94.94 0 0 0-.704.291q-.284.291-.283.943 0 .44.133.71c.092.18.208.31.357.39q.22.12.463.12.52.001.77-.326.253-.326.254-.831v-.111q-.002-.534-.241-.859zM92.433 23.183q0-.63.226-1.069a1.6 1.6 0 0 1 .621-.666q.4-.229.917-.228.57 0 .935.228a1.4 1.4 0 0 1 .546.63q.176.405.176.928v.32H93.18c.018.376.112.664.28.874q.251.311.737.312.42 0 .622-.16a.8.8 0 0 0 .274-.431h.703c-.06.36-.225.642-.487.849q-.394.31-1.112.309-.847 0-1.304-.504-.459-.504-.46-1.395zm.89-.895q-.106.24-.134.547h1.934q-.028-.519-.225-.793-.196-.274-.707-.273-.341 0-.551.141a.86.86 0 0 0-.317.378M96.647 21.334h.734v.525q.279-.343.594-.489.316-.148.658-.147.618 0 .926.34.305.337.305.984v2.424h-.74v-2.283q0-.455-.171-.649-.17-.193-.518-.192-.193 0-.38.07-.19.07-.345.21a1 1 0 0 0-.238.294.9.9 0 0 0-.082.405v2.145h-.74v-3.637zM100.638 23.17q0-.589.213-1.026a1.6 1.6 0 0 1 .615-.68q.403-.244.957-.244.675 0 1.057.33.38.33.472.903l-.734.12a1.2 1.2 0 0 0-.238-.54q-.174-.21-.572-.21-.357 0-.576.174a1 1 0 0 0-.32.474 2.1 2.1 0 0 0-.101.676q0 .38.095.678.095.3.314.477.218.175.578.174.412 0 .613-.207a1 1 0 0 0 .256-.564h.731q-.086.637-.488 1.005-.4.369-1.127.369-.853 0-1.301-.516-.447-.514-.447-1.398zM104.635 23.183q0-.63.225-1.069a1.6 1.6 0 0 1 .622-.666q.399-.229.917-.228.57 0 .935.228a1.4 1.4 0 0 1 .545.63q.178.405.177.928v.32h-2.675c.018.376.113.664.28.874q.253.311.738.312.42 0 .621-.16a.8.8 0 0 0 .274-.431h.704q-.093.54-.487.849-.394.31-1.112.309-.847 0-1.304-.504-.459-.504-.46-1.395zm.889-.895a1.7 1.7 0 0 0-.134.547h1.935q-.028-.519-.226-.793-.195-.274-.706-.273-.343 0-.552.141a.86.86 0 0 0-.317.378M118.411.162h-.624V29.88h.624zM128.145 4.753h1.816v8.135h-1.816zm4.75 2.187v.754q.451-.536.926-.73a2.4 2.4 0 0 1 .984-.204q.995 0 1.502.558.508.546.509 1.585v3.988h-1.725V9.224c0-.381-.073-.648-.219-.81-.14-.168-.353-.252-.649-.252q-.255 0-.509.09-.241.09-.429.285a1.3 1.3 0 0 0-.265.363 1.2 1.2 0 0 0-.092.5v3.488h-1.712V6.94zm8.454 4.27a.6.6 0 0 0-.162-.432q-.15-.171-.624-.252l-.683-.114q-1.135-.193-1.675-.603-.543-.41-.542-1.23-.001-.865.706-1.345c.479-.318 1.109-.477 1.898-.477q1.283 0 1.898.468.614.469.774 1.255l-1.596.17q-.106-.364-.335-.545-.233-.195-.741-.195-.542 0-.764.183a.55.55 0 0 0-.22.432c0 .165.058.315.174.42q.173.147.67.24l.753.126q1.191.216 1.666.639.486.423.488 1.254c0 .555-.223 1.032-.671 1.368q-.657.502-1.965.502c-.871 0-1.514-.16-2.023-.477q-.762-.479-.843-1.528h1.642c.055.288.176.495.371.615q.302.181.832.183c.353 0 .619-.057.765-.17a.59.59 0 0 0 .219-.478zm2.961-.444V8.261h-.959V6.94h.959V5.355h1.725V6.94h1.422v1.32h-1.422v2.575q0 .376.173.591.173.206.543.204.195 0 .359-.024.173-.034.323-.08l.231 1.254a5 5 0 0 1-.648.159q-.326.058-.729.057-1.12 0-1.55-.57-.43-.571-.43-1.663zm3.961-3.826h1.712v5.948h-1.712zm-.012-2.211h1.733v1.356h-1.733zm3.326 6.037V8.261h-.959V6.94h.959V5.355h1.725V6.94h1.423v1.32h-1.423v2.575q0 .376.173.591.173.206.543.204.196 0 .359-.024.174-.034.323-.08l.232 1.254a5 5 0 0 1-.649.159q-.325.058-.728.057-1.121 0-1.551-.57-.43-.571-.43-1.663zm3.9.147V6.937h1.712v3.68q-.001.558.198.797.195.24.625.24.53 0 .902-.363.173-.17.265-.363.091-.194.091-.477V6.943h1.712v5.948h-1.675v-.763q-.754.946-1.886.946-.973 0-1.456-.559-.485-.558-.485-1.593zm7.102-.147V8.261h-.96V6.94h.96V5.355h1.724V6.94h1.423v1.32h-1.423v2.575q0 .376.174.591.172.206.542.204.196 0 .359-.024.174-.034.323-.08l.232 1.254a5 5 0 0 1-.649.159q-.325.058-.728.057-1.12 0-1.551-.57-.427-.571-.426-1.663zm3.762-.798q0-1.024.369-1.743a2.56 2.56 0 0 1 1.042-1.093q.672-.374 1.572-.375 1.4 0 2.105.81.717.809.716 2.164v.558h-4.14q.105 1.56 1.307 1.56.541 0 .81-.204a1 1 0 0 0 .359-.57h1.609c-.116.64-.402 1.131-.856 1.483q-.682.513-1.898.513-1.444 0-2.221-.81-.776-.81-.774-2.29zm4.186-.648q-.035-.671-.289-1.014-.243-.353-.914-.354c-.448 0-.756.12-.948.363q-.287.352-.359 1.002h2.51zm4.646.615q0-1.493.823-2.334.821-.843 2.254-.844c.957 0 1.709.273 2.233.82q.8.819.799 2.313c0 .996-.275 1.764-.82 2.334q-.81.843-2.254.844-1.446 0-2.243-.82-.786-.832-.786-2.313zm1.749-.024q0 .831.311 1.311.311.477.984.477c.448 0 .786-.159.993-.477q.324-.491.323-1.32 0-.83-.323-1.3-.311-.476-.993-.476c-.454 0-.774.159-.984.477q-.311.466-.311 1.311zm5.773-1.491h-.96V7.1h.96v-.31c0-.705.195-1.239.591-1.593q.603-.535 1.572-.534.3 0 .637.045.346.044.67.138l-.231 1.218a1.6 1.6 0 0 0-.36-.069 2 2 0 0 0-.311-.024q-.392 0-.624.183-.219.18-.219.627V7.1h1.389v1.32h-1.389v4.466h-1.725zm-54.558 8.647h5.472v1.47h-3.677v2.017h3.457v1.47h-3.457v3.178h-1.792v-8.135zm6.188 5.183q0-1.494.822-2.335.822-.842 2.255-.843c.956 0 1.709.273 2.233.819q.799.819.798 2.313c0 .997-.274 1.765-.823 2.335q-.809.842-2.254.843-1.445 0-2.245-.82-.786-.831-.786-2.312m1.745-.025c0 .556.104.99.311 1.312q.311.477.984.477c.448 0 .786-.16.993-.477q.324-.491.323-1.32.001-.83-.323-1.3-.311-.477-.993-.477c-.454 0-.774.16-.984.477q-.31.467-.311 1.311zm5.268-2.973h1.712v3.679q0 .559.195.798.195.24.625.24.53 0 .901-.363.175-.17.265-.363.092-.194.092-.477v-3.508h1.712v5.947h-1.676v-.762c-.499.63-1.13.945-1.885.945q-.973 0-1.457-.558t-.484-1.593zm6.635.003h1.676v.753q.452-.535.926-.73a2.4 2.4 0 0 1 .984-.203q.995 0 1.505.558.508.544.509 1.584v3.988h-1.724v-3.667q0-.569-.22-.81c-.14-.168-.353-.252-.649-.252q-.254 0-.508.09-.244.09-.427.285a1.3 1.3 0 0 0-.265.363q-.091.195-.091.501v3.487h-1.713v-5.947zm6.486 3.028q.001-1.494.683-2.347.693-.866 1.898-.867.474 0 .902.183.439.18.764.591v-2.779h1.725V25.2h-1.667v-.717a2.4 2.4 0 0 1-.786.672 2.3 2.3 0 0 1-1.051.228q-.808 0-1.365-.387-.544-.386-.819-1.083-.278-.706-.277-1.63zm1.734-.067q0 .982.36 1.39.369.4.88.399.624 0 .947-.432.335-.445.336-1.198v-.285q-.002-.84-.323-1.254-.324-.41-.927-.41-.565 0-.926.42-.347.42-.347 1.367zm5.033 1.345q0-.787.417-1.206c.287-.289.658-.496 1.121-.616.464-.12.963-.189 1.505-.204l.869-.033v-.216q.001-.546-.232-.786t-.74-.24c-.338 0-.582.06-.753.183a.83.83 0 0 0-.323.513l-1.538-.138c.107-.591.387-1.029.832-1.311q.671-.432 1.828-.432 1.367 0 1.965.603.601.604.6 1.776v3.748h-1.584v-.696a2.8 2.8 0 0 1-.823.615q-.452.229-1.1.228-.914 0-1.48-.468-.567-.469-.567-1.32zm1.63-.105q-.002.33.198.525.21.182.658.183.648 0 1.03-.33.393-.33.393-.921V22.5l-.799.034q-.832.035-1.157.26-.324.23-.323.66m5.478-.375v-2.506h-.96v-1.32h.96V17.67h1.724v1.584h1.423v1.32h-1.423v2.575q0 .377.174.59.174.207.545.205.196-.002.359-.024c.116-.024.223-.048.323-.081l.232 1.254a5 5 0 0 1-.649.159q-.325.058-.728.057c-.75 0-1.264-.189-1.551-.57q-.428-.57-.426-1.662zm3.957-3.826h1.712v5.947h-1.712zm-.012-2.212h1.733V18.4h-1.733zm2.681 5.207q0-1.494.822-2.335c.549-.561 1.298-.843 2.255-.843s1.709.273 2.233.819q.799.819.798 2.313c0 .997-.274 1.765-.822 2.335q-.81.842-2.255.843-1.444 0-2.245-.82-.786-.831-.786-2.312m1.746-.025c0 .556.103.99.31 1.312q.313.479.984.477c.448 0 .786-.16.994-.477q.323-.491.323-1.32t-.323-1.3q-.312-.477-.994-.477c-.454 0-.773.16-.984.477q-.31.467-.31 1.311zm5.31-2.97h1.675v.753q.452-.535.927-.73.472-.204.984-.203.994 0 1.505.558.507.544.508 1.584v3.988h-1.724v-3.667q0-.569-.219-.81-.208-.252-.649-.252-.255 0-.509.09a1.2 1.2 0 0 0-.43.285 1.3 1.3 0 0 0-.265.363q-.091.195-.091.501v3.487h-1.712zm9.072-2.188h2.139l2.105 6.005 2.139-6.005h2.105v8.135h-1.675v-5.434l-1.932 5.434h-1.34l-1.898-5.389v5.389h-1.643zm9.567 5.183q0-1.494.822-2.335c.549-.561 1.298-.843 2.255-.843s1.709.273 2.233.819q.799.819.798 2.313c0 .997-.274 1.765-.822 2.335q-.81.842-2.255.843-1.446 0-2.242-.82-.786-.831-.786-2.312zm1.745-.025c0 .556.104.99.311 1.312q.311.477.984.477c.448 0 .786-.16.993-.477q.324-.491.323-1.32.001-.83-.323-1.3-.311-.477-.993-.477c-.454 0-.774.16-.984.477q-.31.467-.311 1.311zm5.128.057q0-1.492.682-2.346.693-.866 1.898-.867.477 0 .902.183.44.18.765.591v-2.779h1.724V25.2h-1.666v-.717a2.45 2.45 0 0 1-.786.672 2.3 2.3 0 0 1-1.051.228q-.81 0-1.365-.387-.544-.386-.823-1.083-.278-.706-.277-1.63zm1.733-.066q0 .982.36 1.39.37.4.877.399.627 0 .948-.432.334-.445.335-1.198v-.285q0-.84-.323-1.254-.324-.41-.926-.41-.567 0-.926.42-.348.42-.348 1.367zm5.186.066q-.001-1.024.368-1.743a2.56 2.56 0 0 1 1.042-1.092q.672-.375 1.572-.375 1.4 0 2.105.81.717.81.716 2.163v.558h-4.14q.105 1.562 1.307 1.56.545 0 .81-.203.265-.206.36-.57h1.608c-.115.639-.402 1.13-.856 1.482q-.681.513-1.898.513-1.444 0-2.221-.81-.775-.809-.773-2.29zm4.186-.648c-.025-.447-.119-.786-.29-1.014q-.242-.352-.914-.354c-.448 0-.755.12-.947.363q-.287.352-.36 1.002h2.511zm2.568-4.567h1.712v8.135h-1.712zm6.309 6.458a.6.6 0 0 0-.161-.432q-.15-.171-.625-.252l-.682-.114q-1.135-.194-1.676-.604-.542-.41-.542-1.23 0-.865.707-1.344.718-.477 1.898-.477 1.283 0 1.898.468t.774 1.254l-1.597.171q-.106-.365-.335-.546-.233-.194-.74-.195-.545 0-.765.183a.55.55 0 0 0-.219.432c0 .165.058.315.173.42.116.1.339.177.671.24l.752.126q1.192.216 1.667.64.484.422.484 1.254c0 .555-.222 1.032-.67 1.368q-.658.5-1.965.501c-.872 0-1.514-.159-2.023-.477q-.762-.478-.844-1.527h1.642q.082.433.369.615.302.184.831.183c.354 0 .619-.057.765-.171a.59.59 0 0 0 .219-.477z"/>
+  </symbol>
+  <symbol fill="none" id="facebook-24" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+  </symbol>
+  <symbol fill="none" id="x-24" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/>
+  </symbol>
+  <symbol fill="none" id="linkedin-24" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M21.829 0H2.17099C0.972 0 0 0.972 0 2.17099V21.8289C0 23.028 0.972 24 2.17099 24H21.8289C23.028 24 24 23.028 24 21.8289V2.17099C24 0.972 23.028 0 21.829 0ZM7.42662 20.7232C7.42662 21.0721 7.14377 21.355 6.79483 21.355H4.10544C3.7565 21.355 3.47365 21.0721 3.47365 20.7232V9.4494C3.47365 9.10046 3.7565 8.81761 4.10544 8.81761H6.79483C7.14377 8.81761 7.42662 9.10046 7.42662 9.4494V20.7232ZM5.45014 7.75489C4.0391 7.75489 2.8952 6.61099 2.8952 5.19996C2.8952 3.78892 4.0391 2.64503 5.45014 2.64503C6.86117 2.64503 8.00507 3.78892 8.00507 5.19996C8.00507 6.61099 6.86124 7.75489 5.45014 7.75489ZM21.4813 20.7741C21.4813 21.0949 21.2212 21.355 20.9004 21.355H18.0145C17.6937 21.355 17.4335 21.0949 17.4335 20.7741V15.486C17.4335 14.6972 17.6649 12.0292 15.372 12.0292C13.5934 12.0292 13.2327 13.8553 13.1602 14.6749V20.7741C13.1602 21.0949 12.9002 21.355 12.5793 21.355H9.78817C9.46737 21.355 9.20727 21.0949 9.20727 20.7741V9.39851C9.20727 9.07772 9.46737 8.81761 9.78817 8.81761H12.5793C12.9001 8.81761 13.1602 9.07772 13.1602 9.39851V10.3821C13.8197 9.39236 14.7998 8.62844 16.8866 8.62844C21.5077 8.62844 21.4813 12.9457 21.4813 15.3178V20.7741Z"/>
+  </symbol>
+  <symbol fill="none" id="youtube-24" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </symbol>
+  <symbol fill="none" id="instagram-24" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
+  </symbol>
+  <symbol fill="none" id="discord-24" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M20.317 4.369A19.88 19.88 0 0 0 15.894 3a14.145 14.145 0 0 0-.719 1.518 19.205 19.205 0 0 0-5.351 0A14.183 14.183 0 0 0 9.104 3 19.896 19.896 0 0 0 4.682 4.369a18.921 18.921 0 0 0-3.012 12.52 19.929 19.929 0 0 0 6.081 3.097c.487-.65.922-1.339 1.3-2.061a12.445 12.445 0 0 1-1.958-.896c.165-.12.326-.246.483-.374a12.445 12.445 0 0 0 8.946 0c.157.128.318.253.483.374-.627.371-1.281.683-1.958.896.379.722.813 1.41 1.3 2.061a19.94 19.94 0 0 0 6.081-3.097 18.921 18.921 0 0 0-3.012-12.52ZM8.12 15.233c-1.202 0-2.184-1.09-2.184-2.431 0-1.34.97-2.431 2.184-2.431 1.213 0 2.202 1.09 2.184 2.431 0 1.341-.97 2.431-2.184 2.431Zm7.757 0c-1.202 0-2.184-1.09-2.184-2.431 0-1.34.97-2.431 2.184-2.431 1.213 0 2.202 1.09 2.184 2.431 0 1.341-.97 2.431-2.184 2.431Z"/>
+  </symbol>
+  <symbol viewBox="0 0 57 24" fill="none" id="jais">
+    <path d="M0 19.0726H3.99439C4.73285 19.0726 5.29228 18.9944 5.6727 18.838C6.0755 18.6592 6.3664 18.3687 6.54542 17.9665C6.72444 17.5419 6.81396 16.9497 6.81396 16.1899V0H12.386V17.0615C12.386 18.6927 12.1286 20.0112 11.6139 21.0168C11.1216 22 10.372 22.7151 9.36499 23.162C8.38038 23.5866 7.10486 23.7989 5.53844 23.7989H0V19.0726Z" fill="currentColor"/>
+    <path d="M20.0535 24C18.9122 24 17.9388 23.8101 17.1332 23.4302C16.3276 23.0503 15.7123 22.4916 15.2871 21.7542C14.8619 21.0168 14.6493 20.1006 14.6493 19.0056V18.838C14.6493 17.7654 14.8731 16.8603 15.3206 16.1229C15.7906 15.3631 16.4619 14.7598 17.3346 14.3128C18.2073 13.8659 19.2815 13.5531 20.557 13.3743L24.5178 12.8045C24.7863 12.7598 24.9989 12.7039 25.1556 12.6369C25.3346 12.5475 25.4577 12.4469 25.5248 12.3352C25.6143 12.2011 25.6591 12.0335 25.6591 11.8324V11.6648C25.6591 11.1955 25.5584 10.8156 25.357 10.5251C25.1779 10.2346 24.8982 10.0223 24.5178 9.88827C24.1374 9.75419 23.6563 9.68715 23.0745 9.68715H22.7388C21.9332 9.68715 21.3066 9.85475 20.8591 10.1899C20.4339 10.5028 20.2213 10.9274 20.2213 11.4637V11.6313H15.3206V11.4637C15.3206 10.4358 15.5668 9.55307 16.0591 8.81564C16.5514 8.07821 17.357 7.50838 18.4759 7.10615C19.5948 6.70391 21.0605 6.50279 22.8731 6.50279H23.2087C25.1108 6.50279 26.6101 6.71508 27.7066 7.13967C28.8031 7.5419 29.5751 8.1229 30.0227 8.88268C30.4702 9.64246 30.694 10.6034 30.694 11.7654V19.3743C30.694 19.6871 30.7611 19.9106 30.8954 20.0447C31.0297 20.1788 31.2534 20.2458 31.5667 20.2458H32.6744V23.7989H29.6535C28.8031 23.7989 28.143 23.7207 27.673 23.5642C27.2031 23.3855 26.8451 23.0838 26.5989 22.6592C26.3528 22.2123 26.1849 21.5754 26.0954 20.7486C25.6255 21.5307 25.122 22.1676 24.5849 22.6592C24.0479 23.1285 23.4325 23.4749 22.7388 23.6983C22.0675 23.8994 21.2843 24 20.3892 24H20.0535ZM22.1682 20.5475C22.8619 20.5475 23.4661 20.3799 23.9807 20.0447C24.5178 19.7095 24.9206 19.2514 25.1891 18.6704C25.48 18.0894 25.6255 17.4302 25.6255 16.6927V15.6201C25.536 15.6648 25.4241 15.7207 25.2898 15.7877C25.1779 15.8324 25.0549 15.8659 24.9206 15.8883C24.7416 15.9106 24.5626 15.9441 24.3835 15.9888L22.8731 16.257C22.1346 16.3911 21.5416 16.5587 21.094 16.7598C20.6465 16.9609 20.322 17.2067 20.1206 17.4972C19.9192 17.7877 19.8185 18.1341 19.8185 18.5363V18.7039C19.8185 19.1285 19.908 19.4749 20.0871 19.743C20.2661 20.0112 20.5122 20.2123 20.8255 20.3464C21.1612 20.4804 21.5304 20.5475 21.9332 20.5475H22.1682Z" fill="currentColor"/>
+    <path d="M34.2921 6.70391H39.5621V23.7989H34.2921V6.70391ZM34.2921 0H39.5621V4.15642H34.2921V0Z" fill="currentColor"/>
+    <path d="M49.1119 24C47.3889 24 45.9791 23.7877 44.8826 23.3631C43.7861 22.9162 42.9805 22.2905 42.4658 21.486C41.9735 20.6592 41.7273 19.676 41.7273 18.5363V18.3687H46.5945V18.5363C46.5945 19.0726 46.684 19.5084 46.863 19.8436C47.042 20.1788 47.3217 20.4358 47.7021 20.6145C48.0826 20.771 48.5972 20.8492 49.2462 20.8492H49.5483C50.1301 20.8492 50.6224 20.7933 51.0252 20.6816C51.428 20.5475 51.7301 20.3464 51.9315 20.0782C52.1329 19.8101 52.2336 19.486 52.2336 19.1061V18.9385C52.2336 18.6257 52.1441 18.3464 51.9651 18.1006C51.8084 17.8547 51.5399 17.6536 51.1595 17.4972C50.8014 17.3408 50.3091 17.2179 49.6826 17.1285L47.2993 16.7598C46.1805 16.6034 45.2294 16.324 44.4462 15.9218C43.6854 15.5196 43.0924 14.9832 42.6672 14.3128C42.2644 13.6201 42.063 12.7821 42.063 11.7989V11.6313C42.063 10.514 42.3427 9.57542 42.9022 8.81564C43.484 8.05587 44.3008 7.48603 45.3525 7.10615C46.4266 6.70391 47.7021 6.50279 49.1791 6.50279H49.5147C51.0588 6.50279 52.3679 6.70391 53.442 7.10615C54.5161 7.50838 55.3217 8.07821 55.8587 8.81564C56.3958 9.55307 56.6643 10.4358 56.6643 11.4637V11.6313H51.8644V11.4637C51.8644 10.838 51.6518 10.3799 51.2266 10.0894C50.8238 9.79888 50.2196 9.65363 49.414 9.65363H49.0784C48.6308 9.65363 48.228 9.72067 47.87 9.85475C47.5343 9.96648 47.277 10.1453 47.0979 10.3911C46.9189 10.6369 46.8294 10.9162 46.8294 11.229V11.3966C46.8294 11.6872 46.8965 11.9441 47.0308 12.1676C47.1875 12.3687 47.4224 12.5475 47.7357 12.7039C48.0714 12.8603 48.5077 12.9721 49.0448 13.0391L51.4951 13.4078C52.793 13.5866 53.8448 13.8883 54.6504 14.3128C55.456 14.7151 56.049 15.2626 56.4294 15.9553C56.8098 16.6257 57 17.4525 57 18.4358V18.6034C57 19.8101 56.7091 20.8156 56.1273 21.6201C55.5455 22.4246 54.6951 23.0279 53.5762 23.4302C52.4574 23.8101 51.0812 24 49.4476 24H49.1119Z" fill="currentColor"/>
+  </symbol>
+  <symbol viewBox="0 0 80 24" fill="none" id="pain">
+    <path d="M0 0H15.2145C17.2748 0 19.0068 0.259155 20.4105 0.777465C21.8142 1.27324 22.8783 2.07324 23.6028 3.17746C24.35 4.28169 24.7236 5.71268 24.7236 7.47042V7.80845C24.7236 9.54366 24.35 10.9634 23.6028 12.0676C22.8783 13.1718 21.8029 13.9831 20.3766 14.5014C18.9728 15.0197 17.2521 15.2789 15.2145 15.2789H6.72426V24H0V0ZM13.89 10.9859C14.7277 10.9859 15.4183 10.8732 15.9616 10.6479C16.5277 10.4225 16.9465 10.0732 17.2182 9.6C17.4899 9.12676 17.6257 8.52958 17.6257 7.80845V7.47042C17.6257 6.7493 17.4899 6.15211 17.2182 5.67887C16.9465 5.20563 16.5277 4.85634 15.9616 4.63099C15.4183 4.40563 14.7277 4.29296 13.89 4.29296H6.72426V10.9859H13.89Z" fill="currentColor"/>
+    <path d="M32.4075 0H41.475L52.2407 24H45.2787L36.2111 2.60282H37.6035L28.502 24H21.6758L32.4075 0ZM29.6227 14.7042H44.7013L45.0749 19.2676H29.2152L29.6227 14.7042Z" fill="currentColor"/>
+    <path d="M53.6463 0H60.4385L73.4795 16.0563V0H80V24H73.2418L60.2008 8.11268V24H53.6463V0Z" fill="currentColor"/>
+  </symbol>
+  <symbol viewBox="0 0 65 65" fill="none" id="box">
+    <path d="M19.5 9.53516L32.5 16.8468L45.5 9.53516M18.75 55.5352V40.902L6 33.5352M59.1797 33.7424L46.25 40.902V56.0352M6 17.5352L32.5 32.9042L59.175 17.31M32.5 63.0352V32.8733M60 45.2252C59.9989 46.3082 59.716 47.3719 59.1797 48.3095C58.6434 49.2472 57.8725 50.0258 56.9444 50.5674L35.5556 62.9192C34.6265 63.4613 33.5727 63.7466 32.5 63.7466C31.4273 63.7466 30.3735 63.4613 29.4444 62.9192L8.05556 50.5674C7.12747 50.0258 6.35661 49.2472 5.8203 48.3095C5.28399 47.3719 5.0011 46.3082 5 45.2252V32.965V20.5215C5.0011 19.4384 5.28399 18.3747 5.8203 17.4371C6.35661 16.4994 7.12747 15.7208 8.05556 15.1793L29.4444 2.82742C30.3735 2.28537 31.4273 2 32.5 2C33.5727 2 34.6265 2.28537 35.5556 2.82742L56.9444 15.1793C57.8725 15.7208 58.6434 16.4994 59.1797 17.4371C59.716 18.3747 59.9989 19.4384 60 20.5215V33.0352V45.2252Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+  </symbol>
+  <symbol viewBox="0 0 65 65" fill="none" id="book">
+    <path d="M32.5776 18.3333C32.5776 15.3275 31.3733 12.4449 29.2295 10.3195C27.0858 8.19404 24.1783 7 21.1466 7H4V49.5H24.0043C26.2781 49.5 28.4587 50.3955 30.0665 51.9896C31.6743 53.5836 32.5776 55.7457 32.5776 58M32.5776 18.3333V58M32.5776 18.3333C32.5776 15.3275 33.7819 12.4449 35.9257 10.3195C38.0694 8.19404 40.9769 7 44.0086 7H61.1552V49.5H41.1509C38.8771 49.5 36.6964 50.3955 35.0886 51.9896C33.4808 53.5836 32.5776 55.7457 32.5776 58" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+  </symbol>
+</svg>
+
+
+    
+      <script type="module" src="/k2/assets/js/site-PIav99r7jUDR.js"></script>
+    
+  </body>
+</html>

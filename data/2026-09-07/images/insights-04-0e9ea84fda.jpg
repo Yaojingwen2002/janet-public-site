@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+<noscript><style>form.antibot > * { display: none !important; } form.antibot noscript { display: block !important; }</style>
+</noscript><script async src="https://www.googletagmanager.com/gtag/js?id=UA-38309929-1"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag("js", new Date());gtag("set", "developer_id.dMDhkMT", true);gtag("config", "UA-38309929-1", {"groups":"default","anonymize_ip":true,"page_placeholder":"PLACEHOLDER_page_path"});gtag("config", "G-BEW2TB5Q3G", {"groups":"default","page_placeholder":"PLACEHOLDER_page_location"});</script>
+<meta name="description" content="Enterprise software vendors are arbitraging open weight models, developing their own options and using the frontier AI labs when needed. Take notes since you&#039;ll likely be doing the same LLM portfolio management as you wrangle your AI budget. The latest round of enterprise software earnings featured a bevy of nuggets on mixing and matching AI models. Since most companies are consuming their AI through their applications it&#039;s worth watching the vendors who are taking on the token cost risks and managing margins with a portfolio approach to models." />
+<link rel="canonical" href="https://www.constellationr.com/insights/news/why-you-should-arbitrage-your-ai-models-your-vendors-do" />
+<link rel="image_src" href="https://www.constellationr.com/sites/default/files/styles/1080wide/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=fEa5QxOs" />
+<link rel="icon" href="/themes/custom/constellationr/assets/img/favicon/favicon.ico" />
+<link rel="icon" sizes="16x16" href="/themes/custom/constellationr/assets/img/favicon/favicon.ico" />
+<link rel="icon" sizes="96x96" href="/themes/custom/constellationr/assets/img/favicon/favicon-96x96.png" />
+<link rel="icon" sizes="192x192" href="/themes/custom/constellationr/assets/img/favicon/web-app-manifest-192x192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/constellationr/assets/img/favicon/apple-touch-icon.png" />
+<meta property="og:image" content="https://www.constellationr.com/sites/default/files/styles/1080wide/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=fEa5QxOs" />
+<meta property="og:image:url" content="https://www.constellationr.com/sites/default/files/styles/1080wide/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=fEa5QxOs" />
+<meta property="og:image:secure_url" content="https://www.constellationr.com/sites/default/files/styles/1080wide/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=fEa5QxOs" />
+<meta property="og:image:type" content="1080" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@constellationr" />
+<meta name="twitter:description" content="Award-winning, Silicon Valley-based research and advisory firm focused on helping early adopters harness the transformative power of exponential technology." />
+<meta name="twitter:title" content="Why you should arbitrage your AI models like your vendors do" />
+<meta name="twitter:image" content="https://www.constellationr.com/sites/default/files/styles/1080wide/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=fEa5QxOs" />
+<meta name="Generator" content="Drupal 11 (https://www.drupal.org); Commerce 3" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Why you should arbitrage your AI models like your vendors do | Constellation Research</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_hBnQ-60DSiFT5IjE6H5HkUbEGr_ypUVrI7XgLzPHLwA.css?delta=0&amp;language=en&amp;theme=constellationr&amp;include=eJxljmtqAzEMhC9k7CMZ2VZ2ReQHkpywPX3VBhpo_ojRx8wwBc1Qss5KwFlPEBpHLttsDk1qF_sf6h0b2ZQMtU5pNEf6U_EmcxiO9nYJ6vI4PTAbFMb0H-RGuhiuUJ0aMoN5k6SDZwF2KpjGlA5MXxi610K6EfvSWGH9eMMCgUNgnZqa7AUc3yTusXZh0hNbUAPx4J0s24kdUwHFT9pRFQ7UoJcv6i_Xg_Cp6ffGPttm_Aaas3kS" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_In1bRoBdIIexdaXu2fQrrSjW0TLdxsSRqddjm5Wy2Ds.css?delta=1&amp;language=en&amp;theme=constellationr&amp;include=eJxljmtqAzEMhC9k7CMZ2VZ2ReQHkpywPX3VBhpo_ojRx8wwBc1Qss5KwFlPEBpHLttsDk1qF_sf6h0b2ZQMtU5pNEf6U_EmcxiO9nYJ6vI4PTAbFMb0H-RGuhiuUJ0aMoN5k6SDZwF2KpjGlA5MXxi610K6EfvSWGH9eMMCgUNgnZqa7AUc3yTusXZh0hNbUAPx4J0s24kdUwHFT9pRFQ7UoJcv6i_Xg_Cp6ffGPttm_Aaas3kS" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_IDr36-FVCuY3Hb_rIyLpZHoDE5dF5AM0JO_3MbGpl_c.css?delta=3&amp;language=en&amp;theme=constellationr&amp;include=eJxljmtqAzEMhC9k7CMZ2VZ2ReQHkpywPX3VBhpo_ojRx8wwBc1Qss5KwFlPEBpHLttsDk1qF_sf6h0b2ZQMtU5pNEf6U_EmcxiO9nYJ6vI4PTAbFMb0H-RGuhiuUJ0aMoN5k6SDZwF2KpjGlA5MXxi610K6EfvSWGH9eMMCgUNgnZqa7AUc3yTusXZh0hNbUAPx4J0s24kdUwHFT9pRFQ7UoJcv6i_Xg_Cp6ffGPttm_Aaas3kS" />
+
+    
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "v8baqjv9px");
+    </script>
+
+  </head>
+  <body class="path-node page-node-type-insight-blog">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="layout-container">
+
+  <header class="page-header" role="banner">
+
+    <div class="page-header-content">
+    <div class="flex page-header-content-inner" id="desktop-menu-system-header">
+        <div class="page-header-logo"><a href="/"><img src="/themes/custom/constellationr/assets/img/site-header-logo.svg" alt="Constellation Research Site Logo"></a></div>
+        <div class="menu-section">
+            <div class="top-menu">
+            <nav>
+                <ul>
+                    <li class="contact-link"><a href="/contact-us" class="right-arrow">Contact Us</a></li>
+                    <li class="about-link">
+                        <button id="about-menu-trigger" class="about-menu-button">About Constellation</button>
+                        
+              <ul class="menu about-menu hidden">
+                    <li class="menu-item">
+        <a href="/about/overview" data-drupal-link-system-path="node/110253">Company Overview</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/our-clients" data-drupal-link-system-path="node/110248">Our Clients</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/client-services-team" data-drupal-link-system-path="node/110340">Client Services Team</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/media-mentions" data-drupal-link-system-path="node/110263">Media Mentions</a>
+              </li>
+                <li class="menu-item">
+        <a href="/newsroom/press-releases" data-drupal-link-system-path="node/118327">Press Releases</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/careers" data-drupal-link-system-path="node/110249">Careers at Constellation</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact-us" data-drupal-link-system-path="node/110351">Contact Us</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/legal" data-drupal-link-system-path="node/110250">Legal Terms</a>
+              </li>
+        </ul>
+  
+
+
+                    </li>
+                                        <li class="login-link"><a href="/user">Login</a></li>
+                    <li class="join-link">
+                        <a href="/join" class="btn btn3">
+                            <div class="flex">
+                                <div class="title right-arrow">Join</div>
+                            </div>
+                        </a>
+                    </li>
+                                    </ul>
+            </nav>
+            </div>
+            <div class="bottom-menu">
+                  <div class="region region-megamenu-titles">
+    
+<div id="block-constellationr-megamenu" class="block block-block-content block-block-content641731d7-c0d6-47ac-96d1-3b47d98844e0 mega-menu-triggers">
+            <nav>
+            <ul>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+<li><a href="/research" class="mega-menu-trigger" id="mega-menu-target-57">Research</a></li>
+
+                                                        
+<li><a href="/services" class="mega-menu-trigger" id="mega-menu-target-65">Analyst Services</a></li>
+
+                                                        
+<li><a href="/videos" class="mega-menu-trigger" id="mega-menu-target-74">Videos</a></li>
+
+                                                        
+<li><a href="/communities" class="mega-menu-trigger" id="mega-menu-target-82">Communities</a></li>
+
+                                                        
+<li><a href="/events" class="mega-menu-trigger" id="mega-menu-target-91">Events</a></li>
+
+                                                        
+<li><a href="/insights" class="mega-menu-trigger" id="mega-menu-target-99">Insights</a></li>
+
+                                                        
+                                                        
+                                <li class="search-menu-item"><a href="#" class="search-trigger">Search</a></li>
+            </ul>
+        </nav>
+    </div>
+
+  </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu-system-header" class="mobile-page-header-content-inner flex">
+        <div class="mobile-logo"><a href="/"><img src="/themes/custom/constellationr/assets/img/icons/small-logo-circles.svg" alt="Constellation Research Site Logo"></a></div>
+        <div class="mobile-menu-top">
+            <div class="mobile-search-icon"><a href="/search"><img src="/themes/custom/constellationr/assets/img/icons/orange-search-sm.svg" alt="Search Icon"></a></div>
+            <div class="mobile-menu-trigger"><button class="mobile-menu-hamburger"><img src="/themes/custom/constellationr/assets/img/icons/hamburger-menu-icon.svg"></div>
+        </div>
+    </div> 
+    <div class="mobile-menu-system-items hidden">
+        <nav>
+
+            <ul class="mobile-menu-top-level">
+                <li class="about-link">
+                    <button id="about-menu-trigger" class="about-menu-button">About Constellation</button>
+                    
+              <ul class="menu about-menu hidden">
+                    <li class="menu-item">
+        <a href="/about/overview" data-drupal-link-system-path="node/110253">Company Overview</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/our-clients" data-drupal-link-system-path="node/110248">Our Clients</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/client-services-team" data-drupal-link-system-path="node/110340">Client Services Team</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/media-mentions" data-drupal-link-system-path="node/110263">Media Mentions</a>
+              </li>
+                <li class="menu-item">
+        <a href="/newsroom/press-releases" data-drupal-link-system-path="node/118327">Press Releases</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/careers" data-drupal-link-system-path="node/110249">Careers at Constellation</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contact-us" data-drupal-link-system-path="node/110351">Contact Us</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about/legal" data-drupal-link-system-path="node/110250">Legal Terms</a>
+              </li>
+        </ul>
+  
+
+
+                </li>
+                <li class="login-link"><a href="/user">Login</a></li>
+                <li class="join-link">
+                    <a href="/join" class="btn btn3">
+                        <div class="flex">
+                            <div class="title right-arrow">Join</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            
+<div id="block-constellationr-megamenu-3" class="block block-block-content block-block-content641731d7-c0d6-47ac-96d1-3b47d98844e0 mobile-mega-menu-items-block">
+            <ul class="mobile-mega-menu-dropdown-items">
+                  <li class="mobile-mega-menu-dropdown-item"><a href="/research">Research</a>
+        <div class="mega-menu-mobile-item-content">
+            <ul class="mega-menu-mobile-item-content-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/book-open-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/library">Full Library</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/edit-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/blog">Analyst Blog</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/users-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/analysts">Analysts</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/03/book-open-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/the-board">The Board</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/file-search-02.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/shortlist-overview">ShortLists</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/folder.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/themes">Business Themes</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/layout-alt-02.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/agenda">Research Agenda</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/05/book-open-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/library/orbits-series">Orbits Series</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/shield-tick.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/policies">Research &amp; Citation Policies</a></div>
+</li>
+
+</ul>
+                        <div class="mega-menu-mobile-item-content-sidebar">
+                <h4>  Recommendations for You
+</h4>
+                <div class="mega-menu-mobile-item-content-sidebar-links">  
+    <div class="menu-sidebar-item">
+        <a href="/research/blog">Analyst Blog</a>
+        <p>Get updates about industry trends, events and research.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/research/contributors">Meet Our Analysts</a>
+        <p>Connect with our subject matter experts.</p>
+    </div>
+
+</div>
+            </div>
+                    </div>
+    </li>
+
+      <li class="mobile-mega-menu-dropdown-item"><a href="/services">Analyst Services</a>
+        <div class="mega-menu-mobile-item-content">
+            <ul class="mega-menu-mobile-item-content-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/file-search-02.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/custom-research">Custom Research</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/cpu-chip-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/technology-acquisition">Technology Acquisition</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/message-square-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/analyst-inquiries">Analyst Inquiries</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/microphone-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/speaking-workshops">Speaking and Workshops</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/users-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/provider-advisory">Provider Advisory Services</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/users-01_0.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/enterprise-advisory">Enterprise Advisory Services</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/03/users-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/the-board">Board Advisory</a></div>
+</li>
+
+</ul>
+                        <div class="mega-menu-mobile-item-content-sidebar">
+                <h4>  Recommendations for You
+</h4>
+                <div class="mega-menu-mobile-item-content-sidebar-links">  
+    <div class="menu-sidebar-item">
+        <a href="/contact-us">Book an Inquiry</a>
+        <p>Schedule time with one of our analysts.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/services">Advisory Services</a>
+        <p>Ongoing guidance for your organization.</p>
+    </div>
+
+</div>
+            </div>
+                    </div>
+    </li>
+
+      <li class="mobile-mega-menu-dropdown-item"><a href="/videos">Videos</a>
+        <div class="mega-menu-mobile-item-content">
+            <ul class="mega-menu-mobile-item-content-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square.svg" alt=""></div>
+    <div class="link-item-url"><a href="/video/channel/disruptv">DisrupTV</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_1.svg" alt=""></div>
+    <div class="link-item-url"><a href="/video/channel/constellationtv">ConstellationTV</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_2.svg" alt=""></div>
+    <div class="link-item-url"><a href="/videos/all?series%5B100156%5D=100156">Shortlist Spotlights</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_4.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/video?series%5B100026%5D=100026">Insights Video</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/play-square.svg" alt=""></div>
+    <div class="link-item-url"><a href="/videos/all?series%5B100155%5D=100155">CR Conversations</a></div>
+</li>
+
+</ul>
+                        <div class="mega-menu-mobile-item-content-sidebar">
+                <h4>  Recommendations for You
+</h4>
+                <div class="mega-menu-mobile-item-content-sidebar-links">  
+    <div class="menu-sidebar-item">
+        <a href="/video/channel/disruptv/episodes">Watch the latest episode of DisrupTV</a>
+        <p>Stay ahead with fresh takes on tech, leadership, and innovation</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/video/channel/constellationtv">Watch the latest episode of CRTV</a>
+        <p>Catch the latest hot take from Constellation analysts.</p>
+    </div>
+
+</div>
+            </div>
+                    </div>
+    </li>
+
+      <li class="mobile-mega-menu-dropdown-item"><a href="/communities">Communities</a>
+        <div class="mega-menu-mobile-item-content">
+            <ul class="mega-menu-mobile-item-content-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/award-03.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/business-transformation-150">Business Transformation 150</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/flag-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/ambient-experience-100">Ambient Experience 100</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/award-ribbon-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/supernova-awards-2026">SuperNova Awards</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/server-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/artificial-intelligence-150">Artificial Intelligence 150</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/globe-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/sustainability50">Sustainability 50</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/award-ribbon-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/ai-first-service-firms">AI-First Service Firms</a></div>
+</li>
+
+</ul>
+                        <div class="mega-menu-mobile-item-content-sidebar">
+                <h4>  Recommendations for You
+</h4>
+                <div class="mega-menu-mobile-item-content-sidebar-links">  
+    <div class="menu-sidebar-item">
+        <a href="/join#no-back">Become a Member</a>
+        <p>Join the Constellation community and access our comprehensive collection of research and analysis.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/communities/business-transformation-150/nominate">BT150 Nomination Form</a>
+        <p>Know someone driving meaningful change? Nominate them for the upcoming BT150 and showcase their impact on a global stage.</p>
+    </div>
+
+</div>
+            </div>
+                    </div>
+    </li>
+
+      <li class="mobile-mega-menu-dropdown-item"><a href="/events">Events</a>
+        <div class="mega-menu-mobile-item-content">
+            <ul class="mega-menu-mobile-item-content-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/constellations-connected-enterprise-2026">Constellation’s Connected Enterprise</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/analyst-relations-experience-2026">Analyst Relations Experience</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/constellations-ai-forum-september-2026">AI Forum</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2025/ambient-experience-summit-2025">Ambient Experience Summit</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/03/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/constellations-futures-forum-2026">Constellation&#039;s Futures Forum</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2027/healthcare-transformation-summit-2027">Healthcare Transformation Summit</a></div>
+</li>
+
+</ul>
+                        <div class="mega-menu-mobile-item-content-sidebar">
+                <h4>  Recommendations for You
+</h4>
+                <div class="mega-menu-mobile-item-content-sidebar-links">  
+    <div class="menu-sidebar-item">
+        <a href="/event/2026/constellations-ai-forum-march-2026">AI Forum Registration</a>
+        <p>Secure your spot at AIF on March 19, 2026.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/events/external">Industry Events</a>
+        <p>See where our analysts are headed next.</p>
+    </div>
+
+</div>
+            </div>
+                    </div>
+    </li>
+
+      <li class="mobile-mega-menu-dropdown-item"><a href="/insights">Insights</a>
+        <div class="mega-menu-mobile-item-content">
+            <ul class="mega-menu-mobile-item-content-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/layout-alt-02_0.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/news">Insights News</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/book-closed.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/live">Notebook</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/book-open-01_0.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/library?keyword=&amp;research_type%5B100244%5D=100244&amp;author=Larry%20Dignan%20%2825646%29">Customer Stories</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_5.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/video">Insights Video</a></div>
+</li>
+
+</ul>
+                        <div class="mega-menu-mobile-item-content-sidebar">
+                <h4>  Recommendations for You
+</h4>
+                <div class="mega-menu-mobile-item-content-sidebar-links">  
+    <div class="menu-sidebar-item">
+        <a href="/insights/news">Insights News</a>
+        <p>Stay ahead of enterprise news with Larry Dignan.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/insights/customer-stories">Customer Stories</a>
+        <p>These enterprises are making big waves with technology use cases.</p>
+    </div>
+
+</div>
+            </div>
+                    </div>
+    </li>
+
+
+        </ul>
+    </div>
+
+
+        </nav>
+    </div>
+</div>
+
+
+    
+
+<div id="block-constellationr-megamenu-2" class="block block-block-content block-block-content641731d7-c0d6-47ac-96d1-3b47d98844e0 mega-menu-dropdowns">
+            <div class="menu-content">
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+
+    <div class="mega-menu-dropdown-item hidden" id="mega-menu-target-57">
+        <div class="flex">
+            <div class="menu-items">
+                <h4>Research</h4>
+                <ul class="mega-menu-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/book-open-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/library">Full Library</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/edit-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/blog">Analyst Blog</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/users-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/analysts">Analysts</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/03/book-open-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/the-board">The Board</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/file-search-02.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/shortlist-overview">ShortLists</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/folder.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/themes">Business Themes</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/layout-alt-02.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/agenda">Research Agenda</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/05/book-open-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/library/orbits-series">Orbits Series</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/shield-tick.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/policies">Research &amp; Citation Policies</a></div>
+</li>
+
+</ul>
+            </div>
+                        <div class="menu-sidebar">
+                <h4>Recommendations for You</h4>
+                <div class="menu-sidebar-links">
+                      
+    <div class="menu-sidebar-item">
+        <a href="/research/blog">Analyst Blog</a>
+        <p>Get updates about industry trends, events and research.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/research/contributors">Meet Our Analysts</a>
+        <p>Connect with our subject matter experts.</p>
+    </div>
+
+
+                </div>
+            </div>
+                    </div>
+    </div>
+
+
+                                            
+
+    <div class="mega-menu-dropdown-item hidden" id="mega-menu-target-65">
+        <div class="flex">
+            <div class="menu-items">
+                <h4>Available Services</h4>
+                <ul class="mega-menu-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/file-search-02.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/custom-research">Custom Research</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/cpu-chip-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/technology-acquisition">Technology Acquisition</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/message-square-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/analyst-inquiries">Analyst Inquiries</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/microphone-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/speaking-workshops">Speaking and Workshops</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/users-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/provider-advisory">Provider Advisory Services</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/users-01_0.svg" alt=""></div>
+    <div class="link-item-url"><a href="/services/enterprise-advisory">Enterprise Advisory Services</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/03/users-01.svg" alt=""></div>
+    <div class="link-item-url"><a href="/the-board">Board Advisory</a></div>
+</li>
+
+</ul>
+            </div>
+                        <div class="menu-sidebar">
+                <h4>Recommendations for You</h4>
+                <div class="menu-sidebar-links">
+                      
+    <div class="menu-sidebar-item">
+        <a href="/contact-us">Book an Inquiry</a>
+        <p>Schedule time with one of our analysts.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/services">Advisory Services</a>
+        <p>Ongoing guidance for your organization.</p>
+    </div>
+
+
+                </div>
+            </div>
+                    </div>
+    </div>
+
+
+                                            
+
+    <div class="mega-menu-dropdown-item hidden" id="mega-menu-target-74">
+        <div class="flex">
+            <div class="menu-items">
+                <h4>Videos</h4>
+                <ul class="mega-menu-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square.svg" alt=""></div>
+    <div class="link-item-url"><a href="/video/channel/disruptv">DisrupTV</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_1.svg" alt=""></div>
+    <div class="link-item-url"><a href="/video/channel/constellationtv">ConstellationTV</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_2.svg" alt=""></div>
+    <div class="link-item-url"><a href="/videos/all?series%5B100156%5D=100156">Shortlist Spotlights</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_4.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/video?series%5B100026%5D=100026">Insights Video</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/play-square.svg" alt=""></div>
+    <div class="link-item-url"><a href="/videos/all?series%5B100155%5D=100155">CR Conversations</a></div>
+</li>
+
+</ul>
+            </div>
+                        <div class="menu-sidebar">
+                <h4>Recommendations for You</h4>
+                <div class="menu-sidebar-links">
+                      
+    <div class="menu-sidebar-item">
+        <a href="/video/channel/disruptv/episodes">Watch the latest episode of DisrupTV</a>
+        <p>Stay ahead with fresh takes on tech, leadership, and innovation</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/video/channel/constellationtv">Watch the latest episode of CRTV</a>
+        <p>Catch the latest hot take from Constellation analysts.</p>
+    </div>
+
+
+                </div>
+            </div>
+                    </div>
+    </div>
+
+
+                                            
+
+    <div class="mega-menu-dropdown-item hidden" id="mega-menu-target-82">
+        <div class="flex">
+            <div class="menu-items">
+                <h4>Our Communities</h4>
+                <ul class="mega-menu-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/award-03.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/business-transformation-150">Business Transformation 150</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/flag-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/ambient-experience-100">Ambient Experience 100</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/award-ribbon-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/supernova-awards-2026">SuperNova Awards</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/server-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/artificial-intelligence-150">Artificial Intelligence 150</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/globe-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/sustainability50">Sustainability 50</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/01/award-ribbon-white.svg" alt=""></div>
+    <div class="link-item-url"><a href="/communities/ai-first-service-firms">AI-First Service Firms</a></div>
+</li>
+
+</ul>
+            </div>
+                        <div class="menu-sidebar">
+                <h4>Recommendations for You</h4>
+                <div class="menu-sidebar-links">
+                      
+    <div class="menu-sidebar-item">
+        <a href="/join#no-back">Become a Member</a>
+        <p>Join the Constellation community and access our comprehensive collection of research and analysis.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/communities/business-transformation-150/nominate">BT150 Nomination Form</a>
+        <p>Know someone driving meaningful change? Nominate them for the upcoming BT150 and showcase their impact on a global stage.</p>
+    </div>
+
+
+                </div>
+            </div>
+                    </div>
+    </div>
+
+
+                                            
+
+    <div class="mega-menu-dropdown-item hidden" id="mega-menu-target-91">
+        <div class="flex">
+            <div class="menu-items">
+                <h4>Events</h4>
+                <ul class="mega-menu-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/constellations-connected-enterprise-2026">Constellation’s Connected Enterprise</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/analyst-relations-experience-2026">Analyst Relations Experience</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/constellations-ai-forum-september-2026">AI Forum</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2025/ambient-experience-summit-2025">Ambient Experience Summit</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2026/03/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2026/constellations-futures-forum-2026">Constellation&#039;s Futures Forum</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/calendar.svg" alt=""></div>
+    <div class="link-item-url"><a href="/event/2027/healthcare-transformation-summit-2027">Healthcare Transformation Summit</a></div>
+</li>
+
+</ul>
+            </div>
+                        <div class="menu-sidebar">
+                <h4>Recommendations for You</h4>
+                <div class="menu-sidebar-links">
+                      
+    <div class="menu-sidebar-item">
+        <a href="/event/2026/constellations-ai-forum-march-2026">AI Forum Registration</a>
+        <p>Secure your spot at AIF on March 19, 2026.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/events/external">Industry Events</a>
+        <p>See where our analysts are headed next.</p>
+    </div>
+
+
+                </div>
+            </div>
+                    </div>
+    </div>
+
+
+                                            
+
+    <div class="mega-menu-dropdown-item hidden" id="mega-menu-target-99">
+        <div class="flex">
+            <div class="menu-items">
+                <h4>The Latest from Insights Live</h4>
+                <ul class="mega-menu-links">  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/layout-alt-02_0.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/news">Insights News</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/book-closed.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/live">Notebook</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/book-open-01_0.svg" alt=""></div>
+    <div class="link-item-url"><a href="/research/library?keyword=&amp;research_type%5B100244%5D=100244&amp;author=Larry%20Dignan%20%2825646%29">Customer Stories</a></div>
+</li>
+
+  
+<li class="link-item">
+    <div class="link-item-icon"><img src="/sites/default/files/mega-menu-link-icon/2025/11/play-square_5.svg" alt=""></div>
+    <div class="link-item-url"><a href="/insights/video">Insights Video</a></div>
+</li>
+
+</ul>
+            </div>
+                        <div class="menu-sidebar">
+                <h4>Recommendations for You</h4>
+                <div class="menu-sidebar-links">
+                      
+    <div class="menu-sidebar-item">
+        <a href="/insights/news">Insights News</a>
+        <p>Stay ahead of enterprise news with Larry Dignan.</p>
+    </div>
+
+  
+    <div class="menu-sidebar-item">
+        <a href="/insights/customer-stories">Customer Stories</a>
+        <p>These enterprises are making big waves with technology use cases.</p>
+    </div>
+
+
+                </div>
+            </div>
+                    </div>
+    </div>
+
+
+                                            
+                                            
+                        <div class="mega-menu-dropdown-item mega-menu-search hidden" id="mega-menu-search-form">
+                <form action="/search">
+                    <input name="text" placeholder="Search..."><input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+  </header>
+
+  
+  
+  
+
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>
+    <div class="layout-content">
+      <div class="block block-system block-system-breadcrumb-block">
+  
+    
+        <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+    <ol>
+                  <li class="home"><a href="/"><img src="/themes/custom/constellationr/assets/img/icons/gray-home-icon.svg" alt="Home page link"><span class="hidden">Home</span></a></li>
+                      <li>
+                  <a href="/insights">Insights</a>
+              </li>
+                      <li>
+                  <a href="/insights/news">News</a>
+              </li>
+                      <li>
+                  Why you should arbitrage your AI models like your vendors do
+              </li>
+              </ol>
+  </nav>
+
+  </div>
+
+        <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+
+
+
+<article class="node node--type-insight-blog node--view-mode-full">
+    
+    
+    <div class="container_76">
+        <div class="blog-title">
+            <div class="flex">
+                <div class="left">                
+                    <h1>Why you should arbitrage your AI models like your vendors do</h1>
+                    <div class="date">Published September 6, 2026</div>
+                    <div class="share">
+                        <div class="social-share-icons top-social-share">
+                            <div class="block block-better-social-sharing-buttons block-social-sharing-buttons-block">
+  
+    
+      
+
+<div style="display: none"><link rel="preload" href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg" as="image" type="image/svg+xml" crossorigin="anonymous" /></div>
+
+<div class="social-sharing-buttons">
+
+                
+        <a href="#" class="btn-copy social-sharing-buttons-button share-copy" role="button" title="Copy link" aria-label="Copy link">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#copy" />
+            </svg>
+            <span class="before-copy">Copy link</span>
+            <span class="after-copy">Link Copied</span>
+            <div class="social-sharing-buttons-popup" role="alert" aria-live="assertive">Copied to clipboard</div>
+        </a>
+        
+                <a href="https://twitter.com/intent/tweet?text=Why%20you%20should%20arbitrage%20your%20AI%20models%20like%20your%20vendors%20do+https://www.constellationr.com/insights/news/why-you-should-arbitrage-your-ai-models-your-vendors-do" target="_blank" title="Share to X" aria-label="Share to X" class="social-sharing-buttons-button share-x" rel="noopener">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#x" />
+            </svg>
+        </a>
+    
+        
+        
+        
+        
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.constellationr.com/insights/news/why-you-should-arbitrage-your-ai-models-your-vendors-do" target="_blank" title="Share to Linkedin" aria-label="Share to Linkedin" class="social-sharing-buttons-button share-linkedin" rel="noopener">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#linkedin" />
+            </svg>
+        </a>
+    
+        
+        
+        
+        
+        
+        
+                <a href="/cdn-cgi/l/email-protection#320d414750585751460f655a4b1700024b5d47170002415a5d475e561700025340505b46405355571700024b5d4740170002737b1700025f5d56575e411700025e5b59571700024b5d474017000244575c565d4041170002565d14535f4209505d564b0f5a46464241081d1d4545451c515d5c4146575e5e53465b5d5c401c515d5f1d5b5c415b555a46411d5c5745411d455a4b1f4b5d471f415a5d475e561f5340505b46405355571f4b5d47401f535b1f5f5d56575e411f4b5d47401f44575c565d40411f565d" title="Share to Email" aria-label="Share to Email" class="social-sharing-buttons-button share-email" target="_blank" rel="noopener">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#email" />
+            </svg>
+        </a>
+    
+                                            <a href="javascript:window.print()" rel="" class="bssb-printlink share-print" title="Print"  aria-label="Print">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#print" />
+            </svg>
+        </a>
+    
+</div>
+
+  </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-76">
+
+        <div class="flex">
+
+            <div class="first content-column">
+
+                
+                <div class="u-wysiwyg blog-body">
+                      <p>Enterprise software vendors are arbitraging open weight models, developing their own options and using the frontier AI labs when needed. Take notes since you'll likely be doing the same LLM portfolio management as you wrangle your AI budget. </p>
+<p>The latest round of enterprise software earnings featured a bevy of nuggets on mixing and matching AI models. Since most companies are consuming their AI through their applications it's worth watching the vendors who are taking on the token cost risks and managing margins with a portfolio approach to models. </p>
+<p>In the US, the storyline for AI is proprietary vs open models (via China), but there's a lot of nuances. Nvidia is championing both open and closed models. After all, Nvidia is selling you the AI infrastructure. CEO Jensen Huang recently set the scene on the <a href="https://www.constellationr.com/insights/news/nvidia-projects-432-billion-annual-revenue-run-rate-q2-surge">company's earnings call</a>:</p>
+<blockquote><p><em>"The world will need both closed models and open models. And both closed models and open models are skyrocketing in use. Open models are doing incredibly well. Closed models, we know are doing incredibly well," said Huang. "Every major company, every country and every startup needs to build their domain specific, their proprietary AI, their proprietary alpha. And the open models reaching frontier levels has made it possible, has enabled them to all do that."</em></p>
+</blockquote>
+<p>Nebius' Roman Chernin, Chief Business Officer, added that proprietary data is the only moat and open models that are valuable because they can be tuned. </p>
+<ul>
+<li><a href="https://www.constellationr.com/insights/news/nvidias-1293-billion-hugging-face-acquisition-validates-open-weight-models"><strong>Nvidia’s $12.93 billion Hugging Face acquisition validates open weight models</strong></a></li>
+<li><a href="https://www.constellationr.com/insights/news/will-enterprises-learn-love-meta-ai-models-again"><strong>Will enterprises learn to love Meta AI models again?</strong></a></li>
+</ul>
+<p>Ultimately, you'll be leveraging open models to offset frontier AI costs. As previously noted, the only things that'll matter in AI are price, performance and outcomes. Z.ai, the company behind one of the lead open models GLM-5.3 said as much <a href="https://www.constellationr.com/insights/news/zai-reports-first-half-results-sales-surge">in its earnings missive</a>. </p>
+<p>Z.ai said: "Industry evaluation criteria are also shifting from single-turn response quality and token consumption volume to long-horizon task success rate, unit intelligence cost, result verifiability, and the actual business outcomes delivered to customers."</p>
+<p>The company added that it is focused on making better models and not chasing ancillary business models as a diversion. </p>
+
+<article>
+  
+
+
+          
+<img src="/sites/default/files/styles/responsive_600w/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=aAfTYyMn" data-srcset="/sites/default/files/styles/responsive_600w/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=aAfTYyMn 600w,/sites/default/files/styles/responsive_1000w/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=vOhyqb1k 1000w,/sites/default/files/styles/responsive_1400w/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=ZjHRoFea 1400w,/sites/default/files/styles/responsive_1800w/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=li-rayt_ 1800w,/sites/default/files/styles/responsive_2200w/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=BC5ukXdl 2200w" alt="Z.ai" width="600" height="347" data-multiplier="1x">
+
+
+</article>
+<p>With that backdrop in mind, here's a look at what software vendors are saying about managing their own models. </p>
+<p>Oracle CEO Mike Sicilia <a href="https://www.constellationr.com/insights/news/oracle-takeaways-ai-value-outcome-pricing-managing-ai-spend">was most explicit about open models and their role in controlling costs</a>. Speaking at a recent investment conference, Sicilia said: "We arbitrage open source models. We oversource OpenAI inside of our own applications.  I think there's a place for open models. In fact, some of those Fusion examples that I gave earlier with HCM, we're arbitraging both, in this case, OpenAI and open models."</p>
+<p>If the results are good enough with an open model, follow the value. "If there's a good enough result from the model that results in a high-quality answer for customers, we're by no means opposed to leveraging that open model and keeping our costs low as a result," said Sicilia, who said their will be multiple model winners and Oracle won't be locked into any one LLM.</p>
+<ul>
+<li><a href="https://www.constellationr.com/research/blog/open-weight-models-are-gaining-ground-enterprise-ai">Open-Weight Models Are Gaining Ground in Enterprise AI</a></li>
+<li><a href="https://www.constellationr.com/insights/news/get-ready-us-open-llms-and-just-time">Get ready for US open LLMs and just in time</a></li>
+<li><a href="https://www.constellationr.com/insights/news/rightsizing-open-models-may-cut-your-ai-inference-spend">Rightsizing open models may cut your AI inference spend</a></li>
+<li><a href="https://www.constellationr.com/insights/news/most-important-llm-benchmark-today-price">The most important LLM benchmark today: Price</a></li>
+</ul>
+<p><a href="https://www.constellationr.com/insights/news/salesforce-aims-be-your-enterprise-ai-harness-touts-aiforce">Salesforce CEO Marc Benioff hit a similar theme</a>. He said customers don't care about the model underneath the application. "There will be frontier models. There are going to be open models and there's going to be room for all of the above," said Benioff, who talked up Nvidia's Nemotron models. </p>
+<p>Benioff added Salesforce has its own custom models too. The Benioff riff was a touch awkward given <a href="https://www.constellationr.com/insights/news/salesforce-q2-shines-amid-ai-demand">the earnings call started with a Claudeforce announcement with Anthropic</a>. </p>
+<p>Workday's Gerrit Kazmaier, President of Product &amp; Technology, also said the company is <a href="https://www.constellationr.com/insights/news/workday-q2-strong-says-ai-attracting-more-wallet-share">excited about the open-weight model developments</a>. "They open up new opportunities for us for having our own reinforcement learning, building our own adapters over them. They give us a much stronger optionality when we think about international and sovereignty," said Kazmaier. </p>
+<p>"We are focused on driving the right ROI and economics for our customers," said Kazmaier. "We deploy a large set of models from multiple vendors. We have small models, open-weight models and large frontier models we use to build our AI systems and agents with."</p>
+<p>Workday has a lab that is "actively exploring opportunities for us to not only use open-weight models, but truly specialize them to our purposes and see what lift we get," said Kazmaier. </p>
+<p>This mixing and matching of models is going to raise the profile of harnesses for AI agents. Box CEO Aaron Levie said the company is using its model neutral harness to "direct the workload to whatever is effectively <a href="https://www.constellationr.com/insights/news/box-ceo-levie-says-model-prices-falling-excited-about-open-weight-options">the cheapest model at the accuracy level that the customer is looking for</a>."</p>
+<p>"In some cases, it'll be an open weight model and there are models on the horizon we're quite excited about we assume are coming in the second half," said Levie. </p>
+<p>HPE CFO Marie Myers said the company can continue to improve margins and is expanding its AI-enabled process optimization effort called Catalyst. She said: "We have expanded both our AI and operational simplification efforts across the enterprise. HPE is now deploying an internal agent AI platform built on our own private cloud AI, open source, and open weight models, leveraging intelligent routing that sends each workload request to the most cost-effective AI model."</p>
+<p>HPE's internal projections indicate the company can reduce its token costs on its private cloud relative to public cloud by up to 60%. "Routine tasks stay on-premise while frontier models are reserved for the most complex work," said Myers.</p>
+<p>Add it up and you'll need to act a bit more like your enterprise vendors when it comes to LLMs. These enterprise software players are ahead of the LLM arbitrage game since it's part of their business. Here are some things to think about:</p>
+<ul>
+<li>The harness you use has to be model agnostic and preferably vendor agnostic.</li>
+<li>Any use case that doesn't require a frontier model should go with the cheapest option. </li>
+<li>Grow expertise in tuning open weight models with your own data preferably running on your own infrastructure. </li>
+<li>Choose what functions you want to outsource model selection to your vendor. The reality is most companies will consume AI through their software vendors. </li>
+<li>Focus on outcomes where proprietary models can drive competitive edge. </li>
+<li>It's likely that an open model strategy will include more Nvidia, which delivers its Nemotron models that are used by software vendors as well as consulting firms. For instance, Deloitte just started an open model practice based on Nemotron. </li>
+</ul>
+<p>Snowflake CEO Sridhar Ramaswamy indicated customers are <a href="https://www.constellationr.com/insights/news/snowflake-q2-growth-surges-ai-and-data-demand">moving more toward arbitrage and optimization with open weight models</a>. He said:</p>
+<blockquote><p><em>“We are absolutely seeing a lot of interest in being able to switch between different models and also to optimize cost. And this is also where open source models come in. There's obviously been several generations of these open source models, and we support many of them within Snowflake. And yes, we have pretty different economics when it comes to open source models since we run the inference ourselves. So that offers a lot of potential for future optimization.”</em></p>
+</blockquote>
+
+
+                </div>
+
+                <div class="block block-better-social-sharing-buttons block-social-sharing-buttons-block">
+  
+    
+      
+
+<div style="display: none"><link rel="preload" href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg" as="image" type="image/svg+xml" crossorigin="anonymous" /></div>
+
+<div class="social-sharing-buttons">
+
+                
+        <a href="#" class="btn-copy social-sharing-buttons-button share-copy" role="button" title="Copy link" aria-label="Copy link">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#copy" />
+            </svg>
+            <span class="before-copy">Copy link</span>
+            <span class="after-copy">Link Copied</span>
+            <div class="social-sharing-buttons-popup" role="alert" aria-live="assertive">Copied to clipboard</div>
+        </a>
+        
+                <a href="https://twitter.com/intent/tweet?text=Why%20you%20should%20arbitrage%20your%20AI%20models%20like%20your%20vendors%20do+https://www.constellationr.com/insights/news/why-you-should-arbitrage-your-ai-models-your-vendors-do" target="_blank" title="Share to X" aria-label="Share to X" class="social-sharing-buttons-button share-x" rel="noopener">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#x" />
+            </svg>
+        </a>
+    
+        
+        
+        
+        
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.constellationr.com/insights/news/why-you-should-arbitrage-your-ai-models-your-vendors-do" target="_blank" title="Share to Linkedin" aria-label="Share to Linkedin" class="social-sharing-buttons-button share-linkedin" rel="noopener">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#linkedin" />
+            </svg>
+        </a>
+    
+        
+        
+        
+        
+        
+        
+                <a href="/cdn-cgi/l/email-protection#68571b1d0a020d0b1c553f00114d5a5811071d4d5a581b00071d040c4d5a58091a0a011c1a090f0d4d5a5811071d1a4d5a5829214d5a5805070c0d041b4d5a580401030d4d5a5811071d1a4d5a581e0d060c071a1b4d5a580c074e090518530a070c1155001c1c181b5247471f1f1f460b07061b1c0d0404091c0107061a460b07054701061b010f001c1b47060d1f1b471f00114511071d451b00071d040c45091a0a011c1a090f0d4511071d1a4509014505070c0d041b4511071d1a451e0d060c071a1b450c07" title="Share to Email" aria-label="Share to Email" class="social-sharing-buttons-button share-email" target="_blank" rel="noopener">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#email" />
+            </svg>
+        </a>
+    
+                                            <a href="javascript:window.print()" rel="" class="bssb-printlink share-print" title="Print"  aria-label="Print">
+            <svg aria-hidden="true" width="20px" height="20px" style="border-radius:3px;">
+                <use href="/modules/contrib/better_social_sharing_buttons/assets/dist/sprites/social-icons--no-color.svg#print" />
+            </svg>
+        </a>
+    
+</div>
+
+  </div>
+
+
+                <div class="authors">
+                      
+
+
+                
+    <article class="user content-author-large-teaser">
+        <div class="flex author-item">
+            <div class="left">
+                <div class="photo"><a href="https://www.constellationr.com/user/larry-dignan">    <img loading="lazy" src="/sites/default/files/styles/headshot_400x400/public/user/person-photo/2026/01/06/larry_headshot_2.png.webp?itok=tevCaIdS" width="400" height="400" alt="" class="image-style-headshot-400x400" />
+
+
+
+</a></div>
+                <div class="name"><a href="https://www.constellationr.com/user/larry-dignan">  Larry
+   Dignan
+</a></div>
+                <div class="title">  Editor in Chief of Constellation Insights
+<br />  Constellation Research
+</div>
+            </div>
+            <div class="right u-wysiwyg">
+                <p>Larry Dignan is Editor in Chief of Constellation Insights at Constellation Research, where he leads editorial coverage focused on enterprise technology, digital transformation, and emerging trends shaping the future of business. He oversees research-driven news, analysis, interviews, and event coverage designed to help technology buyers and vendors navigate complex markets with clarity and context. ...</p>
+                <a class="author-item-read-more" href="https://www.constellationr.com/user/larry-dignan">Read more</a>
+            </div>
+        </div>
+    </article>
+
+
+
+                </div>
+
+                <div class="recent-insight-posts">
+                    <div class="view view-insight-news-footer-recent-posts view-id-insight_news_footer_recent_posts view-display-id-embed_1 js-view-dom-id-1763657a786c11a94c38a229a1db76769cb91d3736a91e8dc29dadcadfd7d7ba">
+  
+    
+      
+      <div class="view-content">
+      <h2 class="u-sr-only view-content__header">Results</h2>
+      
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-03_162924.png.webp?itok=NRE2-15g'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 3, 2026</div>
+            <h3><a href="/insights/news/adobe-names-chakravarthy-ceo">Adobe names Chakravarthy CEO</a></h3>
+            <div class="article-type">Next-Generation Customer Experience</div>
+            <div class="summary">Adobe said Anil Chakravarthy, president of Adobe&#039;s Customer Experience Orchestration business and worldwide field operations, will become its next CEO replacing Shantanu Narayen De...</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-03_161219.png.webp?itok=HUNyzyXz'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 3, 2026</div>
+            <h3><a href="/insights/news/openai-launches-gpt-6-astra">OpenAI launches GPT-6 Astra </a></h3>
+            <div class="article-type">Future of Work</div>
+            <div class="summary">OpenAI launched GPT-6 Astra to customers in its Daybreak program. Astra will roll out to a select group of customers before broad availability....</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-03_120210.png.webp?itok=YXMVkTuX'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 3, 2026</div>
+            <h3><a href="/insights/news/nvidias-1293-billion-hugging-face-acquisition-validates-open-weight-models">Nvidia’s $12.93 billion Hugging Face acquisition validates open weight models</a></h3>
+            <div class="article-type">Innovation &amp; Product-led Growth</div>
+            <div class="summary">Nvidia said it will buy Hugging Face in a deal valued at $12.93 billion. Nvidia said the deal is to expand its developer ecosystem and improve Hugging Face&#039;s infrastructure. The re...</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-03_070836.png.webp?itok=SuHMASSo'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 3, 2026</div>
+            <h3><a href="/insights/news/will-enterprises-learn-love-meta-ai-models-again">Will enterprises learn to love Meta AI models again?</a></h3>
+            <div class="article-type">Data to Decisions</div>
+            <div class="summary">Meta released Muse Spark 1.3 and said it improves coding and agentic tasks, promised that Watermelon, an improved model is on deck, and said Muse Spark open weight releases are com...</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-02_165509.png.webp?itok=0Bf-cy1s'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 2, 2026</div>
+            <h3><a href="/insights/news/broadcom-reports-strong-q3-sees-ai-chip-revenue-accelerating-q4">Broadcom reports strong Q3, sees AI chip revenue accelerating in Q4</a></h3>
+            <div class="article-type">Tech Optimization</div>
+            <div class="summary">Broadcom continued to ride demand for its AI custom accelerators in the fiscal third quarter with revenue growth of 86%....</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-02_164307.png.webp?itok=JcZ53UBA'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 2, 2026</div>
+            <h3><a href="/insights/news/snowflake-q2-growth-surges-ai-and-data-demand">Snowflake Q2 growth surges on AI and data demand</a></h3>
+            <div class="article-type">Data to Decisions</div>
+            <div class="summary">Snowflake&#039;s revenue growth accelerated to 37% in the second quarter as the company continues to see strong demand for its data platform due to AI. ...</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+    </div>
+  
+          </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="second sidebar">
+                                
+                <div class="sidebar-item published-info">
+                    <div class="pubinfo">
+                        <h5>Published</h5>
+                        <div class="published-date">September 6, 2026</div>
+                    </div>
+                    <div class="small-author-items">
+                                                <h5>Author</h5>
+                                                <div class="author-items">
+                                                            <div class="author-item small-author-photo-name">
+        <div class="author-photo">    <img loading="lazy" src="/sites/default/files/styles/headshot_400x400/public/user/person-photo/2026/01/06/larry_headshot_2.png.webp?itok=tevCaIdS" width="400" height="400" alt="" class="image-style-headshot-400x400" />
+
+
+
+</div>
+        <div class="author-name"><a href="https://www.constellationr.com/user/larry-dignan">Larry Dignan</a></div>
+</div>
+
+                                                    </div>
+                    </div>
+                    <div class="categories">
+                        <details>
+                            <summary>Categories</summary>
+                            <div class="categories-list">
+                            
+                                                                <h5>Business Themes</h5>
+                                      <a href="/business-themes/data-decisions" hreflang="en">Data to Decisions</a>
+  <a href="/business-themes/innovation-product-led-growth" hreflang="en">Innovation &amp; Product-led Growth</a>
+
+                                
+                                
+                                
+                                
+                                                                    <h5>Hot Topics</h5>
+                                      <a href="/taxonomy/term/100067" hreflang="en">Agentic AI</a>
+  <a href="/taxonomy/term/100066" hreflang="en">AI</a>
+  <a href="/taxonomy/term/100068" hreflang="en">LLMs</a>
+
+                                
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <div class="sidebar-item related-blog-posts">
+                    <h5>Related Blog Posts</h5>
+                    <div class="related-blog-posts-items">
+                        
+                                                                                <div class="view view-related-insight-blog-posts view-id-related_insight_blog_posts view-display-id-embed_1 js-view-dom-id-db7fee57dd7bbdebdc92477a5f489f29de10f25d9c913f05d6dab3e82667031e">
+
+      <div class="view-content">
+      
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-01_061559.png.webp?itok=odV4TFLL'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 6, 2026</div>
+            <h3><a href="/insights/news/why-you-should-arbitrage-your-ai-models-your-vendors-do">Why you should arbitrage your AI models like your vendors do</a></h3>
+            <div class="article-type">Data to Decisions</div>
+            <div class="summary">Enterprise software vendors are arbitraging open weight models, developing their own options and using the frontier AI labs when needed. Take notes since you&#039;ll likely be doing the...</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-03_161219.png.webp?itok=HUNyzyXz'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 3, 2026</div>
+            <h3><a href="/insights/news/openai-launches-gpt-6-astra">OpenAI launches GPT-6 Astra </a></h3>
+            <div class="article-type">Future of Work</div>
+            <div class="summary">OpenAI launched GPT-6 Astra to customers in its Daybreak program. Astra will roll out to a select group of customers before broad availability....</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+  
+  <div class="views-row">
+    
+    
+
+
+<article class="node node--type-insight-blog node--view-mode-analyst-blog-small-card smallcard">
+
+        <div class="teaser-image"  style="background-image: url('/sites/default/files/styles/responsive_5_4_600w/public/media/image/2026/09/screenshot_2026-09-03_070836.png.webp?itok=SuHMASSo'); background-size: cover; background-position: center;">
+                            <div class="content-type">Insights News</div>
+                    </div>
+        <div class="teaser-content">
+            <div class="date">September 3, 2026</div>
+            <h3><a href="/insights/news/will-enterprises-learn-love-meta-ai-models-again">Will enterprises learn to love Meta AI models again?</a></h3>
+            <div class="article-type">Data to Decisions</div>
+            <div class="summary">Meta released Muse Spark 1.3 and said it improves coding and agentic tasks, promised that Watermelon, an improved model is on deck, and said Muse Spark open weight releases are com...</div>
+            <div class="author">  
+<article class="profile simple fname-lname">
+            Larry Dignan
+    </article>
+
+</div>
+        </div>
+
+</article>
+</div>
+
+
+    </div>
+    
+</div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="components"></div>
+    </div>
+
+</article>
+
+  </div>
+
+    </div>
+    
+    
+  </main>
+
+      <footer role="contentinfo">
+        <div class="region region-footer">
+    
+<section id="block-constellationr-globalfooter" class="block block-block-content block-block-content08885ce7-0555-4c72-97a9-49eb33caf999 global-footer">
+    <div class="container-80">
+        <div class="flex">
+            <div class="column col1">
+                <div class="footer-logo">
+                    <a href="/"><img src="/themes/custom/constellationr/assets/img/icons/logo-white.svg" alt="Constellation Research Logo"></a>
+                </div>
+                <div class="description u-wysiwyg">
+                    <p>  Guiding organizations through their digital transformation journey with strategic research and advisory services.
+</p>
+                </div>
+                <div class="footer-company-menu u-wysiwyg">
+                    <nav>
+                    <ul>
+        <li><a href="/about/overview">Company Overview</a></li>
+        <li><a href="/about/our-clients">Our Clients</a></li>
+        <li><a href="/about/media-mentions">Media Mentions</a></li>
+        <li><a href="/about/careers">Careers at Constellation Research</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li><a href="/client-services-team">Client Services Team</a></li>
+        <li><a href="/about/legal">Legal &amp; Terms of use</a></li>
+    </ul>
+
+                    </nav>
+                </div>
+            </div>
+                <div class="column">
+        
+
+    <div class="paragraph paragraph--type--footer-menu-column paragraph--view-mode--default">
+        
+        
+                    <h4>  Research
+</h4>
+            <nav>
+                <ul>
+        <li><a href="/research/library">Full Library</a></li>
+        <li><a href="/research/agenda">Research Agenda</a></li>
+        <li><a href="/research/blog">Research Blog</a></li>
+        <li><a href="/research/shortlist-overview">ShortLists</a></li>
+        <li><a href="/research/contributors">Contributors</a></li>
+        <li><a href="/research/themes">Research Themes</a></li>
+        <li><a href="/research/policies">Research Policies</a></li>
+    </ul>
+
+            </nav>
+            </div>
+
+    </div>
+    <div class="column">
+        
+
+    <div class="paragraph paragraph--type--footer-menu-column paragraph--view-mode--default">
+        
+        
+                    <h4>  Analyst Services
+</h4>
+            <nav>
+                <ul>
+        <li><a href="/services/analyst-inquiries">Analyst Inquiries</a></li>
+        <li><a href="/services/provider-advisory">Provider Advisory</a></li>
+        <li><a href="/services/custom-research">Custom Research</a></li>
+        <li><a href="/services/technology-acquisition">Technology Acquisition</a></li>
+        <li><a href="/services/speaking-workshops">Speaking Workshops</a></li>
+        <li><a href="/services/enterprise-advisory">Enterprise Advisory</a></li>
+    </ul>
+
+            </nav>
+            </div>
+
+    </div>
+    <div class="column">
+        
+
+    <div class="paragraph paragraph--type--footer-menu-column paragraph--view-mode--default">
+        
+        
+                    <h4>  Videos
+</h4>
+            <nav>
+                <ul>
+        <li><a href="/video/channel/disruptv">DisrupTV</a></li>
+        <li><a href="/video/channel/constellationtv">ConstellationTV</a></li>
+        <li><a href="/videos/insights">Insights Video</a></li>
+        <li><a href="/videos/shortlist-spotlights">ShortList Spotlights</a></li>
+        <li><a href="/videos/cr-convos">CR Conversations</a></li>
+    </ul>
+
+            </nav>
+            </div>
+
+    </div>
+    <div class="column">
+        
+
+    <div class="paragraph paragraph--type--footer-menu-column paragraph--view-mode--default">
+        
+        
+                    <h4>  Communities
+</h4>
+            <nav>
+                <ul>
+        <li><a href="/communities/business-transformation-150">Business Transformation 150</a></li>
+        <li><a href="/communities/supernova-awards-2026">SuperNova Awards™</a></li>
+        <li><a href="/communities/ambient-experience-100">Ambient Experience 100</a></li>
+        <li><a href="/communities/artificial-intelligence-150">Artificial Intelligence 150</a></li>
+        <li><a href="/communities/sustainability50">Sustainability 50</a></li>
+    </ul>
+
+            </nav>
+            </div>
+
+    </div>
+    <div class="column">
+        
+
+    <div class="paragraph paragraph--type--footer-menu-column paragraph--view-mode--default">
+        
+        
+                    <h4>  Events
+</h4>
+            <nav>
+                <ul>
+        <li><a href="/events/2026/constellation-connected-enterprise">Constellation&#039;s Connected Enterprise</a></li>
+        <li><a href="/event/2026/constellations-ai-forum-2026">AI Forum</a></li>
+        <li><a href="/event/2026/healthcare-transformation-summit-2026">Healthcare Transformation Summit</a></li>
+        <li><a href="/event/2025/analyst-relations-experience-2025">Analyst Relations Experience</a></li>
+        <li><a href="/event/2026/analyst-relations-experience-2026">Ambient Experience Summit</a></li>
+    </ul>
+
+            </nav>
+            </div>
+
+    </div>
+    <div class="column">
+        
+
+    <div class="paragraph paragraph--type--footer-menu-column paragraph--view-mode--default">
+        
+        
+                    <h4>  Insights Live
+</h4>
+            <nav>
+                <ul>
+        <li><a href="/insights/news">Insights News</a></li>
+        <li><a href="/insights/customer-stories">Customer Stories</a></li>
+        <li><a href="/insights/newsletters">Newsletters</a></li>
+        <li><a href="/insights/live">Notebook</a></li>
+        <li><a href="/insights/video">Video</a></li>
+    </ul>
+
+            </nav>
+            </div>
+
+    </div>
+
+        </div>
+    </div>
+
+    <div class="container-80 social-row">
+        <div class="social-media-links">
+            <div class="label">Follow Us: </div>
+            <div class="social-icons">
+                <div class="social-icon"><a href="https://www.linkedin.com/company/constellation-research/" target="_blank"><img alt="ConstellationR on Linkedin" src="/themes/custom/constellationr/assets/img/icons/footer-linkedin-logo.svg"></a></div>
+                <div class="social-icon"><a href="https://www.x.com/constellationr/" target="_blank"><img alt="ConstellationR on X" src="/themes/custom/constellationr/assets/img/icons/footer-x-logo.svg"></a></div>
+                <div class="social-icon"><a href="https://www.youtube.com/@ConstellationResearch" target="_blank"><img alt="ConstellationR on Youtube" src="/themes/custom/constellationr/assets/img/icons/footer-youtube-logo.svg"></a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="container-80">
+            <div class="flex u-wysiwyg">
+                <div class="first"><p>  © Constellation Research Inc. 2010 - 2026. All Rights Reserved.
+</p></div>
+                <div class="second"><p>  Constellation Research, Constellation SuperNova Awards, Connected Enterprise, and the Constellation Research logo are trademarks of Constellation Research, Inc. All other products and services listed herein are trademarks of their respective companies.
+</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  </div>
+
+    </footer>
+  
+</div>
+  </div>
+
+    
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/120536","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ckeditorResponsiveTable":{"tableSelector":"table:not([data-drupal-selector=\u0022edit-settings-selection-table\u0022])","failClass":"tabled--stacked","captionSide":"top","largeCharacterThreshold":50,"smallCharacterThreshold":8},"easyResponsiveImages":{"lazyLoadingThreshold":"1250"},"google_analytics":{"account":"UA-38309929-1","trackOutbound":true,"trackMailto":true,"trackTel":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackDomainMode":1},"ckeditorAccordion":{"accordionStyle":{"collapseAll":1,"keepRowsOpen":1,"animateAccordionOpenAndClose":1,"openTabsWithHash":1,"allowHtmlInTitles":0}},"quicklink":{"admin_link_container_patterns":["#block-local-tasks-block a",".block-local-tasks-block a","#drupal-off-canvas a","#toolbar-administration a","[data-drupal-admin-styles] a"],"ignore_admin_paths":true,"ignore_ajax_links":true,"ignore_file_ext":true,"total_request_limit":0,"concurrency_throttle_limit":0,"idle_wait_timeout":2000,"viewport_delay":0,"debug":false,"url_patterns_to_ignore":["user\/logout","#","\/admin","\/edit"]},"user":{"uid":0,"permissionsHash":"80d86d1faa32076bcb25aa1f09bdbf1ef0d22a89c0c34d9c6fa50b9ff9c69c42"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=4.0.0"></script>
+<script src="https://unpkg.com/quicklink@3.0.1/dist/quicklink.umd.js"></script>
+<script src="/sites/default/files/js/js_3LYvKAudMcWrh-jxD9LkXLN3B-BFtzFyrkBLfcuEBDM.js?scope=footer&amp;delta=2&amp;language=en&amp;theme=constellationr&amp;include=eJxtjVEKwkAMRC-0ukda0jSuoWlSk1Sop7ciVBG_ZngMbwbKJG9hyCAtruCsvQ1rpmlUtGU74epOmqfVpeBEI6d5A0TzkU3r0c4XN03S8bNyimX38J1awiBUf0EbORaBraDNMzlSi3ReqL5jxxpJIpD7gdcuNoAUgti-3TxDp3jJ-UFeulnf1aAgWzJG_QXltjJOwjrVo_1jjZXzCVRodJ4"></script>
+<script src="/modules/contrib/ckeditor_accordion/js/accordion.frontend.min.js?tk1a12"></script>
+<script src="/sites/default/files/js/js_a_y2TN1W7Npx4jEZDfACd_pRTlMW3kwvitaZ9oMh3sE.js?scope=footer&amp;delta=4&amp;language=en&amp;theme=constellationr&amp;include=eJxtjVEKwkAMRC-0ukda0jSuoWlSk1Sop7ciVBG_ZngMbwbKJG9hyCAtruCsvQ1rpmlUtGU74epOmqfVpeBEI6d5A0TzkU3r0c4XN03S8bNyimX38J1awiBUf0EbORaBraDNMzlSi3ReqL5jxxpJIpD7gdcuNoAUgti-3TxDp3jJ-UFeulnf1aAgWzJG_QXltjJOwjrVo_1jjZXzCVRodJ4"></script>
+<script src="https://js.stripe.com/v3/" defer="defer"></script>
+<script src="/sites/default/files/js/js_4fo6RcCrZ4DFm-vdOuCFqktGE7vcgNi4_c5ku4usbLA.js?scope=footer&amp;delta=6&amp;language=en&amp;theme=constellationr&amp;include=eJxtjVEKwkAMRC-0ukda0jSuoWlSk1Sop7ciVBG_ZngMbwbKJG9hyCAtruCsvQ1rpmlUtGU74epOmqfVpeBEI6d5A0TzkU3r0c4XN03S8bNyimX38J1awiBUf0EbORaBraDNMzlSi3ReqL5jxxpJIpD7gdcuNoAUgti-3TxDp3jJ-UFeulnf1aAgWzJG_QXltjJOwjrVo_1jjZXzCVRodJ4"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="/sites/default/files/js/js_CaK8u4wq9z8gTPTAJAYHQXiaIkF6NcxFkOB2_EStJwk.js?scope=footer&amp;delta=8&amp;language=en&amp;theme=constellationr&amp;include=eJxtjVEKwkAMRC-0ukda0jSuoWlSk1Sop7ciVBG_ZngMbwbKJG9hyCAtruCsvQ1rpmlUtGU74epOmqfVpeBEI6d5A0TzkU3r0c4XN03S8bNyimX38J1awiBUf0EbORaBraDNMzlSi3ReqL5jxxpJIpD7gdcuNoAUgti-3TxDp3jJ-UFeulnf1aAgWzJG_QXltjJOwjrVo_1jjZXzCVRodJ4"></script>
+
+  </body>
+</html>

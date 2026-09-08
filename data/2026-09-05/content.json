@@ -1,0 +1,204 @@
+{
+  "date": "2026-09-05",
+  "vol": "340",
+  "intro_text": "今天不缺新模型和新融资，缺的是兑现证据。强模型发布后要处理访问混乱，安全公司要把风险变成采购理由，云厂和 SaaS 平台要证明 AI 不是 PPT，而是合同、收入和机房账单。",
+  "cover": {
+    "title": "承诺进入结算期",
+    "subtitle": "Astra 访问、Anthropic 治理、Crusoe 机房和 Salesforce 收入，把 AI 叙事推到交付账本上。",
+    "image_path": "runs/2026-09-05/cover.png",
+    "image_prompt": "Use case: productivity-visual. Asset type: 21:9 editorial magazine cover background for Janet AI morning briefing. Primary request: create a sharp black, white, and Janet green (#18E299) AI technology magazine cover image about AI companies moving from demos into controlled distribution, costly infrastructure, safety gates, developer platforms, and public-market scrutiny. Scene/backdrop: an abstract editorial control room made of thin black grid lines, model access gates, API keys as abstract shapes, server racks, legal-document silhouettes, market tick marks, and developer tool panels converging into a restrained central signal layer. Style/medium: premium Swiss editorial tech cover, crisp geometric composition, subtle paper grain, realistic depth, high contrast, restrained. Composition/framing: cinematic 21:9 wide banner, asymmetric layout, strong clean negative space center-left for HTML overlay text, visual density toward right side. Lighting/mood: cool white studio light with sharp black shadows and Janet green signal accents. Constraints: no readable text, no date, no VOL number, no brand names, no logos, no robot faces, no glowing brain, no cheap neon, no watermark, no in-image typography."
+  },
+  "trend": "AI 公司今天最难回答的不是“我们又强了多少”，而是“你拿什么证明这东西能稳定交付”。Astra 的访问混乱把发布节奏打到台前，Anthropic 的 IPO 治理把安全理想拖进股权结构，Crusoe 的巨额融资则提醒所有人：模型能力背后是一张电力、GPU、土地和债务表。\n\n企业端同样在结算。Salesforce、Adobe、Resect 和教育工具都在把 AI 包进已有流程，卖点不再是会聊天，而是能不能减少客服成本、守住文档事实、接住课堂和会议这些具体场景。创作者和小公司今天要看的，是哪些 AI 能立刻帮你少返工，哪些只是把账单推迟到下个月。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Altman道歉并限Astra访问",
+          "body": "The Verge 9 月 4 日报道，OpenAI CEO Sam Altman 为 GPT-6 Astra 上线后的混乱访问节奏公开道歉。报道提到，部分付费用户和开发者抱怨自己看得到发布会承诺，却拿不到稳定入口；OpenAI 随后解释称，最强能力会按安全、容量和账户类型分批开放。Astra 仍被定位为新一代旗舰模型，但这次风波先暴露的不是 benchmark，而是交付和预期管理。",
+          "janet_take": "模型越强，排队越伤信任。用户质疑的焦点已经转到付费、API、企业合同和安全闸门到底谁优先。OpenAI 过去靠惊艳发布抢心智，现在要靠稳定供给保信用。发布会可以一次点燃情绪，交付混乱会按小时扣分。",
+          "source": "The Verge",
+          "url": "https://www.theverge.com/ai-artificial-intelligence/990060/altman-apologizes-messy-astra-rollout",
+          "image_origin": "source",
+          "image_source_url": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/09/gettyimages-2285138968.jpg?quality=90&strip=all&crop=0%2C12.219817290162%2C100%2C75.560365419677&w=1200",
+          "image": "images/news-01-altmanastra.webp"
+        },
+        {
+          "title": "Anthropic重组章程备战IPO",
+          "body": "Financial Times 9 月 4 日报道，Anthropic 正在调整 public benefit corporation 治理结构，为潜在 IPO 做准备。报道称，公司需要在坚持长期安全使命、接受外部资本、保护早期投资人权利之间重新平衡；投资人和员工都在关注 Claude 高速增长后，董事会和股东在关键商业决策中的权力边界。",
+          "janet_take": "安全公司也逃不开资本市场的硬桌子。Anthropic 一直把 public benefit 当护城河，现在护城河要和 IPO 流动性坐在同一张表上。它要证明的东西很具体：当收入、估值和发布速度互相拉扯时，章程还能不能挡住短期冲动。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/anthropic-public-benefit-corporation-ipo-governance-2026-09-04",
+          "image_origin": "source",
+          "image_source_url": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/STKB364_CLAUDE_D.jpg?quality=90&strip=all&crop=0%2C10.7%2C100%2C78.5&w=1200",
+          "image": "images/news-02-anthropicipo.webp"
+        },
+        {
+          "title": "Crusoe融资扩建AI机房",
+          "body": "Bloomberg 9 月 4 日报道，AI infrastructure company Crusoe 正在推进新一轮数十亿美元融资，目标估值约 300 亿美元，用于扩建 AI 数据中心和电力配套。Crusoe 此前以能源与数据中心结合出名，如今客户需求来自训练和推理算力的持续膨胀。交易仍取决于最终条款和市场条件。",
+          "janet_take": "AI 热潮最诚实的地方在机房。你可以怀疑每个应用故事，但很难否认大模型正在吞电、吞 GPU、吞长期资本。Crusoe 这种公司赚的不是灵感钱，是供应链和电力调度的钱。中国团队看海外模型竞赛，别只看参数，先看谁在替谁承担固定资产风险。",
+          "source": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-09-04/crusoe-seeks-ai-data-center-funding-at-30-billion-valuation",
+          "image_origin": "search",
+          "image_source_url": "https://substackcdn.com/image/fetch/$s_!Bb34!,f_auto,q_auto:good,fl_progressive:steep/https://substack-post-media.s3.amazonaws.com/public/images/b75f89f5-8b3e-480a-a727-bd44dadbb0f6_4032x3024.jpeg",
+          "image": "images/news-03-crusoeai.jpg"
+        },
+        {
+          "title": "Salesforce用Agentforce冲收入指引",
+          "body": "Reuters 9 月 4 日报道，Salesforce 在财报沟通中继续把 Agentforce 作为增长故事的核心，强调企业客户正在购买用于客服、销售和内部流程的 AI agent。公司给出的收入展望高于部分市场预期，但投资人仍在追问 AI 产品到底贡献多少增量、会不会蚕食既有 seat-based SaaS 收费。",
+          "janet_take": "Salesforce 最会把新概念塞进老账本。Agentforce 若能卖进客服和销售流程，就是给 SaaS 增长续命；若只是包皮 Copilot，续费时会被算得很清楚。",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/technology/artificial-intelligence/salesforce-forecast-agentforce-ai-demand-2026-09-04/",
+          "image_origin": "search",
+          "image_source_url": "https://images.squarespace-cdn.com/content/v1/637dc346cd653e686a50c1f5/7f7c6e41-df10-42c1-90aa-6b0582292bb9/Intrducing+Agentforce+IMG3.png?format=1500w",
+          "image": "images/news-04-salesforceagentforce.webp"
+        },
+        {
+          "title": "Adobe靠Firefly卖企业AI",
+          "body": "CNBC 9 月 4 日报道，Adobe 高管继续强调 Firefly、Acrobat AI Assistant 和企业内容供应链产品的商业化路径，重点是让品牌客户在合规素材、广告变体生成和文档工作流里使用 AI。Adobe 的优势是已有 Creative Cloud 与 Document Cloud 账户，但市场也在盯它能否抵住免费生成工具和新兴设计平台的价格压力。",
+          "janet_take": "Adobe 的麻烦很现实：用户已经习惯它贵，但不会无限容忍它慢。企业愿意为版权可控、品牌一致和审批流程付钱，这正是 Adobe 能守住的地方。它要赢，靠市场部少返工、法务少皱眉、内容生产别失控。",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2026/09/04/adobe-enterprise-ai-firefly-acrobat-monetization.html",
+          "image_origin": "source",
+          "image_source_url": "https://image.cnbcfm.com/api/v1/image/107370310-1706193717324-gettyimages-1464362247-AFP_336Y67E.jpeg?v=1706193827&w=1200&h=675",
+          "image": "images/news-05-adobeai.jpg"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Astra监督难度继续加码",
+          "body": "Wired 9 月 4 日跟进 OpenAI Astra 安全争议，重点放在 monitorability：模型能力提升后，安全团队更难只靠 chain-of-thought 观察判断它是否在绕开规则。OpenAI 的安全材料承认，高能力模型在 cyber、tool use 和长链任务中需要更多隔离、轨迹监控和访问限制。也就是说，模型更会干活的同时，外部可读性没有同步变好。",
+          "janet_take": "最危险的不是模型聪明，是你不知道它聪明到哪一步。过去大家盯答案对不对，现在得盯它在工具链里有没有越权、绕路、试探边界。Astra 的难题会变成整个行业的难题：能力曲线往上走，监督手段不能还停在聊天记录截图。",
+          "source": "Wired",
+          "url": "https://www.wired.com/story/openai-astra-model-monitorability-safety/",
+          "image_origin": "search",
+          "image_source_url": "https://astraremembers.carrd.co/assets/images/card.jpg?v=400f7159",
+          "image": "images/models-01-astra.jpg"
+        },
+        {
+          "title": "Gemini CLI接入IDE权限",
+          "body": "Google Developers Blog 9 月 4 日宣布 Gemini CLI 扩展开发环境集成，开发者可在 VS Code、JetBrains 系列和终端之间复用上下文，让 Gemini 帮忙解释代码、生成测试、执行重构建议并调用本地工具。Google 强调个人开发者仍有免费额度，企业侧则可通过 Google Cloud 控制权限、日志和数据边界。",
+          "janet_take": "开发工具战争正在从“谁补全更快”转向“谁最懂你的项目现场”。CLI、IDE 和云权限打通后，模型拿到的上下文会更完整，效果也更吓人。代价很简单：你给它的本地权限越多，越要问日志、数据隔离和误操作恢复。",
+          "source": "Google Developers Blog",
+          "url": "https://developers.googleblog.com/en/gemini-cli-ide-integrations-2026/",
+          "image_origin": "search",
+          "image_source_url": "https://agmazon.com/blog/articles/technology/202507/gemini-cli-install-guide.png",
+          "image": "images/models-02-gemini-cliide.png"
+        },
+        {
+          "title": "Codestral低延迟抢IDE代码位",
+          "body": "Mistral AI 9 月 4 日发布 Codestral 系列更新，主打更低延迟、更长上下文和代码补全、重构、测试生成场景。官方说明强调，模型可通过 La Plateforme 和企业部署渠道使用，并继续面向 IDE 插件、代码搜索和内部知识库场景优化。相比追逐最大参数，Mistral 把重点放在开发者每天能否低成本高频调用。",
+          "janet_take": "代码模型不是越大越有生意。开发者真正消耗的是等待时间、上下文窗口和一次次失败补丁。Mistral 如果能把延迟和价格打下来，反而会比旗舰模型更容易住进 IDE。小团队尤其现实：每天调用几千次时，账单比榜单更刺眼。",
+          "source": "Mistral AI",
+          "url": "https://mistral.ai/news/codestral-update-september-2026",
+          "image_origin": "search",
+          "image_source_url": "https://pic1.zhimg.com/v2-1c709239f6a7b9d008258a86c81af040_1440w.jpg?source=172ae18b",
+          "image": "images/models-03-codestral.jpg"
+        },
+        {
+          "title": "Comet移动版抢浏览器入口",
+          "body": "Perplexity 9 月 4 日宣布其 AI browser Comet 扩展到 iOS 和 Android waitlist。Comet 的卖点是把搜索、页面理解、任务代理和个人上下文放进浏览器层，而不是只停在问答框。移动端若能跑通，AI agent 将更接近用户每天真实的入口：网页、邮箱、日历、地图和支付跳转。",
+          "janet_take": "浏览器贴着真实任务，所以 agent 都想住进去。Comet 上移动端，赌的是搜索框会变成行动框；成败看少点几次、少犯几次错。",
+          "source": "Perplexity",
+          "url": "https://www.perplexity.ai/hub/blog/comet-mobile-waitlist",
+          "image_origin": "search",
+          "image_source_url": "https://ai-bot.cn/wp-content/uploads/2025/05/Comet-website-1.png",
+          "image": "images/models-04-comet.png"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Resect融资拦截幻觉输出",
+          "body": "TechCrunch 9 月 4 日报道，AI startup Resect AI 从 stealth 中亮相并完成 2500 万美元融资，产品方向是为企业生成式 AI 工作流提供 hallucination guardrail。公司称其系统会在回答进入客户、员工或自动化流程前，检查事实依据、来源一致性和高风险断言。投资人看中的不是又一个聊天机器人，而是企业敢不敢把 AI 输出放进业务流程。",
+          "janet_take": "幻觉终于从笑话变成预算项。Resect 这类工具不承诺“模型永远正确”，它拦的是客户、合同和数据库更新前的高风险错误。价值很窄，也正因为窄才可能收费。企业先需要一个能说“这句话没证据”的刹车片。",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/09/04/resect-ai-emerges-from-stealth-to-stop-enterprise-ai-hallucinations/",
+          "image_origin": "search",
+          "image_source_url": "https://storage.googleapis.com/production-os-assets/assets/c53c9d6a-c07a-4a68-b1e3-d7c5d0774c74",
+          "image": "images/insights-01-resect.png"
+        },
+        {
+          "title": "Claude学习模式进入课堂",
+          "body": "Anthropic 9 月 4 日宣布扩展 Claude for Education，与多所高校和在线学习平台合作，重点是把 Claude 接入课程讨论、写作反馈、研究助理和行政问答。官方强调产品会使用学习模式，引导学生拆解问题，而不是直接替学生交作业。学校关注的仍是学术诚信、数据保护和教师控制权。",
+          "janet_take": "教育场景最怕 AI 把学习偷成代写。Anthropic 用学习模式包装 Claude，方向是对的：少给现成答案，多逼学生展示推理过程。学校要后台权限、审计记录和老师能关掉的开关。教育 AI 的门槛在学习行为，不在讲题口才。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/claude-for-education-expanded-learning-mode-2026",
+          "image_origin": "search",
+          "image_source_url": "https://www.forbes.com.au/wp-content/uploads/2026/03/GettyImages-2259733131.jpg?resize=768",
+          "image": "images/insights-02-anthropicclaude.webp"
+        },
+        {
+          "title": "OpenAI连接器接管企业库",
+          "body": "OpenAI 9 月 4 日更新企业连接器，扩展 ChatGPT 与 Google Drive、SharePoint、Slack、GitHub 和内部知识库的权限控制。官方说明称，管理员可配置索引范围、数据保留和 connector-level access，回答会尽量回到企业已有资料。这个方向延续 Astra 访问分层之后的产品逻辑：模型能力要嵌进组织数据，权限边界就必须跟上。",
+          "janet_take": "企业知识库接错一次就是内部资料裸奔。OpenAI 往 connector 做深，说明大模型想吃的是组织上下文。好处是员工少翻十个系统；代价是权限模型必须干净。很多公司 AI 做不起来，根源常在文件夹权限像旧仓库一样乱。",
+          "source": "OpenAI",
+          "url": "https://openai.com/index/chatgpt-enterprise-connectors-september-2026/",
+          "image_origin": "search",
+          "image_source_url": "https://pic4.zhimg.com/v2-acee3941d59dc30f5739b3ba5f0f2601_1440w.jpg",
+          "image": "images/insights-03-openai.jpg"
+        },
+        {
+          "title": "英伟达出口规则盯云算力",
+          "body": "Reuters 9 月 4 日报道，美国政府继续评估对高端 AI 芯片出口和云算力转售的限制，焦点包括改版 Nvidia 加速器、海外数据中心访问以及中国客户间接获得算力的路径。企业游说重点放在收入、供应链和美国技术影响力；安全部门则担心先进算力被用于军事和网络能力提升。",
+          "janet_take": "芯片限制已经不只管货物流向，还要管云里的算力怎么被租走。对中国 AI 公司来说，最烦的是训练计划、客户承诺和融资故事都要随政策摆动。算力越像战略资源，商业合同越像天气预报。",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/technology/us-weighs-ai-chip-export-cloud-compute-rules-2026-09-04/",
+          "image_origin": "search",
+          "image_source_url": "https://img.mydigit.cn/forum/202501/27/200136r1y10y1mttn4y66q.jpg",
+          "image": "images/insights-04-45a3dac781.jpg"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Anthropic IPO估值接受公开考试",
+          "body": "Anthropic 的治理调整之所以被资本市场盯住，是因为 Claude 增长已经把公司推到更高估值区间。Financial Times 9 月 4 日报道中提到，潜在 IPO 会让 public benefit corporation 的使命承诺面对更复杂的股东诉求。二级市场会问得更粗暴：安全投入占多少成本，商业化速度能不能支撑估值，OpenAI 和 Google 夹击下毛利如何守住。",
+          "janet_take": "一级市场可以相信故事，公开市场会拆故事。Anthropic 最难讲的是如何证明安全投入并非拖累利润的装饰。处理好，它会给 AI 公司一个新模板；处理不好，public benefit 可能被投资人当成估值折扣理由。",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/anthropic-public-benefit-corporation-ipo-governance-2026-09-04",
+          "image_origin": "source",
+          "image_source_url": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/STKB364_CLAUDE_D.jpg?quality=90&strip=all&crop=0%2C10.7%2C100%2C78.5&w=1200",
+          "image": "images/insights2-01-anthropic.webp"
+        },
+        {
+          "title": "AI机房估值吃下电费",
+          "body": "Crusoe 的融资传闻把 AI 基建估值再次推高。Bloomberg 9 月 4 日称，公司目标估值约 300 亿美元，资金主要服务于数据中心扩张。投资逻辑很直接：只要大模型训练和推理需求继续增长，靠近能源、能快速交付机房、能签下长期客户的基础设施公司就会被重估。",
+          "janet_take": "资本现在愿意给机房高估值，因为它比应用故事更容易抵押。问题是，电力接入、GPU 周期和客户集中度会一起压上来。AI 基建看似卖铲子，实际也在赌淘金热多久不退烧。退得慢，估值成立；退得快，折旧会比故事跑得更快。",
+          "source": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-09-04/crusoe-seeks-ai-data-center-funding-at-30-billion-valuation",
+          "image_origin": "search",
+          "image_source_url": "https://assets.bbhub.io/image/v1/resize?type=auto&url=https%3A%2F%2Fassets.bbhub.io%2Fprofessional%2Fsites%2F41%2FRisk800px-x-515px.png&width=800",
+          "image": "images/insights2-02-ai.webp"
+        },
+        {
+          "title": "C3.ai换帅仍要交亏损答卷",
+          "body": "MarketWatch 9 月 4 日报道，C3.ai 在创始人 Tom Siebel 退居幕后、公司调整管理层后，仍面临增长放缓和亏损压力。公司继续强调企业 AI 应用和政府客户，但投资人更关心销售周期、客户留存和订阅收入稳定性。AI 概念能吸引注意，财报最终要回答现金流。",
+          "janet_take": "C3.ai 提醒市场：名字里有 AI，不代表资本永远买单。换帅能换叙事，换不了客户预算、交付周期和亏损压力。",
+          "source": "MarketWatch",
+          "url": "https://www.marketwatch.com/story/c3-ai-stock-ceo-transition-enterprise-ai-results-2026-09-04",
+          "image_origin": "search",
+          "image_source_url": "http://p0.qhimg.com/t11fd4c33017c57ac8611784f63.webp?size=550x710",
+          "image": "images/insights2-03-c3ai.webp"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Notion AI整理会议记录",
+          "body": "Notion 9 月 4 日更新 AI Meeting Notes，面向团队空间提供自动摘要、行动项提取、项目页面关联和权限继承。新版本强调记录会留在 Notion workspace 内，并可把会议结论直接挂到任务、文档和数据库条目上。它不是最炫的 agent，但贴着很多团队每天真正浪费时间的地方。",
+          "janet_take": "会议工具的标准很低，也很残酷：少漏一个决定，少追一次谁负责，就有价值。Notion 赢在记录、任务和知识库同场；重大决策仍要人回听原文。",
+          "source": "Notion",
+          "url": "https://www.notion.com/releases/ai-meeting-notes-september-2026",
+          "image_origin": "search",
+          "image_source_url": "https://kurashi-notion.com/cdn/shop/articles/2603_CustomAgent_8a823dd0-5b88-4b0d-870b-0d79f411d1e8.jpg?v=1773990687&width=1920",
+          "image": "images/tools-01-notion-ai.webp"
+        }
+      ]
+    }
+  }
+}

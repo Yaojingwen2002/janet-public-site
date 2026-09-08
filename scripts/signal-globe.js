@@ -1173,18 +1173,23 @@ if (stage && canvas) {
     }
   }
 
+  let animationFrame = 0;
+  function scheduleFrame() {
+    if (!animationFrame && state.ready && state.pageVisible && state.inViewport) animationFrame = requestAnimationFrame(frame);
+  }
+
   function frame(time) {
+    animationFrame = 0;
     if (!state.ready) return;
     if (!state.pageVisible || !state.inViewport) {
       state.lastFrame = time;
-      window.requestAnimationFrame(frame);
       return;
     }
     const delta = Math.min(42, time - state.lastFrame || 16);
     state.lastFrame = time;
     const paused = state.manuallyPaused || (finePointer.matches && state.cardHover);
 
-    if (!state.dragging && !paused) {
+    if (!state.dragging && !paused && !reducedMotion.matches) {
       const autoRotateRate = stage.clientWidth < 620 ? .000014 : .000008;
       const motionPreferenceScale = reducedMotion.matches ? .45 : 1;
       globeGroup.rotateY(delta * autoRotateRate * motionPreferenceScale + state.velocity.x);
@@ -1198,7 +1203,7 @@ if (stage && canvas) {
     updateCenterCoordinates();
     updateMarkerPresentation(time, delta);
     renderer.render(scene, camera);
-    window.requestAnimationFrame(frame);
+    scheduleFrame();
   }
 
   function updateMotionButton() {
@@ -1357,10 +1362,14 @@ if (stage && canvas) {
     document.addEventListener('visibilitychange', () => {
       state.pageVisible = !document.hidden;
       state.lastFrame = performance.now();
+      if (document.hidden) { cancelAnimationFrame(animationFrame); animationFrame = 0; }
+      else scheduleFrame();
     });
     visibilityObserver = new IntersectionObserver((entries) => {
       state.inViewport = entries.some((entry) => entry.isIntersecting);
       state.lastFrame = performance.now();
+      if (!state.inViewport) { cancelAnimationFrame(animationFrame); animationFrame = 0; }
+      else scheduleFrame();
     }, { threshold: .01 });
     visibilityObserver.observe(stage);
   }
@@ -1400,7 +1409,7 @@ if (stage && canvas) {
         })
       };
       state.lastFrame = performance.now();
-      window.requestAnimationFrame(frame);
+      scheduleFrame();
     } catch (error) {
       console.error('Signal globe failed to initialize', error);
       setFallback('全球信号图暂时不可用，今日晨报仍可正常阅读。');

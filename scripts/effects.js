@@ -35,10 +35,10 @@
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
-        const target = document.querySelector(href);
+        const target = href.length > 1 ? document.getElementById(decodeURIComponent(href.slice(1))) : null;
         if (target) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
         }
       });
     });
@@ -47,10 +47,10 @@
     const hash = window.location.hash;
     if (hash) {
       setTimeout(() => {
-        const target = document.querySelector(hash);
+        const target = document.getElementById(decodeURIComponent(hash.slice(1)));
         if (target) {
           const y = target.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          window.scrollTo({ top: y, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
         }
       }, 100);
     }

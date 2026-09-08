@@ -4,6 +4,8 @@
   const qs = (selector, parent = document) => parent.querySelector(selector);
   const qsa = (selector, parent = document) => Array.from(parent.querySelectorAll(selector));
   const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealedWords = new WeakSet();
+  const revealedElements = new WeakSet();
 
   function initScrollChapters() {
     const sections = qsa('[data-theme]');
@@ -60,7 +62,8 @@
   }
 
   function initWordReveal() {
-    const targets = qsa('[data-reveal="words"]');
+    const targets = qsa('[data-reveal="words"]').filter(target => !revealedWords.has(target));
+    targets.forEach(target => revealedWords.add(target));
     if (!targets.length) return;
     if (reduceMotion()) {
       targets.forEach((target) => target.classList.add('on'));
@@ -81,7 +84,8 @@
   }
 
   function initReveal() {
-    const targets = qsa('.rv-fade, .rv-scale, .rv-left, .rv-right, .reveal');
+    const targets = qsa('.rv-fade, .rv-scale, .rv-left, .rv-right, .reveal').filter(target => !revealedElements.has(target));
+    targets.forEach(target => revealedElements.add(target));
     if (!targets.length) return;
     if (reduceMotion()) {
       targets.forEach((target) => target.classList.add('on'));

@@ -2,6 +2,7 @@
   'use strict';
 
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (!finePointer.matches || !document.documentElement.hasAttribute('data-janet-experiment')) return;
 
   function init() {
@@ -25,6 +26,7 @@
     let hasPosition = false;
     let dragging = false;
     let stateKey = '';
+    let frameId = 0;
 
     function isBusy(target) {
       return document.body.classList.contains('is-busy') ||
@@ -62,17 +64,20 @@
       }
       cursor.classList.add('is-visible');
       setState(event.target);
+      if (!frameId && !document.hidden) frameId = requestAnimationFrame(render);
     }
 
     function render() {
+      frameId = 0;
+      if (document.hidden) return;
       const dx = targetX - currentX;
       const dy = targetY - currentY;
       const distance = Math.hypot(dx, dy);
-      const follow = dragging ? .92 : distance > 80 ? .86 : .72;
+      const follow = reducedMotion.matches ? 1 : dragging ? .92 : distance > 80 ? .86 : .72;
       currentX += dx * follow;
       currentY += dy * follow;
       cursor.style.transform = 'translate3d(' + currentX + 'px,' + currentY + 'px,0) translate(-50%,-50%)';
-      window.requestAnimationFrame(render);
+      if (Math.hypot(targetX - currentX, targetY - currentY) > .1) frameId = requestAnimationFrame(render);
     }
 
     document.addEventListener('pointermove', move, { passive: true });
@@ -111,7 +116,9 @@
       attributeFilter: ['aria-busy', 'class']
     });
 
-    window.requestAnimationFrame(render);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { cancelAnimationFrame(frameId); frameId = 0; cursor.classList.remove('is-visible'); }
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });

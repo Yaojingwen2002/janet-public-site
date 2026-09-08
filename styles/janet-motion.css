@@ -53,8 +53,8 @@ body[data-theme="contact"] {
   opacity: 0;
   transform: translateY(18px);
   transition:
-    opacity .55s calc(var(--i, 0) * 70ms) var(--ease),
-    transform .55s calc(var(--i, 0) * 70ms) cubic-bezier(.22,1,.36,1);
+    opacity .48s min(calc(var(--i, 0) * 45ms), 320ms) var(--ease),
+    transform .48s min(calc(var(--i, 0) * 45ms), 320ms) cubic-bezier(.22,1,.36,1);
 }
 
 .word.on {

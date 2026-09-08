@@ -622,6 +622,8 @@
   function getInitialProjectFilter() {
     const params = new URLSearchParams(window.location.search);
     const project = params.get('project');
+    if (['marvel-ten', 'shuttle-universe', 'quiet-heat', 'standard-answer'].includes(project)) return 'signature-collection';
+    if (['mirror-plan', 'igpt-image2-handbook'].includes(project)) return 'visual-research-lab';
     if (project === 'signature-collection' || project === 'visual-research-lab' || project === 'misaligned-scenes') return project;
     return 'all';
   }

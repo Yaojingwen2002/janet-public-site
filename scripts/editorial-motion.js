@@ -21,7 +21,9 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const states = new WeakMap();
+  const movingStates = new Set();
   let frame = 0;
+  let lastTime = 0;
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
@@ -44,34 +46,35 @@
     return state;
   }
 
-  function render() {
+  function render(time) {
     frame = 0;
-    let moving = false;
+    const delta = lastTime ? Math.min(time - lastTime, 48) : 16.667;
+    lastTime = time;
+    const follow = 1 - Math.pow(.82, delta / 16.667);
 
-    document.querySelectorAll('.editorial-motion').forEach((element) => {
-      const state = states.get(element);
-      if (!state) return;
+    movingStates.forEach((state) => {
+      const element = state.element;
+      if (!element.isConnected) { movingStates.delete(state); return; }
 
-      state.currentX += (state.targetX - state.currentX) * 0.18;
-      state.currentY += (state.targetY - state.currentY) * 0.18;
-      state.currentLift += (state.targetLift - state.currentLift) * 0.16;
+      state.currentX += (state.targetX - state.currentX) * follow;
+      state.currentY += (state.targetY - state.currentY) * follow;
+      state.currentLift += (state.targetLift - state.currentLift) * follow;
 
       element.style.setProperty('--editorial-tilt-x', `${state.currentY.toFixed(3)}deg`);
       element.style.setProperty('--editorial-tilt-y', `${state.currentX.toFixed(3)}deg`);
       element.style.setProperty('--editorial-lift', `${state.currentLift.toFixed(3)}px`);
 
-      if (
-        Math.abs(state.targetX - state.currentX) > 0.01 ||
-        Math.abs(state.targetY - state.currentY) > 0.01 ||
-        Math.abs(state.targetLift - state.currentLift) > 0.01
-      ) moving = true;
+      if (Math.abs(state.targetX - state.currentX) < .01 &&
+          Math.abs(state.targetY - state.currentY) < .01 &&
+          Math.abs(state.targetLift - state.currentLift) < .01) movingStates.delete(state);
     });
 
-    if (moving) frame = window.requestAnimationFrame(render);
+    if (movingStates.size && !document.hidden) frame = window.requestAnimationFrame(render);
+    else lastTime = 0;
   }
 
   function requestRender() {
-    if (!frame) frame = window.requestAnimationFrame(render);
+    if (!frame && !document.hidden) frame = window.requestAnimationFrame(render);
   }
 
   function eligible(event) {
@@ -93,6 +96,7 @@
     state.targetY = (0.5 - y) * 4.6;
     state.targetLift = -7;
     state.active = true;
+    movingStates.add(state);
     element.classList.add('is-editorial-hover');
     element.style.setProperty('--editorial-pointer-x', `${(x * 100).toFixed(2)}%`);
     element.style.setProperty('--editorial-pointer-y', `${(y * 100).toFixed(2)}%`);
@@ -107,13 +111,30 @@
     state.targetY = 0;
     state.targetLift = 0;
     state.active = false;
+    movingStates.add(state);
     element.classList.remove('is-editorial-hover');
     requestRender();
   }, { passive: true });
 
   function register() {
+    if (!finePointer.matches || reducedMotion.matches) return;
     document.querySelectorAll(selector).forEach(stateFor);
   }
+
+  function resetMotion() {
+    cancelAnimationFrame(frame);
+    frame = 0;
+    lastTime = 0;
+    document.querySelectorAll('.editorial-motion').forEach(element => {
+      const state = states.get(element);
+      if (state) Object.assign(state, { currentX: 0, currentY: 0, targetX: 0, targetY: 0, currentLift: 0, targetLift: 0, active: false });
+      element.classList.remove('is-editorial-hover');
+      ['--editorial-tilt-x', '--editorial-tilt-y', '--editorial-lift'].forEach(key => element.style.removeProperty(key));
+    });
+    movingStates.clear();
+  }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) resetMotion(); });
+  reducedMotion.addEventListener('change', resetMotion);
 
   document.addEventListener('janet:content-rendered', register);
   document.addEventListener('DOMContentLoaded', register);

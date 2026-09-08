@@ -130,6 +130,12 @@
 
   function getSeriesInfo(value) {
     const text = String(value || '').toLowerCase();
+    if (/signature-collection|专属作品集|quiet.?heat/.test(text)) {
+      return { label: 'Janet 专属作品集', className: 'work-series-band--marvel-ten' };
+    }
+    if (/visual-research-lab|影像参考实验室/.test(text)) {
+      return { label: '影像参考实验室', className: 'work-series-band--cinematic' };
+    }
     if (/marvel-ten|漫威十人|漫威历史/.test(text)) {
       return { label: '漫威十人', className: 'work-series-band--marvel-ten' };
     }
@@ -616,7 +622,7 @@
   function getInitialProjectFilter() {
     const params = new URLSearchParams(window.location.search);
     const project = params.get('project');
-    if (project === 'marvel-ten' || project === 'mirror-plan' || project === 'shuttle-universe' || project === 'misaligned-scenes' || project === 'igpt-image2-handbook') return project;
+    if (project === 'signature-collection' || project === 'visual-research-lab' || project === 'misaligned-scenes') return project;
     return 'all';
   }
 

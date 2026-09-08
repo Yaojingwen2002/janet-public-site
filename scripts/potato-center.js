@@ -19,9 +19,26 @@
     ['AI 信号站', 'index.html#hero'],
     ['每日晨报', 'news.html'],
     ['作品库', 'portfolio.html'],
-    ['镜场计划', 'mirror-plan.html'],
     ['关于 Janet', 'index.html#about']
   ];
+
+  function mirrorPlanMenuHtml() {
+    const image = escapeHtml(linkHref('assets/works/mirror-plan/updates/oldboy-text-round-01-b.jpg'));
+    const page = escapeHtml(linkHref('mirror-plan.html#oldboy-update'));
+    return [
+      '<details class="potato-mirror-entry">',
+      '  <summary><span>镜场计划</span><small>最新更新</small></summary>',
+      '  <div class="potato-mirror-update">',
+      '    <a href="' + page + '" aria-label="查看镜场计划第 2 期老男孩更新">',
+      '      <img src="' + image + '" alt="镜场计划第 2 期老男孩走廊镜头 Text Round 01 B 测试图" width="640" height="272" loading="lazy">',
+      '      <strong>第 2 期 · 《老男孩》走廊镜头</strong>',
+      '      <span>24mm 低畸变侧视、2.35:1、白色顶光与局部青绿墙反射。Text Round 02 只调整曝光、色彩、动作余波和结构锐度。</span>',
+      '      <em>本轮生成服务网络故障，无新出图；这里展示最近有效的 Text Round 01 B 测试图。</em>',
+      '    </a>',
+      '  </div>',
+      '</details>'
+    ].join('');
+  }
 
   function auth() {
     return window.JanetAuth;
@@ -75,7 +92,7 @@
       const current = currentPageMatches(href, label) ? ' aria-current="page"' : '';
       return '<a role="menuitem" data-nav-index="' + String(index + 1).padStart(2, '0') + '" href="' +
         escapeHtml(linkHref(href)) + '"' + current + '>' + escapeHtml(label) + '</a>';
-    }).join('');
+    }).join('') + mirrorPlanMenuHtml();
 
     const targetCenter = center || qs('[data-potato-center]');
     if (targetCenter && menu.parentElement !== targetCenter) targetCenter.appendChild(menu);

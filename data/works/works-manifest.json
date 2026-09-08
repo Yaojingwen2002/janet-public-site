@@ -1,166 +1,57 @@
 {
-  "schema_version": "1.0.0",
-  "generated_at": "2026-07-17T00:00:00.000Z",
+  "schema_version": "2.0.0",
+  "generated_at": "2026-08-26T10:00:00+08:00",
   "library": {
     "title": "Janet 作品库",
-    "subtitle": "AI 影像、剧情短片与创作流程档案",
-    "description": "这里不是成片展示墙，而是 Janet 的 AI 内容制作档案：从世界观设定、角色设计、镜头运动、提示词、分镜、字幕、封面到发布文案，每个作品都保留完整制作链路。"
+    "subtitle": "三个创作体系，完整保留作品与方法",
+    "description": "作品库现按创作体系归档：Janet 专属作品集、影像参考实验室、错位名场面系列剧集。"
   },
   "projects": [
     {
-      "id": "marvel-ten",
-      "title": "漫威十人",
-      "type": "AI 历史纪念短片",
-      "source_path_label": "漫威十人",
-      "description": "从马丁·古德曼到凯文·费奇，用一镜到底的历史穿越，重看漫威如何被十位关键人物接力改写。专题收录完整成片、人物时间线、角色还原与幕后制作档案。",
-      "method": [
-        "人物面部锁定",
-        "时代服装复原",
-        "场景考据",
-        "连续动作",
-        "首尾帧锚点"
-      ],
-      "tags": [
-        "漫威历史",
-        "一镜到底",
-        "AI 短片",
-        "角色一致性",
-        "电影工业"
-      ],
-      "work_count": 1,
-      "document_count": 1,
-      "thumbnail": "assets/works/marvel-ten/images/final-lineup.jpg",
-      "cover": "assets/works/marvel-ten/images/hero-goodman-office.jpg",
-      "url": "marvel-ten.html",
-      "display_count_label": "1 film",
-      "badge": "新作品"
+      "id": "signature-collection",
+      "title": "Janet 专属作品集",
+      "type": "AI 影像与世界观作品总集",
+      "description": "将穿梭宇宙与漫威十人合并为同一个专属作品体系，并收录最新的 QUIET HEAT 视觉舞蹈 MV。从人物、世界观到成片，完整保留每个项目的制作链路。",
+      "method": ["角色与气质锁定", "世界观与场景设计", "镜头运动", "声音与节奏", "成片与发布档案"],
+      "tags": ["QUIET HEAT", "穿梭宇宙", "漫威十人", "AI Film", "完整制作档案"],
+      "work_count": 5,
+      "document_count": 8,
+      "thumbnail": "assets/works/quiet-heat/poster.jpg",
+      "cover": "assets/works/quiet-heat/poster.jpg",
+      "url": "signature-collection.html",
+      "display_count_label": "3 projects / 5 works",
+      "badge": "最新更新"
     },
     {
-      "id": "mirror-plan",
-      "title": "镜场计划",
-      "type": "AI 导演视觉研发观测站",
-      "source_path_label": "镜场计划 / S0 实验观测站",
-      "description": "以 14 张母图构成实验图谱，公开低分辨率研究衍生图，并用编号记录追踪 A/B/C 变量、失败证据与阶段判断。",
-      "method": [
-        "原片视觉分析",
-        "原创安全转译",
-        "A/B/C 单变量测试",
-        "Janet 肉眼评价",
-        "完整过程与证据归档"
-      ],
-      "tags": [
-        "镜场计划",
-        "AI 导演",
-        "实验图谱",
-        "视觉校准",
-        "安全转译"
-      ],
-      "work_count": 14,
-      "document_count": 4,
-      "project_json": "data/works/projects/mirror-plan.json",
-      "thumbnail": "assets/works/mirror-plan/research/atlas/05.jpg",
-      "cover": "assets/works/mirror-plan/research/atlas/05.jpg",
-      "url": "mirror-plan.html",
-      "display_count_label": "14 atlas frames",
-      "badge": "视觉研发"
-    },
-    {
-      "id": "shuttle-universe",
-      "title": "穿梭宇宙",
-      "type": "世界观型 AI 短视频合集",
-      "source_path_label": "7_穿梭宇宙账号",
-      "description": "一个高速穿越型 AI 影像项目。每个作品围绕角色气质、骑乘方式、异世界场景和第三人称追随镜头展开，重点不是展示 AI 技术，而是建立一种可持续扩展的视觉爽感系统。",
-      "method": [
-        "角色气质",
-        "标志性骑乘方式",
-        "陌生场景",
-        "首帧 / 尾帧",
-        "第三人称高速穿梭运镜"
-      ],
-      "tags": [
-        "高速穿梭",
-        "世界观",
-        "3渲2",
-        "半写实动画",
-        "Veo",
-        "Seedance"
-      ],
-      "work_count": 3,
-      "document_count": 0,
-      "project_json": "data/works/projects/shuttle-universe.json",
-      "thumbnail": "assets/works/shuttle-universe/gallery/project-cover.jpg",
-      "cover": "assets/works/shuttle-universe/gallery/project-cover.jpg",
-      "url": "shuttle-universe.html"
+      "id": "visual-research-lab",
+      "title": "影像参考实验室",
+      "type": "Prompt、镜场实验与视觉研发",
+      "description": "影像参考、结构化 Prompt 与导演视觉校准的统一实验室。内含镜场计划及 iGPT-Image2 提示词手册，最新更新为第 2 期《老男孩》走廊画面实验。",
+      "method": ["视觉拆解", "结构化 Prompt", "A/B/C 单变量测试", "失败证据归档", "可复制研究记录"],
+      "tags": ["镜场计划", "老男孩", "Prompt Library", "视觉校准", "AI 导演"],
+      "work_count": 114,
+      "document_count": 6,
+      "thumbnail": "assets/works/mirror-plan/updates/oldboy-text-round-01-b.jpg",
+      "cover": "assets/works/mirror-plan/updates/oldboy-text-round-01-b.jpg",
+      "url": "visual-research-lab.html",
+      "display_count_label": "2 research zones",
+      "badge": "第 2 期更新"
     },
     {
       "id": "misaligned-scenes",
-      "title": "错位名场面",
-      "type": "剧情型 AI 短片合集",
-      "source_path_label": "09_错位名场面",
-      "description": "一个剧情型 AI 短片项目。它不靠角色乱炖，而是把经典名场面的困境交给另一个世界的能力或语言来解决，让善意、责任、荒诞和讽刺在同一个故事里撞车。",
-      "method": [
-        "经典困境",
-        "外来能力 / 道具",
-        "语言冲突",
-        "角色功能",
-        "完整结局"
-      ],
-      "tags": [
-        "剧情短片",
-        "语言冲突",
-        "黑色幽默",
-        "角色一致性",
-        "分镜",
-        "发布文案"
-      ],
+      "title": "错位名场面系列剧集",
+      "type": "剧情型 AI 系列短片",
+      "description": "把经典名场面的困境交给另一个世界的能力或语言来解决，让善意、责任、荒诞和讽刺在同一个故事里撞车。",
+      "method": ["经典困境", "外来能力 / 道具", "语言冲突", "角色功能", "完整结局"],
+      "tags": ["系列剧集", "剧情短片", "语言冲突", "黑色幽默", "分镜档案"],
       "work_count": 1,
       "document_count": 22,
-      "project_json": "data/works/projects/misaligned-scenes.json",
       "thumbnail": "assets/works/misaligned-scenes/gallery/snow-white-cover-1.jpg",
       "cover": "assets/works/misaligned-scenes/gallery/snow-white-cover-1.jpg",
-      "url": "misaligned-scenes.html"
-    },
-    {
-      "id": "igpt-image2-handbook",
-      "title": "iGPT-Image2 提示词手册",
-      "type": "结构化图像生成 Prompt Library",
-      "source_path_label": "freestylefly/awesome-gpt-image-2 + Janet 安全改写",
-      "description": "100 组可复制、可筛选、可追溯来源的结构化图像生成提示词卡片。镜场计划现已升级为独立视觉研发项目。",
-      "method": [
-        "Prompt Builder",
-        "描述性安全改写",
-        "100 组提示词卡片",
-        "来源筛选",
-        "复制复用"
-      ],
-      "tags": [
-        "GPT-Image2",
-        "Prompt Library",
-        "结构化提示词",
-        "安全改写"
-      ],
-      "work_count": 100,
-      "document_count": 2,
-      "project_json": "data/works/projects/igpt-image2-handbook.json",
-      "url": "gpt-image2-handbook.html",
-      "thumbnail": "assets/works/cinematic-lab/cover-v2.webp",
-      "cover": "assets/works/cinematic-lab/cover-v2.webp",
-      "display_count_label": "2 zones",
-      "badge": "实验项目"
+      "url": "misaligned-scenes.html",
+      "display_count_label": "series archive"
     }
   ],
-  "featured_works": [
-    "marvel-ten",
-    "jingchang-plan-s0-lab",
-    "shuttle-universe-e59388e588a9e6b3",
-    "shuttle-universe-e69e97e5858b",
-    "shuttle-universe-e9a9ace9878ce5a5",
-    "misaligned-scenes-snow-white-wrong-name",
-    "igpt-image2-handbook-cases"
-  ],
-  "stats": {
-    "project_count": 5,
-    "work_count": 119,
-    "document_count": 30
-  }
+  "featured_works": ["quiet-heat", "marvel-ten", "shuttle-universe", "mirror-plan", "igpt-image2-handbook", "misaligned-scenes"],
+  "stats": {"project_count": 3, "work_count": 120, "document_count": 36}
 }

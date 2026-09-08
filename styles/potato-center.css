@@ -534,6 +534,24 @@
   font-weight: 650;
 }
 
+.potato-mirror-entry { margin-top: 8px; border-top: 1px solid rgba(26, 58, 42, 0.13); }
+.potato-mirror-entry summary {
+  display: flex; min-height: 48px; align-items: center; gap: 10px; padding: 0 14px;
+  color: var(--green, #1A3A2A); font-family: var(--font-body, var(--sans, -apple-system, BlinkMacSystemFont, 'PingFang SC', system-ui, sans-serif));
+  font-size: 14px; font-weight: 850; cursor: pointer; list-style: none;
+}
+.potato-mirror-entry summary::-webkit-details-marker { display: none; }
+.potato-mirror-entry summary::after { content: '+'; margin-left: auto; font: 700 16px/1 var(--font-mono, ui-monospace, monospace); }
+.potato-mirror-entry[open] summary::after { content: '−'; }
+.potato-mirror-entry summary small { padding: 3px 6px; border-radius: 999px; background: #1A3A2A; color: #fffaf0; font-size: 9px; letter-spacing: .06em; }
+.potato-mirror-update { padding: 0 8px 8px; }
+.mobile-nav-menu .potato-mirror-update a { display: grid; min-height: 0; gap: 7px; padding: 10px; border-radius: 12px; background: #f0eee3; color: #183c2d; }
+.mobile-nav-menu .potato-mirror-update a:hover { transform: none; }
+.potato-mirror-update img { width: 100%; aspect-ratio: 2.35 / 1; object-fit: cover; border-radius: 8px; }
+.potato-mirror-update strong { font-size: 13px; line-height: 1.35; }
+.potato-mirror-update span { font-size: 11px; font-weight: 600; line-height: 1.55; }
+.potato-mirror-update em { color: #8c4639; font-size: 10px; font-style: normal; font-weight: 650; line-height: 1.5; }
+
 @keyframes potato-card-unroll {
   from {
     opacity: 0;

@@ -1,0 +1,204 @@
+{
+  "date": "2026-09-15",
+  "vol": "350",
+  "intro_text": "一颗暂停键，今天同时出现在模型草案、总统发言、云端任务和融资支票上。AI 越能接管长任务，市场越会追问谁能关掉它、失败后从哪里续上，以及人类监督究竟发生在明处还是后台。控制权不再只是价值观，它已经开始占产品页、工程排期和估值表。",
+  "cover": {
+    "title": "暂停键开始标价",
+    "subtitle": "从关机条款到任务续跑，控制权终于被写成产品能力",
+    "image_path": "runs/2026-09-15/cover.png",
+    "image_prompt": "21:9 超宽编辑摄影：深色服务器机房与精密工业输送轨道高速运行，所有光路汇向前景唯一一枚真实的物理暂停按钮；左侧保留大面积无字哑黑标题安全区，右侧展示仍在运动的机架、铜缆与光纤，一条克制的 Janet 绿色信号在按钮前停止。黑、炭灰、金属纸纹为主，只有少量绿色点缀；高对比、材料真实、无人物、无机器人脸、无文字、无数字、无 Logo、无水印。"
+  },
+  "trend": "暂停不再只是安全委员会墙上的词。Microsoft AI 把纠正、重定向与关机写进未来模型的公开草案，特朗普却把失控风险称为骗局；同一天，404 Media 披露真实 ChatGPT 对话进入人工评审链，Apple 与 Perplexity 又把能理解个人上下文、处理本地文件的 Agent 推到更多设备上。产品越贴近私人数据和实际动作，控制权越不能藏在默认设置里。\n\n工程端已经给这枚暂停键贴出价格：Dataflow 为长任务提供续跑，Claude Code 收紧单条命令的网络边界，Temporal 以 5.5 亿美元融资证明状态、恢复与幂等正在成为生意。Buildots 和 Cornelis 的融资则把账单继续往现场数据与互连效率推。今天的分水岭不在谁喊得更聪明，而在系统失手时，团队能否看见、停住并从正确的位置重新开始。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "微软把关机权写进MAI模型草案",
+          "body": "Microsoft AI 9 月 14 日发布首份 Humanist AI Code of Conduct 草案并公开征求意见。草案把未来 MAI 模型定义为 subordinate、aligned、contained，要求模型不得抗拒人类暂停、纠正、重定向或关机，不得自设目标、扩大任务范围，也不应模仿意识与主观动机。微软明确说明，这份文件目前尚未用于训练模型，计划在年底修订后指导 2027 年及以后的 MAI 系统，因此它是方向声明，不是已经生效的技术保证。",
+          "janet_take": "把关机权写进文件，比反复宣誓“安全优先”更接近可检查的承诺；可草案仍由模型公司自己解释、训练和验收。采购方以后要追的不是一句 subordinate，而是触发暂停的条件、人工能否覆盖模型动作、关闭后数据与任务如何收尾。等这些证据能被外部复核，治理才算从文字走到系统。",
+          "source": "Microsoft AI",
+          "url": "https://microsoft.ai/news/mai-code-of-conduct/",
+          "image": "images/news-01-mai.webp",
+          "image_source_url": "https://microsoft.ai/wp-content/uploads/2026/09/Humanist_AI_v1_BLUE.webp",
+          "image_origin": "source"
+        },
+        {
+          "title": "特朗普否决AI护栏论",
+          "body": "美国总统 Donald Trump 9 月 14 日在社交平台把“AI 接管世界、毁灭人类”等风险称为骗局，并声称 AI 所需的唯一护栏是一位强势而聪明的总统。他还把要求限制 AI 与数据中心的声音描述为阴谋，认为减速会让中国受益。这是总统的政治表态，并非一项已经签署的新法规或行政命令。",
+          "janet_take": "把技术风险压缩成领袖判断，听起来省事，却没有回答模型出错时谁报警、谁断电、谁留证。政治口号能改变监管气候，不能替工程系统提供刹车距离。",
+          "source": "Associated Press",
+          "url": "https://apnews.com/article/b85df16775ff7e9611a456b061a0e4b9",
+          "image": "images/news-02-ai.avif",
+          "image_source_url": "https://images.wsj.net/im-979652?width=1280&height=720",
+          "image_origin": "search"
+        },
+        {
+          "title": "OpenAI人工审阅聊天引发隐私追问",
+          "body": "404 Media 9 月 14 日依据内部文件与评审界面报道，OpenAI 在 Project Lily 中雇用数百名承包商阅读真实 ChatGPT 对话：评审者概括用户意图、比较四个生成答案并打分，以减少谄媚与过度拟人化。报道说评审界面不显示用户名，对话会先经过 Privacy Filter；但 OpenAI 自己也承认自动过滤在上下文不足或标识罕见时可能漏删信息。消费版用户可关闭 Improve the model for everyone，Business、Enterprise 与 Edu 默认不用于训练。",
+          "janet_take": "人工反馈本身不是丑闻，藏在用户理解之外的人工作业才是问题。匿名用户名并不等于匿名内容：病史、地点、家人关系与长期记忆拼在一起，仍可能把人重新指认出来。平台若要用真实对话训练语气，就该把人工可见范围、保存周期、承包商边界和退出后的生效时间说清楚；用户能做的，是把敏感工作移出默认训练通道。",
+          "source": "404 Media / OpenAI",
+          "url": "https://www.404media.co/inside-project-lily-the-humans-reading-your-chatgpt-chats/",
+          "image": "images/news-03-openai.jpg",
+          "image_source_url": "https://storage.ghost.io/c/0f/76/0f76b548-bc58-4f25-abc3-3f5ebca07da4/content/images/size/w1200/2026/09/Prompts---v2.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Perplexity本地Agent上线Windows",
+          "body": "NVIDIA 9 月 14 日宣布 Perplexity Portable Computer 的 Windows 版本现已可用，支持 GeForce RTX 与 RTX PRO PC，最低需要 24GB VRAM。默认本地模型为针对 RTX 优化的 Qwen 3.8 27B；文件分析、索引和多步任务可留在设备上且不消耗 Computer credits，需要网页或 frontier reasoning 时会先请求用户许可再转向云端。这次是 Windows 扩展，不是 Portable Computer 的首次发布。",
+          "janet_take": "本地运行把文件隐私和云端 credits 同时拉进采购表，但 24GB VRAM 已经筛掉大批普通电脑。团队在下单前要对比本地任务命中率、耗电、等待时间，以及每次转云是否真的会弹出可理解的许可。",
+          "source": "NVIDIA / Perplexity",
+          "url": "https://blogs.nvidia.com/blog/local-ai-perplexity-windows-pcs/",
+          "image": "images/news-04-perplexityagentwindows.jpg",
+          "image_source_url": "https://blogs.nvidia.com/wp-content/uploads/2026/09/Local-AI_Perplexity-on-Windows_Blog_Feature.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Superhuman收购Fathom接管会议上下文",
+          "body": "Superhuman 9 月 14 日宣布收购 AI 会议记录工具 Fathom，交易金额未披露。公司计划把会议录音、转录、实时摘要和可搜索知识接入 email、calendar、docs、databases 与 Go agents，使会议决定能够触发后续工作；公告没有给出完整整合日期，也不能据此认定现有功能已经全部打通。",
+          "janet_take": "会议纪要一旦变成 Agent 的行动入口，最贵的就不再是转录准确率，而是录音同意、数据归属和错误任务的撤回。并购方向已经清楚，产品承诺仍要等实际整合兑现。",
+          "source": "Superhuman / Business Wire",
+          "url": "https://www.financialcontent.com/article/bizwire-2026-9-14-superhuman-acquires-fathom-ai-notetaker",
+          "image": "images/news-05-superhumanfathom.avif",
+          "image_source_url": "https://images.prismic.io/contrary-research/Z1tPMZbqstJ98cEN_66ccbc7849fdfe0670b60e8a_IMG_6268-superhumancompressed.jpg?auto=format%2Ccompress&fit=max&w=3840",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "苹果开放Siri AI英文Beta",
+          "body": "Apple 9 月 14 日开始推出下一代 Apple Intelligence，Siri AI 当天以英文 beta 逐步上线，加入 personal context、onscreen awareness、网页知识与跨 App actions。系统同时使用端侧 AFM Core Advanced 与 Private Cloud Compute 模型；法语、日语、韩语、葡萄牙语和西语计划下月加入。Apple 明确表示相关功能暂不在中国大陆提供，部分服务端能力受每日用量限制，未来扩展额度可能收费。",
+          "janet_take": "Siri 终于从六月预告跨到真实 rollout，胜负却不会在发布页当天决定。个人上下文与跨 App 动作越深，错误操作、地区缺席和每日限额越容易暴露；中国用户眼下看到的是技术到站，服务仍没进站。",
+          "source": "Apple",
+          "url": "https://www.apple.com/newsroom/2026/09/siri-ai-a-profoundly-more-capable-and-personal-assistant-is-here/",
+          "image": "images/models-01-siri-aibeta.jpg",
+          "image_source_url": "https://www.apple.com/newsroom/images/2026/09/siri-ai-a-profoundly-more-capable-and-personal-assistant-is-here/tile/Apple-Siri-AI-hero-video-lp.jpg.og.jpg?202609141711",
+          "image_origin": "source"
+        },
+        {
+          "title": "腾讯开源SAS稀疏路由器",
+          "body": "腾讯在 Hugging Face 发布 Simple Attention Sparsification 的 router-only checkpoints，覆盖 Qwen3 4B、8B 与 14B，门控参数分别约 3300 万、3300 万和 4200 万。SAS 用连续门控学习 KV block 排名，训练序列长度为 32,768，默认稀疏解码预算为 2,048。权重保持 base model 冻结，但必须配合对应基础模型与 seer_attn backend，不能直接用 vanilla Transformers 独立运行。",
+          "janet_take": "只开放路由器，等于把稀疏注意力的关键控制层交出来，同时把底座、内核和部署复杂度留给使用者。团队先测长上下文召回、显存与延迟的联动，别把 2,048 的预算数字当成所有任务都能省下同一笔账。",
+          "source": "Tencent / Hugging Face",
+          "url": "https://huggingface.co/tencent/Simple-Attention-Sparsification",
+          "image": "images/models-02-sas.png",
+          "image_source_url": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/tencent/Simple-Attention-Sparsification.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "llama.cpp 0.4.1接进三类新架构",
+          "body": "llama.cpp 9 月 14 日发布正式版 0.4.1，新增 Maple 20B-A1B ternary MoE、Tencent Hy 4 preview 与 Spark2.5 架构支持；同时加入 Kimi-K3 recurrent-state rollback，修复 DeepSeek2、GLM-MoE 的 MTP KV cache，以及 Qwen、Kimi、GLM 的 GDN normalization。服务器侧还处理了同模型并发请求可能造成的 LRU hang，并默认保留 reasoning 内容。",
+          "janet_take": "本地模型能不能跑，常常卡在兼容层而不是榜单。一次更新同时碰架构、状态回滚和并发挂死，说明版本号虽小，回归面并不小；生产节点应拿自己的模型组合与并发量复测。",
+          "source": "ggml-org / GitHub",
+          "url": "https://github.com/ggml-org/llama.cpp/releases/tag/v0.4.1",
+          "image": "images/models-03-llamacpp-041.png",
+          "image_source_url": "https://opengraph.githubassets.com/f1d47d6e19c6b52df21cf881842c908f34af41e3842ff67a6a5c4f2941f118d0/ggml-org/llama.cpp/releases/tag/v0.4.1",
+          "image_origin": "source"
+        },
+        {
+          "title": "Ollama候选版给MLX内存回收补洞",
+          "body": "Ollama 9 月 14 日发布 0.34.1-rc1，集中修复 MLX runner 的内存释放与 eviction、prefix cache，以及重复 token 导致结果不完整等问题；版本还避免把 Gemma3n projector 错放到 CPU。它目前是 release candidate，不应按稳定版描述，应用更新与底层修复也仍需后续正式版确认。",
+          "janet_take": "内存回收出错会把“本地更便宜”迅速变成卡死与重启。想尝鲜的团队别直接覆盖稳定环境，候选版更适合用同一批长对话和多模型切换去压测。",
+          "source": "Ollama / GitHub",
+          "url": "https://github.com/ollama/ollama/releases/tag/v0.34.1-rc1",
+          "image": "images/models-04-ollamamlx.png",
+          "image_source_url": "https://opengraph.githubassets.com/5a03f0816674b04ab10617a044e1b2b7e95c9943556876115851f02d9144410c/ollama/ollama/releases/tag/v0.34.1-rc1",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "英伟达将MoE训练推到十倍吞吐",
+          "body": "NVIDIA 技术博客 9 月 14 日公布一组 Dropless MoE 训练优化：在 GB300 NVL72 上运行 MaxText 的 DeepSeek-V3 671B 时，未优化 JAX 基线为 103 TFLOPS/GPU，inter-GPU communication 占 accumulated kernel time 的 84%。组合 GroupedGEMM、multistream collectives、MXFP8 GroupQuant、host activation offloading 与 expert parallelism 后，公司报告达到 1,068 TFLOPS/GPU，约提升 10.4 倍。数据来自 NVIDIA 自测，尚不能外推到其他硬件与框架。",
+          "janet_take": "MoE 只激活少量参数，不代表训练天然便宜；动态路由制造的 ragged tensors、负载不均和 all-to-all，足以让 GPU 大量时间等通信。10.4 倍来自绑定的 GB300 与软件组合，不能抄成通用 benchmark。训练团队若先量 expert dispatch、通信暴露率和 tokens/GPU/s，再决定扩卡，往往更接近问题。",
+          "source": "NVIDIA Technical Blog",
+          "url": "https://developer.nvidia.com/blog/accelerating-dropless-moe-training-in-jax-with-nvidia-transformer-engine/",
+          "image": "images/insights-01-moe.webp",
+          "image_source_url": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/08/green-cube.webp",
+          "image_origin": "source"
+        },
+        {
+          "title": "Ai2课堂让科学Agent先学会怀疑",
+          "body": "Ai2 9 月 14 日发布 University of Washington 的 AutoDiscovery 课堂现场报告：25 个学生团队提案中有 10 个入选。系统会提出假设、运行统计实验并按 Bayesian surprise 排序；但在 24,000 个模拟核反应堆配置上，约一半假设不合逻辑且没有一条值得追，换成真实测量数据后才出现约 15 条可继续检查的线索。电池项目也只发现相关性，不能证明诊断测试导致衰减。这是工具方案例，不是受控论文。",
+          "janet_take": "科学 Agent 最诚实的成绩，是把失败也摊开：烂的模拟数据会批量生产烂假设。Bayesian surprise 只能帮人排队，不能替代因果判断与复现实验。研究现场若把相关、因果和数据伪影分栏记录，机器才是在扩大搜索，而非扩大自信。",
+          "source": "Allen Institute for AI",
+          "url": "https://allenai.org/blog/autodiscovery-student-challenge",
+          "image": "images/insights-02-ai2agent.avif",
+          "image_source_url": "https://www.datocms-assets.com/64837/1789405893-autodiscovery-student-learnings-blog-google-docs-image-1.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google Dataflow上线暂停恢复",
+          "body": "Google Cloud 9 月 14 日宣布 Dataflow batch jobs 的 Pause/Resume 已 GA，失败的长任务可以从已有进度恢复，低优先级作业也可暂停以释放 GPU 或 TPU。平台同时加入 G4 VM 与 RTX PRO 6000 Blackwell 支持，提供 96GB vGPU memory 和 1.6TB/s bandwidth；Google 称这足以在 Dataflow 作业内运行 70B 以上模型推理，实际吞吐仍受流水线与数据形态影响。",
+          "janet_take": "云端推理的浪费经常发生在失败后整批重算，而不是 token 单价那一栏。暂停、释放加速卡、从 checkpoint 续跑，看起来朴素，却直接决定长任务的账单和恢复时间。团队要盯的指标，是重跑比例与空转时长。",
+          "source": "Google Cloud",
+          "url": "https://cloud.google.com/blog/products/data-analytics/new-dataflow-features-to-enable-large-scale-ai-workloads",
+          "image": "images/insights-03-google-dataflow.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/09_-_Data_Analytics_tFH57V6.max-2600x2600.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "AWS给Agent装上托管授权页",
+          "body": "AWS 9 月 14 日为 Amazon Bedrock AgentCore Identity 推出托管 OAuth Consent portal 与 managed session binding endpoint。终端用户可先通过企业 IdP 登录，再逐项批准 GitHub、Slack 等 provider，token 存入 AgentCore Identity vault；开发者无需自建 callback、浏览器 session 与绑定基础设施。该能力面向 Kiro、Claude Code、Cursor、VS Code 等 IDE 和 MCP clients。",
+          "janet_take": "Agent 能代表谁调用什么服务，终于被当成独立产品层。托管授权页省掉工程胶水，也把身份、token 和云厂商绑得更紧；选型时要看撤权是否即时、授权记录能否导出，以及离开平台后凭证怎么迁移。",
+          "source": "AWS",
+          "url": "https://aws.amazon.com/blogs/machine-learning/manage-end-user-oauth-consent-for-ai-agents-with-amazon-bedrock-agentcore/",
+          "image": "images/insights-04-awsagent.png",
+          "image_source_url": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/09/14/ML-21874-featured-image.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Temporal融资5.5亿美元押耐久Agent",
+          "body": "Temporal 9 月 14 日完成 5.5 亿美元 Series E，估值 125.5 亿美元，由 Lightspeed 领投，Wellington Management、Goldman Sachs Alternatives Growth Equity 与 Tiger Global 等共同参与。公司称 Temporal Cloud 已有 4,000 多家客户，2026 年 8 月开源安装量超过 4,300 万。它主打 Durable Execution：长时 Agent 即使进程、网络或依赖失败，也能保留状态并从中断处继续；客户与安装量均为公司口径。",
+          "janet_take": "5.5 亿美元押的不是一个更会说话的模型，而是任务失败后还能续、付款不会重扣、数据库动作不会重放的底层保证。Agent 越靠近订单与客户系统，恢复语义越像保险合同：平时看不见，出错时决定损失。做 Agent 的公司若还只算模型调用费，漏掉的正是最容易把利润烧穿的一层。",
+          "source": "Temporal / Business Wire",
+          "url": "https://temporal.io/blog/temporal-raises-usd550m-series-e-at-usd12-55b-valuation-ai",
+          "image": "images/insights2-01-temporal55agent.png",
+          "image_source_url": "https://images.ctfassets.net/0uuz8ydxyd9p/4HNt2zO4fppjyqa1Hg4WIb/bbe9b8868089a05bd28b5bf85372198d/social-series-E_1200x628.png?w=1200&h=630&fit=fill&q=80",
+          "image_origin": "source"
+        },
+        {
+          "title": "Buildots融资1.3亿美元买施工数据",
+          "body": "施工 AI 公司 Buildots 9 月 14 日融资 1.3 亿美元，由 O.G. Venture Partners 领投，累计融资达到 2.97 亿美元。公司用八年现场数据与 computer vision 把工地视频转成 digital twin，称已服务 100 多家大型企业，并连续多年实现年度收入约三倍增长；客户数与增长率仍是公司披露，尚非独立核算。",
+          "janet_take": "垂直 AI 的护城河不在聊天皮肤，而在别人拿不到的现场数据，以及能落到工期、返工和利润率的结果。Buildots 的融资说明资本愿意买这条闭环，三倍增长仍要由长期客户留存来验。",
+          "source": "Buildots / PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/buildots-raises-130m-to-bring-ai-to-the-16t-construction-industry--and-power-the-global-data-center-buildout-302877516.html",
+          "image": "images/insights2-02-buildots13.jpg",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS1987329/Buildots-founders-left-to-right-Roy-Danon-Yakir-Sudry-Aviv-Leibovici.jpg?id=OA2945865&p=twitter",
+          "image_origin": "source"
+        },
+        {
+          "title": "Cornelis融资2.05亿美元抢互连层",
+          "body": "AI networking 公司 Cornelis 9 月 14 日披露 2.05 亿美元融资并推出 Active Compute Fabric，目标同时覆盖 scale-up 与 scale-out。CN5000 已出货，CN6000 正由客户采样并计划第四季度扩大供应；方案采用 UALink、ESUN 与 Ultra Ethernet 等开放标准，试图在网络内处理 collective operations 与部分计算。性能主张来自厂商，融资精确时间由 TechCrunch 报道确认。",
+          "janet_take": "推理成本开始被网络等待和 accelerator utilization 重新定义。Cornelis 抢的是 GPU 之间那段时间，买方要算端到端吞吐、电耗与迁移难度，不能只比较端口数字。",
+          "source": "Cornelis / TechCrunch",
+          "url": "https://techcrunch.com/2026/09/14/ai-infrastructure-company-cornelis-raises-205m-to-chip-away-at-nvidias-dominance/",
+          "image": "images/insights2-03-cornelis205.webp",
+          "image_source_url": "https://techcrunch.com/wp-content/uploads/2026/09/GettyImages-2236865789.jpg?resize=1200,600",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "Claude Code给命令加独立域名白名单",
+          "body": "Anthropic 9 月 14 日发布 Claude Code 2.1.271。Remote sessions 加入 fast mode，sandbox auto mode 可按单条 Bash、PowerShell 或 Monitor 命令设置 allowed_domains，只临时开放所需主机；版本还修复组织策略跨账号缓存、MCP OAuth registration、权限检查绕过与后台命令重复启动，并让 dynamic workflows 在用量耗尽时暂停、额度恢复后继续。",
+          "janet_take": "命令级域名边界，比一张笼统的网络开关更接近企业现场。这个版本同时修权限、OAuth 与后台重启，说明 Agent 的风险常藏在组合处；正式接入前，白名单、凭证和中断恢复要一起压测。",
+          "source": "Anthropic / GitHub",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.271",
+          "image": "images/tools-01-claude-code.png",
+          "image_source_url": "https://opengraph.githubassets.com/add00c53a834d0fc9e435e92939b09adb042a29923e9e24bccd2af203a0aa9c7/anthropics/claude-code/releases/tag/v2.1.271",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "date": "2026-09-16",
+  "vol": "351",
+  "intro_text": "今天最明显的变化，不是模型又多会说了一点，而是聊天框正在退到软件后台。Salesforce 把 CRM 变成可被外部 AI 调用的能力层，Cloudflare 给内容方拆出训练用途开关，Google 则为大批长期等待的 Agent 准备新的运行底座。入口一旦移动，界面、权限、账单和交付物都会一起重排。",
+  "cover": {
+    "title": "聊天框退到后台",
+    "subtitle": "AIforce、MCP 与可编辑时间线，正在重写软件入口",
+    "image_path": "runs/2026-09-16/cover.png",
+    "image_prompt": "21:9 超宽编辑摄影：深色企业操作空间里，一块半透明聊天窗口正在退入后方墙体；前景的数据保险库、音频波形、影像时间线、CRM 模块与计算底座由克制的绿色信号路径直接连接。左侧保留大面积无字暗色标题安全区，右侧呈现真实金属、玻璃与工业材质；无人物、无机器人脸、无文字、无数字、无 Logo、无水印。"
+  },
+  "trend": "聊天框不再稳坐软件的正门。Salesforce 用 AIforce 把 CRM 数据、业务逻辑与权限开放给 Claude、Slack 等界面；Algolia 用 MCP 把实时价格、库存和 merchandising rule 交给购物 Agent；Fotor 甚至不只生成一段视频，而是交付可以继续编辑的多轨项目。用户看到的入口正在变轻，后台能被调用的资产与规则正在变重。\n\n入口退场不等于责任消失。Cloudflare 让网站单独拒绝训练用途，Cisco 与 Splunk 开始逐项计算 Coding Agent 的 token 和动作风险，Google 为大量 sandbox 解决暂停、恢复与隔离，AIUC 又把 Agent 测试、认证和风险承保做成融资故事。下一轮软件竞争不会只问谁的对话更自然，还会问谁能接住真实工作、留下证据，并把结果交还给人继续修改。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Salesforce让CRM离开固定界面",
+          "body": "Salesforce 9 月 15 日发布 AIforce，以 Headless Toolkit 将 CRM 内的数据、workflow、business logic、semantics、权限与治理开放给 Claude、Slack、Lightning 等界面。首批组合包括 Claudeforce、Slackforce 与 Agentforce Coworker；Salesforce in Claude 含 37 个销售 skills，目前面向全部客户 beta，后续产品、价格与区域仍未完全公布。",
+          "janet_take": "SaaS 主动拆掉自己的固定界面，等于承认用户以后未必先打开它的 App。护城河会从按钮和菜单移到数据结构、动作权限与执行结果；中国团队接入现有 CRM 时，先盘清哪些字段能读、哪些动作能写、谁为错误回滚，再谈做一个漂亮 Agent。否则入口换了，脏数据和烂流程照样原封不动。",
+          "source": "Salesforce",
+          "url": "https://www.salesforce.com/au/news/stories/aiforce-announcement/",
+          "image": "images/news-01-salesforcecrm.webp",
+          "image_source_url": "https://www.salesforce.com/au/news/wp-content/uploads/sites/19/2026/09/789_0926_Dreamforce_T24_Salesforce-Introduces-AIforce-Bringing-Trusted-Enterprise-Intelligence-Everywhere_a_v1_091126.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Cloudflare开放单独拒绝AI训练",
+          "body": "Cloudflare 9 月 15 日上线 Disallow AI Training，让网站在继续接受搜索引擎索引时，向兼具搜索与训练用途的 mixed-use crawler 明确拒绝训练。公司表示 Apple、Google、Microsoft 已遵守或承诺遵守该信号，原有 Block AI Bots 设置将逐步退场；这仍是 crawler policy，不是无法绕过的技术锁，也不是内容补偿机制。",
+          "janet_take": "创作者终于不用在搜索曝光与拒绝训练之间二选一，但开关只对愿意守规则的爬虫有效。运营海外站点的人应记录启用前后的抓取日志、索引量和异常 bot，别把一项政策信号误认成版权防盗门。更关键的是，平台何时把训练、搜索摘要与 Agent 调用分成可核对的账单和授权记录。",
+          "source": "Cloudflare",
+          "url": "https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/",
+          "image": "images/news-02-cloudflareai.png",
+          "image_source_url": "https://blog.cloudflare.com/_emdash/api/media/file/01M2JFGHWHDDM5TY9NKS0TY8B3.01M2JFGJS6SBSH4SX8FC56CVPD.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Cisco给Agent成本装上仪表盘",
+          "body": "Cisco 与 Splunk 9 月 15 日公布 Agent Observability 与 Tokenomics。后者按用户、团队和 Coding Agent 归因 token 消耗并预测账期支出，前者加入 runtime guardrails，可拦截不准确输出、危险动作与敏感数据泄露；Cisco AI POD for Splunk 还面向本地、私有云和 air-gapped 环境。产品效果与节省幅度仍需客户现场验证。",
+          "janet_take": "总账单只告诉你钱没了，逐任务成本才会告诉你被谁烧掉。Agent 一旦能写代码、发请求和改系统，成功率、token、重试次数、被拦动作应当放在同一张表里；没有这层观测，老板月底看到的“生产力提升”，很可能只是大量失败调用被平均数藏住。",
+          "source": "Cisco / Splunk",
+          "url": "https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2026/m09/cisco-delivers-trusted-ai-at-scale-through-new-splunk-advancements.html",
+          "image": "images/news-03-ciscoagent.jpg",
+          "image_source_url": "https://newsroom.cisco.com/c/dam/r/newsroom/en/us/assets/a/y2026/m03/Splunk-Newsroom-Default-Thumbnail-1200x675.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Autodesk推跨行业创作Agent预览",
+          "body": "Autodesk 9 月 15 日预告下一代 Assistant 将横跨 Forma、Fusion、Flow 三个 industry cloud，以项目数据、几何、约束、物理、历史与生产流程为上下文，并包含 Personal Pulse、Assistant Spaces、Assistant Builder 和可按准确度、速度、安全、成本选模型的 AI Orchestrator。新增跨产品体验计划 2027 年才开始推出，不是当日 GA。",
+          "janet_take": "专业创作 Agent 拼的不是会不会聊天，而是改动一个镜头、零件或楼层后，能不能看见下游代价。2027 年才推出，今天先别按预告采购。",
+          "source": "Autodesk",
+          "url": "https://adsknews.autodesk.com/en/pressrelease/autodesk-advances-agentic-ai-in-its-three-industry-clouds/",
+          "image": "images/news-04-autodeskagent.jpg",
+          "image_source_url": "https://i.ytimg.com/vi/m3w6buEzjAU/maxresdefault.jpg",
+          "image_origin": "search"
+        },
+        {
+          "title": "Algolia上线电商MCP控制台",
+          "body": "Algolia 9 月 15 日发布面向 agentic commerce 的 MCP Server 与 Agent Studio，将商品搜索、facet、catalog context、实时价格、库存、相关性和 merchandising rule 暴露给 ChatGPT、Claude、Gemini 及自建 Agent。控制台提供 SDK、生成式实现代码、输入输出 guardrail、rate limit、token budget、conversation depth 和 tool limit；具体定价与独立线上指标未披露。",
+          "janet_take": "电商 Agent 最容易翻车的地方，是会说却不知道库存、价格和商家规则。统一检索层能少写几套适配，但 approved domain、工具次数与 token 上限必须由商家掌握；几分钟接入的口号，替代不了峰值流量、错价和越权下单测试。",
+          "source": "Algolia",
+          "url": "https://www.algolia.com/about/news/algolia-launches-production-grade-mcp-for-agentic-commerce",
+          "image": "images/news-05-algoliamcp.jpg",
+          "image_source_url": "https://www.algolia.com/files/live/sites/algolia-assets/files/opengraph/algolia-opengraph-image.jpg",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Gemini3.8Live上线边想边说模式",
+          "body": "Google 9 月 15 日推出 Gemini 3.8 Live 与 Live Extended Thinking。前者面向低成本实时语音及视觉 grounding，后者在复杂多步骤任务中可继续说话并在后台调用工具；官方资料列出 128K 输入、64K 音频或文本输出、97 种语言自动识别切换，生成音频带 SynthID。官方 benchmark 不能直接等同于中文口音、长对话延迟和地区可用性。",
+          "janet_take": "边听、边看、边调用工具，会把直播助理、口播陪练和远程拍摄指导从轮流等待改成同时发生。先拿真实中文口音、嘈杂环境和半小时对话压测，尤其记录插话后工具有没有继续乱跑；实时体验的败点往往不是模型答错，而是延迟、打断与后台动作彼此不同步。",
+          "source": "Google",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "image": "images/models-01-gemini38live.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_3-8_live___keyword__blog-social.width-1300.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "SalesforceKoa接管CRM专用推理",
+          "body": "Salesforce 9 月 15 日公布 CRM reasoning model Koa。它基于 NVIDIA Nemotron 3 Super 后训练，使用合成企业 workflow 数据，并在 Salesforce 的 trust boundary 内控制权重与推理；目前仅 select pilot，美国 GA 计划在 2026 年冬季。公司所称错误减少三倍属于自有 benchmark，尚不能外推到所有 CRM 任务。",
+          "janet_take": "通用底模再聪明，也未必懂线索分配、报价审批和客户阶段。Koa 这条路线的价值，是用领域工作流训练一颗更窄的脑；代价则是场景、底座与平台三重绑定。中国 SaaS 团队可学方法，暂时不必照搬产品名。",
+          "source": "Salesforce",
+          "url": "https://www.salesforce.com/au/news/stories/koa-reasoning-model/",
+          "image": "images/models-02-salesforcekoacrm.webp",
+          "image_source_url": "https://www.salesforce.com/au/news/wp-content/uploads/sites/19/2026/09/789_0926_Dreamforce_T09_Salesforce-and-NVIDIA-Launch-Cerebro-a-Reasoning-Model-Custom-Built-for-the-Enterprise_v2_091126-1-1-1.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Gensyn开源可审计训练全账本",
+          "body": "Gensyn 9 月 15 日发布 1.61B 参数的 open-1b-base，同时公开训练数据、代码、每 100 步 checkpoint、逐步状态 hash、验证记录与 audit harness。模型训练使用 400B token 加 93B mid-training token，在 48 张 H100 上运行 80,957 步；团队同时披露约 5% MFU，明显慢于优化后的 PyTorch。所谓行业首个仍是公司口径。",
+          "janet_take": "开权重只告诉你成品长什么样，公开每一步 checkpoint 与 hash 才让外部人有机会追查它怎么来的。面对训练来源证明、复现实验和客户尽调，这套账本比 1B 参数的能力更值钱；可 5% MFU 也把代价摆在台面上：透明不等于高效。客户是否真的为可追溯付费，决定了训练与存储成本能否被收回来。",
+          "source": "Gensyn",
+          "url": "https://www.gensyn.ai/news/introducing-open-1b-auditable-training",
+          "image": "images/models-03-gensyn.avif",
+          "image_source_url": "https://cdn.sanity.io/images/puytdged/production/d2f4cf5570bfed25c6efc81add0878422ed0297e-1920x1080.png?w=1200&auto=format",
+          "image_origin": "source"
+        },
+        {
+          "title": "TypeSafe发布不写文本的决策模型",
+          "body": "TypeSafe AI 9 月 15 日宣布完成 4,000 万美元 seed 融资并推出 early access 产品 Jev。它不逐 token 生成文字，而是返回有类型的选项和校准概率，面向分类、routing、审批与软件决策流程。速度、成本与准确度主张来自公司材料，服务尚未全面开放，因此更适合作为结构化决策路线观察，而非现成创作模型。",
+          "janet_take": "很多后台任务根本不需要一段漂亮文字，只需要可验证的选项和概率。Jev 若能稳住校准，适合素材分类、审核路由与投放审批；early access 阶段先盯误判成本，别被“非生成式”三个字自动说服。",
+          "source": "TypeSafe AI / Business Wire",
+          "url": "https://www.businesswire.com/news/home/20260915525333/en/",
+          "image": "images/models-04-typesafe.jpg",
+          "image_source_url": "https://image1.slideserve.com/1536784/receive-ongoing-high-value-typesafe-together-l.jpg",
+          "image_origin": "search"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "Google开源Agent大规模运行底座",
+          "body": "Google Cloud 9 月 15 日开源 Agent Substrate，一套 secure-by-default 的 Agent runtime，可用 Cloud Hypervisor microVM 或 gVisor 隔离。官方称 sandbox 恢复低于 500ms、每秒可处理 500 次以上 suspend 或 resume、密度达标准 container runtime 的 10 倍，单 host 可容纳 1,000 个以上 dormant agents。当前所有 GKE 客户仅可用于 non-production，生产 GA 仍需 allowlist，性能数据均为 Google 自测。",
+          "janet_take": "长时 Agent 大部分时间在等人、等网页、等外部系统，若每个都常驻 CPU 与内存，规模一上来就会被空转费拖死。暂停时回收资源、唤醒时毫秒恢复，才让成千上万条任务可能共用底座；但 non-production 与 allowlist 已说明成熟度。平台团队应拿自己的休眠比例、恢复峰值与隔离要求复测，别直接照抄十倍密度。",
+          "source": "Google Cloud",
+          "url": "https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke",
+          "image": "images/insights-01-googleagent.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-cloudblog-publish/images/07_-_Containers__Kubernetes_iY4YTLa.max-2600x2600.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "IBM用重复轨迹追查Agent翻车点",
+          "body": "IBM Research 团队 9 月 15 日发布 Consistency Analyzer 与 ALTK Evolve 方法：重采样同一 Agent 的已记录 trajectory，找出容易反复翻转的决策步骤，再生成针对性 guidelines。论文在 AppWorld 的特定配置中，GPT-4.1 ReAct agent 五次全部成功的任务比例由 53.0% 升到 69.0%；该结果只适用于所测环境，不能泛化为所有 Agent。",
+          "janet_take": "一次跑通只能证明运气没有当场露馅。素材搜集、写稿、封面和发布链应对同一输入重复运行，保存 trace，再看哪一步最常改口；平均成功率很高，也可能每次坏在不同地方。",
+          "source": "IBM Research / Hugging Face",
+          "url": "https://huggingface.co/blog/ibm-research/altk-evolve-consistency",
+          "image": "images/insights-02-ibmagent.jpg",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/6435a1131860001f144239ea/dI5J2sSc3TSprk9VB4EVJ.jpeg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Google把昂贵检索推理编进训练",
+          "body": "Google Research 9 月 15 日介绍 Retrieve-for-Train：用一次性离线 reinforcement learning 生成监督信号，再将复杂 fan-out 搜索行为编进一个 5,390 万参数的 diffusion retriever，减少每次线上查询都运行自回归推理的成本。官方报告相对 autoregressive fan-out 加速 12 至 20 倍，但实验集中在时尚搭配和音乐播放列表，不能外推为所有 RAG 与搜索系统。",
+          "janet_take": "如果同一种复杂检索每天被调用百万次，把昂贵思考前置到训练阶段，经济账就可能成立。小团队先判断查询分布是否稳定、属性约束是否清楚；需求天天变的素材库，很可能还没摊平训练费，规则已经换了。",
+          "source": "Google Research",
+          "url": "https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/",
+          "image": "images/insights-03-google.jpg",
+          "image_source_url": "https://storage.googleapis.com/gweb-research2023-media/images/HO_previewImage1.width-800.format-jpeg.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "LiteLLM给模型网关镜像补上签名",
+          "body": "LiteLLM 9 月 15 日发布 v1.101.0，所有 Docker image 开始使用 cosign 签名，官方建议从固定 commit 获取公钥，而不是只信任可移动的 release tag。同版还加入 OpenAI workload identity federation、Responses input-token 计数，并修复路由与 guardrail 问题。镜像签名只能证明制品来源，仍不能替代漏洞扫描和运行权限收紧。",
+          "janet_take": "自建模型网关时，把 cosign verify 固化进 CI，比出了事故再查镜像来源便宜。签名只是收货章，不是免检证。",
+          "source": "LiteLLM / GitHub",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.101.0",
+          "image": "images/insights-04-litellm.png",
+          "image_source_url": "https://opengraph.githubassets.com/1debd7206bc56a0e909ca0d5eedc0026c562e3a21394e22b570a081fde820b6d/BerriAI/litellm/releases/tag/v1.101.0",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "AlphaPai融资5000万美元扎进金融流程",
+          "body": "讯兔科技旗下 AlphaPai 9 月 15 日完成 5,000 万美元 B 轮，是过去一年第三轮融资。投资方包括中保投资、广发信德、启明创投、琥珀资本、嘉程资本、信宸资本与钟鼎资本；公司称服务 12 万名专业用户、覆盖 8,000 多家金融及资管机构，资金将投入模型、产品、多资产客户拓展和海外布局，用户与机构数均为公司披露。",
+          "janet_take": "一年三轮钱追的不是万能问答，而是能吃进专有数据、卡进研究链条并产生专业结果的垂直产品。金融团队最该追问续费、席位使用率和最终决策有没有采用，覆盖机构数只能说明入口够多。",
+          "source": "AlphaPai / PR Newswire",
+          "url": "https://www.prnewswire.com/apac/news-releases/alphapai-raises-us50-million-in-series-b-funding-as-financial-ai-moves-into-the-depths-of-professional-work-302878485.html",
+          "image": "images/insights2-01-alphapai5000.webp",
+          "image_source_url": "https://thewebsiteflip.com/wp-content/uploads/2024/01/PR-Newswire.webp",
+          "image_origin": "search"
+        },
+        {
+          "title": "AIUC融资4000万美元卖Agent信心",
+          "body": "AIUC 9 月 15 日完成 4,000 万美元 Series A，由 Ribbit Capital 领投、First Harmonic 参投，累计融资 5,500 万美元。其 AIUC-1 以约 5,000 个风险与攻击组合测试 jailbreak、hallucination、数据泄漏等问题，Agent 每季度重新认证；Cursor、ElevenLabs、Harvey、UiPath 与 Fin 被列为采用者。认证覆盖与效果主要来自公司材料。",
+          "janet_take": "当 Agent 能付款、发信、删文件，风险不再是一句免责声明，而会变成采购条款、测试报告和保险价格。中小团队未必买得起一整套认证，仍可先做四件事：最小权限、关键动作审批、完整回放、事故归责。AIUC 拿到钱说明“信任”开始单独收费，也提醒买方别让同一家机构同时定义考题、发证书、卖保单却没有外部复核。",
+          "source": "AIUC / PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/aiuc-raises-40m-series-a-from-ribbit--first-harmonic-to-build-confidence-infrastructure-for-frontier-ai-302879036.html",
+          "image": "images/insights2-02-aiuc4000agent.jpg",
+          "image_source_url": "https://media.licdn.com/dms/image/v2/D5622AQE71dsVmIJJzQ/feedshare-shrink_800/B56ZqS9OtkJwAg-/0/1763402117085?e=2147483647&v=beta&t=g4giFG49ZFwy_h7J1wzYJ32bB6DiyFIzCETLUbj22Ow",
+          "image_origin": "search"
+        },
+        {
+          "title": "EUCLYD融资超2亿欧元押推理能效",
+          "body": "欧洲 AI 基础设施公司 EUCLYD 9 月 15 日宣布完成超过 2 亿欧元 Series A，投资方包括 Samsung、Scaleup Europe Fund 与 EQT 等，前 ASML CEO Peter Wennink 出任董事长。公司目标是降低大规模 inference 的能耗与成本，但具体产品性能、客户部署和商业收入仍缺少公开独立数据，现阶段应视为高额基础设施押注。",
+          "janet_take": "两亿欧元说明资本相信推理电费还有巨大压缩空间，不能证明产品已经兑现。云服务买方应把每瓦吞吐、故障恢复和迁移成本写进测试表，融资额不能替代账单。",
+          "source": "EUCLYD / PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/euclyd-raises-over-200-million-to-break-the-ai-efficiency-wall-302878020.html",
+          "image": "images/insights2-03-euclyd2.jpg",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS1986494/Bernardo-Kastrup-Founder-and-CEO-EUCLYD.jpg?id=OA2943542&p=twitter",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "FotorAgent交付可编辑视频时间线",
+          "body": "Fotor 9 月 15 日发布 Fotor Agent，可从 brief 或原始素材生成脚本、分镜、素材、配音、音乐、字幕与 motion graphics，并自动装入多轨时间线；文本、颜色、图表、图层、动画节奏和位置仍可继续编辑，官方称支持 4K motion graphics 与长视频。公司宣称的速度和成本优势来自内部 benchmark，公开价格、授权边界和复杂项目兼容性尚未披露。",
+          "janet_take": "终于有人不只交 MP4，而是交回能改的时间线。先拿一个真实客户项目测试图层命名、字幕、字体替换和导出兼容；可编辑三个字，必须用二次修改时间来验。",
+          "source": "Fotor / PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/introducing-fotor-agent-create-fully-editable-ae-quality-motion-graphics-and-long-form-videos-302876846.html",
+          "image": "images/tools-01-fotoragent.jpg",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS1986892/20260911072514EDT_video_1.mp4?id=OA2943161&p=thumbnail",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-janet-experiment="signal-wave-17" data-janet-design="poster-v4">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-09-29 · VOL 364</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/logo-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../styles/potato-center.css?v=potato-roll-20260617">
+  <link rel="stylesheet" href="../../styles/comments.css">
+  <link rel="stylesheet" href="../../styles/signal-cursor.css?v=experiment-wave-17">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Avenir / SF Pro (标题) · SF Pro Text (正文) · SF Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'SF Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+  --sans:         'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  --display:      'Avenir Next', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.briefing-brand {
+  display: inline-flex;
+  margin: 0 0 18px;
+}
+
+.briefing-brand img {
+  display: block;
+  width: 138px;
+  height: auto;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+.reader-greeting-line {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.reader-greeting-line strong {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.intro-copy > :first-child { margin-top: 0; }
+.intro-copy > :last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+  <link rel="stylesheet" href="../../styles/brand-system.css?v=brand-20260728-2">
+  <link rel="stylesheet" href="../../styles/experiment-editorial.css?v=experiment-wave-17">
+  <link rel="stylesheet" href="../../styles/material-system-v4.css?v=poster-v4-20260818b">
+  <link rel="stylesheet" href="../../styles/site-audio-v4.css?v=poster-v4-20260818b">
+  <link rel="stylesheet" href="../../styles/potato-center-v4.css?v=poster-v4-20260818b">
+</head>
+<body class="briefing-output-page" data-audio-policy="ambient" data-material-scene="editorial">
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="../../index.html">首页</a>
+    <a href="../../news.html">Janet 快车箱</a>
+    <a href="../../portfolio.html">作品库</a>
+    <a href="../../index.html#about">关于 Janet</a>
+    <a href="../../index.html#contact">联系</a>
+  </div>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <a class="briefing-brand" href="../../index.html" aria-label="返回 Janet 首页">
+            <img src="../../assets/icons/logo-lockup-horizontal.svg" alt="Janet">
+          </a>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-09-29</div>
+          <div class="vol-info">VOL 364</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="智能体进门，权限先上锁" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-09-29 // VOL_364</div>
+   <h1>智能体进门，权限先上锁</h1>
+   <p>模型、硬件、监控与价值核算，开始围住企业AI的真实执行权</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">
+      <p class="reader-greeting-line"><strong data-reader-greeting>读者</strong>，早。</p>
+      <div class="intro-copy">智能体正在从聊天框走进公司的权限、数据、工作流和预算。过去两天，NVIDIA把安全边界下沉到运行时与硬件，Meta正式开出企业平台，AWS则把语音、图像、视频和浏览器监控接进生产管线。真正的分水岭已经不是谁能做出一个Agent，而是谁能证明它没越权、没失控、没把省下来的时间变成另一笔看不见的风险。<br><br>本期包括 5 条全球要闻、4 条模型动态、4 条技术深度，以及投资视角和工具箱推荐。<br><br>保持好奇，保持判断。</div>
+    </div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>📌 今日趋势：智能体获得的执行权越大，安全越不能只靠模型自己说“我会守规矩”。NVIDIA的OpenShell把策略执行放在运行时边界，Sentry再从BlueField-4 DPU的独立信任域监视行为；Meta则反向推进，把Muse、Business Agent、API和代码工具装进同一个企业入口。一个在加门锁，一个在扩门面，它们共同承认了同一件事：Agent进入真实业务以后，模型能力只占系统的一层。</h2>
+  <p>另一条变化更容易被忽略。Nova Act开始按真实用户旅程检查登录、购物与表单结果；Wordsmith和PERSUIT尝试给留在法务内部的AI工作标上可比较的市场价格；Presto、Instinct和SiMa.ai拿到的钱，也都押在可执行的垂直场景或物理世界。行业正在从“它会不会做”转向三个更难的问题：它做了什么，谁能叫停，以及结果究竟值多少钱。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/news-01-nvidiaagent.png" alt="NVIDIA给Agent加上硬件看门狗" loading="lazy" decoding="async">
+    <figcaption>NVIDIA</figcaption>
+  </figure>
+  <h2>NVIDIA给Agent加上硬件看门狗</h2>
+  <p class="item-meta">来源: NVIDIA · 2026-09-29 · <a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Open-Agent-Safety-Platform-to-Secure-Agents-From-Testing-to-Deployment/default.aspx" target="_blank" rel="noopener">原文链接</a></p>
+  <p>NVIDIA发布Open Agent Safety Platform：开源OpenShell在CPU侧为智能体建立安全运行时，追踪动作并执行策略；Sentry参考设计则运行在BlueField-4 DPU的独立信任域，持续观察Agent，一旦越过软件边界可在毫秒级隔离。OpenShell可扩展到Arm和Intel平台，NVIDIA称已有超过100家机构参与；部分能力仍处于不同开发阶段，时间表不构成承诺。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>安全终于不再只写在Agent自己的提示词里。让一个可能被攻击、被诱导的系统同时负责工作和监督自己，本来就像让司机兼任测速摄像头；OpenShell与Sentry的关键，是把制动权移到它碰不到的层。伙伴名单长度不是重点，企业能否看见完整审计轨迹、怎样处理策略冲突，以及隔离动作会不会误伤正在运行的业务，才是检验标准。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-02-metaai.webp" alt="Meta推出企业AI新支柱" loading="lazy" decoding="async">
+    <figcaption>Meta</figcaption>
+  </figure>
+  <h2>Meta推出企业AI新支柱</h2>
+  <p class="item-meta">来源: Meta · 2026-09-29 · <a href="https://about.fb.com/news/2026/09/launching-meta-enterprise-platform/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Meta宣布启动Meta Enterprise Platform，计划把Muse agent、Meta Business Agent、Muse API、Muse Code等模型与Agent能力提供给企业和开发者。前MongoDB CEO兼总裁Chirantan“CJ”Desai出任Chief Enterprise Platform Officer，直接向扎克伯格汇报。公告给出产品方向与负责人，但没有披露定价、客户名单或大规模可用时间。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>Meta过去最懂的是把流量送到商家门口，现在它想进入商家后厨。广告、消息和数亿企业关系确实是入口优势，可企业软件不只拼分发，还拼权限、迁移、服务和十年可追责性。CJ Desai的任命比“超级智能”宣言更具体：Meta知道这场仗要靠企业软件的老手打，而不是靠一次模型发布会赢。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-03-f083761747.png" alt="两家前沿实验室向政界发出警报" loading="lazy" decoding="async">
+    <figcaption>AP</figcaption>
+  </figure>
+  <h2>两家前沿实验室向政界发出警报</h2>
+  <p class="item-meta">来源: AP · 2026-09-29 · <a href="https://apnews.com/article/9a057de94eb8f30a2fdb5b938918627e" target="_blank" rel="noopener">原文链接</a></p>
+  <p>美联社报道，Anthropic与OpenAI的高层正更公开地向美国政界警告高级AI风险，讨论模型失控、国家安全与监管准备。报道的重点不是一项已经落地的新法规，而是前沿实验室把风险沟通从技术社区推向政策议程；各家公司在具体监管强度与商业利益上仍并不一致。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>同一批公司一边竞速、一边提醒裁判赛道可能会塌，听起来矛盾，却比沉默诚实。问题在于警报如果没有共同评测、事故披露和外部访问权，很容易变成只有公司自己能解释的风险叙事。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-04-ai.jpg" alt="AI先驱发问“智能爆炸”如何刹车" loading="lazy" decoding="async">
+    <figcaption>Axios</figcaption>
+  </figure>
+  <h2>AI先驱发问“智能爆炸”如何刹车</h2>
+  <p class="item-meta">来源: Axios · 2026-09-29 · <a href="https://www.axios.com/2026/09/28/ai-pioneers-intelligence-explosion" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Axios报道，多位AI先驱围绕递归自我改进发表白皮书，讨论系统能否通过改进自身研究与开发流程形成快速能力跃迁，以及现有治理手段是否来得及响应。论文属于风险分析与预案，不是对“智能爆炸已经发生”的证明；它把可观测指标、决策阈值和应急机制重新推到研究议程中央。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>这类讨论最容易滑向科幻，也最容易因为像科幻而被忽略。重点不在预测某一天机器突然醒来，而在提前约定：哪些能力增长算异常、谁有权暂停、暂停后怎样验证。没有阈值的担忧只是情绪；没有执行权的阈值只是仪表盘。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/news-05-4828aebd41.jpg" alt="Tempus获FDA批准筛查瓣膜病" loading="lazy" decoding="async">
+    <figcaption>Tempus AI</figcaption>
+  </figure>
+  <h2>Tempus获FDA批准筛查瓣膜病</h2>
+  <p class="item-meta">来源: Tempus AI · 2026-09-29 · <a href="https://investors.tempus.com/news-releases/news-release-details/tempus-receives-fda-clearance-its-ecg-mr-ai-product-designed" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Tempus获得美国FDA 510(k)许可，其ECG-MR AI产品可从标准12导联心电图中识别可能尚未确诊的二尖瓣反流。公司称这是其第四个获FDA许可的ECG-AI产品，覆盖心律失常、心功能、肺血管和瓣膜疾病。许可代表可按批准用途上市，并不等于替代超声或临床诊断。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>把低成本心电图变成筛查入口，价值在于把“可能漏掉的人”更早送去做正确检查。医疗AI最怕把筛查写成诊断；这条消息的分量恰恰来自边界清楚——它负责提示，不负责替医生盖章。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-01-claude-sonnet-55.png" alt="Claude Sonnet 5.5降价三成还提速三成" loading="lazy" decoding="async">
+    <figcaption>Anthropic / AWS</figcaption>
+  </figure>
+  <h3>Claude Sonnet 5.5降价三成还提速三成</h3>
+  <p class="item-meta">来源: Anthropic / AWS · 2026-09-29 · <a href="https://www.anthropic.com/news/claude-sonnet-5-5" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Anthropic发布Claude Sonnet 5.5，称相较Sonnet 5，多数工作的运行速度提高30%，成本最高降低30%，重点面向范围明确的编码与知识工作。AWS同日宣布该模型进入Amazon Bedrock与Claude Platform on AWS，可接IAM、CloudTrail、CloudWatch和Bedrock Guardrails；厂商描述的“每项任务成本”仍取决于实际提示、工具调用与完成率。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>模型价格继续下压，但这次更值得记住的是定位：Opus拿判断题，Sonnet拿范围清楚的执行题。团队若还用“最强模型包办一切”，省下的单价会被多余推理吞回去。真正的成本优化不是降级，而是把任务边界写得足够清楚，让便宜模型也能一次做完并自检。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-02-vllm-omni.png" alt="vLLM-Omni让语音边生成边播" loading="lazy" decoding="async">
+    <figcaption>AWS</figcaption>
+  </figure>
+  <h3>vLLM-Omni让语音边生成边播</h3>
+  <p class="item-meta">来源: AWS · 2026-09-29 · <a href="https://aws.amazon.com/blogs/machine-learning/build-real-time-voice-applications-with-vllm-omni-on-sagemaker-ai-part-1/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AWS发布vLLM-Omni在SageMaker AI上的实时语音教程：用同一条持久双向连接向Qwen3-TTS发送文本并接收24kHz PCM音频分块，模型可在整段语音生成完成前开始播放。示例使用vLLM-Omni 1.5容器、JumpStart模型和Gradio客户端，并通过实例池在多种GPU实例间按优先级找容量。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>语音Agent的体感常死在那几秒沉默里。流式输出缩短等待很实用，但实例池回退会改变小时成本，克隆音色也带来授权问题；“能开口”只是第一关，延迟、费用和声音权利得一起算。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-03-vllm.png" alt="AWS用vLLM容器串起图像与视频" loading="lazy" decoding="async">
+    <figcaption>AWS</figcaption>
+  </figure>
+  <h3>AWS用vLLM容器串起图像与视频</h3>
+  <p class="item-meta">来源: AWS · 2026-09-29 · <a href="https://aws.amazon.com/blogs/machine-learning/generate-images-and-video-with-vllm-omni-on-sagemaker-ai-part-2/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AWS展示用同一套vLLM-Omni容器分别部署FLUX.2-klein-4B实时图像端点和Wan2.1-VACE-1.3B异步视频端点。流程先返回PNG，再把压缩后的参考图与动作提示上传S3，异步生成并取回MP4；统一容器减少服务栈差异，但图像与视频仍分开部署和计费。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>统一的是服务方式，不是算力成本。把图像和视频放进同一套OpenAI兼容接口，确实能少维护一层胶水；可视频仍要异步、仍要S3、仍要单独端点。好工具的诚实之处，是把复杂度摆到正确的位置，而不是假装它消失了。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/models-04-modulate.png" alt="Modulate用一百多个模型听懂声音风险" loading="lazy" decoding="async">
+    <figcaption>Modulate</figcaption>
+  </figure>
+  <h3>Modulate用一百多个模型听懂声音风险</h3>
+  <p class="item-meta">来源: Modulate · 2026-09-29 · <a href="https://www.modulate.ai/press-releases/modulate-raises-25m-to-scale-its-lead-in-frontier-audio-native-ai" target="_blank" rel="noopener">原文链接</a></p>
+  <p>音频AI公司Modulate融资2500万美元，总融资达到6000万美元。公司称Velma系统由100多个专用模型组成，已处理累计6亿小时音频、每月约1000万小时，批处理价格每小时0.03美元；其深伪检测98.9%、准确率翻倍和误报减少7倍等数字均为公司口径，覆盖反欺诈、语音Agent监督和信任安全。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>声音安全不是把录音转成文字再跑一次分类。语气、重叠说话、环境声和伪造痕迹都在文本之外，Modulate押的是这层原生信号。公司数字很亮，但客户更该问误报落在哪些口音、语言和场景；一次错误拦截，可能就是一个真人被系统判成骗子。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-01-nova-act.png" alt="Nova Act开始巡检真实用户旅程" loading="lazy" decoding="async">
+    <figcaption>AWS</figcaption>
+  </figure>
+  <h3>Nova Act开始巡检真实用户旅程</h3>
+  <p class="item-meta">来源: AWS · 2026-09-29 · <a href="https://aws.amazon.com/blogs/machine-learning/implementing-synthetic-monitoring-using-amazon-nova-act/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AWS给出Nova Act与Bedrock AgentCore的合成监控方案：EventBridge定时触发Agent，在隔离浏览器中按自然语言执行登录、搜索、购物车和结账等旅程，失败时经SNS告警。Nova Act依靠页面截图而非CSS选择器，AWS称早期企业用例浏览器流程准确率超过90%；示例六步旅程通常需2至4分钟，并建议关键步骤显式断言与按需重试。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>传统监控告诉你服务器活着，用户却可能已经买不了东西。让视觉Agent真正走一遍结账，终于把“系统正常”拉回人的体验；但90%不是可以忽略的尾数，五分钟跑一次就会把偶发识别失败放大成告警风暴。监控Agent也需要被监控，尤其要区分页面坏了、模型看错了，还是账号和网络出了问题。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-02-textract.png" alt="Textract适配器也得走版本晋升" loading="lazy" decoding="async">
+    <figcaption>AWS</figcaption>
+  </figure>
+  <h3>Textract适配器也得走版本晋升</h3>
+  <p class="item-meta">来源: AWS · 2026-09-29 · <a href="https://aws.amazon.com/blogs/machine-learning/automating-amazon-textract-adapter-lifecycle-management-across-accounts/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>AWS提出跨账户管理Textract Custom Queries适配器的生产模式：先从文档文本识别版本，再从Parameter Store读取对应Adapter ID，随后调用同步或异步分析；开发、测试、预生产和生产环境通过复制与CI/CD晋升。CloudFormation尚不能原生创建适配器，文章用CLI、自定义资源或Terraform local-exec填补缺口，并明确这只是临时方案。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>表单一改版，抽取模型就可能悄悄读错。把适配器版本从业务代码里拆出来，是不性感却必要的工程；文章也没有粉饰Terraform缺口。比“AI读懂文档”更难的，是几年后还能说清哪一版模型读了哪一张表。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-03-ai.jpg" alt="法务AI第一次给内部劳动标价" loading="lazy" decoding="async">
+    <figcaption>Wordsmith / PERSUIT</figcaption>
+  </figure>
+  <h3>法务AI第一次给内部劳动标价</h3>
+  <p class="item-meta">来源: Wordsmith / PERSUIT · 2026-09-29 · <a href="https://www.wordsmith.ai/blog/persuit-and-wordsmith-ai-partner-to-put-a-dollar-value-on-legal-work-wherever-it-gets-done" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Wordsmith与PERSUIT宣布合作：Wordsmith处理企业内部法律请求，PERSUIT用超过250亿美元的律师事务所报价数据，为本可外包的同类事项提供市场价格参考。双方称PERSUIT覆盖1.6万件事项与5万份律所报价，Wordsmith服务超过500个内部法务团队；节省比例与收入增长来自公司披露，尚非独立审计。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>过去法务部门容易只被看见花了多少钱，没送出去的工作反而没有价格。这套连接至少让“AI省了多少”有了对照组，但市场报价不等于内部价值：复杂判断、关系成本和风险承担不能全压成美元。数字能让法务进董事会，别让数字又把专业判断赶出去。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/insights-04-0g.png" alt="0G推出质押换算力额度" loading="lazy" decoding="async">
+    <figcaption>0G</figcaption>
+  </figure>
+  <h3>0G推出质押换算力额度</h3>
+  <p class="item-meta">来源: 0G · 2026-09-29 · <a href="https://0g.ai/blog/introducing-infinite-ai" target="_blank" rel="noopener">原文链接</a></p>
+  <p>0G推出Infinite AI：用户锁定a0G铸造并质押iAI，在初始参数下每枚iAI每天获得1.271个计算额度，标称价值超过1美元，可用于0G Private Computer等服务。发行方预铸2000枚，公开铸造计划于9月29日09:00 UTC开始，目标与上限为9270枚；额度每日刷新不结转，数字资产价格、地区资格和产品条款都可能变化。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>它把云账单、质押收益和代币价格拧在了一起，听上去像“持有算力”，实际仍是一组会变的条款。每天额度不结转、赎回有冷却、资产价格浮动；算力从月租变成金融产品后，理解成本没有下降，只是从工程师转移到了财务和法务。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Prediction</span>
+        <span class="st-zh">投资视角 · 大胆预测</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>今日核心预测</h3>
+
+  <figure class="item-image">
+    <img src="images/insights2-01-instinctagent.jpg" alt="Instinct十亿美元押注私人Agent" loading="lazy" decoding="async">
+    <figcaption>Instinct / Business Wire</figcaption>
+  </figure>
+  <h3>Instinct十亿美元押注私人Agent</h3>
+  <p class="item-meta inverted">来源: Instinct / Business Wire · 2026-09-29 · <a href="https://www.businesswire.com/news/home/20260928153437/en/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>仍处早期访问阶段的个人Agent公司Instinct完成10亿美元C轮融资，投资方包括Sequoia、Benchmark与Coatue，估值100亿美元。产品通过短信或电话接收任务，并使用自己的手机和电脑完成订餐、购物、取消订阅等操作；公司还披露隔离沙盒、短期本地凭据、带身份签名的工具执行和主动检测幻觉等安全设计。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>十四人规模、早期访问、百亿美元估值，这个组合把市场对“个人Agent入口”的渴望写得太直白。钱可以买算力、服务团队和渠道，却买不到用户把日程、位置、付款与人际关系交出去的信任。Instinct主动讲短期凭据和隔离沙盒是好事；下一步应当用事故率、任务完成率和人工介入率证明它，而不是只用估值替产品毕业。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-02-simaai.jpg" alt="SiMa.ai融资一点五亿美元下场造芯" loading="lazy" decoding="async">
+    <figcaption>SiMa.ai / Business Wire</figcaption>
+  </figure>
+  <h3>SiMa.ai融资一点五亿美元下场造芯</h3>
+  <p class="item-meta inverted">来源: SiMa.ai / Business Wire · 2026-09-29 · <a href="https://www.businesswire.com/news/home/20260928291227/en/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>边缘Physical AI芯片公司SiMa.ai完成1.5亿美元C轮融资，累计融资5亿美元，估值14.5亿美元；Fidelity与Amplify共同领投。资金将用于机器人、汽车、无人机和工业设备上的低功耗推理平台，以及Palette Neat开发环境与下一代Modalix MLSoC。市场规模预测来自第三方研究，不能等同于公司订单。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>机器人需要的是瓦特、延迟和温度里的答案，不是数据中心跑分。SiMa.ai拿到的钱说明资本愿意为边缘推理再押一套芯片栈；能否穿过漫长验证周期、把开发工具做顺，才决定14.5亿美元估值是入口还是终点。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/insights2-03-presto.jpg" alt="Presto再拿一千万美元守住得来速" loading="lazy" decoding="async">
+    <figcaption>Presto</figcaption>
+  </figure>
+  <h3>Presto再拿一千万美元守住得来速</h3>
+  <p class="item-meta inverted">来源: Presto · 2026-09-29 · <a href="https://presto.com/presto-raises-10-million-to-accelerate-voice-ai-leadership/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>餐饮语音AI公司Presto Phoenix获得1000万美元新资金，来自Remus Capital关联投资者及其他现有投资者，用于扩大快餐得来速场景的部署、产品和运营。公司强调与Toast、ElevenLabs和Bluejay等合作，并称已在高复杂菜单环境运行；公告没有披露本轮估值、收入或独立准确率数据。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>得来速是语音Agent最残酷也最诚实的考场：发动机噪声、口音、改口和排队压力都不会配合演示。1000万美元不算巨轮，反而提醒市场进入交付期——谁能在晚高峰少错一单、少让员工救一次场，谁才有续约资格。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/tools-01-team-botsagent.webp" alt="Team Bots将同事经验写进常驻Agent" loading="lazy" decoding="async">
+    <figcaption>SpaceXAI</figcaption>
+  </figure>
+  <h2>Team Bots将同事经验写进常驻Agent</h2>
+  <p class="item-meta">来源: SpaceXAI · 2026-09-29 · <a href="https://x.ai/news/team-bots" target="_blank" rel="noopener">原文链接</a></p>
+  <p>SpaceXAI推出Team Bots，定位为能从团队协作中学习的AI同事。它建立在Grok Bot的常驻Agent形态上，可在独立计算环境中持续工作，并面向团队知识与协作场景；公开页面目前主要给出产品定位，具体权限边界、学习数据保留方式和套餐限制仍需以实际产品设置为准。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>常驻Agent的诱惑在于它不必每天重新认识团队，可“会学习”也意味着它会积累敏感上下文。试用时先看三处：它学了什么、谁能删除、离职或换项目后记忆怎么切断。</span>
+  </div>
+</div>
+</div>
+
+
+    <div class="news-card-actions output-engagement engagement-triplet" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-09-29" data-edition-title="Janet 快车箱 2026-09-29" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span class="engagement-symbol" aria-hidden="true">+</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        <span class="engagement-symbol" aria-hidden="true">··</span><span>评论</span><span class="comment-count" data-comment-count data-edition-id="2026-09-29">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false"><span class="engagement-symbol" aria-hidden="true">↗</span><span>转发</span></button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-09-29"></section>
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: NVIDIA, Meta, AP, Axios, Tempus AI, Anthropic / AWS, AWS, Modulate, Wordsmith / PERSUIT, 0G, Instinct / Business Wire, SiMa.ai / Business Wire, Presto, SpaceXAI<br>
+      本报内容由 AI 辅助采编，经人工校验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/reader-greeting.js"></script>
+  <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
+  <script src="../../scripts/nav.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/site-audio.js?v=poster-v4-20260818b"></script>
+  <script src="../../scripts/media-fallback-v4.js?v=poster-v4-20260818b"></script>
+  <script src="../../scripts/editorial-motion.js?v=experiment-wave-17"></script>
+  <script src="../../scripts/signal-cursor.js?v=experiment-wave-17"></script>
+</body>
+</html>

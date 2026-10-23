@@ -17,7 +17,7 @@ Janet 当前使用 OpenAI 官网下载的 Codex 桌面 App。当前系统不默�
 ### 1. 准备当天任务
 
 ```bash
-cd /Volumes/Janet/janet-public-site/codex-briefing-system
+cd /path/to/janet-public-site/codex-briefing-system
 bash scripts/run-codex-briefing.sh
 ```
 
@@ -34,7 +34,7 @@ runs/YYYY-MM-DD/briefing-task.md
 在 Codex App 中打开：
 
 ```text
-/Volumes/Janet/janet-public-site/codex-briefing-system
+/path/to/janet-public-site/codex-briefing-system
 ```
 
 让 Codex App 读取并执行：
@@ -141,9 +141,8 @@ cp .env.example .env
 `.env` 只放本地路径：
 
 ```text
-# Optional. 默认使用项目内模板：
-# /Volumes/Janet/janet-public-site/codex-briefing-system/templates/template.html
-# TEMPLATE_PATH=/Volumes/Janet/janet-public-site/codex-briefing-system/templates/template.html
+# Optional. 默认使用项目内模板，无需设置：
+# TEMPLATE_PATH=/path/to/janet-public-site/codex-briefing-system/templates/template.html
 ```
 
 默认模板已迁移进本项目，不再依赖外部公众号工程。

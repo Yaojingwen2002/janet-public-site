@@ -125,7 +125,7 @@ else
   ALLOW_NOT_LATEST=1 node "$ROOT/src/check-site-briefing.mjs" "$DATE"
 fi
 
-git add "data/$DATE/" data/MANIFEST.json data/news-index.json sitemap.xml
+git add --sparse "data/$DATE/" data/MANIFEST.json data/news-index.json sitemap.xml
 
 if git diff --cached --quiet -- "data/$DATE/" data/MANIFEST.json data/news-index.json sitemap.xml; then
   echo "No briefing data changes to commit for $DATE."

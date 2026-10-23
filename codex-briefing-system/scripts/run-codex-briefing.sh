@@ -33,6 +33,8 @@ NODE
 EOF
 
 sed \
+  -e "s|{{ROOT}}|$ROOT|g" \
+  -e "s|{{SITE_ROOT}}|$REPO_ROOT|g" \
   -e "s|{{DATE}}|$DATE|g" \
   -e "s|{{VOL}}|$VOL|g" \
   -e "s|{{WINDOW_START}}|$WINDOW_START|g" \

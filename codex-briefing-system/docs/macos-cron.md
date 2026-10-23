@@ -27,13 +27,13 @@
 ## 备用 cron：08:00 准备
 
 ```cron
-0 8 * * * cd /Volumes/Janet/janet-public-site/codex-briefing-system && /bin/bash scripts/run-codex-briefing.sh >> /Volumes/Janet/janet-public-site/codex-briefing-system/runs/cron.log 2>&1
+0 8 * * * cd /path/to/janet-public-site/codex-briefing-system && /bin/bash scripts/run-codex-briefing.sh >> runs/cron.log 2>&1
 ```
 
 ## 备用 cron：09:00 复查
 
 ```cron
-0 9 * * * cd /Volumes/Janet/janet-public-site/codex-briefing-system && /bin/bash scripts/check-briefing-published.sh "$(TZ=Asia/Taipei date +\\%F)" >> /Volumes/Janet/janet-public-site/codex-briefing-system/runs/review.log 2>&1
+0 9 * * * cd /path/to/janet-public-site/codex-briefing-system && /bin/bash scripts/check-briefing-published.sh "$(TZ=Asia/Taipei date +\\%F)" >> runs/review.log 2>&1
 ```
 
 ## Codex App 操作
@@ -41,7 +41,7 @@
 cron 之后，在 Codex App 中打开：
 
 ```text
-/Volumes/Janet/janet-public-site/codex-briefing-system
+/path/to/janet-public-site/codex-briefing-system
 ```
 
 执行当天任务文件：

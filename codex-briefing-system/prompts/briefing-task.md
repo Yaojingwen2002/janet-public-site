@@ -4,12 +4,11 @@
 
 ## 先读
 
-1. `/Volumes/Janet/janet-public-site/codex-briefing-system/prompts/editorial-system.md`
-2. `/Users/yaojw/.codex/janet-memory/Janet完整档案.md`
-3. `/Users/yaojw/.codex/janet-memory/Janet编辑立场当前切片.md`
-4. `/Volumes/Janet/公众号 AI 推文/engineering/docs/CONTENT_SCHEMA.md`
-5. `/Volumes/Janet/janet-public-site/codex-briefing-system/templates/template.html`
-6. 本系统最近 5 期 `/Volumes/Janet/janet-public-site/codex-briefing-system/runs/*/content.json` 和已有 `editorial-plan.json`
+1. `{{ROOT}}/prompts/editorial-system.md`
+2. `{{ROOT}}/templates/template.html`
+3. `{{ROOT}}/src/qa-briefing.mjs` 与 `{{ROOT}}/src/editorial-qa.mjs`，把代码中的门禁视为内容契约
+4. 主站最近 5 期 `{{SITE_ROOT}}/data/*/content.json` 和本系统已有的 `{{ROOT}}/runs/*/editorial-plan.json`
+5. 如果当前电脑存在 `~/.codex/janet-memory/Janet完整档案.md` 和 `~/.codex/janet-memory/Janet编辑立场当前切片.md`，可以读取；缺失时不得中断流程
 
 `editorial-system.md` 是最高编辑规范。私有档案只用于理解当前方向，不得复制进公开文件；带日期的立场切片不是永久人格。
 

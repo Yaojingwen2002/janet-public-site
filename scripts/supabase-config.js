@@ -5,6 +5,9 @@
   const SUPABASE_ANON_KEY = 'sb_publishable_r58xVkLC-ZTlhDwiLPKp6w_vNwmOLaQ';
   const SUPABASE_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
   const AUTH_PERSISTENCE_KEY = 'janet_auth_persistence';
+  const GUEST_TOKEN_KEY = 'janet_guest_token_v1';
+  let guestToken = '';
+  let guestId = null;
   const isConfigured = /^https:\/\/.+\.supabase\.co$/i.test(SUPABASE_URL) &&
     SUPABASE_ANON_KEY &&
     SUPABASE_ANON_KEY !== 'YOUR_ANON_KEY';
@@ -25,6 +28,31 @@
 
   const localStore = safeStorage('localStorage');
   const sessionStore = safeStorage('sessionStorage');
+
+  async function prepareGuestIdentity() {
+    // Only the hash is public. The random bearer credential stays in this browser.
+    if (!window.crypto || !window.crypto.subtle) return;
+    let token = storageGet(localStore, GUEST_TOKEN_KEY) || storageGet(sessionStore, GUEST_TOKEN_KEY);
+    if (!/^[a-f0-9]{64}$/.test(token || '')) {
+      token = Array.from(window.crypto.getRandomValues(new Uint8Array(32)),
+        (byte) => byte.toString(16).padStart(2, '0')).join('');
+      if (!storageSet(localStore, GUEST_TOKEN_KEY, token)) storageSet(sessionStore, GUEST_TOKEN_KEY, token);
+    }
+    const digest = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(token));
+    guestToken = token;
+    guestId = 'guest_' + Array.from(new Uint8Array(digest),
+      (byte) => byte.toString(16).padStart(2, '0')).join('');
+  }
+
+  function guestFetch(input, init) {
+    const target = new URL(typeof input === 'string' ? input : input.url);
+    if (guestToken && target.origin === SUPABASE_URL && target.pathname.startsWith('/rest/v1/')) {
+      const headers = new Headers((init && init.headers) || (typeof input !== 'string' && input.headers) || {});
+      headers.set('x-janet-guest-token', guestToken);
+      return window.fetch(input, { ...init, headers });
+    }
+    return window.fetch(input, init);
+  }
 
   function storageGet(storage, key) {
     if (!storage) return null;
@@ -98,6 +126,7 @@
     getPersistence,
     setPersistence
   };
+  window.JanetSupabase.getGuestId = () => guestId;
 
   function finish(nextClient, error) {
     client = nextClient || null;
@@ -117,6 +146,7 @@
     }
     if (window.supabase && typeof window.supabase.createClient === 'function') {
       finish(window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        global: { fetch: guestFetch },
         auth: {
           storage: authStorage,
           persistSession: true,
@@ -133,6 +163,7 @@
     script.onload = () => {
       if (window.supabase && typeof window.supabase.createClient === 'function') {
         finish(window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          global: { fetch: guestFetch },
           auth: {
             storage: authStorage,
             persistSession: true,
@@ -148,5 +179,9 @@
     document.head.appendChild(script);
   }
 
-  createClient();
+  prepareGuestIdentity().catch(() => {
+    // Auth and public reads still work; guest writes fail closed without a credential.
+    guestToken = '';
+    guestId = null;
+  }).then(createClient);
 })();

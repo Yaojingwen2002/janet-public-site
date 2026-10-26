@@ -62,9 +62,10 @@
   }
 
   function localGuestSession() {
-    const guestId = localStorage.getItem(STORAGE.guestId);
+    const guestId = window.JanetSupabase && window.JanetSupabase.getGuestId();
     const guestName = localStorage.getItem(STORAGE.guestName);
     if (!guestId || !guestName || validateUsername(guestName)) return null;
+    localStorage.setItem(STORAGE.guestId, guestId);
     return {
       user: {
         id: guestId,
@@ -84,11 +85,13 @@
     return Boolean(session && session.user && session.user.user_metadata && session.user.user_metadata.local_guest);
   }
 
-  function createLocalGuestSession(username) {
+  async function createLocalGuestSession(username) {
     const guestName = normalizeUsername(username) || randomGuestName();
     const usernameError = validateUsername(guestName);
     if (usernameError) throw new Error(usernameError);
-    const guestId = localStorage.getItem(STORAGE.guestId) || ('guest_' + Math.random().toString(36).slice(2, 12).toUpperCase());
+    if (window.JanetSupabase && window.JanetSupabase.ready) await window.JanetSupabase.ready;
+    const guestId = window.JanetSupabase && window.JanetSupabase.getGuestId();
+    if (!guestId) throw new Error('游客身份初始化失败，请刷新页面后重试。');
     localStorage.setItem(STORAGE.guestId, guestId);
     localStorage.setItem(STORAGE.guestName, guestName);
     currentSession = {

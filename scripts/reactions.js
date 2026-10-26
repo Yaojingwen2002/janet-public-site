@@ -179,12 +179,15 @@
       if (isActive) {
         let query = client().from('reactions').delete().eq('edition_id', editionId).eq('reaction_type', type);
         query = identity.mode === 'user' ? query.eq('user_id', identity.userId) : query.eq('guest_id', identity.guestId);
-        result = await query;
+        result = await query.select('id');
+        if (!result.error && (!result.data || !result.data.length)) {
+          throw new Error('未能取消点赞，请确认当前身份后重试。');
+        }
       } else {
         result = await client().from('reactions').insert(payload);
       }
       if (result.error) {
-        warnOnce('Supabase toggle', result.error.message);
+        throw new Error('点赞没有保存成功，请稍后重试。');
       } else {
         stateCache.delete(editionId);
         return;
@@ -328,8 +331,12 @@
       const reactionBtn = event.target.closest('[data-reaction-type]');
       if (reactionBtn) {
         const wrap = reactionBtn.closest('.news-reactions');
-        await toggleReaction(wrap.dataset.editionId, reactionBtn.dataset.reactionType);
-        await renderWrap(wrap);
+        try {
+          await toggleReaction(wrap.dataset.editionId, reactionBtn.dataset.reactionType);
+          await renderWrap(wrap);
+        } catch (error) {
+          window.alert(error.message);
+        }
         return;
       }
 

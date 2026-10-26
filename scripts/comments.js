@@ -130,7 +130,7 @@
         badgeCountCache.delete(editionId);
         return;
       }
-      warnOnce('Supabase insert', error.message);
+      throw new Error('评论没有保存成功，请稍后重试。');
     }
 
     const comments = readLocal(editionId);
@@ -150,12 +150,12 @@
     if (!ownsComment(target, identity)) throw new Error('只能删除自己的评论。');
 
     if (configured() && !String(commentId).startsWith('local_')) {
-      const { error } = await client().from('comments').update({ is_deleted: true }).eq('id', commentId);
-      if (!error) {
+      const { data, error } = await client().from('comments').update({ is_deleted: true }).eq('id', commentId).select('id');
+      if (!error && data && data.length === 1) {
         badgeCountCache.delete(state.editionId);
         return;
       }
-      warnOnce('Supabase delete', error.message);
+      throw new Error('评论未能删除，请确认当前身份后重试。');
     }
 
     const comments = readLocal(state.editionId).map((item) => String(item.id) === String(commentId) ? { ...item, is_deleted: true } : item);

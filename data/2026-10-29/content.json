@@ -1,0 +1,274 @@
+{
+  "date": "2026-10-29",
+  "vol": "394",
+  "intro_text": "Rime在语音发出之前留下一层可检查的文字，Google则先把Carbon交给部分安全防御伙伴。能力提高以后，检查点放在哪里开始成为产品设计的一部分。今天也有更贴近日常的变化：Mac加入触控、语音模型合并转写与翻译、音乐模型获得社区Mac转换版；两家大厂财报则提供了用量增长背后的收入尺度。",
+  "cover": {
+    "title": "声音先过闸，模型再上岗",
+    "subtitle": "语音检查点、安全模型试用，以及云收入里的真实增长",
+    "image_path": "runs/2026-10-29/cover.png",
+    "image_prompt": "Use case: photorealistic-natural. Asset type: Janet AI daily briefing editorial cover, ultra-wide 21:9 panoramic. Primary request: a restrained photographic metaphor for speech AI that can be inspected before it acts. Scene: a black studio table, on the right two thirds a low curved ribbon of warm ivory paper shaped like a flowing sound wave passes through a single upright smoked-glass inspection gate held by two small brushed steel posts. Beyond the gate the ribbon becomes neatly spaced short emerald glass tiles, suggesting a voice being checked then translated into deliberate actions. Tactile real materials, physically credible shadows, spare contemporary editorial still-life, soft lateral daylight, black, warm ivory and restrained Janet emerald green. Leave the left third dark, calm, low detail negative space for white HTML title overlay. Quiet, precise, elegant, no glowing sci-fi. Exact very wide 21:9 framing. No text, numbers, dates, logos, watermarks, interfaces, faces, robots, medical imagery or claims of a real news photograph."
+  },
+  "trend": "Prism把文字检查放在开口之前，Carbon把访问范围收在首批防御伙伴，Plato则给代理搭建不会花真钱或改真实记录的训练场。三个动作分别处理输出、权限与练习环境，提醒我们：检查点放在执行前，通常比事后解释一句错误更有用。\n\n科研合作、触控Mac和两家公司的财报并不共享同一种完成条件。科研资助还要等实验，硬件要等交付与实测，云业务增长也不能替代单位成本核算。今天保留这些差别，既看新能力，也看它现在究竟交到谁手里、做到了哪一步。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Anthropic扩展科研免费额度合作",
+          "body": "Anthropic公布AI for Science项目扩展，与20家基金会、研究机构和团队合作提供免费Claude额度。该项目始于2025年5月，本次新增的是机构合作层；与HHMI Janelia合作的实验室仪器接口标准MHS仍属研究预览。公告提到的科研提速是合作案例与机构自述，不构成已完成的临床或科学验证。",
+          "janet_take": "免费额度能缓解一部分试验成本，机构合作还能让数据集、软件和仪器接口被更多研究者复用。研究问题、实验设计与复核责任依然在科学家手里，额度发出去与发现做出来之间还有很长一段路。",
+          "source": "Anthropic",
+          "url": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
+          "published_at": "2026-10-28",
+          "image_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/5b18c53b35c0425fda21efaf2c3bcf10761798ec-2000x1125.jpg",
+          "image_credit": "本次AI for Science扩展公告的官方插画。",
+          "date": "2026-10-28（原文仅日期）",
+          "image": "images/news-01.jpg",
+          "image_source_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/5b18c53b35c0425fda21efaf2c3bcf10761798ec-2000x1125.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "Meta给五所大学模型与科研资助",
+          "body": "Meta宣布与加州理工、俄亥俄州立大学医学院、路易斯安那州立大学、印第安纳大学和UTHealth Houston合作，提供合计200万美元资助及模型访问。项目包括婴儿气切管脱落检测、失智症对话适配与心衰风险研究；气切监测已有概念验证，其余研究仍在推进，不能写成已获临床批准的诊疗产品。",
+          "janet_take": "婴儿无法呼救、老人对话节奏不同，都是通用聊天榜单覆盖不到的真实问题。资助的价值取决于这些差异有没有进入数据、评估和临床流程，而不只是论文里多一个大模型名字。",
+          "source": "Meta",
+          "url": "https://about.fb.com/news/2026/10/meta-partners-with-five-us-universities-to-accelerate-medical-and-scientific-breakthroughs/",
+          "published_at": "2026-10-28T17:00:49Z",
+          "image_url": "https://about.fb.com/wp-content/uploads/2026/10/Meta-Partners-With-Five-US-Universities-to-Accelerate-Medical-and-Scientific-Breakthroughs_Header.jpg?w=1200",
+          "image_credit": "Meta本次五所大学科研合作公告配图；不代表项目已获临床批准。",
+          "date": "2026-10-29 01:00（台北）",
+          "image": "images/news-02.jpg",
+          "image_source_url": "https://about.fb.com/wp-content/uploads/2026/10/Meta-Partners-With-Five-US-Universities-to-Accelerate-Medical-and-Scientific-Breakthroughs_Header.jpg?w=1200",
+          "image_origin": "source"
+        },
+        {
+          "title": "Insurify开放代理比价的三种接口",
+          "body": "Insurify推出AI Agent Gateway，以MCP服务、网站内WebMCP工具和代理专用网页连接同一保险市场，提供实时可比报价。参与代理须通过获准的集成识别身份，并保留消费者同意、保障范围、免赔额和承保商披露；用户仍可转到保险公司复核并完成投保。WebMCP是拟议网页标准，不意味着所有浏览器已自动支持。",
+          "janet_take": "低保费如果抹掉免赔额和保障范围，就只是更快地制造误解。代理比价的产品质量，会体现在同意如何取得、条件怎样并排呈现，以及用户是否始终知道自己在买什么。",
+          "source": "Insurify",
+          "url": "https://insurify.com/press/news/insurify-launches-ai-agent-gateway/",
+          "published_at": "2026-10-28",
+          "image_url": "https://a.storyblok.com/f/162273/1814x1224/0de13e09c6/chatgpt_app_vis_1_2x.png/m/1814x1224/smart/filters%3Aquality%2890%29",
+          "image_credit": "Insurify此前公布的ChatGPT比价界面资料图，非本次Gateway界面；图中示例价格不代表当前报价。",
+          "image_context_url": "https://insurify.com/press/news/insurify-chatgpt-app/",
+          "date": "2026-10-28（原文仅日期）",
+          "image": "images/news-03.png",
+          "image_source_url": "https://a.storyblok.com/f/162273/1814x1224/0de13e09c6/chatgpt_app_vis_1_2x.png/m/1814x1224/smart/filters%3Aquality%2890%29",
+          "image_origin": "archive"
+        },
+        {
+          "title": "IBM续签美网AI与云合作至2031年",
+          "body": "USTA与IBM续签五年合作，IBM将继续担任美国网球公开赛官方AI与云合作伙伴至2031年。双方披露2026年官网及App合计超过2.7亿次互动，并列出本届已推出的Live Updates、Key Moments及Serve Quality。此次新闻是续约，不能把已有赛事功能重写为当天首次上线；互动次数也不是独立用户数。",
+          "janet_take": "一场球赛最有用的信息可能只是这一分为什么关键。长期合作积累的数据和赛事语境，能帮助回答这种小问题；2.7亿次互动说明触达规模，却还不能单独证明AI功能增加了多少满意度。",
+          "source": "IBM / USTA",
+          "url": "https://newsroom.ibm.com/2026-10-28-usta-and-ibm-announce-five-year-renewal-of-longstanding-partnership",
+          "published_at": "2026-10-28",
+          "image_url": "https://newsroom.ibm.com/image/USOpen_IBM_OfficialPartnerUSO_RGB_Social.png",
+          "image_credit": "本次IBM与USTA续约公告采用的官方合作标识。",
+          "date": "2026-10-28（原文仅日期）",
+          "image": "images/news-04.png",
+          "image_source_url": "https://newsroom.ibm.com/image/USOpen_IBM_OfficialPartnerUSO_RGB_Social.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "MacBook Pro首次加入触控与OLED屏",
+          "body": "Apple发布14及16英寸MacBook Pro，采用PROLED XDR串联OLED屏，并首次在Mac加入触控；搭载M5 Pro或M5 Max，最高128GB统一内存，配合macOS 27与Siri AI。美国起价分别为2899与3399美元，10月28日开放预订、11月6日开始交付。它与前一日公布的14英寸M6机型是不同产品，不应混写芯片或价格。",
+          "janet_take": "对剪辑师和设计师，直接触碰时间线、画布与三维物体，改变的是操作距离。屏幕更亮、内存更大也很诱人，但本地模型能不能跑得舒服，仍受量化精度、上下文和散热约束。最高配置的容量不能替所有模型作性能承诺；下一步最有说服力的证据，会是连续一整天的真实创作工作，而非发布页上的峰值参数。",
+          "source": "Apple",
+          "url": "https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
+          "published_at": "2026-10-28",
+          "image_url": "https://www.apple.com/newsroom/images/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/tile/Apple-MacBook-Pro-with-PROLED-XDR-Display-Touch-experience-261028-lp.jpg.og.jpg?202610281719",
+          "image_credit": "Apple本次PROLED XDR触控MacBook Pro官方产品图。",
+          "date": "2026-10-28（原文仅日期）",
+          "image": "images/news-05.jpg",
+          "image_source_url": "https://www.apple.com/newsroom/images/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/tile/Apple-MacBook-Pro-with-PROLED-XDR-Display-Touch-experience-261028-lp.jpg.og.jpg?202610281719",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Google限量开放Carbon安全模型",
+          "body": "Google发布Gemini 4 Carbon，首批经Fairwind Program面向部分网络防御伙伴，广泛开发者、企业与消费者访问仍待后续开放。官方引用Artificial Analysis新版v5.0指数59分，并公布漏洞发现、修补与长程编程表现；内部安全评测属于厂商数据。预告入门价为每百万输入2美元、输出10美元，优惠结束后为4与20美元，不能写成永久定价。",
+          "janet_take": "榜单第一与人人可调用之间，隔着一次有意收窄的上线。安全模型越能跨多步完成工程任务，越需要明确它能碰哪些代码、谁接受补丁以及怎样撤销。Carbon当前的产品事实是受控试用：指数分数和内部攻击测试都不能推出对真实系统永远安全，也不能把预告价格当作已经开放的公共API账单。",
+          "source": "Google",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+          "published_at": "2026-10-28T17:00:00Z",
+          "image_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_carbon_102726_social_share.width-1300.png",
+          "image_credit": "Gemini 4 Carbon本次官方发布配图。",
+          "date": "2026-10-29 01:00（台北）",
+          "image": "images/models-01.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_carbon_102726_social_share.width-1300.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Prism先输出可检查文字再发声",
+          "body": "Rime发布面向企业语音代理的Prism，端到端处理听、写与说，同时在语音输出前保留可检查、可改写的文字层，工具调用可与说话并行。公司在自跑的τ-Voice测试中报告56.6分及0.57秒首音频延迟；这些是作者自报结果。自助强化学习与监督微调API仍在与测试客户建设中，并非已全面开放。",
+          "janet_take": "电话里的半秒等待很短，一句说错的话却可能直接改变订单。保留开口前的文字检查点，给业务规则、人名发音与动作确认留下了实际插口。代价是企业仍要设计好哪些内容拦截、何时确认、失败怎样转人工；厂商自跑分数更适合当测试起点，最终还得放进自己嘈杂、打断频繁的电话录音里验收。",
+          "source": "Rime",
+          "url": "https://www.rime.ai/resources/prism-first-speech-to-speech-for-enterprise",
+          "published_at": "2026-10-28",
+          "image_url": "https://cdn.prod.website-files.com/6a4f24a63472d0b77c36fc03/6ae0fe9159b82670cc2081b1_prism-benchmarks-blog.png",
+          "image_credit": "Prism公告中的厂商评测比较图，数据为Rime自报。",
+          "date": "2026-10-28（原文仅日期）",
+          "image": "images/models-02.png",
+          "image_source_url": "https://cdn.prod.website-files.com/6a4f24a63472d0b77c36fc03/6ae0fe9159b82670cc2081b1_prism-benchmarks-blog.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Nemotron新语音模型合并转写与翻译",
+          "body": "NVIDIA推出开放权重Nemotron 3.5 Transcribe，以可提示的单模型处理录音转写、说话人标记、翻译及音频问答，支持40种语言，约43亿活跃参数。权重已上Hugging Face；公告称量化版本将随后提供，并列出NeMo-Speech.cpp或vLLM部署路径。当地端侧硬件支持计划与已经可下载的权重须分开看，不能宣称所有量化版都已就绪。",
+          "janet_take": "会议整理最烦的往往是先辨认谁说话，再把同一段音频送去翻译。合并模型减少了流程接缝，但专业名词、重叠发言和引用原句的准确性，仍比一份流畅摘要更决定它能否进入正式纪要。",
+          "source": "NVIDIA",
+          "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-updates-models-agents-games/",
+          "published_at": "2026-10-28T15:00:46Z",
+          "image_url": "https://blogs.nvidia.com/wp-content/uploads/2026/10/nv-blog-1280x680-2-1.jpg",
+          "image_credit": "NVIDIA本次端侧AI更新公告配图；不是转写准确率的独立测试。",
+          "date": "2026-10-28 23:00（台北）",
+          "image": "images/models-03.jpg",
+          "image_source_url": "https://blogs.nvidia.com/wp-content/uploads/2026/10/nv-blog-1280x680-2-1.jpg",
+          "image_origin": "source"
+        },
+        {
+          "title": "社区转换版将YuE2音乐模型接入Mac",
+          "body": "mlx-community上传YuE2-3B的独立Swift-MLX转换权重及配套VAE，源模型来自M-A-P，并非当天新基础模型。模型卡给出歌词与风格生成歌曲、可编辑ABC乐谱的接口，bf16骨干约7.26GB；速度和内存均为转换作者自报。许可保留非商业限制及上游个人创作者例外，公司商业使用仍需向权利方取得许可。",
+          "janet_take": "本地生成配乐多了一条Mac路径，扩展名换好却不等于版权问题消失。个人创作例外、企业接单和收费托管服务适用条件不同，歌词与翻唱的原作品权利也不会随模型下载一并取得。",
+          "source": "Hugging Face · mlx-community",
+          "url": "https://huggingface.co/mlx-community/YuE2-3B-bf16/tree/7024750ff947a1c57191a34908e14a8f55548516",
+          "published_at": "2026-10-28T16:29:10Z",
+          "image_url": "https://huggingface.co/m-a-p/YuE2-3B/resolve/main/assets/architecture.png",
+          "supporting_source_url": "https://huggingface.co/m-a-p/YuE2-3B",
+          "image_credit": "上游YuE2模型的架构图，用于说明转换版的源模型；不是MLX转换速度测评。",
+          "source_revision": "7024750ff947a1c57191a34908e14a8f55548516",
+          "date": "2026-10-29 00:29（台北）",
+          "image": "images/models-04.png",
+          "image_source_url": "https://huggingface.co/m-a-p/YuE2-3B/resolve/main/assets/architecture.png",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "llama.cpp接入流式音频与实时端点",
+          "body": "llama.cpp发布v0.8.0，加入LFM3文本、视觉、音频和全模态支持，以及实验性的mtmd流式音频接口；服务端新增/v1/realtime和/tts端点。版本同时调整音频生成状态、专家缓存及多个后端，现有集成须留意API变化。它是当天正式软件版本，不是又一次发布LFM3基础模型，实验接口也不保证向后兼容。",
+          "janet_take": "端侧模型只有进入稳定的加载器和服务接口，才方便被字幕、录音和桌面工具调用。实验API意味着集成者还会遇到变化，锁定版本和保留可回退路径，比追着每个自动构建编号更新更省心。",
+          "source": "GitHub · ggml-org",
+          "url": "https://github.com/ggml-org/llama.cpp/releases/tag/v0.8.0",
+          "published_at": "2026-10-28T12:47:51Z",
+          "image_url": "https://opengraph.githubassets.com/0f77b0cb99936dd9b949e0a88cbc0f3c61ca85fb733e4a0ed657f8ffb14c1792/ggml-org/llama.cpp/releases/tag/v0.8.0",
+          "image_credit": "本次GitHub版本发布卡片，非运行截图。",
+          "date": "2026-10-28 20:47（台北）",
+          "image": "images/insights-01.png",
+          "image_source_url": "https://opengraph.githubassets.com/0f77b0cb99936dd9b949e0a88cbc0f3c61ca85fb733e4a0ed657f8ffb14c1792/ggml-org/llama.cpp/releases/tag/v0.8.0",
+          "image_origin": "source"
+        },
+        {
+          "title": "Windmill将代理任务接入流程编辑",
+          "body": "Windmill v1.853.0发布说明新增agent to flow、标签式代理页面及统一webhook面板，并改进脚本模块缓存和日志掩码匹配。本条采用当天正式GitHub Release补充开发动态，所述范围以发布说明为限；没有独立端到端速度测评，也不能据此宣称所有自然语言任务都能可靠变成生产流程。",
+          "janet_take": "代理草稿能接到流程编辑器，才有机会看清输入、分支与触发条件。可视化并不会替执行权限和错误处理作决定，软件提供的是整理任务的入口，业务仍得为每一步的结果负责。",
+          "source": "GitHub · Windmill",
+          "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.853.0",
+          "published_at": "2026-10-28T22:11:20Z",
+          "image_url": "https://opengraph.githubassets.com/192495632203a44fa107be8882894f653cfcdc22579db020b9a9697ee5b8ab30/windmill-labs/windmill/releases/tag/v1.853.0",
+          "image_credit": "本次GitHub版本发布卡片，非运行截图。",
+          "date": "2026-10-29 06:11（台北）",
+          "image": "images/insights-02.png",
+          "image_source_url": "https://opengraph.githubassets.com/192495632203a44fa107be8882894f653cfcdc22579db020b9a9697ee5b8ab30/windmill-labs/windmill/releases/tag/v1.853.0",
+          "image_origin": "source"
+        },
+        {
+          "title": "n8n发布旧版MCP会话泄漏修复",
+          "body": "n8n在1.123.89维护版修复MCP Server Trigger空闲会话未回收导致的内存泄漏，以及Google Drive v1请求中的无限分页循环。该版本发布于窗口内，属于旧分支的实际修复，不是n8n 3.0新功能。公告未给出泄漏规模、受影响部署数量或攻击利用证据，不宜自行补成安全事件。",
+          "janet_take": "自动化常在演示里跑一次，在服务器上却要跑几个月。空闲会话回收和分页终止条件看起来琐碎。它们恰好决定工作流会不会越跑越占内存、直到没人知道它什么时候停了。",
+          "source": "GitHub · n8n",
+          "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%401.123.89",
+          "published_at": "2026-10-28T07:28:11Z",
+          "image_url": "https://opengraph.githubassets.com/014cec01950c5cd128a5886c895ede8b4ca69291d8fb519558b8a2bf5efbc7ce/n8n-io/n8n/releases/tag/n8n%401.123.89",
+          "image_credit": "本次GitHub版本发布卡片，非运行截图。",
+          "date": "2026-10-28 15:28（台北）",
+          "image": "images/insights-03.png",
+          "image_source_url": "https://opengraph.githubassets.com/014cec01950c5cd128a5886c895ede8b4ca69291d8fb519558b8a2bf5efbc7ce/n8n-io/n8n/releases/tag/n8n%401.123.89",
+          "image_origin": "source"
+        },
+        {
+          "title": "LangChain发布流式追踪信息修复",
+          "body": "LangChain Core发布1.7.1，修复v3流式响应中网关追踪元数据的保留，并为Mermaid标签中的节点元数据加入转义处理。发布说明还列有依赖更新；本次属于核心库补丁，不是新模型或新的整套代理框架。追踪信息完整有助于排查调用链，但这条变更本身不能证明业务成本或成功率改善。",
+          "janet_take": "排查一条长工作流，最怕结果还在、调用从哪里来却丢了。元数据补回之后，定位链路才少一点猜测；修复是否覆盖自己的网关和流式组合，仍可以用一次实际故障回放来确认。",
+          "source": "GitHub · LangChain",
+          "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.7.1",
+          "published_at": "2026-10-28T15:00:02Z",
+          "image_url": "https://opengraph.githubassets.com/fe2a22062c276d73568f75632bc2154562060ea58f3c84ff2a75644e17126161/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.7.1",
+          "image_credit": "本次GitHub版本发布卡片，非运行截图。",
+          "date": "2026-10-28 23:00（台北）",
+          "image": "images/insights-04.png",
+          "image_source_url": "https://opengraph.githubassets.com/fe2a22062c276d73568f75632bc2154562060ea58f3c84ff2a75644e17126161/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.7.1",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "微软云营收增三成并披露季度财报",
+          "body": "微软发布截至9月30日的2027财年第一季度结果：营收922.79亿美元，同比增长19%；微软云营收639亿美元，增长30%，Azure增长48%。GAAP净利润366.29亿美元，增长32%，剔除OpenAI投资影响后的非GAAP净利润增长18%。同期现金流表中的物业及设备购置393.67亿美元，这不是全部AI开支，也不包含所有租赁口径。",
+          "janet_take": "云增长和投入同时扩大，单看其中一边都容易读偏。尤其OpenAI投资损益改变了净利润同比，经营扩张的速度与投资账面变化应分别看，才能理解财报里两组不同的增长数字。",
+          "source": "Microsoft Investor Relations",
+          "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast",
+          "published_at": "2026-10-28T20:08:01Z",
+          "image": "images/insights2-01-microsoft.png",
+          "image_source_url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast",
+          "image_origin": "source",
+          "image_credit": "微软本次FY27 Q1财报原始页面截图，保留季度、日期及报告口径。",
+          "date": "2026-10-29 04:08（台北）"
+        },
+        {
+          "title": "Alphabet披露云营收翻倍与用量增长",
+          "body": "Alphabet公布第三季度财报相关CEO发言：公司营收同比增长25%，Google Cloud增长103%；第一方模型API每分钟处理接近320亿token，环比增加40%，Gemini应用用户达到10亿。上述用量和产品表现为管理层披露，不能直接换算成付费用户或单位利润；CEO也表示正增加供给满足长期需求。",
+          "janet_take": "token用量和云收入同步上升，比单独一个下载量更能说明需求。两条曲线仍没有回答每一单位服务赚多少，推理成本、折扣和新增设备的折旧，会继续决定这场扩张的经济效果。",
+          "source": "Google / Alphabet",
+          "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/",
+          "published_at": "2026-10-28T21:05:00Z",
+          "image_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/q3_earnings.width-1300.png",
+          "image_credit": "Google本次Q3 2026财报官方配图。",
+          "date": "2026-10-29 05:05（台北）",
+          "image": "images/insights2-02.png",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/q3_earnings.width-1300.png",
+          "image_origin": "source"
+        },
+        {
+          "title": "Plato融资1600万美元训练工作代理",
+          "body": "Plato宣布1600万美元A轮融资，由Nava Ventures领投，Gradient Ventures、Transpose Platform及Mustafa Suleyman等参与，累计融资1900万美元。公司为AI实验室搭建可重置的模拟工作环境，覆盖客服、人事、财务与医疗行政，用于强化学习和评估。融资是当天新公告；模拟环境中的完成率不能直接当作真实企业部署表现。",
+          "janet_take": "练习下单时不花真钱，练习改档时不动真实病历，这类环境有很具体的购买理由。难点是把权限边界、异常输入和业务后果也做进训练，而非只复制几个软件按钮。融资投向训练场，说明模型之外还有一层劳动密集的环境建设；它最终的质量，要看代理换到真实系统后，多少习惯仍然有效。",
+          "source": "Plato Technologies / PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/plato-raises-16-million-to-build-the-training-grounds-for-ais-next-leap-into-real-work-302921832.html",
+          "published_at": "2026-10-28T13:17:00Z",
+          "image_url": "https://mmx.prnewswire.com/media/MS2022290/Plato-Logo.jpg?id=OA3043625&p=facebook",
+          "image_credit": "Plato随本轮融资公告提供的公司标识。",
+          "date": "2026-10-28 21:17（台北）",
+          "image": "images/insights2-03.jpg",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS2022290/Plato-Logo.jpg?id=OA3043625&p=facebook",
+          "image_origin": "source"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "SocialForge按服务区分退役模型替代",
+          "body": "开源社媒生产工具SocialForge发布v1.30.2，修正退役Veo模型在Gemini API与Vertex AI上的替代型号混用，要求路由明确指定后端。版本还收紧重定向时的凭据处理，并增加模型注册表与退役记录的一致性测试。这是独立项目的维护更新，具体替代关系来自作者核对，使用前仍需确认自己所接服务的官方可用型号。",
+          "janet_take": "同一个模型昵称，在不同服务里可能指向不同替代项。给创作流水线加上服务维度，比悄悄换一个看起来相近的名字可靠；修补密钥重定向也很实际，至少迁移模型时不该顺手扩大凭据去向。",
+          "source": "GitHub · SocialForge",
+          "url": "https://github.com/indranilbanerjee/socialforge/releases/tag/v1.30.2",
+          "published_at": "2026-10-28T06:22:16Z",
+          "image_url": "https://opengraph.githubassets.com/1dd193c0da12c97c46a6a8bfdc1a1b907ae06973b3da771dde03018ebe4dd728/indranilbanerjee/socialforge/releases/tag/v1.30.2",
+          "image_credit": "本次GitHub版本发布卡片，非运行截图。",
+          "date": "2026-10-28 14:22（台北）",
+          "image": "images/tools-01.png",
+          "image_source_url": "https://opengraph.githubassets.com/1dd193c0da12c97c46a6a8bfdc1a1b907ae06973b3da771dde03018ebe4dd728/indranilbanerjee/socialforge/releases/tag/v1.30.2",
+          "image_origin": "source"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "date": "2026-11-04",
+  "vol": "400",
+  "intro_text": "幻灯片能生成，服务能修复，长任务也能自己跑。今天更有用的进展，是有人认真拆开了那句“已经完成”：究竟检查了什么，又有哪些东西仍然没有验过。",
+  "cover": {
+    "title": "交卷以后，谁来验收",
+    "subtitle": "从幻灯片几何检查到真实攻防：完成声明之外的证据",
+    "image_path": "runs/2026-11-04/cover.png",
+    "image_prompt": "21:9 ultra-wide photorealistic editorial still-life for Janet AI daily briefing. A matte black laboratory table, on the right two thirds a precise white ceramic mechanical puzzle of interlocking gears beside a small emerald-green verification weight and a thin stainless measuring caliper. The puzzle is partially assembled with one gear visibly misaligned; quiet physical metaphor for checking generated work before using it. Warm ivory, graphite black and restrained emerald green, refined side lighting, tactile porcelain and brushed steel, museum quality contemporary photography, realistic shadows. Leave left third dark low-detail negative space for white HTML headline. No text, letters, digits, dates, logos, watermarks, people, robots, glowing brains or neon. Conceptual still life, not a news photograph. Exact 21:9 composition."
+  },
+  "trend": "IBM的Palette在交出幻灯片前渲染并测量版面；CyberArena用外部健康检查判断修补是否生效；StateBench则直接核对一长串修改之后的变量真值。这三份当天发表的材料，给“完成”找到了不同的证据，尤其不愿意只听模型自己宣布成功。\n\n检查也有边界：幻灯片不重叠，不能保证叙事精彩；攻防测试中的胜率，不等于能接管真实生产环境；读完长文，更不等于准确记住每次状态更新。今天留下的实用判断是：一份结果能通过哪一种检查，比一句笼统的“更可靠”更有信息量。融资和云服务财报另行说明投入与收入，不拿它们替技术效果作证。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "Cloudflare上线漏洞调查入口",
+          "body": "Cloudflare推出Zero Wire，把需要优先调查的互联网漏洞情报集中到Radar：条目给出受影响对象、处置线索、供应商公告和证据，并区分需要关注的项目与参考资料。它还附有用于只读环境评估的预制提示，帮助使用者结合自己的部署判断是否受影响；复制提示不等于系统已经扫描或修复。部分漏洞会列出可用的WAF缓解措施，但并非所有条目都有规则，临时缓解也不能代替补丁。公告发布于11月3日14:00 UTC。",
+          "janet_take": "漏洞标题里最吓人的词，往往回答不了“我这台服务到底有没有事”。Zero Wire把产品版本、供应商证据和评估问题放在一起，至少缩短了从恐慌到调查的距离。它保留只读评估这一层也很务实：确认暴露面与动手修改之间，本来就有一次责任交接。入口好找，不代表每条漏洞都已经有现成解药。",
+          "source": "Cloudflare Blog",
+          "url": "https://blog.cloudflare.com/zero-wire",
+          "published_at": "2026-11-03T14:00:00Z",
+          "image": "images/cloudflare.png",
+          "image_origin": "source",
+          "image_source_url": "https://blog.cloudflare.com/_emdash/api/media/file/01M6GJ54KK0RNQ5KJ7W37TRBQH.01M6GJ559QCVEGK02P04VDKP19.png",
+          "image_credit": "Cloudflare：Zero Wire公告配图"
+        },
+        {
+          "title": "Snowflake CoWork开放看板预览",
+          "body": "Snowflake在11月3日介绍CoWork的新功能：用户可以描述需求，由CoCo生成仪表板，再按角色分享；仪表板目前为公开预览。管理员可通过Profiles预设团队的模型、技能和连接器，Automations则承接定时任务。会话与自动任务仍受用户原有权限、行级访问和数据遮罩策略约束，预设配置并不扩大数据访问范围。",
+          "janet_take": "业务同事终于有机会直接改看板，而不是排队请别人调整一张图。真正决定能否推广的，是分享之后谁能看到哪些行；这次公告把角色和数据遮罩写进使用路径，比单纯展示漂亮图表更有分量。",
+          "source": "Snowflake Blog",
+          "url": "https://www.snowflake.com/en/blog/snowflake-cowork-profiles-automations-dashboards/",
+          "published_at": "2026-11-03",
+          "image": "images/cowork.png",
+          "image_origin": "source",
+          "image_source_url": "https://www.snowflake.com/content/dam/snowflake-site/blog/2026/11/expedition-cowork.png",
+          "image_credit": "Snowflake：本次CoCo与CoWork功能公告图"
+        },
+        {
+          "title": "Snowflake CoCo接手长时开发任务",
+          "body": "同日，Snowflake介绍面向开发者的CoCo云会话：Cloud Agents在受控沙箱里运行长任务，支持子代理、实时应用预览，以及克隆仓库、建分支、提交和发起PR。定时、事件或webhook触发的Automations以创建者身份执行并保留运行记录。Cortex Agent SDK的Python与TypeScript客户端已正式可用；记忆与动态模型路由仍为公开预览。",
+          "janet_take": "关掉电脑后任务还能继续，省下的是等待时间；留下一份可检查的PR，省下的才可能是返工时间。云会话越长，途中做过哪些决定、最终改了哪些文件，就越不能只靠最后一段聊天总结交代。",
+          "source": "Snowflake Blog",
+          "url": "https://www.snowflake.com/en/blog/snowflake-coco-cloud-agents-automations/",
+          "published_at": "2026-11-03",
+          "image": "images/coco.png",
+          "image_origin": "source",
+          "image_source_url": "https://www.snowflake.com/content/dam/snowflake-site/blog/2026/11/expedition-coco.png",
+          "image_credit": "Snowflake：CoCo开发者与CoWork业务入口示意图"
+        },
+        {
+          "title": "Snowflake扩展数据管道构建方式",
+          "body": "Snowflake的另一份当日数据工程公告确认：dbt Projects及其Slim CI、沿用生产环境对象的能力正式可用，DCM Projects也进入正式可用阶段。Pipeline Builder和Task Graph Object处于公开预览，DCM Test Branches仍是私有预览。它们分别服务于管道构建、任务编排和隔离测试，不能把一张功能清单全部理解为现在就可在生产环境启用。",
+          "janet_take": "自动写一段转换SQL并不难，难的是测试时不碰坏生产表。dbt的精简持续集成与隔离测试分支，触到的是数据团队每天承担的具体代价；其中一些仍在预览，落地速度不能按发布会的节奏估计。",
+          "source": "Snowflake Blog",
+          "url": "https://www.snowflake.com/en/blog/autonomous-data-engineering-ai-agents-apps/",
+          "published_at": "2026-11-03",
+          "image": "images/snowdata.png",
+          "image_origin": "source",
+          "image_source_url": "https://www.snowflake.com/content/dam/snowflake-site/blog/2026/11/expedition-data-engineering.png",
+          "image_credit": "Snowflake：本次自主数据工程功能公告图"
+        },
+        {
+          "title": "Open WebUI加入多标签工作区",
+          "body": "Open WebUI在11月3日发布v0.13.0。聊天旁的新标签工作区可并排容纳文件、终端、预览和评论，并支持拖动排序、创建文件及查看Git变更。Desktop标签可共享桌面操作，Browser标签可用于网页操作与测试，但两者都依赖具备相应能力的Open Terminal连接；单独更新WebUI不会自动获得一台可控桌面。",
+          "janet_take": "聊天窗口旁边有文件、有终端，也有能自己接手的桌面，终于接近实际干活时的桌子。对自托管用户而言，安装前最容易漏掉的恰恰是那条连接要求：界面按钮出现，与后面的运行环境准备好，是两回事。",
+          "source": "Open WebUI / GitHub Release",
+          "url": "https://github.com/open-webui/open-webui/releases/tag/v0.13.0",
+          "published_at": "2026-11-03T12:23:16Z",
+          "image": "images/webui.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/88aa3e9fc0ac0c27a549566b16a82610e31ae236fb36dc35f996f038bfb83e7b/open-webui/open-webui/releases/tag/v0.13.0",
+          "image_credit": "GitHub：v0.13.0官方版本发布卡片"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Sarvam Prism用一次前向做选择",
+          "body": "Sarvam发布Prism权重与技术介绍，仓库实际发布提交为11月3日13:16 UTC。它是基于Sarvam 105B-10B的LoRA微调版，面向有限选项的决策，一次前向计算各选项概率，不必逐词生成回答。作者报告B200上中位延迟44毫秒，并在其25个模型对照中给出71.8的平均成绩；这些属于作者测试。权重为Apache 2.0，FP8部署仍要求至少约120GB显存的GPU，且目前仅处理文本。",
+          "janet_take": "许多业务问题只需从几个合法选项里挑一个，长篇解释反而增加延迟。Prism把输出收紧到概率，有明确用处；但一次前向并不等于一张消费级显卡，105B级底座的部署门槛仍然摆在那里。",
+          "source": "Sarvam AI / Hugging Face",
+          "url": "https://www.sarvam.ai/blogs/sarvam-prism",
+          "published_at": "2026-11-03T13:16:18Z",
+          "image": "images/prism.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://assets.sarvam.ai/tr:w-1600,q-90,f-auto,dpr-auto/images/03117ysv/production/9de24f0346149d6c43848c8d4bb5b2611badf37a-1535x1025.png?rect=0,30,1535,768",
+          "image_credit": "Sarvam AI：Prism原文主图"
+        },
+        {
+          "title": "IBM微调20B模型生成可检查幻灯片",
+          "body": "IBM Research在当天首次发表Palette技术介绍：一个20B模型的LoRA适配器分别承担设计者与编码者角色，先输出可编辑的JSON简报，再逐页生成pptxgenjs代码。团队合成约1000套、1万页训练幻灯片；生成后渲染测量重叠、裁切与溢出，仅在检查改善时保留编辑模型的修订。作者报告它在PresentBench三个领域的平均得分排第二，但这不代表所有演示场景。本文介绍训练方法与结果，未据此确认当日新增可下载权重。",
+          "janet_take": "做幻灯片最折磨人的，常常不是缺一句文案，而是标题盖住了图、表格多编了一行。Palette把编辑决定和几何摆放拆开，再让程序实际测量，抓住了很具体的返工来源。我喜欢“改好才收下”这条规则；它只对检查器覆盖的错误负责，仍然不能替人判断一页讲得是否清楚，更不能担保没被检查到的事实。",
+          "source": "IBM Research / Hugging Face",
+          "url": "https://huggingface.co/blog/ibm-research/palette-deck-building",
+          "published_at": "2026-11-03T16:35:36.040Z",
+          "image": "images/palette.png",
+          "image_origin": "source",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/63890e3843d8b0797a0ad606/5pHD09UHuAK-6OyKGKimD.png",
+          "image_credit": "IBM Research：Palette技术介绍配图"
+        },
+        {
+          "title": "P-H3转换版更新ComfyUI原生工作流",
+          "body": "Pruna在11月3日15:55 UTC更新P-H3-Image的ComfyUI转换版工作流，改用ComfyUI原生支持。它是既有MiniMax-H3衍生图像模型的工作流更新，基础模型和权重较早，不能写成当天新基础模型。作者给出8MP、8步生成示例；最小w4a8组合下载约20GB、峰值显存约21GB，量化会改变部分细节。许可并非无限制商用：美国、欧盟、英国与韩国等区域须另获许可，并有产品署名要求。",
+          "janet_take": "21GB显存让这套衍生模型接近部分个人工作站的容量，但还远没有轻到随手运行。更容易踩坑的是地域许可：文件可以下载与产品可以在目标市场销售，中间隔着模型卡已经写明的条件。",
+          "source": "Pruna AI / Hugging Face",
+          "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy/tree/44a0fb73f299da1bb715bdb5ff59ce3fd3c6f543",
+          "published_at": "2026-11-03T15:55:08Z",
+          "image": "images/pruna.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://huggingface.co/PrunaAI/P-H3-Image/resolve/main/assets/p-h3-image.jpg",
+          "image_credit": "Pruna AI：该衍生图像模型的官方生成示例拼图"
+        },
+        {
+          "title": "社区量化3D Coder支持苹果端运行",
+          "body": "mlx-community当天上传Qwen3.5-4B-3D-Coder的OptiQ 4bit混合精度量化版，来源是ccore的3D代码独立微调模型，并非Qwen官方新基础模型。发布者在24GB M4机器上自报约26 token/s、峰值内存4–6GB，文件约3.7GB。其18次尝试中11次完成渲染、3次加载崩溃、4次陷入推理循环；示例经过挑选，且未提供与原精度模型的能力对照。",
+          "janet_take": "模型卡愿意把七次失败也列出来，比一排精挑细选的3D成品更能帮助判断。它已经提供一个本地实验入口；11次成功的结果，还不足以承诺稳定接单，更不能反推量化前后质量没有损失。",
+          "source": "mlx-community / Hugging Face",
+          "url": "https://huggingface.co/mlx-community/Qwen3.5-4B-3D-Coder-OptiQ-4bit",
+          "published_at": "2026-11-03T17:37:35Z",
+          "image": "images/mlx.png",
+          "image_origin": "source",
+          "image_source_url": "https://huggingface.co/mlx-community/Qwen3.5-4B-3D-Coder-OptiQ-4bit/resolve/main/examples/golem-front.png",
+          "image_credit": "发布者自报：该转换模型生成并渲染的石头傀儡示例"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "StateBench测试长文状态追踪失误",
+          "body": "AllenAI当天发布StateBench的新分析，基础数据与研究较早。测试要求模型从长文中追踪最新赋值、自更新和跨变量引用，而非只找出某句原文。作者报告，在高难度长序列设置中，所测前沿模型的最终状态准确率不超过13%。在专门训练的275M小模型实验里，采用GatedDeltaNet的混合架构比纯Transformer更能外推长序列；不过实验使用固定变量，不能据此证明它已解决真实任务中新对象不断出现的记忆问题。",
+          "janet_take": "客户先改地址，再撤回订单，最后又只恢复其中一件商品：记录全在，并不代表当前状态已经算对。StateBench把“能找到旧话”与“能更新事实”拆开测，正好戳到长对话的软肋。13%来自特定高难测试，不能拿来概括所有聊天；但它足以提醒我们，长上下文长度从来没有附赠一份准确的业务账本。",
+          "source": "AllenAI / Hugging Face",
+          "url": "https://huggingface.co/blog/allenai/statebench",
+          "published_at": "2026-11-03T17:15:21.376Z",
+          "image": "images/state.png",
+          "image_origin": "source",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/5g9HfQLFFaQE0fslWrxh0.png",
+          "image_credit": "AllenAI：StateBench状态变化示意图"
+        },
+        {
+          "title": "CyberArena用真实服务检查攻防结果",
+          "body": "2077 AI Data Foundation当天介绍CyberArena：两名代理各自维护相同服务，在三轮、每轮20分钟的比赛里同时攻击对手并修补自己，结果结合外部健康检查判定。作者在40个挑战、12个模型、466场比赛上报告结果，并在行为分析中发现23%的未验证修复声明和21%的不完整修补。统计来自作者的受控评估，不等于模型能在真实企业网络中自主防御。",
+          "janet_take": "“已修复”是聊天记录里的一个句子，服务是否还会被打穿则是另一件事。让外部检查器判定结果，至少阻止了模型靠措辞给自己加分；比赛环境与真实值班之间，还有系统复杂度和误操作代价的距离。",
+          "source": "2077 AI Data Foundation / Hugging Face",
+          "url": "https://huggingface.co/blog/2077AIDataFoundation/cyberarena",
+          "published_at": "2026-11-03",
+          "image": "images/cyber.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/6aced2a6f5e3b6157ee23b20/xSFmZ2yuP586r4Xha3am5.jpeg",
+          "image_credit": "2077 AI Data Foundation：CyberArena原文配图"
+        },
+        {
+          "title": "IBM实测同模型更换框架后的差距",
+          "body": "IBM Research在当天新分析中用同一GLM-5.3-flash模型比较CUGA、Hermes与Deep Agents，覆盖AppWorld的90项任务。作者自测任务完成率依次为81.1%、46.7%、30%；CUGA用了针对AppWorld的配置，其他框架的设置并不完全对等。因此结果说明框架与任务适配会改变表现，不能推出通用优胜排名。这组对照也没有启用策略规则，不能拿完成率证明支付审批等规则已经有效。",
+          "janet_take": "同一模型从30%到81%的跨度很抢眼，配置不对等的注脚同样关键。给任务专门准备过的框架获胜，证明的是准备工作有价值；把这个结果写成其他框架不行，反而会错过实验真正能说明的部分。",
+          "source": "IBM Research / Hugging Face",
+          "url": "https://huggingface.co/blog/ibm-research/cuga-harness",
+          "published_at": "2026-11-03T15:57:39.663Z",
+          "image": "images/cuga.png",
+          "image_origin": "source",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/636c2b3c1df179e8b83d7730/HAejcV9UI0kFWjSLj5Hva.png",
+          "image_credit": "IBM Research：本次CUGA框架对照文章配图"
+        },
+        {
+          "title": "CrewAI发布模型目录维护版本",
+          "body": "CrewAI于11月3日18:25 UTC发布1.15.35。官方变更仅列出LiteLLM模型目录更新，以及补充1.15.34的快照和变更记录，属于文档与目录维护。公告没有提供执行性能、代理推理或工具权限能力的新增证据，不应把版本号变化写成全套运行能力提升。",
+          "janet_take": "版本公告只有两项文档变更，新闻也就只讲到这里。维护模型目录能减少接入时的误判，却不会凭空改善代理完成任务的能力。把维护工作按它本来的规模记录下来，反倒更尊重使用者的时间。",
+          "source": "CrewAI / GitHub Release",
+          "url": "https://github.com/crewAIInc/crewAI/releases/tag/1.15.35",
+          "published_at": "2026-11-03T18:25:15Z",
+          "image": "images/crew.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/329537cd40de768457e077f1f355e75fe069dcc95a551301b0b00dacd09f2b9e/crewAIInc/crewAI/releases/tag/1.15.35",
+          "image_credit": "GitHub：CrewAI 1.15.35官方发布卡片"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Traversal融资1.2亿美元做AI运维",
+          "body": "Traversal于11月3日宣布完成1.2亿美元B轮融资，估值10亿美元，Kleiner Perkins、Redpoint和Khosla Ventures共同领投，Sequoia等继续参与。公司主打AI站点可靠性工程：结合生产系统数据，提出并检验故障原因，而非只生成一段看似合理的日志解释。它自报每月调查量从513次增至近7.3万次，但调查次数不等于已成功消除的事故数，也没有在这份公告中给出独立对照结果。",
+          "janet_take": "月调查量涨到近7.3万次，首先说明系统被频繁调用，还没有说明值班工程师少熬了多少夜。运维产品最动人的承诺是减少定位故障时的盲查；最昂贵的失误则是自信地指错原因。Traversal要证明的差额，应落在定位时间、修复结果与误报成本上，融资规模只能为这场验证提供更长的跑道。",
+          "source": "Traversal",
+          "url": "https://www.traversal.com/blog/traversal-series-b-120-million-ai-sre",
+          "published_at": "2026-11-03",
+          "image": "images/traversal.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://cdn.prod.website-files.com/69b7d15e970d88f7a10898a6/6ae902f9ca82883fb9aa64ab_series-b-announcement-og-1200.jpg",
+          "image_credit": "Traversal：本次B轮金额与估值公告图"
+        },
+        {
+          "title": "fal披露16.5亿美元两轮融资",
+          "body": "fal在11月3日上线的公司文章中同时披露E轮与F轮融资，公告配图标注两轮合计16.5亿美元。E轮较早在年内完成，由Sequoia领投；当天宣布的F轮由Bessemer Venture Partners领投，NVIDIA继续投资。资金将支持2027年的推理容量、研究与团队扩张。原始公告未分别列出各轮金额及估值，也不能把较早完成的E轮写成当天才发生的融资。",
+          "janet_take": "广告和影视团队真正交片时，调用量会集中在赶工的几个小时。fal把资金同时投向推理容量与研发，解释了融资背后的实际支出方向；两轮合计的大数字说明资金体量，却没有单独回答每轮交易的价格。",
+          "source": "fal",
+          "url": "https://fal.ai/blog/series-e-f",
+          "published_at": "2026-11-03",
+          "image": "images/fal.png",
+          "image_origin": "source",
+          "image_source_url": "https://cdn.prod.website-files.com/6aa6c6d1e24fcce9487a1e9c/6ae9106ed85e1074d7ec7774_fal_social_blog.png",
+          "image_credit": "fal：本次E轮与F轮披露文章主图"
+        },
+        {
+          "title": "DigitalOcean季报营收同比涨40%",
+          "body": "DigitalOcean在11月3日新披露第三季度财报：收入约3.21亿美元，同比增长40%；AI客户年化收入运行率为3.76亿美元，同比增长288%。这一口径把使用AI产品的客户全部收入计入，并以当季收入乘四，不是单季AI推理收入。公司同时录得归属普通股股东净亏损约4300万美元，包含5700万美元票据转换费用。基础业务发生在此前季度，本条报道的是当天新增财务披露。",
+          "janet_take": "3.76亿美元的AI客户指标很亮眼，定义却决定它能说明什么：买了AI产品的客户，普通云服务消费也算进去。这个增长支持客户采用更多产品的判断，仍不能单凭它推算推理业务规模，更不能直接当作利润。",
+          "source": "DigitalOcean Investor Relations",
+          "url": "https://investors.digitalocean.com/news/news-details/2026/DigitalOcean-Announces-Third-Quarter-2026-Financial-Results/default.aspx",
+          "published_at": "2026-11-03",
+          "image": "images/digitalocean.png",
+          "image_origin": "source",
+          "image_source_url": "https://s206.q4cdn.com/265192696/files/content_files/Earnings-Presentation-2026-Q3-_FINAL_.pdf",
+          "image_credit": "DigitalOcean：本次Q3业绩演示文档第4页"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "n8n将管理员加入自修复评审",
+          "body": "n8n于11月3日发布2.47.0，变更包括让实例管理员参与团队自修复评审、在结果所属项目中打开自修复聊天，以及修正已弃用AI Agent类型提示的操作入口。此外，更新限制代理沙箱文件写入大小，并在MCP工作流报错时应用执行信息脱敏。这是官方版本变更记录，不意味着所有工作流都已经能自动修好，也不应与同时维护的stable标签混为一谈。",
+          "janet_take": "自动修复如果把讨论开进错误项目，或者漏掉真正负责的管理员，再聪明也很难收尾。这次小修触及的正是接手位置和可见范围；对已有工作流的团队，它们比又多一个生成按钮更贴近日常麻烦。",
+          "source": "n8n / GitHub Release",
+          "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.47.0",
+          "published_at": "2026-11-03T08:36:32Z",
+          "image": "images/n8n.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/33adac3db33bc473ab6331df9fbbebfb320459e9e65ffef7fb2875227320a648/n8n-io/n8n/releases/tag/n8n%402.47.0",
+          "image_credit": "GitHub：n8n 2.47.0官方版本发布卡片"
+        }
+      ]
+    }
+  }
+}

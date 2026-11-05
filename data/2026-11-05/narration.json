@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-05",
+  "title": "从出图到改代码",
+  "content_sha256": "684dd06937727995a891f51c80d0d053de84da6f73063e7487e562f097797e74",
+  "item_count": 17,
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "voice_label": "普通话女声 · AI 播报",
+  "rate": "-3%",
+  "audio": "narration.m4a",
+  "transcript": "narration.txt",
+  "duration": 1231.968,
+  "audio_sha256": "c25fa7c8126d05366798ee3fa3e524bb00ebbd56904c00b7fdd25303e843597d",
+  "chapters": [
+    {
+      "id": "opening",
+      "title": "开场",
+      "text": "各位听众，欢迎收听 Janet 每日晨报。今天是2026年11月5日，第401期。\n从出图到改代码。\n创作、协作与研究，各自推进一步。\nImages 2.6把GIF和更细的编辑控制带进创作工具，OpenAI则计划买下代码协作工具公司Pierre。另一组消息来自研究现场：Linux漏洞流水线公布一次扫描的成本，Claude参与解析一种仍然用途不明的蛋白质结构。融资和财报也各有进展，金额的性质比标题里的零更重要。\n本期为您完整播报十七条新闻，每条新闻后紧接 Janet 锐评。",
+      "start": 0,
+      "duration": 48.192
+    },
+    {
+      "id": "trend",
+      "title": "今日趋势",
+      "text": "首先关注今日趋势。\n做一张图之后还能继续改，生成代码之后还能看清改了哪里：Images 2.6和Pierre分别处理创作与协作中的下一步。两者都有具体入口，也有不同状态——前者已上线，后者仍是等待交割的收购协议。\n\n研究消息更适合逐项读。Linux报告给出了发现、复现、验证和候选补丁的分层数字；蛋白质研究交出了结构，却没有宣告解开其生物功能。资金端同样不能混算：Nooks拿到增长资本承诺，TeraWulf增加项目信用支持，高通则面对手机业务下降与非手机业务的未来目标。今天没有一个结论能替所有消息收尾。",
+      "start": 48.192,
+      "duration": 52.56
+    },
+    {
+      "id": "news-0",
+      "title": "OpenAI拟收购Pierre，补强代码协作",
+      "text": "下面进入全球要闻。\n第1条。OpenAI拟收购Pierre，补强代码协作。\n据OpenAI报道。\nOpenAI于11月4日宣布将收购Pierre Computer Company，后者开发Code Storage以及Trees、Diffs等开源工具；Codex的文件浏览和变更审阅已使用这些库。双方计划改进开发者与多个代码智能体并行工作的Git协作。交易金额未公布，交割仍须满足惯常条件及监管批准，交割前两家公司独立运营。OpenAI称相关开源项目会继续开源，Code Storage客户也可继续使用服务。\nJanet 锐评。\n代码能同时写出十个分支，读懂十个分支仍然占用人的注意力。Pierre已有的差异浏览与就地修改，比再加一个聊天入口更贴近这个瓶颈。收购计划也透露了Codex的方向：从一个会写代码的窗口，延伸到团队共同判断、修改和交付的位置。能否减少审阅负担，要等产品真正接进来才有答案。",
+      "section": "news",
+      "item_index": 0,
+      "source_url": "https://openai.com/index/openai-to-acquire-pierre/",
+      "start": 100.752,
+      "duration": 76.8
+    },
+    {
+      "id": "news-1",
+      "title": "Daybreak Red接入美国政府云东区",
+      "text": "第2条。Daybreak Red接入美国政府云东区。\n据OpenAI报道。\n11月4日，OpenAI宣布GPT-5.6 Cyber可通过Daybreak Red在AWS GovCloud（US-East）供获批客户使用，属于既有安全模型的区域与渠道扩展。接入同时需要OpenAI资格审批与AWS开通，前者获批不会自动启用后者。用途包括获授权的漏洞研究和安全测试；发现与修复方案仍须专业人员复核。\nJanet 锐评。\n政府云里的可用性是一道具体的采购与部署门槛。模型名字没换，能够在哪个环境运行却变了；两家的开通步骤也说明，获得模型资格与拿到实际服务之间仍有一段距离。",
+      "section": "news",
+      "item_index": 1,
+      "source_url": "https://openai.com/index/daybreak-red-aws-govcloud/",
+      "start": 177.552,
+      "duration": 55.992
+    },
+    {
+      "id": "news-2",
+      "title": "DevRev发布企业自助服务新案例",
+      "text": "第3条。DevRev发布企业自助服务新案例。\n据OpenAI／DevRev报道。\nOpenAI在11月4日首次发布DevRev应用案例，介绍Computer与Operator如何结合GPT-6 Astra、GPT-6.1 Sol及公司自身的智能体运行框架处理企业服务请求。DevRev称操作可撤回、回答能回到来源，并以多版本资料、跨系统数据和角色权限评估系统。这是当天新案例报道，相关产品与模型并非当天首次推出；效果主要来自企业自述。\nJanet 锐评。\n客服问答里最麻烦的往往是同一制度有三个版本、同一客户在两个系统里。这个案例交代了信息和行动怎样受控，却没有给出足以横向比较的独立成绩。能读出它的设计取舍，已经比照搬客户证言有用。",
+      "section": "news",
+      "item_index": 2,
+      "source_url": "https://openai.com/index/devrev-enterprise-self-service/",
+      "start": 233.544,
+      "duration": 64.584
+    },
+    {
+      "id": "news-3",
+      "title": "ComfyUI支持视频工作流输出ProRes",
+      "text": "第4条。ComfyUI支持视频工作流输出ProRes。\n据ComfyUI官方GitHub Release报道。\nComfyUI于11月4日01:12 UTC发布v0.44.0。官方更新记录包含视频保存的ProRes与不同色度采样支持、VAE计算数据类型控制，以及MiniMax-H3相关本地组件支持；合作方节点还加入若干图像、配音与视频操作。这里报道的是工作流软件版本，节点接入不代表所连接的模型在同一天首发，外部服务的账号和费用也独立存在。\nJanet 锐评。\n剪辑流程常被最后一步格式卡住。ProRes输出比一张漂亮的节点截图更接近后期交接，但编码格式解决的是素材运输；画面是否连贯、声音是否对齐，仍是另两件事。",
+      "section": "news",
+      "item_index": 3,
+      "source_url": "https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.44.0",
+      "start": 298.128,
+      "duration": 61.656
+    },
+    {
+      "id": "news-4",
+      "title": "Windmill加入流程总超时控制",
+      "text": "第5条。Windmill加入流程总超时控制。\n据Windmill官方GitHub Release报道。\nWindmill在11月4日19:48 UTC发布v1.861.0，加入流程级墙钟时间超时、按运行筛选日志、运行图表控制等功能，并修复Git同步自动拉取可能用自身提交回退编辑的问题。当天随后发布的v1.862.0主要修补界面与导航；总超时功能的来源版本为v1.861.0。\nJanet 锐评。\n每个步骤都没超时，串起来的整项任务也可能耗尽一个上午。给流程整体计时，对有多个模型与外部请求的自动化很实际：等待终于有了一个总上限。",
+      "section": "news",
+      "item_index": 4,
+      "source_url": "https://github.com/windmill-labs/windmill/releases/tag/v1.861.0",
+      "start": 359.784,
+      "duration": 53.136
+    },
+    {
+      "id": "models-0",
+      "title": "Images 2.6加入GIF与SVG导出",
+      "text": "下面进入模型动态。\n第6条。Images 2.6加入GIF与SVG导出。\n据OpenAI报道。\nOpenAI于11月4日上线Images 2.6，覆盖ChatGPT、Codex及API；API提供Flare与Sunburst两种选择。此次增加GIF制作、API图像标记和SVG导出，并引入complexity参数控制构图规划投入，quality则控制视觉细节。官方称整体生成更快，低质量档Flare最快可约6秒出图；这属于厂商条件下的表述，复杂编辑不等于同样耗时。\nJanet 锐评。\n对反复改稿的人，保住同一个角色、商品和品牌细节，比再抽一次漂亮盲盒更省力。GIF又把一次生成延伸成一个小动作，适合表情、角色草稿和社交素材。不过，复杂度与画质是两根独立旋钮；把每项都推到最高，未必符合一次局部修改的工作量。真正有吸引力的是更短的来回，而非一个孤立的最快秒数。",
+      "section": "models",
+      "item_index": 0,
+      "source_url": "https://openai.com/index/introducing-images-2-6/",
+      "start": 412.92,
+      "duration": 77.64
+    },
+    {
+      "id": "models-1",
+      "title": "腾讯发布Hy4，权重仍待公布",
+      "text": "第7条。腾讯发布Hy4，权重仍待公布。\n据腾讯官方新闻稿／腾讯云ADP报道。\n腾讯于11月4日发布Hy4正式版，在原有预览版基础上增加视觉理解与电脑操作能力，并面向长程任务优化。官方称模型已在TokenHub、WorkBuddy、CodeBuddy等产品提供，模型权重与系统卡计划近日公布；因此不能把当天状态写成权重已可下载。腾讯云ADP也已接入正式版。本文不沿用旧预览版参数冒充新版已确认规格。\nJanet 锐评。\n正式版能调用，与正式版权重能下载，是两张不同的通行证。看图、操控界面和专业软件任务把它推向更复杂的工作，但在系统卡与权重到手之前，外界能检查的范围仍主要由产品入口决定。",
+      "section": "models",
+      "item_index": 1,
+      "source_url": "https://en.prnasia.com/releases/apac/tencent-launches-hy4-joining-the-ranks-of-the-world-s-leading-open-source-ai-models-554689.shtml",
+      "start": 490.56,
+      "duration": 62.376
+    },
+    {
+      "id": "models-2",
+      "title": "Cognition发布低成本SWE-2 Flash",
+      "text": "第8条。Cognition发布低成本SWE-2 Flash。\n据Cognition报道。\nCognition于11月4日发布SWE-2 Flash，基于Thinking Machines的Inkling-Small继续中期训练与强化学习，总参数276B、每次激活12B。它已进入Devin Desktop与CLI，厂商称价格为SWE-2的五分之一、速度约三倍。网页200对60 token/s的演示为按设定速度回放，不能当作独立实测。权重尚未公开，可信伙伴与研究机构共享计划仍在筹备。\nJanet 锐评。\n把文档整理、常规代码修改交给较便宜的模型，是比所有任务都争第一更实际的定位。276B总参数也提醒人：激活少不等于整套权重很小，暂未公开的共享计划更不等于今天能在本地运行。",
+      "section": "models",
+      "item_index": 2,
+      "source_url": "https://cognition.com/blog/swe-2-flash",
+      "start": 552.936,
+      "duration": 61.488
+    },
+    {
+      "id": "models-3",
+      "title": "MLX社区发布轻量语音转换版",
+      "text": "第9条。MLX社区发布轻量语音转换版。\n据mlx-community模型卡报道。\nmlx-community在11月4日14:08 UTC新建Nemotron Labs Unified ASR 0.6B的4-bit MLX转换版，模型卡标注权重约472MB，基于NVIDIA指定修订转换，沿用OpenMDW 1.1许可。这是社区量化转换，不是NVIDIA当天发布新基础模型。模型卡描述16kHz单声道输入、离线与缓冲流式转写，并提醒原版误字率表不能直接代表量化版；量化主要省内存，不保证提速。\nJanet 锐评。\n472MB让Mac上的转写试验容易开头，口音、人名和背景声则不会随文件一起压缩。转换者明确写出量化不一定加速，这句限制反倒比“轻量”二字更能帮助人选型。",
+      "section": "models",
+      "item_index": 3,
+      "source_url": "https://huggingface.co/mlx-community/nemotron-labs-unified-asr-0.6b-4bit",
+      "start": 614.424,
+      "duration": 67.056
+    },
+    {
+      "id": "insights-0",
+      "title": "OpenAI用流水线验证948条提权路径",
+      "text": "下面进入技术深度。\n第10条。OpenAI用流水线验证948条提权路径。\n据OpenAI报道。\nOpenAI于11月4日首次披露10月中旬一次Linux内核安全研究：流水线分析2308个候选发现，动态复现1724个漏洞，并生成948个有效本地提权验证及候选补丁，API消耗约121万美元。研究使用尚未公开的安全模型，在受控环境运行；人员复核后向维护者报告。948不是已被上游合入的补丁数，报告中的假设赏金价值也不是实际收入。\nJanet 锐评。\n扫描能批量运行，维护者的判断却不能按同样比例无限扩张。2308到1724再到948，至少让人看见发现、复现与可利用性之间的筛选，而不是把一串告警当作修复成果。真正影响防守的是可复核的报告与可接受的补丁能否及时抵达；候选补丁写出来，只走完了其中一段。",
+      "section": "insights",
+      "item_index": 0,
+      "source_url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+      "start": 681.48,
+      "duration": 78.168
+    },
+    {
+      "id": "insights-1",
+      "title": "Dharma用20亿参数提取文档字段",
+      "text": "第11条。Dharma用20亿参数提取文档字段。\n据Dharma-AI／Hugging Face报道。\nDharma-AI于11月4日发表Field Extractor技术文章：在20亿参数OCR底座上以43384条样本训练LoRA，让文档图片按指定schema输出嵌套JSON，缺失字段返回null。作者在546份文档、1638种请求案例上自测；成本比较使用单张L40S每小时2.24美元的GPU时间，并非对外售价。自托管与API的计价口径不同，不能把该倍率直接当采购折扣。\nJanet 锐评。\n一份发票最终要进入数据库时，完整抄出整页常常还不够。指定字段、类型和空值的价值，在于减少下一段映射代码；作者同时交代成本口径，读者才知道比较的是一次计算，还是已经包含维护的服务。",
+      "section": "insights",
+      "item_index": 1,
+      "source_url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+      "start": 759.648,
+      "duration": 68.424
+    },
+    {
+      "id": "insights-2",
+      "title": "CloudOpsBench用45项任务测云操作",
+      "text": "第12条。CloudOpsBench用45项任务测云操作。\n据The Decoder当日新报道／CloudOpsBench原仓库报道。\n11月4日，The Decoder首次报道CloudOpsBench的45项AWS运维任务，基础项目已更早公开。原始仓库提供初始状态、任务说明、检查器和参考解法，覆盖清理资源、修复连接及收紧访问等操作。仓库说明执行后端仍有私有部分，克隆任务库本身不能得到完整运行系统；打包检查也不代表任务已全量执行。本文采用原仓库可核验的范围，不混用媒体数字与后来变化的排行榜。\nJanet 锐评。\n删掉一个废弃队列并不难，难的是找到所有该删的队列，同时留住旁边仍在使用的资源。运维考题的边界感很有价值，公开任务与开放可复现的整套运行环境却还隔着一步。",
+      "section": "insights",
+      "item_index": 2,
+      "source_url": "https://the-decoder.com/new-open-source-benchmark-reveals-reasoning-as-the-biggest-bottleneck-for-ai-in-cloud-operations/",
+      "start": 828.072,
+      "duration": 67.368
+    },
+    {
+      "id": "insights-3",
+      "title": "Anthropic用Claude解析穹隆颗粒结构",
+      "text": "第13条。Anthropic用Claude解析穹隆颗粒结构。\n据Anthropic生物研究团队报道。\nAnthropic于11月4日发布生物研究，展示由细菌噬菌体蛋白组成的L05穹隆颗粒三维结构，由96份同一蛋白组装。Claude在人类指导下参与数据库检索、构建设计、纯化方法优化与显微数据处理。团队自报纯化约90分钟、随后34小时得到首个结构模型；传统耗时对比为团队估计。预印本已提交bioRxiv，颗粒的生物学功能仍未确定。\nJanet 锐评。\n用途未知却能先得到结构，是基础研究很真实的推进方式。这里省下的时间有实验步骤对应，也有人类持续指导；把它写成模型独立发现生命奥秘，反而会盖住这段具体的协作。",
+      "section": "insights",
+      "item_index": 3,
+      "source_url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
+      "start": 895.44,
+      "duration": 62.472
+    },
+    {
+      "id": "insights2-0",
+      "title": "Nooks拿到5亿美元增长资本承诺",
+      "text": "下面进入投资视角。\n第14条。Nooks拿到5亿美元增长资本承诺。\n据Nooks公司公告报道。\nNooks于11月4日宣布General Catalyst Customer Value Fund提供5亿美元非稀释性增长资本承诺，用于销售与营销扩张，资金按新增客户价值产生的回报偿付，不能等同普通股权融资或当天一次性到账。公司同时介绍Revenue Agent Platform与Node；Node现可申请早期访问，计划2027年初普遍提供。约三倍增长、135%净收入留存等指标为公司自报，当前收入规模未披露。\nJanet 锐评。\n不卖股份不等于资金免费。投资方押的是未来新增客户能带来的回报，因此这笔钱更像放大一台已经能运转的获客机器；它证明了融资结构的选择，尚不能证明每一家公司的销售都能被智能体重写。",
+      "section": "insights2",
+      "item_index": 0,
+      "source_url": "https://www.nooks.ai/blog-posts/introducing-node-revenue-agent-platform",
+      "start": 957.912,
+      "duration": 68.04
+    },
+    {
+      "id": "insights2-1",
+      "title": "Google为TeraWulf项目增加信用支持",
+      "text": "第15条。Google为TeraWulf项目增加信用支持。\n据TeraWulf公司公告报道。\nTeraWulf于11月4日签订Google信用支持协议，服务于肯塔基州Justified园区的预期项目债务融资，并公布与Fluor的工程采购施工协议。相关Anthropic租赁承诺约190亿美元，基础租赁事件更早；当天新增的是融资信用支持与施工安排。190亿美元不是Google当日投资额，也不是本次已到账债务金额。\nJanet 锐评。\n机房合同有长期收入的想象，施工先花的却是真金白银。Google的信用支持试图缩短两者之间的融资距离，Fluor负责另一段建设执行；合同金额很大，也仍然不能替代一栋按期通电交付的楼。",
+      "section": "insights2",
+      "item_index": 1,
+      "source_url": "https://investors.terawulf.com/news-events/press-releases/detail/148/terawulf-secures-google-credit-backstop-for-project-financing-in-support-of-19-billion-anthropic-lease-executes-definitive-fluor-epc-agreement",
+      "start": 1025.952,
+      "duration": 58.536
+    },
+    {
+      "id": "insights2-2",
+      "title": "高通营收降8%，重申数据中心目标",
+      "text": "第16条。高通营收降8%，重申数据中心目标。\n据高通官方财报报道。\n高通11月4日发布2026财年第四季及全年业绩：第四季GAAP营收103.22亿美元，同比下降8%；非GAAP稀释每股收益2.17美元，同比下降28%。QCT汽车业务季度收入首次达到20亿美元、增长89%。公司重申2027财年数据中心收入50亿美元目标，预计非手机收入增长超过60%；这是管理层前瞻目标，不是当期数据中心已实现收入。\nJanet 锐评。\n同一份财报里，汽车业务大增与总收入下降可以同时成立。数据中心的五十亿美元目标给了下一年的方向，却还没有消除手机业务回落的压力。对一个跨进AI基础设施的芯片商，最有信息量的后续变化，是新业务实际收入何时单独站出来，而不是在今天把未来目标加进已实现的营收。",
+      "section": "insights2",
+      "item_index": 2,
+      "source_url": "https://investor.qualcomm.com/files/content_files/FY2026-4th-Quarter-Earnings-Release.pdf",
+      "start": 1084.488,
+      "duration": 76.752
+    },
+    {
+      "id": "tools-0",
+      "title": "n8n修复跨平台安装并发布维护版",
+      "text": "下面进入今日工具箱。\n第17条。n8n修复跨平台安装并发布维护版。\n据n8n官方GitHub Release报道。\nn8n于11月4日13:10 UTC发布稳定版2.46.6，修复npm安装跨平台失效；当天较早的2.46.5还修复AI Agent节点弃用提示、凭证解析与表达式数组键读取。它们属于维护更新，不是新智能体产品。使用2.47分支的部署则有同日2.47.2对应安装修补，升级路径仍以当前分支为准。\nJanet 锐评。\n自动化工具连安装都过不去，再聪明的节点也没有上场机会。这样一条窄小的维护消息适合留下版本号，等真正需要重建环境时，能直接找到修补从哪里开始。",
+      "section": "tools",
+      "item_index": 0,
+      "source_url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.46.6",
+      "start": 1161.24,
+      "duration": 60.6
+    },
+    {
+      "id": "closing",
+      "title": "结束语",
+      "text": "以上是本期 Janet 每日晨报的全部内容。感谢收听。保持好奇，保持判断。我们下期再见。",
+      "start": 1221.84,
+      "duration": 10.128
+    }
+  ]
+}

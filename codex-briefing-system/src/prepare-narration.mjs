@@ -1,0 +1,13 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { targetDateFromArg } from './lib.mjs';
+import { buildNarration } from './narration.mjs';
+const root = resolve(new URL('..', import.meta.url).pathname);
+const date = targetDateFromArg();
+const folder = resolve(root, 'runs', date);
+const content = JSON.parse(readFileSync(resolve(folder, 'content.json')));
+const script = buildNarration(content);
+if (script.item_count !== 17) throw new Error(`narration_expected_17_items:${script.item_count}`);
+writeFileSync(resolve(folder, 'narration-script.json'), JSON.stringify(script, null, 2) + '\n');
+writeFileSync(resolve(folder, 'narration.txt'), script.segments.map(s => s.text).join('\n\n') + '\n');
+console.log(`narration_script_ready date=${date} items=17 segments=${script.segments.length}`);

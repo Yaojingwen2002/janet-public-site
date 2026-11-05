@@ -58,7 +58,8 @@ function detectStage(runDir) {
 function siteIsPublished(siteRoot, date) {
   const dataRoot = resolve(siteRoot, 'data');
   const editionDir = resolve(dataRoot, date);
-  const tripletReady = ['content.json', 'output.html', 'cover.png']
+  const required = ['content.json', 'output.html', 'cover.png', ...(date >= '2026-11-05' ? ['narration.json', 'narration.m4a', 'narration.txt'] : [])];
+  const tripletReady = required
     .every((name) => existsSync(resolve(editionDir, name)));
   const manifest = readJson(resolve(dataRoot, 'MANIFEST.json'), []);
   const index = readJson(resolve(dataRoot, 'news-index.json'), {});

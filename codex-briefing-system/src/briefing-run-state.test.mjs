@@ -46,6 +46,19 @@ test('reports a recent task file as active research', (t) => {
   assert.equal(result.age_minutes, 5);
 });
 
+test('new editions are not complete until their full audio files are present', (t) => {
+  const { root, siteRoot } = fixture();
+  t.after(() => rmSync(siteRoot, { recursive: true, force: true }));
+  const today = '2026-11-05';
+  const dataRoot = resolve(siteRoot, 'data');
+  for (const name of ['content.json', 'output.html', 'cover.png']) write(resolve(dataRoot, today, name));
+  write(resolve(dataRoot, 'MANIFEST.json'), JSON.stringify([today]));
+  write(resolve(dataRoot, 'news-index.json'), JSON.stringify({ latest_edition_id: today }));
+  assert.notEqual(inspectBriefingRun({ date: today, root, siteRoot }).status, 'already_published');
+  for (const name of ['narration.json', 'narration.m4a', 'narration.txt']) write(resolve(dataRoot, today, name));
+  assert.equal(inspectBriefingRun({ date: today, root, siteRoot }).status, 'already_published');
+});
+
 test('reports an old unfinished task as missing instead of active', (t) => {
   const { root, siteRoot } = fixture();
   t.after(() => rmSync(siteRoot, { recursive: true, force: true }));

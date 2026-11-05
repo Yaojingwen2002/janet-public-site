@@ -53,6 +53,9 @@ function requireFile(filePath, label) {
 
 requireFile(contentPath, 'content_json');
 requireFile(outputPath, 'output_html');
+if (date >= '2026-11-05') {
+  for (const name of ['narration.json', 'narration.txt', 'narration.m4a']) requireFile(resolve(dataDir, name), name);
+}
 if (requireFile(coverPath, 'cover_png')) {
   const size = statSync(coverPath).size;
   if (size < 20_000) issues.push(`cover_png_too_small:${size}`);

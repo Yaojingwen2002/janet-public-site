@@ -13,7 +13,7 @@ SITE_DATA_DIR="$SITE_ROOT/data/$DATE"
 
 missing=()
 
-for required in content.json output.html cover.png; do
+for required in content.json output.html cover.png narration.json narration.m4a narration.txt; do
   [[ -f "$RUN_DIR/$required" ]] || missing+=("$RUN_DIR/$required")
   [[ -f "$SITE_DATA_DIR/$required" ]] || missing+=("$SITE_DATA_DIR/$required")
 done
@@ -39,6 +39,7 @@ if (( ${#missing[@]} > 0 )); then
 fi
 
 node "$ROOT/src/qa-briefing.mjs" "$DATE"
+node "$ROOT/src/qa-narration.mjs" "$DATE"
 node "$ROOT/src/check-site-briefing.mjs" "$DATE"
 
 BASE_URL="${PUBLIC_SITE_URL:-https://yaojingwen2002.github.io/janet-public-site}"
@@ -48,7 +49,10 @@ for path in \
   "news.html" \
   "data/$DATE/content.json" \
   "data/$DATE/output.html" \
-  "data/$DATE/cover.png"; do
+  "data/$DATE/cover.png" \
+  "data/$DATE/narration.json" \
+  "data/$DATE/narration.txt" \
+  "data/$DATE/narration.m4a"; do
   code="$(curl -L -s -o /dev/null -w '%{http_code}' "$BASE_URL/$path" || true)"
   [[ "$code" == "200" ]] || remote_missing+=("$BASE_URL/$path:$code")
 done

@@ -15,7 +15,7 @@ if [[ ! -d "$SRC_DIR" ]]; then
   exit 1
 fi
 
-for required in content.json output.html cover.png; do
+for required in content.json output.html cover.png narration.json narration.m4a narration.txt; do
   if [[ ! -f "$SRC_DIR/$required" ]]; then
     echo "缺少晨报文件：$SRC_DIR/$required" >&2
     exit 1
@@ -26,6 +26,9 @@ mkdir -p "$DEST_DIR"
 cp "$SRC_DIR/content.json" "$DEST_DIR/content.json"
 cp "$SRC_DIR/output.html" "$DEST_DIR/output.html"
 cp "$SRC_DIR/cover.png" "$DEST_DIR/cover.png"
+for file in narration.json narration.m4a narration.txt; do
+  cp "$SRC_DIR/$file" "$DEST_DIR/$file"
+done
 if [[ -d "$SRC_DIR/images" ]]; then
   rm -rf "$DEST_DIR/images"
   mkdir -p "$DEST_DIR/images"

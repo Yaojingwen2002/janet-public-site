@@ -10,5 +10,8 @@
     "publish": "node src/publish-to-site.mjs",
     "qa": "node src/qa-briefing.mjs",
     "test": "node --test src/*.test.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.3"
   }
 }

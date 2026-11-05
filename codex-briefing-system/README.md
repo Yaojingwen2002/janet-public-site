@@ -61,6 +61,12 @@ Codex App 可以使用它自身可用的搜索、浏览器、MCP 和文件读取
 bash scripts/postprocess-briefing.sh YYYY-MM-DD --publish
 ```
 
+## 全文语音播报
+
+后处理自动生成普通话女声新闻播报，包含完整导语、趋势和17条新闻，每条后紧接 Janet 锐评。`src/narration.mjs` 保留每个正文和锐评字段原文，并加上开场、栏目过渡和结束语。`scripts/prepare-narration.sh YYYY-MM-DD` 可单独准备口播稿、M4A和章节清单；首次运行在 `.venv-tts` 安装锁定版本的 edge-tts 和 mutagen，使用系统网络代理。外部语音服务失败时最多重试三次，缓存已完成章节，检查未通过会阻止发布。
+
+公开文件是 `narration.txt`、`narration.m4a` 和 `narration.json`。源码哈希、音频哈希、全17条覆盖和章节时长必须一致。修改正文后须重新运行后处理。首页、归档页和新晨报正文都加载同一播放器，支持自动播放尝试、点击解锁、暂停、进度、倍速、章节跳转和同日收听位置恢复；用户暂停后不会被普通点击重新开启。浏览器的有声自动播放规则可能要求用户首次点击。页面明确标注 AI 播报。
+
 这一步会：
 
 - 渲染 `runs/YYYY-MM-DD/output.html`

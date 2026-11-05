@@ -20,6 +20,7 @@ fi
 node src/ensure-item-images.mjs "$DATE"
 node src/render-output.mjs "$DATE"
 node src/qa-briefing.mjs "$DATE"
+bash scripts/prepare-narration.sh "$DATE"
 
 if [[ "$PUBLISH" == "--publish" ]]; then
   bash scripts/sync-to-site.sh "$DATE"

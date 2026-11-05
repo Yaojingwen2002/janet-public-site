@@ -135,6 +135,24 @@ const latestEdition = editions.find((edition) => edition.edition_id === latest);
 if (!latestEdition) issues.push('latest_edition_missing_from_index');
 const latestContentPath = latestEdition ? localPathFromUrl(latestEdition.content_url) : '';
 const latestOutputPath = latestEdition ? localPathFromUrl(latestEdition.url) : '';
+if (latest >= '2026-11-05') {
+  for (const name of ['narration.json', 'narration.m4a', 'narration.txt']) requireFile(`data/${latest}/${name}`);
+  const narration = readJson(`data/${latest}/narration.json`);
+  const content = readJson(latestContentPath);
+  if (narration && content) {
+    const hash = createHash('sha256').update(JSON.stringify(content)).digest('hex');
+    if (narration.content_sha256 !== hash || narration.date !== latest) issues.push('narration_stale');
+    const chapters = narration.chapters || [];
+    if (narration.item_count !== 17 || chapters.filter(c => c.section).length !== 17) issues.push('narration_incomplete');
+    for (const [section, group] of Object.entries(content.sections || {})) {
+      group.items.forEach((item, index) => {
+        const chapter = chapters.find(c => c.section === section && c.item_index === index);
+        if (!chapter || !chapter.text.includes(item.body) || !chapter.text.includes(item.janet_take) || chapter.text.indexOf(item.janet_take) < chapter.text.indexOf(item.body)) issues.push(`narration_omits_editorial:${section}:${index}`);
+      });
+    }
+    if (existsSync(resolve(root, `data/${latest}/narration.m4a`)) && sha256(`data/${latest}/narration.m4a`) !== narration.audio_sha256) issues.push('narration_audio_hash_mismatch');
+  }
+}
 requireFile(`data/${latest}/cover.png`);
 if (!latestContentPath) issues.push('latest_content_url_missing');
 if (!latestOutputPath) issues.push('latest_output_url_missing');

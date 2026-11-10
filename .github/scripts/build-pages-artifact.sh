@@ -48,9 +48,13 @@ find "$OUTPUT" -name '._*' -delete
 find "$OUTPUT" -name '.DS_Store' -delete
 touch "$OUTPUT/.nojekyll"
 node "$ROOT/scripts/prepare-pages-artifact.mjs" "$OUTPUT"
+node "$ROOT/scripts/prune-news-image-copies.mjs" "$OUTPUT"
 find "$OUTPUT" -name '._*' -delete
 find "$OUTPUT" -name '.DS_Store' -delete
 
 file_count="$(find "$OUTPUT" -type f | wc -l | tr -d ' ')"
 size_kb="$(du -sk "$OUTPUT" | awk '{print $1}')"
+if (( size_kb > 900000 )); then
+  echo "::warning::Public artifact is near the Pages capacity limit; see the media migration plan in docs/NEWS-OPERATIONS.md."
+fi
 echo "pages_artifact_ready files=$file_count size_kb=$size_kb output=$OUTPUT"

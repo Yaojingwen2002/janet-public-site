@@ -12,7 +12,6 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-  actions: write
 concurrency:
   group: briefing-source-collection
   cancel-in-progress: false
@@ -47,8 +46,4 @@ jobs:
           git commit -m "Update news source collection"
           git pull --rebase origin main
           git push origin HEAD:main
-          # Let an edition deployment finish so its Briefing title reaches mail handoff.
-          for run_id in $(gh run list --workflow deploy-pages.yml --limit 10 --json databaseId,status --jq ' .[] | select(.status != "completed") | .databaseId'); do
-            gh run watch "$run_id" || true
-          done
-          gh workflow run deploy-pages.yml --ref main
+          # The news desk reads this public snapshot directly; no full-site deployment.

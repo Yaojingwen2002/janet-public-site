@@ -1,0 +1,221 @@
+{
+  "date": "2026-11-10",
+  "vol": "406",
+  "intro_text": "新的大模型同时向两端走：Anthropic降低高端模型价格，Meta用更小的模型承接重复任务；图像生成继续走向多轮修改和透明素材。另一边，OpenAI公开研究任务的停止机制，金融与出版公司则谈起资料如何保留、如何交到下一位使用者手里。今天逐项看价格、资格、证据与融资结构。",
+  "cover": {
+    "title": "模型降价，停止键在哪",
+    "subtitle": "调用成本与研究任务的停止边界，都要读清楚。",
+    "image_path": "runs/2026-11-10/cover.png",
+    "image_prompt": "21:9 editorial photographic cover, black warm white and restrained Janet green. Mechanical emergency-stop button beside server rack cables on the right; deep black negative space on the left, film grain, hard side light, no text, no logo, no date."
+  },
+  "trend": "Muse Ember把输入标价降到每百万tokens十美分，Fable与Mythos 5.2也调低了标准价格，但两者服务的任务与访问条件并不相同。便宜的输入不能直接换算成便宜的完整任务，较快的生成也没有省掉检查结果的步骤。Seedream 5.5强调连续修改与原生透明素材，衡量它的场景则是同一张图改过多轮后还剩下多少可用细节。\n\nControl Room回答另一件具体的事：研究任务出问题时，谁有权阻断下一次推理。公司披露的三十五秒从收到停止指令算起，部分故障关闭能力仍在扩展覆盖。制造业档案检索、合成金融人物与出版融资另行说明资料和服务如何积累；它们各有进展，不需要借一张模型排行榜来证明。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "ChatGPT企业版进入AWS采购目录",
+          "body": "OpenAI宣布ChatGPT Enterprise上架AWS Marketplace，机构可通过既有AWS采购与账单关系购买、管理，符合资格的支出可计入AWS承诺消费。官方称模型、功能和更新节奏与直接采购相同；医疗及金融行业方案另须确认资格。这是采购渠道变化，不等于所有工作负载自动迁移到AWS，也不能据此假定所有合同支出都可抵扣。",
+          "janet_take": "采购渠道有时比再多一个按钮更决定工具能否进公司。已有预算和付款关系能少走几轮流程。数据怎样处理、账号怎样管理，仍由实际产品设置与合同回答。",
+          "source": "OpenAI官方采购公告",
+          "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+          "image": "images/aws.png",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/kftzwdyauwt9/5DGBSgbf6fNNvNwn1uSuuS/b1cb4070d26ff221cd7f08bbc171b268/chatgpt-enterprise-now-available-in-aws-marketplace-social.png?w=1600&h=900&fit=fill",
+          "image_credit": "OpenAI官方采购公告"
+        },
+        {
+          "title": "Meta向全球扩展AI年龄推定保护",
+          "body": "Meta将Instagram的AI年龄估计扩展到全球，把疑似未成年、即使填写成年生日的账号纳入Teen Account保护。美国父母本月将收到说明通知；澳大利亚开始采用Apple自愿共享的年龄范围信号。Facebook仍在继续铺开相关技术，Threads计划年内全球推出相似机制。这些属于各平台不同阶段的安排，不能合写为当天全部完成；年龄推定也存在误判可能。",
+          "janet_take": "年龄是一行自填资料，保护措施却取决于它是否真实。推定技术能覆盖一些填错生日的账号，也会让被误判的人承担纠正成本；保护的强度与纠正错误的路径，都关系到使用体验。",
+          "source": "Meta官方全球扩展公告",
+          "url": "https://about.fb.com/news/2026/11/expanding-teen-account-protections-to-teens-around-the-world/",
+          "image": "images/teen.png",
+          "image_origin": "source",
+          "image_source_url": "https://about.fb.com/wp-content/uploads/2026/11/Expanding-Teen-Account-Protections-to-Teens-Around-the-World_socialShare.jpg?w=1200",
+          "image_credit": "Meta官方全球扩展公告"
+        },
+        {
+          "title": "Claude Code限制重定向携带凭据",
+          "body": "Claude Code v2.1.321修正MCP OAuth请求在服务器重定向时向其他主机携带刷新令牌等秘密的问题，并修补部分Bash只读命令、写文件路径与复制移动操作的权限判断。远程控制新增统一指定设置文件的入口；设置文件变动后须重启才会继续创建新会话。本条聚焦客户端维护，不能仅由修复公告断言已有用户凭据实际泄露。",
+          "janet_take": "登录成功以后，刷新令牌还会继续参与后台请求。重定向看起来像正常联网的一步，接收它的主机却可能已经变了；收紧这一步，比在界面上多写一句安全提示更具体。",
+          "source": "Anthropic官方Release",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
+          "image": "images/claude.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/85f2b1107bb6950f8a3ead18ca0274fe284bf439f13a70dfcab92d2ca3572eac/anthropics/claude-code/releases/tag/v2.1.321",
+          "image_credit": "Anthropic官方Release"
+        },
+        {
+          "title": "Windmill支持逐个重启专用节点",
+          "body": "Windmill v1.865.0支持原位重新加载专用工作节点，并逐个重启，增加按文件夹模式分配专用节点和复用同类型连接的触发器。维护项还包括设置变更对比遮蔽秘密、在令牌或用户消失时撤销MCP OAuth授权，以及脚本或流程改名后调整Azure触发器。这是调度、连接与维护行为更新，不代表滚动重启在所有部署中都能保证零中断。",
+          "janet_take": "一口气重启全部执行节点，最容易让正常任务也一起排队。逐个处理给维护留了余地，连接和改名的修补则减少那些平时不显眼、真正运行时才冒出来的断点。",
+          "source": "Windmill官方Release",
+          "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.865.0",
+          "image": "images/windmill.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/72f408706fb79abed506969a7b933e7e2809bbecd2847c532974f69e7579bf8d/windmill-labs/windmill/releases/tag/v1.865.0",
+          "image_credit": "Windmill官方Release"
+        },
+        {
+          "title": "Langfuse停用内容推算用量",
+          "body": "Langfuse v4.77.0取消自动分词估算，不再根据请求内容推断观测的token用量，并引导用户补交缺失用量。版本同时加入Bedrock API key上游连接、为OpenAI和Anthropic连接配置自定义地址与额外请求头，以及若干追踪和费用记录改进。取消推算意味着未上报的用量可能继续缺失，不能将空白记录当作零消耗。",
+          "janet_take": "统计里填一个看似精确的数字很容易，让它对得上供应商账单更难。停止猜测会暴露更多空格，却也给使用者一个明确提示：这里缺的是原始用量，缺口没有因页面画出图表就自动消失。",
+          "source": "Langfuse官方版本公告",
+          "url": "https://github.com/langfuse/langfuse/releases/tag/v4.77.0",
+          "image": "images/langfuse.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/a7abf5a6ff7e80401df545d293dfc72de0ab7877d606855440872a48c8c7d9fc/langfuse/langfuse/releases/tag/v4.77.0",
+          "image_credit": "Langfuse官方版本公告"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Fable与Mythos5.2降价并加快生成",
+          "body": "Anthropic推出Claude Fable 5.2与Mythos 5.2，同一底层模型采用不同访问与防护安排：Fable面向一般用户，Mythos的生物与网络研究能力须通过验证项目申请。标准价格为每百万输入tokens八美元、输出四十美元；可选快速模式为十六与八十美元，厂商称生成最高加速2.5倍。官方研究和工程案例属于特定配置下的公司自报。当天Claude Code版本已接入Fable 5.2并作为默认Fable模型，访问仍受产品与账号资格约束。",
+          "janet_take": "同一个底层模型，使用者拿到的入口和能做的事仍可能不同。低一档的标价有利于长任务，快速模式则用更高单价换等待时间；最后一项任务花多少钱，还受输出、重试和检查影响。最容易漏读的是资格条件：页面上看见模型名字，并不会让一项受验证限制的研究能力自动向所有账号开放。",
+          "source": "Anthropic官方发布与当天客户端记录",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "image": "images/anthropic.png",
+          "image_origin": "source",
+          "image_source_url": "https://www-cdn.anthropic.com/images/4zrzovbb/website/b2dab182c77b4ccfd36423470106915b20f676ae-1200x630.jpg",
+          "image_credit": "Anthropic官方发布与当天客户端记录"
+        },
+        {
+          "title": "Muse Ember以十美分输入价上线",
+          "body": "Meta发布Muse Ember，在Muse Code与Meta Model API以muse-ember-1.0提供，支持文本、图像、音频与视频理解。每百万输入tokens为0.10美元、缓存输入0.004美元、输出0.50美元；上下文一百万tokens，输出最高512K。公司公布的评测包含外部Artificial Analysis结果和内部测试；部分终端测试使用不同模型各自的框架，不能直接归因为纯模型差距。低价服务不等于开放权重，发布材料未在此宣布权重下载。",
+          "janet_take": "输入十美分，很适合那些每天重复几百遍的小任务；输出价格、推理量和失败重试，仍会决定整条流程的花费。把复杂规划交给大模型、重复执行交给小模型，是一个可以实测的分工，分流错误也有代价。对预算紧的小团队，保留同一批真实任务比较总费用，比只看一项榜单的领先更有用。",
+          "source": "Meta官方模型发布及官方社交公告",
+          "url": "https://research.meta.ai/blog/muse-ember",
+          "image": "images/ember.png",
+          "image_origin": "source",
+          "image_source_url": "https://research.meta.ai/articles/muse-glint/hero/blog-header-light-v1.webp",
+          "image_credit": "Meta Muse Ember本次发布配图"
+        },
+        {
+          "title": "Seedream5.5加入原生透明素材",
+          "body": "字节跳动Seed发布Seedream 5.5，强调连续编辑时保留未修改区域，展示同一图像连续一百轮修改，并支持含完整或部分透明度的原生RGBA素材。官方另称中英文测试中的严重文字损坏率为0.4%、轻微为1.7%；这些是厂商评估，不能保证任意提示或其他语言都达到同样结果。Pro版属于后续计划，公告本身没有给出可统一适用的公共API型号、费率与开放日期。",
+          "janet_take": "改第十稿时，上一稿已经对好的衣服和光线又变了，是创作者熟悉的返工。保留未改区域和直接交透明素材，解决的是这类小而昂贵的麻烦；演示的一百轮还不能替每个人的项目作保证。",
+          "source": "ByteDance Seed官方文章及发布帖",
+          "url": "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5",
+          "image": "images/seedream.png",
+          "image_origin": "source",
+          "image_source_url": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/user-upload/4xfa4mw8m2ymh.png",
+          "image_credit": "Seedream 5.5官方文字与图像示例"
+        },
+        {
+          "title": "Ollama接入既有Ripple65B模型",
+          "body": "Ollama v0.40.16新增Ripple Preview运行入口，指向Ricursive Intelligence既有的65B稠密编码模型；这是当天运行时支持更新，基础模型较早公开，不能改写成新的基础模型首发。版本还称Qwen3.8 Flash Next在Apple芯片上少占约27GiB内存，并修正Responses接口在默认情况下静默截断输入的行为。内存数字属于指定模型与平台，不能推广到所有权重。",
+          "janet_take": "多一个现成运行入口，能省掉手工适配的时间。对长代码任务，默认静默截掉输入却可能更影响判断：内容少了一截，模型即使认真作答，也是在回答一个变短的问题。",
+          "source": "Ollama官方Release",
+          "url": "https://github.com/ollama/ollama/releases/tag/v0.40.16",
+          "image": "images/ollama.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/a784a87ada4e29a6e11994845504bfe2db75c4254ef58aaf9d9e9981e48489a1/ollama/ollama/releases/tag/v0.40.16",
+          "image_credit": "Ollama官方Release"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "OpenAI用35秒阻断研究任务推理",
+          "body": "OpenAI披露Control Room，按任务ID集中管理研究基础设施的模型推理授权，停止指令抵达后最多三十五秒阻断进一步输出，延迟来自授权缓存。工作进程可能仍活着，停止的是后续模型推理，不能简称整个进程被杀掉。公司称系统已覆盖研究基础设施；服务失效时拒绝推理的故障关闭机制已覆盖前沿模型研究，其余研究工作负载将在随后几天完成铺开。它与风险监测协同，也不负责撤销已经发生的外部动作。",
+          "janet_take": "停止键如果写在任务自己的代码里，还得期待那段代码在出问题时照常听话。把授权检查放到更集中的推理层，有明确的工程理由。三十五秒也给出了可追问的边界：监测多久才发现问题、这段等待里能做多少事，以及已经发出去的动作怎样收尾，都不会被一个停止接口自动包办。",
+          "source": "OpenAI官方研究基础设施说明",
+          "url": "https://openai.com/index/control-room",
+          "image": "images/control.png",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/kftzwdyauwt9/7CRGR1hiay1UfPVqjUSdAk/da9d8e1e61347fdae6d40e0a72962731/introducing-control-room-social.png?w=1600&h=900&fit=fill",
+          "image_credit": "OpenAI官方研究基础设施说明"
+        },
+        {
+          "title": "NVIDIA公开日本金融合成人物数据",
+          "body": "NVIDIA与Elith公开Nemotron-Personas-Finance-Japan，包含一百万条记录、每条九种人物描述，合计九百万份persona与五十个字段，覆盖家庭资产、金融知识、职业和人口背景。数据以官方统计与公开调查的分布为基础，并非真实客户记录，采用CC BY 4.0，可用于商业用途且须按许可署名。它适合构造客户对话与测试不同群体的体验，不能把合成分布当作实际个人或已观察到的真实消费行为。",
+          "janet_take": "合成一个会担心退休金的家庭，能帮助团队检查客服是否问对问题，却不能替代真实用户愿不愿接受建议的验证。一百万条记录与九百万份描述是两种计数，数据量再大，也没有自动多出九百万位真实受访者。",
+          "source": "NVIDIA官方Hugging Face技术文章",
+          "url": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+          "image": "images/nvidia.png",
+          "image_origin": "source",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/604ad59e2fad27aca4515dab/-hyd03JaQoRhMbmlw9-uJ.jpeg",
+          "image_credit": "NVIDIA官方Hugging Face技术文章"
+        },
+        {
+          "title": "Amazon用专家协作关系做模型剪枝",
+          "body": "Amazon团队当天首次发表HOPE技术分析，在MoE专家剪枝时纳入专家之间的成对协作关系，而非只给每位专家独立排序。方法先用校准数据记录激活与输出统计，再求解剪除集合，不需再训练，并可与量化结合。作者在三类模型、两种校准数据与多项测试中报告高剪枝比例下更明显的优势；逐层独立剪枝、跨层作用及更高阶关系仍有限制，不能解释为任意模型减半后都能保持效果。",
+          "janet_take": "删掉一个单独看不重要的部件，也可能拆散一组很会配合的搭档。HOPE把这种关系纳入选择，思路比简单排末位更细；校准任务不同，哪些搭档重要也可能随之变化。",
+          "source": "Amazon作者原始技术分析",
+          "url": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+          "image": "images/amazon.png",
+          "image_origin": "source",
+          "image_source_url": "https://cdn-uploads.huggingface.co/production/uploads/6ab2f79bd8000a811c648a32/xZT8tg4be3bgZIx2EQS_m.png",
+          "image_credit": "Amazon作者原始技术分析"
+        },
+        {
+          "title": "空研用图像检索接续70年工程档案",
+          "body": "OpenAI当天首次发表Kuken Industries与Recursive建设图纸检索的客户案例，基础系统并非当天才投入使用。工程师可用零件编号、图纸截图或PDF检索七十年档案，再结合现场规格和既往更换记录确认。Kuken预计全年检索工时可减少约90%，这是预期；另一个仍在原型测试的图纸检查工具，约90%的被标记问题属真实差异，是告警准确程度，不能写成发现了全部错误的90%。",
+          "janet_take": "老设备的一张图纸，常常记着当年为什么这样安装。让新人找到它，老师傅才有时间解释后面的判断；能搜索到相似零件，还远没有替工程师确认两件东西真的能装在一起。",
+          "source": "OpenAI当天客户案例，含Kuken自报与预期",
+          "url": "https://openai.com/index/kuken",
+          "image": "images/kuken.png",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/kftzwdyauwt9/6UDzxFFmwmfW8lpeJoR0qp/66054ea949fefe5a2913280f09583df4/261001_2095.jpg?w=1600&q=85&fm=webp",
+          "image_credit": "OpenAI当天客户案例，含Kuken自报与预期"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "Coframe融资2500万美元做网页实验",
+          "body": "Coframe宣布累计融资三千五百万美元，其中本轮A轮为二千五百万美元，由Khosla Ventures与Hanabi Capital共同领投。产品将生成、设计、开发与实验分析接在一起，持续测试网站和广告变体。公司自报客户转换率平均提升超过20%、实验胜出率39%；缺少本期独立复核与统一对照口径，不能视为所有网站采用后都能取得的增长。参与者包括科技公司个人负责人，公告不等于这些公司全都作为机构投资。",
+          "janet_take": "网页改得快，只有在实验能区分真实增量与偶然波动时才有持续价值。平均提升二成是公司的客户样本，不是给每个网站的保底收益；二千五百万本轮与三千五百万累计，也各自回答不同的问题。",
+          "source": "Coframe官方融资新闻稿",
+          "url": "https://www.prnewswire.com/news-releases/coframe-raises-35-million-to-build-the-living-internet-302933460.html",
+          "image": "images/coframe.png",
+          "image_origin": "source",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS2030249/Coframe-Josh-Payne-CEO-Founder.jpg?id=OA3065439&p=facebook",
+          "image_credit": "Coframe创始人Josh Payne，本次融资公告原图"
+        },
+        {
+          "title": "Spines拿到6400万美元出版资金",
+          "body": "Spines公布六千四百万美元增长资金，由Zeev Ventures领投的二千九百万美元A-1股权轮，与Twelve提供的三千五百万美元非稀释增长融资额度组成。公司自报收入年化运行率达到五千万美元，不能当作已实现全年收入；超过八千位美国作者已使用平台。作者提供原稿，平台接编辑、设计、翻译、有声书及分发，也可选人工专业服务。融资额度不等于已全部到账，不稀释股份亦不等于没有资金成本。",
+          "janet_take": "书能顺利排出来，与有人愿意买来读，是出版链条上的两道难题。平台替作者接起编辑、封面和分发，确实能减少来回寻找服务的麻烦；营销能力和实际读者收入仍要另外看。六千四百万的标题里，一部分是融资额度；把这层结构讲清楚，比把所有钱都叫成新股投资更接近公司将怎样扩张。",
+          "source": "Spines官方融资公告",
+          "url": "https://www.prnewswire.com/news-releases/spines-secures-64m-to-help-more-authors-publish-and-reach-readers-worldwide-302933315.html",
+          "image": "images/spines.png",
+          "image_origin": "source",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS2030490/Yehuda-Niv-CEO-Spines.jpg?id=OA3066176&p=facebook",
+          "image_credit": "Spines创始人Yehuda Niv，摄影Doron Letzter／本次公告"
+        },
+        {
+          "title": "geniosAI融资1910万美元留存分析依据",
+          "body": "geniosAI走出隐身期，宣布合计一千九百一十万美元种子及A轮融资；FactSet领投A轮，Zoom与General Catalyst参与。产品面向财务负责人和投资团队，连接金融数据、计算、假设与复核决定，主张让下一次分析沿用既有依据。公司称已在大型银行及科技企业团队中使用，尚未在公告披露足以独立验证的收入、留存或准确率，本轮总额也不是单一A轮金额。",
+          "janet_take": "一个数字链接到原文件，只能说明它从哪里来；怎么算、用了什么假设、谁改过结论，同样影响能否接着用。把这些一起留下，金融团队才有机会质疑并修订上一份工作，而非重新相信一段流畅的解释。",
+          "source": "geniosAI公司新闻稿／Business Wire原文转载",
+          "url": "https://www.businesswire.com/news/home/20261109329159/en/",
+          "image": "images/genios.png",
+          "image_origin": "source",
+          "image_source_url": "https://media.zenfs.com/en/business-wire.com/e5ddb3deda509e3f54f9551b31d0c69e.jpg",
+          "image_credit": "geniosAI本次新闻稿配图／Business Wire，经Yahoo原文转载"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "n8n给等待执行的恢复次数加上限",
+          "body": "n8n稳定维护线2.46.7为等待与排队执行设置恢复尝试上限，修复相应反复恢复行为。当天另有2.47.3分支更新，涉及迁移发现的归属权限与定时任务清理；它们是不同发布线，升级前须核对自己所在版本，本条工具入口指向2.46.7固定标签，不使用会继续移动的stable链接。",
+          "janet_take": "等待中的任务不应靠无止境恢复来维持一种假装正常的状态。给尝试次数上限，至少让异常有机会明确结束；它解决恢复逻辑，任务本身失败的原因仍得从记录里找。",
+          "source": "n8n官方固定版本Release",
+          "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.46.7",
+          "image": "images/n8n.png",
+          "image_origin": "source",
+          "image_source_url": "https://opengraph.githubassets.com/1e63aba4ee03a09037b751cb0c746b25a1aab98f3361925614c9e6cd9ce3b16e/n8n-io/n8n/releases/tag/n8n%402.46.7",
+          "image_credit": "n8n官方固定版本Release"
+        }
+      ]
+    }
+  }
+}

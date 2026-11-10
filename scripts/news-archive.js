@@ -4,7 +4,8 @@
     query: '',
     date: 'all',
     source: 'all',
-    category: 'all'
+    category: 'all',
+    visibleCount: 24
   };
 
   function escapeHtml(value) {
@@ -25,6 +26,7 @@
   function option(value, label) {
     return `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`;
   }
+  const categoryLabel = value => ({news:'全球要闻',models:'模型动态',insights:'技术深度',insights2:'投资与商业',tools:'工具箱',agents:'智能体',research:'研究',business:'商业',open_source:'开放项目',creator_tools:'创作工具'})[value] || value;
 
   function fillFilters(index) {
     const dateEl = document.getElementById('news-date-filter');
@@ -32,7 +34,7 @@
     const categoryEl = document.getElementById('news-category-filter');
     if (dateEl) dateEl.innerHTML = option('all', '全部日期') + index.editions.map((edition) => option(edition.date, edition.date)).join('');
     if (sourceEl) sourceEl.innerHTML = option('all', '全部来源') + index.sources.map((source) => option(source, source)).join('');
-    if (categoryEl) categoryEl.innerHTML = option('all', '全部分类') + index.categories.map((category) => option(category, category)).join('');
+    if (categoryEl) categoryEl.innerHTML = option('all', '全部分类') + index.categories.map((category) => option(category, categoryLabel(category))).join('');
   }
 
   function editionMatches(edition) {
@@ -92,7 +94,7 @@
 
   function editionCard(edition, featured) {
     const sources = (edition.top_sources || []).slice(0, 4).map((source) => `<span>${escapeHtml(source)}</span>`).join('');
-    const categories = (edition.top_categories || []).slice(0, 4).map((category) => `<span>${escapeHtml(category)}</span>`).join('');
+    const categories = (edition.top_categories || []).slice(0, 4).map((category) => `<span>${escapeHtml(categoryLabel(category))}</span>`).join('');
     const date = new Date(`${edition.date}T00:00:00+08:00`);
     const month = Number.isNaN(date.getTime()) ? edition.date.slice(5, 7) : date.toLocaleString('en-US', { month: 'short' });
     const day = edition.date ? edition.date.slice(8, 10) : '--';
@@ -108,14 +110,14 @@
           <div class="le-body">
             <div class="le-meta">
               <span class="le-issue">${escapeHtml(edition.date)}</span>
-              <span>${escapeHtml(edition.edition_type || 'codex_briefing')}</span>
+              <span>完整晨报 · 全文播报</span>
             </div>
             <h3 class="le-title">${escapeHtml(edition.title || 'Janet 快车箱')}</h3>
             <p class="le-thesis">${escapeHtml(summary)}</p>
             <div class="news-chip-row">${sources}${categories}</div>
             <div class="le-stats">
               <div class="le-stat"><strong>${escapeHtml(signalCount)}</strong>条信号</div>
-              <div class="le-stat"><strong>${escapeHtml(sourceCount)}</strong>个来源</div>
+              <div class="le-stat"><strong>${escapeHtml(sourceCount)}</strong>个主要来源</div>
             </div>
             <div class="news-edition-actions">
               ${editionOpenAction(url, 'news-edition-open', '打开本期 ↗')}
@@ -123,6 +125,7 @@
             ${editionEngagement(edition, false)}
           </div>
           <div class="le-panel" data-issue="${escapeHtml(edition.date)}">
+            ${/^\d{4}-\d{2}-\d{2}$/.test(edition.date) ? `<img class="news-cover-preview" src="data/${escapeHtml(edition.date)}/cover.png" alt="本期晨报封面" loading="lazy">` : ''}
             <div class="le-panel-tag">Latest</div>
             <div class="le-panel-num">${escapeHtml(signalCount)}<span>条精选</span></div>
           </div>
@@ -145,7 +148,7 @@
         <div class="ec-action">
           <div class="ec-stats">
             <div class="ec-stat"><strong>${escapeHtml(signalCount)}</strong> 条信号</div>
-            <div class="ec-stat"><strong>${escapeHtml(sourceCount)}</strong> 个来源</div>
+            <div class="ec-stat"><strong>${escapeHtml(sourceCount)}</strong> 个主要来源</div>
           </div>
           ${editionOpenAction(url, 'ec-open', '打开本期 →')}
           ${editionEngagement(edition, true)}
@@ -169,16 +172,21 @@
     const count = document.getElementById('news-result-count');
     if (!list || !state.index) return;
     const editions = state.index.editions.filter(editionMatches);
-    if (count) count.textContent = `${editions.length} editions`;
+    if (count) count.textContent = `${editions.length} 期`;
     const count2 = document.getElementById('news-result-count-2');
     if (count2) count2.textContent = `${editions.length} 期`;
     list.innerHTML = editions.length
-      ? editions.map((edition) => editionCard(edition, false)).join('')
+      ? editions.slice(0, state.visibleCount).map((edition) => editionCard(edition, false)).join('')
       : '<p class="news-empty">没有匹配的晨报。</p>';
+    const more = document.getElementById('news-load-more');
+    if (more) { more.hidden = editions.length <= state.visibleCount; more.textContent = `加载更多晨报（还剩 ${Math.max(0, editions.length-state.visibleCount)} 期）`; }
     if (notify) document.dispatchEvent(new CustomEvent('janet:content-rendered'));
   }
 
   function bindFilters() {
+    const more = document.getElementById('news-load-more');
+    if (more) more.addEventListener('click', () => { state.visibleCount += 24; renderList(); });
+    for (const id of ['news-search','news-date-filter','news-source-filter','news-category-filter']) document.getElementById(id)?.addEventListener(id==='news-search'?'input':'change', () => { state.visibleCount=24; });
     const search = document.getElementById('news-search');
     const date = document.getElementById('news-date-filter');
     const source = document.getElementById('news-source-filter');

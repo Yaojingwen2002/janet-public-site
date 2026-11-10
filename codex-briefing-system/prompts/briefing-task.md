@@ -4,6 +4,10 @@
 
 ## 先读
 
+先执行 `node src/inspect-live-briefing.mjs {{DATE}}` 检查线上。`published` 时安静结束；`audio_incomplete` 只复用已发布正文与图片补语音；`deployment_incomplete` 先修复缺失或不一致的部署文件；`check_failed` 先恢复连接，不能认定缺刊。只有已确认 `missing` 才完整采编。检查结果保存在当期 `live-verification.json`。
+
+采集入口为 `{{SITE_ROOT}}/data/briefing-candidates.json` 与 `{{SITE_ROOT}}/data/briefing-sources.json`。线索日期不匹配时执行 `node src/collect-candidates.mjs {{DATE}}`；线索仍须逐条原文核验，不能把自动采集标成已核验。来源不足时继续按当前自动化任务中的补齐规则搜索。
+
 1. `{{ROOT}}/prompts/editorial-system.md`
 2. `{{ROOT}}/templates/template.html`
 3. `{{ROOT}}/src/qa-briefing.mjs` 与 `{{ROOT}}/src/editorial-qa.mjs`，把代码中的门禁视为内容契约

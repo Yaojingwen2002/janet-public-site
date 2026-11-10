@@ -1,0 +1,29 @@
+name: Verify Daily Briefing
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/briefing-live-check.yml'
+      - 'codex-briefing-system/src/inspect-live-briefing.mjs'
+  schedule:
+    - cron: '5 1 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Verify public edition and full narration
+        run: node codex-briefing-system/src/inspect-live-briefing.mjs
+      - name: Preserve live verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: briefing-live-verification
+          path: codex-briefing-system/runs/*/live-verification.json

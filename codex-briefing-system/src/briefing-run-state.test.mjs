@@ -19,7 +19,7 @@ function write(filePath, value = 'ready') {
   writeFileSync(filePath, value, 'utf8');
 }
 
-test('reports a fully indexed site edition as published', (t) => {
+test('local indexed files do not prove that a deployment is online', (t) => {
   const { root, siteRoot } = fixture();
   t.after(() => rmSync(siteRoot, { recursive: true, force: true }));
   const dataRoot = resolve(siteRoot, 'data');
@@ -29,7 +29,8 @@ test('reports a fully indexed site edition as published', (t) => {
   write(resolve(dataRoot, 'MANIFEST.json'), JSON.stringify([date]));
   write(resolve(dataRoot, 'news-index.json'), JSON.stringify({ latest_edition_id: date }));
 
-  assert.equal(inspectBriefingRun({ date, root, siteRoot }).status, 'already_published');
+  assert.equal(inspectBriefingRun({ date, root, siteRoot }).status, 'local_ready_for_live_check');
+  assert.equal(inspectBriefingRun({ date, root, siteRoot }).online_verified, false);
 });
 
 test('reports a recent task file as active research', (t) => {
@@ -56,7 +57,7 @@ test('new editions are not complete until their full audio files are present', (
   write(resolve(dataRoot, 'news-index.json'), JSON.stringify({ latest_edition_id: today }));
   assert.notEqual(inspectBriefingRun({ date: today, root, siteRoot }).status, 'already_published');
   for (const name of ['narration.json', 'narration.m4a', 'narration.txt']) write(resolve(dataRoot, today, name));
-  assert.equal(inspectBriefingRun({ date: today, root, siteRoot }).status, 'already_published');
+  assert.equal(inspectBriefingRun({ date: today, root, siteRoot }).status, 'local_ready_for_live_check');
 });
 
 test('reports an old unfinished task as missing instead of active', (t) => {

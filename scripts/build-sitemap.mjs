@@ -22,6 +22,7 @@ const index = JSON.parse(readFileSync(indexPath, 'utf8'));
 const entries = [
   { path: '' },
   { path: 'news.html' },
+  { path: 'news-desk.html' },
   { path: 'portfolio.html' },
   { path: 'signature-collection.html' },
   { path: 'quiet-heat.html' },

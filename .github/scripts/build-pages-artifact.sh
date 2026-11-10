@@ -26,7 +26,7 @@ done
 mkdir -p "$OUTPUT/scripts"
 find "$ROOT/scripts" -maxdepth 1 -type f -name '*.js' -exec cp {} "$OUTPUT/scripts/" \;
 
-for file in MANIFEST.json news-index.json source-locations.json mirror-plan-status.json; do
+for file in MANIFEST.json news-index.json source-locations.json mirror-plan-status.json briefing-sources.json briefing-candidates.json; do
   cp "$ROOT/data/$file" "$OUTPUT/data/$file"
 done
 

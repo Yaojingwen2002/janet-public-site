@@ -1,0 +1,31 @@
+{
+ "schema_version":1,"timezone":"Asia/Taipei",
+ "policy":"采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
+ "sources":[
+ {"id":"openai","name":"OpenAI","channel":"官方发布","tier":"primary","format":"rss","url":"https://openai.com/news/rss.xml","home":"https://openai.com/news/"},
+ {"id":"google","name":"Google AI","channel":"官方发布","tier":"primary","format":"rss","url":"https://blog.google/technology/ai/rss/","home":"https://blog.google/technology/ai/"},
+ {"id":"github-blog","name":"GitHub Blog","channel":"官方发布","tier":"primary","format":"rss","url":"https://github.blog/feed/","home":"https://github.blog/"},
+ {"id":"hf-blog","name":"Hugging Face 作者文章","channel":"论文与研究","tier":"mixed","format":"hf-blog","url":"https://huggingface.co/api/blog?limit=60","home":"https://huggingface.co/blog","note":"核对作者身份；公司自测、独立分析与同行评审分开标注。"},
+ {"id":"claude-code","name":"Claude Code","channel":"开源与版本","tier":"primary","format":"github","repo":"anthropics/claude-code","url":"https://api.github.com/repos/anthropics/claude-code/releases?per_page=12","home":"https://github.com/anthropics/claude-code/releases"},
+ {"id":"ollama","name":"Ollama","channel":"开源与版本","tier":"primary","format":"github","repo":"ollama/ollama","url":"https://api.github.com/repos/ollama/ollama/releases?per_page=12","home":"https://github.com/ollama/ollama/releases"},
+ {"id":"transformers","name":"Transformers","channel":"开源与版本","tier":"primary","format":"github","repo":"huggingface/transformers","url":"https://api.github.com/repos/huggingface/transformers/releases?per_page=12","home":"https://github.com/huggingface/transformers/releases"},
+ {"id":"langfuse","name":"Langfuse","channel":"开源与版本","tier":"primary","format":"github","repo":"langfuse/langfuse","url":"https://api.github.com/repos/langfuse/langfuse/releases?per_page=12","home":"https://github.com/langfuse/langfuse/releases"},
+ {"id":"n8n","name":"n8n","channel":"开源与版本","tier":"primary","format":"github","repo":"n8n-io/n8n","url":"https://api.github.com/repos/n8n-io/n8n/releases?per_page=12","home":"https://github.com/n8n-io/n8n/releases","note":"stable与固定版本合并，测试版单独标注。"},
+ {"id":"windmill","name":"Windmill","channel":"开源与版本","tier":"primary","format":"github","repo":"windmill-labs/windmill","url":"https://api.github.com/repos/windmill-labs/windmill/releases?per_page=12","home":"https://github.com/windmill-labs/windmill/releases"},
+ {"id":"litellm","name":"LiteLLM","channel":"开源与版本","tier":"primary","format":"github","repo":"BerriAI/litellm","url":"https://api.github.com/repos/BerriAI/litellm/releases?per_page=12","home":"https://github.com/BerriAI/litellm/releases"},
+ {"id":"anthropic","name":"Anthropic","channel":"官方发布","tier":"primary","format":"manual","home":"https://www.anthropic.com/news","note":"核对日期与官方发布帖时间，不把仅日期字段伪装为精确时刻。"},
+ {"id":"meta","name":"Meta AI Research","channel":"官方发布","tier":"primary","format":"manual","home":"https://research.meta.ai/"},
+ {"id":"seed","name":"ByteDance Seed","channel":"官方发布","tier":"primary","format":"manual","home":"https://seed.bytedance.com/en/research/"},
+ {"id":"deepmind","name":"Google DeepMind","channel":"论文与研究","tier":"primary","format":"manual","home":"https://deepmind.google/blog/"},
+ {"id":"hf-models","name":"Hugging Face 模型与提交","channel":"模型与衍生版本","tier":"mixed","format":"manual","home":"https://huggingface.co/models?sort=created","note":"核对创建与提交时间，明确独立微调、量化、转换、许可及底座。"},
+ {"id":"arxiv","name":"arXiv","channel":"论文与研究","tier":"primary","format":"manual","home":"https://arxiv.org/list/cs.AI/recent","note":"预印本不等于完成同行评审；区分首次提交与版本更新。"},
+ {"id":"prnewswire","name":"PR Newswire 公司公告","channel":"融资与财报","tier":"primary","format":"manual","home":"https://www.prnewswire.com/news-releases/news-releases-list/","note":"公司自报；区分本轮、累计、估值、融资额度与到账金额。"},
+ {"id":"businesswire","name":"Business Wire 公司公告","channel":"融资与财报","tier":"primary","format":"manual","home":"https://www.businesswire.com/","note":"保留原始公司来源，不把转载日期当成事件发生日。"},
+ {"id":"sec","name":"SEC EDGAR","channel":"融资与财报","tier":"primary","format":"manual","home":"https://www.sec.gov/edgar/search/","note":"新披露可记录新财务细节，并注明基础事件日期。"},
+ {"id":"tech-eu","name":"Tech.eu","channel":"媒体线索","tier":"secondary","format":"manual","home":"https://tech.eu/","note":"优先原始采访；融资数字回查公司或投资方。"},
+ {"id":"techcrunch","name":"TechCrunch AI","channel":"媒体线索","tier":"secondary","format":"manual","home":"https://techcrunch.com/category/artificial-intelligence/"},
+ {"id":"jiqizhixin","name":"机器之心","channel":"中文线索","tier":"secondary","format":"manual","home":"https://www.jiqizhixin.com/","note":"补充中文发现；模型参数与发布时间回到原文。"},
+ {"id":"qbitai","name":"量子位","channel":"中文线索","tier":"secondary","format":"manual","home":"https://www.qbitai.com/"},
+ {"id":"36kr","name":"36氪","channel":"中文线索","tier":"secondary","format":"manual","home":"https://36kr.com/","note":"投融资与商业案例的发现渠道，区分采访和转载。"}
+ ]
+}

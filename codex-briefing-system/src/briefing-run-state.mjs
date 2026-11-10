@@ -79,9 +79,11 @@ export function inspectBriefingRun({
   const runDir = resolve(root, 'runs', date);
   if (siteIsPublished(siteRoot, date)) {
     return {
-      status: 'already_published',
+      status: 'local_ready_for_live_check',
       date,
-      stage: 'published'
+      stage: 'local_synced',
+      online_verified: false,
+      next_check: 'inspect-live-briefing.mjs'
     };
   }
 

@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-10",
+  "timezone": "Asia/Taipei",
+  "generated_at": "2026-11-10T05:18:10.031Z",
+  "window": {
+    "start": "2026-11-09T00:01:00.000Z",
+    "end": "2026-11-10T00:00:00.000Z"
+  },
+  "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
+  "source_results": [
+    {
+      "id": "github-blog",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-10T05:18:06.495Z",
+      "raw_count": 0
+    },
+    {
+      "id": "openai",
+      "status": "ok",
+      "count": 4,
+      "checked_at": "2026-11-10T05:18:06.928Z",
+      "raw_count": 4
+    },
+    {
+      "id": "hf-blog",
+      "status": "ok",
+      "count": 2,
+      "checked_at": "2026-11-10T05:18:07.539Z",
+      "raw_count": 2
+    },
+    {
+      "id": "ollama",
+      "status": "ok",
+      "count": 1,
+      "checked_at": "2026-11-10T05:18:07.846Z",
+      "raw_count": 1
+    },
+    {
+      "id": "google",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-10T05:18:08.205Z",
+      "raw_count": 0
+    },
+    {
+      "id": "claude-code",
+      "status": "ok",
+      "count": 1,
+      "checked_at": "2026-11-10T05:18:08.256Z",
+      "raw_count": 1
+    },
+    {
+      "id": "langfuse",
+      "status": "ok",
+      "count": 1,
+      "checked_at": "2026-11-10T05:18:08.458Z",
+      "raw_count": 1
+    },
+    {
+      "id": "windmill",
+      "status": "ok",
+      "count": 1,
+      "checked_at": "2026-11-10T05:18:08.852Z",
+      "raw_count": 1
+    },
+    {
+      "id": "anthropic",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "meta",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "seed",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "deepmind",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "hf-models",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "arxiv",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "prnewswire",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "businesswire",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "sec",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "tech-eu",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "techcrunch",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "jiqizhixin",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "qbitai",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "36kr",
+      "status": "manual",
+      "count": 0
+    },
+    {
+      "id": "transformers",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-10T05:18:09.175Z",
+      "raw_count": 0
+    },
+    {
+      "id": "litellm",
+      "status": "ok",
+      "count": 1,
+      "checked_at": "2026-11-10T05:18:09.246Z",
+      "raw_count": 1
+    },
+    {
+      "id": "n8n",
+      "status": "ok",
+      "count": 2,
+      "checked_at": "2026-11-10T05:18:10.031Z",
+      "raw_count": 4
+    }
+  ],
+  "candidates": [
+    {
+      "id": "e372c61ba3f0e7a4",
+      "event_key": "BerriAI/litellm@v1.108.4",
+      "title": "LiteLLM v1.108.4",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.108.4",
+      "published_at": "2026-11-09T23:00:51.000Z",
+      "published_raw": "2026-11-09T23:00:51Z",
+      "time_status": "in_window",
+      "source_id": "litellm",
+      "source": "LiteLLM",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "> [!TIP] > The `lts` image tag always points to the latest LTS release. Pull `ghcr.io/berriai/litellm:lts` to stay on the newest LTS patch ## Verify this release ```bash cosign verify \\ --key https://raw.githubusercontent.com/BerriAI/litellm/e82a3c646908ba0a6ee0beddc4310d7a6cac4065/cosign.pub \\ ghcr.io/berriai/litellm:v1.108.4 ``` Same command for `litellm-database`, `litellm-non_root` and the `docker.io/litellm/*` images ## What's new in 1.108.4 (LTS) 10 PRs. 7 fixed, 1 changed. No action needed to upgrade ### Changes - **AWS Bedrock:** Fixed 400s from GLM, GPT-6 Luna and Nova 2 on Bedrock when the conversation carries Claude's signed thinking (#50399) - **AWS Bedrock:** Changed `/bedrock` ",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "ace31f3b0bb1b6f0",
+      "event_key": "anthropics/claude-code@v2.1.321",
+      "title": "Claude Code v2.1.321",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.321",
+      "published_at": "2026-11-09T19:22:30.000Z",
+      "published_raw": "2026-11-09T19:22:30Z",
+      "time_status": "in_window",
+      "source_id": "claude-code",
+      "source": "Claude Code",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## What's changed - Added Claude Fable 5.2 (`claude-fable-5-2`), now the default Fable model — 1M context, $8/$40 per Mtok with $0.20/Mtok cache reads - Added `--settings ` to `claude remote-control`, which applies a settings file to every session it starts; if the file changes, no new session starts until you restart `claude remote-control` - Fixed MCP OAuth requests sending secrets such as refresh tokens to another host when a server redirected them - Fixed a case where a read-only Bash command ran outside the sandbox without a permission prompt - Fixed a case where Bash permission checks judged a file write from the wrong folder and didn't prompt - Fixed deny rules and protected-file prom",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "caa9073cefb43725",
+      "event_key": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+      "title": "ChatGPT Enterprise now available in AWS Marketplace",
+      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+      "published_at": "2026-11-09T19:00:00.000Z",
+      "published_raw": "Mon, 09 Nov 2026 19:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "ChatGPT Enterprise is now available through AWS Marketplace, helping organizations simplify procurement through existing AWS purchasing and billing relationships.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "9e6aebddb26b3098",
+      "event_key": "ollama/ollama@v0.40.16",
+      "title": "Ollama v0.40.16",
+      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.16",
+      "published_at": "2026-11-09T18:21:19.000Z",
+      "published_raw": "2026-11-09T18:21:19Z",
+      "time_status": "in_window",
+      "source_id": "ollama",
+      "source": "Ollama",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## Ripple Preview [Ripple Preview](https://ollama.com/library/ripple-preview) from Ricursive Intelligence is a 65B dense model built for agentic coding. ```sh ollama run ripple-preview ``` ## What's Changed - Qwen3.8 Flash Next uses about 27 GiB less memory on Apple silicon - `ollama launch claude` always routes Claude Code to the selected model - `ollama launch` explains when a cloud model has been retired - `/v1/responses` respects `truncation` and no longer silently truncates by default - `/v1/models` returns an empty list instead of `null` when no models are installed - CUDA 13.5 support for Windows on ARM - Updated llama.cpp **Full Changelog**: https://github.com/ollama/ollama/compare/v",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "ac3085103733c282",
+      "event_key": "windmill-labs/windmill@1.865.0",
+      "title": "Windmill v1.865.0",
+      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.865.0",
+      "published_at": "2026-11-09T17:15:12.000Z",
+      "published_raw": "2026-11-09T17:15:12Z",
+      "time_status": "in_window",
+      "source_id": "windmill",
+      "source": "Windmill",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [1.865.0](https://github.com/windmill-labs/windmill/compare/v1.864.1...v1.865.0) (2026-11-09) ### Features * explain row filter update rewrites in the postgres trigger editor ([#12033](https://github.com/windmill-labs/windmill/issues/12033)) ([570ead4](https://github.com/windmill-labs/windmill/commit/570ead45b300caedeacf318a915f25b2299f60b0)) * let dedicated_workers take folder patterns like ws:f/dw/* ([#12268](https://github.com/windmill-labs/windmill/issues/12268)) ([1f92c4f](https://github.com/windmill-labs/windmill/commit/1f92c4fa44edabdaa4b7885d07e788c3e92f05fa)) * let integration triggers use any connection of their type ([#11968](https://github.com/windmill-labs/windmill/issues/119",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "ac8f18750241a65f",
+      "event_key": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+      "title": "Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan's Demographics and Financial Context",
+      "url": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+      "published_at": "2026-11-09T15:05:57.247Z",
+      "published_raw": "2026-11-09T15:05:57.247Z",
+      "time_status": "in_window",
+      "source_id": "hf-blog",
+      "source": "Hugging Face 作者文章",
+      "channel": "论文与研究",
+      "tier": "mixed",
+      "summary": "",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "952d2516af2e9054",
+      "event_key": "https://openai.com/index/control-room",
+      "title": "Control Room: A central system to track and stop model workloads across our research infrastructure",
+      "url": "https://openai.com/index/control-room",
+      "published_at": "2026-11-09T13:00:00.000Z",
+      "published_raw": "Mon, 09 Nov 2026 13:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "Learn how OpenAI’s Control Room tracks model workloads across our research infrastructure and can rapidly stop them when safety or security concerns arise.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "55d059b88c6c576a",
+      "event_key": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+      "title": "Your Experts Have Partners. There's HOPE for Keeping Them Together",
+      "url": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+      "published_at": "2026-11-09T12:34:29.545Z",
+      "published_raw": "2026-11-09T12:34:29.545Z",
+      "time_status": "in_window",
+      "source_id": "hf-blog",
+      "source": "Hugging Face 作者文章",
+      "channel": "论文与研究",
+      "tier": "mixed",
+      "summary": "",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "f12d0f3649124cc7",
+      "event_key": "langfuse/langfuse@v4.77.0",
+      "title": "Langfuse v4.77.0",
+      "url": "https://github.com/langfuse/langfuse/releases/tag/v4.77.0",
+      "published_at": "2026-11-09T12:21:23.000Z",
+      "published_raw": "2026-11-09T12:21:23Z",
+      "time_status": "in_window",
+      "source_id": "langfuse",
+      "source": "Langfuse",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "⚠️⚠️⚠️ This release removes automatic tokenization, as we believe no one should be relying on it. Read our [change log](https://langfuse.com/changelog/2026-11-06-retiring-tokenization) to learn more. ⚠️⚠️⚠️ ## What's Changed ### Features * feat(topics): proper cost tracking for executions by @nimarb in https://github.com/langfuse/langfuse/pull/19432 * feat(external-media-storage): make external media storage an enterprise feature by @wochinge in https://github.com/langfuse/langfuse/pull/19778 * feat(web): use Langfuse by ClickHouse logo in the app shell and auth screens by @marcklingen in https://github.com/langfuse/langfuse/pull/19740 * feat(ai-gateway): add Amazon Bedrock upstream with API",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "c01c42462218d183",
+      "event_key": "n8n-io/n8n@2.46.7",
+      "title": "n8n stable",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.46.7",
+      "published_at": "2026-11-09T08:25:30.000Z",
+      "published_raw": "2026-11-09T08:25:30Z",
+      "time_status": "in_window",
+      "source_id": "n8n",
+      "source": "n8n",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [2.46.7](https://github.com/n8n-io/n8n/compare/n8n@2.46.6...n8n@2.46.7) (2026-11-09) ### Bug Fixes * **core:** Limit resume attempts for waiting and queued executions ([#42862](https://github.com/n8n-io/n8n/issues/42862)) ([c7aa6aa](https://github.com/n8n-io/n8n/commit/c7aa6aa6e1aa8d891d454a7516c2232b98821da4))",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "62394197c6521fed",
+      "event_key": "n8n-io/n8n@2.47.3",
+      "title": "n8n n8n@2.47.3",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.47.3",
+      "published_at": "2026-11-09T08:21:35.000Z",
+      "published_raw": "2026-11-09T08:21:35Z",
+      "time_status": "in_window",
+      "source_id": "n8n",
+      "source": "n8n",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [2.47.3](https://github.com/n8n-io/n8n/compare/n8n@2.47.2...n8n@2.47.3) (2026-11-09) ### Bug Fixes * **core:** Only allow users who can edit a workflow to own its migration findings ([#43101](https://github.com/n8n-io/n8n/issues/43101)) ([cff4342](https://github.com/n8n-io/n8n/commit/cff43429ed34fadf95d0c688d7325db8e9df5c72)) * **core:** Retire stale scheduled tasks in repeated batches in each reaper pass ([#43096](https://github.com/n8n-io/n8n/issues/43096)) ([4ba6e50](https://github.com/n8n-io/n8n/commit/4ba6e50a8a1e54e1dc9db261d12283b4cfba49a5)) ### Features * Open the migration report filtered to the recipient from notification emails ([#43095](https://github.com/n8n-io/n8n/issues/430",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "02e9abf47eaf3fa0",
+      "event_key": "https://openai.com/index/coderabbit-codex-daybreak",
+      "title": "CodeRabbit scales agentic software development and ships 20x more",
+      "url": "https://openai.com/index/coderabbit-codex-daybreak",
+      "published_at": "2026-11-09T08:00:00.000Z",
+      "published_raw": "Mon, 09 Nov 2026 08:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "CodeRabbit uses OpenAI models to govern and trust AI-generated code and Codex to ship 20 times more software with the same engineering team.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "2e34e84f0999c607",
+      "event_key": "https://openai.com/index/kuken",
+      "title": "Kuken Industries searches 70 years of drawings in minutes",
+      "url": "https://openai.com/index/kuken",
+      "published_at": "2026-11-09T08:00:00.000Z",
+      "published_raw": "Mon, 09 Nov 2026 08:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "Kuken Industries uses the OpenAI API to search 70 years of cooling tower drawings. Engineers can find the drawing for a repair in 4.5 minutes, down from nearly an hour.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    }
+  ]
+}

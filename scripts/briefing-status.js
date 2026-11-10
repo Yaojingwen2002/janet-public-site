@@ -1,0 +1,6 @@
+(()=>{'use strict';const target=document.querySelector('[data-briefing-audio]:not([data-content-url])');if(!target)return;
+ const banner=document.createElement('div');banner.className='briefing-update';banner.setAttribute('role','status');target.before(banner);
+ const now=new Date(),parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'}).formatToParts(now),v=k=>parts.find(x=>x.type===k)?.value;
+ const day=`${v('year')}-${v('month')}-${v('day')}`,expected=Number(v('hour'))<8?new Date(Date.parse(day+'T00:00:00Z')-86400000).toISOString().slice(0,10):day;
+ fetch('data/news-index.json',{cache:'no-cache',signal:AbortSignal.timeout(15000)}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(index=>{const latest=index.latest_edition_id;if(!/^\d{4}-\d\d-\d\d$/.test(latest))throw Error();const delayed=latest<expected;banner.classList.toggle('is-delayed',delayed);const copy=document.createElement('span');copy.textContent=delayed?`${expected} 晨报尚未发布 · 当前最新一期 ${latest}`:`最新一期 ${latest} · 可阅读与收听`;const link=document.createElement('a');link.href='news-desk.html';link.textContent='查看来源与采集 ↗';banner.replaceChildren(copy,link);}).catch(()=>{banner.textContent='暂时无法核对更新日期；可从归档继续阅读。';});
+})();

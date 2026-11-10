@@ -33,6 +33,7 @@ jobs:
 
       - name: Build and verify public artifact
         run: |
+          node --test codex-briefing-system/src/news-desk.test.mjs codex-briefing-system/src/briefing-run-state.test.mjs
           bash .github/scripts/build-pages-artifact.sh _site
           node scripts/qa-current-site.mjs --root _site
 

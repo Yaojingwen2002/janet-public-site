@@ -114,7 +114,7 @@ function generateSection(items, isMini, date) {
 function generateInvestment(items, date) {
   if (!items?.length) return '<div class="prediction-box">\n  <p style="color:rgba(255,255,255,0.5);">今日无投资预测。</p>\n</div>';
   let html = '<div class="prediction-box">\n';
-  html += '  <h3>今日核心预测</h3>\n\n';
+  html += '  <h3>投资与商业</h3>\n\n';
   for (const item of items) {
     const title = String(item.title || '').trim();
     const link = String(item.link || item.url || '').trim();
@@ -154,9 +154,8 @@ function generateTrend(trend) {
     .split(/\n{2,}/)
     .map((part) => part.trim())
     .filter(Boolean);
-  const [headline = '', ...body] = parts;
-  let html = `<div class="trend-card">\n  <h2>📌 今日趋势：${escapeHtml(headline)}</h2>\n`;
-  for (const paragraph of body) {
+  let html = '<div class="trend-card">\n  <h2>今日趋势</h2>\n';
+  for (const paragraph of parts) {
     html += `  <p>${paragraphs(paragraph)}</p>\n`;
   }
   html += '</div>';

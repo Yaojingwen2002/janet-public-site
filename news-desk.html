@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Janet · 新闻采集台</title><meta name="description" content="查看 Janet 晨报的新闻线索、来源渠道、核验状态与建设计划。"><link rel="icon" href="assets/icons/logo-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="styles/news-desk.css"><link rel="canonical" href="https://yaojingwen2002.github.io/janet-public-site/news-desk.html"></head>
+<body><a class="skip" href="#desk-main">跳到内容</a><header class="desk-top"><a class="desk-brand" href="index.html">Janet<span> / 快车箱</span></a><nav aria-label="站点导航"><a href="news.html">阅读晨报 ↗</a><a href="portfolio.html">作品库</a></nav></header>
+<main id="desk-main"><section class="desk-hero"><p class="eyebrow">THE NEWS DESK · 来源透明</p><h1>看见信号，<br>也看见来源。</h1><div><p>从发现到原文核验，再到完整晨报。这里保留每一步的边界。</p><p id="desk-stamp" class="muted" role="status">正在读取采集记录…</p></div></section>
+<section class="desk-stats" id="desk-stats" aria-label="采集概览"></section>
+<nav class="desk-tabs" aria-label="采集台目录"><a href="#collection">01 采集看板</a><a href="#sources">02 渠道与新闻源</a><a href="#roadmap">03 建设路线</a></nav>
+<section id="collection"><div class="section-head"><div><p class="eyebrow">01 / COLLECTION</p><h2>新闻结构采集板</h2></div><button id="desk-export" disabled>导出当前线索 CSV ↓</button></div><p id="desk-window" class="muted"></p><p class="desk-note">采集结果是待核验线索。日期有疑问、仅有转载或缺少原始依据时，仍需回到原文；入选和语音由编辑发布流程完成。</p>
+<div id="desk-quota" class="desk-quota" aria-label="最近一期的栏目结构"></div>
+<form class="desk-filters" id="desk-filters" role="search"><label>搜索<input id="desk-query" type="search" placeholder="标题、公司、来源…"></label><label>状态<select id="desk-state"><option value="all">全部状态</option><option value="unreviewed">待核验</option><option value="needs_time_review">需补发布时间</option><option value="selected">最近一期入选</option></select></label><label>栏目<select id="desk-section"><option value="all">全部栏目</option><option value="unassigned">待分栏</option><option value="news">全球要闻</option><option value="models">模型动态</option><option value="insights">技术深度</option><option value="insights2">投资与商业</option><option value="tools">工具箱</option></select></label><label>渠道<select id="desk-channel"><option value="all">全部渠道</option></select></label><button type="reset">清除筛选</button></form>
+<p id="desk-count" class="muted" aria-live="polite"></p><div id="desk-board" class="desk-board" aria-live="polite"></div></section>
+<section id="sources"><div class="section-head"><div><p class="eyebrow">02 / SOURCE LIBRARY</p><h2>渠道与新闻源</h2></div></div><p class="muted">“已连接”仅说明本次采集成功，不代表报道已通过事实核验。人工来源保留直达入口，不伪装成自动抓取。</p><div id="desk-sources" class="source-grid"></div></section>
+<section id="roadmap"><div class="section-head"><div><p class="eyebrow">03 / BUILD IN THE OPEN</p><h2>下一步，按影响做建设。</h2></div></div><div class="roadmap-grid">
+<article><span class="pill">本次建设</span><h3>把漏发变成可见状态</h3><p>增加线上正文、图片与全文语音检查；区分完整发布、只缺语音和部署不完整。本地文件齐全不再等同于线上成功。</p></article>
+<article><span class="pill">本次建设</span><h3>让采集有稳定入口</h3><p>维护来源目录，定时汇总官方发布、研究文章与版本更新。保留失败状态和时间疑点，避免自动把线索写成新闻。</p></article>
+<article><span class="pill">本次建设</span><h3>先读今天，再找旧刊</h3><p>归档突出最新一期、图片与收听入口，增加更新日期提示；正文增加栏目目录和舒适阅读模式。</p></article>
+<article><span class="pill next">下一阶段</span><h3>跨渠道合并同一事件</h3><p>在链接去重之后建立事件关联，把首发、后续财务细节和转载区分开，保留每次判断的依据。</p></article>
+<article><span class="pill next">下一阶段</span><h3>积累来源质量记录</h3><p>跟踪原文可达率、日期精度、图片有效率与更正记录，按证据调整来源优先级，减少对单一地区和厂商的依赖。</p></article>
+<article><span class="pill next">下一阶段</span><h3>完成稳定的发布值守</h3><p>将采编、图片与语音任务迁入持续可用的执行环境，增加失败重试和交接。云端采集已独立，完整发布仍需现有编辑任务运行。</p></article>
+</div></section></main><footer>Janet · 保持好奇，保持判断。<a href="news.html">返回晨报 →</a></footer><script src="scripts/news-desk.js" defer></script></body></html>

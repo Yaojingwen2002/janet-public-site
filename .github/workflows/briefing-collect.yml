@@ -21,6 +21,12 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /codex-briefing-system/src/
+            /data/briefing-sources.json
+            /data/briefing-candidates.json
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
@@ -33,7 +39,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: briefing-source-collection
+          name: briefing-source-collection-${{ github.run_id }}-${{ github.run_attempt }}
           path: data/briefing-candidates.json
       - name: Update source desk snapshot
         env:

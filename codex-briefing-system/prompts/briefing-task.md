@@ -4,7 +4,7 @@
 
 ## 先读
 
-先执行 `node src/inspect-live-briefing.mjs {{DATE}}` 检查线上。`published` 时安静结束；`audio_incomplete` 只复用已发布正文与图片补语音；`deployment_incomplete` 先修复缺失或不一致的部署文件；`check_failed` 先恢复连接，不能认定缺刊。只有已确认 `missing` 才完整采编。检查结果保存在当期 `live-verification.json`。
+先执行 `node src/inspect-live-briefing.mjs {{DATE}}` 检查线上。`published` 时安静结束；`audio_incomplete` 只复用已发布正文与图片补语音；`deployment_incomplete` 先修复缺失或不一致的部署文件；`check_failed` 先恢复连接，不能认定缺刊；`invalid_content` 先修复已发布数据的结构和来源证据，不能直接换成新稿。只有已确认 `missing` 才完整采编。检查结果保存在当期 `live-verification.json`。
 
 采集入口为 `{{SITE_ROOT}}/data/briefing-candidates.json` 与 `{{SITE_ROOT}}/data/briefing-sources.json`。线索日期不匹配时执行 `node src/collect-candidates.mjs {{DATE}}`；线索仍须逐条原文核验，不能把自动采集标成已核验。来源不足时继续按当前自动化任务中的补齐规则搜索。
 
@@ -30,7 +30,7 @@
 - 当前网页模板、栏目顺序和 JSON schema 不改。
 - 数量严格为 `news` 5、`models` 4、`insights` 4、`insights2` 3、`tools` 1。
 - 每条必须有 `title`, `body`, `janet_take`, `source`, `url`，最终还必须有来源可追溯的本地图片。
-- 只收时间窗口内可核验的新闻。同事件多源合并，不够 17 条就停止并报告，不用旧闻凑数。
+- 只收时间窗口内可核验的新闻，同事件多源合并。某栏目不足时继续在同一窗口搜索：一级原始报道与官方发布 → 官方 changelog/GitHub Release → 独立微调、量化与端侧转换 → 当天首次发表的新分析或新财务细节。明确标注衍生版本、作者自报及基础事件日期，不伪造发布时间或开放范围。只有穷尽补齐层后仍不足17条，或事实、图片、QA仍不合格，才停止并逐项报告缺口；不用旧闻、无关图片补数。
 - 不要把密钥、邮箱、授权码、私有档案或内部提示写进输出。
 
 ## 执行顺序
@@ -164,4 +164,4 @@
 bash scripts/postprocess-briefing.sh {{DATE}} --publish
 ```
 
-后处理负责图片本地化、渲染、QA、同步主站、git commit、push 和 Pages 检查。不要手动修改主站根目录页面，不要发布 QA 未通过的晨报。
+后处理负责图片本地化、渲染、QA、同步主站、git commit 与 push；推送成功不代表 Pages 已部署。等待部署成功后运行 `node src/finalize-publication.mjs {{DATE}}`，自动检查29项公开资源、完整语音与成功部署版本的文件哈希，保存 `publication-receipt.json` 和不可覆盖的 `receipts/*.json`；只有回执 `ok=true`、`status=verified` 才报告发布成功。云端也会在每次成功部署和09:05巡检时生成回执。GitHub部署元数据不可核对时报告“部署待确认”，不要重新采编或重复推送。不要手动修改主站根目录页面，不要发布 QA 未通过的晨报。

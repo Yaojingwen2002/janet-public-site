@@ -6,27 +6,46 @@ on:
       - '.github/workflows/briefing-live-check.yml'
       - 'codex-briefing-system/src/**'
       - 'scripts/prune-news-image-copies*.mjs'
+  workflow_run:
+    workflows: [Deploy Janet Site to GitHub Pages]
+    types: [completed]
   schedule:
     - cron: '5 1 * * *'
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 jobs:
   verify:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /codex-briefing-system/src/
+            /scripts/prune-news-image-copies.mjs
+            /scripts/prune-news-image-copies.test.mjs
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
           package-manager-cache: false
       - name: Test source timing, publication state and artifact safety
-        run: node --test codex-briefing-system/src/news-desk.test.mjs codex-briefing-system/src/briefing-run-state.test.mjs scripts/prune-news-image-copies.test.mjs
+        run: node --test codex-briefing-system/src/news-desk.test.mjs codex-briefing-system/src/briefing-run-state.test.mjs codex-briefing-system/src/finalize-publication.test.mjs codex-briefing-system/src/narration.test.mjs codex-briefing-system/src/editorial-qa.test.mjs scripts/prune-news-image-copies.test.mjs
       - name: Verify public edition and full narration
-        run: node codex-briefing-system/src/inspect-live-briefing.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BRIEFING_DEPLOYMENT_RUN_ID: ${{ github.event.workflow_run.id || '' }}
+        run: node codex-briefing-system/src/finalize-publication.mjs
       - name: Preserve live verification
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: briefing-live-verification
-          path: codex-briefing-system/runs/*/live-verification.json
+          name: briefing-live-verification-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 30
+          path: |
+            codex-briefing-system/runs/*/live-verification.json
+            codex-briefing-system/runs/*/publication-receipt.json
+            codex-briefing-system/runs/*/receipts/*.json

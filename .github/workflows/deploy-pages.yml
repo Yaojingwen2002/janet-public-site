@@ -4,6 +4,19 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '*.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'favicon.ico'
+      - '.nojekyll'
+      - 'auth/**'
+      - 'asset/**'
+      - 'assets/**'
+      - 'styles/**'
+      - 'scripts/**'
+      - 'data/**'
+      - '.github/scripts/**'
   workflow_dispatch:
 
 permissions:

@@ -4,7 +4,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/briefing-live-check.yml'
-      - 'codex-briefing-system/src/inspect-live-briefing.mjs'
+      - 'codex-briefing-system/src/**'
+      - 'scripts/prune-news-image-copies*.mjs'
   schedule:
     - cron: '5 1 * * *'
   workflow_dispatch:
@@ -19,6 +20,8 @@ jobs:
         with:
           node-version: '24'
           package-manager-cache: false
+      - name: Test source timing, publication state and artifact safety
+        run: node --test codex-briefing-system/src/news-desk.test.mjs codex-briefing-system/src/briefing-run-state.test.mjs scripts/prune-news-image-copies.test.mjs
       - name: Verify public edition and full narration
         run: node codex-briefing-system/src/inspect-live-briefing.mjs
       - name: Preserve live verification

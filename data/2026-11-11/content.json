@@ -1,0 +1,221 @@
+{
+  "date": "2026-11-11",
+  "vol": "407",
+  "intro_text": "AI相关自由职业项目的预算更大、工时更多，标注时薪却未明显拉开差距。OpenAI与Upwork的新研究提醒我们区分工作量和单位时间的报酬。今天另有ChatGPT商家入口、Gemini Carbon扩大可用范围、三项新增模型路由，以及医疗预览、企业代理融资和创作工具更新；分别读清适用范围与证据。",
+  "cover": {
+    "title": "项目变大，时薪未必更高",
+    "subtitle": "新研究看见更多工作量；新产品与模型入口各有条件。",
+    "image_path": "runs/2026-11-11/cover.png",
+    "image_prompt": "21:9 editorial photographic cover. A black mechanical stopwatch beside a long accordion-fold strip of blank warm-white project paper and a thin Janet green ruler on a charcoal worktable. Hard side light, tactile paper edges, dark negative space on the left, subtle film grain. No words, numbers, date, logos or volume number."
+  },
+  "trend": "同样叫“AI项目”，可能已经包含更多种任务。OpenAI与Upwork的新研究发现，这类项目预算更高、工时更多，标注时薪与其他项目却相近。平台上某类工作的占比下降，也不能直接换算成全社会少了多少岗位。项目的边界、统计的分母，比一个醒目的增幅更能解释接单者正在经历什么。\n\n产品与模型方面，ChatGPT给商家增加认领信息和经营专属代理的入口，Carbon扩大付费访问；OpenRouter的三项新记录则只是当天新增的调用路线，其中两项明确属于衍生模型。这些变化可以逐项使用和比较，不必都包装成基础模型首发。医疗数据代理的预览与三笔企业融资另有各自的使用条件，融资额也不能替代效果验证。",
+  "sections": {
+    "news": {
+      "items": [
+        {
+          "title": "ChatGPT开放商家认领与专属代理",
+          "body": "OpenAI推出Businesses in ChatGPT测试版，符合条件的商家可通过Business Hub认领企业、更新信息与产品价格库存，并查看达到隐私门槛后的汇总提及、点击和发现主题；公司称不向商家分享用户原始对话或Business Agent聊天。专属Business Agents先面向美国合资格电商与在线服务企业。用户自主进入清楚标记、与原始聊天分开的商家会话；代理还可作为标明赞助的广告目的地，不能混同ChatGPT的独立回答。",
+          "janet_take": "商家终于可以直接修正自己的营业信息，用户也能多问几句库存与服务细节。但从独立回答走进商家代理，回答者的立场已经改变；界面上那条清楚的分界，比一句“更懂你”有用。汇总点击能帮助经营者理解流量，不等于他们拿到了顾客的聊天记录。对小商家而言，眼下更实际的是确认认领资格、资料能更新到哪里，以及代理入口是否属于自己所在的市场。",
+          "source": "OpenAI官方产品公告",
+          "url": "https://openai.com/index/introducing-businesses-chatgpt",
+          "image": "images/business.png",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/kftzwdyauwt9/7Eicp7g84HA3PCzyVJTfbT/d423890d5a1a863bf69a57bcbbbf6e99/business-agents-blog-social.png?w=1600&h=900&fit=fill",
+          "image_credit": "OpenAI本次Businesses in ChatGPT发布配图"
+        },
+        {
+          "title": "Google与Adobe扩展文档创作协作",
+          "body": "Google与Adobe宣布扩大合作，计划在Drive和Gmail中增加通往Acrobat的文档操作，把Adobe创作与生产力工具进一步接入Gemini、Gemini Enterprise和搜索AI Mode。双方还将探索Acrobat工作流、企业客户体验协作，以及DeepMind与Photoshop的近实时编辑方向。公告包含后续推出及探索中的项目，不能理解为全部功能当天已向所有账号开放，也未统一给出免费使用承诺。",
+          "janet_take": "打开附件以后再找软件，是很多办公室里反复发生的小折返。入口靠近文件有实际价值。合作清单中已经规划的连接与仍在探索的编辑模型，距离日常可用还隔着不同的发布步骤。",
+          "source": "Google与Adobe官方合作公告",
+          "url": "https://blog.google/company-news/inside-google/company-announcements/adobe-google-partnership-integration/",
+          "image": "images/adobe.png",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Adobe_snippet_hero.max-1440x810.png",
+          "image_credit": "Google与Adobe官方合作公告"
+        },
+        {
+          "title": "Android扩展Gemini智能设备支持",
+          "body": "Google公布Gemini Intelligence的新一轮设备与功能安排：Pixel 10系列部分机型通过Pixel Drop获得功能，Motorola signature 27将在美国11月19日开放预订，不能写成当天开售。任务自动化扩展到英国、印度与日本，Create My Widget计划未来几周推出，可结合Gmail、日历和搜索信息。Rambler输入与设备协助也各有支持机型，部分能力涉及Android 17、语言、地区、订阅或年龄条件，并非全体Android手机同时获得。",
+          "janet_take": "手机发布稿经常将今天、下周和下一台新机放在一起说。自动替用户跨应用操作很吸引人，真正决定体验的仍是手上的具体机型与所在地区；同一个功能名字，未必对应同一天的可用性。",
+          "source": "Google Android官方更新",
+          "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
+          "image": "images/android.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Gemini_Intelligence_Signature27_Hero_2784x156.width-1300.jpg",
+          "image_credit": "Google Android官方更新"
+        },
+        {
+          "title": "Google开放医疗数据代理预览",
+          "body": "Google Cloud公布Gemini for healthcare预览，介绍与HCA Healthcare、Highmark Health及Northwell Health等机构的合作。方案尝试连接电子病历、账单、医疗指南等资料，支持记录整理与事前授权等多步骤工作，强调受控访问和专业人员监督。本条是产品预览及合作方应用说明，没有据此证明临床疗效、诊断准确率或所有医院均已上线；行政资料处理也不能直接等同医生诊疗。",
+          "janet_take": "病历、付款规则和指南分别存放，医护人员常常花时间寻找同一件事的不同版本。连接资料能减少折返，来源错配也可能放大错误。预览阶段最有分量的进展，会是实际场景里可复查的结果。",
+          "source": "Google Cloud官方预览说明",
+          "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare/",
+          "image": "images/health.png",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/social_share_NWQpgus.max-1440x810.png",
+          "image_credit": "Google Cloud官方预览说明"
+        },
+        {
+          "title": "Git发布修补六类安全漏洞版本",
+          "body": "Git发布2.56.1，并为2.55至2.50的维护系列提供对应修补版本，处理恶意仓库递归克隆中的代码执行、引用路径验证，以及签名移除、二进制补丁、大型合并和fast-import相关问题。GitHub称云端服务已部署修复，Enterprise Server补丁见3.19.15、3.20.11、3.21.9与3.22.4。公告同时提醒更新内置Git的应用和自动化环境；暂时只处理可信输入不能代替安装修复，也不能由漏洞公告断言本机已遭攻击。",
+          "janet_take": "AI写代码再快，克隆、合并和处理补丁仍经过这些基础工具。一台电脑上可能同时藏着几份Git。系统终端已经更新，不代表某个桌面应用随附的那一份也跟着换好了。",
+          "source": "GitHub官方安全公告",
+          "url": "https://github.blog/open-source/git/git-security-vulnerabilities-announced-7/",
+          "image": "images/git.png",
+          "image_origin": "source",
+          "image_source_url": "https://github.blog/open-source/git/git-security-vulnerabilities-announced-7/",
+          "image_credit": "GitHub本次六项Git漏洞公告页面截图"
+        }
+      ]
+    },
+    "models": {
+      "items": [
+        {
+          "title": "Gemini4Carbon扩大付费调用范围",
+          "body": "Google扩大Gemini 4 Carbon可用范围，面向付费开发者与企业提供API，并向Google AI Ultra订阅者铺开Gemini应用、AI Mode和Antigravity入口。这是两周前先向Fairwind网络防御项目推出后的访问扩展，基础事件较早，增强网络安全能力仍有单独申请条件。公共访问型号的优惠价为每百万输入tokens两美元、输出十美元，11月30日优惠期结束后为四与二十美元。厂商基准及演示不代表所有任务都达到同等收益，科研免费名额也受资格、容量与遴选限制。",
+          "janet_take": "一个模型从小范围试用走到更多付费入口，对开发者最直接的影响是终于能接进自己的任务。优惠价有截止日期，长时间运行还会消耗更多推理与验证用量。眼下算得过来的工作，到十二月可能换一张账单。公共版本与受申请限制的网络研究能力也不能合写：产品菜单上多了Carbon，并不会自动赋予所有用途相同的访问范围。",
+          "source": "Google DeepMind官方开放范围与价格说明",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+          "image": "images/carbon.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_key_art_16-9_lockup.width-1300.jpg",
+          "image_credit": "Google DeepMind官方开放范围与价格说明"
+        },
+        {
+          "title": "OpenRouter新增文心5.5预览接入",
+          "body": "OpenRouter当天新增Baidu ERNIE 5.5 Flash Preview条目，并显示由Baidu提供的可用端点。平台列出1,024,000 tokens上下文，每百万输入tokens标价0.28美元、输出1.13美元。这条记录证明的是本窗口内平台新增接入，不是百度基础模型首发时间；Preview性质与实际账号限制仍须按服务说明确认。本次未核验到该Preview对应的可下载权重，不能与较早的ERNIE 5.5 Flash Base仓库混为一谈。",
+          "janet_take": "预览版接进统一接口，方便现有应用试跑。名字相近的Base仓库和Preview服务却可能对应不同交付物；能调用、能下载、能自行部署，是三种分别确认的能力。",
+          "source": "OpenRouter官方模型页及端点API",
+          "url": "https://openrouter.ai/baidu/ernie-5.5-flash-preview",
+          "image": "images/ernie.png",
+          "image_origin": "source",
+          "image_source_url": "https://openrouter.ai/en-US/baidu/ernie-5.5-flash-preview/opengraph-image-vc0va0?e64ee705e9bb9143",
+          "image_credit": "OpenRouter ERNIE 5.5 Flash Preview专属模型卡"
+        },
+        {
+          "title": "文心Light衍生模型接入国际路由",
+          "body": "OpenRouter新增ERNIE-Light-DT 1.0国际调用路由，列出Baidu端点、1,024,000 tokens上下文，以及每百万输入tokens1.13美元、输出3.94美元。平台说明它基于开源GLM，并介绍Baidu Sparse Attention等调整；这些属于平台对衍生模型的说明，不是独立测试结论。当天可核验事件为新增路由，不能改写成全新独立基础模型首发，也未由这份服务页证实对应权重已开放下载。",
+          "janet_take": "现有底座经过调整，可能适合一类新的工作负载。衍生模型没有必要伪装成从头训练的基础模型；清楚交代来源，反而方便使用者判断迁移成本，以及究竟在比较哪一层变化。",
+          "source": "OpenRouter官方模型页及端点API",
+          "url": "https://openrouter.ai/baidu/ernie-light-dt-1.0-intl",
+          "image": "images/light.png",
+          "image_origin": "source",
+          "image_source_url": "https://openrouter.ai/en-US/baidu/ernie-light-dt-1.0-intl/opengraph-image-vc0va0?e64ee705e9bb9143",
+          "image_credit": "OpenRouter ERNIE-Light-DT国际版专属模型卡"
+        },
+        {
+          "title": "NexN2.6新增多模态低价调用入口",
+          "body": "NexAGI的Nex-N2.6当天加入OpenRouter，平台列出文本和图像输入、文本输出，262,144 tokens上下文；每百万输入tokens0.12美元、输出0.40美元。端点由NexAGI提供，标记FP8。按平台说明，这是基于GLM-5.3-Flash的衍生版本，参数与能力描述属于作者或平台自报；当天新增的是服务入口，不等于其底座当天首发。本次未核验到公开权重下载，低价API也不构成开放权重证明。",
+          "janet_take": "十二美分的输入价适合拿真实小任务试算，尤其是重复处理图文的环节。FP8是端点的计算表示，不能单独推出速度或准确率。一次成功样例与整天批量运行的表现，往往还隔着不少失败重试。",
+          "source": "OpenRouter官方模型页及端点API",
+          "url": "https://openrouter.ai/nex-agi/nex-n2.6",
+          "image": "images/nex.png",
+          "image_origin": "source",
+          "image_source_url": "https://openrouter.ai/en-US/nex-agi/nex-n2.6/opengraph-image-vc0va0?e64ee705e9bb9143",
+          "image_credit": "OpenRouter Nex-N2.6专属模型卡"
+        }
+      ]
+    },
+    "insights": {
+      "items": [
+        {
+          "title": "新研究发现AI项目预算工时同步增加",
+          "body": "OpenAI与Upwork发表新研究，以既有平台资料观察自由职业需求。2025上半年至2026上半年，网页开发在Upwork发帖中的占比减少1.98个百分点，视频动画增加1.38个百分点；占比不是岗位绝对数，更不能直接推及全部劳动力市场。AI相关发帖的任务组合从2023年初至2025年末更为多样，研究所用多样性指标上升45%。这类项目固定价预算较高、涉及工时较多，但标注时薪与其他项目相近。观察性比较不能单独证明AI导致变化，也未证明自由职业者的实际到手收入普遍提高。",
+          "janet_take": "一张项目单从写文案延伸到做图、剪片和接工具，预算上升可能只是工作包变厚。最容易误读的恰好是“AI项目更值钱”：总价更高，未必意味着每小时更贵。接单者的技能组合在变化，报价时对交付范围的描述也更重要。网页开发占比下降同样不是一个行业消失的判决；分母在变、任务在重组，平台研究能照见其中一部分，却照不见所有人的收入。",
+          "source": "OpenAI与Upwork联合研究原文",
+          "url": "https://openai.com/index/ai-effect-on-freelance-work",
+          "image": "images/freelance.png",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/kftzwdyauwt9/6uOuGMP8uXe0QmAClG9qAN/692ade63f2f37280ed6b8ffb00f9f53b/ai-effect-on-freelance-work-social.png?w=1600&h=900&fit=fill",
+          "image_credit": "OpenAI本次自由职业研究配图"
+        },
+        {
+          "title": "MKA推出跨职业多模态任务基准",
+          "body": "Google与Artificial Analysis介绍Multimodal Knowledge Agent基准，以200项私有任务覆盖十个行业、83种职业，专业人员通常须三至八小时完成，涉及文档、图表与其他多模态材料。评估在相同Stirrup框架、工具和预算下进行，每项约七十个二元检查点，事实与设计权重约为75%和25%。非Google模型担任自动评分者，与专家评分一致率为96%，不是任务正确率。另行公开的是十个示例，完整200题保留私有以减少污染。",
+          "janet_take": "真实文件通常不会预先清洗成一道整齐的题。将图表、文档和成品格式一起考，比只看最后一句答案更接近日常工作；不过评分一致率说明评分过程有多接近专家，并没有替参赛模型拿到九十六分。",
+          "source": "Google与Artificial Analysis官方基准说明",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/",
+          "image": "images/mka.png",
+          "image_origin": "source",
+          "image_source_url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/01_Hero_MKA_Benchmark_2784x1566.width-1300.png",
+          "image_credit": "Google与Artificial Analysis官方基准说明"
+        },
+        {
+          "title": "新调查揭示学生使用AI指导缺口",
+          "body": "OpenAI发表教育指导报告，援引ThinkYoung新研究：受访学生中79%曾用AI做作业，47%曾获如何使用的指导。文章介绍欧洲、中东与非洲部分教育合作项目、教师应用与早期经验。受访样本不能直接当作全球学生普查，教师自报省时与采用率也不是学生独立思考或长期学习成绩改善的因果证据。本条是当天新研究与分析，文中涉及的部分教育项目基础事件较早。",
+          "janet_take": "学生早已打开工具，课堂里的解释却没有同步跟上。教会提问还不够，识别杜撰来源、讲清引用和保留独立作业的过程，都属于使用能力；工具使用率高，无法代替这些具体的教学安排。",
+          "source": "OpenAI教育报告及ThinkYoung调查说明",
+          "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+          "image": "images/education.png",
+          "image_origin": "source",
+          "image_source_url": "https://images.ctfassets.net/kftzwdyauwt9/31dARlakgeBjEGDjdpJO19/7f707711c640f606dafacb1854d2a673/closing-the-ai-guidance-gap-in-education-social.png?w=1600&h=900&fit=fill",
+          "image_credit": "OpenAI本次教育指导报告配图"
+        },
+        {
+          "title": "HuggingFace发布决策模型指南",
+          "body": "Hugging Face发表Decision Models分析与工具指南，介绍以状态、问题和允许的答案为输入，直接输出选项及概率的决策方式，而非生成一段自由文本。文章展示choice、score等有限决策接口，以及Transformers、llama.cpp与Hub的接入路径，举例使用既有GEV-26B-Decide等模型。本条是当天新发布的分析，基础模型较早；文章公开时间以官方博客仓库当天合并记录交叉核验，不能把页面零点占位时间当作精确发布时间。输出概率本身不保证正确或已校准。",
+          "janet_take": "有些系统只想知道下一步走哪条路线，并不需要一篇长解释。限定答案集合能省掉解析自由文本的麻烦。真正困难的部分仍是选错时怎样处理，以及那个看起来很有把握的概率是否可信。",
+          "source": "Hugging Face官方指南及博客发布提交",
+          "url": "https://huggingface.co/blog/decision",
+          "image": "images/decision.png",
+          "image_origin": "source",
+          "image_source_url": "https://huggingface.co/blog/assets/decision/thumbnail.png",
+          "image_credit": "Hugging Face Decision Models本次文章示意图"
+        }
+      ]
+    },
+    "insights2": {
+      "items": [
+        {
+          "title": "WhiteMatter融资两千万美元管代理",
+          "body": "原名QuilrAI的WhiteMatter宣布完成两千万美元A轮，Blumberg Capital领投，Crew Capital及Sprout & Oak继续参与。公司介绍覆盖终端、浏览器、SaaS、云与代码的代理管理平台，并可为代理配置Guardian执行策略检查。公司自报现管理225万个代理，半年营收增长至五倍、净收入留存率约200%；这些经营数字未经本次独立审计，代理数量也不等于真实员工数或已证明的安全效果。新资金用于研发、市场扩展和管理团队建设。",
+          "janet_take": "代理会调用工具、派生任务，管理对象自然不再只是一个登录账号。WhiteMatter的生意是守住这些动作经过的地方，融资说明投资人愿意为这层控制下注。两百多万个代理听着很大，仍得知道如何计数、检查覆盖哪些动作。留存率是已有客户收入的变化，也不能拿来证明每次危险操作都被拦住；好看的经营曲线与可靠的防护，最终要分别举证。",
+          "source": "WhiteMatter经PR Newswire发布的融资公告",
+          "url": "https://www.prnewswire.com/news-releases/whitematter-raises-20m-series-a-to-close-the-growing-gap-between-ai-autonomy-and-enterprise-governance-302934477.html",
+          "image": "images/white-press.jpg",
+          "image_origin": "source",
+          "image_source_url": "https://mmx.prnewswire.com/media/MS2031005/IMG_0823.jpg?id=OA3067696&p=facebook",
+          "image_credit": "WhiteMatter本次融资公告管理团队合影"
+        },
+        {
+          "title": "PromptPath融资千万美元扩展车商语音",
+          "body": "汽车经销商对话辅助公司PromptPath宣布一千二百万美元A轮，FM Capital与Armory Square Ventures领投，Automotive Ventures、Holman Ventures及车商投资方参与，汽车科技高管Keith Jezek加入董事会。平台提供实时对话提示、客户背景与教练式反馈，覆盖销售、金融保险及售后沟通，并计划扩展产品。公司将其定位为辅助员工而非替代人，这属于产品方立场，不能当作已经验证的就业结果；公告未给出可统一比较的营收与留存数据。",
+          "janet_take": "一句购车咨询里常常藏着预算、时间和顾虑。及时提醒销售人员，比通话结束后再补录更贴近成交现场；同一份录音究竟用于帮助员工还是持续考核他们，则取决于实际使用规则。",
+          "source": "PromptPath经PR Newswire发布的融资公告",
+          "url": "https://www.prnewswire.com/news-releases/leading-automotive-vcs-back-promptpaths-vision-of-turning-every-voice-conversation-into-results-for-automotive-retailers-with-12-million-series-a-investment-302934900.html",
+          "image": "images/promptpath.png",
+          "image_origin": "source",
+          "image_source_url": "https://www.prnewswire.com/news-releases/leading-automotive-vcs-back-promptpaths-vision-of-turning-every-voice-conversation-into-results-for-automotive-retailers-with-12-million-series-a-investment-302934900.html",
+          "image_credit": "PromptPath本次融资原始发布页面截图"
+        },
+        {
+          "title": "Lumbra融资两千五百万扩展企业部署",
+          "body": "Lumbra宣布两千五百万美元A轮，由Point72 Ventures与Ansa共同领投，Costanoa继续参与。公司称资金主要用于工程与部署团队，将已服务政府敏感环境的代理平台拓展至金融、医疗和法律等商业领域。其LumbraOS组合代理编排、可追溯知识图谱和持续评估；写回业务记录前由领域专家验证。现有部署与可靠性描述属于公司自报，不能由融资和政府客户背景直接推出各行业效果。金额及投资方经公司新闻室与Business Wire当日原始公告的授权转载交叉核对。",
+          "janet_take": "敏感环境里的经验能形成门槛，却不会自动变成医院或律所的现成答案。数据权限、专家验证与记录留存都很具体。资金用来扩展部署团队，也说明这类产品离开演示后还有大量现场工作。",
+          "source": "Lumbra官方新闻室及Business Wire原始公告转载",
+          "url": "https://lumbra.ai/newsroom",
+          "image": "images/lumbra.png",
+          "image_origin": "source",
+          "image_source_url": "https://lumbra.ai/newsroom",
+          "image_credit": "Lumbra本次融资官方新闻室公告卡片截图"
+        }
+      ]
+    },
+    "tools": {
+      "items": [
+        {
+          "title": "ComfyUI加入创作节点与显存切片",
+          "body": "ComfyUI发布v0.45.0，加入Pika H3 Flex及声音音乐节点、Tencent HY LLM、Kling 4.0 Flash等合作伙伴节点，并更新图像与视频接入；工作流模板升至0.11.105。维护部分包括SeedVR2 VAE按空闲显存自适应切片、图像视频处理及若干崩溃修复。合作节点调用外部服务时仍取决于相应账号、额度和费用，界面可见不表示底层模型权重开放或API免费。升级使用的是当天正式Release，不能用节点更新改写旧模型的首发日期。",
+          "janet_take": "节点越多，画布越像一个创作工具箱；旁边连接的服务账单也可能越多。对本地工作流，显存切片这种不起眼的维护反而更直接：素材能否完整跑完，常常比菜单上又多了几个名字更影响交付。",
+          "source": "ComfyUI官方v0.45.0 Release",
+          "url": "https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.45.0",
+          "image": "images/comfy.png",
+          "image_origin": "source",
+          "image_source_url": "https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.45.0",
+          "image_credit": "ComfyUI v0.45.0官方版本说明页面截图"
+        }
+      ]
+    }
+  }
+}

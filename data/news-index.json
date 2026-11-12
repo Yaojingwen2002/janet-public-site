@@ -1,8 +1,42 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-11T00:26:26.882Z",
-  "latest_edition_id": "2026-11-11",
+  "generated_at": "2026-11-12T00:16:19.082Z",
+  "latest_edition_id": "2026-11-12",
   "editions": [
+    {
+      "edition_id": "2026-11-12",
+      "date": "2026-11-12",
+      "title": "多助手协作，卡在没读完的消息",
+      "summary": "共享订单里的要求已经发送，负责提交的助手却还没有读到——Anthropic当天发表的新解读，将这种抢跑列为多人代理协作的具体失败。基础研究较早完成，结论来自模拟环境；它提示的是多位用户、多个目标共用一份资源时，沟通与提交顺序可能比再加一位助手更影响结果。Google的Tabletop则先给人一个共同编辑行程、投票和分账的空间，两件事不能直接互相证明。 Qwen4-Max交付的是截至11月25日的预览入口，Gemini Decision 1交付的是对有限答案的快速判断，本地微调与转换模型又交付另一种控制方式。使用条件",
+      "edition_type": "codex_briefing",
+      "signal_count": 17,
+      "edition_items_count": 17,
+      "homepage_items_count": 5,
+      "url": "data/2026-11-12/output.html",
+      "content_url": "data/2026-11-12/content.json",
+      "top_sources": [
+        "Google官方CarPlay发布说明",
+        "Google Labs官方实验公告",
+        "Google Africa官方首届团队公告",
+        "OpenAI官方计划进展报告",
+        "LiteLLM官方v1.109.0 Release",
+        "Qwen官方发布帖及QwenCloud模型与订阅文档",
+        "Google DeepMind官方Decisions API公告",
+        "QVAC官方新报告及模型卡"
+      ],
+      "top_categories": [
+        "news",
+        "models",
+        "insights",
+        "insights2",
+        "tools"
+      ],
+      "lead_story": {
+        "title": "Gemini接入CarPlay语音陪伴驾驶",
+        "source": "Google官方CarPlay发布说明",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/"
+      }
+    },
     {
       "edition_id": "2026-11-11",
       "date": "2026-11-11",
@@ -3725,6 +3759,23 @@
     }
   ],
   "sources": [
+    "Google官方CarPlay发布说明",
+    "Google Labs官方实验公告",
+    "Google Africa官方首届团队公告",
+    "OpenAI官方计划进展报告",
+    "LiteLLM官方v1.109.0 Release",
+    "Qwen官方发布帖及QwenCloud模型与订阅文档",
+    "Google DeepMind官方Decisions API公告",
+    "QVAC官方新报告及模型卡",
+    "MLX社区当天转换仓库与模型卡",
+    "Anthropic Alignment Science当天研究解读与原始论文",
+    "Google Research官方研究解读",
+    "Hugging Face官方训练指南与发布提交",
+    "LangChain官方1.5.0 Release及合并说明",
+    "Torus官方Foundry发布与融资公告",
+    "Plurai经PR Newswire发布的融资与开放公告",
+    "Akara经GlobeNewswire发布的融资公告",
+    "n8n官方2.47.4稳定版Release",
     "OpenAI官方产品公告",
     "Google与Adobe官方合作公告",
     "Google Android官方更新",

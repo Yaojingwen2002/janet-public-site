@@ -2,7 +2,7 @@
   "schema_version": 1,
   "date": "2026-11-12",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-12T04:21:52.624Z",
+  "generated_at": "2026-11-12T07:02:04.660Z",
   "window": {
     "start": "2026-11-11T00:01:00.000Z",
     "end": "2026-11-12T00:00:00.000Z"
@@ -10,60 +10,60 @@
   "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
   "source_results": [
     {
-      "id": "openai",
-      "status": "ok",
-      "raw_count": 3,
-      "count": 3,
-      "checked_at": "2026-11-12T04:21:51.872Z"
-    },
-    {
       "id": "github-blog",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-12T04:21:51.924Z"
+      "checked_at": "2026-11-12T07:02:03.811Z"
     },
     {
       "id": "hf-blog",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-12T04:21:51.956Z"
+      "checked_at": "2026-11-12T07:02:03.832Z"
     },
     {
       "id": "google",
       "status": "ok",
       "raw_count": 3,
       "count": 3,
-      "checked_at": "2026-11-12T04:21:52.038Z"
+      "checked_at": "2026-11-12T07:02:03.993Z"
     },
     {
-      "id": "transformers",
+      "id": "openai",
       "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-12T04:21:52.238Z"
+      "raw_count": 3,
+      "count": 3,
+      "checked_at": "2026-11-12T07:02:04.025Z"
     },
     {
       "id": "claude-code",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-12T04:21:52.246Z"
+      "checked_at": "2026-11-12T07:02:04.217Z"
     },
     {
       "id": "ollama",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-12T04:21:52.323Z"
+      "checked_at": "2026-11-12T07:02:04.313Z"
     },
     {
       "id": "langfuse",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-12T04:21:52.339Z"
+      "checked_at": "2026-11-12T07:02:04.322Z"
+    },
+    {
+      "id": "transformers",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-12T07:02:04.328Z"
     },
     {
       "id": "anthropic",
@@ -140,21 +140,21 @@
       "status": "ok",
       "raw_count": 5,
       "count": 3,
-      "checked_at": "2026-11-12T04:21:52.530Z"
-    },
-    {
-      "id": "windmill",
-      "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-12T04:21:52.591Z"
+      "checked_at": "2026-11-12T07:02:04.519Z"
     },
     {
       "id": "litellm",
       "status": "ok",
       "raw_count": 3,
       "count": 3,
-      "checked_at": "2026-11-12T04:21:52.624Z"
+      "checked_at": "2026-11-12T07:02:04.607Z"
+    },
+    {
+      "id": "windmill",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-12T07:02:04.660Z"
     }
   ],
   "candidates": [

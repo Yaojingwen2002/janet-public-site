@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-15T06:16:12.325Z",
+  "generated_at": "2026-11-16T03:13:08.065Z",
   "window": {
-    "start": "2026-11-14T00:01:00.000Z",
-    "end": "2026-11-15T00:00:00.000Z"
+    "start": "2026-11-15T00:01:00.000Z",
+    "end": "2026-11-16T00:00:00.000Z"
   },
   "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
   "source_results": [
@@ -14,56 +14,56 @@
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-15T06:16:11.069Z"
+      "checked_at": "2026-11-16T03:13:07.176Z"
     },
     {
       "id": "openai",
       "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-15T06:16:11.088Z"
+      "raw_count": 2,
+      "count": 2,
+      "checked_at": "2026-11-16T03:13:07.246Z"
     },
     {
       "id": "hf-blog",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-15T06:16:11.132Z"
+      "checked_at": "2026-11-16T03:13:07.257Z"
     },
     {
       "id": "google",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-15T06:16:11.188Z"
-    },
-    {
-      "id": "transformers",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-15T06:16:11.587Z"
+      "checked_at": "2026-11-16T03:13:07.339Z"
     },
     {
       "id": "claude-code",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-15T06:16:11.653Z"
-    },
-    {
-      "id": "ollama",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-15T06:16:11.662Z"
+      "checked_at": "2026-11-16T03:13:07.623Z"
     },
     {
       "id": "langfuse",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-15T06:16:11.698Z"
+      "checked_at": "2026-11-16T03:13:07.635Z"
+    },
+    {
+      "id": "transformers",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-16T03:13:07.637Z"
+    },
+    {
+      "id": "ollama",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-16T03:13:07.712Z"
     },
     {
       "id": "anthropic",
@@ -140,101 +140,101 @@
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-15T06:16:11.971Z"
+      "checked_at": "2026-11-16T03:13:07.935Z"
     },
     {
       "id": "litellm",
       "status": "ok",
       "raw_count": 3,
       "count": 3,
-      "checked_at": "2026-11-15T06:16:12.006Z"
+      "checked_at": "2026-11-16T03:13:07.968Z"
     },
     {
       "id": "windmill",
       "status": "ok",
-      "raw_count": 2,
-      "count": 2,
-      "checked_at": "2026-11-15T06:16:12.325Z"
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-16T03:13:08.065Z"
     }
   ],
   "candidates": [
     {
-      "id": "3764fd5c2b056895",
-      "event_key": "BerriAI/litellm@v1.107.0-rc.4",
-      "title": "LiteLLM v1.107.0-rc.4",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.107.0-rc.4",
-      "published_at": "2026-11-14T23:46:31.000Z",
-      "published_raw": "2026-11-14T23:46:31Z",
+      "id": "2e8f421d2ee2a3df",
+      "event_key": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "title": "A step toward defining the Standard Model on a lattice",
+      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "published_at": "2026-11-15T22:00:01.000Z",
+      "published_raw": "Sun, 15 Nov 2026 22:00:01 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "Explore a candidate nonperturbative lattice definition of the Standard Model and how GPT-6 Astra helped turn the idea into a detailed proof.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "33b95c2112c46efd",
+      "event_key": "https://openai.com/index/our-new-blog-for-science",
+      "title": "Our new blog for science",
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "published_at": "2026-11-15T22:00:00.000Z",
+      "published_raw": "Sun, 15 Nov 2026 22:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "The OpenAI science blog shares new findings, practical methods, and firsthand accounts from researchers using AI to advance scientific discovery.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "842f516a45a249d3",
+      "event_key": "BerriAI/litellm@v1.111.0-dev.3",
+      "title": "LiteLLM v1.111.0-dev.3",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.111.0-dev.3",
+      "published_at": "2026-11-15T05:09:18.000Z",
+      "published_raw": "2026-11-15T05:09:18Z",
       "time_status": "in_window",
       "source_id": "litellm",
       "source": "LiteLLM",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## Verify this release This release candidate is built from [`a1a541b`](https://github.com/BerriAI/litellm/commit/a1a541bfb1295d44bcb3b9ab882ba8f8b1c2dfa5), the reviewed merge of #51771 into `rc/1.107.0`. It is published as `1.107.0rc4` on PyPI and `v1.107.0-rc.4` on Docker After the Oct 21 incident (#47826) we replaced the cosign key that signs our Docker images. These images are signed with the new key from [commit `e82a3c6`](https://github.com/BerriAI/litellm/commit/e82a3c646908ba0a6ee0beddc4310d7a6cac4065) ```bash cosign verify \\ --key https://raw.githubusercontent.com/BerriAI/litellm/e82a3c646908ba0a6ee0beddc4310d7a6cac4065/cosign.pub \\ ghcr.io/berriai/litellm:v1.107.0-rc.4 ``` ## Why a",
+      "summary": "> [!WARNING] > **This release was only partly published. Use [v1.111.0-dev.4](https://github.com/BerriAI/litellm/releases/tag/v1.111.0-dev.4) instead.** > It is built from the same commit and fixes the publishing problems below. > [!IMPORTANT] > **Signing has moved to keyless cosign.** This is the first release signed with Sigstore keyless signing (GitHub OIDC) instead of the `cosign.pub` key. > `cosign verify --key ...` does not work for this release or later ones. Use the command below. Earlier releases still verify with the key. ## Known issues, fixed in v1.111.0-dev.4 - `pip install \"litellm[proxy]==1.111.0.dev3\"` failed at first, because the `litellm-proxy-extras` and `litellm-enterpris",
       "review_status": "unreviewed",
       "also_seen_in": []
     },
     {
-      "id": "fe2d022b775c8438",
-      "event_key": "BerriAI/litellm@v1.108.9",
-      "title": "LiteLLM v1.108.9",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.108.9",
-      "published_at": "2026-11-14T22:00:02.000Z",
-      "published_raw": "2026-11-14T22:00:02Z",
+      "id": "9826855b554edd43",
+      "event_key": "BerriAI/litellm@v1.111.0-dev.4",
+      "title": "LiteLLM v1.111.0-dev.4",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.111.0-dev.4",
+      "published_at": "2026-11-15T04:17:20.000Z",
+      "published_raw": "2026-11-15T04:17:20Z",
       "time_status": "in_window",
       "source_id": "litellm",
       "source": "LiteLLM",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## Verify Docker Image Signature All LiteLLM Docker images are signed with [cosign](https://docs.sigstore.dev/cosign/overview/). This release is signed with the key introduced in [commit `e82a3c6`](https://github.com/BerriAI/litellm/commit/e82a3c646908ba0a6ee0beddc4310d7a6cac4065). **Verify using the pinned commit hash (recommended):** A commit hash is cryptographically immutable, so this is the strongest way to ensure you are using the published signing key: ```bash cosign verify \\ --key https://raw.githubusercontent.com/BerriAI/litellm/e82a3c646908ba0a6ee0beddc4310d7a6cac4065/cosign.pub \\ ghcr.io/berriai/litellm:v1.108.9 ``` **Verify using the release tag (convenience):** Tags are protecte",
+      "summary": "> [!IMPORTANT] > **Signing has moved to keyless cosign.** Since v1.111.0-dev.3, releases are signed with Sigstore keyless signing (GitHub OIDC) instead of the `cosign.pub` key. > `cosign verify --key ...` does not work for this release. Use the command below. Earlier releases still verify with the key. ## Verify this release ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.111.0-dev.4 ``` Same command for `docker.io/litellm/litellm` and the Helm chart at `ghcr.io/berriai/litellm/chart/litellm:1.111.0-dev.4",
       "review_status": "unreviewed",
       "also_seen_in": []
     },
     {
-      "id": "b1c600f61f6bbdc4",
-      "event_key": "windmill-labs/windmill@1.875.0",
-      "title": "Windmill v1.875.0",
-      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.875.0",
-      "published_at": "2026-11-14T15:22:27.000Z",
-      "published_raw": "2026-11-14T15:22:27Z",
-      "time_status": "in_window",
-      "source_id": "windmill",
-      "source": "Windmill",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## [1.875.0](https://github.com/windmill-labs/windmill/compare/v1.874.0...v1.875.0) (2026-11-14) ### Features * exact start and end of a fairness cap in its alerts ([#12438](https://github.com/windmill-labs/windmill/issues/12438)) ([df0e5cf](https://github.com/windmill-labs/windmill/commit/df0e5cf4c2e90e071594f962cb1c5ed9e9023754)) * fairness reserve as a worker group setting, shown on the workers page ([#12435](https://github.com/windmill-labs/windmill/issues/12435)) ([5f8e002](https://github.com/windmill-labs/windmill/commit/5f8e0022b699f58836d1a24304debcc7d7611e1a)) * show long step durations in hours and minutes on run timelines ([#12437](https://github.com/windmill-labs/windmill/issues/",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "7383d2b8b8978eac",
-      "event_key": "windmill-labs/windmill@1.874.0",
-      "title": "Windmill v1.874.0",
-      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.874.0",
-      "published_at": "2026-11-14T07:20:30.000Z",
-      "published_raw": "2026-11-14T07:20:30Z",
-      "time_status": "in_window",
-      "source_id": "windmill",
-      "source": "Windmill",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## [1.874.0](https://github.com/windmill-labs/windmill/compare/v1.873.1...v1.874.0) (2026-11-14) ### Features * fairness reserve workers that only serve non-overloaded workspaces ([#12431](https://github.com/windmill-labs/windmill/issues/12431)) ([df56c11](https://github.com/windmill-labs/windmill/commit/df56c111bb597bc9d3f99462c5d40e1b57e60def)) * fairness-aware queue alerts and a capped-workspace alert ([#12432](https://github.com/windmill-labs/windmill/issues/12432)) ([9724f3b](https://github.com/windmill-labs/windmill/commit/9724f3bdf085c68e1b91c9655cbe01c3f2598bdd)) ### Bug Fixes * keep group run-as principals when renaming a group-* member ([#12409](https://github.com/windmill-labs/win",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "1068e0d69d96ed6e",
-      "event_key": "BerriAI/litellm@v1.106.10",
-      "title": "LiteLLM v1.106.10",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.106.10",
-      "published_at": "2026-11-14T00:34:35.000Z",
-      "published_raw": "2026-11-14T00:34:35Z",
+      "id": "4fe49f32efc53d16",
+      "event_key": "BerriAI/litellm@v1.110.0-rc.3",
+      "title": "LiteLLM v1.110.0-rc.3",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.110.0-rc.3",
+      "published_at": "2026-11-15T01:10:14.000Z",
+      "published_raw": "2026-11-15T01:10:14Z",
       "time_status": "in_window",
       "source_id": "litellm",
       "source": "LiteLLM",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## Verify this release ```bash cosign verify \\ --key https://raw.githubusercontent.com/BerriAI/litellm/e82a3c646908ba0a6ee0beddc4310d7a6cac4065/cosign.pub \\ ghcr.io/berriai/litellm:v1.106.10 ``` Same command for `litellm-database`, `litellm-non_root` and the `docker.io/litellm/*` images ## What's new in 1.106.10 2 PRs. 1 fixed. No action needed to upgrade ### Changes - **MCP:** Fixed Google MCP servers asking users to sign in again when the access token expires (#41197) --- Backport #51731 · [Full changelog](https://github.com/BerriAI/litellm/compare/v1.106.9...v1.106.10)",
+      "summary": "## Verify Docker Image Signature All LiteLLM Docker images are signed with [cosign](https://docs.sigstore.dev/cosign/overview/). This release is signed with the key introduced in [commit `e82a3c6`](https://github.com/BerriAI/litellm/commit/e82a3c646908ba0a6ee0beddc4310d7a6cac4065). **Verify using the pinned commit hash (recommended):** A commit hash is cryptographically immutable, so this is the strongest way to ensure you are using the published signing key: ```bash cosign verify \\ --key https://raw.githubusercontent.com/BerriAI/litellm/e82a3c646908ba0a6ee0beddc4310d7a6cac4065/cosign.pub \\ ghcr.io/berriai/litellm:v1.110.0-rc.3 ``` **Verify using the release tag (convenience):** Tags are pro",
       "review_status": "unreviewed",
       "also_seen_in": []
     }

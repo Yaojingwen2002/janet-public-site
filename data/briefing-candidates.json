@@ -2,7 +2,7 @@
   "schema_version": 1,
   "date": "2026-11-17",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-17T05:15:40.477Z",
+  "generated_at": "2026-11-17T07:47:07.283Z",
   "window": {
     "start": "2026-11-16T00:01:00.000Z",
     "end": "2026-11-17T00:00:00.000Z"
@@ -14,56 +14,56 @@
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-17T05:15:39.610Z"
+      "checked_at": "2026-11-17T07:47:06.073Z"
     },
     {
       "id": "openai",
       "status": "ok",
-      "raw_count": 9,
-      "count": 9,
-      "checked_at": "2026-11-17T05:15:39.698Z"
+      "raw_count": 11,
+      "count": 11,
+      "checked_at": "2026-11-17T07:47:06.276Z"
     },
     {
       "id": "hf-blog",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-17T05:15:39.771Z"
+      "checked_at": "2026-11-17T07:47:06.281Z"
     },
     {
       "id": "google",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-17T05:15:39.853Z"
-    },
-    {
-      "id": "claude-code",
-      "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-17T05:15:40.062Z"
-    },
-    {
-      "id": "ollama",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-17T05:15:40.070Z"
+      "checked_at": "2026-11-17T07:47:06.284Z"
     },
     {
       "id": "langfuse",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-17T05:15:40.141Z"
+      "checked_at": "2026-11-17T07:47:06.803Z"
     },
     {
       "id": "transformers",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-17T05:15:40.176Z"
+      "checked_at": "2026-11-17T07:47:06.859Z"
+    },
+    {
+      "id": "ollama",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-17T07:47:06.872Z"
+    },
+    {
+      "id": "claude-code",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-17T07:47:06.904Z"
     },
     {
       "id": "anthropic",
@@ -140,24 +140,40 @@
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-17T05:15:40.374Z"
+      "checked_at": "2026-11-17T07:47:07.162Z"
     },
     {
       "id": "litellm",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-17T05:15:40.437Z"
+      "checked_at": "2026-11-17T07:47:07.209Z"
     },
     {
       "id": "windmill",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-17T05:15:40.477Z"
+      "checked_at": "2026-11-17T07:47:07.283Z"
     }
   ],
   "candidates": [
+    {
+      "id": "0e7f690aa4ff229b",
+      "event_key": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+      "title": "Strengthening NATO and allied cyber defenses with AI",
+      "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+      "published_at": "2026-11-17T00:00:00.000Z",
+      "published_raw": "Tue, 17 Nov 2026 00:00:00 GMT",
+      "time_status": "needs_time_review",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "How OpenAI is working with NATO and allied cyber agencies to help trusted defenders find vulnerabilities, test fixes and protect essential systems.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
     {
       "id": "4e2b4f1543d14800",
       "event_key": "anthropics/claude-code@v2.1.326",
@@ -271,6 +287,22 @@
       "also_seen_in": []
     },
     {
+      "id": "b82b64ef90f76e66",
+      "event_key": "https://openai.com/business/customer-stories/revolut",
+      "title": "How Revolut raises ambition without lowering the bar",
+      "url": "https://openai.com/business/customer-stories/revolut",
+      "published_at": "2026-11-16T09:30:00.000Z",
+      "published_raw": "Mon, 16 Nov 2026 09:30:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "Discover how Revolut uses OpenAI models and Codex to cut coding time by 30–60%, scale financial crime investigations, and innovate without compromising security.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
       "id": "ff7833693fa2a067",
       "event_key": "https://openai.com/index/lvmh-media-division-partnership",
       "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
@@ -319,22 +351,6 @@
       "also_seen_in": []
     },
     {
-      "id": "21b4758ab52123ac",
-      "event_key": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
-      "title": "Advancing computer-use agents for healthcare teams",
-      "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
-      "published_at": "2026-11-16T06:00:00.000Z",
-      "published_raw": "Mon, 16 Nov 2026 06:00:00 GMT",
-      "time_status": "in_window",
-      "source_id": "openai",
-      "source": "OpenAI",
-      "channel": "官方发布",
-      "tier": "primary",
-      "summary": "",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
       "id": "21e886491b30cfff",
       "event_key": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
       "title": "More ways to move care forward with ChatGPT for Healthcare",
@@ -347,6 +363,22 @@
       "channel": "官方发布",
       "tier": "primary",
       "summary": "Introducing computer-use agents, improved clinical answers, and new healthcare plugins that work across healthcare software to get real work done.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "21b4758ab52123ac",
+      "event_key": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+      "title": "Advancing computer-use agents for healthcare teams",
+      "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+      "published_at": "2026-11-16T06:00:00.000Z",
+      "published_raw": "Mon, 16 Nov 2026 06:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "",
       "review_status": "unreviewed",
       "also_seen_in": []
     },

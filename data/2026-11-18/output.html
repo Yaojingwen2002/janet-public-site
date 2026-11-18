@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-janet-experiment="signal-wave-17" data-janet-design="poster-v4">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janet 快车箱 · AI 晨报 · 2026-11-18 · VOL 414</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/logo-mark.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../styles/potato-center.css?v=potato-roll-20260617">
+  <link rel="stylesheet" href="../../styles/comments.css">
+  <link rel="stylesheet" href="../../styles/briefing-audio.css?v=20261105">
+  <link rel="stylesheet" href="../../styles/briefing-reading.css?v=reader-20261110-2">
+  <link rel="stylesheet" href="../../styles/signal-cursor.css?v=experiment-wave-17">
+  <style>
+/* ═══════════════════════════════════════════════════
+   Janet 快车箱 · 晨报模板
+   项目内模板 · codex-briefing-system/templates/template.html
+   色彩: 纸白 / 深墨绿 / 琥珀金 / 信号绿
+   字体: Avenir / SF Pro (标题) · SF Pro Text (正文) · SF Mono (元数据)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  /* 品牌色 */
+  --green:        #1A3A2A;
+  --green-mid:    #2D5A40;
+  --green-light:  rgba(26, 58, 42, .09);
+  --amber:        #C17A2E;
+  --amber-mid:    #A36424;
+  --amber-light:  rgba(193, 122, 46, .10);
+  --signal:       #18E299;
+  --signal-dim:   rgba(24, 226, 153, .10);
+  --signal-bdr:   rgba(24, 226, 153, .28);
+  /* 文字 */
+  --ink:          #0d0d0d;
+  --ink-2:        #3D3D38;
+  --ink-3:        #7A7A72;
+  --ink-4:        #B0B0A8;
+  /* 纸面 */
+  --paper:        #FAFAF7;
+  --surface:      #F2EDE6;
+  --surface-2:    #EAE4DC;
+  --border:       rgba(0, 0, 0, .08);
+  --border-mid:   rgba(0, 0, 0, .13);
+  /* 字体 */
+  --mono:         'SF Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+  --sans:         'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  --display:      'Avenir Next', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  /* render-output.mjs injectCoverStyles 依赖 --brand / --brand-sub */
+  --brand:        var(--signal);
+  --brand-sub:    var(--signal-dim);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 容器 ────────────────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ══════════════════════════════════════════════════════
+   报头 Masthead
+   ══════════════════════════════════════════════════════ */
+header {
+  padding-top: 44px;
+  margin-bottom: 36px;
+}
+
+.masthead-top-rule {
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  margin-bottom: 14px;
+}
+
+.slogan {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-mid);
+  margin-bottom: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(40px, 7.5vw, 66px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  color: var(--ink);
+  line-height: 0.93;
+  margin-bottom: 9px;
+}
+
+.briefing-brand {
+  display: inline-flex;
+  margin: 0 0 18px;
+}
+
+.briefing-brand img {
+  display: block;
+  width: 138px;
+  height: auto;
+}
+
+.logo-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+.date-block { text-align: right; flex-shrink: 0; }
+
+.date-info {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.vol-info {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+.masthead-bottom-rule {
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════
+   导语 Intro
+   ══════════════════════════════════════════════════════ */
+.intro-box {
+  padding: 26px 30px;
+  border-left: 3px solid var(--amber);
+  background: var(--amber-light);
+  border-radius: 0 14px 14px 0;
+  margin: 32px 0 40px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+}
+
+.reader-greeting-line {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.reader-greeting-line strong {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.intro-copy > :first-child { margin-top: 0; }
+.intro-copy > :last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   趋势卡 Trend card   (.trend-card 由 generateTrend() 生成)
+   ══════════════════════════════════════════════════════ */
+.trend-card {
+  border: 1.5px solid var(--amber);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(193, 122, 46, .07) 0%, rgba(193, 122, 46, .02) 100%);
+  padding: 28px 30px;
+  margin-bottom: 48px;
+}
+
+.trend-card h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.22;
+  margin-bottom: 16px;
+}
+
+.trend-card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.84;
+  margin-bottom: 14px;
+}
+.trend-card p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════════════════
+   分区标签 Section tag
+   HTML 结构见模板 body — 使用 spans 分色
+   ══════════════════════════════════════════════════════ */
+.section-tag {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 26px;
+  gap: 0;
+  line-height: 1;
+}
+
+.st-num {
+  font-family: var(--display);
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--amber);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-divider {
+  width: 1px;
+  height: 34px;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.st-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.st-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  line-height: 1;
+}
+
+.st-zh {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.st-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-mid);
+  margin-left: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   主卡片 .card   (section_1 全球要闻，大卡)
+   由 buildCard(item, isMini=false) 生成
+   ══════════════════════════════════════════════════════ */
+.card {
+  border: 1px solid var(--border-mid);
+  border-radius: 18px;
+  padding: 26px 28px 22px;
+  margin-bottom: 22px;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(26, 58, 42, .05), 0 4px 18px rgba(26, 58, 42, .04);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3.2vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+
+.card > p { font-size: 15px; color: var(--ink-2); line-height: 1.80; }
+
+/* ── 图片：保留信息完整，使用 contain ───────────────── */
+/* 高特异度覆盖 injectCoverStyles 注入的 object-fit: cover */
+.card .item-image img,
+.mini-card .item-image img,
+.prediction-box .item-image img,
+.tool-card .item-image img {
+  object-fit: contain !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   小卡片 .mini-card   (section_2/3 模型动态/技术深度)
+   由 buildCard(item, isMini=true) 生成
+   ══════════════════════════════════════════════════════ */
+.mini-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background: #fff;
+  box-shadow: 0 1px 8px rgba(26, 58, 42, .04);
+}
+
+.mini-card h3 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mini-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ── 两列网格 (section_2 / section_3) ──────────────── */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ══════════════════════════════════════════════════════
+   Janet 锐评 .critique
+   由 buildCard() 内嵌生成
+   ══════════════════════════════════════════════════════ */
+.critique {
+  margin-top: 18px;
+  padding: 13px 16px;
+  background: var(--signal-dim);
+  border-left: 3px solid var(--signal);
+  border-radius: 0 10px 10px 0;
+}
+
+.critique b {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  display: block;
+  margin-bottom: 7px;
+}
+
+.critique span {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-2);
+  line-height: 1.72;
+}
+
+/* ══════════════════════════════════════════════════════
+   投资预测 .prediction-box   (section_4)
+   由 generateInvestment() 生成
+   ══════════════════════════════════════════════════════ */
+.prediction-box {
+  background: var(--green);
+  color: #fff;
+  padding: 32px;
+  border-radius: 20px;
+}
+
+.prediction-box h3 {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.prediction-box > p {
+  color: rgba(255, 255, 255, .82);
+  font-size: 15px;
+  line-height: 1.80;
+  margin-bottom: 14px;
+}
+
+/* 深色背景内的锐评 */
+.prediction-box .critique {
+  background: rgba(24, 226, 153, .12);
+  border-left-color: var(--signal);
+}
+.prediction-box .critique b  { color: var(--signal); }
+.prediction-box .critique span { color: rgba(255, 255, 255, .88); }
+
+/* ══════════════════════════════════════════════════════
+   工具箱 .tools-grid + .tool-card   (section_5)
+   由 generateTools() 生成
+   ══════════════════════════════════════════════════════ */
+.tools-grid {
+  background: var(--surface);
+  border: 1.5px dashed rgba(193, 122, 46, .5);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.tools-grid > h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 22px;
+}
+
+.tool-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(26, 58, 42, .04);
+}
+.tool-card:last-child { margin-bottom: 0; }
+
+.tool-card h2 {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.tool-card > p { font-size: 14px; color: var(--ink-2); line-height: 1.74; }
+
+/* ══════════════════════════════════════════════════════
+   页脚 Footer
+   ══════════════════════════════════════════════════════ */
+footer {
+  margin-top: 80px;
+  padding-top: 26px;
+  border-top: 2.5px solid var(--amber);
+  text-align: center;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer-brand {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--green);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+footer a { color: var(--green); }
+
+/* ══════════════════════════════════════════════════════
+   响应式
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .main-header    { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .date-block     { text-align: left; }
+  .grid-layout    { grid-template-columns: 1fr; }
+  .intro-box      { padding: 20px 22px; }
+  .trend-card     { padding: 22px; }
+  .prediction-box { padding: 24px 22px; }
+  .tools-grid     { padding: 22px; }
+  .card           { padding: 20px; }
+  .mini-card,
+  .tool-card      { padding: 18px; }
+  .st-num         { font-size: 36px; }
+  .section-tag    { margin-top: 48px; }
+}
+
+@media (max-width: 400px) {
+  .container  { padding: 0 16px 72px; }
+  header      { padding-top: 32px; }
+  .logo       { letter-spacing: -2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+  
+ .janet-cover { position: relative; width: 100%; aspect-ratio: 21 / 9; margin: 0 0 34px; overflow: hidden; border: 1px solid rgba(0,0,0,0.12); background: #050706; }
+ .janet-cover-img { width: 100%; height: 100%; display: block; object-fit: cover; filter: contrast(1.05) saturate(0.9); }
+ .janet-cover-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 44px); color: #fff; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.68) 100%); }
+ .janet-cover-meta { font-family: var(--mono); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: var(--brand); margin-bottom: 10px; text-transform: uppercase; }
+ .janet-cover h1 { margin: 0; max-width: 720px; color: #fff !important; font-size: clamp(30px, 6vw, 58px); line-height: 0.98; font-weight: 950; letter-spacing: 0; }
+ .janet-cover p { margin: 12px 0 0; max-width: 620px; color: rgba(255,255,255,0.88); font-size: clamp(14px, 2.2vw, 18px); font-weight: 650; }
+ .item-image { position: relative; margin: 0 0 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; overflow: hidden; background: #050706; }
+ .item-image img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+ .mini-card .item-image img { max-height: 170px; }
+ .prediction-box .item-image { border-color: rgba(255,255,255,0.12); }
+ .item-image figcaption { position: absolute; right: 10px; bottom: 10px; max-width: calc(100% - 20px); padding: 5px 8px; border-radius: 999px; background: rgba(0,0,0,0.58); color: rgba(255,255,255,0.72); font-size: 10px; line-height: 1; }
+ .item-meta { font-family: var(--mono); font-size: 12px; color: #666; margin: 0 0 12px; }
+ .item-meta a { color: var(--brand); text-decoration: none; font-weight: 700; }
+ .item-meta.inverted { color: rgba(255,255,255,0.62); }
+ @media (max-width: 640px) { .janet-cover { aspect-ratio: 16 / 9; } .janet-cover-overlay { padding: 20px; } }
+
+ </style>
+  <link rel="stylesheet" href="../../styles/brand-system.css?v=brand-20260728-2">
+  <link rel="stylesheet" href="../../styles/experiment-editorial.css?v=experiment-wave-17">
+  <link rel="stylesheet" href="../../styles/material-system-v4.css?v=poster-v4-20260818b">
+  <link rel="stylesheet" href="../../styles/site-audio-v4.css?v=poster-v4-20260818b">
+  <link rel="stylesheet" href="../../styles/potato-center-v4.css?v=poster-v4-20260818b">
+</head>
+<body class="briefing-output-page" data-audio-policy="ambient" data-material-scene="editorial">
+  <div class="potato-center" data-potato-center>
+    <button class="potato-half potato-user-trigger" type="button" aria-label="打开个人中心" aria-expanded="false" data-potato-user-trigger>
+      <span class="potato-user-label" data-potato-user-label data-loading="true">登</span>
+    </button>
+    <button class="potato-half potato-menu-trigger" type="button" aria-label="打开站点菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-potato-menu-trigger>
+      <span class="potato-menu-icon">☰</span>
+    </button>
+  </div>
+  <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <a href="../../index.html">首页</a>
+    <a href="../../news.html">Janet 快车箱</a>
+    <a href="../../portfolio.html">作品库</a>
+    <a href="../../index.html#about">关于 Janet</a>
+    <a href="../../index.html#contact">联系</a>
+  </div>
+  <div class="container">
+
+    <!-- ══ 报头 ══════════════════════════════════════════ -->
+    <header>
+      <div class="masthead-top-rule"></div>
+      <div class="slogan">中国创作者视角 · 全球 AI 前沿 · 每日信号过滤</div>
+      <div class="main-header">
+        <div>
+          <a class="briefing-brand" href="../../index.html" aria-label="返回 Janet 首页">
+            <img src="../../assets/icons/logo-lockup-horizontal.svg" alt="Janet">
+          </a>
+          <span class="logo">Janet 快车箱</span>
+          <span class="logo-sub">AI Daily Briefing</span>
+        </div>
+        <div class="date-block">
+          <div class="date-info">2026-11-18</div>
+          <div class="vol-info">VOL 414</div>
+        </div>
+      </div>
+      <div class="masthead-bottom-rule"></div>
+    </header>
+
+ <section class="janet-cover" data-janet-cover="true">
+  <img src="cover.png" alt="漏洞报告，这次带着补丁" class="janet-cover-img">
+  <div class="janet-cover-overlay">
+   <div class="janet-cover-meta">2026-11-18 // VOL_414</div>
+   <h1>漏洞报告，这次带着补丁</h1>
+   <p>99份核验报告背后，还有研究人员与维护者的逐项工作</p>
+  </div>
+ </section>
+
+
+    <!-- 封面图由 render-output.mjs 在 </header> 后注入 -->
+    <section data-briefing-audio data-content-url="content.json" aria-label="本期晨报语音播报"></section>
+
+    <!-- ══ 导语 ══════════════════════════════════════════ -->
+    <div class="intro-box">
+      <p class="reader-greeting-line"><strong data-reader-greeting>读者</strong>，早。</p>
+      <div class="intro-copy">Gemini任务模式免费扩至六个国家，GPT-6.2与微软新编码模型同日登场。另一边，GitHub公开了一次更耐心的实验：数千个疑似漏洞先经筛选和人工复核，最后交到维护者手里的99份报告，都带着修复建议。本期也读一项出院摘要研究，并拆开融资总额、季度收入和上市利润率的不同口径。<br><br>本期包括 5 条全球要闻、4 条模型动态、4 条技术深度，以及投资视角和工具箱推荐。<br><br>保持好奇，保持判断。</div>
+    </div>
+
+    <!-- ══ 今日趋势 ════════════════════════════════════════ -->
+    <div class="trend-card">
+  <h2>今日趋势</h2>
+  <p>GitHub这次没有把数千个疑似漏洞直接扔给开源项目。AI先筛，七名研究人员再逐项检查，维护者收到99份私密报告与修复建议；截至11月15日，55项已修，14项进入发行版。这是17日新公开的试点结果，扫描本身使用较早的MAI Cyber模型。数字之间的距离，记录的是人做了多少工作。</p>
+  <p>其余变化各有自己的尺度。Gemini扩大免费任务入口，跨设备协议延长会话的寿命，医院研究比较的是医生愿不愿意签署文书。模型评测、临床效果和企业收入，不能互相代替作证。本期把新发布与新分析分开说明，也把转换模型、促销价格和作者自报留在原来的语境里。</p>
+</div>
+
+    <!-- ══ 01 全球要闻 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">01</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Key Intelligence</span>
+        <span class="st-zh">全球要闻</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="top-stories"><div class="card">
+  <figure class="item-image">
+    <img src="images/google.png" alt="Gemini任务模式向六国开放免费版" loading="lazy" decoding="async">
+    <figcaption>Google官方博客</figcaption>
+  </figure>
+  <h2>Gemini任务模式向六国开放免费版</h2>
+  <p class="item-meta">来源: Google官方博客 · 2026-11-18 · <a href="https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Google于17日宣布，Gemini任务模式开始向美国、日本、韩国、加拿大、澳大利亚和印度的用户免费推送，进阶功能先从美国展开，使用的是此前已公布的Gemini 4 Hydrogen。公司展示了致电预约、分析账单、购物和日历处理等场景：购买前按设计需要确认或预授权，也可预设硬性消费上限；部分网站仍可能交还页面让用户完成最后一步。任务在专属、硬件隔离且不与其他用户共享的虚拟机里执行。短信入口须使用符合条件的美国运营商号码，电话功能暂不支持美国五个州，不能把六国免费开放理解为所有功能同步可用。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>预约电话终于不用自己听等待音乐，这种帮助很具体。可是购物车加一盒麦片、替人刷卡买下商品、预约上门服务，承担的后果各不相同；同一个任务开关装不下所有授权。免费入口能带来更多第一次尝试，之后能否常用，还取决于失败时怎样交还页面，以及人在何处仍能接住事情。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/claude.png" alt="ClaudeCode加确认并保护续接记录" loading="lazy" decoding="async">
+    <figcaption>Anthropic官方GitHub Release</figcaption>
+  </figure>
+  <h2>ClaudeCode加确认并保护续接记录</h2>
+  <p class="item-meta">来源: Anthropic官方GitHub Release · 2026-11-18 · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.327" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Claude Code 2.1.327于17日23:17 UTC发布。安装GitHub应用、进而修改仓库前新增确认；命令行可从标准输入读取MCP服务配置，减少令牌进入命令参数的机会，这个入口不适用于Claude Code会话内部。新版还修复Remote Control在工作树模式停服时删除运行中会话所需忽略文件的问题，并处理多种崩溃、停止和恢复后丢失消息的情况。以上来自官方发行说明，未据此宣称所有恢复问题都已消失。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>一次暂停不该把工作现场清空。保护被忽略文件、补回续接消息，修的都是下次打开时还找不找得到东西；这种改动少有演示效果，却直接影响人敢不敢中途离开。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/langfuse.png" alt="Langfuse新版本加入开发者权限预设" loading="lazy" decoding="async">
+    <figcaption>Langfuse官方GitHub Release</figcaption>
+  </figure>
+  <h2>Langfuse新版本加入开发者权限预设</h2>
+  <p class="item-meta">来源: Langfuse官方GitHub Release · 2026-11-18 · <a href="https://github.com/langfuse/langfuse/releases/tag/v4.82.0" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Langfuse 4.82.0于17日14:28 UTC发布，API密钥新增Developer预设，并将Ingestion命名改为Application；原生接入会统一处理提供方用量及传入成本，审计日志改从ClickHouse读取。发行说明也列出GitHub Enterprise单点登录配置中的SSRF修复，以及遇到提供方429后暂停相应LLM连接、而不在当次调用中反复重试的改动。旧v3入口另有截止开关和迁移提示，并不等于所有部署当天立即停用。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>收到429还继续原地猛试，可能把一次限流拖成排队拥堵。暂停连接是小改动，但它承认了服务端已经说“等一下”；可观测工具自己也得学会停下来。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/litellm.png" alt="LiteLLM新补丁管住停流后的生成" loading="lazy" decoding="async">
+    <figcaption>LiteLLM官方GitHub Release</figcaption>
+  </figure>
+  <h2>LiteLLM新补丁管住停流后的生成</h2>
+  <p class="item-meta">来源: LiteLLM官方GitHub Release · 2026-11-18 · <a href="https://github.com/BerriAI/litellm/releases/tag/v1.108.11" target="_blank" rel="noopener">原文链接</a></p>
+  <p>LiteLLM在17日22:29 UTC发布1.108.11长期支持补丁。官方列出一项Bedrock修复：通过Messages接口中断Invoke流后，上游仍可能继续生成并计费；新版处理这一情况，也修复系统和助手消息中的guarded_text片段被丢弃而未进入护栏检查的问题。其他改动包括Gemini历史工具参数为空或截断时的错误处理，以及Azure上向DeepSeek V4 Flash、Pro发送reasoning_effort导致400响应的兼容问题。这是网关修复，不是上述模型同日发布。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>用户按下停止，屏幕静下来，账单却可能还在走。这个补丁提醒我们，界面的结束与服务端的结束是两件事。取消信号走完最后一段路，才算一次完整的停止。</span>
+  </div>
+</div>
+
+<div class="card">
+  <figure class="item-image">
+    <img src="images/transparency.png" alt="微软联同四十余机构推AI透明倡议" loading="lazy" decoding="async">
+    <figcaption>微软公司原始新闻稿</figcaption>
+  </figure>
+  <h2>微软联同四十余机构推AI透明倡议</h2>
+  <p class="item-meta">来源: 微软公司原始新闻稿 · 2026-11-18 · <a href="https://www.prnewswire.com/news-releases/microsoft-and-organizations-across-industries-launch-ai-transparency-initiative-to-strengthen-enterprise-trust-in-ai-models-and-agents-302942660.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>微软于17日13:30美东时间宣布AI Transparency Initiative，与包括Accenture、Adobe、KPMG、Mastercard和Volvo Cars在内的四十余家机构协作。倡议拟推动跨模型、跨提供方的开放标准，并将相关证据接入Microsoft AI、Foundry和Copilot。它特别区分模型自述、运行时记录和独立身份或策略系统的证据，目标是让组织能重建代理获准做什么、访问什么和实际做了什么。目前宣布的是协作方向及产品整合计划，不能当作统一标准已经定稿或所有工具已经支持。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>代理说自己只读过一个文件，和文件系统记录它读过一个文件，证据分量不同。四十余个名字说明这件事有人一起做，最终有没有用，还得看换一家模型后记录能否继续对上。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 02 模型动态 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">02</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Model Updates</span>
+        <span class="st-zh">模型动态</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/gpt62.png" alt="GPT6.2双模型上线专业工作场景" loading="lazy" decoding="async">
+    <figcaption>OpenAI原始发布</figcaption>
+  </figure>
+  <h3>GPT6.2双模型上线专业工作场景</h3>
+  <p class="item-meta">来源: OpenAI原始发布 · 2026-11-18 · <a href="https://openai.com/index/introducing-gpt-6-2-astra-sol/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>OpenAI于17日发布GPT-6.2 Astra与Sol，分别定位高难度项目和日常工作，进入ChatGPT Work、Codex及API。官方称Astra更擅长按照模板制作文档、表格和演示稿，并提升代码与电脑操作能力。Astra API每百万令牌输入8美元、缓存输入0.40美元、输出40美元；输入与输出单价较GPT-6 Astra下降20%，缓存输入下降60%，Sol沿用6.1 Sol单价。这些价格变化不能直接等同每个任务同比例省钱。公司同时报告，两款模型在两项测试中更容易漏报缺失文件等阻塞，已在Codex加入缓解指令；企业及教育工作区的可用性仍取决于管理员启用。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>能照着模板交出一份可用文件，比再加一段漂亮解释更接近专业工作。但缺了源文件却不说，会让外观完整的交付物更难判断。新版的能力和这项已披露的短处需要一起读：成品越像那么回事，使用者越需要知道哪些材料没有拿到、哪些步骤没有完成，尤其不能把安静当成没有阻塞。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/mai-code.jpg" alt="微软推出双档编码模型，价格含促销" loading="lazy" decoding="async">
+    <figcaption>Microsoft AI原始发布</figcaption>
+  </figure>
+  <h3>微软推出双档编码模型，价格含促销</h3>
+  <p class="item-meta">来源: Microsoft AI原始发布 · 2026-11-18 · <a href="https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>微软于17日推出MAI Code 2与Code 2 Flash。前者面向多文件实现、调试和仓库级编码，后者侧重解释、局部修改与常规修复；两者进入GitHub Copilot，Flash另在Foundry提供有限访问预览。微软自报，Code 2在四项编码基准的平均表现约为GPT-6.1 Sol的98%，成本约40%。脚注明确其成本采用五折促销价，比较还受推理强度、测试平台和任务配置影响，不能当作永久价格或全部工作负载的结论。其他分发渠道被列为后续计划。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>“四成成本”很好记，脚注里的“五折促销”更容易被忘掉。采购预算看的是长期账单，今天的评测图则用了特定价格。促销有价值，但它与模型效率不是同一种优势。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/wolof.png" alt="沃洛夫语微调模型新增GGUF转换" loading="lazy" decoding="async">
+    <figcaption>转换仓库及Orange原始模型卡</figcaption>
+  </figure>
+  <h3>沃洛夫语微调模型新增GGUF转换</h3>
+  <p class="item-meta">来源: 转换仓库及Orange原始模型卡 · 2026-11-18 · <a href="https://huggingface.co/mradermacher/Wolof-Qwen3-1.7B-v2610-GGUF" target="_blank" rel="noopener">原文链接</a></p>
+  <p>mradermacher于17日23:23 UTC建立Wolof-Qwen3-1.7B-v2610的GGUF仓库，随后在窗口内上传转换文件。这是独立量化转换版，底层是Orange基于Qwen3-1.7B做的沃洛夫语SFT与DPO适配，不是Qwen官方新基础模型。模型卡同时保留法语、英语定位，并说明部分通用能力会下降、长上下文测试有限，当前未验证无人监督的代理用途。仓库提供约1.2GB的Q4_K_M文件；该文件大小不是完整运行内存需求。许可为CC BY-NC-SA 4.0，包含非商业限制。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>小语种模型的价值常在大榜单看不到的地方：当地用户能不能用自己的语言问清一件事。GGUF降低了试跑门槛，非商业许可却仍然在；部署方便与业务可用不能画等号。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/euro.png" alt="EuroLLM基础模型加入GGUF格式" loading="lazy" decoding="async">
+    <figcaption>转换仓库及utter-project模型卡</figcaption>
+  </figure>
+  <h3>EuroLLM基础模型加入GGUF格式</h3>
+  <p class="item-meta">来源: 转换仓库及utter-project模型卡 · 2026-11-18 · <a href="https://huggingface.co/mradermacher/EuroLLM1.5-9B-Base-GGUF" target="_blank" rel="noopener">原文链接</a></p>
+  <p>EuroLLM1.5-9B-Base的独立GGUF转换仓库于17日11:59 UTC建立，窗口内可核对多次文件上传。它来自utter-project的9B基础模型，提供不同量化档位，例如Q4_K_M文件标注约5.7GB；这是存储大小，实际内存还要计入上下文和运行开销。原始模型卡列出多种语言及Apache 2.0许可，同时强调当前评测结果仍属初步、详细配置待发布。这里的新事件是转换文件上线，不是训练团队当天重发模型，也不是已经调好对话格式的指令助手。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>基础模型被打成方便下载的格式，仍然是基础模型。它为继续训练和本地研究多开了一扇门，但不会因为文件名多了GGUF，就自动学会怎样和用户好好聊天。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 03 技术深度 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">03</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Tech Insights</span>
+        <span class="st-zh">技术深度</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="grid-layout"><div class="mini-card">
+  <figure class="item-image">
+    <img src="images/mdash.png" alt="GitHub安全试点给99份报告配补丁" loading="lazy" decoding="async">
+    <figcaption>GitHub与微软试点原始复盘</figcaption>
+  </figure>
+  <h3>GitHub安全试点给99份报告配补丁</h3>
+  <p class="item-meta">来源: GitHub与微软试点原始复盘 · 2026-11-18 · <a href="https://github.blog/open-source/maintainers/maintainers-dont-need-more-ai-bug-reports-they-need-fixes/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GitHub于17日新公开与微软的Codename MDASH试点结果，基础扫描和修复发生得更早。六个自愿参与的开源项目先由较早的MAI Cyber模型扫描，再经GitHub代理去重筛选，七名FORGE Lab研究人员逐项人工核验，最终私密提交99份带概念验证与修复建议的报告。截至15日，维护者已修复55项，其中14项进入发行版。研究人员每个项目约投入两天，维护者保留如何修、何时发的决定权。项目包括Caddy、Express、FastMCP、AutoGPT、ImageMagick和Netty；这是小样本试点，也不是刚发布的MAI Cyber 2的测试成绩。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>数千个发现变成99份报告，减少的那一大截也是工作成果。维护者接到的是可讨论的补丁，而非又一份待办清单，这才给修复留出了时间。55项已修与14项已发又隔着一段路；用户拿到修复，需要维护者审改、测试和安排发行，扫描器把问题标红以后，事情远没有结束。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/ahp.png" alt="GitHub公开跨设备会话协议的构建" loading="lazy" decoding="async">
+    <figcaption>GitHub工程团队原始文章</figcaption>
+  </figure>
+  <h3>GitHub公开跨设备会话协议的构建</h3>
+  <p class="item-meta">来源: GitHub工程团队原始文章 · 2026-11-18 · <a href="https://github.blog/engineering/engineering-principles/building-the-agent-host-protocol-for-sessions-that-continue-across-devices/" target="_blank" rel="noopener">原文链接</a></p>
+  <p>GitHub在17日工程文章中介绍Agent Host Protocol，解释代理会话怎样在编辑器、应用、手机与云端之间延续。协议以URI标识的通道组织能力，服务器负责状态裁决，客户端通过动作修改状态；重连时可重放排队动作，收到确认后再确定结果。VS Code用TypeScript实现主机，GitHub用Rust，两种实现帮助发现原先只在单一客户端成立的假设。核心包含根、会话和聊天通道，终端、MCP或遥测可扩展。本文是当天新技术复盘，协议和建设工作早已开始，不代表任意第三方客户端现在都已互通。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>从手机回到电脑，最怕看到两个各说各话的进度。AHP把服务器作为状态裁决者，处理的就是这类分歧；跨端连续感的背后，得由双方明确哪一步已经被确认。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/jama.png" alt="新研究用医生签字评估出院摘要" loading="lazy" decoding="async">
+    <figcaption>JAMA Network Open原始研究</figcaption>
+  </figure>
+  <h3>新研究用医生签字评估出院摘要</h3>
+  <p class="item-meta">来源: JAMA Network Open原始研究 · 2026-11-18 · <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2856756" target="_blank" rel="noopener">原文链接</a></p>
+  <p>JAMA Network Open于17日发表一项回顾性研究：12名医生对照伦敦五家医院的住院记录，评估1294份出院摘要，其中645份由GPT-4o mini生成、649份由临床人员撰写。主要终点是无需或仅需小幅修改时愿意签署的概率；调整后分别为92.2%和70.0%，差22.2个百分点，95%置信区间19.0至27.5，满足预设负5个百分点的非劣效界值。研究使用2022至2023年的历史住院资料，17日新发表，不是新模型发布。它没有前瞻评估床旁流程或患者结局；遗漏与幻觉仍存在，结论要求密切临床监督。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>医生愿意署名，是比“读起来像病历”更贴近使用的一道问题。这个研究还让评阅者回看完整住院记录，评价才有了依据。不过，能签一份摘要和病人回家后得到更好的照护，之间还有尚未测量的距离。文书可以先成为助手，患者结局仍需要在真实使用中另外回答。</span>
+  </div>
+</div>
+
+<div class="mini-card">
+  <figure class="item-image">
+    <img src="images/columbia.webp" alt="哥大教授用新分析拆解上市利润率" loading="lazy" decoding="async">
+    <figcaption>哥伦比亚商学院17日新分析</figcaption>
+  </figure>
+  <h3>哥大教授用新分析拆解上市利润率</h3>
+  <p class="item-meta">来源: 哥伦比亚商学院17日新分析 · 2026-11-18 · <a href="https://business.columbia.edu/insights/anthropic-ipo-investors-five-things-to-know" target="_blank" rel="noopener">原文链接</a></p>
+  <p>哥伦比亚商学院于17日刊出对两位教授的采访，重新分析Anthropic较早提交的上市材料，不能把旧申报当作当天首次IPO。会计教授Rajgopal指出，2026年上半年仅扣服务客户成本时毛利率为85%；计入训练和免费用户算力后约45%，再计全部研发约26%。这是教授按不同成本范围重算的分析，三者并非三个可以直接互换的法定毛利率。文章还指出，第三季度收入逾八成来自半年内发布的模型：迭代收入与持续研发支出需要放在一起理解。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>85%、45%、26%都能描述同一家公司，前提是把分母旁边的成本清单展开。模型隔几个月就得重做，研发就很难被当成一次性的远期投入；利润故事也会随这条边界改变。</span>
+  </div>
+</div>
+</div>
+
+    <!-- ══ 04 投资视角 ════════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">04</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Investment &amp; Business</span>
+        <span class="st-zh">投资与商业</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="prediction-box">
+  <h3>投资与商业</h3>
+
+  <figure class="item-image">
+    <img src="images/genesis.jpg" alt="Genesis融资5亿美元扩机器人部署" loading="lazy" decoding="async">
+    <figcaption>Genesis AI原始融资新闻稿</figcaption>
+  </figure>
+  <h3>Genesis融资5亿美元扩机器人部署</h3>
+  <p class="item-meta inverted">来源: Genesis AI原始融资新闻稿 · 2026-11-18 · <a href="https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Genesis AI于17日09:00美东时间宣布5亿美元A轮融资，投后估值35亿美元，由Premji Invest、Khosla Ventures和Eclipse共同领投。资金用于扩大数据采集与训练、推进灵巧操作、增加Eno生产部署和招聘。公司称最初面向制造、物流、实验室等工业环境，再考虑酒店、医疗与消费场景；这些是部署顺序与目标，不等于已在全部行业规模运行。新闻稿中关于人类水平操作和长期自主工作的能力描述属于公司及投资者自报，不能作为独立可靠性测试。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>五亿美元能买来更多试验和产能，却不能替机器人熬过每天的故障。先去制造、物流和实验室，也说明部署需要具体场地与任务；“通用”最终要由一班又一班的工作积累出来。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/dreamteam.png" alt="Dreamteam用新披露厘清融资轮次" loading="lazy" decoding="async">
+    <figcaption>Dreamteam17日公司原始披露</figcaption>
+  </figure>
+  <h3>Dreamteam用新披露厘清融资轮次</h3>
+  <p class="item-meta inverted">来源: Dreamteam17日公司原始披露 · 2026-11-18 · <a href="https://www.dreamteam.ai/blog/introducing-dreamteam" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Dreamteam于17日发布公司介绍，明确5300万美元是种子轮和A轮累计融资，由Together Fund与Accel领投、Premji Invest参与，不能写成单笔A轮。基础融资消息较早，今天采用的是公司新披露的轮次口径与产品细节。其AI原生CRM包括市场分析、交易跟进、销售管线和系统配置四个助手，共享来自电话、邮件与会议的客户信息。公司自报已有13国逾100家企业使用，并明确邮件发送需人批准、团队决定委托范围。这些采用数字及功能效果尚非独立测量。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>CRM最烦的常常是大家又要解释一次客户发生了什么。共享记忆确实对准了这个痛点，发送邮件保留人工批准也很实在。至于5300万美元，轮次写清楚，读者才能判断融资所处阶段。</span>
+  </div>
+  <figure class="item-image">
+    <img src="images/nvidia.png" alt="英伟达季度收入涨至1158亿美元" loading="lazy" decoding="async">
+    <figcaption>英伟达原始季度财报</figcaption>
+  </figure>
+  <h3>英伟达季度收入涨至1158亿美元</h3>
+  <p class="item-meta inverted">来源: 英伟达原始季度财报 · 2026-11-18 · <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027" target="_blank" rel="noopener">原文链接</a></p>
+  <p>英伟达于17日公布2027财年第三季度业绩，季度截至2026年10月25日：收入1158亿美元，环比增20%、同比增103%；数据中心收入1076亿美元，同比增110%。GAAP毛利率74.8%，GAAP净利润653亿美元。公司预计下一季度收入1300亿美元、上下浮动3%，并特别注明该季度多一周，指引未假设来自中国的数据中心计算收入。后两项是前瞻假设，不是已实现业绩；财年名称也不能误读成2027年日历季度。</p>
+  <div class="critique" style="background:rgba(255,255,255,0.1);">
+    <b>Janet 锐评：</b>
+    <span>1158亿美元是已经确认的季度收入，比订单口号更硬，但还不能替客户回答投资回报。下季多一周，也会影响环比比较；中国收入未计入则说明指引用了什么假设。读这种体量的财报，增长幅度之外，日期、确认口径和预计范围同样会改变我们对速度的理解。</span>
+  </div>
+</div>
+
+
+    <!-- ══ 05 创作者工具箱 ══════════════════════════════════ -->
+    <div class="section-tag">
+      <span class="st-num">05</span>
+      <span class="st-divider"></span>
+      <span class="st-labels">
+        <span class="st-en">Creator Toolbox</span>
+        <span class="st-zh">创作者工具箱</span>
+      </span>
+      <span class="st-rule"></span>
+    </div>
+    <div class="tools-grid">
+  <h3>今日工具箱</h3>
+
+<div class="tool-card">
+  <figure class="item-image">
+    <img src="images/windmill.png" alt="Windmill支持保存代理生成的代码" loading="lazy" decoding="async">
+    <figcaption>Windmill官方GitHub Release</figcaption>
+  </figure>
+  <h2>Windmill支持保存代理生成的代码</h2>
+  <p class="item-meta">来源: Windmill官方GitHub Release · 2026-11-18 · <a href="https://github.com/windmill-labs/windmill/releases/tag/v1.876.0" target="_blank" rel="noopener">原文链接</a></p>
+  <p>Windmill 1.876.0于17日12:12 UTC发布，新增让AI执行框架用代码解决任务后保存、复用代码的能力，同时可把当前轮用户消息固定在会话顶部。发行说明还列出保存触发器或定时任务时检查新Hub路径、按实际工作区判断会话编辑权限，以及保存清空后的变量值等修复。这里的复用是平台能力，不代表生成代码已经通过业务测试，也不意味着每个临时任务都适合自动转成长期定时作业。</p>
+  <div class="critique">
+    <b>Janet 锐评：</b>
+    <span>重复问同一个问题，往往只是为了再跑一次相同计算。留下能复用的代码可以少绕一圈；下一次输入变了，旧代码是否还适用，也会比一段聊天记录更容易检查。</span>
+  </div>
+</div>
+</div>
+
+
+    <div class="news-card-actions output-engagement engagement-triplet" aria-label="本期反馈">
+      <div class="news-reactions" data-edition-id="2026-11-18" data-edition-title="Janet 快车箱 2026-11-18" aria-label="本期有用反馈">
+        <button class="reaction-btn" type="button" data-reaction-type="like" aria-label="觉得有用">
+          <span class="engagement-symbol" aria-hidden="true">+</span><span>有用</span><span class="reaction-count" data-reaction-count>0</span>
+        </button>
+      </div>
+      <a class="comment-toggle-btn" href="#daily-comments">
+        <span class="engagement-symbol" aria-hidden="true">··</span><span>评论</span><span class="comment-count" data-comment-count data-edition-id="2026-11-18">0</span>
+      </a>
+      <div class="share-wrap">
+        <button class="share-btn" type="button" data-share-toggle aria-haspopup="menu" aria-expanded="false"><span class="engagement-symbol" aria-hidden="true">↗</span><span>转发</span></button>
+        <div class="share-menu" role="menu" hidden>
+          <button class="share-item" type="button" data-share-action="copy">复制链接</button>
+          <button class="share-item" type="button" data-share-action="x">转发到 X</button>
+          <button class="share-item" type="button" data-share-action="weibo">转发到微博</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="daily-comments" class="comments-section" data-edition-id="2026-11-18"></section>
+
+    <!-- ══ 页脚 ══════════════════════════════════════════ -->
+    <footer>
+      <span class="footer-brand">Janet 快车箱</span>
+      DATA SOURCES: Google官方博客, Anthropic官方GitHub Release, Langfuse官方GitHub Release, LiteLLM官方GitHub Release, 微软公司原始新闻稿, OpenAI原始发布, Microsoft AI原始发布, 转换仓库及Orange原始模型卡, 转换仓库及utter-project模型卡, GitHub与微软试点原始复盘, GitHub工程团队原始文章, JAMA Network Open原始研究, 哥伦比亚商学院17日新分析, Genesis AI原始融资新闻稿, Dreamteam17日公司原始披露, 英伟达原始季度财报, Windmill官方GitHub Release<br>
+      本报内容由 AI 辅助采编，经原文核验。Janet 独立出品，不构成投资建议。<br>
+      <a href="https://yaojingwen2002.github.io/janet-public-site/">janet-public-site</a> · © 2026 Janet Yao
+    </footer>
+
+  </div>
+  <script src="../../scripts/supabase-config.js"></script>
+  <script src="../../scripts/auth.js"></script>
+  <script src="../../scripts/reader-greeting.js"></script>
+  <script src="../../scripts/potato-center.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/comments.js"></script>
+  <script src="../../scripts/reactions.js"></script>
+  <script src="../../scripts/nav.js?v=potato-roll-20260617"></script>
+  <script src="../../scripts/site-audio.js?v=poster-v4-20260818b"></script>
+  <script src="../../scripts/briefing-audio.js?v=20261105" defer></script>
+  <script src="../../scripts/media-fallback-v4.js?v=poster-v4-20260818b"></script>
+  <script src="../../scripts/editorial-motion.js?v=experiment-wave-17"></script>
+  <script src="../../scripts/signal-cursor.js?v=experiment-wave-17"></script>
+  <script src="../../scripts/briefing-reading.js" defer></script>
+</body>
+</html>

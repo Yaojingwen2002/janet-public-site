@@ -1,8 +1,42 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-19T00:21:25.918Z",
-  "latest_edition_id": "2026-11-19",
+  "generated_at": "2026-11-20T00:44:29.567Z",
+  "latest_edition_id": "2026-11-20",
   "editions": [
+    {
+      "edition_id": "2026-11-20",
+      "date": "2026-11-20",
+      "title": "工具目录，按需展开",
+      "summary": "Google的新预览功能保留工具名称与描述，只在需要时加载参数定义，节省空间的同时也留下实际计费条件。OpenAI的内部运维流程则把告警、诊断、人工审查与部署后检查串在同一项任务里。两者分别回答“做事前带多少材料”和“做完以后凭什么确认”，没有一份更短的提示能自动替代后面的验证。 模型栏的四个下载入口，是当天新增的独立GGUF转换。文档解析的高分来自完整流水线，重排结果依赖初次检索，巴斯克语专家模型仍要存下全部权重，小工具模型也有写不完整的测试样例。与此同时，三笔新资金分别购买真实实验、真实工作数据和真实订单履约的",
+      "edition_type": "codex_briefing",
+      "signal_count": 17,
+      "edition_items_count": 17,
+      "homepage_items_count": 5,
+      "url": "data/2026-11-20/output.html",
+      "content_url": "data/2026-11-20/content.json",
+      "top_sources": [
+        "Google官方博客",
+        "Anthropic官方GitHub Release",
+        "Langfuse官方GitHub Release",
+        "LiteLLM官方GitHub Release",
+        "GitHub官方博客（当天新介绍）",
+        "Hugging Face独立转换与原作者模型卡",
+        "Hugging Face独立转换与Rush Labs模型卡",
+        "Hugging Face独立转换与HiTZ模型卡"
+      ],
+      "top_categories": [
+        "news",
+        "models",
+        "insights",
+        "insights2",
+        "tools"
+      ],
+      "lead_story": {
+        "title": "Gemini工具检索按需加载参数定义",
+        "source": "Google官方博客",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/"
+      }
+    },
     {
       "edition_id": "2026-11-19",
       "date": "2026-11-19",
@@ -3997,9 +4031,23 @@
     }
   ],
   "sources": [
+    "Google官方博客",
+    "Anthropic官方GitHub Release",
+    "Langfuse官方GitHub Release",
+    "LiteLLM官方GitHub Release",
+    "GitHub官方博客（当天新介绍）",
+    "Hugging Face独立转换与原作者模型卡",
+    "Hugging Face独立转换与Rush Labs模型卡",
+    "Hugging Face独立转换与HiTZ模型卡",
+    "Hugging Face独立微调与转换模型卡",
+    "OpenAI官方工程文章",
+    "arXiv原始论文（首次公告19日）",
+    "MegaRobo发行方公告 / PR Newswire",
+    "Humyn Labs发行方公告 / PR Newswire",
+    "Everful发行方公告 / PR Newswire",
+    "Windmill官方GitHub Release",
     "Google原始公告",
     "n8n官方GitHub Release",
-    "LiteLLM官方GitHub Release",
     "IBM Research与Confluent作者原文",
     "OpenAI工程团队原文",
     "Google DeepMind原始发布",
@@ -4013,10 +4061,6 @@
     "BrightAI原始新闻稿（Business Wire）",
     "Botsync创始人原始融资公告",
     "Bajaj Finserv原始投资披露及同日新闻稿分发",
-    "Windmill官方GitHub Release",
-    "Google官方博客",
-    "Anthropic官方GitHub Release",
-    "Langfuse官方GitHub Release",
     "微软公司原始新闻稿",
     "OpenAI原始发布",
     "Microsoft AI原始发布",

@@ -1,69 +1,69 @@
 {
   "schema_version": 1,
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-22T06:35:01.682Z",
+  "generated_at": "2026-11-23T04:02:03.002Z",
   "window": {
-    "start": "2026-11-21T00:01:00.000Z",
-    "end": "2026-11-22T00:00:00.000Z"
+    "start": "2026-11-22T00:01:00.000Z",
+    "end": "2026-11-23T00:00:00.000Z"
   },
   "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
   "source_results": [
     {
-      "id": "openai",
+      "id": "github-blog",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-22T06:35:00.596Z"
+      "checked_at": "2026-11-23T04:02:01.838Z"
+    },
+    {
+      "id": "openai",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-23T04:02:01.877Z"
     },
     {
       "id": "hf-blog",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-22T06:35:00.675Z"
+      "checked_at": "2026-11-23T04:02:01.903Z"
     },
     {
       "id": "google",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-22T06:35:00.713Z"
-    },
-    {
-      "id": "github-blog",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-22T06:35:00.730Z"
+      "checked_at": "2026-11-23T04:02:01.985Z"
     },
     {
       "id": "langfuse",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-22T06:35:01.292Z"
+      "checked_at": "2026-11-23T04:02:02.497Z"
     },
     {
-      "id": "claude-code",
+      "id": "transformers",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-22T06:35:01.294Z"
+      "checked_at": "2026-11-23T04:02:02.507Z"
     },
     {
       "id": "ollama",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-22T06:35:01.308Z"
+      "checked_at": "2026-11-23T04:02:02.517Z"
     },
     {
-      "id": "transformers",
+      "id": "claude-code",
       "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-22T06:35:01.339Z"
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-23T04:02:02.667Z"
     },
     {
       "id": "anthropic",
@@ -138,87 +138,55 @@
     {
       "id": "litellm",
       "status": "ok",
-      "raw_count": 2,
-      "count": 2,
-      "checked_at": "2026-11-22T06:35:01.668Z"
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-23T04:02:02.880Z"
     },
     {
       "id": "n8n",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-22T06:35:01.674Z"
+      "checked_at": "2026-11-23T04:02:02.965Z"
     },
     {
       "id": "windmill",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-22T06:35:01.682Z"
+      "checked_at": "2026-11-23T04:02:03.002Z"
     }
   ],
   "candidates": [
     {
-      "id": "62e6753ef6bf3fd4",
-      "event_key": "BerriAI/litellm@v1.108.15",
-      "title": "LiteLLM v1.108.15",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.108.15",
-      "published_at": "2026-11-21T21:35:07.000Z",
-      "published_raw": "2026-11-21T21:35:07Z",
-      "time_status": "in_window",
-      "source_id": "litellm",
-      "source": "LiteLLM",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "> [!TIP] > The `lts` image tag always points to the latest LTS release. Pull `ghcr.io/berriai/litellm:lts` to stay on the newest LTS patch ## Verify this release ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.108.15 ``` Same command for `litellm-database`, `litellm-non_root` and the `docker.io/litellm/*` images ## What's new in 1.108.15 (LTS) 9 PRs. 1 added, 2 fixed. 1 needs action ### Action required - **Other providers:** Set `api_key` or the provider's key env var on keyless JSON-configured deployment",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "8f2c065471f952b4",
-      "event_key": "BerriAI/litellm@v1.112.0-dev.2",
-      "title": "LiteLLM v1.112.0-dev.2",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.112.0-dev.2",
-      "published_at": "2026-11-21T20:13:44.000Z",
-      "published_raw": "2026-11-21T20:13:44Z",
-      "time_status": "in_window",
-      "source_id": "litellm",
-      "source": "LiteLLM",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## Verify Docker Image Signature ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.112.0-dev.2 ``` ## What's Changed * feat(proxy): let operators omit x-litellm-* response headers by @kenneth-berri in https://github.com/BerriAI/litellm/pull/52949 * feat(apps): link overall app budgets to shared presets by @tin-berri in https://github.com/BerriAI/litellm/pull/52946 * fix(responses): preserve deferred tool references on Anthropic routes by @joshua-berri in https://github.com/BerriAI/litellm/pull/52977 * fix(c",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "4bdb6d39f683fd87",
-      "event_key": "huggingface/transformers@v5.24.0",
-      "title": "Transformers v5.24.0",
-      "url": "https://github.com/huggingface/transformers/releases/tag/v5.24.0",
-      "published_at": "2026-11-21T12:28:26.000Z",
-      "published_raw": "2026-11-21T12:28:26Z",
-      "time_status": "in_window",
-      "source_id": "transformers",
-      "source": "Transformers",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "# Release v5.24.0 ## New Model additions ### Inkling 2 Mini Inkling 2 Mini is a multimodal model from Thinking Machines Lab that accepts text and image inputs and generates text outputs. It is a smaller sibling of Inkling 2 Small, added in v5.23.0. It has 24 decoder layers instead of 48, and compensates with a looping mechanism in which layers 6 to 17 run three times. A learned message-passing mechanism mixes the residuals of the previous pass into the attention and mixture-of-experts inputs of each loop layer. The decoder has a hidden size of 2304 and routes each token to 8 of 128 experts. The image encoder, tokenizer and processor are the same as Inkling 2 Small's. A research checkpoint ([",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "be7ed725cfdb96b9",
-      "event_key": "windmill-labs/windmill@1.881.1",
-      "title": "Windmill v1.881.1",
-      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.881.1",
-      "published_at": "2026-11-21T08:14:32.000Z",
-      "published_raw": "2026-11-21T08:14:32Z",
+      "id": "7ee4d0e7898b84d7",
+      "event_key": "windmill-labs/windmill@1.882.0",
+      "title": "Windmill v1.882.0",
+      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.882.0",
+      "published_at": "2026-11-22T15:14:04.000Z",
+      "published_raw": "2026-11-22T15:14:04Z",
       "time_status": "in_window",
       "source_id": "windmill",
       "source": "Windmill",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## [1.881.1](https://github.com/windmill-labs/windmill/compare/v1.881.0...v1.881.1) (2026-11-21) ### Bug Fixes * pin oracle instantclient stage to amd64 in full ee image ([dc84446](https://github.com/windmill-labs/windmill/commit/dc84446e479633f7bd9b069a859e14bb6aece11a)) --- This PR was generated with [Release Please](https://github.com/googleapis/release-please). See [documentation](https://github.com/googleapis/release-please#release-please).",
+      "summary": "## [1.882.0](https://github.com/windmill-labs/windmill/compare/v1.881.1...v1.882.0) (2026-11-22) ### Features * add an instance setting for raw app versions to keep ([#12577](https://github.com/windmill-labs/windmill/issues/12577)) ([4e5fc30](https://github.com/windmill-labs/windmill/commit/4e5fc300f3fbfd26c1f7ec1a55e11255e225e7b6))",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "1a10f1676d46fc01",
+      "event_key": "https://openai.com/index/perplexity-and-intelligence",
+      "title": "Perplexity and Intelligence",
+      "url": "https://openai.com/index/perplexity-and-intelligence",
+      "published_at": "2026-11-22T00:00:00.000Z",
+      "published_raw": "Sun, 22 Nov 2026 00:00:00 GMT",
+      "time_status": "needs_time_review",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluating emerging capabilities.",
       "review_status": "unreviewed",
       "also_seen_in": []
     }

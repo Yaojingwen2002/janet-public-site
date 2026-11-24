@@ -1,69 +1,69 @@
 {
   "schema_version": 1,
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-23T07:24:39.533Z",
+  "generated_at": "2026-11-24T07:07:37.420Z",
   "window": {
-    "start": "2026-11-22T00:01:00.000Z",
-    "end": "2026-11-23T00:00:00.000Z"
+    "start": "2026-11-23T00:01:00.000Z",
+    "end": "2026-11-24T00:00:00.000Z"
   },
   "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
   "source_results": [
-    {
-      "id": "openai",
-      "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-23T07:24:38.495Z"
-    },
-    {
-      "id": "hf-blog",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-23T07:24:38.502Z"
-    },
     {
       "id": "github-blog",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-23T07:24:38.513Z"
+      "checked_at": "2026-11-24T07:07:36.487Z"
+    },
+    {
+      "id": "openai",
+      "status": "ok",
+      "raw_count": 3,
+      "count": 3,
+      "checked_at": "2026-11-24T07:07:36.631Z"
+    },
+    {
+      "id": "hf-blog",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-24T07:07:36.636Z"
     },
     {
       "id": "google",
       "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-23T07:24:38.578Z"
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-24T07:07:36.743Z"
     },
     {
       "id": "transformers",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-23T07:24:39.087Z"
-    },
-    {
-      "id": "langfuse",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-23T07:24:39.104Z"
+      "checked_at": "2026-11-24T07:07:37.058Z"
     },
     {
       "id": "ollama",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-23T07:24:39.148Z"
+      "checked_at": "2026-11-24T07:07:37.067Z"
+    },
+    {
+      "id": "langfuse",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-24T07:07:37.088Z"
     },
     {
       "id": "claude-code",
       "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-23T07:24:39.167Z"
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-24T07:07:37.112Z"
     },
     {
       "id": "anthropic",
@@ -138,55 +138,215 @@
     {
       "id": "n8n",
       "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-23T07:24:39.461Z"
-    },
-    {
-      "id": "litellm",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-23T07:24:39.484Z"
+      "raw_count": 6,
+      "count": 4,
+      "checked_at": "2026-11-24T07:07:37.385Z"
     },
     {
       "id": "windmill",
       "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-24T07:07:37.414Z"
+    },
+    {
+      "id": "litellm",
+      "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-23T07:24:39.533Z"
+      "checked_at": "2026-11-24T07:07:37.420Z"
     }
   ],
   "candidates": [
     {
-      "id": "7ee4d0e7898b84d7",
-      "event_key": "windmill-labs/windmill@1.882.0",
-      "title": "Windmill v1.882.0",
-      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.882.0",
-      "published_at": "2026-11-22T15:14:04.000Z",
-      "published_raw": "2026-11-22T15:14:04Z",
+      "id": "c56a9b81f11e6602",
+      "event_key": "BerriAI/litellm@v1.108.16",
+      "title": "LiteLLM v1.108.16",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.108.16",
+      "published_at": "2026-11-23T22:12:26.000Z",
+      "published_raw": "2026-11-23T22:12:26Z",
       "time_status": "in_window",
-      "source_id": "windmill",
-      "source": "Windmill",
+      "source_id": "litellm",
+      "source": "LiteLLM",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## [1.882.0](https://github.com/windmill-labs/windmill/compare/v1.881.1...v1.882.0) (2026-11-22) ### Features * add an instance setting for raw app versions to keep ([#12577](https://github.com/windmill-labs/windmill/issues/12577)) ([4e5fc30](https://github.com/windmill-labs/windmill/commit/4e5fc300f3fbfd26c1f7ec1a55e11255e225e7b6))",
+      "summary": "## Verify Docker Image Signature ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.108.16 ``` ## What's Changed * fix(decisions): support the litellm_proxy provider (#51611, #53195) [lts/1.108.x] by @zoveki in https://github.com/BerriAI/litellm/pull/53196 * test(otel): backport excluded services matrix fixes (#51554, #51759) [lts/1.108.x] by @yuneng-berri in https://github.com/BerriAI/litellm/pull/53399 * test(auth): expect null error param for blocked keys (#39540) [lts/1.108.x] by @yuneng-berri in https:/",
       "review_status": "unreviewed",
       "also_seen_in": []
     },
     {
-      "id": "1a10f1676d46fc01",
-      "event_key": "https://openai.com/index/perplexity-and-intelligence",
-      "title": "Perplexity and Intelligence",
-      "url": "https://openai.com/index/perplexity-and-intelligence",
-      "published_at": "2026-11-22T00:00:00.000Z",
-      "published_raw": "Sun, 22 Nov 2026 00:00:00 GMT",
-      "time_status": "needs_time_review",
+      "id": "a9972b90c90a6092",
+      "event_key": "anthropics/claude-code@v2.1.331",
+      "title": "Claude Code v2.1.331",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+      "published_at": "2026-11-23T21:34:41.000Z",
+      "published_raw": "2026-11-23T21:34:41Z",
+      "time_status": "in_window",
+      "source_id": "claude-code",
+      "source": "Claude Code",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## What's changed - Added Code Mode support in terminal sessions on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude Platform on AWS - Added `oidc.groups_jsonpath` to the Claude apps gateway, to read groups from the matching entries of a list of objects with a small subset of JSONPath (RFC 9535) - Added an API connectivity section to `claude doctor` that reports whether the API can be reached, with the HTTP status or the error, or says why it wasn't tested - Added a notice when tap-mode voice dictation stops by itself, after 15 seconds without recognized speech or at its 2-minute limit - Added `CLAUDE_CODE_DISABLE_RESPONSE_COMPRESSION` to ask for uncompressed model",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "b0689cf87ab570a4",
+      "event_key": "https://openai.com/index/introducing-shirudo",
+      "title": "OpenAI and Cisco introduce Shirudo",
+      "url": "https://openai.com/index/introducing-shirudo",
+      "published_at": "2026-11-23T21:20:00.000Z",
+      "published_raw": "Mon, 23 Nov 2026 21:20:00 GMT",
+      "time_status": "in_window",
       "source_id": "openai",
       "source": "OpenAI",
       "channel": "官方发布",
       "tier": "primary",
-      "summary": "How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluating emerging capabilities.",
+      "summary": "OpenAI and Cisco introduce Shirudo, an open-source runtime for Linux. It helps teams protect running systems while they roll out patches.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "eb2701ff66febea2",
+      "event_key": "https://huggingface.co/blog/allenai/robotrack",
+      "title": "RoboTrack: Point tracking for real-world robotic manipulation",
+      "url": "https://huggingface.co/blog/allenai/robotrack",
+      "published_at": "2026-11-23T17:20:37.168Z",
+      "published_raw": "2026-11-23T17:20:37.168Z",
+      "time_status": "in_window",
+      "source_id": "hf-blog",
+      "source": "Hugging Face 作者文章",
+      "channel": "论文与研究",
+      "tier": "mixed",
+      "summary": "",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "d6fdac3c20f42b84",
+      "event_key": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/",
+      "title": "A more tailored Google Search that’s uniquely yours",
+      "url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/",
+      "published_at": "2026-11-23T17:00:00.000Z",
+      "published_raw": "Mon, 23 Nov 2026 17:00:00 +0000",
+      "time_status": "in_window",
+      "source_id": "google",
+      "source": "Google AI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "Get more helpful Search responses by securely opting in to connect Google Wallet, Drive, and the Gemini app to Personal Intelligence in AI Mode.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "7e5ea08b03eca9c2",
+      "event_key": "n8n-io/n8n@2.49.5",
+      "title": "n8n n8n@2.49.5",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.49.5",
+      "published_at": "2026-11-23T15:25:29.000Z",
+      "published_raw": "2026-11-23T15:25:29Z",
+      "time_status": "in_window",
+      "source_id": "n8n",
+      "source": "n8n",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [2.49.5](https://github.com/n8n-io/n8n/compare/n8n@2.49.4...n8n@2.49.5) (2026-11-23) ### Bug Fixes * **core:** Refresh the cached token of an expirable credential during its test ([#44832](https://github.com/n8n-io/n8n/issues/44832)) ([5041b0d](https://github.com/n8n-io/n8n/commit/5041b0deb0aefe88b339b36c33372038cb50ff8f)) * **core:** Return an item that holds a value the vm expression engine cannot copy ([#44879](https://github.com/n8n-io/n8n/issues/44879)) ([36ef1a5](https://github.com/n8n-io/n8n/commit/36ef1a51854c6a55e24561b2bda40f2009fa9247))",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "43879fc56411dca3",
+      "event_key": "langfuse/langfuse@v4.84.0",
+      "title": "Langfuse v4.84.0",
+      "url": "https://github.com/langfuse/langfuse/releases/tag/v4.84.0",
+      "published_at": "2026-11-23T12:22:31.000Z",
+      "published_raw": "2026-11-23T12:22:31Z",
+      "time_status": "in_window",
+      "source_id": "langfuse",
+      "source": "Langfuse",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## What's Changed ### Features * feat(mcp): add batchCreateAnnotationQueueItems tool by @tobi12345 in https://github.com/langfuse/langfuse/pull/20477 * feat(web): show Intent topic shares in the tracing pulse chart header by @nmtrang29 in https://github.com/langfuse/langfuse/pull/20482 * feat(billing): ship the billable_events ledger as a ClickHouse migration by @Steffen911 in https://github.com/langfuse/langfuse/pull/20458 * feat(annotation-queue): Embed updated session view by @bezbac in https://github.com/langfuse/langfuse/pull/19225 * feat(topics): describe how sentiment was expressed, not what it was about by @LysanderKie in https://github.com/langfuse/langfuse/pull/20410 * feat(halo): ",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "172d3a317a0c50aa",
+      "event_key": "n8n-io/n8n@1.123.101",
+      "title": "n8n n8n@1.123.101",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%401.123.101",
+      "published_at": "2026-11-23T08:37:07.000Z",
+      "published_raw": "2026-11-23T08:37:07Z",
+      "time_status": "in_window",
+      "source_id": "n8n",
+      "source": "n8n",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [1.123.101](https://github.com/n8n-io/n8n/compare/n8n@1.123.100...n8n@1.123.101) (2026-11-23)",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "81389e2dfe89bd43",
+      "event_key": "n8n-io/n8n@2.48.8",
+      "title": "n8n stable",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.48.8",
+      "published_at": "2026-11-23T08:34:03.000Z",
+      "published_raw": "2026-11-23T08:34:03Z",
+      "time_status": "in_window",
+      "source_id": "n8n",
+      "source": "n8n",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [2.48.8](https://github.com/n8n-io/n8n/compare/n8n@2.48.7...n8n@2.48.8) (2026-11-23) ### Bug Fixes * Broken e2e test in source-control-helper ([#44756](https://github.com/n8n-io/n8n/issues/44756)) ([0a1c9f0](https://github.com/n8n-io/n8n/commit/0a1c9f05346a1f3c8ce8a474b3acbe98fccc808c)) * **core:** Give custom instance roles access to the Migration Report ([#44667](https://github.com/n8n-io/n8n/issues/44667)) ([b7378d4](https://github.com/n8n-io/n8n/commit/b7378d43a412509f891fb4cab9ba263d75b3064f)) * **core:** Throw when an expression reaches the memory limit on the quickjs engine ([#44687](https://github.com/n8n-io/n8n/issues/44687)) ([ef0df0c](https://github.com/n8n-io/n8n/commit/ef0df0",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "38b5f811b23a28b0",
+      "event_key": "n8n-io/n8n@2.49.4",
+      "title": "n8n n8n@2.49.4",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.49.4",
+      "published_at": "2026-11-23T08:18:05.000Z",
+      "published_raw": "2026-11-23T08:18:05Z",
+      "time_status": "in_window",
+      "source_id": "n8n",
+      "source": "n8n",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [2.49.4](https://github.com/n8n-io/n8n/compare/n8n@2.49.3...n8n@2.49.4) (2026-11-23) ### Bug Fixes * **ai-builder:** Apply \"Always allow\" on archive and unpublish to all workflows in the thread ([#44629](https://github.com/n8n-io/n8n/issues/44629)) ([e000c7f](https://github.com/n8n-io/n8n/commit/e000c7fa3240dfed39724d1e3ed86edcc0833df4)) * **core:** Give custom instance roles access to the Migration Report ([#44666](https://github.com/n8n-io/n8n/issues/44666)) ([3cbc4ad](https://github.com/n8n-io/n8n/commit/3cbc4adabf2aa5e47cc572560005f604a63f32dd)) * **core:** Throw when an expression reaches the memory limit on the quickjs engine ([#44686](https://github.com/n8n-io/n8n/issues/44686)) ([",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "10878202550bbbf9",
+      "event_key": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "title": "Connected intelligence for in-house legal",
+      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "published_at": "2026-11-23T08:00:00.000Z",
+      "published_raw": "Mon, 23 Nov 2026 08:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "Watch OpenAI’s Stacey Wang and Craig Bruney, Mary O’Carroll of LECG, and Cooley’s Richard Segal explore how AI can help in-house legal teams connect business context, build reusable workflows and get more from outside counsel.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "1259b534687dd8b3",
+      "event_key": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "title": "Richpanel helps companies automate 50% of support in 30 days",
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "published_at": "2026-11-23T08:00:00.000Z",
+      "published_raw": "Mon, 23 Nov 2026 08:00:00 GMT",
+      "time_status": "in_window",
+      "source_id": "openai",
+      "source": "OpenAI",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "Richpanel uses GPT-6 Astra and GPT-6.1 Sol to equip its AI support agents with tools and procedures, and GPT-6 Luna for their conversations.",
       "review_status": "unreviewed",
       "also_seen_in": []
     }

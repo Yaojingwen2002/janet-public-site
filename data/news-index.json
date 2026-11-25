@@ -1,8 +1,42 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-21T00:11:58.631Z",
-  "latest_edition_id": "2026-11-21",
+  "generated_at": "2026-11-25T08:17:36.071Z",
+  "latest_edition_id": "2026-11-25",
   "editions": [
+    {
+      "edition_id": "2026-11-25",
+      "date": "2026-11-25",
+      "title": "基础题，再答一遍",
+      "summary": "544道基础题，检查的是模型能否稳定答对，以及换一点问法之后会不会失手。DeepMind的新评测给日常可靠性留出了一个独立位置：复杂题的上限很高，读一格颜色、认一个位置却仍可能出错，这两种表现可以同时存在。 实验室和望远镜的数据又有各自的证据等级。GPT-6.2设计的小蛋白经过专门模型筛选，在322个实验样本中测到35个结合信号；爱好者借助Codex与Astra提出了行星候选，专业人员还在复核。前者没有证明疗效，后者还没有确认新行星；它们的进展已经足够具体，保留下一步，故事也成立。 其余变化落在日常成本上：模型转换",
+      "edition_type": "codex_briefing",
+      "signal_count": 17,
+      "edition_items_count": 17,
+      "homepage_items_count": 5,
+      "url": "data/2026-11-25/output.html",
+      "content_url": "data/2026-11-25/content.json",
+      "top_sources": [
+        "Google官方公告",
+        "n8n官方GitHub Release（预览版）",
+        "LiteLLM官方GitHub Release（LTS）",
+        "Hugging Face官方GitHub Release",
+        "Langfuse官方GitHub Release",
+        "GPUWorks模型卡与权重记录（独立转换，作者自报）",
+        "mradermacher转换记录与diarizers-community原模型卡",
+        "mradermacher转换记录与腾讯原模型卡"
+      ],
+      "top_categories": [
+        "news",
+        "models",
+        "insights",
+        "insights2",
+        "tools"
+      ],
+      "lead_story": {
+        "title": "Gemini接入勇士与女武神球队运营",
+        "source": "Google官方公告",
+        "url": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/"
+      }
+    },
     {
       "edition_id": "2026-11-21",
       "date": "2026-11-21",
@@ -4065,6 +4099,23 @@
     }
   ],
   "sources": [
+    "Google官方公告",
+    "n8n官方GitHub Release（预览版）",
+    "LiteLLM官方GitHub Release（LTS）",
+    "Hugging Face官方GitHub Release",
+    "Langfuse官方GitHub Release",
+    "GPUWorks模型卡与权重记录（独立转换，作者自报）",
+    "mradermacher转换记录与diarizers-community原模型卡",
+    "mradermacher转换记录与腾讯原模型卡",
+    "mradermacher转换记录与Wisp原作者模型卡",
+    "OpenAI原始研究披露与Onava合作实验",
+    "OpenAI新案例报道（观测与搜索较早）",
+    "Google DeepMind原始评测公告",
+    "Google新案例汇编（模型此前已发布）",
+    "Zipher创始人原始融资公告",
+    "SiliconANGLE原创采访报道",
+    "Google英国团队原始投资公告",
+    "Windmill官方GitHub Release",
     "Google官方博客（新披露，部署较早）",
     "OpenAI官方技术报告",
     "Anthropic官方GitHub Release",
@@ -4078,9 +4129,7 @@
     "Danaher发行方公告 / PR Newswire",
     "SatSure官方融资公告",
     "The Irish Times原创报道",
-    "Windmill官方GitHub Release",
     "Google官方博客",
-    "Langfuse官方GitHub Release",
     "GitHub官方博客（当天新介绍）",
     "Hugging Face独立转换与Rush Labs模型卡",
     "Hugging Face独立转换与HiTZ模型卡",

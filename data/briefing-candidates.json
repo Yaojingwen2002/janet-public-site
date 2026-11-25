@@ -2,7 +2,7 @@
   "schema_version": 1,
   "date": "2026-11-25",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-25T05:42:54.557Z",
+  "generated_at": "2026-11-25T08:19:00.716Z",
   "window": {
     "start": "2026-11-24T00:01:00.000Z",
     "end": "2026-11-25T00:00:00.000Z"
@@ -10,60 +10,60 @@
   "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
   "source_results": [
     {
-      "id": "github-blog",
-      "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-25T05:42:53.547Z"
-    },
-    {
       "id": "openai",
       "status": "ok",
       "raw_count": 5,
       "count": 5,
-      "checked_at": "2026-11-25T05:42:53.721Z"
+      "checked_at": "2026-11-25T08:18:59.603Z"
     },
     {
       "id": "hf-blog",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-25T05:42:53.725Z"
+      "checked_at": "2026-11-25T08:18:59.610Z"
     },
     {
       "id": "google",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-25T05:42:53.816Z"
+      "checked_at": "2026-11-25T08:18:59.681Z"
     },
     {
-      "id": "claude-code",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-25T05:42:54.060Z"
-    },
-    {
-      "id": "transformers",
+      "id": "github-blog",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-25T05:42:54.093Z"
+      "checked_at": "2026-11-25T08:18:59.693Z"
     },
     {
       "id": "ollama",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-25T05:42:54.170Z"
+      "checked_at": "2026-11-25T08:19:00.202Z"
     },
     {
       "id": "langfuse",
       "status": "ok",
       "raw_count": 2,
       "count": 2,
-      "checked_at": "2026-11-25T05:42:54.200Z"
+      "checked_at": "2026-11-25T08:19:00.261Z"
+    },
+    {
+      "id": "transformers",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-25T08:19:00.312Z"
+    },
+    {
+      "id": "claude-code",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-25T08:19:00.326Z"
     },
     {
       "id": "anthropic",
@@ -140,21 +140,21 @@
       "status": "ok",
       "raw_count": 4,
       "count": 4,
-      "checked_at": "2026-11-25T05:42:54.454Z"
+      "checked_at": "2026-11-25T08:19:00.619Z"
     },
     {
       "id": "windmill",
       "status": "ok",
       "raw_count": 2,
       "count": 2,
-      "checked_at": "2026-11-25T05:42:54.547Z"
+      "checked_at": "2026-11-25T08:19:00.713Z"
     },
     {
       "id": "litellm",
       "status": "ok",
       "raw_count": 4,
       "count": 4,
-      "checked_at": "2026-11-25T05:42:54.557Z"
+      "checked_at": "2026-11-25T08:19:00.716Z"
     }
   ],
   "candidates": [
@@ -186,7 +186,7 @@
       "source": "LiteLLM",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## Verify Docker Image Signature ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.112.0-rc.1 ``` ## What's Changed * fix(decisions): answer 400 naming extra_headers when it is not an object by @paveln83 in https://github.com/BerriAI/litellm/pull/50581 * fix(proxy): stop returning stack traces in health check errors by @ojensen-berri in https://github.com/BerriAI/litellm/pull/52005 * chore(cost-map): add fal_ai seedance 2.5 flash rows, copilot deprecation dates, inkling 2 small rows, pixverse clip prices an",
+      "summary": "## Verify this release ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.112.0-rc.1 ``` Same command for the `docker.io/litellm/litellm` image ## What's new in 1.112.0-rc.1 760 PRs. 110 added, 288 fixed, 57 changed, 8 improved, 2 removed. 1 needs action ### Action required - **Cost tracking and pricing:** Read `ServiceProviderName` in FOCUS export queries that used the removed `ProviderName` or `PublisherName` columns (#52105) ### Highlights - **Other providers:** Added the Perplexity Orchestrator provider ",
       "review_status": "unreviewed",
       "also_seen_in": []
     },
@@ -255,22 +255,6 @@
       "also_seen_in": []
     },
     {
-      "id": "215487d78b45f131",
-      "event_key": "https://github.blog/news-insights/company-news/these-are-the-gifts-developers-will-actually-want/",
-      "title": "These are the gifts developers will actually want",
-      "url": "https://github.blog/news-insights/company-news/these-are-the-gifts-developers-will-actually-want/",
-      "published_at": "2026-11-24T16:00:00.000Z",
-      "published_raw": "Tue, 24 Nov 2026 16:00:00 +0000",
-      "time_status": "in_window",
-      "source_id": "github-blog",
-      "source": "GitHub Blog",
-      "channel": "官方发布",
-      "tier": "primary",
-      "summary": "The developer you're shopping for hasn’t shared their holiday wish list with you yet? Check out these gifts, plus our Black Friday discount all week long. The post These are the gifts developers will actually want appeared first on The GitHub Blog .",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
       "id": "0d108e7b71c40649",
       "event_key": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
       "title": "How Gemini is changing the game for Golden State's organization and fans.",
@@ -283,6 +267,22 @@
       "channel": "官方发布",
       "tier": "primary",
       "summary": "Google Gemini partners with Golden State to power fan experiences and business operations for the Warriors, Valkyries, and Chase Center. See the news.",
+      "review_status": "unreviewed",
+      "also_seen_in": []
+    },
+    {
+      "id": "215487d78b45f131",
+      "event_key": "https://github.blog/news-insights/company-news/these-are-the-gifts-developers-will-actually-want/",
+      "title": "These are the gifts developers will actually want",
+      "url": "https://github.blog/news-insights/company-news/these-are-the-gifts-developers-will-actually-want/",
+      "published_at": "2026-11-24T16:00:00.000Z",
+      "published_raw": "Tue, 24 Nov 2026 16:00:00 +0000",
+      "time_status": "in_window",
+      "source_id": "github-blog",
+      "source": "GitHub Blog",
+      "channel": "官方发布",
+      "tier": "primary",
+      "summary": "The developer you're shopping for hasn’t shared their holiday wish list with you yet? Check out these gifts, plus our Black Friday discount all week long. The post These are the gifts developers will actually want appeared first on The GitHub Blog .",
       "review_status": "unreviewed",
       "also_seen_in": []
     },

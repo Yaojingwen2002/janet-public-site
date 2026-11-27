@@ -2,7 +2,7 @@
   "schema_version": 1,
   "date": "2026-11-27",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-27T05:24:39.044Z",
+  "generated_at": "2026-11-27T08:13:32.593Z",
   "window": {
     "start": "2026-11-26T00:01:00.000Z",
     "end": "2026-11-27T00:00:00.000Z"
@@ -10,60 +10,60 @@
   "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
   "source_results": [
     {
-      "id": "github-blog",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-27T05:24:38.176Z"
-    },
-    {
       "id": "openai",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-27T05:24:38.204Z"
+      "checked_at": "2026-11-27T08:13:31.444Z"
     },
     {
       "id": "hf-blog",
       "status": "ok",
       "raw_count": 2,
       "count": 2,
-      "checked_at": "2026-11-27T05:24:38.379Z"
+      "checked_at": "2026-11-27T08:13:31.478Z"
+    },
+    {
+      "id": "github-blog",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-27T08:13:31.538Z"
     },
     {
       "id": "google",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-27T05:24:38.382Z"
-    },
-    {
-      "id": "ollama",
-      "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-27T05:24:38.651Z"
-    },
-    {
-      "id": "claude-code",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-27T05:24:38.655Z"
+      "checked_at": "2026-11-27T08:13:31.553Z"
     },
     {
       "id": "langfuse",
       "status": "ok",
       "raw_count": 2,
       "count": 2,
-      "checked_at": "2026-11-27T05:24:38.719Z"
+      "checked_at": "2026-11-27T08:13:32.089Z"
+    },
+    {
+      "id": "ollama",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-27T08:13:32.092Z"
     },
     {
       "id": "transformers",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-27T05:24:38.749Z"
+      "checked_at": "2026-11-27T08:13:32.105Z"
+    },
+    {
+      "id": "claude-code",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-27T08:13:32.133Z"
     },
     {
       "id": "anthropic",
@@ -136,25 +136,25 @@
       "count": 0
     },
     {
+      "id": "windmill",
+      "status": "ok",
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-27T08:13:32.504Z"
+    },
+    {
       "id": "n8n",
       "status": "ok",
       "raw_count": 6,
       "count": 4,
-      "checked_at": "2026-11-27T05:24:38.935Z"
+      "checked_at": "2026-11-27T08:13:32.525Z"
     },
     {
       "id": "litellm",
       "status": "ok",
       "raw_count": 3,
       "count": 3,
-      "checked_at": "2026-11-27T05:24:39.037Z"
-    },
-    {
-      "id": "windmill",
-      "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-27T05:24:39.044Z"
+      "checked_at": "2026-11-27T08:13:32.593Z"
     }
   ],
   "candidates": [

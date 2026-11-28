@@ -1,69 +1,69 @@
 {
   "schema_version": 1,
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "timezone": "Asia/Taipei",
-  "generated_at": "2026-11-27T08:13:32.593Z",
+  "generated_at": "2026-11-28T04:59:42.389Z",
   "window": {
-    "start": "2026-11-26T00:01:00.000Z",
-    "end": "2026-11-27T00:00:00.000Z"
+    "start": "2026-11-27T00:01:00.000Z",
+    "end": "2026-11-28T00:00:00.000Z"
   },
   "policy": "采集只生成线索。入选前核验原文、发布时间、事件重复、数字、图片与开放范围；不会自动凑满17条或发布。",
   "source_results": [
-    {
-      "id": "openai",
-      "status": "ok",
-      "raw_count": 0,
-      "count": 0,
-      "checked_at": "2026-11-27T08:13:31.444Z"
-    },
-    {
-      "id": "hf-blog",
-      "status": "ok",
-      "raw_count": 2,
-      "count": 2,
-      "checked_at": "2026-11-27T08:13:31.478Z"
-    },
     {
       "id": "github-blog",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-27T08:13:31.538Z"
+      "checked_at": "2026-11-28T04:59:41.570Z"
+    },
+    {
+      "id": "hf-blog",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-28T04:59:41.577Z"
+    },
+    {
+      "id": "openai",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-28T04:59:41.629Z"
     },
     {
       "id": "google",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-27T08:13:31.553Z"
-    },
-    {
-      "id": "langfuse",
-      "status": "ok",
-      "raw_count": 2,
-      "count": 2,
-      "checked_at": "2026-11-27T08:13:32.089Z"
-    },
-    {
-      "id": "ollama",
-      "status": "ok",
-      "raw_count": 1,
-      "count": 1,
-      "checked_at": "2026-11-27T08:13:32.092Z"
+      "checked_at": "2026-11-28T04:59:41.648Z"
     },
     {
       "id": "transformers",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-27T08:13:32.105Z"
+      "checked_at": "2026-11-28T04:59:41.946Z"
+    },
+    {
+      "id": "langfuse",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-28T04:59:41.961Z"
+    },
+    {
+      "id": "ollama",
+      "status": "ok",
+      "raw_count": 0,
+      "count": 0,
+      "checked_at": "2026-11-28T04:59:41.969Z"
     },
     {
       "id": "claude-code",
       "status": "ok",
       "raw_count": 0,
       "count": 0,
-      "checked_at": "2026-11-27T08:13:32.133Z"
+      "checked_at": "2026-11-28T04:59:42.120Z"
     },
     {
       "id": "anthropic",
@@ -136,233 +136,89 @@
       "count": 0
     },
     {
+      "id": "n8n",
+      "status": "ok",
+      "raw_count": 4,
+      "count": 2,
+      "checked_at": "2026-11-28T04:59:42.378Z"
+    },
+    {
       "id": "windmill",
       "status": "ok",
       "raw_count": 1,
       "count": 1,
-      "checked_at": "2026-11-27T08:13:32.504Z"
-    },
-    {
-      "id": "n8n",
-      "status": "ok",
-      "raw_count": 6,
-      "count": 4,
-      "checked_at": "2026-11-27T08:13:32.525Z"
+      "checked_at": "2026-11-28T04:59:42.387Z"
     },
     {
       "id": "litellm",
       "status": "ok",
-      "raw_count": 3,
-      "count": 3,
-      "checked_at": "2026-11-27T08:13:32.593Z"
+      "raw_count": 1,
+      "count": 1,
+      "checked_at": "2026-11-28T04:59:42.389Z"
     }
   ],
   "candidates": [
     {
-      "id": "ffee72d872825d9c",
-      "event_key": "BerriAI/litellm@v1.113.0-dev.1",
-      "title": "LiteLLM v1.113.0-dev.1",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.113.0-dev.1",
-      "published_at": "2026-11-26T21:02:10.000Z",
-      "published_raw": "2026-11-26T21:02:10Z",
+      "id": "b49f2f9239a32873",
+      "event_key": "BerriAI/litellm@v1.108.20",
+      "title": "LiteLLM v1.108.20",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.108.20",
+      "published_at": "2026-11-27T21:37:18.000Z",
+      "published_raw": "2026-11-27T21:37:18Z",
       "time_status": "in_window",
       "source_id": "litellm",
       "source": "LiteLLM",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## Verify Docker Image Signature ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.113.0-dev.1 ``` ## What's Changed * feat(lens): forward agent spans to Lens and record gateway calls in the agent's trace by @kerry-berri in https://github.com/BerriAI/litellm/pull/53285 * fix(proxy): accept audience and public_key_url in litellm_jwtauth by @yucheng-berri in https://github.com/BerriAI/litellm/pull/53288 * fix(proxy): the failure row after a failed fallback stands for the attempt the client saw by @kerry-berri",
+      "summary": "> [!TIP] > The `lts` image tag always points to the latest LTS release. Pull `ghcr.io/berriai/litellm:lts` to stay on the newest LTS patch ## Verify this release ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.108.20 ``` Same command for `litellm-database`, `litellm-non_root` and the `docker.io/litellm/*` images ## What's new in 1.108.20 (LTS) 7 PRs. 3 fixed. No action needed to upgrade ### Changes - **Anthropic:** Fixed a tool message with a non-string `tool_call_id` reaching Anthropic instead of getting",
       "review_status": "unreviewed",
       "also_seen_in": []
     },
     {
-      "id": "b9cd655cc3e4a81f",
-      "event_key": "windmill-labs/windmill@1.886.0",
-      "title": "Windmill v1.886.0",
-      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.886.0",
-      "published_at": "2026-11-26T20:28:54.000Z",
-      "published_raw": "2026-11-26T20:28:54Z",
+      "id": "e29bbb85c7a11576",
+      "event_key": "windmill-labs/windmill@1.887.0",
+      "title": "Windmill v1.887.0",
+      "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.887.0",
+      "published_at": "2026-11-27T15:41:12.000Z",
+      "published_raw": "2026-11-27T15:41:12Z",
       "time_status": "in_window",
       "source_id": "windmill",
       "source": "Windmill",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## [1.886.0](https://github.com/windmill-labs/windmill/compare/v1.885.0...v1.886.0) (2026-11-26) ### Features * a second OTel logs exporter for audit logs ([#12675](https://github.com/windmill-labs/windmill/issues/12675)) ([f28bdff](https://github.com/windmill-labs/windmill/commit/f28bdff94f82d18c2d75d179c6f35f524f5b220c)) * add a Require SSO workspace protection rule ([#12681](https://github.com/windmill-labs/windmill/issues/12681)) ([71f22fc](https://github.com/windmill-labs/windmill/commit/71f22fc6e93f43b2ee4d1eec5c1b5c9ece5e941e)) * overwrite or discard each path conflict when reassigning user items ([#12683](https://github.com/windmill-labs/windmill/issues/12683)) ([b3ab8e2](https://git",
+      "summary": "## [1.887.0](https://github.com/windmill-labs/windmill/compare/v1.886.0...v1.887.0) (2026-11-27) ### Features * add native totp two-factor authentication for password login ([#12620](https://github.com/windmill-labs/windmill/issues/12620)) ([f52c117](https://github.com/windmill-labs/windmill/commit/f52c117e76c4b39265e4d5b3f8304934dce3f0c0)) * add token introspection endpoint and token test UI ([#12702](https://github.com/windmill-labs/windmill/issues/12702)) ([55aec82](https://github.com/windmill-labs/windmill/commit/55aec82102bca445fa91a2d6b926a8a68f953527)) * connect native trigger accounts through the resource connect flow ([#12352](https://github.com/windmill-labs/windmill/issues/12352))",
       "review_status": "unreviewed",
       "also_seen_in": []
     },
     {
-      "id": "1a9fa9ea3375fe61",
-      "event_key": "BerriAI/litellm@v1.108.19",
-      "title": "LiteLLM v1.108.19",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.108.19",
-      "published_at": "2026-11-26T19:05:42.000Z",
-      "published_raw": "2026-11-26T19:05:42Z",
-      "time_status": "in_window",
-      "source_id": "litellm",
-      "source": "LiteLLM",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "> [!TIP] > The `lts` image tag always points to the latest LTS release. Pull `ghcr.io/berriai/litellm:lts` to stay on the newest LTS patch ## Verify this release ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.108.19 ``` Same command for `litellm-database`, `litellm-non_root` and the `docker.io/litellm/*` images ## What's new in 1.108.19 (LTS) 19 PRs. 1 added, 13 fixed, 1 changed. No action needed to upgrade ### Changes - **OpenAI:** Fixed `disable_parallel_tool_use`, `speed` and web search filters doing ",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "a0f1ce00ad86158f",
-      "event_key": "ollama/ollama@v0.40.19-rc0",
-      "title": "Ollama v0.40.19-rc0",
-      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.19-rc0",
-      "published_at": "2026-11-26T17:52:02.000Z",
-      "published_raw": "2026-11-26T17:52:02Z",
-      "time_status": "in_window",
-      "source_id": "ollama",
-      "source": "Ollama",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## What's Changed * inkling2: faster short histories, draft proposals and conv snapshots by @dhiltgen in https://github.com/ollama/ollama/pull/19881 * mlxrunner: compact Engram history buffers by @pdevine in https://github.com/ollama/ollama/pull/19913 * bump llama-server by @pdevine in https://github.com/ollama/ollama/pull/19917 **Full Changelog**: https://github.com/ollama/ollama/compare/v0.40.18...v0.40.19-rc0",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "c26bdc217845572f",
-      "event_key": "BerriAI/litellm@v1.108.18",
-      "title": "LiteLLM v1.108.18",
-      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.108.18",
-      "published_at": "2026-11-26T17:06:13.000Z",
-      "published_raw": "2026-11-26T17:06:13Z",
-      "time_status": "in_window",
-      "source_id": "litellm",
-      "source": "LiteLLM",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "> [!TIP] > The `lts` image tag always points to the latest LTS release. Pull `ghcr.io/berriai/litellm:lts` to stay on the newest LTS patch ## Verify this release ```bash cosign verify \\ --certificate-identity https://github.com/BerriAI/project-releaser/.github/workflows/release.yml@refs/heads/main \\ --certificate-oidc-issuer https://token.actions.githubusercontent.com \\ ghcr.io/berriai/litellm:v1.108.18 ``` Same command for `litellm-database`, `litellm-non_root` and the `docker.io/litellm/*` images ## What's new in 1.108.18 (LTS) 18 PRs. 3 added, 11 fixed, 1 improved. No action needed to upgrade ### Changes - **OpenAI:** Fixed GPT Image 2.5 edits with a `markup` file failing with 400, and SD",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "13d8b03adee844b6",
-      "event_key": "langfuse/langfuse@v4.88.0",
-      "title": "Langfuse v4.88.0",
-      "url": "https://github.com/langfuse/langfuse/releases/tag/v4.88.0",
-      "published_at": "2026-11-26T16:50:41.000Z",
-      "published_raw": "2026-11-26T16:50:41Z",
-      "time_status": "in_window",
-      "source_id": "langfuse",
-      "source": "Langfuse",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## What's Changed ### Features * feat(sharing): let orgs and instances disable public trace and session sharing by @marcklingen in https://github.com/langfuse/langfuse/pull/20463 * feat(ai-gateway): link unpriced usage alert to organization models by @hassiebp in https://github.com/langfuse/langfuse/pull/20977 * feat(mcp): record client capabilities and extensions on MCP spans by @tobi12345 in https://github.com/langfuse/langfuse/pull/20982 * feat(ai-gateway): add redact guardrail action by @wochinge in https://github.com/langfuse/langfuse/pull/20848 * feat(web): create the onboarding API key as a named Developer key by @AbdallahAHO in https://github.com/langfuse/langfuse/pull/20603 * feat(w",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "a734da9d3a1d8760",
-      "event_key": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
-      "title": "Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon",
-      "url": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
-      "published_at": "2026-11-26T11:37:17.440Z",
-      "published_raw": "2026-11-26T11:37:17.440Z",
-      "time_status": "in_window",
-      "source_id": "hf-blog",
-      "source": "Hugging Face 作者文章",
-      "channel": "论文与研究",
-      "tier": "mixed",
-      "summary": "",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "ca67807e499166d5",
-      "event_key": "langfuse/langfuse@v4.87.0",
-      "title": "Langfuse v4.87.0",
-      "url": "https://github.com/langfuse/langfuse/releases/tag/v4.87.0",
-      "published_at": "2026-11-26T11:22:05.000Z",
-      "published_raw": "2026-11-26T11:22:05Z",
-      "time_status": "in_window",
-      "source_id": "langfuse",
-      "source": "Langfuse",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## What's Changed * feat(evals): mark the evaluated observation in the sample trace view by @marliessophie in https://github.com/langfuse/langfuse/pull/20810 * fix(topics): back off on summary rate limits instead of resending them by @LysanderKie in https://github.com/langfuse/langfuse/pull/20817 * fix(ai-gateway): filter gateway key options by selected users by @wochinge in https://github.com/langfuse/langfuse/pull/20835 * feat(ai-gateway): block or log requests whose last turn matches a guardrail by @wochinge in https://github.com/langfuse/langfuse/pull/20734 * feat(ai-gateway): add reset budget action for users and API keys by @wochinge in https://github.com/langfuse/langfuse/pull/20735 *",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "a49d9e1b2cc7cf20",
-      "event_key": "n8n-io/n8n@3.4.1",
-      "title": "n8n n8n@3.4.1",
-      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%403.4.1",
-      "published_at": "2026-11-26T07:47:44.000Z",
-      "published_raw": "2026-11-26T07:47:44Z",
-      "time_status": "in_window",
-      "source_id": "n8n",
-      "source": "n8n",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## [3.4.1](https://github.com/n8n-io/n8n/compare/n8n@2.50.0...n8n@3.4.1) (2026-11-26) ### Bug Fixes * **ai-builder:** Apply the configured reasoning effort to OpenRouter ([#45004](https://github.com/n8n-io/n8n/issues/45004)) ([93a9bd9](https://github.com/n8n-io/n8n/commit/93a9bd95e4a193bea0e2dacbfada0823b752b386)) * Apply execution data size limit in MCP get_workflow_execution ([#45097](https://github.com/n8n-io/n8n/issues/45097)) ([3b3939d](https://github.com/n8n-io/n8n/commit/3b3939d030db40e061e2a0c53339234a42170f57)) * Community package supportedNodesApiVersion v3 compatibility ([136be23](https://github.com/n8n-io/n8n/commit/136be23c14b524ba2e3f5a4c42e1ae202d1c1513)) * **core, editor:** L",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "74a7b4305d31c48a",
-      "event_key": "n8n-io/n8n@1.123.102",
-      "title": "n8n n8n@1.123.102",
-      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%401.123.102",
-      "published_at": "2026-11-26T07:31:28.000Z",
-      "published_raw": "2026-11-26T07:31:28Z",
-      "time_status": "in_window",
-      "source_id": "n8n",
-      "source": "n8n",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## [1.123.102](https://github.com/n8n-io/n8n/compare/n8n@1.123.101...n8n@1.123.102) (2026-11-26)",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "820a099ff8f6dbe2",
-      "event_key": "n8n-io/n8n@2.50.2",
-      "title": "n8n n8n@2.50.2",
-      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.50.2",
-      "published_at": "2026-11-26T07:24:35.000Z",
-      "published_raw": "2026-11-26T07:24:35Z",
-      "time_status": "in_window",
-      "source_id": "n8n",
-      "source": "n8n",
-      "channel": "开源与版本",
-      "tier": "primary",
-      "summary": "## [2.50.2](https://github.com/n8n-io/n8n/compare/n8n@2.50.1...n8n@2.50.2) (2026-11-26) ### Bug Fixes * Apply execution data size limit in MCP get_workflow_execution ([#45141](https://github.com/n8n-io/n8n/issues/45141)) ([965e5b2](https://github.com/n8n-io/n8n/commit/965e5b251a8441919d93b9b9c92beee22748671d)) * **core:** Align extractUrlPath results of isolate expression engines with legacy ([#45149](https://github.com/n8n-io/n8n/issues/45149)) ([5e1ed62](https://github.com/n8n-io/n8n/commit/5e1ed624c0047fe0f874e2792adbbbb0a422a01d)) * **core:** Reduce memory use of concat on workflow data arrays in isolate expression engines ([#45155](https://github.com/n8n-io/n8n/issues/45155)) ([f8ec2b0]",
-      "review_status": "unreviewed",
-      "also_seen_in": []
-    },
-    {
-      "id": "598a2c7fd4f7f5ca",
-      "event_key": "n8n-io/n8n@2.49.7",
+      "id": "7bd208d4867de65b",
+      "event_key": "n8n-io/n8n@2.49.8",
       "title": "n8n stable",
-      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.49.7",
-      "published_at": "2026-11-26T07:23:36.000Z",
-      "published_raw": "2026-11-26T07:23:36Z",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.49.8",
+      "published_at": "2026-11-27T08:18:27.000Z",
+      "published_raw": "2026-11-27T08:18:27Z",
       "time_status": "in_window",
       "source_id": "n8n",
       "source": "n8n",
       "channel": "开源与版本",
       "tier": "primary",
-      "summary": "## [2.49.7](https://github.com/n8n-io/n8n/compare/n8n@2.49.6...n8n@2.49.7) (2026-11-26) ### Bug Fixes * Apply execution data size limit in MCP get_workflow_execution ([#45142](https://github.com/n8n-io/n8n/issues/45142)) ([1e42a0a](https://github.com/n8n-io/n8n/commit/1e42a0a5b5cf8a4d9406911885708e2334feaf72)) * **core:** Align extractUrlPath results of isolate expression engines with legacy ([#45150](https://github.com/n8n-io/n8n/issues/45150)) ([c1e144e](https://github.com/n8n-io/n8n/commit/c1e144e5cb1089ad8af3ebfeea7e7a15e2cf8065)) * **core:** Reduce memory use of concat on workflow data arrays in isolate expression engines ([#45156](https://github.com/n8n-io/n8n/issues/45156)) ([0e11672]",
+      "summary": "## [2.49.8](https://github.com/n8n-io/n8n/compare/n8n@2.49.7...n8n@2.49.8) (2026-11-27)",
       "review_status": "unreviewed",
       "also_seen_in": []
     },
     {
-      "id": "3d2697b636d74b83",
-      "event_key": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
-      "title": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
-      "url": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
-      "published_at": "2026-11-26T05:05:36.737Z",
-      "published_raw": "2026-11-26T05:05:36.737Z",
+      "id": "278748ee6cfb5f52",
+      "event_key": "n8n-io/n8n@2.50.3",
+      "title": "n8n n8n@2.50.3",
+      "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.50.3",
+      "published_at": "2026-11-27T08:18:03.000Z",
+      "published_raw": "2026-11-27T08:18:03Z",
       "time_status": "in_window",
-      "source_id": "hf-blog",
-      "source": "Hugging Face 作者文章",
-      "channel": "论文与研究",
-      "tier": "mixed",
-      "summary": "",
+      "source_id": "n8n",
+      "source": "n8n",
+      "channel": "开源与版本",
+      "tier": "primary",
+      "summary": "## [2.50.3](https://github.com/n8n-io/n8n/compare/n8n@2.50.2...n8n@2.50.3) (2026-11-27) ### Bug Fixes * **editor:** Show a stopped agent chat run as a status line ([#45273](https://github.com/n8n-io/n8n/issues/45273)) ([a5310b6](https://github.com/n8n-io/n8n/commit/a5310b6e2540a01c181879a0b79ea2bbde7e35c9)) ### Features * **editor:** Show thinking and tool calls in one shared activity trace ([#45370](https://github.com/n8n-io/n8n/issues/45370)) ([3aff99e](https://github.com/n8n-io/n8n/commit/3aff99e9a64ba258dedc64d76964efc79da13cdd))",
       "review_status": "unreviewed",
       "also_seen_in": []
     }
